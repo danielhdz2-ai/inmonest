@@ -19,7 +19,7 @@ export async function GET(req: NextRequest) {
   // Vercel Cron envía este header automáticamente
   const isCronCall = req.headers.get('x-vercel-cron') === '1'
 
-  const validSecret = process.env.SCRAPER_SECRET
+  const validSecret = process.env.SCRAPER_SECRET?.trim()
   const isAuthorized = isCronCall || (validSecret && secret === validSecret)
 
   if (!isAuthorized) {
