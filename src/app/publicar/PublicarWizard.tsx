@@ -1,0 +1,399 @@
+'use client'
+
+import { useState, useRef, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
+import { createClient } from '@/lib/supabase/client'
+
+interface FormData {
+  operation: 'rent' | 'sale' | ''
+  province: string
+  city: string
+  district: string
+  postal_code: string
+  price: string
+  bedrooms: string
+  bathrooms: string
+  area: string
+  title: string
+  description: string
+}
+
+const STEPS = ['Operación', 'Ubicación', 'Características', 'Fotos y publicar']
+
+const CIUDADES = [
+  'Madrid', 'Barcelona', 'Valencia', 'Sevilla', 'Zaragoza',
+  'Málaga', 'Murcia', 'Palma', 'Las Palmas', 'Bilbao',
+  'Alicante', 'Córdoba', 'Valladolid', 'Vigo', 'Gijón',
+  'Granada', 'Hospitalet', 'La Coruña', 'Vitoria', 'Elche',
+]
+
+export default function PublicarWizard({ userId }: { userId: string }) {
+  const router = useRouter()
+  const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const [step, setStep] = useState(1)
+  const [form, setForm] = useState<FormData>({
+    operation: '',
+    province: '',
+    city: '',
+    district: '',
+    postal_code: '',
+    price: '',
+    bedrooms: '2',
+    bathrooms: '1',
+    area: '',
+    title: '',
+    description: '',
+  })
+  const [images, setImages] = useState<File[]>([])
+  const [previews, setPreviews] = useState<string[]>([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  const set = (field: keyof FormData, value: string) =>
+    setForm(prev => ({ ...prev, [field]: value }))
+
+  const canNext = () => {
+    if (step === 1) return form.operation !== ''
+    if (step === 2) return form.city.trim() !== '' && form.price.trim() !== ''
+    return true
+  }
+
+  const autoTitle = () => {
+    const hab = form.bedrooms === '0' ? 'Estudio' : `Piso ${form.bedrooms} hab.`
+    const ciudad = form.city ? ` en ${form.city}` : ''
+    const distrito = form.district ? `, ${form.district}` : ''
+    return `${hab}${ciudad}${distrito} — propietario, sin comisión`
+  }
+
+  const handleImages = useCallback((files: FileList | null) => {
+    if (!files) return
+    const newFiles = Array.from(files).slice(0, 10 - images.length)
+    const valid = newFiles.filter(f => f.type.startsWith('image/') && f.size < 10 * 1024 * 1024)
+    setImages(prev => [...prev, ...valid])
+    valid.forEach(f => {
+      const reader = new FileReader()
+      reader.onload = e => setPreviews(prev => [...prev, e.target?.result as string])
+      reader.readAsDataURL(f)
+    })
+  }, [images])
+
+  const removeImage = (i: number) => {
+    setImages(prev => prev.filter((_, idx) => idx !== i))
+    setPreviews(prev => prev.filter((_, idx) => idx !== i))
+  }
+
+  const handlePublish = async () => {
+    setLoading(true)
+    setError('')
+    try {
+      const titleToUse = form.title.trim() || autoTitle()
+
+      const res = await fetch('/api/publicar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, title: titleToUse, province: form.province || form.city }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Error al publicar')
+
+      const listingId: string = data.id
+
+      if (images.length > 0) {
+        const supabase = createClient()
+        for (let i = 0; i < images.length; i++) {
+          const file = images[i]
+          const ext = file.name.split('.').pop() ?? 'jpg'
+          const path = `${userId}/${listingId}/${i}.${ext}`
+          const { error: upErr } = await supabase.storage.from('listings').upload(path, file, { upsert: true })
+          if (!upErr) {
+            await supabase.from('listing_images').insert({ listing_id: listingId, storage_path: path, position: i })
+          }
+        }
+      }
+
+      router.push(`/pisos/${listingId}`)
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : 'Error al publicar')
+      setLoading(false)
+    }
+  }
+
+  const pill = (active: boolean) =>
+    `w-12 h-10 rounded-lg text-sm font-medium border transition-all ${
+      active ? 'bg-[#c9962a] text-white border-[#c9962a]' : 'border-[#f4c94a]/60 text-[#7a5c1e] hover:border-[#c9962a]'
+    }`
+
+  const input = 'w-full border border-[#f4c94a]/60 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#c9962a] focus:ring-1 focus:ring-[#c9962a]'
+
+  return (
+    <div className="max-w-2xl mx-auto">
+      {/* Título */}
+      <div className="mb-8 text-center">
+        <h1 className="text-3xl font-bold text-[#7a5c1e] mb-2">Publica tu anuncio</h1>
+        <p className="text-[#9c7a3c]">Gratis · Sin comisiones · Trato directo</p>
+      </div>
+
+      {/* Indicadores de paso */}
+      <div className="flex items-center justify-between mb-10">
+        {STEPS.map((label, i) => {
+          const n = i + 1
+          const active = n === step
+          const done = n < step
+          return (
+            <div key={n} className="flex flex-1 items-center">
+              <div className="flex flex-col items-center gap-1 flex-shrink-0">
+                <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
+                  done ? 'bg-[#c9962a] text-white' :
+                  active ? 'bg-[#c9962a] text-white ring-4 ring-[#f4c94a]/40' :
+                  'bg-[#f4c94a]/30 text-[#9c7a3c]'
+                }`}>
+                  {done ? '✓' : n}
+                </div>
+                <span className={`text-xs hidden sm:block ${active ? 'text-[#c9962a] font-semibold' : 'text-[#9c7a3c]'}`}>
+                  {label}
+                </span>
+              </div>
+              {i < STEPS.length - 1 && (
+                <div className={`h-0.5 flex-1 mx-2 ${done ? 'bg-[#c9962a]' : 'bg-[#f4c94a]/30'}`} />
+              )}
+            </div>
+          )
+        })}
+      </div>
+
+      {/* Tarjeta */}
+      <div className="bg-white rounded-2xl shadow-sm border border-[#f4c94a]/30 p-8">
+
+        {/* Paso 1: Operación */}
+        {step === 1 && (
+          <div>
+            <h2 className="text-xl font-bold text-[#7a5c1e] mb-6">¿Qué quieres hacer?</h2>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { value: 'rent', label: 'Alquilar', desc: 'Pongo mi piso en alquiler', emoji: '🏠' },
+                { value: 'sale', label: 'Vender', desc: 'Quiero vender mi propiedad', emoji: '🔑' },
+              ].map(opt => (
+                <button
+                  key={opt.value}
+                  onClick={() => set('operation', opt.value)}
+                  className={`p-6 rounded-xl border-2 text-left transition-all ${
+                    form.operation === opt.value
+                      ? 'border-[#c9962a] bg-[#fef9e8]'
+                      : 'border-[#f4c94a]/40 hover:border-[#c9962a]/50 hover:bg-[#fef9e8]/50'
+                  }`}
+                >
+                  <div className="text-3xl mb-2">{opt.emoji}</div>
+                  <div className="font-bold text-[#7a5c1e] text-lg">{opt.label}</div>
+                  <div className="text-sm text-[#9c7a3c] mt-1">{opt.desc}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Paso 2: Ubicación y precio */}
+        {step === 2 && (
+          <div>
+            <h2 className="text-xl font-bold text-[#7a5c1e] mb-6">Ubicación y precio</h2>
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Ciudad *</label>
+                  <input
+                    list="ciudades-list"
+                    value={form.city}
+                    onChange={e => set('city', e.target.value)}
+                    placeholder="Madrid, Barcelona..."
+                    className={input}
+                  />
+                  <datalist id="ciudades-list">
+                    {CIUDADES.map(c => <option key={c} value={c} />)}
+                  </datalist>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Barrio / Zona</label>
+                  <input
+                    value={form.district}
+                    onChange={e => set('district', e.target.value)}
+                    placeholder="Malasaña, Gràcia..."
+                    className={input}
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Código postal</label>
+                  <input
+                    value={form.postal_code}
+                    onChange={e => set('postal_code', e.target.value)}
+                    placeholder="28004"
+                    maxLength={5}
+                    className={input}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-[#7a5c1e] mb-1">
+                    Precio {form.operation === 'rent' ? '(€/mes) *' : '(€) *'}
+                  </label>
+                  <input
+                    type="number"
+                    value={form.price}
+                    onChange={e => set('price', e.target.value)}
+                    placeholder={form.operation === 'rent' ? '900' : '250000'}
+                    min={0}
+                    className={input}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Paso 3: Características */}
+        {step === 3 && (
+          <div>
+            <h2 className="text-xl font-bold text-[#7a5c1e] mb-6">Características</h2>
+            <div className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-[#7a5c1e] mb-2">Habitaciones</label>
+                <div className="flex gap-2">
+                  {['0', '1', '2', '3', '4', '5'].map(n => (
+                    <button key={n} onClick={() => set('bedrooms', n)} className={pill(form.bedrooms === n)}>
+                      {n === '0' ? 'Est.' : n === '5' ? '5+' : n}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[#7a5c1e] mb-2">Baños</label>
+                <div className="flex gap-2">
+                  {['1', '2', '3', '4'].map(n => (
+                    <button key={n} onClick={() => set('bathrooms', n)} className={pill(form.bathrooms === n)}>
+                      {n === '4' ? '4+' : n}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Superficie (m²)</label>
+                <input
+                  type="number"
+                  value={form.area}
+                  onChange={e => set('area', e.target.value)}
+                  placeholder="75"
+                  min={0}
+                  className="w-32 border border-[#f4c94a]/60 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#c9962a] focus:ring-1 focus:ring-[#c9962a]"
+                />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Paso 4: Título, descripción y fotos */}
+        {step === 4 && (
+          <div>
+            <h2 className="text-xl font-bold text-[#7a5c1e] mb-6">Describe tu anuncio</h2>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Título del anuncio</label>
+                <input
+                  value={form.title}
+                  onChange={e => set('title', e.target.value)}
+                  placeholder={autoTitle()}
+                  maxLength={120}
+                  className={input}
+                />
+                <p className="text-xs text-[#9c7a3c] mt-1">Si lo dejas vacío se usará el título sugerido</p>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Descripción</label>
+                <textarea
+                  value={form.description}
+                  onChange={e => set('description', e.target.value)}
+                  placeholder="Describe tu propiedad: estado, reformas, orientación, transporte cercano..."
+                  rows={4}
+                  maxLength={2000}
+                  className="w-full border border-[#f4c94a]/60 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#c9962a] focus:ring-1 focus:ring-[#c9962a] resize-none"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[#7a5c1e] mb-2">
+                  Fotos ({images.length}/10)
+                </label>
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  className="hidden"
+                  onChange={e => handleImages(e.target.files)}
+                />
+                <div className="grid grid-cols-3 gap-2">
+                  {previews.map((src, i) => (
+                    <div key={i} className="relative aspect-video rounded-lg overflow-hidden bg-[#fef9e8]">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={src} alt="" className="w-full h-full object-cover" />
+                      <button
+                        onClick={() => removeImage(i)}
+                        className="absolute top-1 right-1 w-5 h-5 bg-black/60 text-white rounded-full text-xs flex items-center justify-center hover:bg-black/80"
+                      >×</button>
+                    </div>
+                  ))}
+                  {images.length < 10 && (
+                    <button
+                      onClick={() => fileInputRef.current?.click()}
+                      className="aspect-video rounded-lg border-2 border-dashed border-[#f4c94a] flex flex-col items-center justify-center gap-1 text-[#9c7a3c] hover:border-[#c9962a] hover:bg-[#fef9e8] transition-all text-xs"
+                    >
+                      <span className="text-2xl">+</span>
+                      <span>Añadir foto</span>
+                    </button>
+                  )}
+                </div>
+              </div>
+              {error && (
+                <p className="text-red-600 text-sm bg-red-50 px-3 py-2 rounded-lg">{error}</p>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Botones de navegación */}
+        <div className="flex justify-between mt-8 pt-6 border-t border-[#f4c94a]/20">
+          <button
+            onClick={() => setStep(s => Math.max(1, s - 1))}
+            className={`px-5 py-2.5 rounded-lg text-sm font-medium border border-[#f4c94a]/60 text-[#7a5c1e] hover:bg-[#fef9e8] transition-all ${step === 1 ? 'invisible' : ''}`}
+          >
+            ← Anterior
+          </button>
+
+          {step < 4 ? (
+            <button
+              onClick={() => canNext() && setStep(s => s + 1)}
+              disabled={!canNext()}
+              className="px-6 py-2.5 rounded-lg text-sm font-bold bg-[#c9962a] text-white hover:bg-[#a87a20] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              Siguiente →
+            </button>
+          ) : (
+            <button
+              onClick={handlePublish}
+              disabled={loading}
+              className="px-8 py-2.5 rounded-lg text-sm font-bold bg-[#c9962a] text-white hover:bg-[#a87a20] transition-all disabled:opacity-60 flex items-center gap-2"
+            >
+              {loading ? (
+                <>
+                  <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z" />
+                  </svg>
+                  Publicando...
+                </>
+              ) : '🚀 Publicar anuncio'}
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  )
+}
