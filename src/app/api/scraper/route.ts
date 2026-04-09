@@ -61,7 +61,7 @@ export async function GET(req: NextRequest) {
         source_portal: source,
         source_external_id: item.id,
         source_url: item.url,
-        is_particular: detection.isParticular,
+        is_particular: detection.is_particular,
         particular_confidence: detection.confidence,
         ranking_score: Math.round(detection.confidence * 80),
         status: 'published',
