@@ -16,17 +16,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="relative h-10 w-10 overflow-hidden flex-shrink-0">
-              <Image
-                src="/logo.png"
-                alt=""
-                width={500}
-                height={500}
-                className="absolute top-0 left-0 w-[180%] h-auto object-contain"
-                priority
-              />
-            </div>
+          <Link href="/" className="flex items-center">
             <span className="text-xl font-bold tracking-tight leading-none">
               <span className="text-gray-900">Mivivienda</span><span className="text-[#c9962a]">Libre</span>
             </span>
