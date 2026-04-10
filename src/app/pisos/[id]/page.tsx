@@ -1,13 +1,11 @@
 ﻿'use server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import Navbar from '@/components/NavbarServer'
 import ContactForm from './ContactForm'
+import MapWrapper from './MapWrapper'
 import { getListingById } from '@/lib/listings'
 import type { Metadata } from 'next'
-
-const ListingMap = dynamic(() => import('@/components/ListingMap'), { ssr: false })
 
 interface Props {
   params: Promise<{ id: string }>
@@ -210,7 +208,7 @@ export default async function ListingDetailPage({ params }: Props) {
                 <p className="text-xs text-gray-400 mb-3">
                   Se muestra una zona aproximada para proteger la privacidad del propietario.
                 </p>
-                <ListingMap
+                <MapWrapper
                   lat={listing.lat}
                   lng={listing.lng}
                   title={listing.title}
