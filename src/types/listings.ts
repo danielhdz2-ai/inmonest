@@ -43,7 +43,7 @@ export interface Listing {
 }
 
 export type SortOption = 'relevancia' | 'precio_asc' | 'precio_desc' | 'recientes' | 'superficie'
-export type VistaOption = 'grid' | 'lista'
+export type VistaOption = 'grid' | 'lista' | 'mapa'
 
 export interface SearchParams {
   ciudad?: string

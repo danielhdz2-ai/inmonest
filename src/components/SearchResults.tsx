@@ -1,12 +1,15 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import FiltersPanel from './FiltersPanel'
 import ResultsHeader from './ResultsHeader'
 import ListingCard from './ListingCard'
 import ListingCardList from './ListingCardList'
 import type { Listing, VistaOption } from '@/types/listings'
 import Link from 'next/link'
+
+const MapSearchView = dynamic(() => import('./MapSearchView'), { ssr: false })
 
 interface CurrentParams {
   ciudad: string
@@ -77,9 +80,11 @@ export default function SearchResults({
           activeFilterCount={activeFilterCount}
         />
 
-        {/* Listado */}
+        {/* Listado / Mapa */}
         {listings.length > 0 ? (
-          vista === 'lista' ? (
+          vista === 'mapa' ? (
+            <MapSearchView listings={listings} />
+          ) : vista === 'lista' ? (
             <div className="flex flex-col gap-3">
               {listings.map((listing) => (
                 <ListingCardList key={listing.id} listing={listing} />
