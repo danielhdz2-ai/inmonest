@@ -13,6 +13,7 @@ interface Anuncio {
   status: string
   published_at: string | null
   views_count: number | null
+  turbo_until: string | null
 }
 
 function formatPrice(price: number | null, operation: string) {
@@ -24,6 +25,7 @@ function formatPrice(price: number | null, operation: string) {
 export default function MisAnunciosList({ anuncios }: { anuncios: Anuncio[] }) {
   const router = useRouter()
   const [loadingId, setLoadingId] = useState<string | null>(null)
+  const [turboLoadingId, setTurboLoadingId] = useState<string | null>(null)
 
   async function changeStatus(id: string, status: 'published' | 'paused' | 'archived') {
     setLoadingId(id)
@@ -36,6 +38,21 @@ export default function MisAnunciosList({ anuncios }: { anuncios: Anuncio[] }) {
       router.refresh()
     } finally {
       setLoadingId(null)
+    }
+  }
+
+  async function activarTurbo(id: string) {
+    setTurboLoadingId(id)
+    try {
+      const res = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slug: 'turbo_7d', listing_id: id }),
+      })
+      const data = await res.json()
+      if (data.url) window.location.href = data.url
+    } finally {
+      setTurboLoadingId(null)
     }
   }
 
@@ -57,6 +74,8 @@ export default function MisAnunciosList({ anuncios }: { anuncios: Anuncio[] }) {
     <div className="flex flex-col gap-3">
       {anuncios.map((a) => {
         const isLoading = loadingId === a.id
+        const isTurboLoading = turboLoadingId === a.id
+        const isTurboActive = a.turbo_until ? new Date(a.turbo_until) > new Date() : false
         return (
           <div
             key={a.id}
@@ -91,6 +110,23 @@ export default function MisAnunciosList({ anuncios }: { anuncios: Anuncio[] }) {
               >
                 Ver
               </Link>
+
+              {/* Botón Turbo */}
+              {a.status === 'published' && (
+                isTurboActive ? (
+                  <span className="text-xs px-2.5 py-1 rounded-lg bg-amber-100 text-amber-700 font-semibold">
+                    ⚡ Turbo activo
+                  </span>
+                ) : (
+                  <button
+                    onClick={() => activarTurbo(a.id)}
+                    disabled={isTurboLoading}
+                    className="text-xs px-2.5 py-1 rounded-lg border border-amber-300 text-amber-700 bg-amber-50 hover:bg-amber-100 transition-colors font-semibold disabled:opacity-50"
+                  >
+                    {isTurboLoading ? '...' : '⚡ Turbo 9€'}
+                  </button>
+                )
+              )}
 
               {a.status === 'published' ? (
                 <button

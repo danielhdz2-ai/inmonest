@@ -13,7 +13,7 @@ export default async function MiCuentaPage() {
   // Obtener sus anuncios
   const { data: misAnuncios } = await supabase
     .from('listings')
-    .select('id, title, city, price_eur, operation, status, published_at, views_count')
+    .select('id, title, city, price_eur, operation, status, published_at, views_count, turbo_until')
     .eq('owner_user_id', user.id)
     .order('published_at', { ascending: false })
     .limit(20)
