@@ -49,6 +49,8 @@ export default function PublicarWizard({ userId }: { userId: string }) {
   const [previews, setPreviews] = useState<string[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [aiLoading, setAiLoading] = useState(false)
+  const [aiError, setAiError] = useState('')
 
   const set = (field: keyof FormData, value: string) =>
     setForm(prev => ({ ...prev, [field]: value }))
@@ -64,6 +66,34 @@ export default function PublicarWizard({ userId }: { userId: string }) {
     const ciudad = form.city ? ` en ${form.city}` : ''
     const distrito = form.district ? `, ${form.district}` : ''
     return `${hab}${ciudad}${distrito} — propietario, sin comisión`
+  }
+
+  const handleGenerateAI = async () => {
+    setAiLoading(true)
+    setAiError('')
+    try {
+      const res = await fetch('/api/generar-descripcion', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          operation: form.operation,
+          city: form.city,
+          district: form.district,
+          bedrooms: form.bedrooms,
+          bathrooms: form.bathrooms,
+          area: form.area,
+          price: form.price,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Error al generar')
+      if (data.title) set('title', data.title)
+      if (data.description) set('description', data.description)
+    } catch (e: unknown) {
+      setAiError(e instanceof Error ? e.message : 'Error al generar con IA')
+    } finally {
+      setAiLoading(false)
+    }
   }
 
   const handleImages = useCallback((files: FileList | null) => {
@@ -107,7 +137,12 @@ export default function PublicarWizard({ userId }: { userId: string }) {
           const path = `${userId}/${listingId}/${i}.${ext}`
           const { error: upErr } = await supabase.storage.from('listings').upload(path, file, { upsert: true })
           if (!upErr) {
-            await supabase.from('listing_images').insert({ listing_id: listingId, storage_path: path, position: i })
+            const { data: urlData } = supabase.storage.from('listings').getPublicUrl(path)
+            await supabase.from('listing_images').insert({
+              listing_id: listingId,
+              storage_path: urlData.publicUrl,
+              position: i,
+            })
           }
         }
       }
@@ -307,7 +342,25 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                 <p className="text-xs text-[#9c7a3c] mt-1">Si lo dejas vacío se usará el título sugerido</p>
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Descripción</label>
+                <div className="flex items-center justify-between mb-1">
+                  <label className="block text-sm font-medium text-[#7a5c1e]">Descripción</label>
+                  <button
+                    type="button"
+                    onClick={handleGenerateAI}
+                    disabled={aiLoading || !form.city}
+                    className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#fef9e8] text-[#c9962a] border border-[#f4c94a] hover:bg-[#fef0c0] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {aiLoading ? (
+                      <>
+                        <svg className="animate-spin w-3 h-3" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z" />
+                        </svg>
+                        Generando...
+                      </>
+                    ) : '✨ Generar con IA'}
+                  </button>
+                </div>
                 <textarea
                   value={form.description}
                   onChange={e => set('description', e.target.value)}
@@ -316,6 +369,13 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                   maxLength={2000}
                   className="w-full border border-[#f4c94a]/60 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#c9962a] focus:ring-1 focus:ring-[#c9962a] resize-none"
                 />
+                {aiError && (
+                  <p className="text-amber-700 text-xs mt-1 bg-amber-50 px-2 py-1 rounded">
+                    {aiError === 'IA no configurada'
+                      ? 'Añade GEMINI_API_KEY en Vercel para usar esta función'
+                      : aiError}
+                  </p>
+                )}
               </div>
               <div>
                 <label className="block text-sm font-medium text-[#7a5c1e] mb-2">
