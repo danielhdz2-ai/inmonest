@@ -42,3 +42,7 @@ next-env.d.ts
 
 .vercel
 .env*.local
+
+logs/
+.env.*.vercel
+scripts/run-seed.bat

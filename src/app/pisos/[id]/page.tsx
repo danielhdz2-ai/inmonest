@@ -1,6 +1,8 @@
-﻿import { notFound } from 'next/navigation'
+﻿'use server'
+import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import ContactForm from './ContactForm'
 import { getListingById } from '@/lib/listings'
 import type { Metadata } from 'next'
 
@@ -230,46 +232,5 @@ export default async function ListingDetailPage({ params }: Props) {
         </div>
       </div>
     </div>
-  )
-}
-
-// Formulario de contacto (client component embebido)
-function ContactForm({ listingId }: { listingId: string }) {
-  return (
-    <form action={`/api/listings/${listingId}/contact`} method="POST" className="space-y-3">
-      <input
-        name="from_name"
-        type="text"
-        placeholder="Tu nombre"
-        required
-        className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
-      />
-      <input
-        name="from_email"
-        type="email"
-        placeholder="Tu email"
-        required
-        className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
-      />
-      <input
-        name="from_phone"
-        type="tel"
-        placeholder="Tu teléfono (opcional)"
-        className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
-      />
-      <textarea
-        name="message"
-        placeholder="Escribe tu mensaje..."
-        rows={3}
-        required
-        className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#c9962a] resize-none"
-      />
-      <button
-        type="submit"
-        className="w-full py-2.5 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#a87a20] transition-colors"
-      >
-        Enviar mensaje
-      </button>
-    </form>
   )
 }
