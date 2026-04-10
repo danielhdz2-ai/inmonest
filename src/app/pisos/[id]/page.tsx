@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import ContactForm from './ContactForm'
 import MapWrapper from './MapWrapper'
+import ViewTracker from './ViewTracker'
 import { getListingById } from '@/lib/listings'
 import type { Metadata } from 'next'
 
@@ -46,6 +47,7 @@ export default async function ListingDetailPage({ params }: Props) {
   return (
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Navbar />
+      <ViewTracker listingId={listing.id} />
 
       <div className="max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
         {/* Breadcrumb */}

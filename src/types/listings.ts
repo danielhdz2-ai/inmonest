@@ -36,6 +36,7 @@ export interface Listing {
   ranking_score: number
   turbo_until: string | null
   status: ListingStatus
+  views_count: number
   published_at: string | null
   created_at: string
   updated_at: string
