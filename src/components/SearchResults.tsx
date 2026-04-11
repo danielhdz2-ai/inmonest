@@ -67,9 +67,9 @@ export default function SearchResults({
   }
 
   return (
-    <div className="flex gap-6 items-start">
-      {/* Sidebar filtros */}
-      <FiltersPanel isOpen={filtersOpen} onClose={() => setFiltersOpen(false)} />
+    <div className={`flex gap-6 items-start ${vista === 'mapa' ? 'overflow-hidden' : ''}`}>
+      {/* Sidebar filtros — oculto en vista mapa (el chat IA reemplaza su función) */}
+      {vista !== 'mapa' && <FiltersPanel isOpen={filtersOpen} onClose={() => setFiltersOpen(false)} />}
 
       {/* Columna principal */}
       <div className="flex-1 min-w-0">
@@ -83,7 +83,7 @@ export default function SearchResults({
         {/* Listado / Mapa */}
         {listings.length > 0 ? (
           vista === 'mapa' ? (
-            <MapSearchView listings={listings} />
+            <MapSearchView listings={listings} total={total} />
           ) : vista === 'lista' ? (
             <div className="flex flex-col gap-3">
               {listings.map((listing) => (

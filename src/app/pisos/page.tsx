@@ -46,7 +46,7 @@ export default async function PisosPage({ searchParams }: PisosPageProps) {
   const operacion = (params.operacion as OperationType) || undefined
   const soloParticulares = params.solo_particulares === 'true'
   const ordenar = (params.ordenar as SortOption) || 'relevancia'
-  const vista = (params.vista as VistaOption) || 'lista'
+  const vista = (params.vista as VistaOption) || 'mapa'
   const pagina = Math.max(1, parseInt(params.pagina ?? '1', 10))
 
   const habitaciones = params.hab ? parseInt(params.hab, 10) : undefined
@@ -100,62 +100,124 @@ export default async function PisosPage({ searchParams }: PisosPageProps) {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
-        {/* Breadcrumb + título */}
-        <div className="mb-4">
-          <nav className="text-xs text-gray-400 flex items-center gap-1.5 mb-1">
-            <Link href="/" className="hover:text-gray-600">Inicio</Link>
-            <span>/</span>
-            <span className="text-gray-600">
-              {operacion === 'sale' ? 'Venta' : operacion === 'rent' ? 'Alquiler' : 'Pisos'}
-            </span>
-            {ciudad && (
-              <>
-                <span>/</span>
-                <span className="text-gray-900 font-medium">
-                  {ciudad.charAt(0).toUpperCase() + ciudad.slice(1)}
-                </span>
-              </>
-            )}
-          </nav>
-          <h1 className="text-xl font-bold text-gray-900">
-            {pageTitle}
-            {operacion && (
-              <span className="text-gray-500 font-normal text-base ml-2">
-                · {operacion === 'rent' ? 'Alquiler' : 'Venta'}
-              </span>
-            )}
-            {soloParticulares && (
-              <span className="ml-2 px-2 py-0.5 text-xs font-semibold bg-[#fef0c0] text-[#a87a20] rounded-full align-middle">
-                Solo particulares
-              </span>
-            )}
-          </h1>
+      {/* Layout según vista: mapa=full-width, resto=contenedor */}
+      {vista === 'mapa' ? (
+        <div className="w-full overflow-hidden">
+          {/* Breadcrumb + título compacto */}
+          <div className="px-4 sm:px-6 lg:px-8 py-2 bg-white border-b border-gray-100">
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <div>
+                <nav className="text-xs text-gray-400 flex items-center gap-1.5">
+                  <a href="/" className="hover:text-gray-600">Inicio</a>
+                  <span>/</span>
+                  <span className="text-gray-600">
+                    {operacion === 'sale' ? 'Venta' : operacion === 'rent' ? 'Alquiler' : 'Pisos'}
+                  </span>
+                  {ciudad && (
+                    <>
+                      <span>/</span>
+                      <span className="text-gray-900 font-medium">
+                        {ciudad.charAt(0).toUpperCase() + ciudad.slice(1)}
+                      </span>
+                    </>
+                  )}
+                </nav>
+                <h1 className="text-sm font-bold text-gray-900 flex items-center gap-2 mt-0.5">
+                  {pageTitle}
+                  {operacion && (
+                    <span className="text-gray-500 font-normal">
+                      · {operacion === 'rent' ? 'Alquiler' : 'Venta'}
+                    </span>
+                  )}
+                  {soloParticulares && (
+                    <span className="px-2 py-0.5 text-xs font-semibold bg-[#fef0c0] text-[#a87a20] rounded-full">
+                      Solo particulares
+                    </span>
+                  )}
+                </h1>
+              </div>
+            </div>
+          </div>
+          <SearchResults
+            listings={listings}
+            total={total}
+            pagina={pagina}
+            totalPaginas={totalPaginas}
+            vista={vista}
+            currentParams={{
+              ciudad,
+              operacion: operacion ?? '',
+              soloParticulares,
+              ordenar,
+              vista,
+              precioMin,
+              precioMax,
+              habitaciones,
+              banosMin,
+              areaMin,
+              areaMax,
+            }}
+            activeFilterCount={activeFilterCount}
+          />
         </div>
+      ) : (
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+          {/* Breadcrumb + título */}
+          <div className="mb-4">
+            <nav className="text-xs text-gray-400 flex items-center gap-1.5 mb-1">
+              <Link href="/" className="hover:text-gray-600">Inicio</Link>
+              <span>/</span>
+              <span className="text-gray-600">
+                {operacion === 'sale' ? 'Venta' : operacion === 'rent' ? 'Alquiler' : 'Pisos'}
+              </span>
+              {ciudad && (
+                <>
+                  <span>/</span>
+                  <span className="text-gray-900 font-medium">
+                    {ciudad.charAt(0).toUpperCase() + ciudad.slice(1)}
+                  </span>
+                </>
+              )}
+            </nav>
+            <h1 className="text-xl font-bold text-gray-900">
+              {pageTitle}
+              {operacion && (
+                <span className="text-gray-500 font-normal text-base ml-2">
+                  · {operacion === 'rent' ? 'Alquiler' : 'Venta'}
+                </span>
+              )}
+              {soloParticulares && (
+                <span className="ml-2 px-2 py-0.5 text-xs font-semibold bg-[#fef0c0] text-[#a87a20] rounded-full align-middle">
+                  Solo particulares
+                </span>
+              )}
+            </h1>
+          </div>
 
-        {/* Layout sidebar + resultados */}
-        <SearchResults
-          listings={listings}
-          total={total}
-          pagina={pagina}
-          totalPaginas={totalPaginas}
-          vista={vista}
-          currentParams={{
-            ciudad,
-            operacion: operacion ?? '',
-            soloParticulares,
-            ordenar,
-            vista,
-            precioMin,
-            precioMax,
-            habitaciones,
-            banosMin,
-            areaMin,
-            areaMax,
-          }}
-          activeFilterCount={activeFilterCount}
-        />
-      </div>
+          {/* Layout sidebar + resultados */}
+          <SearchResults
+            listings={listings}
+            total={total}
+            pagina={pagina}
+            totalPaginas={totalPaginas}
+            vista={vista}
+            currentParams={{
+              ciudad,
+              operacion: operacion ?? '',
+              soloParticulares,
+              ordenar,
+              vista,
+              precioMin,
+              precioMax,
+              habitaciones,
+              banosMin,
+              areaMin,
+              areaMax,
+            }}
+            activeFilterCount={activeFilterCount}
+          />
+        </div>
+      )}
     </div>
   )
 }
