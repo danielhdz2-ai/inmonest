@@ -39,7 +39,7 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
     apikey: SUPABASE_SERVICE_KEY,
     Authorization: `Bearer ${SUPABASE_SERVICE_KEY}`,
     'Content-Type': 'application/json',
-    Prefer: 'resolution=merge-duplicates,return=representation',
+    Prefer: 'resolution=ignore-duplicates,return=representation',
   }
 
   const body = {
@@ -73,6 +73,8 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
 
   if (!res.ok) {
     const err = await res.text()
+    // 23505 = duplicate key — listing ya existe, no es un error real
+    if (err.includes('"23505"')) return true
     console.error(`  ↳ Error upsert: ${err.slice(0, 120)}`)
     return false
   }
@@ -92,7 +94,7 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
 async function insertImages(listingId: string, images: string[], headers: Record<string, string>) {
   const rows = images.slice(0, 10).map((url, i) => ({
     listing_id: listingId,
-    url,
+    external_url: url,
     position: i,
   }))
 
