@@ -295,8 +295,8 @@ export default async function ListingDetailPage({ params }: Props) {
                   </span>
                 )}
                 {listing.is_particular && (
-                  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-[#fef0c0] text-[#a87a20]">
-                    ✓ Particular verificado
+                  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-700 text-white flex items-center gap-1">
+                    💎 Propietario Directo
                   </span>
                 )}
                 {listing.origin === 'direct' && (
@@ -362,8 +362,8 @@ export default async function ListingDetailPage({ params }: Props) {
                   )}
                 </div>
                 {listing.is_particular && (
-                  <p className="mt-3 text-xs text-green-700 bg-green-50 rounded-lg px-3 py-2">
-                    ✓ Anuncio de particular — sin comisión de agencia
+                  <p className="mt-3 text-xs text-emerald-800 bg-emerald-50 rounded-lg px-3 py-2 font-medium">
+                    💎 Propietario Directo — sin comisión de agencia
                   </p>
                 )}
               </div>

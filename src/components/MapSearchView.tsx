@@ -195,8 +195,8 @@ export default function MapSearchView({ listings, total }: Props) {
                     {listing.city && <span className="truncate">📍 {listing.city}</span>}
                   </div>
                   {listing.is_particular && (
-                    <span className="inline-block mt-1.5 text-[9px] font-semibold bg-green-50 text-green-700 border border-green-200 px-1.5 py-0.5 rounded-full uppercase tracking-wide">
-                      PARTICULAR
+                    <span className="inline-block mt-1.5 text-[9px] font-semibold bg-emerald-700 text-white px-1.5 py-0.5 rounded-full uppercase tracking-wide">
+                      💎 PROPIETARIO DIRECTO
                     </span>
                   )}
                 </div>

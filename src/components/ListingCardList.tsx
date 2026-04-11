@@ -71,8 +71,8 @@ export default function ListingCardList({ listing }: ListingCardListProps) {
                 </span>
               )}
               {listing.is_particular && (
-                <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-gold-100 text-gold-700">
-                  Particular
+                <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-700 text-white flex items-center gap-1">
+                  💎 Propietario Directo
                 </span>
               )}
               {listing.origin === 'direct' && (
