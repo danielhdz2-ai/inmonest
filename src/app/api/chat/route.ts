@@ -4,9 +4,9 @@ import { GoogleGenerativeAI } from '@google/generative-ai'
 // Leemos la key en runtime (no en module-load) para que Vercel la resuelva correctamente
 function getApiKey(): string {
   return (
-    process.env.GEMINI_API_KEY ??
-    process.env.GOOGLE_AI_API_KEY ??
     process.env.CLAVE_API_IA_GOOGLE ??
+    process.env.GOOGLE_AI_API_KEY ??
+    process.env.GEMINI_API_KEY ??
     ''
   ).trim()
 }
