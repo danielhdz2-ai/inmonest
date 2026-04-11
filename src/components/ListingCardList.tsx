@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Listing } from '@/types/listings'
+import ListingCardGallery from './ListingCardGallery'
 
 interface ListingCardListProps {
   listing: Listing
@@ -20,9 +21,7 @@ export default function ListingCardList({ listing }: ListingCardListProps) {
     ? new Date(listing.turbo_until) > new Date()
     : false
 
-  const firstImage = listing.listing_images?.[0]
-  const imageUrl = firstImage?.storage_path ?? firstImage?.external_url ?? null
-  const imageCount = listing.listing_images?.length ?? 0
+  const images = listing.listing_images ?? []
 
   return (
     <Link href={`/pisos/${listing.id}`} className="group block">
@@ -33,34 +32,13 @@ export default function ListingCardList({ listing }: ListingCardListProps) {
             : 'border-gray-100 shadow-sm'
         }`}
       >
-        {/* Imagen */}
-        <div className="relative w-52 sm:w-64 md:w-72 shrink-0 bg-gray-100 overflow-hidden">
-          {imageUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={imageUrl}
-              alt={listing.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center min-h-[160px]">
-              <svg className="w-10 h-10 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 22V12h6v10" />
-              </svg>
-            </div>
-          )}
-
-          {/* Contador de fotos */}
-          {imageCount > 1 && (
-            <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md text-xs font-medium bg-black/60 text-white">
-              1 / {imageCount}
-            </span>
-          )}
+        {/* Imagen con flechas */}
+        <div className="relative w-52 sm:w-64 md:w-72 shrink-0 min-h-[160px]">
+          <ListingCardGallery images={images} title={listing.title} aspectClass="" className="absolute inset-0" />
 
           {/* Badge Turbo */}
           {isTurboActive && (
-            <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-400 text-amber-900">
+            <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full text-xs font-semibold bg-amber-400 text-amber-900 z-20 pointer-events-none">
               ⚡ Turbo
             </span>
           )}

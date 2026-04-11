@@ -5,6 +5,7 @@ import Navbar from '@/components/NavbarServer'
 import ContactForm from './ContactForm'
 import MapWrapper from './MapWrapper'
 import ViewTracker from './ViewTracker'
+import ListingGallery from '@/components/ListingGallery'
 import { getListingById } from '@/lib/listings'
 import type { Metadata } from 'next'
 
@@ -72,54 +73,13 @@ export default async function ListingDetailPage({ params }: Props) {
           {/* Columna izquierda: imágenes + descripción */}
           <div className="lg:col-span-2 space-y-6">
             {/* Galería de imágenes */}
-            <div className="bg-white rounded-xl overflow-hidden border border-gray-100 shadow-sm">
-              {images.length > 0 ? (
-                <>
-                  {/* Imagen principal */}
-                  <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={images[0].storage_path ?? images[0].external_url ?? ''}
-                      alt={listing.title}
-                      className="w-full h-full object-cover"
-                    />
-                    {images.length > 1 && (
-                      <span className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2.5 py-1 rounded-full">
-                        1 / {images.length} fotos
-                      </span>
-                    )}
-                  </div>
-                  {/* Grid de miniaturas */}
-                  {images.length > 1 && (
-                    <div className="grid grid-cols-4 gap-1 p-1">
-                      {images.slice(1, 5).map((img, i) => (
-                        <div key={img.id} className="relative aspect-[4/3] overflow-hidden bg-gray-100 rounded">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={img.storage_path ?? img.external_url ?? ''}
-                            alt={`Foto ${i + 2}`}
-                            className="w-full h-full object-cover hover:opacity-90 transition-opacity cursor-pointer"
-                          />
-                          {i === 3 && images.length > 5 && (
-                            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                              <span className="text-white font-bold text-sm">+{images.length - 5}</span>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </>
-              ) : (
-                <div className="aspect-[16/9] bg-gray-100 flex items-center justify-center">
-                  <svg className="w-16 h-16 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 22V12h6v10" />
-                  </svg>
-                </div>
-              )}
-
-            </div>
+            <ListingGallery
+              images={images}
+              title={listing.title}
+              lat={listing.lat}
+              lng={listing.lng}
+              priceLabel={formatPrice(listing.price_eur, listing.operation)}
+            />
 
             {/* Descripción */}
             <div className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
