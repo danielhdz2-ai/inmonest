@@ -200,11 +200,11 @@ export default function MapSearchView({ listings, total, ciudad }: Props) {
                 onMouseEnter={() => { if (listingsWithCoords.find(l => l.id === listing.id)?.lat != null) setActiveId(listing.id) }}
                 onMouseLeave={() => setActiveId(null)}
               >
-                {/* Imagen */}
-                <div className="w-28 h-[140px] shrink-0 bg-gray-100 overflow-hidden relative">
+                {/* Imagen — se estira al alto del contenido */}
+                <div className="w-28 shrink-0 self-stretch bg-gray-100 overflow-hidden relative" style={{ minHeight: '90px' }}>
                   {imgUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={imgUrl} alt={listing.title} className="w-full h-full object-cover absolute inset-0" />
+                    <img src={imgUrl} alt="" className="w-full h-full object-cover absolute inset-0" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
                       <svg className="w-8 h-8 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -212,68 +212,46 @@ export default function MapSearchView({ listings, total, ciudad }: Props) {
                       </svg>
                     </div>
                   )}
-                  {/* Badge ALQ / Venta */}
-                  <span className={`absolute top-1.5 left-1.5 text-[10px] font-bold px-2 py-0.5 rounded-full leading-none ${
-                    listing.operation === 'rent'
-                      ? 'bg-sky-600 text-white'
-                      : 'bg-orange-500 text-white'
-                  }`}>
-                    {listing.operation === 'rent' ? 'ALQ' : 'VENTA'}
-                  </span>
-                  {listing.is_bank && (
-                    <span className="absolute bottom-1.5 left-1.5 bg-blue-900 text-yellow-300 text-[9px] font-bold px-1.5 py-0.5 rounded-full leading-none">
-                      🏦 BANCO
-                    </span>
-                  )}
                 </div>
 
                 {/* Info */}
-                <div className="flex-1 px-3 py-2.5 min-w-0 flex flex-col justify-between">
-                  <div>
-                    {/* Precio */}
-                    <p className="font-bold text-gray-900 text-sm leading-tight">
+                <div className="flex-1 px-3 py-2 min-w-0">
+                  {/* Fila superior: precio + badge operación */}
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <span className="font-bold text-gray-900 text-sm leading-tight">
                       {formatPriceFull(listing.price_eur, listing.operation)}
-                    </p>
-                    {/* Título */}
-                    <p className="text-xs text-gray-700 line-clamp-2 leading-snug mt-0.5">
-                      {listing.title}
-                    </p>
-                    {/* Descripción recortada */}
-                    {listing.description && (
-                      <p className="text-[11px] text-gray-400 line-clamp-2 leading-snug mt-1">
-                        {listing.description.slice(0, 100)}
-                      </p>
-                    )}
-                  </div>
-
-                  {/* Iconos: habs · m² · ciudad */}
-                  <div className="flex gap-2 mt-1.5 text-xs text-gray-500 flex-wrap items-center">
-                    {listing.bedrooms != null && (
-                      <span className="flex items-center gap-0.5">
-                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 12V6a1 1 0 011-1h16a1 1 0 011 1v6M3 12h18M3 12v6m18-6v6"/></svg>
-                        {listing.bedrooms === 0 ? 'Estudio' : listing.bedrooms}
-                      </span>
-                    )}
-                    {listing.area_m2 && (
-                      <span className="flex items-center gap-0.5">
-                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><rect x="3" y="3" width="18" height="18" rx="1"/></svg>
-                        {listing.area_m2}m²
-                      </span>
-                    )}
-                    {listing.city && (
-                      <span className="flex items-center gap-0.5 text-gray-400">
-                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        {listing.city}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Badge PROPIETARIO DIRECTO */}
-                  {listing.is_particular && (
-                    <span className="mt-1.5 inline-flex items-center gap-1 bg-emerald-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full leading-none w-fit">
-                      ✓ PROPIETARIO DIRECTO
                     </span>
-                  )}
+                    <span className={`text-xs font-bold px-1.5 py-0.5 rounded-full leading-none ${
+                      listing.operation === 'rent' ? 'bg-sky-100 text-sky-700' : 'bg-orange-100 text-orange-700'
+                    }`}>
+                      {listing.operation === 'rent' ? 'ALQ' : 'VENTA'}
+                    </span>
+                  </div>
+                  {/* Título */}
+                  <p className="text-xs text-gray-600 line-clamp-2 leading-snug mt-1">
+                    {listing.title}
+                  </p>
+                  {/* Iconos: habs · m² · ciudad */}
+                  <div className="flex gap-2 mt-1.5 text-xs text-gray-400 flex-wrap items-center">
+                    {listing.bedrooms != null && (
+                      <span>🛏 {listing.bedrooms === 0 ? 'Estudio' : listing.bedrooms}</span>
+                    )}
+                    {listing.area_m2 && <span>📐 {listing.area_m2}m²</span>}
+                    {listing.city && <span className="truncate">📍 {listing.city}</span>}
+                  </div>
+                  {/* Badges */}
+                  <div className="flex gap-1.5 mt-1.5 flex-wrap">
+                    {listing.is_particular && (
+                      <span className="inline-flex items-center bg-emerald-600 text-white text-xs font-bold px-2 py-0.5 rounded-full leading-none">
+                        ✓ PROPIETARIO DIRECTO
+                      </span>
+                    )}
+                    {listing.is_bank && (
+                      <span className="inline-flex items-center bg-blue-900 text-yellow-300 text-xs font-bold px-2 py-0.5 rounded-full leading-none">
+                        🏦 BANCO
+                      </span>
+                    )}
+                  </div>
                 </div>
               </Link>
             )
