@@ -309,9 +309,6 @@ async function scrapeSolvia(operation: 'venta' | 'alquiler', maxPages: number) {
 
       const isBankProp = it.isBankBadge || d.isBankProperty
 
-      const features: Record<string, string> = {}
-      if (d.specialBadge) features.badge_solvia = d.specialBadge
-
       const listing: ScrapedListing = {
         title:       d.title ?? `Piso en ${operation} — Solvia`,
         description: d.description ?? undefined,
@@ -333,7 +330,6 @@ async function scrapeSolvia(operation: 'venta' | 'alquiler', maxPages: number) {
         is_bank:       isBankProp,
         bank_entity:   BANK_ENTITY,
         images:        d.images,
-        features,
       }
 
       const ok = await upsertListing(listing)

@@ -22,7 +22,6 @@ export interface ScrapedListing {
   source_external_id: string
   is_particular: boolean
   images?: string[]
-  features?: Record<string, string>
   is_bank?: boolean
   bank_entity?: string
 }
@@ -60,13 +59,12 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
     lng: listing.lng ?? null,
     bedrooms: listing.bedrooms ?? null,
     bathrooms: listing.bathrooms ?? null,
-    area_m2: listing.area_m2 ?? null,
+    area_m2: listing.area_m2 != null ? Math.round(listing.area_m2) : null,
     source_portal: listing.source_portal,
     source_url: listing.source_url,
     source_external_id: listing.source_external_id,
     ranking_score: listing.is_bank ? 70 : 30,
     published_at: new Date().toISOString(),
-    features: listing.features ?? {},
     is_bank: listing.is_bank ?? false,
     bank_entity: listing.bank_entity ?? null,
   }
