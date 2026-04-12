@@ -1,38 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// Dominios permitidos para proxiar (solo portales inmobiliarios conocidos)
-const ALLOWED_DOMAINS = [
-  'pisos.com',
-  'fotocasa.es',
-  'idealista.com',
-  'habitaclia.com',
-  'mitula.es',
-  'trovit.es',
-  'kelify.com',
-  'tucasa.com',
-  'enalquiler.com',
-  'solvia.es',
-  'servihabitat.com',
-  'aliseda.es',
-  'gilmar.es',
-  'tecnocasa.es',
-  'monapart.com',
-  'redpiso.com',
-  'milanuncios.com',
-  // CDNs comunes de portales
-  'cdn1.infocasas.com',
-  'img3.idealista.com',
-  'img.fotocasa.es',
-  'static.pisos.com',
-  'cdn.mitula.net',
-  'img.enalquiler.com',
-  'images.habitaclia.com',
-]
+// Bloquear IPs privadas / locales para prevenir SSRF
+const PRIVATE_IP_RE =
+  /^(localhost|127\.|10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.|0\.0\.0\.0|::1|fc00:|fe80:)/i
 
-function isDomainAllowed(url: string): boolean {
+function isSafeUrl(rawUrl: string): boolean {
   try {
-    const { hostname } = new URL(url)
-    return ALLOWED_DOMAINS.some((d) => hostname === d || hostname.endsWith(`.${d}`))
+    const { protocol, hostname } = new URL(rawUrl)
+    // Solo HTTPS
+    if (protocol !== 'https:') return false
+    // Bloquear hostnames privados
+    if (PRIVATE_IP_RE.test(hostname)) return false
+    // Bloquear metadata cloud (AWS, GCP, Azure)
+    if (hostname === '169.254.169.254' || hostname === 'metadata.google.internal') return false
+    return true
   } catch {
     return false
   }
@@ -46,22 +27,18 @@ export async function GET(request: NextRequest) {
     return new NextResponse('Missing url parameter', { status: 400 })
   }
 
-  // Validar que es una URL permitida
-  if (!isDomainAllowed(imageUrl)) {
-    return new NextResponse('Domain not allowed', { status: 403 })
+  if (!isSafeUrl(imageUrl)) {
+    return new NextResponse('URL not allowed', { status: 403 })
   }
 
   try {
     const response = await fetch(imageUrl, {
       headers: {
-        // Simulamos un navegador navegando directamente (sin Referer externo)
         'User-Agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
         Accept: 'image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8',
         'Accept-Encoding': 'gzip, deflate, br',
-        // Sin Referer para evitar bloqueos
       },
-      // Timeout razonable
       signal: AbortSignal.timeout(8000),
     })
 
