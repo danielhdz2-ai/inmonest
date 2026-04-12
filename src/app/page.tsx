@@ -134,26 +134,46 @@ export default function Home() {
       </section>
 
       {/* ── CTA publicar ───────────────────────────────────────── */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-          ¿Tienes un piso para alquilar o vender?
-        </h2>
-        <p className="mt-3 text-gray-500 max-w-xl mx-auto">
-          Crea tu anuncio en menos de 5 minutos. Nuestra IA genera el título y la descripción por ti.
-        </p>
-        <div className="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
-          <Link
-            href="/publicar"
-            className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-base shadow-md shadow-[#c9962a]/25"
-          >
-            Publicar mi anuncio gratis →
-          </Link>
-          <Link
-            href="/gestoria"
-            className="inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-[#e8b52a]/50 text-gray-700 font-medium hover:bg-[#fef9e8] hover:border-[#c9962a] transition-colors text-base"
-          >
-            Ver contratos desde 7 €
-          </Link>
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a0d00] via-[#2e1900] to-[#42300a] shadow-2xl">
+          {/* Imagen de fondo */}
+          <div className="absolute inset-0">
+            <Image
+              src="/keys.jpg"
+              alt="Llaves de casa"
+              fill
+              className="object-cover opacity-30"
+              sizes="(max-width: 1024px) 100vw, 1024px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1a0d00]/90 via-[#2e1900]/70 to-transparent" />
+          </div>
+
+          {/* Contenido */}
+          <div className="relative z-10 px-8 sm:px-12 py-14 max-w-xl">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#c9962a]/20 text-[#f4c94a] text-xs font-semibold border border-[#c9962a]/30 mb-5">
+              🏠 Para propietarios
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
+              ¿Tienes un piso para<br />alquilar o vender?
+            </h2>
+            <p className="mt-3 text-white/70 text-base leading-relaxed">
+              Crea tu anuncio en menos de 5 minutos. Nuestra IA genera el título y la descripción por ti.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/publicar"
+                className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg shadow-[#c9962a]/30"
+              >
+                Publicar mi anuncio gratis →
+              </Link>
+              <Link
+                href="/vender-casa"
+                className="inline-flex items-center justify-center px-6 py-3.5 rounded-full border border-white/20 text-white/85 font-medium hover:bg-white/10 hover:border-white/40 transition-colors text-sm backdrop-blur-sm"
+              >
+                Buscar agencia inmobiliaria
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
