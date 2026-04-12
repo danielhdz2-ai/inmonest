@@ -149,7 +149,7 @@ export default function Home() {
             Publicar mi anuncio gratis →
           </Link>
           <Link
-            href="/documentos"
+            href="/gestoria"
             className="inline-flex items-center justify-center px-7 py-3.5 rounded-full border border-[#e8b52a]/50 text-gray-700 font-medium hover:bg-[#fef9e8] hover:border-[#c9962a] transition-colors text-base"
           >
             Ver contratos desde 7 €

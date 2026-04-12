@@ -377,7 +377,7 @@ export default async function ListingDetailPage({ params }: Props) {
                 Genera tu contrato de alquiler o arras en minutos desde 7 €.
               </p>
               <Link
-                href="/documentos"
+                href="/gestoria"
                 className="block text-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#a87a20] transition-colors"
               >
                 Ver contratos →
