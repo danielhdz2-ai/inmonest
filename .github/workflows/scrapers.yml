@@ -434,10 +434,10 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: 🧠 Normalizar títulos con Gemini Flash
+      - name: 🧠 Normalizar títulos con IA (OpenRouter)
         run: npx --yes tsx scripts/normalize-titles.ts --limit 150
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-          GOOGLE_AI_API_KEY: ${{ secrets.GOOGLE_AI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
 

@@ -11,10 +11,11 @@
  * Procesa en batches de 10 para minimizar llamadas a la API.
  */
 
-const SUPABASE_URL = 'https://ktsdxpmaljiyuwimcugx.supabase.co'
-const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY ?? ''
-const GEMINI_KEY   = process.env.GOOGLE_AI_API_KEY ?? ''
-const GEMINI_URL   = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent'
+const SUPABASE_URL    = 'https://ktsdxpmaljiyuwimcugx.supabase.co'
+const SUPABASE_KEY    = process.env.SUPABASE_SERVICE_KEY ?? ''
+const OPENROUTER_KEY  = process.env.OPENROUTER_API_KEY ?? ''
+const OPENROUTER_URL  = 'https://openrouter.ai/api/v1/chat/completions'
+const MODEL           = 'google/gemini-flash-1.5'  // barato y rápido en OpenRouter
 
 const args  = process.argv.slice(2)
 const LIMIT = args.includes('--limit') ? parseInt(args[args.indexOf('--limit') + 1]) : 100
@@ -64,27 +65,33 @@ ${numbered}
 
 Responde con los mismos números y los títulos normalizados:`
 
-  const res = await fetch(`${GEMINI_URL}?key=${GEMINI_KEY}`, {
+  const res = await fetch(OPENROUTER_URL, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Authorization': `Bearer ${OPENROUTER_KEY}`,
+      'Content-Type': 'application/json',
+      'HTTP-Referer': 'https://inmonest.com',
+      'X-Title': 'Inmonest',
+    },
     body: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.3, maxOutputTokens: 1024 },
+      model: MODEL,
+      messages: [{ role: 'user', content: prompt }],
+      temperature: 0.3,
+      max_tokens: 1024,
     }),
   })
 
   if (!res.ok) {
-    console.error(`  ⚠️  Gemini error: ${res.status} ${await res.text().then(t => t.slice(0, 100))}`)
-    return titles // devolver originales si falla
+    console.error(`  ⚠️  OpenRouter error: ${res.status} ${await res.text().then(t => t.slice(0, 100))}`)
+    return titles
   }
 
   const json = await res.json() as {
-    candidates?: Array<{ content: { parts: Array<{ text: string }> } }>
+    choices?: Array<{ message: { content: string } }>
   }
-  const text = json.candidates?.[0]?.content?.parts?.[0]?.text ?? ''
+  const text = json.choices?.[0]?.message?.content ?? ''
 
-  // Parsear respuesta numerada: "1. Título normalizado"
-  const result: string[] = [...titles] // fallback a originales
+  const result: string[] = [...titles]
   const lines = text.split('\n').filter(l => l.trim())
   for (const line of lines) {
     const m = line.match(/^(\d+)\.\s+(.+)$/)
@@ -101,8 +108,8 @@ Responde con los mismos números y los títulos normalizados:`
 
 // ── Main ─────────────────────────────────────────────────────────────────────
 async function main() {
-  if (!SUPABASE_KEY) { console.error('❌ Falta SUPABASE_SERVICE_KEY'); process.exit(1) }
-  if (!GEMINI_KEY)   { console.error('❌ Falta GOOGLE_AI_API_KEY'); process.exit(1) }
+  if (!SUPABASE_KEY)   { console.error('❌ Falta SUPABASE_SERVICE_KEY'); process.exit(1) }
+  if (!OPENROUTER_KEY) { console.error('❌ Falta OPENROUTER_API_KEY'); process.exit(1) }
 
   console.log(`\n🧠 Inmonest — Normalización de títulos (límite: ${LIMIT})\n`)
 
