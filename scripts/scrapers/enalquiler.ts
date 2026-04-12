@@ -104,18 +104,16 @@ interface ListingStub {
 function extractStubs(html: string): ListingStub[] {
   const stubs: ListingStub[] = []
 
-  // Patrón de URL de detalle
-  const detailRe = /href="(\/alquiler_piso_[^/]+\/alquiler-piso-[^"]+_(\d{5,})\.html)"/gi
+  // Las URLs son absolutas: href="https://www.enalquiler.com/alquiler_piso_{city}/alquiler-piso-{slug}_{id}.html"
+  const detailRe = /href="(https:\/\/www\.enalquiler\.com\/alquiler_piso_[^/]+\/alquiler-piso-[^"]+_(\d{5,})\.html)"/gi
   const seen = new Set<string>()
   let m: RegExpExecArray | null
 
   while ((m = detailRe.exec(html))) {
-    const path = m[1]
+    const url = m[1]
     const id = m[2]
     if (seen.has(id)) continue
     seen.add(id)
-
-    const url = `https://www.enalquiler.com${path}`
     stubs.push({ id, url, title: '', priceRaw: null, area: null, bedrooms: null, bathrooms: null, firstImage: null, description: null, address: null })
   }
 
@@ -141,7 +139,7 @@ interface DetailData {
   isParticular: boolean
 }
 
-function parseDetail(html: string, fallbackCity: string): DetailData {
+function parseDetail(html: string, fallbackCity: string, listingId: string): DetailData {
   // ── Verificar que es particular ──────────────────────────────
   const particularMarkers = [
     /particular/i,
@@ -158,20 +156,27 @@ function parseDetail(html: string, fallbackCity: string): DetailData {
   if (titleM) title = titleM[1].replace(/<[^>]+>/g, '').trim().slice(0, 200)
   if (!title) {
     const ogTitle = html.match(/<meta[^>]+property="og:title"[^>]+content="([^"]+)"/i)
+      ?? html.match(/<meta[^>]+content="([^"]+)"[^>]+property="og:title"/i)
     if (ogTitle) title = ogTitle[1].trim()
   }
 
   // ── Precio ───────────────────────────────────────────────────
+  // enalquiler usa la variable JS: PriceProduct': "1.600"
+  // También puede aparecer como "\d+ &euro;" o en un span
   let price: number | null = null
-  const pricePats = [
-    /"price"\s*:\s*"?([\d.,]+)"?/i,
-    /(\d{1,3}(?:[.,]\d{3})*)\s*€\s*\/?\s*mes/i,
-    /(\d{3,6})\s*€/,
+  const pricePats: RegExp[] = [
+    /PriceProduct['"]\s*:\s*['"]?([\d.,]+)/i,               // variable JS
+    /(\d{1,2}[.,]\d{3})\s*(&euro;|€|&#8364;)/i,             // 1.600 € / 1.600 &euro;
+    /(\d{3,5})\s*&euro;/i,                                    // 900 &euro;
+    /(\d{3,5})\s*&#8364;/i,                                   // 900 &#8364;
+    /"priceValue"\s*[:|=]\s*['"]?([\d.,]+)/i,
+    /data-price="([\d.,]+)"/i,
   ]
   for (const p of pricePats) {
     const pm = html.match(p)
     if (pm) {
-      const raw = pm[1].replace(/[.,]/g, '').replace(/\./g, '')
+      // Eliminar puntos/comas de miles y parsear
+      const raw = pm[1].replace(/\./g, '').replace(/,/g, '')
       const val = parseInt(raw, 10)
       if (!isNaN(val) && val > 50 && val < 100000) { price = val; break }
     }
@@ -179,10 +184,12 @@ function parseDetail(html: string, fallbackCity: string): DetailData {
 
   // ── Superficie ───────────────────────────────────────────────
   let area: number | null = null
-  const areaPats = [
-    /"floorSize".*?"value"\s*:\s*"?(\d+)/i,
-    /(\d{2,4})\s*m[²2]/i,
-    /superficie[^:]*:\s*(\d+)/i,
+  const areaPats: RegExp[] = [
+    /(\d{2,4})\s*m2\b/i,                                     // 60m2
+    /(\d{2,4})\s*m[²2]/i,                                    // 60m²
+    /(\d{2,4})\s*metros\s*cuadrados/i,
+    /"floorSize"[\s\S]*?"value"\s*:\s*"?(\d+)/i,
+    /(\d{2,4})\s*m<sup>2<\/sup>/i,
   ]
   for (const p of areaPats) {
     const am = html.match(p)
@@ -191,8 +198,9 @@ function parseDetail(html: string, fallbackCity: string): DetailData {
 
   // ── Habitaciones ─────────────────────────────────────────────
   let bedrooms: number | null = null
-  const bedPats = [
-    /(\d+)\s*hab(?:itaci(?:ones|[oó]n))?/i,
+  const bedPats: RegExp[] = [
+    /(\d)\s*Hab\b/,                                           // "2 Hab" (enalquiler)
+    /(\d+)\s*habitaci(?:ones|[oó]n)/i,
     /(\d+)\s*dormitori(?:os|o)/i,
     /"numberOfRooms"\s*:\s*(\d+)/,
   ]
@@ -203,8 +211,8 @@ function parseDetail(html: string, fallbackCity: string): DetailData {
 
   // ── Baños ────────────────────────────────────────────────────
   let bathrooms: number | null = null
-  const bathPats = [
-    /(\d+)\s*ba[ñn]o/i,
+  const bathPats: RegExp[] = [
+    /(\d)\s*Ba[ñn]o/i,
     /"numberOfBathroomsTotal"\s*:\s*(\d+)/,
   ]
   for (const p of bathPats) {
@@ -214,79 +222,95 @@ function parseDetail(html: string, fallbackCity: string): DetailData {
 
   // ── Descripción ──────────────────────────────────────────────
   let description: string | null = null
-  const descPats = [
-    /<div[^>]*class="[^"]*description[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
-    /<div[^>]*id="[^"]*descripcion[^"]*"[^>]*>([\s\S]*?)<\/div>/i,
-    /<p[^>]*class="[^"]*descripcion[^"]*"[^>]*>([\s\S]*?)<\/p>/i,
-    /class="[^"]*anuncio-descripcion[^"]*"[^>]*>([\s\S]*?)<\/(?:div|p|section)>/i,
-    /<meta[^>]+name="description"[^>]+content="([^"]{80,})"/i,
-  ]
-  for (const p of descPats) {
-    const dm = html.match(p)
-    if (dm) {
-      description = dm[1].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 3000)
-      if (description.length > 50) break
-    }
+  // Meta description contiene la descripción completa del anuncio en enalquiler
+  const metaDesc = html.match(/<meta[^>]+name="description"[^>]+content="([^"]{80,})"/i)
+    ?? html.match(/<meta[^>]+content="([^"]{80,})"[^>]+name="description"/i)
+  if (metaDesc) {
+    description = metaDesc[1]
+      .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#039;/g, "'")
+      .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&apos;/g, "'")
+      .trim().slice(0, 3000)
   }
   // Fallback: og:description
   if (!description || description.length < 50) {
     const og = html.match(/<meta[^>]+property="og:description"[^>]+content="([^"]+)"/i)
+      ?? html.match(/<meta[^>]+content="([^"]+)"[^>]+property="og:description"/i)
     if (og) description = og[1].trim()
   }
 
   // ── Imágenes ─────────────────────────────────────────────────
+  // Solo las imágenes cuyo nombre empieza con el ID del anuncio → evitar contaminación
   const images: string[] = []
-  // Patrón CDN enalquiler: https://images.enalquiler.com/viviendas/{a}/{b}/{id}-{abc}_no.jpg
-  const imgRe = /https:\/\/images\.enalquiler\.com\/viviendas\/\d+\/\d+\/\d+-\d+_no\.jpg/gi
+  const imgRe = /https:\/\/images\.enalquiler\.com\/viviendas\/\d+\/\d+\/\d+-\d+_(?:no|or)\.jpg/gi
   const imgSeen = new Set<string>()
   let im: RegExpExecArray | null
   while ((im = imgRe.exec(html))) {
-    if (!imgSeen.has(im[0])) {
-      imgSeen.add(im[0])
-      images.push(im[0])
+    const imgUrl = im[0]
+    // Solo tomar las que pertenecen a este anuncio (filename starts with listingId)
+    const filename = imgUrl.split('/').pop() ?? ''
+    if (!filename.startsWith(listingId)) continue
+    // Preferir _no.jpg (tamaño normal) sobre _or.jpg (original)
+    const normalUrl = imgUrl.replace('_or.jpg', '_no.jpg')
+    if (!imgSeen.has(normalUrl)) {
+      imgSeen.add(normalUrl)
+      images.push(normalUrl)
     }
   }
-  // También buscar og:image
-  const ogImgM = html.match(/<meta[^>]+property="og:image"[^>]+content="([^"]+)"/i)
-  if (ogImgM && !imgSeen.has(ogImgM[1])) images.unshift(ogImgM[1])
 
-  // ── Localización ─────────────────────────────────────────────
+  // ── Lat/Lng ─────────────────────────────────────────────────
   let lat: number | null = null
   let lng: number | null = null
-  const latM = html.match(/"latitude"\s*:\s*"?([\d.-]+)"?/i) ?? html.match(/lat[itude]*["']?\s*[:=]\s*"?([\d.-]+)"?/i)
-  const lngM = html.match(/"longitude"\s*:\s*"?([\d.-]+)"?/i) ?? html.match(/l(?:ng|ongitude)["']?\s*[:=]\s*"?([\d.-]+)"?/i)
-  if (latM && lngM) {
-    const latV = parseFloat(latM[1])
-    const lngV = parseFloat(lngM[1])
-    if (latV > 36 && latV < 44 && lngV > -10 && lngV < 5) {
-      lat = latV; lng = lngV
-    }
+  // enalquiler puede tener coordenadas en JS vars o data attrs
+  const latPats = [
+    /"latitude"\s*:\s*"?([\d.-]+)"?/i,
+    /lat[itude]*["']?\s*[:=]\s*"?(3[6-9]|4[0-3]\.[\d]+)"?/i,
+    /data-lat="([\d.-]+)"/i,
+  ]
+  const lngPats = [
+    /"longitude"\s*:\s*"?([-\d.]+)"?/i,
+    /l(?:ng|ongitude)["']?\s*[:=]\s*"?([-\d.]{4,})"?/i,
+    /data-lng="([-\d.]+)"/i,
+    /data-lon="([-\d.]+)"/i,
+  ]
+  for (const p of latPats) {
+    const m = html.match(p)
+    if (m) { const v = parseFloat(m[1]); if (v > 36 && v < 44) { lat = v; break } }
+  }
+  for (const p of lngPats) {
+    const m = html.match(p)
+    if (m) { const v = parseFloat(m[1]); if (v > -10 && v < 5) { lng = v; break } }
   }
 
-  // ── Dirección y distrito ─────────────────────────────────────
+  // ── Dirección y localización ─────────────────────────────────
   let address: string | null = null
   let district: string | null = null
   let cityResult = fallbackCity
 
-  // JSON-LD address
-  const addrM = html.match(/"streetAddress"\s*:\s*"([^"]+)"/i)
-  if (addrM) address = addrM[1].trim()
-
-  const districtM = html.match(/"addressLocality"\s*:\s*"([^"]+)"/i)
-  if (districtM) {
-    const parts = districtM[1].split(',').map(s => s.trim())
-    if (parts.length >= 2) {
-      district = parts[0]
-      cityResult = parts[parts.length - 1]
-    } else {
-      cityResult = parts[0]
+  // enalquiler muestra la dirección en un elemento visible: "Calle X, Distrito, Ciudad"
+  // Patrón: texto en elemento con datos de dirección
+  const addrPats = [
+    /"streetAddress"\s*:\s*"([^"]+)"/i,
+    /class="[^"]*(?:direccion|address|location)[^"]*"[^>]*>([^<]{10,80})</i,
+    /(?:Calle|Avenida|Plaza|Paseo|Carrer|Via|Ronda|Travesía|Camino|C\/)\s+[A-Za-záéíóúñÁÉÍÓÚÑ][^<\n]{5,60}/i,
+  ]
+  for (const p of addrPats) {
+    const m = html.match(p)
+    if (m) {
+      address = m[1]?.replace(/<[^>]+>/g, '').trim() ?? null
+      if (address && address.length > 5) break
     }
   }
 
-  // Fallback: dirección visible en la página (patrón: "Calle ..., Distrito, Ciudad")
-  if (!address) {
-    const visibleAddr = html.match(/(?:Calle|Avenida|Plaza|Paseo|Carrer|Via|Ronda|Travesía|Camino)[^<\n]{5,80}/i)
-    if (visibleAddr) address = visibleAddr[0].replace(/\s+/g, ' ').trim()
+  // Localidad en JSON-LD o breadcrumbs
+  const localityM = html.match(/"addressLocality"\s*:\s*"([^"]+)"/i)
+  if (localityM) {
+    const parts = localityM[1].split(',').map((s: string) => s.trim())
+    if (parts.length >= 2) { district = parts[0]; cityResult = parts[parts.length - 1] }
+    else { cityResult = parts[0] }
+  } else {
+    // Breadcrumbs enalquiler: suelen tener el distrito en la url
+    const breadM = html.match(/alquiler-pisos-([a-z-]+)_2_\d+_30/i)
+    if (breadM) district = breadM[1].replace(/-/g, ' ')
   }
 
   return { title, price, area, bedrooms, bathrooms, description, images, district, city: cityResult, address, lat, lng, isParticular }
@@ -347,7 +371,7 @@ async function main() {
         continue
       }
 
-      const detail = parseDetail(detailHtml, cityData.city)
+      const detail = parseDetail(detailHtml, cityData.city, stub.id)
 
       if (!detail.price) {
         console.log(`    ⏭ Sin precio, saltando`)
