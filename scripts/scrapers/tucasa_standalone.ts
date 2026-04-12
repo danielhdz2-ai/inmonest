@@ -155,6 +155,15 @@ function extractListings(
     )
     const description = descM ? descM[1].replace(/\s+/g, ' ').trim() : undefined
 
+    // Imágenes: extraer src y data-src de cacheimg de tucasa
+    const imageUrls: string[] = []
+    const imgRe = /(?:src|data-src|data-lazy-src|data-original)="(https?:\/\/(?:www\.)?tucasa\.com\/cacheimg\/[^"]+)"/gi
+    for (const im of card.matchAll(imgRe)) {
+      const url = im[1]
+      if (!imageUrls.includes(url)) imageUrls.push(url)
+    }
+    const images = imageUrls.slice(0, 6)
+
     listings.push({
       title,
       description,
@@ -171,6 +180,7 @@ function extractListings(
       source_external_id: `tucasa_${id}`,
       is_particular: false,
       is_bank: false,
+      images: images.length > 0 ? images : undefined,
     })
   }
 
@@ -233,8 +243,9 @@ async function main() {
         const priceStr = listing.price_eur
           ? listing.price_eur.toLocaleString('es-ES') + ' €'
           : 'sin precio'
+        const imgStr = listing.images?.length ? ` 🖼️ ${listing.images.length} img` : ' (sin imágenes)'
         console.log(
-          `  ✅ [${listing.source_external_id}] ${listing.title} — ${priceStr} — ${listing.area_m2 ?? '?'} m²`
+          `  ✅ [${listing.source_external_id}] ${listing.title} — ${priceStr} — ${listing.area_m2 ?? '?'} m²${imgStr}`
         )
       } else {
         totalSkipped++
