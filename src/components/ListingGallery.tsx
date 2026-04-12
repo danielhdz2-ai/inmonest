@@ -61,7 +61,11 @@ export default function ListingGallery({ images, title, lat, lng, priceLabel }: 
     )
   }
 
-  const getUrl = (img: ImageItem) => img.storage_path ?? img.external_url ?? ''
+  const getUrl = (img: ImageItem) => {
+    if (img.storage_path) return img.storage_path
+    if (img.external_url) return `/api/img-proxy?url=${encodeURIComponent(img.external_url)}`
+    return ''
+  }
 
   return (
     <>

@@ -34,7 +34,12 @@ export default function ListingCardGallery({
     )
   }
 
-  const imageUrl = images[current].storage_path ?? images[current].external_url ?? ''
+  function buildUrl(img: ImageItem) {
+    if (img.storage_path) return img.storage_path
+    if (img.external_url) return `/api/img-proxy?url=${encodeURIComponent(img.external_url)}`
+    return ''
+  }
+  const imageUrl = buildUrl(images[current])
 
   const prev = (e: React.MouseEvent) => {
     e.preventDefault()

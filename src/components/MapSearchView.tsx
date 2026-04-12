@@ -157,7 +157,11 @@ export default function MapSearchView({ listings, total, ciudad, searchQuery }: 
         opacity: (listing as Record<string, unknown>)._cityFallback ? 0.7 : 1,
         zIndexOffset: 100,
       })
-      const imgUrl = listing.listing_images?.[0]?.storage_path ?? listing.listing_images?.[0]?.external_url ?? null
+      const rawImg = listing.listing_images?.[0]?.storage_path
+        ?? (listing.listing_images?.[0]?.external_url
+          ? `/api/img-proxy?url=${encodeURIComponent(listing.listing_images[0].external_url)}`
+          : null)
+      const imgUrl = rawImg
       const priceFull = formatPriceFull(listing.price_eur, listing.operation)
       const opLabel = listing.operation === 'rent' ? 'Alquiler' : 'Venta'
       const opColor = listing.operation === 'rent' ? '#0284c7' : '#ea580c'
@@ -267,7 +271,8 @@ export default function MapSearchView({ listings, total, ciudad, searchQuery }: 
         ) : (
           listingsWithCoords.map((listing) => {
             const img = listing.listing_images?.[0]
-            const imgUrl = img?.storage_path ?? img?.external_url ?? null
+            const imgUrl = img?.storage_path
+              ?? (img?.external_url ? `/api/img-proxy?url=${encodeURIComponent(img.external_url)}` : null)
             const isActive = listing.id === activeId
 
             return (
