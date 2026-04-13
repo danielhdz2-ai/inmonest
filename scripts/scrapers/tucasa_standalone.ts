@@ -155,14 +155,15 @@ function extractListings(
     )
     const description = descM ? descM[1].replace(/\s+/g, ' ').trim() : undefined
 
-    // Imágenes: extraer src y data-src de cacheimg de tucasa
+    // Imagen de portada de la tarjeta (thumbnail)
     const imageUrls: string[] = []
     const imgRe = /(?:src|data-src|data-lazy-src|data-original)="(https?:\/\/(?:www\.)?tucasa\.com\/cacheimg\/[^"]+)"/gi
     for (const im of card.matchAll(imgRe)) {
-      const url = im[1]
+      const url = im[1].replace('/cacheimg/small/', '/cacheimg/big/')
       if (!imageUrls.includes(url)) imageUrls.push(url)
     }
-    const images = imageUrls.slice(0, 6)
+    // Fallback: si no hay imágenes en el card, poner array vacío y el detalle las traerá
+    const cardImages = imageUrls.slice(0, 1)
 
     listings.push({
       title,
@@ -180,13 +181,76 @@ function extractListings(
       source_external_id: `tucasa_${id}`,
       is_particular: false,
       is_bank: false,
-      images: images.length > 0 ? images : undefined,
+      images: cardImages.length > 0 ? cardImages : undefined,
       external_link: sourceUrl,
       phone: undefined,
-    })
+      _needsDetail: true,
+    } as ScrapedListing & { _needsDetail?: boolean })
   }
 
   return listings
+}
+
+// Extrae imágenes, descripción y teléfono de la página de detalle
+export async function scrapeDetail(url: string): Promise<{
+  images: string[]
+  description?: string
+  phone?: string
+}> {
+  const html = await fetchHtml(url)
+  if (!html) return { images: [] }
+
+  // Imágenes: todas las cacheimg del detalle → usar /big/ para calidad
+  const cacheImgSet = new Set<string>()
+  for (const m of html.matchAll(/cacheimg\/(?:small|big)\/[\w/]+(?: |[./]jpg|[./]jpeg|[./]png|[./]webp)/gi)) {
+    // relimpiar
+  }
+  for (const m of html.matchAll(/\/cacheimg\/(?:small|big)\/[^"'\s<>]+/gi)) {
+    const bigUrl = `https://www.tucasa.com${m[0].replace('/cacheimg/small/', '/cacheimg/big/')}`
+    cacheImgSet.add(bigUrl)
+  }
+  // Imagen del JSON-LD (apinmo.com, alta resolución)
+  const jldImgs: string[] = []
+  for (const block of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      const j = JSON.parse(block[1])
+      if (typeof j.image === 'string') jldImgs.push(j.image)
+      else if (Array.isArray(j.image)) jldImgs.push(...j.image.filter((x: unknown) => typeof x === 'string'))
+    } catch { /* noop */ }
+  }
+  // Preferir apinmo (alta res) si está, luego cacheimg/big
+  const images = [...new Set([...jldImgs, ...cacheImgSet])].slice(0, 12)
+
+  // Descripción: de JSON-LD
+  let description: string | undefined
+  for (const block of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)) {
+    try {
+      const j = JSON.parse(block[1])
+      if (j.description && j.description.length > 30) {
+        description = j.description
+          .replace(/<[^>]+>/g, ' ')
+          .replace(/&lt;[^&]+&gt;/g, ' ')
+          .replace(/&amp;/g, '&')
+          .replace(/&nbsp;/g, ' ')
+          .replace(/\s+/g, ' ')
+          .trim()
+        break
+      }
+    } catch { /* noop */ }
+  }
+
+  // Teléfono: buscar en data-phone, o cerca de "teléfono" en el texto
+  let phone: string | undefined
+  const dataPhone = html.match(/data-phone[^=]*?=["']([6-9]\d{8})["']/i)
+  if (dataPhone) {
+    phone = dataPhone[1]
+  } else {
+    // Buscar teléfonos españoles cerca de la palabra contacto/teléfono
+    const contactZone = html.match(/(?:tel[eé]fono|contacto|llamar)[^<]{0,200}([6-9]\d{8})/i)
+    if (contactZone) phone = contactZone[1]
+  }
+
+  return { images, description, phone }
 }
 
 async function scrapePage(
@@ -239,15 +303,24 @@ async function main() {
     }
 
     for (const listing of listings) {
+      // Visitar página de detalle para obtener imágenes completas, descripción y teléfono
+      const detail = await scrapeDetail(listing.source_url!)
+      await sleep(800)
+      if (detail.images.length > 0) listing.images = detail.images
+      if (detail.description && (!listing.description || listing.description.length < 50))
+        listing.description = detail.description
+      if (detail.phone) listing.phone = detail.phone
+
       const inserted = await upsertListing(listing)
       if (inserted) {
         totalInserted++
         const priceStr = listing.price_eur
           ? listing.price_eur.toLocaleString('es-ES') + ' €'
           : 'sin precio'
-        const imgStr = listing.images?.length ? ` 🖼️ ${listing.images.length} img` : ' (sin imágenes)'
+        const imgStr = listing.images?.length ? ` 🖼️ ${listing.images.length} img` : ' ⚠️ sin imágenes'
+        const telStr = listing.phone ? ` 📞 ${listing.phone}` : ''
         console.log(
-          `  ✅ [${listing.source_external_id}] ${listing.title} — ${priceStr} — ${listing.area_m2 ?? '?'} m²${imgStr}`
+          `  ✅ [${listing.source_external_id}] ${listing.title} — ${priceStr}${imgStr}${telStr}`
         )
       } else {
         totalSkipped++
