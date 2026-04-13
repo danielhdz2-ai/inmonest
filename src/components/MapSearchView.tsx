@@ -20,6 +20,28 @@ function formatPriceFull(price: number | null, operation: string): string {
   return operation === 'rent' ? `${f} €/mes` : `${f} €`
 }
 
+// ── Clustering ligero para pins secundarios ────────────────────────────────
+// Agrupa pins que caen en la misma celda de grid (≈500 m a zoom 12)
+function deduplicatePins(pins: MapPin[]): Array<{ pin: MapPin; count: number }> {
+  const GRID = 150 // ~0.007° ≈ 500 m
+  const cells = new Map<string, { pin: MapPin; count: number }>()
+  for (const pin of pins) {
+    const key = `${Math.round(pin.lat * GRID)},${Math.round(pin.lng * GRID)}`
+    if (cells.has(key)) {
+      cells.get(key)!.count++
+    } else {
+      cells.set(key, { pin, count: 1 })
+    }
+  }
+  return Array.from(cells.values())
+}
+
+function clusterIconHtml(count: number): string {
+  const sz = count > 20 ? '32px' : '26px'
+  const fs = count > 20 ? '12px' : '11px'
+  return `<div style="width:${sz};height:${sz};border-radius:50%;background:#c9962a;border:2px solid #fff;color:#fff;font-size:${fs};font-weight:800;display:flex;align-items:center;justify-content:center;transform:translate(-50%,-50%);box-shadow:0 2px 8px rgba(0,0,0,0.25);font-family:-apple-system,system-ui,sans-serif;cursor:pointer;">${count > 99 ? '99+' : count}</div>`
+}
+
 // Genera HTML del badge de precio centrado en el pin del mapa
 // iconAnchor:[0,0] + translate(-50%,-50%) = centrado exacto en la coordenada
 function priceIconHtml(label: string, active: boolean, small = false): string {
@@ -212,10 +234,13 @@ export default function MapSearchView({ listings, total, ciudad, searchQuery }: 
           if (!mapObjRef.current) return
           // Marcar los ids que ya tienen marcador interactivo
           const interactiveIds = new Set(withCoords.map((l) => l.id))
-          pins.forEach((pin) => {
-            if (interactiveIds.has(pin.id)) return // ya tiene precio label interactivo
-            const icon = createSecondaryPriceIcon(L, pin)
-            const m = L.marker([pin.lat, pin.lng], { icon, opacity: 0.85, zIndexOffset: -100 })
+          const nonInteractive = pins.filter((p) => !interactiveIds.has(p.id))
+          const clustered = deduplicatePins(nonInteractive)
+          clustered.forEach(({ pin, count }) => {
+            const icon = count > 1
+              ? L.divIcon({ html: clusterIconHtml(count), className: '', iconSize: [0, 0], iconAnchor: [0, 0] })
+              : createSecondaryPriceIcon(L, pin)
+            const m = L.marker([pin.lat, pin.lng], { icon, opacity: 0.9, zIndexOffset: -100 })
             m.addTo(map)
             allPinMarkersRef.current.push(m)
           })
@@ -261,7 +286,7 @@ export default function MapSearchView({ listings, total, ciudad, searchQuery }: 
       {/* ── Columna 2: Lista de inmuebles ───────────────────────── */}
       <div
         ref={listRef}
-        className="w-96 xl:w-[440px] shrink-0 overflow-y-auto flex flex-col gap-2 p-3 bg-white border-r border-gray-100"
+        className="w-[400px] xl:w-[460px] shrink-0 overflow-y-auto flex flex-col gap-2.5 p-3 bg-white border-r border-gray-100"
       >
         {/* Contador */}
         <p className="text-xs text-gray-500 font-medium px-1 pb-1 border-b border-gray-100">
@@ -293,7 +318,7 @@ export default function MapSearchView({ listings, total, ciudad, searchQuery }: 
                 onMouseLeave={() => setActiveId(null)}
               >
                 {/* Imagen */}
-                <div className="w-[130px] shrink-0 self-stretch bg-gray-100 overflow-hidden relative" style={{ minHeight: '115px' }}>
+                <div className="w-[150px] shrink-0 self-stretch bg-gray-100 overflow-hidden relative" style={{ minHeight: '130px' }}>
                   {imgUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={imgUrl} alt="" className="w-full h-full object-cover absolute inset-0" />
@@ -313,10 +338,10 @@ export default function MapSearchView({ listings, total, ciudad, searchQuery }: 
                 </div>
 
                 {/* Info */}
-                <div className="flex-1 px-3 py-2.5 min-w-0 flex flex-col justify-between">
+                <div className="flex-1 px-3 py-3 min-w-0 flex flex-col justify-between">
                   {/* Precio */}
                   <div>
-                    <p className={`font-extrabold text-base leading-tight ${isActive ? 'text-[#c9962a]' : 'text-gray-900'}`}>
+                    <p className={`font-extrabold text-lg leading-tight ${isActive ? 'text-[#c9962a]' : 'text-gray-900'}`}>
                       {formatPriceFull(listing.price_eur, listing.operation)}
                     </p>
 
