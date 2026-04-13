@@ -38,6 +38,20 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Cache Playwright Chromium
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Instalar Chromium (si no está en caché)
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx --yes playwright install chromium --with-deps
+
+      - name: Instalar dependencias SO de Chromium (siempre)
+        run: npx --yes playwright install-deps chromium
+
       # ═══════════════ PISOS.COM ════════════════════════════════
 
       # ── pisos.com Alquiler ─────────────────────────────────────

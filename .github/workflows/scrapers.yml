@@ -13,7 +13,7 @@ on:
         required: false
         default: 'all'
         type: choice
-        options: [all, tecnocasa, redpiso, monapart, pisoscom, gilmar, particulares, milanuncios, solvia, aliseda, kelify]
+        options: [all, tecnocasa, redpiso, monapart, pisoscom, gilmar, particulares, milanuncios, solvia, aliseda]
       max:
         description: 'Máx. anuncios por ciudad'
         required: false
@@ -350,42 +350,23 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
+      - name: Cache Playwright Chromium
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Instalar Chromium (si no está en caché)
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: npx --yes playwright install chromium --with-deps
+
+      - name: Instalar dependencias SO de Chromium (siempre)
+        run: npx --yes playwright install-deps chromium
+
       - name: 🔥 Milanuncios Particulares — ${{ matrix.city }} (${{ matrix.operation }})
         run: |
-          npx --yes tsx scripts/scrapers/milanuncios.ts \
-            ${{ matrix.operation }} \
-            ${{ matrix.city }} \
-            5
-        env:
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
-
-  # ─── 💎 Robot C: Kelify Standalone (Particulares) ─────────────────────────
-  job_kelify:
-    if: ${{ github.event_name == 'schedule' || inputs.scraper == 'all' || inputs.scraper == 'kelify' }}
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      max-parallel: 2
-      matrix:
-        city: [madrid, barcelona, valencia, sevilla, zaragoza, malaga]
-        operation: [venta, alquiler]
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: package-lock.json
-
-      - name: Instalar dependencias
-        working-directory: miviviendalibre
-        run: npm ci
-
-      - name: 💎 Kelify Particulares — ${{ matrix.city }} (${{ matrix.operation }})
-        working-directory: miviviendalibre
-        run: |
-          npx --yes tsx scripts/scrapers/kelify_standalone.ts \
+          npx --yes tsx scripts/scrapers/milanuncios_particulares.ts \
             ${{ matrix.operation }} \
             ${{ matrix.city }} \
             5
@@ -395,7 +376,7 @@ jobs:
   # ─── Resumen final ──────────────────────────────────────────────────────────
   resumen:
     runs-on: ubuntu-latest
-    needs: [tecnocasa, redpiso, monapart, pisoscom, gilmar, particulares, milanuncios, solvia, aliseda, job_kelify]
+    needs: [tecnocasa, redpiso, monapart, pisoscom, gilmar, particulares, milanuncios, solvia, aliseda]
     if: always()
     steps:
       - name: Resumen de ejecución
@@ -413,12 +394,11 @@ jobs:
           echo "| 🔥 Milanuncios | ${{ needs.milanuncios.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🏦 Solvia | ${{ needs.solvia.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🏦 Aliseda | ${{ needs.aliseda.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 💎 Kelify | ${{ needs.job_kelify.result }} |" >> $GITHUB_STEP_SUMMARY
 
   # ─── 🧠 Normalización de títulos con IA ─────────────────────────────────────
   normalize_titles:
     runs-on: ubuntu-latest
-    needs: [tecnocasa, redpiso, monapart, pisoscom, gilmar, particulares, milanuncios, solvia, aliseda, job_kelify]
+    needs: [tecnocasa, redpiso, monapart, pisoscom, gilmar, particulares, milanuncios, solvia, aliseda]
     if: always() && needs.tecnocasa.result != 'cancelled'
     steps:
       - uses: actions/checkout@v4
