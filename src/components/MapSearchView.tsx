@@ -274,125 +274,121 @@ export default function MapSearchView({ listings, total, ciudad, searchQuery }: 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeId])
 
-  return (
-    /* Layout 3 columnas: [chat IA] [lista] [mapa] */
-    <div className="flex h-[calc(100vh-128px)] min-h-[500px]">
+  const CARD_H = 120
+  const IMG_W = 150
 
-      {/* ── Columna 1: Buscador IA ──────────────────────────────── */}
-      <div className="w-64 shrink-0 hidden xl:flex flex-col border-r border-gray-200">
+  return (
+    <div style={{ display: 'flex', height: 'calc(100vh - 128px)', minHeight: 500, fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif' }}>
+
+      {/* Columna 1 — Buscador IA (solo pantallas grandes) */}
+      <div style={{ width: 260, minWidth: 260, borderRight: '1px solid #e5e7eb', display: 'flex', flexDirection: 'column' }} className="hidden xl:flex">
         <IASearchSidebar />
       </div>
 
-      {/* ── Columna 2: Lista de inmuebles ───────────────────────── */}
+      {/* Columna 2 — Lista de inmuebles */}
       <div
         ref={listRef}
-        className="w-[420px] xl:w-[460px] shrink-0 overflow-y-auto flex flex-col gap-2 px-2 py-2 bg-white border-r border-gray-200"
+        style={{ width: 400, minWidth: 400, overflowY: 'auto', background: '#fff', borderRight: '1px solid #e5e7eb', display: 'flex', flexDirection: 'column', gap: 6, padding: '8px 8px' }}
       >
         {/* Contador */}
-        <p className="text-xs text-gray-400 px-1 py-1">
+        <p style={{ fontSize: 12, color: '#9ca3af', padding: '2px 4px', marginBottom: 2 }}>
           {total != null ? `+${total.toLocaleString('es-ES')} resultados` : `${listings.length} resultados`}
         </p>
 
         {listings.length === 0 ? (
-          <div className="text-center py-16 text-gray-400 text-sm">No hay resultados con los filtros actuales</div>
+          <div style={{ textAlign: 'center', padding: '60px 0', color: '#9ca3af', fontSize: 14 }}>
+            No hay resultados con los filtros actuales
+          </div>
         ) : (
           listingsWithCoords.map((listing) => {
             const img = listing.listing_images?.[0]
             const imgUrl = img?.storage_path
               ?? (img?.external_url ? `/api/img-proxy?url=${encodeURIComponent(img.external_url)}` : null)
             const isActive = listing.id === activeId
+            const opColor = listing.operation === 'rent' ? '#0284c7' : '#ea580c'
 
             return (
               <Link
                 key={listing.id}
                 href={`/pisos/${listing.id}`}
                 ref={(el) => { cardRefs.current[listing.id] = el }}
-                style={{ height: '160px' }}
-                className={`flex bg-white rounded-xl overflow-hidden border transition-shadow duration-150 hover:shadow-md ${
-                  isActive
-                    ? 'border-[#c9962a] shadow-md ring-2 ring-[#c9962a]/30'
-                    : listing.is_bank
-                    ? 'border-blue-200'
-                    : 'border-gray-200 hover:border-gray-300'
-                }`}
+                style={{
+                  display: 'flex',
+                  height: CARD_H,
+                  minHeight: CARD_H,
+                  maxHeight: CARD_H,
+                  background: '#fff',
+                  borderRadius: 10,
+                  overflow: 'hidden',
+                  border: isActive ? '2px solid #c9962a' : '1px solid #e5e7eb',
+                  boxShadow: isActive ? '0 0 0 3px rgba(201,150,42,0.15)' : '0 1px 3px rgba(0,0,0,0.07)',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  flexShrink: 0,
+                  transition: 'box-shadow 0.15s, border-color 0.15s',
+                }}
                 onMouseEnter={() => { if (listingsWithCoords.find(l => l.id === listing.id)?.lat != null) setActiveId(listing.id) }}
                 onMouseLeave={() => setActiveId(null)}
               >
-                {/* Imagen izquierda — ancho fijo */}
-                <div className="relative shrink-0 bg-gray-100 overflow-hidden" style={{ width: '180px', height: '160px' }}>
+                {/* Imagen izquierda */}
+                <div style={{ width: IMG_W, minWidth: IMG_W, height: CARD_H, position: 'relative', background: '#f3f4f6', overflow: 'hidden', flexShrink: 0 }}>
                   {imgUrl ? (
                     // eslint-disable-next-line @next/next/no-img-element
-                    <img src={imgUrl} alt="" className="absolute inset-0 w-full h-full object-cover" />
+                    <img src={imgUrl} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                   ) : (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <svg className="w-10 h-10 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                      </svg>
+                    <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <svg width="36" height="36" fill="none" viewBox="0 0 24 24" stroke="#d1d5db"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /></svg>
                     </div>
                   )}
-                  <span className={`absolute bottom-1.5 left-1.5 text-[10px] font-bold px-1.5 py-0.5 rounded leading-none ${
-                    listing.operation === 'rent' ? 'bg-sky-600 text-white' : 'bg-orange-500 text-white'
-                  }`}>
+                  {/* Badge tipo operacion */}
+                  <span style={{ position: 'absolute', bottom: 6, left: 6, background: opColor, color: '#fff', fontSize: 9, fontWeight: 800, padding: '2px 6px', borderRadius: 4, lineHeight: 1.2 }}>
                     {listing.operation === 'rent' ? 'ALQUILER' : 'VENTA'}
                   </span>
                 </div>
 
                 {/* Info derecha */}
-                <div className="flex-1 min-w-0 flex flex-col justify-between px-3 py-2.5">
-                  {/* Precio + badges */}
-                  <div>
-                    <div className="flex items-start justify-between gap-1">
-                      <p className={`font-bold text-lg leading-tight ${isActive ? 'text-[#c9962a]' : 'text-gray-900'}`}>
-                        {formatPriceFull(listing.price_eur, listing.operation)}
-                      </p>
-                      <div className="flex gap-1 shrink-0">
-                        {listing.is_particular && (
-                          <span className="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-1.5 py-0.5 rounded leading-none whitespace-nowrap">
-                            PARTICULAR
-                          </span>
-                        )}
-                        {listing.is_bank && (
-                          <span className="bg-blue-100 text-blue-800 text-[9px] font-bold px-1.5 py-0.5 rounded leading-none">
-                            BANCO
-                          </span>
-                        )}
-                      </div>
-                    </div>
+                <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '10px 12px 8px', overflow: 'hidden' }}>
 
-                    {/* Título */}
-                    <p className="text-sm text-gray-700 line-clamp-2 leading-snug mt-1">
-                      {listing.title}
-                    </p>
+                  {/* Fila: Precio + badges */}
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 4 }}>
+                    <span style={{ fontSize: 17, fontWeight: 800, color: isActive ? '#c9962a' : '#111827', lineHeight: 1.2, whiteSpace: 'nowrap' }}>
+                      {formatPriceFull(listing.price_eur, listing.operation)}
+                    </span>
+                    <div style={{ display: 'flex', gap: 3, flexShrink: 0 }}>
+                      {listing.is_particular && (
+                        <span style={{ background: '#d1fae5', color: '#065f46', fontSize: 9, fontWeight: 800, padding: '2px 5px', borderRadius: 4, lineHeight: 1.3, whiteSpace: 'nowrap' }}>PARTICULAR</span>
+                      )}
+                      {listing.is_bank && (
+                        <span style={{ background: '#dbeafe', color: '#1e40af', fontSize: 9, fontWeight: 800, padding: '2px 5px', borderRadius: 4, lineHeight: 1.3 }}>BANCO</span>
+                      )}
+                    </div>
                   </div>
+
+                  {/* Título */}
+                  <p style={{ fontSize: 12, color: '#374151', lineHeight: 1.4, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', margin: 0 }}>
+                    {listing.title}
+                  </p>
 
                   {/* Stats + ubicación */}
                   <div>
-                    <div className="flex gap-3 text-sm text-gray-600 flex-wrap">
+                    <div style={{ display: 'flex', gap: 10, fontSize: 12, color: '#6b7280', flexWrap: 'wrap' }}>
                       {listing.bedrooms != null && (
-                        <span className="flex items-center gap-1">
-                          <span className="text-gray-400">🛏</span>
-                          {listing.bedrooms === 0 ? 'Estudio' : `${listing.bedrooms} hab.`}
-                        </span>
+                        <span>🛏 {listing.bedrooms === 0 ? 'Estudio' : `${listing.bedrooms} hab`}</span>
                       )}
                       {listing.area_m2 != null && (
-                        <span className="flex items-center gap-1">
-                          <span className="text-gray-400">📐</span>
-                          {listing.area_m2} m²
-                        </span>
+                        <span>📐 {listing.area_m2} m²</span>
                       )}
                       {listing.bathrooms != null && (
-                        <span className="flex items-center gap-1">
-                          <span className="text-gray-400">🚿</span>
-                          {listing.bathrooms}
-                        </span>
+                        <span>🚿 {listing.bathrooms}</span>
                       )}
                     </div>
                     {listing.city && (
-                      <p className="text-xs text-gray-400 mt-0.5 truncate">
-                        {[listing.district, listing.city].filter(Boolean).join(', ')}
+                      <p style={{ fontSize: 11, color: '#9ca3af', margin: '2px 0 0', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        📍 {[listing.district, listing.city].filter(Boolean).join(', ')}
                       </p>
                     )}
                   </div>
+
                 </div>
               </Link>
             )
@@ -400,18 +396,14 @@ export default function MapSearchView({ listings, total, ciudad, searchQuery }: 
         )}
 
         {listings.length > 0 && (
-          <p className="text-xs text-gray-300 text-center py-2">
+          <p style={{ fontSize: 11, color: '#d1d5db', textAlign: 'center', padding: '6px 0' }}>
             {withCoords.length} de {listings.length} en el mapa
           </p>
         )}
       </div>
 
-      {/* ── Columna 3: Mapa ─────────────────────────────────────── */}
-      <div
-        ref={mapElRef}
-        className="flex-1 overflow-hidden"
-        style={{ minWidth: 0 }}
-      />
+      {/* Columna 3 — Mapa */}
+      <div ref={mapElRef} style={{ flex: 1, minWidth: 0, overflow: 'hidden' }} />
     </div>
   )
 }
