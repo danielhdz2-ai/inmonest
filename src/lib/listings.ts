@@ -3,8 +3,7 @@ import type { Listing, SearchParams } from '@/types/listings'
 
 const PAGE_SIZE = 24
 
-// Campos públicos para lista/mapa — NO incluye phone, external_link, source_url, advertiser_name
-// (advertiser_name solo se expone en el endpoint /api/pisos/[id]/contact)
+// Campos públicos para lista/mapa — NO incluye phone, external_link, source_url
 const PUBLIC_LISTING_FIELDS = [
   'id', 'origin', 'owner_user_id', 'operation', 'title', 'description',
   'price_eur', 'province', 'city', 'district', 'postal_code',
@@ -12,7 +11,7 @@ const PUBLIC_LISTING_FIELDS = [
   'source_portal', 'source_external_id',
   'is_particular', 'particular_confidence', 'ranking_score',
   'turbo_until', 'status', 'views_count', 'published_at', 'created_at', 'updated_at',
-  'features', 'is_bank', 'bank_entity',
+  'features', 'is_bank', 'bank_entity', 'advertiser_name',
   'listing_images(id, storage_path, external_url, position)',
 ].join(', ')
 
