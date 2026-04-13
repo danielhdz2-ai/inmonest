@@ -438,6 +438,11 @@ async function scrapeParticulares(
         console.log(`    ⚠️ [DESCARTADO - sin fotos] ${detailUrl.slice(30, 80)}`)
         continue
       }
+      if (!detail.isParticularConfirmed) {
+        discarded++
+        console.log(`    ⚠️ [DESCARTADO - agencia] ${detailUrl.slice(30, 80)}`)
+        continue
+      }
 
       // Título desde URL + ciudad fallback
       // URL: /alquilar/piso-sant_gervasi_galvany08006-62574760584_109800/
@@ -490,7 +495,7 @@ async function scrapeParticulares(
         source_portal:     'pisos.com',
         source_url:         detailUrl,
         source_external_id: externalId,
-        is_particular:      true,   // Siempre — venimos de /particulares/
+        is_particular:      true,   // Confirmado por "Anunciante particular" en el HTML
         images:             detail.images,
         external_link:      detailUrl,
         phone:              detail.phone ?? undefined,
@@ -519,7 +524,7 @@ async function scrapeParticulares(
   console.log('\n' + '─'.repeat(60))
   console.log(
     `📊 pisos.com particulares ${operation}/${citySlug}: ` +
-    `${imported} importados | ${discarded} descartados (sin precio/fotos) | ${skipped} errores`
+    `${imported} importados | ${discarded} descartados (sin precio/fotos/agencia) | ${skipped} errores`
   )
 }
 
