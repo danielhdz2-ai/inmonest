@@ -342,10 +342,10 @@ jobs:
 # ══════════════════════════════════════════════════════════════════════════════
 # BLOQUE 2 — PARTICULARES  (solo VENTA — alquiler tiene demasiado ruido de agencias)
 # ══════════════════════════════════════════════════════════════════════════════
-  # ─── 🏠 pisos.com Particulares ──────────────────────────────────────────────
+  # ─── 🏠 pisos.com Particulares — ⚠️ PAUSADO hasta verificar clasificación ───
   pisoscom_particulares:
     name: "🏠 [Particulares pisos.com] ${{ matrix.city }} — Venta"
-    if: ${{ github.event_name == 'schedule' || inputs.scraper == 'all' || inputs.scraper == 'pisoscom_particulares' }}
+    if: ${{ inputs.scraper == 'pisoscom_particulares' }}   # ⚠️ PAUSADO: solo manual
     runs-on: ubuntu-latest
     continue-on-error: true
     strategy:

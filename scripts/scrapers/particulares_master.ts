@@ -87,12 +87,25 @@ function extractJsonLdListings(
 }
 
 /**
- * pisos.com certifica con el texto "Anunciante particular" cuando el anunciante
- * es un propietario directo. Si no aparece ese texto → es agencia.
- * Nunca aparece "Anunciante particular" en un anuncio de agencia.
+ * Validación positiva absoluta — pisos.com
+ *
+ * REGLA Única: SOLO true si el bloque de contacto contiene el texto
+ * exacto "Anunciante particular". Si dice cualquier otra cosa (agencia,
+ * nombre de empresa, "Contactar con el anunciante", etc.) → false.
+ *
+ * Buscamos en las ~2000 chars alrededor del bloque de contacto (owner-data,
+ * contact-block, advertiser) para evitar falsos positivos por texto que
+ * pudiera aparecer en la descripción o meta-tags.
  */
 function isParticularListing(html: string): boolean {
-  return /anunciante\s+particular/i.test(html)
+  // Extraer el bloque de contacto del HTML
+  // pisos.com usa clases como: owner-data, contact-block, advertiser-info,
+  // contact-form, id-anunciante
+  const contactBlockRe = /class="[^"]*(?:owner-data|contact-block|advertiser-info|contact-form|id-anunciante|anunciante)[^"]*"[\s\S]{0,2000}?(?=<\/(?:div|section|aside|article)>)/i
+  const contactMatch = html.match(contactBlockRe)
+  const blockToSearch = contactMatch ? contactMatch[0] : html
+
+  return /anunciante\s+particular/i.test(blockToSearch)
 }
 
 
