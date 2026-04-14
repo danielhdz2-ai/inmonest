@@ -87,86 +87,64 @@ function extractJsonLdListings(
 }
 
 /**
- * Verifica que el anuncio sea realmente de un particular.
- * Comprueba señales en el HTML del detalle.
+ * REGLA DE ORO — pisos.com marca explícitamente a los particulares con la
+ * etiqueta "Anunciante particular" en el bloque de contacto (.owner-data).
  *
- * IMPORTANTE: primero chequeamos señales de AGENCIA (hard-reject) para evitar
- * que la palabra "particular" aparezca en描述 de una agencia y la cuele.
+ * Decisión BINARIA:
+ *   ✅ Existe "Anunciante particular"  →  true
+ *   ❌ NO existe                       →  false  (aunque ponga nombre de persona)
+ *
+ * Doble check: incluso con la badge, si el nombre del anunciante contiene
+ * señales corporativas (Inmo, Finques, S.L., etc.) → false.
+ * Cubre el caso de agencias que sortean el filtro de pisos.com.
  */
 function isParticularListing(html: string): boolean {
-  const lower = html.toLowerCase()
+  // ── PASO 1: buscar la badge explícita de pisos.com ─────────────────────────
+  // pisos.com renderiza "Anunciante particular" como texto visible en el bloque
+  // de contacto. Sin esta etiqueta → no es particular para nosotros.
+  if (!/anunciante\s+particular/i.test(html)) return false
 
-  // ── 1. Señales DURAS de AGENCIA → descartar inmediatamente ──────────────────
-  const AGENCY_HARD_SIGNALS = [
-    'anunciante profesional',          // badge pisos.com para agentes
-    'registre d\'agents immobiliaris', // badge catalán: agente colegiado
-    'registro de agentes inmobiliarios',
-    'registro d\'agents',
-    'ver inmuebles de ',               // "Ver inmuebles de TUKSA" → card de agencia
-    'honorarios de agencia',
-    'honorarios de intermediación',
-    'gastos de agencia',
-    'comisión de agencia',
-    'comisión de intermediación',
-    'nuestros inmuebles',              // "nuestros inmuebles disponibles"
-    'nuestra cartera',                 // "nuestra cartera de propiedades"
-    'nuestros clientes',               // lenguaje corporativo
-    // Franquicias y agencias específicas
-    'tuksa',
-    'century 21',
-    'keller williams',
-    'engel & völkers',
-    'coldwell banker',
-    'donpiso',
-    'housell',
-    're/max',
-    'remax',
-    'lucas fox',
-    'bcn advisors',
-    'amat inmobiliaris',
-  ]
-  for (const signal of AGENCY_HARD_SIGNALS) {
-    if (lower.includes(signal)) return false
-  }
-
-  // ── Extraer nombre del anunciante cruzando etiquetas HTML ──────────────────
-  // El regex [^<]{0,200} no cruza tags — necesitamos buscar más amplio y limpiar
+  // ── PASO 2: doble check — nombre corporativo aunque tenga la badge ─────────
+  // Extraer el nombre del anunciante del bloque de contacto (.owner-data / similar)
+  // Usamos strip de tags para cruzar la estructura HTML
   let advertiserName = ''
-  // Estrategia 1: atributo data- con el nombre (fiable si pisos.com lo expone)
-  const dataName = html.match(/data-(?:advertiser|publisher|owner)-name="([^"]{3,80})"/i)
-  if (dataName) advertiserName = dataName[1]
-  // Estrategia 2: bloque HTML alrededor de clase "advertiser/anunciante" → strip tags
-  if (!advertiserName) {
-    const blockM = html.match(/class="[^"]*(?:advertiser|anunciante|contact)[^"]*"[\s\S]{0,600}?<\/(?:div|section|aside|article)>/i)
-    if (blockM) advertiserName = blockM[0].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 80)
-  }
-  // Estrategia 3: JSON-LD Organization/LocalBusiness (frecuente en pisos.com)
-  if (!advertiserName) {
-    const ldOrg = html.match(/"name"\s*:\s*"([A-ZÁÉÍÓÚÜÑ][^"]{3,60})"/)
-    if (ldOrg) advertiserName = ldOrg[1]
-  }
-  // Rechazar si el nombre extraído tiene señales corporativas
-  if (advertiserName && /\b[A-ZÁÉÍÓÚÑ]{4,}\b/.test(advertiserName)) return false
-  if (advertiserName && /\bS\.?\s*L\.?\b|\bS\.?\s*A\.?\b/i.test(advertiserName)) return false
-  if (advertiserName && /inmobiliaria|asesores|gesti[oó]n|inmosur|finques|grupo|inmuebles|agencia/i.test(advertiserName)) return false
 
-  // ── 2. Señales POSITIVAS de particular ──────────────────────────────────────
-  // Badge específica de pisos.com para particulares
-  if (/anunciante\s+particular/i.test(html)) return true
-  // Texto en descripción que indica venta/alquiler directo
-  if (/\bsin\s+(intermediarios?|agencia|comisi[oó]n)\b/i.test(html)) return true
-  if (/\bpropietario\s+(directo|vende|alquila|particular|privado)\b/i.test(html)) return true
-  if (/\bparticular\s+vende\b/i.test(html)) return true
-  if (/\bventa\s+directa\s+(del?\s+)?propietario\b/i.test(html)) return true
-  // Badge o etiqueta de clase en HTML
-  if (/class="[^"]*particular[^"]*"/i.test(html)) return true
-  if (/class="[^"]*propietario[^"]*"/i.test(html)) return true
+  // Estrategia A: atributo data- (más fiable cuando pisos.com lo inyecta)
+  const dataAttr = html.match(/data-(?:advertiser|publisher|owner|contact)-name="([^"]{2,80})"/i)
+  if (dataAttr) advertiserName = dataAttr[1].trim()
 
-  // ── 3. MURO DE CONTENCIÓN — Duda = false ────────────────────────────────────
-  // Si no se encontró una badge explícita de "Anunciante particular", rechazar.
-  // Es mejor perder un particular real que mentir al usuario clasificando una agencia.
-  return false
+  // Estrategia B: texto dentro del bloque de clase owner-data / contact-info
+  if (!advertiserName) {
+    const ownerBlock = html.match(/class="[^"]*(?:owner-data|contact-info|advertiser-info|anunciante)[^"]*"[\s\S]{0,800}?<\/(?:div|section|aside)>/i)
+    if (ownerBlock) {
+      advertiserName = ownerBlock[0]
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .slice(0, 100)
+    }
+  }
+
+  // Estrategia C: JSON con "nombre" del anunciante (pisos.com inyecta JSON en <script>)
+  if (!advertiserName) {
+    const jsonName = html.match(/"(?:nombre|name|advertiserName)"\s*:\s*"([A-Za-záéíóúüñÁÉÍÓÚÜÑ][^"]{2,60})"/)
+    if (jsonName) advertiserName = jsonName[1].trim()
+  }
+
+  // ── Señales corporativas en el nombre → rechazar aunque tenga badge ─────────
+  if (advertiserName) {
+    // Sufijos societarios
+    if (/\bS\.?\s*L\.?\b|\bS\.?\s*A\.?\b|\bS\.?\s*L\.?\s*U\.?\b/i.test(advertiserName)) return false
+    // Palabras clave de agencia
+    if (/inmo|finques|finca|asesores|asesor[ií]a|gesti[oó]n|gestoria|gestor[ií]a|agencia|inmuebles|propiedades|promotora|constructora|inversiones|grupo\s+inmo/i.test(advertiserName)) return false
+    // Todo en MAYÚSCULAS de 4+ letras = patrón corporativo (TUKSA, TOT FINQUES, JLL...)
+    if (/[A-ZÁÉÍÓÚÜÑ]{4,}/.test(advertiserName) && !/[a-záéíóúüñ]{3,}/.test(advertiserName)) return false
+  }
+
+  // ── PASO 3: badge confirmada + nombre sin señales corporativas → PARTICULAR ──
+  return true
 }
+
 
 function extractDetailData(html: string): {
   price: number | null
