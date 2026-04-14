@@ -87,24 +87,12 @@ function extractJsonLdListings(
 }
 
 /**
- * Validación positiva estricta — pisos.com
- *
- * REGLA 1 (requisito): el HTML debe contener "Anunciante particular".
- *   Sin esa etiqueta → false inmediato.
- *
- * REGLA 2 (exclusión): si existe "Ver inmuebles de [nombre]" en el bloque
- *   de contacto, el anunciante tiene una cartera profesional → false.
- *   Esto captura casos como "Infinity Marbella" que sortean el filtro de
- *   pisos.com pero se delatan con ese enlace de listado profesional.
+ * pisos.com certifica con el texto "Anunciante particular" cuando el anunciante
+ * es un propietario directo. Si no aparece ese texto → es agencia.
+ * Nunca aparece "Anunciante particular" en un anuncio de agencia.
  */
 function isParticularListing(html: string): boolean {
-  // REGLA 1 — el portal debe certificar explícitamente que es particular
-  if (!/anunciante\s+particular/i.test(html)) return false
-
-  // REGLA 2 — "Ver inmuebles de X" → cartera profesional, no es particular
-  if (/ver\s+inmuebles\s+de\s+/i.test(html)) return false
-
-  return true
+  return /anunciante\s+particular/i.test(html)
 }
 
 
