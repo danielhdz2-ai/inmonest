@@ -1,11 +1,20 @@
-name: 🤖 Scrapers Autónomos
+name: 🤖 Raspadores Autónomos
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PORTALES ACTIVOS:
+#   Agencias  → Tecnocasa · Redpiso · Monapart · pisos.com · Gilmar
+#   Banca     → Solvia (Sabadell) · Aliseda (Santander/Blackstone)
+#   Particular→ pisos.com Particulares · Milanuncios Particulares
+#
+# PORTALES PROHIBIDOS (agregadores / riesgo legal):
+#   ✗ mitula  ✗ kelify  ✗ trovit  ← NUNCA añadir
+# ─────────────────────────────────────────────────────────────────────────────
 
 on:
   schedule:
-    # Cada 6 horas (00:00, 06:00, 12:00, 18:00 UTC = 02:00, 08:00, 14:00, 20:00 España)
+    # Cada 6 horas: 00:00, 06:00, 12:00, 18:00 UTC (02:00, 08:00, 14:00, 20:00 España)
     - cron: '0 */6 * * *'
 
-  # También se puede lanzar manualmente desde GitHub → Actions → Run workflow
   workflow_dispatch:
     inputs:
       scraper:
@@ -13,20 +22,35 @@ on:
         required: false
         default: 'all'
         type: choice
-        options: [all, tecnocasa, redpiso, monapart, pisoscom, gilmar, pisoscom_particulares, milanuncios_particulares, solvia, aliseda]
+        options:
+          - all
+          - tecnocasa
+          - redpiso
+          - monapart
+          - pisoscom
+          - gilmar
+          - pisoscom_particulares
+          - milanuncios_particulares
+          - solvia
+          - aliseda
       max:
-        description: 'Máx. anuncios por ciudad'
+        description: 'Máx. anuncios / páginas por ciudad'
         required: false
         default: '50'
 
 env:
   SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
+# ══════════════════════════════════════════════════════════════════════════════
+# BLOQUE 1 — AGENCIAS
+# ══════════════════════════════════════════════════════════════════════════════
 jobs:
-  # ─── Tecnocasa ──────────────────────────────────────────────────────────────
+  # ─── 🏢 Tecnocasa ───────────────────────────────────────────────────────────
   tecnocasa:
+    name: "🏢 [Tecnocasa] ${{ matrix.city }} — ${{ matrix.operation }}"
     if: ${{ github.event_name == 'schedule' || inputs.scraper == 'all' || inputs.scraper == 'tecnocasa' }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       fail-fast: false
       max-parallel: 2
@@ -59,7 +83,7 @@ jobs:
       - name: Instalar dependencias SO de Chromium (siempre)
         run: npx --yes playwright install-deps chromium
 
-      - name: 🤖 Scraper Tecnocasa — ${{ matrix.city }} (${{ matrix.operation }})
+      - name: 🤖 Ejecutar scraper
         run: |
           MAX=${{ github.event.inputs.max || '50' }}
           npx --yes tsx scripts/scrapers/tecnocasa.ts \
@@ -70,10 +94,12 @@ jobs:
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
-  # ─── Redpiso ────────────────────────────────────────────────────────────────
+  # ─── 🏢 Redpiso ─────────────────────────────────────────────────────────────
   redpiso:
+    name: "🏢 [Redpiso] ${{ matrix.city }} — ${{ matrix.operation }}"
     if: ${{ github.event_name == 'schedule' || inputs.scraper == 'all' || inputs.scraper == 'redpiso' }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       fail-fast: false
       max-parallel: 2
@@ -106,7 +132,7 @@ jobs:
       - name: Instalar dependencias SO de Chromium (siempre)
         run: npx --yes playwright install-deps chromium
 
-      - name: 🤖 Scraper Redpiso — ${{ matrix.city }} (${{ matrix.operation }})
+      - name: 🤖 Ejecutar scraper
         run: |
           MAX=${{ github.event.inputs.max || '50' }}
           npx --yes tsx scripts/scrapers/redpiso.ts \
@@ -117,10 +143,12 @@ jobs:
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
-  # ─── Monapart ───────────────────────────────────────────────────────────────
+  # ─── 🏢 Monapart ────────────────────────────────────────────────────────────
   monapart:
+    name: "🏢 [Monapart] ${{ matrix.operation }}"
     if: ${{ github.event_name == 'schedule' || inputs.scraper == 'all' || inputs.scraper == 'monapart' }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       fail-fast: false
       matrix:
@@ -151,7 +179,7 @@ jobs:
       - name: Instalar dependencias SO de Chromium (siempre)
         run: npx --yes playwright install-deps chromium
 
-      - name: 🤖 Scraper Monapart (${{ matrix.operation }})
+      - name: 🤖 Ejecutar scraper
         run: |
           MAX=${{ github.event.inputs.max || '50' }}
           npx --yes tsx scripts/scrapers/monapart.ts \
@@ -161,10 +189,12 @@ jobs:
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
-  # ─── pisos.com ──────────────────────────────────────────────────────────────
+  # ─── 🏢 pisos.com (general — agencias + mixto) ─────────────────────────────
   pisoscom:
+    name: "🏢 [pisos.com] ${{ matrix.city }} — ${{ matrix.operation }}"
     if: ${{ github.event_name == 'schedule' || inputs.scraper == 'all' || inputs.scraper == 'pisoscom' }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       fail-fast: false
       max-parallel: 2
@@ -183,7 +213,7 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: 🤖 Scraper pisos.com — ${{ matrix.city }} (${{ matrix.operation }})
+      - name: 🤖 Ejecutar scraper
         run: |
           MAX_PAGES=${{ github.event.inputs.max || '5' }}
           npx --yes tsx scripts/scrapers/pisoscom.ts \
@@ -193,10 +223,12 @@ jobs:
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
-  # ─── Gilmar ─────────────────────────────────────────────────────────────────
+  # ─── 🏢 Gilmar ──────────────────────────────────────────────────────────────
   gilmar:
+    name: "🏢 [Gilmar] ${{ matrix.operation }}"
     if: ${{ github.event_name == 'schedule' || inputs.scraper == 'all' || inputs.scraper == 'gilmar' }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       fail-fast: false
       max-parallel: 1
@@ -214,7 +246,7 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: 🤖 Scraper Gilmar — ${{ matrix.operation }}
+      - name: 🤖 Ejecutar scraper
         run: |
           MAX=${{ github.event.inputs.max || '300' }}
           npx --yes tsx scripts/scrapers/gilmar.ts \
@@ -223,11 +255,16 @@ jobs:
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
-  # ─── Solvia (Banco Sabadell / Intrum) ──────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+# BLOQUE 3 — BANCA
+# ══════════════════════════════════════════════════════════════════════════════
+  # ─── 🏦 Solvia (Banco Sabadell / Intrum) ────────────────────────────────────
   # NOTA: haya.es fue absorbida por Solvia en 2023, este job cubre ambas marcas
   solvia:
+    name: "🏦 [Solvia] ${{ matrix.operation }}"
     if: ${{ github.event_name == 'schedule' || inputs.scraper == 'all' || inputs.scraper == 'solvia' }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       fail-fast: false
       max-parallel: 1
@@ -245,7 +282,7 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: 🏦 Scraper Solvia (Banco Sabadell) — ${{ matrix.operation }}
+      - name: 🤖 Ejecutar scraper
         run: |
           npx --yes tsx scripts/scrapers/solvia.ts \
             ${{ matrix.operation }} \
@@ -253,10 +290,12 @@ jobs:
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
-  # ─── Aliseda (Banco Santander / Blackstone) ───────────────────────────────
+  # ─── 🏦 Aliseda (Banco Santander / Blackstone) ─────────────────────────────
   aliseda:
+    name: "🏦 [Aliseda] ${{ matrix.operation }}"
     if: ${{ github.event_name == 'schedule' || inputs.scraper == 'all' || inputs.scraper == 'aliseda' }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       fail-fast: false
       max-parallel: 1
@@ -288,7 +327,7 @@ jobs:
       - name: Instalar dependencias SO de Chromium (siempre)
         run: npx --yes playwright install-deps chromium
 
-      - name: 🏦 Scraper Aliseda (Santander/Blackstone) — ${{ matrix.operation }}
+      - name: 🤖 Ejecutar scraper
         run: |
           npx --yes tsx scripts/scrapers/aliseda.ts \
             ${{ matrix.operation }} \
@@ -297,16 +336,20 @@ jobs:
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
+# ══════════════════════════════════════════════════════════════════════════════
+# BLOQUE 2 — PARTICULARES  (solo VENTA — alquiler tiene demasiado ruido de agencias)
+# ══════════════════════════════════════════════════════════════════════════════
   # ─── 🏠 pisos.com Particulares ──────────────────────────────────────────────
   pisoscom_particulares:
+    name: "🏠 [Particulares pisos.com] ${{ matrix.city }} — Venta"
     if: ${{ github.event_name == 'schedule' || inputs.scraper == 'all' || inputs.scraper == 'pisoscom_particulares' }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       fail-fast: false
       max-parallel: 2
       matrix:
         city: [madrid, barcelona, valencia, sevilla, zaragoza, malaga]
-        operation: [venta, alquiler]
     steps:
       - uses: actions/checkout@v4
 
@@ -319,10 +362,10 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: 🏠 pisos.com Particulares — ${{ matrix.city }} (${{ matrix.operation }})
+      - name: 🤖 Ejecutar scraper
         run: |
           npx --yes tsx scripts/scrapers/particulares_master.ts \
-            ${{ matrix.operation }} \
+            venta \
             ${{ matrix.city }} \
             3
         env:
@@ -330,14 +373,15 @@ jobs:
 
   # ─── 🔥 Milanuncios Particulares ────────────────────────────────────────────
   milanuncios_particulares:
+    name: "🔥 [Milanuncios] ${{ matrix.city }} — Venta"
     if: ${{ github.event_name == 'schedule' || inputs.scraper == 'all' || inputs.scraper == 'milanuncios_particulares' }}
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       fail-fast: false
       max-parallel: 2
       matrix:
         city: [madrid, barcelona, valencia, sevilla, zaragoza, malaga]
-        operation: [venta, alquiler]
     steps:
       - uses: actions/checkout@v4
 
@@ -364,41 +408,66 @@ jobs:
       - name: Instalar dependencias SO de Chromium (siempre)
         run: npx --yes playwright install-deps chromium
 
-      - name: 🔥 Milanuncios Particulares — ${{ matrix.city }} (${{ matrix.operation }})
+      - name: 🤖 Ejecutar scraper
         run: |
           npx --yes tsx scripts/scrapers/milanuncios_particulares.ts \
-            ${{ matrix.operation }} \
+            venta \
             ${{ matrix.city }} \
             5
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
-  # ─── Resumen final ──────────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+# POST-PROCESO
+# ══════════════════════════════════════════════════════════════════════════════
+  # ─── 📊 Resumen final ───────────────────────────────────────────────────────
   resumen:
+    name: "📊 Resumen de ejecución"
     runs-on: ubuntu-latest
-    needs: [tecnocasa, redpiso, monapart, pisoscom, gilmar, pisoscom_particulares, milanuncios_particulares, solvia, aliseda]
+    needs:
+      - tecnocasa
+      - redpiso
+      - monapart
+      - pisoscom
+      - gilmar
+      - pisoscom_particulares
+      - milanuncios_particulares
+      - solvia
+      - aliseda
     if: always()
     steps:
-      - name: Resumen de ejecución
+      - name: Generar resumen
         run: |
-          echo "## 🤖 Scrapers completados" >> $GITHUB_STEP_SUMMARY
+          echo "## 🤖 Raspadores Autónomos — Resultado" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Robot | Tipo | Estado |" >> $GITHUB_STEP_SUMMARY
           echo "|-------|------|--------|" >> $GITHUB_STEP_SUMMARY
           echo "| 🏢 Tecnocasa | Agencia | ${{ needs.tecnocasa.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🏢 Redpiso | Agencia | ${{ needs.redpiso.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🏢 Monapart | Agencia | ${{ needs.monapart.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🏢 pisos.com General | Agencia+Part. | ${{ needs.pisoscom.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🏢 pisos.com General | Agencia + Mixto | ${{ needs.pisoscom.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🏢 Gilmar | Agencia | ${{ needs.gilmar.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🏠 pisos.com Particulares | Particular | ${{ needs.pisoscom_particulares.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🔥 Milanuncios Particulares | Particular | ${{ needs.milanuncios_particulares.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🏠 pisos.com Particulares | Particular (solo venta) | ${{ needs.pisoscom_particulares.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔥 Milanuncios Particulares | Particular (solo venta) | ${{ needs.milanuncios_particulares.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🏦 Solvia (Banco Sabadell) | Banca | ${{ needs.solvia.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 🏦 Aliseda (Santander/Blackstone) | Banca | ${{ needs.aliseda.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> ⚠️ **Portales prohibidos**: mitula · kelify · trovit — nunca añadir" >> $GITHUB_STEP_SUMMARY
 
   # ─── 🧠 Normalización de títulos con IA ─────────────────────────────────────
   normalize_titles:
+    name: "🧠 Normalizar títulos con IA"
     runs-on: ubuntu-latest
-    needs: [tecnocasa, redpiso, monapart, pisoscom, gilmar, pisoscom_particulares, milanuncios_particulares, solvia, aliseda]
+    needs:
+      - tecnocasa
+      - redpiso
+      - monapart
+      - pisoscom
+      - gilmar
+      - pisoscom_particulares
+      - milanuncios_particulares
+      - solvia
+      - aliseda
     if: always() && needs.tecnocasa.result != 'cancelled'
     steps:
       - uses: actions/checkout@v4
@@ -412,7 +481,7 @@ jobs:
       - name: Instalar dependencias
         run: npm ci
 
-      - name: 🧠 Normalizar títulos con IA (OpenRouter)
+      - name: 🧠 Normalizar títulos (OpenRouter — límite 150)
         run: npx --yes tsx scripts/normalize-titles.ts --limit 150
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
