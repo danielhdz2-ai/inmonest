@@ -87,25 +87,27 @@ function extractJsonLdListings(
 }
 
 /**
- * Validación positiva absoluta — pisos.com
+ * Lógica binaria — pisos.com
  *
- * REGLA Única: SOLO true si el bloque de contacto contiene el texto
- * exacto "Anunciante particular". Si dice cualquier otra cosa (agencia,
- * nombre de empresa, "Contactar con el anunciante", etc.) → false.
+ * El portal escribe literalmente "Particular" en el bloque de contacto
+ * cuando el anunciante es un propietario directo.
  *
- * Buscamos en las ~2000 chars alrededor del bloque de contacto (owner-data,
- * contact-block, advertiser) para evitar falsos positivos por texto que
- * pudiera aparecer en la descripción o meta-tags.
+ * const esParticularEfectivo = textoContacto.includes('Particular')
+ *
+ * Si NO contiene esa palabra → false. Sin excepciones.
  */
 function isParticularListing(html: string): boolean {
-  // Extraer el bloque de contacto del HTML
-  // pisos.com usa clases como: owner-data, contact-block, advertiser-info,
-  // contact-form, id-anunciante
-  const contactBlockRe = /class="[^"]*(?:owner-data|contact-block|advertiser-info|contact-form|id-anunciante|anunciante)[^"]*"[\s\S]{0,2000}?(?=<\/(?:div|section|aside|article)>)/i
-  const contactMatch = html.match(contactBlockRe)
-  const blockToSearch = contactMatch ? contactMatch[0] : html
+  // Extraer el bloque de contacto (owner-data / contact-block / advertiser-info)
+  // pisos.com lo usa como contenedor del tipo de anunciante
+  const blockRe = /class="[^"]*(?:owner-data|contact-block|advertiser-info|contact-form|id-anunciante|anunciante)[^"]*"[\s\S]{0,2000}?(?=<\/(?:div|section|aside|article)>)/i
+  const blockMatch = html.match(blockRe)
+  const textoContacto = blockMatch
+    ? blockMatch[0].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')  // strip tags
+    : html.slice(0, 50000)  // fallback: primeros 50k chars (contiene el bloque)
 
-  return /anunciante\s+particular/i.test(blockToSearch)
+  // Lógica binaria: si el portal no escribe "Particular" → es agencia
+  const esParticularEfectivo = textoContacto.includes('Particular') || textoContacto.includes('particular')
+  return esParticularEfectivo
 }
 
 

@@ -3,14 +3,68 @@
 -- Reclasificación masiva: agencias infiltradas → is_particular = false
 --
 -- CÓMO USAR EN SUPABASE SQL EDITOR:
---   1. Ejecuta primero el bloque DIAGNÓSTICO (al final) → anota los conteos.
---   2. Ejecuta el UPDATE único de abajo.
---   3. Repite el DIAGNÓSTICO → todos deben mostrar 0.
+--   PASO 1: Ejecuta el bloque "BARRIDO PISOS.COM" (más abajo) — limpia todo
+--           lo que entró de pisos.com sin la etiqueta Particular.
+--   PASO 2: Ejecuta el UPDATE MASIVO GENERAL para el resto de portales.
+--   PASO 3: Ejecuta los SELECTs de DIAGNÓSTICO para confirmar resultado = 0.
 -- ═════════════════════════════════════════════════════════════════════════════
 
+
 -- ─────────────────────────────────────────────────────────────────────────────
--- UPDATE ÚNICO — Un solo pase, todas las reglas en OR
+-- PASO 1 — BARRIDO PISOS.COM (lógica binaria de Daniel)
+-- "Si el portal no etiquetó al anunciante como Particular, es agencia."
+-- Limpia TODO lo de pisos.com donde el advertiser_name no sea nulo y sea
+-- un nombre corporativo, o bien donde la descripción no mencione 'particular'.
 -- ─────────────────────────────────────────────────────────────────────────────
+
+UPDATE listings
+SET
+  is_particular = false,
+  ranking_score = 30,
+  updated_at    = now()
+WHERE is_particular = true
+  AND status        = 'published'
+  AND source_portal = 'pisos.com'
+  AND (
+    -- Descripción no menciona "particular" en ningún contexto
+    description NOT ILIKE '%particular%'
+    -- O no tiene descripción en absoluto
+    OR description IS NULL
+    OR trim(description) = ''
+  );
+
+-- Variante complementaria: advertiser_name con señales corporativas en pisos.com
+UPDATE listings
+SET
+  is_particular = false,
+  ranking_score = 30,
+  updated_at    = now()
+WHERE is_particular = true
+  AND status        = 'published'
+  AND source_portal = 'pisos.com'
+  AND advertiser_name IS NOT NULL
+  AND (
+    -- Nombres todo en MAYÚSCULAS (≥5 letras, sin minúsculas) — INFINITY, CUEVAS, GARCIA...
+    (
+      advertiser_name ~ '[A-ZÁÉÍÓÚÜÑ]{5,}'
+      AND advertiser_name !~ '[a-záéíóúüñ]{3,}'
+    )
+    -- Palabras corporativas en el nombre
+    OR advertiser_name ILIKE '%inmo%'
+    OR advertiser_name ILIKE '%gestión%'
+    OR advertiser_name ILIKE '%gestion%'
+    OR advertiser_name ILIKE '%real estate%'
+    OR advertiser_name ILIKE '%properties%'
+    OR advertiser_name ILIKE '%finques%'
+    OR advertiser_name ILIKE '%services%'
+    OR advertiser_name ILIKE '%consulting%'
+    OR advertiser_name ILIKE '%infinity%'
+    -- Sufijos societarios
+    OR advertiser_name ~* '\mS\.?\s*L\.?\s*U?\.?\s*\M'
+    OR advertiser_name ~* '\mS\.?\s*A\.?\s*\M'
+  );
+
+
 
 UPDATE listings
 SET
