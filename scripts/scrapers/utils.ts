@@ -39,16 +39,22 @@ const AGENCY_PORTALS = new Set([
 
 // ── Blacklist de palabras que revelan anunciante de agencia ───────────────────
 // Se chequean contra título + descripción (lowercased). Si hay match → is_particular=false.
+// IMPORTANTE: NO usar \binmobiliaria\b solo — un particular puede decir "sin inmobiliaria".
 const AGENCY_TEXT_PATTERNS = [
-  // Términos operativos de agencia
-  /\binmobiliaria\b/,
+  // Términos operativos de agencia (contexto positivo, no negativo)
   /\bagencia\s+inmobiliaria\b/,
+  /(?<!sin\s|no\s|ninguna\s)\binmobiliaria\b(?!\s*(?:no\b|sin\b|directa))/,
   /\bhonorarios\b/,
-  /\bgastos\s+de\s+gesti[oó]n\b/,
+  /\bgastos\s+de\s+(gesti[oó]n|agencia)\b/,
   /\bcomisi[oó]n\s+de\s+(agencia|intermediaci[oó]n)\b/,
-  /\basesor\s+inmobiliario\b/,
+  /\basesor(?:a)?\s+inmobiliario\b/,
   /\bconsulting\s+inmobiliario\b/,
-  /\bpuntos\s+de\s+venta\b/,
+  /\bver\s+inmuebles\s+de\b/,        // "Ver inmuebles de TUKSA"
+  /\bnuestros?\s+inmuebles\b/,       // "nuestros inmuebles"
+  /\bnuestra\s+cartera\b/,           // "nuestra cartera de pisos"
+  /\bregistro\s+de\s+agentes\s+inmobiliarios\b/,  // badge pisos.com agente colegiado
+  /\bregistre\s+d'agents\s+immobiliaris\b/,        // badge catalán pisos.com
+  /\banunciante\s+profesional\b/,    // pisos.com badge para agencias
   // Emails corporativos
   /\b(info|ventas|contacto|alquiler|pisos|arrendamiento)@[a-z0-9.\-]+\.[a-z]{2,}/,
   // Franquicias y cadenas conocidas
@@ -64,6 +70,18 @@ const AGENCY_TEXT_PATTERNS = [
   /\balquiler\s+seguro\b/,
   /\bamat\s+inmobiliaris\b/,
   /\bbcn\s+advisors\b/,
+  /\blucas\s+fox\b/,
+  /\bcushman\s+&\s+wakefield\b/,
+  /\bcolliers\b/,
+  /\bsavills\b/,
+  /\bcbre\b/,
+  /\bneinor\s+homes\b/,
+  /\bmetrovacesa\b/,
+  /\bvía\s+céle?re\b/,
+  /\bhaya\s+real\s+estate\b/,
+  /\baltamira\s+real\b/,
+  /\banticipa\s+real\b/,
+  /\btuksa\b/,  // Agencia conocida en Barcelona
 ]
 
 /**
@@ -77,6 +95,36 @@ function looksLikeAgency(title: string, description?: string): boolean {
 
 // Formas societarias que revelan empresa (→ is_particular = false)
 const CORPORATE_SUFFIXES = /\b(s\.?l\.?|s\.?a\.?|s\.?l\.?u\.?|s\.?l\.?l\.?|s\.?c\.?|s\.?c\.?p\.?|sociedad\s+limitada|sociedad\s+an[oó]nima)\b/i
+
+// Nombres de marca de agencias conocidas (sin sufijo S.L. pero inequívocas)
+const KNOWN_AGENCY_BRANDS = new Set([
+  'tuksa', 'aedas', 'neinor', 'metrovacesa', 'cbre', 'jll', 'savills', 'cushman',
+  'colliers', 'inmoglaciar', 'kronos', 'anticipa', 'haya', 'altamira', 'solvia',
+  'gilmar', 'amat', 'tecnocasa', 'donpiso', 'habitaclia', 'redpiso', 'monapart',
+  'aliseda', 'servihabitat', 'lucas fox', 'bcn advisors', 'engel', 'coldwell',
+  'housell', 'fincas habermas', 'api grupo',
+])
+
+/**
+ * Detecta si el nombre del anunciante parece una empresa/agencia incluso sin sufijo S.L.
+ * Casos: nombres en MAYÚSCULAS tipo TUKSA, CBRE, JLL; marcas conocidas.
+ */
+function looksLikeCorporateName(name: string | undefined): boolean {
+  if (!name || name.trim().length < 2) return false
+  const n = name.trim()
+  // Excluir nombres genéricos que siempre son particulares
+  if (/^propietario\s*particular$/i.test(n)) return false
+  // All-caps acronym style: TUKSA, CBRE, JLL, AEDAS (3+ letras todas mayúsculas)
+  if (/^[A-ZÁÉÍÓÚÑ]{3,}(\s[A-ZÁÉÍÓÚÑ]{2,})*$/.test(n)) return true
+  // Nombre contiene sufijo societario (ya cubierto por CORPORATE_SUFFIXES pero por si acaso)
+  if (CORPORATE_SUFFIXES.test(n)) return true
+  // Marca conocida en el nombre
+  const lower = n.toLowerCase()
+  for (const brand of KNOWN_AGENCY_BRANDS) {
+    if (lower.includes(brand)) return true
+  }
+  return false
+}
 
 /**
  * Normaliza el nombre del anunciante:
@@ -135,8 +183,9 @@ async function findContentDuplicate(
 ): Promise<{ id: string; is_particular: boolean } | null> {
 
   // Estrategia 1 — coordenadas GPS
+  // Radio: ~33 m (0.0003°) — suficiente para cubrir imprecisión GPS pero no mezclar edificios distintos
   if (listing.lat != null && listing.lng != null) {
-    const δ = 0.001
+    const δ = 0.0003
     const url =
       `${SUPABASE_URL}/rest/v1/listings` +
       `?operation=eq.${listing.operation}` +
@@ -188,6 +237,7 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
   // ── Paso 1: buscar duplicado exacto por source_portal + source_external_id ─
   let listingId: string | null = null
   let existingIsParticular = false
+  let isExactMatch = false  // true = mismo portal+id; false = coincidencia por contenido
 
   const exactRes = await fetch(
     `${SUPABASE_URL}/rest/v1/listings` +
@@ -201,6 +251,7 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
     if (rows.length > 0) {
       listingId = rows[0].id
       existingIsParticular = rows[0].is_particular
+      isExactMatch = true
     }
   }
 
@@ -208,32 +259,62 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
   if (!listingId) {
     const contentMatch = await findContentDuplicate(listing, baseHeaders)
     if (contentMatch) {
+      // ⚠️ PROTECCIÓN CRÍTICA: nunca dejar que un anuncio de AGENCIA absorba
+      // un registro existente de PARTICULAR. Son propiedades distintas o el particular
+      // es la fuente más fiable → ignorar el de agencia, el particular ya está cubierto.
+      if (!listing.is_particular && contentMatch.is_particular) {
+        console.log(`  ℹ️ Omitido (agencia vs particular cercano): preservando registro particular ${contentMatch.id.slice(0, 8)}`)
+        return true  // "procesado" — no crear duplicado, el particular es el canónico
+      }
       listingId = contentMatch.id
       existingIsParticular = contentMatch.is_particular
+      isExactMatch = false
       console.log(`  📎 Dedup contenido → fusionando con id ${listingId}`)
     }
   }
 
-  // ── Paso 3: Prioridad Particular ──────────────────────────────────────────
-  // Portales de agencia → forzar is_particular=false sin excepción
+  // ── Paso 3: Determinación de is_particular ────────────────────────────────
+  // Portales 100% agencia → forzar false sin excepción
   const fromAgencyPortal = AGENCY_PORTALS.has(listing.source_portal.toLowerCase())
-  // Texto del anuncio delata agencia → forzar false aunque venga de URL /particulares/
-  const textRevealsAgency = listing.is_particular
-    ? looksLikeAgency(listing.title, listing.description)
-    : false
-  // Nombre del anunciante con sufijo societario → forzar false
+
+  // Texto del anuncio delata agencia — se evalúa SIEMPRE (no solo cuando incoming=true)
+  // Para bloquear "promociones" cuando el texto indica claramente que es agencia
+  const textRevealsAgency = looksLikeAgency(listing.title, listing.description)
+
+  // Nombre del anunciante: sufijo societario S.L./S.A. o nombre corporativo (TUKSA, CBRE…)
   const { name: advertiserName, forceAgency: nameRevealsAgency } = sanitizeAdvertiserName(
     listing.advertiser_name, listing.is_particular, listing.source_portal
   )
-  // Si el anuncio existente era de agencia pero el nuevo es de particular → promover
-  // Nunca degradar: si ya es particular, se queda particular
-  const isParticular = (fromAgencyPortal || textRevealsAgency || nameRevealsAgency)
-    ? false
-    : (listing.is_particular || existingIsParticular)
-  if (textRevealsAgency || nameRevealsAgency) {
-    console.log(`  🚫 [AGENCIA detectada por ${textRevealsAgency ? 'texto' : 'nombre'}] ${listing.title.slice(0, 60)}`)
+  const corpNameRevealsAgency = looksLikeCorporateName(listing.advertiser_name)
+
+  const hardAgency = fromAgencyPortal || textRevealsAgency || nameRevealsAgency || corpNameRevealsAgency
+
+  // Lógica definitiva:
+  //   - Si hay señal dura de agencia → siempre false
+  //   - Coincidencia EXACTA (mismo portal+id): confiar en el valor que trae el scraper
+  //     excepto que una confirmación previa de particular no se degrada por un scraper
+  //     que por defecto pone false (ej: pisoscom.ts general)
+  //   - Coincidencia CONTENIDO (mismo tipo garantizado por el bloqueo en paso 2):
+  //     promover si alguno de los dos es particular
+  let isParticular: boolean
+  if (hardAgency) {
+    isParticular = false
+  } else if (isExactMatch) {
+    // Para coincidencia exacta: respetar el valor del scraper SALVO si
+    // el scraper simplemente hace default false (no tiene lógica de detección).
+    // Heurística: si el scraper pone false PERO el existente era true (confirmed),
+    // y NO hay señales de agencia en texto/nombre → preservar el true existente.
+    isParticular = listing.is_particular || existingIsParticular
+  } else {
+    // Coincidencia de contenido misma familia (ambos particular o ambos agencia)
+    isParticular = listing.is_particular || existingIsParticular
   }
-  if (listing.is_particular && !existingIsParticular && listingId) {
+
+  if (hardAgency) {
+    const reason = fromAgencyPortal ? 'portal' : textRevealsAgency ? 'texto' : nameRevealsAgency ? 'nombre(sufijo)' : 'nombre(marca)'
+    console.log(`  🚫 [AGENCIA — ${reason}] ${listing.title.slice(0, 60)}`)
+  }
+  if (listing.is_particular && !existingIsParticular && listingId && !hardAgency) {
     console.log(`  ⭐ Promovido a "Directo de Particular"`)
   }
 

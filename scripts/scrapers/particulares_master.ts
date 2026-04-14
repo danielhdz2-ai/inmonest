@@ -89,13 +89,68 @@ function extractJsonLdListings(
 /**
  * Verifica que el anuncio sea realmente de un particular.
  * Comprueba señales en el HTML del detalle.
+ *
+ * IMPORTANTE: primero chequeamos señales de AGENCIA (hard-reject) para evitar
+ * que la palabra "particular" aparezca en描述 de una agencia y la cuele.
  */
 function isParticularListing(html: string): boolean {
   const lower = html.toLowerCase()
-  // Señal principal: pisos.com pone una badge/etiqueta en la página del detalle
-  if (lower.includes('particular') || lower.includes('propietario')) return true
-  // Señal negativa: si menciona explícitamente agencia/inmobiliaria, descartar
-  // (no hacemos hard-reject porque muchos particulares describen que no usan agencia)
+
+  // ── 1. Señales DURAS de AGENCIA → descartar inmediatamente ──────────────────
+  const AGENCY_HARD_SIGNALS = [
+    'anunciante profesional',          // badge pisos.com para agentes
+    'registre d\'agents immobiliaris', // badge catalán: agente colegiado
+    'registro de agentes inmobiliarios',
+    'registro d\'agents',
+    'ver inmuebles de ',               // "Ver inmuebles de TUKSA" → card de agencia
+    'honorarios de agencia',
+    'honorarios de intermediación',
+    'gastos de agencia',
+    'comisión de agencia',
+    'comisión de intermediación',
+    'nuestros inmuebles',              // "nuestros inmuebles disponibles"
+    'nuestra cartera',                 // "nuestra cartera de propiedades"
+    'nuestros clientes',               // lenguaje corporativo
+    // Franquicias y agencias específicas
+    'tuksa',
+    'century 21',
+    'keller williams',
+    'engel & völkers',
+    'coldwell banker',
+    'donpiso',
+    'housell',
+    're/max',
+    'remax',
+    'lucas fox',
+    'bcn advisors',
+    'amat inmobiliaris',
+  ]
+  for (const signal of AGENCY_HARD_SIGNALS) {
+    if (lower.includes(signal)) return false
+  }
+
+  // Nombres en mayúsculas en la sección del anunciante (TUKSA, CBRE, JLL, etc.)
+  // pisos.com muestra el nombre del anunciante en un bloque con clase 'advertiser' o similar
+  const advertiserBlock = html.match(/(?:anunciante|advertiser|contact-name)[^<]{0,200}/i)?.[0] ?? ''
+  if (/\b[A-ZÁÉÍÓÚÑ]{4,}\b/.test(advertiserBlock)) return false
+
+  // ── 2. Señales POSITIVAS de particular ──────────────────────────────────────
+  // Badge específica de pisos.com para particulares
+  if (/anunciante\s+particular/i.test(html)) return true
+  // Texto en descripción que indica venta/alquiler directo
+  if (/\bsin\s+(intermediarios?|agencia|comisi[oó]n)\b/i.test(html)) return true
+  if (/\bpropietario\s+(directo|vende|alquila|particular|privado)\b/i.test(html)) return true
+  if (/\bparticular\s+vende\b/i.test(html)) return true
+  if (/\bventa\s+directa\s+(del?\s+)?propietario\b/i.test(html)) return true
+  // Badge o etiqueta de clase en HTML
+  if (/class="[^"]*particular[^"]*"/i.test(html)) return true
+  if (/class="[^"]*propietario[^"]*"/i.test(html)) return true
+
+  // ── 3. Señal débil (solo si no hay nada más) ─────────────────────────────────
+  // La palabra "particular" o "propietario" en el HTML como último recurso
+  // pero SOLO si NO hay señales de agencia (ya verificado arriba)
+  if (/\bparticular\b/i.test(html) || /\bpropietario\b/i.test(html)) return true
+
   return false
 }
 

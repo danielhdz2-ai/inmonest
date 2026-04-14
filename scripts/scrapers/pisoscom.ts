@@ -101,6 +101,7 @@ function extractDetailData(html: string): {
   referenceId: string | null
   orientation: string | null
   energyCert: string | null
+  isParticular: boolean
 } {
   // ── Precio ──────────────────────────────────────────────
   let price: number | null = null
@@ -308,7 +309,26 @@ function extractDetailData(html: string): {
     images.push(`https://fotos.imghs.net/xl-wp/${agent}/${rest}`)
   }
 
-  return { price, area, bedrooms, bathrooms, description, images, district: null, postalCode, lat, lng, floor, areaUseful, ageText, referenceId, orientation, energyCert }
+  // ── ¿Es particular? ──────────────────────────────────────────────────────────
+  // Hard-reject: señales inequívocas de agencia en el HTML
+  const AGENCY_HARD = [
+    'anunciante profesional',
+    'registre d\'agents immobiliaris',
+    'registro de agentes inmobiliarios',
+    'ver inmuebles de ',
+    'honorarios de agencia',
+    'gastos de agencia',
+    'comisión de agencia',
+    'nuestros inmuebles',
+    'nuestra cartera',
+    'tuksa', 'century 21', 'keller williams', 'engel & völkers',
+    'coldwell banker', 'donpiso', 'housell', 're/max',
+  ]
+  const lowerHtml = html.toLowerCase()
+  const isAgencySignal = AGENCY_HARD.some(s => lowerHtml.includes(s))
+  const isParticular = !isAgencySignal && /anunciante\s+particular/i.test(html)
+
+  return { price, area, bedrooms, bathrooms, description, images, district: null, postalCode, lat, lng, floor, areaUseful, ageText, referenceId, orientation, energyCert, isParticular }
 }
 
 async function scrapeCity(
@@ -413,7 +433,7 @@ async function scrapeCity(
         source_portal: 'pisos.com',
         source_url: detailUrl,
         source_external_id: externalId,
-        is_particular: false,
+        is_particular: detail.isParticular,  // Detectado del HTML ("Anunciante particular")
         images: detail.images,
         features: {
           ...(detail.floor       ? { planta: detail.floor }           : {}),
