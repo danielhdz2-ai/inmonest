@@ -129,10 +129,26 @@ function isParticularListing(html: string): boolean {
     if (lower.includes(signal)) return false
   }
 
-  // Nombres en mayúsculas en la sección del anunciante (TUKSA, CBRE, JLL, etc.)
-  // pisos.com muestra el nombre del anunciante en un bloque con clase 'advertiser' o similar
-  const advertiserBlock = html.match(/(?:anunciante|advertiser|contact-name)[^<]{0,200}/i)?.[0] ?? ''
-  if (/\b[A-ZÁÉÍÓÚÑ]{4,}\b/.test(advertiserBlock)) return false
+  // ── Extraer nombre del anunciante cruzando etiquetas HTML ──────────────────
+  // El regex [^<]{0,200} no cruza tags — necesitamos buscar más amplio y limpiar
+  let advertiserName = ''
+  // Estrategia 1: atributo data- con el nombre (fiable si pisos.com lo expone)
+  const dataName = html.match(/data-(?:advertiser|publisher|owner)-name="([^"]{3,80})"/i)
+  if (dataName) advertiserName = dataName[1]
+  // Estrategia 2: bloque HTML alrededor de clase "advertiser/anunciante" → strip tags
+  if (!advertiserName) {
+    const blockM = html.match(/class="[^"]*(?:advertiser|anunciante|contact)[^"]*"[\s\S]{0,600}?<\/(?:div|section|aside|article)>/i)
+    if (blockM) advertiserName = blockM[0].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 80)
+  }
+  // Estrategia 3: JSON-LD Organization/LocalBusiness (frecuente en pisos.com)
+  if (!advertiserName) {
+    const ldOrg = html.match(/"name"\s*:\s*"([A-ZÁÉÍÓÚÜÑ][^"]{3,60})"/)
+    if (ldOrg) advertiserName = ldOrg[1]
+  }
+  // Rechazar si el nombre extraído tiene señales corporativas
+  if (advertiserName && /\b[A-ZÁÉÍÓÚÑ]{4,}\b/.test(advertiserName)) return false
+  if (advertiserName && /\bS\.?\s*L\.?\b|\bS\.?\s*A\.?\b/i.test(advertiserName)) return false
+  if (advertiserName && /inmobiliaria|asesores|gesti[oó]n|inmosur|finques|grupo|inmuebles|agencia/i.test(advertiserName)) return false
 
   // ── 2. Señales POSITIVAS de particular ──────────────────────────────────────
   // Badge específica de pisos.com para particulares
@@ -146,11 +162,9 @@ function isParticularListing(html: string): boolean {
   if (/class="[^"]*particular[^"]*"/i.test(html)) return true
   if (/class="[^"]*propietario[^"]*"/i.test(html)) return true
 
-  // ── 3. Señal débil (solo si no hay nada más) ─────────────────────────────────
-  // La palabra "particular" o "propietario" en el HTML como último recurso
-  // pero SOLO si NO hay señales de agencia (ya verificado arriba)
-  if (/\bparticular\b/i.test(html) || /\bpropietario\b/i.test(html)) return true
-
+  // ── 3. MURO DE CONTENCIÓN — Duda = false ────────────────────────────────────
+  // Si no se encontró una badge explícita de "Anunciante particular", rechazar.
+  // Es mejor perder un particular real que mentir al usuario clasificando una agencia.
   return false
 }
 
@@ -166,6 +180,7 @@ function extractDetailData(html: string): {
   lat: number | null
   lng: number | null
   floor: string | null
+  advertiserName: string | null
 } {
   // ── Precio ──────────────────────────────────────────────
   let price: number | null = null
@@ -278,7 +293,23 @@ function extractDetailData(html: string): {
     images.push(`https://fotos.imghs.net/xl-wp/${agent}/${rest}`)
   }
 
-  return { price, area, bedrooms, bathrooms, description, images, district: null, postalCode, lat, lng, floor }
+  // ── Nombre del anunciante ────────────────────────────────
+  let advertiserName: string | null = null
+  // Estrategia 1: atributo data- (más fiable)
+  const adDataName = html.match(/data-(?:advertiser|publisher|owner)-name="([^"]{3,80})"/i)
+  if (adDataName) advertiserName = adDataName[1].trim()
+  // Estrategia 2: JSON-LD agent/seller/author
+  if (!advertiserName) {
+    const ldAgent = html.match(/"(?:agent|author|seller|provider)"\s*:\s*\{[^}]*"name"\s*:\s*"([^"]{4,80})"/)
+    if (ldAgent) advertiserName = ldAgent[1].trim()
+  }
+  // Estrategia 3: elemento HTML con clase de nombre de anunciante (texto directo)
+  if (!advertiserName) {
+    const brandBlock = html.match(/class="[^"]*(?:brand|advertiser-name|contact-name|owner-name)[^"]*"[^>]*>([^<]{3,80})<\//)
+    if (brandBlock) advertiserName = brandBlock[1].trim()
+  }
+
+  return { price, area, bedrooms, bathrooms, description, images, district: null, postalCode, lat, lng, floor, advertiserName }
 }
 
 async function scrapeParticulares(
@@ -390,6 +421,7 @@ async function scrapeParticulares(
         images: detail.images,
         external_link: detailUrl,
         phone: extractPhone(detailHtml) ?? undefined,
+        advertiser_name: detail.advertiserName ?? undefined,
       }
 
       const ok = await upsertListing(listing)
