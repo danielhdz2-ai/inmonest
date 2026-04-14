@@ -263,7 +263,7 @@ function parseAdFromJson(
     source_portal:      'milanuncios.com',
     source_url:         detailUrl,
     source_external_id: `mil_${externalId}`,
-    is_particular:      true,
+    is_particular:      ad.sellerType === 'private',
     external_link:      detailUrl,
   }
 }
@@ -288,6 +288,7 @@ async function scrapeParticulares(
   console.log('â”€'.repeat(70))
 
   let imported  = 0
+  let rejected  = 0
   let skipped   = 0
   let discarded = 0
 
@@ -329,11 +330,11 @@ async function scrapeParticulares(
       // El contexto del navegador ya fue liberado dentro de fetchInitialProps
       const pagination   = props.adListPagination?.pagination
       const allAds       = props.adListPagination?.adList?.ads ?? []
-      const particulares = allAds.filter((ad) => ad.sellerType === 'private')
 
+      const nPrivate = allAds.filter((a) => a.sellerType === 'private').length
       console.log(
-        `  ðŸ”— ${allAds.length} anuncios totales â†’ ${particulares.length} particulares` +
-        ` (pÃ¡g. ${pagination?.page ?? page}/${pagination?.totalPages ?? '?'}, total: ${pagination?.totalAds ?? '?'})`,
+        `  🔗 ${allAds.length} anuncios totales → ${nPrivate} particulares` +
+        ` (pág. ${pagination?.page ?? page}/${pagination?.totalPages ?? '?'}, total: ${pagination?.totalAds ?? '?'})`,
       )
 
       if (allAds.length === 0) {
@@ -341,7 +342,7 @@ async function scrapeParticulares(
         break
       }
 
-      for (const ad of particulares) {
+      for (const ad of allAds) {
         const listing = parseAdFromJson(ad, opLabel as 'sale' | 'rent', geoInfo.city, geoInfo.province)
         if (!listing) {
           discarded++
@@ -350,12 +351,19 @@ async function scrapeParticulares(
         }
         const result = await upsertListing(listing)
         if (result) {
-          imported++
-          console.log(
-            `  âœ“ [${listing.price_eur}â‚¬ ${listing.area_m2 ?? '?'}mÂ²` +
-            ` ${listing.images?.length ?? 0}ðŸ“· ${listing.bedrooms ?? '?'}hab]` +
-            ` ${listing.title} â€” ${(ad.url ?? '').split('/').slice(-1)[0]}`,
-          )
+          if (listing.is_particular) {
+            imported++
+            console.log(
+              `  ✓ [${listing.price_eur}€ ${listing.area_m2 ?? '?'}m²` +
+              ` ${listing.images?.length ?? 0}📷 ${listing.bedrooms ?? '?'}hab]` +
+              ` ${listing.title} – ${(ad.url ?? '').split('/').slice(-1)[0]}`,
+            )
+          } else {
+            rejected++
+            console.log(
+              `  🏢 [AGENCIA] ${listing.title.slice(0, 50)} | ${listing.price_eur}€ | guardada is_particular=false`,
+            )
+          }
         } else {
           skipped++
         }
@@ -370,7 +378,7 @@ async function scrapeParticulares(
   }
 
   console.log('\n' + 'â”€'.repeat(70))
-  console.log(`  âœ… Importados: ${imported}  |  Omitidos: ${skipped}  |  Descartados: ${discarded}`)
+  console.log(`  ✅ Importados: ${imported}  |  🏢 Agencias: ${rejected}  |  Omitidos: ${skipped}  |  Descartados: ${discarded}`)
 }
 
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€

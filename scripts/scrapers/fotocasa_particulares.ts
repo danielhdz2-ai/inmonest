@@ -389,23 +389,30 @@ async function scrapeFotocasaParticulares(
       console.log(`  → ${listings.length} anuncios encontrados`)
 
       for (const re of listings) {
-        // ── MURO DE CONTENCIÓN ──────────────────────────────────────────
-        if (!isParticularAdvertiser(re.advertiser)) {
-          rejected++
+        // ── VERIFICACIÓN: particular=true, agencia=false ─────────────────────────────
+        const isParticular = isParticularAdvertiser(re.advertiser)
+        if (!isParticular) {
           const name = re.advertiser?.name ?? 'sin nombre'
-          console.log(`    ⛔ Rechazado (no particular): ${name} (commercialTypeId=${re.advertiser?.commercialTypeId ?? '?'})`)
-          continue
+          console.log(`    🏢 [AGENCIA] guardando con is_particular=false: ${name} (commercialTypeId=${re.advertiser?.commercialTypeId ?? '?'})`)
         }
 
         const item = parseRealEstate(re, opLabel as 'sale' | 'rent', geo.city, geo.province)
         if (!item) { skipped++; continue }
+        item.is_particular = isParticular
 
         const ok = await upsertListing(item)
         if (ok) {
-          imported++
-          console.log(
-            `    ✅ [${imported}] 🏠 ${item.title.slice(0, 55)} | ${item.price_eur?.toLocaleString('es-ES')}€`,
-          )
+          if (isParticular) {
+            imported++
+            console.log(
+              `    ✅ [${imported}] 🏠 ${item.title.slice(0, 55)} | ${item.price_eur?.toLocaleString('es-ES')}€`,
+            )
+          } else {
+            rejected++
+            console.log(
+              `    🏢 [AGENCIA] guardada: ${item.title.slice(0, 55)} | ${item.price_eur?.toLocaleString('es-ES')}€`,
+            )
+          }
         } else {
           skipped++
         }
@@ -424,7 +431,7 @@ async function scrapeFotocasaParticulares(
 
   console.log(`\n📊 FOTOCASA PARTICULARES — ${operation}/${cityKey}:`)
   console.log(`   ✅ ${imported} importados`)
-  console.log(`   ⛔ ${rejected} rechazados (no eran particulares)`)
+  console.log(`   🏢 ${rejected} agencias guardadas con is_particular=false`)
   console.log(`   ⚠️ ${skipped} omitidos (datos incompletos o error)`)
 }
 

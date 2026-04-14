@@ -348,11 +348,10 @@ async function scrapeParticulares(
       const detailHtml = await fetchHtml(detailUrl)
       if (!detailHtml) { skipped++; continue }
 
-      // ── FILTRO DE PUREZA: verificar que realmente sea particular ──
-      if (!isParticularListing(detailHtml)) {
-        rejected++
-        console.log(`    ⛔ Rechazado (no particular): ${item.name.slice(0, 50)}`)
-        continue
+      // ── VERIFICACIÓN DE PUREZA: true=particular, false=agencia ──
+      const confirmedParticular = isParticularListing(detailHtml)
+      if (!confirmedParticular) {
+        console.log(`    🏢 [AGENCIA] guardando con is_particular=false: ${item.name.slice(0, 50)}`)
       }
 
       const detail = extractDetailData(detailHtml)
@@ -395,7 +394,7 @@ async function scrapeParticulares(
         source_portal: 'pisos.com',
         source_url: detailUrl,
         source_external_id: externalId,
-        is_particular: true, // ✅ SIEMPRE true en este scraper
+        is_particular: confirmedParticular,
         images: detail.images,
         external_link: detailUrl,
         phone: extractPhone(detailHtml) ?? undefined,
@@ -404,10 +403,17 @@ async function scrapeParticulares(
 
       const ok = await upsertListing(listing)
       if (ok) {
-        imported++
-        console.log(
-          `    ✅ [${imported}] 🏠 PARTICULAR: ${title.slice(0, 50)} | ${detail.price?.toLocaleString('es-ES')}€ | ${detail.area}m²`
-        )
+        if (confirmedParticular) {
+          imported++
+          console.log(
+            `    ✅ [${imported}] 🏠 PARTICULAR: ${title.slice(0, 50)} | ${detail.price?.toLocaleString('es-ES')}€ | ${detail.area}m²`
+          )
+        } else {
+          rejected++
+          console.log(
+            `    🏢 [AGENCIA] guardada: ${title.slice(0, 50)} | ${detail.price?.toLocaleString('es-ES')}€`
+          )
+        }
       } else {
         skipped++
       }
@@ -420,7 +426,7 @@ async function scrapeParticulares(
 
   console.log(`\n📊 ÉLITE PARTICULARES ${operation}/${citySlug}:`)
   console.log(`   ✅ ${imported} importados como particular`)
-  console.log(`   ⛔ ${rejected} rechazados (no eran particulares)`)
+  console.log(`   🏢 ${rejected} agencias guardadas con is_particular=false`)
   console.log(`   ⚠️ ${skipped} errores`)
 }
 
