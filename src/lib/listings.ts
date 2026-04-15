@@ -1,13 +1,12 @@
+import { createClient as createClient_ } from '@supabase/supabase-js'
 import { createClient } from '@/lib/supabase/server'
 import type { Listing, SearchParams } from '@/types/listings'
 
 const PAGE_SIZE = 24
 
-// SELECT sin description ni campos privados → reduce payload de 24 tarjetas
 const LIST_SELECT =
   'id, origin, operation, title, price_eur, province, city, district, postal_code, lat, lng, bedrooms, bathrooms, area_m2, source_portal, is_particular, particular_confidence, ranking_score, turbo_until, status, views_count, published_at, created_at, is_bank, bank_entity, features, advertiser_name, source_external_id, listing_images(id, storage_path, external_url, position)'
 
-// Campos privados que no viajan al cliente
 const PRIVATE_FIELDS = ['phone', 'external_link', 'source_url'] as const
 
 function stripPrivateFields(listing: Record<string, unknown>): Listing {
@@ -16,11 +15,19 @@ function stripPrivateFields(listing: Record<string, unknown>): Listing {
   return copy as unknown as Listing
 }
 
+// Cliente directo (igual que debug-db — confirmado que devuelve 1229 registros)
+function getPublicDb() {
+  return createClient_(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
+}
+
 async function _searchListings(params: SearchParams): Promise<{
   listings: Listing[]
   total: number
 }> {
-  const supabase = await createClient()
+  const supabase = getPublicDb()
   const pagina = params.pagina ?? 1
   const from = (pagina - 1) * PAGE_SIZE
   const to = from + PAGE_SIZE - 1
@@ -102,11 +109,11 @@ async function _searchListings(params: SearchParams): Promise<{
   const { data, error, count } = await query
 
   if (error) {
-    console.error('[searchListings] Supabase error:', error.message, error.details, error.hint)
+    console.error('[searchListings] ERROR:', error.message, '| code:', error.code, '| hint:', error.hint)
     return { listings: [], total: 0 }
   }
 
-  // Ordenar imágenes por position y eliminar campos privados antes de serializar
+  console.log('[searchListings] OK — total:', count, '| params:', JSON.stringify(params))
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const listings = ((data ?? []) as any[]).map((l) => stripPrivateFields({
     ...l,
