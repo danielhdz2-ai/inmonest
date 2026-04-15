@@ -46,7 +46,7 @@ export default async function PisosPage({ searchParams }: PisosPageProps) {
   const operacion = (params.operacion as OperationType) || undefined
   const soloParticulares = params.solo_particulares === 'true'
   const ordenar = (params.ordenar as SortOption) || 'relevancia'
-  const vista = (params.vista as VistaOption) || 'mapa'
+  const vista = (params.vista as VistaOption) || 'grid'
   const pagina = Math.max(1, parseInt(params.pagina ?? '1', 10))
 
   const habitaciones = params.hab ? parseInt(params.hab, 10) : undefined
