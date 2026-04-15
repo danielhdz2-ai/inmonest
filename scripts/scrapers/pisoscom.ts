@@ -84,6 +84,44 @@ function extractJsonLdListings(
 }
 
 // Extrae datos del HTML de una página de detalle de pisos.com
+// ── Búsqueda recursiva en árbol JSON (límite de profundidad) ─────────────────
+function deepFindNum(obj: unknown, keys: string[], depth = 8): number | null {
+  if (depth === 0 || obj === null || obj === undefined || typeof obj !== 'object') return null
+  const o = obj as Record<string, unknown>
+  for (const key of keys) {
+    const v = o[key]
+    if (v !== undefined && v !== null) {
+      if (typeof v === 'number' && Number.isFinite(v) && v > 0) return Math.round(v)
+      if (typeof v === 'string' && /^\d+$/.test(v.trim())) return parseInt(v.trim(), 10)
+    }
+  }
+  for (const k of Object.keys(o)) {
+    const child = o[k]
+    if (child && typeof child === 'object' && !Array.isArray(child)) {
+      const r = deepFindNum(child, keys, depth - 1)
+      if (r !== null) return r
+    }
+  }
+  return null
+}
+
+function deepFindStr(obj: unknown, keys: string[], depth = 8): string | null {
+  if (depth === 0 || obj === null || obj === undefined || typeof obj !== 'object') return null
+  const o = obj as Record<string, unknown>
+  for (const key of keys) {
+    const v = o[key]
+    if (typeof v === 'string' && v.trim().length > 0) return v.trim()
+  }
+  for (const k of Object.keys(o)) {
+    const child = o[k]
+    if (child && typeof child === 'object' && !Array.isArray(child)) {
+      const r = deepFindStr(child, keys, depth - 1)
+      if (r !== null) return r
+    }
+  }
+  return null
+}
+
 function extractDetailData(html: string): {
   price: number | null
   area: number | null
@@ -98,11 +136,18 @@ function extractDetailData(html: string): {
   floor: string | null
   areaUseful: number | null
   ageText: string | null
+  propertyType: string | null
   referenceId: string | null
   orientation: string | null
   energyCert: string | null
   isParticular: boolean
 } {
+  // ── __NEXT_DATA__ JSON (fuente más fiable en Next.js) ────────────────────
+  let nextData: unknown = null
+  const nextM = html.match(/<script[^>]+id="__NEXT_DATA__"[^>]*>([\s\S]*?)<\/script>/)
+  if (nextM) {
+    try { nextData = JSON.parse(nextM[1]) } catch { /* ignorar */ }
+  }
   // ── Precio ──────────────────────────────────────────────
   let price: number | null = null
   const priceMeta = html.match(/por\s+([\d.]+(?:\.[\d]{3})*)\s*€/)
@@ -122,29 +167,45 @@ function extractDetailData(html: string): {
   if (areaM) area = parseInt(areaM[1], 10)
 
   // ── Habitaciones ─────────────────────────────────────────
-  let bedrooms: number | null = null
-  const bedPats = [
-    /(\d+)\s*habitaci(?:ones|ón)/i,
-    /(\d+)\s*dormitori(?:os|o)/i,
-    /(\d+)\s*hab\b/i,
-    /"numberOfRooms"\s*:\s*(\d+)/,
-    /"rooms"\s*:\s*(\d+)/,
-  ]
-  for (const pat of bedPats) {
-    const m = html.match(pat)
-    if (m) { bedrooms = parseInt(m[1], 10); break }
+  // 1) __NEXT_DATA__ (más fiable — valor exacto del JSON del servidor)
+  let bedrooms: number | null = deepFindNum(nextData, [
+    'habitaciones', 'dormitorios', 'numberOfRooms', 'rooms', 'numHabitaciones',
+    'numDormitorios', 'bedrooms',
+  ])
+  // 2) Texto HTML con número antes O después de la etiqueta
+  if (!bedrooms) {
+    const bedPats = [
+      /(\d+)\s*habitaci(?:ones|[oó]n)/i,
+      /(\d+)\s*dormitori(?:os|o)/i,
+      /habitaci(?:ones|[oó]n)\s*[:\s><\/]+\s*(\d+)/i,
+      /dormitori(?:os|o)\s*[:\s><\/]+\s*(\d+)/i,
+      /(\d+)\s*hab\b/i,
+      /"numberOfRooms"\s*:\s*(\d+)/,
+      /"rooms"\s*:\s*(\d+)/,
+      /"habitaciones"\s*:\s*"?(\d+)/i,
+    ]
+    for (const pat of bedPats) {
+      const m = html.match(pat)
+      if (m) { bedrooms = parseInt(m[1], 10); break }
+    }
   }
 
   // ── Baños ────────────────────────────────────────────────
-  let bathrooms: number | null = null
-  const bathPats = [
-    /(\d+)\s*ba[ñn]o/i,
-    /"numberOfBathroomsTotal"\s*:\s*(\d+)/,
-    /"bathrooms"\s*:\s*(\d+)/,
-  ]
-  for (const pat of bathPats) {
-    const m = html.match(pat)
-    if (m) { bathrooms = parseInt(m[1], 10); break }
+  let bathrooms: number | null = deepFindNum(nextData, [
+    'banos', 'banios', 'numBanos', 'numberOfBathroomsTotal', 'bathrooms',
+  ])
+  if (!bathrooms) {
+    const bathPats = [
+      /(\d+)\s*ba[ñn]o/i,
+      /ba[ñn]os?\s*[:\s><\/]+\s*(\d+)/i,
+      /"numberOfBathroomsTotal"\s*:\s*(\d+)/,
+      /"bathrooms"\s*:\s*(\d+)/,
+      /"banos"\s*:\s*"?(\d+)/i,
+    ]
+    for (const pat of bathPats) {
+      const m = html.match(pat)
+      if (m) { bathrooms = parseInt(m[1], 10); break }
+    }
   }
 
   // ── Descripción completa ─────────────────────────────────
@@ -227,14 +288,31 @@ function extractDetailData(html: string): {
   }
 
   // ── Antigüedad ───────────────────────────────────────────
-  let ageText: string | null = null
-  const agePats = [
-    /"antig[üu]edad"\s*:\s*"([^"]{3,60})"/i,
-    /[Aa]ntig[üu]edad\s*[:\s]+([^<\n"]{3,60}?)(?:\s*[<,]|$)/,
-  ]
-  for (const p of agePats) {
-    const m = html.match(p)
-    if (m) { ageText = m[1].trim(); break }
+  let ageText: string | null = deepFindStr(nextData, ['antiguedad', 'antiquity', 'antig\u00fcedad'])
+  if (!ageText) {
+    const agePats = [
+      /"antig[üu]edad"\s*:\s*"([^"]{3,60})"/i,
+      /[Aa]ntig[üu]edad\s*[:\s]+([^<\n"]{3,60}?)(?:\s*[<,]|$)/,
+    ]
+    for (const p of agePats) {
+      const m = html.match(p)
+      if (m) { ageText = m[1].trim(); break }
+    }
+  }
+
+  // ── Tipo de inmueble ──────────────────────────────────────
+  let propertyType: string | null = deepFindStr(nextData, [
+    'tipoInmueble', 'tipo', 'tipoCasa', 'subtipo', 'propertyType', 'houseType', 'tipo_inmueble',
+  ])
+  if (!propertyType) {
+    const typePats = [
+      /"tipo(?:InmuebleTexto|Casa|Inmueble)?"\s*:\s*"([^"]{2,40})"/i,
+      /Tipo\s+de\s+(?:casa|inmueble|vivienda)\s*[:\s><\/]+\s*([^<\n"]{2,40}?)(?:\s*<|$)/i,
+    ]
+    for (const p of typePats) {
+      const m = html.match(p)
+      if (m && !/^\d+$/.test(m[1])) { propertyType = m[1].trim(); break }
+    }
   }
 
   // ── Referencia ───────────────────────────────────────────
@@ -328,7 +406,7 @@ function extractDetailData(html: string): {
   const isAgencySignal = AGENCY_HARD.some(s => lowerHtml.includes(s))
   const isParticular = !isAgencySignal && /anunciante\s+particular/i.test(html)
 
-  return { price, area, bedrooms, bathrooms, description, images, district: null, postalCode, lat, lng, floor, areaUseful, ageText, referenceId, orientation, energyCert, isParticular }
+  return { price, area, bedrooms, bathrooms, description, images, district: null, postalCode, lat, lng, floor, areaUseful, ageText, propertyType, referenceId, orientation, energyCert, isParticular }
 }
 
 async function scrapeCity(
@@ -389,6 +467,13 @@ async function scrapeCity(
 
       const detail = extractDetailData(detailHtml)
 
+      // ── Regla de calidad: obligatorio habitaciones Y baños ─────────────────
+      if (!detail.bedrooms || !detail.bathrooms) {
+        console.log(`    ⏭️ Sin características (habs/baños) → omitido: ${detailUrl.slice(-60)}`)
+        skipped++
+        continue
+      }
+
       // Barrio/distrito desde el slug de la URL
       // URL: /comprar/piso-collblanc08904-63392603320_525021/
       let district: string | undefined
@@ -436,12 +521,13 @@ async function scrapeCity(
         is_particular: detail.isParticular,  // Detectado del HTML ("Anunciante particular")
         images: detail.images,
         features: {
-          ...(detail.floor       ? { planta: detail.floor }           : {}),
-          ...(detail.areaUseful  ? { area_util_m2: String(detail.areaUseful) } : {}),
-          ...(detail.ageText     ? { antiguedad: detail.ageText }     : {}),
-          ...(detail.referenceId ? { referencia: detail.referenceId } : {}),
-          ...(detail.orientation ? { orientacion: detail.orientation } : {}),
-          ...(detail.energyCert  ? { cert_energetico: detail.energyCert } : {}),
+          ...(detail.floor         ? { planta: detail.floor }                 : {}),
+          ...(detail.areaUseful    ? { area_util_m2: String(detail.areaUseful) } : {}),
+          ...(detail.propertyType  ? { tipo_casa: detail.propertyType }       : {}),
+          ...(detail.ageText       ? { antiguedad: detail.ageText }           : {}),
+          ...(detail.referenceId   ? { referencia: detail.referenceId }       : {}),
+          ...(detail.orientation   ? { orientacion: detail.orientation }       : {}),
+          ...(detail.energyCert    ? { cert_energetico: detail.energyCert }   : {}),
         },
       }
 

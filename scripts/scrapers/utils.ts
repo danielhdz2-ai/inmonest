@@ -25,8 +25,9 @@ export interface ScrapedListing {
   images?: string[]
   is_bank?: boolean
   bank_entity?: string
-  external_link: string
+  external_link?: string
   phone?: string             // siempre guardar, incluso para agencias
+  features?: Record<string, string>  // campos extra: planta, antiguedad, tipo_casa, etc.
 }
 
 const SUPABASE_URL = 'https://ktsdxpmaljiyuwimcugx.supabase.co'
@@ -347,8 +348,11 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
     published_at: new Date().toISOString(),
     is_bank: listing.is_bank ?? false,
     bank_entity: listing.bank_entity ?? null,
-    external_link: listing.external_link,
+    external_link: listing.external_link ?? null,
     phone: listing.phone ?? null,  // siempre guardar aunque sea agencia
+    features: listing.features && Object.keys(listing.features).length > 0
+      ? listing.features
+      : undefined,
   }
 
   // ── Paso 4: PATCH si existe, INSERT si no ─────────────────────────────────
