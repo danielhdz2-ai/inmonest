@@ -324,6 +324,7 @@ async function main() {
   const args = process.argv.slice(2)
   const cityKey = (args[0] ?? 'madrid').toLowerCase()
   const maxPages = parseInt(args[1] ?? '5', 10)
+  const maxItems = parseInt(args[2] ?? '9999', 10)
 
   if (!CITY_MAP[cityKey]) {
     console.error(`❌ Ciudad no soportada: "${cityKey}"\n   Disponibles: ${Object.keys(CITY_MAP).join(', ')}`)
@@ -413,12 +414,14 @@ async function main() {
       const ok = await upsertListing(listing)
       if (ok) {
         totalUpserted++
-        console.log(`    ✅ ${detail.price.toLocaleString('es-ES')}€/mes — ${title.slice(0, 60)}`)
+        console.log(`    ✅ [${totalUpserted}/${maxItems}] ${detail.price.toLocaleString('es-ES')}€/mes — ${title.slice(0, 60)}`)
+        if (totalUpserted >= maxItems) { console.log(`  🎯 Límite de ${maxItems} alcanzado`); break }
       } else {
         totalSkipped++
       }
     }
 
+    if (totalUpserted >= maxItems) break
     // Pausa entre páginas para no sobrecargar
     if (page < maxPages) {
       console.log(`  ⏳ Pausa 3s entre páginas...`)

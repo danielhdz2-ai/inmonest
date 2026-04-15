@@ -273,7 +273,7 @@ function parseDetailPage(html: string, sourceUrl: string): {
 }
 
 // ─── Scraper principal ───────────────────────────────────────────────────────
-async function scrapeSolvia(operation: 'venta' | 'alquiler', maxPages: number) {
+async function scrapeSolvia(operation: 'venta' | 'alquiler', maxPages: number, maxItems: number = 9999) {
   const opEs   = operation === 'venta' ? 'comprar' : 'alquilar'
   const opLabel: 'sale' | 'rent' = operation === 'venta' ? 'sale' : 'rent'
 
@@ -342,18 +342,27 @@ async function scrapeSolvia(operation: 'venta' | 'alquiler', maxPages: number) {
         external_link: it.url,
       }
 
+      // Boutique: solo anuncios con imágenes
+      if (!d.images.length) {
+        skipped++
+        console.log(`    ⚠️ Sin imágenes, descartado: ${(d.title ?? '').slice(0, 55)}`)
+        continue
+      }
+
       const ok = await upsertListing(listing)
       if (ok) {
         imported++
         const bankTag = isBankProp ? '🏦 ' : ''
         console.log(
-          `    ✅ [${imported}] ${bankTag}${(d.title ?? '').slice(0, 55)} | ${d.price?.toLocaleString('es-ES') ?? '?'}€ | ${d.area ?? '?'}m²`
+          `    ✅ [${imported}/${maxItems}] ${bankTag}${(d.title ?? '').slice(0, 55)} | ${d.price?.toLocaleString('es-ES') ?? '?'}€ | ${d.area ?? '?'}m²`
         )
+        if (imported >= maxItems) { console.log(`  🎯 Límite de ${maxItems} alcanzado`); break }
       } else {
         skipped++
       }
     }
 
+    if (imported >= maxItems) break
     console.log(`  📊 Página ${page}: importados ${imported}, saltados ${skipped}`)
     await sleep(DELAY_MS * 2)
   }
@@ -362,9 +371,9 @@ async function scrapeSolvia(operation: 'venta' | 'alquiler', maxPages: number) {
 }
 
 // ─── Entry point ─────────────────────────────────────────────────────────────
-const [op = 'venta', maxPagesStr = '5'] = process.argv.slice(2)
+const [op = 'venta', maxPagesStr = '5', maxItemsStr = '9999'] = process.argv.slice(2)
 if (op !== 'venta' && op !== 'alquiler') {
   console.error('❌ Operación inválida. Usa: venta | alquiler')
   process.exit(1)
 }
-scrapeSolvia(op, parseInt(maxPagesStr, 10))
+scrapeSolvia(op, parseInt(maxPagesStr, 10), parseInt(maxItemsStr, 10))

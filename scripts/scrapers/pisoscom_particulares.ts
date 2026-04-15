@@ -373,7 +373,8 @@ function extractExternalId(url: string): string {
 async function scrapeParticulares(
   operation: 'venta' | 'alquiler',
   citySlug: string,
-  maxPages: number
+  maxPages: number,
+  maxItems: number = 9999
 ): Promise<void> {
   const geoInfo = CITY_MAP[citySlug]
   if (!geoInfo) {
@@ -389,6 +390,7 @@ async function scrapeParticulares(
   let imported  = 0
   let skipped   = 0
   let discarded = 0   // sin precio o sin fotos
+  console.log(`   Límite: ${maxItems} anuncios nuevos con foto`)
 
   for (let page = 1; page <= maxPages; page++) {
     const searchUrl =
@@ -507,10 +509,11 @@ async function scrapeParticulares(
         const priceLabel = detail.price.toLocaleString('es-ES')
         const conf = detail.isParticularConfirmed ? '✓particular' : '~particular'
         console.log(
-          `    ✅ [${imported}] ${title.slice(0, 48).padEnd(48)} ` +
+          `    ✅ [${imported}/${maxItems}] ${title.slice(0, 48).padEnd(48)} ` +
           `${priceLabel.padStart(8)}€ | ${detail.area ?? '?'}m² | ` +
           `🖼️ ${detail.images.length} | ${conf}`
         )
+        if (imported >= maxItems) { console.log(`  🎯 Límite de ${maxItems} alcanzado`); break }
       } else {
         skipped++
       }
@@ -518,6 +521,7 @@ async function scrapeParticulares(
       await sleep(DELAY_MS)
     }
 
+    if (imported >= maxItems) break
     if (page < maxPages) await sleep(2200)
   }
 
@@ -536,13 +540,14 @@ async function main() {
   const operation = (args[0] as 'venta' | 'alquiler') || 'alquiler'
   const city      = args[1] || 'madrid'
   const maxPages  = parseInt(args[2] || '6', 10)
+  const maxItems  = parseInt(args[3] || '9999', 10)
 
   if (!['venta', 'alquiler'].includes(operation)) {
     console.error(`❌ Operación inválida: ${operation}. Usa 'venta' o 'alquiler'`)
     process.exit(1)
   }
 
-  await scrapeParticulares(operation, city, maxPages)
+  await scrapeParticulares(operation, city, maxPages, maxItems)
 }
 
 main().catch(console.error)

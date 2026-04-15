@@ -268,6 +268,7 @@ async function main() {
   const opArg = (process.argv[2] ?? 'venta').toLowerCase()
   const cityArg = (process.argv[3] ?? 'madrid').toLowerCase()
   const maxPages = parseInt(process.argv[4] ?? '5', 10)
+  const maxItems = parseInt(process.argv[5] ?? '9999', 10)
 
   const cityInfo = CITY_MAP[cityArg]
   if (!cityInfo) {
@@ -311,22 +312,33 @@ async function main() {
         listing.description = detail.description
       if (detail.phone) listing.phone = detail.phone
 
+      // Regla boutique: solo subir si tiene imágenes
+      if (!listing.images?.length) {
+        console.log(`  ⚠️ Sin imágenes, descartado: ${listing.title?.slice(0, 60)}`)
+        totalSkipped++
+        await sleep(DELAY_MS)
+        continue
+      }
+
       const inserted = await upsertListing(listing)
       if (inserted) {
         totalInserted++
         const priceStr = listing.price_eur
           ? listing.price_eur.toLocaleString('es-ES') + ' €'
           : 'sin precio'
-        const imgStr = listing.images?.length ? ` 🖼️ ${listing.images.length} img` : ' ⚠️ sin imágenes'
+        const imgStr = ` 🖼️ ${listing.images.length} img`
         const telStr = listing.phone ? ` 📞 ${listing.phone}` : ''
         console.log(
-          `  ✅ [${listing.source_external_id}] ${listing.title} — ${priceStr}${imgStr}${telStr}`
+          `  ✅ [${totalInserted}/${maxItems}] ${listing.title} — ${priceStr}${imgStr}${telStr}`
         )
+        if (totalInserted >= maxItems) { console.log(`  🎯 Límite de ${maxItems} alcanzado`); break }
       } else {
         totalSkipped++
       }
       await sleep(DELAY_MS)
     }
+
+    if (totalInserted >= maxItems) break
 
     if (page < maxPages) {
       await sleep(DELAY_MS)

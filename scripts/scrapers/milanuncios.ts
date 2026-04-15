@@ -260,7 +260,8 @@ function extractDetailData(html: string, url: string): {
 async function scrapeMilanuncios(
   operation: 'venta' | 'alquiler',
   citySlug: string,
-  maxPages: number
+  maxPages: number,
+  maxItems: number = 9999
 ): Promise<void> {
   const geoInfo = CITY_MAP[citySlug]
   if (!geoInfo) {
@@ -324,6 +325,14 @@ async function scrapeMilanuncios(
         continue
       }
 
+      // Boutique: solo anuncios con imágenes
+      if (!detail.images.length) {
+        rejected++
+        console.log(`    ⚠️ Sin imágenes, descartado: ${item.title.slice(0, 50)}`)
+        await sleep(DELAY_MS)
+        continue
+      }
+
       const listing: ScrapedListing = {
         title: item.title || `Particular Milanuncios – ${geoInfo.city}`,
         description: detail.description,
@@ -349,8 +358,9 @@ async function scrapeMilanuncios(
       if (ok) {
         imported++
         console.log(
-          `    ✅ [${imported}] 🏠 ${item.title.slice(0, 50)} | ${detail.price?.toLocaleString('es-ES')}€ | ${detail.area}m²`
+          `    ✅ [${imported}/${maxItems}] 🏠 ${item.title.slice(0, 50)} | ${detail.price?.toLocaleString('es-ES')}€ | ${detail.area}m²`
         )
+        if (imported >= maxItems) { console.log(`  🎯 Límite de ${maxItems} alcanzado`); break }
       } else {
         skipped++
       }
@@ -358,6 +368,7 @@ async function scrapeMilanuncios(
       await sleep(DELAY_MS)
     }
 
+    if (imported >= maxItems) break
     if (page < maxPages) await sleep(3000)
   }
 
@@ -372,7 +383,8 @@ async function main() {
   const operation = (args[0] as 'venta' | 'alquiler') || 'venta'
   const city = args[1] || 'madrid'
   const maxPages = parseInt(args[2] || '5', 10)
-  await scrapeMilanuncios(operation, city, maxPages)
+  const maxItems = parseInt(args[3] || '9999', 10)
+  await scrapeMilanuncios(operation, city, maxPages, maxItems)
 }
 
 main().catch(console.error)
