@@ -1,25 +1,13 @@
-import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { createClient } from '@/lib/supabase/server'
 import type { Listing, SearchParams } from '@/types/listings'
 
 const PAGE_SIZE = 24
 
-// Cliente sin cookies para queries públicas cacheables
-// (usa la anon key que ya es pública — no expone datos privados gracias a RLS)
-function createPublicClient() {
-  return createSupabaseClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
-}
-
 // SELECT sin description ni campos privados → reduce payload de 24 tarjetas
-// de ~120KB a ~35KB. Detalle usa getListingById que sí trae description.
 const LIST_SELECT =
   'id, origin, operation, title, price_eur, province, city, district, postal_code, lat, lng, bedrooms, bathrooms, area_m2, source_portal, is_particular, particular_confidence, ranking_score, turbo_until, status, views_count, published_at, created_at, is_bank, bank_entity, features, advertiser_name, source_external_id, listing_images(id, storage_path, external_url, position)'
 
-// Campos que NUNCA deben llegar al cliente desde la lista/mapa
-// Se eliminan en servidor antes de serializar los props del RSC
+// Campos privados que no viajan al cliente
 const PRIVATE_FIELDS = ['phone', 'external_link', 'source_url'] as const
 
 function stripPrivateFields(listing: Record<string, unknown>): Listing {
@@ -28,12 +16,11 @@ function stripPrivateFields(listing: Record<string, unknown>): Listing {
   return copy as unknown as Listing
 }
 
-// ── Función interna (sin caché) usada por la versión cacheada ─────────────────
 async function _searchListings(params: SearchParams): Promise<{
   listings: Listing[]
   total: number
 }> {
-  const supabase = createPublicClient()
+  const supabase = await createClient()
   const pagina = params.pagina ?? 1
   const from = (pagina - 1) * PAGE_SIZE
   const to = from + PAGE_SIZE - 1
