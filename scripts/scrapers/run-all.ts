@@ -5,7 +5,8 @@
  * Reglas de oro:
  *   - Máx. 5 anuncios NUEVOS por tarea (con foto obligatoria)
  *   - Sin duplicados: upsertListing deduplica por source_portal + source_external_id
- *   - Scrapers Playwright (tecnocasa, redpiso, monapart) pausados
+ *   - Scrapers Playwright (redpiso, monapart) pausados
+ *   - Tecnocasa: VETADO PERMANENTEMENTE (imágenes = planos/logos, precios erróneos)
  *
  * USO:
  *   SUPABASE_SERVICE_KEY=xxx npx tsx scripts/scrapers/run-all.ts
