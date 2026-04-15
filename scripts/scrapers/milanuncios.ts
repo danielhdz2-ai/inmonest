@@ -350,7 +350,8 @@ export async function scrapeMilanuncios(
         source_portal: 'milanuncios',
         source_url: item.url,
         source_external_id: `mila_${item.id}`,
-        is_particular: true, // ✅ Siempre true
+        is_particular: true,
+        external_link: item.url,
         images: detail.images,
       }
 
