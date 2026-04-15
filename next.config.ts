@@ -2,9 +2,8 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig: NextConfig = {
-  webpack: (config) => {
-    config.resolve.roots = [path.resolve(__dirname)]
-    return config
+  turbopack: {
+    root: path.resolve(__dirname),
   },
   images: {
     // CDNs externos usados por los scrapers — evita errores de dominio no permitido
