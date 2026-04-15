@@ -9,23 +9,30 @@ export async function GET() {
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   const db = createClient(url, key)
 
-  // Query directa sin join
-  const a = await db.from('listings').select('id', { count: 'exact', head: true })
+  // Test 1: directo sin filtros
+  const t1 = await db.from('listings').select('id', { count: 'exact', head: true })
 
-  // Query directa con join (el que causaba 0)
-  const b = await db
-    .from('listings')
-    .select('id, listing_images(id)', { count: 'exact', head: true })
+  // Test 2: directo con operation=sale
+  const t2 = await db.from('listings').select('id', { count: 'exact', head: true }).eq('operation', 'sale')
 
-  // Via searchListings (ahora sin join)
-  const { listings, total } = await searchListings({})
+  // Test 3: searchListings sin filtros
+  const r3 = await searchListings({})
+
+  // Test 4: searchListings con operacion=sale (igual que hace /pisos?operacion=sale)
+  const r4 = await searchListings({ operacion: 'sale' })
+
+  // Test 5: searchListings con ordenar=relevancia (igual que la página)
+  const r5 = await searchListings({ operacion: 'sale', ordenar: 'relevancia' })
 
   return NextResponse.json({
-    directa_sin_join: { count: a.count, error: a.error?.message },
-    directa_con_join: { count: b.count, error: b.error?.message },
-    searchListings: { total, rows: listings.length, sample: listings[0]?.id ?? null },
+    t1_directo_total:    { count: t1.count, error: t1.error?.message },
+    t2_directo_sale:     { count: t2.count, error: t2.error?.message },
+    t3_search_vacio:     { total: r3.total, rows: r3.listings.length },
+    t4_search_sale:      { total: r4.total, rows: r4.listings.length },
+    t5_search_sale_rel:  { total: r5.total, rows: r5.listings.length },
   })
 }
+
 
 
 
