@@ -266,7 +266,7 @@ export async function scrapeMilanuncios(
   const geoInfo = CITY_MAP[citySlug]
   if (!geoInfo) {
     console.error(`Ciudad no soportada: ${citySlug}. Disponibles: ${Object.keys(CITY_MAP).join(', ')}`)
-    return
+    return { inserted: 0, skipped: 0 }
   }
 
   const opLabel = operation === 'venta' ? 'sale' : 'rent'

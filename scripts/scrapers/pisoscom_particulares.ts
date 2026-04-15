@@ -380,7 +380,7 @@ export async function scrapeParticulares(
   if (!geoInfo) {
     console.error(`❌ Ciudad no soportada: ${citySlug}`)
     console.error(`   Ciudades disponibles: ${Object.keys(CITY_MAP).join(', ')}`)
-    return
+    return { inserted: 0, skipped: 0 }
   }
 
   const opLabel  = operation === 'venta' ? 'sale' : 'rent'
