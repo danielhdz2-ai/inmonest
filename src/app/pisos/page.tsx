@@ -6,6 +6,9 @@ import { searchListings } from '@/lib/listings'
 import Link from 'next/link'
 import SearchForm from '@/components/SearchForm'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 interface PisosPageProps {
   searchParams: Promise<Record<string, string | undefined>>
 }
