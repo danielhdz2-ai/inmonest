@@ -1,4 +1,3 @@
-import { unstable_cache } from 'next/cache'
 import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { createClient } from '@/lib/supabase/server'
 import type { Listing, SearchParams } from '@/types/listings'
@@ -42,7 +41,6 @@ async function _searchListings(params: SearchParams): Promise<{
   let query = supabase
     .from('listings')
     .select(LIST_SELECT, { count: 'exact' })
-    .eq('status', 'published')
     .range(from, to)
 
   // Ordenación
@@ -133,13 +131,7 @@ async function _searchListings(params: SearchParams): Promise<{
   return { listings, total: count ?? 0 }
 }
 
-// Versión cacheada de searchListings — TTL 3 minutos
-// Las búsquedas populares (Madrid, Barcelona) se sirven desde caché en ~1ms
-export const searchListings = unstable_cache(
-  _searchListings,
-  ['searchListings'],
-  { revalidate: 180 }
-)
+export const searchListings = _searchListings
 
 export async function getListingById(id: string): Promise<Listing | null> {
   const supabase = await createClient()
