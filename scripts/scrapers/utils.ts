@@ -2,6 +2,10 @@
  * Utilidades compartidas para todos los scrapers de Mi Vivienda Libre
  * Ejecutar con: npx tsx scripts/scrapers/utils.ts
  */
+import { config } from 'dotenv'
+import { resolve } from 'path'
+// Carga .env.local desde la raíz del proyecto (2 niveles arriba de scripts/scrapers/)
+config({ path: resolve(process.cwd(), '.env.local') })
 
 export interface ScrapedListing {
   title: string
