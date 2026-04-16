@@ -39,6 +39,24 @@ function sleep(ms: number) {
   return new Promise(r => setTimeout(r, ms))
 }
 
+// ── Filtro de anuncios de DEMANDA ──────────────────────────────────────────────────
+const DEMAND_PATTERNS = [
+  /^\s*(?:compro|compramos|busco|buscamos|necesito|necesitamos|quiero\s+comprar|quiero\s+alquilar|buscando|interesado\s+en\s+comprar|interesado\s+en\s+alquilar)\b/i,
+  /\bpagamos?\s+al\s+contado\b/i,
+  /\bse\s+busca\s+(?:piso|casa|local|inmueble|vivienda)\b/i,
+  /\bcompro\s+(?:piso|casa|local|inmueble|vivienda|finca|chalet|apartamento)\b/i,
+  /\bbusco\s+(?:piso|casa|local|inmueble|vivienda|finca|chalet|apartamento)\b/i,
+  /\bcompro\s+inmueble\b/i,
+  /\bcompro\s+vivienda\b/i,
+  /\bbusco\s+para\s+(?:comprar|alquilar)\b/i,
+  /\bquiero\s+(?:comprar|alquilar)\b/i,
+]
+function isDemandListing(title: string, description?: string | null): boolean {
+  if (DEMAND_PATTERNS.some(re => re.test(title))) return true
+  if (description && DEMAND_PATTERNS.some(re => re.test(description.slice(0, 200)))) return true
+  return false
+}
+
 async function fetchHtml(url: string): Promise<string | null> {
   try {
     const res = await fetch(url, {
@@ -317,6 +335,13 @@ export async function scrapeMilanuncios(
       if (!detailHtml) { skipped++; continue }
 
       const detail = extractDetailData(detailHtml, item.url)
+
+      // Filtrar anuncios de demanda (compradores buscando inmueble)
+      if (isDemandListing(item.title, detail.description)) {
+        rejected++
+        console.log(`    \uD83D\uDEAB [DEMANDA] Descartado: ${item.title.slice(0, 60)}`)
+        continue
+      }
 
       // Verificación extra de particular
       if (!detail.isParticular) {

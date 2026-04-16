@@ -32,6 +32,7 @@ export interface ScrapedListing {
   external_link?: string
   phone?: string             // siempre guardar, incluso para agencias
   features?: Record<string, string>  // campos extra: planta, antiguedad, tipo_casa, etc.
+  upload_to_storage?: boolean  // si true, descarga las imágenes y las sube a Supabase Storage
 }
 
 const SUPABASE_URL = 'https://ktsdxpmaljiyuwimcugx.supabase.co'
@@ -410,16 +411,119 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
   }
 
   if (listingId && listing.images?.length) {
-    await insertImages(listingId, listing.images, baseHeaders)
+    await insertImages(listingId, listing.images, baseHeaders,
+      listing.upload_to_storage
+        ? {
+            uploadToStorage: true,
+            portal: listing.source_portal,
+            externalId: listing.source_external_id,
+            referer: `https://www.${listing.source_portal}.com/`,
+          }
+        : undefined,
+    )
   }
 
   return true
 }
 
-async function insertImages(listingId: string, images: string[], headers: Record<string, string>) {
-  // Regla de calidad: mínimo 5, máximo 15 fotos
+// ── Supabase Storage upload ─────────────────────────────────────────────────
+const STORAGE_BUCKET = 'listings'
+const STORAGE_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+
+/**
+ * Descarga una imagen desde externalUrl y la sube al bucket 'listings' de
+ * Supabase Storage usando service_role key (bypassa RLS).
+ * @param externalUrl  URL origen de la imagen
+ * @param storagePath  Ruta dentro del bucket, e.g. "scraper/tucasa/12345/0.jpg"
+ * @param referer      Referer HTTP a enviar (para eludir bloqueo de hotlinking)
+ * @returns URL pública del Storage, o null si falla
+ */
+export async function uploadImageToStorage(
+  externalUrl: string,
+  storagePath: string,
+  referer?: string,
+): Promise<string | null> {
+  const serviceKey = process.env.SUPABASE_SERVICE_KEY ?? ''
+  if (!serviceKey) return null
+
+  try {
+    const imgRes = await fetch(externalUrl, {
+      headers: {
+        'User-Agent': STORAGE_UA,
+        Accept: 'image/webp,image/avif,image/*,*/*;q=0.8',
+        ...(referer ? { Referer: referer } : {}),
+      },
+      signal: AbortSignal.timeout(20000),
+    })
+    if (!imgRes.ok) return null
+
+    const contentType = imgRes.headers.get('content-type') ?? 'image/jpeg'
+    if (!contentType.startsWith('image/')) return null
+
+    const buffer = await imgRes.arrayBuffer()
+    if (buffer.byteLength < 1024) return null  // demasiado pequeño → página de error
+
+    const uploadRes = await fetch(
+      `${SUPABASE_URL}/storage/v1/object/${STORAGE_BUCKET}/${storagePath}`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${serviceKey}`,
+          apikey: serviceKey,
+          'Content-Type': contentType,
+          'x-upsert': 'true',
+        },
+        body: buffer,
+      },
+    )
+    if (!uploadRes.ok) {
+      const err = await uploadRes.text()
+      console.warn(`  ⚠️ Storage upload (${uploadRes.status}): ${err.slice(0, 80)}`)
+      return null
+    }
+    return `${SUPABASE_URL}/storage/v1/object/public/${STORAGE_BUCKET}/${storagePath}`
+  } catch (err) {
+    console.warn(`  ⚠️ uploadImageToStorage error: ${err}`)
+    return null
+  }
+}
+
+interface InsertImagesOptions {
+  uploadToStorage?: boolean
+  portal?: string
+  externalId?: string
+  referer?: string
+}
+
+async function insertImages(
+  listingId: string,
+  images: string[],
+  headers: Record<string, string>,
+  options?: InsertImagesOptions,
+) {
   const capped = images.slice(0, 15)
-  const rows = capped.map((url, i) => ({
+  let finalUrls: string[]
+
+  if (options?.uploadToStorage && options.portal && options.externalId) {
+    // Descargar cada imagen y subirla a Supabase Storage
+    finalUrls = []
+    for (let i = 0; i < capped.length; i++) {
+      const ext = capped[i].match(/\.(jpg|jpeg|png|webp)/i)?.[1]?.toLowerCase() ?? 'jpg'
+      const safeid = options.externalId.replace(/[^a-z0-9_-]/gi, '_')
+      const path = `scraper/${options.portal}/${safeid}/${i}.${ext}`
+      const stored = await uploadImageToStorage(capped[i], path, options.referer)
+      if (stored) {
+        finalUrls.push(stored)
+      }
+      // Si la subida falla, no incluir la URL externa (sería bloqueada por hotlinking)
+    }
+  } else {
+    finalUrls = capped
+  }
+
+  if (finalUrls.length === 0) return
+
+  const rows = finalUrls.map((url, i) => ({
     listing_id: listingId,
     external_url: url,
     position: i,

@@ -81,7 +81,31 @@ function extractExternalId(url: string): string {
   const m = url.match(/-(\d{7,12})\.htm/)
   return m ? m[1] : url.replace(/\W/g, '').slice(-15)
 }
+// ───────────────────────────────────────────────────────────────────────────
+// Filtro de anuncios de DEMANDA (compradores buscando inmueble)
+// Milanuncios mezcla oferta y demanda; solo queremos vendedores/arrendadores.
+// ───────────────────────────────────────────────────────────────────────────
+const DEMAND_PATTERNS = [
+  /^\s*(?:compro|compramos|busco|buscamos|necesito|necesitamos|quiero\s+comprar|quiero\s+alquilar|buscando|interesado\s+en\s+comprar|interesado\s+en\s+alquilar)\b/i,
+  /\bpagamos?\s+al\s+contado\b/i,
+  /\bse\s+busca\s+(?:piso|casa|local|inmueble|vivienda)\b/i,
+  /\bcompro\s+(?:piso|casa|local|inmueble|vivienda|finca|chalet|apartamento)\b/i,
+  /\bbusco\s+(?:piso|casa|local|inmueble|vivienda|finca|chalet|apartamento)\b/i,
+  /\bcompro\s+inmueble\b/i,
+  /\bcompro\s+vivienda\b/i,
+  /\bbusco\s+para\s+(?:comprar|alquilar)\b/i,
+  /\bquiero\s+(?:comprar|alquilar)\b/i,
+]
 
+/**
+ * Devuelve true si el anuncio es de DEMANDA (alguien buscando comprar/alquilar).
+ * Se evalúa el título y los primeros 200 caracteres de la descripción.
+ */
+function isDemandListing(title: string, description?: string | null): boolean {
+  if (DEMAND_PATTERNS.some(re => re.test(title))) return true
+  if (description && DEMAND_PATTERNS.some(re => re.test(description.slice(0, 200)))) return true
+  return false
+}
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Tipos del JSON window.__INITIAL_PROPS__ (estructura de la API de Milanuncios)
 // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
@@ -207,6 +231,9 @@ function parseAdFromJson(
   defaultProvince: string,
 ): ScrapedListing | null {
   if (!ad.url) return null
+
+  // Filtrar anuncios de demanda (compradores buscando inmueble)
+  if (isDemandListing(ad.title ?? '', ad.description)) return null
 
   const price = ad.price?.cashPrice?.value ?? null
   if (!price || price <= 0) return null

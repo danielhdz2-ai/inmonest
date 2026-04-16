@@ -142,10 +142,11 @@ function extractListingLinks(html: string): HabitacliaItem[] {
   if (items.length > 0) return items
 
   // Estrategia 2: href con patrón ID de Habitaclia (-i\d{8,}.htm)
-  // Captura URLs absolutas: https://www.habitaclia.com/comprar-piso-...-madrid-i500004521959.htm
-  const linkRe = /href="(https?:\/\/www\.habitaclia\.com\/(?:comprar|alquiler)-[^"?#\s]*-i\d{8,}\.htm)"/gi
+  // Habitaclia sirve URLs **relativas**: href="/comprar-piso-...-madrid-i500004521959.htm"
+  const linkRe = /href="((?:https?:\/\/www\.habitaclia\.com)?\/(?:comprar|alquiler)-[^"?#\s]*-i\d{8,}\.htm)"/gi
   while ((m = linkRe.exec(html))) {
-    const url = m[1]
+    const raw = m[1]
+    const url = raw.startsWith('http') ? raw : `https://www.habitaclia.com${raw.startsWith('/') ? raw : `/${raw}`}`
     if (seen.has(url)) continue
     seen.add(url)
     items.push({ url, title: '', price: null })
