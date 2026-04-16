@@ -1,14 +1,3 @@
-/**
- * src/app/sitemap.xml/route.ts
- *
- * Route handler que genera el sitemap.xml manualmente.
- * Toma precedencia sobre src/app/sitemap.ts (metadata route) para /sitemap.xml.
- * Razones para usar route handler en vez del API de Next.js:
- *  - Control explícito del Content-Type: text/xml
- *  - Escapado XML garantizado (Next.js no siempre escapa & en metadata routes)
- *  - Sin espacios ni caracteres inesperados en las URLs
- */
-
 import { createClient } from '@/lib/supabase/server'
 
 export const dynamic = 'force-dynamic'
@@ -22,7 +11,7 @@ const CIUDADES = [
   'malaga', 'murcia', 'bilbao', 'alicante', 'granada',
 ]
 
-/** Escapa los 5 caracteres reservados de XML. */
+/** Escapa los 5 caracteres reservados de XML */
 function xe(str: string): string {
   return str
     .replace(/&/g, '&amp;')
@@ -32,14 +21,9 @@ function xe(str: string): string {
     .replace(/'/g, '&apos;')
 }
 
-/**
- * Construye una URL sin espacios ni saltos de línea y la escapa para XML.
- * path debe empezar por '/' o estar vacío.
- */
+/** Concatena BASE_URL + path, elimina espacios y escapa para XML */
 function u(path: string): string {
-  // Eliminamos CUALQUIER espacio o salto antes de escapar
-  const clean = `${BASE_URL}${path}`.replace(/\s+/g, '')
-  return xe(clean)
+  return xe(`${BASE_URL}${path}`.replace(/\s+/g, ''))
 }
 
 interface SitemapEntry {
@@ -63,7 +47,6 @@ function xmlEntry({ loc, lastmod, changefreq, priority }: SitemapEntry): string 
 export async function GET() {
   const supabase = await createClient()
 
-  // ── Obtener todos los anuncios publicados paginando de 1000 en 1000 ──────
   let listings: Array<{ id: string; updated_at: string | null; published_at: string | null }> = []
   let from = 0
   const PAGE = 1000
@@ -84,27 +67,24 @@ export async function GET() {
 
   const today = new Date().toISOString().slice(0, 10)
 
-  // ── Páginas estáticas ────────────────────────────────────────────────────
   const staticEntries = [
-    xmlEntry({ loc: xe(BASE_URL),              lastmod: today, changefreq: 'daily',   priority: 1.0 }),
-    xmlEntry({ loc: u('/pisos'),               lastmod: today, changefreq: 'hourly',  priority: 1.0 }),
-    xmlEntry({ loc: u('/pisos?operacion=rent'),lastmod: today, changefreq: 'daily',   priority: 0.9 }),
-    xmlEntry({ loc: u('/pisos?operacion=sale'),lastmod: today, changefreq: 'daily',   priority: 0.9 }),
-    xmlEntry({ loc: u('/publicar'),                            changefreq: 'monthly', priority: 0.7 }),
-    xmlEntry({ loc: u('/publicar-anuncio'),                    changefreq: 'monthly', priority: 0.7 }),
-    xmlEntry({ loc: u('/vender-casa'),                         changefreq: 'monthly', priority: 0.7 }),
-    xmlEntry({ loc: u('/gestoria'),                            changefreq: 'monthly', priority: 0.6 }),
-    xmlEntry({ loc: u('/agencias'),                            changefreq: 'monthly', priority: 0.6 }),
-    xmlEntry({ loc: u('/contacto'),                            changefreq: 'monthly', priority: 0.5 }),
+    xmlEntry({ loc: xe(BASE_URL),               lastmod: today, changefreq: 'daily',   priority: 1.0 }),
+    xmlEntry({ loc: u('/pisos'),                lastmod: today, changefreq: 'hourly',  priority: 1.0 }),
+    xmlEntry({ loc: u('/pisos?operacion=rent'), lastmod: today, changefreq: 'daily',   priority: 0.9 }),
+    xmlEntry({ loc: u('/pisos?operacion=sale'), lastmod: today, changefreq: 'daily',   priority: 0.9 }),
+    xmlEntry({ loc: u('/publicar'),                             changefreq: 'monthly', priority: 0.7 }),
+    xmlEntry({ loc: u('/publicar-anuncio'),                     changefreq: 'monthly', priority: 0.7 }),
+    xmlEntry({ loc: u('/vender-casa'),                          changefreq: 'monthly', priority: 0.7 }),
+    xmlEntry({ loc: u('/gestoria'),                             changefreq: 'monthly', priority: 0.6 }),
+    xmlEntry({ loc: u('/agencias'),                             changefreq: 'monthly', priority: 0.6 }),
+    xmlEntry({ loc: u('/contacto'),                             changefreq: 'monthly', priority: 0.5 }),
   ]
 
-  // ── Páginas de búsqueda por ciudad ───────────────────────────────────────
   const ciudadEntries = CIUDADES.flatMap((slug) => [
     xmlEntry({ loc: u(`/pisos?ciudad=${slug}&operacion=rent`), lastmod: today, changefreq: 'daily', priority: 0.9 }),
     xmlEntry({ loc: u(`/pisos?ciudad=${slug}&operacion=sale`), lastmod: today, changefreq: 'daily', priority: 0.8 }),
   ])
 
-  // ── Anuncios individuales ────────────────────────────────────────────────
   const listingEntries = listings.map((l) => {
     const lm = new Date(l.updated_at ?? l.published_at ?? Date.now())
       .toISOString()
@@ -112,12 +92,10 @@ export async function GET() {
     return xmlEntry({ loc: u(`/pisos/${l.id}`), lastmod: lm, changefreq: 'weekly', priority: 0.7 })
   })
 
-  const allEntries = [...staticEntries, ...ciudadEntries, ...listingEntries]
-
   const xml =
     '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    allEntries.join('\n') +
+    [...staticEntries, ...ciudadEntries, ...listingEntries].join('\n') +
     '\n</urlset>'
 
   return new Response(xml, {
