@@ -14,7 +14,7 @@ import { createClient } from '@/lib/supabase/server'
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
-const BASE_URL = 'https://www.inmonest.com'
+const BASE_URL = 'https://inmonest.com'
 const MAX_LISTINGS = 49_000
 
 const CIUDADES = [
