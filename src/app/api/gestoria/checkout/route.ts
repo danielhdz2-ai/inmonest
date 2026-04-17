@@ -3,9 +3,18 @@ import Stripe from 'stripe'
 
 const BASE_URL = 'https://inmonest.com'
 
-// Servicios de gestoría con pago directo en Stripe
+// Todos los servicios de gestoría con pago directo en Stripe
 const STRIPE_SERVICES: Record<string, { name: string; price_eur: number }> = {
-  'reserva-compra': { name: 'Contrato de Reserva de Compra', price_eur: 50 },
+  'arras-penitenciales':  { name: 'Contrato de Arras Penitenciales',     price_eur: 120 },
+  'arras-confirmatorias': { name: 'Contrato de Arras Confirmatorias',     price_eur: 120 },
+  'reserva-compra':       { name: 'Contrato de Reserva de Compra',        price_eur: 50  },
+  'alquiler-vivienda-lau':{ name: 'Contrato de Alquiler de Vivienda (LAU)', price_eur: 90 },
+  'alquiler-temporada':   { name: 'Contrato de Alquiler por Temporada',   price_eur: 80  },
+  'alquiler-habitacion':  { name: 'Contrato de Alquiler de Habitación',   price_eur: 60  },
+  'reserva-alquiler':     { name: 'Contrato de Reserva de Alquiler',      price_eur: 50  },
+  'rescision-alquiler':   { name: 'Contrato de Rescisión de Alquiler',    price_eur: 60  },
+  'liquidacion-fianza':   { name: 'Liquidación de Fianza',                price_eur: 30  },
+  'devolucion-fianzas':   { name: 'Solicitud de Devolución de Fianzas',   price_eur: 40  },
 }
 
 function getStripe() {
@@ -21,14 +30,14 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  let body: { service_key?: string; client_email?: string }
+  let body: { service_key?: string; client_email?: string; client_name?: string; client_phone?: string }
   try {
     body = await req.json()
   } catch {
     return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
   }
 
-  const { service_key, client_email } = body
+  const { service_key, client_email, client_name, client_phone } = body
 
   if (!service_key?.trim()) {
     return NextResponse.json({ error: 'service_key requerido' }, { status: 400 })
@@ -46,6 +55,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Email inválido' }, { status: 400 })
   }
 
+  // Para reserva-compra (requiere documentación): redirect a carga de docs
+  // Para el resto: redirect a página de confirmación
+  const successPath = service_key === 'reserva-compra'
+    ? '/gestoria/carga-documentos'
+    : '/gestoria/gracias'
+
   try {
     const stripe = getStripe()
     const session = await stripe.checkout.sessions.create({
@@ -61,8 +76,12 @@ export async function POST(req: NextRequest) {
         },
       ],
       customer_email: safeEmail,
-      metadata: { service_key },
-      success_url: `${BASE_URL}/gestoria/carga-documentos?session_id={CHECKOUT_SESSION_ID}`,
+      metadata: {
+        service_key,
+        client_name:  client_name?.trim().slice(0, 120) ?? '',
+        client_phone: client_phone?.trim().slice(0, 30) ?? '',
+      },
+      success_url: `${BASE_URL}${successPath}?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${BASE_URL}/gestoria`,
       locale: 'es',
       payment_method_types: ['card'],

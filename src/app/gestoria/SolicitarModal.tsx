@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default function SolicitarModal({ service, onClose }: Props) {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', notes: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [errMsg, setErrMsg] = useState('')
 
@@ -22,46 +22,26 @@ export default function SolicitarModal({ service, onClose }: Props) {
 
   const set = (k: keyof typeof form, v: string) => setForm(p => ({ ...p, [k]: v }))
 
-  const isPaymentService = service.key === 'reserva-compra'
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('sending')
     setErrMsg('')
     try {
-      if (isPaymentService) {
-        // Stripe checkout flow
-        const res = await fetch('/api/gestoria/checkout', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            service_key: service.key,
-            client_email: form.email,
-          }),
-        })
-        const data = await res.json()
-        if (!res.ok) throw new Error(data.error || 'Error al iniciar el pago')
-        window.location.href = data.url
-        return
-      }
-
-      // Contact-only flow for other services
-      const res = await fetch('/api/gestoria/solicitar', {
+      // Todos los servicios van a Stripe
+      const res = await fetch('/api/gestoria/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          service_key: service.key,
-          service_name: service.name,
-          price_eur: service.price,
-          client_name: form.name,
+          service_key:  service.key,
           client_email: form.email,
+          client_name:  form.name,
           client_phone: form.phone,
-          notes: form.notes,
         }),
       })
       const data = await res.json()
-      if (!res.ok) throw new Error(data.error || 'Error al enviar')
-      setStatus('sent')
+      if (!res.ok) throw new Error(data.error || 'Error al iniciar el pago')
+      window.location.href = data.url
+      return
     } catch (e: unknown) {
       setErrMsg(e instanceof Error ? e.message : 'Error al enviar')
       setStatus('error')
@@ -147,16 +127,6 @@ export default function SolicitarModal({ service, onClose }: Props) {
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Notas o información adicional</label>
-                <textarea
-                  rows={3}
-                  value={form.notes}
-                  onChange={e => set('notes', e.target.value)}
-                  placeholder="Comunidad autónoma, fecha deseada, particularidades del contrato..."
-                  className={`${input} resize-none`}
-                />
-              </div>
-
               {status === 'error' && (
                 <p className="text-red-600 text-sm bg-red-50 rounded-lg px-3 py-2">{errMsg}</p>
               )}
@@ -173,14 +143,12 @@ export default function SolicitarModal({ service, onClose }: Props) {
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z" />
                       </svg>
-                      {isPaymentService ? 'Redirigiendo a pago…' : 'Enviando...'}
+                      Redirigiendo a pago…
                     </>
-                  ) : isPaymentService ? 'Pagar 50 € con tarjeta →' : 'Solicitar este servicio'}
+                  ) : `Pagar ${service.price} € con tarjeta →`}
                 </button>
                 <p className="text-center text-xs text-gray-400 mt-2">
-                  {isPaymentService
-                    ? 'Pago seguro con Stripe · Redirige a pasarela de pago'
-                    : 'Te contactamos en 24h · Sin pago por adelantado'}
+                  Pago seguro con Stripe · Redirige a pasarela de pago
                 </p>
               </div>
             </form>

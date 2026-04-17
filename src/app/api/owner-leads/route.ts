@@ -7,9 +7,9 @@ const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!
 // si no, solo registra en consola de Vercel)
 async function sendNotification(lead: Record<string, unknown>) {
   const RESEND_KEY = process.env.RESEND_API_KEY
-  const NOTIFY_EMAIL = process.env.OWNER_LEADS_NOTIFY_EMAIL ?? process.env.ADMIN_EMAIL
+  const NOTIFY_EMAIL = process.env.OWNER_LEADS_NOTIFY_EMAIL ?? process.env.ADMIN_EMAIL ?? 'info@inmonest.com'
 
-  if (!RESEND_KEY || !NOTIFY_EMAIL) {
+  if (!RESEND_KEY) {
     // Sin configuración de email → solo log (Vercel Functions logs)
     console.log('[owner-lead] Nuevo lead de vendedor:', JSON.stringify(lead, null, 2))
     return

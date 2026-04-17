@@ -22,7 +22,7 @@ export default function RevealContact({ listingId, isParticular, isLoggedIn }: P
   async function handleReveal() {
     if (!isLoggedIn) {
       // Redirigir al login con return_to
-      window.location.href = `/auth/login?next=/pisos/${listingId}`
+      window.location.href = `/login?next=/pisos/${listingId}`
       return
     }
 
@@ -30,7 +30,7 @@ export default function RevealContact({ listingId, isParticular, isLoggedIn }: P
     try {
       const res = await fetch(`/api/pisos/${listingId}/contact`)
       if (res.status === 403) {
-        window.location.href = `/auth/login?next=/pisos/${listingId}`
+        window.location.href = `/login?next=/pisos/${listingId}`
         return
       }
       if (!res.ok) {
