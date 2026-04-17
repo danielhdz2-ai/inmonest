@@ -16,7 +16,7 @@ async function sendNotification(lead: Record<string, unknown>) {
   }
 
   const body = {
-    from: 'MiViviendaLibre <noreply@miviviendalibre.com>',
+    from: 'Inmonest <info@inmonest.com>',
     to: [NOTIFY_EMAIL],
     subject: `🏠 Nuevo lead de vendedor — ${lead.address ?? ''} (${lead.city ?? ''})`,
     html: `

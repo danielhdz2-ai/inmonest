@@ -43,7 +43,7 @@ async function geocodeCity(district: string | null, city: string | null, provinc
   try {
     const res = await fetch(
       `https://nominatim.openstreetmap.org/search?q=${q}&format=json&limit=1&countrycodes=es`,
-      { headers: { 'User-Agent': 'miviviendalibre.com/1.0' }, next: { revalidate: 86400 } }
+      { headers: { 'User-Agent': 'inmonest.com/1.0' }, next: { revalidate: 86400 } }
     )
     if (!res.ok) return null
     const data = await res.json() as Array<{ lat: string; lon: string }>

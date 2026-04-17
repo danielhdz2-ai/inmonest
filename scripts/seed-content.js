@@ -208,7 +208,7 @@ async function main() {
   }
 
   console.log(`\n\n🎉 Listo! ${inserted} anuncios en Supabase.`)
-  console.log('   La web ya tiene contenido. ¡Abre https://miviviendalibre.vercel.app!')
+  console.log('   La web ya tiene contenido. ¡Abre https://inmonest.com!')
 }
 
 main().catch(console.error)

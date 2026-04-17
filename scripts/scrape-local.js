@@ -6,7 +6,7 @@
 // Uso: node scripts/scrape-local.js
 // ============================================================
 
-const API_URL = 'https://miviviendalibre.vercel.app/api/ingest'
+const API_URL = 'https://inmonest.com/api/ingest'
 const API_SECRET = 'scraper-secret-mvl-2026'
 
 // ── Wallapop ──────────────────────────────────────────────────────────────────

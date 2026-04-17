@@ -4,8 +4,8 @@ import NavbarServer from '@/components/NavbarServer'
 import PublicarLandingClient from './PublicarLandingClient'
 
 export const metadata = {
-  title: 'Publica tu anuncio gratis — MiviviendaLibre',
-  description: 'Publica tu piso o casa en MiviviendaLibre. 2 anuncios gratis, visibilidad Turbo inmediata, trato directo con compradores e inquilinos verificados.',
+  title: 'Publica tu anuncio gratis — Inmonest',
+  description: 'Publica tu piso o casa en Inmonest. 2 anuncios gratis, visibilidad Turbo inmediata, trato directo con compradores e inquilinos verificados.',
 }
 
 const PASOS = [
@@ -124,7 +124,7 @@ export default async function PublicarAnuncioPage() {
 
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
               Cómo poner un anuncio<br />
-              <span className="text-[#f4c94a]">en MiviviendaLibre</span>
+              <span className="text-[#f4c94a]">en Inmonest</span>
             </h1>
             <p className="text-lg text-white/75 mb-8 leading-relaxed">
               Tus 2 primeros anuncios son gratuitos. Sin comisiones, trato directo

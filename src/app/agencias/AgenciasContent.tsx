@@ -102,7 +102,7 @@ export default function AgenciasContent() {
       if (!res.ok) throw new Error('Error al enviar')
       setSent(true)
     } catch {
-      setError('Hubo un problema al enviar. Por favor escríbenos a hola@miviviendalibre.com')
+      setError('Hubo un problema al enviar. Por favor escríbenos a info@inmonest.com')
     } finally {
       setSending(false)
     }
@@ -389,8 +389,8 @@ export default function AgenciasContent() {
       {/* ── Footer CTA ───────────────────────────────────────── */}
       <section className="bg-gray-900 text-white py-14 px-4 text-center">
         <p className="text-gray-400 text-sm mb-2">¿Prefieres hablar directamente?</p>
-        <a href="mailto:hola@miviviendalibre.com" className="text-[#f4c94a] font-semibold hover:underline">
-          hola@miviviendalibre.com
+        <a href="mailto:info@inmonest.com" className="text-[#f4c94a] font-semibold hover:underline">
+          info@inmonest.com
         </a>
       </section>
     </main>

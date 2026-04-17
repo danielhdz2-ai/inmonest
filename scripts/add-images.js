@@ -182,7 +182,7 @@ async function main() {
   }
 
   console.log(`\n\n🎉 ¡Listo! ${inserted} imágenes añadidas.`)
-  console.log('   Abre https://miviviendalibre.vercel.app/pisos para verlas.')
+  console.log('   Abre https://inmonest.com/pisos para verlas.')
 }
 
 main().catch(console.error)

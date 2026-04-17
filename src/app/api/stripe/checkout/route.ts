@@ -6,7 +6,7 @@ function getStripe() {
   return new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2026-03-25.dahlia' })
 }
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://miviviendalibre.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'https://inmonest.com'
 
 // Mapa slug → Stripe Price ID (se configuran en Vercel como env vars)
 // STRIPE_PRICE_TURBO_7D, STRIPE_PRICE_VISIBILITY_30D

@@ -14,7 +14,7 @@ function getOpenRouterKey(): string {
   return (process.env.OPENROUTER_API_KEY ?? '').trim()
 }
 
-const SYSTEM_PROMPT = `Eres un asistente de búsqueda de pisos para el portal MiviviendaLibre.
+const SYSTEM_PROMPT = `Eres un asistente de búsqueda de pisos para el portal Inmonest.
 Tu única función es interpretar lo que el usuario busca y devolver un JSON con los filtros de búsqueda.
 Responde EXCLUSIVAMENTE con un objeto JSON válido, sin texto adicional, sin markdown, sin explicaciones.
 
@@ -76,8 +76,8 @@ async function callOpenRouter(apiKey: string, lastUserMsg: string): Promise<stri
     headers: {
       'Authorization': `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://miviviendalibre.vercel.app',
-      'X-Title': 'MiviviendaLibre',
+      'HTTP-Referer': 'https://inmonest.com',
+      'X-Title': 'Inmonest',
     },
     body: JSON.stringify({
       model: 'openrouter/free',

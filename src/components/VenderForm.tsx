@@ -55,7 +55,7 @@ function useAddressSearch() {
       setLoading(true)
       try {
         const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query + ', España')}&format=json&addressdetails=1&limit=5&countrycodes=es`
-        const res = await fetch(url, { headers: { 'User-Agent': 'miviviendalibre.com/1.0' } })
+        const res = await fetch(url, { headers: { 'User-Agent': 'inmonest.com/1.0' } })
         const data = await res.json() as Array<{
           display_name: string
           lat: string

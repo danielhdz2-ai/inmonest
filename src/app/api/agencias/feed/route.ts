@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
 
     // Descargar el feed desde la URL
     const feedRes = await fetch(feedUrl, {
-      headers: { 'User-Agent': 'MiViviendaLibre-FeedBot/1.0' },
+      headers: { 'User-Agent': 'Inmonest-FeedBot/1.0' },
       signal: AbortSignal.timeout(15000),
     })
 

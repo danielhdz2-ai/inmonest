@@ -84,7 +84,7 @@ export async function scrapeMilanuncios(): Promise<MilanunciosListing[]> {
         const url = `https://www.milanuncios.com/rss/${slug}/?where=${citySlug}`
         const res = await fetch(url, {
           headers: {
-            'User-Agent': 'Mozilla/5.0 (compatible; bot/1.0; +https://miviviendalibre.com)',
+            'User-Agent': 'Mozilla/5.0 (compatible; bot/1.0; +https://inmonest.com)',
             'Accept': 'application/rss+xml, application/xml, text/xml',
           },
           next: { revalidate: 0 },

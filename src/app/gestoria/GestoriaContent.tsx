@@ -442,7 +442,7 @@ export default function GestoriaPage() {
           <div className="space-y-4">
             {[
               {
-                q: '¿Necesito tener cuenta en MiviviendaLibre para contratar?',
+                q: '¿Necesito tener cuenta en Inmonest para contratar?',
                 a: 'No. Puedes solicitar cualquier servicio sin tener cuenta. Solo necesitas un email de contacto donde te enviaremos el contrato.',
               },
               {
