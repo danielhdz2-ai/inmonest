@@ -18,7 +18,7 @@ export default function GestoriaPage() {
     <>
       <Navbar />
       <GestoriaContent />
-      <WhatsAppButton /></>
+      <WhatsAppButton />
     </>
   )
 }
