@@ -177,6 +177,54 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Buscador de Chollos ────────────────────────────────── */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="relative overflow-hidden rounded-3xl shadow-xl bg-[#0d1a0f] min-h-[300px] flex">
+          {/* Columna izquierda — imagen */}
+          <div className="hidden lg:block relative w-[420px] shrink-0 order-first">
+            <Image
+              src="/familia2.jpg"
+              alt="Personas buscando chollos inmobiliarios"
+              fill
+              className="object-cover object-center"
+              sizes="420px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-l from-[#0d1a0f] via-[#0d1a0f]/20 to-transparent" />
+          </div>
+
+          {/* Columna derecha — texto */}
+          <div className="relative z-10 flex flex-col justify-center px-8 sm:px-12 py-12 flex-1">
+            <span className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-[#c9962a]/25 text-[#f4c94a] text-xs font-semibold border border-[#c9962a]/40 mb-5">
+              🔍 Oportunidades exclusivas
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
+              Buscador de<br /><span className="text-[#f4c94a]">Chollos</span>
+            </h2>
+            <p className="mt-3 text-white/65 text-sm sm:text-base leading-relaxed max-w-sm">
+              Busca los chollos más interesantes de tu ciudad. Pisos de fondos bancarios, embargos y oportunidades únicas a precio de mercado o por debajo.
+            </p>
+            <div className="mt-7 flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/pisos?origen=fondos-bancarios"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg shadow-[#c9962a]/40"
+              >
+                Ver chollos disponibles →
+              </Link>
+              <Link
+                href="/pisos"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white/80 font-medium hover:bg-white/10 transition-colors text-sm"
+              >
+                Explorar todos los pisos
+              </Link>
+            </div>
+          </div>
+
+          {/* Destellos decorativos */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-[#c9962a]/8 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/3 w-40 h-40 bg-[#f4c94a]/5 rounded-full blur-2xl pointer-events-none" />
+        </div>
+      </section>
+
 
     </div>
   )
