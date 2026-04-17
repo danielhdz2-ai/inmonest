@@ -13,6 +13,14 @@ function getStripe() {
 }
 
 export async function POST(req: NextRequest) {
+  // Verificar que la clave de Stripe está configurada
+  if (!process.env.STRIPE_SECRET_KEY) {
+    return NextResponse.json(
+      { error: 'El pago con tarjeta no está disponible en este momento. Contacta con info@inmonest.com' },
+      { status: 503 }
+    )
+  }
+
   let body: { service_key?: string; client_email?: string }
   try {
     body = await req.json()
@@ -38,27 +46,32 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Email inválido' }, { status: 400 })
   }
 
-  const stripe = getStripe()
-  const session = await stripe.checkout.sessions.create({
-    mode: 'payment',
-    line_items: [
-      {
-        quantity: 1,
-        price_data: {
-          currency: 'eur',
-          unit_amount: service.price_eur * 100,
-          product_data: { name: service.name },
+  try {
+    const stripe = getStripe()
+    const session = await stripe.checkout.sessions.create({
+      mode: 'payment',
+      line_items: [
+        {
+          quantity: 1,
+          price_data: {
+            currency: 'eur',
+            unit_amount: service.price_eur * 100,
+            product_data: { name: service.name },
+          },
         },
-      },
-    ],
-    customer_email: safeEmail,
-    metadata: { service_key },
-    success_url: `${BASE_URL}/gestoria/carga-documentos?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${BASE_URL}/gestoria`,
-    locale: 'es',
-    payment_method_types: ['card'],
-    billing_address_collection: 'auto',
-  })
+      ],
+      customer_email: safeEmail,
+      metadata: { service_key },
+      success_url: `${BASE_URL}/gestoria/carga-documentos?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${BASE_URL}/gestoria`,
+      locale: 'es',
+      payment_method_types: ['card'],
+      billing_address_collection: 'auto',
+    })
 
-  return NextResponse.json({ url: session.url })
+    return NextResponse.json({ url: session.url })
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : 'Error al crear la sesión de pago'
+    return NextResponse.json({ error: msg }, { status: 500 })
+  }
 }
