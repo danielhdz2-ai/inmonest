@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Navbar from '@/components/NavbarServer'
 import VenderForm from '@/components/VenderForm'
 import Link from 'next/link'
@@ -63,13 +64,18 @@ export default function VenderCasaPage() {
       <Navbar />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#1a0d00] via-[#2e1900] to-[#42300a] min-h-[420px] sm:min-h-[500px] flex items-center">
-        {/* Patrón decorativo */}
-        <div className="absolute inset-0 opacity-5"
-          style={{ backgroundImage: 'radial-gradient(circle at 25% 50%, #f4c94a 0%, transparent 60%), radial-gradient(circle at 75% 20%, #c9962a 0%, transparent 50%)' }}
+      <section className="relative overflow-hidden min-h-[420px] sm:min-h-[500px] flex items-center">
+        {/* Imagen de fondo */}
+        <Image
+          src="/decorado1.jpg"
+          alt="Interior moderno"
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
         />
-        <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full bg-[#c9962a]/10 blur-3xl" />
-        <div className="absolute -bottom-10 -left-10 w-72 h-72 rounded-full bg-[#f4c94a]/8 blur-3xl" />
+        {/* Overlay oscuro para legibilidad */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/65 to-black/50" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">

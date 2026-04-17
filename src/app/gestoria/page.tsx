@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/NavbarServer'
 import GestoriaContent from './GestoriaContent'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 export const metadata: Metadata = {
   title: 'Contratos inmobiliarios — Gestoría experta | Inmonest',
@@ -17,6 +18,7 @@ export default function GestoriaPage() {
     <>
       <Navbar />
       <GestoriaContent />
+      <WhatsAppButton /></>
     </>
   )
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 const PLANES = [
@@ -112,8 +113,20 @@ export default function AgenciasContent() {
     <main className="bg-white min-h-screen">
 
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-24 px-4">
-        <div className="max-w-5xl mx-auto text-center">
+      <section className="relative overflow-hidden text-white py-24 px-4 min-h-[480px] flex items-center">
+        {/* Imagen de fondo */}
+        <Image
+          src="/interior1.jpg"
+          alt="Interior moderno"
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
+        />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/75 via-black/60 to-black/45" />
+
+        <div className="relative z-10 max-w-5xl mx-auto text-center w-full">
           <span className="inline-block bg-[#c9962a] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
             Para inmobiliarias
           </span>
@@ -121,7 +134,7 @@ export default function AgenciasContent() {
             Tu inmobiliaria,<br />
             <span className="text-[#f4c94a]">sin intermediarios de portal</span>
           </h1>
-          <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+          <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto mb-10">
             Publica tus inmuebles ante compradores y arrendatarios cualificados.
             Sin coste por clic. Sin pujas de visibilidad. Sin ruido de portales masificados.
           </p>
