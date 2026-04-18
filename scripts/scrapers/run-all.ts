@@ -15,8 +15,6 @@
  * Producción de pisos/día (aprox.):
  *   pisos.com part. alquiler  →  5
  *   pisos.com part. venta     →  5
- *   tucasa venta              →  5
- *   tucasa alquiler           →  5
  *   enalquiler (particulares) →  5
  *   milanuncios (particulares)→  5
  *   solvia (bancarios)        →  5
@@ -55,20 +53,6 @@ const jobs: { label: string; cmd: string }[] = [
   {
     label: '🏠 pisos.com particulares — venta Barcelona',
     cmd: `npx tsx scripts/scrapers/pisoscom_particulares.ts venta barcelona ${PAGES} ${MAX}`,
-  },
-
-  // ── tucasa.com ─────────────────────────────────────────────────────────────
-  {
-    label: '🏠 tucasa — venta Madrid',
-    cmd: `npx tsx scripts/scrapers/tucasa_standalone.ts venta madrid ${PAGES} 0 ${MAX}`,
-  },
-  {
-    label: '🏠 tucasa — alquiler Madrid',
-    cmd: `npx tsx scripts/scrapers/tucasa_standalone.ts alquiler madrid ${PAGES} 0 ${MAX}`,
-  },
-  {
-    label: '🏠 tucasa — venta Valencia',
-    cmd: `npx tsx scripts/scrapers/tucasa_standalone.ts venta valencia ${PAGES} 0 ${MAX}`,
   },
 
   // ── enalquiler.com (solo alquiler, 100% particulares) ─────────────────────
