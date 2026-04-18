@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Listing } from '@/types/listings'
 import ListingCardGallery from './ListingCardGallery'
+import FavoriteButton from './FavoriteButton'
 
 interface ListingCardProps {
   listing: Listing
@@ -60,6 +61,9 @@ export default function ListingCard({ listing }: ListingCardProps) {
               {listing.operation === 'rent' ? 'Alquiler' : 'Venta'}
             </span>
           </div>
+
+          {/* Favorito */}
+          <FavoriteButton listingId={listing.id} />
         </div>
 
         {/* Contenido */}
