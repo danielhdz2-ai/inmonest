@@ -30,6 +30,38 @@ function sleep(ms: number) {
   return new Promise(r => setTimeout(r, ms))
 }
 
+/**
+ * Verifica en paralelo qué URLs devuelven HTTP 200.
+ * Hace HEAD requests (más rápido, sin descargar el cuerpo).
+ * Máximo CONCURRENCY a la vez para no saturar el servidor.
+ */
+async function verifyImageUrls(urls: string[], concurrency = 4): Promise<string[]> {
+  const valid: string[] = []
+  const chunks: string[][] = []
+  for (let i = 0; i < urls.length; i += concurrency) {
+    chunks.push(urls.slice(i, i + concurrency))
+  }
+  for (const chunk of chunks) {
+    const results = await Promise.all(
+      chunk.map(async url => {
+        try {
+          const res = await fetch(url, {
+            method: 'HEAD',
+            headers: { 'User-Agent': UA },
+            signal: AbortSignal.timeout(6000),
+            redirect: 'follow',
+          })
+          return res.ok ? url : null
+        } catch {
+          return null
+        }
+      })
+    )
+    for (const u of results) if (u) valid.push(u)
+  }
+  return valid
+}
+
 async function fetchHtml(url: string): Promise<string | null> {
   try {
     const res = await fetch(url, {
@@ -319,9 +351,16 @@ export async function runTucasa(
         listing.description = detail.description
       if (detail.phone) listing.phone = detail.phone
 
-      // Regla boutique: solo subir si tiene ≥5 imágenes reales
-      if (!listing.images?.length || listing.images.length < 5) {
-        console.log(`  ⚠️ Solo ${listing.images?.length ?? 0} fotos (<5), descartado: ${listing.title?.slice(0, 60)}`)
+      // Verificar que las URLs de imagen devuelvan 200 (descartar rotas)
+      if (listing.images && listing.images.length > 0) {
+        const validImgs = await verifyImageUrls(listing.images)
+        console.log(`  🔍 Imágenes: ${listing.images.length} encontradas → ${validImgs.length} válidas`)
+        listing.images = validImgs
+      }
+
+      // Regla boutique: solo subir si tiene ≥3 imágenes válidas
+      if (!listing.images?.length || listing.images.length < 3) {
+        console.log(`  ⚠️ Solo ${listing.images?.length ?? 0} fotos válidas (<3), descartado: ${listing.title?.slice(0, 60)}`)
         totalSkipped++
         await sleep(DELAY_MS)
         continue

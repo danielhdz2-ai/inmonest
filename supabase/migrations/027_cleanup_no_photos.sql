@@ -13,22 +13,20 @@ SELECT
   COUNT(*) AS sin_foto
 FROM listings
 WHERE
-  user_id IS NULL          -- solo scraping, no anuncios de usuarios
-  AND has_images = false   -- sin ninguna imagen
-  AND (images IS NULL OR images = '[]'::jsonb OR jsonb_array_length(images) = 0)
+  source_portal IS NOT NULL  -- solo scraping, no anuncios de usuarios
+  AND has_images = false      -- sin ninguna imagen en listing_images
 GROUP BY source_portal
 ORDER BY sin_foto DESC;
 
 -- ── 2. Borrar los listings sin foto scrapeados ────────────────────────
 DELETE FROM listings
 WHERE
-  user_id IS NULL
-  AND has_images = false
-  AND (images IS NULL OR images = '[]'::jsonb OR jsonb_array_length(images) = 0);
+  source_portal IS NOT NULL
+  AND has_images = false;
 
 -- ── 3. Verificación post-limpieza ────────────────────────────────────
 SELECT COUNT(*) AS total_sin_foto_restantes
 FROM listings
 WHERE
-  user_id IS NULL
+  source_portal IS NOT NULL
   AND has_images = false;
