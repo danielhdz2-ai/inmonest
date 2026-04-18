@@ -8,7 +8,7 @@ export default function Footer() {
       {/* ── Imagen de fondo con overlay ─────────────────────────── */}
       <div className="absolute inset-0 pointer-events-none select-none">
         <Image
-          src="/familia1.jpg"
+          src="/amigos1.jpg"
           alt=""
           fill
           className="object-cover object-center opacity-10"

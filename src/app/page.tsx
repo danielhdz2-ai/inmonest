@@ -258,7 +258,7 @@ export default function Home() {
           {/* Columna derecha — imagen */}
           <div className="hidden lg:block relative w-[420px] shrink-0">
             <Image
-              src="/amigos1.jpg"
+              src="/familia3.jpg"
               alt="Familia buscando hipoteca"
               fill
               className="object-cover object-center"
