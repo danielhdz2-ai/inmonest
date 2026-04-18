@@ -10,18 +10,19 @@
 
 -- ── 1. Diagnóstico: ¿cuántas imágenes hay por dominio? ────────────────
 SELECT
-  SUBSTRING(url FROM 'https?://([^/]+)') AS dominio,
+  SUBSTRING(external_url FROM 'https?://([^/]+)') AS dominio,
   COUNT(*) AS total
 FROM listing_images
+WHERE external_url IS NOT NULL
 GROUP BY dominio
 ORDER BY total DESC
 LIMIT 30;
 
 -- ── 2. Borrar imágenes con URL claramente inválida (vacía o sin http) ─
 DELETE FROM listing_images
-WHERE url IS NULL
-   OR url = ''
-   OR url NOT LIKE 'http%';
+WHERE external_url IS NULL
+   OR external_url = ''
+   OR external_url NOT LIKE 'http%';
 
 -- ── 3. Recalcular has_images para todos los listings afectados ─────────
 UPDATE listings l

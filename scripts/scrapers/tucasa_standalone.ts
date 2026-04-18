@@ -244,26 +244,40 @@ export async function scrapeDetail(url: string): Promise<{
   const html = await fetchHtml(url)
   if (!html) return { images: [] }
 
-  // Imágenes: todas las cacheimg del detalle → usar /big/ para calidad
-  const cacheImgSet = new Set<string>()
-  for (const m of html.matchAll(/cacheimg\/(?:small|big)\/[\w/]+(?: |[./]jpg|[./]jpeg|[./]png|[./]webp)/gi)) {
-    // relimpiar
+  const imgSet = new Set<string>()
+
+  // ── Método 1: URLs directas /Fotos/{agency}/{listing}/{photo}.jpeg ──
+  // Ejemplo real: https://www.tucasa.com/Fotos/8014336/59536516/4286788805.jpeg
+  for (const m of html.matchAll(/https?:\/\/(?:www\.)?tucasa\.com\/Fotos\/\d+\/\d+\/\d+\.jpe?g/gi)) {
+    imgSet.add(m[0])
   }
-  for (const m of html.matchAll(/\/cacheimg\/(?:small|big)\/[^"'\s<>]+/gi)) {
-    const bigUrl = `https://www.tucasa.com${m[0].replace('/cacheimg/small/', '/cacheimg/big/')}`
-    cacheImgSet.add(bigUrl)
-  }
-  // Imagen del JSON-LD (apinmo.com, alta resolución)
-  const jldImgs: string[] = []
+
+  // ── Método 2: JSON-LD (alta resolución, puede ser apinmo.com) ───────
   for (const block of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)) {
     try {
       const j = JSON.parse(block[1])
-      if (typeof j.image === 'string') jldImgs.push(j.image)
-      else if (Array.isArray(j.image)) jldImgs.push(...j.image.filter((x: unknown) => typeof x === 'string'))
+      const imgs = typeof j.image === 'string' ? [j.image]
+                 : Array.isArray(j.image) ? j.image.filter((x: unknown) => typeof x === 'string')
+                 : []
+      for (const u of imgs) imgSet.add(u as string)
     } catch { /* noop */ }
   }
-  // Preferir apinmo (alta res) si está, luego cacheimg/big
-  const images = [...new Set([...jldImgs, ...cacheImgSet])].slice(0, 12)
+
+  // ── Método 3: JS embebido — array de fotos en variable JS ────────────
+  // Algunos portales meten algo como: photos:["url1","url2",...]
+  for (const m of html.matchAll(/(?:photos|images|fotos|gallery)\s*[=:]\s*\[([^\]]{20,5000})\]/gi)) {
+    const inner = m[1]
+    for (const urlMatch of inner.matchAll(/"(https?:\/\/[^"]+\.jpe?g[^"]*)"/gi)) {
+      imgSet.add(urlMatch[1])
+    }
+  }
+
+  // ── Método 4: cacheimg como fallback ────────────────────────────────
+  for (const m of html.matchAll(/\/cacheimg\/(?:small|big)\/[^"'\s<>]+/gi)) {
+    imgSet.add(`https://www.tucasa.com${m[0].replace('/cacheimg/small/', '/cacheimg/big/')}`)
+  }
+
+  const images = [...imgSet].slice(0, 15)
 
   // Descripción: de JSON-LD
   let description: string | undefined
