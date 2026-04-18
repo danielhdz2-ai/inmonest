@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ url: session.url })
   } catch (err) {
     // Log completo en servidor para diagnóstico
-    const stripeErr = err as Stripe.errors.StripeError
+    const stripeErr = err as { type?: string; code?: string; message?: string; raw?: unknown }
     console.error('[gestoria/checkout] Stripe error:', {
       type:    stripeErr.type,
       code:    stripeErr.code,
