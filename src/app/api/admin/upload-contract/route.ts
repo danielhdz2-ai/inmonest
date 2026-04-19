@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
       method:  'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${RESEND_KEY}` },
       body: JSON.stringify({
-        from:    'Inmonest <noreply@inmonest.com>',
+        from:    process.env.CONTACT_FROM_EMAIL ?? 'Inmonest <info@inmonest.com>',
         to:      fullRecord.client_email,
         subject: 'Tu contrato esta listo - Inmonest',
         html:    `
