@@ -7,30 +7,86 @@
  * Portafolio: activos inmobiliarios de Banco Sabadell (servicer: Intrum/Solvia)
  * Entidad bancaria mostrada: 'Banco Sabadell (Solvia/Intrum)'
  *
- * Badges propios de Solvia detectados:
- *   INMUEBLE DE BANCO   → is_bank = true (ranking +40 puntos)
- *   EN SITUACIÓN ESPECIAL, VENTA FLASH, NOVEDAD → se guardan en features
- *
- * Estructura de URLs:
- *   Listado venta:    https://www.solvia.es/es/comprar/piso/?pagina=N
- *   Listado alquiler: https://www.solvia.es/es/alquilar/piso/?pagina=N
- *   Detalle:          https://www.solvia.es/es/propiedades/{op}/{slug}-{id1}-{id2}
+ * IMPLEMENTACIÓN: Usa la API interna REST de Solvia (SPA Angular).
+ *   Endpoint de búsqueda: POST https://www.solvia.es/api/inmuebles/v2/buscarInmuebles
+ *   Endpoint de detalle:  GET  https://www.solvia.es/es/propiedades/{op}/{slug}-{idVivienda}-{promotionId}
  *
  * CDN imágenes: cdnsolvproep.solvia.es/uploaded/img_{UUID}.ORIGINAL.jpg
+ *   Nota: la API devuelve barras invertidas en las URLs → se normalizan con replace(/\\/g, '/')
  *
  * USO:
- *   npx tsx scripts/scrapers/solvia.ts [operacion] [maxPaginas]
+ *   npx tsx scripts/scrapers/solvia.ts [operacion] [maxPaginas] [maxItems] [provincia] [precioMax] [minFotos]
  *   operacion:  venta | alquiler (default: venta)
- *   maxPaginas: número de páginas a intentar (default: 5, una pág. ≈ 20 pisos)
+ *   maxPaginas: páginas de API a consultar (default: 5, ~20 pisos/página)
+ *   maxItems:   máximo de pisos a importar (default: 9999)
+ *   provincia:  barcelona | madrid | valencia | … (default: todas)
+ *   precioMax:  precio máximo en EUR (filtrado client-side)
+ *   minFotos:   mínimo de fotos requerido (default: 1)
  */
 
-import { upsertListing, type ScrapedListing } from './utils'
+import { upsertListing, extractAmenities, type ScrapedListing } from './utils'
 
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
 
-const BANK_ENTITY = 'Banco Sabadell (Solvia/Intrum)'
-const DELAY_MS    = 1500
+const BANK_ENTITY    = 'Banco Sabadell (Solvia/Intrum)'
+const DELAY_MS       = 1500
+const SOLVIA_API_URL = 'https://www.solvia.es/api/inmuebles/v2/buscarInmuebles'
+
+// Mapa de nombre de provincia normalizado → idProvincia en la API de Solvia
+const PROVINCE_IDS: Record<string, number> = {
+  alava: 1, albacete: 2, alicante: 3, almeria: 4, asturias: 33, avila: 5,
+  badajoz: 6, barcelona: 8, burgos: 9, caceres: 10, cadiz: 11, cantabria: 39,
+  castellon: 12, ceuta: 51, ciudad_real: 13, cordoba: 14, cuenca: 16,
+  girona: 17, granada: 18, guadalajara: 19, guipuzcoa: 20, huelva: 21,
+  huesca: 22, islas_baleares: 7, jaen: 23, la_rioja: 26, las_palmas: 35,
+  leon: 24, lleida: 25, lugo: 27, madrid: 28, malaga: 29, melilla: 52,
+  murcia: 30, navarra: 31, ourense: 32, palencia: 34, pontevedra: 36,
+  salamanca: 37, santa_cruz_tenerife: 38, segovia: 40, sevilla: 41,
+  soria: 42, tarragona: 43, teruel: 44, toledo: 45, valencia: 46,
+  valladolid: 47, vizcaya: 48, zamora: 49, zaragoza: 50,
+}
+
+// Interfaz del ítem devuelto por la API de búsqueda de Solvia
+interface SolviaSearchItem {
+  id: string                    // "178548-142529-O"
+  idVivienda: number
+  tituloFicha: string
+  precio: number
+  dormitorios: number
+  banyos: number
+  m2: number
+  provincia: { id: string; nombre: string }
+  poblacion: { id: number; nombre: string }
+  direccion: string
+  tipoVivienda: { id: number; nombre: string }
+  categoriaTipoVivienda: { id: number; nombre: string }
+  promocion: { id: number; titulo: string }
+  listaImagenesInmueble_vORIGINAL: string[]
+  situacionEspecial: boolean
+  novedad: boolean
+  reformar: boolean
+  idOrigenProducto: number
+  barrio: string | null
+}
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .trim()
+}
+
+function resolveProvince(name: string): number | undefined {
+  const key = name
+    .toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, '_')
+  return PROVINCE_IDS[key]
+}
 
 function sleep(ms: number) {
   return new Promise(r => setTimeout(r, ms))
@@ -308,99 +364,186 @@ function parseDetailPage(html: string, sourceUrl: string): {
   }
 }
 
+// ─── Extraer características del detalle ─────────────────────────────────────
+
+
 // ─── Scraper principal ───────────────────────────────────────────────────────
-export async function scrapeSolvia(operation: 'venta' | 'alquiler', maxPages: number, maxItems: number = 9999) {
-  const opEs   = operation === 'venta' ? 'comprar' : 'alquilar'
+export async function scrapeSolvia(
+  operation: 'venta' | 'alquiler',
+  maxPages: number,
+  maxItems: number = 9999,
+  provincia?: string,     // ej. 'barcelona' → mapea a idProvincia en la API
+  precioMax?: number,     // precio máximo (filtra client-side tras la búsqueda)
+  minFotos: number = 1,   // mínimo de fotos exigido (default 1 — acepta todos)
+) {
   const opLabel: 'sale' | 'rent' = operation === 'venta' ? 'sale' : 'rent'
+  const tipoOperacion = operation === 'venta' ? 'COMPRA' : 'ALQUILER'
+  const filtroTipo    = operation === 'venta' ? 'V' : 'A'
+  const opSlug        = operation === 'venta' ? 'comprar' : 'alquilar'
 
-  console.log(`\n🏦 Solvia (Banco Sabadell) — ${operation} pisos (hasta ${maxPages} páginas)`)
+  const idProvincia = provincia ? resolveProvince(provincia) : undefined
+  if (provincia && !idProvincia) {
+    console.warn(`⚠️  Provincia desconocida: '${provincia}'. Se usarán todas las provincias.`)
+  }
 
-  let imported = 0; let skipped = 0
-  const seenUrls = new Set<string>()
+  console.log(
+    `\n🏦 Solvia — ${operation}${provincia ? ` en ${provincia}` : ''}` +
+    `${precioMax ? ` (hasta ${precioMax.toLocaleString('es-ES')}€)` : ''} | ` +
+    `hasta ${maxPages} págs API | max ${maxItems} pisos`
+  )
+
+  // ── Paso 1: Colectar resultados de la API de búsqueda ────────────────────
+  const allItems: SolviaSearchItem[] = []
 
   for (let page = 1; page <= maxPages; page++) {
-    const listUrl = `https://www.solvia.es/es/${opEs}/piso/?pagina=${page}`
-    console.log(`  📄 Página ${page}: ${listUrl}`)
-
-    const listHtml = await fetchHtml(listUrl)
-    if (!listHtml) { console.log('  ⚠️  Sin respuesta, parando'); break }
-
-    if (listHtml.includes('No hemos encontrado resultados') || listHtml.includes('sin resultados')) {
-      console.log('  ✅ Sin más resultados'); break
+    const body: Record<string, unknown> = {
+      numeroPagina: page,
+      registrosPorPagina: 20,
+      idCategoriaTipoVivienda: 1,   // 1 = Viviendas
+      tipoOperacion,
+      filtroTipo,
     }
+    if (idProvincia) body.idProvincia = idProvincia
 
-    const items = extractListingUrls(listHtml)
-    const newItems = items.filter(it => !seenUrls.has(it.url))
-
-    if (newItems.length === 0) {
-      console.log('  ⚠️  Sin URLs nuevas (paginación JS no soportada en modo fetch) — parando')
+    console.log(`  📄 Página API ${page}…`)
+    let res: Response
+    try {
+      res = await fetch(SOLVIA_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'User-Agent': UA,
+          Origin: 'https://www.solvia.es',
+          Referer: 'https://www.solvia.es/',
+        },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(30_000),
+      })
+    } catch (err) {
+      console.warn(`  ⚠️  Fetch error en página ${page}: ${err}`)
       break
     }
 
-    console.log(`  → ${newItems.length} anuncios nuevos encontrados`)
-
-    for (const it of newItems) {
-      seenUrls.add(it.url)
-      await sleep(DELAY_MS)
-
-      const detailHtml = await fetchHtml(it.url)
-      if (!detailHtml) { skipped++; continue }
-
-      const d = parseDetailPage(detailHtml, it.url)
-
-      // El external ID es el último número en la URL: …-161982-199642 → 199642
-      const extIdM = it.url.match(/-(\d+)$/)
-      const externalId = `solvia_${extIdM ? extIdM[1] : it.url.split('/').pop()}`
-
-      const isBankProp = it.isBankBadge || d.isBankProperty
-
-      const listing: ScrapedListing = {
-        title:       d.title ?? `Piso en ${operation} — Solvia`,
-        description: d.description ?? undefined,
-        price_eur:   d.price ?? undefined,
-        operation:   opLabel,
-        province:    d.province ?? undefined,
-        city:        d.city ?? undefined,
-        district:    d.district ?? undefined,
-        postal_code: d.postalCode ?? undefined,
-        lat:         d.lat ?? undefined,
-        lng:         d.lng ?? undefined,
-        bedrooms:    d.bedrooms ?? undefined,
-        bathrooms:   d.bathrooms ?? undefined,
-        area_m2:     d.area ?? undefined,
-        source_portal: 'solvia.es',
-        source_url:    it.url,
-        source_external_id: externalId,
-        is_particular: false,
-        is_bank:       isBankProp,
-        bank_entity:   BANK_ENTITY,
-        images:        d.images,
-        external_link: it.url,
-      }
-
-      // Boutique: solo anuncios con ≥5 imágenes reales
-      if (d.images.length < 5) {
-        skipped++
-        console.log(`    ⚠️ Solo ${d.images.length} fotos (<5), descartado: ${(d.title ?? '').slice(0, 55)}`)
-        continue
-      }
-
-      const ok = await upsertListing(listing)
-      if (ok) {
-        imported++
-        const bankTag = isBankProp ? '🏦 ' : ''
-        console.log(
-          `    ✅ [${imported}/${maxItems}] ${bankTag}${(d.title ?? '').slice(0, 55)} | ${d.price?.toLocaleString('es-ES') ?? '?'}€ | ${d.area ?? '?'}m²`
-        )
-        if (imported >= maxItems) { console.log(`  🎯 Límite de ${maxItems} alcanzado`); break }
-      } else {
-        skipped++
-      }
+    if (!res.ok) {
+      console.warn(`  ⚠️  API HTTP ${res.status} en página ${page}`)
+      break
     }
 
+    const data = await res.json() as { inmuebles?: SolviaSearchItem[]; totalResultados?: number }
+    const items = data.inmuebles ?? []
+
+    if (items.length === 0) {
+      console.log('  ✅ Sin más resultados en la API')
+      break
+    }
+
+    console.log(`  → ${items.length} anuncios (totalResultados: ${data.totalResultados ?? '?'})`)
+    allItems.push(...items)
+
+    // Si ya tenemos suficientes para el filtrado no hace falta seguir
+    if (allItems.length >= maxItems * 6) break
+    await sleep(DELAY_MS)
+  }
+
+  // ── Paso 2: Filtrar pisos (tipo "Piso") y ordenar por precio ascendente ────
+  let candidates = allItems
+    .filter(it => it.tipoVivienda?.nombre === 'Piso')
+    .sort((a, b) => (a.precio ?? 0) - (b.precio ?? 0))
+
+  if (precioMax) {
+    candidates = candidates.filter(it => (it.precio ?? 0) <= precioMax)
+  }
+
+  console.log(
+    `\n  🏠 Pisos filtrados: ${candidates.length}` +
+    `${precioMax ? ` (≤ ${precioMax.toLocaleString('es-ES')}€)` : ''}` +
+    ` de ${allItems.length} viviendas totales`
+  )
+
+  // ── Paso 3: Enriquecer con página de detalle e insertar ───────────────────
+  let imported = 0; let skipped = 0
+  const seenIds = new Set<string>()
+
+  for (const item of candidates) {
     if (imported >= maxItems) break
-    console.log(`  📊 Página ${page}: importados ${imported}, saltados ${skipped}`)
-    await sleep(DELAY_MS * 2)
+    const externalId = `solvia_${item.idVivienda}`
+    if (seenIds.has(externalId)) continue
+    seenIds.add(externalId)
+
+    await sleep(DELAY_MS)
+
+    // Construcción de URL de detalle
+    const slug      = slugify(item.tituloFicha)
+    const detailUrl = `https://www.solvia.es/es/propiedades/${opSlug}/${slug}-${item.idVivienda}-${item.promocion?.id ?? 0}`
+
+    // Imágenes desde la API (normalizar barras invertidas)
+    const images = (item.listaImagenesInmueble_vORIGINAL ?? [])
+      .map(img => img.replace(/\\/g, '/'))
+      .filter(img => img.startsWith('https://'))
+
+    if (images.length < minFotos) {
+      skipped++
+      console.log(`    ⚠️ Solo ${images.length} fotos (<${minFotos}): ${item.tituloFicha.slice(0, 55)}`)
+      continue
+    }
+
+    // Obtener descripción, coords, features desde la página HTML de detalle
+    let description: string | null = null
+    let lat: number | null = null
+    let lng: number | null = null
+    let postalCode: string | null = null
+    let feats: Record<string, string> = {}
+
+    const detailHtml = await fetchHtml(detailUrl)
+    if (detailHtml) {
+      const d = parseDetailPage(detailHtml, detailUrl)
+      feats     = extractAmenities(detailHtml)
+      description = d.description
+      lat         = d.lat
+      lng         = d.lng
+      postalCode  = d.postalCode
+    }
+
+    // Badges de la respuesta de búsqueda
+    if (item.situacionEspecial) feats['situacion_especial'] = 'true'
+    if (item.novedad)           feats['novedad']            = 'true'
+    if (item.reformar)          feats['a_reformar']         = 'true'
+
+    const listing: ScrapedListing = {
+      title:              item.tituloFicha,
+      description:        description ?? undefined,
+      price_eur:          item.precio ?? undefined,
+      operation:          opLabel,
+      province:           item.provincia?.nombre ?? undefined,
+      city:               item.poblacion?.nombre ?? undefined,
+      postal_code:        postalCode ?? undefined,
+      lat:                lat ?? undefined,
+      lng:                lng ?? undefined,
+      bedrooms:           item.dormitorios ?? undefined,
+      bathrooms:          item.banyos ?? undefined,
+      area_m2:            item.m2 ?? undefined,
+      source_portal:      'solvia.es',
+      source_url:         detailUrl,
+      source_external_id: externalId,
+      is_particular:      false,
+      is_bank:            true,           // Todos los activos de Solvia son bancarios
+      bank_entity:        BANK_ENTITY,
+      images,
+      external_link:      detailUrl,
+      features:           Object.keys(feats).length > 0 ? feats : undefined,
+    }
+
+    const ok = await upsertListing(listing)
+    if (ok) {
+      imported++
+      console.log(
+        `    ✅ [${imported}/${maxItems}] ${item.tituloFicha.slice(0, 50)} | ` +
+        `${item.precio?.toLocaleString('es-ES') ?? '?'}€ | ${item.m2 ?? '?'}m² | ${images.length} fotos`
+      )
+    } else {
+      skipped++
+    }
   }
 
   console.log(`\n✅ Solvia — TOTAL: ${imported} importados, ${skipped} saltados`)
@@ -409,10 +552,18 @@ export async function scrapeSolvia(operation: 'venta' | 'alquiler', maxPages: nu
 
 // ─── Entry point ─────────────────────────────────────────────────────────────
 if (process.argv[1]?.includes('solvia')) {
-  const [op = 'venta', maxPagesStr = '5', maxItemsStr = '9999'] = process.argv.slice(2)
+  // USO: npx tsx scripts/scrapers/solvia.ts [op] [maxPags] [maxItems] [provincia] [precioMax] [minFotos]
+  const [op = 'venta', maxPagesStr = '5', maxItemsStr = '9999', provinciaArg, precioMaxStr, minFotosStr] = process.argv.slice(2)
   if (op !== 'venta' && op !== 'alquiler') {
     console.error('❌ Operación inválida. Usa: venta | alquiler')
     process.exit(1)
   }
-  scrapeSolvia(op as 'venta' | 'alquiler', parseInt(maxPagesStr, 10), parseInt(maxItemsStr, 10))
+  scrapeSolvia(
+    op as 'venta' | 'alquiler',
+    parseInt(maxPagesStr, 10),
+    parseInt(maxItemsStr, 10),
+    provinciaArg || undefined,
+    precioMaxStr ? parseInt(precioMaxStr, 10) : undefined,
+    minFotosStr ? parseInt(minFotosStr, 10) : 1,
+  )
 }

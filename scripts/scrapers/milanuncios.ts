@@ -14,7 +14,7 @@
  *   Filtro solo particulares: &demandante=par
  */
 
-import { upsertListing, type ScrapedListing } from './utils'
+import { upsertListing, extractAmenities, type ScrapedListing } from './utils'
 
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
@@ -378,7 +378,7 @@ export async function scrapeMilanuncios(
         is_particular: true,
         external_link: item.url,
         images: detail.images,
-        features: {},
+        features: extractAmenities(detailHtml),
       }
 
       const ok = await upsertListing(listing)

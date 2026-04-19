@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getStripeKey } from '@/lib/stripe-key'
+import { createClient } from '@/lib/supabase/server'
 
 export const dynamic = 'force-dynamic'
 
@@ -34,6 +35,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
   }
 
+  // Obtener usuario autenticado (opcional — el checkout funciona también sin cuenta)
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+
   const { service_key, client_email, client_name, client_phone } = body
 
   if (!service_key?.trim()) {
@@ -64,13 +69,15 @@ export async function POST(req: NextRequest) {
   params.set('line_items[0][price_data][product_data][name]', service.name)
   params.set('line_items[0][price_data][product_data][description]', 'Inmonest — Gestoría inmobiliaria')
   params.set('success_url', `${BASE_URL}${successPath}?session_id={CHECKOUT_SESSION_ID}`)
-  params.set('cancel_url', `${BASE_URL}/gestoria`)
+  params.set('cancel_url', `${BASE_URL}/gestoria/error?service_key=${encodeURIComponent(service_key)}&service_name=${encodeURIComponent(service.name)}&price=${service.price_eur}`)
   params.set('locale', 'es')
   params.set('payment_method_types[0]', 'card')
   params.set('billing_address_collection', 'auto')
+  params.set('phone_number_collection[enabled]', 'true')
   params.set('metadata[service_key]', service_key)
   params.set('metadata[client_name]',  (client_name?.trim() ?? '').slice(0, 120))
   params.set('metadata[client_phone]', (client_phone?.trim() ?? '').slice(0, 30))
+  if (user?.id) params.set('metadata[user_id]', user.id)
   if (safeEmail) params.set('customer_email', safeEmail)
 
   try {

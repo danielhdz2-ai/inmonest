@@ -120,21 +120,64 @@ export async function POST(req: NextRequest) {
     if (orderErr) console.log('[webhooks/stripe] orders update (normal si es gestoría directa):', orderErr.message)
 
     // ── 2. Guardar en gestoria_requests (idempotente) ────────────────────
-    const { error: grErr } = await supabase
-      .from('gestoria_requests')
-      .upsert({
-        session_id:             sessionId,
-        service_key:            serviceKey,
-        client_email:           clientEmail,
-        client_name:            clientName,
-        client_phone:           clientPhone,
-        amount_eur:             parseFloat(amount),
-        status:                 'paid',
-        paid_at:                new Date().toISOString(),
-        stripe_payment_intent:  paymentIntent,
-      }, { onConflict: 'session_id' })
-    if (grErr) console.error('[webhooks/stripe] gestoria_requests upsert error:', grErr.message)
-    else       console.log('[webhooks/stripe] gestoria_requests guardado OK')
+    const upsertPayload = {
+      session_id:             sessionId,
+      service_key:            serviceKey,
+      client_email:           clientEmail,
+      client_name:            clientName,
+      client_phone:           clientPhone,
+      amount_eur:             parseFloat(amount),
+      status:                 'paid',
+      paid_at:                new Date().toISOString(),
+      stripe_payment_intent:  paymentIntent,
+      user_id:                meta.user_id || null,
+    }
+    console.log('[webhooks/stripe] gestoria_requests upsert payload:', JSON.stringify(upsertPayload))
+
+    let grErr: { message: string; code?: string; details?: string } | null = null
+    try {
+      const result = await supabase
+        .from('gestoria_requests')
+        .upsert(upsertPayload, { onConflict: 'session_id' })
+      grErr = result.error as typeof grErr
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? e.message : String(e)
+      console.error('[webhooks/stripe] ERROR CRÍTICO en gestoria_requests upsert (excepción):', msg)
+      grErr = { message: msg }
+    }
+
+    if (grErr) {
+      // Detectar errores de esquema para diagnóstico inmediato
+      const isColumnMissing =
+        grErr.message?.includes('column') ||
+        grErr.code === '42703' ||          // PostgreSQL: undefined_column
+        grErr.details?.includes('column')
+      const isMissingTable =
+        grErr.message?.includes('relation') ||
+        grErr.code === '42P01'             // PostgreSQL: undefined_table
+
+      if (isColumnMissing) {
+        console.error(
+          '[webhooks/stripe] ERROR: Columna faltante en DB.' +
+          ' Ejecuta la migración 035b_gestoria_requests_fix.sql en Supabase SQL Editor.' +
+          ' Detalle:', grErr.message, '| code:', grErr.code
+        )
+      } else if (isMissingTable) {
+        console.error(
+          '[webhooks/stripe] ERROR: Tabla gestoria_requests no existe.' +
+          ' Detalle:', grErr.message
+        )
+      } else {
+        console.error(
+          '[webhooks/stripe] ERROR en gestoria_requests upsert:',
+          grErr.message, '| code:', grErr.code, '| details:', grErr.details
+        )
+      }
+      // No devolvemos 500 — el webhook debe responder 200 para que Stripe no reintente indefinidamente
+      // El problema es de configuración de DB, no del payload de Stripe
+    } else {
+      console.log('[webhooks/stripe] gestoria_requests guardado OK. session_id:', sessionId, '| user_id:', meta.user_id || 'anónimo')
+    }
 
     // ── 3. Email al ADMIN ────────────────────────────────────────────────
     await sendEmail({

@@ -50,7 +50,7 @@ type UploadStatus = 'idle' | 'uploading' | 'done' | 'error'
 interface FileEntry { file: File | null; status: UploadStatus; error?: string }
 
 export default function MisDocumentosClient({ requests, justPaid, userEmail }: Props) {
-  const [tab, setTab] = useState<'contratos' | 'docs' | 'estado'>(justPaid ? 'estado' : 'contratos')
+  const [tab, setTab] = useState<'pedidos' | 'contratos' | 'docs' | 'estado'>(justPaid ? 'estado' : 'pedidos')
   const [selectedRequest, setSelectedRequest] = useState<GestoriaRequest | null>(requests[0] ?? null)
   const [files, setFiles] = useState<Record<string, FileEntry>>({
     dni:           { file: null, status: 'idle' },
@@ -146,8 +146,9 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
       )}
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-gray-100 p-1 rounded-xl mb-6 w-fit">
+      <div className="flex gap-1 bg-gray-100 p-1 rounded-xl mb-6 w-fit flex-wrap">
         {([
+          { id: 'pedidos',   label: '🛒 Mis pedidos' },
           { id: 'contratos', label: '📄 Mis contratos' },
           { id: 'docs',      label: '📤 Subir documentos' },
           { id: 'estado',    label: '📊 Estado del trámite' },
@@ -163,6 +164,73 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
           </button>
         ))}
       </div>
+
+      {/* ── TAB: MIS PEDIDOS ─────────────────────────────────────────────── */}
+      {tab === 'pedidos' && (
+        <div>
+          {requests.length === 0 ? (
+            <div className="bg-white rounded-2xl border border-gray-200 p-16 text-center">
+              <div className="text-5xl mb-4">🛒</div>
+              <h2 className="text-xl font-semibold text-gray-700 mb-2">Aún no tienes pedidos</h2>
+              <p className="text-gray-500 text-sm mb-6">Cuando contrates un servicio de gestoría, aparecerá aquí.</p>
+              <Link href="/gestoria" className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors">
+                Ver servicios disponibles →
+              </Link>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {requests.map((req, i) => (
+                <div key={req.id} className="bg-white rounded-2xl border border-gray-200 p-5 flex flex-col sm:flex-row sm:items-center gap-4">
+                  {/* Número de pedido */}
+                  <div className="w-10 h-10 rounded-full bg-[#f4e9d0] text-[#7a5c1e] font-bold text-sm flex items-center justify-center flex-shrink-0">
+                    #{requests.length - i}
+                  </div>
+                  {/* Info */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-semibold text-gray-900 text-sm leading-snug">
+                      {SERVICE_LABELS[req.service_key] ?? req.service_key.replace(/-/g, ' ')}
+                    </h3>
+                    <div className="flex flex-wrap items-center gap-2 mt-1">
+                      {req.paid_at && (
+                        <span className="text-xs text-gray-400">
+                          {new Date(req.paid_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}
+                        </span>
+                      )}
+                      {req.client_name && (
+                        <span className="text-xs text-gray-400">· {req.client_name}</span>
+                      )}
+                    </div>
+                  </div>
+                  {/* Estado + importe */}
+                  <div className="flex items-center gap-3 flex-shrink-0">
+                    <span className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
+                      req.status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+                    }`}>
+                      {req.status === 'paid' ? '✓ Pagado' : 'Pendiente'}
+                    </span>
+                    <span className="text-[#c9962a] font-bold text-lg">
+                      {req.amount_eur != null ? `${Number(req.amount_eur).toFixed(2)} €` : '—'}
+                    </span>
+                  </div>
+                  {/* Paso actual */}
+                  <div className="sm:w-40 text-xs text-gray-400 flex-shrink-0">
+                    <div className="flex items-center gap-1.5">
+                      <div className="flex gap-0.5">
+                        {STEPS.map(s => (
+                          <div key={s.n} className={`w-2 h-2 rounded-full ${
+                            (req.step ?? 1) >= s.n ? 'bg-[#c9962a]' : 'bg-gray-200'
+                          }`} />
+                        ))}
+                      </div>
+                      <span>{STEPS.find(s => s.n === (req.step ?? 1))?.label ?? 'Pago confirmado'}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* ── TAB: CONTRATOS ─────────────────────────────────────────────────── */}
       {tab === 'contratos' && (

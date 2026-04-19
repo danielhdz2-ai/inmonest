@@ -26,10 +26,11 @@ export default async function MisDocumentosPage({
   let requests: GestoriaRequest[] = []
 
   if (user) {
+    // Buscar por user_id (pagos con sesión) O por email (retrocompatibilidad)
     const { data } = await supabase
       .from('gestoria_requests')
       .select('id,session_id,service_key,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at')
-      .eq('client_email', user.email)
+      .or(`user_id.eq.${user.id},client_email.eq.${user.email}`)
       .order('paid_at', { ascending: false })
     requests = (data ?? []) as GestoriaRequest[]
   } else if (sessionId) {

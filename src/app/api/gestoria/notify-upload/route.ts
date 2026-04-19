@@ -1,16 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
-import Stripe from 'stripe'
 import { createClient } from '@supabase/supabase-js'
-
-function getStripe() {
-  return new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2026-03-25.dahlia' })
-}
+import { getStripeKey } from '@/lib/stripe-key'
 
 function getSupabaseAdmin() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_KEY ?? process.env.SUPABASE_SERVICE_ROLE_KEY!,
   )
+}
+
+interface StripeSession {
+  payment_status: string
+  customer_email: string | null
+  customer_details?: { email?: string | null }
 }
 
 const RESEND_API = 'https://api.resend.com/emails'
@@ -34,13 +36,24 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'session_id inválido' }, { status: 400 })
   }
 
-  // Verificar pago
-  const stripe = getStripe()
-  let session: Stripe.Checkout.Session
+  const key = getStripeKey()
+  if (!key) {
+    return NextResponse.json({ error: 'Stripe no configurado' }, { status: 503 })
+  }
+
+  // Verificar pago (fetch nativo, sin SDK)
+  let session: StripeSession
   try {
-    session = await stripe.checkout.sessions.retrieve(session_id)
+    const res = await fetch(
+      `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(session_id)}`,
+      { headers: { Authorization: `Bearer ${key}` } },
+    )
+    session = await res.json() as StripeSession
+    if (!res.ok) {
+      return NextResponse.json({ error: 'Sesión de pago no encontrada' }, { status: 404 })
+    }
   } catch {
-    return NextResponse.json({ error: 'Sesión de pago no encontrada' }, { status: 404 })
+    return NextResponse.json({ error: 'Error de red al verificar pago' }, { status: 502 })
   }
 
   if (session.payment_status !== 'paid') {

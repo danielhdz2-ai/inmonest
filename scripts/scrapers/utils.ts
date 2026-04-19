@@ -32,7 +32,106 @@ export interface ScrapedListing {
   external_link?: string
   phone?: string             // siempre guardar, incluso para agencias
   features?: Record<string, string>  // campos extra: planta, antiguedad, tipo_casa, etc.
+  video_url?: string         // URL de vídeo del inmueble (YouTube embed, etc.)
+  virtual_tour_url?: string  // URL de tour virtual (Matterport, etc.)
   upload_to_storage?: boolean  // si true, descarga las imágenes y las sube a Supabase Storage
+}
+
+/**
+ * Extrae amenidades canónicas de un fragmento de HTML o texto plano.
+ * Devuelve un objeto con claves canónicas y valor 'true' (o valor concreto).
+ * Usada por TODOS los scrapers → datos homogéneos en la BD.
+ */
+export function extractAmenities(text: string): Record<string, string> {
+  const feat: Record<string, string> = {}
+
+  // JSON-LD amenityFeature (cuando se pasa HTML completo)
+  const ldBlocks = text.match(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi) ?? []
+  for (const block of ldBlocks) {
+    const inner = block.replace(/<\/?script[^>]*>/gi, '')
+    try {
+      const obj = JSON.parse(inner)
+      const amenities: Array<{ name?: string; value?: unknown }> = (
+        obj.amenityFeature ?? obj['@graph']?.[0]?.amenityFeature ?? []
+      )
+      for (const a of amenities) {
+        if (a.name && (a.value === true || a.value === 'true' || a.value === 1))
+          feat[a.name.toLowerCase().replace(/\s+/g, '_')] = 'true'
+      }
+    } catch { /* ignorar */ }
+  }
+
+  // Patrones textuales — clave canónica siempre en minúsculas con guión bajo
+  const PATS: Array<[RegExp, string]> = [
+    [/ascensor/i,                               'ascensor'],
+    [/piscina/i,                                'piscina'],
+    [/garaje|plaza\s+de\s+parking|\bparking\b/i,'garaje'],
+    [/trastero/i,                               'trastero'],
+    [/terraza|balc[oó]n/i,                      'terraza'],
+    [/jard[ií]n/i,                              'jardin'],
+    [/aire\s+acondicionado|\ba\/c\b/i,          'aire_acondicionado'],
+    [/armarios?\s+empotrados?/i,                'armarios_empotrados'],
+    [/calefacci[oó]n/i,                         'calefaccion'],
+    [/exterior/i,                               'exterior'],
+    [/obra\s+nueva/i,                           'obra_nueva'],
+    [/a\s+reformar/i,                           'a_reformar'],
+    [/buen\s+estado/i,                          'buen_estado'],
+    [/portero\s+autom[aá]tico|videoportero/i,   'portero_automatico'],
+    [/amueblado/i,                              'amueblado'],
+  ]
+  for (const [re, key] of PATS) {
+    if (re.test(text) && !feat[key]) feat[key] = 'true'
+  }
+
+  // Planta (valor numérico o texto)
+  const plantaM = text.match(/(\d+)[ºª]?\s*planta/i) ?? text.match(/planta\s+(\w+)/i)
+  if (plantaM) feat['planta'] = plantaM[1]
+
+  // Año de construcción
+  const anioM =
+    text.match(/construid[oa][^<\n]*?(\d{4})/i) ??
+    text.match(/a[ñn]o(?:\s+de)?\s+construcci[oó]n[^<\n]*?(\d{4})/i)
+  if (anioM) {
+    const yr = parseInt(anioM[1])
+    if (yr > 1900 && yr <= new Date().getFullYear()) feat['anio_construccion'] = anioM[1]
+  }
+
+  // Calificación energética (A–G)
+  const enM =
+    text.match(/calificaci[oó]n\s+energ[eé]tica[^A-G\n]{0,30}([A-G])\b/i) ??
+    text.match(/certificado[^A-G\n]{0,30}\bclase\s+([A-G])\b/i) ??
+    text.match(/energ[eé]tica[^:\n]{0,10}:\s*([A-G])\b/i)
+  if (enM) feat['eficiencia_energetica'] = enM[1].toUpperCase()
+
+  return feat
+}
+
+/**
+ * Normaliza el nombre de una ciudad para almacenamiento canónico.
+ * - Elimina código postal embebido: "Barcelona 08001" → "Barcelona"
+ * - Elimina sufijo de provincia en paréntesis: "El Escorial (Madrid)" → "El Escorial"
+ * - Capitaliza correctamente, elimina espacios múltiples
+ */
+export function normalizeCity(raw: string | null | undefined): string | null {
+  if (!raw || raw.trim() === '') return null
+  let s = raw.trim()
+  // Código postal al final: "Barcelona 08001"
+  s = s.replace(/\s+\d{5}\s*$/, '').trim()
+  // Provincia en paréntesis: "Valencia (Valencia)"
+  s = s.replace(/\s*\([^)]+\)\s*$/, '').trim()
+  // Espacios múltiples
+  s = s.replace(/\s{2,}/g, ' ')
+  // Capitalizar (los artículos/preposiciones van en minúsculas salvo la primera palabra)
+  const LOWER = new Set(['de', 'del', 'la', 'las', 'los', 'el', 'els', 'les', 'i', 'y', 'a'])
+  s = s
+    .split(' ')
+    .map((w, i) =>
+      i === 0 || !LOWER.has(w.toLowerCase())
+        ? w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()
+        : w.toLowerCase(),
+    )
+    .join(' ')
+  return s || null
 }
 
 const SUPABASE_URL = 'https://ktsdxpmaljiyuwimcugx.supabase.co'
@@ -358,6 +457,8 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
     features: listing.features && Object.keys(listing.features).length > 0
       ? listing.features
       : undefined,
+    video_url: listing.video_url ?? null,
+    virtual_tour_url: listing.virtual_tour_url ?? null,
   }
 
   // ── Paso 4: PATCH si existe, INSERT si no ─────────────────────────────────

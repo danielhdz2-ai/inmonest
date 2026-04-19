@@ -19,7 +19,7 @@
 
 import { chromium } from 'playwright-extra'
 import StealthPlugin from 'puppeteer-extra-plugin-stealth'
-import { upsertListing, type ScrapedListing } from './utils'
+import { upsertListing, extractAmenities, type ScrapedListing } from './utils'
 
 chromium.use(StealthPlugin())
 
@@ -294,6 +294,10 @@ function parseRealEstate(
 
   const externalId = `fc_${re.id}`
 
+  // Extraer amenidades del texto de la descripción
+  const amenities = extractAmenities(description ?? '')
+  if (floorRaw !== undefined && floorRaw !== null) amenities['planta'] = String(floorRaw)
+
   const listing: ScrapedListing = {
     title,
     description: description ?? undefined,
@@ -314,15 +318,12 @@ function parseRealEstate(
     is_particular:       true,
     advertiser_name:     advertiserName,
     images,
+    features: amenities,
     external_link:       fullDetailUrl,
     // phone: fotocasa oculta el teléfono tras login — no disponible sin autenticación
   }
 
-  // Añadir planta si está disponible
-  if (floorRaw !== undefined && floorRaw !== null) {
-    ;(listing as ScrapedListing & { floor?: string }).floor = String(floorRaw)
-  }
-
+  // La planta ya se procesó arriba junto con extractAmenities — no añadir dos veces
   return listing
 }
 

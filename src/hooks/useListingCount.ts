@@ -2,11 +2,13 @@
 
 /**
  * useListingCount
- * Cuenta los anuncios que coinciden con los filtros actuales de la URL.
+ * Cuenta los anuncios que coinciden con los filtros actuales de la URL,
+ * opcionalmente sobreescritos por `overrides` (estado local pendiente).
  * Debouncea los cambios 350 ms para no saturar Supabase.
  *
  * USO:
- *   const { count, loading } = useListingCount()
+ *   const { count, loading } = useListingCount()                   // sólo URL
+ *   const { count, loading } = useListingCount({ caract: 'ascensor,piscina' }) // local state
  */
 
 import { useEffect, useRef, useState } from 'react'
@@ -16,13 +18,19 @@ import { applyProFilters, parseProParams } from '@/lib/search-filters'
 
 const DEBOUNCE_MS = 350
 
-export function useListingCount() {
+export function useListingCount(overrides?: Record<string, string>) {
   const sp = useSearchParams()
   const [count, setCount]     = useState<number | null>(null)
   const [loading, setLoading] = useState(false)
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
+  // Serialise overrides so the effect dep is stable when values don't change
+  const overridesKey = overrides ? JSON.stringify(overrides) : ''
+
   useEffect(() => {
+    // Helper: prefer override value, otherwise fall back to URL param
+    const get = (key: string) => overrides?.[key] ?? sp.get(key)
+
     if (timer.current) clearTimeout(timer.current)
 
     timer.current = setTimeout(async () => {
@@ -37,21 +45,21 @@ export function useListingCount() {
           .eq('has_images', true)
 
         // ── Filtros base (mismos que searchListings en lib/listings.ts) ──
-        const operacion = sp.get('operacion')
-        const ciudad    = sp.get('ciudad')
-        const hab       = sp.get('hab')
-        const banos     = sp.get('banos')
-        const precioMin = sp.get('precio_min')
-        const precioMax = sp.get('precio_max')
-        const areaMin   = sp.get('area_min')
-        const areaMax   = sp.get('area_max')
+        const operacion = get('operacion')
+        const ciudad    = get('ciudad')
+        const hab       = get('hab')
+        const banos     = get('banos')
+        const precioMin = get('precio_min')
+        const precioMax = get('precio_max')
+        const areaMin   = get('area_min')
+        const areaMax   = get('area_max')
 
         if (operacion) q = q.eq('operation', operacion)
         if (ciudad)    q = q.ilike('city', `%${ciudad}%`)
 
-        if (sp.get('solo_particulares') === 'true') q = q.eq('is_particular', true)
-        if (sp.get('solo_bancarias')    === 'true') q = q.eq('is_bank', true)
-        if (sp.get('solo_agencias')     === 'true') {
+        if (get('solo_particulares') === 'true') q = q.eq('is_particular', true)
+        if (get('solo_bancarias')    === 'true') q = q.eq('is_bank', true)
+        if (get('solo_agencias')     === 'true') {
           q = q.eq('is_particular', false).eq('is_bank', false)
         }
 
@@ -64,12 +72,12 @@ export function useListingCount() {
 
         // ── Filtros pro (features JSONB + fecha) ─────────────────────────
         q = applyProFilters(q, parseProParams({
-          estado:     sp.get('estado')     ?? undefined,
-          caract:     sp.get('caract')     ?? undefined,
-          planta:     sp.get('planta')     ?? undefined,
-          energia:    sp.get('energia')    ?? undefined,
-          multimedia: sp.get('multimedia') ?? undefined,
-          fecha_pub:  sp.get('fecha_pub')  ?? undefined,
+          estado:     get('estado')     ?? undefined,
+          caract:     get('caract')     ?? undefined,
+          planta:     get('planta')     ?? undefined,
+          energia:    get('energia')    ?? undefined,
+          multimedia: get('multimedia') ?? undefined,
+          fecha_pub:  get('fecha_pub')  ?? undefined,
         }))
 
         const { count: n } = await q
@@ -84,7 +92,8 @@ export function useListingCount() {
     return () => {
       if (timer.current) clearTimeout(timer.current)
     }
-  }, [sp])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sp, overridesKey])
 
   return { count, loading }
 }

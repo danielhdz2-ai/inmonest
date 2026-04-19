@@ -12,7 +12,7 @@ export default async function ContratosPage() {
     supabase
       .from('gestoria_requests')
       .select('id,session_id,service_key,client_name,amount_eur,status,step,paid_at,contract_path,created_at')
-      .eq('client_email', user!.email)
+      .or(`client_email.eq.${user!.email},user_id.eq.${user!.id}`)
       .order('paid_at', { ascending: false }),
     supabase
       .from('user_documents')

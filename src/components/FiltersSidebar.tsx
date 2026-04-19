@@ -1,7 +1,8 @@
 'use client'
 
-import { useCallback, useState, type ReactNode } from 'react'
+import { useCallback, useMemo, useState, type ReactNode } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useListingCount } from '@/hooks/useListingCount'
 
 // ── Datos ────────────────────────────────────────────────────────────────
 type Item = { label: string; value: string }
@@ -214,6 +215,26 @@ export default function FiltersSidebar({ isOpen, onClose }: FiltersSidebarProps)
   const toggleList = (list: string[], value: string) =>
     list.includes(value) ? list.filter((x) => x !== value) : [...list, value]
 
+  // ── Conteo en tiempo real a partir del estado local pendiente ─────────
+  const liveOverrides = useMemo(() => {
+    const o: Record<string, string> = {}
+    if (precioMin)        o.precio_min  = precioMin
+    if (precioMax)        o.precio_max  = precioMax
+    if (hab)              o.hab         = hab
+    if (banos)            o.banos       = banos
+    if (areaMin)          o.area_min    = areaMin
+    if (areaMax)          o.area_max    = areaMax
+    if (estado)           o.estado      = estado
+    if (caract.length)    o.caract      = caract.join(',')
+    if (planta)           o.planta      = planta
+    if (energia)          o.energia     = energia
+    if (multimedia.length) o.multimedia = multimedia.join(',')
+    if (fechaPub)         o.fecha_pub   = fechaPub
+    return o
+  }, [precioMin, precioMax, hab, banos, areaMin, areaMax, estado, caract, planta, energia, multimedia, fechaPub])
+
+  const { count: liveCount, loading: countLoading } = useListingCount(liveOverrides)
+
   const hasActive = !!(
     precioMin || precioMax || hab || banos || areaMin || areaMax ||
     estado || caract.length || planta || energia || multimedia.length || fechaPub
@@ -321,12 +342,6 @@ export default function FiltersSidebar({ isOpen, onClose }: FiltersSidebarProps)
             active={caract}
             onToggle={(v) => setCaract((prev) => toggleList(prev, v))}
           />
-          <button
-            onClick={() => nav({ caract: caract.join(',') })}
-            className="mt-3 w-full py-2 rounded-lg border border-gold-300 text-gold-600 text-xs font-semibold hover:bg-gold-50 transition-colors"
-          >
-            Aplicar características
-          </button>
         </Section>
 
         {/* Planta */}
@@ -389,13 +404,21 @@ export default function FiltersSidebar({ isOpen, onClose }: FiltersSidebarProps)
 
       </div>
 
-      {/* Botón mobile */}
-      <div className="lg:hidden pt-4 border-t border-gray-100 mt-4">
+      {/* Botón Ver X anuncios — visible en desktop y mobile */}
+      <div className="pt-4 border-t border-gray-100 mt-2">
         <button
           onClick={applyAll}
-          className="w-full py-3 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-gold-600 transition-colors"
+          disabled={countLoading}
+          className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white text-sm font-semibold transition-colors disabled:opacity-70"
         >
-          Aplicar filtros
+          {countLoading && (
+            <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
+          )}
+          {countLoading
+            ? 'Calculando…'
+            : liveCount === null
+              ? 'Ver anuncios'
+              : `Ver ${liveCount.toLocaleString('es-ES')} anuncio${liveCount !== 1 ? 's' : ''}`}
         </button>
       </div>
 

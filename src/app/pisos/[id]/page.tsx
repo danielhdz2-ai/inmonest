@@ -14,6 +14,7 @@ import type { Metadata } from 'next'
 
 interface Props {
   params: Promise<{ id: string }>
+  searchParams?: Promise<Record<string, string | undefined>>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -54,8 +55,10 @@ async function geocodeCity(district: string | null, city: string | null, provinc
   }
 }
 
-export default async function ListingDetailPage({ params }: Props) {
+export default async function ListingDetailPage({ params, searchParams }: Props) {
   const { id } = await params
+  const sp = searchParams ? await searchParams : {}
+  const justPublished = sp.publicado === '1'
   const listing = await getListingById(id)
 
   if (!listing) notFound()
@@ -89,6 +92,19 @@ export default async function ListingDetailPage({ params }: Props) {
     <div className="flex flex-col min-h-screen bg-white">
       <Navbar />
       <ViewTracker listingId={listing.id} />
+
+      {/* Banner publicación exitosa */}
+      {justPublished && (
+        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 border-b border-amber-200">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3">
+            <span className="text-2xl">🎉</span>
+            <div>
+              <p className="font-semibold text-amber-800 text-sm">¡Anuncio publicado con éxito!</p>
+              <p className="text-amber-700 text-xs">Tu anuncio ya es visible para todos los interesados. Compártelo para llegar a más personas.</p>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ── Galería edge-to-edge (sin contenedor, sin márgenes) ── */}
       <ListingGallery
@@ -340,7 +356,11 @@ export default async function ListingDetailPage({ params }: Props) {
 
               <div className="p-6 space-y-4">
                 <h3 className="font-semibold text-gray-900 text-sm">Contacta con el anunciante</h3>
-                <ContactForm listingId={listing.id} />
+                <ContactForm
+                  listingId={listing.id}
+                  initialName={user?.user_metadata?.full_name ?? user?.user_metadata?.name ?? undefined}
+                  initialEmail={user?.email ?? undefined}
+                />
 
                 <RevealContact
                   listingId={listing.id}
@@ -420,7 +440,11 @@ export default async function ListingDetailPage({ params }: Props) {
             </div>
             <div className="p-6 space-y-4">
               <h3 className="font-semibold text-gray-900 text-sm">Contacta con el anunciante</h3>
-              <ContactForm listingId={listing.id} />
+              <ContactForm
+                listingId={listing.id}
+                initialName={user?.user_metadata?.full_name ?? user?.user_metadata?.name ?? undefined}
+                initialEmail={user?.email ?? undefined}
+              />
               <RevealContact
                 listingId={listing.id}
                 isParticular={listing.is_particular}

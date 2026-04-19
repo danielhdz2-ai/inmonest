@@ -15,19 +15,78 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Inmonest | Venta de pisos entre particulares sin comisiones",
-  description: "La plataforma líder para vender tu casa directamente. Sin agencias, sin comisiones. Quédate con el 100% de tu venta.",
-  keywords: "pisos particulares, vender casa sin comisión, alquiler sin agencia, compra sin intermediarios, inmuebles particulares España, inmonest",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://inmonest.com'),
-  alternates: {
-    canonical: '/',
+
+  // title.template: todas las subpáginas heredan automáticamente "Título | Inmonest"
+  title: {
+    default: 'Inmonest | Pisos entre particulares sin comisiones',
+    template: '%s | Inmonest',
   },
+  description:
+    'Compra, vende o alquila tu piso directamente entre particulares. Sin agencias, sin comisiones. Miles de inmuebles en toda España.',
+  keywords: [
+    'pisos particulares',
+    'vender casa sin comisión',
+    'alquiler sin agencia',
+    'comprar piso sin intermediarios',
+    'inmuebles particulares España',
+    'portal inmobiliario sin comisiones',
+    'contratos de arras',
+    'contrato de alquiler',
+    'gestoría inmobiliaria online',
+    'inmonest',
+  ],
+  authors: [{ name: 'Inmonest', url: 'https://inmonest.com' }],
+  creator: 'Inmonest',
+  publisher: 'Inmonest',
+  applicationName: 'Inmonest',
+
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    shortcut: '/icon.png',
+    apple: '/apple-icon.png',
+  },
+
+  // Directivas de rastreo — permite que Google indexe todo el contenido útil
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+
+  // Open Graph — imagen cuando alguien comparte un link
   openGraph: {
-    title: "Inmonest | Venta de pisos sin comisiones",
-    description: "La plataforma líder para vender tu casa directamente. Sin agencias, sin comisiones.",
-    locale: "es_ES",
-    type: "website",
-    siteName: "Inmonest",
+    title: 'Inmonest | Pisos entre particulares sin comisiones',
+    description:
+      'Compra, vende o alquila tu piso directamente entre particulares. Sin agencias, sin comisiones.',
+    url: 'https://inmonest.com',
+    siteName: 'Inmonest',
+    locale: 'es_ES',
+    type: 'website',
+    images: [
+      {
+        url: '/og-image.jpg',  // crea public/og-image.jpg a 1200×630px para mejor resultado
+        width: 1200,
+        height: 630,
+        alt: 'Inmonest — Pisos sin comisiones entre particulares',
+      },
+    ],
+  },
+
+  // Twitter / X Card
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Inmonest | Pisos entre particulares sin comisiones',
+    description: 'Compra, vende o alquila tu piso directamente. Sin agencias, sin comisiones.',
+    images: ['/og-image.jpg'],
   },
 };
 

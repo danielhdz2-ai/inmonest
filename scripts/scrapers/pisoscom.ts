@@ -9,7 +9,7 @@
  *   maxPages: número de páginas a scraper (default: 5)
  */
 
-import { upsertListing, type ScrapedListing } from './utils'
+import { upsertListing, extractAmenities, type ScrapedListing } from './utils'
 
 const UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
@@ -521,13 +521,16 @@ async function scrapeCity(
         is_particular: detail.isParticular,  // Detectado del HTML ("Anunciante particular")
         images: detail.images,
         features: {
-          ...(detail.floor         ? { planta: detail.floor }                 : {}),
+          // Amenidades detectadas por regex del HTML completo
+          ...extractAmenities(detailHtml),
+          // Campos estructurados del scraper (sobrescriben si hay conflicto)
+          ...(detail.floor         ? { planta: detail.floor }                    : {}),
           ...(detail.areaUseful    ? { area_util_m2: String(detail.areaUseful) } : {}),
-          ...(detail.propertyType  ? { tipo_casa: detail.propertyType }       : {}),
-          ...(detail.ageText       ? { antiguedad: detail.ageText }           : {}),
-          ...(detail.referenceId   ? { referencia: detail.referenceId }       : {}),
-          ...(detail.orientation   ? { orientacion: detail.orientation }       : {}),
-          ...(detail.energyCert    ? { cert_energetico: detail.energyCert }   : {}),
+          ...(detail.propertyType  ? { tipo_casa: detail.propertyType }          : {}),
+          ...(detail.ageText       ? { antiguedad: detail.ageText }              : {}),
+          ...(detail.referenceId   ? { referencia: detail.referenceId }          : {}),
+          ...(detail.orientation   ? { orientacion: detail.orientation }         : {}),
+          ...(detail.energyCert    ? { cert_energetico: detail.energyCert }      : {}),
         },
       }
 

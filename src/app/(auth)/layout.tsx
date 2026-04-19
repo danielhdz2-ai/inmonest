@@ -8,33 +8,23 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
       {/* ── Columna izquierda: marketing ────────────────────────────── */}
       <div className="hidden lg:flex lg:w-[55%] xl:w-[60%] flex-col relative overflow-hidden bg-[#0f1a12]">
 
-        {/* Imágenes en grid */}
-        <div className="absolute inset-0 grid grid-rows-2">
-          {/* Imagen superior — decorado */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/decorado1.jpg"
-            alt="Vivienda moderna"
-            className="w-full h-full object-cover"
-          />
-          {/* Imagen inferior — gestoría */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/gestoria1.jpg"
-            alt="Asesoría inmobiliaria"
-            className="w-full h-full object-cover"
-          />
-        </div>
+        {/* Imagen de fondo completa */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/interior3.jpg"
+          alt="Vivienda moderna"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
 
         {/* Overlay oscuro degradado */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black/65 via-black/45 to-black/65" />
 
         {/* Contenido sobre las imágenes */}
         <div className="relative z-10 flex flex-col h-full p-10 xl:p-14">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center w-fit mb-auto">
-            <span className="text-3xl font-black tracking-tight">
+          <Link href="/" className="w-fit mb-auto">
+            <span className="text-3xl font-black tracking-tight leading-none">
               <span className="text-white">Inmo</span><span className="text-[#c9962a]">nest</span>
             </span>
           </Link>

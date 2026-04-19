@@ -5,8 +5,8 @@ import VenderForm from '@/components/VenderForm'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Vende tu casa rápido — Inmonest',
-  description: 'Conectamos propietarios con las mejores agencias inmobiliarias de tu zona. Gratis, sin compromiso y en menos de 24 horas.',
+  title: 'Vende tu casa sin comisión — Inmonest',
+  description: 'Vende tu piso directamente entre particulares, sin agencias y sin pagar comisiones. Publica tu anuncio gratis y conecta con compradores reales en toda España.',
 }
 
 const PASOS = [

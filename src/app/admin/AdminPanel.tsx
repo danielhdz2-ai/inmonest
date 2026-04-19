@@ -97,12 +97,15 @@ export default function AdminPanel({ initialRequests }: Props) {
   const [stepSaving, setStepSaving] = useState(false)
   const [notesVal, setNotesVal]     = useState('')
   const [filterStatus, setFilterStatus] = useState<'all' | 'pending' | 'paid'>('all')
+  const [searchEmail, setSearchEmail]   = useState('')
   const [uploadProgress, setUploadProgress] = useState<string | null>(null)
   const contractInputRef = useRef<HTMLInputElement>(null)
 
-  const filtered = requests.filter(r =>
-    filterStatus === 'all' ? true : r.status === filterStatus
-  )
+  const filtered = requests.filter(r => {
+    const matchStatus = filterStatus === 'all' || r.status === filterStatus
+    const matchEmail  = !searchEmail.trim() || (r.client_email ?? '').toLowerCase().includes(searchEmail.trim().toLowerCase())
+    return matchStatus && matchEmail
+  })
 
   async function loadDocs(req: GestoriaRequest) {
     setSelected(req)
@@ -228,48 +231,73 @@ export default function AdminPanel({ initialRequests }: Props) {
           {/* Tabla izquierda */}
           <div className="lg:col-span-3">
             <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
-              <div className="p-4 border-b border-gray-100 flex items-center justify-between">
-                <h2 className="font-semibold text-gray-900">Todos los pedidos</h2>
-                <select
-                  className="text-sm border border-gray-200 rounded-lg px-2 py-1 focus:outline-none"
-                  value={filterStatus}
-                  onChange={e => setFilterStatus(e.target.value as typeof filterStatus)}
-                >
-                  <option value="all">Todos</option>
-                  <option value="paid">Pagados</option>
-                  <option value="pending">Pendientes</option>
-                </select>
+              <div className="p-4 border-b border-gray-100 space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <h2 className="font-semibold text-gray-900">Todos los pedidos</h2>
+                  <select
+                    className="text-sm border border-gray-200 rounded-lg px-2 py-1 focus:outline-none"
+                    value={filterStatus}
+                    onChange={e => setFilterStatus(e.target.value as typeof filterStatus)}
+                  >
+                    <option value="all">Todos</option>
+                    <option value="paid">Pagados</option>
+                    <option value="pending">Pendientes</option>
+                  </select>
+                </div>
+                <div className="relative">
+                  <svg className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                  <input
+                    type="text"
+                    placeholder="Buscar por email..."
+                    value={searchEmail}
+                    onChange={e => setSearchEmail(e.target.value)}
+                    className="w-full pl-8 pr-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#c9962a]"
+                  />
+                </div>
               </div>
               <div className="divide-y divide-gray-100 max-h-[60vh] overflow-y-auto">
                 {filtered.length === 0 ? (
                   <div className="p-8 text-center text-gray-400">No hay pedidos</div>
                 ) : filtered.map(req => (
-                  <button
+                  <div
                     key={req.id}
-                    onClick={() => loadDocs(req)}
-                    className={`w-full text-left p-4 hover:bg-gray-50 transition-colors ${
+                    className={`w-full text-left p-4 hover:bg-gray-50 transition-colors cursor-pointer ${
                       selected?.id === req.id ? 'bg-amber-50 border-l-2 border-[#c9962a]' : ''
                     }`}
+                    onClick={() => loadDocs(req)}
                   >
-                    <div className="flex items-center justify-between gap-2">
+                    <div className="flex items-start justify-between gap-2">
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">
                           {SERVICE_LABELS[req.service_key] ?? req.service_key}
                         </p>
-                        <p className="text-xs text-gray-400">{req.client_email}</p>
+                        <p className="text-xs text-[#c9962a] font-medium truncate mt-0.5">{req.client_email}</p>
+                        <p className="text-xs text-gray-400 mt-0.5">
+                          {req.paid_at ? new Date(req.paid_at).toLocaleDateString('es-ES') : 'Sin fecha'}
+                          {req.amount_eur ? ` · ${req.amount_eur} €` : ''}
+                        </p>
                       </div>
-                      <div className="flex-shrink-0 flex flex-col items-end gap-1">
+                      <div className="flex-shrink-0 flex flex-col items-end gap-1.5">
                         <span className={`px-2 py-0.5 rounded-full text-xs font-semibold ${
                           req.status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
                         }`}>
-                          {req.status === 'paid' ? 'Pagado' : 'Pendiente'}
+                          {req.status === 'paid' ? '✓ Pagado' : 'Pendiente'}
                         </span>
-                        <span className="text-xs text-gray-400">
-                          Paso {req.step ?? 1}/4 &middot; {req.amount_eur ? `${req.amount_eur} EUR` : ''}
-                        </span>
+                        <span className="text-xs text-gray-400">Paso {req.step ?? 1}/4</span>
+                        {req.session_id && (
+                          <a
+                            href={`https://dashboard.stripe.com/payments/${req.session_id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={e => e.stopPropagation()}
+                            className="text-xs text-indigo-500 hover:text-indigo-700 hover:underline font-medium"
+                          >
+                            Ver en Stripe ↗
+                          </a>
+                        )}
                       </div>
                     </div>
-                  </button>
+                  </div>
                 ))}
               </div>
             </div>

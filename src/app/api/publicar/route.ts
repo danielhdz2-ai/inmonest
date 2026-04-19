@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
   }
 
   const body = await req.json()
-  const { operation, province, city, district, postal_code, price, bedrooms, bathrooms, area, title, description } = body
+  const { operation, province, city, district, postal_code, price, bedrooms, bathrooms, area, title, description, features } = body
 
   if (!operation || !city?.trim() || !price || !title?.trim()) {
     return NextResponse.json({ error: 'Faltan campos obligatorios' }, { status: 400 })
@@ -51,10 +51,11 @@ export async function POST(req: NextRequest) {
       city: String(city).trim(),
       district: district ? String(district).trim() : null,
       postal_code: postal_code ? String(postal_code).trim() : null,
-      bedrooms: bedrooms !== '' && bedrooms != null ? parseInt(bedrooms) : null,
-      bathrooms: bathrooms !== '' && bathrooms != null ? parseInt(bathrooms) : null,
-      area_m2: area !== '' && area != null ? parseFloat(area) : null,
-      is_particular: true,
+      bedrooms:          bedrooms !== '' && bedrooms != null ? parseInt(bedrooms) : null,
+      bathrooms:         bathrooms !== '' && bathrooms != null ? parseInt(bathrooms) : null,
+      area_m2:           area !== '' && area != null ? parseFloat(area) : null,
+      features:          (features && typeof features === 'object') ? features : {},
+      is_particular:     true,
       particular_confidence: 1.0,
       ranking_score: 70,
       status: 'published',

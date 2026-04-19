@@ -2,7 +2,13 @@
 
 import { useState } from 'react'
 
-export default function ContactForm({ listingId }: { listingId: string }) {
+interface ContactFormProps {
+  listingId: string
+  initialName?: string
+  initialEmail?: string
+}
+
+export default function ContactForm({ listingId, initialName, initialEmail }: ContactFormProps) {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -38,10 +44,15 @@ export default function ContactForm({ listingId }: { listingId: string }) {
 
   if (status === 'sent') {
     return (
-      <div className="rounded-xl bg-green-50 border border-green-200 p-4 text-center">
-        <p className="text-green-800 font-semibold text-sm">✓ Mensaje enviado</p>
-        <p className="text-green-600 text-xs mt-1">
-          El propietario recibirá tu solicitud y te responderá pronto.
+      <div className="rounded-2xl bg-gradient-to-br from-[#fef9e8] to-[#fffbf0] border border-[#f4c94a]/40 p-5 text-center space-y-2">
+        <div className="w-10 h-10 rounded-full bg-[#c9962a] flex items-center justify-center mx-auto">
+          <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <p className="text-[#42300a] font-semibold text-sm">Mensaje enviado</p>
+        <p className="text-[#a87a20] text-xs leading-relaxed">
+          El anunciante recibirá tu solicitud y te responderá por email en breve.
         </p>
       </div>
     )
@@ -53,6 +64,7 @@ export default function ContactForm({ listingId }: { listingId: string }) {
         name="from_name"
         type="text"
         placeholder="Tu nombre"
+        defaultValue={initialName}
         required
         className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
       />
@@ -60,6 +72,7 @@ export default function ContactForm({ listingId }: { listingId: string }) {
         name="from_email"
         type="email"
         placeholder="Tu email"
+        defaultValue={initialEmail}
         required
         className="w-full px-3 py-2 text-sm rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
       />

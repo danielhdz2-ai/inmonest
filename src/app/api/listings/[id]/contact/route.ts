@@ -103,7 +103,7 @@ export async function POST(req: NextRequest, { params }: Params) {
   // Obtener anuncio + propietario
   const { data: listing, error: listingErr } = await supabase
     .from('listings')
-    .select('id, title, status, city, user_id')
+    .select('id, title, status, city, owner_user_id')
     .eq('id', listingId)
     .eq('status', 'published')
     .single()
@@ -116,11 +116,12 @@ export async function POST(req: NextRequest, { params }: Params) {
   const { data: contactRow, error: insertErr } = await supabase
     .from('listing_contacts')
     .insert({
-      listing_id: listingId,
-      from_name:  from_name.trim().slice(0, 100),
-      from_email: from_email.trim().slice(0, 200),
-      from_phone: from_phone?.trim().slice(0, 30) ?? null,
-      message:    message.trim().slice(0, 2000),
+      listing_id:    listingId,
+      owner_user_id: listing.owner_user_id ?? null,
+      from_name:     from_name.trim().slice(0, 100),
+      from_email:    from_email.trim().slice(0, 200),
+      from_phone:    from_phone?.trim().slice(0, 30) ?? null,
+      message:       message.trim().slice(0, 2000),
     })
     .select('id')
     .single()
@@ -147,13 +148,13 @@ export async function POST(req: NextRequest, { params }: Params) {
 
     // 1. Obtener email del propietario vía Admin API
     let ownerEmail: string | null = null
-    if (listing.user_id) {
+    if (listing.owner_user_id) {
       try {
         const adminSb = createAdmin(
           process.env.NEXT_PUBLIC_SUPABASE_URL!,
           process.env.SUPABASE_SERVICE_KEY!
         )
-        const { data: userData } = await adminSb.auth.admin.getUserById(listing.user_id)
+        const { data: userData } = await adminSb.auth.admin.getUserById(listing.owner_user_id!)
         ownerEmail = userData?.user?.email ?? null
       } catch (err) {
         console.error('[listing/contact] no se pudo obtener email del propietario:', err)
