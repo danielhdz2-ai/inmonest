@@ -11,7 +11,11 @@ export async function POST(req: NextRequest) {
   const body = await req.json()
   const { doc_key, file_name, mime_type } = body
 
-  const ALLOWED_KEYS  = ['dni', 'nomina', 'escrituras', 'otro']
+  const ALLOWED_KEYS  = [
+    'dni', 'nomina', 'escrituras',
+    'nota-simple', 'contrato-alquiler', 'cert-energetico',
+    'cedula-habitabilidad', 'facturas', 'otro',
+  ]
   const ALLOWED_TYPES = ['application/pdf', 'image/jpeg', 'image/png', 'image/webp']
 
   if (!ALLOWED_KEYS.includes(doc_key)) {

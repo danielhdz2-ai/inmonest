@@ -5,6 +5,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
+interface ListingImage {
+  external_url: string | null
+  storage_path: string | null
+  position: number
+}
+
 interface Listing {
   id: string
   title: string
@@ -15,7 +21,7 @@ interface Listing {
   bedrooms: number | null
   bathrooms: number | null
   area_m2: number | null
-  images: string[] | null
+  listing_images: ListingImage[]
   source: string
 }
 
@@ -38,7 +44,12 @@ export default function FavoritoCard({ favId, listing }: Props) {
     router.refresh()
   }
 
-  const imgSrc = listing.images?.[0] ?? '/interior1.jpg'
+  const firstImg = (listing.listing_images ?? []).sort((a, b) => (a.position ?? 0) - (b.position ?? 0))[0]
+  const imgSrc = firstImg?.storage_path
+    ? firstImg.storage_path
+    : firstImg?.external_url
+      ? `/api/img-proxy?url=${encodeURIComponent(firstImg.external_url)}`
+      : '/interior1.jpg'
   const location = [listing.city, listing.province].filter(Boolean).join(', ')
   const price = listing.price_eur
     ? new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(listing.price_eur)

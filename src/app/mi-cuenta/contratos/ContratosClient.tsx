@@ -26,9 +26,15 @@ const STEP_INFO = [
 ]
 
 const DOC_DEFS = [
-  { key: 'dni',        label: 'DNI / NIE',         desc: 'Ambas caras en un PDF o imagen',      icon: '🪪' },
-  { key: 'nomina',     label: 'Nomina',             desc: 'Ultimas 3 nominas (PDF)',             icon: '💼' },
-  { key: 'escrituras', label: 'Escrituras',         desc: 'Escritura de propiedad del inmueble', icon: '📜' },
+  { key: 'dni',                  label: 'DNI / CIF',                      desc: 'Ambas caras en un PDF o imagen',           icon: '🪪' },
+  { key: 'nomina',               label: 'Nomina',                         desc: 'Ultimas 3 nominas (PDF)',                  icon: '💼' },
+  { key: 'escrituras',           label: 'Escrituras',                     desc: 'Escritura de propiedad del inmueble',      icon: '📜' },
+  { key: 'nota-simple',          label: 'Nota Simple',                    desc: 'Del Registro de la Propiedad',             icon: '🏛️' },
+  { key: 'contrato-alquiler',    label: 'Contrato de Alquiler/Arras',     desc: 'Contrato firmado o borrador',              icon: '📋' },
+  { key: 'cert-energetico',      label: 'Certificado Energetico',         desc: 'Certificado de eficiencia energetica',     icon: '⚡' },
+  { key: 'cedula-habitabilidad', label: 'Cedula de Habitabilidad',        desc: 'Cedula de habitabilidad vigente',          icon: '🏠' },
+  { key: 'facturas',             label: 'Facturas',                       desc: 'Facturas de suministros u otros',          icon: '🧾' },
+  { key: 'otro',                 label: 'Otros contratos',                desc: 'Cualquier otro documento relevante',       icon: '📄' },
 ]
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: string }> = {
@@ -72,7 +78,10 @@ export default function ContratosClient({ contratos, userDocs, userId }: Props) 
   const [docs, setDocs] = useState<UserDoc[]>(userDocs)
   const [downloading, setDownloading] = useState<string | null>(null)
   const [uploading, setUploading]     = useState<string | null>(null)
-  const fileRefs = useRef<Record<string, HTMLInputElement | null>>({})
+  const [selectedDocType, setSelectedDocType] = useState(DOC_DEFS[0].key)
+  const [pendingFile, setPendingFile]         = useState<File | null>(null)
+  const newDocInputRef = useRef<HTMLInputElement | null>(null)
+  const fileRefs = useRef<Record<string, HTMLInputElement | null>>({}) // kept for potential future per-key inputs
 
   async function handleDownload(contrato: Contrato) {
     if (!contrato.contract_path) return
@@ -242,8 +251,8 @@ export default function ContratosClient({ contratos, userDocs, userId }: Props) 
 
       {/* ── DOCUMENTACION ─────────────────────────────────────────────── */}
       {tab === 'documentos' && (
-        <div className="space-y-4">
-          {/* Descripcion */}
+        <div className="space-y-5">
+          {/* Banner informativo */}
           <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 flex items-start gap-3">
             <span className="text-xl flex-shrink-0">ℹ️</span>
             <div className="text-sm text-blue-800">
@@ -252,77 +261,112 @@ export default function ContratosClient({ contratos, userDocs, userId }: Props) 
             </div>
           </div>
 
-          {/* Cards de documentos */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {DOC_DEFS.map(def => {
-              const existing  = docs.find(d => d.doc_key === def.key)
-              const isUploading = uploading === def.key
-              const cfg = existing ? (STATUS_CONFIG[existing.status] ?? STATUS_CONFIG.uploaded) : null
+          {/* ── Subir nuevo documento ── */}
+          <div className="bg-white rounded-2xl border border-gray-200 p-5">
+            <h3 className="font-semibold text-gray-900 text-sm mb-4">Subir nuevo documento</h3>
+            <div className="flex flex-col sm:flex-row gap-3">
+              {/* Selector tipo */}
+              <div className="flex-1">
+                <label className="block text-xs text-gray-500 mb-1">Tipo de documento</label>
+                <select
+                  value={selectedDocType}
+                  onChange={e => { setSelectedDocType(e.target.value); setPendingFile(null) }}
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#c9962a]/40"
+                >
+                  {DOC_DEFS.map(d => (
+                    <option key={d.key} value={d.key}>{d.icon} {d.label}</option>
+                  ))}
+                </select>
+              </div>
 
-              return (
-                <div key={def.key} className={`bg-white rounded-2xl border-2 transition-all p-5 ${
-                  existing?.status === 'validated' ? 'border-green-200' :
-                  existing?.status === 'rejected'  ? 'border-red-200' :
-                  existing                          ? 'border-amber-200' :
-                  'border-gray-200 hover:border-gray-300'
-                }`}>
-                  <div className="text-3xl mb-3">{def.icon}</div>
-                  <h3 className="font-semibold text-gray-900 text-sm mb-0.5">{def.label}</h3>
-                  <p className="text-xs text-gray-400 mb-4">{def.desc}</p>
+              {/* Selector archivo */}
+              <div className="flex-1">
+                <label className="block text-xs text-gray-500 mb-1">Archivo</label>
+                <button
+                  type="button"
+                  onClick={() => newDocInputRef.current?.click()}
+                  className="w-full border border-dashed border-gray-300 hover:border-[#c9962a] rounded-xl px-3 py-2.5 text-sm text-left transition-colors"
+                >
+                  {pendingFile
+                    ? <span className="text-gray-800 truncate block">{pendingFile.name}</span>
+                    : <span className="text-gray-400">Seleccionar PDF / imagen…</span>}
+                </button>
+                <input
+                  ref={newDocInputRef}
+                  type="file"
+                  accept=".pdf,.jpg,.jpeg,.png,.webp"
+                  className="hidden"
+                  onChange={e => setPendingFile(e.target.files?.[0] ?? null)}
+                />
+              </div>
 
-                  {existing ? (
-                    <div className="space-y-2">
-                      <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${cfg!.color}`}>
-                        <span>{cfg!.icon}</span>
-                        {cfg!.label}
-                      </div>
-                      <p className="text-xs text-gray-400 truncate">{existing.file_name}</p>
-                      {existing.notes && (
-                        <p className="text-xs text-gray-500 bg-gray-50 rounded-lg p-2">{existing.notes}</p>
-                      )}
-                      {existing.status !== 'validated' && (
-                        <button
-                          onClick={() => fileRefs.current[def.key]?.click()}
-                          className="text-xs text-[#c9962a] hover:underline"
-                        >
-                          Reemplazar archivo
-                        </button>
-                      )}
-                    </div>
-                  ) : (
-                    <button
-                      onClick={() => fileRefs.current[def.key]?.click()}
-                      disabled={isUploading}
-                      className="w-full border-2 border-dashed border-gray-200 hover:border-[#c9962a] rounded-xl py-3 text-sm text-gray-400 hover:text-[#c9962a] transition-colors disabled:opacity-60"
-                    >
-                      {isUploading ? (
-                        <span className="flex items-center justify-center gap-2">
-                          <span className="animate-spin w-4 h-4 border-2 border-[#c9962a] border-t-transparent rounded-full" />
-                          Subiendo...
-                        </span>
-                      ) : (
-                        '+ Subir archivo'
-                      )}
-                    </button>
-                  )}
-
-                  <input
-                    ref={el => { fileRefs.current[def.key] = el }}
-                    type="file"
-                    accept=".pdf,.jpg,.jpeg,.png,.webp"
-                    className="hidden"
-                    onChange={e => {
-                      const file = e.target.files?.[0]
-                      if (file) handleUploadDoc(def.key, file)
-                    }}
-                  />
-                </div>
-              )
-            })}
+              {/* Botón subir */}
+              <div className="flex items-end">
+                <button
+                  disabled={!pendingFile || uploading === selectedDocType}
+                  onClick={async () => {
+                    if (!pendingFile) return
+                    await handleUploadDoc(selectedDocType, pendingFile)
+                    setPendingFile(null)
+                    if (newDocInputRef.current) newDocInputRef.current.value = ''
+                  }}
+                  className="w-full sm:w-auto px-5 py-2.5 bg-[#c9962a] hover:bg-[#b8841e] disabled:opacity-50 text-white text-sm font-semibold rounded-xl transition-colors"
+                >
+                  {uploading === selectedDocType ? (
+                    <span className="flex items-center gap-2">
+                      <span className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full" />
+                      Subiendo…
+                    </span>
+                  ) : 'Subir'}
+                </button>
+              </div>
+            </div>
+            {/* Hint del tipo seleccionado */}
+            {(() => { const def = DOC_DEFS.find(d => d.key === selectedDocType); return def ? <p className="text-xs text-gray-400 mt-2">{def.desc}</p> : null })()}
           </div>
 
-          {/* Banner interior decorativo */}
-          <div className="relative overflow-hidden rounded-2xl h-32">
+          {/* ── Documentos ya subidos ── */}
+          {docs.length > 0 && (
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <div className="px-5 py-4 border-b border-gray-100">
+                <h3 className="font-semibold text-gray-900 text-sm">Mis documentos</h3>
+              </div>
+              <div className="divide-y divide-gray-100">
+                {docs.map(doc => {
+                  const def = DOC_DEFS.find(d => d.key === doc.doc_key)
+                  const cfg = STATUS_CONFIG[doc.status] ?? STATUS_CONFIG.uploaded
+                  return (
+                    <div key={doc.id} className="flex items-center justify-between px-5 py-3 gap-4">
+                      <div className="flex items-center gap-3 min-w-0">
+                        <span className="text-xl flex-shrink-0">{def?.icon ?? '📄'}</span>
+                        <div className="min-w-0">
+                          <p className="text-sm font-medium text-gray-800">{def?.label ?? doc.doc_key}</p>
+                          <p className="text-xs text-gray-400 truncate">{doc.file_name}</p>
+                          {doc.notes && <p className="text-xs text-gray-500 mt-0.5">{doc.notes}</p>}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3 flex-shrink-0">
+                        <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${cfg.color}`}>
+                          <span>{cfg.icon}</span>{cfg.label}
+                        </span>
+                        {doc.status !== 'validated' && (
+                          <button
+                            onClick={() => { setSelectedDocType(doc.doc_key); newDocInputRef.current?.click() }}
+                            className="text-xs text-[#c9962a] hover:underline whitespace-nowrap"
+                          >
+                            Reemplazar
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* Banner decorativo */}
+          <div className="relative overflow-hidden rounded-2xl h-28">
             <Image src="/decorado1.jpg" alt="" fill className="object-cover" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a0f]/80 to-transparent flex items-center pl-6">
               <div className="text-white">
