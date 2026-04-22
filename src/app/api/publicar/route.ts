@@ -97,5 +97,44 @@ export async function POST(req: NextRequest) {
       .catch(() => { /* silencioso: el cron lo reintentará */ })
   }
 
+  // ── Notificación al admin cuando un particular publica ────────────────────
+  const resendKey   = process.env.RESEND_API_KEY
+  const notifyEmail = process.env.CONTACT_NOTIFY_EMAIL ?? 'info@inmonest.com'
+  const fromEmail   = process.env.CONTACT_FROM_EMAIL   ?? 'Inmonest <info@inmonest.com>'
+
+  if (resendKey && data?.id) {
+    const fecha = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
+    const listingUrl = `https://inmonest.com/pisos/${data.id}`
+    fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${resendKey}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: fromEmail,
+        to:   [notifyEmail],
+        subject: `🏠 Nuevo anuncio de particular — ${String(city).trim()}`,
+        html: `
+          <div style="font-family:sans-serif;max-width:580px;margin:auto;background:#f9f9f9;padding:24px;border-radius:8px">
+            <h2 style="color:#c9962a;margin:0 0 4px">¡Nuevo anuncio publicado!</h2>
+            <p style="color:#888;font-size:12px;margin:0 0 20px">${fecha}</p>
+            <div style="background:#fff;border-radius:8px;padding:20px;border:1px solid #e5e7eb">
+              <table style="width:100%;font-size:14px;border-collapse:collapse">
+                <tr><td style="padding:7px;font-weight:700;color:#374151;width:120px">Título</td><td style="padding:7px">${String(title).trim()}</td></tr>
+                <tr style="background:#f9fafb"><td style="padding:7px;font-weight:700;color:#374151">Ciudad</td><td style="padding:7px">${String(city).trim()}</td></tr>
+                <tr><td style="padding:7px;font-weight:700;color:#374151">Operación</td><td style="padding:7px">${operation === 'rent' ? 'Alquiler' : 'Venta'}</td></tr>
+                <tr style="background:#f9fafb"><td style="padding:7px;font-weight:700;color:#374151">Precio</td><td style="padding:7px;color:#c9962a;font-weight:700">${priceNum.toLocaleString('es-ES')} €${operation === 'rent' ? '/mes' : ''}</td></tr>
+                <tr><td style="padding:7px;font-weight:700;color:#374151">Usuario</td><td style="padding:7px;font-size:12px;color:#888">${user.email ?? user.id}</td></tr>
+              </table>
+            </div>
+            <div style="text-align:center;margin-top:20px">
+              <a href="${listingUrl}" style="background:#c9962a;color:#fff;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px">
+                Ver anuncio →
+              </a>
+            </div>
+          </div>
+        `,
+      }),
+    }).catch(() => { /* no bloquear respuesta */ })
+  }
+
   return NextResponse.json({ id: data.id })
 }

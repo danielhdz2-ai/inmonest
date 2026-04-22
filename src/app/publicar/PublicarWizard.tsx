@@ -519,38 +519,50 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                   onDragOver={e => { e.preventDefault(); e.currentTarget.classList.add('border-[#c9962a]') }}
                   onDragLeave={e => e.currentTarget.classList.remove('border-[#c9962a]')}
                   onDrop={e => { e.preventDefault(); e.currentTarget.classList.remove('border-[#c9962a]'); handleImages(e.dataTransfer.files) }}
-                  onClick={() => images.length < 10 && fileInputRef.current?.click()}
-                  className="border-2 border-dashed border-[#f4c94a]/60 rounded-xl p-4 cursor-pointer hover:border-[#c9962a] hover:bg-[#fef9e8]/50 transition-all mb-3"
+                  className="border-2 border-dashed border-[#f4c94a]/60 rounded-xl p-4 transition-all mb-3"
                 >
                   {previews.length === 0 ? (
-                    <div className="text-center py-6">
-                      <div className="text-4xl mb-2">ðŸ“·</div>
-                      <p className="text-sm font-medium text-[#7a5c1e]">Arrastra las fotos aquÃ­</p>
+                    <div
+                      className="text-center py-6 cursor-pointer hover:bg-[#fef9e8]/50 rounded-lg"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      <div className="text-4xl mb-2">📷</div>
+                      <p className="text-sm font-medium text-[#7a5c1e]">Arrastra las fotos aquí</p>
                       <p className="text-xs text-[#9c7a3c] mt-1">o haz clic para seleccionar</p>
                     </div>
                   ) : (
-                    <div className="grid grid-cols-3 gap-2">
-                      {previews.map((src, i) => (
-                        <div key={i} className="relative aspect-video rounded-lg overflow-hidden bg-[#fef9e8]">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={src} alt="" className="w-full h-full object-cover" />
+                    <div>
+                      <p className="text-xs text-[#9c7a3c] mb-2">{images.length} foto{images.length !== 1 ? 's' : ''} añadida{images.length !== 1 ? 's' : ''}</p>
+                      <div className="grid grid-cols-3 gap-2">
+                        {previews.map((src, i) => (
+                          <div key={i} className="relative rounded-lg overflow-hidden bg-[#fef9e8] group" style={{ aspectRatio: '4/3' }}>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={src} alt={`Foto ${i + 1}`} className="w-full h-full object-cover" />
+                            <button
+                              type="button"
+                              onClick={e => { e.stopPropagation(); removeImage(i) }}
+                              className="absolute top-1 right-1 w-6 h-6 bg-black/60 text-white rounded-full text-xs flex items-center justify-center hover:bg-red-600 transition-colors"
+                              aria-label="Eliminar foto"
+                            >×</button>
+                            {i === 0 && (
+                              <span className="absolute bottom-1 left-1 text-[10px] bg-[#c9962a] text-white px-1.5 py-0.5 rounded font-medium">
+                                Principal
+                              </span>
+                            )}
+                          </div>
+                        ))}
+                        {images.length < 10 && (
                           <button
-                            onClick={e => { e.stopPropagation(); removeImage(i) }}
-                            className="absolute top-1 right-1 w-5 h-5 bg-black/60 text-white rounded-full text-xs flex items-center justify-center hover:bg-black/80"
-                          >Ã—</button>
-                          {i === 0 && (
-                            <span className="absolute bottom-1 left-1 text-[10px] bg-[#c9962a] text-white px-1.5 py-0.5 rounded font-medium">
-                              Principal
-                            </span>
-                          )}
-                        </div>
-                      ))}
-                      {images.length < 10 && (
-                        <div className="aspect-video rounded-lg border-2 border-dashed border-[#f4c94a] flex flex-col items-center justify-center gap-1 text-[#9c7a3c] text-xs">
-                          <span className="text-2xl">+</span>
-                          <span>AÃ±adir</span>
-                        </div>
-                      )}
+                            type="button"
+                            onClick={() => fileInputRef.current?.click()}
+                            className="rounded-lg border-2 border-dashed border-[#f4c94a] flex flex-col items-center justify-center gap-1 text-[#9c7a3c] text-xs hover:border-[#c9962a] hover:bg-[#fef9e8] transition-all"
+                            style={{ aspectRatio: '4/3' }}
+                          >
+                            <span className="text-2xl leading-none">+</span>
+                            <span>Añadir</span>
+                          </button>
+                        )}
+                      </div>
                     </div>
                   )}
                 </div>
