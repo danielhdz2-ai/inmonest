@@ -9,7 +9,7 @@ interface Service {
   key: string
   name: string
   shortName: string
-  category: 'compraventa' | 'alquiler' | 'rescision'
+  category: 'compraventa' | 'alquiler' | 'rescision' | 'financiacion'
   description: string
   includes: string[]
   price: number
