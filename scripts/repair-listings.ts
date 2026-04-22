@@ -16,7 +16,6 @@
 
 const SUPABASE_URL = 'https://ktsdxpmaljiyuwimcugx.supabase.co'
 const SERVICE_KEY  = process.env.SUPABASE_SERVICE_KEY
-  ?? 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt0c2R4cG1hbGppeXV3aW1jdWd4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTY1NDg1NCwiZXhwIjoyMDkxMjMwODU0fQ.0VuUqRsrb2kNgLfoqyduMC7weRc9JJKtg1r14mOEbi8'
 
 const DRY_RUN     = process.argv.includes('--dry-run')
 const PORTAL_FILTER = (() => {

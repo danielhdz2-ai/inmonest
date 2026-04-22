@@ -3,10 +3,18 @@
  * Ejecutar: node scripts/cleanup-now.mjs
  */
 import { createClient } from '@supabase/supabase-js'
+import { config } from 'dotenv'
+import { resolve, dirname } from 'path'
+import { fileURLToPath } from 'url'
+const __dirname = dirname(fileURLToPath(import.meta.url))
+config({ path: resolve(__dirname, '../.env.local') })
+
+const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY
+if (!SERVICE_KEY) { console.error('Falta SUPABASE_SERVICE_KEY en .env.local'); process.exit(1) }
 
 const db = createClient(
   'https://ktsdxpmaljiyuwimcugx.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt0c2R4cG1hbGppeXV3aW1jdWd4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTY1NDg1NCwiZXhwIjoyMDkxMjMwODU0fQ.0VuUqRsrb2kNgLfoqyduMC7weRc9JJKtg1r14mOEbi8'
+  SERVICE_KEY
 )
 
 async function countAll() {
