@@ -247,6 +247,63 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Analizador de Mercado ─────────────────────────────── */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <div className="relative overflow-hidden rounded-3xl shadow-xl min-h-[260px] flex">
+          {/* Imagen de fondo */}
+          <div className="absolute inset-0">
+            <Image
+              src="/interior2.jpg"
+              alt="Analizador de mercado inmobiliario"
+              fill
+              className="object-cover object-center"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a0f]/90 via-[#0d1a0f]/70 to-[#0d1a0f]/30" />
+          </div>
+          {/* Contenido */}
+          <div className="relative z-10 flex flex-col justify-center px-8 sm:px-12 py-12 flex-1">
+            <span className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-[#c9962a]/25 text-[#f4c94a] text-xs font-semibold border border-[#c9962a]/40 mb-5">
+              📊 Herramienta gratuita
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
+              Analizador de<br /><span className="text-[#f4c94a]">Mercado Inmobiliario</span>
+            </h2>
+            <p className="mt-3 text-white/65 text-sm sm:text-base leading-relaxed max-w-sm">
+              Precio medio del m², temperatura del mercado y comparativa de precios en 10 ciudades de España. Datos de abril 2026.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link
+                href="/analizador-mercado"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg shadow-[#c9962a]/40"
+              >
+                Ver análisis →
+              </Link>
+              <Link
+                href="/analizador-mercado?tab=alquiler"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white/80 font-medium hover:bg-white/10 transition-colors text-sm"
+              >
+                Precios de alquiler
+              </Link>
+            </div>
+          </div>
+          {/* Mini stats flotantes */}
+          <div className="hidden lg:flex flex-col justify-center gap-3 pr-10 shrink-0">
+            {[
+              { ciudad: 'Madrid', precio: '5.458 €/m²', trend: '▲ 12%' },
+              { ciudad: 'Barcelona', precio: '4.820 €/m²', trend: '▲ 10%' },
+              { ciudad: 'Málaga', precio: '4.644 €/m²', trend: '▲ 18%' },
+            ].map(s => (
+              <div key={s.ciudad} className="bg-white/10 backdrop-blur border border-white/20 rounded-xl px-4 py-3 text-white">
+                <p className="text-xs text-white/60">{s.ciudad}</p>
+                <p className="font-bold text-sm">{s.precio}</p>
+                <p className="text-[10px] text-red-400 font-semibold">{s.trend} anual</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Blog inmobiliario ─────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
         <div className="relative overflow-hidden rounded-3xl shadow-xl bg-[#0d1a0f] min-h-[300px] flex">

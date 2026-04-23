@@ -17,6 +17,7 @@ const NAV_ITEMS = [
   { label: 'Gestoría',             href: '/gestoria' },
   { label: 'Agencias',             href: '/agencias' },
   { label: 'Hipotecas',            href: '/hipoteca' },
+  { label: 'Analizador de Mercado', href: '/analizador-mercado' },
   { label: 'Blog',                 href: '/blog' },
 ]
 
