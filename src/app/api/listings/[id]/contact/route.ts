@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { createClient as createAdmin } from '@supabase/supabase-js'
+import { createAdminClient } from '@/lib/supabase/admin'
 
 const RESEND_API  = 'https://api.resend.com/emails'
 const FROM_EMAIL  = () => process.env.CONTACT_FROM_EMAIL ?? 'Inmonest <info@inmonest.com>'
@@ -150,10 +150,7 @@ export async function POST(req: NextRequest, { params }: Params) {
     let ownerEmail: string | null = null
     if (listing.owner_user_id) {
       try {
-        const adminSb = createAdmin(
-          process.env.NEXT_PUBLIC_SUPABASE_URL!,
-          process.env.SUPABASE_SERVICE_KEY!
-        )
+        const adminSb = createAdminClient()
         const { data: userData } = await adminSb.auth.admin.getUserById(listing.owner_user_id!)
         ownerEmail = userData?.user?.email ?? null
       } catch (err) {
@@ -228,10 +225,7 @@ export async function POST(req: NextRequest, { params }: Params) {
   if (contactRow?.id) {
     // Usar admin client para UPDATE (bypass RLS)
     try {
-      const adminSb = createAdmin(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.SUPABASE_SERVICE_KEY!
-      )
+      const adminSb = createAdminClient()
       await adminSb.from('listing_contacts').update({
         email_owner_status: ownerStatus,
         email_reply_status: replyStatus,
