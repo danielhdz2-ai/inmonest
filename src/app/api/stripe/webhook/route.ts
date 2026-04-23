@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
-import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 
 const RESEND_API   = 'https://api.resend.com/emails'
 const BASE_URL     = 'https://inmonest.com'
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
 
     console.log('[webhook] checkout.session.completed — servicio:', serviceKey, '| cliente:', clientEmail, '| importe:', amount, '€')
 
-    const supabase = await createClient()
+    const supabase = createAdminClient()
 
     // ── 1. Marcar order como pagada ──────────────────────────────────────
     const { error: orderErr } = await supabase

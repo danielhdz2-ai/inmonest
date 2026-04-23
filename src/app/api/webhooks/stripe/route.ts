@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import crypto from 'crypto'
-import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { decodeEnvKey } from '@/lib/stripe-key'
 
 export const dynamic = 'force-dynamic'
@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
 
     console.log('[webhooks/stripe] checkout.session.completed — servicio:', serviceKey, '| cliente:', clientEmail, '| importe:', amount, '€')
 
-    const supabase = await createClient()
+    const supabase = createAdminClient()
 
     // ── 1. Marcar order como pagada ──────────────────────────────────────
     const { error: orderErr } = await supabase

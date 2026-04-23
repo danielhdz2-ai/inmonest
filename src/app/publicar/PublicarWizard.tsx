@@ -196,6 +196,8 @@ export default function PublicarWizard({ userId }: { userId: string }) {
       // Upload compressed images
       if (images.length > 0) {
         const supabase = createClient()
+        const uploadedUrls: string[] = []
+
         for (let i = 0; i < images.length; i++) {
           const file = images[i]
           const ext  = file.name.split('.').pop() ?? 'webp'
@@ -205,6 +207,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
             .upload(path, file, { upsert: true, contentType: file.type })
           if (!upErr) {
             const { data: urlData } = supabase.storage.from('listings').getPublicUrl(path)
+            uploadedUrls.push(urlData.publicUrl)
             await supabase.from('listing_images').insert({
               listing_id:   listingId,
               storage_path: path,
@@ -214,11 +217,13 @@ export default function PublicarWizard({ userId }: { userId: string }) {
           }
         }
 
-        // Mark has_images = true
-        await supabase
-          .from('listings')
-          .update({ has_images: true })
-          .eq('id', listingId)
+        // Guardar URLs en listings.images para que la página de detalle las muestre
+        if (uploadedUrls.length > 0) {
+          await supabase
+            .from('listings')
+            .update({ images: uploadedUrls, has_images: true })
+            .eq('id', listingId)
+        }
       }
 
       router.push(`/pisos/${listingId}?publicado=1`)

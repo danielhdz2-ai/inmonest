@@ -33,19 +33,7 @@ export default function HipotecaContactForm() {
     setSending(true)
     setError(null)
     try {
-      const resendKey = ''  // handled server-side via /api/contacto
-      const body = `
-        <b>Consulta hipoteca</b><br>
-        Nombre: ${form.nombre}<br>
-        Email: ${form.email}<br>
-        Teléfono: ${form.telefono}<br>
-        Ingresos netos/mes: ${form.ingresos} €<br>
-        Precio del piso: ${form.precio_piso} €<br>
-        Entrada disponible: ${form.entrada} €<br>
-        Tipo de empleo: ${form.empleo}<br>
-        Mensaje: ${form.mensaje}
-      `
-      const res = await fetch('/api/contacto', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

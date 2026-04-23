@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { GoogleGenerativeAI } from '@google/generative-ai'
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY ?? ''
+const OR_MODEL = 'google/gemini-2.0-flash-lite-001'
 
 export async function POST(req: NextRequest) {
   // Auth check
@@ -10,7 +9,8 @@ export async function POST(req: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'No autenticado' }, { status: 401 })
 
-  if (!GEMINI_API_KEY) {
+  const openrouterKey = process.env.OPENROUTER_API_KEY
+  if (!openrouterKey) {
     return NextResponse.json({ error: 'IA no configurada' }, { status: 503 })
   }
 
@@ -60,10 +60,30 @@ Responde EXCLUSIVAMENTE con un objeto JSON válido, sin texto adicional:
 {"title": "...", "description": "..."}`
 
   try {
-    const genAI = new GoogleGenerativeAI(GEMINI_API_KEY)
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
-    const result = await model.generateContent(prompt)
-    const text = result.response.text().trim()
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${openrouterKey}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://inmonest.com',
+        'X-Title': 'Inmonest',
+      },
+      body: JSON.stringify({
+        model: OR_MODEL,
+        messages: [{ role: 'user', content: prompt }],
+        max_tokens: 600,
+        temperature: 0.7,
+      }),
+    })
+
+    if (!res.ok) {
+      const errText = await res.text()
+      console.error('[generar-descripcion] OpenRouter error:', res.status, errText)
+      return NextResponse.json({ error: 'Error en servicio de IA' }, { status: 500 })
+    }
+
+    const json = await res.json() as { choices?: { message?: { content?: string } }[] }
+    const text = json.choices?.[0]?.message?.content?.trim() ?? ''
 
     // Strip markdown code fences if present
     const clean = text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim()
