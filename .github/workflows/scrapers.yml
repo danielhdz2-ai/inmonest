@@ -12,9 +12,10 @@ name: 🤖 Raspadores Pro
 # ─────────────────────────────────────────────────────────────────────────────
 
 on:
-  schedule:
-    # Cada 6 horas: 00:00, 06:00, 12:00, 18:00 UTC (02:00, 08:00, 14:00, 20:00 España)
-    - cron: '0 */6 * * *'
+  # TEMPORALMENTE DESACTIVADO (2026-04-27) - Regenerando AI v2.0 en 687 listings
+  # schedule:
+  #   # Cada 6 horas: 00:00, 06:00, 12:00, 18:00 UTC (02:00, 08:00, 14:00, 20:00 España)
+  #   - cron: '0 */6 * * *'
 
   workflow_dispatch:
     inputs:
