@@ -1,5 +1,6 @@
 {
   "functions": {
+    "src/app/api/scraper/route.ts":                    { "maxDuration": 300 },
     "src/app/api/gestoria/checkout/route.ts":          { "maxDuration": 30 },
     "src/app/api/stripe/checkout/route.ts":            { "maxDuration": 30 },
     "src/app/api/cron/generate-descriptions/route.ts": { "maxDuration": 60 }
@@ -40,7 +41,7 @@
     },
     {
       "path": "/api/cron/generate-descriptions",
-      "schedule": "0 3 * * *"
+      "schedule": "0 * * * *"
     }
   ]
 }

@@ -61,7 +61,7 @@ jobs:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
           PAGES="${{ github.event.inputs.paginas || '3' }}"
-          for city in madrid barcelona valencia sevilla malaga bilbao zaragoza granada; do
+          for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── pisos.com alquiler/$city ($PAGES páginas) ──"
             npx tsx scripts/scrapers/pisoscom_particulares.ts alquiler $city $PAGES
             sleep 5
@@ -74,7 +74,7 @@ jobs:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
           PAGES="${{ github.event.inputs.paginas || '3' }}"
-          for city in madrid barcelona valencia sevilla malaga bilbao zaragoza granada; do
+          for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── pisos.com venta/$city ($PAGES páginas) ──"
             npx tsx scripts/scrapers/pisoscom_particulares.ts venta $city $PAGES
             sleep 5
@@ -89,7 +89,7 @@ jobs:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
           PAGES="${{ github.event.inputs.paginas || '5' }}"
-          for city in madrid barcelona valencia sevilla malaga bilbao zaragoza granada; do
+          for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── milanuncios alquiler/$city ($PAGES páginas) ──"
             npx tsx scripts/scrapers/milanuncios_particulares.ts alquiler $city $PAGES
             sleep 8
@@ -102,7 +102,7 @@ jobs:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
           PAGES="${{ github.event.inputs.paginas || '5' }}"
-          for city in madrid barcelona valencia sevilla malaga bilbao zaragoza granada; do
+          for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── milanuncios venta/$city ($PAGES páginas) ──"
             npx tsx scripts/scrapers/milanuncios_particulares.ts venta $city $PAGES
             sleep 8
@@ -117,7 +117,7 @@ jobs:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
           PAGES="${{ github.event.inputs.paginas || '5' }}"
-          for city in madrid barcelona valencia sevilla malaga bilbao zaragoza granada; do
+          for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── tucasa alquiler/$city ($PAGES páginas) ──"
             npx tsx scripts/scrapers/tucasa_standalone.ts alquiler $city $PAGES
             sleep 5
@@ -130,7 +130,7 @@ jobs:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
           PAGES="${{ github.event.inputs.paginas || '5' }}"
-          for city in madrid barcelona valencia sevilla malaga bilbao zaragoza granada; do
+          for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── tucasa venta/$city ($PAGES páginas) ──"
             npx tsx scripts/scrapers/tucasa_standalone.ts venta $city $PAGES
             sleep 5
@@ -145,7 +145,7 @@ jobs:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
           PAGES="${{ github.event.inputs.paginas || '5' }}"
-          for city in madrid barcelona valencia sevilla malaga bilbao zaragoza granada alicante murcia; do
+          for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada alicante murcia; do
             echo "── enalquiler alquiler/$city ($PAGES páginas) ──"
             npx tsx scripts/scrapers/enalquiler.ts $city $PAGES
             sleep 6

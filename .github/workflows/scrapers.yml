@@ -206,7 +206,7 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        city: [madrid, barcelona, valencia, sevilla, zaragoza, malaga]
+        city: [barcelona, madrid, valencia, sevilla, zaragoza, malaga]
         operation: [venta, alquiler]
     steps:
       - uses: actions/checkout@v4
@@ -360,7 +360,7 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        city: [madrid, barcelona, valencia, sevilla, zaragoza, malaga]
+        city: [barcelona, madrid, valencia, sevilla, zaragoza, malaga]
     steps:
       - uses: actions/checkout@v4
 
@@ -393,7 +393,7 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        city: [madrid, barcelona, valencia, sevilla, zaragoza, malaga]
+        city: [barcelona, madrid, valencia, sevilla, zaragoza, malaga]
     steps:
       - uses: actions/checkout@v4
 
@@ -440,7 +440,7 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        city: [madrid, barcelona, valencia, sevilla, zaragoza, malaga]
+        city: [barcelona, madrid, valencia, sevilla, zaragoza, malaga]
     steps:
       - uses: actions/checkout@v4
 
@@ -487,7 +487,7 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        city: [madrid, barcelona, valencia, sevilla, zaragoza, malaga]
+        city: [barcelona, madrid, valencia, sevilla, zaragoza, malaga]
     steps:
       - uses: actions/checkout@v4
 

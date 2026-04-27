@@ -60,9 +60,11 @@ export async function GET(req: NextRequest) {
   let fail = 0
 
   for (const listing of listings) {
+    console.log(`[cron/generate-descriptions] Procesando ${listing.id} - ${listing.is_particular ? 'PARTICULAR' : 'AGENCIA'}`)
     const aiDesc = await generateAiDescription(listing, openrouterKey)
 
     if (!aiDesc) {
+      console.warn(`[cron/generate-descriptions] ⚠️ No se generó descripción para ${listing.id}`)
       fail++
       await sleep(DELAY_MS)
       continue

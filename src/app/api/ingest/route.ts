@@ -103,19 +103,38 @@ export async function POST(req: NextRequest) {
       }
       // Genera descripción IA en background para el listing recién insertado
       if (process.env.OPENROUTER_API_KEY) {
-        const { data: newRow } = await supabase
+        const { data: newRow, error: fetchErr } = await supabase
           .from('listings')
-          .select('id, title, description, operation, city, district, province, price_eur, bedrooms, bathrooms, area_m2')
+          .select('id, title, description, operation, city, district, province, price_eur, bedrooms, bathrooms, area_m2, is_particular')
           .eq('source_external_id', item.external_id)
           .is('ai_description', null)
           .single()
-        if (newRow) {
-          void generateAiDescription(newRow, process.env.OPENROUTER_API_KEY).then(async (desc) => {
-            if (desc) {
-              await supabase.from('listings').update({ ai_description: desc }).eq('id', newRow.id)
-            }
-          })
+        
+        if (fetchErr) {
+          console.error(`[ingest] Error al buscar listing para IA: ${fetchErr.message}`)
+        } else if (newRow) {
+          void generateAiDescription(newRow, process.env.OPENROUTER_API_KEY)
+            .then(async (desc) => {
+              if (desc) {
+                const { error: updateErr } = await supabase
+                  .from('listings')
+                  .update({ ai_description: desc })
+                  .eq('id', newRow.id)
+                if (updateErr) {
+                  console.error(`[ingest] Error al guardar descripción IA para ${newRow.id}: ${updateErr.message}`)
+                } else {
+                  console.log(`[ingest] ✅ Descripción IA generada para ${newRow.id}`)
+                }
+              } else {
+                console.warn(`[ingest] ⚠️ No se pudo generar descripción IA para ${newRow.id}`)
+              }
+            })
+            .catch((err) => {
+              console.error(`[ingest] Error en generación IA para ${newRow.id}:`, err)
+            })
         }
+      } else {
+        console.warn('[ingest] ⚠️ OPENROUTER_API_KEY no configurada - descripciones IA deshabilitadas')
       }
       inserted++
     }

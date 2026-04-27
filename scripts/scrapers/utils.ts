@@ -4,6 +4,7 @@
  */
 import { config } from 'dotenv'
 import { resolve } from 'path'
+import { generateAiDescription } from '../../src/lib/ai-description'
 // Carga .env.local desde la raíz del proyecto (2 niveles arriba de scripts/scrapers/)
 config({ path: resolve(process.cwd(), '.env.local') })
 
@@ -567,6 +568,12 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
     await insertImages(listingId, listing.images, baseHeaders)
   }
 
+  // ── Generar descripción IA en background (no bloquea el scraper) ────────
+  const openrouterKey = process.env.OPENROUTER_API_KEY
+  if (listingId && openrouterKey && !isExactMatch) { // solo para nuevos inserts
+    void generateAiDescriptionForListing(listingId, baseHeaders, openrouterKey)
+  }
+
   return true
 }
 
@@ -690,6 +697,54 @@ export async function uploadImageToStorage(
   } catch (err) {
     console.warn(`  ⚠️ uploadImageToStorage error: ${err}`)
     return null
+  }
+}
+
+// ── Generar descripción IA para un listing recién insertado ────────────────
+async function generateAiDescriptionForListing(
+  listingId: string,
+  headers: Record<string, string>,
+  openrouterKey: string,
+) {
+  try {
+    // Buscar el listing con los datos necesarios para generar la descripción
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/listings?id=eq.${listingId}&select=id,title,description,operation,city,district,province,price_eur,bedrooms,bathrooms,area_m2,is_particular&limit=1`,
+      { headers }
+    )
+    if (!res.ok) return
+
+    const rows = await res.json() as Array<{
+      id: string
+      title: string
+      description: string | null
+      operation: string
+      city: string | null
+      district: string | null
+      province: string | null
+      price_eur: number | null
+      bedrooms: number | null
+      bathrooms: number | null
+      area_m2: number | null
+      is_particular: boolean
+    }>
+
+    if (rows.length === 0) return
+    const listing = rows[0]
+
+    // Generar descripción con IA
+    const aiDesc = await generateAiDescription(listing, openrouterKey)
+    if (!aiDesc) return
+
+    // Guardar descripción
+    await fetch(`${SUPABASE_URL}/rest/v1/listings?id=eq.${listingId}`, {
+      method: 'PATCH',
+      headers: { ...headers, Prefer: 'return=minimal' },
+      body: JSON.stringify({ ai_description: aiDesc }),
+    })
+  } catch (err) {
+    // Error silencioso — no bloquea el scraper, el cron job lo reintentará
+    console.warn(`  ⚠️ No se pudo generar descripción IA para ${listingId}: ${err}`)
   }
 }
 
