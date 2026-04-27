@@ -10,7 +10,11 @@ import DescriptionExpand from './DescriptionExpand'
 import RevealContact from './RevealContact'
 import SimilarListingsCarousel from '@/components/SimilarListingsCarousel'
 import MortgageCalculator from '@/components/MortgageCalculator'
+import PriceAnalysisSection from '@/components/PriceAnalysisSection'
+import NeighborhoodSection from '@/components/NeighborhoodSection'
 import { getListingById, getSimilarListings } from '@/lib/listings'
+import { getPriceAnalysis } from '@/lib/price-analysis'
+import { generateNeighborhoodInfo, getNeighborhoodFallback } from '@/lib/neighborhood-info'
 import { createClient } from '@/lib/supabase/server'
 import { decodeHtml } from '@/lib/html'
 import type { Metadata } from 'next'
@@ -149,6 +153,28 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
     listing.operation,
     listing.price_eur,
   )
+
+  // Análisis de precios
+  const priceAnalysis = await getPriceAnalysis(
+    listing.id,
+    listing.city,
+    listing.district,
+    listing.operation,
+    listing.price_eur,
+    listing.area_m2,
+    listing.bedrooms,
+  )
+
+  // Información del barrio
+  let neighborhoodInfo = await generateNeighborhoodInfo(
+    listing.district,
+    listing.city,
+    listing.province,
+  )
+  // Fallback si falla la generación con IA
+  if (!neighborhoodInfo) {
+    neighborhoodInfo = getNeighborhoodFallback(listing.district, listing.city)
+  }
 
   const images = listing.listing_images ?? []
 
@@ -296,6 +322,22 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                 <p className="text-xs font-bold text-[#a87a20] uppercase tracking-wider mb-3">✨ Análisis del anuncio</p>
                 <DescriptionExpand text={listing.ai_description} />
               </div>
+            )}
+
+            {/* ── ANÁLISIS DE PRECIOS COMPETITIVO ── */}
+            {priceAnalysis && (
+              <PriceAnalysisSection
+                analysis={priceAnalysis}
+                city={city}
+                district={district}
+                operation={listing.operation}
+                bedrooms={listing.bedrooms}
+              />
+            )}
+
+            {/* ── INFORMACIÓN DEL BARRIO ── */}
+            {neighborhoodInfo && (
+              <NeighborhoodSection info={neighborhoodInfo} />
             )}
 
             {/* Características — sin bordes de caja, solo separador */}
