@@ -14,6 +14,7 @@ import TotalPurchaseCostCalculator from '@/components/TotalPurchaseCostCalculato
 import TotalRentalCostCalculator from '@/components/TotalRentalCostCalculator'
 import PriceAnalysisSection from '@/components/PriceAnalysisSection'
 import NeighborhoodSection from '@/components/NeighborhoodSection'
+import ListingSchema from '@/components/ListingSchema'
 import { getListingById, getSimilarListings } from '@/lib/listings'
 import { getPriceAnalysis } from '@/lib/price-analysis'
 import { generateNeighborhoodInfo, getNeighborhoodFallback } from '@/lib/neighborhood-info'
@@ -197,6 +198,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <ListingSchema listing={listing} />
       <Navbar />
       <ViewTracker listingId={listing.id} />
 

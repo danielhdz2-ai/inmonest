@@ -86,10 +86,13 @@ async function getListingUrls(): Promise<MetadataRoute.Sitemap> {
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
     )
+    
+    // ✨ SOLO LISTINGS PREMIUM: Con AI description v2.0 (206 listings de calidad)
     const { data, error } = await supabase
       .from('listings')
       .select('id, updated_at')
       .eq('status', 'published')
+      .not('ai_description', 'is', null)  // Solo con descripción IA
       .limit(10000)
 
     if (error || !data) return []
@@ -98,7 +101,7 @@ async function getListingUrls(): Promise<MetadataRoute.Sitemap> {
       url: `${BASE_URL}/pisos/${listing.id}`,
       lastModified: listing.updated_at ? new Date(listing.updated_at) : new Date(),
       changeFrequency: 'weekly' as const,
-      priority: 0.7,
+      priority: 0.85,  // ↑ Mayor prioridad para listings premium (antes 0.7)
     }))
   } catch {
     return []
