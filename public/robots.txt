@@ -1,0 +1,12 @@
+# robots.txt para Inmonest
+# Permitir a todos los crawlers
+
+User-agent: *
+Allow: /
+
+# Bloquear solo secciones privadas/admin si las hubiera
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://inmonest.com/sitemap.xml
