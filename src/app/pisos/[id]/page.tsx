@@ -10,6 +10,8 @@ import DescriptionExpand from './DescriptionExpand'
 import RevealContact from './RevealContact'
 import SimilarListingsCarousel from '@/components/SimilarListingsCarousel'
 import MortgageCalculator from '@/components/MortgageCalculator'
+import TotalPurchaseCostCalculator from '@/components/TotalPurchaseCostCalculator'
+import TotalRentalCostCalculator from '@/components/TotalRentalCostCalculator'
 import PriceAnalysisSection from '@/components/PriceAnalysisSection'
 import NeighborhoodSection from '@/components/NeighborhoodSection'
 import { getListingById, getSimilarListings } from '@/lib/listings'
@@ -560,6 +562,21 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
               </div>
             )}
 
+            {/* Calculadora de Gastos Totales */}
+            {listing.operation === 'sale' && listing.price_eur && (
+              <TotalPurchaseCostCalculator 
+                precioVivienda={listing.price_eur} 
+                provincia={listing.province}
+              />
+            )}
+            {listing.operation === 'rent' && listing.price_eur && (
+              <TotalRentalCostCalculator 
+                alquilerMensual={listing.price_eur}
+                areaM2={listing.area_m2}
+                bedrooms={listing.bedrooms}
+              />
+            )}
+
             {/* CTA contratos */}
             <div className="bg-[#fef9e8] rounded-2xl p-5 border border-[#f4c94a]/30">
               <p className="text-sm font-semibold text-[#42300a] mb-1">¿Vas a cerrar el trato?</p>
@@ -602,6 +619,21 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
               />
             </div>
           </div>
+
+          {/* Calculadoras mobile */}
+          {listing.operation === 'sale' && listing.price_eur && (
+            <TotalPurchaseCostCalculator 
+              precioVivienda={listing.price_eur} 
+              provincia={listing.province}
+            />
+          )}
+          {listing.operation === 'rent' && listing.price_eur && (
+            <TotalRentalCostCalculator 
+              alquilerMensual={listing.price_eur}
+              areaM2={listing.area_m2}
+              bedrooms={listing.bedrooms}
+            />
+          )}
 
           {/* Calculadora hipotecaria mobile — solo venta */}
           {listing.operation === 'sale' && (
