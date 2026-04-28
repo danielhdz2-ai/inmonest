@@ -493,7 +493,7 @@ async function scrapeCity(
       if (slugM) {
         district = slugM[1].replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()).trim()
       }
-      district = district || item.City ?? undefined
+      district = district ?? item.City ?? undefined
 
       // Código postal también desde la URL: piso-barrio08904
       let postalCode = detail.postalCode
