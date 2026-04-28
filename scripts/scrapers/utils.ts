@@ -397,20 +397,22 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
   // ── Paso 1: buscar duplicado exacto por source_portal + source_external_id ─
   let listingId: string | null = null
   let existingIsParticular = false
+  let existingHasAiDescription = false
   let isExactMatch = false  // true = mismo portal+id; false = coincidencia por contenido
 
   const exactRes = await fetch(
     `${SUPABASE_URL}/rest/v1/listings` +
     `?source_portal=eq.${encodeURIComponent(listing.source_portal)}` +
     `&source_external_id=eq.${encodeURIComponent(listing.source_external_id ?? '')}` +
-    `&select=id,is_particular&limit=1`,
+    `&select=id,is_particular,ai_description&limit=1`,
     { headers: baseHeaders },
   )
   if (exactRes.ok) {
-    const rows = await exactRes.json() as Array<{ id: string; is_particular: boolean }>
+    const rows = await exactRes.json() as Array<{ id: string; is_particular: boolean; ai_description: string | null }>
     if (rows.length > 0) {
       listingId = rows[0].id
       existingIsParticular = rows[0].is_particular
+      existingHasAiDescription = !!rows[0].ai_description
       isExactMatch = true
     }
   }
@@ -570,7 +572,7 @@ export async function upsertListing(listing: ScrapedListing): Promise<boolean> {
 
   // ── Generar descripción IA en background (no bloquea el scraper) ────────
   const openrouterKey = process.env.OPENROUTER_API_KEY
-  if (listingId && openrouterKey && !isExactMatch) { // solo para nuevos inserts
+  if (listingId && openrouterKey && !existingHasAiDescription) { // generar si no existe
     void generateAiDescriptionForListing(listingId, baseHeaders, openrouterKey)
   }
 

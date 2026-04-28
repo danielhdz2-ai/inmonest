@@ -26,15 +26,20 @@ export async function POST(req: NextRequest) {
   }
 
   const supabase = await createClient()
+
+  // Obtener usuario autenticado si existe
+  const { data: { user } } = await supabase.auth.getUser()
+
   const { error } = await supabase.from('gestoria_requests').insert({
-    service_key: service_key.trim(),
+    service_key:  service_key.trim(),
     service_name: service_name.trim(),
-    price_eur: parseInt(String(price_eur), 10),
-    client_name: client_name.trim().slice(0, 120),
+    price_eur:    parseInt(String(price_eur), 10),
+    client_name:  client_name.trim().slice(0, 120),
     client_email: client_email.trim().toLowerCase().slice(0, 200),
     client_phone: client_phone?.trim().slice(0, 30) || null,
-    notes: notes?.trim().slice(0, 1000) || null,
-    status: 'pending',
+    notes:        notes?.trim().slice(0, 1000) || null,
+    status:       'pending',
+    ...(user?.id ? { user_id: user.id } : {}),
   })
 
   if (error) {

@@ -16,8 +16,15 @@
 
 import { upsertListing, extractAmenities, type ScrapedListing } from './utils'
 
-const UA =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+const UA_POOL = [
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15',
+]
+const randomUA = () => UA_POOL[Math.floor(Math.random() * UA_POOL.length)]
 
 // Milanuncios usa slugs de ciudad diferentes
 const CITY_MAP: Record<string, { province: string; city: string; slug: string }> = {
@@ -61,7 +68,7 @@ async function fetchHtml(url: string): Promise<string | null> {
   try {
     const res = await fetch(url, {
       headers: {
-        'User-Agent': UA,
+        'User-Agent': randomUA(),
         Accept: 'text/html,application/xhtml+xml,*/*;q=0.8',
         'Accept-Language': 'es-ES,es;q=0.9',
         'Cache-Control': 'no-cache',
@@ -342,7 +349,7 @@ export async function scrapeMilanuncios(
       for (const imgUrl of detail.images.slice(0, 20)) {
         try {
           const res = await fetch(imgUrl, {
-            headers: { Range: 'bytes=0-4096', Referer: 'https://www.milanuncios.com/', 'User-Agent': UA },
+            headers: { Range: 'bytes=0-4096', Referer: 'https://www.milanuncios.com/', 'User-Agent': randomUA() },
             signal: AbortSignal.timeout(5000),
           })
           const buf = Buffer.from(await res.arrayBuffer())

@@ -651,7 +651,7 @@ export default async function ServicioGestoriaPage({
                 ))}
               </ul>
               <Link
-                href="/publicar-anuncio"
+                href={`/gestoria/solicitar/${servicio}`}
                 className="block w-full text-center bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-4 rounded-xl transition-colors"
               >
                 Solicitar ahora
@@ -756,7 +756,7 @@ export default async function ServicioGestoriaPage({
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="/publicar-anuncio"
+              href={`/gestoria/solicitar/${servicio}`}
               className="bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-8 rounded-xl transition-colors"
             >
               Solicitar {data.nombre} — {data.precio} €

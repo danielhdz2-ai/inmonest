@@ -1,6 +1,9 @@
 import type { MetadataRoute } from 'next'
 import { createClient } from '@supabase/supabase-js'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 const BASE_URL = 'https://inmonest.com'
 
 const CIUDADES = [

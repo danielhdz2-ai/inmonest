@@ -112,8 +112,9 @@ export async function POST(req: NextRequest, { params }: Params) {
     return NextResponse.json({ error: 'Anuncio no encontrado' }, { status: 404 })
   }
 
-  // Insertar contacto en BD
-  const { data: contactRow, error: insertErr } = await supabase
+  // Insertar contacto en BD (admin client para bypass RLS)
+  const adminSbInsert = createAdminClient()
+  const { data: contactRow, error: insertErr } = await adminSbInsert
     .from('listing_contacts')
     .insert({
       listing_id:    listingId,

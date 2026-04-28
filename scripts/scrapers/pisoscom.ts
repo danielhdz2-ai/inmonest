@@ -11,8 +11,19 @@
 
 import { upsertListing, extractAmenities, type ScrapedListing } from './utils'
 
-const UA =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+const UA_POOL = [
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15',
+]
+const randomUA = () => UA_POOL[Math.floor(Math.random() * UA_POOL.length)]
+
+const DEMAND_RE = /^\s*(?:busco|buscamos|necesito|necesitamos|compro|compramos|se\s+busca|quiero\s+(?:comprar|alquilar)|interesado\s+en)\b/i
+const isDemand = (title: string, desc?: string | null) =>
+  DEMAND_RE.test(title) || (!!desc && DEMAND_RE.test(desc.slice(0, 200)))
 
 const CITY_MAP: Record<string, { province: string; city: string }> = {
   madrid:    { province: 'Madrid',    city: 'Madrid' },
@@ -35,7 +46,7 @@ async function fetchHtml(url: string): Promise<string | null> {
   try {
     const res = await fetch(url, {
       headers: {
-        'User-Agent': UA,
+        'User-Agent': randomUA(),
         Accept: 'text/html,application/xhtml+xml,*/*;q=0.8',
         'Accept-Language': 'es-ES,es;q=0.9',
         'Cache-Control': 'no-cache',
@@ -412,12 +423,13 @@ function extractDetailData(html: string): {
 async function scrapeCity(
   operation: 'venta' | 'alquiler',
   citySlug: string,
-  maxPages: number
-): Promise<void> {
+  maxPages: number,
+  maxItems: number = 9999,
+): Promise<{ inserted: number; skipped: number }> {
   const geoInfo = CITY_MAP[citySlug]
   if (!geoInfo) {
     console.error(`Ciudad no soportada: ${citySlug}`)
-    return
+    return { inserted: 0, skipped: 0 }
   }
 
   const opLabel = operation === 'venta' ? 'sale' : 'rent'
@@ -481,7 +493,7 @@ async function scrapeCity(
       if (slugM) {
         district = slugM[1].replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()).trim()
       }
-      district = district || item.City || undefined
+      district = district || item.City ?? undefined
 
       // Código postal también desde la URL: piso-barrio08904
       let postalCode = detail.postalCode
@@ -501,9 +513,16 @@ async function scrapeCity(
         .replace(/&#\d+;/g, c => String.fromCharCode(parseInt(c.slice(2, -1), 10)))
         .trim()
 
+      // ── Filtro de demanda ────────────────────────────────────────────────
+      if (isDemand(title, detail.description)) {
+        console.log(`    🚫 Demanda ignorada: ${title.slice(0, 60)}`)
+        skipped++
+        continue
+      }
+
       const listing: ScrapedListing = {
         title: title || `Piso en ${opEs} – ${geoInfo.city}`,
-        description: detail.description,
+        description: detail.description || '',
         price_eur: detail.price ?? undefined,
         operation: opLabel as 'sale' | 'rent',
         province: geoInfo.province,
@@ -540,6 +559,7 @@ async function scrapeCity(
         console.log(
           `    ✅ [${imported}] ${title.slice(0, 55)} | ${detail.price?.toLocaleString('es-ES')}€ | ${detail.area}m²`
         )
+        if (imported >= maxItems) { console.log(`  🎯 Límite ${maxItems} alcanzado`); break }
       } else {
         skipped++
       }
@@ -547,11 +567,23 @@ async function scrapeCity(
       await sleep(DELAY_MS)
     }
 
+    if (imported >= maxItems) break
     // Pausa entre páginas
     if (page < maxPages) await sleep(2000)
   }
 
   console.log(`\n📊 pisos.com ${opEs}/${citySlug}: ${imported} importados, ${skipped} errores`)
+  return { inserted: imported, skipped }
+}
+
+/** Función exportable para llamar desde el orquestador de Vercel Cron */
+export async function scrapePisoscom(
+  operation: 'venta' | 'alquiler',
+  citySlug: string,
+  maxPages: number,
+  maxItems: number = 9999,
+): Promise<{ inserted: number; skipped: number }> {
+  return scrapeCity(operation, citySlug, maxPages, maxItems)
 }
 
 // Punto de entrada

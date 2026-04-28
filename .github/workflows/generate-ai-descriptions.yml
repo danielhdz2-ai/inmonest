@@ -1,0 +1,47 @@
+name: Generate AI Descriptions v2.0
+
+on:
+  # Ejecución manual
+  workflow_dispatch:
+    inputs:
+      batch_size:
+        description: 'Número de listings por ejecución'
+        required: false
+        default: '15'
+  
+  # Automático: cada hora
+  schedule:
+    - cron: '0 * * * *'  # Cada hora en punto
+
+jobs:
+  generate-descriptions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate AI descriptions (batch)
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: |
+          BATCH_SIZE=${{ github.event.inputs.batch_size || '15' }}
+          echo "🚀 Generando hasta $BATCH_SIZE descripciones AI v2.0..."
+          npx tsx scripts/github-ai-generator.mts --batch=$BATCH_SIZE
+
+      - name: Report completion
+        run: |
+          echo "✅ Batch completado"
+          npx tsx scripts/github-ai-generator.mts --stats

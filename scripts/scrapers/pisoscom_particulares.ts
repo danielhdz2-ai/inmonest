@@ -22,8 +22,19 @@
 
 import { upsertListing, extractPhone, type ScrapedListing } from './utils'
 
-const UA =
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36'
+const UA_POOL = [
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:125.0) Gecko/20100101 Firefox/125.0',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_4_1) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.4.1 Safari/605.1.15',
+]
+const randomUA = () => UA_POOL[Math.floor(Math.random() * UA_POOL.length)]
+
+const DEMAND_RE = /^\s*(?:busco|buscamos|necesito|necesitamos|compro|compramos|se\s+busca|quiero\s+(?:comprar|alquilar)|interesado\s+en)\b/i
+const isDemand = (title: string, desc?: string | null) =>
+  DEMAND_RE.test(title) || (!!desc && DEMAND_RE.test(desc.slice(0, 200)))
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Ciudades soportadas
@@ -59,7 +70,7 @@ async function fetchHtml(url: string): Promise<string | null> {
   try {
     const res = await fetch(url, {
       headers: {
-        'User-Agent': UA,
+        'User-Agent': randomUA(),
         Accept: 'text/html,application/xhtml+xml,*/*;q=0.8',
         'Accept-Language': 'es-ES,es;q=0.9',
         'Cache-Control': 'no-cache',
@@ -479,6 +490,13 @@ export async function scrapeParticulares(
       }
 
       const externalId = extractExternalId(detailUrl)
+
+      // ── Filtro de demanda ────────────────────────────────────────────────
+      if (isDemand(title, detail.description)) {
+        console.log(`    🚫 Demanda ignorada: ${title.slice(0, 60)}`)
+        skipped++
+        continue
+      }
 
       const listing: ScrapedListing = {
         title,

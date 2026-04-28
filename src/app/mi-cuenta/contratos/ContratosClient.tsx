@@ -78,6 +78,26 @@ export default function ContratosClient({ contratos, userDocs, userId }: Props) 
   const [docs, setDocs] = useState<UserDoc[]>(userDocs)
   const [downloading, setDownloading] = useState<string | null>(null)
   const [uploading, setUploading]     = useState<string | null>(null)
+  const [paying, setPaying]           = useState<string | null>(null)
+
+  async function handlePagar(contrato: Contrato) {
+    setPaying(contrato.id)
+    try {
+      const res  = await fetch('/api/gestoria/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service_key:  contrato.service_key,
+          client_name:  contrato.client_name ?? '',
+          client_email: '',
+        }),
+      })
+      const data = await res.json()
+      if (data.url) window.location.href = data.url
+    } finally {
+      setPaying(null)
+    }
+  }
   const [selectedDocType, setSelectedDocType] = useState(DOC_DEFS[0].key)
   const [pendingFile, setPendingFile]         = useState<File | null>(null)
   const newDocInputRef = useRef<HTMLInputElement | null>(null)
@@ -159,6 +179,16 @@ export default function ContratosClient({ contratos, userDocs, userId }: Props) 
       {/* ── HISTORIAL ─────────────────────────────────────────────────── */}
       {tab === 'historial' && (
         <div>
+          {/* Banner tras nueva solicitud */}
+          {typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('solicitud') === '1' && (
+            <div className="bg-green-50 border border-green-200 rounded-2xl p-4 flex items-start gap-3 mb-4">
+              <span className="text-xl flex-shrink-0">✅</span>
+              <div className="text-sm text-green-800">
+                <p className="font-semibold">¡Solicitud recibida!</p>
+                <p className="text-green-700 mt-0.5">Tu solicitud ha sido registrada. Completa el pago para que nuestro equipo empiece a redactar tu contrato.</p>
+              </div>
+            </div>
+          )}
           {contratos.length === 0 ? (
             <div className="bg-white rounded-2xl border border-gray-200 p-16 text-center">
               <div className="relative w-full h-40 rounded-xl overflow-hidden mb-6">
@@ -192,6 +222,7 @@ export default function ContratosClient({ contratos, userDocs, userId }: Props) 
                         <span className="text-lg font-bold text-[#c9962a]">
                           {c.amount_eur ? `${c.amount_eur} EUR` : ''}
                         </span>
+                        {/* Contrato entregado: descargar */}
                         {c.contract_path ? (
                           <button
                             onClick={() => handleDownload(c)}
@@ -206,6 +237,22 @@ export default function ContratosClient({ contratos, userDocs, userId }: Props) 
                               </svg>
                             )}
                             Descargar
+                          </button>
+                        ) : c.status === 'pending' && !c.paid_at ? (
+                          /* Solicitud sin pago: mostrar botón Pagar ahora */
+                          <button
+                            onClick={() => handlePagar(c)}
+                            disabled={paying === c.id}
+                            className="flex items-center gap-1.5 bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-3 py-2 rounded-lg transition-colors disabled:opacity-60"
+                          >
+                            {paying === c.id ? (
+                              <span className="animate-spin w-3 h-3 border-2 border-white border-t-transparent rounded-full" />
+                            ) : (
+                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                              </svg>
+                            )}
+                            Pagar ahora
                           </button>
                         ) : (
                           <span className="text-xs bg-gray-100 text-gray-400 px-3 py-2 rounded-lg">En preparacion</span>
