@@ -1,3 +1,4 @@
+// Deploy: 2026-04-28 - Calculadoras interactivas
 import type { NextConfig } from "next";
 import path from "path";
 
