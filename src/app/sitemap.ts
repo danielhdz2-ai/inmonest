@@ -25,6 +25,8 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/hipoteca`,             lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.9 },
   { url: `${BASE_URL}/calculadora-gastos-compra`,    lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 },
   { url: `${BASE_URL}/calculadora-gastos-alquiler`,  lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 },
+  { url: `${BASE_URL}/barcelona/pisos-particulares-sin-comision`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.98 },
+  { url: `${BASE_URL}/madrid/pisos-particulares-sin-comision`,    lastModified: new Date(), changeFrequency: 'daily', priority: 0.98 },
   { url: `${BASE_URL}/publicar-anuncio`,     lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
   { url: `${BASE_URL}/vender-casa`,          lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
   { url: `${BASE_URL}/agencias`,             lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.7 },

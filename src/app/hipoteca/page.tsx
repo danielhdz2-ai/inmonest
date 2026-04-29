@@ -9,8 +9,8 @@ import HipotecaContactForm from './HipotecaContactForm'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Hipoteca sin estrés — Te ayudamos a conseguir la mejor financiación',
-  description: 'Compara las mejores hipotecas del mercado. Calculadora de cuota mensual, análisis de viabilidad financiera y gestión personalizada con nuestro equipo de expertos.',
+  title: 'Hipoteca sin estrés 2026 — Compara 15+ bancos y consigue el mejor tipo',
+  description: 'Calculadora hipoteca gratis + comparativa de las mejores ofertas (desde 2,5% TIN). Gestión completa sin coste para ti. Respuesta en 24-48h. Ahorra hasta 15.000€ en intereses.',
   alternates: { canonical: `${BASE_URL}/hipoteca` },
   openGraph: {
     title: '¿Buscas hipoteca? Te ayudamos a conseguir la mejor financiación — Inmonest',
