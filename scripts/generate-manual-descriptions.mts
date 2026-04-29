@@ -72,8 +72,9 @@ async function main() {
   const { data: listings, error } = await sb
     .from('listings')
     .select('*')
-    .eq('source_portal', 'wallapop')
+    .eq('status', 'published')
     .or('ai_description.is.null,ai_description.eq.')
+    .limit(300)
 
   if (error) {
     console.error('❌ Error:', error.message)

@@ -13,7 +13,9 @@
 import { calculatePriceDeviation } from './city-price-reference'
 import { calculateMonthlyExpenses } from './monthly-cost-calculator'
 
-const OR_MODEL = 'google/gemini-2.0-flash-lite-001'
+// Modelo económico con buen balance calidad/precio
+// $0.02 por 1M tokens (50x más barato que GPT-4)
+const OR_MODEL = 'google/gemini-flash-1.5'
 
 interface ListingInput {
   id: string
@@ -32,98 +34,28 @@ interface ListingInput {
 
 function buildPrompt(l: ListingInput): string {
   const op = l.operation === 'rent' ? 'alquiler' : 'venta'
-  const hab =
-    l.bedrooms === 0
-      ? 'estudio'
-      : l.bedrooms === 1
-        ? '1 habitación'
-        : `${l.bedrooms} habitaciones`
-  
-  const ubicacion = [l.district, l.city, l.province].filter(Boolean).join(', ')
-  const precio = l.price_eur
-    ? l.operation === 'rent'
-      ? `${l.price_eur}€/mes`
-      : `${l.price_eur.toLocaleString('es-ES')}€`
-    : null
-
-  // ANÁLISIS DE PRECIOS COMPETITIVO
-  let priceAnalysis = ''
-  if (l.price_eur && l.area_m2 && l.city) {
-    const analysis = calculatePriceDeviation(
-      l.price_eur,
-      l.area_m2,
-      l.city,
-      l.operation as 'sale' | 'rent'
-    )
-    
-    if (analysis.deviation !== null) {
-      if (analysis.isOpportunity) {
-        priceAnalysis = `\n- ANÁLISIS DE PRECIO: Este inmueble está un ${Math.abs(analysis.deviation)}% por DEBAJO de la media de ${l.city} (${analysis.cityAvgPerM2}€/m²). ¡OPORTUNIDAD ÚNICA! Menciona esto como ventaja competitiva.`
-      } else if (analysis.isPremium) {
-        priceAnalysis = `\n- ANÁLISIS DE PRECIO: Este inmueble está un ${analysis.deviation}% por ENCIMA de la media de ${l.city} (${analysis.cityAvgPerM2}€/m²). Es una propiedad PREMIUM/EXCLUSIVA. Justifica el precio con calidades superiores, ubicación privilegiada o características únicas.`
-      } else {
-        priceAnalysis = `\n- ANÁLISIS DE PRECIO: Precio competitivo, ${Math.abs(analysis.deviation)}% ${analysis.deviation < 0 ? 'por debajo' : 'por encima'} de la media de ${l.city} (${analysis.cityAvgPerM2}€/m²).`
-      }
-    }
-  }
-
-  // ── CONTEXTO DEL BARRIO ──────────────────────────────────────────
-  let neighborhoodContext = ''
-  if (l.district || l.city) {
-    neighborhoodContext = `\n- CONTEXTO DEL BARRIO: Menciona brevemente 2-3 ventajas de vivir en ${l.district || l.city}: transporte (metro/bus/cercanías), servicios cercanos (supermercados, colegios, hospitales), o ambiente del barrio (tranquilo, familiar, comercial, etc.). Usa información general conocida, NO inventes datos específicos.`
-  }
-
-  // ── GASTOS MENSUALES (SOLO ALQUILER) ────────────────────────────
-  let expensesInfo = ''
-  if (l.operation === 'rent' && l.price_eur && l.area_m2 && l.bedrooms !== null) {
-    const expenses = calculateMonthlyExpenses({
-      rent: l.price_eur,
-      area_m2: l.area_m2,
-      bedrooms: l.bedrooms,
-    })
-    expensesInfo = `\n- GASTOS ESTIMADOS: Coste mensual total estimado de ${expenses.total}€ (incluyendo alquiler ${l.price_eur}€ + suministros ~${expenses.utilities}€ + internet ~${expenses.internet}€). Menciona esto para dar transparencia.`
-  }
-
-  // Solo es particular si está EXPLÍCITAMENTE marcado como true
+  const hab = l.bedrooms === 0 ? 'estudio' : l.bedrooms === 1 ? '1 hab' : `${l.bedrooms} habs`
+  const ubicacion = [l.district, l.city].filter(Boolean).join(', ')
+  const precio = l.price_eur ? (l.operation === 'rent' ? `${l.price_eur}€/mes` : `${l.price_eur.toLocaleString('es-ES')}€`) : null
   const isParticular = l.is_particular === true
 
-  // ── PROMPTS DIFERENCIADOS: PARTICULAR vs AGENCIA ─────────────────
+  // Prompt optimizado (menos tokens)
   if (isParticular) {
-    return `Eres un propietario particular que alquila/vende su piso directamente.
-Escribe una descripción COMPLETA Y OPTIMIZADA de 350-400 palabras para TU piso:
+    return `Eres propietario. Describe TU piso en ${op} en ${ubicacion} (${hab}${l.bathrooms ? `, ${l.bathrooms} baños` : ''}${l.area_m2 ? `, ${l.area_m2}m²` : ''}${precio ? `, ${precio}` : ''}).
 
-Datos del piso:
-- Operación: ${op}
-- Ubicación: ${ubicacion || 'España'}
-- Tipo: ${hab}
-${l.bathrooms ? `- Baños: ${l.bathrooms}` : ''}
-${l.area_m2 ? `- Superficie: ${l.area_m2} m²` : ''}
-${precio ? `- Precio: ${precio}` : ''}${priceAnalysis}${neighborhoodContext}${expensesInfo}
+Estructura (250 palabras):
+1. Descripción atractiva del piso (luminosidad, reforma, distribución)
+2. Barrio: transporte, servicios, ambiente
+3. Ventaja: "Sin comisión, trato directo con propietario"
 
-Instrucciones CRÍTICAS:
-- Usa PRIMERA PERSONA: "Alquilo mi piso", "Tengo un piso", "Ofrezco"
-- ESTRUCTURA EN 3 BLOQUES:
-  
-  BLOQUE 1 (100-120 palabras): Descripción del piso
-  - Presenta el piso de forma atractiva y personal
-  - Menciona características principales (luminosidad, reforma, distribución)
-  - Tono cercano y entusiasta
-  
-  BLOQUE 2 (120-150 palabras): Análisis de precio + Barrio
-  ${priceAnalysis ? '- MENCIONA EXPLÍCITAMENTE el análisis de precio (oportunidad/premium según corresponda)' : ''}
-  - Habla del barrio: transporte, servicios, ambiente
-  ${expensesInfo ? '- Menciona el coste mensual total estimado' : ''}
-  - Conecta el precio con el valor que ofrece
-  
-  BLOQUE 3 (80-100 palabras): Ventaja de particular + Llamada a la acción
-  - MENCIONA: "Trato directo con el propietario, sin comisiones de agencia"
-  - Resalta la ventaja económica de no pagar comisión
-  - Invita a contactar: "Contáctame directamente si te interesa"
+Primera persona, tono cercano, sin emojis, texto plano.`
+  }
 
-- Tono CERCANO y personal, como hablar con un amigo
-- Sin emojis, sin markdown, solo texto plano
-- EXACTAMENTE entre 350 y 400 palabras
-- USA los datos de análisis de precio y barrio proporcionados
+  // Agencia - prompt corto
+  return `Describe piso en ${op} en ${ubicacion} (${hab}${l.bathrooms ? `, ${l.bathrooms} baños` : ''}${l.area_m2 ? `, ${l.area_m2}m²` : ''}${precio ? `, ${precio}` : ''}).
+
+Escribe 250 palabras: características del piso, ventajas del barrio, beneficios de la ubicación. Tono profesional, sin emojis, texto plano.`
+}
 
 Ejemplo de inicio: "¡Hola! Soy el propietario y te ofrezco este magnífico piso de..."
 
@@ -192,7 +124,7 @@ export async function generateAiDescription(
       body: JSON.stringify({
         model: OR_MODEL,
         messages: [{ role: 'user', content: buildPrompt(listing) }],
-        max_tokens: 1000,  // Incrementado para descripciones largas
+        max_tokens: 500,  // Optimizado: descripciones concisas (200-250 palabras)
         temperature: 0.7,
       }),
     })
@@ -204,8 +136,8 @@ export async function generateAiDescription(
     }
     const text = json.choices?.[0]?.message?.content?.trim() ?? ''
     
-    // Validar longitud mínima (ahora esperamos 350-400 palabras ≈ 2000-2400 chars)
-    return text.length >= 300 ? text : null
+    // Validar longitud mínima (esperamos 200-250 palabras ≈ 1200-1500 chars)
+    return text.length >= 200 ? text : null
   } catch {
     return null
   }
