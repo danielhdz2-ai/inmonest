@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Suspense } from 'react'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import SearchForm from '@/components/SearchForm'
@@ -56,7 +57,6 @@ export default function PisosMalagaPage() {
           <Image src="/ciudades/malaga1.jpg" alt="Málaga" fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/90 via-blue-800/85 to-indigo-900/90" />
         </div>
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
         
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center text-white mb-12">
@@ -98,7 +98,9 @@ export default function PisosMalagaPage() {
           </div>
 
           <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-6">
-            <SearchForm />
+            <Suspense fallback={<div className="h-32 animate-pulse bg-gray-100 rounded-lg" />}>
+              <SearchForm />
+            </Suspense>
           </div>
         </div>
       </section>
