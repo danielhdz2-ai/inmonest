@@ -297,17 +297,17 @@ export async function scrapeMilanuncios(
   const opLabel = operation === 'venta' ? 'sale' : 'rent'
   const opSlug = operation === 'venta' ? 'venta' : 'alquiler'
   console.log(`\n🔥 MILANUNCIOS ÉLITE — ${operation}/${citySlug} (${maxPages} páginas)`)
-  console.log(`   Filtro: &demandante=par (solo particulares)\n`)
+  console.log(`   Filtrado manual: solo particulares verificados\n`)
 
   let imported = 0
   let skipped = 0
   let rejected = 0
 
   for (let page = 1; page <= maxPages; page++) {
-    // demandante=par filtra solo anunciantes particulares en Milanuncios
+    // SIN filtro demandante=par (no funciona bien), filtrado manual después
     const searchUrl =
       `https://www.milanuncios.com/pisos-en-${opSlug}-en-${geoInfo.slug}/` +
-      `?demandante=par&pagina=${page}`
+      `?pagina=${page}`
 
     console.log(`  📄 Página ${page}: ${searchUrl}`)
     const html = await fetchHtml(searchUrl)

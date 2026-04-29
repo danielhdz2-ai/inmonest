@@ -527,6 +527,12 @@ async function main() {
       continue
     }
 
+    // ⭐ FILTRO CRÍTICO: Solo particulares (NO agencias)
+    if (!detail.is_particular) {
+      console.log(`🏢 [AGENCIA] Descartado: ${detail.title.slice(0, 50)}`)
+      continue
+    }
+
     // Filtro de precio
     if (minPrice !== undefined && (detail.price ?? 0) < minPrice) {
       console.log(`⏭️  Precio ${detail.price?.toLocaleString('es-ES')}€ < mín ${minPrice.toLocaleString('es-ES')}€ — omitido`)

@@ -54,52 +54,9 @@ Primera persona, tono cercano, sin emojis, texto plano.`
   // Agencia - prompt corto
   return `Describe piso en ${op} en ${ubicacion} (${hab}${l.bathrooms ? `, ${l.bathrooms} baños` : ''}${l.area_m2 ? `, ${l.area_m2}m²` : ''}${precio ? `, ${precio}` : ''}).
 
-Escribe 250 palabras: características del piso, ventajas del barrio, beneficios de la ubicación. Tono profesional, sin emojis, texto plano.`
-}
-
-Ejemplo de inicio: "¡Hola! Soy el propietario y te ofrezco este magnífico piso de..."
+Escribe 250 palabras: características del piso, ventajas del barrio, beneficios de la ubicación. Tono profesional, sin emojis, texto plano.
 
 Responde SOLO con el texto de la descripción, sin comillas ni títulos de sección.`
-  } else {
-    return `Eres un agente inmobiliario profesional que redacta anuncios comerciales premium.
-Escribe una descripción COMPLETA Y OPTIMIZADA de 350-400 palabras para esta propiedad:
-
-Datos del inmueble:
-- Operación: ${op}
-- Ubicación: ${ubicacion || 'España'}
-- Características: ${hab}, ${l.bathrooms ? `${l.bathrooms} baños` : ''}, ${l.area_m2 ? `${l.area_m2} m²` : ''}
-${precio ? `- Precio: ${precio}` : ''}${priceAnalysis}${neighborhoodContext}${expensesInfo}
-
-Instrucciones CRÍTICAS:
-- Usa TERCERA PERSONA: "Se ofrece", "Esta propiedad cuenta con", "El inmueble dispone de"
-- ESTRUCTURA EN 3 BLOQUES:
-  
-  BLOQUE 1 (100-120 palabras): Presentación de la propiedad
-  - Descripción elegante y profesional del inmueble
-  - Características destacadas (calidades, distribución, orientación)
-  - Tono corporativo premium
-  
-  BLOQUE 2 (120-150 palabras): Análisis de mercado + Entorno
-  ${priceAnalysis ? '- MENCIONA EXPLÍCITAMENTE el análisis de precio (oportunidad/exclusividad según corresponda)' : ''}
-  - Describe el barrio: conectividad, equipamientos, perfil de zona
-  ${expensesInfo ? '- Menciona el coste mensual total estimado para dar transparencia' : ''}
-  - Posiciona la propiedad en el mercado
-  
-  BLOQUE 3 (80-100 palabras): Propuesta de valor + Contacto
-  - Refuerza por qué es una excelente inversión/oportunidad
-  - Usa verbos de acción: "dispone", "ofrece", "presenta", "garantiza"
-  - Termina con: "Contacte con nuestro equipo comercial para más información y visitas"
-
-- Tono PROFESIONAL y corporativo, como catálogo de lujo
-- NUNCA menciones: propietario, trato directo, sin comisiones
-- Sin emojis, sin markdown, solo texto plano
-- EXACTAMENTE entre 350 y 400 palabras
-- USA los datos de análisis de precio y barrio proporcionados
-
-Ejemplo de inicio: "Esta exclusiva propiedad representa una oportunidad única en el mercado de..."
-
-Responde SOLO con el texto de la descripción, sin comillas ni títulos de sección.`
-  }
 }
 
 /**
