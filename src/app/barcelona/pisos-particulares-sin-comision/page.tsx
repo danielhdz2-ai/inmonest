@@ -14,118 +14,35 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/barcelona/pisos-particulares-sin-comision` },
   openGraph: {
     title: 'Pisos de Particulares en Barcelona Sin Comisión — Inmonest',
-    description: 'Contacta directamente con propietarios. Sin intermediarios, sin comisiones. Ahorra miles de euros.',
+    description: 'Contacta directamente con propietarios. Sin intermediarios, sin comisiones.',
     url: `${BASE_URL}/barcelona/pisos-particulares-sin-comision`,
     type: 'website',
-    siteName: 'Inmonest',
-    locale: 'es_ES',
-    images: [
-      {
-        url: `${BASE_URL}/og-barcelona.jpg`,
-        width: 1200,
-        height: 630,
-        alt: 'Pisos de particulares en Barcelona sin comisión',
-      },
-    ],
   },
 }
 
 const VENTAJAS = [
-  {
-    icon: '💰',
-    titulo: 'Ahorra hasta 6.000€',
-    desc: 'Sin comisión de agencia. En un piso de 1.200€/mes ahorras 2 mensualidades (2.400€). En una compra de 300.000€ ahorras el 2% (6.000€).',
-  },
-  {
-    icon: '🤝',
-    titulo: 'Trato directo con el propietario',
-    desc: 'Hablas directamente con quien toma las decisiones. Negociación más rápida, sin intermediarios que ralenticen el proceso.',
-  },
-  {
-    icon: '✅',
-    titulo: 'Pisos verificados con IA',
-    desc: 'Cada anuncio tiene descripción generada por IA que valida fotos, características y documentación. Solo publicamos pisos reales.',
-  },
-  {
-    icon: '⚡',
-    titulo: 'Respuesta en 24 horas',
-    desc: 'Los particulares responden más rápido que las agencias. Contacta por WhatsApp, email o teléfono y consigue visita en 1-2 días.',
-  },
+  { icon: '💰', titulo: 'Ahorra hasta 6.000€', desc: 'Sin comisión de agencia. En un piso de 1.200€/mes ahorras 2 mensualidades (2.400€). En compra ahorras el 2% (6.000€).' },
+  { icon: '🤝', titulo: 'Trato directo', desc: 'Hablas directamente con quien toma las decisiones. Negociación más rápida.' },
+  { icon: '✅', titulo: 'Verificados con IA', desc: 'Cada anuncio validado por IA con fotos y documentación real.' },
+  { icon: '⚡', titulo: 'Respuesta en 24h', desc: 'Los particulares responden más rápido. Visita en 1-2 días.' },
 ]
 
-const BARRIOS_BARCELONA = [
-  {
-    nombre: 'Eixample',
-    imagen: '/placeholder-eixample.jpg',
-    descripcion: 'El barrio modernista por excelencia. Edificios de Gaudí, comercios de lujo y excelente transporte.',
-    precioMedio: '1.400€/mes',
-    destacado: 'Passeig de Gràcia, Casa Batlló',
-    link: '/pisos?city=barcelona&district=eixample',
-  },
-  {
-    nombre: 'Gràcia',
-    imagen: '/placeholder-gracia.jpg',
-    descripcion: 'Ambiente bohemio, plazas con terrazas y mercado local. Muy popular entre jóvenes profesionales.',
-    precioMedio: '1.250€/mes',
-    destacado: 'Park Güell, Plaça del Sol',
-    link: '/pisos?city=barcelona&district=gracia',
-  },
-  {
-    nombre: 'Sants',
-    imagen: '/placeholder-sants.jpg',
-    descripcion: 'Residencial y bien conectado. Perfecto para familias. Cerca de la estación y Camp Nou.',
-    precioMedio: '1.100€/mes',
-    destacado: 'Estación de Sants, Parc de l\'Espanya Industrial',
-    link: '/pisos?city=barcelona&district=sants',
-  },
-  {
-    nombre: 'Poblenou',
-    imagen: '/placeholder-poblenou.jpg',
-    descripcion: 'El barrio tecnológico de Barcelona. Startups, coworkings y cerca de la playa. Muy moderno.',
-    precioMedio: '1.350€/mes',
-    destacado: 'Rambla del Poblenou, playas',
-    link: '/pisos?city=barcelona&district=poblenou',
-  },
+const BARRIOS = [
+  { nombre: 'Eixample', precio: '1.400€/mes', desc: 'El barrio modernista. Edificios de Gaudí, excelente transporte.', link: '/pisos?city=barcelona&district=eixample', imagen: '/ciudades/barcelona2.jpg' },
+  { nombre: 'Gràcia', precio: '1.250€/mes', desc: 'Bohemio, plazas con terrazas. Popular entre jóvenes profesionales.', link: '/pisos?city=barcelona&district=gracia', imagen: '/interior1.jpg' },
+  { nombre: 'Sants', precio: '1.100€/mes', desc: 'Residencial y bien conectado. Perfecto para familias.', link: '/pisos?city=barcelona&district=sants', imagen: '/interior2.jpg' },
+  { nombre: 'Poblenou', precio: '1.350€/mes', desc: 'Barrio tecnológico. Startups, coworkings y playa.', link: '/pisos?city=barcelona&district=poblenou', imagen: '/ciudades/barcelona3.jpg' },
 ]
 
 const TESTIMONIOS = [
-  {
-    nombre: 'Laura M.',
-    barrio: 'Gràcia',
-    texto: 'Encontré mi piso en 1 semana. Hablé directamente con el dueño y me ahorré 2.400€ de comisión. ¡Increíble!',
-    ahorro: '2.400€',
-  },
-  {
-    nombre: 'Carlos R.',
-    barrio: 'Sants',
-    texto: 'Compré mi primer piso sin pagar comisión de agencia. El propietario era súper transparente y todo fue muy rápido.',
-    ahorro: '6.000€',
-  },
-  {
-    nombre: 'Ana S.',
-    barrio: 'Eixample',
-    texto: 'Las descripciones con IA son geniales. Sabes exactamente qué esperar antes de la visita. Cero sorpresas.',
-    ahorro: '1.800€',
-  },
+  { nombre: 'Laura M.', barrio: 'Gràcia', texto: 'Encontré mi piso en 1 semana. Sin agencia, sin comisiones. ¡Increíble!', ahorro: '2.400€' },
+  { nombre: 'Carlos R.', barrio: 'Sants', texto: 'Compré sin pagar comisión. Todo fue muy rápido y transparente.', ahorro: '6.000€' },
 ]
 
 const FAQS = [
-  {
-    q: '¿Por qué alquilar o comprar directamente al propietario?',
-    a: 'Ahorras la comisión de agencia (1-2 meses de alquiler o 2-5% del precio de venta). Además, el proceso es más rápido porque tratas directamente con quien decide.',
-  },
-  {
-    q: '¿Cómo sé que los pisos son de particulares reales?',
-    a: 'Verificamos cada anuncio con IA que analiza fotos, descripción y datos catastrales. Solo publicamos pisos con documentación completa y fotos reales.',
-  },
-  {
-    q: '¿Cuánto tarda el proceso de alquiler/compra?',
-    a: 'En alquiler: 7-10 días desde visita hasta contrato. En compra: 30-45 días desde oferta hasta escritura ante notario. Más rápido que con agencia.',
-  },
-  {
-    q: '¿Hay pisos en todos los barrios de Barcelona?',
-    a: 'Sí, tenemos pisos de particulares en Eixample, Gràcia, Sants, Poblenou, Sarrià, Ciutat Vella y más. Usa el buscador para filtrar por barrio.',
-  },
+  { q: '¿Por qué alquilar directamente al propietario?', a: 'Ahorras 1-2 meses de comisión (1.200-2.400€) y el proceso es más rápido.' },
+  { q: '¿Cómo verificáis los pisos?', a: 'IA valida fotos, descripción y datos catastrales. Solo pisos reales.' },
+  { q: '¿Cuánto tarda?', a: 'Alquiler: 7-10 días. Compra: 30-45 días. Más rápido que con agencia.' },
 ]
 
 export default function PisosBarcelonaPage() {
@@ -134,61 +51,51 @@ export default function PisosBarcelonaPage() {
       <Navbar />
       <WhatsAppButton />
 
-      {/* Hero con imagen de fondo */}
       <section className="relative pt-24 pb-20 px-4 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/imagencabezera.jpg" alt="Barcelona" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-indigo-900/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a0d00]/85 via-[#2e1900]/65 to-[#1a0d00]/35" />
         </div>
         
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center text-white mb-12">
-            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-block bg-[#c9962a]/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold border border-[#c9962a]/40 mb-6 text-[#f4c94a]">
               🏠 Barcelona • Particulares • Sin Comisión
             </div>
             <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
               Pisos de particulares<br />
-              <span className="text-yellow-400">sin comisión</span> en Barcelona
+              <span className="text-[#f4c94a]">sin comisión</span> en Barcelona
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
               Contacta directamente con el propietario.<br />
               <strong className="text-white">Ahorra hasta 6.000€</strong> en comisiones de agencia.
             </p>
 
-            {/* Stats */}
             <div className="flex flex-wrap justify-center gap-8 mb-10">
               <div className="text-center">
-                <div className="text-4xl font-black text-yellow-400">253</div>
-                <div className="text-sm text-blue-200">Pisos disponibles</div>
+                <div className="text-4xl font-black text-[#f4c94a]">253</div>
+                <div className="text-sm text-white/70">Pisos disponibles</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-black text-yellow-400">0€</div>
-                <div className="text-sm text-blue-200">Comisión agencia</div>
+                <div className="text-4xl font-black text-[#f4c94a]">0€</div>
+                <div className="text-sm text-white/70">Comisión</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-black text-yellow-400">24h</div>
-                <div className="text-sm text-blue-200">Respuesta media</div>
+                <div className="text-4xl font-black text-[#f4c94a]">24h</div>
+                <div className="text-sm text-white/70">Respuesta</div>
               </div>
             </div>
 
-            {/* CTA Principal */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link 
-                href="/pisos?city=barcelona&operation=rent" 
-                className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-4 rounded-full text-lg transition-all shadow-xl hover:shadow-2xl hover:scale-105"
-              >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/pisos?city=barcelona&operation=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
                 Ver pisos en alquiler →
               </Link>
-              <Link 
-                href="/pisos?city=barcelona&operation=sale" 
-                className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all"
-              >
+              <Link href="/pisos?city=barcelona&operation=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
                 Ver pisos en venta →
               </Link>
             </div>
           </div>
 
-          {/* Buscador integrado */}
           <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-6">
             <Suspense fallback={<div className="h-32 animate-pulse bg-gray-100 rounded-lg" />}>
               <SearchForm />
@@ -197,65 +104,39 @@ export default function PisosBarcelonaPage() {
         </div>
       </section>
 
-      {/* Ventajas */}
       <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-              ¿Por qué buscar pisos de particulares?
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Ahorra dinero, tiempo y dolores de cabeza. Trato directo, sin intermediarios.
-            </p>
-          </div>
-
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center">¿Por qué buscar pisos de particulares?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {VENTAJAS.map((v, i) => (
-              <div key={i} className="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-blue-300 hover:shadow-lg transition-all">
+              <div key={i} className="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-[#c9962a] hover:shadow-lg transition-all">
                 <div className="text-4xl mb-4">{v.icon}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{v.titulo}</h3>
-                <p className="text-gray-600 leading-relaxed">{v.desc}</p>
+                <p className="text-gray-600">{v.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Barrios populares */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-              Barrios más populares de Barcelona
-            </h2>
-            <p className="text-lg text-gray-600">
-              Encuentra tu piso ideal en los mejores barrios de la ciudad
-            </p>
-          </div>
-
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center">Barrios más populares de Barcelona</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {BARRIOS_BARCELONA.map((barrio, i) => (
-              <Link key={i} href={barrio.link} className="group">
-                <div className="bg-gray-100 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-blue-400 to-indigo-500 relative overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center text-white text-6xl font-black opacity-20">
-                      {barrio.nombre.charAt(0)}
+            {BARRIOS.map((b, i) => (
+              <Link key={i} href={b.link} className="group">
+                <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all">
+                  <div className="aspect-[4/3] relative overflow-hidden">
+                    <Image src={b.imagen} alt={b.nombre} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <span className="bg-[#c9962a] text-white text-xs font-bold px-2.5 py-1 rounded-full">{b.precio}</span>
                     </div>
                   </div>
                   <div className="p-5">
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                        {barrio.nombre}
-                      </h3>
-                      <span className="bg-blue-100 text-blue-700 text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap">
-                        {barrio.precioMedio}
-                      </span>
-                    </div>
-                    <p className="text-sm text-gray-600 mb-3 leading-relaxed">{barrio.descripcion}</p>
-                    <p className="text-xs text-gray-500 mb-3">📍 {barrio.destacado}</p>
-                    <span className="text-blue-600 font-semibold text-sm group-hover:underline">
-                      Ver pisos en {barrio.nombre} →
-                    </span>
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#c9962a] mb-2 transition-colors">{b.nombre}</h3>
+                    <p className="text-sm text-gray-600 mb-3">{b.desc}</p>
+                    <span className="text-[#c9962a] font-semibold text-sm group-hover:underline">Ver pisos →</span>
                   </div>
                 </div>
               </Link>
@@ -264,27 +145,16 @@ export default function PisosBarcelonaPage() {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="py-20 px-4 bg-gradient-to-b from-blue-50 to-white">
+      <section className="py-20 px-4 bg-gradient-to-b from-[#fef9e8] to-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-              Lo que dicen nuestros usuarios
-            </h2>
-            <p className="text-lg text-gray-600">
-              Miles de personas ya han ahorrado en comisiones
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center">Lo que dicen nuestros usuarios</h2>
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {TESTIMONIOS.map((t, i) => (
-              <div key={i} className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-all">
+              <div key={i} className="bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#c9962a]/50 transition-all">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    {t.nombre.charAt(0)}
-                  </div>
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#c9962a] to-[#a87a20] rounded-full flex items-center justify-center text-white font-bold">{t.nombre.charAt(0)}</div>
                   <div>
-                    <div className="font-bold text-gray-900">{t.nombre}</div>
+                    <div className="font-bold">{t.nombre}</div>
                     <div className="text-sm text-gray-500">{t.barrio}</div>
                   </div>
                 </div>
@@ -298,117 +168,34 @@ export default function PisosBarcelonaPage() {
         </div>
       </section>
 
-      {/* CTA Registro */}
-      <section className="py-20 px-4 bg-gradient-to-r from-blue-600 to-indigo-700">
+      <section className="py-20 px-4 bg-gradient-to-r from-[#c9962a] to-[#a87a20]">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-3xl md:text-5xl font-black mb-6">
-            ¿Quieres recibir pisos nuevos antes que nadie?
-          </h2>
-          <p className="text-xl text-blue-100 mb-8">
-            Crea una alerta personalizada y te avisamos cuando haya pisos que te interesen.<br />
-            <strong className="text-white">Gratis y sin compromiso.</strong>
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/publicar-anuncio" 
-              className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-4 rounded-full text-lg transition-all shadow-xl"
-            >
-              Crear alerta gratis →
-            </Link>
-            <Link 
-              href="/publicar-anuncio" 
-              className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all"
-            >
-              ¿Tienes un piso? Publícalo gratis
-            </Link>
-          </div>
+          <h2 className="text-3xl md:text-5xl font-black mb-6">¿Quieres recibir pisos nuevos antes que nadie?</h2>
+          <p className="text-xl text-[#f4c94a]/90 mb-8">Crea una alerta personalizada gratis.</p>
+          <Link href="/publicar-anuncio" className="inline-block bg-white hover:bg-gray-50 text-[#c9962a] font-bold px-8 py-4 rounded-full text-lg shadow-xl">
+            Crear alerta gratis →
+          </Link>
         </div>
       </section>
 
-      {/* FAQs */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-4">
-              Preguntas frecuentes
-            </h2>
-          </div>
-
+          <h2 className="text-3xl font-black text-gray-900 mb-8 text-center">Preguntas frecuentes</h2>
           <div className="space-y-4">
             {FAQS.map((faq, i) => (
-              <details key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-6 group">
-                <summary className="font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center text-lg">
+              <details key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-6 group hover:border-[#c9962a]/50 transition-all">
+                <summary className="font-bold text-gray-900 cursor-pointer list-none flex justify-between">
                   {faq.q}
-                  <span className="text-blue-600 group-open:rotate-180 transition-transform text-2xl">▼</span>
+                  <span className="text-[#c9962a] group-open:rotate-180 transition-transform">▼</span>
                 </summary>
-                <p className="text-gray-700 mt-4 leading-relaxed">{faq.a}</p>
+                <p className="text-gray-700 mt-4">{faq.a}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Schema FAQ */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: FAQS.map(faq => ({
-              '@type': 'Question',
-              name: faq.q,
-              acceptedAnswer: {
-                '@type': 'Answer',
-                text: faq.a,
-              },
-            })),
-          }),
-        }}
-      />
-
-      {/* Schema LocalBusiness */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Service',
-            name: 'Pisos de Particulares en Barcelona Sin Comisión',
-            description: 'Plataforma para encontrar pisos de alquiler y venta en Barcelona directamente de particulares, sin comisión de agencia',
-            provider: {
-              '@type': 'Organization',
-              name: 'Inmonest',
-              url: 'https://inmonest.com',
-            },
-            areaServed: {
-              '@type': 'City',
-              name: 'Barcelona',
-              '@id': 'https://www.wikidata.org/wiki/Q1492',
-            },
-            hasOfferCatalog: {
-              '@type': 'OfferCatalog',
-              name: 'Pisos en Barcelona',
-              itemListElement: [
-                {
-                  '@type': 'Offer',
-                  itemOffered: {
-                    '@type': 'Accommodation',
-                    name: 'Pisos en alquiler Barcelona',
-                  },
-                },
-                {
-                  '@type': 'Offer',
-                  itemOffered: {
-                    '@type': 'Accommodation',
-                    name: 'Pisos en venta Barcelona',
-                  },
-                },
-              ],
-            },
-          }),
-        }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQS.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }) }} />
     </div>
   )
 }

@@ -14,39 +14,35 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE_URL}/madrid/pisos-particulares-sin-comision` },
   openGraph: {
     title: 'Pisos de Particulares en Madrid Sin Comisión — Inmonest',
-    description: 'Contacta directamente con propietarios. Sin intermediarios, sin comisiones. Ahorra miles de euros.',
+    description: 'Contacta directamente con propietarios. Sin intermediarios, sin comisiones.',
     url: `${BASE_URL}/madrid/pisos-particulares-sin-comision`,
     type: 'website',
-    siteName: 'Inmonest',
-    locale: 'es_ES',
   },
 }
 
 const VENTAJAS = [
-  { icon: '💰', titulo: 'Ahorra hasta 6.000€', desc: 'Sin comisión de agencia. En un piso de 1.500€/mes ahorras 2 mensualidades (3.000€). En una compra de 300.000€ ahorras el 2% (6.000€).' },
-  { icon: '🤝', titulo: 'Trato directo con el propietario', desc: 'Hablas directamente con quien toma las decisiones. Negociación más rápida, sin intermediarios.' },
-  { icon: '✅', titulo: 'Pisos verificados con IA', desc: 'Cada anuncio tiene descripción generada por IA que valida fotos y características. Solo publicamos pisos reales.' },
-  { icon: '⚡', titulo: 'Respuesta en 24 horas', desc: 'Los particulares responden más rápido que las agencias. Contacta por WhatsApp y consigue visita en 1-2 días.' },
+  { icon: '💰', titulo: 'Ahorra hasta 6.000€', desc: 'Sin comisión de agencia. En un piso de 1.500€/mes ahorras 2 mensualidades (3.000€). En compra ahorras el 2%.' },
+  { icon: '🤝', titulo: 'Trato directo', desc: 'Hablas directamente con quien toma las decisiones. Negociación rápida.' },
+  { icon: '✅', titulo: 'Verificados con IA', desc: 'IA valida fotos y características. Solo pisos reales.' },
+  { icon: '⚡', titulo: 'Respuesta en 24h', desc: 'Contacta por WhatsApp y consigue visita en 1-2 días.' },
 ]
 
 const BARRIOS = [
-  { nombre: 'Salamanca', precio: '1.800€/mes', desc: 'Barrio elegante con comercios de lujo. Serrano, Velázquez y Goya.', link: '/pisos?city=madrid&district=salamanca' },
-  { nombre: 'Chamberí', precio: '1.500€/mes', desc: 'Residencial y céntrico. Perfecto para profesionales. Trafalgar, Alonso Martínez.', link: '/pisos?city=madrid&district=chamberi' },
-  { nombre: 'Malasaña', precio: '1.400€/mes', desc: 'Bohemio y alternativo. Lleno de bares, tiendas vintage y ambiente joven.', link: '/pisos?city=madrid&district=malasana' },
-  { nombre: 'Retiro', precio: '1.600€/mes', desc: 'Junto al parque. Tranquilo, verde y bien comunicado. Ideal para familias.', link: '/pisos?city=madrid&district=retiro' },
+  { nombre: 'Salamanca', precio: '1.800€/mes', desc: 'Barrio elegante con comercios de lujo. Serrano, Velázquez.', link: '/pisos?city=madrid&district=salamanca', imagen: '/ciudades/madrid2.jpg' },
+  { nombre: 'Chamberí', precio: '1.500€/mes', desc: 'Residencial y céntrico. Perfecto para profesionales.', link: '/pisos?city=madrid&district=chamberi', imagen: '/interior1.jpg' },
+  { nombre: 'Malasaña', precio: '1.400€/mes', desc: 'Bohemio y alternativo. Bares, vintage y ambiente joven.', link: '/pisos?city=madrid&district=malasana', imagen: '/interior3.jpg' },
+  { nombre: 'Retiro', precio: '1.600€/mes', desc: 'Junto al parque. Tranquilo, verde. Ideal para familias.', link: '/pisos?city=madrid&district=retiro', imagen: '/interior4.jpg' },
 ]
 
 const TESTIMONIOS = [
-  { nombre: 'Miguel Á.', barrio: 'Chamberí', texto: 'Encontré piso en 5 días. Sin agencia, sin comisiones. El propietario era súper profesional.', ahorro: '3.000€' },
-  { nombre: 'Patricia L.', barrio: 'Salamanca', texto: 'Compré mi piso sin pagar comisión. Todo fue transparente y rápido. ¡Recomendadísimo!', ahorro: '6.000€' },
-  { nombre: 'Javier M.', barrio: 'Malasaña', texto: 'La plataforma es muy fácil de usar. Contacté con 3 propietarios en un día.', ahorro: '2.400€' },
+  { nombre: 'Miguel Á.', barrio: 'Chamberí', texto: 'Encontré piso en 5 días. Sin agencia, sin comisiones. ¡Genial!', ahorro: '3.000€' },
+  { nombre: 'Patricia L.', barrio: 'Salamanca', texto: 'Compré sin pagar comisión. Todo transparente y rápido.', ahorro: '6.000€' },
 ]
 
 const FAQS = [
-  { q: '¿Por qué alquilar directamente al propietario en Madrid?', a: 'Ahorras la comisión de agencia (1-2 meses de alquiler o 2-5% del precio de venta). En Madrid, donde los alquileres son altos, puedes ahorrar entre 2.000-4.000€.' },
-  { q: '¿Cómo verificáis que los pisos son reales?', a: 'Usamos IA para validar fotos, descripción y datos catastrales. Además, pedimos documentación del propietario antes de publicar.' },
-  { q: '¿Cuánto tarda el proceso?', a: 'En alquiler: 7-10 días. En compra: 30-45 días. Más rápido que con agencia tradicional.' },
-  { q: '¿Hay pisos en todas las zonas de Madrid?', a: 'Sí, tenemos pisos en Salamanca, Chamberí, Malasaña, Retiro, Arganzuela, Centro y más.' },
+  { q: '¿Por qué alquilar directamente al propietario?', a: 'Ahorras 1-2 meses de comisión (2.000-4.000€). Proceso más directo.' },
+  { q: '¿Cómo verificáis los pisos?', a: 'IA valida fotos, descripción y datos catastrales. Documentación completa.' },
+  { q: '¿Cuánto tarda?', a: 'Alquiler: 7-10 días. Compra: 30-45 días. Más rápido que con agencia.' },
 ]
 
 export default function PisosMadridPage() {
@@ -55,46 +51,43 @@ export default function PisosMadridPage() {
       <Navbar />
       <WhatsAppButton />
 
-      {/* Hero */}
       <section className="relative pt-24 pb-20 px-4 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/ciudades/madrid1.jpg" alt="Madrid" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-br from-red-900/90 via-red-800/85 to-orange-900/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a0d00]/85 via-[#2e1900]/65 to-[#1a0d00]/35" />
         </div>
         
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center text-white mb-12">
-            <div className="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <div className="inline-block bg-[#c9962a]/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold border border-[#c9962a]/40 mb-6 text-[#f4c94a]">
               🏠 Madrid • Particulares • Sin Comisión
             </div>
             <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
               Pisos de particulares<br />
-              <span className="text-yellow-300">sin comisión</span> en Madrid
+              <span className="text-[#f4c94a]">sin comisión</span> en Madrid
             </h1>
-            <p className="text-xl md:text-2xl text-red-100 mb-8 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
               Contacta directamente con el propietario.<br />
-              <strong className="text-white">Ahorra hasta 6.000€</strong> en comisiones de agencia.
+              <strong className="text-white">Ahorra hasta 6.000€</strong> en comisiones.
             </p>
 
-            {/* Stats */}
             <div className="flex flex-wrap justify-center gap-8 mb-10">
               <div className="text-center">
-                <div className="text-4xl font-black text-yellow-300">253</div>
-                <div className="text-sm text-red-200">Pisos disponibles</div>
+                <div className="text-4xl font-black text-[#f4c94a]">253</div>
+                <div className="text-sm text-white/70">Pisos disponibles</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-black text-yellow-300">0€</div>
-                <div className="text-sm text-red-200">Comisión agencia</div>
+                <div className="text-4xl font-black text-[#f4c94a]">0€</div>
+                <div className="text-sm text-white/70">Comisión</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-black text-yellow-300">24h</div>
-                <div className="text-sm text-red-200">Respuesta media</div>
+                <div className="text-4xl font-black text-[#f4c94a]">24h</div>
+                <div className="text-sm text-white/70">Respuesta</div>
               </div>
             </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/pisos?city=madrid&operation=rent" className="bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-bold px-8 py-4 rounded-full text-lg transition-all shadow-xl hover:scale-105">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/pisos?city=madrid&operation=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
                 Ver pisos en alquiler →
               </Link>
               <Link href="/pisos?city=madrid&operation=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
@@ -111,15 +104,12 @@ export default function PisosMadridPage() {
         </div>
       </section>
 
-      {/* Ventajas */}
       <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center">
-            ¿Por qué buscar pisos de particulares?
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center">¿Por qué buscar pisos de particulares?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {VENTAJAS.map((v, i) => (
-              <div key={i} className="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-red-300 transition-all">
+              <div key={i} className="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-[#c9962a] hover:shadow-lg transition-all">
                 <div className="text-4xl mb-4">{v.icon}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{v.titulo}</h3>
                 <p className="text-gray-600">{v.desc}</p>
@@ -129,26 +119,24 @@ export default function PisosMadridPage() {
         </div>
       </section>
 
-      {/* Barrios */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center">
-            Barrios más populares de Madrid
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center">Barrios más populares de Madrid</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {BARRIOS.map((b, i) => (
               <Link key={i} href={b.link} className="group">
-                <div className="bg-gray-100 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all">
-                  <div className="aspect-[4/3] bg-gradient-to-br from-red-400 to-orange-500 flex items-center justify-center text-white text-6xl font-black opacity-90">
-                    {b.nombre.charAt(0)}
+                <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all">
+                  <div className="aspect-[4/3] relative overflow-hidden">
+                    <Image src={b.imagen} alt={b.nombre} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <span className="bg-[#c9962a] text-white text-xs font-bold px-2.5 py-1 rounded-full">{b.precio}</span>
+                    </div>
                   </div>
                   <div className="p-5">
-                    <div className="flex justify-between mb-2">
-                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-red-600">{b.nombre}</h3>
-                      <span className="bg-red-100 text-red-700 text-xs font-bold px-2.5 py-1 rounded-full">{b.precio}</span>
-                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#c9962a] mb-2 transition-colors">{b.nombre}</h3>
                     <p className="text-sm text-gray-600 mb-3">{b.desc}</p>
-                    <span className="text-red-600 font-semibold text-sm group-hover:underline">Ver pisos →</span>
+                    <span className="text-[#c9962a] font-semibold text-sm group-hover:underline">Ver pisos →</span>
                   </div>
                 </div>
               </Link>
@@ -157,15 +145,14 @@ export default function PisosMadridPage() {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="py-20 px-4 bg-gradient-to-b from-red-50 to-white">
+      <section className="py-20 px-4 bg-gradient-to-b from-[#fef9e8] to-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center">Lo que dicen nuestros usuarios</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {TESTIMONIOS.map((t, i) => (
-              <div key={i} className="bg-white border border-gray-200 rounded-2xl p-6">
+              <div key={i} className="bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#c9962a]/50 transition-all">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-600 rounded-full flex items-center justify-center text-white font-bold">{t.nombre.charAt(0)}</div>
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#c9962a] to-[#a87a20] rounded-full flex items-center justify-center text-white font-bold">{t.nombre.charAt(0)}</div>
                   <div>
                     <div className="font-bold">{t.nombre}</div>
                     <div className="text-sm text-gray-500">{t.barrio}</div>
@@ -181,27 +168,25 @@ export default function PisosMadridPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-4 bg-gradient-to-r from-red-600 to-orange-700">
+      <section className="py-20 px-4 bg-gradient-to-r from-[#c9962a] to-[#a87a20]">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl md:text-5xl font-black mb-6">¿Quieres recibir pisos nuevos antes que nadie?</h2>
-          <p className="text-xl text-red-100 mb-8">Crea una alerta personalizada y te avisamos cuando haya pisos que te interesen.</p>
-          <Link href="/publicar-anuncio" className="inline-block bg-yellow-300 hover:bg-yellow-400 text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl">
+          <p className="text-xl text-[#f4c94a]/90 mb-8">Crea una alerta personalizada gratis.</p>
+          <Link href="/publicar-anuncio" className="inline-block bg-white hover:bg-gray-50 text-[#c9962a] font-bold px-8 py-4 rounded-full text-lg shadow-xl">
             Crear alerta gratis →
           </Link>
         </div>
       </section>
 
-      {/* FAQs */}
       <section className="py-20 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-black text-gray-900 mb-8 text-center">Preguntas frecuentes</h2>
           <div className="space-y-4">
             {FAQS.map((faq, i) => (
-              <details key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-6 group">
+              <details key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-6 group hover:border-[#c9962a]/50 transition-all">
                 <summary className="font-bold text-gray-900 cursor-pointer list-none flex justify-between">
                   {faq.q}
-                  <span className="text-red-600 group-open:rotate-180 transition-transform">▼</span>
+                  <span className="text-[#c9962a] group-open:rotate-180 transition-transform">▼</span>
                 </summary>
                 <p className="text-gray-700 mt-4">{faq.a}</p>
               </details>
