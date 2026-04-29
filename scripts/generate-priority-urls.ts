@@ -54,6 +54,7 @@ async function main() {
     .from('listings')
     .select('id')
     .eq('status', 'published')
+    .not('ai_description', 'is', null)  // Solo listings premium con IA
     .order('created_at', { ascending: false })
     .limit(50)
 
