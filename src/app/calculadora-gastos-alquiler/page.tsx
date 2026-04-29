@@ -110,7 +110,7 @@ export default function CalculadoraGastosAlquilerPage() {
           <div className="grid lg:grid-cols-2 gap-8 items-start">
             {/* Calculadora Sticky */}
             <div className="lg:sticky lg:top-24">
-              <TotalRentalCostCalculator rentaMensual={1000} />
+              <TotalRentalCostCalculator alquilerMensual={1000} />
               
               <div className="mt-6 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
                 <p className="text-sm text-emerald-900 mb-3">
