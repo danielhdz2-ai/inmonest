@@ -14,7 +14,12 @@ async function main() {
   
   const { data: allHab, count } = await sb
     .from('listings')
-    .select('id, title, images, source_external_id', { count: 'exact' })
+    .select(`
+      id, 
+      title, 
+      source_external_id,
+      listing_images (external_url)
+    `, { count: 'exact' })
     .eq('source_portal', 'habitaclia.com')
     .order('created_at', { ascending: false })
   
@@ -26,9 +31,9 @@ async function main() {
   }
   
   // Clasificar por número de imágenes
-  const noImages = allHab.filter((l: any) => !l.images || l.images.length === 0)
-  const fewImages = allHab.filter((l: any) => l.images && l.images.length > 0 && l.images.length < 3)
-  const goodImages = allHab.filter((l: any) => l.images && l.images.length >= 3)
+  const noImages = allHab.filter((l: any) => !l.listing_images || l.listing_images.length === 0)
+  const fewImages = allHab.filter((l: any) => l.listing_images && l.listing_images.length > 0 && l.listing_images.length < 3)
+  const goodImages = allHab.filter((l: any) => l.listing_images && l.listing_images.length >= 3)
   
   console.log(`📊 CLASIFICACIÓN POR IMÁGENES:`)
   console.log(`   Sin imágenes (0): ${noImages.length}`)

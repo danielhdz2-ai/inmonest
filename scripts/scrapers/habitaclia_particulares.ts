@@ -8,10 +8,10 @@
  * (catalán) → is_particular=true. Siempre guardamos, nunca descartamos.
  *
  * Uso:
- *   npx tsx scripts/scrapers/habitaclia_particulares.ts [operation] [city] [maxPages]
+ *   npx tsx scripts/scrapers/habitaclia_particulares.ts [operation] [city] [maxListings]
  *   operation: venta | alquiler (default: venta)
  *   city: madrid | barcelona | valencia | sevilla | zaragoza | malaga (default: madrid)
- *   maxPages: número de páginas (default: 5)
+ *   maxListings: número máximo de pisos a importar (default: 10)
  */
 
 import { chromium } from 'playwright-extra'
@@ -391,6 +391,7 @@ function extractDetailData(html: string, fallbackPrice: number | null, detailUrl
     const raw = imgM[0].replace(/\);?$/, '') // strip trailing ); from CSS url()
     const url = raw.startsWith('//') ? 'https:' + raw : raw
     if (seenImgs.has(url)) continue
+    // Solo aplicar filtro de propertyPath si existe (evita descartar todas las imágenes)
     if (propertyPath && !url.includes(propertyPath)) continue // ignorar fotos de otros inmuebles
     if (/[Pp]\.(?:jpg|jpeg|png|webp)$/.test(url)) continue  // skip preview (P) size
     if (/logo|avatar|banner/i.test(url)) continue
@@ -445,7 +446,7 @@ function extractDetailData(html: string, fallbackPrice: number | null, detailUrl
 async function scrapeHabitacliaParticulares(
   operation: 'venta' | 'alquiler',
   citySlug: string,
-  maxPages: number,
+  maxListings: number,
 ): Promise<void> {
   const geoInfo = CITY_MAP[citySlug]
   if (!geoInfo) {
@@ -455,14 +456,14 @@ async function scrapeHabitacliaParticulares(
   }
 
   const opLabel = operation === 'venta' ? 'sale' : 'rent'
-  console.log(`\n🏠 HABITACLIA PARTICULARES — ${operation}/${citySlug} (${maxPages} páginas)`)
+  console.log(`\n🏠 HABITACLIA PARTICULARES — ${operation}/${citySlug} (máximo ${maxListings} pisos)`)
   console.log('─'.repeat(70))
 
   let imported  = 0
   let rejected  = 0   // guardados con is_particular=false (portal no dijo particular)
   let skipped   = 0   // error de red / datos insuficientes
 
-  for (let page = 1; page <= maxPages; page++) {
+  for (let page = 1; imported < maxListings; page++) {
     const searchUrl = buildSearchUrl(operation, geoInfo.slug, page)
     console.log(`\n  📄 Página ${page}: ${searchUrl}`)
 
@@ -501,7 +502,7 @@ async function scrapeHabitacliaParticulares(
 
       // Datos primarios del listado (precio + imágenes ya disponibles)
       let price  = item.price
-      let images = [...item.images]
+      let images = [...item.images]  // Imágenes del listado como base
       let detail: Awaited<ReturnType<typeof extractDetailData>> | null = null
 
       // Enriquecimiento opcional con página de detalle
@@ -509,8 +510,19 @@ async function scrapeHabitacliaParticulares(
       const detailHtml = await fetchHtml(item.url, searchUrl)
       if (detailHtml) {
         detail = extractDetailData(detailHtml, price, item.url)
-        if (detail.price)              price  = detail.price
-        if (detail.images.length > 0)  images = detail.images
+        if (detail.price) price = detail.price
+        
+        // COMBINAMOS imágenes del listado + detalle (eliminar duplicados)
+        if (detail.images.length > 0) {
+          const allImages = [...images, ...detail.images]
+          const unique = Array.from(new Set(allImages))
+          images = unique.slice(0, 20)  // Máximo 20 imágenes
+        }
+      }
+
+      // Log de diagnóstico de imágenes
+      if (images.length === 0) {
+        console.log(`    ⚠️ [SIN IMÁGENES] Listado: ${item.images.length}, Detalle: ${detail?.images.length || 0}`)
       }
 
       // Si no tenemos precio ni fotos (ni de listing ni de detalle) → descartar
@@ -566,6 +578,11 @@ async function scrapeHabitacliaParticulares(
           console.log(
             `    ✅ [${imported}] 🏠 PARTICULAR: ${title.slice(0, 50)} | ${price.toLocaleString('es-ES')}€ | ${detail?.area ?? '?'}m²`,
           )
+          // Detener si alcanzamos el límite
+          if (imported >= maxListings) {
+            console.log(`\n  🎯 Límite de ${maxListings} pisos alcanzado, deteniendo scrape...`)
+            break
+          }
         } else {
           rejected++
           console.log(
@@ -579,10 +596,13 @@ async function scrapeHabitacliaParticulares(
       await sleep(DELAY_MS)
     }
 
-    if (page < maxPages) {
-      console.log(`  ⏳ Esperando ${PAGE_DELAY_MS / 1000}s...`)
-      await sleep(PAGE_DELAY_MS)
+    // Si alcanzamos el límite, salir del loop de páginas
+    if (imported >= maxListings) {
+      break
     }
+
+    console.log(`  ⏳ Esperando ${PAGE_DELAY_MS / 1000}s...`)
+    await sleep(PAGE_DELAY_MS)
   }
 
   console.log('\n' + '─'.repeat(70))
@@ -595,12 +615,12 @@ async function scrapeHabitacliaParticulares(
 // ─── Punto de entrada ─────────────────────────────────────────────────────────
 
 async function main(): Promise<void> {
-  const args      = process.argv.slice(2)
-  const operation = (args[0] as 'venta' | 'alquiler') || 'venta'
-  const city      = args[1] || 'madrid'
-  const maxPages  = parseInt(args[2] || '5', 10)
+  const args        = process.argv.slice(2)
+  const operation   = (args[0] as 'venta' | 'alquiler') || 'venta'
+  const city        = args[1] || 'madrid'
+  const maxListings = parseInt(args[2] || '10', 10)
   try {
-    await scrapeHabitacliaParticulares(operation, city, maxPages)
+    await scrapeHabitacliaParticulares(operation, city, maxListings)
   } finally {
     await closeSession()
   }
