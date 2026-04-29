@@ -135,7 +135,10 @@ export default function PisosBarcelonaPage() {
 
       {/* Hero con imagen de fondo */}
       <section className="relative pt-24 pb-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 opacity-95" />
+        <div className="absolute inset-0">
+          <Image src="/imagencabezera.jpg" alt="Barcelona" fill className="object-cover" priority />
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/90 via-blue-800/85 to-indigo-900/90" />
+        </div>
         <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
         
         <div className="relative max-w-7xl mx-auto">
