@@ -3,19 +3,57 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
+import SocialAuthButtons from '@/components/SocialAuthButtons'
 
 export default function RegistroPage() {
   const [email, setEmail] = useState('')
   const [nombre, setNombre] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [mode, setMode] = useState<'magic-link' | 'password'>('password')
 
-  async function handleRegistro(e: React.FormEvent) {
+  async function handlePasswordRegister(e: React.FormEvent) {
     e.preventDefault()
-    if (!email.trim() || !nombre.trim()) return
+    if (!email.trim() || !nombre.trim() || !password.trim()) return
+    if (password.length < 8) {
+      setError('La contraseña debe tener al menos 8 caracteres')
+      return
+    }
+    
     setLoading(true)
     setError(null)
+    
+    const supabase = createClient()
+    const { error } = await supabase.auth.signUp({
+      email: email.trim().toLowerCase(),
+      password: password.trim(),
+      options: {
+        data: { 
+          full_name: nombre.trim(),
+        },
+        emailRedirectTo: `${location.origin}/auth/callback`,
+      },
+    })
+    
+    setLoading(false)
+    if (error) {
+      setError(error.message === 'User already registered' 
+        ? 'Este email ya está registrado. Inicia sesión.'
+        : 'No se pudo crear la cuenta. Inténtalo de nuevo.')
+    } else {
+      setSent(true)
+    }
+  }
+
+  async function handleMagicLinkRegister(e: React.FormEvent) {
+    e.preventDefault()
+    if (!email.trim() || !nombre.trim()) return
+    
+    setLoading(true)
+    setError(null)
+    
     const supabase = createClient()
     const { error } = await supabase.auth.signInWithOtp({
       email: email.trim().toLowerCase(),
@@ -24,6 +62,7 @@ export default function RegistroPage() {
         data: { full_name: nombre.trim() },
       },
     })
+    
     setLoading(false)
     if (error) {
       setError('No se pudo crear la cuenta. Inténtalo de nuevo.')
@@ -41,13 +80,17 @@ export default function RegistroPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
-          <h1 className="text-xl font-bold text-gray-900 mb-2">¡Bienvenido, {nombre}!</h1>
+          <h1 className="text-xl font-bold text-gray-900 mb-2">
+            {mode === 'password' ? '¡Cuenta creada!' : `¡Bienvenido, ${nombre}!`}
+          </h1>
           <p className="text-gray-500 text-sm mb-1">
             Confirma tu email para activar la cuenta:
           </p>
           <p className="font-semibold text-gray-800 mb-6">{email}</p>
           <p className="text-xs text-gray-400">
-            Haz clic en el enlace del email para entrar. Válido 10 minutos.
+            {mode === 'password' 
+              ? 'Te hemos enviado un email de confirmación. Haz clic en el enlace para verificar tu cuenta.'
+              : 'Haz clic en el enlace del email para entrar. Válido 10 minutos.'}
           </p>
         </div>
       </div>
@@ -62,24 +105,62 @@ export default function RegistroPage() {
           Publica tu piso y llega a miles de particulares.
         </p>
 
-        <form onSubmit={handleRegistro} className="space-y-4">
+        {/* Botones OAuth Social */}
+        <SocialAuthButtons 
+          redirectTo="/auth/callback"
+          onError={setError}
+        />
+
+        {/* Divisor */}
+        <div className="flex items-center gap-3 my-5">
+          <div className="flex-1 h-px bg-gray-200" />
+          <span className="text-xs text-gray-400">o con email</span>
+          <div className="flex-1 h-px bg-gray-200" />
+        </div>
+
+        {/* Toggle Magic Link / Password */}
+        <div className="flex bg-gray-100 rounded-lg p-1 mb-4">
+          <button
+            onClick={() => setMode('magic-link')}
+            className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors ${
+              mode === 'magic-link' 
+                ? 'bg-white text-gray-900 shadow-sm' 
+                : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            Enlace mágico
+          </button>
+          <button
+            onClick={() => setMode('password')}
+            className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors ${
+              mode === 'password' 
+                ? 'bg-white text-gray-900 shadow-sm' 
+                : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            Contraseña
+          </button>
+        </div>
+
+        <form onSubmit={mode === 'magic-link' ? handleMagicLinkRegister : handlePasswordRegister} className="space-y-3">
           <div>
-            <label htmlFor="nombre" className="block text-sm font-medium text-gray-700 mb-1">
-              Nombre
+            <label htmlFor="nombre" className="block text-xs font-medium text-gray-600 mb-1">
+              Nombre completo
             </label>
             <input
               id="nombre"
               type="text"
               required
-              autoComplete="given-name"
+              autoComplete="name"
               placeholder="Tu nombre"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#c9962a] focus:border-transparent"
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#c9962a] focus:border-transparent"
             />
           </div>
+          
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="email" className="block text-xs font-medium text-gray-600 mb-1">
               Email
             </label>
             <input
@@ -90,9 +171,28 @@ export default function RegistroPage() {
               placeholder="tu@email.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#c9962a] focus:border-transparent"
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#c9962a] focus:border-transparent"
             />
           </div>
+
+          {mode === 'password' && (
+            <div>
+              <label htmlFor="password" className="block text-xs font-medium text-gray-600 mb-1">
+                Contraseña
+              </label>
+              <input
+                id="password"
+                type="password"
+                required
+                autoComplete="new-password"
+                placeholder="Mínimo 8 caracteres"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                minLength={8}
+                className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#c9962a] focus:border-transparent"
+              />
+            </div>
+          )}
 
           {error && (
             <p className="text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</p>
@@ -101,7 +201,7 @@ export default function RegistroPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-[#c9962a] text-white rounded-lg text-sm font-semibold hover:bg-[#a87a20] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? 'Creando cuenta...' : 'Crear cuenta gratis'}
           </button>
@@ -115,9 +215,9 @@ export default function RegistroPage() {
         </p>
 
         <div className="mt-5 pt-4 border-t border-gray-100 text-center">
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-500">
             ¿Ya tienes cuenta?{' '}
-            <Link href="/login" className="text-[#c9962a] font-medium hover:underline">
+            <Link href="/login" className="text-[#c9962a] font-semibold hover:underline">
               Inicia sesión
             </Link>
           </p>
