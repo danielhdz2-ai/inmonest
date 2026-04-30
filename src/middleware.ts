@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
+import { createServerClient } from '@supabase/ssr'
 import {
   publicApiLimit,
   authedApiLimit,
@@ -14,12 +15,11 @@ import {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // ── Identificador único (IP o user_id si está autenticado) ────────────────
+  // ── 1. RATE LIMITING (primero para evitar spam) ───────────────────────────
+
   const ip = getIP(request)
   const authHeader = request.headers.get('authorization')
   const identifier = authHeader ? `user:${authHeader.split(' ')[1]?.slice(0, 10)}` : `ip:${ip}`
-
-  // ── APLICAR RATE LIMITS SEGÚN RUTA ────────────────────────────────────────
 
   // Auth endpoints (login, registro, magic link)
   if (pathname.startsWith('/api/auth') || pathname.match(/\/(login|registro)/)) {
@@ -70,7 +70,49 @@ export async function middleware(request: NextRequest) {
     if (rateLimitResponse) return rateLimitResponse
   }
 
-  return NextResponse.next()
+  // ── 2. SUPABASE AUTH + PROTECCIÓN DE RUTAS ────────────────────────────────
+
+  let supabaseResponse = NextResponse.next({ request })
+
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll()
+        },
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value }) =>
+            request.cookies.set(name, value)
+          )
+          supabaseResponse = NextResponse.next({ request })
+          cookiesToSet.forEach(({ name, value, options }) =>
+            supabaseResponse.cookies.set(name, value, options)
+          )
+        },
+      },
+    }
+  )
+
+  // Refresca la sesión sin bloquear rutas públicas
+  const { data: { user } } = await supabase.auth.getUser()
+
+  // Proteger /mi-cuenta y /publicar — redirigir a login si no autenticado
+  const protectedPaths = ['/mi-cuenta', '/publicar']
+  const publicPaths = ['/publicar-anuncio']
+  const isProtected =
+    protectedPaths.some((p) => pathname.startsWith(p)) &&
+    !publicPaths.some((p) => pathname.startsWith(p))
+
+  if (isProtected && !user) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/login'
+    url.searchParams.set('next', pathname)
+    return NextResponse.redirect(url)
+  }
+
+  return supabaseResponse
 }
 
 // ── CONFIGURACIÓN ──────────────────────────────────────────────────────────
