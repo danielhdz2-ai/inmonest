@@ -5,6 +5,7 @@ import "./globals.css";
 import ChatWidget from "@/components/ChatWidget";
 import Footer from "@/components/Footer";
 import GTMProvider from "@/components/GTMProvider";
+import OrganizationSchema from "@/components/OrganizationSchema";
 
 const GTM_ID = 'GTM-57Q8NRVN'
 
@@ -128,6 +129,9 @@ export default function RootLayout({
 
         {/* SPA route-change page_view tracker */}
         <GTMProvider />
+
+        {/* Schema.org Organization - SEO structured data */}
+        <OrganizationSchema />
 
         {children}
         <Footer />

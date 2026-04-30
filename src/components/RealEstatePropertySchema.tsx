@@ -1,28 +1,46 @@
 /**
- * Schema.org RealEstateProperty (actualizado)
+ * Schema.org RealEstateProperty
  * Rich snippets en Google con precio, ubicación, características
  * Aparece en resultados de búsqueda con información destacada
  */
 
-interface ListingSchemaProps {
-  listing: any
+interface Listing {
+  id: string
+  title: string
+  description: string | null
+  city: string | null
+  district: string | null
+  address: string | null
+  lat: number | null
+  lng: number | null
+  operation: 'sale' | 'rent'
+  price_eur: number | null
+  area_m2: number | null
+  bedrooms: number | null
+  bathrooms: number | null
+  is_particular: boolean
+  agency_name: string | null
+  photos: Array<{ url: string }>
 }
 
-export default function ListingSchema({ listing }: ListingSchemaProps) {
+interface Props {
+  listing: Listing
+}
+
+export default function RealEstatePropertySchema({ listing }: Props) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'RealEstateProperty',
     name: listing.title,
-    description: listing.ai_description || listing.description || `${listing.operation === 'sale' ? 'Piso en venta' : 'Piso en alquiler'} en ${listing.city || 'España'}`,
+    description: listing.description || `${listing.operation === 'sale' ? 'Piso en venta' : 'Piso en alquiler'} en ${listing.city || 'España'}`,
     url: `https://inmonest.com/pisos/${listing.id}`,
     
     // Ubicación
     address: {
       '@type': 'PostalAddress',
       addressLocality: listing.city,
-      addressRegion: listing.district || listing.province,
+      addressRegion: listing.district,
       streetAddress: listing.address,
-      postalCode: listing.postal_code,
       addressCountry: 'ES',
     },
 
@@ -41,7 +59,7 @@ export default function ListingSchema({ listing }: ListingSchemaProps) {
     floorSize: listing.area_m2 ? {
       '@type': 'QuantitativeValue',
       value: listing.area_m2,
-      unitCode: 'MTK',
+      unitCode: 'MTK', // Metros cuadrados
     } : undefined,
 
     // Oferta (precio)
@@ -63,11 +81,7 @@ export default function ListingSchema({ listing }: ListingSchemaProps) {
     },
 
     // Imágenes
-    image: (listing.listing_images || []).map((img: any) => img.image_url),
-    
-    // Fechas
-    datePosted: listing.created_at,
-    dateModified: listing.updated_at || listing.created_at,
+    image: listing.photos.map(p => p.url),
   }
 
   // Limpiar valores undefined
