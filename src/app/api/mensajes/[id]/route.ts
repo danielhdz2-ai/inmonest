@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { notifyNewMessage } from '@/lib/push-notifications'
 
 export const dynamic = 'force-dynamic'
 
@@ -86,5 +87,23 @@ export async function POST(
     .single()
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+
+  // ── ENVIAR NOTIFICACIÓN PUSH AL DESTINATARIO ──────────────────────────────
+  const recipientId = conv.buyer_id === user.id ? conv.seller_id : conv.buyer_id
+  
+  // Obtener nombre del remitente
+  const { data: senderProfile } = await supabase
+    .from('users')
+    .select('name, email')
+    .eq('id', user.id)
+    .single()
+  
+  const senderName = senderProfile?.name || senderProfile?.email || 'Usuario'
+  
+  // Enviar notificación (sin esperar, fire-and-forget)
+  notifyNewMessage(recipientId, senderName, sanitized, id).catch((err) => {
+    console.error('[Mensajes] Error enviando push notification:', err)
+  })
+
   return NextResponse.json({ message: msg })
 }
