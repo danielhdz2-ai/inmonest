@@ -3,7 +3,9 @@
     "src/app/api/scraper/route.ts":                    { "maxDuration": 300 },
     "src/app/api/gestoria/checkout/route.ts":          { "maxDuration": 30 },
     "src/app/api/stripe/checkout/route.ts":            { "maxDuration": 30 },
-    "src/app/api/cron/generate-descriptions/route.ts": { "maxDuration": 60 }
+    "src/app/api/cron/generate-descriptions/route.ts": { "maxDuration": 60 },
+    "src/app/api/cron/scraper-indomio/route.ts":       { "maxDuration": 60 },
+    "src/app/api/cron/scraper-hipoges/route.ts":       { "maxDuration": 60 }
   },
   "rewrites": [],
   "headers": [
@@ -42,6 +44,14 @@
     {
       "path": "/api/cron/generate-descriptions",
       "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/cron/scraper-indomio",
+      "schedule": "0 10 * * *"
+    },
+    {
+      "path": "/api/cron/scraper-hipoges",
+      "schedule": "0 11 * * *"
     }
   ]
 }
