@@ -328,14 +328,7 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
               </div>
               <p className="text-[10px] text-gray-400 mt-1.5 text-right">{newMsg.length}/2000</p>
             </div>
-          </div>
-        ) : (
-          <div className="hidden lg:flex flex-1 items-center justify-center text-center p-8">
-            <div>
-              <div className="text-4xl mb-3">💬</div>
-              <p className="text-sm text-gray-400">Selecciona una conversación</p>
-            </div>
-          </div>
+          </>
         )}
       </div>
     </div>
