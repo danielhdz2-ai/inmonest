@@ -13,15 +13,18 @@
 Ve a: https://vercel.com/dashboard → tu-proyecto → Settings → Environment Variables
 
 Verifica que existan:
-- ✅ `RESEND_API_KEY` = `re_WycLX8Bp_...`
-- ✅ `SUPABASE_SERVICE_ROLE_KEY` = `eyJhbGc...`
-- ✅ `CRON_SECRET` = (cualquier string secreto, ej: `mi-cron-secreto-2024`)
+- ✅ `RESEND_API_KEY` = `re_XXXXX...` (obtén una en https://resend.com/api-keys)
+- ✅ `SUPABASE_SERVICE_ROLE_KEY` = `eyJhbGc...` (Dashboard → Settings → API → service_role key)
+- ✅ `CRON_SECRET` = (string aleatorio, genera con: `openssl rand -base64 32`)
 
-Si NO existen, agrégalas:
-```
-RESEND_API_KEY=re_WycLX8Bp_7vW16ahjXD17NNh1dZvnXnYV
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt0c2R4cG1hbGppeXV3aW1jdWd4Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NTY1NDg1NCwiZXhwIjoyMDkxMjMwODU0fQ.0VuUqRsrb2kNgLfoqyduMC7weRc9JJKtg1r14mOEbi8
-CRON_SECRET=mi-cron-secreto-2024
+Si NO existen, agrégalas copiando los valores de tu `.env.local`:
+```bash
+# ⚠️ NUNCA pongas claves reales en documentación pública
+# Copia estos valores desde tu .env.local o dashboards oficiales:
+
+RESEND_API_KEY=TU_RESEND_API_KEY_AQUI
+SUPABASE_SERVICE_ROLE_KEY=TU_SUPABASE_SERVICE_ROLE_KEY_AQUI
+CRON_SECRET=TU_CRON_SECRET_ALEATORIO_AQUI
 ```
 
 **IMPORTANTE:** Después de agregar variables, haz **Redeploy** del proyecto.
