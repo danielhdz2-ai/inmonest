@@ -46,3 +46,8 @@ next-env.d.ts
 logs/
 .env.*.vercel
 scripts/run-seed.bat
+
+# backups
+/backups/
+*.sql
+*.sql.gz

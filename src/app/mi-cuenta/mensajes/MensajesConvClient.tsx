@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
+import { useRealtimeMessages } from '@/hooks/useRealtimeMessages'
+import { useTypingIndicator } from '@/hooks/useTypingIndicator'
 
 interface Message {
   id: string
@@ -42,7 +44,53 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
   const [newMsg, setNewMsg]           = useState('')
   const [loadingMsgs, setLoadingMsgs] = useState(false)
   const [sending, setSending]         = useState(false)
+  const [otherUserTyping, setOtherUserTyping] = useState(false)
   const bottomRef                     = useRef<HTMLDivElement>(null)
+  const typingTimeoutRef              = useRef<NodeJS.Timeout | null>(null)
+
+  // ── TIEMPO REAL: Escuchar nuevos mensajes ─────────────────────────────────
+  const { isConnected, sendTypingSignal } = useRealtimeMessages({
+    conversationId: selected?.id ?? '',
+    userId,
+    enabled: !!selected,
+    onNewMessage: useCallback((newMessage) => {
+      setMessages(prev => {
+        // Evitar duplicados
+        if (prev.some(m => m.id === newMessage.id)) return prev
+        return [...prev, newMessage as Message]
+      })
+      
+      // Actualizar last_message en lista de conversaciones
+      setConvs(prev => prev.map(c =>
+        c.id === newMessage.conversation_id
+          ? { ...c, last_message: newMessage.content, last_message_at: newMessage.created_at }
+          : c
+      ))
+    }, []),
+    onTyping: useCallback((typingUserId) => {
+      if (typingUserId === userId) return
+      
+      // Mostrar indicador de "escribiendo..."
+      setOtherUserTyping(true)
+      
+      // Limpiar timeout anterior
+      if (typingTimeoutRef.current) {
+        clearTimeout(typingTimeoutRef.current)
+      }
+      
+      // Ocultar después de 3 segundos sin señales
+      typingTimeoutRef.current = setTimeout(() => {
+        setOtherUserTyping(false)
+      }, 3000)
+    }, [userId]),
+  })
+
+  // ── Enviar señal de "typing" mientras escribe ─────────────────────────────
+  const { handleTyping } = useTypingIndicator({
+    onTyping: sendTypingSignal,
+    debounceMs: 1000,
+    throttleMs: 3000,
+  })
 
   const loadMessages = useCallback(async (conv: Conversation) => {
     setLoadingMsgs(true)
@@ -154,27 +202,45 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
                       {unread > 0 && (
                         <span className="w-5 h-5 bg-[#c9962a] text-white text-xs font-bold rounded-full flex items-center justify-center">
                           {unread}
-                        </span>
-                      )}
-                    </div>
+                    {isConnected && (
+                      <p className="text-xs text-green-500 mt-2">● Conectado en tiempo real</p>
+                    )}
                   </div>
-                </button>
-              )
-            })}
-          </div>
-        </div>
-
-        {/* ── Chat ────────────────────────────────────────────────── */}
-        {selected ? (
-          <div className="flex-1 flex flex-col min-w-0">
-            {/* Header del chat */}
-            <div className="px-4 py-3 border-b border-gray-100 flex items-center gap-3">
-              <button
-                onClick={() => setSelected(null)}
-                className="lg:hidden text-gray-400 hover:text-gray-700 p-1"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </div>
+              ) : (
+                <>
+                  {messages.map(msg => {
+                    const isOwn = msg.sender_id === userId
+                    return (
+                      <div key={msg.id} className={`flex ${isOwn ? 'justify-end' : 'justify-start'}`}>
+                        <div className={`max-w-xs lg:max-w-md px-4 py-2.5 rounded-2xl text-sm ${
+                          isOwn
+                            ? 'bg-[#c9962a] text-white rounded-tr-sm'
+                            : 'bg-gray-100 text-gray-800 rounded-tl-sm'
+                        }`}>
+                          <p className="leading-relaxed">{msg.body}</p>
+                          <p className={`text-[10px] mt-1 ${isOwn ? 'text-amber-200' : 'text-gray-400'}`}>
+                            {new Date(msg.created_at).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
+                            {isOwn && msg.read_at && ' · Leído'}
+                          </p>
+                        </div>
+                      </div>
+                    )
+                  })}
+                  
+                  {/* Indicador de "escribiendo..." */}
+                  {otherUserTyping && (
+                    <div className="flex justify-start">
+                      <div className="bg-gray-100 px-4 py-2.5 rounded-2xl rounded-tl-sm">
+                        <div className="flex gap-1">
+                          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               <div className="min-w-0">
@@ -212,7 +278,10 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
                           ? 'bg-[#c9962a] text-white rounded-tr-sm'
                           : 'bg-gray-100 text-gray-800 rounded-tl-sm'
                       }`}>
-                        <p className="leading-relaxed">{msg.body}</p>
+                        <p classN{
+                    setNewMsg(e.target.value)
+                    handleTyping() // Enviar señal de "typing"
+                  }g.body}</p>
                         <p className={`text-[10px] mt-1 ${isOwn ? 'text-amber-200' : 'text-gray-400'}`}>
                           {new Date(msg.created_at).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
                           {isOwn && msg.read_at && ' · Leído'}
