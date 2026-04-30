@@ -202,6 +202,9 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
                       {unread > 0 && (
                         <span className="w-5 h-5 bg-[#c9962a] text-white text-xs font-bold rounded-full flex items-center justify-center">
                           {unread}
+                        </span>
+                      )}
+                    </div>
                     {isConnected && (
                       <p className="text-xs text-green-500 mt-2">● Conectado en tiempo real</p>
                     )}
