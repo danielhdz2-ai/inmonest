@@ -206,26 +206,50 @@ async function handler(req: NextRequest) {
     const searchUrl = buildSearchUrl(f)
     const html      = buildEmailHtml(label, searchUrl, matchedListings)
 
-    const emailRes = await fetch('https://api.resend.com/emails', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${RESEND_KEY}` },
-      body: JSON.stringify({
-        from:    'Inmonest Alertas <alertas@inmonest.com>',
-        to:      user.email,
-        subject: `🔔 ${matchedListings.length} nuevo${matchedListings.length !== 1 ? 's' : ''} piso${matchedListings.length !== 1 ? 's' : ''}: ${label}`,
-        html,
-      }),
-    })
+    if (!RESEND_KEY) {
+      console.error('[cron/alertas] RESEND_API_KEY no configurada, omitiendo email')
+      continue
+    }
 
-    if (emailRes.ok) {
-      emailed++
+    try {
+      const emailRes = await fetch('https://api.resend.com/emails', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${RESEND_KEY}` },
+        body: JSON.stringify({
+          from:    'Inmonest Alertas <alertas@inmonest.com>',
+          to:      user.email,
+          subject: `🔔 ${matchedListings.length} nuevo${matchedListings.length !== 1 ? 's' : ''} piso${matchedListings.length !== 1 ? 's' : ''}: ${label}`,
+          html,
+        }),
+      })
+
+      const emailData = await emailRes.json()
+
+      if (emailRes.ok) {
+        console.log(`[cron/alertas] ✅ Email enviado a ${user.email} (${matchedListings.length} pisos)`)
+        emailed++
+        await adminSupabase
+          .from('search_alerts')
+          .update({
+            last_sent_at:  now.toISOString(),
+            last_match_at: now.toISOString(),
+            total_sent:    ((alert as unknown as { total_sent: number }).total_sent ?? 0) + 1,
+          })
+          .eq('id', alert.id)
+      } else {
+        console.error(`[cron/alertas] ❌ Error enviando email a ${user.email}:`, emailData)
+        // Actualizar last_sent_at para no quedarse en loop
+        await adminSupabase
+          .from('search_alerts')
+          .update({ last_sent_at: now.toISOString() })
+          .eq('id', alert.id)
+      }
+    } catch (err) {
+      console.error(`[cron/alertas] ❌ Excepción al enviar email:`, err)
+      // Actualizar last_sent_at para no quedarse en loop
       await adminSupabase
         .from('search_alerts')
-        .update({
-          last_sent_at:  now.toISOString(),
-          last_match_at: now.toISOString(),
-          total_sent:    ((alert as unknown as { total_sent: number }).total_sent ?? 0) + 1,
-        })
+        .update({ last_sent_at: now.toISOString() })
         .eq('id', alert.id)
     }
   }
