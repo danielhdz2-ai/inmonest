@@ -262,27 +262,39 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
                   </div>
                 </div>
               ) : (
-                messages.map(msg => {
-                  const isOwn = msg.sender_id === userId
-                  return (
-                    <div key={msg.id} className={`flex ${isOwn ? 'justify-end' : 'justify-start'}`}>
-                      <div className={`max-w-xs lg:max-w-md px-4 py-2.5 rounded-2xl text-sm ${
-                        isOwn
-                          ? 'bg-[#c9962a] text-white rounded-tr-sm'
-                          : 'bg-gray-100 text-gray-800 rounded-tl-sm'
-                      }`}>
-                        <p classN{
-                    setNewMsg(e.target.value)
-                    handleTyping() // Enviar señal de "typing"
-                  }g.body}</p>
-                        <p className={`text-[10px] mt-1 ${isOwn ? 'text-amber-200' : 'text-gray-400'}`}>
-                          {new Date(msg.created_at).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
-                          {isOwn && msg.read_at && ' · Leído'}
-                        </p>
+                <>
+                  {messages.map(msg => {
+                    const isOwn = msg.sender_id === userId
+                    return (
+                      <div key={msg.id} className={`flex ${isOwn ? 'justify-end' : 'justify-start'}`}>
+                        <div className={`max-w-xs lg:max-w-md px-4 py-2.5 rounded-2xl text-sm ${
+                          isOwn
+                            ? 'bg-[#c9962a] text-white rounded-tr-sm'
+                            : 'bg-gray-100 text-gray-800 rounded-tl-sm'
+                        }`}>
+                          <p className="leading-relaxed">{msg.body}</p>
+                          <p className={`text-[10px] mt-1 ${isOwn ? 'text-amber-200' : 'text-gray-400'}`}>
+                            {new Date(msg.created_at).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
+                            {isOwn && msg.read_at && ' · Leído'}
+                          </p>
+                        </div>
+                      </div>
+                    )
+                  })}
+                  
+                  {/* Indicador de "escribiendo..." */}
+                  {otherUserTyping && (
+                    <div className="flex justify-start">
+                      <div className="bg-gray-100 px-4 py-2.5 rounded-2xl rounded-tl-sm">
+                        <div className="flex gap-1">
+                          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                          <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                        </div>
                       </div>
                     </div>
-                  )
-                })
+                  )}
+                </>
               )}
               <div ref={bottomRef} />
             </div>
