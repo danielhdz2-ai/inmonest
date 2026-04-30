@@ -205,12 +205,19 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
                         </span>
                       )}
                     </div>
-                    {isConnected && (
-                      <p className="text-xs text-green-500 mt-2">● Conectado en tiempo real</p>
-                    )}
                   </div>
-                </div>
-              ) : (
+                </button>
+              )
+            })}
+            {isConnected && (
+              <p className="text-xs text-green-500 mt-2 px-4">● Conectado en tiempo real</p>
+            )}
+          </div>
+        </div>
+
+        {/* ── Área de chat ──────────────────────────────────────────── */}
+        <div className={`flex-1 flex flex-col ${!selected ? 'hidden lg:flex' : 'flex'}`}>
+          {!selected ? (
                 <>
                   {messages.map(msg => {
                     const isOwn = msg.sender_id === userId
