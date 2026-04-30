@@ -376,28 +376,49 @@ function extractDetailData(html: string, fallbackPrice: number | null, detailUrl
   if (lngM) lng = parseFloat(lngM[1])
 
   // ── Imágenes ─────────────────────────────────────────────────────────────────
-  // Habitaclia detail: //images.habimg.com/imgh/{codem}-{id}/{slug}_{uuid}XL.jpg
-  // IMPORTANTE: el final de la página tiene "Anuncios similares" con fotos de otros
-  // inmuebles. Filtramos por el path del inmueble actual usando data-codem/data-codinm.
+  // Habitaclia detail: //images.habimg.com/imgh/{codem}-{codinm}/{slug}_{uuid}XL.jpg
+  // CRÍTICO: extraer codem-codinm de la URL del inmueble para filtrar imágenes
+  // La página incluye "Anuncios similares" con fotos de otros inmuebles al final.
+  let propertyCode: string | null = null
+  
+  // 1. Intentar extraer de data-codem y data-codinm
   const codemAttr  = html.match(/data-codem="(\d+)"/)?.[1]
   const codinmAttr = html.match(/data-codinm="(\d+)"/)?.[1]
-  const propertyPath = (codemAttr && codinmAttr) ? `/imgh/${codemAttr}-${codinmAttr}/` : null
+  if (codemAttr && codinmAttr) {
+    propertyCode = `${codemAttr}-${codinmAttr}`
+  }
+  
+  // 2. Si falla, extraer de la URL del detalle (e.g., i500004518781.htm → 500-4518781)
+  if (!propertyCode && detailUrl) {
+    const urlCodeM = detailUrl.match(/[_-]i(\d{3})(\d+)\.htm/)
+    if (urlCodeM) {
+      // Normalizar removiendo ceros iniciales del segundo grupo
+      const firstPart = urlCodeM[1]
+      const secondPart = parseInt(urlCodeM[2], 10).toString()
+      propertyCode = `${firstPart}-${secondPart}`
+    }
+  }
 
   const images: string[] = []
   const seenImgs = new Set<string>()
-  const imgRe = /(?:https?:)?\/\/images\.habimg\.com\/imgh\/[^\s"'<>)]+\.(?:jpg|jpeg|png|webp)/gi
-  let imgM: RegExpExecArray | null
-  while ((imgM = imgRe.exec(html))) {
-    const raw = imgM[0].replace(/\);?$/, '') // strip trailing ); from CSS url()
-    const url = raw.startsWith('//') ? 'https:' + raw : raw
-    if (seenImgs.has(url)) continue
-    // Solo aplicar filtro de propertyPath si existe (evita descartar todas las imágenes)
-    if (propertyPath && !url.includes(propertyPath)) continue // ignorar fotos de otros inmuebles
-    if (/[Pp]\.(?:jpg|jpeg|png|webp)$/.test(url)) continue  // skip preview (P) size
-    if (/logo|avatar|banner/i.test(url)) continue
-    seenImgs.add(url)
-    images.push(url)
-    if (images.length >= 20) break
+  
+  if (propertyCode) {
+    const imgRe = /(?:https?:)?\/\/images\.habimg\.com\/imgh\/[^\s"'<>)]+\.(?:jpg|jpeg|png|webp)/gi
+    let imgM: RegExpExecArray | null
+    while ((imgM = imgRe.exec(html))) {
+      const raw = imgM[0].replace(/\);?$/, '') // strip trailing ); from CSS url()
+      const url = raw.startsWith('//') ? 'https:' + raw : raw
+      if (seenImgs.has(url)) continue
+      
+      // FILTRO OBLIGATORIO: solo imágenes que contengan el código de esta propiedad
+      if (!url.includes(`/imgh/${propertyCode}/`)) continue
+      
+      if (/[Pp]\.(?:jpg|jpeg|png|webp)$/.test(url)) continue  // skip preview (P) size
+      if (/logo|avatar|banner/i.test(url)) continue
+      seenImgs.add(url)
+      images.push(url)
+      if (images.length >= 20) break
+    }
   }
 
   // ── Amenidades ───────────────────────────────────────────────────────────────
