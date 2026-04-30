@@ -10,25 +10,33 @@ npm install web-push
 
 ## 2. GENERAR VAPID KEYS (Solo Primera Vez)
 
+⚠️ **IMPORTANTE**: Cada proyecto debe tener sus propias VAPID keys únicas. NO reutilices keys de ejemplo.
+
 ```bash
 npx web-push generate-vapid-keys
 ```
 
 Esto genera:
 - **Public Key**: Para el cliente (navegador)
-- **Private Key**: Para el servidor
+- **Private Key**: Para el servidor (¡MANTENER SECRETA!)
 
 ## 3. CONFIGURAR VARIABLES DE ENTORNO
 
 Añade las keys generadas a `.env.local`:
 
 ```bash
-# Frontend (Public)
-NEXT_PUBLIC_VAPID_PUBLIC_KEY=BGNXBejO63i9F7uNlNeAAVBdqtzTPSn28r_z4Jg7dR0Buti6qNmDftHUcXg7ZZlRBjtSJL0SqJMLEB1mU5_3ncI
+# Frontend (Public) - Reemplaza con tu Public Key generada
+NEXT_PUBLIC_VAPID_PUBLIC_KEY=TU_PUBLIC_KEY_AQUI
 
-# Backend (Private) - ¡NUNCA COMPARTAS ESTA!
-VAPID_PRIVATE_KEY=KllP9K0Z5HSokTGis8veAlhDHFdoOET68rc1l-gEhC4
+# Backend (Private) - ⚠️ ¡NUNCA COMPARTAS ESTA! ⚠️
+# ¡NO la subas a Git! ¡NO la pongas en .env.example!
+VAPID_PRIVATE_KEY=TU_PRIVATE_KEY_AQUI
 ```
+
+⚠️ **CRÍTICO DE SEGURIDAD**:
+- Las VAPID keys son como contraseñas
+- La private key NUNCA debe estar en código público
+- Genera keys ÚNICAS para cada entorno (desarrollo, producción)
 
 También en **Vercel → Settings → Environment Variables**:
 - `NEXT_PUBLIC_VAPID_PUBLIC_KEY` (Production + Preview)
