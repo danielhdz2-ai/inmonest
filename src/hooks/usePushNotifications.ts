@@ -102,7 +102,7 @@ export function usePushNotifications(): UsePushNotificationsReturn {
       // 4. Suscribirse a Push Manager
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(vapidPublicKey),
+        applicationServerKey: urlBase64ToUint8Array(vapidPublicKey) as BufferSource,
       })
 
       // 5. Enviar suscripción al servidor

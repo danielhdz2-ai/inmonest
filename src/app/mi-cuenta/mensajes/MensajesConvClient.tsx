@@ -53,7 +53,7 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
     conversationId: selected?.id ?? '',
     userId,
     enabled: !!selected,
-    onNewMessage: useCallback((newMessage) => {
+    onNewMessage: useCallback((newMessage: any) => {
       setMessages(prev => {
         // Evitar duplicados
         if (prev.some(m => m.id === newMessage.id)) return prev
@@ -67,7 +67,7 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
           : c
       ))
     }, []),
-    onTyping: useCallback((typingUserId) => {
+    onTyping: useCallback((typingUserId: string) => {
       if (typingUserId === userId) return
       
       // Mostrar indicador de "escribiendo..."
@@ -251,10 +251,10 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
               {/* Mensajes */}
               <div className="flex-1 overflow-y-auto p-4 space-y-3">
                 {loadingMsgs ? (
-                <div className="flex items-center justify-center h-full">
-                  <span className="animate-spin w-6 h-6 border-2 border-[#c9962a] border-t-transparent rounded-full" />
-                </div>
-              ) : messages.length === 0 ? (
+                  <div className="flex items-center justify-center h-full">
+                    <span className="animate-spin w-6 h-6 border-2 border-[#c9962a] border-t-transparent rounded-full" />
+                  </div>
+                ) : messages.length === 0 ? (
                 <div className="flex items-center justify-center h-full text-center">
                   <div>
                     <div className="text-3xl mb-2">👋</div>
@@ -330,6 +330,7 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
             </div>
           </>
         )}
+      </div>
       </div>
     </div>
   )
