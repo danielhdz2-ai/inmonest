@@ -1,5 +1,8 @@
 ﻿import { NextRequest, NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+export const maxDuration = 120 // 2 minutos máx. para evitar consumo excesivo
+
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const SERVICE_KEY  = process.env.SUPABASE_SERVICE_KEY
                   ?? process.env.SUPABASE_SERVICE_ROLE_KEY
