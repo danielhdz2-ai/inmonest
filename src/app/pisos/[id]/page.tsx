@@ -335,6 +335,65 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
               </div>
             )}
 
+            {/* ── CTA GESTORÍA (Alquiler / Venta) ── */}
+            {listing.operation === 'rent' ? (
+              <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+                <div className="flex items-start gap-4">
+                  <span className="text-4xl">📄</span>
+                  <div className="flex-1">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                      ¿Vas a alquilar este piso?
+                    </h3>
+                    <p className="text-white/80 text-sm sm:text-base mb-4">
+                      Necesitas un <strong>contrato de alquiler LAU</strong> (obligatorio por ley). Nuestros abogados lo redactan personalizado con todas las cláusulas legales. <strong>Desde 7€.</strong>
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Link
+                        href="/gestoria/contrato-alquiler"
+                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg"
+                      >
+                        Crear contrato LAU desde 7€ →
+                      </Link>
+                      <Link
+                        href="/blog/contrato-arrendamiento-lau"
+                        className="inline-flex items-center justify-center px-5 py-3 rounded-full border border-white/30 text-white font-medium hover:bg-white/10 transition-colors text-sm"
+                      >
+                        Leer guía completa
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+                <div className="flex items-start gap-4">
+                  <span className="text-4xl">🏠</span>
+                  <div className="flex-1">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2">
+                      ¿Listo para comprar?
+                    </h3>
+                    <p className="text-white/80 text-sm sm:text-base mb-4">
+                      Protege tu señal con un <strong>contrato de arras</strong> redactado por abogados. Evita problemas legales y asegura tu compra. <strong>Desde 30€.</strong>
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Link
+                        href="/gestoria/contrato-arras"
+                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg"
+                      >
+                        Crear contrato de arras desde 30€ →
+                      </Link>
+                      <Link
+                        href="/gestoria"
+                        className="inline-flex items-center justify-center px-5 py-3 rounded-full border border-white/30 text-white font-medium hover:bg-white/10 transition-colors text-sm"
+                      >
+                        Ver todos los servicios
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* ── ANÁLISIS DE PRECIOS COMPETITIVO ── */}
             {priceAnalysis && (
               <PriceAnalysisSection
