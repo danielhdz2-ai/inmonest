@@ -27,11 +27,12 @@
 - **Cron**: Maintenance 06:00 AM
 
 ### Hipoges
-- **Estado**: ✅ ACTIVO - Calidad verificada ⭐ NUEVO
-- **Volumen**: 5 pisos (productos bancarios)
+- **Estado**: 🧪 PRUEBA MANUAL - Calidad verificada ⭐ NUEVO
+- **Volumen**: 6 pisos (productos bancarios)
 - **Calidad**: Alta - Imágenes nítidas, datos completos
 - **Nota**: Scraper arreglado con selector `init-similar-card`
-- **Cron**: Maintenance 06:00 AM
+- **Cron**: ❌ DESACTIVADO - Solo ejecución manual hasta testear más
+- **Marca**: "Fondo Bancario" en advertiser_name
 
 ---
 

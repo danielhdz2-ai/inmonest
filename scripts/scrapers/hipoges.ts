@@ -124,9 +124,32 @@ async function scrapeCity(operation: 'venta' | 'alquiler', cityKey: string, maxL
         const img = card.querySelector('img')
         const imgSrc = img ? (img.getAttribute('src') || img.getAttribute('data-src') || '') : ''
         
-        // Buscar enlace
-        const link = card.querySelector('a') || card.closest('a')
-        const href = link ? (link as HTMLAnchorElement).href : null
+        // Buscar enlace - los componentes Angular tienen el enlace en el div con role="button"
+        let href: string | null = null
+        const buttonDiv = card.querySelector('div[role="button"]')
+        if (buttonDiv) {
+          // El href puede estar en un elemento padre o en un atributo
+          const parentLink = buttonDiv.closest('a')
+          if (parentLink) {
+            href = (parentLink as HTMLAnchorElement).href
+          }
+        }
+        
+        // Si no encontró el enlace, buscar cualquier <a> dentro de la tarjeta
+        if (!href) {
+          const link = card.querySelector('a')
+          if (link) {
+            href = (link as HTMLAnchorElement).href
+          }
+        }
+        
+        // Si aún no tiene href, construir URL desde el título/ubicación
+        if (!href) {
+          // Extraer un ID único del texto o usar el precio como referencia
+          const priceStr = price ? price.toString() : 'unknown'
+          const cleanTitle = title.toLowerCase().replace(/[^a-z0-9]/g, '-')
+          href = `https://realestate.hipoges.com/es/inmueble/${cleanTitle}-${priceStr}`
+        }
         
         return {
           title: title.replace(/[\n\r]+/g, ' ').replace(/\.cls-.*?}/g, '').trim().slice(0, 200),
@@ -165,6 +188,7 @@ async function scrapeCity(operation: 'venta' | 'alquiler', cityKey: string, maxL
       console.log(`\n🔍 Scrapeando ${index + 1}/${cardsToProcess.length}:`)
       console.log(`   ${card.title}`)
       console.log(`   ${card.price}€ - ${card.area}m² - ${card.bedrooms}hab`)
+      console.log(`   URL: ${card.href}`)
       
       // Todos los datos están en la tarjeta, no necesitamos navegar
       const scrapedListing: ScrapedListing = {
@@ -184,7 +208,7 @@ async function scrapeCity(operation: 'venta' | 'alquiler', cityKey: string, maxL
         lat: undefined,
         lng: undefined,
         is_particular: false,
-        advertiser_name: 'Hipoges',
+        advertiser_name: 'Hipoges - Fondo Bancario',
         images: card.imgSrc ? [card.imgSrc] : [],
       }
       

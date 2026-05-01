@@ -45,10 +45,6 @@
     {
       "path": "/api/cron/generate-descriptions",
       "schedule": "0 9 * * *"
-    },
-    {
-      "path": "/api/cron/scraper-hipoges",
-      "schedule": "0 10 * * *"
     }
   ]
 }
