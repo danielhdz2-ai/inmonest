@@ -26,6 +26,13 @@
 - **Nota**: Pisos de agencia eliminados
 - **Cron**: Maintenance 06:00 AM
 
+### Hipoges
+- **Estado**: ✅ ACTIVO - Calidad verificada ⭐ NUEVO
+- **Volumen**: 5 pisos (productos bancarios)
+- **Calidad**: Alta - Imágenes nítidas, datos completos
+- **Nota**: Scraper arreglado con selector `init-similar-card`
+- **Cron**: Maintenance 06:00 AM
+
 ---
 
 ## ❌ Scrapers Desactivados (Baja Calidad)
@@ -34,12 +41,6 @@
 - **Estado**: ❌ ELIMINADO
 - **Razón**: Imágenes de baja calidad, datos incompletos
 - **Acción**: Todos los pisos eliminados de la BD
-
-### Hipoges
-- **Estado**: ⏸️ PAUSADO
-- **Razón**: Calidad no validada
-- **Límite**: Máximo 2 pisos de prueba
-- **Cron**: Desactivado
 
 ### Indomio
 - **Estado**: ❌ BLOQUEADO
@@ -75,9 +76,10 @@
 - Pisos.com: 56
 - Solvia: 10
 - Gilmar: 17
-- **Total**: 83 pisos
+- Hipoges: 5 ⭐ NUEVO
+- **Total**: 88 pisos
 
-### Total General: 573 pisos
+### Total General: 578 pisos
 
 ---
 

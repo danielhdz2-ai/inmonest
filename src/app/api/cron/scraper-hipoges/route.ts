@@ -11,7 +11,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 const CITIES = ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza']
-const MAX_LISTINGS = 2 // LÍMITE DE PRUEBA - No aumentar hasta validar calidad
+const MAX_LISTINGS = 10 // ✅ CALIDAD VERIFICADA - Usuario confirmó imágenes nítidas y datos completos
 
 const CITY_MAP: Record<string, { province: string; city: string; slug: string }> = {
   madrid:    { province: 'Madrid',    city: 'Madrid',    slug: 'madrid' },

@@ -93,14 +93,11 @@ async function scrapeCity(operation: 'venta' | 'alquiler', cityKey: string, maxL
     
     // Extraer tarjetas de propiedades - buscar elementos que contengan precios en EUR
     const propertyCards = await page.evaluate(() => {
-      // Buscar todos los elementos que contengan un precio
-      const allElements = Array.from(document.querySelectorAll('*'))
-      const cardsWithPrice = allElements.filter((el) => {
-        const text = el.textContent || ''
-        return /\d+\.\d{3}\s*€/.test(text) && text.length < 500 // Filtrar textos largos
-      })
+      // Estrategia: buscar componentes Angular init-similar-card
+      // Cada uno representa UNA tarjeta única con imagen
+      const cards = Array.from(document.querySelectorAll('init-similar-card'))
       
-      return cardsWithPrice.map((card) => {
+      return cards.map((card) => {
         const text = card.textContent || ''
         
         // Extraer precio
