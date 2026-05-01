@@ -40,8 +40,8 @@ export default function Home() {
               El portal para particulares
             </span>
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-md">
-              Inmonest: Tu portal<br />
-              <span className="text-[#f4c94a]">inmobiliario y gestoría digital</span>
+              Inmonest: <span className="text-white">Tu portal inmobiliario,</span><br />
+              <span className="text-[#f4c94a]">tu gestoría digital</span>
             </h1>
             <p className="mt-5 text-lg text-white/80 max-w-xl leading-relaxed">
               En Inmonest, encontramos el inmueble que necesitas, y si eres particular, te ofrecemos una gestoría especializada en derecho inmobiliario.

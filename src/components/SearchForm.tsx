@@ -58,8 +58,14 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
 
   const { count: liveCount, loading: countLoading } = useListingCount(liveOverrides)
 
-  // Pills de tipo de anunciante (3 opciones, mutuamente excluyentes)
+  // Pills de tipo de anunciante (4 opciones, mutuamente excluyentes)
   const TIPO_PILLS: { value: TipoAnunciante; label: string; icon: string; activeClass: string }[] = [
+    {
+      value: '',
+      label: 'Cualquiera',
+      icon: '',
+      activeClass: 'bg-blue-600 text-white border-blue-600',
+    },
     {
       value: 'bancarios',
       label: 'Fondos bancarios',
