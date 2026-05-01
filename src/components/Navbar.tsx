@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 interface NavbarProps {
@@ -47,47 +48,49 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             </svg>
           </button>
 
-          {/* Logo — pegado a la izquierda */}
-          <Link href="/" className="flex items-end gap-0 flex-shrink-0 -ml-0.5">
-            <span className="text-3xl font-extrabold tracking-tight leading-none pb-1">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+            <Image
+              src="/logo.png"
+              alt="Inmonest"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
+              priority
+            />
+            <span className="text-2xl font-extrabold tracking-tight leading-none hidden sm:block">
               <span className="text-[#1a0d00]">Inmo</span><span className="text-[#c9962a]">nest</span>
             </span>
           </Link>
 
-          {/* Nav links — solo desktop, en el centro */}
-          <nav className="hidden lg:flex items-center gap-5 text-sm font-medium text-gray-600 ml-6 flex-1">
-            <Link href="/pisos?operacion=rent"                        className="hover:text-[#c9962a] transition-colors whitespace-nowrap">Alquiler</Link>
-            <Link href="/pisos?operacion=rent&solo_particulares=true" className="hover:text-[#c9962a] transition-colors whitespace-nowrap">Pisos de Particulares</Link>
-            <Link href="/pisos?operacion=sale"                        className="hover:text-[#c9962a] transition-colors whitespace-nowrap">Compra</Link>
-            <Link href="/publicar-anuncio"                            className="hover:text-[#c9962a] transition-colors whitespace-nowrap">Publicar gratis</Link>
-            <Link href="/vender-casa"                                 className="hover:text-[#c9962a] transition-colors whitespace-nowrap">Vender casa</Link>
-            <Link href="/gestoria"                                    className="hover:text-[#c9962a] transition-colors whitespace-nowrap">Gestoría</Link>
-            <Link href="/agencias"                                    className="hover:text-[#c9962a] transition-colors whitespace-nowrap">Agencias</Link>
-            <Link href="/hipoteca"                                    className="hover:text-[#c9962a] transition-colors whitespace-nowrap font-semibold text-[#c9962a]">Hipotecas</Link>
-          </nav>
+          {/* Spacer */}
+          <div className="flex-1" />
 
-          {/* Spacer para empujar CTAs a la derecha */}
-          <div className="flex-1 lg:flex-none" />
-
-          {/* CTAs */}
+          {/* CTAs principales — siempre visibles */}
           <div className="flex items-center gap-2">
             <Link
+              href="/gestoria"
+              className="hidden md:inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#c9962a] transition-colors whitespace-nowrap"
+            >
+              Gestoría
+            </Link>
+            <Link
               href="/publicar-anuncio"
-              className="hidden sm:inline-flex items-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
             >
               Publicar anuncio
             </Link>
             {isLoggedIn ? (
               <Link
                 href="/mi-cuenta"
-                className="hidden sm:inline-flex items-center px-4 py-2 rounded-full border border-[#c9962a]/40 text-[#c9962a] text-sm font-medium hover:bg-[#fef9e8] transition-colors whitespace-nowrap"
+                className="inline-flex items-center px-4 py-2 rounded-full border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap"
               >
                 Mi cuenta
               </Link>
             ) : (
               <Link
                 href="/login"
-                className="hidden sm:inline-flex items-center px-4 py-2 rounded-full border border-[#c9962a]/40 text-[#c9962a] text-sm font-medium hover:bg-[#fef9e8] transition-colors whitespace-nowrap"
+                className="hidden sm:inline-flex items-center px-4 py-2 rounded-full border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap"
               >
                 Entrar
               </Link>
@@ -115,8 +118,9 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
       >
         {/* Cabecera del panel */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
-          <Link href="/" onClick={close} className="flex items-end gap-0">
-            <span className="text-2xl font-extrabold tracking-tight leading-none pb-0.5">
+          <Link href="/" onClick={close} className="flex items-center gap-2">
+            <Image src="/logo.png" alt="Inmonest" width={32} height={32} className="h-8 w-8 object-contain" />
+            <span className="text-xl font-extrabold tracking-tight leading-none">
               <span className="text-[#1a0d00]">Inmo</span><span className="text-[#c9962a]">nest</span>
             </span>
           </Link>
