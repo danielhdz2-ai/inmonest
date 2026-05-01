@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import Image from 'next/image'
 import { useState, useEffect } from 'react'
 
 interface NavbarProps {
@@ -50,15 +49,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
 
           {/* Logo — pegado a la izquierda */}
           <Link href="/" className="flex items-end gap-0 flex-shrink-0 -ml-0.5">
-            <Image
-              src="/logo.png"
-              alt="Inmonest"
-              width={160}
-              height={42}
-              className="h-10 w-auto object-contain mb-0.5"
-              priority
-            />
-            <span className="text-xl font-extrabold tracking-tight leading-none pb-1">
+            <span className="text-3xl font-extrabold tracking-tight leading-none pb-1">
               <span className="text-[#1a0d00]">Inmo</span><span className="text-[#c9962a]">nest</span>
             </span>
           </Link>
@@ -125,8 +116,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
         {/* Cabecera del panel */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
           <Link href="/" onClick={close} className="flex items-end gap-0">
-            <Image src="/logo.png" alt="Inmonest" width={120} height={32} className="h-8 w-auto object-contain mb-0.5" />
-            <span className="text-lg font-extrabold tracking-tight leading-none pb-0.5">
+            <span className="text-2xl font-extrabold tracking-tight leading-none pb-0.5">
               <span className="text-[#1a0d00]">Inmo</span><span className="text-[#c9962a]">nest</span>
             </span>
           </Link>

@@ -39,7 +39,7 @@ export default function Home() {
             <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#c9962a]/30 text-[#f4c94a] border border-[#c9962a]/40 mb-5 backdrop-blur-sm">
               ✦ Solo propietarios particulares
             </span>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-white drop-shadow-md">
+            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-md">
               Inmonest: Quédate con<br />
               <span className="text-[#f4c94a]">el 100% de tu venta</span>
             </h1>
