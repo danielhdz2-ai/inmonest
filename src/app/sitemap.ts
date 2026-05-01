@@ -38,6 +38,15 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/cookies`,              lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.2 },
   { url: `${BASE_URL}/seguridad`,            lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.2 },
   { url: `${BASE_URL}/contacto`,             lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
+  
+  // Páginas de gestoría (servicios SEO con alta prioridad)
+  { url: `${BASE_URL}/gestoria/burofax-desistimiento-alquiler`,     lastModified: new Date(), changeFrequency: 'monthly', priority: 0.92 },
+  { url: `${BASE_URL}/gestoria/certificado-eficiencia-energetica`,  lastModified: new Date(), changeFrequency: 'monthly', priority: 0.94 },
+  { url: `${BASE_URL}/gestoria/contrato-compraventa`,               lastModified: new Date(), changeFrequency: 'monthly', priority: 0.93 },
+  { url: `${BASE_URL}/gestoria/nota-simple`,                        lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 },
+  
+  // Blog / Contenido SEO
+  { url: `${BASE_URL}/blog/contrato-arrendamiento-lau`,             lastModified: new Date(), changeFrequency: 'monthly', priority: 0.88 },
 ]
 
 // Páginas SEO de contratos de arras por ciudad
