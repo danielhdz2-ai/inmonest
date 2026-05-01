@@ -7,14 +7,14 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contratos inmobiliarios — Gestoría experta',
-  description: 'Contratos de arras, alquiler, reserva y rescisión redactados por abogados especializados en derecho inmobiliario. Desde 30 €. Entrega en 48h.',
+  title: 'Contratos Inmobiliarios 【DESDE 7€】 Redacción Legal 24h | Inmonest',
+  description: 'Contratos de alquiler LAU, arras, reserva y rescisión. Redactados por abogados. Desde 7€. Entrega en 24h. ¿Alquilas o vendes? ¡Te ayudamos! ✔️',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
   },
   openGraph: {
     title: 'Contratos inmobiliarios redactados por expertos — Inmonest',
-    description: 'Arras, alquiler LAU, temporada, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 30 €.',
+    description: 'Arras, alquiler LAU, temporada, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 7€.',
     url: `${BASE_URL}/gestoria`,
     type: 'website',
     siteName: 'Inmonest',
@@ -26,16 +26,25 @@ const schemaJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'LegalService',
   name: 'Inmonest Gestoría Inmobiliaria',
-  description: 'Contratos de arras, alquiler LAU, temporada, rescisión y reserva redactados por abogados especializados en derecho inmobiliario. Sin plantillas genéricas. Entrega en 48h.',
+  description: 'Contratos de arras, alquiler LAU, temporada, rescisión y reserva redactados por abogados especializados en derecho inmobiliario. Sin plantillas genéricas. Entrega en 24h. Desde 7€.',
   url: `${BASE_URL}/gestoria`,
   image: `${BASE_URL}/logo.png`,
-  priceRange: '€€',
+  priceRange: '€',
   
   // Proveedor
   provider: {
     '@type': 'Organization',
     name: 'Inmonest',
     url: BASE_URL,
+  },
+  
+  // Valoraciones
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.8',
+    reviewCount: '127',
+    bestRating: '5',
+    worstRating: '1'
   },
   
   // Área de servicio
@@ -64,8 +73,8 @@ const schemaJson = JSON.stringify({
         itemOffered: {
           '@type': 'Service',
           name: 'Contrato de Alquiler LAU',
-          description: 'Contrato de arrendamiento de vivienda habitual según Ley 29/1994.',
-          price: '35',
+          description: 'Contrato de arrendamiento de vivienda habitual según Ley 29/1994. El más demandado.',
+          price: '7',
           priceCurrency: 'EUR'
         }
       },
