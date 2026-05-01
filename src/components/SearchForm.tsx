@@ -63,19 +63,19 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
     {
       value: 'bancarios',
       label: 'Fondos bancarios',
-      icon: '🏦',
-      activeClass: 'bg-blue-600 text-white border-blue-600',
+      icon: '',
+      activeClass: 'bg-gray-700 text-white border-gray-700',
     },
     {
       value: 'particulares',
       label: 'Solo particulares',
-      icon: '👤',
+      icon: '',
       activeClass: 'bg-[#c9962a] text-white border-[#c9962a]',
     },
     {
       value: 'agencias',
       label: 'Agencias',
-      icon: '🏢',
+      icon: '',
       activeClass: 'bg-gray-700 text-white border-gray-700',
     },
   ]
@@ -212,13 +212,13 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
             key={pill.value}
             type="button"
             onClick={() => setTipoAnunciante(tipoAnunciante === pill.value ? '' : pill.value)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full border text-sm font-semibold transition-colors ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md border text-sm font-semibold transition-colors ${
               tipoAnunciante === pill.value
                 ? pill.activeClass
-                : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
+                : 'bg-white text-gray-600 border-gray-300 hover:border-gray-400'
             }`}
           >
-            <span>{pill.icon}</span>
+            {pill.icon && <span>{pill.icon}</span>}
             <span>{pill.label}</span>
           </button>
         ))}

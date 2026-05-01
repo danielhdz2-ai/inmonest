@@ -48,17 +48,9 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             </svg>
           </button>
 
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-            <Image
-              src="/logo.png"
-              alt="Inmonest"
-              width={40}
-              height={40}
-              className="h-10 w-10 object-contain"
-              priority
-            />
-            <span className="text-2xl font-extrabold tracking-tight leading-none hidden sm:block">
+          {/* Logo - Solo texto */}
+          <Link href="/" className="flex items-center flex-shrink-0">
+            <span className="text-3xl font-extrabold tracking-tight leading-none">
               <span className="text-[#1a0d00]">Inmo</span><span className="text-[#c9962a]">nest</span>
             </span>
           </Link>
@@ -70,7 +62,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           <div className="flex items-center gap-2">
             <Link
               href="/gestoria"
-              className="hidden md:inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#c9962a] transition-colors whitespace-nowrap"
+              className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
             >
               Gestoría
             </Link>

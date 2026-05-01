@@ -37,14 +37,14 @@ export default function Home() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-28 w-full">
           <div className="max-w-2xl mb-10">
             <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#c9962a]/30 text-[#f4c94a] border border-[#c9962a]/40 mb-5 backdrop-blur-sm">
-              ✦ Solo propietarios particulares
+              El portal para particulares
             </span>
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-md">
-              Inmonest: Quédate con<br />
-              <span className="text-[#f4c94a]">el 100% de tu venta</span>
+              Inmonest: Tu portal<br />
+              <span className="text-[#f4c94a]">inmobiliario y gestoría digital</span>
             </h1>
             <p className="mt-5 text-lg text-white/80 max-w-xl leading-relaxed">
-              Tu nido, directo y sin comisiones. Conectamos propietarios e inquilinos directamente. Sin agencias, sin intermediarios.
+              En Inmonest, encontramos el inmueble que necesitas, y si eres particular, te ofrecemos una gestoría especializada en derecho inmobiliario.
             </p>
           </div>
 
@@ -89,6 +89,49 @@ export default function Home() {
               {ciudad.nombre}
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* ── Tarjeta Gestoría ──────────────────────────────────────── */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-14">
+        <div className="relative overflow-hidden rounded-2xl shadow-lg bg-gradient-to-r from-[#1a0d00] to-[#2e1900] min-h-[280px] flex">
+          {/* Contenido */}
+          <div className="relative z-10 flex-1 px-8 sm:px-12 py-10">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#c9962a]/25 text-[#f4c94a] text-xs font-semibold border border-[#c9962a]/40 mb-4">
+              📄 Gestoría Digital
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug mb-3">
+              ¿Necesitas redactar un<br />contrato de alquiler o arras?
+            </h2>
+            <p className="text-white/70 text-sm sm:text-base leading-relaxed max-w-lg mb-6">
+              Nuestros expertos en derecho inmobiliario te ayudan con contratos personalizados, revisiones legales y gestión documental completa. Desde 7€.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/gestoria"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg"
+              >
+                Ver servicios de gestoría →
+              </Link>
+              <Link
+                href="/blog"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/30 text-white/90 font-medium hover:bg-white/10 transition-colors text-sm"
+              >
+                Guías y consejos
+              </Link>
+            </div>
+          </div>
+          {/* Imagen */}
+          <div className="hidden lg:block relative w-[380px] shrink-0">
+            <Image
+              src="/familia3.jpg"
+              alt="Gestoría inmobiliaria"
+              fill
+              className="object-cover opacity-90"
+              sizes="380px"
+            />
+            <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#1a0d00]/60" />
+          </div>
         </div>
       </section>
 
