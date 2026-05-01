@@ -11,7 +11,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 
 const CITIES = ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza']
-const MAX_LISTINGS = 15 // Listings por ejecución
+const MAX_LISTINGS = 2 // DESACTIVADO - Calidad insuficiente
 
 const CITY_MAP: Record<string, { province: string; city: string; slug: string }> = {
   madrid:    { province: 'Madrid',    city: 'Madrid',    slug: 'madrid' },
