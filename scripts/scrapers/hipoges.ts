@@ -195,12 +195,9 @@ async function scrapeCity(operation: 'venta' | 'alquiler', cityKey: string, maxL
         totalScraped++
         const result = await upsertListing(scrapedListing)
         
-        if (result === 'inserted') {
+        if (result) {
           totalInserted++
-          console.log(`   ✅ Insertado`)
-        } else if (result === 'updated') {
-          totalUpdated++
-          console.log(`   🔄 Actualizado`)
+          console.log(`   ✅ Insertado/Actualizado`)
         } else {
           console.log(`   ⏭️  Omitido`)
         }

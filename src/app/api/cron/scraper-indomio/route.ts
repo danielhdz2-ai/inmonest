@@ -21,7 +21,7 @@ async function runIndomioScraper(
   city: string,
   maxPages: number
 ): Promise<{ scraped: number; inserted: number; updated: number }> {
-  const { upsertListing } = await import('../../../scripts/scrapers/utils')
+  const { upsertListing } = await import('../../../../../scripts/scrapers/utils')
   
   const UA_POOL = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
@@ -147,32 +147,27 @@ async function runIndomioScraper(
       totalScraped++
       
       const result = await upsertListing({
-        external_id: listing.id,
-        portal: 'indomio',
-        url: listing.url,
-        title,
-        description,
-        operation,
-        price_eur: price,
-        area_m2: area,
-        bedrooms,
-        bathrooms,
+        source_external_id: listing.id,
+        source_portal: 'indomio',
+        source_url: listing.url,
+        title: title || 'Sin título',
+        description: description || undefined,
+        operation: operation === 'venta' ? 'sale' : 'rent',
+        price_eur: price || undefined,
+        area_m2: area || undefined,
+        bedrooms: bedrooms || undefined,
+        bathrooms: bathrooms || undefined,
         city: cityData.city,
         province: cityData.province,
-        district: null,
-        address: null,
-        lat: null,
-        lng: null,
-        floor: null,
-        property_type: 'piso',
-        energy_cert: null,
+        district: undefined,
+        lat: undefined,
+        lng: undefined,
         is_particular: false,
-        agency_name: null,
-        photos: images.slice(0, 15),
+        advertiser_name: undefined,
+        images,
       })
       
-      if (result === 'inserted') totalInserted++
-      else if (result === 'updated') totalUpdated++
+      if (result) totalInserted++
     }
     
     await sleep(DELAY_MS)

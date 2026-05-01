@@ -9,11 +9,6 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
-import { chromium } from 'playwright-extra'
-import StealthPlugin from 'puppeteer-extra-plugin-stealth'
-
-// @ts-ignore - puppeteer-extra-plugin-stealth types
-chromium.use(StealthPlugin())
 
 const CITIES = ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza']
 const MAX_LISTINGS = 15 // Listings por ejecución
@@ -29,7 +24,12 @@ const CITY_MAP: Record<string, { province: string; city: string; slug: string }>
 }
 
 async function runProperstarScraper(city: string, maxListings: number) {
-  const { upsertListing } = await import('../../../../scripts/scrapers/utils')
+  const { upsertListing } = await import('../../../../../scripts/scrapers/utils')
+  const { chromium } = await import('playwright-extra')
+  const StealthPlugin = (await import('puppeteer-extra-plugin-stealth')).default
+  
+  // @ts-ignore - puppeteer-extra-plugin-stealth types
+  chromium.use(StealthPlugin())
 
   const cityData = CITY_MAP[city]
   if (!cityData) {
@@ -166,8 +166,7 @@ async function runProperstarScraper(city: string, maxListings: number) {
       totalScraped++
       const result = await upsertListing(scrapedListing)
 
-      if (result === 'inserted') totalInserted++
-      else if (result === 'updated') totalUpdated++
+      if (result) totalInserted++
 
       await page.waitForTimeout(1000)
     }
