@@ -1,6 +1,17 @@
-# ⏸️ Crons Desactivados - Plan de Optimización
+# ⚙️ Crons Optimizados - Configuración Actual
 
-## 🚨 Problema Detectado
+## ✅ Estado Actual (2026-05-01)
+
+**Scrapers activos optimizados:**
+- ✅ **Pisos.com Particulares** - Lunes 07:00 AM (semanal)
+- ✅ **Solvia (Banco Sabadell)** - Miércoles 07:00 AM (semanal)
+
+**Consumo estimado:**
+- Pisos.com: ~2-3 min CPU/semana
+- Solvia: ~1-2 min CPU/semana
+- **TOTAL: ~3-5 min CPU/semana = ~12-20 min/mes** (~5% del plan gratuito)
+
+## 🚨 Problema Original Resuelto
 
 **Fecha:** 2026-05-01  
 **Causa:** Vercel alertó 75% de consumo CPU sin usuarios registrados
@@ -43,9 +54,23 @@ export const maxDuration = 60 // Ya existía
 "src/app/api/cron/alertas/route.ts": { "maxDuration": 60 }
 ```
 
-## 🔧 Ejecución Manual (desarrollo)
+## 🔧 Ejecución Manual (cuando sea necesario)
 
-### 1. Scraper Principal
+### 1. Scrapers Activos (ya automáticos)
+
+```bash
+# Pisos.com - Se ejecuta automáticamente lunes 07:00 AM
+# Solvia - Se ejecuta automáticamente miércoles 07:00 AM
+
+# Para forzar ejecución manual inmediata:
+curl https://inmonest.com/api/cron/scraper-pisoscom \
+  -H "Authorization: Bearer $CRON_SECRET"
+
+curl https://inmonest.com/api/cron/scraper-solvia \
+  -H "Authorization: Bearer $CRON_SECRET"
+```
+
+### 2. Otros Scrapers (bajo demanda)
 
 ```bash
 # Ejecutar scraper manualmente (local)
