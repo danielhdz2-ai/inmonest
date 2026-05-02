@@ -18,6 +18,18 @@ export const metadata: Metadata = {
   },
 }
 
+// Páginas de recursos y oportunidades — se añaden aquí a medida que se crean
+const RECURSOS = [
+  {
+    href: '/oportunidades-bancarias',
+    titulo: 'Pisos de Banco Baratos — Oportunidades de Fondos Bancarios 2026',
+    resumen: 'Accede al catálogo verificado de Solvia, Aliseda, Servihabitat y otros fondos. Pisos desde 40.000 €. Gestión legal y documentación incluida.',
+    categoria: 'Oportunidades',
+    etiqueta: 'Nuevo',
+    imagen: '/mercado1.jpg',
+  },
+]
+
 const ARTICULOS = [
   {
     slug: 'vender-piso-sin-comisiones',
@@ -127,8 +139,55 @@ export default function BlogPage() {
           </p>
         </header>
 
+        {/* Recursos y landing pages destacadas */}
+        {RECURSOS.length > 0 && (
+          <section className="mb-14">
+            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <span className="w-1 h-5 bg-amber-500 rounded-full inline-block" />
+              Oportunidades destacadas
+            </h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {RECURSOS.map((r) => (
+                <li key={r.href}>
+                  <a
+                    href={r.href}
+                    className="group flex flex-col bg-white border border-amber-200 rounded-2xl overflow-hidden hover:border-amber-400 hover:shadow-md transition-all h-full"
+                  >
+                    <div className="relative h-36 bg-gray-100">
+                      <img src={r.imagen} alt={r.titulo} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      <div className="absolute top-3 left-3 flex gap-2">
+                        <span className="text-xs font-semibold bg-amber-500 text-white px-2.5 py-1 rounded-full">
+                          {r.categoria}
+                        </span>
+                        {r.etiqueta && (
+                          <span className="text-xs font-semibold bg-white text-amber-600 border border-amber-300 px-2.5 py-1 rounded-full">
+                            {r.etiqueta}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                    <div className="p-5 flex flex-col flex-1">
+                      <h3 className="font-bold text-gray-900 group-hover:text-amber-600 transition-colors mb-2 text-base leading-snug">
+                        {r.titulo}
+                      </h3>
+                      <p className="text-gray-500 text-sm leading-relaxed flex-1">{r.resumen}</p>
+                      <span className="mt-4 text-sm font-semibold text-amber-600 group-hover:text-amber-700">
+                        Ver oportunidades →
+                      </span>
+                    </div>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         {/* Artículos */}
         <section>
+          <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+            <span className="w-1 h-5 bg-gray-300 rounded-full inline-block" />
+            Guías y artículos
+          </h2>
           <ul className="space-y-8">
             {ARTICULOS.map((art) => (
               <li key={art.slug}>
