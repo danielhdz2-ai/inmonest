@@ -36,6 +36,9 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/contrato-compraventa`,              lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/nota-simple`,                       lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
 
+  // Páginas de oportunidades especiales
+  { url: `${BASE_URL}/oportunidades-bancarias`, lastModified: today, changeFrequency: 'weekly' as const, priority: 0.92 },
+
   // Blog — todos los artículos
   { url: `${BASE_URL}/blog`,                                       lastModified: today, changeFrequency: 'weekly',  priority: 0.8 },
   { url: `${BASE_URL}/blog/contrato-arrendamiento-lau`,            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
