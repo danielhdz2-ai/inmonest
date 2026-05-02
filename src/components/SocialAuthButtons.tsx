@@ -36,7 +36,10 @@ export default function SocialAuthButtons({
     })
 
     if (error) {
-      onError?.(`No se pudo conectar con ${provider}. Inténtalo de nuevo.`)
+      const msg = error.message?.includes('provider is not enabled')
+        ? `El acceso con ${provider} no está disponible en este momento. Usa email y contraseña.`
+        : `No se pudo conectar con ${provider}. Inténtalo de nuevo.`
+      onError?.(msg)
       setLoadingProvider(null)
     }
     // No reseteamos loadingProvider si funciona porque se redirige

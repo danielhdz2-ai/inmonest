@@ -22,7 +22,11 @@ export async function middleware(request: NextRequest) {
   const identifier = authHeader ? `user:${authHeader.split(' ')[1]?.slice(0, 10)}` : `ip:${ip}`
 
   // Auth endpoints (login, registro, magic link)
-  if (pathname.startsWith('/api/auth') || pathname.match(/\/(login|registro)/)) {
+  // Solo aplica rate limit a POST/PUT — las visitas de página (GET) no cuentan
+  if (
+    (pathname.startsWith('/api/auth') || pathname.match(/\/(login|registro)/)) &&
+    request.method !== 'GET'
+  ) {
     const rateLimitResponse = await applyRateLimit(authLimit, identifier, request)
     if (rateLimitResponse) return rateLimitResponse
   }

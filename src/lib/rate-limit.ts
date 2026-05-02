@@ -46,13 +46,13 @@ export const authedApiLimit = redis
   : null
 
 /**
- * Login/Registro - Muy restrictivo
- * 5 requests por 15 minutos
+ * Login/Registro - Solo se aplica a POST (intentos reales de auth)
+ * 20 intentos por 15 minutos por IP
  */
 export const authLimit = redis
   ? new Ratelimit({
       redis,
-      limiter: Ratelimit.slidingWindow(5, '15 m'),
+      limiter: Ratelimit.slidingWindow(20, '15 m'),
       analytics: true,
       prefix: 'ratelimit:auth',
     })
