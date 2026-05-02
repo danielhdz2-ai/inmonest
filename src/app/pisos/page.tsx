@@ -25,7 +25,7 @@ export async function generateMetadata({ searchParams }: PisosPageProps): Promis
 
   // Meta optimizada para CTR en Google
   const title = `${opLabel}${ciudadLabel}${particulares} 【612 Pisos desde 250€】 0% Comisión | Inmonest`
-  const description = `✓ 612 pisos${operacion === 'rent' ? ' en alquiler' : operacion === 'sale' ? ' en venta' : ''}${ciudadLabel ? ' en ' + ciudad.charAt(0).toUpperCase() + ciudad.slice(1) : ''} desde 250€/mes. 0% comisión entre particulares. Contratos LAU desde 7€. ¡Ver ahora!`
+  const description = `✓ 612 pisos${operacion === 'rent' ? ' en alquiler' : operacion === 'sale' ? ' en venta' : ''}${ciudadLabel ? ' en ' + ciudad!.charAt(0).toUpperCase() + ciudad!.slice(1) : ''} desde 250€/mes. 0% comisión entre particulares. Contratos LAU desde 7€. ¡Ver ahora!`
 
   return {
     title,
