@@ -209,7 +209,7 @@ export default function CertificadoEficienciaEnergeticaPage() {
             <div className="space-y-3">
               <div className="flex items-center gap-3 p-3 rounded-lg bg-green-50 border border-green-200">
                 <span className="font-bold text-green-700 text-xl">A - B</span>
-                <span className="text-gray-700 text-sm">Pisos nuevos (< 5 años) con aislamiento térmico, doble acristalamiento, aerotermia o solar.</span>
+                <span className="text-gray-700 text-sm">Pisos nuevos (&lt; 5 años) con aislamiento térmico, doble acristalamiento, aerotermia o solar.</span>
               </div>
               <div className="flex items-center gap-3 p-3 rounded-lg bg-lime-50 border border-lime-200">
                 <span className="font-bold text-lime-700 text-xl">C - D</span>
@@ -221,7 +221,7 @@ export default function CertificadoEficienciaEnergeticaPage() {
               </div>
               <div className="flex items-center gap-3 p-3 rounded-lg bg-orange-50 border border-orange-200">
                 <span className="font-bold text-orange-700 text-xl">F - G</span>
-                <span className="text-gray-700 text-sm">Pisos antiguos (> 30 años) sin aislamiento, ventanas simples, calefacción antigua.</span>
+                <span className="text-gray-700 text-sm">Pisos antiguos (&gt; 30 años) sin aislamiento, ventanas simples, calefacción antigua.</span>
               </div>
             </div>
             <p className="text-sm text-gray-500 mt-4">

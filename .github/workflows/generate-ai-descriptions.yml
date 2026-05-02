@@ -1,17 +1,13 @@
 name: Generate AI Descriptions v2.0
 
 on:
-  # Ejecución manual
+  # Ejecución SOLO manual (schedule desactivado 2026-05-02 para reducir consumo de tokens)
   workflow_dispatch:
     inputs:
       batch_size:
         description: 'Número de listings por ejecución'
         required: false
         default: '15'
-  
-  # Automático: cada hora
-  schedule:
-    - cron: '0 * * * *'  # Cada hora en punto
 
 jobs:
   generate-descriptions:

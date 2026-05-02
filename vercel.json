@@ -30,15 +30,6 @@
       ]
     }
   ],
-  "crons": [
-    {
-      "path": "/api/cron/scraper-pisoscom",
-      "schedule": "0 7 * * 1"
-    },
-    {
-      "path": "/api/cron/scraper-solvia",
-      "schedule": "0 7 * * 3"
-    }
-  ]
+  "crons": []
 }
 

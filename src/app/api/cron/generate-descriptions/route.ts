@@ -1,9 +1,10 @@
 /**
  * /api/cron/generate-descriptions
  *
- * Cron job que genera ai_description para listings publicados que aún no la tengan.
- * Se ejecuta cada hora según vercel.json.
- * Procesa hasta 20 listings por ejecución para no exceder el timeout de Vercel.
+ * Genera descripciones para listings publicados que aún no la tengan.
+ * Estrategia:
+ *   - Por defecto: plantillas dinámicas (gratis, sin tokens, sin API externa)
+ *   - Si OPENROUTER_API_KEY está disponible: usa IA (OpenRouter)
  *
  * Seguridad: solo acepta llamadas desde el propio Vercel cron
  * (header Authorization: Bearer CRON_SECRET) o sin header en local.
@@ -11,15 +12,15 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { generateTemplateDescription } from '@/lib/template-description'
 import { generateAiDescription } from '@/lib/ai-description'
 
-const BATCH_SIZE = 20
-const DELAY_MS   = 400
+const BATCH_SIZE = 30
+const DELAY_MS   = 100
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
 
 export async function GET(req: NextRequest) {
-  // ── Auth: CRON_SECRET de Vercel ──────────────────────────────────────────
   const cronSecret = process.env.CRON_SECRET
   if (cronSecret) {
     const auth = req.headers.get('authorization')
@@ -32,13 +33,15 @@ export async function GET(req: NextRequest) {
   const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_SERVICE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   const openrouterKey = process.env.OPENROUTER_API_KEY
 
-  if (!supabaseUrl || !supabaseKey || !openrouterKey) {
-    return NextResponse.json({ error: 'Missing env vars' }, { status: 500 })
+  const useAi = Boolean(openrouterKey)
+  const mode = useAi ? 'ai' : 'template'
+
+  if (!supabaseUrl || !supabaseKey) {
+    return NextResponse.json({ error: 'Missing Supabase env vars' }, { status: 500 })
   }
 
   const sb = createClient(supabaseUrl, supabaseKey)
 
-  // ── Obtener listings sin ai_description ─────────────────────────────────
   const { data: listings, error } = await sb
     .from('listings')
     .select('id, title, description, operation, city, district, province, price_eur, bedrooms, bathrooms, area_m2, is_particular')
@@ -53,26 +56,26 @@ export async function GET(req: NextRequest) {
   }
 
   if (!listings || listings.length === 0) {
-    return NextResponse.json({ ok: true, processed: 0, message: 'Todos los listings tienen descripción' })
+    return NextResponse.json({ ok: true, processed: 0, mode, message: 'Todos los listings tienen descripción' })
   }
 
   let ok = 0
   let fail = 0
 
   for (const listing of listings) {
-    console.log(`[cron/generate-descriptions] Procesando ${listing.id} - ${listing.is_particular ? 'PARTICULAR' : 'AGENCIA'}`)
-    const aiDesc = await generateAiDescription(listing, openrouterKey)
+    let desc: string | null = null
 
-    if (!aiDesc) {
-      console.warn(`[cron/generate-descriptions] ⚠️ No se generó descripción para ${listing.id}`)
-      fail++
-      await sleep(DELAY_MS)
-      continue
+    if (useAi) {
+      desc = await generateAiDescription(listing, openrouterKey!)
+    }
+
+    if (!desc) {
+      desc = generateTemplateDescription(listing)
     }
 
     const { error: updateErr } = await sb
       .from('listings')
-      .update({ ai_description: aiDesc })
+      .update({ ai_description: desc })
       .eq('id', listing.id)
 
     if (updateErr) {
@@ -85,6 +88,6 @@ export async function GET(req: NextRequest) {
     await sleep(DELAY_MS)
   }
 
-  console.log(`[cron/generate-descriptions] ✅ ${ok} guardados, ❌ ${fail} errores`)
-  return NextResponse.json({ ok: true, processed: ok, errors: fail, total: listings.length })
+  console.log(`[cron/generate-descriptions] ✅ ${ok} guardados (modo: ${mode}), ❌ ${fail} errores`)
+  return NextResponse.json({ ok: true, processed: ok, errors: fail, total: listings.length, mode })
 }
