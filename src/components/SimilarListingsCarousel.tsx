@@ -22,10 +22,18 @@ function formatPrice(price: number | null, operation: string): string {
 function getImageUrl(listing: Listing): string | null {
   const img = listing.listing_images?.[0]
   if (!img) return null
-  if (img.storage_path) {
-    return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/listing-images/${img.storage_path}`
+  // Priorizar external_url (URL pública completa de Supabase Storage o scraper)
+  if (img.external_url) {
+    const isSupabase = img.external_url.includes('supabase.co/storage')
+    return isSupabase
+      ? img.external_url
+      : `/api/img-proxy?url=${encodeURIComponent(img.external_url)}`
   }
-  return img.external_url ?? null
+  // Fallback: construir URL desde storage_path relativo
+  if (img.storage_path) {
+    return `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/listings/${img.storage_path}`
+  }
+  return null
 }
 
 export default function SimilarListingsCarousel({

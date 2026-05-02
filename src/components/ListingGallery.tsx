@@ -44,8 +44,18 @@ export default function ListingGallery({ images, title, lat, lng, priceLabel }: 
   }, [lightbox])
 
   const getUrl = (img: ImageItem) => {
-    if (img.storage_path) return img.storage_path
-    if (img.external_url) return `/api/img-proxy?url=${encodeURIComponent(img.external_url)}`
+    if (img.external_url) {
+      const isSupabase = img.external_url.includes('supabase.co/storage')
+      return isSupabase
+        ? img.external_url
+        : `/api/img-proxy?url=${encodeURIComponent(img.external_url)}`
+    }
+    if (img.storage_path) {
+      const base = process.env.NEXT_PUBLIC_SUPABASE_URL
+      return base
+        ? `${base}/storage/v1/object/public/listings/${img.storage_path}`
+        : img.storage_path
+    }
     return ''
   }
 

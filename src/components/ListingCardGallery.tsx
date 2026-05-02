@@ -36,8 +36,24 @@ export default function ListingCardGallery({
   }
 
   function buildUrl(img: ImageItem) {
-    if (img.storage_path) return img.storage_path
-    if (img.external_url) return `/api/img-proxy?url=${encodeURIComponent(img.external_url)}`
+    // external_url tiene prioridad — para fotos de particulares es la URL pública completa de Supabase Storage
+    if (img.external_url) {
+      // URLs de Supabase Storage → sirven directamente sin proxy
+      if (img.external_url.includes('supabase.co/storage') || img.external_url.startsWith('https://')) {
+        const isSupabase = img.external_url.includes('supabase.co/storage')
+        return isSupabase
+          ? img.external_url
+          : `/api/img-proxy?url=${encodeURIComponent(img.external_url)}`
+      }
+      return img.external_url
+    }
+    // Fallback: construir URL pública desde storage_path relativo
+    if (img.storage_path) {
+      const base = process.env.NEXT_PUBLIC_SUPABASE_URL
+      return base
+        ? `${base}/storage/v1/object/public/listings/${img.storage_path}`
+        : img.storage_path
+    }
     return ''
   }
   const imageUrl = buildUrl(images[current])
