@@ -5,8 +5,10 @@ import VenderForm from '@/components/VenderForm'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Vender Casa Sin Comisiones 【AHORRA 10.000€】 0% Comisión | Inmonest',
-  description: 'Vende tu casa GRATIS entre particulares. Sin agencias, sin comisiones. Publica en 2 minutos. Miles de compradores activos. ¡Tu nido, 100% tuyo! ✅',
+  title: 'Vender Casa Sin Comisión entre Particulares | 0% Agencia — Inmonest',
+  description: 'Vende tu casa directamente al comprador sin pagar comisión de agencia. Publica gratis en 2 minutos, llega a compradores reales en toda España. Sin intermediarios.',
+  alternates: { canonical: '/vender-casa' },
+  keywords: 'vender casa sin comisiones, vender piso sin comisiones, vender casa particulares, vender piso entre particulares, vender casa sin agencia',
 }
 
 const PASOS = [

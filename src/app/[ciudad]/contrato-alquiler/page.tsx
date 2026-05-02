@@ -26,17 +26,22 @@ export async function generateMetadata({ params }: { params: Promise<{ ciudad: s
   if (!nombre) return {}
 
   const isBarcelona = ciudad === 'barcelona'
+  const isValencia  = ciudad === 'valencia'
   const title = isBarcelona
-    ? `Contrato de Alquiler en Barcelona | Zonas Tensionadas e Índice de Referencia LAU 2026 — Inmonest`
-    : `Contrato de Alquiler en ${nombre} | Guía Legal LAU 2026 + Revisión Profesional — Inmonest`
+    ? `Contrato de Alquiler Barcelona | Zonas Tensionadas LAU 2026 — Inmonest`
+    : isValencia
+      ? `Contrato de Alquiler Valencia | Guía LAU 2026 desde 7 € — Inmonest`
+      : `Contrato de Alquiler en ${nombre} | Guía LAU 2026 — Inmonest`
   const description = isBarcelona
-    ? `¿Alquilas en Barcelona? La LAU 2026 regula el contrato de alquiler en zonas tensionadas y el índice de referencia de precios. Protégete con revisión legal desde 90 €.`
-    : `Guía completa del contrato de alquiler en ${nombre} según la LAU 2026: duración, fianza, actualización de renta y cláusulas esenciales. Revisión por abogado desde 90 €.`
+    ? `Alquila en Barcelona con seguridad legal. Zonas tensionadas, índice de referencia de precios y cláusulas LAU 2026 explicadas. Contrato revisado por abogado desde 7 €.`
+    : isValencia
+      ? `Contrato de alquiler en Valencia adaptado a la LAU 2026. Incluye cláusulas de fianza, actualización de renta IPC y revisión legal. Descárgalo desde 7 €.`
+      : `Contrato de alquiler en ${nombre} conforme a la LAU 2026. Cláusulas de fianza, duración, actualización IPC y rescisión. Revisado por abogado desde 7 €.`
 
   return {
     title,
     description,
-    keywords: `contrato alquiler ${nombre.toLowerCase()}, alquiler piso ${nombre.toLowerCase()}, LAU 2026, ley arrendamientos urbanos, contrato arrendamiento vivienda, ${isBarcelona ? 'zonas tensionadas barcelona, índice referencia precios barcelona,' : ''} gestoría ${nombre.toLowerCase()}`,
+    keywords: `contrato alquiler ${nombre.toLowerCase()}, contrato arrendamiento ${nombre.toLowerCase()}, alquiler piso ${nombre.toLowerCase()}, LAU 2026 ${nombre.toLowerCase()}, ley arrendamientos urbanos${isBarcelona ? ', zonas tensionadas barcelona, índice referencia precios barcelona' : ''}`,
     alternates: { canonical: `/${ciudad}/contrato-alquiler` },
     openGraph: {
       title,
