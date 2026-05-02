@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     type: 'website',
     siteName: 'Inmonest',
+    images: [{ url: `${BASE_URL}/mercado1.jpg`, width: 1200, height: 630, alt: 'Pisos de fondos bancarios baratos — Inmonest' }],
   },
 }
 
@@ -167,10 +168,10 @@ export default function OportunidadesBancariasPage() {
         {/* ── HERO ───────────────────────────────────────────────────────────── */}
         <section className="relative bg-gray-900 text-white overflow-hidden">
           <Image
-            src="/mercado2.jpg"
+            src="/inmobiliaria8.jpg"
             alt="Oportunidades inmobiliarias bancarias"
             fill
-            className="object-cover opacity-30"
+            className="object-cover opacity-25"
             priority
           />
           <div className="relative z-10 max-w-5xl mx-auto px-4 py-20 md:py-28">
@@ -263,6 +264,38 @@ export default function OportunidadesBancariasPage() {
           </div>
         </section>
 
+        {/* ── IMAGEN EXTERIOR + CONFIANZA ───────────────────────────────────── */}
+        <section className="max-w-5xl mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden">
+              <Image
+                src="/inmonestexterior.png"
+                alt="Inmonest — Tu portal inmobiliario de confianza"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold mb-4">Tu portal inmobiliario de confianza</h2>
+              <p className="text-gray-500 mb-4">
+                En Inmonest no somos una agencia. Somos el puente directo entre el comprador y
+                los fondos bancarios, con toda la documentación verificada y abogados especializados
+                respaldando cada operación.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                {['Verificación documental previa', 'Abogados especializados en compraventa', 'Sin comisión de agencia', 'Gestión 100% online'].map(b => (
+                  <li key={b} className="flex items-center gap-2">
+                    <span className="text-amber-500 font-bold">✓</span> {b}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/registro" className="inline-block mt-6 bg-amber-500 hover:bg-amber-400 text-white font-semibold px-6 py-3 rounded-full transition">
+                Crear cuenta gratis
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* ── CÓMO FUNCIONA ─────────────────────────────────────────────────── */}
         <section className="bg-gray-50 py-16">
           <div className="max-w-5xl mx-auto px-4">
@@ -271,10 +304,20 @@ export default function OportunidadesBancariasPage() {
               <p className="text-gray-500">En 3 pasos tienes tu piso bancario asegurado legalmente</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {PASOS.map((p) => (
+              {PASOS.map((p, i) => (
                 <div key={p.n} className="text-center">
-                  <div className="w-14 h-14 rounded-full bg-amber-500 text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">
-                    {p.n}
+                  <div className="relative h-40 rounded-xl overflow-hidden mb-4">
+                    <Image
+                      src={i === 0 ? '/keys.jpg' : i === 1 ? '/interior3.jpg' : '/gestoria1.jpg'}
+                      alt={p.titulo}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gray-900/50 flex items-center justify-center">
+                      <div className="w-12 h-12 rounded-full bg-amber-500 text-white text-xl font-bold flex items-center justify-center">
+                        {p.n}
+                      </div>
+                    </div>
                   </div>
                   <h3 className="text-lg font-bold mb-2">{p.titulo}</h3>
                   <p className="text-gray-500 text-sm">{p.texto}</p>
@@ -287,7 +330,7 @@ export default function OportunidadesBancariasPage() {
         {/* ── CTA REGISTRO ──────────────────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-gray-900 text-white py-16">
           <Image
-            src="/familia1.jpg"
+            src="/familia3.jpg"
             alt="Familia en su nuevo hogar"
             fill
             className="object-cover opacity-20"
@@ -389,6 +432,18 @@ export default function OportunidadesBancariasPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ── GALERÍA DE INTERIORES ─────────────────────────────────────────── */}
+        <section className="max-w-5xl mx-auto px-4 py-12">
+          <h2 className="text-2xl font-bold text-center mb-6">Ejemplos de propiedades disponibles</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {['/interior1.jpg', '/interior2.jpg', '/interior4.jpg', '/mercado1.jpg'].map((src, i) => (
+              <div key={i} className="relative h-36 md:h-44 rounded-xl overflow-hidden">
+                <Image src={src} alt={`Interior propiedad bancaria ${i + 1}`} fill className="object-cover hover:scale-105 transition-transform duration-300" />
+              </div>
+            ))}
           </div>
         </section>
 

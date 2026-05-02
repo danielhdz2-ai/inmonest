@@ -80,7 +80,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',  // crea public/og-image.jpg a 1200×630px para mejor resultado
+        url: '/imagencabezera.jpg',
         width: 1200,
         height: 630,
         alt: 'Inmonest — Pisos sin comisiones entre particulares',
@@ -93,7 +93,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Inmonest | Pisos entre particulares sin comisiones',
     description: 'Compra, vende o alquila tu piso directamente. Sin agencias, sin comisiones.',
-    images: ['/og-image.jpg'],
+    images: ['/imagencabezera.jpg'],
   },
 };
 

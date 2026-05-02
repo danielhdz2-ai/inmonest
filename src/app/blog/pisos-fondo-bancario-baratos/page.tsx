@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     type: 'article',
     siteName: 'Inmonest',
     publishedTime: FECHA,
+    images: [{ url: `${BASE_URL}/mercado1.jpg`, width: 1200, height: 630, alt: 'Pisos de fondo bancario baratos — Inmonest' }],
   },
 }
 
@@ -130,7 +131,30 @@ export default function PisosFondoBancarioPage() {
           </p>
         </article>
 
-        <div className="mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-7">
+        {/* ── CTA Oportunidades Bancarias ─────────────────────────────────── */}
+        <div className="mt-12 rounded-2xl overflow-hidden border border-amber-200 shadow-sm">
+          <div className="relative h-44 bg-gray-900">
+            <img src="/mercado2.jpg" alt="Oportunidades bancarias" className="w-full h-full object-cover opacity-40" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+              <span className="text-amber-400 text-xs font-bold uppercase tracking-widest mb-1">Acceso Exclusivo</span>
+              <h3 className="text-white text-xl font-bold">Oportunidades bancarias a bajo coste</h3>
+              <p className="text-white/70 text-sm mt-1">Pisos de Solvia, Aliseda y Servihabitat. Verificados. Desde 40.000 €.</p>
+            </div>
+          </div>
+          <div className="bg-amber-50 px-7 py-5 flex flex-wrap gap-3 items-center justify-between">
+            <p className="text-gray-700 text-sm font-medium">Regístrate gratis y accede al catálogo completo con precios reales</p>
+            <div className="flex gap-3 flex-wrap">
+              <Link href="/oportunidades-bancarias" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
+                Ver oportunidades bancarias →
+              </Link>
+              <Link href="/registro" className="border border-amber-400 text-amber-700 hover:bg-amber-50 font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
+                Crear cuenta gratis
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 bg-amber-50 border border-amber-200 rounded-2xl p-7">
           <h2 className="text-lg font-bold text-gray-900 mb-2">¿Encontraste un chollo bancario? Asegura la operación con arras</h2>
           <p className="text-gray-600 text-sm mb-5">
             Antes de cerrar cualquier compraventa, protégete con un contrato de arras redactado por abogados especializados. Entrega en 48h.

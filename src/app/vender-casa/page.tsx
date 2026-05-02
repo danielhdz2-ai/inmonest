@@ -7,8 +7,17 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Vender Casa Sin Comisión entre Particulares | 0% Agencia — Inmonest',
   description: 'Vende tu casa directamente al comprador sin pagar comisión de agencia. Publica gratis en 2 minutos, llega a compradores reales en toda España. Sin intermediarios.',
-  alternates: { canonical: '/vender-casa' },
+  alternates: { canonical: 'https://inmonest.com/vender-casa' },
   keywords: 'vender casa sin comisiones, vender piso sin comisiones, vender casa particulares, vender piso entre particulares, vender casa sin agencia',
+  openGraph: {
+    title: 'Vende tu casa sin comisión — Inmonest',
+    description: 'Publica gratis, llega a compradores reales. 0% comisión. Sin agencia. España.',
+    url: 'https://inmonest.com/vender-casa',
+    type: 'website',
+    siteName: 'Inmonest',
+    locale: 'es_ES',
+    images: [{ url: 'https://inmonest.com/publicar-keys.jpg', width: 1200, height: 630, alt: 'Vender casa sin comisión — Inmonest' }],
+  },
 }
 
 const PASOS = [

@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
+    images: [{ url: `${BASE_URL}/gestoria1.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria — contratos redactados por abogados' }],
   },
 }
 
