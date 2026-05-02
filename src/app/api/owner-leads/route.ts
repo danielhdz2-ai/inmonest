@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { sendEmail, emailAcuseRecibo } from '@/lib/email'
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!
@@ -92,8 +93,17 @@ export async function POST(req: NextRequest) {
 
     const [lead] = await res.json() as Array<Record<string, unknown>>
 
-    // Enviar notificación (no bloqueante)
+    // Notificación al admin (no bloqueante)
     sendNotification({ ...data, id: lead?.id }).catch(console.error)
+
+    // Acuse de recibo al vendedor
+    if (typeof data.email === 'string' && typeof data.name === 'string') {
+      sendEmail({
+        to: data.email,
+        subject: '✅ Hemos recibido tu solicitud — Inmonest',
+        html: emailAcuseRecibo(data.name, 'vendedor'),
+      }).catch(() => { /* no crítico */ })
+    }
 
     return NextResponse.json({ ok: true, id: lead?.id })
   } catch (err) {

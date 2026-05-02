@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { sendEmail, emailGestoriaCliente, ADMIN_EMAIL } from '@/lib/email'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const RESEND_API = 'https://api.resend.com/emails'
@@ -45,6 +46,13 @@ export async function POST(req: NextRequest) {
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
+
+  // ── Email de confirmación al cliente ──────────────────────────────────────
+  sendEmail({
+    to: client_email.trim().toLowerCase(),
+    subject: `✅ Solicitud recibida — ${service_name.trim()} · Inmonest`,
+    html: emailGestoriaCliente(client_name.trim(), service_name.trim(), parseInt(String(price_eur), 10)),
+  }).catch(() => { /* no crítico */ })
 
   // ── Enviar email de notificación a info@inmonest.com ──────────────────────
   const RESEND_KEY = process.env.RESEND_API_KEY

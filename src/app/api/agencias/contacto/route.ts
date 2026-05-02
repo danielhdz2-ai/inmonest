@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { sendEmail, emailAcuseRecibo } from '@/lib/email'
 
 const RESEND_API = 'https://api.resend.com/emails'
 
@@ -83,6 +84,13 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(notifyPayload),
     }).catch(err => console.error('[agencias/contacto] Resend error:', err))
   }
+
+  // Acuse de recibo a la agencia
+  sendEmail({
+    to: safeEmail,
+    subject: '✅ Hemos recibido tu solicitud — Inmonest para Agencias',
+    html: emailAcuseRecibo(safeNombre, 'agencia'),
+  }).catch(() => { /* no crítico */ })
 
   return NextResponse.json({ ok: true })
 }

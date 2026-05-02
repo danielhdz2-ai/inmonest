@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { generateAiDescription } from '@/lib/ai-description'
+import { sendEmail, emailAnuncioPublicado } from '@/lib/email'
 
 export async function POST(req: NextRequest) {
   const supabase = await createClient()
@@ -96,6 +97,16 @@ export async function POST(req: NextRequest) {
           .eq('id', data.id)
       })
       .catch(() => { /* silencioso: el cron lo reintentará */ })
+  }
+
+  // ── Confirmación al usuario que publicó ───────────────────────────────────
+  if (data?.id && user.email) {
+    const nombre = (user.user_metadata?.full_name as string | undefined) ?? 'Propietario'
+    sendEmail({
+      to: user.email,
+      subject: `✅ Tu anuncio está publicado — ${String(title).trim()}`,
+      html: emailAnuncioPublicado(nombre, String(title).trim(), data.id, priceNum, operation),
+    }).catch(() => { /* no crítico */ })
   }
 
   // ── Notificación al admin cuando un particular publica ────────────────────
