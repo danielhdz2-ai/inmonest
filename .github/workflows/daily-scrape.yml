@@ -24,6 +24,7 @@ jobs:
   scrape:
     name: Scrape particulares
     runs-on: ubuntu-latest
+    timeout-minutes: 90
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -57,26 +58,30 @@ jobs:
       # ── pisos.com Alquiler ─────────────────────────────────────
       - name: "[pisos.com] Scrape alquiler"
         if: ${{ github.event.inputs.operacion != 'venta' && (github.event.inputs.scraper == 'pisoscom' || github.event.inputs.scraper == 'todos' || github.event.inputs.scraper == '') }}
+        continue-on-error: true
+        timeout-minutes: 20
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
-          PAGES="${{ github.event.inputs.paginas || '3' }}"
+          PAGES="${{ github.event.inputs.paginas || '2' }}"
           for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── pisos.com alquiler/$city ($PAGES páginas) ──"
-            npx tsx scripts/scrapers/pisoscom_particulares.ts alquiler $city $PAGES
+            npx tsx scripts/scrapers/pisoscom_particulares.ts alquiler $city $PAGES || echo "⚠️ Error en $city, continuando..."
             sleep 5
           done
 
       # ── pisos.com Venta ────────────────────────────────────────
       - name: "[pisos.com] Scrape venta"
         if: ${{ github.event.inputs.operacion != 'alquiler' && (github.event.inputs.scraper == 'pisoscom' || github.event.inputs.scraper == 'todos' || github.event.inputs.scraper == '') }}
+        continue-on-error: true
+        timeout-minutes: 20
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
-          PAGES="${{ github.event.inputs.paginas || '3' }}"
+          PAGES="${{ github.event.inputs.paginas || '2' }}"
           for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── pisos.com venta/$city ($PAGES páginas) ──"
-            npx tsx scripts/scrapers/pisoscom_particulares.ts venta $city $PAGES
+            npx tsx scripts/scrapers/pisoscom_particulares.ts venta $city $PAGES || echo "⚠️ Error en $city, continuando..."
             sleep 5
           done
 
@@ -85,26 +90,30 @@ jobs:
       # ── Milanuncios Alquiler ───────────────────────────────────
       - name: "[milanuncios] Scrape alquiler"
         if: ${{ github.event.inputs.operacion != 'venta' && (github.event.inputs.scraper == 'milanuncios' || github.event.inputs.scraper == 'todos' || github.event.inputs.scraper == '') }}
+        continue-on-error: true
+        timeout-minutes: 20
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
-          PAGES="${{ github.event.inputs.paginas || '5' }}"
+          PAGES="${{ github.event.inputs.paginas || '2' }}"
           for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── milanuncios alquiler/$city ($PAGES páginas) ──"
-            npx tsx scripts/scrapers/milanuncios_particulares.ts alquiler $city $PAGES
+            npx tsx scripts/scrapers/milanuncios_particulares.ts alquiler $city $PAGES || echo "⚠️ Error en $city, continuando..."
             sleep 8
           done
 
       # ── Milanuncios Venta ──────────────────────────────────────
       - name: "[milanuncios] Scrape venta"
         if: ${{ github.event.inputs.operacion != 'alquiler' && (github.event.inputs.scraper == 'milanuncios' || github.event.inputs.scraper == 'todos' || github.event.inputs.scraper == '') }}
+        continue-on-error: true
+        timeout-minutes: 20
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
-          PAGES="${{ github.event.inputs.paginas || '5' }}"
+          PAGES="${{ github.event.inputs.paginas || '2' }}"
           for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── milanuncios venta/$city ($PAGES páginas) ──"
-            npx tsx scripts/scrapers/milanuncios_particulares.ts venta $city $PAGES
+            npx tsx scripts/scrapers/milanuncios_particulares.ts venta $city $PAGES || echo "⚠️ Error en $city, continuando..."
             sleep 8
           done
 
@@ -113,26 +122,30 @@ jobs:
       # ── tucasa Alquiler ────────────────────────────────────────
       - name: "[tucasa] Scrape alquiler"
         if: ${{ github.event.inputs.operacion != 'venta' && (github.event.inputs.scraper == 'tucasa' || github.event.inputs.scraper == 'todos' || github.event.inputs.scraper == '') }}
+        continue-on-error: true
+        timeout-minutes: 20
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
-          PAGES="${{ github.event.inputs.paginas || '5' }}"
+          PAGES="${{ github.event.inputs.paginas || '2' }}"
           for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── tucasa alquiler/$city ($PAGES páginas) ──"
-            npx tsx scripts/scrapers/tucasa_standalone.ts alquiler $city $PAGES
+            npx tsx scripts/scrapers/tucasa_standalone.ts alquiler $city $PAGES || echo "⚠️ Error en $city, continuando..."
             sleep 5
           done
 
       # ── tucasa Venta ───────────────────────────────────────────
       - name: "[tucasa] Scrape venta"
         if: ${{ github.event.inputs.operacion != 'alquiler' && (github.event.inputs.scraper == 'tucasa' || github.event.inputs.scraper == 'todos' || github.event.inputs.scraper == '') }}
+        continue-on-error: true
+        timeout-minutes: 20
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
-          PAGES="${{ github.event.inputs.paginas || '5' }}"
+          PAGES="${{ github.event.inputs.paginas || '2' }}"
           for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
             echo "── tucasa venta/$city ($PAGES páginas) ──"
-            npx tsx scripts/scrapers/tucasa_standalone.ts venta $city $PAGES
+            npx tsx scripts/scrapers/tucasa_standalone.ts venta $city $PAGES || echo "⚠️ Error en $city, continuando..."
             sleep 5
           done
 
@@ -141,12 +154,14 @@ jobs:
       # ── enalquiler Alquiler (solo alquiler, la web es exclusiva de alquiler) ──
       - name: "[enalquiler] Scrape alquiler"
         if: ${{ github.event.inputs.operacion != 'venta' && (github.event.inputs.scraper == 'enalquiler' || github.event.inputs.scraper == 'todos' || github.event.inputs.scraper == '') }}
+        continue-on-error: true
+        timeout-minutes: 20
         env:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
-          PAGES="${{ github.event.inputs.paginas || '5' }}"
+          PAGES="${{ github.event.inputs.paginas || '2' }}"
           for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada alicante murcia; do
             echo "── enalquiler alquiler/$city ($PAGES páginas) ──"
-            npx tsx scripts/scrapers/enalquiler.ts $city $PAGES
+            npx tsx scripts/scrapers/enalquiler.ts $city $PAGES || echo "⚠️ Error en $city, continuando..."
             sleep 6
           done
