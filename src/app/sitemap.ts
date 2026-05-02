@@ -7,47 +7,62 @@ export const revalidate = 0
 const BASE_URL = 'https://inmonest.com'
 
 const CIUDADES = [
-  'madrid',
-  'barcelona',
-  'valencia',
-  'sevilla',
-  'malaga',
-  'bilbao',
-  'zaragoza',
-  'alicante',
+  'madrid', 'barcelona', 'valencia', 'sevilla',
+  'malaga', 'bilbao', 'zaragoza', 'alicante',
 ]
+
+const today = new Date()
 
 // Páginas estáticas principales
 const STATIC_PAGES: MetadataRoute.Sitemap = [
-  { url: BASE_URL,                           lastModified: new Date(), changeFrequency: 'daily',   priority: 1.0 },
-  { url: `${BASE_URL}/pisos`,                lastModified: new Date(), changeFrequency: 'daily',   priority: 0.9 },
-  { url: `${BASE_URL}/gestoria`,             lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.9 },
-  { url: `${BASE_URL}/hipoteca`,             lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.9 },
-  { url: `${BASE_URL}/calculadora-gastos-compra`,    lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 },
-  { url: `${BASE_URL}/calculadora-gastos-alquiler`,  lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 },
-  { url: `${BASE_URL}/barcelona/pisos-particulares-sin-comision`, lastModified: new Date(), changeFrequency: 'daily', priority: 0.98 },
-  { url: `${BASE_URL}/madrid/pisos-particulares-sin-comision`,    lastModified: new Date(), changeFrequency: 'daily', priority: 0.98 },
-  { url: `${BASE_URL}/valencia/pisos-particulares-sin-comision`,  lastModified: new Date(), changeFrequency: 'daily', priority: 0.98 },
-  { url: `${BASE_URL}/sevilla/pisos-particulares-sin-comision`,   lastModified: new Date(), changeFrequency: 'daily', priority: 0.98 },
-  { url: `${BASE_URL}/malaga/pisos-particulares-sin-comision`,    lastModified: new Date(), changeFrequency: 'daily', priority: 0.98 },
-  { url: `${BASE_URL}/publicar-anuncio`,     lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-  { url: `${BASE_URL}/vender-casa`,          lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-  { url: `${BASE_URL}/agencias`,             lastModified: new Date(), changeFrequency: 'weekly',  priority: 0.7 },
-  { url: `${BASE_URL}/aviso-legal`,          lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.2 },
-  { url: `${BASE_URL}/privacidad`,           lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.2 },
-  { url: `${BASE_URL}/cookies`,              lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.2 },
-  { url: `${BASE_URL}/seguridad`,            lastModified: new Date(), changeFrequency: 'yearly',  priority: 0.2 },
-  { url: `${BASE_URL}/contacto`,             lastModified: new Date(), changeFrequency: 'monthly', priority: 0.5 },
-  
-  // Páginas de gestoría (servicios SEO con alta prioridad)
-  { url: `${BASE_URL}/gestoria/burofax-desistimiento-alquiler`,     lastModified: new Date(), changeFrequency: 'monthly', priority: 0.92 },
-  { url: `${BASE_URL}/gestoria/certificado-eficiencia-energetica`,  lastModified: new Date(), changeFrequency: 'monthly', priority: 0.94 },
-  { url: `${BASE_URL}/gestoria/contrato-compraventa`,               lastModified: new Date(), changeFrequency: 'monthly', priority: 0.93 },
-  { url: `${BASE_URL}/gestoria/nota-simple`,                        lastModified: new Date(), changeFrequency: 'monthly', priority: 0.95 },
-  
-  // Blog / Contenido SEO
-  { url: `${BASE_URL}/blog/contrato-arrendamiento-lau`,             lastModified: new Date(), changeFrequency: 'monthly', priority: 0.88 },
+  { url: BASE_URL,                           lastModified: today, changeFrequency: 'daily',   priority: 1.0 },
+  { url: `${BASE_URL}/pisos`,                lastModified: today, changeFrequency: 'daily',   priority: 0.9 },
+  { url: `${BASE_URL}/gestoria`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.9 },
+  { url: `${BASE_URL}/hipoteca`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.9 },
+  { url: `${BASE_URL}/calculadora-gastos-compra`,   lastModified: today, changeFrequency: 'monthly', priority: 0.9 },
+  { url: `${BASE_URL}/calculadora-gastos-alquiler`, lastModified: today, changeFrequency: 'monthly', priority: 0.9 },
+  { url: `${BASE_URL}/publicar-anuncio`,     lastModified: today, changeFrequency: 'monthly', priority: 0.8 },
+  { url: `${BASE_URL}/vender-casa`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/agencias`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.8 },
+  { url: `${BASE_URL}/contacto`,             lastModified: today, changeFrequency: 'monthly', priority: 0.5 },
+  { url: `${BASE_URL}/aviso-legal`,          lastModified: today, changeFrequency: 'yearly',  priority: 0.2 },
+  { url: `${BASE_URL}/privacidad`,           lastModified: today, changeFrequency: 'yearly',  priority: 0.2 },
+  { url: `${BASE_URL}/cookies`,              lastModified: today, changeFrequency: 'yearly',  priority: 0.2 },
+  { url: `${BASE_URL}/seguridad`,            lastModified: today, changeFrequency: 'yearly',  priority: 0.2 },
+
+  // Gestoría — servicios SEO
+  { url: `${BASE_URL}/gestoria/burofax-desistimiento-alquiler`,    lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/certificado-eficiencia-energetica`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/contrato-compraventa`,              lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/nota-simple`,                       lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+
+  // Blog — todos los artículos
+  { url: `${BASE_URL}/blog`,                                       lastModified: today, changeFrequency: 'weekly',  priority: 0.8 },
+  { url: `${BASE_URL}/blog/contrato-arrendamiento-lau`,            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/blog/contrato-alquiler-vivienda-guia`,       lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/blog/contrato-arras-diferencias`,            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/blog/vender-piso-sin-comisiones`,            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/blog/como-alquilar-piso-sin-agencia`,        lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
+  { url: `${BASE_URL}/blog/alquiler-con-opcion-a-compra`,          lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
+  { url: `${BASE_URL}/blog/alquiler-habitacion-coliving`,          lastModified: today, changeFrequency: 'monthly', priority: 0.80 },
+  { url: `${BASE_URL}/blog/pisos-fondo-bancario-baratos`,          lastModified: today, changeFrequency: 'monthly', priority: 0.80 },
+  { url: `${BASE_URL}/blog/prestamo-entre-particulares-hacienda`,  lastModified: today, changeFrequency: 'monthly', priority: 0.80 },
+
+  // Páginas de pisos-particulares por ciudad
+  { url: `${BASE_URL}/barcelona/pisos-particulares-sin-comision`,  lastModified: today, changeFrequency: 'daily', priority: 0.95 },
+  { url: `${BASE_URL}/madrid/pisos-particulares-sin-comision`,     lastModified: today, changeFrequency: 'daily', priority: 0.95 },
+  { url: `${BASE_URL}/valencia/pisos-particulares-sin-comision`,   lastModified: today, changeFrequency: 'daily', priority: 0.95 },
+  { url: `${BASE_URL}/sevilla/pisos-particulares-sin-comision`,    lastModified: today, changeFrequency: 'daily', priority: 0.95 },
+  { url: `${BASE_URL}/malaga/pisos-particulares-sin-comision`,     lastModified: today, changeFrequency: 'daily', priority: 0.95 },
 ]
+
+// Hub de ciudad — página principal por ciudad
+const CIUDAD_HUB_PAGES: MetadataRoute.Sitemap = CIUDADES.map((ciudad) => ({
+  url: `${BASE_URL}/${ciudad}`,
+  lastModified: today,
+  changeFrequency: 'weekly' as const,
+  priority: 0.92,
+}))
 
 // Páginas SEO de contratos de arras por ciudad
 const ARRAS_PAGES: MetadataRoute.Sitemap = CIUDADES.map((ciudad) => ({
@@ -103,13 +118,12 @@ async function getListingUrls(): Promise<MetadataRoute.Sitemap> {
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
     )
-    
-    // ✨ SOLO LISTINGS PREMIUM: Con AI description v2.0 (206 listings de calidad)
+
+    // Todos los listings publicados (con o sin ai_description — ahora tenemos plantillas)
     const { data, error } = await supabase
       .from('listings')
       .select('id, updated_at')
       .eq('status', 'published')
-      .not('ai_description', 'is', null)  // Solo con descripción IA
       .limit(10000)
 
     if (error || !data) return []
@@ -118,7 +132,7 @@ async function getListingUrls(): Promise<MetadataRoute.Sitemap> {
       url: `${BASE_URL}/pisos/${listing.id}`,
       lastModified: listing.updated_at ? new Date(listing.updated_at) : new Date(),
       changeFrequency: 'weekly' as const,
-      priority: 0.85,  // ↑ Mayor prioridad para listings premium (antes 0.7)
+      priority: 0.7,
     }))
   } catch {
     return []
@@ -130,6 +144,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...STATIC_PAGES,
+    ...CIUDAD_HUB_PAGES,
     ...ARRAS_PAGES,
     ...ALQUILER_PAGES,
     ...ALQUILER_SIN_AGENCIA_PAGES,
