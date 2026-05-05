@@ -12,6 +12,8 @@ const SERVICIOS: Record<string, { nombre: string; precio: number; categoria: str
   'alquiler-opcion-compra': { nombre: 'Contrato de Alquiler con Opción a Compra', precio: 150, categoria: 'Compraventa',           incluye: ['Arrendamiento + opción de compra integrados', 'Precio de compra fijado e inalterable', 'Descuento de rentas en precio final', 'PDF firmable en 48h'] },
   'prestamo-particulares':  { nombre: 'Contrato de Préstamo entre Particulares',  precio: 90,  categoria: 'Financiación',          incluye: ['Importe, plazos y cuotas detalladas', 'Vencimiento anticipado por impago', 'Nota fiscal: tributación ante AEAT', 'PDF firmable en 48h'] },
   'alquiler-garaje-trastero':{ nombre: 'Contrato de Alquiler de Garaje o Trastero', precio: 40, categoria: 'Alquiler',            incluye: ['Descripción del espacio y vehículos', 'Fianza y devolución detallada', 'Responsabilidad por daños y robos', 'PDF firmable en 24h'] },
+  'acompanamiento-reserva-arras':       { nombre: 'Acompañamiento Reserva hasta Arras',              precio: 350, categoria: 'Servicios Premium',     incluye: ['Revisión contrato de reserva', 'Análisis nota registral completo', 'Revisión documentación urbanística', 'Redacción contrato de arras', 'Apoyo jurídico durante todo el proceso'] },
+  'compra-completa-reserva-escritura':  { nombre: 'Servicio Completo de Compra: Reserva a Escritura', precio: 550, categoria: 'Servicios Premium',     incluye: ['Gestión completa del proceso de compra', 'Revisión contratos con agencias', 'Revisión honorarios y notas de encargo', 'Análisis documentación registral y urbanística', 'Coordinación con notaría', 'Atención prioritaria'] },
 }
 
 export function generateStaticParams() {

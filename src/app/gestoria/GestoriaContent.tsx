@@ -226,6 +226,44 @@ const SERVICES: Service[] = [
     badge: 'Más económico',
   },
 
+  // --- SERVICIOS PREMIUM DE ACOMPAÑAMIENTO ---
+  {
+    key: 'acompanamiento-reserva-arras',
+    name: 'Acompañamiento Reserva hasta Arras',
+    shortName: 'Acompañamiento Reserva-Arras',
+    category: 'compraventa',
+    description: 'Servicio completo de asesoramiento jurídico desde la reserva hasta el contrato de arras. Incluye revisión de contratos de reserva, nota registral, documentación urbanística y apoyo legal en todo el proceso.',
+    includes: [
+      'Revisión completa de contrato de reserva',
+      'Análisis exhaustivo de nota simple registral',
+      'Revisión de documentación urbanística',
+      'Redacción de contrato de arras personalizado',
+      'Apoyo jurídico durante todo el proceso',
+      'Entrega en 48h · Atención personalizada',
+    ],
+    price: 350,
+    image: '/gestoria/gestoria1.jpg',
+    badge: 'Premium',
+  },
+  {
+    key: 'compra-completa-reserva-escritura',
+    name: 'Servicio Completo de Compra: Reserva a Escritura',
+    shortName: 'Compra Completa',
+    category: 'compraventa',
+    description: 'El servicio más completo de gestoría inmobiliaria. Te acompañamos desde la reserva hasta la escrituración con revisión total de documentación, contratos con agencias, honorarios y apoyo en cada paso del proceso de compra.',
+    includes: [
+      'Gestión completa: reserva, arras y escritura',
+      'Revisión de contratos con agencias inmobiliarias',
+      'Revisión de notas de encargo y honorarios',
+      'Análisis documentación registral y urbanística',
+      'Apoyo legal en todo el proceso de compra',
+      'Coordinación con notaría · Atención prioritaria',
+    ],
+    price: 550,
+    image: '/gestoria/gestoria4.jpg',
+    badge: 'Todo incluido',
+  },
+
   // --- COMPRAVENTA ESPECIAL ---
   {
     key: 'alquiler-opcion-compra',

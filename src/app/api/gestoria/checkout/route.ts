@@ -17,6 +17,8 @@ const STRIPE_SERVICES: Record<string, { name: string; price_eur: number }> = {
   'rescision-alquiler':    { name: 'Contrato de Rescisión de Alquiler',      price_eur: 60  },
   'liquidacion-fianza':    { name: 'Liquidación de Fianza',                  price_eur: 30  },
   'devolucion-fianzas':    { name: 'Solicitud de Devolución de Fianzas',     price_eur: 40  },
+  'acompanamiento-reserva-arras':        { name: 'Acompañamiento Reserva hasta Arras',              price_eur: 350 },
+  'compra-completa-reserva-escritura':   { name: 'Servicio Completo de Compra: Reserva a Escritura', price_eur: 550 },
 }
 
 export async function POST(req: NextRequest) {

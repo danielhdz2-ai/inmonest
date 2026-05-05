@@ -498,6 +498,118 @@ const SERVICIOS: Record<string, ServiceData> = {
       { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 60 },
     ],
   },
+
+  'acompanamiento-reserva-arras': {
+    nombre: 'Acompañamiento Reserva hasta Arras',
+    precio: 350,
+    categoria: 'Servicios Premium',
+    tagline: 'Asesoramiento jurídico completo desde la reserva hasta el contrato de arras',
+    descripcion:
+      'Comprar un inmueble es una de las decisiones más importantes de tu vida. Desde la firma del contrato de reserva hasta el contrato de arras, hay múltiples pasos críticos donde un error puede costarte miles de euros: contratos mal redactados, cargas ocultas en el registro, problemas urbanísticos o cláusulas abusivas. Nuestro servicio premium te acompaña con asesoramiento jurídico especializado en cada etapa, revisando toda la documentación y protegiendo tus intereses en todo momento.',
+    image: '/gestoria/gestoria1.jpg',
+    imageAlt: 'Asesoramiento jurídico en compraventa de inmuebles',
+    paraQuien: [
+      'Compradores que quieren seguridad jurídica total en su compra',
+      'Personas que van a comprar su primera vivienda y necesitan orientación',
+      'Operaciones con agencias inmobiliarias donde quieres verificar todos los contratos',
+      'Compras donde detectas cláusulas dudosas o necesitas opinión experta',
+    ],
+    incluye: [
+      'Revisión completa del contrato de reserva con la agencia o particular',
+      'Análisis exhaustivo de nota simple registral: cargas, hipotecas, embargos',
+      'Revisión de documentación urbanística: cédula, licencias, ITE',
+      'Redacción personalizada del contrato de arras (penitenciales o confirmatorias)',
+      'Asesoramiento telefónico y email durante todo el proceso',
+      'Atención prioritaria · Entrega en 48h',
+    ],
+    pasos: [
+      { num: '01', titulo: 'Solicita el servicio', desc: 'Facilítanos los datos básicos de la operación y la documentación que tengas hasta el momento.' },
+      { num: '02', titulo: 'Revisión jurídica completa', desc: 'Nuestro equipo legal analiza el contrato de reserva, la nota registral y la documentación urbanística. Te informamos de cualquier riesgo detectado.' },
+      { num: '03', titulo: 'Acompañamiento personalizado', desc: 'Te asesoramos en cada paso: negociación de cláusulas, preparación del contrato de arras y resolución de dudas hasta la firma.' },
+    ],
+    faq: [
+      {
+        q: '¿Qué incluye exactamente el servicio?',
+        a: 'Revisión del contrato de reserva, análisis completo de la nota registral, revisión urbanística del inmueble, redacción del contrato de arras personalizado y asesoramiento continuo durante todo el proceso hasta la firma de arras.',
+      },
+      {
+        q: '¿En qué me ayuda revisar la nota registral?',
+        a: 'La nota registral revela cargas ocultas como hipotecas, embargos, usufructos o servidumbres que pueden afectar gravemente a tu compra. Nuestro análisis identifica estos riesgos y te explica cómo resolverlos antes de firmar arras.',
+      },
+      {
+        q: '¿Puedo contratar este servicio si ya firmé la reserva?',
+        a: 'Sí, aunque lo ideal es contratarlo antes. Si ya firmaste la reserva, revisaremos el contrato y te asesoraremos sobre posibles cláusulas problemáticas y los siguientes pasos hasta las arras.',
+      },
+      {
+        q: '¿Este servicio incluye el contrato de arras?',
+        a: 'Sí, incluye la redacción completa y personalizada del contrato de arras (penitenciales o confirmatorias según tu caso), adaptado a los datos de tu operación y con todas las garantías jurídicas.',
+      },
+    ],
+    relacionados: [
+      { slug: 'compra-completa-reserva-escritura', nombre: 'Servicio Completo de Compra', precio: 550 },
+      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 120 },
+      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 120 },
+    ],
+  },
+
+  'compra-completa-reserva-escritura': {
+    nombre: 'Servicio Completo de Compra: Reserva a Escritura',
+    precio: 550,
+    categoria: 'Servicios Premium',
+    tagline: 'El servicio más completo de gestoría inmobiliaria: te acompañamos desde la reserva hasta la escritura',
+    descripcion:
+      'Comprar una vivienda implica meses de trámites, documentación compleja y riesgos legales en cada etapa. La mayoría de compradores firman contratos sin entender las cláusulas, aceptan honorarios abusivos de agencias, o descubren problemas registrales cuando ya es tarde. Nuestro servicio integral te protege en todo el proceso: revisamos contratos con agencias, analizamos documentación registral y urbanística, coordinamos con la notaría y te asesoramos hasta que firmes la escritura. Es como tener un abogado inmobiliario de confianza a tu lado en cada paso.',
+    image: '/gestoria/gestoria4.jpg',
+    imageAlt: 'Servicio completo de gestoría para compraventa de vivienda',
+    paraQuien: [
+      'Compradores que quieren la máxima tranquilidad durante todo el proceso',
+      'Personas que van a comprar con agencia y quieren revisar todos los contratos',
+      'Operaciones complejas con hipoteca, obras pendientes o documentación irregular',
+      'Compradores que valoran su tiempo y prefieren delegar la gestión legal',
+    ],
+    incluye: [
+      'Gestión completa del proceso: revisión de reserva, arras y preparación de escritura',
+      'Revisión de contratos con agencias inmobiliarias y notas de encargo',
+      'Análisis de honorarios de agencia: verificación de cumplimiento legal',
+      'Análisis exhaustivo de documentación registral: cargas, titularidad, hipotecas',
+      'Revisión de documentación urbanística completa: ITE, cédula, licencias',
+      'Coordinación con notaría para preparación de escritura',
+      'Asesoramiento prioritario: email, teléfono y WhatsApp',
+      'Seguimiento continuo hasta el día de la firma ante notario',
+    ],
+    pasos: [
+      { num: '01', titulo: 'Solicita el servicio', desc: 'Nos proporcionas los datos de la operación y toda la documentación disponible: reserva, nota registral, contratos de agencia, etc.' },
+      { num: '02', titulo: 'Auditoría jurídica completa', desc: 'Revisamos contratos, documentación registral, urbanística y honorarios de agencia. Identificamos riesgos y cláusulas abusivas.' },
+      { num: '03', titulo: 'Acompañamiento hasta escritura', desc: 'Te asesoramos en cada etapa: negociación con agencia, firma de arras, coordinación con notaría y preparación de la escritura. Estamos contigo hasta el final.' },
+    ],
+    faq: [
+      {
+        q: '¿Qué diferencia hay con el servicio de Acompañamiento Reserva-Arras?',
+        a: 'Este servicio es más completo: incluye todo lo anterior PLUS revisión de contratos con agencias, notas de encargo, honorarios, coordinación con notaría y acompañamiento hasta la firma de la escritura pública. Es el servicio premium total.',
+      },
+      {
+        q: '¿Revisáis los honorarios que me cobra la agencia?',
+        a: 'Sí, verificamos que los honorarios de la agencia cumplen la normativa, que no hay cláusulas abusivas en la nota de encargo y que los importes son razonables según el mercado. Te asesoramos si detectamos irregularidades.',
+      },
+      {
+        q: '¿Coordinais con la notaría?',
+        a: 'Sí, nos encargamos de coordinar con la notaría para la preparación de la escritura, verificamos el borrador y nos aseguramos de que todos los documentos estén listos para el día de la firma.',
+      },
+      {
+        q: '¿Cuánto dura el servicio?',
+        a: 'Desde que lo contratas hasta que firmas la escritura ante notario. Habitualmente el proceso de compra dura entre 2 y 4 meses. Estamos contigo durante todo ese tiempo con asesoramiento continuo.',
+      },
+      {
+        q: '¿Puedo contratar este servicio si ya firmé la reserva o las arras?',
+        a: 'Sí, te incorporamos al proceso en la fase en que estés. Revisaremos lo ya firmado para identificar riesgos y te acompañaremos en los pasos restantes hasta escritura.',
+      },
+    ],
+    relacionados: [
+      { slug: 'acompanamiento-reserva-arras', nombre: 'Acompañamiento Reserva-Arras', precio: 350 },
+      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 120 },
+      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 120 },
+    ],
+  },
 }
 
 export function generateStaticParams() {
