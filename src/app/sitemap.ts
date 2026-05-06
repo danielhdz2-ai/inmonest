@@ -1,8 +1,9 @@
 import type { MetadataRoute } from 'next'
 import { createClient } from '@supabase/supabase-js'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+// ✅ OPTIMIZACIÓN: Cachear sitemap 6 horas (bots lo consultan constantemente)
+export const revalidate = 21600  // 6 horas
+// export const dynamic = 'force-dynamic'  // ❌ DESACTIVADO - consumía CPU innecesario
 
 const BASE_URL = 'https://inmonest.com'
 

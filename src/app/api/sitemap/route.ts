@@ -1,7 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+// ✅ OPTIMIZACIÓN: Cachear API sitemap 6 horas
+export const revalidate = 21600  // 6 horas
+// export const dynamic = 'force-dynamic'  // ❌ DESACTIVADO
 
 const BASE_URL = 'https://inmonest.com'
 const MAX_LISTINGS = 49_000

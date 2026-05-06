@@ -14,19 +14,22 @@
     {
       "source": "/sitemap.xml",
       "headers": [
-        { "key": "Cache-Control", "value": "no-store, no-cache, must-revalidate" }
+        { "key": "Cache-Control", "value": "public, s-maxage=21600, stale-while-revalidate=43200" },
+        { "key": "X-Robots-Tag", "value": "noai, noimageai" }
       ]
     },
     {
       "source": "/(gestoria|vender-casa|agencias|publicar-anuncio|contacto|seguridad|blog|pisos)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, s-maxage=300, stale-while-revalidate=600" }
+        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=7200" },
+        { "key": "X-Robots-Tag", "value": "noai, noimageai" }
       ]
     },
     {
       "source": "/:ciudad/(alquiler-particulares|alquiler-sin-agencia|contrato-alquiler|contrato-arras|vender-piso|pisos)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=7200" }
+        { "key": "Cache-Control", "value": "public, s-maxage=7200, stale-while-revalidate=14400" },
+        { "key": "X-Robots-Tag", "value": "noai, noimageai" }
       ]
     }
   ],

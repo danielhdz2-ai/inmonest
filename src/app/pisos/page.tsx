@@ -6,8 +6,9 @@ import { searchListings } from '@/lib/listings'
 import Link from 'next/link'
 import SearchForm from '@/components/SearchForm'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+// ✅ OPTIMIZACIÓN: Cachear 1 hora, regenerar en background
+export const revalidate = 3600  // 1 hora de caché
+// export const dynamic = 'force-dynamic'  // ❌ DESACTIVADO - consumía demasiado CPU
 
 interface PisosPageProps {
   searchParams: Promise<Record<string, string | undefined>>
