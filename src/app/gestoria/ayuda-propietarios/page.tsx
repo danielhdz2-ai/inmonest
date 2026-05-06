@@ -39,7 +39,7 @@ export default function AyudaPropietariosPage() {
     offers: {
       '@type': 'Offer',
       price: '73',
-      priceCurrency': 'EUR',
+      priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
     },
     aggregateRating: {

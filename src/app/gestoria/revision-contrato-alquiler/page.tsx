@@ -142,7 +142,7 @@ export default function RevisionContratoAlquilerPage() {
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-red-50 p-6 rounded-lg border-l-4 border-red-500">
               <div className="text-4xl mb-4">❌</div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">Fianza > 2 meses</h3>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Fianza &gt; 2 meses</h3>
               <p className="text-gray-700 mb-3">
                 La Ley de Vivienda 2026 prohíbe fianzas superiores a 2 meses de renta (antes era 1 mes para LAU).
               </p>
