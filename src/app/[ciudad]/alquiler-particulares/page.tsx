@@ -7,6 +7,9 @@ import ListingCard from '@/components/ListingCard'
 import LeadCaptureForm from '@/components/LeadCaptureForm'
 import { searchListings } from '@/lib/listings'
 
+// ✅ OPTIMIZACIÓN: Cachear 2 horas (páginas de ciudad cambian poco)
+export const revalidate = 7200  // 2 horas
+
 const BASE_URL = 'https://inmonest.com'
 
 const CIUDADES: Record<string, string> = {

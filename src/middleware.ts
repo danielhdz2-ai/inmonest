@@ -15,6 +15,20 @@ import {
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
+  // ── 0. BLOQUEO DE BOTS AGRESIVOS (protección CPU) ─────────────────────────
+  
+  const userAgent = request.headers.get('user-agent') || ''
+  const blockedBots = [
+    'GPTBot', 'ChatGPT-User', 'CCBot', 'anthropic-ai', 'Claude-Web',
+    'cohere-ai', 'Omgilibot', 'Omgili', 'FacebookBot', 'Bytespider',
+    'PetalBot', 'SemrushBot', 'AhrefsBot', 'DotBot', 'MJ12bot',
+    'BLEXBot', 'DataForSeoBot'
+  ]
+  
+  if (blockedBots.some(bot => userAgent.includes(bot))) {
+    return new NextResponse('Bot not allowed', { status: 403 })
+  }
+
   // ── 1. RATE LIMITING (primero para evitar spam) ───────────────────────────
 
   const ip = getIP(request)

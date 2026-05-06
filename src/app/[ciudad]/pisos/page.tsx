@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 
+// ✅ OPTIMIZACIÓN: Cachear 2 horas
+export const revalidate = 7200
+
 const BASE_URL = 'https://inmonest.com'
 
 const CIUDADES: Record<string, string> = {
