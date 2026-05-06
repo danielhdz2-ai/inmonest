@@ -7,18 +7,24 @@ export const dynamic = 'force-dynamic'
 const BASE_URL = 'https://inmonest.com'
 
 const STRIPE_SERVICES: Record<string, { name: string; price_eur: number }> = {
-  'arras-penitenciales':   { name: 'Contrato de Arras Penitenciales',       price_eur: 120 },
-  'arras-confirmatorias':  { name: 'Contrato de Arras Confirmatorias',       price_eur: 120 },
-  'reserva-compra':        { name: 'Contrato de Reserva de Compra',          price_eur: 50  },
-  'alquiler-vivienda-lau': { name: 'Contrato de Alquiler de Vivienda (LAU)', price_eur: 90  },
-  'alquiler-temporada':    { name: 'Contrato de Alquiler por Temporada',     price_eur: 80  },
-  'alquiler-habitacion':   { name: 'Contrato de Alquiler de Habitación',     price_eur: 60  },
-  'reserva-alquiler':      { name: 'Contrato de Reserva de Alquiler',        price_eur: 50  },
-  'rescision-alquiler':    { name: 'Contrato de Rescisión de Alquiler',      price_eur: 60  },
-  'liquidacion-fianza':    { name: 'Liquidación de Fianza',                  price_eur: 30  },
-  'devolucion-fianzas':    { name: 'Solicitud de Devolución de Fianzas',     price_eur: 40  },
-  'acompanamiento-reserva-arras':        { name: 'Acompañamiento Reserva hasta Arras',              price_eur: 350 },
-  'compra-completa-reserva-escritura':   { name: 'Servicio Completo de Compra: Reserva a Escritura', price_eur: 550 },
+  'arras-penitenciales':   { name: 'Contrato de Arras Penitenciales',       price_eur: 145 },
+  'arras-confirmatorias':  { name: 'Contrato de Arras Confirmatorias',       price_eur: 145 },
+  'reserva-compra':        { name: 'Contrato de Reserva de Compra',          price_eur: 61  },
+  'alquiler-vivienda-lau': { name: 'Contrato de Alquiler de Vivienda (LAU)', price_eur: 120  },
+  'alquiler-temporada':    { name: 'Contrato de Alquiler por Temporada',     price_eur: 97  },
+  'alquiler-habitacion':   { name: 'Contrato de Alquiler de Habitación',     price_eur: 73  },
+  'reserva-alquiler':      { name: 'Contrato de Reserva de Alquiler',        price_eur: 61  },
+  'rescision-alquiler':    { name: 'Contrato de Rescisión de Alquiler',      price_eur: 73  },
+  'liquidacion-fianza':    { name: 'Liquidación de Fianza',                  price_eur: 36  },
+  'alquiler-habitaciones': { name: 'Contrato de Alquiler de Habitación',     price_eur: 121 },
+  'alquiler-local-comercial': { name: 'Contrato de Alquiler de Local Comercial', price_eur: 121 },
+  'alquiler-garaje-trastero': { name: 'Contrato de Alquiler de Garaje o Trastero', price_eur: 48 },
+  'alquiler-opcion-compra': { name: 'Contrato de Alquiler con Opción a Compra', price_eur: 182 },
+  'prestamo-particulares':  { name: 'Contrato de Préstamo entre Particulares', price_eur: 109 },
+  'pack-revision-reserva-alquiler': { name: 'Pack Revisión y Redacción: Reserva + Contrato de Alquiler', price_eur: 169 },
+  'arras-parking-garage':   { name: 'Contrato de Arras para Compraventa de Parking o Garaje', price_eur: 73 },
+  'acompanamiento-reserva-arras':        { name: 'Acompañamiento Reserva hasta Arras',              price_eur: 424 },
+  'compra-completa-reserva-escritura':   { name: 'Servicio Completo de Compra: Reserva a Escritura', price_eur: 666 },
 }
 
 export async function POST(req: NextRequest) {

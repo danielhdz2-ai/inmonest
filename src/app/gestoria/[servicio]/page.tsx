@@ -24,7 +24,7 @@ interface ServiceData {
 const SERVICIOS: Record<string, ServiceData> = {
   'arras-penitenciales': {
     nombre: 'Contrato de Arras Penitenciales',
-    precio: 120,
+    precio: 145,
     categoria: 'Compraventa',
     tagline: 'El estándar de oro en la compraventa de inmuebles',
     descripcion:
@@ -69,15 +69,15 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 120 },
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 90 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 60 },
+      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
   },
 
   'arras-confirmatorias': {
     nombre: 'Contrato de Arras Confirmatorias',
-    precio: 120,
+    precio: 145,
     categoria: 'Compraventa',
     tagline: 'El contrato más vinculante: ambas partes se comprometen sin marcha atrás',
     descripcion:
@@ -122,15 +122,15 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 120 },
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 90 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 60 },
+      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
   },
 
   'contrato-alquiler': {
     nombre: 'Contrato de Alquiler de Vivienda (LAU)',
-    precio: 90,
+    precio: 120,
     categoria: 'Alquiler',
     tagline: 'El contrato de alquiler más completo, adaptado a la Ley de Vivienda 2026',
     descripcion:
@@ -175,15 +175,15 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 120 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 60 },
-      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 120 },
+      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
     ],
   },
 
   'rescision-alquiler': {
     nombre: 'Contrato de Rescisión de Alquiler',
-    precio: 60,
+    precio: 73,
     categoria: 'Rescisión y fianzas',
     tagline: 'Cierra el alquiler sin conflictos: llaves, estado y fianza en un solo documento',
     descripcion:
@@ -228,15 +228,15 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 90 },
-      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 120 },
-      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 120 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
+      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
     ],
   },
 
   'alquiler-habitaciones': {
     nombre: 'Contrato de Alquiler de Habitación',
-    precio: 100,
+    precio: 121,
     categoria: 'Alquiler',
     tagline: 'Alquila habitaciones en piso compartido con todas las garantías jurídicas',
     descripcion:
@@ -281,15 +281,15 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 90 },
-      { slug: 'alquiler-local-comercial', nombre: 'Alquiler Local Comercial', precio: 100 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 60 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'alquiler-local-comercial', nombre: 'Alquiler Local Comercial', precio: 121 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
   },
 
   'alquiler-local-comercial': {
     nombre: 'Contrato de Alquiler de Local Comercial',
-    precio: 100,
+    precio: 121,
     categoria: 'Alquiler',
     tagline: 'Protege tu negocio con un contrato adaptado a la LAU empresarial',
     descripcion:
@@ -334,15 +334,15 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 100 },
-      { slug: 'alquiler-garaje-trastero', nombre: 'Garaje o Trastero', precio: 40 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 60 },
+      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 121 },
+      { slug: 'alquiler-garaje-trastero', nombre: 'Garaje o Trastero', precio: 48 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
   },
 
   'alquiler-opcion-compra': {
     nombre: 'Contrato de Alquiler con Opción a Compra',
-    precio: 150,
+    precio: 182,
     categoria: 'Compraventa',
     tagline: 'Alquila ahora, compra cuando quieras: el contrato más versátil del mercado',
     descripcion:
@@ -387,15 +387,15 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 120 },
-      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 120 },
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 90 },
+      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
+      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
     ],
   },
 
   'prestamo-particulares': {
     nombre: 'Contrato de Préstamo entre Particulares',
-    precio: 90,
+    precio: 109,
     categoria: 'Financiación',
     tagline: 'Formaliza el préstamo de capital privado con plena validez jurídica y fiscal',
     descripcion:
@@ -440,15 +440,15 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 120 },
-      { slug: 'alquiler-opcion-compra', nombre: 'Alquiler con Opción a Compra', precio: 150 },
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 90 },
+      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
+      { slug: 'alquiler-opcion-compra', nombre: 'Alquiler con Opción a Compra', precio: 182 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
     ],
   },
 
   'alquiler-garaje-trastero': {
     nombre: 'Contrato de Alquiler de Garaje o Trastero',
-    precio: 40,
+    precio: 48,
     categoria: 'Alquiler',
     tagline: 'El contrato más ágil y económico para alquilar tu plaza de garaje o trastero',
     descripcion:
@@ -493,15 +493,15 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 90 },
-      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 100 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 60 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 121 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
   },
 
   'acompanamiento-reserva-arras': {
     nombre: 'Acompañamiento Reserva hasta Arras',
-    precio: 350,
+    precio: 424,
     categoria: 'Servicios Premium',
     tagline: 'Asesoramiento jurídico completo desde la reserva hasta el contrato de arras',
     descripcion:
@@ -546,15 +546,15 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'compra-completa-reserva-escritura', nombre: 'Servicio Completo de Compra', precio: 550 },
-      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 120 },
-      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 120 },
+      { slug: 'compra-completa-reserva-escritura', nombre: 'Servicio Completo de Compra', precio: 666 },
+      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
+      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
     ],
   },
 
   'compra-completa-reserva-escritura': {
     nombre: 'Servicio Completo de Compra: Reserva a Escritura',
-    precio: 550,
+    precio: 666,
     categoria: 'Servicios Premium',
     tagline: 'El servicio más completo de gestoría inmobiliaria: te acompañamos desde la reserva hasta la escritura',
     descripcion:
@@ -605,9 +605,113 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'acompanamiento-reserva-arras', nombre: 'Acompañamiento Reserva-Arras', precio: 350 },
-      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 120 },
-      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 120 },
+      { slug: 'acompanamiento-reserva-arras', nombre: 'Acompañamiento Reserva-Arras', precio: 424 },
+      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
+      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
+    ],
+  },
+
+  'pack-revision-reserva-alquiler': {
+    nombre: 'Pack Revisión y Redacción: Reserva + Contrato de Alquiler',
+    precio: 169,
+    categoria: 'Alquiler',
+    tagline: 'Dos contratos esenciales en un solo servicio integral',
+    descripcion: 'Servicio completo que incluye la revisión jurídica del contrato de reserva que vas a firmar y la redacción personalizada del contrato de alquiler LAU definitivo. Ideal para inquilinos que quieren seguridad desde el primer paso y ahorrarse problemas posteriores.',
+    image: '/gestoria/gestoria2.jpg',
+    imageAlt: 'Revisión y redacción de contratos de alquiler',
+    paraQuien: [
+      'Inquilinos que van a reservar un piso y firmar contrato de alquiler',
+      'Personas que quieren revisar la reserva antes de entregar dinero',
+      'Casos donde la inmobiliaria o propietario ofrece su propio contrato',
+      'Alquileres donde se prefiere tener todo revisado por un abogado',
+    ],
+    incluye: [
+      'Revisión completa del contrato de reserva que te ofrezcan',
+      'Redacción del contrato de alquiler LAU personalizado',
+      'Adaptado a la Ley de Vivienda 2026',
+      'Cláusulas de actualización de renta y fianza',
+      'Condiciones suspensivas de protección al inquilino',
+      'Entrega de ambos documentos en PDF firmable en 48h',
+    ],
+    pasos: [
+      { num: '01', titulo: 'Envía el contrato de reserva', desc: 'Súbenos el contrato de reserva que te han dado. Nuestro equipo lo revisa en detalle.' },
+      { num: '02', titulo: 'Revisión y redacción', desc: 'Analizamos cláusulas abusivas y redactamos tu contrato de alquiler personalizado.' },
+      { num: '03', titulo: 'Recibes ambos documentos', desc: 'En 48h tienes el informe de revisión de la reserva y tu contrato de alquiler listo para firmar.' },
+    ],
+    faq: [
+      {
+        q: '¿Puedo contratar solo la revisión de la reserva?',
+        a: 'Sí, pero este pack ahorra 20€ frente a contratar ambos servicios por separado. Es la opción más completa para tener todo cubierto desde el principio.',
+      },
+      {
+        q: '¿Qué pasa si la reserva tiene cláusulas abusivas?',
+        a: 'Te indicamos qué cláusulas son problemáticas, te explicamos por qué y te sugerimos modificaciones que puedes solicitar antes de firmar.',
+      },
+      {
+        q: '¿El contrato de alquiler incluye cláusulas de actualización de renta?',
+        a: 'Sí, está adaptado a la Ley de Vivienda 2026 con límites de subida según la zona tensionada o no. Todo según normativa vigente.',
+      },
+      {
+        q: '¿Cuánto tiempo tengo para usar el contrato de alquiler?',
+        a: 'El contrato es tuyo de por vida. Puedes usarlo cuando lo necesites, sin caducidad ni límite de tiempo.',
+      },
+    ],
+    relacionados: [
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 121 },
+    ],
+  },
+
+  'arras-parking-garage': {
+    nombre: 'Contrato de Arras para Compraventa de Parking o Garaje',
+    precio: 73,
+    categoria: 'Compraventa',
+    tagline: 'Asegura la compra de tu plaza de parking o garaje con garantías',
+    descripcion: 'Contrato de arras específicamente adaptado para la compraventa de plazas de parking o garajes. Incluye cláusulas especiales sobre acceso, uso, cargas, servidumbres y verificación registral. Protege tanto a comprador como vendedor en este tipo particular de inmuebles.',
+    image: '/gestoria/gestoria5.jpg',
+    imageAlt: 'Contrato de arras para parking',
+    paraQuien: [
+      'Compradores de plazas de parking o garajes',
+      'Vendedores que quieren formalizar la reserva con seguridad',
+      'Operaciones de compraventa de parkings en comunidades',
+      'Casos donde se requiere verificar acceso y servidumbres',
+    ],
+    incluye: [
+      'Redacción personalizada para parking o garaje',
+      'Revisión de nota simple registral',
+      'Cláusulas de desistimiento adaptadas al inmueble',
+      'Verificación de cargas y servidumbres de paso',
+      'Comprobación de acceso y uso permitido',
+      'Entrega en PDF firmable digitalmente en 48h',
+    ],
+    pasos: [
+      { num: '01', titulo: 'Solicita el contrato', desc: 'Completa el formulario con los datos del parking/garaje, comprador y vendedor.' },
+      { num: '02', titulo: 'Revisión registral', desc: 'Verificamos la nota registral, cargas, servidumbres y situación legal del inmueble.' },
+      { num: '03', titulo: 'Entrega del contrato', desc: 'Recibes el contrato personalizado en PDF firmable en menos de 48h.' },
+    ],
+    faq: [
+      {
+        q: '¿Es diferente a las arras de una vivienda?',
+        a: 'Sí, incluye cláusulas específicas sobre acceso, uso compartido de zonas comunes, servidumbres de paso y limitaciones de uso típicas de parkings.',
+      },
+      {
+        q: '¿Se revisa la situación registral del parking?',
+        a: 'Sí, verificamos la nota simple para confirmar titularidad, cargas, hipotecas y cualquier anotación que pueda afectar a la compra.',
+      },
+      {
+        q: '¿Qué pasa si el parking tiene cargas o hipotecas?',
+        a: 'Incluimos cláusulas que obligan al vendedor a cancelar las cargas antes de la escritura, protegiendo así al comprador.',
+      },
+      {
+        q: '¿Se puede desistir de la compra?',
+        a: 'Sí, con las mismas condiciones que unas arras penitenciales: el comprador pierde la señal, el vendedor devuelve el doble.',
+      },
+    ],
+    relacionados: [
+      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
+      { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
+      { slug: 'alquiler-garaje-trastero', nombre: 'Alquiler Garaje/Trastero', precio: 48 },
     ],
   },
 }
