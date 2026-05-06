@@ -127,7 +127,10 @@ export default function SolicitarFormClient({ servicioSlug, servicioNombre, serv
         {/* Resumen precio */}
         <div className="bg-[#fdf8ee] border border-[#e8d48a] rounded-xl px-4 py-3 flex items-center justify-between">
           <span className="text-sm text-gray-700 font-medium">{servicioNombre}</span>
-          <span className="text-xl font-bold text-[#c9a84c]">{servicioPrecio} €</span>
+          <div className="text-right">
+            <div className="text-xl font-bold text-[#c9a84c]">{servicioPrecio} €</div>
+            <div className="text-[10px] text-gray-500 -mt-0.5">IVA incluido</div>
+          </div>
         </div>
 
         {/* Botón */}

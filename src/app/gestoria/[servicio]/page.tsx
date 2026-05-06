@@ -825,7 +825,10 @@ export default async function ServicioGestoriaPage({
           </h1>
           <p className="text-white/80 text-lg max-w-xl mb-5">{data.tagline}</p>
           <div className="flex flex-wrap items-center gap-4">
-            <span className="text-3xl font-bold text-[#c9a84c]">{data.precio} €</span>
+            <div>
+              <span className="text-3xl font-bold text-[#c9a84c]">{data.precio} €</span>
+              <span className="text-white/50 text-xs ml-2">IVA incluido</span>
+            </div>
             <span className="text-white/60 text-sm">· Entrega en 48h · PDF firmable</span>
           </div>
         </div>
@@ -857,7 +860,10 @@ export default async function ServicioGestoriaPage({
             <div className="sticky top-24 bg-[#fdf8ee] border border-[#e8d48a] rounded-2xl p-6 space-y-4">
               <p className="text-sm text-[#7a5c1e] font-medium uppercase tracking-wide">{data.categoria}</p>
               <h3 className="text-xl font-bold text-gray-900">{data.nombre}</h3>
-              <p className="text-4xl font-bold text-[#c9a84c]">{data.precio} €</p>
+              <div>
+                <p className="text-4xl font-bold text-[#c9a84c]">{data.precio} €</p>
+                <p className="text-xs text-gray-500 mt-1">IVA incluido</p>
+              </div>
               <ul className="space-y-2">
                 {data.incluye.slice(0, 4).map((inc, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
@@ -975,7 +981,7 @@ export default async function ServicioGestoriaPage({
               href={`/gestoria/solicitar/${servicio}`}
               className="bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-8 rounded-xl transition-colors"
             >
-              Solicitar {data.nombre} — {data.precio} €
+              Solicitar {data.nombre} — {data.precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>
             </Link>
             <Link
               href="/gestoria"

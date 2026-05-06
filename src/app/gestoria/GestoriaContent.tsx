@@ -459,7 +459,10 @@ export default function GestoriaPage() {
                 )}
                 {/* Precio en imagen */}
                 <div className="absolute bottom-3 right-3 bg-white/95 rounded-lg px-3 py-1.5">
-                  <span className="text-xl font-extrabold text-[#c9962a]">{service.price} €</span>
+                  <div className="text-right">
+                    <div className="text-xl font-extrabold text-[#c9962a]">{service.price} €</div>
+                    <div className="text-[10px] text-gray-500 font-medium -mt-0.5">IVA incluido</div>
+                  </div>
                 </div>
               </div>
 
@@ -487,7 +490,7 @@ export default function GestoriaPage() {
                   onClick={() => setSelectedService(service)}
                   className="w-full py-2.5 bg-[#c9962a] text-white rounded-xl font-bold text-sm hover:bg-[#a87a20] transition-colors"
                 >
-                  Solicitar por {service.price} €
+                  Solicitar por {service.price} € <span className="font-normal text-xs opacity-90">(IVA incl.)</span>
                 </button>
               </div>
             </article>
