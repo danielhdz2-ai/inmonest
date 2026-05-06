@@ -32,6 +32,33 @@ const RECURSOS = [
 
 const ARTICULOS = [
   {
+    slug: 'asesoria-juridica-compra-vivienda',
+    titulo: 'Asesoría jurídica en la compra de vivienda: ¿por qué necesitas un gestor inmobiliario?',
+    resumen:
+      'Comprar una vivienda sin asesoramiento puede costarte miles de euros en errores. Descubre qué revisa un gestor especializado y por qué es la mejor inversión que puedes hacer.',
+    fecha: '5 de mayo de 2026',
+    categoria: 'Gestoría',
+    lectura: '7 min',
+  },
+  {
+    slug: 'gestoria-barcelona-valencia-madrid',
+    titulo: 'Gestoría inmobiliaria en Barcelona, Valencia y Madrid: diferencias clave por ciudad',
+    resumen:
+      'ITE en Barcelona, cédula en Valencia, IEE en Madrid... Cada ciudad tiene su normativa. Te explicamos qué debes revisar según dónde compres tu vivienda.',
+    fecha: '5 de mayo de 2026',
+    categoria: 'Gestoría',
+    lectura: '8 min',
+  },
+  {
+    slug: 'servicio-completo-compra-vivienda',
+    titulo: 'Servicio completo de compra: de la reserva a la escritura con todas las garantías',
+    resumen:
+      'Revisión de contratos con agencias, análisis de honorarios, coordinación con notaría... Descubre cómo funciona el servicio integral que te acompaña en todo el proceso.',
+    fecha: '5 de mayo de 2026',
+    categoria: 'Gestoría',
+    lectura: '6 min',
+  },
+  {
     slug: 'vender-piso-sin-comisiones',
     titulo: 'Vender tu piso sin comisiones: guía completa para propietarios 2026',
     resumen:
