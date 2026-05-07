@@ -38,7 +38,7 @@ export default function RevisionContratoAlquilerPage() {
     },
     offers: {
       '@type': 'Offer',
-      price: '39',
+      price: '60',
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
     },
@@ -348,15 +348,15 @@ export default function RevisionContratoAlquilerPage() {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-            Revisión profesional por 39€
+            Revisión profesional desde 60€
           </h2>
           <p className="text-xl text-gray-600 mb-12">
             Mucho más barato que pagar 3 meses de fianza ilegal (1.500€+)
           </p>
-          <div className="max-w-md mx-auto">
-            <div className="border-2 border-[#c9962a] rounded-lg p-8">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión de Contrato de Alquiler</h3>
-              <div className="text-5xl font-bold text-[#c9962a] mb-2">39€</div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <div className="border-2 border-gray-200 rounded-lg p-8">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión Básica</h3>
+              <div className="text-5xl font-bold text-[#c9962a] mb-2">60€</div>
               <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
               <ul className="text-left space-y-3 mb-8">
                 <li className="flex items-start gap-2">
@@ -370,12 +370,6 @@ export default function RevisionContratoAlquilerPage() {
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Detección de cláusulas ilegales</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-gray-700">Análisis de fianza y garantías</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -395,6 +389,46 @@ export default function RevisionContratoAlquilerPage() {
                 className="block bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar revisión
+              </Link>
+            </div>
+            <div className="border-2 border-[#c9962a] rounded-lg p-8 relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#c9962a] text-white px-4 py-1 rounded-full text-sm font-semibold">
+                Recomendado
+              </div>
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión + Corrección</h3>
+              <div className="text-5xl font-bold text-[#c9962a] mb-2">120€</div>
+              <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
+              <ul className="text-left space-y-3 mb-8">
+                <li className="flex items-start gap-2">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700"><strong>Todo lo anterior +</strong></span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Versión corregida del contrato</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Argumentos legales para negociar</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Asesoramiento vía email</span>
+                </li>
+              </ul>
+              <Link
+                href="/gestoria/solicitar/revision-correccion"
+                className="block bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
+              >
+                Solicitar revisión completa
               </Link>
             </div>
           </div>
@@ -499,3 +533,5 @@ export default function RevisionContratoAlquilerPage() {
     </>
   )
 }
+
+

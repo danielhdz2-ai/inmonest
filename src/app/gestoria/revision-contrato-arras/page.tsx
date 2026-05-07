@@ -38,7 +38,7 @@ export default function RevisionContratosArrasPage() {
     },
     offers: {
       '@type': 'Offer',
-      price: '45',
+      price: '60',
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
     },
@@ -401,7 +401,7 @@ export default function RevisionContratosArrasPage() {
                 </li>
               </ul>
               <Link
-                href="/gestoria/solicitar/revision-arras"
+                href="/gestoria/solicitar/revision-correccion-arras"
                 className="block bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar revisión completa
@@ -512,4 +512,5 @@ export default function RevisionContratosArrasPage() {
     </>
   )
 }
+
 
