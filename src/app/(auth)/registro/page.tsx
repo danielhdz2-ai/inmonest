@@ -12,7 +12,6 @@ export default function RegistroPage() {
   const [loading, setLoading] = useState(false)
   const [sent, setSent] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const [mode, setMode] = useState<'magic-link' | 'password'>('password')
 
   async function handlePasswordRegister(e: React.FormEvent) {
     e.preventDefault()
@@ -47,30 +46,6 @@ export default function RegistroPage() {
     }
   }
 
-  async function handleMagicLinkRegister(e: React.FormEvent) {
-    e.preventDefault()
-    if (!email.trim() || !nombre.trim()) return
-    
-    setLoading(true)
-    setError(null)
-    
-    const supabase = createClient()
-    const { error } = await supabase.auth.signInWithOtp({
-      email: email.trim().toLowerCase(),
-      options: {
-        emailRedirectTo: `${location.origin}/auth/callback`,
-        data: { full_name: nombre.trim() },
-      },
-    })
-    
-    setLoading(false)
-    if (error) {
-      setError('No se pudo crear la cuenta. Inténtalo de nuevo.')
-    } else {
-      setSent(true)
-    }
-  }
-
   if (sent) {
     return (
       <div className="w-full max-w-md text-center">
@@ -81,16 +56,14 @@ export default function RegistroPage() {
             </svg>
           </div>
           <h1 className="text-xl font-bold text-gray-900 mb-2">
-            {mode === 'password' ? '¡Cuenta creada!' : `¡Bienvenido, ${nombre}!`}
+            ¡Cuenta creada!
           </h1>
           <p className="text-gray-500 text-sm mb-1">
             Confirma tu email para activar la cuenta:
           </p>
           <p className="font-semibold text-gray-800 mb-6">{email}</p>
           <p className="text-xs text-gray-400">
-            {mode === 'password' 
-              ? 'Te hemos enviado un email de confirmación. Haz clic en el enlace para verificar tu cuenta.'
-              : 'Haz clic en el enlace del email para entrar. Válido 10 minutos.'}
+            Te hemos enviado un email de confirmación. Haz clic en el enlace para verificar tu cuenta.
           </p>
         </div>
       </div>
@@ -118,31 +91,7 @@ export default function RegistroPage() {
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
-        {/* Toggle Magic Link / Password */}
-        <div className="flex bg-gray-100 rounded-lg p-1 mb-4">
-          <button
-            onClick={() => setMode('magic-link')}
-            className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors ${
-              mode === 'magic-link' 
-                ? 'bg-white text-gray-900 shadow-sm' 
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            Enlace mágico
-          </button>
-          <button
-            onClick={() => setMode('password')}
-            className={`flex-1 py-1.5 text-xs font-medium rounded-md transition-colors ${
-              mode === 'password' 
-                ? 'bg-white text-gray-900 shadow-sm' 
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            Contraseña
-          </button>
-        </div>
-
-        <form onSubmit={mode === 'magic-link' ? handleMagicLinkRegister : handlePasswordRegister} className="space-y-3">
+        <form onSubmit={handlePasswordRegister} className="space-y-3">
           <div>
             <label htmlFor="nombre" className="block text-xs font-medium text-gray-600 mb-1">
               Nombre completo
@@ -175,24 +124,22 @@ export default function RegistroPage() {
             />
           </div>
 
-          {mode === 'password' && (
-            <div>
-              <label htmlFor="password" className="block text-xs font-medium text-gray-600 mb-1">
-                Contraseña
-              </label>
-              <input
-                id="password"
-                type="password"
-                required
-                autoComplete="new-password"
-                placeholder="Mínimo 8 caracteres"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                minLength={8}
-                className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#c9962a] focus:border-transparent"
-              />
-            </div>
-          )}
+          <div>
+            <label htmlFor="password" className="block text-xs font-medium text-gray-600 mb-1">
+              Contraseña
+            </label>
+            <input
+              id="password"
+              type="password"
+              required
+              autoComplete="new-password"
+              placeholder="Mínimo 8 caracteres"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              minLength={8}
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#c9962a] focus:border-transparent"
+            />
+          </div>
 
           {error && (
             <p className="text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</p>
