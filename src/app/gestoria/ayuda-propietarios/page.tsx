@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/imagenes/gestoria4.jpg`, width: 1200, height: 630, alt: 'Contratos alquiler propietarios' }],
+    images: [{ url: `${BASE_URL}/imagenes/familia1.jpg`, width: 1200, height: 630, alt: 'Contratos alquiler propietarios' }],
   },
 }
 
@@ -112,7 +112,7 @@ export default function AyudaPropietariosPage() {
             </div>
             <div className="relative">
               <Image
-                src="/imagenes/gestoria4.jpg"
+                src="/imagenes/familia1.jpg"
                 alt="Propietario firmando contrato de alquiler"
                 width={600}
                 height={400}
@@ -244,7 +244,7 @@ export default function AyudaPropietariosPage() {
                 5 años + 3 prórroga tácita.
               </p>
               <Link
-                href="/gestoria/alquiler-vivienda-lau"
+                href="/gestoria/solicitar/contrato-alquiler"
                 className="block text-center bg-[#c9962a] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar →
@@ -258,7 +258,7 @@ export default function AyudaPropietariosPage() {
                 Condiciones específicas para temporales.
               </p>
               <Link
-                href="/gestoria/alquiler-temporada"
+                href="/gestoria/solicitar/contrato-alquiler"
                 className="block text-center bg-[#c9962a] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar →
@@ -271,7 +271,7 @@ export default function AyudaPropietariosPage() {
                 Para alquilar una habitación en piso compartido. Espacios comunes, normas de convivencia, etc.
               </p>
               <Link
-                href="/gestoria/alquiler-habitaciones"
+                href="/gestoria/solicitar/alquiler-habitaciones"
                 className="block text-center bg-[#c9962a] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar →

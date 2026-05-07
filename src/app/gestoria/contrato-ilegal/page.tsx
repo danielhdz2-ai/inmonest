@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/imagenes/gestoria5.jpg`, width: 1200, height: 630, alt: 'Detectar contrato ilegal' }],
+    images: [{ url: `${BASE_URL}/imagenes/keys.jpg`, width: 1200, height: 630, alt: 'Detectar contrato ilegal' }],
   },
 }
 
@@ -70,7 +70,7 @@ export default function ContratoIlegalPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
-                  href="/gestoria/solicitar/analisis-contrato-ilegal"
+                  href="/gestoria/solicitar/contrato-ilegal"
                   className="bg-red-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-700 transition text-center shadow-lg"
                 >
                   Analizar mi contrato (29€)
@@ -113,7 +113,7 @@ export default function ContratoIlegalPage() {
             </div>
             <div className="relative">
               <Image
-                src="/imagenes/gestoria5.jpg"
+                src="/imagenes/keys.jpg"
                 alt="Análisis de contrato ilegal o fraudulento"
                 width={600}
                 height={400}
@@ -427,7 +427,7 @@ export default function ContratoIlegalPage() {
               </li>
             </ul>
             <Link
-              href="/gestoria/solicitar/analisis-contrato-ilegal"
+              href="/gestoria/solicitar/contrato-ilegal"
               className="block bg-red-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-red-700 transition"
             >
               Analizar mi contrato ahora
@@ -485,7 +485,7 @@ export default function ContratoIlegalPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/gestoria/solicitar/analisis-contrato-ilegal"
+              href="/gestoria/solicitar/contrato-ilegal"
               className="bg-white text-red-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
               Analizar mi contrato (29€)

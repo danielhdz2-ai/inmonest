@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/imagenes/gestoria6.jpg`, width: 1200, height: 630, alt: 'Asesoría legal compra piso' }],
+    images: [{ url: `${BASE_URL}/imagenes/familia3.jpg`, width: 1200, height: 630, alt: 'Asesoría legal compra piso' }],
   },
 }
 
@@ -113,7 +113,7 @@ export default function AsesoriaCompraPisoPage() {
             </div>
             <div className="relative">
               <Image
-                src="/imagenes/gestoria6.jpg"
+                src="/imagenes/familia3.jpg"
                 alt="Abogado asesorando compra de piso"
                 width={600}
                 height={400}
@@ -404,7 +404,7 @@ export default function AsesoriaCompraPisoPage() {
                 </li>
               </ul>
               <Link
-                href="/gestoria/solicitar/asesoria-compra-basica"
+                href="/gestoria/solicitar/asesoria-compra"
                 className="block bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Contratar asesoría básica
@@ -450,7 +450,7 @@ export default function AsesoriaCompraPisoPage() {
                 </li>
               </ul>
               <Link
-                href="/gestoria/solicitar/asesoria-compra-premium"
+                href="/gestoria/solicitar/compra-completa-reserva-escritura"
                 className="block bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Contratar asesoría premium
