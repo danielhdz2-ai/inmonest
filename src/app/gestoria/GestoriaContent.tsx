@@ -329,9 +329,9 @@ const CATEGORIES = [
 
 const CATEGORY_COLORS: Record<string, string> = {
   compraventa: 'bg-orange-100 text-orange-700',
-  alquiler: 'bg-purple-100 text-purple-700',
-  rescision: 'bg-blue-100 text-blue-700',
-  financiacion: 'bg-green-100 text-green-700',
+  alquiler: 'bg-orange-50 text-orange-600',
+  rescision: 'bg-amber-100 text-amber-700',
+  financiacion: 'bg-yellow-100 text-yellow-700',
 }
 
 const CATEGORY_LABELS: Record<string, string> = {

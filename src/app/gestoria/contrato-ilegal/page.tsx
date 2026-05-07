@@ -92,19 +92,19 @@ export default function ContratoIlegalPage() {
               </div>
               <div className="flex items-center gap-6 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Análisis en 24h</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Confidencial</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>IVA incluido</span>
@@ -259,7 +259,7 @@ export default function ContratoIlegalPage() {
             Fraudes que hemos evitado
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
+            <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="text-4xl">✅</div>
                 <h3 className="text-xl font-bold text-gray-900">Caso 1: Okupa vendiendo piso ajeno</h3>
@@ -272,11 +272,11 @@ export default function ContratoIlegalPage() {
                 <strong>Detección:</strong> El "vendedor" no era propietario. Era un okupa que había falsificado DNI 
                 y escrituras. El verdadero dueño vivía en el extranjero.
               </p>
-              <p className="text-green-700 font-semibold">
+              <p className="text-[#c9962a] font-semibold">
                 ✅ Resultado: Cliente no pagó nada. Denunciamos a Policía. Okupa detenido.
               </p>
             </div>
-            <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
+            <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="text-4xl">✅</div>
                 <h3 className="text-xl font-bold text-gray-900">Caso 2: Hipoteca oculta superior al precio</h3>
@@ -289,11 +289,11 @@ export default function ContratoIlegalPage() {
                 <strong>Detección:</strong> Piso tenía hipoteca de 220.000€ impagada + embargo judicial. 
                 Era imposible venderlo sin saldar deudas.
               </p>
-              <p className="text-green-700 font-semibold">
+              <p className="text-[#c9962a] font-semibold">
                 ✅ Resultado: Cliente evitó perder 150.000€. Vendedor tenía antecedentes por estafa.
               </p>
             </div>
-            <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
+            <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="text-4xl">✅</div>
                 <h3 className="text-xl font-bold text-gray-900">Caso 3: Alquiler falso (subarriendo ilegal)</h3>
@@ -306,11 +306,11 @@ export default function ContratoIlegalPage() {
                 <strong>Detección:</strong> El "casero" era realmente un inquilino que subarrendaba ilegalmente. 
                 Contrato falso sin consentimiento del verdadero propietario.
               </p>
-              <p className="text-green-700 font-semibold">
+              <p className="text-[#c9962a] font-semibold">
                 ✅ Resultado: Cliente no pagó. Estafador denunciado. Recuperación inmediata.
               </p>
             </div>
-            <div className="bg-green-50 border-2 border-green-200 rounded-lg p-6">
+            <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="text-4xl">✅</div>
                 <h3 className="text-xl font-bold text-gray-900">Caso 4: Documentos PDF falsificados</h3>
@@ -323,7 +323,7 @@ export default function ContratoIlegalPage() {
                 <strong>Detección:</strong> Los documentos estaban editados con Photoshop. Nombres cambiados, 
                 sellos falsos. Pedimos nota simple oficial y no coincidía nada.
               </p>
-              <p className="text-green-700 font-semibold">
+              <p className="text-[#c9962a] font-semibold">
                 ✅ Resultado: Fraude detectado antes del pago. Denuncia interpuesta.
               </p>
             </div>
@@ -396,31 +396,31 @@ export default function ContratoIlegalPage() {
             <div className="text-sm text-gray-500 mb-6">IVA incluido · Entrega 24h</div>
             <ul className="text-left space-y-3 mb-8 max-w-md mx-auto">
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-700">Verificación de identidad del vendedor</span>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-700">Análisis forense de documentación</span>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-700">Detección de patrones de estafa</span>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-700">Informe de riesgo en PDF</span>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-700">Recomendaciones y plan de acción</span>
@@ -504,3 +504,4 @@ export default function ContratoIlegalPage() {
     </>
   )
 }
+

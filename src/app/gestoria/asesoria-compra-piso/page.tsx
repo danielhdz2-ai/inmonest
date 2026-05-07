@@ -85,26 +85,26 @@ export default function AsesoriaCompraPisoPage() {
                   href="https://wa.me/34624177966?text=Hola,%20estoy%20comprando%20piso%20y%20necesito%20asesor%C3%ADa%20legal"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition text-center shadow-lg"
+                  className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
                   💬 WhatsApp directo
                 </a>
               </div>
               <div className="flex items-center gap-6 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Abogado a tu lado</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>100% independiente</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>IVA incluido</span>
@@ -294,32 +294,32 @@ export default function AsesoriaCompraPisoPage() {
             Problemas que hemos detectado y solucionado
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-green-50 p-6 rounded-lg border-2 border-green-200">
+            <div className="bg-orange-50 p-6 rounded-lg border-2 border-orange-200">
               <div className="text-4xl mb-3">💰</div>
               <h3 className="text-lg font-bold mb-2 text-gray-900">Ahorro de 8.500€ en hipoteca</h3>
               <p className="text-gray-700 text-sm mb-3">
                 Cliente iba a firmar hipoteca con comisión de apertura del 1,5% + seguro de vida obligatorio caro. 
                 Negociamos: 0% comisión + seguro externo. Ahorro: 8.500€.
               </p>
-              <div className="text-green-700 font-semibold text-sm">Barcelona, marzo 2026</div>
+              <div className="text-orange-700 font-semibold text-sm">Barcelona, marzo 2026</div>
             </div>
-            <div className="bg-green-50 p-6 rounded-lg border-2 border-green-200">
+            <div className="bg-orange-50 p-6 rounded-lg border-2 border-orange-200">
               <div className="text-4xl mb-3">📐</div>
               <h3 className="text-lg font-bold mb-2 text-gray-900">Detectamos 12m² menos</h3>
               <p className="text-gray-700 text-sm mb-3">
                 Anuncio decía 78m². Nota simple registral: 66m². Diferencia: 12m² × 3.000€/m² = 36.000€ de sobreprecio. 
                 Renegociamos precio o cancelación.
               </p>
-              <div className="text-green-700 font-semibold text-sm">Madrid, abril 2026</div>
+              <div className="text-orange-700 font-semibold text-sm">Madrid, abril 2026</div>
             </div>
-            <div className="bg-green-50 p-6 rounded-lg border-2 border-green-200">
+            <div className="bg-orange-50 p-6 rounded-lg border-2 border-orange-200">
               <div className="text-4xl mb-3">⚠️</div>
               <h3 className="text-lg font-bold mb-2 text-gray-900">Evitamos compra con okupa</h3>
               <p className="text-gray-700 text-sm mb-3">
                 Vendedor ocultaba que había inquilino moroso de hace 2 años (okupa de facto). 
                 Cliente habría heredado el problema. Cancelamos compra a tiempo.
               </p>
-              <div className="text-green-700 font-semibold text-sm">Valencia, mayo 2026</div>
+              <div className="text-orange-700 font-semibold text-sm">Valencia, mayo 2026</div>
             </div>
           </div>
         </div>
@@ -379,25 +379,25 @@ export default function AsesoriaCompraPisoPage() {
               <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
               <ul className="text-left space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Nota simple + análisis completo</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Revisión contrato arras</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Informe de riesgos en PDF</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Asesoramiento vía email</span>
@@ -419,31 +419,31 @@ export default function AsesoriaCompraPisoPage() {
               <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
               <ul className="text-left space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700"><strong>Todo lo anterior +</strong></span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Revisión oferta hipoteca</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Negociación con vendedor/banco</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Revisión escritura compraventa</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Soporte WhatsApp hasta firma</span>
@@ -518,7 +518,7 @@ export default function AsesoriaCompraPisoPage() {
               href="https://wa.me/34624177966?text=Hola,%20necesito%20asesoramiento%20para%20comprar%20un%20piso"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition shadow-lg border-2 border-white"
+              className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition shadow-lg border-2 border-white"
             >
               💬 Consulta gratuita (WhatsApp)
             </a>
@@ -558,3 +558,4 @@ export default function AsesoriaCompraPisoPage() {
     </>
   )
 }
+

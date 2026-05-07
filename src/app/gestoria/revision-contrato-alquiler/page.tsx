@@ -59,7 +59,7 @@ export default function RevisionContratoAlquilerPage() {
       <WhatsAppButton />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-green-50 to-white py-16 px-4">
+      <section className="bg-gradient-to-br from-orange-50 to-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -67,7 +67,7 @@ export default function RevisionContratoAlquilerPage() {
                 ⚠️ No firmes sin conocer tus derechos
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                ¿Tu casero te ha dado un <span className="text-green-600">contrato de alquiler</span>?
+                ¿Tu casero te ha dado un <span className="text-[#c9962a]">contrato de alquiler</span>?
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 Un abogado especializado lo revisa en <strong>24 horas</strong>. Detectamos cláusulas abusivas, 
@@ -91,19 +91,19 @@ export default function RevisionContratoAlquilerPage() {
               </div>
               <div className="flex items-center gap-6 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Entrega en 24h</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Ley Vivienda 2026</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>IVA incluido</span>
@@ -119,7 +119,7 @@ export default function RevisionContratoAlquilerPage() {
                 className="rounded-lg shadow-2xl"
                 priority
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border-2 border-green-200">
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border-2 border-orange-200">
                 <div className="flex items-center gap-3">
                   <div className="text-3xl">⭐</div>
                   <div>
@@ -257,7 +257,7 @@ export default function RevisionContratoAlquilerPage() {
       </section>
 
       {/* Testimonios */}
-      <section className="py-16 px-4 bg-green-50">
+      <section className="py-16 px-4 bg-orange-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             Inquilinos que han evitado abusos
@@ -328,7 +328,7 @@ export default function RevisionContratoAlquilerPage() {
               },
             ].map((item) => (
               <div key={item.step} className="flex gap-6 items-start">
-                <div className="bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
+                <div className="bg-[#c9962a] text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
                   {item.step}
                 </div>
                 <div className="flex-1">
@@ -348,37 +348,43 @@ export default function RevisionContratoAlquilerPage() {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-            Revisión profesional desde 39€
+            Revisión profesional por 39€
           </h2>
           <p className="text-xl text-gray-600 mb-12">
             Mucho más barato que pagar 3 meses de fianza ilegal (1.500€+)
           </p>
-          <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-            <div className="border-2 border-gray-200 rounded-lg p-8">
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión Express</h3>
-              <div className="text-5xl font-bold text-green-600 mb-2">39€</div>
+          <div className="max-w-md mx-auto">
+            <div className="border-2 border-[#c9962a] rounded-lg p-8">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión de Contrato de Alquiler</h3>
+              <div className="text-5xl font-bold text-[#c9962a] mb-2">39€</div>
               <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
               <ul className="text-left space-y-3 mb-8">
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-700">Análisis de cláusulas</span>
+                  <span className="text-gray-700">Verificación Ley Vivienda 2026</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-700">Detección de ilegalidades</span>
+                  <span className="text-gray-700">Detección de cláusulas ilegales</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-700">Informe en PDF</span>
+                  <span className="text-gray-700">Análisis de fianza y garantías</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span className="text-gray-700">Informe de conformidad</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Entrega en 24h</span>
@@ -386,49 +392,9 @@ export default function RevisionContratoAlquilerPage() {
               </ul>
               <Link
                 href="/gestoria/solicitar/revision-alquiler"
-                className="block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
+                className="block bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar revisión
-              </Link>
-            </div>
-            <div className="border-2 border-green-600 rounded-lg p-8 relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                Más completo
-              </div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión + Negociación</h3>
-              <div className="text-5xl font-bold text-green-600 mb-2">79€</div>
-              <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
-              <ul className="text-left space-y-3 mb-8">
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-gray-700"><strong>Todo lo anterior +</strong></span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-gray-700">Versión corregida del contrato</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-gray-700">Argumentos legales + jurisprudencia</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-gray-700">Email de apoyo para negociar</span>
-                </li>
-              </ul>
-              <Link
-                href="/gestoria/solicitar/revision-alquiler"
-                className="block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
-              >
-                Solicitar revisión completa
               </Link>
             </div>
           </div>
@@ -474,7 +440,7 @@ export default function RevisionContratoAlquilerPage() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-16 px-4 bg-green-600 text-white">
+      <section className="py-16 px-4 bg-[#c9962a] text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Protege tus derechos como inquilino
@@ -485,7 +451,7 @@ export default function RevisionContratoAlquilerPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/revision-alquiler"
-              className="bg-white text-green-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
+              className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
               Revisar mi contrato (39€)
             </Link>
@@ -507,25 +473,25 @@ export default function RevisionContratoAlquilerPage() {
           <h2 className="text-2xl font-bold mb-8 text-gray-900">Servicios relacionados</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Link href="/gestoria/alquiler-vivienda-lau" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-green-600">Redactar contrato LAU</h3>
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Redactar contrato LAU</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Si eres propietario, te redactamos un contrato legal adaptado a la Ley de Vivienda 2026.
               </p>
-              <span className="text-green-600 font-semibold">Desde 73€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 73€ →</span>
             </Link>
             <Link href="/gestoria/burofax-desistimiento-alquiler" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-green-600">Burofax desistimiento</h3>
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Burofax desistimiento</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Si quieres salir del alquiler antes de tiempo, te redactamos el burofax legal.
               </p>
-              <span className="text-green-600 font-semibold">Desde 19€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 19€ →</span>
             </Link>
             <Link href="/gestoria/contrato-ilegal" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-green-600">¿Contrato ilegal?</h3>
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">¿Contrato ilegal?</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Te ayudamos a detectar si tu contrato es completamente ilegal o fraudulento.
               </p>
-              <span className="text-green-600 font-semibold">Desde 29€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 29€ →</span>
             </Link>
           </div>
         </div>

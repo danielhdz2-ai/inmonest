@@ -84,26 +84,26 @@ export default function AyudaPropietariosPage() {
                   href="https://wa.me/34624177966?text=Hola,%20necesito%20un%20contrato%20de%20alquiler%20para%20mi%20piso"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition text-center shadow-lg"
+                  className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
                   💬 WhatsApp directo
                 </a>
               </div>
               <div className="flex items-center gap-6 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Entrega en 24h</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Personalizado</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>IVA incluido</span>
@@ -140,7 +140,7 @@ export default function AyudaPropietariosPage() {
             ¿Por qué necesitas un contrato profesional?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+            <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
               <div className="text-4xl mb-4">🛡️</div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Evita inquilinos morosos</h3>
               <p className="text-gray-700">
@@ -148,7 +148,7 @@ export default function AyudaPropietariosPage() {
                 Facilita el desahucio si el inquilino no paga.
               </p>
             </div>
-            <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+            <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
               <div className="text-4xl mb-4">⚖️</div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Cumple la Ley de Vivienda 2026</h3>
               <p className="text-gray-700">
@@ -156,7 +156,7 @@ export default function AyudaPropietariosPage() {
                 mascotas, suministros, etc. Sin riesgo de nulidad.
               </p>
             </div>
-            <div className="bg-green-50 p-6 rounded-lg border-l-4 border-green-500">
+            <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
               <div className="text-4xl mb-4">💰</div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Maximiza tus rentas</h3>
               <p className="text-gray-700">
@@ -414,7 +414,7 @@ export default function AyudaPropietariosPage() {
               href="https://wa.me/34624177966?text=Hola,%20necesito%20asesoramiento%20para%20alquilar%20mi%20piso"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition shadow-lg border-2 border-white"
+              className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition shadow-lg border-2 border-white"
             >
               💬 Asesoramiento gratuito (WhatsApp)
             </a>
@@ -454,3 +454,4 @@ export default function AyudaPropietariosPage() {
     </>
   )
 }
+
