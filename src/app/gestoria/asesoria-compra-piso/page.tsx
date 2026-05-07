@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/imagenes/familia3.jpg`, width: 1200, height: 630, alt: 'Asesoría legal compra piso' }],
+    images: [{ url: `${BASE_URL}/familia3.jpg`, width: 1200, height: 630, alt: 'Asesoría legal compra piso' }],
   },
 }
 
@@ -113,7 +113,7 @@ export default function AsesoriaCompraPisoPage() {
             </div>
             <div className="relative">
               <Image
-                src="/imagenes/familia3.jpg"
+                src="/familia3.jpg"
                 alt="Abogado asesorando compra de piso"
                 width={600}
                 height={400}

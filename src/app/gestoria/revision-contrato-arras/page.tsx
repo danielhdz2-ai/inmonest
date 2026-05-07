@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/imagenes/gestoria1.jpg`, width: 1200, height: 630, alt: 'Revisión de contrato de arras por abogado' }],
+    images: [{ url: `${BASE_URL}/gestoria1.jpg`, width: 1200, height: 630, alt: 'Revisión de contrato de arras por abogado' }],
   },
 }
 
@@ -112,7 +112,7 @@ export default function RevisionContratosArrasPage() {
             </div>
             <div className="relative">
               <Image
-                src="/imagenes/gestoria1.jpg"
+                src="/gestoria1.jpg"
                 alt="Abogado revisando contrato de arras"
                 width={600}
                 height={400}

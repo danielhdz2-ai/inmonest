@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/imagenes/familia1.jpg`, width: 1200, height: 630, alt: 'Contratos alquiler propietarios' }],
+    images: [{ url: `${BASE_URL}/familia1.jpg`, width: 1200, height: 630, alt: 'Contratos alquiler propietarios' }],
   },
 }
 
@@ -112,7 +112,7 @@ export default function AyudaPropietariosPage() {
             </div>
             <div className="relative">
               <Image
-                src="/imagenes/familia1.jpg"
+                src="/familia1.jpg"
                 alt="Propietario firmando contrato de alquiler"
                 width={600}
                 height={400}
