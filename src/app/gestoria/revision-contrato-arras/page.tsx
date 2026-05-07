@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria/revision-arras.jpg`, width: 1200, height: 630, alt: 'Revisión de contrato de arras por abogado' }],
+    images: [{ url: `${BASE_URL}/imagenes/gestoria2.jpg`, width: 1200, height: 630, alt: 'Revisión de contrato de arras por abogado' }],
   },
 }
 
@@ -59,7 +59,7 @@ export default function RevisionContratosArrasPage() {
       <WhatsAppButton />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-white py-16 px-4">
+      <section className="bg-gradient-to-br from-orange-50 to-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -67,7 +67,7 @@ export default function RevisionContratosArrasPage() {
                 ⚠️ No firmes sin revisión legal
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                ¿Te han dado un <span className="text-blue-600">contrato de arras</span> y no te fías?
+                ¿Te han dado un <span className="text-[#c9962a]">contrato de arras</span> y no te fías?
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 Un abogado especializado lo revisa en <strong>24 horas</strong>. Detectamos cláusulas abusivas, 
@@ -76,7 +76,7 @@ export default function RevisionContratosArrasPage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
                   href="/gestoria/solicitar/revision-arras"
-                  className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition text-center shadow-lg"
+                  className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
                   Revisar mi contrato ahora (45€)
                 </Link>
@@ -112,14 +112,14 @@ export default function RevisionContratosArrasPage() {
             </div>
             <div className="relative">
               <Image
-                src="/gestoria/revision-arras.jpg"
+                src="/imagenes/gestoria2.jpg"
                 alt="Abogado revisando contrato de arras"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-2xl"
                 priority
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border-2 border-blue-200">
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border-2 border-orange-200">
                 <div className="flex items-center gap-3">
                   <div className="text-3xl">⭐</div>
                   <div>
@@ -266,7 +266,7 @@ export default function RevisionContratosArrasPage() {
               },
             ].map((item) => (
               <div key={item.step} className="flex gap-6 items-start">
-                <div className="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
+                <div className="bg-[#c9962a] text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
                   {item.step}
                 </div>
                 <div className="flex-1">
@@ -283,7 +283,7 @@ export default function RevisionContratosArrasPage() {
       </section>
 
       {/* Testimonios */}
-      <section className="py-16 px-4 bg-blue-50">
+      <section className="py-16 px-4 bg-orange-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             Casos reales que hemos evitado
@@ -332,7 +332,7 @@ export default function RevisionContratosArrasPage() {
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             <div className="border-2 border-gray-200 rounded-lg p-8">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión Básica</h3>
-              <div className="text-5xl font-bold text-blue-600 mb-2">45€</div>
+              <div className="text-5xl font-bold text-[#c9962a] mb-2">45€</div>
               <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
               <ul className="text-left space-y-3 mb-8">
                 <li className="flex items-start gap-2">
@@ -362,17 +362,17 @@ export default function RevisionContratosArrasPage() {
               </ul>
               <Link
                 href="/gestoria/solicitar/revision-arras"
-                className="block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+                className="block bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar revisión
               </Link>
             </div>
-            <div className="border-2 border-blue-600 rounded-lg p-8 relative">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
+            <div className="border-2 border-[#c9962a] rounded-lg p-8 relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#c9962a] text-white px-4 py-1 rounded-full text-sm font-semibold">
                 Recomendado
               </div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión + Corrección</h3>
-              <div className="text-5xl font-bold text-blue-600 mb-2">89€</div>
+              <div className="text-5xl font-bold text-[#c9962a] mb-2">89€</div>
               <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
               <ul className="text-left space-y-3 mb-8">
                 <li className="flex items-start gap-2">
@@ -401,8 +401,8 @@ export default function RevisionContratosArrasPage() {
                 </li>
               </ul>
               <Link
-                href="/gestoria/solicitar/revision-arras-plus"
-                className="block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition"
+                href="/gestoria/solicitar/revision-arras"
+                className="block bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar revisión completa
               </Link>
@@ -450,7 +450,7 @@ export default function RevisionContratosArrasPage() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-16 px-4 bg-blue-600 text-white">
+      <section className="py-16 px-4 bg-[#c9962a] text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             No arriesgues tu dinero. Revisa tu contrato antes de firmar.
@@ -461,7 +461,7 @@ export default function RevisionContratosArrasPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/revision-arras"
-              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
+              className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
               Revisar mi contrato (45€)
             </Link>
@@ -486,25 +486,25 @@ export default function RevisionContratosArrasPage() {
           <h2 className="text-2xl font-bold mb-8 text-gray-900">Servicios relacionados</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Link href="/gestoria/arras-penitenciales" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-blue-600">Redactar contrato de arras</h3>
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Redactar contrato de arras</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Si necesitas un contrato desde cero, lo redactamos personalizado en 48h.
               </p>
-              <span className="text-blue-600 font-semibold">Desde 145€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 145€ →</span>
             </Link>
             <Link href="/gestoria/nota-simple" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-blue-600">Pedir nota simple</h3>
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Pedir nota simple</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Nota simple registral oficial en 24h. Imprescindible antes de comprar.
               </p>
-              <span className="text-blue-600 font-semibold">Desde 15€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 15€ →</span>
             </Link>
             <Link href="/gestoria/contrato-compraventa" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-blue-600">Contrato de compraventa</h3>
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Contrato de compraventa</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Para la escritura definitiva ante notario. Redacción legal completa.
               </p>
-              <span className="text-blue-600 font-semibold">Desde 195€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 195€ →</span>
             </Link>
           </div>
         </div>

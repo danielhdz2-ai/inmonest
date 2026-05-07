@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria/revision-alquiler.jpg`, width: 1200, height: 630, alt: 'Revisión contrato alquiler inquilino' }],
+    images: [{ url: `${BASE_URL}/imagenes/gestoria3.jpg`, width: 1200, height: 630, alt: 'Revisión contrato alquiler inquilino' }],
   },
 }
 
@@ -76,7 +76,7 @@ export default function RevisionContratoAlquilerPage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
                   href="/gestoria/solicitar/revision-alquiler"
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition text-center shadow-lg"
+                  className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
                   Revisar mi contrato (39€)
                 </Link>
@@ -112,7 +112,7 @@ export default function RevisionContratoAlquilerPage() {
             </div>
             <div className="relative">
               <Image
-                src="/gestoria/revision-alquiler.jpg"
+                src="/imagenes/gestoria3.jpg"
                 alt="Abogado revisando contrato de alquiler"
                 width={600}
                 height={400}
@@ -425,7 +425,7 @@ export default function RevisionContratoAlquilerPage() {
                 </li>
               </ul>
               <Link
-                href="/gestoria/solicitar/revision-alquiler-plus"
+                href="/gestoria/solicitar/revision-alquiler"
                 className="block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition"
               >
                 Solicitar revisión completa
@@ -493,7 +493,7 @@ export default function RevisionContratoAlquilerPage() {
               href="https://wa.me/34624177966?text=Tengo%20dudas%20sobre%20mi%20contrato%20de%20alquiler"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition shadow-lg border-2 border-white"
+              className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition shadow-lg border-2 border-white"
             >
               💬 Consulta gratuita (WhatsApp)
             </a>

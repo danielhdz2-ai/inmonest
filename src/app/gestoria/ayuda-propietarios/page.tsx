@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria/propietarios.jpg`, width: 1200, height: 630, alt: 'Contratos alquiler propietarios' }],
+    images: [{ url: `${BASE_URL}/imagenes/gestoria4.jpg`, width: 1200, height: 630, alt: 'Contratos alquiler propietarios' }],
   },
 }
 
@@ -59,15 +59,15 @@ export default function AyudaPropietariosPage() {
       <WhatsAppButton />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-indigo-50 to-white py-16 px-4">
+      <section className="bg-gradient-to-br from-orange-50 to-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <div className="inline-block bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
                 ✅ Ley de Vivienda 2026 cumplida
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                ¿Alquilas tu piso? <br/><span className="text-indigo-600">Protégelo con un contrato legal</span>
+                ¿Alquilas tu piso? <br/><span className="text-[#c9962a]">Protégelo con un contrato legal</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 Contratos de alquiler LAU personalizados y adaptados a la <strong>Ley de Vivienda 2026</strong>. 
@@ -76,7 +76,7 @@ export default function AyudaPropietariosPage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
                   href="/gestoria/alquiler-vivienda-lau"
-                  className="bg-indigo-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-indigo-700 transition text-center shadow-lg"
+                  className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
                   Solicitar contrato (73€)
                 </Link>
@@ -112,14 +112,14 @@ export default function AyudaPropietariosPage() {
             </div>
             <div className="relative">
               <Image
-                src="/gestoria/propietarios.jpg"
+                src="/imagenes/gestoria4.jpg"
                 alt="Propietario firmando contrato de alquiler"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-2xl"
                 priority
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border-2 border-indigo-200">
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border-2 border-orange-200">
                 <div className="flex items-center gap-3">
                   <div className="text-3xl">🏠</div>
                   <div>
@@ -236,43 +236,43 @@ export default function AyudaPropietariosPage() {
             Contratos para cada situación
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="border-2 border-indigo-200 rounded-lg p-6 hover:border-indigo-500 transition">
+            <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler LAU (vivienda habitual)</h3>
-              <div className="text-3xl font-bold text-indigo-600 mb-3">73€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-3">73€</div>
               <p className="text-gray-600 mb-4">
                 Para alquilar como vivienda principal del inquilino. Protección LAU completa, 
                 5 años + 3 prórroga tácita.
               </p>
               <Link
                 href="/gestoria/alquiler-vivienda-lau"
-                className="block text-center bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition"
+                className="block text-center bg-[#c9962a] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar →
               </Link>
             </div>
-            <div className="border-2 border-indigo-200 rounded-lg p-6 hover:border-indigo-500 transition">
+            <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler temporal</h3>
-              <div className="text-3xl font-bold text-indigo-600 mb-3">67€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-3">67€</div>
               <p className="text-gray-600 mb-4">
                 Para estancias cortas (estudios, trabajo temporal). Menos de 1 año. 
                 Condiciones específicas para temporales.
               </p>
               <Link
                 href="/gestoria/alquiler-temporada"
-                className="block text-center bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition"
+                className="block text-center bg-[#c9962a] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar →
               </Link>
             </div>
-            <div className="border-2 border-indigo-200 rounded-lg p-6 hover:border-indigo-500 transition">
+            <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler de habitación</h3>
-              <div className="text-3xl font-bold text-indigo-600 mb-3">73€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-3">73€</div>
               <p className="text-gray-600 mb-4">
                 Para alquilar una habitación en piso compartido. Espacios comunes, normas de convivencia, etc.
               </p>
               <Link
                 href="/gestoria/alquiler-habitaciones"
-                className="block text-center bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition"
+                className="block text-center bg-[#c9962a] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar →
               </Link>
@@ -282,7 +282,7 @@ export default function AyudaPropietariosPage() {
       </section>
 
       {/* Testimonios */}
-      <section className="py-16 px-4 bg-indigo-50">
+      <section className="py-16 px-4 bg-orange-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             Propietarios que han protegido su inversión
@@ -328,19 +328,19 @@ export default function AyudaPropietariosPage() {
           <p className="text-xl text-gray-600 mb-8">
             Ofrecemos <strong>descuentos por volumen</strong> para agencias que necesitan contratos recurrentes.
           </p>
-          <div className="bg-indigo-50 border-2 border-indigo-200 rounded-lg p-8">
+          <div className="bg-orange-50 border-2 border-orange-200 rounded-lg p-8">
             <h3 className="text-2xl font-bold mb-4 text-gray-900">Packs para Agencias</h3>
             <div className="grid md:grid-cols-3 gap-6 mb-6">
               <div>
-                <div className="text-3xl font-bold text-indigo-600">10 contratos</div>
+                <div className="text-3xl font-bold text-[#c9962a]">10 contratos</div>
                 <div className="text-gray-600">65€/ud → Ahorro 80€</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-indigo-600">25 contratos</div>
+                <div className="text-3xl font-bold text-[#c9962a]">25 contratos</div>
                 <div className="text-gray-600">59€/ud → Ahorro 350€</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-indigo-600">50+ contratos</div>
+                <div className="text-3xl font-bold text-[#c9962a]">50+ contratos</div>
                 <div className="text-gray-600">Consultar precio</div>
               </div>
             </div>
@@ -348,7 +348,7 @@ export default function AyudaPropietariosPage() {
               href="https://wa.me/34624177966?text=Hola,%20soy%20agencia%20inmobiliaria%20y%20necesito%20contratos%20de%20alquiler%20en%20volumen"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition"
+              className="inline-block bg-[#c9962a] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
             >
               💬 Contactar para pack agencias
             </a>
@@ -395,7 +395,7 @@ export default function AyudaPropietariosPage() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-16 px-4 bg-indigo-600 text-white">
+      <section className="py-16 px-4 bg-[#c9962a] text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Protege tu inversión inmobiliaria
@@ -406,7 +406,7 @@ export default function AyudaPropietariosPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/alquiler-vivienda-lau"
-              className="bg-white text-indigo-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
+              className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
               Solicitar contrato (73€)
             </Link>
@@ -428,25 +428,25 @@ export default function AyudaPropietariosPage() {
           <h2 className="text-2xl font-bold mb-8 text-gray-900">Servicios relacionados</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Link href="/gestoria/rescision-contrato" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-indigo-600">Rescisión de contrato</h3>
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Rescisión de contrato</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Si necesitas rescindir un contrato de alquiler por incumplimiento del inquilino.
               </p>
-              <span className="text-indigo-600 font-semibold">Desde 85€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 85€ →</span>
             </Link>
             <Link href="/gestoria/certificado-eficiencia-energetica" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-indigo-600">Certificado energético</h3>
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Certificado energético</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Obligatorio para alquilar. Te lo gestionamos en 48h con técnico certificado.
               </p>
-              <span className="text-indigo-600 font-semibold">Desde 55€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 55€ →</span>
             </Link>
             <Link href="/gestoria/burofax-desistimiento-alquiler" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-indigo-600">Burofax al inquilino</h3>
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Burofax al inquilino</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Para notificar impagos, incumplimientos o inicio de desahucio de forma legal.
               </p>
-              <span className="text-indigo-600 font-semibold">Desde 19€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 19€ →</span>
             </Link>
           </div>
         </div>

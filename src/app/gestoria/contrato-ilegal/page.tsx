@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria/contrato-ilegal.jpg`, width: 1200, height: 630, alt: 'Detectar contrato ilegal' }],
+    images: [{ url: `${BASE_URL}/imagenes/gestoria5.jpg`, width: 1200, height: 630, alt: 'Detectar contrato ilegal' }],
   },
 }
 
@@ -113,7 +113,7 @@ export default function ContratoIlegalPage() {
             </div>
             <div className="relative">
               <Image
-                src="/gestoria/contrato-ilegal.jpg"
+                src="/imagenes/gestoria5.jpg"
                 alt="Análisis de contrato ilegal o fraudulento"
                 width={600}
                 height={400}
