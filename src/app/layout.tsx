@@ -28,13 +28,13 @@ export const metadata: Metadata = {
     template: '%s | Inmonest',
   },
   description:
-    'Gestoría inmobiliaria online: Contratos de arras, alquiler LAU, compraventa desde 29€. Redactados por abogados en 48h. También pisos entre particulares sin comisiones.',
+    'Gestoría inmobiliaria online: Contratos de arras, alquiler LAU, compraventa desde 29€. Redactados por expertos en 48h. También pisos entre particulares sin comisiones.',
   keywords: [
     'gestoría inmobiliaria online',
     'contratos de arras',
     'contrato de alquiler LAU',
     'contrato compraventa vivienda',
-    'abogado inmobiliario online',
+    'gestoría inmobiliaria experta',
     'revisión contrato arras',
     'revisión contrato alquiler',
     'gestoría digital Barcelona',

@@ -7,19 +7,19 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Revisión de Contrato de Arras 【DESDE 45€】 Abogado Especializado | Inmonest',
-  description: '¿Te han dado un contrato de arras y no te fías? Abogados inmobiliarios lo revisan en 24h. Detectamos cláusulas abusivas, errores y te protegemos. Desde 45€.',
+  title: 'Revisión de Contrato de Arras 【DESDE 45€】 Gestoría Experta | Inmonest',
+  description: '¿Te han dado un contrato de arras y no te fías? Nuestra gestoría inmobiliaria experta lo revisa en 24h. Detectamos cláusulas abusivas, errores y te protegemos. Desde 45€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/revision-contrato-arras`,
   },
   openGraph: {
-    title: 'Revisión de Contrato de Arras por Abogados — Inmonest',
+    title: 'Revisión de Contrato de Arras por Gestoría Experta — Inmonest',
     description: 'No firmes sin revisión legal. Detectamos cláusulas abusivas, errores registrales y condiciones perjudiciales. 24h. Desde 45€.',
     url: `${BASE_URL}/gestoria/revision-contrato-arras`,
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria1.jpg`, width: 1200, height: 630, alt: 'Revisión de contrato de arras por abogado' }],
+    images: [{ url: `${BASE_URL}/gestoria1.jpg`, width: 1200, height: 630, alt: 'Revisión de contrato de arras por gestoría inmobiliaria' }],
   },
 }
 
@@ -30,7 +30,7 @@ export default function RevisionContratosArrasPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Revisión de Contrato de Arras',
-    description: 'Revisión legal de contratos de arras por abogados especializados en derecho inmobiliario. Detectamos cláusulas abusivas y errores. Entrega en 24h.',
+    description: 'Revisión legal de contratos de arras por gestoría inmobiliaria experta en contratos inmobiliarios. Detectamos cláusulas abusivas y errores. Entrega en 24h.',
     provider: {
       '@type': 'Organization',
       name: 'Inmonest',
@@ -117,7 +117,7 @@ export default function RevisionContratosArrasPage() {
                 ¿Te han dado un <span className="text-[#c9962a]">contrato de arras</span> y no te fías?
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Un abogado especializado lo revisa en <strong>24 horas</strong>. Detectamos cláusulas abusivas, 
+                Nuestro equipo de gestoría lo revisa en <strong>24 horas</strong>. Detectamos cláusulas abusivas, 
                 errores registrales y condiciones que te perjudican.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -147,7 +147,7 @@ export default function RevisionContratosArrasPage() {
                   <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>Abogados especializados</span>
+                  <span>Gestoría inmobiliaria experta</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
@@ -160,7 +160,7 @@ export default function RevisionContratosArrasPage() {
             <div className="relative">
               <Image
                 src="/gestoria1.jpg"
-                alt="Abogado revisando contrato de arras"
+                alt="Gestoría revisando contrato de arras"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-2xl"
@@ -222,7 +222,7 @@ export default function RevisionContratosArrasPage() {
             ¿Qué revisamos en tu contrato?
           </h2>
           <p className="text-xl text-center text-gray-600 mb-12 max-w-3xl mx-auto">
-            Nuestros abogados analizan <strong>cada cláusula</strong> para protegerte de problemas futuros
+            Nuestro equipo de gestoría analiza <strong>cada cláusula</strong> para protegerte de problemas futuros
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             {[
@@ -295,8 +295,8 @@ export default function RevisionContratosArrasPage() {
               },
               {
                 step: '2',
-                title: 'Abogado especializado lo revisa',
-                desc: 'Un abogado inmobiliario analiza cada cláusula, verifica datos registrales, y detecta riesgos o condiciones abusivas.',
+                title: 'Gestoría experta lo revisa',
+                desc: 'Nuestro equipo de gestoría inmobiliaria analiza cada cláusula, verifica datos registrales, y detecta riesgos o condiciones abusivas.',
                 time: '12-24 horas',
               },
               {
@@ -503,7 +503,7 @@ export default function RevisionContratosArrasPage() {
             No arriesgues tu dinero. Revisa tu contrato antes de firmar.
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Desde 45€ puedes dormir tranquilo sabiendo que un abogado ha revisado cada cláusula.
+            Desde 45€ puedes dormir tranquilo sabiendo que nuestra gestoría ha revisado cada cláusula.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

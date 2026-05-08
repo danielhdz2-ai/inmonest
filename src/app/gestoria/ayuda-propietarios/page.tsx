@@ -8,13 +8,13 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   title: 'Contratos de Alquiler para Propietarios 【DESDE 73€】 LAU 2026 | Inmonest',
-  description: '¿Alquilas tu piso? Contratos LAU legales adaptados a la Ley de Vivienda 2026. Protege tu inversión. Redactados por abogados en 24h. Desde 73€.',
+  description: '¿Alquilas tu piso? Contratos LAU legales adaptados a la Ley de Vivienda 2026. Protege tu inversión. Redactados por nuestra gestoría en 24h. Desde 73€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/ayuda-propietarios`,
   },
   openGraph: {
     title: 'Contratos de Alquiler para Propietarios — Inmonest',
-    description: 'Contratos LAU legales que cumplen Ley de Vivienda 2026. Protege tu piso de inquilinos morosos. Redactados por abogados. 24h. Desde 73€.',
+    description: 'Contratos LAU legales que cumplen Ley de Vivienda 2026. Protege tu piso de inquilinos morosos. Redactados por nuestra gestoría. 24h. Desde 73€.',
     url: `${BASE_URL}/gestoria/ayuda-propietarios`,
     type: 'website',
     siteName: 'Inmonest',
@@ -30,7 +30,7 @@ export default function AyudaPropietariosPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Contratos de Alquiler para Propietarios',
-    description: 'Contratos de alquiler LAU personalizados y adaptados a la Ley de Vivienda 2026. Redactados por abogados especializados para proteger tu inversión inmobiliaria.',
+    description: 'Contratos de alquiler LAU personalizados y adaptados a la Ley de Vivienda 2026. Redactados por gestoría inmobiliaria experta para proteger tu inversión inmobiliaria.',
     provider: {
       '@type': 'Organization',
       name: 'Inmonest',
@@ -67,7 +67,7 @@ export default function AyudaPropietariosPage() {
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 Contratos de alquiler LAU personalizados y adaptados a la <strong>Ley de Vivienda 2026</strong>. 
-                Protege tu inversión de inquilinos morosos, impagos y okupa. Redactados por abogados en 24h.
+                Protege tu inversión de inquilinos morosos, impagos y okupa. Redactados por nuestra gestoría en 24h.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link

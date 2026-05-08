@@ -7,15 +7,15 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contratar Contrato de Alquiler LAU en Bilbao 【120€】 Abogados 48h | Inmonest',
-  description: '¿Necesitas un contrato de alquiler LAU en Bilbao? Redacción personalizada por abogados en 48h. Precio fijo 120€. Bilbao, Getxo, Barakaldo. Ley Vivienda 2026.',
-  keywords: ['contratar contrato alquiler Bilbao', 'comprar contrato alquiler Bilbao', 'solicitar contrato alquiler LAU País Vasco', 'precio contrato alquiler Bilbao', 'abogado contrato alquiler Bizkaia'],
+  title: 'Contratar Contrato de Alquiler LAU en Bilbao 【120€】 Gestoría Experta | Inmonest',
+  description: '¿Necesitas un contrato de alquiler LAU en Bilbao? Redacción personalizada por gestoría inmobiliaria experta en 48h. Precio fijo 120€. Bilbao, Getxo, Barakaldo.',
+  keywords: ['contratar contrato alquiler Bilbao', 'comprar contrato alquiler Bilbao', 'solicitar contrato alquiler LAU País Vasco', 'precio contrato alquiler Bilbao', 'gestoría contrato alquiler Bizkaia'],
   alternates: {
     canonical: `${BASE_URL}/bilbao/contrato-alquiler`,
   },
   openGraph: {
     title: 'Contrato de Alquiler LAU en Bilbao - 120€ | Inmonest',
-    description: 'Contrato de alquiler vivienda en Bilbao. Abogados especializados. LAU + Ley Vivienda 2026. 48h. 120€.',
+    description: 'Contrato de alquiler vivienda en Bilbao. Gestoría inmobiliaria experta. LAU + Ley Vivienda 2026. 48h. 120€.',
     url: `${BASE_URL}/bilbao/contrato-alquiler`,
     type: 'website',
     siteName: 'Inmonest',
@@ -31,7 +31,7 @@ export default function ContratoAlquilerBilbaoPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Contrato de Alquiler de Vivienda (LAU) en Bilbao',
-    description: 'Redacción de contrato de alquiler de vivienda en Bilbao y País Vasco. Adaptado a LAU y Ley de Vivienda 2026. Abogados especializados.',
+    description: 'Redacción de contrato de alquiler de vivienda en Bilbao y País Vasco. Adaptado a LAU y Ley de Vivienda 2026. Gestoría inmobiliaria experta.',
     provider: {
       '@type': 'Organization',
       name: 'Inmonest',
@@ -149,7 +149,7 @@ export default function ContratoAlquilerBilbaoPage() {
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-orange-50 border-l-4 border-[#c9a84c] p-4 rounded-r-lg mb-6">
               <p className="text-gray-800 font-semibold text-lg">¿Necesitas redactar un Contrato de Alquiler de Vivienda (LAU) en Bilbao?</p>
-              <p className="text-gray-600 text-sm mt-1">Abogados especializados lo redactan por ti en 48h. Precio fijo: 120€. Adaptado a Ley de Vivienda 2026.</p>
+              <p className="text-gray-600 text-sm mt-1">Gestoría inmobiliaria experta lo redacta por ti en 48h. Precio fijo: 120€. Adaptado a Ley de Vivienda 2026.</p>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">¿Qué es el contrato de alquiler LAU?</h2>
             <p className="text-gray-600 leading-relaxed text-[1.05rem]">
@@ -262,7 +262,7 @@ export default function ContratoAlquilerBilbaoPage() {
           <div className="space-y-6">
             {[
               { num: '01', titulo: 'Solicita el contrato', desc: 'Facilita los datos del propietario, inquilino, piso y condiciones económicas. El formulario es guiado y claro.' },
-              { num: '02', titulo: 'Redacción personalizada', desc: 'Nuestros abogados redactan un contrato a medida, verificando que todas las cláusulas cumplen la legislación vigente.' },
+              { num: '02', titulo: 'Redacción personalizada', desc: 'Nuestro equipo de gestoría redacta un contrato a medida, verificando que todas las cláusulas cumplen la legislación vigente.' },
               { num: '03', titulo: 'Listo para firmar', desc: 'Recibes el contrato PDF en 48h, firmable digitalmente. El inventario de mobiliario se incluye como anexo.' },
             ].map((paso) => (
               <div key={paso.num} className="flex gap-6">
@@ -355,7 +355,7 @@ export default function ContratoAlquilerBilbaoPage() {
         <section className="bg-[#0d1a0f] rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">¿Listo para solicitar tu contrato de alquiler en Bilbao?</h2>
           <p className="text-white/60 mb-6 max-w-lg mx-auto">
-            En menos de 48h tienes el documento listo para firmar. Redactado por abogados, adaptado a LAU y Ley de Vivienda 2026.
+            En menos de 48h tienes el documento listo para firmar. Redactado por nuestra gestoría inmobiliaria experta, adaptado a LAU y Ley de Vivienda 2026.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

@@ -371,11 +371,11 @@ export default function GestoriaPage() {
             <span className="text-[#f4c94a]">redactados por expertos</span>
           </h1>
           <p className="text-white/85 text-base sm:text-lg max-w-xl leading-relaxed">
-            Nuestro equipo de abogados especializados en derecho inmobiliario redacta cada contrato a medida. Sin automatismos. Con la seguridad jurídica que mereces.
+            Nuestro equipo de gestoría inmobiliaria experta en contratos inmobiliarios redacta cada contrato a medida. Sin automatismos. Con la seguridad jurídica que mereces.
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white text-sm">
-              <span>⚖️</span> Abogados especializados
+              <span>⚖️</span> Gestoría inmobiliaria experta
             </div>
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white text-sm">
               <span>⏱️</span> Respuesta en 24h
@@ -391,7 +391,7 @@ export default function GestoriaPage() {
       <section className="bg-[#7a5c1e] py-5 px-6">
         <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-x-10 gap-y-3 text-center">
           {[
-            { icon: '🏛️', text: 'Equipo de abogados colegiados' },
+            { icon: '🏛️', text: 'Equipo de gestoría especializado' },
             { icon: '📋', text: 'Contratos personalizados, no plantillas' },
             { icon: '🔒', text: 'Sin pago por adelantado' },
             { icon: '📧', text: 'Entrega por email en PDF firmable' },
@@ -543,10 +543,10 @@ export default function GestoriaPage() {
             <div>
               <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Nuestro equipo</span>
               <h2 className="text-2xl font-extrabold text-gray-900 mt-2 mb-4">
-                Abogados especializados en<br />derecho inmobiliario español
+                Gestoría inmobiliaria experta en<br />contratos inmobiliarios españoles
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
-                No generamos documentos automáticos. Cada contrato lo revisa un abogado colegiado con experiencia en operaciones inmobiliarias, adaptándolo a la normativa autonómica específica de cada comunidad.
+                No generamos documentos automáticos. Cada contrato lo revisa nuestro equipo de gestoría con experiencia en operaciones inmobiliarias, adaptándolo a la normativa autonómica específica de cada comunidad.
               </p>
               <ul className="space-y-3">
                 {[
@@ -696,11 +696,11 @@ export default function GestoriaPage() {
                 Inmonest nació como portal inmobiliario para particulares, y desde el primer día detectamos el mismo problema: propietarios e inquilinos firmando contratos descargados de internet sin ninguna supervisión jurídica. Contratos que luego generaban conflictos, pérdidas económicas y procesos judiciales evitables.
               </p>
               <p className="text-gray-600 leading-relaxed mb-6">
-                Por eso creamos la Gestoría Inmonest: un servicio de redacción de contratos inmobiliarios personalizados, revisados por abogados colegiados especializados en derecho inmobiliario español. No somos una plataforma de plantillas automáticas. Cada contrato lo redacta un profesional que conoce tu situación concreta.
+                Por eso creamos la Gestoría Inmonest: un servicio de redacción de contratos inmobiliarios personalizados, revisados por nuestro equipo de gestoría experto en contratos inmobiliarios españoles. No somos una plataforma de plantillas automáticas. Cada contrato lo redacta un profesional que conoce tu situación concreta.
               </p>
               <div className="space-y-3">
                 {[
-                  { icon: '🎓', text: 'Abogados colegiados con especialización en derecho inmobiliario' },
+                  { icon: '🎓', text: 'Equipo de gestoría con especialización en contratos inmobiliarios' },
                   { icon: '📍', text: 'Conocimiento de normativa autonómica: Cataluña, Madrid, Valencia, Andalucía...' },
                   { icon: '🔄', text: 'Revisiones gratuitas dentro de los 7 días tras la entrega' },
                   { icon: '📞', text: 'Consultas post-entrega incluidas sin coste adicional' },
@@ -721,7 +721,7 @@ export default function GestoriaPage() {
                     ['❌', 'Plantilla genérica', 'Sin adaptar a tu CCAA, situación ni partes concretas'],
                     ['❌', 'Cláusulas nulas', 'Muchas plantillas incluyen cláusulas prohibidas por la LAU 2026'],
                     ['❌', 'Sin actualización', 'La Ley de Vivienda cambia y las plantillas no se actualizan'],
-                    ['✅', 'Contrato Inmonest', 'Personalizado, actualizado y revisado por abogado colegiado'],
+                    ['✅', 'Contrato Inmonest', 'Personalizado, actualizado y revisado por nuestra gestoría experta'],
                   ].map(([icon, titulo, desc]) => (
                     <div key={titulo} className="flex items-start gap-2 text-sm">
                       <span className="shrink-0 mt-0.5">{icon}</span>
@@ -738,7 +738,7 @@ export default function GestoriaPage() {
                 <ol className="space-y-2">
                   {[
                     'Solicitas y facilitas los datos por email o formulario',
-                    'Asignamos tu contrato a un abogado especializado',
+                    'Asignamos tu contrato a nuestro equipo de gestoría especializado',
                     'Revisión de nota simple registral si aplica',
                     'Entrega del PDF personalizado en 24-48h',
                     'Una ronda de revisiones gratuita si necesitas ajustes',

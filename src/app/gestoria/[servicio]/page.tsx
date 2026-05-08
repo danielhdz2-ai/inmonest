@@ -48,7 +48,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     pasos: [
       { num: '01', titulo: 'Solicita el contrato', desc: 'Rellena el formulario con los datos básicos de comprador, vendedor e inmueble. Solo tarda 3 minutos.' },
-      { num: '02', titulo: 'Revisión por abogado', desc: 'Nuestro equipo jurídico revisa la nota simple, confirma los datos y redacta el contrato personalizado.' },
+      { num: '02', titulo: 'Revisión profesional', desc: 'Nuestro equipo de gestoría revisa la nota simple, confirma los datos y redacta el contrato personalizado.' },
       { num: '03', titulo: 'Recibe el documento', desc: 'En menos de 48h tienes el PDF listo para firmar digitalmente. Incluimos guía de firma para ambas partes.' },
     ],
     faq: [
@@ -101,7 +101,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     pasos: [
       { num: '01', titulo: 'Solicita el contrato', desc: 'Completa el formulario con los datos del comprador, vendedor e inmueble. Tardas menos de 5 minutos.' },
-      { num: '02', titulo: 'Redacción por abogado', desc: 'Nuestros abogados revisan los datos registrales y redactan el contrato adaptado a tu operación específica.' },
+      { num: '02', titulo: 'Redacción personalizada', desc: 'Nuestro equipo de gestoría revisa los datos registrales y redacta el contrato adaptado a tu operación específica.' },
       { num: '03', titulo: 'Entrega en 48h', desc: 'Recibes el PDF firmable digitalmente con instrucciones para ambas partes. Sin desplazamientos ni notaría.' },
     ],
     faq: [

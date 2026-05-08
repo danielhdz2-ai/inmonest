@@ -8,7 +8,7 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   title: '¿Tu Contrato es Ilegal? 【ANÁLISIS 29€】 Detectamos Fraudes y Abusos | Inmonest',
-  description: '¿Sospechas que tu contrato de alquiler o compra es ilegal? Abogado lo analiza en 24h. Detectamos fraudes, documentos falsos y estafas. Desde 29€.',
+  description: '¿Sospechas que tu contrato de alquiler o compra es ilegal? Nuestra gestoría lo analiza en 24h. Detectamos fraudes, documentos falsos y estafas. Desde 29€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/contrato-ilegal`,
   },
@@ -65,7 +65,7 @@ export default function ContratoIlegalPage() {
                 ¿Crees que tu contrato <span className="text-red-600">es ilegal o falso</span>?
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Un abogado especializado lo analiza en <strong>24 horas</strong>. Detectamos documentos falsificados, 
+                Nuestro equipo de gestoría lo analiza en <strong>24 horas</strong>. Detectamos documentos falsificados, 
                 estafas, contratos nulos y operaciones fraudulentas. <strong>Protégete antes de perder tu dinero.</strong>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -347,7 +347,7 @@ export default function ContratoIlegalPage() {
               },
               {
                 step: '2',
-                title: 'Abogado investiga el caso',
+                title: 'Gestoría investiga el caso',
                 desc: 'Verificamos identidad, documentación, registro, precios de mercado, patrones de estafa. Análisis forense del contrato.',
                 time: '12-24 horas',
               },

@@ -7,15 +7,15 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contratar Contrato de Arras en Bilbao 【145€】 Abogados en 48h | Inmonest',
-  description: '¿Necesitas un contrato de arras en Bilbao? Redacción personalizada por abogados en 48h. Precio fijo 145€. Bilbao, Getxo, Barakaldo. Nota simple incluida.',
-  keywords: ['contratar contrato arras Bilbao', 'comprar contrato arras Bilbao', 'solicitar contrato arras País Vasco', 'precio contrato arras Bilbao', 'abogado contrato arras Bizkaia'],
+  title: 'Contratar Contrato de Arras en Bilbao 【145€】 Gestoría Experta | Inmonest',
+  description: '¿Necesitas un contrato de arras en Bilbao? Redacción personalizada por gestoría inmobiliaria experta en 48h. Precio fijo 145€. Bilbao, Getxo, Barakaldo.',
+  keywords: ['contratar contrato arras Bilbao', 'comprar contrato arras Bilbao', 'solicitar contrato arras País Vasco', 'precio contrato arras Bilbao', 'gestoría contrato arras Bizkaia'],
   alternates: {
     canonical: `${BASE_URL}/bilbao/contrato-arras`,
   },
   openGraph: {
     title: 'Contrato de Arras en Bilbao - 145€ | Inmonest',
-    description: 'Contrato de arras penitenciales en Bilbao. Abogados especializados. 48h. 145€.',
+    description: 'Contrato de arras penitenciales en Bilbao. Gestoría inmobiliaria experta. 48h. 145€.',
     url: `${BASE_URL}/bilbao/contrato-arras`,
     type: 'website',
     siteName: 'Inmonest',
@@ -31,7 +31,7 @@ export default function ContratoArrasBilbaoPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Contrato de Arras Penitenciales en Bilbao',
-    description: 'Redacción de contrato de arras para compraventa de inmuebles en Bilbao. Abogados especializados en derecho inmobiliario.',
+    description: 'Redacción de contrato de arras para compraventa de inmuebles en Bilbao. Gestoría inmobiliaria experta en contratos de compraventa.',
     provider: {
       '@type': 'Organization',
       name: 'Inmonest',
@@ -149,7 +149,7 @@ export default function ContratoArrasBilbaoPage() {
           <div className="lg:col-span-2 space-y-6">
             <div className="bg-orange-50 border-l-4 border-[#c9a84c] p-4 rounded-r-lg mb-6">
               <p className="text-gray-800 font-semibold text-lg">¿Necesitas redactar un Contrato de Arras Penitenciales en Bilbao?</p>
-              <p className="text-gray-600 text-sm mt-1">Abogados especializados lo redactan por ti en 48h. Precio fijo: 145€. Sin sorpresas.</p>
+              <p className="text-gray-600 text-sm mt-1">Gestoría inmobiliaria experta lo redacta por ti en 48h. Precio fijo: 145€. Sin sorpresas.</p>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">¿Qué es el contrato de arras penitenciales?</h2>
             <p className="text-gray-600 leading-relaxed text-[1.05rem]">
@@ -262,7 +262,7 @@ export default function ContratoArrasBilbaoPage() {
           <div className="space-y-6">
             {[
               { num: '01', titulo: 'Solicita el contrato', desc: 'Rellena el formulario con los datos básicos de comprador, vendedor e inmueble. Solo tarda 3 minutos.' },
-              { num: '02', titulo: 'Revisión por abogado', desc: 'Nuestro equipo jurídico revisa la nota simple, confirma los datos y redacta el contrato personalizado.' },
+              { num: '02', titulo: 'Revisión profesional', desc: 'Nuestro equipo de gestoría revisa la nota simple, confirma los datos y redacta el contrato personalizado.' },
               { num: '03', titulo: 'Recibe el documento', desc: 'En menos de 48h tienes el PDF listo para firmar digitalmente. Incluimos guía de firma para ambas partes.' },
             ].map((paso) => (
               <div key={paso.num} className="flex gap-6">
@@ -355,7 +355,7 @@ export default function ContratoArrasBilbaoPage() {
         <section className="bg-[#0d1a0f] rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">¿Listo para solicitar tu contrato de arras en Bilbao?</h2>
           <p className="text-white/60 mb-6 max-w-lg mx-auto">
-            En menos de 48h tienes el documento listo para firmar. Redactado por abogados, sin plantillas genéricas.
+            En menos de 48h tienes el documento listo para firmar. Redactado por nuestra gestoría inmobiliaria experta, sin plantillas genéricas.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link

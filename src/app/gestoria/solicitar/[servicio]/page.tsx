@@ -50,7 +50,7 @@ export async function generateMetadata({
 
   return {
     title: `${data.nombre} - ${data.precio}€ | Gestoría Inmonest`,
-    description: `Solicita ${data.nombre} por ${data.precio}€. ${data.incluye.slice(0, 2).join('. ')}. Redactado por abogados especializados. Entrega en 48h.`,
+    description: `Solicita ${data.nombre} por ${data.precio}€. ${data.incluye.slice(0, 2).join('. ')}. Redactado por gestoría inmobiliaria experta. Entrega en 48h.`,
     alternates: {
       canonical: `${BASE_URL}/gestoria/solicitar/${servicio}`,
     },
@@ -145,7 +145,7 @@ export default async function SolicitarServicioPage({
                 <div className="border-t border-white/10 pt-5 space-y-3">
                   <div className="flex items-center gap-2">
                     <span className="text-[#c9a84c]">⚖️</span>
-                    <span className="text-xs text-white/70">Redactado por abogados especializados</span>
+                    <span className="text-xs text-white/70">Redactado por gestoría inmobiliaria experta</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="text-[#c9a84c]">🔒</span>

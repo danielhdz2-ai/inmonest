@@ -7,14 +7,14 @@ import Script from 'next/script'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Compraventa Vivienda【DESDE 80€】Legal con Abogado | Inmonest',
-  description: 'Contrato de compraventa de vivienda redactado por abogados. Protege tu compra o venta. Arras, reserva, cláusulas especiales. Desde 80€. Entrega en 24-48h ✓',
+  title: 'Contrato de Compraventa Vivienda【DESDE 80€】Legal con Gestoría Experta | Inmonest',
+  description: 'Contrato de compraventa de vivienda redactado por gestoría inmobiliaria experta. Protege tu compra o venta. Arras, reserva, cláusulas especiales. Desde 80€. Entrega en 24-48h ✓',
   alternates: {
     canonical: `${BASE_URL}/gestoria/contrato-compraventa`,
   },
   openGraph: {
     title: 'Contrato de Compraventa - Desde 80€ | Inmonest',
-    description: 'Contrato de compraventa profesional redactado por abogados. Protege tu inversión inmobiliaria.',
+    description: 'Contrato de compraventa profesional redactado por gestoría inmobiliaria experta. Protege tu inversión inmobiliaria.',
     url: `${BASE_URL}/gestoria/contrato-compraventa`,
     type: 'website',
   },
@@ -24,7 +24,7 @@ const schemaJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Contrato de Compraventa de Vivienda',
-  description: 'Contrato de compraventa de inmueble redactado por abogados especializados en derecho inmobiliario. Incluye todas las cláusulas legales necesarias para proteger comprador y vendedor.',
+  description: 'Contrato de compraventa de inmueble redactado por gestoría inmobiliaria experta en contratos inmobiliarios. Incluye todas las cláusulas legales necesarias para proteger comprador y vendedor.',
   provider: {
     '@type': 'Organization',
     name: 'Inmonest',
@@ -68,7 +68,7 @@ export default function ContratoCompraventaPage() {
                 Contrato de Compraventa de Vivienda
               </h1>
               <p className="text-xl text-white/80 leading-relaxed mb-8">
-                ¿Vas a comprar o vender un piso? Protege tu inversión con un contrato redactado por abogados. Con todas las cláusulas legales. <strong>Desde 80€.</strong>
+                ¿Vas a comprar o vender un piso? Protege tu inversión con un contrato redactado por nuestra gestoría. Con todas las cláusulas legales. <strong>Desde 80€.</strong>
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -94,7 +94,7 @@ export default function ContratoCompraventaPage() {
             <div className="grid sm:grid-cols-4 gap-6">
               <div className="text-center">
                 <div className="text-4xl mb-3">⚖️</div>
-                <h3 className="font-bold text-gray-900 mb-2">Redactado por abogados</h3>
+                <h3 className="font-bold text-gray-900 mb-2">Redactado por gestoría experta</h3>
                 <p className="text-gray-600 text-sm">Especialistas en derecho inmobiliario</p>
               </div>
               <div className="text-center">
@@ -263,8 +263,8 @@ export default function ContratoCompraventaPage() {
               <div className="flex gap-4">
                 <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#c9962a] text-white flex items-center justify-center font-bold">2</div>
                 <div>
-                  <h3 className="font-bold text-gray-900 mb-2">Abogado revisa y redacta</h3>
-                  <p className="text-gray-700">Un abogado especializado redacta el contrato con todas las cláusulas necesarias según tu caso.</p>
+                  <h3 className="font-bold text-gray-900 mb-2">Equipo de gestoría revisa y redacta</h3>
+                  <p className="text-gray-700">Nuestro equipo de gestoría redacta el contrato con todas las cláusulas necesarias según tu caso.</p>
                 </div>
               </div>
               
@@ -338,7 +338,7 @@ export default function ContratoCompraventaPage() {
           <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-8 text-white text-center">
             <h3 className="text-2xl font-bold mb-4">¿Listo para proteger tu compraventa?</h3>
             <p className="text-white/80 mb-6">
-              Contrato redactado por abogados en 24-48h. Con todas las cláusulas legales necesarias.
+              Contrato redactado por nuestra gestoría en 24-48h. Con todas las cláusulas legales necesarias.
             </p>
             <Link
               href="/gestoria/solicitar/contrato-compraventa"

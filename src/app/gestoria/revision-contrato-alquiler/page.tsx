@@ -8,7 +8,7 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   title: 'Revisión Contrato Alquiler 【39€】 Protege tus Derechos como Inquilino | Inmonest',
-  description: '¿Tu casero te ha dado un contrato de alquiler? Abogado lo revisa en 24h. Detectamos cláusulas abusivas, abusos y condiciones ilegales. Desde 39€.',
+  description: '¿Tu casero te ha dado un contrato de alquiler? Nuestra gestoría lo revisa en 24h. Detectamos cláusulas abusivas, abusos y condiciones ilegales. Desde 39€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/revision-contrato-alquiler`,
   },
@@ -30,7 +30,7 @@ export default function RevisionContratoAlquilerPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Revisión de Contrato de Alquiler para Inquilinos',
-    description: 'Revisión legal de contratos de alquiler LAU por abogados especializados. Protegemos tus derechos como inquilino. Detectamos cláusulas abusivas, fianzas ilegales y condiciones contrarias a la Ley de Vivienda 2026.',
+    description: 'Revisión legal de contratos de alquiler LAU por gestoría inmobiliaria experta. Protegemos tus derechos como inquilino. Detectamos cláusulas abusivas, fianzas ilegales y condiciones contrarias a la Ley de Vivienda 2026.',
     provider: {
       '@type': 'Organization',
       name: 'Inmonest',
@@ -117,7 +117,7 @@ export default function RevisionContratoAlquilerPage() {
                 ¿Tu casero te ha dado un <span className="text-[#c9962a]">contrato de alquiler</span>?
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Un abogado especializado lo revisa en <strong>24 horas</strong>. Detectamos cláusulas abusivas, 
+                Nuestro equipo de gestoría lo revisa en <strong>24 horas</strong>. Detectamos cláusulas abusivas, 
                 fianzas ilegales y condiciones que violan la <strong>Ley de Vivienda 2026</strong>.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -160,7 +160,7 @@ export default function RevisionContratoAlquilerPage() {
             <div className="relative">
               <Image
                 src="/familia2.jpg"
-                alt="Abogado revisando contrato de alquiler"
+                alt="Gestoría revisando contrato de alquiler"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-2xl"
@@ -331,7 +331,7 @@ export default function RevisionContratoAlquilerPage() {
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="text-yellow-500 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
               <p className="text-gray-700 mb-4 italic">
-                "Me prohibían tener perro. El abogado me explicó que era abusivo salvo que los estatutos 
+                "Me prohibían tener perro. Nuestra gestoría me explicó que era abusivo salvo que los estatutos 
                 lo prohibieran (y no lo hacían). Ahora vivo con mi golden retriever."
               </p>
               <div className="text-sm font-semibold text-gray-900">Laura G., Valencia</div>
@@ -357,7 +357,7 @@ export default function RevisionContratoAlquilerPage() {
               },
               {
                 step: '2',
-                title: 'Abogado lo analiza',
+                title: 'Gestoría lo analiza',
                 desc: 'Revisamos cada cláusula contra la Ley de Vivienda 2026, LAU y jurisprudencia del Tribunal Supremo.',
                 time: '12-24 horas',
               },

@@ -44,7 +44,7 @@ export default function Home() {
               <span className="text-white">desde 29€ en 48h</span>
             </h1>
             <p className="mt-5 text-lg text-white/80 max-w-xl leading-relaxed">
-              Gestoría online especializada: Contratos de arras, alquiler LAU, compraventa. Redactados por abogados. También pisos entre particulares sin comisiones.
+              Gestoría online especializada: Contratos de arras, alquiler LAU, compraventa. Redactados por expertos. También pisos entre particulares sin comisiones.
             </p>
           </div>
 
@@ -61,7 +61,7 @@ export default function Home() {
       <section className="bg-[#fef9e8] border-y border-[#f4c94a]/30">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap justify-center items-center gap-6 sm:gap-10 text-sm text-gray-600">
           {[
-            '⚖️ Redactados por abogados',
+            '⚖️ Redactados por expertos',
             '⚡ Entrega en 48h',
             '💰 Desde 29€',
             '🔒 Pago seguro Stripe',
@@ -83,7 +83,7 @@ export default function Home() {
             ⚖️ Gestoría Inmobiliaria Digital
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
-            Contratos redactados por abogados en 48h
+            Contratos redactados por expertos en 48h
           </h2>
           <p className="text-gray-600 text-base max-w-2xl mx-auto">
             Redacción, revisión y asesoría legal inmobiliaria. Desde 29€. Pago seguro con Stripe.
