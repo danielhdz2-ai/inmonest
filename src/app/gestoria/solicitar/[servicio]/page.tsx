@@ -100,11 +100,6 @@ export default async function SolicitarServicioPage({
         url: BASE_URL,
       },
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '324',
-    },
   }
 
   return (

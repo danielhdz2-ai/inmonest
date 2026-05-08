@@ -42,11 +42,6 @@ export default function AsesoriaCompraPisoPage() {
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '156',
-    },
   }
 
   return (

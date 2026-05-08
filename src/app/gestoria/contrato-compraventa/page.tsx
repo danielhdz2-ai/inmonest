@@ -35,11 +35,7 @@ const schemaJson = JSON.stringify({
     price: '80',
     priceCurrency: 'EUR',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '156',
-  },
+
 })
 
 export default function ContratoCompraventaPage() {

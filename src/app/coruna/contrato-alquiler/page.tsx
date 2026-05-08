@@ -48,11 +48,6 @@ export default function ContratoAlquilerCorunaPage() {
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '187',
-    },
   }
 
   const faqSchema = {

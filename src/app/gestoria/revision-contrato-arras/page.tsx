@@ -42,11 +42,7 @@ export default function RevisionContratosArrasPage() {
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '187',
-    },
+
   }
 
   const faqSchema = {

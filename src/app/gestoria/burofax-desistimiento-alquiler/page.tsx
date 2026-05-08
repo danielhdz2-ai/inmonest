@@ -35,11 +35,6 @@ const schemaJson = JSON.stringify({
     price: '15',
     priceCurrency: 'EUR',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '89',
-  },
 })
 
 export default function BurofaxDesistimientoPage() {

@@ -39,15 +39,6 @@ const schemaJson = JSON.stringify({
     url: BASE_URL,
   },
   
-  // Valoraciones
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.8',
-    reviewCount: '127',
-    bestRating: '5',
-    worstRating: '1'
-  },
-  
   // Área de servicio
   areaServed: { 
     '@type': 'Country', 
