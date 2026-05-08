@@ -101,10 +101,27 @@ export default function RegistroPage() {
           <p className="text-gray-500 text-sm mb-1">
             Confirma tu email para activar la cuenta:
           </p>
-          <p className="font-semibold text-gray-800 mb-6">{email}</p>
-          <p className="text-xs text-gray-400">
+          <p className="font-semibold text-gray-800 mb-4">{email}</p>
+          <p className="text-xs text-gray-400 mb-6">
             Te hemos enviado un email de confirmación. Haz clic en el enlace para verificar tu cuenta.
           </p>
+          
+          {/* Botones de acceso rápido */}
+          <div className="space-y-3 pt-4 border-t border-gray-100">
+            <p className="text-xs font-medium text-gray-600 mb-3">Mientras tanto, puedes:</p>
+            <Link
+              href="/gestoria"
+              className="block w-full py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors"
+            >
+              Ver contratos de gestoría
+            </Link>
+            <Link
+              href="/mi-cuenta"
+              className="block w-full py-3 border-2 border-[#c9962a] text-[#c9962a] rounded-xl text-sm font-bold hover:bg-[#fef9f0] transition-colors"
+            >
+              Ir a mi panel
+            </Link>
+          </div>
         </div>
       </div>
     )
