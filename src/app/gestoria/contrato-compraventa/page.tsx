@@ -359,23 +359,23 @@ export default function ContratoCompraventaPage() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-8">Servicios relacionados</h2>
             <div className="grid sm:grid-cols-3 gap-6">
-              <Link href="/gestoria/certificado-eficiencia-energetica" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-[#c9962a] transition-colors">
+              <Link href="/gestoria/solicitar/arras-penitenciales" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-[#c9962a] transition-colors">
                 <h3 className="font-bold text-gray-900 group-hover:text-[#c9962a] mb-2">
-                  Certificado Energético →
+                  Contrato de Arras →
                 </h3>
-                <p className="text-sm text-gray-600">Desde 45€</p>
+                <p className="text-sm text-gray-600">Desde 145€</p>
               </Link>
-              <Link href="/gestoria/nota-simple" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-[#c9962a] transition-colors">
+              <Link href="/gestoria/solicitar/revision-arras" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-[#c9962a] transition-colors">
                 <h3 className="font-bold text-gray-900 group-hover:text-[#c9962a] mb-2">
-                  Nota Simple Registro →
+                  Revisión de Arras →
                 </h3>
-                <p className="text-sm text-gray-600">Desde 9€</p>
+                <p className="text-sm text-gray-600">Desde 60€</p>
               </Link>
-              <Link href="/gestoria/modelo-600" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-[#c9962a] transition-colors">
+              <Link href="/gestoria" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-[#c9962a] transition-colors">
                 <h3 className="font-bold text-gray-900 group-hover:text-[#c9962a] mb-2">
-                  Modelo 600 (ITP) →
+                  Más Servicios →
                 </h3>
-                <p className="text-sm text-gray-600">Desde 25€</p>
+                <p className="text-sm text-gray-600">Ver todos</p>
               </Link>
             </div>
           </div>

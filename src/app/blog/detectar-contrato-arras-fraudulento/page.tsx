@@ -116,7 +116,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
           </p>
           <p className="bg-green-50 p-4 rounded-lg">
             ✅ <strong>Qué hacer:</strong> Exige ver la nota simple ANTES de firmar arras. Pídela tú mismo al Registro 
-            o <Link href="/gestoria/nota-simple" className="text-green-700 underline">te la gestionamos en 24h (15€)</Link>.
+            o <Link href="/gestoria/solicitar/asesoria-compra" className="text-green-700 underline">contrátanos para verificar la propiedad</Link>.
           </p>
 
           <h3>4. Precio muy por debajo del mercado</h3>
@@ -221,7 +221,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
           <ol className="list-decimal pl-6 space-y-4">
             <li>
               <strong>Pide nota simple oficial (15€, 24h):</strong> No te fíes de PDFs que te envíe el vendedor. 
-              <Link href="/gestoria/nota-simple" className="text-blue-600 underline ml-1">Pídela tú mismo aquí</Link>.
+              <Link href="/gestoria/solicitar/asesoria-compra" className="text-blue-600 underline ml-1">Consúltanos para verificar</Link>.
             </li>
             <li>
               <strong>Verifica identidad del vendedor:</strong> Compara DNI físico con nota simple. Deben coincidir nombre y apellidos exactos.

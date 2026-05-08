@@ -49,11 +49,62 @@ export default function RevisionContratosArrasPage() {
     },
   }
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '¿Cuánto tarda la revisión?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Entre 12 y 24 horas laborables desde que subes el contrato. Si es urgente, podemos hacerlo en menos de 6 horas (consultar disponibilidad por WhatsApp).',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Qué pasa si encuentran errores graves?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Te enviamos un informe detallado explicando los errores, el riesgo que suponen, y recomendaciones concretas. Si contratas la revisión completa (89€), te damos la versión corregida y argumentos legales para negociar con el vendedor.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Puedo usar el informe para cancelar la compra?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sí. Si detectamos irregularidades graves (datos erróneos, cargas ocultas, vendedor sin legitimación), el informe es válido legalmente para justificar la no firma y recuperar cualquier señal entregada.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Revisáis la nota simple del inmueble?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sí, si la aportas. Verificamos que los datos del contrato coincidan con el Registro de la Propiedad. Si no la tienes, podemos pedirla nosotros por 15€ adicionales.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Y si el vendedor se niega a cambiar el contrato?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Te damos argumentos legales y jurisprudencia para defender tus derechos. Si aún así se niega, es una señal de alerta: mejor no comprar un piso a alguien que no acepta condiciones justas.',
+        },
+      },
+    ],
+  }
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
       <WhatsAppButton />
@@ -485,26 +536,26 @@ export default function RevisionContratosArrasPage() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold mb-8 text-gray-900">Servicios relacionados</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/gestoria/arras-penitenciales" className="border rounded-lg p-6 hover:shadow-lg transition">
+            <Link href="/gestoria/solicitar/arras-penitenciales" className="border rounded-lg p-6 hover:shadow-lg transition">
               <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Redactar contrato de arras</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Si necesitas un contrato desde cero, lo redactamos personalizado en 48h.
               </p>
               <span className="text-[#c9962a] font-semibold">Desde 145€ →</span>
             </Link>
-            <Link href="/gestoria/nota-simple" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Pedir nota simple</h3>
+            <Link href="/gestoria/solicitar/asesoria-compra" className="border rounded-lg p-6 hover:shadow-lg transition">
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Asesoría completa de compra</h3>
               <p className="text-gray-600 text-sm mb-3">
-                Nota simple registral oficial en 24h. Imprescindible antes de comprar.
+                Acompañamiento legal completo desde la reserva hasta la escritura.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 15€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 95€ →</span>
             </Link>
-            <Link href="/gestoria/contrato-compraventa" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Contrato de compraventa</h3>
+            <Link href="/gestoria" className="border rounded-lg p-6 hover:shadow-lg transition">
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Más servicios de gestoría</h3>
               <p className="text-gray-600 text-sm mb-3">
-                Para la escritura definitiva ante notario. Redacción legal completa.
+                Contratos de alquiler, rescisión, análisis de fraude y más servicios legales.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 195€ →</span>
+              <span className="text-[#c9962a] font-semibold">Ver todos →</span>
             </Link>
           </div>
         </div>

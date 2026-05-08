@@ -24,25 +24,65 @@ export default function RegistroPage() {
     setLoading(true)
     setError(null)
     
-    const supabase = createClient()
-    const { error } = await supabase.auth.signUp({
-      email: email.trim().toLowerCase(),
-      password: password.trim(),
-      options: {
-        data: { 
-          full_name: nombre.trim(),
+    try {
+      const supabase = createClient()
+      
+      // Intento de registro
+      const { data, error } = await supabase.auth.signUp({
+        email: email.trim().toLowerCase(),
+        password: password.trim(),
+        options: {
+          data: { 
+            full_name: nombre.trim(),
+          },
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
-        emailRedirectTo: `${location.origin}/auth/callback`,
-      },
-    })
-    
-    setLoading(false)
-    if (error) {
-      setError(error.message === 'User already registered' 
-        ? 'Este email ya está registrado. Inicia sesión.'
-        : 'No se pudo crear la cuenta. Inténtalo de nuevo.')
-    } else {
-      setSent(true)
+      })
+      
+      setLoading(false)
+      
+      if (error) {
+        console.error('Error de registro:', error)
+        
+        // Mensajes de error específicos
+        if (error.message.includes('already registered')) {
+          setError('Este email ya está registrado. Inicia sesión.')
+        } else if (error.message.includes('rate limit')) {
+          setError('Demasiados intentos. Espera 1 minuto.')
+        } else if (error.message.includes('Invalid email')) {
+          setError('Email inválido.')
+        } else if (error.message.includes('Password')) {
+          setError('La contraseña debe tener al menos 8 caracteres.')
+        } else if (error.message.includes('not allowed')) {
+          setError('Registro temporalmente deshabilitado.')
+        } else {
+          setError('Error al crear cuenta. Usa Google para registrarte.')
+        }
+        return
+      }
+      
+      // Si el usuario fue creado correctamente
+      if (data.user) {
+        // Si hay sesión (auto-confirm habilitado), redirigir
+        if (data.session) {
+          console.log('Usuario registrado con auto-confirmación')
+          window.location.href = '/mi-cuenta'
+          return
+        }
+        
+        // Si no hay sesión, requiere confirmar email
+        console.log('Usuario creado, requiere confirmación de email')
+        setSent(true)
+        return
+      }
+      
+      // Caso inesperado
+      setError('Error desconocido. Intenta con Google.')
+      
+    } catch (err) {
+      setLoading(false)
+      console.error('Excepción en registro:', err)
+      setError('Error de conexión. Verifica tu internet.')
     }
   }
 

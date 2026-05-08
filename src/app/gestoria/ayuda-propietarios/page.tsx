@@ -75,10 +75,10 @@ export default function AyudaPropietariosPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
-                  href="/gestoria/alquiler-vivienda-lau"
+                  href="/gestoria/solicitar/contrato-alquiler"
                   className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
-                  Solicitar contrato (73€)
+                  Solicitar contrato (120€)
                 </Link>
                 <a
                   href="https://wa.me/34624177966?text=Hola,%20necesito%20un%20contrato%20de%20alquiler%20para%20mi%20piso"
@@ -405,10 +405,10 @@ export default function AyudaPropietariosPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/gestoria/alquiler-vivienda-lau"
+              href="/gestoria/solicitar/contrato-alquiler"
               className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Solicitar contrato (73€)
+              Solicitar contrato (120€)
             </Link>
             <a
               href="https://wa.me/34624177966?text=Hola,%20necesito%20asesoramiento%20para%20alquilar%20mi%20piso"
@@ -426,27 +426,20 @@ export default function AyudaPropietariosPage() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold mb-8 text-gray-900">Servicios relacionados</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/gestoria/rescision-contrato" className="border rounded-lg p-6 hover:shadow-lg transition">
+          <div className="grid md:grid-cols-2 gap-6">
+            <Link href="/gestoria/solicitar/rescision-alquiler" className="border rounded-lg p-6 hover:shadow-lg transition">
               <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Rescisión de contrato</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Si necesitas rescindir un contrato de alquiler por incumplimiento del inquilino.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 85€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 73€ →</span>
             </Link>
-            <Link href="/gestoria/certificado-eficiencia-energetica" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Certificado energético</h3>
+            <Link href="/gestoria" className="border rounded-lg p-6 hover:shadow-lg transition">
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Más servicios de gestoría</h3>
               <p className="text-gray-600 text-sm mb-3">
-                Obligatorio para alquilar. Te lo gestionamos en 48h con técnico certificado.
+                Revisión de contratos, arras, compraventa y más servicios legales inmobiliarios.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 55€ →</span>
-            </Link>
-            <Link href="/gestoria/burofax-desistimiento-alquiler" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Burofax al inquilino</h3>
-              <p className="text-gray-600 text-sm mb-3">
-                Para notificar impagos, incumplimientos o inicio de desahucio de forma legal.
-              </p>
-              <span className="text-[#c9962a] font-semibold">Desde 19€ →</span>
+              <span className="text-[#c9962a] font-semibold">Ver todos →</span>
             </Link>
           </div>
         </div>

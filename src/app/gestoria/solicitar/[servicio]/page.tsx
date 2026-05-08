@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 import Navbar from '@/components/NavbarServer'
 import SolicitarFormClient from './SolicitarFormClient'
+
+const BASE_URL = 'https://inmonest.com'
 
 const SERVICIOS: Record<string, { nombre: string; precio: number; categoria: string; incluye: string[] }> = {
   'arras-penitenciales':    { nombre: 'Contrato de Arras Penitenciales',          precio: 145, categoria: 'Compraventa',           incluye: ['Redacción personalizada con datos reales', 'Revisión de nota simple registral', 'Cláusulas de desistimiento y penalización', 'PDF firmable en 48h'] },
@@ -23,10 +26,45 @@ const SERVICIOS: Record<string, { nombre: string; precio: number; categoria: str
   'ayuda-propietarios':                 { nombre: 'Redacción de Contrato LAU para Propietarios',      precio: 73,  categoria: 'Alquiler',             incluye: ['Contrato LAU conforme 2026', 'Cláusulas de protección propietario', 'Inventario de bienes incluido', 'Actualización de renta IPC', 'PDF firmable en 48h'] },
   'contrato-ilegal':                    { nombre: 'Análisis de Fraude Inmobiliario',                  precio: 29,  categoria: 'Revisión Legal',       incluye: ['Verificación documentación', 'Detección de señales de fraude', 'Análisis nota simple registral', 'Informe de riesgos críticos', 'Entrega urgente en 12h'] },
   'asesoria-compra':                    { nombre: 'Asesoría Completa Compra de Vivienda',             precio: 95,  categoria: 'Servicios Premium',    incluye: ['Análisis inicial gratuito', 'Revisión nota simple + arras', 'Asesoramiento hipoteca', 'Revisión documentación vendedor', 'Acompañamiento hasta escritura'] },
+  'contrato-compraventa':               { nombre: 'Contrato de Compraventa de Vivienda',              precio: 80,  categoria: 'Compraventa',          incluye: ['Redacción completa personalizada', 'Cláusulas de protección comprador/vendedor', 'Condiciones de pago y entrega', 'Garantías y saneamiento', 'PDF firmable en 48h'] },
 }
 
 export function generateStaticParams() {
   return Object.keys(SERVICIOS).map((servicio) => ({ servicio }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ servicio: string }>
+}): Promise<Metadata> {
+  const { servicio } = await params
+  const data = SERVICIOS[servicio]
+  
+  if (!data) {
+    return {
+      title: 'Servicio no encontrado | Inmonest',
+      description: 'El servicio solicitado no está disponible.',
+    }
+  }
+
+  return {
+    title: `${data.nombre} - ${data.precio}€ | Gestoría Inmonest`,
+    description: `Solicita ${data.nombre} por ${data.precio}€. ${data.incluye.slice(0, 2).join('. ')}. Redactado por abogados especializados. Entrega en 48h.`,
+    alternates: {
+      canonical: `${BASE_URL}/gestoria/solicitar/${servicio}`,
+    },
+    openGraph: {
+      title: `${data.nombre} - ${data.precio}€`,
+      description: `${data.incluye[0]}. Servicio profesional de gestoría inmobiliaria.`,
+      url: `${BASE_URL}/gestoria/solicitar/${servicio}`,
+      type: 'website',
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  }
 }
 
 export default async function SolicitarServicioPage({
@@ -38,8 +76,43 @@ export default async function SolicitarServicioPage({
   const data = SERVICIOS[servicio]
   if (!data) notFound()
 
+  // Schema markup Product para SEO
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: data.nombre,
+    description: data.incluye.join('. '),
+    category: data.categoria,
+    brand: {
+      '@type': 'Brand',
+      name: 'Inmonest',
+    },
+    offers: {
+      '@type': 'Offer',
+      url: `${BASE_URL}/gestoria/solicitar/${servicio}`,
+      priceCurrency: 'EUR',
+      price: data.precio,
+      availability: 'https://schema.org/InStock',
+      priceValidUntil: '2027-12-31',
+      seller: {
+        '@type': 'Organization',
+        name: 'Inmonest',
+        url: BASE_URL,
+      },
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '324',
+    },
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <Navbar />
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">

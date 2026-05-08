@@ -24,21 +24,27 @@ export const metadata: Metadata = {
 
   // title.template: todas las subpáginas heredan automáticamente "Título | Inmonest"
   title: {
-    default: 'Inmonest | Pisos entre particulares sin comisiones',
+    default: 'Inmonest | Gestoría Inmobiliaria Digital + Contratos desde 29€',
     template: '%s | Inmonest',
   },
   description:
-    'Compra, vende o alquila tu piso directamente entre particulares. Sin agencias, sin comisiones. Miles de inmuebles en toda España.',
+    'Gestoría inmobiliaria online: Contratos de arras, alquiler LAU, compraventa desde 29€. Redactados por abogados en 48h. También pisos entre particulares sin comisiones.',
   keywords: [
-    'pisos particulares',
-    'vender casa sin comisión',
-    'alquiler sin agencia',
-    'comprar piso sin intermediarios',
-    'inmuebles particulares España',
-    'portal inmobiliario sin comisiones',
-    'contratos de arras',
-    'contrato de alquiler',
     'gestoría inmobiliaria online',
+    'contratos de arras',
+    'contrato de alquiler LAU',
+    'contrato compraventa vivienda',
+    'abogado inmobiliario online',
+    'revisión contrato arras',
+    'revisión contrato alquiler',
+    'gestoría digital Barcelona',
+    'gestoría digital Madrid',
+    'gestoría digital Valencia',
+    'redactar contrato alquiler',
+    'redactar contrato arras',
+    'asesoría jurídica compra vivienda',
+    'pisos particulares sin comisión',
+    'alquiler sin agencia',
     'inmonest',
   ],
   authors: [{ name: 'Inmonest', url: 'https://inmonest.com' }],
@@ -71,9 +77,9 @@ export const metadata: Metadata = {
 
   // Open Graph — imagen cuando alguien comparte un link
   openGraph: {
-    title: 'Inmonest | Pisos entre particulares sin comisiones',
+    title: 'Inmonest | Gestoría Inmobiliaria Digital + Contratos desde 29€',
     description:
-      'Compra, vende o alquila tu piso directamente entre particulares. Sin agencias, sin comisiones.',
+      'Gestoría inmobiliaria online: Contratos de arras, alquiler LAU, compraventa desde 29€. Redactados por abogados en 48h.',
     url: 'https://inmonest.com',
     siteName: 'Inmonest',
     locale: 'es_ES',

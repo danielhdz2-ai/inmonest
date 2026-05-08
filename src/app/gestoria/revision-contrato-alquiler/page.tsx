@@ -49,11 +49,62 @@ export default function RevisionContratoAlquilerPage() {
     },
   }
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '¿Y si el propietario se niega a cambiar el contrato?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Tienes dos opciones: 1) Firmas sabiendo qué cláusulas son nulas (no te afectarán aunque estén escritas), o 2) Buscas otro piso. Si un casero se niega a eliminar cláusulas ilegales, es mala señal.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Las cláusulas abusivas son nulas aunque las firme?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'SÍ. Las cláusulas contrarias a la Ley de Vivienda o LAU son nulas de pleno derecho. Aunque las firmes, no tienen validez legal. Pero es mejor eliminarlas antes para evitar conflictos futuros.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Puedo usar el informe si voy a juicio?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sí. El informe es un dictamen jurídico válido. Si el propietario incumple o intenta aplicar cláusulas abusivas, puedes usarlo como prueba en reclamación o juicio.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Revisáis contratos de alquiler temporal?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sí, también revisamos temporales, turísticos, de habitación, etc. Los precios son los mismos. La Ley de Vivienda 2026 también aplica a temporales.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Cuánto tarda la revisión?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Entre 12 y 24 horas laborables. Si es urgente (firmas mañana), podemos hacerlo en 6 horas (consultar disponibilidad por WhatsApp).',
+        },
+      },
+    ],
+  }
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navbar />
       <WhatsAppButton />
@@ -506,19 +557,19 @@ export default function RevisionContratoAlquilerPage() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl font-bold mb-8 text-gray-900">Servicios relacionados</h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/gestoria/alquiler-vivienda-lau" className="border rounded-lg p-6 hover:shadow-lg transition">
+            <Link href="/gestoria/solicitar/contrato-alquiler" className="border rounded-lg p-6 hover:shadow-lg transition">
               <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Redactar contrato LAU</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Si eres propietario, te redactamos un contrato legal adaptado a la Ley de Vivienda 2026.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 73€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 120€ →</span>
             </Link>
-            <Link href="/gestoria/burofax-desistimiento-alquiler" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Burofax desistimiento</h3>
+            <Link href="/gestoria" className="border rounded-lg p-6 hover:shadow-lg transition">
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Más servicios de gestoría</h3>
               <p className="text-gray-600 text-sm mb-3">
-                Si quieres salir del alquiler antes de tiempo, te redactamos el burofax legal.
+                Contratos de arras, compraventa, rescisión y más servicios legales inmobiliarios.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 19€ →</span>
+              <span className="text-[#c9962a] font-semibold">Ver todos →</span>
             </Link>
             <Link href="/gestoria/contrato-ilegal" className="border rounded-lg p-6 hover:shadow-lg transition">
               <h3 className="font-bold text-lg mb-2 text-[#c9962a]">¿Contrato ilegal?</h3>

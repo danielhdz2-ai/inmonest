@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -794,6 +795,7 @@ export default async function ServicioGestoriaPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJson }} />
 
       <Navbar />
+      <WhatsAppButton />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative h-[400px] sm:h-[480px] overflow-hidden">
@@ -878,9 +880,23 @@ export default async function ServicioGestoriaPage({
               >
                 Solicitar ahora
               </Link>
+              <a
+                href="https://wa.me/34641009947?text=Hola,%20tengo%20dudas%20sobre%20el%20servicio%20de%20{data.nombre}"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm"
+              >
+                💬 WhatsApp: 641 009 947
+              </a>
+              <a
+                href="tel:+34641009947"
+                className="block w-full text-center border border-[#c9a84c] text-[#c9a84c] hover:bg-[#fdf8ee] font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
+              >
+                📞 Llamar: 641 009 947
+              </a>
               <Link
                 href="/gestoria"
-                className="block w-full text-center border border-[#c9a84c] text-[#c9a84c] hover:bg-[#fdf8ee] font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
+                className="block w-full text-center border border-gray-300 text-gray-600 hover:bg-gray-50 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
                 Ver todos los contratos
               </Link>
@@ -983,12 +999,20 @@ export default async function ServicioGestoriaPage({
             >
               Solicitar {data.nombre} — {data.precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>
             </Link>
-            <Link
-              href="/gestoria"
+            <a
+              href="https://wa.me/34641009947?text=Hola,%20tengo%20dudas%20sobre%20{data.nombre}"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors"
+            >
+              💬 WhatsApp: 641 009 947
+            </a>
+            <a
+              href="tel:+34641009947"
               className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors"
             >
-              Ver todos los contratos
-            </Link>
+              📞 Llamar ahora
+            </a>
           </div>
         </section>
       </div>

@@ -391,22 +391,22 @@ export default function OportunidadesBancariasPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {[
                 {
-                  titulo: 'Nota Simple',
-                  precio: '9 €',
-                  desc: 'Verifica cargas, hipotecas y titularidad del inmueble antes de hacer ninguna oferta.',
-                  href: '/gestoria/nota-simple',
+                  titulo: 'Asesoría de Compra',
+                  precio: '95 €',
+                  desc: 'Verificación completa de la propiedad y acompañamiento legal en todo el proceso de compra.',
+                  href: '/gestoria/solicitar/asesoria-compra',
                   urgente: true,
                 },
                 {
                   titulo: 'Contrato de Arras',
-                  precio: '120 €',
+                  precio: '145 €',
                   desc: 'Reserva el piso bancario con seguridad legal. Redactado por abogados, entrega en 48h.',
-                  href: '/gestoria/arras-penitenciales',
+                  href: '/gestoria/solicitar/arras-penitenciales',
                   urgente: false,
                 },
                 {
                   titulo: 'Contrato de Compraventa',
-                  precio: '120 €',
+                  precio: '80 €',
                   desc: 'El documento definitivo revisado por nuestros abogados antes de la firma ante notario.',
                   href: '/gestoria/contrato-compraventa',
                   urgente: false,
@@ -471,7 +471,7 @@ export default function OportunidadesBancariasPage() {
               {[
                 { label: 'Blog: Guía fondos bancarios', href: '/blog/pisos-fondo-bancario-baratos' },
                 { label: 'Contratos de Arras', href: '/gestoria' },
-                { label: 'Nota Simple registral', href: '/gestoria/nota-simple' },
+                { label: 'Asesoría de Compra', href: '/gestoria/solicitar/asesoria-compra' },
                 { label: 'Calculadora gastos compra', href: '/calculadora-gastos-compra' },
                 { label: 'Pisos en Madrid', href: '/madrid/pisos' },
                 { label: 'Pisos en Barcelona', href: '/barcelona/pisos' },

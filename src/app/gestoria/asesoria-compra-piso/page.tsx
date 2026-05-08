@@ -534,23 +534,23 @@ export default function AsesoriaCompraPisoPage() {
             <Link href="/gestoria/revision-contrato-arras" className="border rounded-lg p-6 hover:shadow-lg transition">
               <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Revisión contrato de arras</h3>
               <p className="text-gray-600 text-sm mb-3">
-                Si solo necesitas revisar el contrato de arras que te han dado, desde 45€.
+                Si solo necesitas revisar el contrato de arras que te han dado, desde 60€.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 45€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 60€ →</span>
             </Link>
-            <Link href="/gestoria/nota-simple" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Pedir nota simple</h3>
+            <Link href="/gestoria/solicitar/arras-penitenciales" className="border rounded-lg p-6 hover:shadow-lg transition">
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Redactar contrato de arras</h3>
               <p className="text-gray-600 text-sm mb-3">
-                Nota simple registral oficial en 24h. Imprescindible antes de cualquier compra.
+                Contrato de arras personalizado redactado por abogados en 48h.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 15€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 145€ →</span>
             </Link>
-            <Link href="/gestoria/contrato-compraventa" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Redactar compraventa</h3>
+            <Link href="/gestoria" className="border rounded-lg p-6 hover:shadow-lg transition">
+              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Más servicios de gestoría</h3>
               <p className="text-gray-600 text-sm mb-3">
-                Si compras de particular a particular sin agencia, te redactamos el contrato completo.
+                Contratos de alquiler, rescisión, análisis de fraude y más servicios legales.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 195€ →</span>
+              <span className="text-[#c9962a] font-semibold">Ver todos →</span>
             </Link>
           </div>
         </div>

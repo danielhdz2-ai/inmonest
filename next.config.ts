@@ -6,6 +6,30 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
+  
+  // Redirects 301 para URLs antiguas o eliminadas
+  async redirects() {
+    return [
+      // Servicios eliminados → redirigir a gestoría principal
+      {
+        source: '/gestoria/certificado-eficiencia-energetica',
+        destination: '/gestoria',
+        permanent: true, // 301
+      },
+      {
+        source: '/gestoria/nota-simple',
+        destination: '/gestoria',
+        permanent: true,
+      },
+      // Si había URLs antiguas de contratos, agregar aquí
+      // {
+      //   source: '/contratos/:slug',
+      //   destination: '/gestoria/solicitar/:slug',
+      //   permanent: true,
+      // },
+    ]
+  },
+  
   images: {
     // CDNs externos usados por los scrapers — evita errores de dominio no permitido
     remotePatterns: [
