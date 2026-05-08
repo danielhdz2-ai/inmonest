@@ -7,8 +7,9 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Arras en A Coruña 【145€】 Redactado por Abogados | Inmonest',
-  description: 'Contrato de arras penitenciales en A Coruña. Redactado por abogados especializados en derecho inmobiliario. Revisión de nota simple incluida. Entrega en 48h.',
+  title: 'Contratar Contrato de Arras en A Coruña 【145€】 Abogados en 48h | Inmonest',
+  description: '¿Necesitas un contrato de arras en A Coruña? Redacción personalizada por abogados en 48h. Precio fijo 145€. A Coruña, Santiago, Ferrol. Nota simple incluida.',
+  keywords: ['contratar contrato arras A Coruña', 'comprar contrato arras Galicia', 'solicitar contrato arras Santiago', 'precio contrato arras A Coruña', 'abogado contrato arras Ferrol'],
   alternates: {
     canonical: `${BASE_URL}/coruna/contrato-arras`,
   },
@@ -151,6 +152,10 @@ export default function ContratoArrasCorunaPage() {
         {/* ── DESCRIPCIÓN + CTA ─────────────────────────────────────────── */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
+            <div className="bg-orange-50 border-l-4 border-[#c9a84c] p-4 rounded-r-lg mb-6">
+              <p className="text-gray-800 font-semibold text-lg">¿Necesitas redactar un Contrato de Arras Penitenciales en A Coruña?</p>
+              <p className="text-gray-600 text-sm mt-1">Abogados especializados lo redactan por ti en 48h. Precio fijo: 145€. Sin sorpresas.</p>
+            </div>
             <h2 className="text-2xl font-bold text-gray-900">¿Qué es el contrato de arras penitenciales?</h2>
             <p className="text-gray-600 leading-relaxed text-[1.05rem]">
               El contrato de arras penitenciales es el documento precontractual más utilizado en A Coruña y Galicia (Santiago, Ferrol, Narón, Arteixo) para formalizar la intención de compraventa de un inmueble. Permite a cualquiera de las dos partes desistir del acuerdo: el comprador pierde la señal entregada, y el vendedor debe devolver el doble si es él quien se echa atrás. Esta doble penalización lo convierte en la herramienta de seguridad jurídica más equilibrada del mercado inmobiliario gallego.

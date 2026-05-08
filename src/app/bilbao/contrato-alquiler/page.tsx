@@ -7,8 +7,9 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Alquiler LAU en Bilbao 【120€】 Redactado por Abogados | Inmonest',
-  description: 'Contrato de alquiler de vivienda en Bilbao y País Vasco adaptado a LAU y Ley de Vivienda 2026. Redactado por abogados. Entrega en 48h.',
+  title: 'Contratar Contrato de Alquiler LAU en Bilbao 【120€】 Abogados 48h | Inmonest',
+  description: '¿Necesitas un contrato de alquiler LAU en Bilbao? Redacción personalizada por abogados en 48h. Precio fijo 120€. Bilbao, Getxo, Barakaldo. Ley Vivienda 2026.',
+  keywords: ['contratar contrato alquiler Bilbao', 'comprar contrato alquiler Bilbao', 'solicitar contrato alquiler LAU País Vasco', 'precio contrato alquiler Bilbao', 'abogado contrato alquiler Bizkaia'],
   alternates: {
     canonical: `${BASE_URL}/bilbao/contrato-alquiler`,
   },
@@ -151,6 +152,10 @@ export default function ContratoAlquilerBilbaoPage() {
         {/* ── DESCRIPCIÓN + CTA ─────────────────────────────────────────── */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
+            <div className="bg-orange-50 border-l-4 border-[#c9a84c] p-4 rounded-r-lg mb-6">
+              <p className="text-gray-800 font-semibold text-lg">¿Necesitas redactar un Contrato de Alquiler de Vivienda (LAU) en Bilbao?</p>
+              <p className="text-gray-600 text-sm mt-1">Abogados especializados lo redactan por ti en 48h. Precio fijo: 120€. Adaptado a Ley de Vivienda 2026.</p>
+            </div>
             <h2 className="text-2xl font-bold text-gray-900">¿Qué es el contrato de alquiler LAU?</h2>
             <p className="text-gray-600 leading-relaxed text-[1.05rem]">
               El contrato de alquiler de vivienda habitual está regulado por la Ley de Arrendamientos Urbanos (LAU) y la Ley de Vivienda de 2023 con sus actualizaciones de 2026. En Bilbao y el País Vasco (Getxo, Barakaldo, Portugalete, San Sebastián, Vitoria), un contrato mal redactado puede suponer años de problemas: cláusulas nulas, actualizaciones de renta incorrectas, imposibilidad de recuperar el piso o disputas por la fianza. Nuestro equipo jurídico redacta contratos personalizados que protegen al propietario y cumplen con todos los derechos del inquilino exigidos por ley.
