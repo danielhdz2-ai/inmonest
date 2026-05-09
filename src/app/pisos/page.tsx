@@ -19,6 +19,7 @@ export async function generateMetadata({ searchParams }: PisosPageProps): Promis
   const ciudad = params.ciudad
   const operacion = params.operacion
   const soloParticulares = params.solo_particulares === 'true'
+  const pagina = parseInt(params.pagina ?? '1', 10)
 
   const opLabel = operacion === 'sale' ? 'Venta' : operacion === 'rent' ? 'Alquiler' : 'Venta y Alquiler'
   const ciudadLabel = ciudad ? ` ${ciudad.charAt(0).toUpperCase() + ciudad.slice(1)}` : ''
@@ -28,16 +29,34 @@ export async function generateMetadata({ searchParams }: PisosPageProps): Promis
   const title = `${opLabel}${ciudadLabel}${particulares} 【612 Pisos desde 250€】 0% Comisión | Inmonest`
   const description = `✓ 612 pisos${operacion === 'rent' ? ' en alquiler' : operacion === 'sale' ? ' en venta' : ''}${ciudadLabel ? ' en ' + ciudad!.charAt(0).toUpperCase() + ciudad!.slice(1) : ''} desde 250€/mes. 0% comisión entre particulares. Contratos LAU desde 7€. ¡Ver ahora!`
 
+  // ✅ SEO: Canonical siempre a URL base (sin filtros)
+  const canonicalUrl = `/pisos${ciudad ? `?ciudad=${encodeURIComponent(ciudad)}` : ''}`
+
+  // ✅ SEO: NOINDEX para filtros complejos y paginación para evitar contenido duplicado
+  const hasFilters = Boolean(
+    params.solo_particulares || 
+    params.solo_bancarias || 
+    params.solo_agencias ||
+    params.habitaciones_min || 
+    params.precio_min || 
+    params.precio_max ||
+    params.area_min ||
+    params.vista ||
+    params.ordenar ||
+    pagina > 1
+  )
+
   return {
     title,
     description,
+    ...(hasFilters && { robots: { index: false, follow: true } }), // noindex pero sigue enlaces
     openGraph: {
       title,
       description,
       type: 'website',
     },
     alternates: {
-      canonical: `/pisos${ciudad ? `?ciudad=${encodeURIComponent(ciudad)}` : ''}`,
+      canonical: canonicalUrl,
     },
   }
 }
