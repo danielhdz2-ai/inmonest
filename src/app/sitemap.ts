@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next'
 import { createClient } from '@supabase/supabase-js'
 
-// ✅ OPTIMIZACIÓN: Cachear sitemap 6 horas (bots lo consultan constantemente)
-export const revalidate = 21600  // 6 horas
+// ✅ OPTIMIZACIÓN: Regenerar sitemap cada 1 hora para evitar 404s
+export const revalidate = 3600  // 1 hora (antes: 6h - causaba 404s en Google)
 // export const dynamic = 'force-dynamic'  // ❌ DESACTIVADO - consumía CPU innecesario
 
 const BASE_URL = 'https://inmonest.com'
@@ -158,11 +158,12 @@ async function getListingUrls(): Promise<MetadataRoute.Sitemap> {
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
     )
 
-    // Todos los listings publicados (con o sin ai_description — ahora tenemos plantillas)
+    // Solo listings publicados, con imágenes y activos
     const { data, error } = await supabase
       .from('listings')
       .select('id, updated_at')
       .eq('status', 'published')
+      .eq('has_images', true)
       .limit(10000)
 
     if (error || !data) return []
