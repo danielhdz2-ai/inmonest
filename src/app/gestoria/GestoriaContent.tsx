@@ -364,14 +364,14 @@ export default function GestoriaPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-[#3d2a05]/90 via-[#7a5c1e]/70 to-transparent" />
         <div className="relative h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 max-w-4xl">
           <span className="inline-block bg-[#c9962a] text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 w-fit">
-            Gestoría Inmobiliaria
+            Gestoría especializada · Alquiler LAU
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-4">
             Contratos inmobiliarios<br />
             <span className="text-[#f4c94a]">redactados por expertos</span>
           </h1>
           <p className="text-white/85 text-base sm:text-lg max-w-xl leading-relaxed">
-            Nuestro equipo de gestoría inmobiliaria experta en contratos inmobiliarios redacta cada contrato a medida. Sin automatismos. Con la seguridad jurídica que mereces.
+            <strong className="text-white">Gestoría especializada que tramita contratos de alquiler</strong> (LAU, Ley de Vivienda 2026), arras y rescisión: cada documento a medida, sin plantillas genéricas y con la seguridad jurídica que mereces.
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white text-sm">
@@ -391,7 +391,7 @@ export default function GestoriaPage() {
       <section className="bg-[#7a5c1e] py-5 px-6">
         <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-x-10 gap-y-3 text-center">
           {[
-            { icon: '🏛️', text: 'Equipo de gestoría especializado' },
+            { icon: '🏛️', text: 'Gestoría especializada: tramita contratos de alquiler' },
             { icon: '📋', text: 'Contratos personalizados, no plantillas' },
             { icon: '🔒', text: 'Sin pago por adelantado' },
             { icon: '📧', text: 'Entrega por email en PDF firmable' },

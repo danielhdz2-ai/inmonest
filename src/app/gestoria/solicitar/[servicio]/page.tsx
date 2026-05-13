@@ -48,15 +48,22 @@ export async function generateMetadata({
     }
   }
 
+  const isAlquilerLau = servicio === 'contrato-alquiler'
+  const description = isAlquilerLau
+    ? `Gestoría especializada que tramita contratos de alquiler: ${data.nombre} por ${data.precio}€. ${data.incluye.slice(0, 2).join('. ')}. Entrega en 48h.`
+    : `Solicita ${data.nombre} por ${data.precio}€. ${data.incluye.slice(0, 2).join('. ')}. Redactado por gestoría inmobiliaria experta. Entrega en 48h.`
+
   return {
     title: `${data.nombre} - ${data.precio}€ | Gestoría Inmonest`,
-    description: `Solicita ${data.nombre} por ${data.precio}€. ${data.incluye.slice(0, 2).join('. ')}. Redactado por gestoría inmobiliaria experta. Entrega en 48h.`,
+    description,
     alternates: {
       canonical: `${BASE_URL}/gestoria/solicitar/${servicio}`,
     },
     openGraph: {
       title: `${data.nombre} - ${data.precio}€`,
-      description: `${data.incluye[0]}. Servicio profesional de gestoría inmobiliaria.`,
+      description: isAlquilerLau
+        ? `${data.incluye[0]}. Gestoría especializada en contratos de alquiler LAU.`
+        : `${data.incluye[0]}. Servicio profesional de gestoría inmobiliaria.`,
       url: `${BASE_URL}/gestoria/solicitar/${servicio}`,
       type: 'website',
     },

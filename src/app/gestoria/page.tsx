@@ -8,13 +8,13 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   title: 'Contratos Inmobiliarios 【DESDE 7€】 Redacción Legal 24h | Inmonest',
-  description: 'Contratos de alquiler LAU, arras, reserva y rescisión. Redactados por abogados. Desde 7€. Entrega en 24h. ¿Alquilas o vendes? ¡Te ayudamos! ✔️',
+  description: 'Gestoría especializada que tramita contratos de alquiler (LAU), arras, reserva y rescisión. Redactados por abogados. Desde 7€. Entrega en 24h.',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
   },
   openGraph: {
     title: 'Contratos inmobiliarios redactados por expertos — Inmonest',
-    description: 'Arras, alquiler LAU, temporada, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 7€.',
+    description: 'Gestoría especializada en contratos de alquiler y compraventa. Tramitamos LAU, arras, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 7€.',
     url: `${BASE_URL}/gestoria`,
     type: 'website',
     siteName: 'Inmonest',
@@ -27,7 +27,7 @@ const schemaJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'LegalService',
   name: 'Inmonest Gestoría Inmobiliaria',
-  description: 'Contratos de arras, alquiler LAU, temporada, rescisión y reserva redactados por abogados especializados en derecho inmobiliario. Sin plantillas genéricas. Entrega en 24h. Desde 7€.',
+  description: 'Gestoría especializada que tramita contratos de alquiler LAU, arras, temporada, rescisión y reserva. Redactados por abogados en derecho inmobiliario, sin plantillas genéricas. Entrega en 24h. Desde 7€.',
   url: `${BASE_URL}/gestoria`,
   image: `${BASE_URL}/logo.png`,
   priceRange: '€',
