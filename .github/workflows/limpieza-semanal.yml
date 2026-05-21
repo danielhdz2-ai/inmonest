@@ -1,0 +1,53 @@
+name: '🧹 Limpieza Semanal de Pisos Obsoletos'
+
+on:
+  schedule:
+    # Todos los domingos a las 03:00 AM (hora de España = UTC+2)
+    - cron: '0 1 * * 0'
+  workflow_dispatch:  # Permitir ejecución manual
+
+jobs:
+  clean-obsolete-listings:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout código
+        uses: actions/checkout@v4
+      
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: 📚 Instalar dependencias
+        run: npm ci
+      
+      - name: 🧹 Ejecutar limpieza de pisos obsoletos
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+        run: |
+          echo "🔍 Verificando pisos obsoletos..."
+          npx tsx scripts/clean-obsolete-listings.mts
+          
+          echo "✅ Limpieza completada"
+      
+      - name: 📊 Generar reporte
+        if: always()
+        run: |
+          echo "## 📊 Reporte de Limpieza Semanal" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Fecha:** $(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Limpieza ejecutada correctamente" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Acciones realizadas:" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Eliminados pisos con status != published" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Eliminados pisos sin imágenes (has_images = false)" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Backup creado automáticamente" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Beneficios:" >> $GITHUB_STEP_SUMMARY
+          echo "- 🚀 Evita errores 404 en Google Search Console" >> $GITHUB_STEP_SUMMARY
+          echo "- 📈 Mejora SEO y crawl budget" >> $GITHUB_STEP_SUMMARY
+          echo "- 🧹 Mantiene BD limpia y optimizada" >> $GITHUB_STEP_SUMMARY
