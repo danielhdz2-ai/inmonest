@@ -31,6 +31,18 @@ jobs:
         run: |
           echo "📧 Enviando alertas a usuarios..."
           
+          # Verificar que el secret existe
+          if [ -z "${{ secrets.CRON_SECRET }}" ]; then
+            echo "⚠️  CRON_SECRET no está configurado en GitHub Secrets"
+            echo "📝 Para configurarlo:"
+            echo "   1. Ve a Settings > Secrets and variables > Actions"
+            echo "   2. Crea un secret llamado CRON_SECRET"
+            echo "   3. Usa el mismo valor que en Vercel (.env.local)"
+            echo ""
+            echo "⏭️  Saltando envío de alertas..."
+            exit 0
+          fi
+          
           # Llamar al endpoint con el secret de autenticación
           response=$(curl -s -w "\n%{http_code}" -X POST \
             https://inmonest.com/api/cron/alertas \
@@ -41,11 +53,15 @@ jobs:
           body=$(echo "$response" | sed '$d')
           
           echo "Status code: $http_code"
-          echo "Response: $body"
+          echo "Response body: $body"
           
           # Verificar que fue exitoso
           if [ "$http_code" -ne 200 ]; then
-            echo "❌ Error al enviar alertas"
+            echo "❌ Error al enviar alertas (HTTP $http_code)"
+            echo "Posibles causas:"
+            echo "  - CRON_SECRET incorrecto"
+            echo "  - Error en la API (revisa logs de Vercel)"
+            echo "  - Problema con RESEND_API_KEY"
             exit 1
           fi
           
