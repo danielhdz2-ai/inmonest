@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import Navbar from '@/components/NavbarServer'
 import SearchForm from '@/components/SearchForm'
 import BentoVentajas from '@/components/BentoVentajas'
+import CarruselServicios from '@/components/CarruselServicios'
 
 const CIUDADES_POPULARES = [
   { nombre: 'Madrid', slug: 'madrid' },
@@ -76,79 +77,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Servicios de Gestoría Destacados ──────────────────────── */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-10">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#c9962a]/15 text-[#a87a20] border border-[#c9962a]/25 mb-4">
-            ⚖️ Gestoría Inmobiliaria Digital
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
-            Contratos redactados por expertos en 48h
-          </h2>
-          <p className="text-gray-600 text-base max-w-2xl mx-auto">
-            Redacción, revisión y asesoría legal inmobiliaria. Desde 29€. Pago seguro con Stripe.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
-          {/* Contrato de Arras */}
-          <Link href="/gestoria/solicitar/arras-penitenciales" className="group bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-[#c9962a] hover:shadow-xl transition-all">
-            <div className="text-4xl mb-4">📝</div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#c9962a] transition">
-              Contrato de Arras
-            </h3>
-            <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-              Penitenciales o confirmatorias. Protege tu señal al comprar. Revisión nota simple incluida.
-            </p>
-            <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold text-[#c9962a]">145€</span>
-              <span className="text-sm text-gray-500">→ 48h</span>
-            </div>
-          </Link>
-
-          {/* Contrato de Alquiler */}
-          <Link href="/gestoria/solicitar/contrato-alquiler" className="group bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-[#c9962a] hover:shadow-xl transition-all">
-            <div className="text-4xl mb-4">🏠</div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#c9962a] transition">
-              Contrato de Alquiler LAU
-            </h3>
-            <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-              Adaptado a Ley de Vivienda 2026. Para propietarios e inquilinos. Cláusulas personalizadas.
-            </p>
-            <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold text-[#c9962a]">120€</span>
-              <span className="text-sm text-gray-500">→ 48h</span>
-            </div>
-          </Link>
-
-          {/* Revisión de Contratos */}
-          <Link href="/gestoria/revision-contrato-arras" className="group bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-[#c9962a] hover:shadow-xl transition-all">
-            <div className="text-4xl mb-4">🔍</div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#c9962a] transition">
-              Revisión Legal
-            </h3>
-            <p className="text-gray-600 text-sm mb-4 leading-relaxed">
-              Te han dado un contrato? Lo revisamos en 24h. Detectamos cláusulas abusivas y errores.
-            </p>
-            <div className="flex items-center justify-between">
-              <span className="text-2xl font-bold text-[#c9962a]">60€</span>
-              <span className="text-sm text-gray-500">→ 24h</span>
-            </div>
-          </Link>
-        </div>
-
-        <div className="text-center">
-          <Link
-            href="/gestoria"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors shadow-lg text-base"
-          >
-            Ver todos los servicios de gestoría
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
-        </div>
-      </section>
+      {/* ── Servicios de Gestoría Destacados (Carrusel Animado) ──────────────────────── */}
+      <CarruselServicios />
 
       {/* ── Ciudades populares (pisos) ──────────────────────────────────── */}
       <section className="bg-gray-50 py-12">
