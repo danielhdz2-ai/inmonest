@@ -13,7 +13,9 @@
  * Uso:
  *   npx tsx scripts/scrapers/pisoscom_particulares.ts [op] [city] [maxPages]
  *   op: venta | alquiler   (defecto: alquiler)
- *   city: madrid | barcelona | valencia | sevilla | zaragoza | bilbao | malaga | granada | murcia | alicante
+ *   city: madrid | barcelona | valencia | sevilla | zaragoza | bilbao | granada | 
+ *         murcia | alicante | palma | coruna | vigo | gijon | vitoria | 
+ *         pamplona | santander | cordoba | valladolid
  *   maxPages: número máximo de páginas (defecto: 6)
  *
  * Ejemplo:
@@ -46,14 +48,18 @@ const CITY_MAP: Record<string, { province: string; city: string }> = {
   sevilla:   { province: 'Sevilla',   city: 'Sevilla' },
   zaragoza:  { province: 'Zaragoza',  city: 'Zaragoza' },
   bilbao:    { province: 'Vizcaya',   city: 'Bilbao' },
-  malaga:    { province: 'Málaga',    city: 'Málaga' },
   granada:   { province: 'Granada',   city: 'Granada' },
   murcia:    { province: 'Murcia',    city: 'Murcia' },
   alicante:  { province: 'Alicante',  city: 'Alicante' },
-  valladolid:{ province: 'Valladolid',city: 'Valladolid' },
+  palma:     { province: 'Baleares',  city: 'Palma de Mallorca' },
+  coruna:    { province: 'A Coruña',  city: 'A Coruña' },
+  vigo:      { province: 'Pontevedra', city: 'Vigo' },
+  gijon:     { province: 'Asturias',  city: 'Gijón' },
+  vitoria:   { province: 'Álava',     city: 'Vitoria-Gasteiz' },
   pamplona:  { province: 'Navarra',   city: 'Pamplona' },
   santander: { province: 'Cantabria', city: 'Santander' },
   cordoba:   { province: 'Córdoba',   city: 'Córdoba' },
+  valladolid:{ province: 'Valladolid',city: 'Valladolid' },
 }
 
 /** Delay entre peticiones para no sobrecargar el servidor */

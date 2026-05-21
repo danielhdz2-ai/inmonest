@@ -64,7 +64,7 @@ jobs:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
           PAGES="${{ github.event.inputs.paginas || '2' }}"
-          for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
+          for city in barcelona madrid valencia sevilla alicante murcia palma coruna bilbao zaragoza granada; do
             echo "── pisos.com alquiler/$city ($PAGES páginas) ──"
             npx tsx scripts/scrapers/pisoscom_particulares.ts alquiler $city $PAGES || echo "⚠️ Error en $city, continuando..."
             sleep 5
@@ -79,7 +79,7 @@ jobs:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
           PAGES="${{ github.event.inputs.paginas || '2' }}"
-          for city in barcelona madrid valencia sevilla malaga bilbao zaragoza granada; do
+          for city in barcelona madrid valencia sevilla alicante murcia palma coruna bilbao zaragoza granada; do
             echo "── pisos.com venta/$city ($PAGES páginas) ──"
             npx tsx scripts/scrapers/pisoscom_particulares.ts venta $city $PAGES || echo "⚠️ Error en $city, continuando..."
             sleep 5

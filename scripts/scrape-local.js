@@ -16,12 +16,14 @@ const CITIES = [
   { name: 'Barcelona', lat: 41.3851, lng:  2.1734 },
   { name: 'Valencia',  lat: 39.4699, lng: -0.3763 },
   { name: 'Sevilla',   lat: 37.3891, lng: -5.9845 },
-  { name: 'Málaga',    lat: 36.7213, lng: -4.4214 },
   { name: 'Bilbao',    lat: 43.2630, lng: -2.9350 },
   { name: 'Zaragoza',  lat: 41.6488, lng: -0.8891 },
   { name: 'Alicante',  lat: 38.3452, lng: -0.4810 },
   { name: 'Granada',   lat: 37.1773, lng: -3.5986 },
   { name: 'Murcia',    lat: 37.9922, lng: -1.1307 },
+  { name: 'Palma',     lat: 39.5696, lng:  2.6502 },
+  { name: 'Coruña',    lat: 43.3623, lng: -8.4115 },
+  { name: 'Vigo',      lat: 42.2328, lng: -8.7226 },
 ]
 
 const SEARCHES_WALLAPOP = [
@@ -93,12 +95,14 @@ const CITY_SLUGS = {
   'Barcelona':  'barcelona',
   'Valencia':   'valencia-ciudad',
   'Sevilla':    'sevilla',
-  'Málaga':     'malaga',
   'Bilbao':     'bilbao',
   'Zaragoza':   'zaragoza',
   'Alicante':   'alicante',
   'Granada':    'granada',
   'Murcia':     'murcia',
+  'Palma':      'palma',
+  'Coruña':     'a-coruna',
+  'Vigo':       'vigo',
 }
 
 function extractRssTag(xml, tag) {
