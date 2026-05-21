@@ -1,14 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { gtmPush } from '@/components/GTMProvider'
 
-// ✅ Evitar prerender - requiere searchParams en runtime
-export const dynamic = 'force-dynamic'
-
-export default function ConfirmacionPage() {
+function ConfirmacionContent() {
   const searchParams = useSearchParams()
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading')
   const [data, setData] = useState<{ service_name: string; customer_email: string } | null>(null)
@@ -202,5 +199,21 @@ export default function ConfirmacionPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+// ✅ Wrapper con Suspense para evitar error de prerender
+export default function ConfirmacionPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f]">
+        <div className="text-center">
+          <div className="inline-block w-16 h-16 border-4 border-[#f4c94a] border-t-transparent rounded-full animate-spin mb-4" />
+          <p className="text-white text-lg">Cargando...</p>
+        </div>
+      </div>
+    }>
+      <ConfirmacionContent />
+    </Suspense>
   )
 }
