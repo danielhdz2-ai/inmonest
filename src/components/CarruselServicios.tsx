@@ -67,91 +67,93 @@ export default function CarruselServicios() {
   const serviciosDuplicados = [...SERVICIOS, ...SERVICIOS]
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="text-center mb-10">
-        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#c9962a]/15 text-[#a87a20] border border-[#c9962a]/25 mb-4">
+    <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-16">
+      <div className="text-center mb-6 sm:mb-10">
+        <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#c9962a]/15 text-[#a87a20] border border-[#c9962a]/25 mb-3 sm:mb-4">
           Gestoría Inmobiliaria Digital
         </span>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 tracking-tight mb-2 sm:mb-3 px-2">
           Contratos redactados por expertos en 48h
         </h2>
-        <p className="text-gray-600 text-base max-w-2xl mx-auto">
+        <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto px-2">
           Redacción, revisión y asesoría legal inmobiliaria. Desde 29€. Pago seguro con Stripe.
         </p>
       </div>
 
       {/* Carrusel */}
       <div 
-        className="relative overflow-hidden mb-8"
+        className="relative overflow-hidden mb-6 sm:mb-8 -mx-3 sm:mx-0"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => setIsPaused(false)}
       >
-        {/* Gradientes laterales */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        {/* Gradientes laterales - más pequeños en móvil */}
+        <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-16 lg:w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-16 lg:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
         {/* Contenedor scroll */}
         <div
           ref={scrollRef}
-          className="flex gap-6 overflow-x-hidden py-2"
+          className="flex gap-3 sm:gap-5 lg:gap-6 overflow-x-hidden py-2 px-3 sm:px-0"
           style={{ scrollBehavior: 'auto' }}
         >
           {serviciosDuplicados.map((servicio, index) => (
             <Link
               key={`${servicio.slug}-${index}`}
               href={`/gestoria/solicitar/${servicio.slug}`}
-              className="group flex-shrink-0 w-[340px] bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-[#c9962a] hover:shadow-2xl transition-all duration-300"
+              className="group flex-shrink-0 w-[280px] sm:w-[320px] lg:w-[340px] bg-white border-2 border-gray-200 rounded-xl sm:rounded-2xl overflow-hidden hover:border-[#c9962a] hover:shadow-2xl transition-all duration-300"
             >
               {/* Imagen del servicio */}
-              <div className="relative h-48 w-full bg-gray-100">
+              <div className="relative h-36 sm:h-44 lg:h-48 w-full bg-gray-100">
                 <Image
                   src={servicio.imagen}
                   alt={servicio.nombre}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  sizes="340px"
+                  sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 340px"
                 />
                 {/* Overlay con categoría */}
-                <div className="absolute top-3 left-3">
-                  <span className="inline-block px-3 py-1 rounded-md text-xs font-semibold bg-white/90 backdrop-blur-sm text-[#a87a20] border border-[#c9962a]/20">
+                <div className="absolute top-2 sm:top-3 left-2 sm:left-3">
+                  <span className="inline-block px-2 sm:px-3 py-0.5 sm:py-1 rounded-md text-[10px] sm:text-xs font-semibold bg-white/90 backdrop-blur-sm text-[#a87a20] border border-[#c9962a]/20">
                     {servicio.categoria}
                   </span>
                 </div>
                 {servicio.categoria === 'Premium' && (
-                  <div className="absolute top-3 right-3">
-                    <span className="inline-block px-3 py-1 rounded-md text-xs font-bold bg-yellow-500 text-white">
-                      MÁS SOLICITADO
+                  <div className="absolute top-2 sm:top-3 right-2 sm:right-3">
+                    <span className="inline-block px-2 sm:px-3 py-0.5 sm:py-1 rounded-md text-[10px] sm:text-xs font-bold bg-yellow-500 text-white">
+                      ⭐ POPULAR
                     </span>
                   </div>
                 )}
               </div>
 
               {/* Contenido */}
-              <div className="p-6">
+              <div className="p-4 sm:p-5 lg:p-6">
                 {/* Título */}
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#c9962a] transition min-h-[56px]">
+                <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 mb-2 sm:mb-3 group-hover:text-[#c9962a] transition min-h-[44px] sm:min-h-[56px] line-clamp-2">
                   {servicio.nombre}
                 </h3>
 
                 {/* Descripción */}
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed min-h-[80px]">
+                <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed min-h-[60px] sm:min-h-[72px] lg:min-h-[80px] line-clamp-3 sm:line-clamp-4">
                   {servicio.descripcion}
                 </p>
 
                 {/* Precio y tiempo */}
-                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-gray-200">
                   <div>
-                    <div className="text-2xl font-bold text-[#c9962a]">{servicio.precio}€</div>
-                    <div className="text-xs text-gray-500">IVA incluido</div>
+                    <div className="text-xl sm:text-2xl font-bold text-[#c9962a]">{servicio.precio}€</div>
+                    <div className="text-[10px] sm:text-xs text-gray-500">IVA incluido</div>
                   </div>
                   <div className="text-right">
-                    <div className="text-sm font-semibold text-gray-900">Entrega en</div>
-                    <div className="text-sm text-[#c9962a] font-bold">{servicio.tiempo}</div>
+                    <div className="text-xs sm:text-sm font-semibold text-gray-900">Entrega en</div>
+                    <div className="text-xs sm:text-sm text-[#c9962a] font-bold">{servicio.tiempo}</div>
                   </div>
                 </div>
 
-                {/* Indicador hover */}
-                <div className="mt-4 flex items-center justify-center text-sm font-semibold text-[#c9962a] opacity-0 group-hover:opacity-100 transition-opacity">
+                {/* Indicador hover - solo desktop */}
+                <div className="hidden sm:flex mt-4 items-center justify-center text-sm font-semibold text-[#c9962a] opacity-0 group-hover:opacity-100 transition-opacity">
                   Solicitar ahora
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -163,21 +165,28 @@ export default function CarruselServicios() {
         </div>
       </div>
 
-      {/* Indicador de pausa */}
-      <div className="text-center mb-6">
+      {/* Indicador de pausa - solo desktop */}
+      <div className="hidden sm:block text-center mb-6">
         <p className="text-sm text-gray-500">
           {isPaused ? 'Carrusel pausado - Mueve el cursor fuera para continuar' : 'Pasa el ratón sobre una tarjeta para pausar'}
         </p>
       </div>
 
+      {/* Indicador móvil */}
+      <div className="sm:hidden text-center mb-6">
+        <p className="text-xs text-gray-500">
+          Desliza para ver más servicios →
+        </p>
+      </div>
+
       {/* CTA */}
-      <div className="text-center">
+      <div className="text-center px-2">
         <Link
           href="/gestoria"
-          className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors shadow-lg text-base"
+          className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors shadow-lg text-sm sm:text-base"
         >
-          Ver todos los servicios de gestoría
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          Ver todos los servicios
+          <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </Link>
