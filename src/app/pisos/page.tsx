@@ -7,7 +7,7 @@ import Link from 'next/link'
 import SearchForm from '@/components/SearchForm'
 
 // ✅ OPTIMIZACIÓN: Cachear 1 hora, regenerar en background
-export const revalidate = 3600  // 1 hora de caché
+export const revalidate = 43200  // 12 horas (antes: 1h - optimizado para reducir CPU)
 // export const dynamic = 'force-dynamic'  // ❌ DESACTIVADO - consumía demasiado CPU
 
 interface PisosPageProps {

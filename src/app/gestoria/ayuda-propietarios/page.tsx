@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
 }
 
-export const revalidate = 3600
+export const revalidate = 86400  // 24 horas (antes: 1h - optimizado para reducir CPU)
 
 export default function AyudaPropietariosPage() {
   const schemaJson = {

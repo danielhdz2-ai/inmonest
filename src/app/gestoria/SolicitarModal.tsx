@@ -1,6 +1,7 @@
 ﻿'use client'
 
 import { useState } from 'react'
+import { gtmPush } from '@/components/GTMProvider'
 
 interface Service {
   key: string
@@ -49,6 +50,22 @@ export default function SolicitarModal({ service, onClose }: Props) {
     e.preventDefault()
     setStatus('sending')
     setErrMsg('')
+    
+    // Google Ads conversion tracking: begin_checkout
+    gtmPush({
+      event: 'begin_checkout',
+      ecommerce: {
+        items: [{
+          item_id: service.key,
+          item_name: service.name,
+          price: service.price,
+          quantity: 1
+        }]
+      },
+      value: service.price,
+      currency: 'EUR'
+    })
+    
     try {
       const res = await fetch('/api/gestoria/checkout', {
         method: 'POST',
@@ -62,6 +79,22 @@ export default function SolicitarModal({ service, onClose }: Props) {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Error al iniciar el pago')
+      
+      // Google Ads conversion tracking: initiate checkout (redirect to payment)
+      gtmPush({
+        event: 'add_to_cart',
+        ecommerce: {
+          items: [{
+            item_id: service.key,
+            item_name: service.name,
+            price: service.price,
+            quantity: 1
+          }]
+        },
+        value: service.price,
+        currency: 'EUR'
+      })
+      
       window.location.href = data.url
     } catch (e: unknown) {
       setErrMsg(e instanceof Error ? e.message : 'Error al enviar')

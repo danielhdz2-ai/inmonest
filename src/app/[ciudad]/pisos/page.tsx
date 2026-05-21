@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 
 // ✅ OPTIMIZACIÓN: Cachear 2 horas
-export const revalidate = 7200
+export const revalidate = 43200  // 12 horas (antes: 2h - optimizado para reducir CPU)
 
 const BASE_URL = 'https://inmonest.com'
 

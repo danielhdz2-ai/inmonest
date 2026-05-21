@@ -1,11 +1,12 @@
 import { createClient } from '@/lib/supabase/server'
 
-// ✅ OPTIMIZACIÓN: Cachear API sitemap 6 horas
-export const revalidate = 21600  // 6 horas
+// ✅ OPTIMIZACIÓN: Cachear API sitemap 24 horas (reducido de 6h por alto consumo CPU)
+export const revalidate = 86400  // 24 horas (antes: 6h - consumía CPU excesivo)
 // export const dynamic = 'force-dynamic'  // ❌ DESACTIVADO
 
 const BASE_URL = 'https://inmonest.com'
-const MAX_LISTINGS = 49_000
+// Reducido de 49k a 10k para optimizar CPU (Google sitemap limit = 50k URLs)
+const MAX_LISTINGS = 10_000  // Antes: 49_000 - consumía demasiado CPU
 
 const CIUDADES = [
   'madrid', 'barcelona', 'valencia', 'sevilla', 'zaragoza',

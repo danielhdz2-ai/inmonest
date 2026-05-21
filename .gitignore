@@ -51,3 +51,5 @@ scripts/run-seed.bat
 /backups/
 *.sql
 *.sql.gz
+
+.vercel

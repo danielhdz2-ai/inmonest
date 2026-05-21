@@ -8,7 +8,7 @@ import LeadCaptureForm from '@/components/LeadCaptureForm'
 import { searchListings } from '@/lib/listings'
 
 // ✅ OPTIMIZACIÓN: Cachear 2 horas (páginas de ciudad cambian poco)
-export const revalidate = 7200  // 2 horas
+export const revalidate = 43200  // 12 horas (antes: 2h - optimizado para reducir CPU)
 
 const BASE_URL = 'https://inmonest.com'
 

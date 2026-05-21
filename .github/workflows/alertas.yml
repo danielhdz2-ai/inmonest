@@ -1,0 +1,61 @@
+name: 🔔 Enviar Alertas de Búsqueda
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PROPÓSITO:
+#   Disparar el endpoint /api/cron/alertas diariamente para enviar emails
+#   a usuarios con alertas de búsqueda configuradas.
+#
+# VENTAJA vs Vercel Cron:
+#   - 0 consumo de CPU en Vercel
+#   - GitHub Actions gratuito: 2,000 min/mes (esto usa <1 min/mes)
+#   - Mantiene recursos de Vercel disponibles para tráfico real
+# ─────────────────────────────────────────────────────────────────────────────
+
+on:
+  # Ejecutar diariamente a las 08:00 UTC (10:00 España)
+  # Hora óptima: después de los scrapers (07:00) para tener pisos frescos
+  schedule:
+    - cron: '0 8 * * *'
+  
+  # Permitir ejecución manual para testing
+  workflow_dispatch:
+
+jobs:
+  send-alerts:
+    name: Enviar alertas pendientes
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+      - name: 🔔 Disparar endpoint de alertas
+        run: |
+          echo "📧 Enviando alertas a usuarios..."
+          
+          # Llamar al endpoint con el secret de autenticación
+          response=$(curl -s -w "\n%{http_code}" -X POST \
+            https://inmonest.com/api/cron/alertas \
+            -H "x-cron-secret: ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json")
+          
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+          
+          echo "Status code: $http_code"
+          echo "Response: $body"
+          
+          # Verificar que fue exitoso
+          if [ "$http_code" -ne 200 ]; then
+            echo "❌ Error al enviar alertas"
+            exit 1
+          fi
+          
+          echo "✅ Alertas enviadas correctamente"
+      
+      - name: 📊 Reporte de ejecución
+        if: always()
+        run: |
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "Fecha: $(date '+%Y-%m-%d %H:%M:%S %Z')"
+          echo "Workflow: Alertas de Búsqueda"
+          echo "Estado: ${{ job.status }}"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

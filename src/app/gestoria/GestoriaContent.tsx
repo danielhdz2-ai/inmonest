@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import SolicitarModal from './SolicitarModal'
+import { gtmPush } from '@/components/GTMProvider'
 
 interface Service {
   key: string
@@ -487,7 +488,22 @@ export default function GestoriaPage() {
 
                 {/* CTA */}
                 <button
-                  onClick={() => setSelectedService(service)}
+                  onClick={() => {
+                    // Google Ads conversion tracking: view_item
+                    gtmPush({
+                      event: 'view_item',
+                      ecommerce: {
+                        items: [{
+                          item_id: service.key,
+                          item_name: service.name,
+                          item_category: service.category,
+                          price: service.price,
+                          quantity: 1
+                        }]
+                      }
+                    })
+                    setSelectedService(service)
+                  }}
                   className="w-full py-2.5 bg-[#c9962a] text-white rounded-xl font-bold text-sm hover:bg-[#a87a20] transition-colors"
                 >
                   Solicitar por {service.price} € <span className="font-normal text-xs opacity-90">(IVA incl.)</span>

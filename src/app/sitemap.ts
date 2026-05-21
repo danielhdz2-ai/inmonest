@@ -1,8 +1,11 @@
 import type { MetadataRoute } from 'next'
 import { createClient } from '@supabase/supabase-js'
+import { CONTRATO_ALQUILER_PREMIUM } from '@/lib/contrato-alquiler-premium-config'
+import { CONTRATO_ARRAS_PREMIUM } from '@/lib/contrato-arras-premium-config'
 
-// ✅ OPTIMIZACIÓN: Regenerar sitemap cada 1 hora para evitar 404s
-export const revalidate = 3600  // 1 hora (antes: 6h - causaba 404s en Google)
+// ✅ OPTIMIZACIÓN: Regenerar sitemap cada 24 horas (reducido de 1h por alto consumo CPU)
+// Con 0.5 visitas/día, regenerar cada hora es innecesario y costoso
+export const revalidate = 86400  // 24 horas (antes: 1h - consumía CPU excesivo)
 // export const dynamic = 'force-dynamic'  // ❌ DESACTIVADO - consumía CPU innecesario
 
 const BASE_URL = 'https://inmonest.com'
@@ -103,17 +106,17 @@ const CIUDAD_HUB_PAGES: MetadataRoute.Sitemap = CIUDADES.map((ciudad) => ({
   priority: 0.92,
 }))
 
-// Páginas SEO de contratos de arras por ciudad
-const ARRAS_PAGES: MetadataRoute.Sitemap = CIUDADES.map((ciudad) => ({
-  url: `${BASE_URL}/${ciudad}/contrato-arras`,
+// Páginas SEO de contratos de arras por ciudad (alineado con rutas premium)
+const ARRAS_PAGES: MetadataRoute.Sitemap = Object.keys(CONTRATO_ARRAS_PREMIUM).map((slug) => ({
+  url: `${BASE_URL}/${slug}/contrato-arras`,
   lastModified: new Date(),
   changeFrequency: 'monthly' as const,
   priority: 0.85,
 }))
 
-// Páginas SEO de contratos de alquiler por ciudad
-const ALQUILER_PAGES: MetadataRoute.Sitemap = CIUDADES.map((ciudad) => ({
-  url: `${BASE_URL}/${ciudad}/contrato-alquiler`,
+// Páginas SEO de contratos de alquiler por ciudad (alineado con rutas premium)
+const ALQUILER_PAGES: MetadataRoute.Sitemap = Object.keys(CONTRATO_ALQUILER_PREMIUM).map((slug) => ({
+  url: `${BASE_URL}/${slug}/contrato-alquiler`,
   lastModified: new Date(),
   changeFrequency: 'monthly' as const,
   priority: 0.85,
