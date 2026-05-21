@@ -236,7 +236,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
               <p className="text-blue-800 text-sm">
                 Para el <strong>95% de alquileres</strong> (vivienda habitual, 5-7 años), un 
                 <strong> contrato privado profesional (120€)</strong> es más que suficiente. 
-                Solo usa notario si: el alquiler es >10 años, el inmueble es comercial de alto valor, 
+                Solo usa notario si: el alquiler es {'>'}10 años, el inmueble es comercial de alto valor, 
                 o necesitas registrarlo para hipotecarlo.
               </p>
             </div>
@@ -475,7 +475,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                 </summary>
                 <p className="text-gray-700 mt-3 text-sm">
                   Porque no incluye fe pública ni registro. Un contrato privado profesional es 100% válido legalmente, 
-                  pero no tiene la "presunción de veracidad" del notario. Para alquileres normales (vivienda, <3 años), 
+                  pero no tiene la "presunción de veracidad" del notario. Para alquileres normales (vivienda, {'<'}3 años), 
                   la fe pública es innecesaria, por eso el precio es menor.
                 </p>
               </details>
