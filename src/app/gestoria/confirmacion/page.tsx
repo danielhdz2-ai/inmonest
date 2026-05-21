@@ -5,6 +5,9 @@ import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { gtmPush } from '@/components/GTMProvider'
 
+// ✅ Evitar prerender - requiere searchParams en runtime
+export const dynamic = 'force-dynamic'
+
 export default function ConfirmacionPage() {
   const searchParams = useSearchParams()
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading')
