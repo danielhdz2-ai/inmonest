@@ -32,6 +32,36 @@ const RECURSOS = [
 
 const ARTICULOS = [
   {
+    slug: 'guia-arras-penitenciales',
+    href: '/gestoria/guia-arras-penitenciales',
+    titulo: 'Guía completa de arras penitenciales: qué son, cuándo usarlas y errores que cuestan miles',
+    resumen:
+      'Todo sobre las arras penitenciales: diferencias con confirmatorias, ejemplos reales con cifras, cláusulas imprescindibles y errores comunes. Evita perder 10.000€+ por falta de información.',
+    fecha: '21 de mayo de 2026',
+    categoria: 'Gestoría',
+    lectura: '10 min',
+  },
+  {
+    slug: 'cuanto-cuesta-contrato-alquiler',
+    href: '/gestoria/cuanto-cuesta-contrato-alquiler',
+    titulo: '¿Cuánto cuesta un contrato de alquiler? Plantilla vs Gestoría vs Notario — Comparativa 2026',
+    resumen:
+      'Descubre cuánto cuesta cada opción: plantilla gratis (0€ pero arriesgada), gestoría profesional (120€) o notario (300-500€). Comparativa completa con qué incluye cada una.',
+    fecha: '21 de mayo de 2026',
+    categoria: 'Gestoría',
+    lectura: '8 min',
+  },
+  {
+    slug: 'arras-vs-reserva-compra',
+    href: '/gestoria/arras-vs-reserva-compra',
+    titulo: 'Diferencia entre arras y reserva de compra: ¿cuál firmar primero? Guía 2026',
+    resumen:
+      'Aprende las diferencias clave entre arras penitenciales y contrato de reserva. Cuándo usar cada uno, qué pasa si incumples, precios y ejemplos reales para evitar errores costosos.',
+    fecha: '21 de mayo de 2026',
+    categoria: 'Gestoría',
+    lectura: '9 min',
+  },
+  {
     slug: 'asesoria-juridica-compra-vivienda',
     titulo: 'Asesoría jurídica en la compra de vivienda: ¿por qué necesitas un gestor inmobiliario?',
     resumen:
@@ -227,7 +257,7 @@ export default function BlogPage() {
                   </div>
 
                   <h2 className="text-xl font-bold text-gray-900 group-hover:text-amber-600 transition-colors mb-2">
-                    <Link href={`/blog/${art.slug}`} className="stretched-link">
+                    <Link href={art.href || `/blog/${art.slug}`} className="stretched-link">
                       {art.titulo}
                     </Link>
                   </h2>
@@ -241,7 +271,7 @@ export default function BlogPage() {
                       {art.fecha}
                     </time>
                     <Link
-                      href={`/blog/${art.slug}`}
+                      href={art.href || `/blog/${art.slug}`}
                       className="text-sm font-semibold text-amber-600 hover:text-amber-700 transition-colors"
                       aria-label={`Leer artículo: ${art.titulo}`}
                     >
