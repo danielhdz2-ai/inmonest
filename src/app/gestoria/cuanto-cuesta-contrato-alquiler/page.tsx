@@ -222,11 +222,11 @@ export default function CuantoCuestaContratoAlquilerPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-red-500 mt-0.5">✗</span>
-                    <span className="text-gray-700">Innecesario para alquileres <3 años</span>
+                    <span className="text-gray-700">Innecesario para alquileres {'<'}3 años</span>
                   </li>
                 </ul>
                 <div className="text-center">
-                  <div className="text-xs text-gray-600 font-semibold">Solo si alquiler >3 años</div>
+                  <div className="text-xs text-gray-600 font-semibold">Solo si alquiler {'>'}3 años</div>
                 </div>
               </div>
             </div>
