@@ -12,6 +12,15 @@ function getDb() {
   )
 }
 
+// ✅ FIX: Normalizar texto para búsqueda sin acentos
+function normalizeCitySearch(city: string): string {
+  return city
+    .normalize('NFD')  // Descomponer caracteres acentuados
+    .replace(/[\u0300-\u036f]/g, '')  // Eliminar diacríticos
+    .toLowerCase()
+    .trim()
+}
+
 export async function searchListings(params: SearchParams): Promise<{
   listings: Listing[]
   total: number
@@ -28,7 +37,13 @@ export async function searchListings(params: SearchParams): Promise<{
     .eq('has_images', true)
 
   if (params.operacion)        countQuery = countQuery.eq('operation', params.operacion)
-  if (params.ciudad)           countQuery = countQuery.ilike('city', `%${params.ciudad}%`)
+  // ✅ FIX: Buscar tanto con tilde como sin tilde para ciudades como "Málaga"
+  if (params.ciudad) {
+    const normalized = normalizeCitySearch(params.ciudad)
+    countQuery = countQuery.or(
+      `city.ilike.%${params.ciudad}%,city.ilike.%${normalized}%`
+    )
+  }
   if (params.solo_particulares) countQuery = countQuery.eq('is_particular', true)
   if (params.solo_bancarias)   countQuery = countQuery.eq('is_bank', true)
   if (params.solo_agencias)    countQuery = countQuery.eq('is_particular', false).eq('is_bank', false)
@@ -62,7 +77,13 @@ export async function searchListings(params: SearchParams): Promise<{
     .eq('has_images', true)
 
   if (params.operacion)        dataQuery = dataQuery.eq('operation', params.operacion)
-  if (params.ciudad)           dataQuery = dataQuery.ilike('city', `%${params.ciudad}%`)
+  // ✅ FIX: Buscar tanto con tilde como sin tilde para ciudades como "Málaga"
+  if (params.ciudad) {
+    const normalized = normalizeCitySearch(params.ciudad)
+    dataQuery = dataQuery.or(
+      `city.ilike.%${params.ciudad}%,city.ilike.%${normalized}%`
+    )
+  }
   if (params.solo_particulares) dataQuery = dataQuery.eq('is_particular', true)
   if (params.solo_bancarias)   dataQuery = dataQuery.eq('is_bank', true)
   if (params.solo_agencias)    dataQuery = dataQuery.eq('is_particular', false).eq('is_bank', false)
@@ -173,13 +194,16 @@ export async function getSimilarListings(
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   )
 
+  // ✅ FIX: Buscar tanto con tilde como sin tilde para ciudades
+  const normalized = normalizeCitySearch(city)
+  
   let q = supabase
     .from('listings')
     .select('id, title, price_eur, operation, city, district, province, bedrooms, bathrooms, area_m2, is_particular, is_bank, bank_entity, turbo_until, status, published_at, created_at, ranking_score')
     .eq('status', 'published')
     .eq('has_images', true)
     .eq('operation', operation)
-    .ilike('city', `%${city}%`)
+    .or(`city.ilike.%${city}%,city.ilike.%${normalized}%`)
     .neq('id', currentId)
 
   // Rango de precio ±20%
