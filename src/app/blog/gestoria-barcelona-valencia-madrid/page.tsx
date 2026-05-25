@@ -292,7 +292,7 @@ export default function GestoriaCiudadesPost() {
               ¿Necesitas gestoría especializada en tu ciudad?
             </h3>
             <p className="text-gray-700 mb-4">
-              Servicios de asesoría jurídica adaptados a Barcelona, Valencia y Madrid. Desde 350 €.
+              Servicios de asesoría jurídica adaptados a tu ciudad. Desde 29 €.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -312,6 +312,24 @@ export default function GestoriaCiudadesPost() {
                 className="inline-block bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-amber-700 transition text-sm"
               >
                 Madrid
+              </Link>
+              <Link
+                href="/gestoria/zaragoza/contratos-inmobiliarios"
+                className="inline-block bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-amber-700 transition text-sm"
+              >
+                Zaragoza
+              </Link>
+              <Link
+                href="/gestoria/sevilla/gestoria-online"
+                className="inline-block bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-amber-700 transition text-sm"
+              >
+                Sevilla
+              </Link>
+              <Link
+                href="/gestoria/granada/contratos-alquiler-compraventa"
+                className="inline-block bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-amber-700 transition text-sm"
+              >
+                Granada
               </Link>
             </div>
           </div>

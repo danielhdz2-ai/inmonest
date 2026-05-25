@@ -395,6 +395,30 @@ export default function GestoriaMadridPage() {
           </div>
         </section>
 
+        {/* Otras ciudades */}
+        <section className="py-12 bg-white border-t border-gray-200">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <h3 className="text-xl font-bold text-gray-900 mb-6">También ofrecemos gestoría inmobiliaria en:</h3>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <Link href="/gestoria/barcelona" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+                Gestoría Barcelona →
+              </Link>
+              <Link href="/gestoria/valencia" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+                Gestoría Valencia →
+              </Link>
+              <Link href="/gestoria/zaragoza/contratos-inmobiliarios" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+                Contratos alquiler Zaragoza →
+              </Link>
+              <Link href="/gestoria/sevilla/gestoria-online" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+                Gestoría online Sevilla →
+              </Link>
+              <Link href="/gestoria/granada/contratos-alquiler-compraventa" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+                Contratos estudiantes Granada →
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* CTA Final */}
         <section className="py-16 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">

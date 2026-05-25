@@ -47,6 +47,11 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/madrid`,                            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/valencia`,                          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
 
+  // Gestoría — Landing pages SEO ciudad-específicas (NUEVAS - Mayo 2026)
+  { url: `${BASE_URL}/gestoria/zaragoza/contratos-inmobiliarios`,           lastModified: today, changeFrequency: 'weekly', priority: 0.8 },
+  { url: `${BASE_URL}/gestoria/sevilla/gestoria-online`,                    lastModified: today, changeFrequency: 'weekly', priority: 0.8 },
+  { url: `${BASE_URL}/gestoria/granada/contratos-alquiler-compraventa`,     lastModified: today, changeFrequency: 'weekly', priority: 0.8 },
+
   // Gestoría — formularios de solicitud (21 servicios)
   { url: `${BASE_URL}/gestoria/solicitar/arras-penitenciales`,           lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/solicitar/arras-confirmatorias`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
