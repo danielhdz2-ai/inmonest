@@ -67,61 +67,61 @@ export default function CarruselServicios() {
   const serviciosDuplicados = [...SERVICIOS, ...SERVICIOS]
 
   return (
-    <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-16">
-      <div className="text-center mb-4 sm:mb-10">
-        <span className="inline-block px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-[#c9962a]/15 text-[#a87a20] border border-[#c9962a]/25 mb-2 sm:mb-4">
+    <section className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-16">
+      <div className="text-center mb-3 sm:mb-10">
+        <span className="inline-block px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[9px] sm:text-xs font-semibold bg-[#c9962a]/15 text-[#a87a20] border border-[#c9962a]/25 mb-1.5 sm:mb-4">
           Gestoría Inmobiliaria Digital
         </span>
-        <h2 className="text-xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 tracking-tight mb-1.5 sm:mb-3 px-2">
+        <h2 className="text-lg sm:text-3xl lg:text-4xl font-extrabold text-gray-900 tracking-tight mb-1 sm:mb-3 px-2">
           Contratos redactados por expertos en 48h
         </h2>
-        <p className="text-gray-600 text-xs sm:text-base max-w-2xl mx-auto px-2">
+        <p className="text-gray-600 text-[11px] sm:text-base max-w-2xl mx-auto px-2">
           Redacción, revisión y asesoría legal inmobiliaria. Desde 29€. Pago seguro con Stripe.
         </p>
       </div>
 
       {/* Carrusel */}
       <div 
-        className="relative overflow-hidden mb-6 sm:mb-8"
+        className="relative overflow-hidden mb-4 sm:mb-8"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => setIsPaused(false)}
       >
         {/* Gradientes laterales - más pequeños en móvil */}
-        <div className="absolute left-0 top-0 bottom-0 w-6 sm:w-16 lg:w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-6 sm:w-16 lg:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-4 sm:w-16 lg:w-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-4 sm:w-16 lg:w-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
         {/* Contenedor scroll */}
         <div
           ref={scrollRef}
-          className="flex gap-2 sm:gap-5 lg:gap-6 overflow-x-hidden py-2"
+          className="flex gap-1.5 sm:gap-5 lg:gap-6 overflow-x-hidden py-1.5 sm:py-2"
           style={{ scrollBehavior: 'auto' }}
         >
           {serviciosDuplicados.map((servicio, index) => (
             <Link
               key={`${servicio.slug}-${index}`}
               href={`/gestoria/solicitar/${servicio.slug}`}
-              className="group flex-shrink-0 w-[260px] sm:w-[320px] lg:w-[340px] bg-white border-2 border-gray-200 rounded-xl sm:rounded-2xl overflow-hidden hover:border-[#c9962a] hover:shadow-2xl transition-all duration-300"
+              className="group flex-shrink-0 w-[220px] sm:w-[320px] lg:w-[340px] bg-white border border-gray-200 sm:border-2 rounded-lg sm:rounded-2xl overflow-hidden hover:border-[#c9962a] hover:shadow-xl transition-all duration-300"
             >
               {/* Imagen del servicio */}
-              <div className="relative h-28 sm:h-40 lg:h-48 w-full bg-gray-100">
+              <div className="relative h-20 sm:h-40 lg:h-48 w-full bg-gray-100">
                 <Image
                   src={servicio.imagen}
                   alt={servicio.nombre}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
-                  sizes="(max-width: 640px) 260px, (max-width: 1024px) 320px, 340px"
+                  sizes="(max-width: 640px) 220px, (max-width: 1024px) 320px, 340px"
                 />
                 {/* Overlay con categoría */}
-                <div className="absolute top-1.5 sm:top-3 left-1.5 sm:left-3">
-                  <span className="inline-block px-1.5 sm:px-3 py-0.5 sm:py-1 rounded text-[9px] sm:text-xs font-semibold bg-white/90 backdrop-blur-sm text-[#a87a20] border border-[#c9962a]/20">
+                <div className="absolute top-1 sm:top-3 left-1 sm:left-3">
+                  <span className="inline-block px-1 sm:px-3 py-0.5 sm:py-1 rounded text-[8px] sm:text-xs font-semibold bg-white/90 backdrop-blur-sm text-[#a87a20] border border-[#c9962a]/20">
                     {servicio.categoria}
                   </span>
                 </div>
                 {servicio.categoria === 'Premium' && (
-                  <div className="absolute top-1.5 sm:top-3 right-1.5 sm:right-3">
-                    <span className="inline-block px-1.5 sm:px-3 py-0.5 sm:py-1 rounded text-[9px] sm:text-xs font-bold bg-yellow-500 text-white">
+                  <div className="absolute top-1 sm:top-3 right-1 sm:right-3">
+                    <span className="inline-block px-1 sm:px-3 py-0.5 sm:py-1 rounded text-[8px] sm:text-xs font-bold bg-yellow-500 text-white">
                       ⭐ POPULAR
                     </span>
                   </div>
@@ -129,26 +129,26 @@ export default function CarruselServicios() {
               </div>
 
               {/* Contenido */}
-              <div className="p-3 sm:p-5 lg:p-6">
+              <div className="p-2 sm:p-5 lg:p-6">
                 {/* Título */}
-                <h3 className="text-sm sm:text-lg lg:text-xl font-bold text-gray-900 mb-1.5 sm:mb-3 group-hover:text-[#c9962a] transition line-clamp-2">
+                <h3 className="text-xs sm:text-lg lg:text-xl font-bold text-gray-900 mb-1 sm:mb-3 group-hover:text-[#c9962a] transition line-clamp-2">
                   {servicio.nombre}
                 </h3>
 
-                {/* Descripción */}
-                <p className="text-gray-600 text-[11px] sm:text-sm mb-2.5 sm:mb-4 leading-snug sm:leading-relaxed line-clamp-2 sm:line-clamp-3">
+                {/* Descripción - solo en tablet+ */}
+                <p className="hidden sm:block text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">
                   {servicio.descripcion}
                 </p>
 
                 {/* Precio y tiempo */}
-                <div className="flex items-center justify-between pt-2 sm:pt-4 border-t border-gray-200">
+                <div className="flex items-center justify-between pt-1.5 sm:pt-4 sm:border-t sm:border-gray-200">
                   <div>
-                    <div className="text-lg sm:text-2xl font-bold text-[#c9962a]">{servicio.precio}€</div>
-                    <div className="text-[9px] sm:text-xs text-gray-500">IVA incluido</div>
+                    <div className="text-base sm:text-2xl font-bold text-[#c9962a]">{servicio.precio}€</div>
+                    <div className="text-[8px] sm:text-xs text-gray-500">IVA inc.</div>
                   </div>
                   <div className="text-right">
-                    <div className="text-[10px] sm:text-sm font-semibold text-gray-900">Entrega en</div>
-                    <div className="text-[11px] sm:text-sm text-[#c9962a] font-bold">{servicio.tiempo}</div>
+                    <div className="text-[9px] sm:text-sm font-semibold text-gray-900">Entrega</div>
+                    <div className="text-[10px] sm:text-sm text-[#c9962a] font-bold">{servicio.tiempo}</div>
                   </div>
                 </div>
 
