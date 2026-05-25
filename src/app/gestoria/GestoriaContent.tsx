@@ -64,7 +64,7 @@ const SERVICES: Service[] = [
       'Obtención y revisión de nota registral actualizada',
       'Consulta de información urbanística y licencias',
       'Informe ejecutivo con hallazgos y recomendaciones',
-      'Entrega en 5-7 días laborables · Formato PDF',
+      'Entrega en 3-5 días · Análisis en 48h · Formato PDF',
     ],
     price: 168,
     image: '/gestoria/gestoria1.jpg',

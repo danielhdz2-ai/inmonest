@@ -8,13 +8,13 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   title: 'Due Diligence Pre-Compra 【168€】 Verificación Completa Post-Arras | Inmonest',
-  description: 'Ya firmaste arras? Verificamos actas de comunidad, derramas, ITE, nota registral e información urbanística antes de escriturar. Informe completo en 5-7 días. 168€ IVA incluido.',
+  description: 'Ya firmaste arras? Verificamos actas de comunidad, derramas, ITE, nota registral e información urbanística antes de escriturar. Informe completo en 3-5 días. 168€ IVA incluido.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/due-diligence-precompra`,
   },
   openGraph: {
     title: 'Due Diligence Pre-Compra — Verificación Documental Completa',
-    description: 'Servicio integral de verificación antes de escriturar: actas comunidad, derramas, ITE, registros, urbanismo. Informe profesional en 5-7 días. 168€.',
+    description: 'Servicio integral de verificación antes de escriturar: actas comunidad, derramas, ITE, registros, urbanismo. Informe profesional en 3-5 días. 168€.',
     url: `${BASE_URL}/gestoria/due-diligence-precompra`,
     type: 'website',
     siteName: 'Inmonest',
@@ -30,7 +30,7 @@ export default function DueDiligencePrecompraPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Pack Due Diligence Pre-Compra',
-    description: 'Verificación integral de documentación inmobiliaria tras firmar arras: actas de comunidad, derramas, ITE, nota registral e información urbanística. Informe ejecutivo en 5-7 días.',
+    description: 'Verificación integral de documentación inmobiliaria tras firmar arras: actas de comunidad, derramas, ITE, nota registral e información urbanística. Informe ejecutivo en 3-5 días.',
     provider: {
       '@type': 'Organization',
       name: 'Inmonest',
@@ -67,7 +67,7 @@ export default function DueDiligencePrecompraPage() {
               <p className="text-xl text-gray-600 mb-8">
                 <strong>Pack Due Diligence Pre-Compra:</strong> Revisamos actas de comunidad, derramas pendientes, 
                 ITE del edificio, nota registral actualizada e información urbanística. 
-                <strong> Informe ejecutivo en 5-7 días laborables.</strong>
+                <strong> Informe ejecutivo en 3-5 días laborables.</strong>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
@@ -90,7 +90,7 @@ export default function DueDiligencePrecompraPage() {
                   <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>5-7 días entrega</span>
+                  <span>3-5 días entrega</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
@@ -353,10 +353,11 @@ export default function DueDiligencePrecompraPage() {
                 1
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">Contratas el servicio (168€)</h3>
+                <h3 className="font-bold text-lg text-gray-900 mb-2">Contratas y envías la documentación</h3>
                 <p className="text-gray-700">
-                  Pagas 168€ (IVA incluido) y nos envías la dirección del inmueble, datos del administrador de fincas (si los tienes) 
-                  y copia de las arras firmadas.
+                  Pagas 168€ (IVA incluido) y nos envías: actas de comunidad (últimos 2 años), ITE del edificio, 
+                  nota registral actualizada, cédula urbanística, y copia de las arras firmadas. 
+                  Si no tienes algún documento, te indicamos cómo obtenerlo.
                 </p>
               </div>
             </div>
@@ -365,10 +366,11 @@ export default function DueDiligencePrecompraPage() {
                 2
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">Solicitamos toda la documentación (48h)</h3>
+                <h3 className="font-bold text-lg text-gray-900 mb-2">Análisis profesional (48 horas)</h3>
                 <p className="text-gray-700">
-                  Contactamos con el administrador de fincas, registro de la propiedad y ayuntamiento para obtener 
-                  actas, ITE, nota registral y cédula urbanística.
+                  Nuestro equipo jurídico revisa toda la documentación con criterio profesional en 48 horas: 
+                  derramas pendientes y extraordinarias, deficiencias del ITE, cargas ocultas en registro, 
+                  licencias urbanísticas y reformas sin legalizar.
                 </p>
               </div>
             </div>
@@ -377,22 +379,10 @@ export default function DueDiligencePrecompraPage() {
                 3
               </div>
               <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">Análisis profesional (3-4 días)</h3>
+                <h3 className="font-bold text-lg text-gray-900 mb-2">Entrega de informe ejecutivo (3-5 días totales)</h3>
                 <p className="text-gray-700">
-                  Nuestro equipo jurídico revisa toda la documentación con criterio profesional: 
-                  derramas, deficiencias estructurales, cargas ocultas, licencias.
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center font-bold">
-                4
-              </div>
-              <div>
-                <h3 className="font-bold text-lg text-gray-900 mb-2">Entrega de informe ejecutivo (día 5-7)</h3>
-                <p className="text-gray-700">
-                  Recibes por email un PDF ejecutivo con todos los hallazgos, semáforo de riesgos y recomendación final: 
-                  <strong> escriturar, renegociar precio o desistir.</strong>
+                  Recibes por email un PDF ejecutivo con todos los hallazgos, semáforo de riesgos (🟢🟡🔴) y recomendación final: 
+                  <strong> escriturar, renegociar precio o desistir.</strong> Incluye anexos con toda la documentación revisada.
                 </p>
               </div>
             </div>
@@ -527,7 +517,7 @@ export default function DueDiligencePrecompraPage() {
             ¿Ya firmaste arras? No arriesgues 200.000€ sin verificar antes
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Por solo 168€ obtienes certeza total antes de escriturar. Informe ejecutivo en 5-7 días.
+              Por solo 168€ obtienes certeza total antes de escriturar. Informe ejecutivo en 3-5 días.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -546,7 +536,7 @@ export default function DueDiligencePrecompraPage() {
             </a>
           </div>
           <p className="mt-6 text-sm opacity-75">
-            ✓ IVA incluido · ✓ Informe en 5-7 días · ✓ Nota registral incluida
+            ✓ IVA incluido · ✓ Informe en 3-5 días · ✓ Análisis en 48h
           </p>
         </div>
       </section>
