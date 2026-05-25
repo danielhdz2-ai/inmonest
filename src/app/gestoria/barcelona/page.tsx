@@ -406,14 +406,14 @@ export default function GestoriaBarcelonaPage() {
               <Link href="/gestoria/valencia" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
                 Gestoría Valencia →
               </Link>
-              <Link href="/gestoria/zaragoza/contratos-inmobiliarios" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
-                Contratos alquiler Zaragoza →
+              <Link href="/zaragoza/contrato-alquiler" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+                Contrato de alquiler en Zaragoza →
               </Link>
-              <Link href="/gestoria/sevilla/gestoria-online" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
-                Gestoría online Sevilla →
+              <Link href="/gestoria/sevilla" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+                Gestoría inmobiliaria en Sevilla →
               </Link>
-              <Link href="/gestoria/granada/contratos-alquiler-compraventa" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
-                Contratos estudiantes Granada →
+              <Link href="/granada/contrato-alquiler" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+                Contrato de alquiler en Granada →
               </Link>
             </div>
           </div>

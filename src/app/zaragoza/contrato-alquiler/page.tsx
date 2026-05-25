@@ -7,25 +7,25 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Zaragoza 【DESDE 29€】 Contratos Alquiler y Arras | Inmonest',
-  description: 'Gestoría especializada en Zaragoza. Redactamos contratos de alquiler LAU, arras penitenciales y compraventa. Abogados expertos en derecho inmobiliario aragonés. Desde 29€. Entrega en 48h.',
+  title: 'Contrato de Alquiler en Zaragoza 【DESDE 29€】 LAU y Arras | Inmonest',
+  description: 'Contratos de alquiler en Zaragoza redactados por abogados. LAU, arras penitenciales y compraventa. Especialistas en derecho inmobiliario aragonés. Desde 29€. Entrega en 48h.',
   keywords: [
-    'gestoria inmobiliaria zaragoza',
     'contrato alquiler zaragoza',
+    'contrato lau zaragoza',
+    'gestoria inmobiliaria zaragoza',
     'contrato arras zaragoza',
     'abogado inmobiliario zaragoza',
     'contrato compraventa zaragoza',
-    'gestoria contratos zaragoza',
+    'alquiler vivienda zaragoza',
     'abogado alquiler zaragoza',
-    'contrato lau zaragoza',
   ],
   alternates: {
-    canonical: `${BASE_URL}/gestoria/zaragoza/contratos-inmobiliarios`,
+    canonical: `${BASE_URL}/zaragoza/contrato-alquiler`,
   },
   openGraph: {
-    title: 'Gestoría Inmobiliaria en Zaragoza - Contratos desde 29€',
-    description: 'Redactamos y revisamos contratos inmobiliarios en Zaragoza. Alquiler, arras, compraventa. Asesoría legal especializada. Entrega 48h.',
-    url: `${BASE_URL}/gestoria/zaragoza/contratos-inmobiliarios`,
+    title: 'Contrato de Alquiler en Zaragoza - Desde 29€',
+    description: 'Contratos de alquiler LAU en Zaragoza redactados por abogados. Arras, compraventa y asesoría legal especializada. Entrega 48h.',
+    url: `${BASE_URL}/zaragoza/contrato-alquiler`,
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
@@ -41,15 +41,15 @@ const schemaData = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE_URL },
-        { '@type': 'ListItem', position: 2, name: 'Gestoría', item: `${BASE_URL}/gestoria` },
-        { '@type': 'ListItem', position: 3, name: 'Zaragoza', item: `${BASE_URL}/gestoria/zaragoza/contratos-inmobiliarios` },
+        { '@type': 'ListItem', position: 2, name: 'Zaragoza', item: `${BASE_URL}/zaragoza` },
+        { '@type': 'ListItem', position: 3, name: 'Contrato de Alquiler', item: `${BASE_URL}/zaragoza/contrato-alquiler` },
       ],
     },
     {
       '@type': 'LegalService',
-      name: 'Gestoría Inmobiliaria Zaragoza - Inmonest',
-      description: 'Servicio de redacción y revisión de contratos inmobiliarios en Zaragoza. Especialistas en alquiler LAU, arras penitenciales y compraventa.',
-      url: `${BASE_URL}/gestoria/zaragoza/contratos-inmobiliarios`,
+      name: 'Contratos de Alquiler Zaragoza - Inmonest',
+      description: 'Servicio de redacción y revisión de contratos de alquiler en Zaragoza. Especialistas en alquiler LAU, arras penitenciales y compraventa.',
+      url: `${BASE_URL}/zaragoza/contrato-alquiler`,
       image: `${BASE_URL}/gestoria/gestoria3.jpg`,
       areaServed: {
         '@type': 'City',
@@ -429,8 +429,11 @@ export default function GestoriaZaragozaPage() {
           <Link href="/gestoria/guia-arras-penitenciales" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
             Guía Arras Penitenciales →
           </Link>
-          <Link href="/zaragoza/contrato-alquiler" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
-            Contrato Alquiler Zaragoza →
+          <Link href="/gestoria/sevilla" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+            Gestoría Sevilla →
+          </Link>
+          <Link href="/granada/contrato-alquiler" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+            Contrato Alquiler Granada →
           </Link>
         </div>
       </section>

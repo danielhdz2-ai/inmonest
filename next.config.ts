@@ -38,6 +38,22 @@ const nextConfig: NextConfig = {
         destination: '/gestoria/:ciudad/contratos-inmobiliarios',
         permanent: true,
       },
+      // Refactorización URLs ciudad-específicas (Mayo 2026) - Arquitectura limpia
+      {
+        source: '/gestoria/zaragoza/contratos-inmobiliarios',
+        destination: '/zaragoza/contrato-alquiler',
+        permanent: true,
+      },
+      {
+        source: '/gestoria/sevilla/gestoria-online',
+        destination: '/gestoria/sevilla',
+        permanent: true,
+      },
+      {
+        source: '/gestoria/granada/contratos-alquiler-compraventa',
+        destination: '/granada/contrato-alquiler',
+        permanent: true,
+      },
     ]
   },
   

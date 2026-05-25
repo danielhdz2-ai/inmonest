@@ -7,8 +7,8 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Sevilla 【DESDE 29€】 Contratos Profesionales Online | Inmonest',
-  description: 'Abogados inmobiliarios en Sevilla. Redactamos contratos de alquiler, arras, compraventa y rescisión. Especialistas en normativa andaluza. Desde 29€. Entrega en 48h. Pago seguro online.',
+  title: 'Gestoría Inmobiliaria Sevilla 【DESDE 29€】 Contratos Online | Inmonest',
+  description: 'Gestoría inmobiliaria en Sevilla 100% online. Contratos de alquiler, arras, compraventa y rescisión. Especialistas en normativa andaluza. Desde 29€. Entrega en 48h.',
   keywords: [
     'gestoria inmobiliaria sevilla',
     'contrato alquiler sevilla',
@@ -20,12 +20,12 @@ export const metadata: Metadata = {
     'revision contrato sevilla',
   ],
   alternates: {
-    canonical: `${BASE_URL}/gestoria/sevilla/gestoria-online`,
+    canonical: `${BASE_URL}/gestoria/sevilla`,
   },
   openGraph: {
-    title: 'Gestoría Inmobiliaria Online en Sevilla - Contratos desde 29€',
-    description: 'Servicio 100% online de gestoría inmobiliaria en Sevilla. Contratos de alquiler LAU, arras penitenciales y compraventa. Abogados especializados en normativa andaluza.',
-    url: `${BASE_URL}/gestoria/sevilla/gestoria-online`,
+    title: 'Gestoría Inmobiliaria en Sevilla - Contratos desde 29€',
+    description: 'Gestoría inmobiliaria en Sevilla 100% online. Contratos de alquiler LAU, arras penitenciales y compraventa. Abogados especializados en normativa andaluza.',
+    url: `${BASE_URL}/gestoria/sevilla`,
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
@@ -42,14 +42,14 @@ const schemaData = {
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE_URL },
         { '@type': 'ListItem', position: 2, name: 'Gestoría', item: `${BASE_URL}/gestoria` },
-        { '@type': 'ListItem', position: 3, name: 'Sevilla', item: `${BASE_URL}/gestoria/sevilla/gestoria-online` },
+        { '@type': 'ListItem', position: 3, name: 'Sevilla', item: `${BASE_URL}/gestoria/sevilla` },
       ],
     },
     {
       '@type': 'LegalService',
-      name: 'Gestoría Inmobiliaria Online Sevilla - Inmonest',
+      name: 'Gestoría Inmobiliaria Sevilla - Inmonest',
       description: 'Gestoría 100% online especializada en contratos inmobiliarios en Sevilla. Redacción y revisión de alquiler LAU, arras, compraventa y rescisión por abogados colegiados.',
-      url: `${BASE_URL}/gestoria/sevilla/gestoria-online`,
+      url: `${BASE_URL}/gestoria/sevilla`,
       image: `${BASE_URL}/gestoria/gestoria5.jpg`,
       areaServed: {
         '@type': 'City',
@@ -476,11 +476,11 @@ export default function GestoriaSevillaPage() {
           <Link href="/gestoria/valencia" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
             Gestoría Valencia →
           </Link>
-          <Link href="/sevilla/contrato-alquiler" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
-            Contrato Alquiler Sevilla →
+          <Link href="/zaragoza/contrato-alquiler" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+            Contrato Alquiler Zaragoza →
           </Link>
-          <Link href="/sevilla/contrato-arras" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
-            Contrato Arras Sevilla →
+          <Link href="/granada/contrato-alquiler" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+            Contrato Alquiler Granada →
           </Link>
           <Link href="/gestoria/guia-arras-penitenciales" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
             Guía Arras Penitenciales →

@@ -314,19 +314,19 @@ export default function GestoriaCiudadesPost() {
                 Madrid
               </Link>
               <Link
-                href="/gestoria/zaragoza/contratos-inmobiliarios"
+                href="/zaragoza/contrato-alquiler"
                 className="inline-block bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-amber-700 transition text-sm"
               >
                 Zaragoza
               </Link>
               <Link
-                href="/gestoria/sevilla/gestoria-online"
+                href="/gestoria/sevilla"
                 className="inline-block bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-amber-700 transition text-sm"
               >
                 Sevilla
               </Link>
               <Link
-                href="/gestoria/granada/contratos-alquiler-compraventa"
+                href="/granada/contrato-alquiler"
                 className="inline-block bg-amber-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-amber-700 transition text-sm"
               >
                 Granada

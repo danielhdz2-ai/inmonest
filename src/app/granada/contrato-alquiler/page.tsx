@@ -7,25 +7,25 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contratos de Alquiler y Compraventa en Granada 【DESDE 29€】 Gestoría Especializada | Inmonest',
-  description: 'Abogados inmobiliarios en Granada. Contratos de alquiler para estudiantes, LAU, arras y compraventa. Especialistas en zona universitaria y Centro. Desde 29€ con entrega en 48h.',
+  title: 'Contrato de Alquiler en Granada 【DESDE 29€】 Estudiantes y LAU | Inmonest',
+  description: 'Contratos de alquiler en Granada para estudiantes y familias. LAU, temporal, arras y compraventa. Especialistas en zona universitaria. Desde 29€ con entrega en 48h.',
   keywords: [
     'contrato alquiler granada',
+    'contrato estudiantes granada',
+    'contrato lau granada',
     'gestoria inmobiliaria granada',
     'contrato arras granada',
     'abogado inmobiliario granada',
-    'contrato estudiantes granada',
     'alquiler centro granada',
-    'contrato compraventa granada',
-    'revision contrato granada',
+    'contrato temporal granada',
   ],
   alternates: {
-    canonical: `${BASE_URL}/gestoria/granada/contratos-alquiler-compraventa`,
+    canonical: `${BASE_URL}/granada/contrato-alquiler`,
   },
   openGraph: {
-    title: 'Contratos de Alquiler y Compraventa en Granada - Desde 29€',
-    description: 'Gestoría especializada en Granada. Contratos para estudiantes, LAU, arras penitenciales y compraventa. Abogados expertos en zona universitaria.',
-    url: `${BASE_URL}/gestoria/granada/contratos-alquiler-compraventa`,
+    title: 'Contrato de Alquiler en Granada - Estudiantes y LAU desde 29€',
+    description: 'Contratos de alquiler en Granada para estudiantes, LAU, arras penitenciales y compraventa. Abogados expertos en zona universitaria.',
+    url: `${BASE_URL}/granada/contrato-alquiler`,
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
@@ -41,15 +41,15 @@ const schemaData = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE_URL },
-        { '@type': 'ListItem', position: 2, name: 'Gestoría', item: `${BASE_URL}/gestoria` },
-        { '@type': 'ListItem', position: 3, name: 'Granada', item: `${BASE_URL}/gestoria/granada/contratos-alquiler-compraventa` },
+        { '@type': 'ListItem', position: 2, name: 'Granada', item: `${BASE_URL}/granada` },
+        { '@type': 'ListItem', position: 3, name: 'Contrato de Alquiler', item: `${BASE_URL}/granada/contrato-alquiler` },
       ],
     },
     {
       '@type': 'LegalService',
-      name: 'Gestoría Contratos Inmobiliarios Granada - Inmonest',
-      description: 'Servicio especializado en redacción de contratos inmobiliarios en Granada. Alquiler estudiantes, LAU, arras penitenciales y compraventa. Abogados expertos en normativa andaluza.',
-      url: `${BASE_URL}/gestoria/granada/contratos-alquiler-compraventa`,
+      name: 'Contratos de Alquiler Granada - Inmonest',
+      description: 'Servicio especializado en contratos de alquiler en Granada. Estudiantes, LAU, arras penitenciales y compraventa. Abogados expertos en normativa andaluza.',
+      url: `${BASE_URL}/granada/contrato-alquiler`,
       image: `${BASE_URL}/gestoria/gestoria8.jpg`,
       areaServed: {
         '@type': 'City',
@@ -462,10 +462,10 @@ export default function GestoriaGranadaPage() {
           <Link href="/gestoria/valencia" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
             Gestoría Valencia →
           </Link>
-          <Link href="/gestoria/zaragoza/contratos-inmobiliarios" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
-            Gestoría Zaragoza →
+          <Link href="/zaragoza/contrato-alquiler" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+            Contrato Alquiler Zaragoza →
           </Link>
-          <Link href="/gestoria/sevilla/gestoria-online" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/sevilla" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
             Gestoría Sevilla →
           </Link>
           <Link href="/gestoria/guia-arras-penitenciales" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
