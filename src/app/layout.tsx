@@ -19,6 +19,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// Viewport config: deshabilitar zoom en móvil para evitar que se rompa el layout
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: '#c9962a',
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://inmonest.com'),
 
@@ -113,7 +122,7 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col overflow-x-hidden">
         {/* GTM noscript fallback */}
         <noscript>
           <iframe
