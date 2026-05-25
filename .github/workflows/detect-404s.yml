@@ -1,0 +1,152 @@
+name: '🔍 Detector de Pisos No Disponibles (404s)'
+
+on:
+  schedule:
+    # Todos los miércoles a las 04:00 AM UTC (06:00 AM España)
+    - cron: '0 4 * * 3'
+  workflow_dispatch:
+    inputs:
+      max_listings:
+        description: 'Máximo de pisos a verificar'
+        default: '100'
+        required: false
+
+jobs:
+  detect-404s:
+    name: Detectar pisos obsoletos
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: 📥 Checkout código
+        uses: actions/checkout@v4
+      
+      - name: 📦 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: 📚 Instalar dependencias
+        run: npm ci
+      
+      - name: 🔍 Verificar pisos más antiguos (detectar 404s)
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          MAX_LISTINGS: ${{ github.event.inputs.max_listings || '100' }}
+        run: |
+          echo "🔍 Verificando pisos más antiguos..."
+          echo "📊 Límite: $MAX_LISTINGS pisos"
+          
+          # Crear script inline para verificar 404s
+          cat > check-availability.mts << 'EOF'
+          import { createClient } from '@supabase/supabase-js'
+          
+          const supabase = createClient(
+            process.env.NEXT_PUBLIC_SUPABASE_URL!,
+            process.env.SUPABASE_SERVICE_ROLE_KEY!
+          )
+          
+          const MAX = parseInt(process.env.MAX_LISTINGS || '100', 10)
+          
+          async function checkAvailability() {
+            // Obtener pisos más antiguos (probable que ya no existan)
+            const { data: listings, error } = await supabase
+              .from('listings')
+              .select('id, title, source_url, source_portal, scraped_at')
+              .eq('status', 'published')
+              .not('source_url', 'is', null)
+              .order('scraped_at', { ascending: true })
+              .limit(MAX)
+            
+            if (error) {
+              console.error('❌ Error:', error)
+              return
+            }
+            
+            if (!listings || listings.length === 0) {
+              console.log('✅ No hay pisos antiguos para verificar')
+              return
+            }
+            
+            console.log(\`📋 Verificando \${listings.length} pisos...\n\`)
+            
+            let removed = 0
+            let available = 0
+            let errors = 0
+            
+            // Verificar en lotes de 10 (concurrencia controlada)
+            for (let i = 0; i < listings.length; i += 10) {
+              const batch = listings.slice(i, i + 10)
+              
+              await Promise.all(batch.map(async (listing) => {
+                try {
+                  const response = await fetch(listing.source_url!, {
+                    method: 'HEAD',
+                    signal: AbortSignal.timeout(8000),
+                    headers: {
+                      'User-Agent': 'Mozilla/5.0 (compatible; InmonestBot/1.0; +https://inmonest.com)'
+                    }
+                  })
+                  
+                  // Códigos que indican que el piso ya no existe
+                  if (response.status === 404 || response.status === 410 || response.status === 403) {
+                    console.log(\`❌ [404] \${listing.title} - \${listing.source_portal}\`)
+                    
+                    // Eliminar de la BD
+                    await supabase
+                      .from('listings')
+                      .delete()
+                      .eq('id', listing.id)
+                    
+                    removed++
+                  } else if (response.status === 200) {
+                    available++
+                  }
+                } catch (err) {
+                  // Timeout o error de red - no eliminar (podría ser transitorio)
+                  errors++
+                }
+              }))
+              
+              // Pausa entre lotes para no saturar
+              await new Promise(resolve => setTimeout(resolve, 2000))
+            }
+            
+            console.log(\`\n📊 RESUMEN:\`)
+            console.log(\`✅ Disponibles: \${available}\`)
+            console.log(\`❌ Eliminados (404/410): \${removed}\`)
+            console.log(\`⚠️  Errores/Timeout: \${errors}\`)
+          }
+          
+          checkAvailability()
+          EOF
+          
+          npx tsx check-availability.mts
+      
+      - name: 📊 Generar reporte
+        if: always()
+        run: |
+          echo "## 🔍 Reporte de Detección de 404s" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Fecha:** $(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
+          echo "**Pisos verificados:** ${{ github.event.inputs.max_listings || '100' }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🎯 Estrategia:" >> $GITHUB_STEP_SUMMARY
+          echo "1. Selecciona los pisos más antiguos (ordenados por \`scraped_at\`)" >> $GITHUB_STEP_SUMMARY
+          echo "2. Verifica cada URL original con \`HEAD\` request (rápido)" >> $GITHUB_STEP_SUMMARY
+          echo "3. Elimina automáticamente si retorna 404/410/403" >> $GITHUB_STEP_SUMMARY
+          echo "4. Ignora timeouts (podrían ser transitorios)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 💰 Consumo:" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ **0 CPU de Vercel** (ejecutado desde GitHub Actions)" >> $GITHUB_STEP_SUMMARY
+          echo "- ⏱️ Duración: ~10-15 min para 100 pisos" >> $GITHUB_STEP_SUMMARY
+          echo "- 📅 Frecuencia: Semanal (miércoles 04:00 AM UTC)" >> $GITHUB_STEP_SUMMARY
+          echo "- 🔄 Concurrencia: 10 verificaciones simultáneas" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🚀 Beneficios:" >> $GITHUB_STEP_SUMMARY
+          echo "- 🚫 Elimina proactivamente pisos que ya no existen" >> $GITHUB_STEP_SUMMARY
+          echo "- 📉 Reduce 404s en Google Search Console" >> $GITHUB_STEP_SUMMARY
+          echo "- 📊 Mantiene índice limpio y actualizado" >> $GITHUB_STEP_SUMMARY
+          echo "- 💾 Libera espacio en base de datos" >> $GITHUB_STEP_SUMMARY

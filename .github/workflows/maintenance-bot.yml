@@ -1,0 +1,69 @@
+name: '🔧 Bot de Mantenimiento - Limpieza Avanzada'
+
+on:
+  schedule:
+    # Todos los lunes a las 06:00 AM UTC (08:00 AM España)
+    - cron: '0 6 * * 1'
+  workflow_dispatch:  # Permitir ejecución manual desde GitHub
+
+jobs:
+  maintenance:
+    name: Ejecutar limpieza avanzada
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+      - name: 🔧 Ejecutar endpoint de mantenimiento
+        run: |
+          echo "🧹 Iniciando limpieza avanzada..."
+          
+          response=$(curl -s -w "\n%{http_code}" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            https://inmonest.com/api/maintenance)
+          
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | head -n-1)
+          
+          echo "📊 Código HTTP: $http_code"
+          echo "📄 Respuesta: $body"
+          
+          if [ "$http_code" -ne 200 ]; then
+            echo "❌ Error en limpieza"
+            exit 1
+          fi
+          
+          echo "✅ Limpieza completada correctamente"
+      
+      - name: 📊 Generar reporte
+        if: always()
+        run: |
+          echo "## 🔧 Reporte de Mantenimiento Avanzado" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Fecha:** $(date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_STEP_SUMMARY
+          echo "**Endpoint:** https://inmonest.com/api/maintenance" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🧹 Tareas Ejecutadas:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "1. **cleanDemandListings**" >> $GITHUB_STEP_SUMMARY
+          echo "   - Elimina anuncios tipo 'Busco piso', 'Compro'" >> $GITHUB_STEP_SUMMARY
+          echo "   - Límite: 500 anuncios/ejecución" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "2. **cleanBrokenImages**" >> $GITHUB_STEP_SUMMARY
+          echo "   - Verifica primeras imágenes en portales con hotlink" >> $GITHUB_STEP_SUMMARY
+          echo "   - Portales: tucasa, pisoscom, milanuncios, enalquiler, habitaclia, fotocasa" >> $GITHUB_STEP_SUMMARY
+          echo "   - Límite: 80 listings/ejecución (concurrencia 10)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "3. **cleanFewPhotosAgencies**" >> $GITHUB_STEP_SUMMARY
+          echo "   - Elimina agencias con <5 fotos (señal de baja calidad)" >> $GITHUB_STEP_SUMMARY
+          echo "   - Límite: 200 listings/ejecución (concurrencia 15)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 💰 Consumo:" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ **0 CPU de Vercel** (ejecutado desde GitHub Actions)" >> $GITHUB_STEP_SUMMARY
+          echo "- ⏱️ Duración estimada: 2-3 minutos" >> $GITHUB_STEP_SUMMARY
+          echo "- 📅 Frecuencia: Semanal (lunes 06:00 AM UTC)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🎯 Beneficios:" >> $GITHUB_STEP_SUMMARY
+          echo "- 🚫 Evita anuncios de demanda ('Busco piso')" >> $GITHUB_STEP_SUMMARY
+          echo "- 🖼️ Mantiene solo listings con imágenes funcionales" >> $GITHUB_STEP_SUMMARY
+          echo "- ⭐ Mejora calidad promedio de anuncios" >> $GITHUB_STEP_SUMMARY
+          echo "- 📈 Reduce tasa de rebote (sin 404s de imágenes)" >> $GITHUB_STEP_SUMMARY

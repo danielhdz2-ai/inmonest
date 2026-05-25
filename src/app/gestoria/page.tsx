@@ -99,6 +99,16 @@ const schemaJson = JSON.stringify({
           price: '40',
           priceCurrency: 'EUR'
         }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Pack Due Diligence Pre-Compra',
+          description: 'Verificación integral de actas de comunidad, derramas, ITE, nota registral e información urbanística tras firmar arras.',
+          price: '168',
+          priceCurrency: 'EUR'
+        }
       }
     ]
   },

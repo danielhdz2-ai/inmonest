@@ -41,6 +41,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/revision-contrato-arras`,           lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/revision-contrato-alquiler`,        lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso`,              lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/due-diligence-precompra`,           lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/ayuda-propietarios`,                lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/contrato-ilegal`,                   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/barcelona`,                         lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
@@ -73,6 +74,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/solicitar/ayuda-propietarios`,            lastModified: today, changeFrequency: 'monthly', priority: 0.84 },
   { url: `${BASE_URL}/gestoria/solicitar/contrato-ilegal`,               lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
   { url: `${BASE_URL}/gestoria/solicitar/asesoria-compra`,               lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
+  { url: `${BASE_URL}/gestoria/solicitar/pack-due-diligence-precompra`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/solicitar/contrato-compraventa`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
 
   // Páginas de oportunidades especiales
