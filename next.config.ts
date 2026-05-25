@@ -21,12 +21,23 @@ const nextConfig: NextConfig = {
         destination: '/gestoria',
         permanent: true,
       },
-      // Si había URLs antiguas de contratos, agregar aquí
-      // {
-      //   source: '/contratos/:slug',
-      //   destination: '/gestoria/solicitar/:slug',
-      //   permanent: true,
-      // },
+      // URLs antiguas de contratos → nueva estructura
+      {
+        source: '/contratos/:slug',
+        destination: '/gestoria/solicitar/:slug',
+        permanent: true,
+      },
+      {
+        source: '/servicios/:slug',
+        destination: '/gestoria/solicitar/:slug',
+        permanent: true,
+      },
+      // Normalización de URLs de gestoría por ciudad (sin duplicados)
+      {
+        source: '/gestoria/:ciudad/contratos',
+        destination: '/gestoria/:ciudad/contratos-inmobiliarios',
+        permanent: true,
+      },
     ]
   },
   
