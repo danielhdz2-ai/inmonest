@@ -11,7 +11,9 @@ const STRIPE_SERVICES: Record<string, { name: string; price_eur: number }> = {
   'arras-confirmatorias':  { name: 'Contrato de Arras Confirmatorias',       price_eur: 145 },
   'reserva-compra':        { name: 'Contrato de Reserva de Compra',          price_eur: 61  },
   'alquiler-vivienda-lau': { name: 'Contrato de Alquiler de Vivienda (LAU)', price_eur: 120  },
+  'contrato-alquiler':     { name: 'Contrato de Alquiler de Vivienda (LAU)', price_eur: 120  },
   'alquiler-temporada':    { name: 'Contrato de Alquiler por Temporada',     price_eur: 97  },
+  'contrato-alquiler-temporal': { name: 'Contrato de Alquiler por Temporada', price_eur: 97 },
   'alquiler-habitacion':   { name: 'Contrato de Alquiler de Habitación',     price_eur: 73  },
   'reserva-alquiler':      { name: 'Contrato de Reserva de Alquiler',        price_eur: 61  },
   'rescision-alquiler':    { name: 'Contrato de Rescisión de Alquiler',      price_eur: 73  },
@@ -25,6 +27,15 @@ const STRIPE_SERVICES: Record<string, { name: string; price_eur: number }> = {
   'arras-parking-garage':   { name: 'Contrato de Arras para Compraventa de Parking o Garaje', price_eur: 73 },
   'acompanamiento-reserva-arras':        { name: 'Acompañamiento Reserva hasta Arras',              price_eur: 424 },
   'compra-completa-reserva-escritura':   { name: 'Servicio Completo de Compra: Reserva a Escritura', price_eur: 666 },
+  'revision-alquiler':                   { name: 'Revisión de Contrato de Alquiler',                 price_eur: 60 },
+  'revision-arras':                      { name: 'Revisión de Contrato de Arras',                    price_eur: 60 },
+  'revision-correccion':                 { name: 'Revisión + Corrección de Contrato',                price_eur: 120 },
+  'revision-correccion-arras':           { name: 'Revisión + Corrección de Contrato de Arras',       price_eur: 120 },
+  'ayuda-propietarios':                  { name: 'Redacción de Contrato LAU para Propietarios',      price_eur: 73 },
+  'contrato-ilegal':                     { name: 'Análisis de Fraude Inmobiliario',                  price_eur: 29 },
+  'asesoria-compra':                     { name: 'Asesoría Completa Compra de Vivienda',             price_eur: 95 },
+  'pack-due-diligence-precompra':        { name: 'Pack Due Diligence Pre-Compra',                    price_eur: 168 },
+  'contrato-compraventa':                { name: 'Contrato de Compraventa de Vivienda',              price_eur: 80 },
 }
 
 export async function POST(req: NextRequest) {

@@ -125,7 +125,7 @@ export default function RevisionContratoAlquilerPage() {
                   href="/gestoria/solicitar/revision-alquiler"
                   className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
-                  Revisar mi contrato (39€)
+                  Revisar mi contrato (60€)
                 </Link>
                 <a
                   href="https://wa.me/34624177966?text=Hola,%20necesito%20revisar%20mi%20contrato%20de%20alquiler"
@@ -534,7 +534,7 @@ export default function RevisionContratoAlquilerPage() {
               href="/gestoria/solicitar/revision-alquiler"
               className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Revisar mi contrato (39€)
+              Revisar mi contrato (60€)
             </Link>
             <a
               href="https://wa.me/34624177966?text=Tengo%20dudas%20sobre%20mi%20contrato%20de%20alquiler"

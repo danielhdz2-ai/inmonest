@@ -228,7 +228,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
             La Ley de Vivienda 2026 protege mucho más a los inquilinos que antes. Si tienes dudas sobre tu contrato:
           </p>
           <ul className="list-disc pl-6">
-            <li><Link href="/gestoria/revision-contrato-alquiler" className="text-blue-600 underline">Revisión de contrato de alquiler (39€)</Link> - Detectamos cláusulas ilegales en 24h</li>
+            <li><Link href="/gestoria/revision-contrato-alquiler" className="text-blue-600 underline">Revisión de contrato de alquiler (60€)</Link> - Detectamos cláusulas ilegales en 24h</li>
             <li><Link href="/gestoria/contrato-ilegal" className="text-blue-600 underline">¿Tu contrato es completamente ilegal? (29€)</Link> - Análisis forense completo</li>
             <li><Link href="/gestoria/ayuda-propietarios" className="text-blue-600 underline">Contratos legales para propietarios (73€)</Link> - Si eres casero y quieres hacerlo bien</li>
           </ul>
@@ -244,7 +244,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
               href="/gestoria/revision-contrato-alquiler"
               className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition text-center"
             >
-              Revisar mi contrato (39€)
+              Revisar mi contrato (60€)
             </Link>
             <a
               href="https://wa.me/34624177966?text=Hola,%20tengo%20dudas%20sobre%20mi%20contrato%20de%20alquiler"

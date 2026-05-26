@@ -71,10 +71,10 @@ export default function AyudaPropietariosPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
-                  href="/gestoria/solicitar/contrato-alquiler"
+                  href="/gestoria/solicitar/ayuda-propietarios"
                   className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
-                  Solicitar contrato (120€)
+                  Solicitar contrato (73€)
                 </Link>
                 <a
                   href="https://wa.me/34624177966?text=Hola,%20necesito%20un%20contrato%20de%20alquiler%20para%20mi%20piso"
@@ -401,10 +401,10 @@ export default function AyudaPropietariosPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/gestoria/solicitar/contrato-alquiler"
+              href="/gestoria/solicitar/ayuda-propietarios"
               className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Solicitar contrato (120€)
+              Solicitar contrato (73€)
             </Link>
             <a
               href="https://wa.me/34624177966?text=Hola,%20necesito%20asesoramiento%20para%20alquilar%20mi%20piso"
