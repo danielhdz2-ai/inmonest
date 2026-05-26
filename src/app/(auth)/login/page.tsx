@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
+import { getRedirectUrl } from '@/lib/admin'
 import SocialAuthButtons from '@/components/SocialAuthButtons'
 
 export default function LoginPage() {
@@ -18,7 +19,7 @@ export default function LoginPage() {
     setError(null)
     
     const supabase = createClient()
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: email.trim().toLowerCase(),
       password: password.trim(),
     })
@@ -27,7 +28,9 @@ export default function LoginPage() {
       setError('Email o contraseña incorrectos')
       setLoading(false)
     } else {
-      window.location.href = '/mi-cuenta'
+      // Redirigir a /admin si es admin, sino a /mi-cuenta
+      const redirectUrl = getRedirectUrl(data.user?.email)
+      window.location.href = redirectUrl
     }
   }
 

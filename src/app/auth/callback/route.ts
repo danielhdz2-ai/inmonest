@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { sendEmail, emailBienvenida } from '@/lib/email'
+import { getRedirectUrl } from '@/lib/admin'
 
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
   const code = searchParams.get('code')
-  const next = searchParams.get('next') ?? '/mi-cuenta'
+  // El parámetro next se ignorará si el usuario es admin
+  const next = searchParams.get('next')
 
   if (code) {
     const supabase = await createClient()
@@ -28,7 +30,9 @@ export async function GET(request: Request) {
         }).catch(() => { /* no crítico */ })
       }
 
-      return NextResponse.redirect(`${origin}${next}`)
+      // Redirigir a /admin si es admin, sino usar next o /mi-cuenta por defecto
+      const redirectUrl = getRedirectUrl(email) || next || '/mi-cuenta'
+      return NextResponse.redirect(`${origin}${redirectUrl}`)
     }
   }
 
