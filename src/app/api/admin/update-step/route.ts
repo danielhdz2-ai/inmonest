@@ -6,7 +6,8 @@ export const dynamic = 'force-dynamic'
 async function isAdmin(supabase: Awaited<ReturnType<typeof createClient>>) {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user?.email) return false
-  return user.email === process.env.CONTACT_NOTIFY_EMAIL
+  const adminEmails = [process.env.CONTACT_NOTIFY_EMAIL, 'daniel.hdz.trader@gmail.com'].filter(Boolean)
+  return adminEmails.includes(user.email)
 }
 
 export async function PATCH(req: NextRequest) {

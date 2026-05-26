@@ -14,8 +14,13 @@ export default async function AdminPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  const adminEmail = process.env.CONTACT_NOTIFY_EMAIL
-  if (!user || user.email !== adminEmail) {
+  // Lista de emails con acceso admin
+  const adminEmails = [
+    process.env.CONTACT_NOTIFY_EMAIL,
+    'daniel.hdz.trader@gmail.com',
+  ].filter(Boolean)
+  
+  if (!user || !adminEmails.includes(user.email || '')) {
     redirect('/')
   }
 
