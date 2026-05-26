@@ -659,6 +659,102 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
       'Sí, el contrato de alquiler LAU es válido en toda Galicia (A Coruña, Santiago de Compostela, Ferrol, Vigo, Pontevedra, Lugo, Ourense). Se adapta a la legislación estatal y autonómica vigente.',
     ),
   },
+
+  mallorca: {
+    slug: 'mallorca',
+    nombre: 'Mallorca',
+    meta: {
+      title: '¿Necesitas redactar el contrato de alquiler en Mallorca? 120 € · 48 h | Inmonest',
+      description:
+        '¿Necesitas redactar un contrato de alquiler en Mallorca? LAU + Ley Vivienda 2026, 48h, precio cerrado 120€. Palma, Calvià, Manacor, Inca.',
+      keywords: [
+        'contrato alquiler Mallorca',
+        'LAU Mallorca',
+        'contrato arrendamiento Palma',
+        'gestoría alquiler Baleares',
+        'alquiler vivienda Mallorca 2026',
+      ],
+      ogTitle: '¿Redactar contrato de alquiler en Mallorca? 120 €, 48 h | Inmonest',
+      ogDescription: 'Contrato LAU en Mallorca. 120 €, entrega 48 h, sin plantillas genéricas. Adaptado a Baleares.',
+      ogImageAlt: 'Contrato de alquiler Mallorca',
+    },
+    schema: {
+      serviceName: 'Contrato de Alquiler de Vivienda (LAU) en Mallorca',
+      serviceDescription:
+        'Redacción de contrato de alquiler de vivienda en Mallorca y Baleares. Adaptado a LAU, Ley de Vivienda 2026 y normativa autonómica balear.',
+      areaType: 'City',
+      areaName: 'Mallorca',
+    },
+    heroImageAlt: 'Contrato de alquiler en Mallorca',
+    breadcrumbFinal: 'Contrato de Alquiler Mallorca',
+    badgeLine: 'Alquiler · Mallorca',
+    ctaStickyLabel: 'Alquiler · Mallorca',
+    introLargo:
+      'El contrato de alquiler de vivienda habitual está regulado por la Ley de Arrendamientos Urbanos (LAU) y la Ley de Vivienda de 2023 con sus actualizaciones de 2026. En Mallorca y las Islas Baleares (Palma, Calvià, Manacor, Inca, Alcúdia, Pollença), un contrato mal redactado puede suponer años de problemas: cláusulas nulas, actualizaciones de renta incorrectas, imposibilidad de recuperar el piso o disputas por la fianza. Además, la regulación del alquiler turístico y estacional en Baleares requiere especial atención para diferenciar claramente el alquiler de vivienda habitual. Nuestro equipo jurídico redacta contratos personalizados que protegen al propietario y cumplen con todos los derechos del inquilino exigidos por ley.',
+    alertaTitulo: 'Vas a firmar un alquiler en Mallorca: ¿vas a hacerlo con un PDF "genérico"?',
+    paraQuienTitulo: '¿Para quién es este contrato en Mallorca?',
+    paraQuien: [
+      'Propietarios en Mallorca que van a alquilar su piso de vivienda habitual por primera vez',
+      'Arrendadores que tienen contratos antiguos y quieren actualizarlos a la normativa vigente',
+      'Inquilinos que quieren revisar las condiciones antes de firmar',
+      'Cualquier alquiler de vivienda habitual de larga duración en Baleares (NO turístico)',
+    ],
+    faqs: faqPack(
+      'Mallorca',
+      '¿Qué fianza es obligatoria en Baleares?',
+      'Una mensualidad de renta como fianza legal mínima, que debe depositarse en el organismo autonómico de las Islas Baleares (IBAVI). Adicionalmente, propietario e inquilino pueden acordar garantías adicionales (hasta 2 mensualidades según la LAU).',
+      '¿El contrato es válido en toda Baleares?',
+      'Sí, el contrato de alquiler LAU es válido en todas las Islas Baleares (Mallorca, Menorca, Ibiza, Formentera). Se adapta a la legislación estatal y autonómica vigente. Este contrato es exclusivamente para vivienda habitual de larga duración, NO para alquiler turístico o estacional.',
+    ),
+  },
+
+  castellon: {
+    slug: 'castellon',
+    nombre: 'Castellón',
+    meta: {
+      title: '¿Necesitas redactar el contrato de alquiler en Castellón? 120 € · 48 h | Inmonest',
+      description:
+        '¿Necesitas redactar un contrato de alquiler en Castellón? LAU + Ley Vivienda 2026, 48h, precio cerrado 120€. Castellón ciudad, Benicàssim, Vila-real.',
+      keywords: [
+        'contrato alquiler Castellón',
+        'LAU Castellón',
+        'contrato arrendamiento Castelló',
+        'gestoría alquiler Comunidad Valenciana',
+        'alquiler vivienda Castellón 2026',
+      ],
+      ogTitle: '¿Redactar contrato de alquiler en Castellón? 120 €, 48 h | Inmonest',
+      ogDescription: 'Contrato LAU en Castellón. 120 €, entrega 48 h, sin plantillas genéricas. Adaptado a la Comunidad Valenciana.',
+      ogImageAlt: 'Contrato de alquiler Castellón',
+    },
+    schema: {
+      serviceName: 'Contrato de Alquiler de Vivienda (LAU) en Castellón',
+      serviceDescription:
+        'Redacción de contrato de alquiler de vivienda en Castellón y Comunidad Valenciana. Adaptado a LAU, Ley de Vivienda 2026 y normativa autonómica valenciana.',
+      areaType: 'City',
+      areaName: 'Castellón',
+    },
+    heroImageAlt: 'Contrato de alquiler en Castellón',
+    breadcrumbFinal: 'Contrato de Alquiler Castellón',
+    badgeLine: 'Alquiler · Castellón',
+    ctaStickyLabel: 'Alquiler · Castellón',
+    introLargo:
+      'El contrato de alquiler de vivienda habitual está regulado por la Ley de Arrendamientos Urbanos (LAU) y la Ley de Vivienda de 2023 con sus actualizaciones de 2026. En Castellón y la provincia de Castelló (Castellón de la Plana, Benicàssim, Vila-real, Burriana, Vinaròs, Peñíscola), un contrato mal redactado puede suponer años de problemas: cláusulas nulas, actualizaciones de renta incorrectas, imposibilidad de recuperar el piso o disputas por la fianza. Nuestro equipo jurídico redacta contratos personalizados que protegen al propietario y cumplen con todos los derechos del inquilino exigidos por ley, adaptados a la normativa de la Comunidad Valenciana.',
+    alertaTitulo: 'Vas a firmar un alquiler en Castellón: ¿vas a hacerlo con un PDF "genérico"?',
+    paraQuienTitulo: '¿Para quién es este contrato en Castellón?',
+    paraQuien: [
+      'Propietarios en Castellón que van a alquilar su piso por primera vez',
+      'Arrendadores que tienen contratos antiguos y quieren actualizarlos a la normativa vigente',
+      'Inquilinos que quieren revisar las condiciones antes de firmar',
+      'Cualquier alquiler de vivienda habitual de larga duración en la provincia de Castellón',
+    ],
+    faqs: faqPack(
+      'Castellón',
+      '¿Qué fianza es obligatoria en la Comunidad Valenciana?',
+      'Una mensualidad de renta como fianza legal mínima, que debe depositarse en el organismo autonómico de la Comunidad Valenciana (AVANT). Adicionalmente, propietario e inquilino pueden acordar garantías adicionales (hasta 2 mensualidades según la LAU).',
+      '¿El contrato es válido en toda la provincia de Castellón?',
+      'Sí, el contrato de alquiler LAU es válido en toda la provincia de Castellón y la Comunidad Valenciana (Valencia, Alicante, Castellón). Se adapta a la legislación estatal y autonómica vigente.',
+    ),
+  },
 }
 
 export function getContratoAlquilerPremiumConfig(slug: string): ContratoAlquilerPremiumConfig | undefined {
