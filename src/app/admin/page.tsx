@@ -2,10 +2,11 @@ import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import Navbar from '@/components/NavbarServer'
-import AdminPanel from './AdminPanel'
+import AdminPanelPremium from './AdminPanelPremium'
 
 export const metadata: Metadata = {
-  title: 'Admin - Inmonest',
+  title: 'Admin Premium - Inmonest',
+  description: 'Panel de administración avanzado con métricas, clientes y analytics'
 }
 
 export const dynamic = 'force-dynamic'
@@ -33,8 +34,8 @@ export default async function AdminPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-gray-50 pt-24 pb-16 px-4">
-        <AdminPanel initialRequests={data ?? []} />
+      <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pt-24 pb-16 px-4">
+        <AdminPanelPremium initialRequests={data ?? []} />
       </main>
     </>
   )
