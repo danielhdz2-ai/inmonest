@@ -415,46 +415,6 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     ),
   },
 
-  castellon: {
-    slug: 'castellon',
-    nombre: 'Castellón',
-    meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Castellón? 120 € · 48 h | Inmonest',
-      description: 'Contrato LAU en Castellón y Comunitat Valenciana. 120€, 48h. Ley de Vivienda 2026.',
-      keywords: ['contrato alquiler Castellón', 'LAU Castelló', 'arrendamiento Castellón', 'alquiler vivienda provincia Castellón'],
-      ogTitle: 'Contrato alquiler Castellón — 120 € | Inmonest',
-      ogDescription: 'Redacción LAU en Castelló de la Plana y provincia.',
-      ogImageAlt: 'Contrato de alquiler Castellón',
-    },
-    schema: {
-      serviceName: 'Contrato de Alquiler de Vivienda (LAU) en Castellón',
-      serviceDescription: 'Contrato de alquiler en Castellón y Comunitat Valenciana.',
-      areaType: 'City',
-      areaName: 'Castellón de la Plana',
-    },
-    heroImageAlt: 'Contrato de alquiler en Castellón',
-    breadcrumbFinal: 'Contrato de Alquiler Castellón',
-    badgeLine: 'Alquiler · Castellón',
-    ctaStickyLabel: 'Alquiler · Castellón',
-    introLargo:
-      'En Castellón y la provincia, el alquiler de vivienda habitual se rige por la LAU y la Ley de Vivienda 2026. Fianza, actualización de renta y duración deben quedar claras para evitar conflictos entre propietario e inquilino. Redactamos un contrato a medida para Castelló de la Plana, Vila-real, Benicàssim y resto de municipios.',
-    alertaTitulo: 'Vas a firmar un alquiler en Castellón: ¿vas a hacerlo con un PDF "genérico"?',
-    paraQuienTitulo: '¿Para quién es este contrato en Castellón?',
-    paraQuien: [
-      'Propietarios en Castelló de la Plana y la provincia',
-      'Arrendadores que adaptan un contrato antiguo a la normativa 2026',
-      'Inquilinos que quieren seguridad antes de firmar',
-      'Alquileres LAU de larga duración en la Comunitat Valenciana',
-    ],
-    faqs: faqPack(
-      'Castellón',
-      '¿Dónde va la fianza en la Comunitat Valenciana?',
-      'La fianza de una mensualidad debe ingresarse en el organismo autonómico valenciano según la normativa aplicable.',
-      '¿Sirve en toda la provincia de Castellón?',
-      'Sí, en Castelló de la Plana, Vila-real, Benicàssim y el resto de municipios valencianos, con el mismo marco legal.',
-    ),
-  },
-
   murcia: {
     slug: 'murcia',
     nombre: 'Murcia',

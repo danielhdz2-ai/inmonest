@@ -110,9 +110,7 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
     if (selectedClient) {
       loadClientDocuments(selectedClient.email)
     }
-  }, [selectedClientalRequests)
-    loadClients()
-  }, [initialRequests])
+  }, [selectedClient])
 
   async function loadMetrics() {
     try {
@@ -123,8 +121,6 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       console.error('Error loading metrics:', err)
     }
   }
-
-  a
 
   async function loadAllDocuments() {
     try {
@@ -145,7 +141,9 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       console.error('Error loading client documents:', err)
       setClientDocuments([])
     }
-  }sync function loadClients() {
+  }
+
+  async function loadClients() {
     try {
       const res = await fetch('/api/admin/clients')
       const data = await res.json()
