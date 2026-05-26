@@ -34,7 +34,7 @@ const DOC_DEFS = [
   { key: 'cert-energetico',      label: 'Certificado Energetico',         desc: 'Certificado de eficiencia energetica',     icon: '⚡' },
   { key: 'cedula-habitabilidad', label: 'Cedula de Habitabilidad',        desc: 'Cedula de habitabilidad vigente',          icon: '🏠' },
   { key: 'facturas',             label: 'Facturas',                       desc: 'Facturas de suministros u otros',          icon: '🧾' },
-  { key: 'otro',                 label: 'Otros contratos',                desc: 'Cualquier otro documento relevante',       icon: '📄' },
+  { key: 'otro',                 label: 'Otros documentos',               desc: 'Cualquier otro documento relevante',       icon: '📄' },
 ]
 
 const STATUS_CONFIG: Record<string, { label: string; color: string; icon: string }> = {
