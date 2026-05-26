@@ -73,12 +73,19 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
   const [metrics, setMetrics] = useState<Metrics | null>(null)
   const [loading, setLoading] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [selectedClient, setSelectedClient] = useState<Client | null>(null)
 
   // Cargar métricas y clientes al montar
   useEffect(() => {
     loadMetrics()
     loadClients()
   }, [])
+  
+  // Recargar datos cuando cambian las requests
+  useEffect(() => {
+    setRequests(initialRequests)
+    loadClients()
+  }, [initialRequests])
 
   async function loadMetrics() {
     try {
@@ -124,7 +131,10 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
     URL.revokeObjectURL(url)
   }
 
-  const filteredClients = clients.filter(c =>
+  // Filtrar solo clientes que han pagado (total_paid > 0)
+  const paidClients = clients.filter(c => c.total_paid > 0)
+  
+  const filteredClients = paidClients.filter(c =>
     c.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
     c.name.toLowerCase().includes(searchQuery.toLowerCase())
   )
@@ -357,10 +367,7 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                       </td>
                       <td className="px-6 py-4 text-center">
                         <button
-                          onClick={() => {
-                            setSearchQuery(client.email)
-                            setTab('pedidos')
-                          }}
+                          onClick={() => setSelectedClient(client)}
                           className="px-3 py-1.5 bg-[#c9962a] text-white text-xs font-semibold rounded-lg hover:bg-amber-700 transition"
                         >
                           Ver pedidos →
@@ -467,6 +474,176 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
           <div className="text-6xl mb-4">📂</div>
           <h3 className="text-xl font-bold text-gray-900 mb-2">Gestión de Documentos</h3>
           <p className="text-gray-500">Funcionalidad en construcción...</p>
+        </div>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════
+          MODAL: DETALLE DEL CLIENTE
+      ═══════════════════════════════════════════════════════════════ */}
+      {selectedClient && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+            {/* Header */}
+            <div className="bg-gradient-to-r from-[#c9962a] to-amber-600 p-6 text-white flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-3xl font-bold">
+                  {selectedClient.name.charAt(0).toUpperCase()}
+                </div>
+                <div>
+                  <h2 className="text-2xl font-bold">{selectedClient.name}</h2>
+                  <p className="text-sm opacity-90">{selectedClient.email}</p>
+                </div>
+              </div>
+              <button
+                onClick={() => setSelectedClient(null)}
+                className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 transition flex items-center justify-center"
+              >
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            {/* Content */}
+            <div className="flex-1 overflow-y-auto p-6">
+              {/* Stats Grid */}
+              <div className="grid grid-cols-3 gap-4 mb-6">
+                <div className="bg-green-50 rounded-xl p-4 border border-green-200">
+                  <p className="text-xs text-green-600 font-semibold mb-1">Total Ingresos</p>
+                  <p className="text-2xl font-bold text-green-700">{selectedClient.total_revenue.toFixed(2)} €</p>
+                </div>
+                <div className="bg-blue-50 rounded-xl p-4 border border-blue-200">
+                  <p className="text-xs text-blue-600 font-semibold mb-1">Pedidos Pagados</p>
+                  <p className="text-2xl font-bold text-blue-700">{selectedClient.total_paid}</p>
+                </div>
+                <div className="bg-purple-50 rounded-xl p-4 border border-purple-200">
+                  <p className="text-xs text-purple-600 font-semibold mb-1">Ticket Promedio</p>
+                  <p className="text-2xl font-bold text-purple-700">
+                    {selectedClient.total_paid > 0 ? (selectedClient.total_revenue / selectedClient.total_paid).toFixed(0) : '0'} €
+                  </p>
+                </div>
+              </div>
+
+              {/* Contact Info */}
+              <div className="bg-gray-50 rounded-xl p-4 mb-6">
+                <h3 className="text-sm font-bold text-gray-900 mb-3">📞 Información de Contacto</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <p className="text-xs text-gray-500 mb-1">Email</p>
+                    <p className="text-sm font-semibold text-gray-900">{selectedClient.email}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 mb-1">Teléfono</p>
+                    <p className="text-sm font-semibold text-gray-900">{selectedClient.phone || '—'}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 mb-1">Primera Compra</p>
+                    <p className="text-sm font-semibold text-gray-900">
+                      {new Date(selectedClient.first_purchase).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 mb-1">Última Compra</p>
+                    <p className="text-sm font-semibold text-gray-900">
+                      {new Date(selectedClient.last_purchase).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Orders List */}
+              <div>
+                <h3 className="text-sm font-bold text-gray-900 mb-3">📋 Historial de Pedidos ({selectedClient.total_orders})</h3>
+                <div className="space-y-3">
+                  {selectedClient.orders.map((order) => (
+                    <div key={order.id} className="bg-white border border-gray-200 rounded-xl p-4 hover:shadow-md transition-shadow">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <h4 className="text-sm font-bold text-gray-900">
+                              {SERVICE_LABELS[order.service_key] || order.service_key}
+                            </h4>
+                            <span className={`px-2 py-0.5 rounded-full text-xs font-bold ${
+                              order.status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
+                            }`}>
+                              {order.status === 'paid' ? '✓ Pagado' : 'Pendiente'}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-4 text-xs text-gray-500 mb-2">
+                            <span>📅 {new Date(order.created_at).toLocaleDateString('es-ES')}</span>
+                            {order.paid_at && (
+                              <span>💰 Pagado: {new Date(order.paid_at).toLocaleDateString('es-ES')}</span>
+                            )}
+                          </div>
+                          
+                          {/* Notas internas si existen */}
+                          {order.internal_notes && (
+                            <div className="mt-2 bg-amber-50 border border-amber-200 rounded p-2">
+                              <p className="text-xs font-semibold text-amber-800 mb-1">📝 Notas Internas:</p>
+                              <p className="text-xs text-amber-700">{order.internal_notes}</p>
+                            </div>
+                          )}
+
+                          {/* Progreso */}
+                          <div className="mt-3 flex items-center gap-2">
+                            <span className="text-xs text-gray-500">Progreso:</span>
+                            <div className="flex gap-1">
+                              {[1, 2, 3, 4].map(step => (
+                                <div
+                                  key={step}
+                                  className={`w-3 h-3 rounded-full ${
+                                    step <= (order.step || 1) ? 'bg-[#c9962a]' : 'bg-gray-200'
+                                  }`}
+                                  title={`Paso ${step}/4`}
+                                />
+                              ))}
+                            </div>
+                            <span className="text-xs text-gray-500">Paso {order.step || 1}/4</span>
+                          </div>
+                        </div>
+
+                        <div className="text-right">
+                          <p className="text-xl font-bold text-[#c9962a] mb-2">{order.amount_eur || 0} €</p>
+                          {order.session_id && (
+                            <a
+                              href={`https://dashboard.stripe.com/payments/${order.session_id}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-xs text-indigo-600 hover:underline inline-flex items-center gap-1"
+                            >
+                              Ver en Stripe
+                              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                              </svg>
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="border-t border-gray-200 p-4 flex justify-end gap-3">
+              <button
+                onClick={() => setSelectedClient(null)}
+                className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
+              >
+                Cerrar
+              </button>
+              <a
+                href={`mailto:${selectedClient.email}`}
+                className="px-6 py-2 bg-[#c9962a] text-white rounded-lg font-semibold hover:bg-amber-700 transition inline-flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                Enviar Email
+              </a>
+            </div>
+          </div>
         </div>
       )}
     </div>
