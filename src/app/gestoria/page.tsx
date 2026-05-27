@@ -7,8 +7,8 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contratos Inmobiliarios desde 61€ — redactados por abogados en 48h | Inmonest',
-  description: 'Gestoría especializada que tramita contratos de alquiler (LAU), arras, reserva y rescisión. Redactados por abogados. Desde 61€. Entrega en 24-48h.',
+  title: 'Gestoría Inmobiliaria Online | Contratos Legales desde 29€',
+  description: 'Gestoría inmobiliaria digital: contratos de compra, venta y alquiler redactados por abogados en 48h. Desde 29€ IVA incluido. ✓ Garantía legal ✓ Asesor personalizado ✓ Toda España',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
   },

@@ -3,12 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import TestimoniosCarousel from '@/components/TestimoniosCarousel'
 
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría venta piso particular — acompañamiento completo',
-  description: 'Vendes tu piso a particular? Te acompañamos desde reserva hasta escritura: contratos, documentación, gestor personalizado. Todo listo para escriturar. 666€.',
+  title: 'Vender Piso Sin Inmobiliaria | Acompañamiento Completo 666€',
+  description: 'Vende tu piso de particular a particular con gestor inmobiliario. Redactamos contratos, recabamos documentación y te acompañamos hasta escrituras. Solo 666€. ✓ Ahorra 10,000€+ en comisiones ✓ Sin sorpresas',
   keywords: 'vender piso particular, asesoría venta vivienda, acompañamiento venta piso, contratos venta particular, gestoría venta inmueble, ayuda vender piso',
   alternates: {
     canonical: `${BASE_URL}/gestoria/venta-completa-reserva-escritura`,
@@ -681,6 +682,22 @@ export default function VentaCompletaPage() {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Testimonios */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Lo que dicen nuestros clientes
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Más de 150 familias han confiado en nosotros para vender o comprar su vivienda. 
+              Lee sus experiencias reales.
+            </p>
+          </div>
+          <TestimoniosCarousel />
         </div>
       </section>
 

@@ -6,8 +6,8 @@ import Navbar from '@/components/NavbarServer'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria en Barcelona | Contratos y Asesoramiento',
-  description: 'Servicios de gestoría inmobiliaria en Barcelona. Acompañamiento en compraventa, revisión de contratos, documentación registral y urbanística. Desde 350€.',
+  title: 'Gestoría Inmobiliaria Barcelona | Contratos y Acompañamiento Legal',
+  description: 'Gestoría inmobiliaria especializada en Barcelona: contratos de compra/venta, arras, alquiler LAU. Acompañamiento completo con abogados. Desde 120€. ✓ Generalitat ✓ Notarias Barcelona ✓ Normativa catalana',
   alternates: { canonical: `${BASE_URL}/gestoria/barcelona` },
   openGraph: {
     title: 'Gestoría Inmobiliaria Barcelona | Inmonest',
