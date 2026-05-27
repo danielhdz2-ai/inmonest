@@ -5,6 +5,7 @@ import Navbar from '@/components/NavbarServer'
 import SearchForm from '@/components/SearchForm'
 import BentoVentajas from '@/components/BentoVentajas'
 import CarruselServicios from '@/components/CarruselServicios'
+import TestimoniosCarousel from '@/components/TestimoniosCarousel'
 
 const CIUDADES_POPULARES = [
   { nombre: 'Madrid', slug: 'madrid' },
@@ -310,6 +311,34 @@ export default function Home() {
               </svg>
               Deja tu reseña en Google
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Testimonios ──────────────────────────────────────── */}
+      <section className="bg-gradient-to-br from-gray-50 to-white py-16 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Casos de éxito</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 mt-2">
+              Familias que confiaron en Inmonest
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Desde ventas sin comisiones hasta contratos de arras y alquiler. 
+              Descubre cómo ayudamos a nuestros clientes.
+            </p>
+          </div>
+          <TestimoniosCarousel />
+          <div className="text-center mt-10">
+            <p className="text-sm text-gray-500 mb-4">
+              ¿Quieres ahorrar miles de euros en comisiones y tener todo el apoyo legal?
+            </p>
+            <Link
+              href="/gestoria"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#c9962a] text-white font-semibold rounded-lg hover:bg-[#a87a20] transition-colors shadow-lg"
+            >
+              Ver todos los servicios de gestoría →
+            </Link>
           </div>
         </div>
       </section>

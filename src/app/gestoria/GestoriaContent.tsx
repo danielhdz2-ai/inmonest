@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import SolicitarModal from './SolicitarModal'
 import { gtmPush } from '@/components/GTMProvider'
+import TestimoniosCarousel from '@/components/TestimoniosCarousel'
 
 interface Service {
   key: string
@@ -632,6 +633,23 @@ export default function GestoriaPage() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Testimonios */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Testimonios reales</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 mt-2">
+              Lo que dicen nuestros clientes
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Más de 500 contratos redactados y clientes satisfechos en toda España. 
+              Lee sus experiencias reales.
+            </p>
+          </div>
+          <TestimoniosCarousel />
         </div>
       </section>
 
