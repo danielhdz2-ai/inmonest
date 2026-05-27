@@ -62,13 +62,13 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           <div className="flex items-center gap-2">
             <Link
               href="/gestoria"
-              className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
             >
               Gestoría
             </Link>
             <Link
               href="/publicar-anuncio"
-              className="inline-flex items-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
+              className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
             >
               Publicar anuncio
             </Link>
