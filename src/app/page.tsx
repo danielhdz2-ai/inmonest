@@ -18,8 +18,69 @@ const CIUDADES_POPULARES = [
 ]
 
 export default function Home() {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '¿Inmonest es gratis?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Publicar pisos entre particulares es 100% gratis, sin comisiones. Los servicios de gestoría inmobiliaria (contratos de arras, alquiler LAU, revisión legal) tienen precios desde 61€ según el tipo de contrato.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Qué servicios ofrece Inmonest?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Inmonest es un portal de pisos entre particulares sin comisiones + gestoría inmobiliaria online. Ofrecemos: (1) Publicación gratuita de anuncios de pisos, (2) Contratos de arras, alquiler, compraventa redactados por expertos, (3) Revisión legal de contratos, (4) Asesoramiento en compra y alquiler.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Puedo publicar mi piso sin registrarme?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sí, puedes publicar sin crear cuenta. Sin embargo, registrarte te permite gestionar todos tus anuncios, solicitar contratos con tus datos precargados, hacer seguimiento de servicios y acceder a tu historial desde un solo panel.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Los contratos tienen validez legal en toda España?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sí. Todos nuestros contratos son redactados por nuestra gestoría experta siguiendo la legislación vigente: Ley de Arrendamientos Urbanos (LAU), Código Civil, Ley de Vivienda 2026. Se adaptan a las particularidades de cada comunidad autónoma cuando es necesario.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Cuánto tardan en entregar un contrato?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'El proceso es: (1) Solicitas el servicio sin pago previo, (2) Te contactamos en 24h para confirmar detalles, (3) Entregamos el contrato personalizado en PDF en 48h. Incluye una ronda de revisiones gratuita dentro de los 7 días.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Inmonest es una agencia inmobiliaria?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'No. Inmonest es un portal de pisos entre particulares (sin comisiones) + gestoría inmobiliaria digital. No cobramos comisiones por la compra o alquiler de pisos. Solo cobramos por servicios jurídicos específicos como redacción de contratos o revisión legal.',
+        },
+      },
+    ],
+  }
+
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      {/* Schema.org FAQPage Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      
       <Navbar />
 
       {/* ── HERO con imagen de cabecera ─────────────────────────── */}
@@ -42,7 +103,7 @@ export default function Home() {
             </span>
             <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-md">
               <span className="text-[#f4c94a]">Contratos inmobiliarios</span><br />
-              <span className="text-white">desde 29€ en 48h</span>
+              <span className="text-white">desde 61€ en 48h</span>
             </h1>
             <p className="mt-5 text-lg text-white/80 max-w-xl leading-relaxed">
               Gestoría online especializada: Contratos de arras, alquiler LAU, compraventa. Redactados por expertos. También pisos entre particulares sin comisiones.
@@ -64,7 +125,7 @@ export default function Home() {
           {[
             '⚖️ Redactados por expertos',
             '⚡ Entrega en 48h',
-            '💰 Desde 29€',
+            '💰 Desde 61€',
             '🔒 Pago seguro Stripe',
           ].map((text) => (
             <span key={text} className="flex items-center gap-1.5">
@@ -249,6 +310,59 @@ export default function Home() {
               </svg>
               Deja tu reseña en Google
             </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ — Preguntas Frecuentes ──────────────────────── */}
+      <section className="bg-white py-16 px-4">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Preguntas frecuentes</span>
+            <h2 className="text-3xl font-extrabold text-gray-900 mt-2 mb-3">
+              ¿Tienes dudas sobre Inmonest?
+            </h2>
+            <p className="text-gray-500 text-sm max-w-xl mx-auto">
+              Las respuestas a las preguntas más comunes sobre nuestros servicios de pisos y gestoría.
+            </p>
+          </div>
+          <div className="space-y-4">
+            {[
+              {
+                q: '¿Inmonest es gratis?',
+                a: 'Publicar pisos entre particulares es 100% gratis, sin comisiones. Los servicios de gestoría inmobiliaria (contratos de arras, alquiler LAU, revisión legal) tienen precios desde 61€ según el tipo de contrato.',
+              },
+              {
+                q: '¿Qué servicios ofrece Inmonest?',
+                a: 'Inmonest es un portal de pisos entre particulares sin comisiones + gestoría inmobiliaria online. Ofrecemos: (1) Publicación gratuita de anuncios de pisos, (2) Contratos de arras, alquiler, compraventa redactados por expertos, (3) Revisión legal de contratos, (4) Asesoramiento en compra y alquiler.',
+              },
+              {
+                q: '¿Puedo publicar mi piso sin registrarme?',
+                a: 'Sí, puedes publicar sin crear cuenta. Sin embargo, registrarte te permite gestionar todos tus anuncios, solicitar contratos con tus datos precargados, hacer seguimiento de servicios y acceder a tu historial desde un solo panel.',
+              },
+              {
+                q: '¿Los contratos tienen validez legal en toda España?',
+                a: 'Sí. Todos nuestros contratos son redactados por nuestra gestoría experta siguiendo la legislación vigente: Ley de Arrendamientos Urbanos (LAU), Código Civil, Ley de Vivienda 2026. Se adaptan a las particularidades de cada comunidad autónoma cuando es necesario.',
+              },
+              {
+                q: '¿Cuánto tardan en entregar un contrato?',
+                a: 'El proceso es: (1) Solicitas el servicio sin pago previo, (2) Te contactamos en 24h para confirmar detalles, (3) Entregamos el contrato personalizado en PDF en 48h. Incluye una ronda de revisiones gratuita dentro de los 7 días.',
+              },
+              {
+                q: '¿Inmonest es una agencia inmobiliaria?',
+                a: 'No. Inmonest es un portal de pisos entre particulares (sin comisiones) + gestoría inmobiliaria digital. No cobramos comisiones por la compra o alquiler de pisos. Solo cobramos por servicios jurídicos específicos como redacción de contratos o revisión legal.',
+              },
+            ].map(({ q, a }) => (
+              <details key={q} className="bg-gray-50 rounded-xl border border-gray-100 group hover:border-[#f4c94a]/40 transition-all">
+                <summary className="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer font-semibold text-gray-900 text-sm list-none">
+                  {q}
+                  <svg className="w-4 h-4 text-gray-400 shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </summary>
+                <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
