@@ -424,6 +424,44 @@ export default function GestoriaPage() {
         </div>
       </section>
 
+      {/* CÓMO FUNCIONA */}
+      <section className="bg-[#fef9e8] py-16 px-4">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-12">¿Cómo funciona?</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            {[
+              {
+                step: '01',
+                title: 'Solicitas el servicio',
+                desc: 'Rellenas el formulario con tus datos y el contrato que necesitas. Sin necesidad de cuenta ni pago previo.',
+                icon: '📝',
+              },
+              {
+                step: '02',
+                title: 'Te contactamos en 24h',
+                desc: 'Un gestor del equipo se pone en contacto contigo por email o teléfono para entender tu situación y confirmar los detalles.',
+                icon: '📞',
+              },
+              {
+                step: '03',
+                title: 'Recibes tu contrato',
+                desc: 'En 48h recibes el contrato en PDF, personalizado con los datos reales de las partes y listo para firmar.',
+                icon: '✅',
+              },
+            ].map((item) => (
+              <div key={item.step} className="text-center">
+                <div className="w-16 h-16 bg-[#c9962a] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+                  <span className="text-2xl">{item.icon}</span>
+                </div>
+                <div className="text-xs font-bold text-[#c9962a] uppercase tracking-widest mb-2">Paso {item.step}</div>
+                <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SERVICIOS */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
         <div className="text-center mb-10">
@@ -530,44 +568,6 @@ export default function GestoriaPage() {
               </div>
             </article>
           ))}
-        </div>
-      </section>
-
-      {/* CÓMO FUNCIONA */}
-      <section className="bg-[#fef9e8] py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-12">¿Cómo funciona?</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {[
-              {
-                step: '01',
-                title: 'Solicitas el servicio',
-                desc: 'Rellenas el formulario con tus datos y el contrato que necesitas. Sin necesidad de cuenta ni pago previo.',
-                icon: '📝',
-              },
-              {
-                step: '02',
-                title: 'Te contactamos en 24h',
-                desc: 'Un gestor del equipo se pone en contacto contigo por email o teléfono para entender tu situación y confirmar los detalles.',
-                icon: '📞',
-              },
-              {
-                step: '03',
-                title: 'Recibes tu contrato',
-                desc: 'En 48h recibes el contrato en PDF, personalizado con los datos reales de las partes y listo para firmar.',
-                icon: '✅',
-              },
-            ].map((item) => (
-              <div key={item.step} className="text-center">
-                <div className="w-16 h-16 bg-[#c9962a] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
-                  <span className="text-2xl">{item.icon}</span>
-                </div>
-                <div className="text-xs font-bold text-[#c9962a] uppercase tracking-widest mb-2">Paso {item.step}</div>
-                <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

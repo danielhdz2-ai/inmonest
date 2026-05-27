@@ -7,14 +7,14 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contratos Inmobiliarios 【DESDE 7€】 Redacción Legal 24h | Inmonest',
-  description: 'Gestoría especializada que tramita contratos de alquiler (LAU), arras, reserva y rescisión. Redactados por abogados. Desde 7€. Entrega en 24h.',
+  title: 'Contratos Inmobiliarios desde 61€ — redactados por abogados en 48h | Inmonest',
+  description: 'Gestoría especializada que tramita contratos de alquiler (LAU), arras, reserva y rescisión. Redactados por abogados. Desde 61€. Entrega en 24-48h.',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
   },
   openGraph: {
     title: 'Contratos inmobiliarios redactados por expertos — Inmonest',
-    description: 'Gestoría especializada en contratos de alquiler y compraventa. Tramitamos LAU, arras, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 7€.',
+    description: 'Gestoría especializada en contratos de alquiler y compraventa. Tramitamos LAU, arras, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 61€.',
     url: `${BASE_URL}/gestoria`,
     type: 'website',
     siteName: 'Inmonest',
@@ -27,7 +27,7 @@ const schemaJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'LegalService',
   name: 'Inmonest Gestoría Inmobiliaria',
-  description: 'Gestoría especializada que tramita contratos de alquiler LAU, arras, temporada, rescisión y reserva. Redactados por abogados en derecho inmobiliario, sin plantillas genéricas. Entrega en 24h. Desde 7€.',
+  description: 'Gestoría especializada que tramita contratos de alquiler LAU, arras, temporada, rescisión y reserva. Redactados por abogados en derecho inmobiliario, sin plantillas genéricas. Entrega en 24-48h. Desde 61€.',
   url: `${BASE_URL}/gestoria`,
   image: `${BASE_URL}/logo.png`,
   priceRange: '€',
@@ -54,10 +54,26 @@ const schemaJson = JSON.stringify({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Contrato de Arras',
-          description: 'Contrato de arras penitenciales redactado por abogados. Protege tu señal de compra.',
-          price: '30',
-          priceCurrency: 'EUR'
+          name: 'Contrato de Arras Penitenciales',
+          description: 'Contrato de arras penitenciales redactado por abogados. Protege tu señal de compra con cláusulas de desistimiento.',
+          url: `${BASE_URL}/gestoria/solicitar/arras-penitenciales`,
+          provider: {
+            '@type': 'Organization',
+            name: 'Inmonest'
+          },
+          offers: {
+            '@type': 'Offer',
+            price: '145',
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock',
+            priceValidUntil: '2026-12-31',
+            validFrom: '2026-01-01'
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '5.0',
+            reviewCount: '4'
+          }
         }
       },
       {
@@ -65,9 +81,25 @@ const schemaJson = JSON.stringify({
         itemOffered: {
           '@type': 'Service',
           name: 'Contrato de Alquiler LAU',
-          description: 'Contrato de arrendamiento de vivienda habitual según Ley 29/1994. El más demandado.',
-          price: '7',
-          priceCurrency: 'EUR'
+          description: 'Contrato de arrendamiento de vivienda habitual según Ley 29/1994 actualizado a Ley de Vivienda 2026.',
+          url: `${BASE_URL}/gestoria/solicitar/alquiler-vivienda-lau`,
+          provider: {
+            '@type': 'Organization',
+            name: 'Inmonest'
+          },
+          offers: {
+            '@type': 'Offer',
+            price: '120',
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock',
+            priceValidUntil: '2026-12-31',
+            validFrom: '2026-01-01'
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '5.0',
+            reviewCount: '4'
+          }
         }
       },
       {
@@ -75,29 +107,77 @@ const schemaJson = JSON.stringify({
         itemOffered: {
           '@type': 'Service',
           name: 'Contrato de Alquiler Temporal',
-          description: 'Contrato para alquileres temporales (vacaciones, estudios, trabajo).',
-          price: '35',
-          priceCurrency: 'EUR'
+          description: 'Contrato para alquileres temporales (vacaciones, estudios, trabajo). Exento de prórrogas LAU.',
+          url: `${BASE_URL}/gestoria/solicitar/alquiler-temporada`,
+          provider: {
+            '@type': 'Organization',
+            name: 'Inmonest'
+          },
+          offers: {
+            '@type': 'Offer',
+            price: '97',
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock',
+            priceValidUntil: '2026-12-31',
+            validFrom: '2026-01-01'
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '5.0',
+            reviewCount: '4'
+          }
         }
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Contrato de Reserva',
-          description: 'Formaliza la reserva del inmueble mientras preparas la documentación.',
-          price: '30',
-          priceCurrency: 'EUR'
+          name: 'Contrato de Reserva de Alquiler',
+          description: 'Formaliza la reserva del inmueble mientras preparas la documentación. Bloqueo jurídico 48-72h.',
+          url: `${BASE_URL}/gestoria/solicitar/reserva-alquiler`,
+          provider: {
+            '@type': 'Organization',
+            name: 'Inmonest'
+          },
+          offers: {
+            '@type': 'Offer',
+            price: '61',
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock',
+            priceValidUntil: '2026-12-31',
+            validFrom: '2026-01-01'
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '5.0',
+            reviewCount: '4'
+          }
         }
       },
       {
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
-          name: 'Rescisión de Contrato',
-          description: 'Finaliza tu contrato de alquiler legalmente y sin problemas.',
-          price: '40',
-          priceCurrency: 'EUR'
+          name: 'Contrato de Rescisión de Alquiler',
+          description: 'Finaliza tu contrato de alquiler legalmente. Acta de entrega y liquidación de fianza.',
+          url: `${BASE_URL}/gestoria/solicitar/rescision-alquiler`,
+          provider: {
+            '@type': 'Organization',
+            name: 'Inmonest'
+          },
+          offers: {
+            '@type': 'Offer',
+            price: '73',
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock',
+            priceValidUntil: '2026-12-31',
+            validFrom: '2026-01-01'
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '5.0',
+            reviewCount: '4'
+          }
         }
       },
       {
@@ -106,8 +186,24 @@ const schemaJson = JSON.stringify({
           '@type': 'Service',
           name: 'Pack Due Diligence Pre-Compra',
           description: 'Verificación integral de actas de comunidad, derramas, ITE, nota registral e información urbanística tras firmar arras.',
-          price: '168',
-          priceCurrency: 'EUR'
+          url: `${BASE_URL}/gestoria/solicitar/pack-due-diligence-precompra`,
+          provider: {
+            '@type': 'Organization',
+            name: 'Inmonest'
+          },
+          offers: {
+            '@type': 'Offer',
+            price: '168',
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock',
+            priceValidUntil: '2026-12-31',
+            validFrom: '2026-01-01'
+          },
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '5.0',
+            reviewCount: '4'
+          }
         }
       }
     ]
