@@ -77,7 +77,7 @@ export default function AyudaPropietariosPage() {
                   Solicitar contrato (73€)
                 </Link>
                 <a
-                  href="https://wa.me/34624177966?text=Hola,%20necesito%20un%20contrato%20de%20alquiler%20para%20mi%20piso"
+                  href="https://wa.me/34641008847?text=Hola,%20necesito%20un%20contrato%20de%20alquiler%20para%20mi%20piso"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
@@ -341,7 +341,7 @@ export default function AyudaPropietariosPage() {
               </div>
             </div>
             <a
-              href="https://wa.me/34624177966?text=Hola,%20soy%20agencia%20inmobiliaria%20y%20necesito%20contratos%20de%20alquiler%20en%20volumen"
+              href="https://wa.me/34641008847?text=Hola,%20soy%20agencia%20inmobiliaria%20y%20necesito%20contratos%20de%20alquiler%20en%20volumen"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-[#c9962a] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
@@ -407,7 +407,7 @@ export default function AyudaPropietariosPage() {
               Solicitar contrato (73€)
             </Link>
             <a
-              href="https://wa.me/34624177966?text=Hola,%20necesito%20asesoramiento%20para%20alquilar%20mi%20piso"
+              href="https://wa.me/34641008847?text=Hola,%20necesito%20asesoramiento%20para%20alquilar%20mi%20piso"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition shadow-lg border-2 border-white"

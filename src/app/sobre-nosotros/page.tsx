@@ -398,7 +398,7 @@ export default function SobreNosotrosPage() {
               info@inmonest.com
             </a>
             <a
-              href="https://wa.me/34624177966"
+              href="https://wa.me/34641008847"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 text-[#c9962a] hover:text-[#b8872a] font-semibold"

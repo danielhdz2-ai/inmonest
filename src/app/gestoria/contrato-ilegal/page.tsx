@@ -76,7 +76,7 @@ export default function ContratoIlegalPage() {
                   Analizar mi contrato (29€)
                 </Link>
                 <a
-                  href="https://wa.me/34624177966?text=Urgente:%20creo%20que%20mi%20contrato%20es%20ilegal%20o%20fraudulento"
+                  href="https://wa.me/34641008847?text=Urgente:%20creo%20que%20mi%20contrato%20es%20ilegal%20o%20fraudulento"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-700 transition text-center shadow-lg"
@@ -491,7 +491,7 @@ export default function ContratoIlegalPage() {
               Analizar mi contrato (29€)
             </Link>
             <a
-              href="https://wa.me/34624177966?text=URGENTE:%20sospecho%20que%20mi%20contrato%20es%20fraudulento"
+              href="https://wa.me/34641008847?text=URGENTE:%20sospecho%20que%20mi%20contrato%20es%20fraudulento"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-700 transition shadow-lg border-2 border-white"

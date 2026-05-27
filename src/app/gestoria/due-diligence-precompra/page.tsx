@@ -77,7 +77,7 @@ export default function DueDiligencePrecompraPage() {
                   Contratar por 168€
                 </Link>
                 <a
-                  href="https://wa.me/34624177966?text=Hola,%20firm%C3%A9%20arras%20y%20necesito%20due%20diligence%20antes%20de%20escriturar"
+                  href="https://wa.me/34641008847?text=Hola,%20firm%C3%A9%20arras%20y%20necesito%20due%20diligence%20antes%20de%20escriturar"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition text-center shadow-lg"
@@ -527,7 +527,7 @@ export default function DueDiligencePrecompraPage() {
               Contratar por 168€ →
             </Link>
             <a
-              href="https://wa.me/34624177966?text=Hola,%20firm%C3%A9%20arras%20y%20necesito%20due%20diligence"
+              href="https://wa.me/34641008847?text=Hola,%20firm%C3%A9%20arras%20y%20necesito%20due%20diligence"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 text-white px-10 py-4 rounded-lg font-bold text-lg hover:bg-green-600 transition shadow-lg"

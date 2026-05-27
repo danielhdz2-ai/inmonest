@@ -247,7 +247,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
               Revisar mi contrato (60€)
             </Link>
             <a
-              href="https://wa.me/34624177966?text=Hola,%20tengo%20dudas%20sobre%20mi%20contrato%20de%20alquiler"
+              href="https://wa.me/34641008847?text=Hola,%20tengo%20dudas%20sobre%20mi%20contrato%20de%20alquiler"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-center"

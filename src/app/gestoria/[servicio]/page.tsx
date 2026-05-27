@@ -881,18 +881,18 @@ export default async function ServicioGestoriaPage({
                 Solicitar ahora
               </Link>
               <a
-                href="https://wa.me/34641009947?text=Hola,%20tengo%20dudas%20sobre%20el%20servicio%20de%20{data.nombre}"
+                href="https://wa.me/34641008847?text=Hola,%20tengo%20dudas%20sobre%20el%20servicio%20de%20{data.nombre}"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm"
               >
-                💬 WhatsApp: 641 009 947
+                💬 WhatsApp: 641 008 847
               </a>
               <a
-                href="tel:+34641009947"
+                href="tel:+34641008847"
                 className="block w-full text-center border border-[#c9a84c] text-[#c9a84c] hover:bg-[#fdf8ee] font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
-                📞 Llamar: 641 009 947
+                📞 Llamar: 641 008 847
               </a>
               <Link
                 href="/gestoria"
@@ -1000,15 +1000,15 @@ export default async function ServicioGestoriaPage({
               Solicitar {data.nombre} — {data.precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>
             </Link>
             <a
-              href="https://wa.me/34641009947?text=Hola,%20tengo%20dudas%20sobre%20{data.nombre}"
+              href="https://wa.me/34641008847?text=Hola,%20tengo%20dudas%20sobre%20{data.nombre}"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors"
             >
-              💬 WhatsApp: 641 009 947
+              💬 WhatsApp: 641 008 847
             </a>
             <a
-              href="tel:+34641009947"
+              href="tel:+34641008847"
               className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors"
             >
               📞 Llamar ahora
