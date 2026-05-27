@@ -117,6 +117,142 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── TESTIMONIOS REALES DE GOOGLE ─────────────────────── */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Reseñas verificadas</span>
+            <h2 className="text-3xl font-extrabold text-gray-900 mt-2 mb-3">
+              Lo que dicen nuestros clientes
+            </h2>
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <div className="flex gap-1">
+                {[1, 2, 3, 4, 5].map(i => (
+                  <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                  </svg>
+                ))}
+              </div>
+              <span className="text-lg font-bold text-gray-900">5.0</span>
+              <span className="text-sm text-gray-500">· 4 reseñas en Google</span>
+            </div>
+            <a 
+              href="https://www.google.com/search?q=inmonest" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-sm text-[#c9962a] hover:underline font-medium"
+            >
+              Ver todas las reseñas en Google →
+            </a>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all shadow-sm">
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <div className="font-bold text-gray-900 text-base">zonetechonline</div>
+                  <div className="text-xs text-gray-500">Hace 16 horas</div>
+                </div>
+                <div className="flex gap-0.5">
+                  {[1, 2, 3, 4, 5].map(i => (
+                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed text-sm italic">
+                "Tramite el contrato de arras, me ayudaron en todo el proceso de documentación, lo recomiendo bastante, muy ágiles, muy rápidos y muy profesionales"
+              </p>
+              <div className="mt-3 text-xs text-gray-500">
+                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Contrato de Arras</span>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all shadow-sm">
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <div className="font-bold text-gray-900 text-base">Alicia Fernández</div>
+                  <div className="text-xs text-gray-500">Hace 23 horas</div>
+                </div>
+                <div className="flex gap-0.5">
+                  {[1, 2, 3, 4, 5].map(i => (
+                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed text-sm italic">
+                "Contraté servicio de acompañamiento de compra, y estoy super contenta, por el trato de Daniel y toda la ayuda con la documentación, super recomendable muchas gracias"
+              </p>
+              <div className="mt-3 text-xs text-gray-500">
+                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Acompañamiento de Compra</span>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all shadow-sm">
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <div className="font-bold text-gray-900 text-base">Daniel Mercat</div>
+                  <div className="text-xs text-gray-500">Hace 1 semana</div>
+                </div>
+                <div className="flex gap-0.5">
+                  {[1, 2, 3, 4, 5].map(i => (
+                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed text-sm italic">
+                "Tramite un contrato de arras con inmonest, ya que no me fiaba de el que me daba la agencia, y me ayudaron en varios puntos importantes, a si que merece la pena"
+              </p>
+              <div className="mt-3 text-xs text-gray-500">
+                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Contrato de Arras</span>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all shadow-sm">
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <div className="font-bold text-gray-900 text-base">Wendy Bermudez</div>
+                  <div className="text-xs text-gray-500">Hace 3 semanas · Local Guide</div>
+                </div>
+                <div className="flex gap-0.5">
+                  {[1, 2, 3, 4, 5].map(i => (
+                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
+                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed text-sm italic">
+                "Necesitaba hacer un contrato de arras para el piso de mi madre, y el equipo jurídico de inmonest nos ayudo con la gestión, muchas gracias"
+              </p>
+              <div className="mt-3 text-xs text-gray-500">
+                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Contrato de Arras</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Widget de Google Reviews */}
+          <div className="text-center">
+            <a 
+              href="https://www.google.com/search?q=inmonest" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-gray-200 rounded-xl font-semibold text-gray-700 hover:border-[#c9962a] hover:text-[#c9962a] transition-all shadow-sm"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
+              </svg>
+              Deja tu reseña en Google
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA publicar ───────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="relative overflow-hidden rounded-3xl shadow-xl bg-[#1a0d00] min-h-[300px] flex">
