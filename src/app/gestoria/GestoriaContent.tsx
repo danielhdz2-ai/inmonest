@@ -285,6 +285,24 @@ const SERVICES: Service[] = [
     image: '/gestoria/gestoria4.jpg',
     badge: 'Todo incluido',
   },
+  {
+    key: 'venta-completa-reserva-escritura',
+    name: 'Servicio Completo de Venta: Reserva a Escritura',
+    shortName: 'Venta Completa',
+    category: 'compraventa',
+    description: 'Acompañamiento completo para propietarios que venden su piso a particulares. Gestor personalizado te ayuda desde la reserva hasta la escritura: contratos, documentación y asesoramiento continuo.',
+    includes: [
+      'Gestor personalizado asignado a tu venta',
+      'Estudio completo de la operación',
+      'Redacción de contratos: reserva y arras',
+      'Ayuda para recabar toda la documentación',
+      'Asesoramiento continuo hasta escritura',
+      'Coordinación con notaría · Atención prioritaria',
+    ],
+    price: 666,
+    image: '/keys.jpg',
+    badge: 'Todo incluido',
+  },
 
   // --- COMPRAVENTA ESPECIAL ---
   {
