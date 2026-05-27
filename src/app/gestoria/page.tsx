@@ -119,7 +119,76 @@ const schemaJson = JSON.stringify({
     contactType: 'Customer Service',
     email: 'hola@inmonest.com',
     availableLanguage: 'Spanish'
-  }
+  },
+  
+  // Reseñas agregadas (para mostrar estrellas ⭐⭐⭐⭐⭐ en Google)
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5.0',
+    reviewCount: '4',
+    bestRating: '5',
+    worstRating: '5'
+  },
+  
+  // Reseñas individuales
+  review: [
+    {
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: 'zonetechonline'
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: '5',
+        bestRating: '5'
+      },
+      reviewBody: 'Tramite el contrato de arras, me ayudaron en todo el proceso de documentación, lo recomiendo bastante, muy ágiles, muy rápidos y muy profesionales',
+      datePublished: '2026-05-26'
+    },
+    {
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: 'Alicia Fernández'
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: '5',
+        bestRating: '5'
+      },
+      reviewBody: 'Contraté servicio de acompañamiento de compra, y estoy super contenta, por el trato de Daniel y toda la ayuda con la documentación, super recomendable muchas gracias',
+      datePublished: '2026-05-26'
+    },
+    {
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: 'Daniel Mercat'
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: '5',
+        bestRating: '5'
+      },
+      reviewBody: 'Tramite un contrato de arras con inmonest, ya que no me fiaba de el que me daba la agencia, y me ayudaron en varios puntos importantes, a si que merece la pena',
+      datePublished: '2026-05-20'
+    },
+    {
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: 'Wendy Bermudez'
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: '5',
+        bestRating: '5'
+      },
+      reviewBody: 'Necesitaba hacer un contrato de arras para el piso de mi madre, y el equipo jurídico de inmonest nos ayudo con la gestión, muchas gracias',
+      datePublished: '2026-05-06'
+    }
+  ]
 })
 
 export default function GestoriaPage() {
