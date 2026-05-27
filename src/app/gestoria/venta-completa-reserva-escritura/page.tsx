@@ -7,14 +7,14 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Acompañamiento Venta Piso Particular 【666€】 Reserva a Escritura | Inmonest',
+  title: 'Gestoría venta piso particular — acompañamiento completo',
   description: 'Vendes tu piso a particular? Te acompañamos desde reserva hasta escritura: contratos, documentación, gestor personalizado. Todo listo para escriturar. 666€.',
   keywords: 'vender piso particular, asesoría venta vivienda, acompañamiento venta piso, contratos venta particular, gestoría venta inmueble, ayuda vender piso',
   alternates: {
     canonical: `${BASE_URL}/gestoria/venta-completa-reserva-escritura`,
   },
   openGraph: {
-    title: 'Acompañamiento Completo Venta Piso Particular — Inmonest',
+    title: 'Gestoría venta piso particular — acompañamiento completo',
     description: 'Gestor personalizado te acompaña desde reserva hasta escritura. Redactamos contratos, recabamos documentación. Vende seguro entre particulares. 666€.',
     url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura`,
     type: 'website',

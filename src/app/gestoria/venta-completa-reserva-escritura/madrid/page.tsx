@@ -7,14 +7,14 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Acompañamiento Venta Piso Madrid 【666€】 Gestor Personalizado | Inmonest',
+  title: 'Gestoría venta piso Madrid — acompañamiento completo',
   description: 'Vendes tu piso en Madrid? Gestor inmobiliario te acompaña desde reserva hasta escritura. Contratos, documentación, asesoramiento completo. 666€ IVA incluido.',
   keywords: 'vender piso Madrid, gestoría venta vivienda Madrid, acompañamiento venta Madrid, contratos venta particular Madrid, asesoría inmobiliaria Madrid',
   alternates: {
     canonical: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/madrid`,
   },
   openGraph: {
-    title: 'Acompañamiento Venta Piso Madrid — Inmonest',
+    title: 'Gestoría venta piso Madrid — acompañamiento completo',
     description: 'Gestor inmobiliario personalizado en Madrid te acompaña desde reserva hasta escritura. Vende seguro entre particulares. 666€.',
     url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/madrid`,
     type: 'website',

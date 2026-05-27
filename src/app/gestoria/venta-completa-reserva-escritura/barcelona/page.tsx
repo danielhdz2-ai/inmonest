@@ -7,14 +7,14 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Acompañamiento Venta Piso Barcelona 【666€】 Gestor Personalizado | Inmonest',
+  title: 'Gestoría venta piso Barcelona — acompañamiento completo',
   description: 'Vendes tu piso en Barcelona? Gestor inmobiliario te acompaña desde reserva hasta escritura. Contratos, documentación, asesoramiento completo. 666€ IVA incluido.',
   keywords: 'vender piso Barcelona, gestoría venta vivienda Barcelona, acompañamiento venta Barcelona, contratos venta particular Barcelona, asesoría inmobiliaria Barcelona',
   alternates: {
     canonical: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/barcelona`,
   },
   openGraph: {
-    title: 'Acompañamiento Venta Piso Barcelona — Inmonest',
+    title: 'Gestoría venta piso Barcelona — acompañamiento completo',
     description: 'Gestor inmobiliario personalizado en Barcelona te acompaña desde reserva hasta escritura. Vende seguro entre particulares. 666€.',
     url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/barcelona`,
     type: 'website',
