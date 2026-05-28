@@ -114,8 +114,9 @@ export default function VenderPisoSinAgenciaPage() {
                 </h1>
 
                 <p className="text-xl text-white/80 mb-8 leading-relaxed">
-                  <strong className="text-white">Gestor inmobiliario personal</strong> te acompaña desde la reserva 
-                  hasta la escritura. Contratos incluidos, asesoramiento legal continuo.
+                  <strong className="text-white">Consulta gratuita primero.</strong> Sin compromiso resolvemos tus dudas. 
+                  Si decides seguir, <strong className="text-white">gestor inmobiliario personal</strong> te acompaña 
+                  desde la reserva hasta la escritura por 666€.
                 </p>
 
                 {/* Key benefits */}
@@ -137,23 +138,23 @@ export default function VenderPisoSinAgenciaPage() {
 
                 {/* CTAs */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <Link
-                    href="/gestoria/solicitar/venta-completa-reserva-escritura"
-                    className="inline-flex items-center justify-center gap-2 bg-[#c9a84c] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#a87a20] transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5"
-                  >
-                    Contratar ahora (666€)
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
                   <a
                     href={`tel:+34${PHONE}`}
-                    className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#1a0d00] transition-all"
+                    className="inline-flex items-center justify-center gap-2 bg-[#c9a84c] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#a87a20] transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5"
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
-                    Llamar ahora
+                    Consulta gratuita · Llamar ahora
+                  </a>
+                  <a
+                    href={`https://wa.me/34${PHONE}?text=Hola,%20quiero%20una%20consulta%20gratuita%20sobre%20vender%20mi%20piso%20sin%20agencia`}
+                    className="inline-flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white hover:text-[#1a0d00] transition-all"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    WhatsApp gratuito
                   </a>
                 </div>
               </div>
@@ -163,6 +164,9 @@ export default function VenderPisoSinAgenciaPage() {
                 <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl p-8 border-4 border-[#c9a84c]/30">
                   <div className="absolute -top-4 -right-4 bg-[#c9a84c] text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg">
                     Todo incluido
+                  </div>
+                  <div className="absolute -top-4 -left-4 bg-green-500 text-white px-4 py-2 rounded-full font-bold text-xs shadow-lg animate-pulse">
+                    📞 Consulta gratis
                   </div>
                   
                   <div className="mb-6">
@@ -211,7 +215,13 @@ export default function VenderPisoSinAgenciaPage() {
                   <div className="bg-gradient-to-r from-[#c9a84c] to-[#a87a20] rounded-2xl p-6 text-center">
                     <div className="text-white/80 text-sm font-semibold mb-1">Precio total</div>
                     <div className="text-5xl font-black text-white mb-1">666 €</div>
-                    <div className="text-white/90 text-sm">IVA incluido · Pago único</div>
+                    <div className="text-white/90 text-sm mb-3">IVA incluido · Pago único</div>
+                    <a
+                      href={`tel:+34${PHONE}`}
+                      className="inline-block text-white/90 text-xs font-semibold hover:text-white underline"
+                    >
+                      Consulta gratuita primero →
+                    </a>
                   </div>
                 </div>
               </div>
@@ -336,15 +346,26 @@ export default function VenderPisoSinAgenciaPage() {
               <div className="text-white/90 text-lg mb-2 font-semibold">Con Inmonest te quedas en el bolsillo</div>
               <div className="text-6xl md:text-7xl font-black text-white mb-3">17,484€</div>
               <div className="text-white/90 text-xl mb-6">que las agencias tradicionales te quitarían en comisiones</div>
-              <Link
-                href="/gestoria/solicitar/venta-completa-reserva-escritura"
-                className="inline-flex items-center gap-2 bg-white text-[#a87a20] px-10 py-5 rounded-xl font-bold text-xl hover:bg-gray-100 transition-all shadow-xl"
-              >
-                Contratar servicio por 666€
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href={`tel:+34${PHONE}`}
+                  className="inline-flex items-center gap-2 bg-white text-[#a87a20] px-10 py-5 rounded-xl font-bold text-xl hover:bg-gray-100 transition-all shadow-xl"
+                >
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  Consulta gratuita · {PHONE_DISPLAY}
+                </a>
+                <Link
+                  href="/gestoria/solicitar/venta-completa-reserva-escritura"
+                  className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-5 rounded-xl font-bold text-lg hover:bg-white/10 transition-all"
+                >
+                  O contratar directamente (666€)
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -434,15 +455,15 @@ export default function VenderPisoSinAgenciaPage() {
               {[
                 {
                   num: '1',
-                  titulo: 'Contratas el servicio',
-                  desc: 'Pago único de 666€ (IVA incluido). Sin costes ocultos ni sorpresas.',
-                  icon: '💳'
+                  titulo: 'Consulta gratuita con gestor',
+                  desc: 'Llamas o escribes por WhatsApp. Explicas tu caso sin compromiso. Resolvemos todas tus dudas.',
+                  icon: '📞'
                 },
                 {
                   num: '2',
-                  titulo: 'Te asignamos tu gestor',
-                  desc: 'En 24h te contacta tu gestor personal. Comienza el estudio de tu operación.',
-                  icon: '👨‍💼'
+                  titulo: 'Contratas el servicio',
+                  desc: 'Si decides seguir adelante, pago único de 666€ (IVA incluido). Sin costes ocultos.',
+                  icon: '💳'
                 },
                 {
                   num: '3',
@@ -513,6 +534,10 @@ export default function VenderPisoSinAgenciaPage() {
             <div className="space-y-4">
               {[
                 {
+                  q: '¿La consulta inicial es realmente gratuita?',
+                  a: 'Sí, 100% gratuita y sin compromiso. Llamas o escribes por WhatsApp, explicas tu caso, resolvemos todas tus dudas sobre el proceso de venta, documentación necesaria, plazos, etc. Solo pagas si decides contratar el servicio completo de 666€.'
+                },
+                {
                   q: '¿Cuánto ahorro vendiendo sin agencia inmobiliaria?',
                   a: 'En un piso de 300,000€, las agencias cobran entre 15,000€ y 18,150€ (5% + IVA). Con Inmonest pagas solo 666€ por el servicio completo. Ahorro real: más de 17,000€ que se quedan en tu bolsillo.'
                 },
@@ -526,7 +551,7 @@ export default function VenderPisoSinAgenciaPage() {
                 },
                 {
                   q: '¿Cuándo pago el servicio?',
-                  a: 'El pago de 666€ (IVA incluido) se realiza al inicio, cuando te asignamos tu gestor personalizado y comenzamos el estudio de la operación. Es un pago único, sin costes adicionales ocultos.'
+                  a: 'PRIMERO hablamos contigo sin compromiso para resolver dudas y explicarte tu caso. Solo si decides seguir adelante, pagas los 666€ (IVA incluido) y comenzamos con tu gestor personalizado. Es un pago único, sin costes adicionales ocultos.'
                 },
                 {
                   q: '¿Qué pasa si la venta no se completa?',
@@ -558,19 +583,30 @@ export default function VenderPisoSinAgenciaPage() {
               Ahorra más de 17,000€ en comisiones
             </h2>
             <p className="text-2xl text-white/90 mb-10 max-w-2xl mx-auto">
-              Gestor inmobiliario personal por solo 666€. Todo incluido hasta la escritura.
+              Primero hablamos contigo sin compromiso. Luego decides si contratar.
             </p>
-            <Link
-              href="/gestoria/solicitar/venta-completa-reserva-escritura"
-              className="inline-flex items-center gap-3 bg-white text-[#a87a20] px-12 py-6 rounded-xl font-black text-2xl hover:bg-gray-100 transition-all shadow-2xl transform hover:scale-105"
-            >
-              Contratar ahora (666€)
-              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href={`tel:+34${PHONE}`}
+                className="inline-flex items-center gap-3 bg-white text-[#a87a20] px-12 py-6 rounded-xl font-black text-2xl hover:bg-gray-100 transition-all shadow-2xl transform hover:scale-105"
+              >
+                <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                Consulta gratuita
+              </a>
+              <a
+                href={`https://wa.me/34${PHONE}?text=Hola,%20quiero%20una%20consulta%20gratuita%20sobre%20vender%20mi%20piso%20sin%20agencia`}
+                className="inline-flex items-center gap-3 border-2 border-white text-white px-10 py-6 rounded-xl font-bold text-xl hover:bg-white/10 transition-all"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                WhatsApp gratuito
+              </a>
+            </div>
             <p className="text-white/80 mt-6 text-sm">
-              IVA incluido · Sin costes ocultos · Pago único
+              ✓ Sin compromiso · ✓ Resolvemos todas tus dudas · ✓ Servicio 666€ (si decides contratar)
             </p>
           </div>
         </section>
