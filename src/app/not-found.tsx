@@ -1,5 +1,16 @@
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import type { Metadata } from 'next'
+
+// CRÍTICO: Forzar status HTTP 404 (no 200)
+export const metadata: Metadata = {
+  title: 'Página no encontrada (404) | Inmonest',
+  description: 'La página que buscas no existe o ha sido movida. Vuelve al inicio o explora nuestros pisos y servicios de gestoría.',
+  robots: 'noindex, nofollow', // No indexar páginas 404
+}
+
+// Forzar status 404 en el servidor
+export const dynamic = 'force-dynamic'
 
 export default function NotFound() {
   return (

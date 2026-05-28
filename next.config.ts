@@ -10,7 +10,8 @@ const nextConfig: NextConfig = {
   // Redirects 301 para URLs antiguas o eliminadas
   async redirects() {
     return [
-      // Servicios eliminados → redirigir a gestoría principal
+      // ═══ SERVICIOS ELIMINADOS ═══
+      // Redirigir a gestoría principal
       {
         source: '/gestoria/certificado-eficiencia-energetica',
         destination: '/gestoria',
@@ -21,7 +22,13 @@ const nextConfig: NextConfig = {
         destination: '/gestoria',
         permanent: true,
       },
-      // URLs antiguas de contratos → nueva estructura
+      {
+        source: '/gestoria/cedula-habitabilidad',
+        destination: '/gestoria',
+        permanent: true,
+      },
+      
+      // ═══ URLS ANTIGUAS DE CONTRATOS ═══
       {
         source: '/contratos/:slug',
         destination: '/gestoria/solicitar/:slug',
@@ -32,26 +39,145 @@ const nextConfig: NextConfig = {
         destination: '/gestoria/solicitar/:slug',
         permanent: true,
       },
-      // Normalización de URLs de gestoría por ciudad (sin duplicados)
+      
+      // ═══ NORMALIZACIÓN GESTORÍA POR CIUDAD ═══
       {
         source: '/gestoria/:ciudad/contratos',
-        destination: '/gestoria/:ciudad/contratos-inmobiliarios',
+        destination: '/gestoria/:ciudad',
         permanent: true,
       },
-      // Refactorización URLs ciudad-específicas (Mayo 2026) - Arquitectura limpia
+      {
+        source: '/gestoria/:ciudad/contratos-inmobiliarios',
+        destination: '/gestoria/:ciudad',
+        permanent: true,
+      },
+      
+      // ═══ REDIRECTS ESPECÍFICOS CIUDAD ═══
+      // Zaragoza
       {
         source: '/gestoria/zaragoza/contratos-inmobiliarios',
         destination: '/zaragoza/contrato-alquiler',
         permanent: true,
       },
       {
+        source: '/gestoria/zaragoza',
+        destination: '/zaragoza/contrato-alquiler',
+        permanent: true,
+      },
+      // Sevilla
+      {
         source: '/gestoria/sevilla/gestoria-online',
         destination: '/gestoria/sevilla',
         permanent: true,
       },
       {
+        source: '/gestoria/sevilla/contratos',
+        destination: '/gestoria/sevilla',
+        permanent: true,
+      },
+      // Granada
+      {
         source: '/gestoria/granada/contratos-alquiler-compraventa',
         destination: '/granada/contrato-alquiler',
+        permanent: true,
+      },
+      {
+        source: '/gestoria/granada',
+        destination: '/granada/contrato-alquiler',
+        permanent: true,
+      },
+      // Málaga
+      {
+        source: '/gestoria/malaga',
+        destination: '/malaga/pisos-particulares-sin-comision',
+        permanent: true,
+      },
+      // Bilbao
+      {
+        source: '/gestoria/bilbao/contratos',
+        destination: '/bilbao/contrato-arras',
+        permanent: true,
+      },
+      // Alicante
+      {
+        source: '/gestoria/alicante',
+        destination: '/gestoria/ciudades',
+        permanent: true,
+      },
+      
+      // ═══ PISOS - PARÁMETROS LEGACY ═══
+      // URLs con parámetros antiguos → Redirigir a URLs limpias
+      {
+        source: '/pisos/alquiler',
+        destination: '/pisos?operacion=rent',
+        permanent: true,
+      },
+      {
+        source: '/pisos/compra',
+        destination: '/pisos?operacion=sale',
+        permanent: true,
+      },
+      {
+        source: '/pisos/venta',
+        destination: '/pisos?operacion=sale',
+        permanent: true,
+      },
+      
+      // ═══ PÁGINAS ANTIGUAS ELIMINADAS ═══
+      {
+        source: '/anuncios',
+        destination: '/pisos',
+        permanent: true,
+      },
+      {
+        source: '/inmuebles',
+        destination: '/pisos',
+        permanent: true,
+      },
+      {
+        source: '/propiedades',
+        destination: '/pisos',
+        permanent: true,
+      },
+      
+      // ═══ BLOG - POSTS ELIMINADOS O MOVIDOS ═══
+      {
+        source: '/blog/arras-penitenciales',
+        destination: '/gestoria/guia-arras-penitenciales',
+        permanent: true,
+      },
+      {
+        source: '/blog/contrato-arras',
+        destination: '/gestoria/contrato-arras',
+        permanent: true,
+      },
+      
+      // ═══ MI-CUENTA - RUTAS ANTIGUAS ═══
+      {
+        source: '/perfil',
+        destination: '/mi-cuenta/perfil',
+        permanent: true,
+      },
+      {
+        source: '/mis-anuncios',
+        destination: '/mi-cuenta/anuncios',
+        permanent: true,
+      },
+      {
+        source: '/mis-favoritos',
+        destination: '/mi-cuenta/favoritos',
+        permanent: true,
+      },
+      
+      // ═══ LANDING PAGES CONSOLIDADAS ═══
+      {
+        source: '/vender-piso',
+        destination: '/vender-piso-sin-agencia',
+        permanent: true,
+      },
+      {
+        source: '/vender-casa-sin-comision',
+        destination: '/vender-piso-sin-agencia',
         permanent: true,
       },
     ]
