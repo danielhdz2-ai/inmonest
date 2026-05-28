@@ -197,23 +197,36 @@ export default function PublicarWizard({ userId }: { userId: string }) {
       if (images.length > 0) {
         const supabase = createClient()
         const uploadedUrls: string[] = []
+        const uploadErrors: string[] = []
 
         for (let i = 0; i < images.length; i++) {
           const file = images[i]
           const ext  = file.name.split('.').pop() ?? 'webp'
           const path = `${userId}/${listingId}/${i}.${ext}`
+          
           const { error: upErr } = await supabase.storage
             .from('listings')
             .upload(path, file, { upsert: true, contentType: file.type })
-          if (!upErr) {
-            const { data: urlData } = supabase.storage.from('listings').getPublicUrl(path)
-            uploadedUrls.push(urlData.publicUrl)
-            await supabase.from('listing_images').insert({
-              listing_id:   listingId,
-              storage_path: path,
-              external_url: urlData.publicUrl,
-              position:     i,
-            })
+          
+          if (upErr) {
+            console.error('[Upload Error]', upErr)
+            uploadErrors.push(`Foto ${i + 1}: ${upErr.message}`)
+            continue
+          }
+          
+          const { data: urlData } = supabase.storage.from('listings').getPublicUrl(path)
+          uploadedUrls.push(urlData.publicUrl)
+          
+          const { error: insertErr } = await supabase.from('listing_images').insert({
+            listing_id:   listingId,
+            storage_path: path,
+            external_url: urlData.publicUrl,
+            position:     i,
+          })
+          
+          if (insertErr) {
+            console.error('[Insert Image Error]', insertErr)
+            uploadErrors.push(`DB Foto ${i + 1}: ${insertErr.message}`)
           }
         }
 
@@ -223,6 +236,12 @@ export default function PublicarWizard({ userId }: { userId: string }) {
             .from('listings')
             .update({ images: uploadedUrls, has_images: true })
             .eq('id', listingId)
+        }
+        
+        // Si todas las imágenes fallaron, mostrar advertencia (pero no bloquear publicación)
+        if (uploadErrors.length > 0 && uploadedUrls.length === 0) {
+          console.error('[Image Upload Failed]', uploadErrors)
+          alert('⚠️ Las imágenes no se pudieron subir. Tu anuncio está publicado pero sin fotos. Contacta a soporte.')
         }
       }
 
@@ -357,9 +376,12 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                     value={form.price}
                     onChange={e => set('price', e.target.value)}
                     placeholder={form.operation === 'rent' ? '900' : '250000'}
-                    min={0}
+                    min={form.operation === 'rent' ? 100 : 10000}
                     className={inputCls}
                   />
+                  <p className="text-xs text-[#9c7a3c] mt-1">
+                    {form.operation === 'rent' ? 'Mínimo 100€/mes' : 'Mínimo 10.000€'}
+                  </p>
                 </div>
               </div>
             </div>

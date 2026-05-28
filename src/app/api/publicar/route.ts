@@ -40,6 +40,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Precio inválido' }, { status: 400 })
   }
 
+  // ✅ FIX: Validar precios mínimos razonables
+  if (operation === 'sale' && priceNum < 10000) {
+    return NextResponse.json({ 
+      error: 'El precio de venta debe ser al menos 10.000€. Si es alquiler, selecciona "Alquilar" en el paso 1.' 
+    }, { status: 400 })
+  }
+  if (operation === 'rent' && priceNum < 100) {
+    return NextResponse.json({ 
+      error: 'El precio de alquiler debe ser al menos 100€/mes' 
+    }, { status: 400 })
+  }
+
   const { data, error } = await supabase
     .from('listings')
     .insert({
