@@ -26,6 +26,53 @@ export default function Footer() {
       {/* ── Separador dorado ───────────────────────────────────── */}
       <div className="h-[3px] bg-gradient-to-r from-transparent via-[#c9962a] to-transparent" />
 
+      {/* ── SERVICIOS DE GESTORÍA ───────────────────────────────── */}
+      <div className="border-b border-white/10 px-6 sm:px-10 lg:px-16 py-10">
+        <div className="flex items-center justify-between mb-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-[#c9962a]">
+            Servicios de Gestoría
+          </p>
+          <Link 
+            href="/gestoria/ciudades" 
+            className="text-xs text-[#c9962a] hover:text-[#f4c94a] transition-colors flex items-center gap-1"
+          >
+            Ver todos los servicios →
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-4">
+          <Link href="/gestoria" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Gestoría Inmobiliaria
+          </Link>
+          <Link href="/gestoria/contrato-arras" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Contrato de Arras
+          </Link>
+          <Link href="/gestoria/contrato-alquiler" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Contrato de Alquiler
+          </Link>
+          <Link href="/gestoria/acompanamiento-venta" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Acompañamiento de Venta
+          </Link>
+          <Link href="/gestoria/revision-contrato-alquiler" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Revisión Contrato Alquiler
+          </Link>
+          <Link href="/gestoria/contrato-compraventa" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Contrato de Compraventa
+          </Link>
+          <Link href="/gestoria/venta-completa-reserva-escritura" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Venta Completa + Escritura
+          </Link>
+          <Link href="/gestoria/asesoria-compra-piso" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Asesoría Compra de Piso
+          </Link>
+          <Link href="/gestoria/due-diligence-precompra" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Due Diligence Precompra
+          </Link>
+          <Link href="/vender-piso-sin-agencia" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Vender sin Agencia
+          </Link>
+        </div>
+      </div>
+
       {/* ── HUB SEO: Contratos e información por ciudad ─────────── */}
       <div className="border-b border-white/10 px-6 sm:px-10 lg:px-16 py-10">
         <p className="text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-6">
