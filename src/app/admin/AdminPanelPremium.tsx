@@ -83,8 +83,41 @@ const SERVICE_LABELS: Record<string, string> = {
   'revision-contrato-alquiler': 'Revisión Contrato Alquiler',
 }
 
+interface Particular {
+  userId: string
+  email: string
+  name: string
+  phone: string | null
+  totalListings: number
+  activeListings: number
+  listings: Array<{
+    id: string
+    title: string
+    price_eur: number | null
+    operation: string
+    city: string | null
+    district: string | null
+    bedrooms: number | null
+    area_m2: number | null
+    status: string
+    created_at: string
+  }>
+  contacts: Array<{
+    id: string
+    listingId: string
+    listingTitle: string
+    fromName: string
+    fromEmail: string
+    fromPhone: string | null
+    message: string
+    createdAt: string
+  }>
+  firstListing: string
+  lastListing: string
+}
+
 export default function AdminPanelPremium({ initialRequests }: { initialRequests: GestoriaRequest[] }) {
-  const [tab, setTab] = useState<'dashboard' | 'pedidos' | 'clientes' | 'documentos'>('dashboard')
+  const [tab, setTab] = useState<'dashboard' | 'pedidos' | 'clientes' | 'documentos' | 'particulares'>('dashboard')
   const [requests, setRequests] = useState<GestoriaRequest[]>(initialRequests)
   const [clients, setClients] = useState<Client[]>([])
   const [metrics, setMetrics] = useState<Metrics | null>(null)
@@ -93,10 +126,14 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
   const [clientDocuments, setClientDocuments] = useState<ClientDocument[]>([])
   const [allDocuments, setAllDocuments] = useState<ClientDocument[]>([])
+  const [particulares, setParticulares] = useState<Particular[]>([])
+  const [selectedParticular, setSelectedParticular] = useState<Particular | null>(null)
 
-  // Cargar métricas y clientes al montar
+  // Cargar métricas, documentos y particulares al montar
   useEffect(() => {
+    loadMetrics()
     loadAllDocuments()
+    loadParticulares()
   }, [])
   
   // Recargar datos cuando cambian las requests
@@ -150,6 +187,16 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       setClients(data.clients || [])
     } catch (err) {
       console.error('Error loading clients:', err)
+    }
+  }
+
+  async function loadParticulares() {
+    try {
+      const res = await fetch('/api/admin/particulares')
+      const data = await res.json()
+      setParticulares(data.particulares || [])
+    } catch (err) {
+      console.error('Error loading particulares:', err)
     }
   }
 
@@ -213,17 +260,18 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       </div>
 
       {/* Tabs Navigation */}
-      <div className="flex gap-2 bg-gray-100 p-1.5 rounded-xl mb-8 w-fit">
+      <div className="flex gap-2 bg-gray-100 p-1.5 rounded-xl mb-8 w-fit overflow-x-auto">
         {([
           { id: 'dashboard', label: '📊 Dashboard', icon: '📊' },
           { id: 'pedidos', label: '📋 Pedidos', icon: '📋' },
-          { id: 'clientes', label: '👥 Clientes', icon: '👥' },
+          { id: 'clientes', label: '👥 Clientes Gestoría', icon: '👥' },
+          { id: 'particulares', label: '🏠 Base de Datos Particulares', icon: '🏠' },
           { id: 'documentos', label: '📂 Documentos', icon: '📂' },
         ] as const).map(t => (
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
-            className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all ${
+            className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all whitespace-nowrap ${
               tab === t.id
                 ? 'bg-white text-[#c9962a] shadow-lg scale-105'
                 : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
@@ -626,6 +674,130 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       )}
 
       {/* ═══════════════════════════════════════════════════════════════
+          TAB 5: PARTICULARES - Base de Datos de Propietarios
+      ═══════════════════════════════════════════════════════════════ */}
+      {tab === 'particulares' && (
+        <div className="space-y-6">
+          {/* Header Stats */}
+          <div className="grid grid-cols-4 gap-4">
+            <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 text-white shadow-xl">
+              <p className="text-sm opacity-90 mb-2">👥 Total Propietarios</p>
+              <p className="text-4xl font-bold">{particulares.length}</p>
+            </div>
+            <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-xl">
+              <p className="text-sm opacity-90 mb-2">🏠 Anuncios Totales</p>
+              <p className="text-4xl font-bold">{particulares.reduce((sum, p) => sum + p.totalListings, 0)}</p>
+            </div>
+            <div className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-6 text-white shadow-xl">
+              <p className="text-sm opacity-90 mb-2">✅ Anuncios Activos</p>
+              <p className="text-4xl font-bold">{particulares.reduce((sum, p) => sum + p.activeListings, 0)}</p>
+            </div>
+            <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-6 text-white shadow-xl">
+              <p className="text-sm opacity-90 mb-2">💬 Contactos Recibidos</p>
+              <p className="text-4xl font-bold">{particulares.reduce((sum, p) => sum + p.contacts.length, 0)}</p>
+            </div>
+          </div>
+
+          {/* Search Bar */}
+          <div className="flex items-center gap-4">
+            <div className="flex-1 relative">
+              <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Buscar particular por email, nombre o ciudad..."
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+              />
+            </div>
+          </div>
+
+          {/* Particulares Table */}
+          <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-gray-50 border-b border-gray-200">
+                  <tr>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Propietario</th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
+                    <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Anuncios</th>
+                    <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Contactos</th>
+                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Actividad</th>
+                    <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {particulares
+                    .filter(p =>
+                      p.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                      p.listings.some(l => l.city?.toLowerCase().includes(searchQuery.toLowerCase()))
+                    )
+                    .map(particular => (
+                      <tr key={particular.userId} className="hover:bg-gray-50 transition-colors">
+                        <td className="px-6 py-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">
+                              {particular.name.charAt(0).toUpperCase()}
+                            </div>
+                            <div>
+                              <p className="text-sm font-semibold text-gray-900">{particular.name}</p>
+                              <p className="text-xs text-gray-500">{particular.email}</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          <p className="text-sm text-gray-600">{particular.phone || '—'}</p>
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          <div className="inline-flex flex-col items-center gap-1">
+                            <span className="text-lg font-bold text-gray-900">{particular.activeListings}</span>
+                            <span className="text-xs text-gray-400">de {particular.totalListings}</span>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          <span className={`px-3 py-1 rounded-full text-sm font-bold ${
+                            particular.contacts.length > 0 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
+                          }`}>
+                            {particular.contacts.length}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4">
+                          <p className="text-xs text-gray-500">
+                            Primera: {new Date(particular.firstListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            Última: {new Date(particular.lastListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                          </p>
+                        </td>
+                        <td className="px-6 py-4 text-center">
+                          <button
+                            onClick={() => setSelectedParticular(particular)}
+                            className="px-3 py-1.5 bg-[#c9962a] text-white text-xs font-semibold rounded-lg hover:bg-amber-700 transition"
+                          >
+                            Ver detalles →
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+
+            {particulares.length === 0 && (
+              <div className="p-12 text-center">
+                <div className="text-6xl mb-4">🏠</div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">No hay particulares</h3>
+                <p className="text-gray-500">Los propietarios que publiquen pisos aparecerán aquí.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════
           MODAL: DETALLE DEL CLIENTE (PANTALLA COMPLETA)
       ═══════════════════════════════════════════════════════════════ */}
       {selectedClient && (
@@ -834,6 +1006,214 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
             </button>
             <a
               href={`mailto:${selectedClient.email}`}
+              className="px-6 py-3 bg-[#c9962a] text-white rounded-xl font-semibold hover:bg-amber-700 transition inline-flex items-center gap-2"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Enviar Email
+            </a>
+          </div>
+        </div>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════
+          MODAL: DETALLE DEL PARTICULAR (PANTALLA COMPLETA)
+      ═══════════════════════════════════════════════════════════════ */}
+      {selectedParticular && (
+        <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-hidden">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-6 text-white flex items-center justify-between shadow-lg">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-3xl font-bold">
+                {selectedParticular.name.charAt(0).toUpperCase()}
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold">{selectedParticular.name}</h2>
+                <p className="text-sm opacity-90">{selectedParticular.email}</p>
+              </div>
+            </div>
+            <button
+              onClick={() => setSelectedParticular(null)}
+              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 transition flex items-center justify-center"
+            >
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Content - Scrollable */}
+          <div className="flex-1 overflow-y-auto bg-gray-50 p-8">
+            <div className="max-w-6xl mx-auto space-y-6">
+              {/* Stats Grid */}
+              <div className="grid grid-cols-3 gap-6">
+                <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-xl">
+                  <p className="text-sm opacity-90 mb-2">🏠 Total Anuncios</p>
+                  <p className="text-4xl font-bold">{selectedParticular.totalListings}</p>
+                </div>
+                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 text-white shadow-xl">
+                  <p className="text-sm opacity-90 mb-2">✅ Anuncios Activos</p>
+                  <p className="text-4xl font-bold">{selectedParticular.activeListings}</p>
+                </div>
+                <div className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-6 text-white shadow-xl">
+                  <p className="text-sm opacity-90 mb-2">💬 Contactos Recibidos</p>
+                  <p className="text-4xl font-bold">{selectedParticular.contacts.length}</p>
+                </div>
+              </div>
+
+              {/* Contact Info */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  📞 Información de Contacto
+                </h3>
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Email</p>
+                    <p className="text-sm font-semibold text-gray-900">{selectedParticular.email}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Teléfono</p>
+                    <p className="text-sm font-semibold text-gray-900">{selectedParticular.phone || '—'}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Primer Anuncio</p>
+                    <p className="text-sm font-semibold text-gray-900">
+                      {new Date(selectedParticular.firstListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Último Anuncio</p>
+                    <p className="text-sm font-semibold text-gray-900">
+                      {new Date(selectedParticular.lastListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Contactos Recibidos */}
+              {selectedParticular.contacts.length > 0 && (
+                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                    💬 Mensajes de Contacto ({selectedParticular.contacts.length})
+                  </h3>
+                  <div className="space-y-4">
+                    {selectedParticular.contacts.map((contact) => (
+                      <div key={contact.id} className="bg-gray-50 rounded-xl p-5 border border-gray-200">
+                        <div className="flex items-start justify-between gap-4 mb-3">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-sm font-bold text-blue-600">
+                                {contact.fromName.charAt(0).toUpperCase()}
+                              </div>
+                              <div>
+                                <p className="text-sm font-bold text-gray-900">{contact.fromName}</p>
+                                <p className="text-xs text-gray-500">{contact.fromEmail}</p>
+                              </div>
+                            </div>
+                            <p className="text-xs text-gray-500 mb-2">
+                              Anuncio: <span className="font-semibold text-gray-700">{contact.listingTitle}</span>
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-xs text-gray-500">
+                              {new Date(contact.createdAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                            </p>
+                            {contact.fromPhone && (
+                              <p className="text-xs font-semibold text-gray-700 mt-1">{contact.fromPhone}</p>
+                            )}
+                          </div>
+                        </div>
+                        <div className="bg-white rounded-lg p-4 border border-gray-200">
+                          <p className="text-xs font-semibold text-gray-500 mb-2">📝 Mensaje:</p>
+                          <p className="text-sm text-gray-700 whitespace-pre-wrap">{contact.message}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Anuncios del Particular */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  🏠 Anuncios Publicados ({selectedParticular.totalListings})
+                </h3>
+                <div className="grid grid-cols-1 gap-4">
+                  {selectedParticular.listings.map((listing) => (
+                    <div key={listing.id} className="bg-gray-50 rounded-xl p-5 border border-gray-200 hover:shadow-md transition-shadow">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <h4 className="text-base font-bold text-gray-900">{listing.title}</h4>
+                            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
+                              listing.status === 'published' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
+                            }`}>
+                              {listing.status === 'published' ? '✅ Activo' : '⏸ Inactivo'}
+                            </span>
+                          </div>
+                          <div className="grid grid-cols-2 gap-4 mb-3">
+                            <div>
+                              <p className="text-xs text-gray-500">📍 Ubicación</p>
+                              <p className="text-sm font-semibold text-gray-900">{listing.city || '—'}</p>
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500">🏷 Operación</p>
+                              <p className="text-sm font-semibold text-gray-900">
+                                {listing.operation === 'rent' ? 'Alquiler' : 'Venta'}
+                              </p>
+                            </div>
+                            {listing.bedrooms && (
+                              <div>
+                                <p className="text-xs text-gray-500">🛏 Habitaciones</p>
+                                <p className="text-sm font-semibold text-gray-900">{listing.bedrooms}</p>
+                              </div>
+                            )}
+                            {listing.area_m2 && (
+                              <div>
+                                <p className="text-xs text-gray-500">📐 Superficie</p>
+                                <p className="text-sm font-semibold text-gray-900">{listing.area_m2} m²</p>
+                              </div>
+                            )}
+                          </div>
+                          <p className="text-xs text-gray-500">
+                            Publicado: {new Date(listing.created_at).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                          </p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-2xl font-bold text-[#c9962a] mb-2">
+                            {listing.price_eur ? `${listing.price_eur.toLocaleString('es-ES')} €` : 'Consultar'}
+                          </p>
+                          <a
+                            href={`https://inmonest.com/pisos/${listing.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-indigo-600 hover:underline inline-flex items-center gap-1"
+                          >
+                            Ver anuncio
+                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Footer - Fixed */}
+          <div className="border-t border-gray-200 bg-white p-6 flex justify-between items-center shadow-lg">
+            <button
+              onClick={() => setSelectedParticular(null)}
+              className="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl font-semibold hover:bg-gray-300 transition"
+            >
+              ← Volver a Particulares
+            </button>
+            <a
+              href={`mailto:${selectedParticular.email}`}
               className="px-6 py-3 bg-[#c9962a] text-white rounded-xl font-semibold hover:bg-amber-700 transition inline-flex items-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
