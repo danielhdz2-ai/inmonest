@@ -4,8 +4,10 @@ import { createAdminClient } from '@/lib/supabase/admin'
 
 /**
  * GET /api/admin/particulares
- * Retorna base de datos completa de usuarios particulares que publicaron pisos
- * Incluye sus anuncios y mensajes de contacto recibidos
+ * Retorna TODOS los usuarios registrados en la plataforma clasificados en 3 categorías:
+ * 1. Clientes Gestoría - Contrataron servicios de gestoría
+ * 2. Clientes Particulares - Se registraron para ver pisos (scrapers)
+ * 3. Propietarios Particulares - Publicaron sus propios pisos
  */
 export async function GET() {
   const supabase = await createClient()
@@ -23,131 +25,148 @@ export async function GET() {
 
   const adminSb = createAdminClient()
 
-  // Obtener todos los usuarios que publicaron al menos un piso
-  const { data: listingsData } = await adminSb
-    .from('listings')
-    .select(`
-      id,
-      title,
-      price_eur,
-      operation,
-      city,
-      district,
-      bedrooms,
-      area_m2,
-      status,
-      published_at,
-      created_at,
-      owner_user_id,
-      is_particular
-    `)
-    .eq('origin', 'direct')
-    .order('created_at', { ascending: false })
+  // Obtener TODOS los usuarios registrados en la plataforma
+  const { data: { users: allUsers }, error: usersError } = await adminSb.auth.admin.listUsers()
 
-  if (!listingsData) {
-    return NextResponse.json({ particulares: [] })
+  if (usersError || !allUsers) {
+    console.error('Error loading users:', usersError)
+    return NextResponse.json({ 
+      clientesGestoria: [],
+      clientesParticulares: [],
+      propietariosParticulares: []
+    })
   }
 
-  // Agrupar por owner_user_id
-  const userMap = new Map<string, {
-    userId: string
-    email: string
-    name: string
-    phone: string | null
-    metadata: Record<string, any>
-    totalListings: number
-    activeListings: number
-    listings: typeof listingsData
-    contacts: Array<{
-      id: string
-      listingId: string
-      listingTitle: string
-      fromName: string
-      fromEmail: string
-      fromPhone: string | null
-      message: string
-      createdAt: string
-    }>
-    firstListing: string
-    lastListing: string
-  }>()
+  const clientesGestoria: Array<any> = []
+  const clientesParticulares: Array<any> = []
+  const propietariosParticulares: Array<any> = []
 
-  // Obtener datos de usuario para cada owner
-  for (const listing of listingsData) {
-    if (!listing.owner_user_id) continue
+  // Para cada usuario, clasificarlo en la categoría correcta
+  for (const user of allUsers) {
+    // Datos base del usuario
+    const userInfo = {
+      userId: user.id,
+      email: user.email || 'Sin email',
+      name: (user.user_metadata?.full_name as string) || user.email?.split('@')[0] || 'Anónimo',
+      phone: (user.user_metadata?.phone as string | null) || null,
+      metadata: user.user_metadata || {},
+      registeredAt: user.created_at,
+      lastSignIn: user.last_sign_in_at || user.created_at,
+    }
 
-    if (!userMap.has(listing.owner_user_id)) {
-      // Obtener datos del usuario de auth.users
-      const { data: { user: userData } } = await adminSb.auth.admin.getUserById(listing.owner_user_id)
-      
-      if (userData) {
-        userMap.set(listing.owner_user_id, {
-          userId: listing.owner_user_id,
-          email: userData.email || 'Sin email',
-          name: (userData.user_metadata?.full_name as string) || userData.email?.split('@')[0] || 'Anónimo',
-          phone: (userData.user_metadata?.phone as string | null) || null,
-          metadata: userData.user_metadata || {},
-          totalListings: 0,
-          activeListings: 0,
-          listings: [],
-          contacts: [],
-          firstListing: listing.created_at,
-          lastListing: listing.created_at,
+    // 1. Verificar si tiene pedidos de gestoría pagados
+    const { data: gestoriaOrders } = await adminSb
+      .from('gestoria_requests')
+      .select('id, service_key, amount_eur, status, created_at, paid_at')
+      .eq('client_email', user.email)
+      .order('created_at', { ascending: false })
+
+    const hasPaidGestoria = gestoriaOrders?.some(o => o.status === 'paid')
+
+    // 2. Verificar si tiene listings como propietario
+    const { data: userListings } = await adminSb
+      .from('listings')
+      .select(`
+        id,
+        title,
+        price_eur,
+        operation,
+        city,
+        district,
+        bedrooms,
+        area_m2,
+        status,
+        created_at
+      `)
+      .eq('owner_user_id', user.id)
+      .order('created_at', { ascending: false })
+
+    const hasListings = userListings && userListings.length > 0
+
+    // 3. Buscar contactos recibidos (solo si es propietario)
+    let contacts: Array<any> = []
+    if (hasListings) {
+      const { data: userContacts } = await adminSb
+        .from('listing_contacts')
+        .select(`
+          id,
+          listing_id,
+          from_name,
+          from_email,
+          from_phone,
+          message,
+          created_at
+        `)
+        .eq('owner_user_id', user.id)
+        .order('created_at', { ascending: false })
+
+      if (userContacts) {
+        contacts = userContacts.map(c => {
+          const listing = userListings.find(l => l.id === c.listing_id)
+          return {
+            id: c.id,
+            listingId: c.listing_id,
+            listingTitle: listing?.title || 'Anuncio eliminado',
+            fromName: c.from_name,
+            fromEmail: c.from_email,
+            fromPhone: c.from_phone,
+            message: c.message,
+            createdAt: c.created_at,
+          }
         })
       }
     }
 
-    const userData = userMap.get(listing.owner_user_id)
-    if (userData) {
-      userData.totalListings++
-      if (listing.status === 'published') userData.activeListings++
-      userData.listings.push(listing)
-      
-      // Actualizar fechas
-      if (new Date(listing.created_at) < new Date(userData.firstListing)) {
-        userData.firstListing = listing.created_at
-      }
-      if (new Date(listing.created_at) > new Date(userData.lastListing)) {
-        userData.lastListing = listing.created_at
-      }
+    // CLASIFICACIÓN EN CATEGORÍAS (orden de prioridad)
+    
+    // 1. CLIENTES GESTORÍA (tienen pedidos pagados)
+    if (hasPaidGestoria) {
+      clientesGestoria.push({
+        ...userInfo,
+        totalOrders: gestoriaOrders?.length || 0,
+        paidOrders: gestoriaOrders?.filter(o => o.status === 'paid').length || 0,
+        totalRevenue: gestoriaOrders?.filter(o => o.status === 'paid').reduce((sum, o) => sum + (o.amount_eur || 0), 0) || 0,
+        orders: gestoriaOrders || [],
+        lastOrder: gestoriaOrders?.[0]?.created_at || null,
+      })
     }
-  }
-
-  // Obtener contactos para cada usuario
-  for (const [userId, userData] of userMap.entries()) {
-    const { data: contacts } = await adminSb
-      .from('listing_contacts')
-      .select(`
-        id,
-        listing_id,
-        from_name,
-        from_email,
-        from_phone,
-        message,
-        created_at
-      `)
-      .eq('owner_user_id', userId)
-      .order('created_at', { ascending: false })
-
-    if (contacts) {
-      userData.contacts = contacts.map(c => {
-        const listing = userData.listings.find(l => l.id === c.listing_id)
-        return {
-          id: c.id,
-          listingId: c.listing_id,
-          listingTitle: listing?.title || 'Anuncio eliminado',
-          fromName: c.from_name,
-          fromEmail: c.from_email,
-          fromPhone: c.from_phone,
-          message: c.message,
-          createdAt: c.created_at,
-        }
+    // 2. PROPIETARIOS PARTICULARES (publicaron pisos)
+    else if (hasListings) {
+      propietariosParticulares.push({
+        ...userInfo,
+        totalListings: userListings.length,
+        activeListings: userListings.filter(l => l.status === 'published').length,
+        listings: userListings,
+        contacts: contacts,
+        firstListing: userListings[userListings.length - 1]?.created_at || null,
+        lastListing: userListings[0]?.created_at || null,
+      })
+    }
+    // 3. CLIENTES PARTICULARES (solo se registraron, sin gestoría ni pisos)
+    else {
+      clientesParticulares.push({
+        ...userInfo,
+        // Datos adicionales que podamos tener
+        favoritos: 0, // TODO: contar favoritos si existe la tabla
+        alertas: 0,   // TODO: contar alertas si existe la tabla
       })
     }
   }
 
-  const particulares = Array.from(userMap.values())
-    .sort((a, b) => b.totalListings - a.totalListings) // Ordenar por más activos
+  // Ordenar cada categoría
+  clientesGestoria.sort((a, b) => b.totalRevenue - a.totalRevenue)
+  propietariosParticulares.sort((a, b) => b.totalListings - a.totalListings)
+  clientesParticulares.sort((a, b) => new Date(b.registeredAt).getTime() - new Date(a.registeredAt).getTime())
 
-  return NextResponse.json({ particulares })
+  return NextResponse.json({ 
+    clientesGestoria,
+    clientesParticulares,
+    propietariosParticulares,
+    stats: {
+      totalUsers: allUsers.length,
+      totalGestoria: clientesGestoria.length,
+      totalParticulares: clientesParticulares.length,
+      totalPropietarios: propietariosParticulares.length,
+    }
+  })
 }

@@ -83,11 +83,45 @@ const SERVICE_LABELS: Record<string, string> = {
   'revision-contrato-alquiler': 'Revisión Contrato Alquiler',
 }
 
-interface Particular {
+interface ClienteGestoria {
   userId: string
   email: string
   name: string
   phone: string | null
+  registeredAt: string
+  lastSignIn: string
+  totalOrders: number
+  paidOrders: number
+  totalRevenue: number
+  orders: Array<{
+    id: string
+    service_key: string
+    amount_eur: number | null
+    status: string
+    created_at: string
+    paid_at: string | null
+  }>
+  lastOrder: string | null
+}
+
+interface ClienteParticular {
+  userId: string
+  email: string
+  name: string
+  phone: string | null
+  registeredAt: string
+  lastSignIn: string
+  favoritos: number
+  alertas: number
+}
+
+interface PropietarioParticular {
+  userId: string
+  email: string
+  name: string
+  phone: string | null
+  registeredAt: string
+  lastSignIn: string
   totalListings: number
   activeListings: number
   listings: Array<{
@@ -112,12 +146,13 @@ interface Particular {
     message: string
     createdAt: string
   }>
-  firstListing: string
-  lastListing: string
+  firstListing: string | null
+  lastListing: string | null
 }
 
 export default function AdminPanelPremium({ initialRequests }: { initialRequests: GestoriaRequest[] }) {
   const [tab, setTab] = useState<'dashboard' | 'pedidos' | 'clientes' | 'documentos' | 'particulares'>('dashboard')
+  const [particularesTab, setParticularesTab] = useState<'gestoria' | 'clientes' | 'propietarios'>('gestoria')
   const [requests, setRequests] = useState<GestoriaRequest[]>(initialRequests)
   const [clients, setClients] = useState<Client[]>([])
   const [metrics, setMetrics] = useState<Metrics | null>(null)
@@ -126,8 +161,17 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
   const [clientDocuments, setClientDocuments] = useState<ClientDocument[]>([])
   const [allDocuments, setAllDocuments] = useState<ClientDocument[]>([])
-  const [particulares, setParticulares] = useState<Particular[]>([])
-  const [selectedParticular, setSelectedParticular] = useState<Particular | null>(null)
+  
+  const [clientesGestoria, setClientesGestoria] = useState<ClienteGestoria[]>([])
+  const [clientesParticulares, setClientesParticulares] = useState<ClienteParticular[]>([])
+  const [propietariosParticulares, setPropietariosParticulares] = useState<PropietarioParticular[]>([])
+  const [selectedPropietario, setSelectedPropietario] = useState<PropietarioParticular | null>(null)
+  const [particularesStats, setParticularesStats] = useState({
+    totalUsers: 0,
+    totalGestoria: 0,
+    totalParticulares: 0,
+    totalPropietarios: 0,
+  })
 
   // Cargar métricas, documentos y particulares al montar
   useEffect(() => {
@@ -194,7 +238,15 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
     try {
       const res = await fetch('/api/admin/particulares')
       const data = await res.json()
-      setParticulares(data.particulares || [])
+      setClientesGestoria(data.clientesGestoria || [])
+      setClientesParticulares(data.clientesParticulares || [])
+      setPropietariosParticulares(data.propietariosParticulares || [])
+      setParticularesStats(data.stats || {
+        totalUsers: 0,
+        totalGestoria: 0,
+        totalParticulares: 0,
+        totalPropietarios: 0,
+      })
     } catch (err) {
       console.error('Error loading particulares:', err)
     }
@@ -674,126 +726,272 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       )}
 
       {/* ═══════════════════════════════════════════════════════════════
-          TAB 5: PARTICULARES - Base de Datos de Propietarios
+          TAB 5: PARTICULARES - 3 Categorías de Usuarios
       ═══════════════════════════════════════════════════════════════ */}
       {tab === 'particulares' && (
         <div className="space-y-6">
           {/* Header Stats */}
           <div className="grid grid-cols-4 gap-4">
-            <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 text-white shadow-xl">
-              <p className="text-sm opacity-90 mb-2">👥 Total Propietarios</p>
-              <p className="text-4xl font-bold">{particulares.length}</p>
+            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-6 text-white shadow-xl">
+              <p className="text-sm opacity-90 mb-2">👥 Total Usuarios</p>
+              <p className="text-4xl font-bold">{particularesStats.totalUsers}</p>
             </div>
             <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-xl">
-              <p className="text-sm opacity-90 mb-2">🏠 Anuncios Totales</p>
-              <p className="text-4xl font-bold">{particulares.reduce((sum, p) => sum + p.totalListings, 0)}</p>
+              <p className="text-sm opacity-90 mb-2">💼 Clientes Gestoría</p>
+              <p className="text-4xl font-bold">{particularesStats.totalGestoria}</p>
             </div>
-            <div className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-6 text-white shadow-xl">
-              <p className="text-sm opacity-90 mb-2">✅ Anuncios Activos</p>
-              <p className="text-4xl font-bold">{particulares.reduce((sum, p) => sum + p.activeListings, 0)}</p>
+            <div className="bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl p-6 text-white shadow-xl">
+              <p className="text-sm opacity-90 mb-2">👤 Clientes Particulares</p>
+              <p className="text-4xl font-bold">{particularesStats.totalParticulares}</p>
             </div>
             <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-6 text-white shadow-xl">
-              <p className="text-sm opacity-90 mb-2">💬 Contactos Recibidos</p>
-              <p className="text-4xl font-bold">{particulares.reduce((sum, p) => sum + p.contacts.length, 0)}</p>
+              <p className="text-sm opacity-90 mb-2">🏠 Propietarios</p>
+              <p className="text-4xl font-bold">{particularesStats.totalPropietarios}</p>
             </div>
+          </div>
+
+          {/* Sub-Tabs para las 3 categorías */}
+          <div className="flex gap-2 bg-gray-100 p-1.5 rounded-xl w-fit">
+            {([
+              { id: 'gestoria', label: '💼 Clientes Gestoría', count: clientesGestoria.length },
+              { id: 'clientes', label: '👤 Clientes Particulares', count: clientesParticulares.length },
+              { id: 'propietarios', label: '🏠 Propietarios', count: propietariosParticulares.length },
+            ] as const).map(t => (
+              <button
+                key={t.id}
+                onClick={() => setParticularesTab(t.id)}
+                className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all whitespace-nowrap ${
+                  particularesTab === t.id
+                    ? 'bg-white text-[#c9962a] shadow-lg scale-105'
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                {t.label} <span className="ml-2 opacity-70">({t.count})</span>
+              </button>
+            ))}
           </div>
 
           {/* Search Bar */}
-          <div className="flex items-center gap-4">
-            <div className="flex-1 relative">
-              <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Buscar particular por email, nombre o ciudad..."
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
-              />
-            </div>
+          <div className="relative">
+            <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              type="text"
+              placeholder="Buscar por email, nombre..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+            />
           </div>
 
-          {/* Particulares Table */}
-          <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-gray-50 border-b border-gray-200">
-                  <tr>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Propietario</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
-                    <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Anuncios</th>
-                    <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Contactos</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Actividad</th>
-                    <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-gray-100">
-                  {particulares
-                    .filter(p =>
-                      p.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                      p.listings.some(l => l.city?.toLowerCase().includes(searchQuery.toLowerCase()))
-                    )
-                    .map(particular => (
-                      <tr key={particular.userId} className="hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-4">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">
-                              {particular.name.charAt(0).toUpperCase()}
+          {/* SUB-TAB 1: CLIENTES GESTORÍA */}
+          {particularesTab === 'gestoria' && (
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Cliente</th>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
+                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Pedidos</th>
+                      <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase">Ingresos</th>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Registrado</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {clientesGestoria
+                      .filter(c =>
+                        c.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        c.name.toLowerCase().includes(searchQuery.toLowerCase())
+                      )
+                      .map(cliente => (
+                        <tr key={cliente.userId} className="hover:bg-gray-50 transition-colors">
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-sm">
+                                {cliente.name.charAt(0).toUpperCase()}
+                              </div>
+                              <div>
+                                <p className="text-sm font-semibold text-gray-900">{cliente.name}</p>
+                                <p className="text-xs text-gray-500">{cliente.email}</p>
+                              </div>
                             </div>
-                            <div>
-                              <p className="text-sm font-semibold text-gray-900">{particular.name}</p>
-                              <p className="text-xs text-gray-500">{particular.email}</p>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="text-sm text-gray-600">{cliente.phone || '—'}</p>
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            <div className="inline-flex flex-col items-center gap-1">
+                              <span className="text-lg font-bold text-gray-900">{cliente.paidOrders}</span>
+                              <span className="text-xs text-gray-400">de {cliente.totalOrders}</span>
                             </div>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4">
-                          <p className="text-sm text-gray-600">{particular.phone || '—'}</p>
-                        </td>
-                        <td className="px-6 py-4 text-center">
-                          <div className="inline-flex flex-col items-center gap-1">
-                            <span className="text-lg font-bold text-gray-900">{particular.activeListings}</span>
-                            <span className="text-xs text-gray-400">de {particular.totalListings}</span>
-                          </div>
-                        </td>
-                        <td className="px-6 py-4 text-center">
-                          <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                            particular.contacts.length > 0 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
-                          }`}>
-                            {particular.contacts.length}
-                          </span>
-                        </td>
-                        <td className="px-6 py-4">
-                          <p className="text-xs text-gray-500">
-                            Primera: {new Date(particular.firstListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
-                          </p>
-                          <p className="text-xs text-gray-500">
-                            Última: {new Date(particular.lastListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
-                          </p>
-                        </td>
-                        <td className="px-6 py-4 text-center">
-                          <button
-                            onClick={() => setSelectedParticular(particular)}
-                            className="px-3 py-1.5 bg-[#c9962a] text-white text-xs font-semibold rounded-lg hover:bg-amber-700 transition"
-                          >
-                            Ver detalles →
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </div>
-
-            {particulares.length === 0 && (
-              <div className="p-12 text-center">
-                <div className="text-6xl mb-4">🏠</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">No hay particulares</h3>
-                <p className="text-gray-500">Los propietarios que publiquen pisos aparecerán aquí.</p>
+                          </td>
+                          <td className="px-6 py-4 text-right">
+                            <p className="text-lg font-bold text-[#c9962a]">{cliente.totalRevenue.toFixed(2)} €</p>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="text-xs text-gray-500">
+                              {new Date(cliente.registeredAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                            </p>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
               </div>
-            )}
-          </div>
+              {clientesGestoria.length === 0 && (
+                <div className="p-12 text-center">
+                  <div className="text-6xl mb-4">💼</div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">No hay clientes de gestoría</h3>
+                  <p className="text-gray-500">Los clientes que contraten servicios aparecerán aquí.</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* SUB-TAB 2: CLIENTES PARTICULARES */}
+          {particularesTab === 'clientes' && (
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Usuario</th>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Registrado</th>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Último acceso</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {clientesParticulares
+                      .filter(c =>
+                        c.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        c.name.toLowerCase().includes(searchQuery.toLowerCase())
+                      )
+                      .map(cliente => (
+                        <tr key={cliente.userId} className="hover:bg-gray-50 transition-colors">
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold text-sm">
+                                {cliente.name.charAt(0).toUpperCase()}
+                              </div>
+                              <div>
+                                <p className="text-sm font-semibold text-gray-900">{cliente.name}</p>
+                                <p className="text-xs text-gray-500">{cliente.email}</p>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="text-sm text-gray-600">{cliente.phone || '—'}</p>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="text-sm text-gray-600">
+                              {new Date(cliente.registeredAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                            </p>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="text-sm text-gray-600">
+                              {new Date(cliente.lastSignIn).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                            </p>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {clientesParticulares.length === 0 && (
+                <div className="p-12 text-center">
+                  <div className="text-6xl mb-4">👤</div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">No hay clientes particulares</h3>
+                  <p className="text-gray-500">Los usuarios registrados aparecerán aquí.</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* SUB-TAB 3: PROPIETARIOS PARTICULARES */}
+          {particularesTab === 'propietarios' && (
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Propietario</th>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
+                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Anuncios</th>
+                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Contactos</th>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Registrado</th>
+                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {propietariosParticulares
+                      .filter(p =>
+                        p.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        p.name.toLowerCase().includes(searchQuery.toLowerCase())
+                      )
+                      .map(propietario => (
+                        <tr key={propietario.userId} className="hover:bg-gray-50 transition-colors">
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-3">
+                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm">
+                                {propietario.name.charAt(0).toUpperCase()}
+                              </div>
+                              <div>
+                                <p className="text-sm font-semibold text-gray-900">{propietario.name}</p>
+                                <p className="text-xs text-gray-500">{propietario.email}</p>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="text-sm text-gray-600">{propietario.phone || '—'}</p>
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            <div className="inline-flex flex-col items-center gap-1">
+                              <span className="text-lg font-bold text-gray-900">{propietario.activeListings}</span>
+                              <span className="text-xs text-gray-400">de {propietario.totalListings}</span>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            <span className={`px-3 py-1 rounded-full text-sm font-bold ${
+                              propietario.contacts.length > 0 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
+                            }`}>
+                              {propietario.contacts.length}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="text-xs text-gray-500">
+                              {new Date(propietario.registeredAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                            </p>
+                            {propietario.firstListing && (
+                              <p className="text-xs text-gray-500">
+                                Primer anuncio: {new Date(propietario.firstListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'short' })}
+                              </p>
+                            )}
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            <button
+                              onClick={() => setSelectedPropietario(propietario)}
+                              className="px-3 py-1.5 bg-[#c9962a] text-white text-xs font-semibold rounded-lg hover:bg-amber-700 transition"
+                            >
+                              Ver detalles →
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {propietariosParticulares.length === 0 && (
+                <div className="p-12 text-center">
+                  <div className="text-6xl mb-4">🏠</div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">No hay propietarios</h3>
+                  <p className="text-gray-500">Los propietarios que publiquen pisos aparecerán aquí.</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
 
@@ -1018,23 +1216,23 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       )}
 
       {/* ═══════════════════════════════════════════════════════════════
-          MODAL: DETALLE DEL PARTICULAR (PANTALLA COMPLETA)
+          MODAL: DETALLE DEL PROPIETARIO (PANTALLA COMPLETA)
       ═══════════════════════════════════════════════════════════════ */}
-      {selectedParticular && (
+      {selectedPropietario && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-6 text-white flex items-center justify-between shadow-lg">
             <div className="flex items-center gap-4">
               <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-3xl font-bold">
-                {selectedParticular.name.charAt(0).toUpperCase()}
+                {selectedPropietario.name.charAt(0).toUpperCase()}
               </div>
               <div>
-                <h2 className="text-2xl font-bold">{selectedParticular.name}</h2>
-                <p className="text-sm opacity-90">{selectedParticular.email}</p>
+                <h2 className="text-2xl font-bold">{selectedPropietario.name}</h2>
+                <p className="text-sm opacity-90">{selectedPropietario.email}</p>
               </div>
             </div>
             <button
-              onClick={() => setSelectedParticular(null)}
+              onClick={() => setSelectedPropietario(null)}
               className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 transition flex items-center justify-center"
             >
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1050,15 +1248,15 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
               <div className="grid grid-cols-3 gap-6">
                 <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-xl">
                   <p className="text-sm opacity-90 mb-2">🏠 Total Anuncios</p>
-                  <p className="text-4xl font-bold">{selectedParticular.totalListings}</p>
+                  <p className="text-4xl font-bold">{selectedPropietario.totalListings}</p>
                 </div>
                 <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 text-white shadow-xl">
                   <p className="text-sm opacity-90 mb-2">✅ Anuncios Activos</p>
-                  <p className="text-4xl font-bold">{selectedParticular.activeListings}</p>
+                  <p className="text-4xl font-bold">{selectedPropietario.activeListings}</p>
                 </div>
                 <div className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-6 text-white shadow-xl">
                   <p className="text-sm opacity-90 mb-2">💬 Contactos Recibidos</p>
-                  <p className="text-4xl font-bold">{selectedParticular.contacts.length}</p>
+                  <p className="text-4xl font-bold">{selectedPropietario.contacts.length}</p>
                 </div>
               </div>
 
@@ -1070,35 +1268,37 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Email</p>
-                    <p className="text-sm font-semibold text-gray-900">{selectedParticular.email}</p>
+                    <p className="text-sm font-semibold text-gray-900">{selectedPropietario.email}</p>
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Teléfono</p>
-                    <p className="text-sm font-semibold text-gray-900">{selectedParticular.phone || '—'}</p>
+                    <p className="text-sm font-semibold text-gray-900">{selectedPropietario.phone || '—'}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Primer Anuncio</p>
+                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Fecha de Registro</p>
                     <p className="text-sm font-semibold text-gray-900">
-                      {new Date(selectedParticular.firstListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                      {new Date(selectedPropietario.registeredAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
                     </p>
                   </div>
-                  <div>
-                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Último Anuncio</p>
-                    <p className="text-sm font-semibold text-gray-900">
-                      {new Date(selectedParticular.lastListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
-                    </p>
-                  </div>
+                  {selectedPropietario.firstListing && (
+                    <div>
+                      <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Primer Anuncio</p>
+                      <p className="text-sm font-semibold text-gray-900">
+                        {new Date(selectedPropietario.firstListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Contactos Recibidos */}
-              {selectedParticular.contacts.length > 0 && (
+              {selectedPropietario.contacts.length > 0 && (
                 <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
                   <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    💬 Mensajes de Contacto ({selectedParticular.contacts.length})
+                    💬 Mensajes de Contacto ({selectedPropietario.contacts.length})
                   </h3>
                   <div className="space-y-4">
-                    {selectedParticular.contacts.map((contact) => (
+                    {selectedPropietario.contacts.map((contact) => (
                       <div key={contact.id} className="bg-gray-50 rounded-xl p-5 border border-gray-200">
                         <div className="flex items-start justify-between gap-4 mb-3">
                           <div className="flex-1">
@@ -1137,10 +1337,10 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
               {/* Anuncios del Particular */}
               <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
                 <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  🏠 Anuncios Publicados ({selectedParticular.totalListings})
+                  🏠 Anuncios Publicados ({selectedPropietario.totalListings})
                 </h3>
                 <div className="grid grid-cols-1 gap-4">
-                  {selectedParticular.listings.map((listing) => (
+                  {selectedPropietario.listings.map((listing) => (
                     <div key={listing.id} className="bg-gray-50 rounded-xl p-5 border border-gray-200 hover:shadow-md transition-shadow">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
@@ -1207,13 +1407,13 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
           {/* Footer - Fixed */}
           <div className="border-t border-gray-200 bg-white p-6 flex justify-between items-center shadow-lg">
             <button
-              onClick={() => setSelectedParticular(null)}
+              onClick={() => setSelectedPropietario(null)}
               className="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl font-semibold hover:bg-gray-300 transition"
             >
               ← Volver a Particulares
             </button>
             <a
-              href={`mailto:${selectedParticular.email}`}
+              href={`mailto:${selectedPropietario.email}`}
               className="px-6 py-3 bg-[#c9962a] text-white rounded-xl font-semibold hover:bg-amber-700 transition inline-flex items-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
