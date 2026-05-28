@@ -109,6 +109,9 @@ interface ClienteParticular {
   email: string
   name: string
   phone: string | null
+  metadata: Record<string, any>
+  provider: string
+  emailConfirmed: boolean
   registeredAt: string
   lastSignIn: string
   favoritos: number
@@ -858,7 +861,9 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
                       <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Usuario</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Teléfono</th>
+                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Provider</th>
+                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Email ✓</th>
                       <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Registrado</th>
                       <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Último acceso</th>
                     </tr>
@@ -879,20 +884,43 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                               <div>
                                 <p className="text-sm font-semibold text-gray-900">{cliente.name}</p>
                                 <p className="text-xs text-gray-500">{cliente.email}</p>
+                                {Object.keys(cliente.metadata).length > 0 && (
+                                  <p className="text-xs text-indigo-600 mt-1" title={JSON.stringify(cliente.metadata)}>📦 {Object.keys(cliente.metadata).length} metadata</p>
+                                )}
                               </div>
                             </div>
                           </td>
                           <td className="px-6 py-4">
-                            <p className="text-sm text-gray-600">{cliente.phone || '—'}</p>
+                            <p className="text-sm text-gray-900 font-mono">{cliente.phone || '—'}</p>
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            <span className={`px-2 py-1 rounded-full text-xs font-bold ${
+                              cliente.provider === 'google' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'
+                            }`}>
+                              {cliente.provider === 'google' ? 'Google' : 'Email'}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            {cliente.emailConfirmed ? (
+                              <span className="text-green-600 text-xl">✓</span>
+                            ) : (
+                              <span className="text-gray-400 text-xl">✗</span>
+                            )}
                           </td>
                           <td className="px-6 py-4">
                             <p className="text-sm text-gray-600">
                               {new Date(cliente.registeredAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
                             </p>
+                            <p className="text-xs text-gray-400">
+                              {new Date(cliente.registeredAt).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
+                            </p>
                           </td>
                           <td className="px-6 py-4">
                             <p className="text-sm text-gray-600">
                               {new Date(cliente.lastSignIn).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                            </p>
+                            <p className="text-xs text-gray-400">
+                              {new Date(cliente.lastSignIn).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
                             </p>
                           </td>
                         </tr>

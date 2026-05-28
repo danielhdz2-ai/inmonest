@@ -43,15 +43,21 @@ export async function GET() {
 
   // Para cada usuario, clasificarlo en la categoría correcta
   for (const user of allUsers) {
-    // Datos base del usuario
+    // Datos base del usuario (TODA LA INFORMACIÓN DISPONIBLE)
     const userInfo = {
       userId: user.id,
       email: user.email || 'Sin email',
       name: (user.user_metadata?.full_name as string) || user.email?.split('@')[0] || 'Anónimo',
       phone: (user.user_metadata?.phone as string | null) || null,
       metadata: user.user_metadata || {},
+      appMetadata: user.app_metadata || {},
+      provider: user.app_metadata?.provider || 'email',
+      emailConfirmed: user.email_confirmed_at ? true : false,
+      emailConfirmedAt: user.email_confirmed_at || null,
       registeredAt: user.created_at,
       lastSignIn: user.last_sign_in_at || user.created_at,
+      role: user.role || 'user',
+      banned: user.banned_until ? true : false,
     }
 
     // 1. Verificar si tiene pedidos de gestoría pagados
