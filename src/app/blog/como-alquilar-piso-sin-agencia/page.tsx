@@ -154,7 +154,7 @@ export default function ComoAlquilarSinAgenciaPage() {
             <Link href="/publicar-anuncio" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
               Publicar anuncio gratis
             </Link>
-            <Link href="/gestoria/contrato-alquiler" className="border border-amber-400 text-amber-700 hover:bg-amber-50 font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
+            <Link href="/gestoria/solicitar/contrato-alquiler" className="border border-amber-400 text-amber-700 hover:bg-amber-50 font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
               Contrato de alquiler LAU — 90 €
             </Link>
           </div>

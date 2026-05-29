@@ -247,7 +247,7 @@ export default function ContratoArrendamientoLAUPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
-                  href="/gestoria/contrato-alquiler"
+                  href="/gestoria/solicitar/contrato-alquiler"
                   className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors"
                 >
                   Ver servicio de gestoría →

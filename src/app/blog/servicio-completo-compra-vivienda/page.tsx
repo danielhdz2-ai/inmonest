@@ -251,7 +251,7 @@ export default function ServicioCompletoCompraPost() {
               </ul>
 
               <Link
-                href="/gestoria/compra-completa-reserva-escritura"
+                href="/gestoria/solicitar/compra-completa-reserva-escritura"
                 className="mt-6 inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition"
               >
                 Contratar servicio completo
@@ -302,16 +302,16 @@ export default function ServicioCompletoCompraPost() {
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/gestoria/compra-completa-reserva-escritura"
+                href="/gestoria/solicitar/compra-completa-reserva-escritura"
                 className="inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition"
               >
-                Contratar servicio (550 €)
+                Contratar servicio (666 €)
               </Link>
               <Link
-                href="/gestoria/acompanamiento-reserva-arras"
+                href="/gestoria/solicitar/acompanamiento-reserva-arras"
                 className="inline-block border border-amber-600 text-amber-600 px-6 py-3 rounded-lg font-semibold hover:bg-amber-50 transition"
               >
-                Ver servicio básico (350 €)
+                Ver servicio básico (424 €)
               </Link>
             </div>
           </div>

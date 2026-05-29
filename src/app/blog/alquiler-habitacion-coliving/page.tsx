@@ -134,8 +134,8 @@ export default function AlquilerHabitacionColivingPage() {
           <p className="text-gray-600 text-sm mb-5">
             Personalizado con tus normas de convivencia, fianza y condiciones de salida. Entrega en 48h. PDF firmable digitalmente.
           </p>
-          <Link href="/gestoria/alquiler-habitaciones" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors inline-block">
-            Solicitar contrato de habitación — 100 €
+          <Link href="/gestoria/solicitar/alquiler-habitaciones" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors inline-block">
+            Solicitar contrato de habitación — 121 €
           </Link>
         </div>
 

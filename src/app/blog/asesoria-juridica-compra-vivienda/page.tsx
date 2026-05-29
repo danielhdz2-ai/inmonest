@@ -136,7 +136,7 @@ export default function AsesoriaJuridicaCompraPost() {
               <li>Asesoramiento continuo hasta la firma de arras</li>
             </ul>
             <p>
-              <Link href="/gestoria/acompanamiento-reserva-arras" className="text-amber-600 hover:text-amber-700 font-semibold">
+              <Link href="/gestoria/solicitar/acompanamiento-reserva-arras" className="text-amber-600 hover:text-amber-700 font-semibold">
                 Ver servicio completo →
               </Link>
             </p>
@@ -153,7 +153,7 @@ export default function AsesoriaJuridicaCompraPost() {
               <li>Seguimiento continuo hasta el día de la firma</li>
             </ul>
             <p>
-              <Link href="/gestoria/compra-completa-reserva-escritura" className="text-amber-600 hover:text-amber-700 font-semibold">
+              <Link href="/gestoria/solicitar/compra-completa-reserva-escritura" className="text-amber-600 hover:text-amber-700 font-semibold">
                 Ver servicio completo →
               </Link>
             </p>
@@ -201,7 +201,7 @@ export default function AsesoriaJuridicaCompraPost() {
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/gestoria/acompanamiento-reserva-arras"
+                href="/gestoria/solicitar/acompanamiento-reserva-arras"
                 className="inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition"
               >
                 Ver servicios de gestoría

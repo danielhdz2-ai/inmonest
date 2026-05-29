@@ -151,7 +151,7 @@ export default function ContratoAlquilerGuiaPage() {
           <p className="text-gray-600 text-sm mb-5">
             Nuestros abogados redactan tu contrato de alquiler personalizado, adaptado a tu comunidad autónoma y a la normativa vigente en 2026. Entrega en 48h.
           </p>
-          <Link href="/gestoria/contrato-alquiler" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors inline-block">
+          <Link href="/gestoria/solicitar/contrato-alquiler" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors inline-block">
             Solicitar contrato de alquiler — 90 €
           </Link>
         </div>

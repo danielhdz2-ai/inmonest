@@ -135,7 +135,7 @@ export default function AlquilerOpcionCompraPage() {
           <p className="text-gray-600 text-sm mb-5">
             El contrato más complejo del mercado, con arrendamiento y derecho de opción integrados. Personalizado y con todas las cláusulas que te protegen. Entrega en 48h.
           </p>
-          <Link href="/gestoria/alquiler-opcion-compra" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors inline-block">
+          <Link href="/gestoria/solicitar/alquiler-opcion-compra" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors inline-block">
             Solicitar contrato de opción a compra — 150 €
           </Link>
         </div>
