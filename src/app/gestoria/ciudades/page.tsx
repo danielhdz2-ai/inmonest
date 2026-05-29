@@ -25,6 +25,7 @@ const CIUDADES = [
 const LANDING_GENERICAS = [
   { slug: 'asesoria-compra-piso', nombre: 'Asesoría Compra de Piso', precio: '666€' },
   { slug: 'due-diligence-precompra', nombre: 'Due Diligence Pre-Compra', precio: '168€' },
+  { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento Arras a Venta', precio: '166€' },
   { slug: 'arras-vs-reserva-compra', nombre: 'Arras vs Reserva Compra', precio: 'Info' },
   { slug: 'guia-arras-penitenciales', nombre: 'Guía Arras Penitenciales', precio: 'Info' },
   { slug: 'revision-contrato-arras', nombre: 'Revisión Contrato Arras', precio: '60€' },
