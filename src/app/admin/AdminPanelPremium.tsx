@@ -153,9 +153,29 @@ interface PropietarioParticular {
   lastListing: string | null
 }
 
+interface LeadContacto {
+  email: string
+  name: string
+  phone: string | null
+  isRegistered: boolean
+  firstContact: string
+  lastContact: string
+  totalMessages: number
+  messages: Array<{
+    id: string
+    listingId: string
+    listingTitle: string
+    listingCity: string
+    listingPrice: number
+    listingOperation: string
+    message: string
+    createdAt: string
+  }>
+}
+
 export default function AdminPanelPremium({ initialRequests }: { initialRequests: GestoriaRequest[] }) {
   const [tab, setTab] = useState<'dashboard' | 'pedidos' | 'clientes' | 'documentos' | 'particulares'>('dashboard')
-  const [particularesTab, setParticularesTab] = useState<'gestoria' | 'clientes' | 'propietarios'>('gestoria')
+  const [particularesTab, setParticularesTab] = useState<'gestoria' | 'clientes' | 'propietarios' | 'leads'>('gestoria')
   const [requests, setRequests] = useState<GestoriaRequest[]>(initialRequests)
   const [clients, setClients] = useState<Client[]>([])
   const [metrics, setMetrics] = useState<Metrics | null>(null)
@@ -168,12 +188,15 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
   const [clientesGestoria, setClientesGestoria] = useState<ClienteGestoria[]>([])
   const [clientesParticulares, setClientesParticulares] = useState<ClienteParticular[]>([])
   const [propietariosParticulares, setPropietariosParticulares] = useState<PropietarioParticular[]>([])
+  const [leadsContactos, setLeadsContactos] = useState<LeadContacto[]>([])
   const [selectedPropietario, setSelectedPropietario] = useState<PropietarioParticular | null>(null)
   const [particularesStats, setParticularesStats] = useState({
     totalUsers: 0,
     totalGestoria: 0,
     totalParticulares: 0,
     totalPropietarios: 0,
+    totalLeads: 0,
+    totalLeadsNoRegistrados: 0,
   })
 
   // Cargar métricas, documentos y particulares al montar
@@ -244,11 +267,14 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       setClientesGestoria(data.clientesGestoria || [])
       setClientesParticulares(data.clientesParticulares || [])
       setPropietariosParticulares(data.propietariosParticulares || [])
+      setLeadsContactos(data.leadsContactos || [])
       setParticularesStats(data.stats || {
         totalUsers: 0,
         totalGestoria: 0,
         totalParticulares: 0,
         totalPropietarios: 0,
+        totalLeads: 0,
+        totalLeadsNoRegistrados: 0,
       })
     } catch (err) {
       console.error('Error loading particulares:', err)
@@ -753,12 +779,13 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
             </div>
           </div>
 
-          {/* Sub-Tabs para las 3 categorías */}
-          <div className="flex gap-2 bg-gray-100 p-1.5 rounded-xl w-fit">
+          {/* Sub-Tabs para las 4 categorías */}
+          <div className="flex gap-2 bg-gray-100 p-1.5 rounded-xl w-fit overflow-x-auto">
             {([
               { id: 'gestoria', label: '💼 Clientes Gestoría', count: clientesGestoria.length },
               { id: 'clientes', label: '👤 Clientes Particulares', count: clientesParticulares.length },
               { id: 'propietarios', label: '🏠 Propietarios', count: propietariosParticulares.length },
+              { id: 'leads', label: '📩 Leads/Contactos', count: leadsContactos.length },
             ] as const).map(t => (
               <button
                 key={t.id}
@@ -1016,6 +1043,106 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                   <div className="text-6xl mb-4">🏠</div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">No hay propietarios</h3>
                   <p className="text-gray-500">Los propietarios que publiquen pisos aparecerán aquí.</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* SUB-TAB 4: LEADS/CONTACTOS */}
+          {particularesTab === 'leads' && (
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Teléfono</th>
+                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Mensajes</th>
+                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Estado</th>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Primer contacto</th>
+                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Último contacto</th>
+                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Detalles</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {leadsContactos
+                      .filter(lead =>
+                        lead.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        lead.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                        (lead.phone && lead.phone.includes(searchQuery))
+                      )
+                      .map(lead => (
+                        <tr key={lead.email} className="hover:bg-gray-50 transition-colors">
+                          <td className="px-6 py-4">
+                            <div className="flex items-center gap-3">
+                              <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${
+                                lead.isRegistered ? 'from-green-500 to-emerald-600' : 'from-gray-400 to-gray-600'
+                              } flex items-center justify-center text-white font-bold text-sm`}>
+                                {lead.name.charAt(0).toUpperCase()}
+                              </div>
+                              <div>
+                                <p className="text-sm font-semibold text-gray-900">{lead.name}</p>
+                                <p className="text-xs text-gray-500">{lead.email}</p>
+                              </div>
+                            </div>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="text-sm text-gray-900 font-mono">{lead.phone || '—'}</p>
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 font-bold">
+                              {lead.totalMessages}
+                            </span>
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            {lead.isRegistered ? (
+                              <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">
+                                ✓ Registrado
+                              </span>
+                            ) : (
+                              <span className="px-3 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">
+                                ⚠ No registrado
+                              </span>
+                            )}
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="text-sm text-gray-600">
+                              {new Date(lead.firstContact).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                            </p>
+                            <p className="text-xs text-gray-400">
+                              {new Date(lead.firstContact).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
+                            </p>
+                          </td>
+                          <td className="px-6 py-4">
+                            <p className="text-sm text-gray-600">
+                              {new Date(lead.lastContact).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
+                            </p>
+                            <p className="text-xs text-gray-400">
+                              {new Date(lead.lastContact).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
+                            </p>
+                          </td>
+                          <td className="px-6 py-4 text-center">
+                            <button
+                              onClick={() => {
+                                alert(`Mensajes de ${lead.name}:\n\n${lead.messages.map(m => 
+                                  `📋 ${m.listingTitle} (${m.listingCity})\n💬 ${m.message}\n📅 ${new Date(m.createdAt).toLocaleString('es-ES')}`
+                                ).join('\n\n───────────\n\n')}`)
+                              }}
+                              className="px-4 py-2 bg-indigo-600 text-white text-xs font-semibold rounded-lg hover:bg-indigo-700 transition"
+                            >
+                              Ver mensajes →
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+              {leadsContactos.length === 0 && (
+                <div className="p-12 text-center">
+                  <div className="text-6xl mb-4">📩</div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">No hay leads/contactos</h3>
+                  <p className="text-gray-500">Los contactos que envíen mensajes aparecerán aquí.</p>
                 </div>
               )}
             </div>

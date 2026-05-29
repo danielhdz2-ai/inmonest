@@ -60,6 +60,21 @@ export async function GET() {
       banned: user.banned_until ? true : false,
     }
 
+    // Si no tiene teléfono en metadata, buscar en listing_contacts
+    if (!userInfo.phone) {
+      const { data: userContacts } = await adminSb
+        .from('listing_contacts')
+        .select('from_phone')
+        .eq('from_email', user.email)
+        .not('from_phone', 'is', null)
+        .limit(1)
+        .single()
+      
+      if (userContacts?.from_phone) {
+        userInfo.phone = userContacts.from_phone
+      }
+    }
+
     // 1. Verificar si tiene pedidos de gestoría pagados
     const { data: gestoriaOrders } = await adminSb
       .from('gestoria_requests')
@@ -164,15 +179,90 @@ export async function GET() {
   propietariosParticulares.sort((a, b) => b.totalListings - a.totalListings)
   clientesParticulares.sort((a, b) => new Date(b.registeredAt).getTime() - new Date(a.registeredAt).getTime())
 
+  // ── 4. LEADS/CONTACTOS: Personas que dejaron su contacto (registradas o no) ──
+  const { data: allContacts } = await adminSb
+    .from('listing_contacts')
+    .select(`
+      id,
+      listing_id,
+      from_name,
+      from_email,
+      from_phone,
+      message,
+      created_at,
+      listings:listing_id (
+        title,
+        city,
+        price_eur,
+        operation
+      )
+    `)
+    .order('created_at', { ascending: false })
+
+  const leadsMap = new Map<string, any>()
+  
+  allContacts?.forEach(contact => {
+    const email = contact.from_email.toLowerCase()
+    const listing = Array.isArray(contact.listings) ? contact.listings[0] : contact.listings
+    
+    if (!leadsMap.has(email)) {
+      // Verificar si está registrado
+      const isRegistered = allUsers.some(u => u.email?.toLowerCase() === email)
+      
+      leadsMap.set(email, {
+        email: contact.from_email,
+        name: contact.from_name,
+        phone: contact.from_phone,
+        isRegistered,
+        firstContact: contact.created_at,
+        lastContact: contact.created_at,
+        totalMessages: 1,
+        messages: [{
+          id: contact.id,
+          listingId: contact.listing_id,
+          listingTitle: listing?.title || 'Anuncio eliminado',
+          listingCity: listing?.city || '',
+          listingPrice: listing?.price_eur || 0,
+          listingOperation: listing?.operation || 'rent',
+          message: contact.message,
+          createdAt: contact.created_at,
+        }]
+      })
+    } else {
+      const existing = leadsMap.get(email)
+      existing.totalMessages++
+      existing.lastContact = contact.created_at
+      if (contact.from_phone && !existing.phone) {
+        existing.phone = contact.from_phone
+      }
+      existing.messages.push({
+        id: contact.id,
+        listingId: contact.listing_id,
+        listingTitle: listing?.title || 'Anuncio eliminado',
+        listingCity: listing?.city || '',
+        listingPrice: listing?.price_eur || 0,
+        listingOperation: listing?.operation || 'rent',
+        message: contact.message,
+        createdAt: contact.created_at,
+      })
+    }
+  })
+
+  const leadsContactos = Array.from(leadsMap.values())
+    .sort((a, b) => new Date(b.lastContact).getTime() - new Date(a.lastContact).getTime())
+
   return NextResponse.json({ 
     clientesGestoria,
     clientesParticulares,
     propietariosParticulares,
+    leadsContactos,
     stats: {
       totalUsers: allUsers.length,
       totalGestoria: clientesGestoria.length,
       totalParticulares: clientesParticulares.length,
       totalPropietarios: propietariosParticulares.length,
+      totalLeads: leadsContactos.length,
+      totalLeadsNoRegistrados: leadsContactos.filter(l => !l.isRegistered).length,
     }
   })
 }
