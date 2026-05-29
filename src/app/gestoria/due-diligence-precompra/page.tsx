@@ -7,14 +7,14 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Due Diligence Pre-Compra 【168€】 Verificación Completa Post-Arras | Inmonest',
-  description: 'Ya firmaste arras? Verificamos actas de comunidad, derramas, ITE, nota registral e información urbanística antes de escriturar. Informe completo en 3-5 días. 168€ IVA incluido.',
+  title: 'Due Diligence Pre-Compra 【350€】 Verificación Completa Post-Arras | Inmonest',
+  description: 'Ya firmaste arras? Verificamos actas de comunidad, derramas, ITE, nota registral e información urbanística antes de escriturar. Informe completo en 3-5 días. 350€ IVA incluido.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/due-diligence-precompra`,
   },
   openGraph: {
     title: 'Due Diligence Pre-Compra — Verificación Documental Completa',
-    description: 'Servicio integral de verificación antes de escriturar: actas comunidad, derramas, ITE, registros, urbanismo. Informe profesional en 3-5 días. 168€.',
+    description: 'Servicio integral de verificación antes de escriturar: actas comunidad, derramas, ITE, registros, urbanismo. Informe profesional en 3-5 días. 350€.',
     url: `${BASE_URL}/gestoria/due-diligence-precompra`,
     type: 'website',
     siteName: 'Inmonest',
@@ -38,7 +38,7 @@ export default function DueDiligencePrecompraPage() {
     },
     offers: {
       '@type': 'Offer',
-      price: '168',
+      price: '350',
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
     },
@@ -74,7 +74,7 @@ export default function DueDiligencePrecompraPage() {
                   href="/gestoria/solicitar/pack-due-diligence-precompra"
                   className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition text-center shadow-lg"
                 >
-                  Contratar por 168€
+                  Contratar por 350€
                 </Link>
                 <a
                   href="https://wa.me/34641008847?text=Hola,%20firm%C3%A9%20arras%20y%20necesito%20due%20diligence%20antes%20de%20escriturar"
@@ -117,7 +117,7 @@ export default function DueDiligencePrecompraPage() {
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-xl border-2 border-blue-200">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">168€</div>
+                  <div className="text-3xl font-bold text-blue-600">350€</div>
                   <div className="text-sm text-gray-600">Verificación completa</div>
                 </div>
               </div>
@@ -165,7 +165,7 @@ export default function DueDiligencePrecompraPage() {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-            ¿Qué incluye el Pack Due Diligence? (168€)
+            ¿Qué incluye el Pack Due Diligence? (350€)
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             
@@ -355,7 +355,7 @@ export default function DueDiligencePrecompraPage() {
               <div>
                 <h3 className="font-bold text-lg text-gray-900 mb-2">Contratas y envías la documentación</h3>
                 <p className="text-gray-700">
-                  Pagas 168€ (IVA incluido) y nos envías: actas de comunidad (últimos 2 años), ITE del edificio, 
+                  Pagas 350€ (IVA incluido) y nos envías: actas de comunidad (últimos 2 años), ITE del edificio, 
                   nota registral actualizada, cédula urbanística, y copia de las arras firmadas. 
                   Si no tienes algún documento, te indicamos cómo obtenerlo.
                 </p>
@@ -475,7 +475,7 @@ export default function DueDiligencePrecompraPage() {
                 ¿Incluye el coste de la nota registral y el ITE?
               </h3>
               <p className="text-gray-700">
-                <strong>Sí, todo incluido en 168€.</strong> Nosotros solicitamos y pagamos la nota simple registral (~9€). 
+                <strong>Sí, todo incluido en 350€.</strong> Nosotros solicitamos y pagamos la nota simple registral (~9€). 
                 El ITE lo obtenemos del ayuntamiento (gratuito si existe, o lo solicitamos si el edificio debe tenerlo).
               </p>
             </div>
@@ -517,14 +517,14 @@ export default function DueDiligencePrecompraPage() {
             ¿Ya firmaste arras? No arriesgues 200.000€ sin verificar antes
           </h2>
           <p className="text-xl mb-8 opacity-90">
-              Por solo 168€ obtienes certeza total antes de escriturar. Informe ejecutivo en 3-5 días.
+              Por solo 350€ obtienes certeza total antes de escriturar. Informe ejecutivo en 3-5 días.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/pack-due-diligence-precompra"
               className="bg-white text-blue-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Contratar por 168€ →
+              Contratar por 350€ →
             </Link>
             <a
               href="https://wa.me/34641008847?text=Hola,%20firm%C3%A9%20arras%20y%20necesito%20due%20diligence"

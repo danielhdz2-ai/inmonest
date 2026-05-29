@@ -67,7 +67,7 @@ const SERVICES: Service[] = [
       'Informe ejecutivo con hallazgos y recomendaciones',
       'Entrega en 3-5 días · Análisis en 48h · Formato PDF',
     ],
-    price: 168,
+    price: 350,
     image: '/gestoria/gestoria1.jpg',
     badge: 'Pre-compra',
   },

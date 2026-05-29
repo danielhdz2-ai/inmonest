@@ -35,7 +35,7 @@ const STRIPE_SERVICES: Record<string, { name: string; price_eur: number }> = {
   'ayuda-propietarios':                  { name: 'Redacción de Contrato LAU para Propietarios',      price_eur: 73 },
   'contrato-ilegal':                     { name: 'Análisis de Fraude Inmobiliario',                  price_eur: 29 },
   'asesoria-compra':                     { name: 'Asesoría Completa Compra de Vivienda',             price_eur: 95 },
-  'pack-due-diligence-precompra':        { name: 'Pack Due Diligence Pre-Compra',                    price_eur: 168 },
+  'pack-due-diligence-precompra':        { name: 'Pack Due Diligence Pre-Compra',                    price_eur: 350 },
   'contrato-compraventa':                { name: 'Contrato de Compraventa de Vivienda',              price_eur: 80 },
   'asesoramiento-arras-venta':           { name: 'Asesoramiento Arras hasta Escritura (Vendedores)', price_eur: 166 },
 }
