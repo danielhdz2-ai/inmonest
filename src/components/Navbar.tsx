@@ -19,6 +19,7 @@ const NAV_ITEMS = [
   { label: 'Hipotecas',            href: '/hipoteca' },
   { label: 'Analizador de Mercado', href: '/analizador-mercado' },
   { label: 'Blog',                 href: '/blog' },
+  { label: 'Ciudades',             href: '/gestoria/ciudades' },
 ]
 
 export default function Navbar({ isLoggedIn = false }: NavbarProps) {
