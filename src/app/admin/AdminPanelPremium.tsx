@@ -327,6 +327,12 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
           <p className="text-gray-500 text-sm mt-1">Control total de Inmonest</p>
         </div>
         <div className="flex items-center gap-3">
+          <Link
+            href="/gestoria/ciudades"
+            className="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-semibold hover:bg-blue-700 transition"
+          >
+            🔍 Auditoría SEO
+          </Link>
           <button
             onClick={exportToCSV}
             className="px-4 py-2 bg-green-600 text-white rounded-xl text-sm font-semibold hover:bg-green-700 transition"
