@@ -6,8 +6,9 @@ import Navbar from '@/components/NavbarServer'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria en Madrid | Contratos y Asesoramiento',
-  description: 'Servicios de gestoría inmobiliaria en Madrid. Acompañamiento en compraventa, revisión de contratos, documentación registral y urbanística. Desde 350€.',
+  title: 'Gestoría Inmobiliaria Madrid para Particulares | Contratos y Asesoramiento',
+  description: 'Gestoría inmobiliaria para particulares en Madrid. Asesor experto asignado para compra o venta de vivienda. Sin comisiones abusivas. Desde 424€.',
+  keywords: 'gestoría inmobiliaria madrid, gestoría para particulares madrid, comprar piso madrid sin agencia, vender piso madrid, contrato arras madrid, asesoría compra vivienda madrid',
   alternates: { canonical: `${BASE_URL}/gestoria/madrid` },
   openGraph: {
     title: 'Gestoría Inmobiliaria Madrid | Inmonest',
@@ -48,17 +49,17 @@ export default function GestoriaMadridPage() {
             description: 'Asesoramiento jurídico completo desde la reserva hasta el contrato de arras en Madrid',
           },
           priceCurrency: 'EUR',
-          price: '350',
+          price: '424',
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
             name: 'Servicio Completo de Compra: Reserva a Escritura',
-            description: 'Servicio integral de gestoría para compraventa de vivienda en Madrid',
+            description: 'Servicio integral con gestor asignado para compraventa de vivienda en Madrid',
           },
           priceCurrency: 'EUR',
-          price: '550',
+          price: '666',
         },
       ],
     },
@@ -89,7 +90,7 @@ export default function GestoriaMadridPage() {
                   Gestoría Inmobiliaria en <span className="text-[#c9a84c]">Madrid</span>
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
-                  Asesoramiento jurídico especializado en compraventa de viviendas. Te acompañamos desde la reserva hasta la escritura con revisión completa de documentación.
+                  Inmonest te acompaña en la compra o venta de tu vivienda en Madrid con un asesor experto asignado. Te ayudamos a evitar las comisiones abusivas de agencias y a cerrar tu operación de forma segura y profesional.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link
@@ -238,11 +239,11 @@ export default function GestoriaMadridPage() {
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-3xl font-bold text-gray-900">350 €</p>
-                      <p className="text-sm text-gray-500">Pago único</p>
+                      <p className="text-3xl font-bold text-gray-900">424 €</p>
+                      <p className="text-sm text-gray-500">IVA incluido</p>
                     </div>
                     <Link
-                      href="/gestoria/acompanamiento-reserva-arras"
+                      href="/gestoria/solicitar/acompanamiento-reserva-arras"
                       className="bg-[#c9a84c] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition"
                     >
                       Contratar
@@ -271,7 +272,7 @@ export default function GestoriaMadridPage() {
                     Servicio Completo: Reserva a Escritura
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    El servicio más completo. Te acompañamos desde la reserva hasta la firma ante notario. Incluye revisión de contratos con agencias, análisis de honorarios, coordinación con notaría y asesoramiento prioritario.
+                    El servicio más completo. Gestor personalizado asignado que te acompaña desde la reserva hasta la firma ante notario. Incluye revisión de contratos con agencias, análisis de honorarios, coordinación con notaría y asesoramiento prioritario.
                   </p>
 
                   <div className="mb-6">
@@ -281,48 +282,48 @@ export default function GestoriaMadridPage() {
                         <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Todo lo anterior + mucho más</span>
+                        <span>Gestor personalizado asignado</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Revisión contratos con agencias inmobiliarias</span>
+                        <span>Estudio completo de la operación</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Verificación honorarios y notas de encargo</span>
+                        <span>Redacción de contratos reserva y arras</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Coordinación con notaría para escritura</span>
+                        <span>Ayuda para recabar documentación</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Atención prioritaria: email, teléfono, WhatsApp</span>
+                        <span>Asesoramiento continuo hasta escritura</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span>Acompañamiento hasta firma ante notario</span>
+                        <span>Coordinación con notaría</span>
                       </li>
                     </ul>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-3xl font-bold text-gray-900">550 €</p>
-                      <p className="text-sm text-gray-500">Servicio completo</p>
+                      <p className="text-3xl font-bold text-gray-900">666 €</p>
+                      <p className="text-sm text-gray-500">IVA incluido</p>
                     </div>
                     <Link
-                      href="/gestoria/compra-completa-reserva-escritura"
+                      href="/gestoria/solicitar/compra-completa-reserva-escritura"
                       className="bg-[#c9a84c] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition"
                     >
                       Contratar
@@ -340,14 +341,14 @@ export default function GestoriaMadridPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
               Cómo trabajamos en Madrid
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#c9a84c] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   1
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Solicitas el servicio</h3>
                 <p className="text-gray-600">
-                  Nos envías los datos de tu operación y la documentación que tengas. Respondemos en menos de 24h.
+                  Nos envías los datos de tu operación online. Respondemos en menos de 2 horas.
                 </p>
               </div>
 
@@ -355,15 +356,25 @@ export default function GestoriaMadridPage() {
                 <div className="w-16 h-16 bg-[#c9a84c] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   2
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Análisis jurídico completo</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Primera llamada con tu experto</h3>
                 <p className="text-gray-600">
-                  Nuestro equipo legal revisa toda la documentación, identifica riesgos y te informa de cada detalle.
+                  Coordinamos una primera llamada con el asesor asignado para analizar tu caso en profundidad.
                 </p>
               </div>
 
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#c9a84c] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                   3
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Análisis completo</h3>
+                <p className="text-gray-600">
+                  Revisamos toda la documentación, identificamos riesgos y te informamos de cada detalle.
+                </p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-[#c9a84c] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                  4
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Te acompañamos hasta el final</h3>
                 <p className="text-gray-600">
@@ -378,13 +389,16 @@ export default function GestoriaMadridPage() {
         <section className="py-16 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Especialistas en el mercado inmobiliario de Madrid
+              Inmonest: Gestoría Inmobiliaria para Particulares
             </h2>
             <p className="text-lg text-gray-600 mb-4">
-              Somos un equipo de abogados y gestores especializados en compraventa de viviendas en Madrid. Conocemos las particularidades del mercado madrileño: IEE e ITE obligatorias, presión de las agencias en operaciones rápidas y la complejidad del mercado más competitivo de España.
+              <strong>No somos una agencia inmobiliaria.</strong> Somos una gestoría especializada en asesoramiento legal inmobiliario para particulares. Nuestro objetivo es ayudarte a comprar o vender tu vivienda evitando las comisiones abusivas de las agencias (entre 9.000€ y 15.000€ en Madrid) y sin renunciar a asesoramiento profesional.
+            </p>
+            <p className="text-lg text-gray-600 mb-4">
+              Cada cliente tiene un <strong>asesor experto asignado</strong> que te acompaña durante todo el proceso: análisis de documentación, redacción de contratos, coordinación con notarías y resolución de cualquier problema legal que surja.
             </p>
             <p className="text-lg text-gray-600 mb-8">
-              Trabajamos con particulares, agencias inmobiliarias y entidades financieras para garantizar que cada operación se cierre con todas las garantías jurídicas y sin sorpresas. Nuestra experiencia en el mercado madrileño nos permite detectar riesgos que otros pasan por alto.
+              Conocemos las particularidades del mercado madrileño: IEE e ITE obligatorias, presión de las agencias en operaciones rápidas y la complejidad del mercado más competitivo de España. Trabajamos para garantizar que tu operación se cierre con todas las garantías y sin sorpresas.
             </p>
             <Link
               href="/gestoria"
@@ -430,7 +444,7 @@ export default function GestoriaMadridPage() {
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
-                href="/gestoria/acompanamiento-reserva-arras"
+                href="/gestoria/solicitar/acompanamiento-reserva-arras"
                 className="bg-[#c9a84c] text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition"
               >
                 Contratar servicio premium
