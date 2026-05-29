@@ -19,10 +19,36 @@ const CIUDADES = [
   { slug: 'barcelona', nombre: 'Barcelona', emoji: '🏖️' },
   { slug: 'valencia', nombre: 'Valencia', emoji: '🌊' },
   { slug: 'sevilla', nombre: 'Sevilla', emoji: '☀️' },
-  { slug: 'malaga', nombre: 'Málaga', emoji: '🌴' },
-  { slug: 'bilbao', nombre: 'Bilbao', emoji: '🏔️' },
-  { slug: 'zaragoza', nombre: 'Zaragoza', emoji: '🏰' },
-  { slug: 'alicante', nombre: 'Alicante', emoji: '⛱️' },
+]
+
+// LANDING PAGES GENÉRICAS (SIN CIUDADES)
+const LANDING_GENERICAS = [
+  { slug: 'asesoria-compra-piso', nombre: 'Asesoría Compra de Piso', precio: '666€' },
+  { slug: 'due-diligence-precompra', nombre: 'Due Diligence Pre-Compra', precio: '168€' },
+  { slug: 'arras-vs-reserva-compra', nombre: 'Arras vs Reserva Compra', precio: 'Info' },
+  { slug: 'guia-arras-penitenciales', nombre: 'Guía Arras Penitenciales', precio: 'Info' },
+  { slug: 'revision-contrato-arras', nombre: 'Revisión Contrato Arras', precio: '60€' },
+  { slug: 'contrato-compraventa', nombre: 'Contrato Compraventa', precio: '80€' },
+  { slug: 'cuanto-cuesta-contrato-alquiler', nombre: 'Cuánto Cuesta Contrato Alquiler', precio: 'Info' },
+  { slug: 'revision-contrato-alquiler', nombre: 'Revisión Contrato Alquiler', precio: '60€' },
+  { slug: 'contrato-ilegal', nombre: 'Análisis Contrato Ilegal', precio: '29€' },
+  { slug: 'ayuda-propietarios', nombre: 'Ayuda Propietarios LAU', precio: '73€' },
+  { slug: 'contrato-arras', nombre: 'Contrato Arras (Info)', precio: 'Info' },
+  { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa Genérica', precio: '666€' },
+]
+
+// LANDING PAGES CON VARIANTES POR CIUDAD
+const LANDING_POR_CIUDAD = [
+  { 
+    servicio: 'venta-completa-reserva-escritura', 
+    nombre: 'Servicio Completo Venta',
+    ciudades: ['madrid', 'barcelona'] // Solo estas tienen página
+  },
+  { 
+    servicio: 'ciudad-hub', 
+    nombre: 'Gestoría Ciudad (Hub)',
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla']
+  },
 ]
 
 const SERVICIOS = [
@@ -167,6 +193,171 @@ export default function CiudadesPage() {
                   </div>
                 </div>
               ))}
+            </div>
+
+          </div>
+        </section>
+
+        {/* PANEL DE AUDITORÍA SEO */}
+        <section className="py-16 px-6 bg-gradient-to-br from-purple-50 to-blue-50">
+          <div className="max-w-7xl mx-auto">
+            
+            <div className="text-center mb-12">
+              <div className="inline-block bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
+                🔍 PANEL DE AUDITORÍA SEO
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                Todas las Landing Pages SEO
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Inventario completo de {LANDING_GENERICAS.length + LANDING_POR_CIUDAD.reduce((acc, l) => acc + l.ciudades.length, 0) + 4} landing pages para auditoría manual
+              </p>
+            </div>
+
+            {/* Landing Pages Genéricas */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 mb-8 border-2 border-purple-200">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <span className="text-3xl">📄</span>
+                Landing Pages Genéricas (Sin Ciudades)
+                <span className="ml-auto bg-purple-600 text-white px-4 py-1 rounded-full text-sm">
+                  {LANDING_GENERICAS.length} páginas
+                </span>
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {LANDING_GENERICAS.map(landing => (
+                  <Link
+                    key={landing.slug}
+                    href={`/gestoria/${landing.slug}`}
+                    target="_blank"
+                    className="group p-4 border-2 border-gray-200 rounded-lg hover:border-purple-500 hover:shadow-md transition-all"
+                  >
+                    <div className="flex items-start justify-between mb-2">
+                      <h4 className="font-semibold text-gray-900 group-hover:text-purple-600 transition-colors">
+                        {landing.nombre}
+                      </h4>
+                      <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full font-semibold">
+                        {landing.precio}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <span>/{landing.slug}</span>
+                      <span className="ml-auto text-purple-600 group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Landing Pages por Ciudad */}
+            <div className="bg-white rounded-2xl shadow-xl p-8 border-2 border-blue-200">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+                <span className="text-3xl">🗺️</span>
+                Landing Pages por Ciudad
+                <span className="ml-auto bg-blue-600 text-white px-4 py-1 rounded-full text-sm">
+                  {LANDING_POR_CIUDAD.reduce((acc, l) => acc + l.ciudades.length, 0)} páginas
+                </span>
+              </h3>
+
+              <div className="space-y-6">
+                {LANDING_POR_CIUDAD.map(landing => (
+                  <div key={landing.servicio} className="border-2 border-gray-200 rounded-lg p-6">
+                    <h4 className="font-bold text-lg text-gray-900 mb-4">
+                      {landing.nombre}
+                    </h4>
+                    
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                      {CIUDADES.map(ciudad => {
+                        const existe = landing.ciudades.includes(ciudad.slug)
+                        const url = landing.servicio === 'ciudad-hub' 
+                          ? `/gestoria/${ciudad.slug}`
+                          : `/gestoria/${landing.servicio}/${ciudad.slug}`
+                        
+                        return (
+                          <div key={ciudad.slug}>
+                            {existe ? (
+                              <Link
+                                href={url}
+                                target="_blank"
+                                className="flex items-center gap-2 p-3 bg-green-50 border-2 border-green-500 rounded-lg hover:bg-green-100 transition-all group"
+                              >
+                                <span className="text-lg">{ciudad.emoji}</span>
+                                <div className="flex-1">
+                                  <div className="font-semibold text-gray-900 text-sm">{ciudad.nombre}</div>
+                                  <div className="text-xs text-green-600">✓ Existe</div>
+                                </div>
+                                <span className="text-green-600 group-hover:translate-x-1 transition-transform">
+                                  →
+                                </span>
+                              </Link>
+                            ) : (
+                              <div className="flex items-center gap-2 p-3 bg-gray-50 border-2 border-gray-300 rounded-lg opacity-50">
+                                <span className="text-lg grayscale">{ciudad.emoji}</span>
+                                <div className="flex-1">
+                                  <div className="font-semibold text-gray-500 text-sm">{ciudad.nombre}</div>
+                                  <div className="text-xs text-gray-400">✗ No existe</div>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Páginas de Ciudad Genéricas */}
+              <div className="mt-6 border-2 border-gray-200 rounded-lg p-6 bg-blue-50">
+                <h4 className="font-bold text-lg text-gray-900 mb-4">
+                  Hubs de Ciudad (Genéricos)
+                </h4>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  {CIUDADES.map(ciudad => (
+                    <Link
+                      key={ciudad.slug}
+                      href={`/gestoria/${ciudad.slug}`}
+                      target="_blank"
+                      className="flex items-center gap-2 p-3 bg-white border-2 border-blue-500 rounded-lg hover:bg-blue-50 transition-all group"
+                    >
+                      <span className="text-lg">{ciudad.emoji}</span>
+                      <div className="flex-1">
+                        <div className="font-semibold text-gray-900 text-sm">{ciudad.nombre}</div>
+                        <div className="text-xs text-blue-600">Hub general</div>
+                      </div>
+                      <span className="text-blue-600 group-hover:translate-x-1 transition-transform">
+                        →
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Resumen */}
+              <div className="mt-6 p-4 bg-gradient-to-r from-purple-100 to-blue-100 rounded-lg">
+                <div className="flex items-center justify-between flex-wrap gap-4">
+                  <div>
+                    <div className="text-sm font-semibold text-gray-600 mb-1">TOTAL LANDING PAGES SEO</div>
+                    <div className="text-3xl font-bold text-gray-900">
+                      {LANDING_GENERICAS.length + LANDING_POR_CIUDAD.reduce((acc, l) => acc + l.ciudades.length, 0) + CIUDADES.length} páginas
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-2 gap-4 text-center">
+                    <div>
+                      <div className="text-2xl font-bold text-purple-600">{LANDING_GENERICAS.length}</div>
+                      <div className="text-xs text-gray-600">Genéricas</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-blue-600">
+                        {LANDING_POR_CIUDAD.reduce((acc, l) => acc + l.ciudades.length, 0) + CIUDADES.length}
+                      </div>
+                      <div className="text-xs text-gray-600">Por ciudad</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
           </div>
