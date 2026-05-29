@@ -141,32 +141,27 @@ export default function CiudadesPage() {
                   {/* Ciudades disponibles */}
                   <div className="p-6">
                     <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">
-                      Disponible en:
+                      Disponible en toda España:
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {CIUDADES.slice(0, 3).map(ciudad => {
-                        // Usar rutas existentes para servicios que ya tienen páginas por ciudad
-                        const href = ['contrato-arras', 'contrato-alquiler'].includes(servicio.slug)
-                          ? `/${ciudad.slug}/${servicio.slug}`
-                          : `/gestoria/${servicio.slug}/${ciudad.slug}`
-                        
-                        return (
-                          <Link
-                            key={ciudad.slug}
-                            href={href}
-                            className="px-3 py-1.5 bg-gray-100 hover:bg-[#c9a84c] hover:text-white rounded-full text-sm font-medium text-gray-700 transition-colors"
-                          >
-                            {ciudad.nombre}
-                          </Link>
-                        )
-                      })}
+                      {CIUDADES.slice(0, 3).map(ciudad => (
+                        <span
+                          key={ciudad.slug}
+                          className="px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700"
+                        >
+                          {ciudad.nombre}
+                        </span>
+                      ))}
+                      <span className="px-3 py-1.5 bg-gray-100 rounded-full text-sm font-medium text-gray-700">
+                        +40 ciudades
+                      </span>
                     </div>
                     
                     <Link
                       href={`/gestoria/${servicio.slug}`}
-                      className="text-sm text-[#c9a84c] hover:text-[#a68939] font-semibold flex items-center gap-1 group"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#c9a84c] hover:bg-[#a68939] text-white rounded-lg font-semibold transition-colors shadow-md"
                     >
-                      Ver todas las ciudades 
+                      Ver servicio completo
                       <span className="group-hover:translate-x-1 transition-transform">→</span>
                     </Link>
                   </div>
