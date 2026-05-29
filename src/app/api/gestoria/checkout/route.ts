@@ -37,6 +37,7 @@ const STRIPE_SERVICES: Record<string, { name: string; price_eur: number }> = {
   'asesoria-compra':                     { name: 'Asesoría Completa Compra de Vivienda',             price_eur: 95 },
   'pack-due-diligence-precompra':        { name: 'Pack Due Diligence Pre-Compra',                    price_eur: 168 },
   'contrato-compraventa':                { name: 'Contrato de Compraventa de Vivienda',              price_eur: 80 },
+  'asesoramiento-arras-venta':           { name: 'Asesoramiento Arras hasta Escritura (Vendedores)', price_eur: 166 },
 }
 
 export async function POST(req: NextRequest) {
