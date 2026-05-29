@@ -445,7 +445,7 @@ export default function AsesoriaCompraPisoPage() {
                 </li>
               </ul>
               <Link
-                href="/gestoria/solicitar/compra-completa-reserva-escritura"
+                href="/gestoria/solicitar/asesoria-compra-premium"
                 className="block bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Contratar asesoría premium
