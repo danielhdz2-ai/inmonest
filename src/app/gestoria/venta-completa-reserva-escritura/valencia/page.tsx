@@ -148,7 +148,7 @@ export default function VentaCompletaValenciaPage() {
             </div>
             <div className="relative">
               <Image
-                src="/familia1.jpg"
+                src="/familia2.jpg"
                 alt="Familia vendedora feliz en Valencia"
                 width={600}
                 height={400}
