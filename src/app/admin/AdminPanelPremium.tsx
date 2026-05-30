@@ -281,6 +281,34 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
     }
   }
 
+  // ── NUEVA FUNCIÓN: Refrescar pedidos ──────────────────────────────────
+  async function refreshPedidos() {
+    setLoading(true)
+    try {
+      const res = await fetch('/api/admin/pedidos')
+      const data = await res.json()
+      setRequests(data.requests || [])
+      // También refrescar métricas y clientes
+      await Promise.all([
+        loadMetrics(),
+        loadClients()
+      ])
+    } catch (err) {
+      console.error('Error refreshing pedidos:', err)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // ── Auto-refresh cada 30 segundos ──────────────────────────────────────
+  useEffect(() => {
+    const interval = setInterval(() => {
+      refreshPedidos()
+    }, 30000) // 30 segundos
+
+    return () => clearInterval(interval)
+  }, [])
+
   async function exportToCSV() {
     const csv = [
       ['Email', 'Nombre', 'Teléfono', 'Total Pedidos', 'Pedidos Pagados', 'Ingresos Totales', 'Primera Compra', 'Última Compra'].join(','),
@@ -327,6 +355,25 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
           <p className="text-gray-500 text-sm mt-1">Control total de Inmonest</p>
         </div>
         <div className="flex items-center gap-3">
+          <button
+            onClick={refreshPedidos}
+            disabled={loading}
+            className="px-4 py-2 bg-[#c9962a] text-white rounded-xl text-sm font-semibold hover:bg-[#a87a20] transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+          >
+            {loading ? (
+              <>
+                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                </svg>
+                Actualizando...
+              </>
+            ) : (
+              <>
+                🔄 Actualizar
+              </>
+            )}
+          </button>
           <Link
             href="/gestoria/ciudades"
             className="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-semibold hover:bg-blue-700 transition"
@@ -341,7 +388,7 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
           </button>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-sm text-gray-500">Online</span>
+            <span className="text-sm text-gray-500">Auto-refresh 30s</span>
           </div>
         </div>
       </div>
