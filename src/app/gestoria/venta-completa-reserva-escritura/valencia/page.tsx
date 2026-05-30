@@ -148,7 +148,7 @@ export default function VentaCompletaValenciaPage() {
             </div>
             <div className="relative">
               <Image
-                src="/familia-confianza.jpg"
+                src="/familia1.jpg"
                 alt="Familia vendedora feliz en Valencia"
                 width={600}
                 height={400}
@@ -195,7 +195,7 @@ export default function VentaCompletaValenciaPage() {
             </div>
             <div className="relative">
               <Image
-                src="/inmonestexterior.png"
+                src="/gestoria2.jpg"
                 alt="Oficina Inmonest gestoría inmobiliaria"
                 width={600}
                 height={450}
