@@ -93,17 +93,18 @@ export default function VentaCompletaMadridPage() {
                 📍 Servicio en Madrid
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                <span className="text-[#c9962a]">Vende tu piso en Madrid</span> con acompañamiento completo
+                <span className="text-[#c9962a]">Vende tu piso en Madrid</span> con la gestoría inmobiliaria de confianza
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Un <strong>gestor inmobiliario especializado en Madrid</strong> te acompaña desde la reserva hasta la escritura. 
-                Redactamos contratos, recabamos documentación y te asesoramos en cada paso. 
-                <strong> Vende seguro sin agencia en Madrid.</strong>
+                <strong>Inmonest es una gestoría inmobiliaria experta en acompañar a particulares vendedores</strong> en todo el proceso de venta. 
+                Desde la primera llamada hasta la firma en notaría, un gestor especializado te ayuda con contratos, documentación y asesoramiento personalizado. 
+                <strong>Vende tu piso en Madrid con total seguridad y sin pagar comisiones de agencia.</strong>
               </p>
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
                 <p className="text-sm text-blue-800">
                   <strong>Especialistas en Madrid:</strong> Conocemos el mercado inmobiliario madrileño, 
-                  la documentación específica de la Comunidad de Madrid y las principales notarías de la capital.
+                  la documentación específica de la Comunidad de Madrid, las notarías de todos los distritos 
+                  y acompañamos a vendedores particulares que quieren evitar los honorarios desmedidos de las agencias tradicionales.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -171,39 +172,160 @@ export default function VentaCompletaMadridPage() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-            ¿Por qué necesitas un gestor para vender en Madrid?
+            ¿Por qué elegir Inmonest para vender tu piso en Madrid?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
-              <div className="text-4xl mb-4">🏛️</div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">Documentación de la Comunidad</h3>
+              <div className="text-4xl mb-4">👨‍⚖️</div>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Gestoría especializada</h3>
               <p className="text-gray-700">
-                En Madrid necesitas certificado de eficiencia energética, cédula de habitabilidad (según municipio), 
-                y conocer la normativa específica de la Comunidad de Madrid para transmisiones.
+                No somos una agencia inmobiliaria. Somos gestoría inmobiliaria especializada en acompañar 
+                a particulares vendedores. Te proporcionamos seguridad jurídica sin cobrarte comisión sobre la venta.
               </p>
             </div>
             <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
               <div className="text-4xl mb-4">💰</div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">Mercado de alta competencia</h3>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Ahorra miles de euros</h3>
               <p className="text-gray-700">
-                Madrid es uno de los mercados más dinámicos de España con operaciones de alto valor. 
-                Un error en documentación puede retrasar meses la venta o hacerte perder al comprador.
+                Las agencias inmobiliarias cobran entre 3% y 5% de comisión (3.000€-5.000€ en un piso de 100.000€). 
+                Con Inmonest pagas solo 687€ y obtienes el mismo acompañamiento profesional.
               </p>
             </div>
             <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
               <div className="text-4xl mb-4">📋</div>
-              <h3 className="text-xl font-bold mb-3 text-gray-900">Plusvalía municipal compleja</h3>
+              <h3 className="text-xl font-bold mb-3 text-gray-900">Expertos en Madrid</h3>
               <p className="text-gray-700">
-                La plusvalía municipal en Madrid tiene particularidades. Te asesoramos sobre cómo calcularla, 
-                pagarla y si puedes aplicar exenciones o bonificaciones.
+                Conocemos la documentación específica de la Comunidad de Madrid, los requisitos municipales, 
+                las notarías de todos los distritos y el mercado inmobiliario madrileño.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Qué incluye */}
+      {/* Cómo trabajamos */}
       <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
+            ¿Cómo trabaja Inmonest contigo?
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Proceso claro y transparente desde el primer contacto hasta la firma en notaría
+          </p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                  1
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Primera llamada con tu gestor</h3>
+              </div>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Nos llamas o rellenas el formulario para conocer tu operación de venta</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Un gestor especializado de Inmonest te contacta en menos de 24 horas</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Analizamos juntos la situación: precio acordado, plazos, comprador, condiciones</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Te explicamos todo el proceso paso a paso y resolvemos tus dudas</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                  2
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Contratas el servicio</h3>
+              </div>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Pago único de 687€ IVA incluido por todo el servicio completo</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Sin costes ocultos ni sorpresas: pagas una sola vez al inicio</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Te asignamos tu gestor personalizado que te acompañará hasta el final</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Comenzamos a trabajar inmediatamente en tu proceso de venta</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                  3
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Nos encargamos de todo</h3>
+              </div>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Redactamos el contrato de arras personalizado para tu operación</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Te ayudamos a recabar toda la documentación necesaria paso a paso</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Coordinamos con la notaría para preparar la firma de escrituras</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Revisamos que toda la documentación esté correcta y completa</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                  4
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Asesoramiento continuo hasta escritura</h3>
+              </div>
+              <ul className="space-y-2 text-gray-700">
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Tu gestor especializado de Inmonest está disponible para consultas</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Te asesoramos en cada paso: desde arras hasta el día de escritura</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Resolvemos cualquier duda o imprevisto que surja durante el proceso</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span>Te acompañamos hasta que firmes en notaría y completes tu venta</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Qué incluye */}
+      <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
             Qué incluye el servicio en Madrid
@@ -215,21 +337,21 @@ export default function VentaCompletaMadridPage() {
             <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
               <h3 className="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
                 <span className="text-[#c9962a]">✓</span>
-                Gestor inmobiliario en Madrid
+                Gestor especializado asignado
               </h3>
               <p className="text-gray-700">
-                Profesional con experiencia en el mercado madrileño que conoce las particularidades de la Comunidad, 
-                notarías de todos los distritos y documentación específica de Madrid.
+                Un profesional experto de Inmonest con experiencia en el mercado madrileño que conoce las particularidades 
+                de la Comunidad, notarías de todos los distritos y documentación específica de Madrid.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
               <h3 className="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
                 <span className="text-[#c9962a]">✓</span>
-                Contratos personalizados
+                Contratos de arras personalizados
               </h3>
               <p className="text-gray-700">
-                Redacción de contratos de reserva y arras cumpliendo con la normativa vigente en Madrid 
+                Redacción de contratos de arras (penitenciales o confirmatorias) cumpliendo con la normativa vigente en Madrid 
                 y adaptados a las particularidades de tu operación de venta.
               </p>
             </div>
@@ -237,18 +359,18 @@ export default function VentaCompletaMadridPage() {
             <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
               <h3 className="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
                 <span className="text-[#c9962a]">✓</span>
-                Documentación completa Madrid
+                Ayuda con toda la documentación
               </h3>
               <p className="text-gray-700">
-                Te ayudamos con certificado energético, cédula de habitabilidad (si aplica), nota simple del Registro 
-                de la Propiedad de Madrid y toda la documentación necesaria para escriturar.
+                Te guiamos paso a paso para obtener: certificado energético, cédula de habitabilidad (si aplica), 
+                nota simple del Registro de la Propiedad de Madrid, IBI, recibos de comunidad y toda la documentación necesaria.
               </p>
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
               <h3 className="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
                 <span className="text-[#c9962a]">✓</span>
-                Coordinación con notarías MAD
+                Coordinación con notarías Madrid
               </h3>
               <p className="text-gray-700">
                 Coordinación con notarías de todos los distritos de Madrid: Centro, Chamartín, Salamanca, 
@@ -259,11 +381,11 @@ export default function VentaCompletaMadridPage() {
             <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
               <h3 className="text-xl font-bold mb-4 text-gray-900 flex items-center gap-2">
                 <span className="text-[#c9962a]">✓</span>
-                Asesoramiento fiscal Madrid
+                Asesoramiento legal continuo
               </h3>
               <p className="text-gray-700">
-                Información sobre plusvalía municipal del Ayuntamiento de Madrid, IRPF por ganancia patrimonial 
-                y las bonificaciones fiscales aplicables en la Comunidad.
+                Tu gestor está disponible por teléfono, email y WhatsApp durante todo el proceso para resolver 
+                cualquier duda legal o administrativa específica de tu venta en Madrid.
               </p>
             </div>
 
@@ -273,10 +395,176 @@ export default function VentaCompletaMadridPage() {
                 Seguimiento hasta escritura
               </h3>
               <p className="text-gray-700">
-                Tu gestor te acompaña durante todo el proceso hasta la firma en notaría. Disponible por teléfono, 
-                email y WhatsApp para resolver cualquier duda específica de tu venta en Madrid.
+                Acompañamiento completo desde la firma de arras hasta la firma de escrituras en notaría. 
+                No te dejamos solo en ningún momento del proceso de venta.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tabla comparativa Inmonest vs Agencias */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">
+            Inmonest Gestoría vs Agencias Inmobiliarias
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Por qué miles de particulares vendedores eligen Inmonest en lugar de agencias tradicionales
+          </p>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse bg-white shadow-lg rounded-lg overflow-hidden">
+              <thead>
+                <tr className="bg-gray-100">
+                  <th className="p-4 text-left border-b-2 border-gray-300 font-bold text-gray-900"></th>
+                  <th className="p-4 text-center border-b-2 border-[#c9962a] font-bold text-[#a87a20] bg-amber-50">
+                    <div className="text-xl mb-1">🏆 Inmonest Gestoría</div>
+                    <div className="text-sm font-normal">Especialistas en particulares</div>
+                  </th>
+                  <th className="p-4 text-center border-b-2 border-gray-300 font-bold text-gray-600">
+                    <div className="text-xl mb-1">🏢 Agencias Inmobiliarias</div>
+                    <div className="text-sm font-normal">Modelo tradicional</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-200">
+                  <td className="p-4 font-semibold text-gray-900">💰 Coste del servicio</td>
+                  <td className="p-4 text-center bg-green-50">
+                    <div className="text-2xl font-bold text-green-600">687€</div>
+                    <div className="text-sm text-gray-600">IVA incluido · Tarifa plana</div>
+                  </td>
+                  <td className="p-4 text-center bg-red-50">
+                    <div className="text-2xl font-bold text-red-600">3.000€ - 5.000€</div>
+                    <div className="text-sm text-gray-600">3-5% comisión sobre venta</div>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-200">
+                  <td className="p-4 font-semibold text-gray-900">📋 Contratos personalizados</td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">✅</span>
+                    <div className="text-sm text-gray-600 mt-1">Redacción incluida</div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">⚠️</span>
+                    <div className="text-sm text-gray-600 mt-1">Plantillas genéricas</div>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-200">
+                  <td className="p-4 font-semibold text-gray-900">👨‍⚖️ Gestor asignado</td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">✅</span>
+                    <div className="text-sm text-gray-600 mt-1">Sí, para todo el proceso</div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">❌</span>
+                    <div className="text-sm text-gray-600 mt-1">Solo agente comercial</div>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-200">
+                  <td className="p-4 font-semibold text-gray-900">🔍 Asesoramiento legal</td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">✅</span>
+                    <div className="text-sm text-gray-600 mt-1">Especialistas gestoría</div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">❌</span>
+                    <div className="text-sm text-gray-600 mt-1">No tienen gestor propio</div>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-200">
+                  <td className="p-4 font-semibold text-gray-900">📄 Ayuda con documentación</td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">✅</span>
+                    <div className="text-sm text-gray-600 mt-1">Paso a paso incluido</div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">⚠️</span>
+                    <div className="text-sm text-gray-600 mt-1">Según disponibilidad</div>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-200">
+                  <td className="p-4 font-semibold text-gray-900">💼 Transparencia de costes</td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">✅</span>
+                    <div className="text-sm text-gray-600 mt-1">Precio fijo 687€</div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">⚠️</span>
+                    <div className="text-sm text-gray-600 mt-1">Depende precio venta</div>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-200">
+                  <td className="p-4 font-semibold text-gray-900">⏱️ Disponibilidad del gestor</td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">✅</span>
+                    <div className="text-sm text-gray-600 mt-1">Tel, email, WhatsApp</div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">⚠️</span>
+                    <div className="text-sm text-gray-600 mt-1">Según carga del agente</div>
+                  </td>
+                </tr>
+                <tr className="border-b border-gray-200">
+                  <td className="p-4 font-semibold text-gray-900">🎯 Conflicto de intereses</td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">✅</span>
+                    <div className="text-sm text-gray-600 mt-1">Solo trabajamos para ti</div>
+                  </td>
+                  <td className="p-4 text-center">
+                    <span className="text-2xl">❌</span>
+                    <div className="text-sm text-gray-600 mt-1">Cobran del comprador también</div>
+                  </td>
+                </tr>
+                <tr className="bg-amber-50 border-2 border-[#c9962a]">
+                  <td className="p-4 font-bold text-gray-900">💰 Ahorro total para ti</td>
+                  <td className="p-4 text-center" colSpan={2}>
+                    <div className="text-3xl font-bold text-[#a87a20]">Ahorras entre 2.313€ y 4.313€</div>
+                    <div className="text-sm text-gray-600 mt-1">En una venta de 100.000€ comparado con agencia tradicional</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className="mt-8 p-6 bg-red-50 border-l-4 border-red-500 rounded-lg">
+            <h3 className="font-bold text-xl text-gray-900 mb-3 flex items-center gap-2">
+              <span className="text-2xl">⚠️</span>
+              Malas prácticas comunes de agencias inmobiliarias
+            </h3>
+            <ul className="space-y-2 text-gray-700">
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 mt-1">•</span>
+                <span><strong>Honorarios desmedidos:</strong> Cobran 3-5% de comisión sobre el precio de venta, que pueden ser miles de euros por hacer trámites básicos.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 mt-1">•</span>
+                <span><strong>Doble comisión:</strong> Muchas agencias cobran comisión tanto al vendedor como al comprador, maximizando sus beneficios a costa de ambas partes.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 mt-1">•</span>
+                <span><strong>Contratos con permanencia:</strong> Te obligan a exclusividad durante meses aunque no vendan tu piso, limitando tus opciones.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 mt-1">•</span>
+                <span><strong>Falta de asesoramiento legal:</strong> Los agentes comerciales no son asesores legales. Muchos no revisan la documentación en profundidad.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-red-500 mt-1">•</span>
+                <span><strong>Presión para bajar precio:</strong> Tienen incentivo para cerrar rápido aunque sea a menor precio, ya que su comisión está asegurada.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="mt-8 p-6 bg-amber-50 border-l-4 border-[#c9962a] rounded-lg">
+            <h3 className="font-bold text-xl text-gray-900 mb-3">🎯 La ventaja de Inmonest</h3>
+            <p className="text-gray-700 text-lg">
+              Inmonest es una <strong>gestoría inmobiliaria especializada en particulares</strong>. No somos agencia, 
+              por eso no cobramos comisión sobre la venta. Te proporcionamos el mismo acompañamiento profesional 
+              <strong> por una tarifa plana de 687€</strong>, independientemente del precio de tu piso. 
+              Nuestro único objetivo es que vendas con total seguridad jurídica y al mejor precio posible.
+            </p>
           </div>
         </div>
       </section>
@@ -296,7 +584,7 @@ export default function VentaCompletaMadridPage() {
               href="/gestoria/solicitar/venta-completa-reserva-escritura"
               className="bg-white text-[#a87a20] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Contratar ahora (666€)
+              Contratar ahora (687€)
             </Link>
             <a
               href="tel:+34641008847"
@@ -351,7 +639,7 @@ export default function VentaCompletaMadridPage() {
               <p className="text-gray-600 text-sm mb-3">
                 Acompañamiento completo si estás comprando en Madrid.
               </p>
-              <div className="text-[#c9962a] font-bold">Desde 666€</div>
+              <div className="text-[#c9962a] font-bold">Desde 687€</div>
             </Link>
           </div>
         </div>
