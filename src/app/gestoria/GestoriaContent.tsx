@@ -410,6 +410,17 @@ export default function GestoriaPage() {
   return (
     <div className="min-h-screen bg-white">
 
+      {/* BREADCRUMB */}
+      <nav className="max-w-6xl mx-auto px-6 pt-6 pb-2">
+        <div className="flex items-center gap-2 text-sm text-gray-500">
+          <Link href="/" className="hover:text-[#c9962a] transition">
+            Inicio
+          </Link>
+          <span>→</span>
+          <span className="text-gray-900 font-medium">Gestoría Inmobiliaria</span>
+        </div>
+      </nav>
+
       {/* HERO */}
       <section className="relative h-[480px] sm:h-[560px] overflow-hidden">
         <Image
@@ -440,6 +451,44 @@ export default function GestoriaPage() {
             </div>
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white text-sm">
               <span>📜</span> +500 contratos redactados
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* QUÉ ES UNA GESTORÍA INMOBILIARIA */}
+      <section className="bg-white py-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            ¿Qué es una gestoría inmobiliaria?
+          </h2>
+          <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
+            <p>
+              Una <strong>gestoría inmobiliaria</strong> es un servicio profesional que se encarga de todos los <strong>trámites legales, administrativos y documentales</strong> relacionados con operaciones inmobiliarias de particulares: <strong>compraventa de viviendas, contratos de alquiler, contratos de arras y escrituras</strong>.
+            </p>
+            <p>
+              En <strong>Inmonest</strong> somos una <strong>gestoría inmobiliaria digital especializada en Barcelona, Madrid y Valencia</strong>, con abogados expertos que redactan contratos personalizados para particulares vendedores y compradores. A diferencia de las agencias inmobiliarias tradicionales, <strong className="text-[#c9962a]">no cobramos comisiones del 3-5%</strong>, sino honorarios fijos transparentes desde 61€.
+            </p>
+            <div className="bg-[#fef9e8] border-l-4 border-[#c9962a] p-6 rounded-r-lg mt-6">
+              <h3 className="font-bold text-gray-900 mb-3 text-xl">¿Cuándo contratar una gestoría inmobiliaria?</h3>
+              <ul className="space-y-2 text-base">
+                <li className="flex items-start gap-3">
+                  <span className="text-[#c9962a] font-bold mt-0.5">✓</span>
+                  <span><strong>Compras o vendes piso entre particulares</strong> y necesitas contratos de arras, reserva o asesoramiento legal</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#c9962a] font-bold mt-0.5">✓</span>
+                  <span><strong>Alquilas tu vivienda</strong> y quieres un contrato LAU adaptado a la Ley de Vivienda 2026 con todas las garantías</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#c9962a] font-bold mt-0.5">✓</span>
+                  <span><strong>Necesitas verificar documentación</strong> antes de escriturar (nota registral, actas comunidad, ITE)</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-[#c9962a] font-bold mt-0.5">✓</span>
+                  <span><strong>Quieres acompañamiento completo</strong> desde la reserva hasta la firma ante notario</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

@@ -7,8 +7,8 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Online | Contratos Legales desde 29€',
-  description: 'Gestoría inmobiliaria digital: contratos de compra, venta y alquiler redactados por abogados en 48h. Desde 29€ IVA incluido. ✓ Garantía legal ✓ Asesor personalizado ✓ Toda España',
+  title: 'Gestoría Inmobiliaria en Barcelona, Madrid y Valencia | Desde 61€',
+  description: '✓ Gestoría inmobiliaria para particulares en Barcelona, Madrid, Valencia ✓ Contratos arras, compraventa, alquiler ✓ Abogados especializados ✓ Desde 61€ ✓ Entrega 48h',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
   },
@@ -287,6 +287,26 @@ const schemaJson = JSON.stringify({
   ]
 })
 
+// Schema para breadcrumb (mejora SEO)
+const breadcrumbSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: BASE_URL
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Gestoría Inmobiliaria',
+      item: `${BASE_URL}/gestoria`
+    }
+  ]
+})
+
 export default function GestoriaPage() {
   return (
     <>
@@ -294,6 +314,11 @@ export default function GestoriaPage() {
         id="schema-gestoria"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: schemaJson }}
+      />
+      <Script
+        id="schema-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: breadcrumbSchema }}
       />
       <Navbar />
       <GestoriaContent />
