@@ -8,15 +8,15 @@ import TestimoniosCarousel from '@/components/TestimoniosCarousel'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Vender Piso Sin Inmobiliaria | Acompañamiento Completo 666€',
-  description: 'Vende tu piso de particular a particular con gestor inmobiliario. Redactamos contratos, recabamos documentación y te acompañamos hasta escrituras. Solo 666€. ✓ Ahorra 10,000€+ en comisiones ✓ Sin sorpresas',
+  title: 'Vender Piso Sin Inmobiliaria | Acompañamiento Completo 687€',
+  description: 'Vende tu piso de particular a particular con gestor inmobiliario. Redactamos contratos, recabamos documentación y te acompañamos hasta escrituras. Solo 687€. ✓ Ahorra 10,000€+ en comisiones ✓ Sin sorpresas',
   keywords: 'vender piso particular, asesoría venta vivienda, acompañamiento venta piso, contratos venta particular, gestoría venta inmueble, ayuda vender piso',
   alternates: {
     canonical: `${BASE_URL}/gestoria/venta-completa-reserva-escritura`,
   },
   openGraph: {
     title: 'Gestoría venta piso particular — acompañamiento completo',
-    description: 'Gestor personalizado te acompaña desde reserva hasta escritura. Redactamos contratos, recabamos documentación. Vende seguro entre particulares. 666€.',
+    description: 'Gestor personalizado te acompaña desde reserva hasta escritura. Redactamos contratos, recabamos documentación. Vende seguro entre particulares. 687€.',
     url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura`,
     type: 'website',
     siteName: 'Inmonest',
@@ -40,7 +40,7 @@ export default function VentaCompletaPage() {
     },
     offers: {
       '@type': 'Offer',
-      price: '666',
+      price: '687',
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
       priceValidUntil: '2026-12-31',
@@ -138,7 +138,7 @@ export default function VentaCompletaPage() {
                   href="/gestoria/solicitar/venta-completa-reserva-escritura"
                   className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#a87a20] transition text-center shadow-lg"
                 >
-                  Contratar servicio (666€)
+                  Contratar servicio (687€)
                 </Link>
                 <a
                   href="https://wa.me/34641008847?text=Hola,%20quiero%20vender%20mi%20piso%20a%20particular%20y%20necesito%20acompañamiento"
@@ -441,7 +441,7 @@ export default function VentaCompletaPage() {
               {
                 paso: '1',
                 titulo: 'Contratas el servicio',
-                desc: 'Rellenas el formulario con los datos de tu venta. Pago único de 666€ (IVA incluido). Sin costes ocultos.',
+                desc: 'Rellenas el formulario con los datos de tu venta. Pago único de 687€ (IVA incluido). Sin costes ocultos.',
               },
               {
                 paso: '2',
@@ -572,7 +572,7 @@ export default function VentaCompletaPage() {
                 <tr className="bg-gray-50">
                   <td className="px-6 py-4 text-sm text-gray-900 font-semibold">Coste total</td>
                   <td className="px-6 py-4 text-center">
-                    <span className="text-[#c9962a] font-bold text-lg">666€</span>
+                    <span className="text-[#c9962a] font-bold text-lg">687€</span>
                   </td>
                   <td className="px-6 py-4 text-center">
                     <span className="text-gray-600 font-semibold">0€<br /><span className="text-xs">(pero más riesgo)</span></span>
@@ -754,14 +754,14 @@ export default function VentaCompletaPage() {
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Gestor personalizado, contratos incluidos, documentación completa y asesoramiento 
-            hasta escriturar. Todo por 666€ IVA incluido.
+            hasta escriturar. Todo por 687€ IVA incluido.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/venta-completa-reserva-escritura"
               className="bg-white text-[#a87a20] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Contratar ahora (666€)
+              Contratar ahora (687€)
             </Link>
             <a
               href="https://wa.me/34641008847?text=Hola,%20quiero%20información%20sobre%20el%20servicio%20de%20acompañamiento%20de%20venta"

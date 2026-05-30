@@ -59,7 +59,7 @@ export default function GestoriaMadridPage() {
             description: 'Servicio integral con gestor asignado para compraventa de vivienda en Madrid',
           },
           priceCurrency: 'EUR',
-          price: '666',
+          price: '687',
         },
       ],
     },
@@ -319,7 +319,7 @@ export default function GestoriaMadridPage() {
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-3xl font-bold text-gray-900">666 €</p>
+                      <p className="text-3xl font-bold text-gray-900">687 €</p>
                       <p className="text-sm text-gray-500">IVA incluido</p>
                     </div>
                     <Link

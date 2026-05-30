@@ -547,7 +547,7 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'compra-completa-reserva-escritura', nombre: 'Servicio Completo de Compra', precio: 666 },
+      { slug: 'compra-completa-reserva-escritura', nombre: 'Servicio Completo de Compra', precio: 687 },
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
     ],
@@ -555,7 +555,7 @@ const SERVICIOS: Record<string, ServiceData> = {
 
   'compra-completa-reserva-escritura': {
     nombre: 'Servicio Completo de Compra: Reserva a Escritura',
-    precio: 666,
+    precio: 687,
     categoria: 'Servicios Premium',
     tagline: 'El servicio más completo de gestoría inmobiliaria: te acompañamos desde la reserva hasta la escritura',
     descripcion:

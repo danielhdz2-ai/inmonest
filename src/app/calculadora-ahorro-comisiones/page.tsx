@@ -44,7 +44,7 @@ export default function CalculadoraAhorroPage() {
         name: '¿Cuánto cobra una agencia inmobiliaria por vender un piso?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Las agencias inmobiliarias tradicionales cobran entre 3% y 5% del precio de venta como comisión. Para un piso de 250,000€, esto significa entre 7,500€ y 12,500€ en comisiones. Con Inmonest solo pagas 666€ por el servicio completo de acompañamiento legal.'
+          text: 'Las agencias inmobiliarias tradicionales cobran entre 3% y 5% del precio de venta como comisión. Para un piso de 250,000€, esto significa entre 7,500€ y 12,500€ en comisiones. Con Inmonest solo pagas 687€ por el servicio completo de acompañamiento legal.'
         }
       },
       {
@@ -52,15 +52,15 @@ export default function CalculadoraAhorroPage() {
         name: '¿Cuánto ahorro vendiendo sin agencia?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'En un piso de 250,000€, la comisión típica de agencia (4%) sería 10,000€. Con el servicio de Inmonest (666€), ahorras 9,334€. En un piso de 400,000€, el ahorro supera los 15,000€.'
+          text: 'En un piso de 250,000€, la comisión típica de agencia (4%) sería 10,000€. Con el servicio de Inmonest (687€), ahorras 9,313€. En un piso de 400,000€, el ahorro supera los 15,000€.'
         }
       },
       {
         '@type': 'Question',
-        name: '¿Qué incluye el servicio de Inmonest por 666€?',
+        name: '¿Qué incluye el servicio de Inmonest por 687€?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'El servicio de venta completa (666€) incluye: gestor personalizado asignado, redacción de contrato de reserva y arras, ayuda para recabar toda la documentación, asesoramiento legal continuo, coordinación con notaría y acompañamiento hasta la firma de escrituras.'
+          text: 'El servicio de venta completa (687€) incluye: gestor personalizado asignado, redacción de contrato de reserva y arras, ayuda para recabar toda la documentación, asesoramiento legal continuo, coordinación con notaría y acompañamiento hasta la firma de escrituras.'
         }
       },
       {
@@ -142,7 +142,7 @@ export default function CalculadoraAhorroPage() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-600">Inmonest:</span>
-                        <span className="font-semibold text-green-600">-666€</span>
+                        <span className="font-semibold text-green-600">-687€</span>
                       </div>
                     </div>
                     <div className="pt-4 border-t border-gray-200 text-center">
@@ -177,7 +177,7 @@ export default function CalculadoraAhorroPage() {
                   <tr>
                     <td className="px-6 py-4 text-sm text-gray-900">Comisión / Coste</td>
                     <td className="px-6 py-4 text-center text-red-600 font-bold">3-5% (6,000€ - 10,000€)</td>
-                    <td className="px-6 py-4 text-center text-[#c9962a] font-bold">666€ fijo</td>
+                    <td className="px-6 py-4 text-center text-[#c9962a] font-bold">687€ fijo</td>
                   </tr>
                   <tr className="bg-gray-50">
                     <td className="px-6 py-4 text-sm text-gray-900">Contratos legales</td>
@@ -215,15 +215,15 @@ export default function CalculadoraAhorroPage() {
               {[
                 {
                   q: '¿Cuánto cobra una agencia inmobiliaria por vender un piso?',
-                  a: 'Las agencias inmobiliarias tradicionales cobran entre 3% y 5% del precio de venta como comisión. Para un piso de 250,000€, esto significa entre 7,500€ y 12,500€ en comisiones. Con Inmonest solo pagas 666€ por el servicio completo de acompañamiento legal.'
+                  a: 'Las agencias inmobiliarias tradicionales cobran entre 3% y 5% del precio de venta como comisión. Para un piso de 250,000€, esto significa entre 7,500€ y 12,500€ en comisiones. Con Inmonest solo pagas 687€ por el servicio completo de acompañamiento legal.'
                 },
                 {
                   q: '¿Cuánto ahorro vendiendo sin agencia?',
-                  a: 'En un piso de 250,000€, la comisión típica de agencia (4%) sería 10,000€. Con el servicio de Inmonest (666€), ahorras 9,334€. En un piso de 400,000€, el ahorro supera los 15,000€.'
+                  a: 'En un piso de 250,000€, la comisión típica de agencia (4%) sería 10,000€. Con el servicio de Inmonest (687€), ahorras 9,313€. En un piso de 400,000€, el ahorro supera los 15,000€.'
                 },
                 {
-                  q: '¿Qué incluye el servicio de Inmonest por 666€?',
-                  a: 'El servicio de venta completa (666€) incluye: gestor personalizado asignado, redacción de contrato de reserva y arras, ayuda para recabar toda la documentación, asesoramiento legal continuo, coordinación con notaría y acompañamiento hasta la firma de escrituras.'
+                  q: '¿Qué incluye el servicio de Inmonest por 687€?',
+                  a: 'El servicio de venta completa (687€) incluye: gestor personalizado asignado, redacción de contrato de reserva y arras, ayuda para recabar toda la documentación, asesoramiento legal continuo, coordinación con notaría y acompañamiento hasta la firma de escrituras.'
                 },
                 {
                   q: '¿Es seguro vender sin agencia?',
@@ -251,7 +251,7 @@ export default function CalculadoraAhorroPage() {
               ¿Listo para vender sin pagar comisiones?
             </h2>
             <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Publica tu anuncio gratis o contrata acompañamiento legal completo por solo 666€
+              Publica tu anuncio gratis o contrata acompañamiento legal completo por solo 687€
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -264,7 +264,7 @@ export default function CalculadoraAhorroPage() {
                 href="/gestoria/venta-completa-reserva-escritura"
                 className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#a87a20] transition"
               >
-                Ver servicio de venta (666€)
+                Ver servicio de venta (687€)
               </Link>
             </div>
           </div>

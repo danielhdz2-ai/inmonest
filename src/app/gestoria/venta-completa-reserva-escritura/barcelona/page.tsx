@@ -8,14 +8,14 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   title: 'Gestoría venta piso Barcelona — acompañamiento completo',
-  description: 'Vendes tu piso en Barcelona? Gestor inmobiliario te acompaña desde reserva hasta escritura. Contratos, documentación, asesoramiento completo. 666€ IVA incluido.',
+  description: 'Vendes tu piso en Barcelona? Gestor inmobiliario te acompaña desde reserva hasta escritura. Contratos, documentación, asesoramiento completo. 687€ IVA incluido.',
   keywords: 'vender piso Barcelona, gestoría venta vivienda Barcelona, acompañamiento venta Barcelona, contratos venta particular Barcelona, asesoría inmobiliaria Barcelona',
   alternates: {
     canonical: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/barcelona`,
   },
   openGraph: {
     title: 'Gestoría venta piso Barcelona — acompañamiento completo',
-    description: 'Gestor inmobiliario personalizado en Barcelona te acompaña desde reserva hasta escritura. Vende seguro entre particulares. 666€.',
+    description: 'Gestor inmobiliario personalizado en Barcelona te acompaña desde reserva hasta escritura. Vende seguro entre particulares. 687€.',
     url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/barcelona`,
     type: 'website',
     siteName: 'Inmonest',
@@ -44,7 +44,7 @@ export default function VentaCompletaBarcelonaPage() {
     },
     offers: {
       '@type': 'Offer',
-      price: '666',
+      price: '687',
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
       priceValidUntil: '2026-12-31',
@@ -111,7 +111,7 @@ export default function VentaCompletaBarcelonaPage() {
                   href="/gestoria/solicitar/venta-completa-reserva-escritura"
                   className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#a87a20] transition text-center shadow-lg"
                 >
-                  Contratar servicio (666€)
+                  Contratar servicio (687€)
                 </Link>
                 <a
                   href="tel:+34641008847"
@@ -289,14 +289,14 @@ export default function VentaCompletaBarcelonaPage() {
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Gestor inmobiliario en Barcelona, contratos adaptados a Cataluña, documentación completa y asesoramiento 
-            hasta escriturar. Todo por 666€ IVA incluido.
+            hasta escriturar. Todo por 687€ IVA incluido.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/venta-completa-reserva-escritura"
               className="bg-white text-[#a87a20] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Contratar ahora (666€)
+              Contratar ahora (687€)
             </Link>
             <a
               href="tel:+34641008847"
@@ -351,7 +351,7 @@ export default function VentaCompletaBarcelonaPage() {
               <p className="text-gray-600 text-sm mb-3">
                 Acompañamiento completo si estás comprando en Barcelona.
               </p>
-              <div className="text-[#c9962a] font-bold">Desde 666€</div>
+              <div className="text-[#c9962a] font-bold">Desde 687€</div>
             </Link>
           </div>
         </div>

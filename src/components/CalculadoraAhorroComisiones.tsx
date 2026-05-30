@@ -29,7 +29,7 @@ export default function CalculadoraAhorroComisiones() {
     const comisionAgencia = precioVenta * 0.04
     
     // Costo servicio Inmonest (venta completa)
-    const costoInmonest = 666
+    const costoInmonest = 687
     
     // Ahorro total
     const ahorroTotal = comisionAgencia - costoInmonest
@@ -236,7 +236,7 @@ export default function CalculadoraAhorroComisiones() {
             {/* CTA gestoría */}
             <div className="text-center pt-4 border-t border-gray-200">
               <p className="text-sm text-gray-600 mb-3">
-                ¿Quieres acompañamiento legal completo por solo 666€?
+                ¿Quieres acompañamiento legal completo por solo 687€?
               </p>
               <a
                 href="/gestoria/venta-completa-reserva-escritura"
@@ -264,7 +264,7 @@ export default function CalculadoraAhorroComisiones() {
                 href="/gestoria/venta-completa-reserva-escritura"
                 className="block px-6 py-3 bg-[#c9962a] text-white font-semibold rounded-lg hover:bg-[#a87a20] transition-colors"
               >
-                Contratar acompañamiento legal (666€)
+                Contratar acompañamiento legal (687€)
               </a>
               <a
                 href="/publicar-anuncio"

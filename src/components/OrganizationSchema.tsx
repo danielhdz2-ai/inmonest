@@ -33,7 +33,7 @@ export default function OrganizationSchema() {
       'Asesoría jurídica inmobiliaria',
       'Contrato de compraventa',
     ],
-    priceRange: '29€ - 666€',
+    priceRange: '29€ - 687€',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
