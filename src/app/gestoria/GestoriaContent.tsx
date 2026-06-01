@@ -424,7 +424,7 @@ export default function GestoriaPage() {
       {/* HERO */}
       <section className="relative h-[480px] sm:h-[560px] overflow-hidden">
         <Image
-          src="/gestoria/imagencabezera.jpg"
+          src="/imagencabezera.jpg"
           alt="Equipo de gestoría inmobiliaria"
           fill
           className="object-cover"
