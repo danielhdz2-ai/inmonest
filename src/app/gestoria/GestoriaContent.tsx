@@ -34,7 +34,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 145,
-    image: '/familia1.jpg',
+    image: '/gestoria1.jpg',
     badge: 'Más solicitado',
   },
   {
@@ -50,7 +50,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 145,
-    image: '/familia2.jpg',
+    image: '/gestoria3.jpg',
   },
   {
     key: 'pack-due-diligence-precompra',
@@ -68,7 +68,7 @@ const SERVICES: Service[] = [
       'Entrega en 3-5 días · Análisis en 48h · Formato PDF',
     ],
     price: 350,
-    image: '/familia3.jpg',
+    image: '/gestoria9.jpg',
     badge: 'Pre-compra',
   },
   {
@@ -87,7 +87,7 @@ const SERVICES: Service[] = [
       'Ideal para propietarios vendedores',
     ],
     price: 166,
-    image: '/barcelona1.jpg',
+    image: '/gestoria10.jpg',
     badge: 'Vendedores',
   },
   {
@@ -423,10 +423,9 @@ export default function GestoriaPage() {
 
       {/* HERO */}
       <section className="relative h-[480px] sm:h-[560px] overflow-hidden">
-        <img
-          src="/imagencabezera.jpg"
-          alt="Equipo de gestoría inmobiliaria"
-          className="w-full h-full object-cover"
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/imagencabezera.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#3d2a05]/90 via-[#7a5c1e]/70 to-transparent" />
         <div className="relative h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 max-w-4xl">
@@ -581,13 +580,10 @@ export default function GestoriaPage() {
               className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
             >
               {/* Imagen */}
-              <div className="relative h-48 overflow-hidden bg-gray-100">
-                <img
-                  src={service.image}
-                  alt={service.shortName}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
+              <div 
+                className="relative h-48 overflow-hidden bg-gray-200 bg-cover bg-center"
+                style={{ backgroundImage: `url('${service.image}')` }}
+              >
                 {/* Overlay degradado */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 {/* Badge categoría */}

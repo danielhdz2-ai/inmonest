@@ -112,13 +112,10 @@ export default function TestimoniosCarousel() {
         <div className="flex flex-col md:flex-row gap-6 items-start">
           {/* Foto del cliente */}
           <div className="flex-shrink-0">
-            <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-[#c9962a]/30">
-              <img
-                src={testimonio.foto}
-                alt={testimonio.nombre}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <div 
+              className="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-[#c9962a]/30 bg-cover bg-center bg-gray-200"
+              style={{ backgroundImage: `url('${testimonio.foto}')` }}
+            />
           </div>
 
           {/* Contenido */}
