@@ -68,7 +68,7 @@ const SERVICES: Service[] = [
       'Entrega en 3-5 días · Análisis en 48h · Formato PDF',
     ],
     price: 350,
-    image: '/gestoria1.jpg',
+    image: '/gestoria9.jpg',
     badge: 'Pre-compra',
   },
   {
@@ -87,7 +87,7 @@ const SERVICES: Service[] = [
       'Ideal para propietarios vendedores',
     ],
     price: 166,
-    image: '/gestoria3.jpg',
+    image: '/gestoria10.jpg',
     badge: 'Vendedores',
   },
   {
@@ -184,7 +184,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 73,
-    image: '/gestoria3.jpg',
+    image: '/gestoria11.jpg',
   },
   {
     key: 'liquidacion-fianza',
@@ -284,7 +284,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · Atención personalizada',
     ],
     price: 424,
-    image: '/gestoria1.jpg',
+    image: '/gestoria10.jpg',
     badge: 'Premium',
   },
   {
@@ -320,7 +320,7 @@ const SERVICES: Service[] = [
       'Coordinación con notaría · Atención prioritaria',
     ],
     price: 687,
-    image: '/keys.jpg',
+    image: '/gestoria11.jpg',
     badge: 'Todo incluido',
   },
 
@@ -372,7 +372,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 109,
-    image: '/gestoria3.jpg',
+    image: '/gestoria9.jpg',
     badge: 'Capital privado',
   },
 ]
