@@ -8,9 +8,10 @@ const BASE_URL = 'https://inmonest.com'
 // Reducido de 49k a 10k para optimizar CPU (Google sitemap limit = 50k URLs)
 const MAX_LISTINGS = 10_000  // Antes: 49_000 - consumía demasiado CPU
 
+// ✅ IMPORTANTE: Estas ciudades DEBEN coincidir con las de src/app/[ciudad]/page.tsx
 const CIUDADES = [
   'madrid', 'barcelona', 'valencia', 'sevilla', 'zaragoza',
-  'malaga', 'murcia', 'bilbao', 'alicante', 'granada',
+  'malaga', 'bilbao', 'alicante',
 ]
 
 /** Escapa los caracteres reservados de XML excepto &
@@ -72,19 +73,27 @@ export async function GET() {
   const staticEntries = [
     xmlEntry({ loc: xe(BASE_URL),               lastmod: today, changefreq: 'daily',   priority: 1.0 }),
     xmlEntry({ loc: u('/pisos'),                lastmod: today, changefreq: 'hourly',  priority: 1.0 }),
-    xmlEntry({ loc: u('/pisos?operacion=rent'), lastmod: today, changefreq: 'daily',   priority: 0.9 }),
-    xmlEntry({ loc: u('/pisos?operacion=sale'), lastmod: today, changefreq: 'daily',   priority: 0.9 }),
     xmlEntry({ loc: u('/publicar'),                             changefreq: 'monthly', priority: 0.7 }),
     xmlEntry({ loc: u('/publicar-anuncio'),                     changefreq: 'monthly', priority: 0.7 }),
     xmlEntry({ loc: u('/vender-casa'),                          changefreq: 'monthly', priority: 0.7 }),
-    xmlEntry({ loc: u('/gestoria'),                             changefreq: 'monthly', priority: 0.6 }),
+    xmlEntry({ loc: u('/gestoria'),             lastmod: today, changefreq: 'weekly',  priority: 0.9 }),
+    xmlEntry({ loc: u('/gestoria/barcelona'),                   changefreq: 'monthly', priority: 0.8 }),
+    xmlEntry({ loc: u('/gestoria/madrid'),                      changefreq: 'monthly', priority: 0.8 }),
+    xmlEntry({ loc: u('/gestoria/valencia'),                    changefreq: 'monthly', priority: 0.8 }),
     xmlEntry({ loc: u('/agencias'),                             changefreq: 'monthly', priority: 0.6 }),
     xmlEntry({ loc: u('/contacto'),                             changefreq: 'monthly', priority: 0.5 }),
+    xmlEntry({ loc: u('/blog'),                                 changefreq: 'weekly',  priority: 0.7 }),
   ]
 
+  // ✅ URLs REALES de ciudades (sin query params que causan 404)
   const ciudadEntries = CIUDADES.flatMap((slug) => [
-    xmlEntry({ loc: u(`/pisos?ciudad=${slug}&operacion=rent`), lastmod: today, changefreq: 'daily', priority: 0.9 }),
-    xmlEntry({ loc: u(`/pisos?ciudad=${slug}&operacion=sale`), lastmod: today, changefreq: 'daily', priority: 0.8 }),
+    xmlEntry({ loc: u(`/${slug}`),                      lastmod: today, changefreq: 'daily', priority: 0.9 }),
+    xmlEntry({ loc: u(`/${slug}/pisos`),                lastmod: today, changefreq: 'daily', priority: 0.8 }),
+    xmlEntry({ loc: u(`/${slug}/alquiler-particulares`),lastmod: today, changefreq: 'daily', priority: 0.8 }),
+    xmlEntry({ loc: u(`/${slug}/alquiler-sin-agencia`), lastmod: today, changefreq: 'daily', priority: 0.8 }),
+    xmlEntry({ loc: u(`/${slug}/vender-piso`),                          changefreq: 'monthly', priority: 0.7 }),
+    xmlEntry({ loc: u(`/${slug}/contrato-alquiler`),                    changefreq: 'monthly', priority: 0.7 }),
+    xmlEntry({ loc: u(`/${slug}/contrato-arras`),                       changefreq: 'monthly', priority: 0.7 }),
   ])
 
   const listingEntries = listings.map((l) => {

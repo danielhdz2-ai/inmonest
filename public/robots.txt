@@ -1,11 +1,14 @@
 # robots.txt para Inmonest
 # Optimizado para reducir consumo de CPU en Vercel Free Tier
 
-# ✅ Permitir solo bots principales (Google, Bing, Yahoo)
+# ✅ Permitir bots principales (Google, Bing, Yahoo) SIN restricciones
 User-agent: Googlebot
 User-agent: Bingbot
 User-agent: Slurp
 Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /mi-cuenta/
 
 # ❌ Bloquear bots de IA y scrapers agresivos (consumen CPU sin aportar valor)
 User-agent: GPTBot
@@ -21,13 +24,12 @@ User-agent: Bytespider
 User-agent: PetalBot
 Disallow: /
 
-# ❌ Bloquear crawlers generales
+# ⚠️ Otros crawlers con restricciones (para evitar sobrecarga)
 User-agent: *
-Crawl-delay: 10
 Disallow: /api/
 Disallow: /admin/
 Disallow: /mi-cuenta/
 Disallow: /publicar-anuncio/
 
-# Sitemap (solo para bots principales)
+# Sitemap (Google lo usará para indexar correctamente)
 Sitemap: https://inmonest.com/sitemap.xml
