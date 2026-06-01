@@ -21,7 +21,7 @@ const TESTIMONIOS: Testimonio[] = [
     nombre: 'María González',
     ciudad: 'Barcelona',
     servicio: 'Venta completa reserva-escritura',
-    foto: '/testimonios/maria.jpg',
+    foto: '/familia1.jpg',
     rating: 5,
     texto: 'Vendí mi piso sin agencia gracias a Inmonest. El gestor personalizado me guió en cada paso desde la reserva hasta las escrituras. Me ahorré más de 12,000€ en comisiones y todo el proceso fue transparente y profesional.',
     fecha: 'Mayo 2026',
@@ -32,7 +32,7 @@ const TESTIMONIOS: Testimonio[] = [
     nombre: 'Carlos Ruiz',
     ciudad: 'Madrid',
     servicio: 'Revisión contrato arras',
-    foto: '/testimonios/carlos.jpg',
+    foto: '/familia2.jpg',
     rating: 5,
     texto: 'Iba a firmar un contrato de arras con cláusulas abusivas que me hubieran costado 15,000€ si el vendedor se echaba atrás. La revisión legal de Inmonest detectó el problema y me salvó de una situación muy complicada.',
     fecha: 'Abril 2026'
@@ -42,7 +42,7 @@ const TESTIMONIOS: Testimonio[] = [
     nombre: 'Laura Martínez',
     ciudad: 'Valencia',
     servicio: 'Contrato alquiler LAU',
-    foto: '/testimonios/laura.jpg',
+    foto: '/familia3.jpg',
     rating: 5,
     texto: 'Necesitaba un contrato de alquiler urgente y legal. En 48h tenía el contrato adaptado a la nueva Ley de Vivienda 2026. Mi inquilino y yo firmamos tranquilos sabiendo que todo estaba en regla.',
     fecha: 'Mayo 2026'
@@ -52,7 +52,7 @@ const TESTIMONIOS: Testimonio[] = [
     nombre: 'Javier López',
     ciudad: 'Sevilla',
     servicio: 'Compra completa reserva-escritura',
-    foto: '/testimonios/javier.jpg',
+    foto: '/familia5.jpg',
     rating: 5,
     texto: 'Comprar mi primer piso era un proceso que me daba miedo por toda la burocracia. El servicio de acompañamiento completo fue perfecto: me explicaron cada paso, revisaron toda la documentación y coordinaron con la notaría. Valió cada euro.',
     fecha: 'Marzo 2026'
@@ -62,7 +62,7 @@ const TESTIMONIOS: Testimonio[] = [
     nombre: 'Ana Fernández',
     ciudad: 'Málaga',
     servicio: 'Due diligence pre-compra',
-    foto: '/testimonios/ana.jpg',
+    foto: '/familia6.jpg',
     rating: 5,
     texto: 'Después de firmar las arras, contraté el pack de Due Diligence. Descubrieron derramas pendientes de 8,000€ que el vendedor no había mencionado. Pude negociar el precio final y evitar una sorpresa muy desagradable.',
     fecha: 'Abril 2026',
@@ -112,11 +112,13 @@ export default function TestimoniosCarousel() {
         <div className="flex flex-col md:flex-row gap-6 items-start">
           {/* Foto del cliente */}
           <div className="flex-shrink-0">
-            <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-gradient-to-br from-[#c9962a]/20 to-[#c9962a]/5 flex items-center justify-center border-2 border-[#c9962a]/30">
-              {/* Placeholder icon si no hay imagen */}
-              <div className="text-4xl text-[#c9962a]">
-                {testimonio.nombre.charAt(0)}
-              </div>
+            <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-[#c9962a]/30">
+              <Image
+                src={testimonio.foto}
+                alt={testimonio.nombre}
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
 
