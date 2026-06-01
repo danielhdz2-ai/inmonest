@@ -34,7 +34,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 145,
-    image: '/gestoria/gestoria1.jpg',
+    image: '/gestoria1.jpg',
     badge: 'Más solicitado',
   },
   {
@@ -50,7 +50,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 145,
-    image: '/gestoria/gestoria3.jpg',
+    image: '/gestoria3.jpg',
   },
   {
     key: 'pack-due-diligence-precompra',
@@ -68,7 +68,7 @@ const SERVICES: Service[] = [
       'Entrega en 3-5 días · Análisis en 48h · Formato PDF',
     ],
     price: 350,
-    image: '/gestoria/gestoria1.jpg',
+    image: '/gestoria1.jpg',
     badge: 'Pre-compra',
   },
   {
@@ -87,7 +87,7 @@ const SERVICES: Service[] = [
       'Ideal para propietarios vendedores',
     ],
     price: 166,
-    image: '/gestoria/gestoria3.jpg',
+    image: '/gestoria3.jpg',
     badge: 'Vendedores',
   },
   {
@@ -103,7 +103,7 @@ const SERVICES: Service[] = [
       'Entrega en 24h · PDF firmable digitalmente',
     ],
     price: 61,
-    image: '/gestoria/gestoria4.jpg',
+    image: '/gestoria4.jpg',
   },
 
   // --- ALQUILER ---
@@ -121,7 +121,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 120,
-    image: '/gestoria/gestoria7.jpg',
+    image: '/gestoria7.jpg',
     badge: 'Ley 2026',
   },
   {
@@ -137,7 +137,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 97,
-    image: '/gestoria/gestoria2.jpg',
+    image: '/gestoria2.jpg',
   },
   {
     key: 'alquiler-habitacion',
@@ -152,7 +152,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 73,
-    image: '/gestoria/gestoria6.jpg',
+    image: '/gestoria6.jpg',
   },
   {
     key: 'reserva-alquiler',
@@ -167,7 +167,7 @@ const SERVICES: Service[] = [
       'Entrega en 24h · PDF firmable digitalmente',
     ],
     price: 61,
-    image: '/gestoria/gestoria5.jpg',
+    image: '/gestoria5.jpg',
   },
 
   // --- RESCISIÓN Y FIANZAS ---
@@ -184,7 +184,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 73,
-    image: '/gestoria/gestoria3.jpg',
+    image: '/gestoria3.jpg',
   },
   {
     key: 'liquidacion-fianza',
@@ -199,7 +199,7 @@ const SERVICES: Service[] = [
       'Entrega en 24h · PDF firmable digitalmente',
     ],
     price: 36,
-    image: '/gestoria/gestoria2.jpg',
+    image: '/gestoria2.jpg',
   },
 
   // --- ALQUILER ESPECIAL ---
@@ -216,7 +216,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 121,
-    image: '/gestoria/gestoria6.jpg',
+    image: '/gestoria6.jpg',
     badge: 'Coliving',
   },
   {
@@ -233,7 +233,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 169,
-    image: '/gestoria/gestoria7.jpg',
+    image: '/gestoria7.jpg',
     badge: 'Pack ahorro',
   },
   {
@@ -249,7 +249,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 121,
-    image: '/gestoria/gestoria2.jpg',
+    image: '/gestoria2.jpg',
   },
   {
     key: 'alquiler-garaje-trastero',
@@ -264,7 +264,7 @@ const SERVICES: Service[] = [
       'Entrega en 24h · PDF firmable digitalmente',
     ],
     price: 48,
-    image: '/gestoria/gestoria5.jpg',
+    image: '/gestoria5.jpg',
     badge: 'Más económico',
   },
 
@@ -284,7 +284,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · Atención personalizada',
     ],
     price: 424,
-    image: '/gestoria/gestoria1.jpg',
+    image: '/gestoria1.jpg',
     badge: 'Premium',
   },
   {
@@ -302,7 +302,7 @@ const SERVICES: Service[] = [
       'Coordinación con notaría · Atención prioritaria',
     ],
     price: 687,
-    image: '/gestoria/gestoria4.jpg',
+    image: '/gestoria4.jpg',
     badge: 'Todo incluido',
   },
   {
@@ -339,7 +339,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 73,
-    image: '/gestoria/gestoria5.jpg',
+    image: '/gestoria5.jpg',
   },
   {
     key: 'alquiler-opcion-compra',
@@ -354,7 +354,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 182,
-    image: '/gestoria/gestoria4.jpg',
+    image: '/gestoria4.jpg',
     badge: 'Nuevo',
   },
 
@@ -372,7 +372,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 109,
-    image: '/gestoria/gestoria3.jpg',
+    image: '/gestoria3.jpg',
     badge: 'Capital privado',
   },
 ]
