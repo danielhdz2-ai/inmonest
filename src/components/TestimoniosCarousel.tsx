@@ -113,11 +113,10 @@ export default function TestimoniosCarousel() {
           {/* Foto del cliente */}
           <div className="flex-shrink-0">
             <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-[#c9962a]/30">
-              <Image
+              <img
                 src={testimonio.foto}
                 alt={testimonio.nombre}
-                fill
-                className="object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>

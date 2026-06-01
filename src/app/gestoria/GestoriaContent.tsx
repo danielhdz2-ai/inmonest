@@ -423,12 +423,10 @@ export default function GestoriaPage() {
 
       {/* HERO */}
       <section className="relative h-[480px] sm:h-[560px] overflow-hidden">
-        <Image
+        <img
           src="/imagencabezera.jpg"
           alt="Equipo de gestoría inmobiliaria"
-          fill
-          className="object-cover"
-          priority
+          className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#3d2a05]/90 via-[#7a5c1e]/70 to-transparent" />
         <div className="relative h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 max-w-4xl">
@@ -584,11 +582,11 @@ export default function GestoriaPage() {
             >
               {/* Imagen */}
               <div className="relative h-48 overflow-hidden bg-gray-100">
-                <Image
+                <img
                   src={service.image}
                   alt={service.shortName}
-                  fill
-                  className="object-cover"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 {/* Overlay degradado */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
