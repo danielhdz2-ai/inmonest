@@ -34,7 +34,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 145,
-    image: '/gestoria1.jpg',
+    image: '/familia1.jpg',
     badge: 'Más solicitado',
   },
   {
@@ -50,7 +50,7 @@ const SERVICES: Service[] = [
       'Entrega en 48h · PDF firmable digitalmente',
     ],
     price: 145,
-    image: '/gestoria3.jpg',
+    image: '/familia2.jpg',
   },
   {
     key: 'pack-due-diligence-precompra',
@@ -68,7 +68,7 @@ const SERVICES: Service[] = [
       'Entrega en 3-5 días · Análisis en 48h · Formato PDF',
     ],
     price: 350,
-    image: '/gestoria9.jpg',
+    image: '/familia3.jpg',
     badge: 'Pre-compra',
   },
   {
@@ -87,7 +87,7 @@ const SERVICES: Service[] = [
       'Ideal para propietarios vendedores',
     ],
     price: 166,
-    image: '/gestoria10.jpg',
+    image: '/barcelona1.jpg',
     badge: 'Vendedores',
   },
   {
