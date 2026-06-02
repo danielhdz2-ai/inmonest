@@ -1,10 +1,10 @@
 name: '🔧 Bot de Mantenimiento - Limpieza Avanzada'
 
 on:
-  # DESACTIVADO: Requiere CRON_SECRET configurado en GitHub Secrets
-  # schedule:
-  #   # Todos los lunes a las 06:00 AM UTC (08:00 AM España)
-  #   - cron: '0 6 * * 1'
+  # NOTA: Requiere CRON_SECRET configurado en GitHub Secrets (ver CONFIGURAR_SECRETS_GITHUB.md)
+  schedule:
+    # Todos los lunes a las 06:00 AM UTC (08:00 AM España)
+    - cron: '0 6 * * 1'
   workflow_dispatch:  # Permitir ejecución manual desde GitHub
 
 jobs:

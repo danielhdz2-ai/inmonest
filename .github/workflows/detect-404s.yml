@@ -1,10 +1,10 @@
 name: '🔍 Detector de Pisos No Disponibles (404s)'
 
 on:
-  # DESACTIVADO: Requiere NEXT_PUBLIC_SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY en GitHub Secrets
-  # schedule:
-  #   # Todos los miércoles a las 04:00 AM UTC (06:00 AM España)
-  #   - cron: '0 4 * * 3'
+  # NOTA: Requiere NEXT_PUBLIC_SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY en GitHub Secrets (ver CONFIGURAR_SECRETS_GITHUB.md)
+  schedule:
+    # Todos los miércoles a las 04:00 AM UTC (06:00 AM España)
+    - cron: '0 4 * * 3'
   workflow_dispatch:
     inputs:
       max_listings:

@@ -14,9 +14,9 @@ name: 🔔 Enviar Alertas de Búsqueda
 on:
   # Ejecutar diariamente a las 08:00 UTC (10:00 España)
   # Hora óptima: después de los scrapers (07:00) para tener pisos frescos
-  # DESACTIVADO: Requiere CRON_SECRET configurado en GitHub Secrets
-  # schedule:
-  #   - cron: '0 8 * * *'
+  # NOTA: Requiere CRON_SECRET configurado en GitHub Secrets (ver CONFIGURAR_SECRETS_GITHUB.md)
+  schedule:
+    - cron: '0 8 * * *'
   
   # Permitir ejecución manual para testing
   workflow_dispatch:
