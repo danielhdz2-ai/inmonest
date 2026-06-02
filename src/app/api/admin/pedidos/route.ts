@@ -19,6 +19,7 @@ export async function GET() {
   const { data, error } = await supabase
     .from('gestoria_requests')
     .select('*')
+    .neq('client_email', 'daniel.trading.sniper@gmail.com')
     .order('created_at', { ascending: false })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })

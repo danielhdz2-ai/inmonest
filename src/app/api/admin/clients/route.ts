@@ -23,10 +23,11 @@ export async function GET(req: NextRequest) {
 
   const adminSb = createAdminClient()
   
-  // Obtener todos los clientes únicos con sus estadísticas
+  // Obtener todos los clientes únicos con sus estadísticas (excluir pruebas)
   const { data: requests, error } = await adminSb
     .from('gestoria_requests')
     .select('*')
+    .neq('client_email', 'daniel.trading.sniper@gmail.com')
     .order('created_at', { ascending: false })
 
   if (error) {

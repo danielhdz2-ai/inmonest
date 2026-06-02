@@ -87,6 +87,41 @@ export async function POST(req: NextRequest) {
 
   console.log('[webhooks/stripe] Evento verificado:', event.type)
 
+  // Mapeo de servicios de gestoría (sincronizar con /api/gestoria/checkout/route.ts)
+  const STRIPE_SERVICES: Record<string, { name: string; price_eur: number }> = {
+    'arras-penitenciales':   { name: 'Contrato de Arras Penitenciales',       price_eur: 145 },
+    'arras-confirmatorias':  { name: 'Contrato de Arras Confirmatorias',       price_eur: 145 },
+    'reserva-compra':        { name: 'Contrato de Reserva de Compra',          price_eur: 61  },
+    'alquiler-vivienda-lau': { name: 'Contrato de Alquiler de Vivienda (LAU)', price_eur: 120  },
+    'contrato-alquiler':     { name: 'Contrato de Alquiler de Vivienda (LAU)', price_eur: 120  },
+    'alquiler-temporada':    { name: 'Contrato de Alquiler por Temporada',     price_eur: 97  },
+    'contrato-alquiler-temporal': { name: 'Contrato de Alquiler por Temporada', price_eur: 97 },
+    'alquiler-habitacion':   { name: 'Contrato de Alquiler de Habitación',     price_eur: 73  },
+    'reserva-alquiler':      { name: 'Contrato de Reserva de Alquiler',        price_eur: 61  },
+    'rescision-alquiler':    { name: 'Contrato de Rescisión de Alquiler',      price_eur: 73  },
+    'liquidacion-fianza':    { name: 'Liquidación de Fianza',                  price_eur: 36  },
+    'alquiler-habitaciones': { name: 'Contrato de Alquiler de Habitación',     price_eur: 121 },
+    'alquiler-local-comercial': { name: 'Contrato de Alquiler de Local Comercial', price_eur: 121 },
+    'alquiler-garaje-trastero': { name: 'Contrato de Alquiler de Garaje o Trastero', price_eur: 48 },
+    'alquiler-opcion-compra': { name: 'Contrato de Alquiler con Opción a Compra', price_eur: 182 },
+    'prestamo-particulares':  { name: 'Contrato de Préstamo entre Particulares', price_eur: 109 },
+    'pack-revision-reserva-alquiler': { name: 'Pack Revisión y Redacción: Reserva + Contrato de Alquiler', price_eur: 169 },
+    'arras-parking-garage':   { name: 'Contrato de Arras para Compraventa de Parking o Garaje', price_eur: 73 },
+    'acompanamiento-reserva-arras':        { name: 'Acompañamiento Reserva hasta Arras',              price_eur: 424 },
+    'compra-completa-reserva-escritura':   { name: 'Servicio Completo de Compra: Reserva a Escritura', price_eur: 687 },
+    'venta-completa-reserva-escritura':    { name: 'Servicio Completo de Venta: Reserva a Escritura', price_eur: 687 },
+    'revision-alquiler':                   { name: 'Revisión de Contrato de Alquiler',                 price_eur: 60 },
+    'revision-arras':                      { name: 'Revisión de Contrato de Arras',                    price_eur: 60 },
+    'revision-correccion':                 { name: 'Revisión + Corrección de Contrato',                price_eur: 120 },
+    'revision-correccion-arras':           { name: 'Revisión + Corrección de Contrato de Arras',       price_eur: 120 },
+    'ayuda-propietarios':                  { name: 'Redacción de Contrato LAU para Propietarios',      price_eur: 73 },
+    'contrato-ilegal':                     { name: 'Análisis de Fraude Inmobiliario',                  price_eur: 29 },
+    'asesoria-compra':                     { name: 'Asesoría Completa Compra de Vivienda',             price_eur: 95 },
+    'pack-due-diligence-precompra':        { name: 'Pack Due Diligence Pre-Compra',                    price_eur: 350 },
+    'contrato-compraventa':                { name: 'Contrato de Compraventa de Vivienda',              price_eur: 80 },
+    'asesoramiento-arras-venta':           { name: 'Asesoramiento Arras hasta Escritura (Vendedores)', price_eur: 166 },
+  }
+
   if (event.type === 'checkout.session.completed') {
     const session    = event.data.object as Record<string, unknown>
     const meta       = (session.metadata as Record<string, string>) ?? {}
@@ -100,6 +135,11 @@ export async function POST(req: NextRequest) {
     const sessionId   = session.id as string
     const paymentIntent = session.payment_intent as string | null ?? null
     const fecha = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
+    
+    // Obtener service_name y price_eur del mapeo
+    const serviceInfo = STRIPE_SERVICES[serviceKey]
+    const serviceName = serviceInfo?.name ?? 'Servicio de Gestoría'
+    const priceEur = serviceInfo?.price_eur ?? parseFloat(amount)
 
     const FROM_EMAIL   = decodeEnvKey(process.env.CONTACT_FROM_EMAIL   ?? '') || 'Inmonest <info@inmonest.com>'
     const NOTIFY_EMAIL = decodeEnvKey(process.env.CONTACT_NOTIFY_EMAIL ?? '') || 'info@inmonest.com'
@@ -123,14 +163,16 @@ export async function POST(req: NextRequest) {
     const upsertPayload = {
       session_id:             sessionId,
       service_key:            serviceKey,
+      service_name:           serviceName,
+      price_eur:              priceEur,
       client_email:           clientEmail,
       client_name:            clientName,
       client_phone:           clientPhone,
       amount_eur:             parseFloat(amount),
       status:                 'paid',
       paid_at:                new Date().toISOString(),
-      stripe_payment_intent:  paymentIntent,
-      user_id:                meta.user_id || null,
+      created_at:             new Date().toISOString(),
+      step:                   1, // Iniciado
     }
     console.log('[webhooks/stripe] gestoria_requests upsert payload:', JSON.stringify(upsertPayload))
 

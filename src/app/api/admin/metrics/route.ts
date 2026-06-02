@@ -25,10 +25,11 @@ export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams
   const period = searchParams.get('period') || '30' // días
 
-  // Métricas generales
+  // Métricas generales (excluir ventas de prueba)
   const { data: requests } = await adminSb
     .from('gestoria_requests')
     .select('*')
+    .neq('client_email', 'daniel.trading.sniper@gmail.com')
 
   const totalOrders = requests?.length || 0
   const paidOrders = requests?.filter(r => r.status === 'paid').length || 0
