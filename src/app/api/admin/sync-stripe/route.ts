@@ -42,7 +42,7 @@ export async function GET(req: NextRequest) {
     // Importar Stripe dinámicamente
     const Stripe = (await import('stripe')).default
     const stripe = new Stripe(stripeSecretKey, {
-      apiVersion: '2024-11-20.acacia',
+      apiVersion: '2026-03-25.dahlia',
     })
 
     // Obtener últimas 50 sesiones completadas

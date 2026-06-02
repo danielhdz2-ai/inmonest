@@ -31,7 +31,7 @@ function decodeKey(key: string): string {
 }
 
 const stripe = new Stripe(decodeKey(STRIPE_SECRET), {
-  apiVersion: '2024-11-20.acacia',
+  apiVersion: '2026-03-25.dahlia',
 })
 
 async function main() {
