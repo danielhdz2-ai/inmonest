@@ -93,19 +93,19 @@ export default function VentaCompletaValenciaPage() {
                 🍊 Vende en Valencia sin agencia
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                <span className="text-[#c9962a]">Vende tu piso en Valencia</span> sin pagar comisiones desmedidas
+                <span className="text-[#c9962a]">¿Ya encontraste comprador?</span> Te ayudamos con todos los trámites en Valencia
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                <strong>Inmonest es una gestoría inmobiliaria experta en acompañar a particulares vendedores en Valencia</strong> sin cobrar comisión sobre la venta. 
-                Desde la primera llamada hasta la firma en notaría, un gestor especializado te ayuda con contratos de arras, documentación de la Comunidad Valenciana y asesoramiento personalizado. 
-                <strong>Vende tu piso en Valencia con seguridad jurídica y ahorra miles de euros en comisiones de agencia.</strong>
+                Si <strong>vendes de particular a particular en Valencia</strong> y ya tienes comprador, 
+                un <strong>gestor inmobiliario especializado</strong> te acompaña desde la reserva hasta la escritura. 
+                Redactamos contratos de arras, recabamos documentación valenciana y asesoramos en cada paso. 
+                <strong>Vende seguro sin agencia, ahorra 10.000€+ en comisiones.</strong>
               </p>
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
                 <p className="text-sm text-blue-800">
-                  <strong>Especialistas en Valencia:</strong> Conocemos el mercado inmobiliario valenciano, 
-                  la documentación específica de la Comunidad Valenciana, las notarías de todos los barrios de Valencia 
-                  (Ruzafa, Campanar, Benimaclet, El Carmen, Ciutat Vella, L'Eixample...) y acompañamos a vendedores particulares 
-                  que quieren evitar los honorarios abusivos de las agencias tradicionales.
+                  <strong>✓ Ya tienes comprador particular:</strong> Perfecto, nosotros nos encargamos de toda la gestión documental. 
+                  <strong>✓ Especialistas en Valencia:</strong> Conocemos el mercado valenciano, documentación de la Comunitat Valenciana 
+                  y coordinamos con notarías de todos los barrios (Ruzafa, Campanar, Benimaclet, El Carmen...).
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">

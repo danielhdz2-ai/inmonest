@@ -93,18 +93,19 @@ export default function VentaCompletaMadridPage() {
                 📍 Servicio en Madrid
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                <span className="text-[#c9962a]">Vende tu piso en Madrid</span> con la gestoría inmobiliaria de confianza
+                <span className="text-[#c9962a]">¿Ya encontraste comprador?</span> Te ayudamos con todos los trámites en Madrid
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                <strong>Inmonest es una gestoría inmobiliaria experta en acompañar a particulares vendedores</strong> en todo el proceso de venta. 
-                Desde la primera llamada hasta la firma en notaría, un gestor especializado te ayuda con contratos, documentación y asesoramiento personalizado. 
-                <strong>Vende tu piso en Madrid con total seguridad y sin pagar comisiones de agencia.</strong>
+                Si <strong>vendes de particular a particular en Madrid</strong> y ya tienes comprador, 
+                un <strong>gestor inmobiliario especializado</strong> te acompaña desde la reserva hasta la escritura. 
+                Redactamos contratos, recabamos documentación y asesoramos en cada paso. 
+                <strong>Vende seguro sin agencia, ahorra 10.000€+ en comisiones.</strong>
               </p>
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
                 <p className="text-sm text-blue-800">
-                  <strong>Especialistas en Madrid:</strong> Conocemos el mercado inmobiliario madrileño, 
-                  la documentación específica de la Comunidad de Madrid, las notarías de todos los distritos 
-                  y acompañamos a vendedores particulares que quieren evitar los honorarios desmedidos de las agencias tradicionales.
+                  <strong>✓ Ya tienes comprador particular:</strong> Perfecto, nosotros nos encargamos de toda la gestión documental. 
+                  <strong>✓ Especialistas en Madrid:</strong> Conocemos el mercado madrileño, documentación de la Comunidad de Madrid 
+                  y coordinamos con notarías de todos los distritos.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">

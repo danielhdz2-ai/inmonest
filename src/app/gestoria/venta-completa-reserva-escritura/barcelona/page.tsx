@@ -93,17 +93,19 @@ export default function VentaCompletaBarcelonaPage() {
                 📍 Servicio en Barcelona
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                <span className="text-[#c9962a]">Vende tu piso en Barcelona</span> con acompañamiento completo
+                <span className="text-[#c9962a]">¿Ya encontraste comprador?</span> Te ayudamos con todos los trámites en Barcelona
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Un <strong>gestor inmobiliario especializado en Barcelona</strong> te acompaña desde la reserva hasta la escritura. 
-                Redactamos contratos, recabamos documentación y te asesoramos en cada paso. 
-                <strong> Vende seguro sin agencia en Barcelona.</strong>
+                Si <strong>vendes de particular a particular en Barcelona</strong> y ya tienes comprador, 
+                un <strong>gestor inmobiliario especializado</strong> te acompaña desde la reserva hasta la escritura. 
+                Redactamos contratos, recabamos documentación y asesoramos en cada paso. 
+                <strong>Vende seguro sin agencia, ahorra 10.000€+ en comisiones.</strong>
               </p>
               <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
                 <p className="text-sm text-blue-800">
-                  <strong>Especialistas en Barcelona:</strong> Conocemos las particularidades del mercado inmobiliario catalán, 
-                  la documentación específica de la Generalitat y las notarías de la ciudad.
+                  <strong>✓ Ya tienes comprador particular:</strong> Perfecto, nosotros nos encargamos de toda la gestión documental. 
+                  <strong>✓ Especialistas en Barcelona:</strong> Conocemos las particularidades de la Generalitat, 
+                  documentación catalana específica y coordinamos con notarías de Barcelona.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
@@ -209,7 +211,7 @@ export default function VentaCompletaBarcelonaPage() {
             Qué incluye el servicio en Barcelona
           </h2>
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Todo lo necesario para vender tu piso en Barcelona con todas las garantías legales
+            Para particulares que venden a particulares en Barcelona. Te gestionamos todos los trámites desde la reserva hasta escriturar.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
