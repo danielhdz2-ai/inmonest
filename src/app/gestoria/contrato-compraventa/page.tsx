@@ -53,7 +53,7 @@ export default function ContratoCompraventaPage() {
         <section className="relative bg-gradient-to-r from-[#1a0d00] to-[#2e1900] text-white py-16 sm:py-24">
           <div className="absolute inset-0 opacity-10">
             <Image
-              src="/gestoria/gestoria1.jpg"
+              src="/gestoria1.jpg"
               alt="Compraventa vivienda"
               fill
               className="object-cover"
@@ -203,7 +203,7 @@ export default function ContratoCompraventaPage() {
           {/* Imagen */}
           <div className="my-12 rounded-2xl overflow-hidden shadow-lg">
             <Image
-              src="/gestoria/gestoria3.jpg"
+              src="/gestoria3.jpg"
               alt="Firma de contrato de compraventa"
               width={800}
               height={450}

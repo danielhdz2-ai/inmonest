@@ -30,7 +30,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     tagline: 'El estándar de oro en la compraventa de inmuebles',
     descripcion:
       'El contrato de arras penitenciales es el documento precontractual más utilizado en España para formalizar la intención de compraventa de un inmueble. Permite a cualquiera de las dos partes desistir del acuerdo: el comprador pierde la señal entregada, y el vendedor debe devolver el doble si es él quien se echa atrás. Esta doble penalización lo convierte en la herramienta de seguridad jurídica más equilibrada del mercado inmobiliario español.',
-    image: '/gestoria/gestoria1.jpg',
+    image: '/gestoria1.jpg',
     imageAlt: 'Firma de contrato de arras penitenciales',
     paraQuien: [
       'Compradores que quieren reservar un inmueble con garantías reales',
@@ -83,7 +83,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     tagline: 'El contrato más vinculante: ambas partes se comprometen sin marcha atrás',
     descripcion:
       'El contrato de arras confirmatorias es el más exigente jurídicamente en la compraventa de inmuebles. A diferencia de las arras penitenciales, no permite que ninguna de las partes desista pagando una penalización: si una parte incumple, la otra puede exigir el cumplimiento forzoso del contrato ante los tribunales o resolver el contrato y exigir daños y perjuicios. Es el contrato ideal cuando ambas partes tienen la certeza absoluta de querer cerrar la operación y no necesitan margen de desistimiento.',
-    image: '/gestoria/gestoria3.jpg',
+    image: '/gestoria3.jpg',
     imageAlt: 'Firma de contrato de arras confirmatorias',
     paraQuien: [
       'Comprador y vendedor que han confirmado todo y quieren el máximo compromiso',
@@ -136,7 +136,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     tagline: 'El contrato de alquiler más completo, adaptado a la Ley de Vivienda 2026',
     descripcion:
       'El contrato de alquiler de vivienda habitual está regulado por la Ley de Arrendamientos Urbanos (LAU) y la Ley de Vivienda de 2023 con sus actualizaciones de 2026. Un contrato mal redactado puede suponer años de problemas: cláusulas nulas, actualizaciones de renta incorrectas, imposibilidad de recuperar el piso o disputas por la fianza. Nuestro equipo jurídico redacta contratos personalizados que protegen al propietario y cumplen con todos los derechos del inquilino exigidos por ley.',
-    image: '/gestoria/gestoria7.jpg',
+    image: '/gestoria7.jpg',
     imageAlt: 'Contrato de alquiler de vivienda entre particulares',
     paraQuien: [
       'Propietarios que van a alquilar su piso por primera vez',
@@ -189,7 +189,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     tagline: 'Cierra el alquiler sin conflictos: llaves, estado y fianza en un solo documento',
     descripcion:
       'Cuando termina un contrato de alquiler, la mayoría de los conflictos surgen por la falta de documentación del estado del piso en el momento de la entrega de llaves. Sin un acta de rescisión correctamente firmada, el propietario puede tener dificultades para retener parte de la fianza por daños, y el inquilino no tiene garantías de que se le devuelva íntegramente. Nuestro contrato de rescisión documenta el estado real del inmueble, liquida la fianza y cierra definitivamente la relación arrendaticia.',
-    image: '/gestoria/gestoria5.jpg',
+    image: '/gestoria5.jpg',
     imageAlt: 'Entrega de llaves y rescisión de contrato de alquiler',
     paraQuien: [
       'Propietarios que recuperan su piso al finalizar el contrato',
@@ -242,7 +242,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     tagline: 'Alquila habitaciones en piso compartido con todas las garantías jurídicas',
     descripcion:
       'El alquiler de habitaciones dentro de una vivienda no queda plenamente amparado por la LAU (que protege la vivienda habitual completa), sino que se rige por el Código Civil y los pactos entre las partes. Esa flexibilidad puede convertirse en un problema si el contrato no está bien redactado: convivencia conflictiva, disputas sobre zonas comunes, fianzas no devueltas o inquilinos que se niegan a marcharse. Nuestro equipo redacta contratos de habitación que regulan con precisión cada aspecto, protegiendo tanto al propietario como al inquilino desde el primer día.',
-    image: '/gestoria/gestoria6.jpg',
+    image: '/gestoria6.jpg',
     imageAlt: 'Contrato de alquiler de habitación en piso compartido',
     paraQuien: [
       'Propietarios que alquilan habitaciones de su vivienda habitual',
@@ -295,7 +295,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     tagline: 'Protege tu negocio con un contrato adaptado a la LAU empresarial',
     descripcion:
       'El alquiler de locales comerciales se rige por el Título III de la LAU (uso distinto de vivienda), donde la libertad de pactos entre las partes es mucho mayor que en el alquiler residencial. Sin embargo, esa libertad puede ser un arma de doble filo: sin cláusulas bien redactadas, el arrendatario puede quedarse sin derecho de traspaso, sin derecho de tanteo ante una venta, con rentas que escalan muy por encima del IPC o con obligaciones de obra injustas. Nuestro equipo jurídico protege tanto al propietario del local como al empresario que va a desarrollar allí su actividad.',
-    image: '/gestoria/gestoria2.jpg',
+    image: '/gestoria2.jpg',
     imageAlt: 'Firma de contrato de alquiler de local comercial',
     paraQuien: [
       'Propietarios de locales comerciales o bajos que quieren arrendar',
@@ -348,7 +348,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     tagline: 'Alquila ahora, compra cuando quieras: el contrato más versátil del mercado',
     descripcion:
       'El alquiler con opción a compra es un contrato doble: por un lado regula el arrendamiento de la vivienda durante un período determinado; por otro, otorga al inquilino el derecho exclusivo e irrevocable de adquirirla en ese plazo a un precio previamente pactado, descontando todo o parte de las rentas abonadas. Es la solución ideal para compradores que aún no tienen financiación hipotecaria definitiva pero quieren asegurarse la propiedad, y para vendedores que quieren generar ingresos durante el proceso de venta sin renunciar a ella.',
-    image: '/gestoria/gestoria4.jpg',
+    image: '/gestoria4.jpg',
     imageAlt: 'Firma de contrato de alquiler con opción a compra',
     paraQuien: [
       'Futuros compradores que aún no tienen financiación aprobada',
@@ -401,7 +401,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     tagline: 'Formaliza el préstamo de capital privado con plena validez jurídica y fiscal',
     descripcion:
       'Un préstamo entre particulares —sea entre familiares, amigos o socios— sin contrato escrito puede convertirse en una fuente de conflictos devastadores: reclamaciones por incumplimiento sin pruebas, obligaciones fiscales incumplidas (Hacienda puede considerar el dinero como una donación encubierta sujeta al Impuesto de Donaciones), o disputas sobre intereses y plazos de devolución. Nuestro contrato regula el importe, los plazos, los intereses pactados y las consecuencias del impago, con plena validez ante juzgados y ante la Agencia Tributaria.',
-    image: '/gestoria/gestoria3.jpg',
+    image: '/gestoria3.jpg',
     imageAlt: 'Firma de contrato de préstamo entre particulares',
     paraQuien: [
       'Familiares o amigos que prestan o reciben dinero de forma privada',
@@ -454,7 +454,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     tagline: 'El contrato más ágil y económico para alquilar tu plaza de garaje o trastero',
     descripcion:
       'El alquiler de garajes y trasteros está excluido del régimen de la LAU en sus aspectos de vivienda habitual, lo que significa que las partes tienen total libertad de pactos pero también más exposición a conflictos si no hay contrato escrito: uso del espacio, vehículos permitidos, responsabilidad por daños o robos, duración mínima y devolución de la fianza. Nuestro contrato es sencillo, económico y cubre todos los puntos que habitualmente generan disputas entre propietario e inquilino.',
-    image: '/gestoria/gestoria5.jpg',
+    image: '/gestoria5.jpg',
     imageAlt: 'Contrato de alquiler de plaza de garaje o trastero',
     paraQuien: [
       'Propietarios de plazas de garaje que quieren alquilarlas',
@@ -507,7 +507,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     tagline: 'Asesoramiento jurídico completo desde la reserva hasta el contrato de arras',
     descripcion:
       'Comprar un inmueble es una de las decisiones más importantes de tu vida. Desde la firma del contrato de reserva hasta el contrato de arras, hay múltiples pasos críticos donde un error puede costarte miles de euros: contratos mal redactados, cargas ocultas en el registro, problemas urbanísticos o cláusulas abusivas. Nuestro servicio premium te acompaña con asesoramiento jurídico especializado en cada etapa, revisando toda la documentación y protegiendo tus intereses en todo momento.',
-    image: '/gestoria/gestoria1.jpg',
+    image: '/gestoria1.jpg',
     imageAlt: 'Asesoramiento jurídico en compraventa de inmuebles',
     paraQuien: [
       'Compradores que quieren seguridad jurídica total en su compra',
@@ -560,7 +560,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     tagline: 'El servicio más completo de gestoría inmobiliaria: te acompañamos desde la reserva hasta la escritura',
     descripcion:
       'Comprar una vivienda implica meses de trámites, documentación compleja y riesgos legales en cada etapa. La mayoría de compradores firman contratos sin entender las cláusulas, aceptan honorarios abusivos de agencias, o descubren problemas registrales cuando ya es tarde. Nuestro servicio integral te protege en todo el proceso: revisamos contratos con agencias, analizamos documentación registral y urbanística, coordinamos con la notaría y te asesoramos hasta que firmes la escritura. Es como tener un abogado inmobiliario de confianza a tu lado en cada paso.',
-    image: '/gestoria/gestoria4.jpg',
+    image: '/gestoria4.jpg',
     imageAlt: 'Servicio completo de gestoría para compraventa de vivienda',
     paraQuien: [
       'Compradores que quieren la máxima tranquilidad durante todo el proceso',
@@ -618,7 +618,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     categoria: 'Alquiler',
     tagline: 'Dos contratos esenciales en un solo servicio integral',
     descripcion: 'Servicio completo que incluye la revisión jurídica del contrato de reserva que vas a firmar y la redacción personalizada del contrato de alquiler LAU definitivo. Ideal para inquilinos que quieren seguridad desde el primer paso y ahorrarse problemas posteriores.',
-    image: '/gestoria/gestoria2.jpg',
+    image: '/gestoria2.jpg',
     imageAlt: 'Revisión y redacción de contratos de alquiler',
     paraQuien: [
       'Inquilinos que van a reservar un piso y firmar contrato de alquiler',
@@ -670,7 +670,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     categoria: 'Compraventa',
     tagline: 'Asegura la compra de tu plaza de parking o garaje con garantías',
     descripcion: 'Contrato de arras específicamente adaptado para la compraventa de plazas de parking o garajes. Incluye cláusulas especiales sobre acceso, uso, cargas, servidumbres y verificación registral. Protege tanto a comprador como vendedor en este tipo particular de inmuebles.',
-    image: '/gestoria/gestoria5.jpg',
+    image: '/gestoria5.jpg',
     imageAlt: 'Contrato de arras para parking',
     paraQuien: [
       'Compradores de plazas de parking o garajes',

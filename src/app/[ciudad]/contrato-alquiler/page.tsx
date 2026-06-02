@@ -33,7 +33,7 @@ export async function generateMetadata({
       type: 'website',
       siteName: 'Inmonest',
       locale: 'es_ES',
-      images: [{ url: `${BASE_URL}/gestoria/gestoria7.jpg`, width: 1200, height: 630, alt: cfg.meta.ogImageAlt }],
+      images: [{ url: `${BASE_URL}/gestoria7.jpg`, width: 1200, height: 630, alt: cfg.meta.ogImageAlt }],
     },
   }
 }

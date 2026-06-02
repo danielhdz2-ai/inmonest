@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria/gestoria8.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria en Granada' }],
+    images: [{ url: `${BASE_URL}/gestoria2.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria en Granada' }],
   },
 }
 
@@ -50,7 +50,7 @@ const schemaData = {
       name: 'Contratos de Alquiler Granada - Inmonest',
       description: 'Servicio especializado en contratos de alquiler en Granada. Estudiantes, LAU, arras penitenciales y compraventa. Abogados expertos en normativa andaluza.',
       url: `${BASE_URL}/granada/contrato-alquiler`,
-      image: `${BASE_URL}/gestoria/gestoria8.jpg`,
+      image: `${BASE_URL}/gestoria2.jpg`,
       areaServed: {
         '@type': 'City',
         name: 'Granada',
@@ -137,7 +137,7 @@ export default function GestoriaGranadaPage() {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#1a0d00] via-[#3d2100] to-[#5a2d00] text-white py-16 sm:py-24">
         <div className="absolute inset-0 opacity-10">
-          <Image src="/gestoria/gestoria8.jpg" alt="Gestoría Granada" fill className="object-cover" />
+          <Image src="/gestoria2.jpg" alt="Gestoría Granada" fill className="object-cover" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-block px-4 py-2 rounded-full bg-[#c9962a]/20 border border-[#c9962a]/40 mb-6">

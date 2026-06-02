@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria/gestoria1.jpg`, width: 1200, height: 630, alt: 'Due diligence inmobiliaria' }],
+    images: [{ url: `${BASE_URL}/gestoria1.jpg`, width: 1200, height: 630, alt: 'Due diligence inmobiliaria' }],
   },
 }
 
@@ -108,7 +108,7 @@ export default function DueDiligencePrecompraPage() {
             </div>
             <div className="relative">
               <Image
-                src="/gestoria/gestoria1.jpg"
+                src="/gestoria1.jpg"
                 alt="Due diligence inmobiliaria - verificación documental"
                 width={600}
                 height={400}

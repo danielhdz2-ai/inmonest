@@ -37,7 +37,7 @@ export default function CuantoCuestaArrasPage() {
     datePublished: FECHA,
     dateModified: FECHA,
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/blog/cuanto-cuesta-contrato-arras` },
-    image: `${BASE_URL}/gestoria/gestoria1.jpg`,
+    image: `${BASE_URL}/gestoria1.jpg`,
     wordCount: 2547,
   })
 

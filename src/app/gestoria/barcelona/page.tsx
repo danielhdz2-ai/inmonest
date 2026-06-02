@@ -110,7 +110,7 @@ export default function GestoriaBarcelonaPage() {
 
               <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/gestoria/gestoria1.jpg"
+                  src="/gestoria1.jpg"
                   alt="Gestoría inmobiliaria en Barcelona"
                   fill
                   className="object-cover"
@@ -182,7 +182,7 @@ export default function GestoriaBarcelonaPage() {
               <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition">
                 <div className="relative h-64">
                   <Image
-                    src="/gestoria/gestoria1.jpg"
+                    src="/gestoria1.jpg"
                     alt="Acompañamiento en compraventa Barcelona"
                     fill
                     className="object-cover"
@@ -262,7 +262,7 @@ export default function GestoriaBarcelonaPage() {
               <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition border-2 border-[#c9a84c]">
                 <div className="relative h-64">
                   <Image
-                    src="/gestoria/gestoria4.jpg"
+                    src="/gestoria4.jpg"
                     alt="Servicio completo de compra Barcelona"
                     fill
                     className="object-cover"

@@ -58,7 +58,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
 
       <section className="relative h-[400px] sm:h-[480px] overflow-hidden">
         <Image
-          src="/gestoria/gestoria7.jpg"
+          src="/gestoria7.jpg"
           alt={config.heroImageAlt}
           fill
           priority

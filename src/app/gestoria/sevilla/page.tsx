@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria/gestoria5.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria online en Sevilla' }],
+    images: [{ url: `${BASE_URL}/gestoria5.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria online en Sevilla' }],
   },
 }
 
@@ -50,7 +50,7 @@ const schemaData = {
       name: 'Gestoría Inmobiliaria Sevilla - Inmonest',
       description: 'Gestoría 100% online especializada en contratos inmobiliarios en Sevilla. Redacción y revisión de alquiler LAU, arras, compraventa y rescisión por abogados colegiados.',
       url: `${BASE_URL}/gestoria/sevilla`,
-      image: `${BASE_URL}/gestoria/gestoria5.jpg`,
+      image: `${BASE_URL}/gestoria5.jpg`,
       areaServed: {
         '@type': 'City',
         name: 'Sevilla',
@@ -141,7 +141,7 @@ export default function GestoriaSevillaPage() {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#1a0d00] via-[#2e1900] to-[#5a3200] text-white py-16 sm:py-24">
         <div className="absolute inset-0 opacity-10">
-          <Image src="/gestoria/gestoria5.jpg" alt="Gestoría Sevilla" fill className="object-cover" />
+          <Image src="/gestoria5.jpg" alt="Gestoría Sevilla" fill className="object-cover" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <div className="inline-block px-4 py-2 rounded-full bg-[#c9962a]/20 border border-[#c9962a]/40 mb-6">
