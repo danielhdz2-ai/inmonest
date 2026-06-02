@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import SalesCalendar from './SalesCalendar'
 
 interface GestoriaRequest {
   id: string
@@ -487,34 +488,8 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
             </div>
           </div>
 
-          {/* Daily Revenue Chart (Simple) */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">📈 Ingresos Últimos 30 Días</h3>
-            <div className="flex items-end justify-between gap-1 h-48">
-              {metrics.dailyMetrics.slice(-30).map((day, idx) => {
-                const maxRevenue = Math.max(...metrics.dailyMetrics.map(d => d.revenue), 1)
-                const height = (day.revenue / maxRevenue) * 100
-                return (
-                  <div key={idx} className="flex-1 flex flex-col items-center">
-                    <div
-                      className="w-full bg-gradient-to-t from-[#c9962a] to-amber-300 rounded-t-lg hover:opacity-80 cursor-pointer transition-opacity relative group"
-                      style={{ height: `${height}%` }}
-                    >
-                      <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block bg-gray-900 text-white text-xs rounded px-2 py-1 whitespace-nowrap">
-                        {new Date(day.date).toLocaleDateString('es', { day: '2-digit', month: 'short' })}
-                        <br />
-                        {day.revenue.toFixed(0)} € · {day.paid} ventas
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-            <div className="flex justify-between mt-2 text-xs text-gray-400">
-              <span>{new Date(metrics.dailyMetrics[0]?.date).toLocaleDateString('es', { day: '2-digit', month: 'short' })}</span>
-              <span>Hoy</span>
-            </div>
-          </div>
+          {/* Sales Calendar */}
+          <SalesCalendar dailyMetrics={metrics.dailyMetrics} />
         </div>
       )}
 
