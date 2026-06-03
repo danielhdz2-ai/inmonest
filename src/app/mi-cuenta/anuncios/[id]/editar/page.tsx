@@ -28,13 +28,20 @@ export default async function EditarAnuncioPage({ params }: Props) {
   if (!listing) notFound()
   if (listing.owner_user_id !== user.id) notFound()
 
+  // Cargar imágenes del anuncio
+  const { data: images } = await supabase
+    .from('listing_images')
+    .select('id, storage_path, external_url, position')
+    .eq('listing_id', id)
+    .order('position')
+
   return (
     <div className="max-w-2xl">
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Editar anuncio</h1>
         <p className="text-sm text-gray-500 mt-1">{listing.title}</p>
       </div>
-      <EditarAnuncioForm listing={listing} />
+      <EditarAnuncioForm listing={{ ...listing, images: images || [] }} />
     </div>
   )
 }
