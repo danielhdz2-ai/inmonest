@@ -394,6 +394,37 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
               </div>
             )}
 
+            {/* ── BANNER VENDEDORES (Solo en ventas) ── */}
+            {listing.operation === 'sale' && listing.is_particular && (
+              <div className="bg-gradient-to-br from-amber-50 via-yellow-50 to-amber-100 rounded-2xl p-6 sm:p-8 border-2 border-[#c9962a]/30 shadow-md">
+                <div className="flex items-start gap-4">
+                  <span className="text-4xl">💰</span>
+                  <div className="flex-1">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900">
+                      ¿Eres el vendedor de este piso?
+                    </h3>
+                    <p className="text-gray-700 text-sm sm:text-base mb-4">
+                      Si vendes de <strong>particular a particular con comprador ya encontrado</strong>, te ayudamos con todo: contratos, documentación y acompañamiento hasta escritura. <strong className="text-[#a87a20]">Ahorra 10.000€+ en comisiones de agencia. Solo 687€.</strong>
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Link
+                        href="/gestoria/venta-completa-reserva-escritura"
+                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg"
+                      >
+                        Ver servicio completo (687€) →
+                      </Link>
+                      <a
+                        href="tel:+34641008847"
+                        className="inline-flex items-center justify-center px-5 py-3 rounded-full border-2 border-[#c9962a] text-[#a87a20] font-semibold hover:bg-[#c9962a] hover:text-white transition-colors text-sm"
+                      >
+                        📞 Llamar: 641 008 847
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {/* ── ANÁLISIS DE PRECIOS COMPETITIVO ── */}
             {priceAnalysis && (
               <PriceAnalysisSection

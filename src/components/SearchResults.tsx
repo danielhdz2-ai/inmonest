@@ -128,14 +128,76 @@ export default function SearchResults({
             />
           ) : vista === 'lista' ? (
             <div className="flex flex-col gap-3">
-              {listings.map((listing) => (
-                <ListingCardList key={listing.id} listing={listing} />
+              {listings.map((listing, index) => (
+                <>
+                  <ListingCardList key={listing.id} listing={listing} />
+                  
+                  {/* Banner gestoría después del piso #6 (solo en página 1) */}
+                  {index === 5 && pagina === 1 && (
+                    <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-6 sm:p-8 my-4 shadow-lg">
+                      <div className="max-w-4xl mx-auto text-center">
+                        <div className="text-5xl mb-4">🏠📄</div>
+                        <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-white">
+                          ¿Vas a comprar o vender un piso?
+                        </h2>
+                        <p className="text-white/90 text-base sm:text-lg mb-6 max-w-2xl mx-auto">
+                          Gestoría inmobiliaria especializada te acompaña en todo el proceso. <strong>Contratos profesionales, documentación completa, asesoramiento experto.</strong> Desde 29€.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                          <Link
+                            href="/gestoria"
+                            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#c9962a] text-white text-lg font-semibold hover:bg-[#a87a20] transition-colors shadow-xl"
+                          >
+                            Ver servicios de gestoría →
+                          </Link>
+                          <Link
+                            href="/gestoria/venta-completa-reserva-escritura"
+                            className="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-white/40 text-white font-medium hover:bg-white/10 transition-colors"
+                          >
+                            Venta completa 687€
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </>
               ))}
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-              {listings.map((listing) => (
-                <ListingCard key={listing.id} listing={listing} />
+              {listings.map((listing, index) => (
+                <>
+                  <ListingCard key={listing.id} listing={listing} />
+                  
+                  {/* Banner gestoría después del piso #6 (solo en página 1) */}
+                  {index === 5 && pagina === 1 && (
+                    <div className="col-span-full bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-6 sm:p-8 my-4 shadow-lg">
+                      <div className="max-w-4xl mx-auto text-center">
+                        <div className="text-5xl mb-4">🏠📄</div>
+                        <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-white">
+                          ¿Vas a comprar o vender un piso?
+                        </h2>
+                        <p className="text-white/90 text-base sm:text-lg mb-6 max-w-2xl mx-auto">
+                          Gestoría inmobiliaria especializada te acompaña en todo el proceso. <strong>Contratos profesionales, documentación completa, asesoramiento experto.</strong> Desde 29€.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                          <Link
+                            href="/gestoria"
+                            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#c9962a] text-white text-lg font-semibold hover:bg-[#a87a20] transition-colors shadow-xl"
+                          >
+                            Ver servicios de gestoría →
+                          </Link>
+                          <Link
+                            href="/gestoria/venta-completa-reserva-escritura"
+                            className="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-white/40 text-white font-medium hover:bg-white/10 transition-colors"
+                          >
+                            Venta completa 687€
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </>
               ))}
             </div>
           )
