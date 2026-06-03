@@ -24,7 +24,7 @@ const CIUDADES = [
 // LANDING PAGES GENÉRICAS (SIN CIUDADES)
 const LANDING_GENERICAS = [
   { slug: 'asesoria-compra-piso', nombre: 'Asesoría Compra de Piso', precio: '666€' },
-  { slug: 'due-diligence-precompra', nombre: 'Due Diligence Pre-Compra', precio: '168€' },
+  { slug: 'due-diligence-precompra', nombre: 'Due Diligence Pre-Compra', precio: '350€' },
   { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento Arras a Venta', precio: '166€' },
   { slug: 'arras-vs-reserva-compra', nombre: 'Arras vs Reserva Compra', precio: 'Info' },
   { slug: 'guia-arras-penitenciales', nombre: 'Guía Arras Penitenciales', precio: 'Info' },
@@ -43,7 +43,12 @@ const LANDING_POR_CIUDAD = [
   { 
     servicio: 'venta-completa-reserva-escritura', 
     nombre: 'Servicio Completo Venta',
-    ciudades: ['madrid', 'barcelona'] // Solo estas tienen página
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga']
+  },
+  { 
+    servicio: 'due-diligence-precompra', 
+    nombre: 'Pack Due Diligence Pre-Compra',
+    ciudades: ['madrid', 'barcelona']
   },
   { 
     servicio: 'ciudad-hub', 
