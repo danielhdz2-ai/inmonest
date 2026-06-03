@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { getSupabaseStorageUrl } from '@/lib/supabase-config'
 
 interface ImageItem {
   id: string
@@ -38,10 +39,7 @@ export default function ListingCardGallery({
   function buildUrl(img: ImageItem) {
     // Prioridad 1: Construir URL desde storage_path (más confiable para Supabase)
     if (img.storage_path) {
-      const base = process.env.NEXT_PUBLIC_SUPABASE_URL
-      if (base) {
-        return `${base}/storage/v1/object/public/listings/${img.storage_path}`
-      }
+      return getSupabaseStorageUrl('listings', img.storage_path)
     }
     
     // Prioridad 2: Usar external_url si existe
