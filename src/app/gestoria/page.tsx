@@ -185,7 +185,7 @@ const schemaJson = JSON.stringify({
         itemOffered: {
           '@type': 'Service',
           name: 'Pack Due Diligence Pre-Compra',
-          description: 'Verificación integral de actas de comunidad, derramas, ITE, nota registral e información urbanística tras firmar arras.',
+          description: 'Gestor inmobiliario experto revisa toda la documentación de tu futura vivienda: nota simple, cargas, deudas, hipotecas, comunidad, IBI, cédula de habitabilidad, ITE. Evita sorpresas de 10.000€+ antes de escriturar. Ideal para compras particular a particular con arras ya firmado.',
           url: `${BASE_URL}/gestoria/solicitar/pack-due-diligence-precompra`,
           provider: {
             '@type': 'Organization',
@@ -193,7 +193,7 @@ const schemaJson = JSON.stringify({
           },
           offers: {
             '@type': 'Offer',
-            price: '168',
+            price: '350',
             priceCurrency: 'EUR',
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
