@@ -44,18 +44,22 @@ export default function ListingGallery({ images, title, lat, lng, priceLabel }: 
   }, [lightbox])
 
   const getUrl = (img: ImageItem) => {
+    // Prioridad 1: Construir URL desde storage_path (más confiable para Supabase)
+    if (img.storage_path) {
+      const base = process.env.NEXT_PUBLIC_SUPABASE_URL
+      if (base) {
+        return `${base}/storage/v1/object/public/listings/${img.storage_path}`
+      }
+    }
+    
+    // Prioridad 2: Usar external_url si existe
     if (img.external_url) {
       const isSupabase = img.external_url.includes('supabase.co/storage')
       return isSupabase
         ? img.external_url
         : `/api/img-proxy?url=${encodeURIComponent(img.external_url)}`
     }
-    if (img.storage_path) {
-      const base = process.env.NEXT_PUBLIC_SUPABASE_URL
-      return base
-        ? `${base}/storage/v1/object/public/listings/${img.storage_path}`
-        : img.storage_path
-    }
+    
     return ''
   }
 

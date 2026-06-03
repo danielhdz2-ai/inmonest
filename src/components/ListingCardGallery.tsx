@@ -36,7 +36,15 @@ export default function ListingCardGallery({
   }
 
   function buildUrl(img: ImageItem) {
-    // external_url tiene prioridad — para fotos de particulares es la URL pública completa de Supabase Storage
+    // Prioridad 1: Construir URL desde storage_path (más confiable para Supabase)
+    if (img.storage_path) {
+      const base = process.env.NEXT_PUBLIC_SUPABASE_URL
+      if (base) {
+        return `${base}/storage/v1/object/public/listings/${img.storage_path}`
+      }
+    }
+    
+    // Prioridad 2: Usar external_url si existe
     if (img.external_url) {
       // URLs de Supabase Storage → sirven directamente sin proxy
       if (img.external_url.includes('supabase.co/storage') || img.external_url.startsWith('https://')) {
@@ -47,13 +55,7 @@ export default function ListingCardGallery({
       }
       return img.external_url
     }
-    // Fallback: construir URL pública desde storage_path relativo
-    if (img.storage_path) {
-      const base = process.env.NEXT_PUBLIC_SUPABASE_URL
-      return base
-        ? `${base}/storage/v1/object/public/listings/${img.storage_path}`
-        : img.storage_path
-    }
+    
     return ''
   }
   const imageUrl = buildUrl(images[current])
