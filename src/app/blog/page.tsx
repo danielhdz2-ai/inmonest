@@ -32,6 +32,17 @@ const RECURSOS = [
 
 const ARTICULOS = [
   {
+    slug: 'due-diligence-compra-vivienda',
+    href: '/blog/due-diligence-compra-vivienda',
+    titulo: 'Due Diligence Inmobiliaria: Qué Revisar Antes de Comprar una Vivienda [2026]',
+    resumen:
+      '¿Compras piso de particular a particular? Descubre qué documentación debes revisar para evitar sorpresas de 10.000€+: cargas, deudas, hipotecas, IBI, cédula de habitabilidad, ITE. Checklist completa paso a paso.',
+    fecha: '1 de junio de 2026',
+    categoria: 'Gestoría',
+    lectura: '8 min',
+    etiqueta: 'Nuevo',
+  },
+  {
     slug: 'guia-arras-penitenciales',
     href: '/gestoria/guia-arras-penitenciales',
     titulo: 'Guía completa de arras penitenciales: qué son, cuándo usarlas y errores que cuestan miles',
