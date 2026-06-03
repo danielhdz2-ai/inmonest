@@ -204,6 +204,11 @@ export default function PublicarWizard({ userId }: { userId: string }) {
           const ext  = file.name.split('.').pop() ?? 'webp'
           const path = `${userId}/${listingId}/${i}.${ext}`
           
+          // Add delay between uploads to avoid rate limiting (300ms)
+          if (i > 0) {
+            await new Promise(resolve => setTimeout(resolve, 300))
+          }
+          
           const { error: upErr } = await supabase.storage
             .from('listings')
             .upload(path, file, { upsert: true, contentType: file.type })

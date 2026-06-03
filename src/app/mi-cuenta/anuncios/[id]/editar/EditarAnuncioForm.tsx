@@ -182,6 +182,11 @@ export default function EditarAnuncioForm({ listing }: { listing: ListingData })
             const timestamp = Date.now()
             const path = `${userId}/${listing.id}/${timestamp}_${i}.${ext}`
             
+            // Add delay between uploads to avoid rate limiting (300ms)
+            if (i > 0) {
+              await new Promise(resolve => setTimeout(resolve, 300))
+            }
+            
             const { error: upErr } = await supabase.storage
               .from('listings')
               .upload(path, file, { upsert: true, contentType: file.type })
