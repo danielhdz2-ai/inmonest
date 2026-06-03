@@ -4,17 +4,27 @@
  */
 
 import { createClient } from '@supabase/supabase-js'
-import 'dotenv/config'
+import { config } from 'dotenv'
+import { resolve } from 'path'
+
+// Cargar variables de .env.local
+config({ path: resolve(process.cwd(), '.env.local') })
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY! // Usar SERVICE ROLE para admin
 
 if (!supabaseUrl || !supabaseKey) {
-  console.error('❌ Falta NEXT_PUBLIC_SUPABASE_URL o NEXT_PUBLIC_SUPABASE_ANON_KEY')
+  console.error('❌ Falta NEXT_PUBLIC_SUPABASE_URL o SUPABASE_SERVICE_ROLE_KEY')
+  console.log('   Verifica que .env.local tenga estas variables configuradas')
   process.exit(1)
 }
 
-const supabase = createClient(supabaseUrl, supabaseKey)
+const supabase = createClient(supabaseUrl, supabaseKey, {
+  auth: {
+    autoRefreshToken: false,
+    persistSession: false
+  }
+})
 
 async function diagnostico() {
   console.log('\n🔍 DIAGNÓSTICO DE IMÁGENES - SUPABASE STORAGE\n')
