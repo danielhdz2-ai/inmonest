@@ -7,14 +7,15 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria en Barcelona, Madrid y Valencia | Desde 61€',
-  description: '✓ Gestoría inmobiliaria para particulares en Barcelona, Madrid, Valencia ✓ Contratos arras, compraventa, alquiler ✓ Abogados especializados ✓ Desde 61€ ✓ Entrega 48h',
+  title: 'Gestoría Inmobiliaria Online | Contratos Arras, Alquiler y Compraventa | Inmonest',
+  description: 'Gestoría inmobiliaria especializada online. Contratos de arras, alquiler LAU, compraventa. Abogados expertos en derecho inmobiliario. Desde 29€. Servicio en toda España: Madrid, Barcelona, Valencia, Sevilla. Entrega 24-48h.',
+  keywords: 'gestoría inmobiliaria, gestoría inmobiliaria online, contrato arras penitenciales, contrato alquiler LAU, gestoría compraventa vivienda, abogado inmobiliario, contratos inmobiliarios, gestoría barcelona, gestoría madrid, gestoría valencia',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
   },
   openGraph: {
-    title: 'Contratos inmobiliarios redactados por expertos — Inmonest',
-    description: 'Gestoría especializada en contratos de alquiler y compraventa. Tramitamos LAU, arras, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 61€.',
+    title: 'Gestoría Inmobiliaria Online — Inmonest',
+    description: 'Gestoría especializada en contratos de alquiler y compraventa. Tramitamos LAU, arras, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 29€.',
     url: `${BASE_URL}/gestoria`,
     type: 'website',
     siteName: 'Inmonest',
@@ -26,24 +27,42 @@ export const metadata: Metadata = {
 const schemaJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'LegalService',
-  name: 'Inmonest Gestoría Inmobiliaria',
-  description: 'Gestoría especializada que tramita contratos de alquiler LAU, arras, temporada, rescisión y reserva. Redactados por abogados en derecho inmobiliario, sin plantillas genéricas. Entrega en 24-48h. Desde 61€.',
+  name: 'Inmonest Gestoría Inmobiliaria Online',
+  description: 'Gestoría inmobiliaria online especializada en contratos de alquiler LAU, arras penitenciales, compraventa, rescisión y revisión legal. Redactados por abogados expertos en derecho inmobiliario. Servicio en toda España. Entrega en 24-48h. Desde 29€.',
   url: `${BASE_URL}/gestoria`,
   image: `${BASE_URL}/logo.png`,
-  priceRange: '€',
+  priceRange: '€€',
+  telephone: '+34641008847',
+  email: 'hola@inmonest.com',
   
   // Proveedor
   provider: {
     '@type': 'Organization',
     name: 'Inmonest',
     url: BASE_URL,
+    logo: `${BASE_URL}/logo.png`,
+    telephone: '+34641008847',
+    email: 'hola@inmonest.com',
   },
   
   // Área de servicio
-  areaServed: { 
-    '@type': 'Country', 
-    name: 'España' 
-  },
+  areaServed: [
+    { '@type': 'City', name: 'Madrid' },
+    { '@type': 'City', name: 'Barcelona' },
+    { '@type': 'City', name: 'Valencia' },
+    { '@type': 'City', name: 'Sevilla' },
+    { '@type': 'Country', name: 'España' }
+  ],
+  
+  // Servicios ofrecidos
+  serviceType: [
+    'Contratos de arras penitenciales',
+    'Contratos de alquiler LAU',
+    'Contratos de compraventa',
+    'Revisión legal de contratos',
+    'Asesoría inmobiliaria',
+    'Gestión documental inmobiliaria'
+  ],
   
   // Catálogo de servicios
   hasOfferCatalog: {

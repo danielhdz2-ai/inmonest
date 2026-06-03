@@ -32,6 +32,17 @@ const RECURSOS = [
 
 const ARTICULOS = [
   {
+    slug: 'que-es-gestoria-inmobiliaria',
+    href: '/blog/que-es-gestoria-inmobiliaria',
+    titulo: '¿Qué es una Gestoría Inmobiliaria? Funciones, Servicios y Precios [2026]',
+    resumen:
+      'Descubre qué hace una gestoría inmobiliaria, servicios que ofrece, cuánto cuesta y cuándo necesitas una. Comparativa con notarios y agencias. Guía completa con precios reales.',
+    fecha: '3 de junio de 2026',
+    categoria: 'Gestoría',
+    lectura: '7 min',
+    etiqueta: 'Nuevo',
+  },
+  {
     slug: 'due-diligence-compra-vivienda',
     href: '/blog/due-diligence-compra-vivienda',
     titulo: 'Due Diligence Inmobiliaria: Qué Revisar Antes de Comprar una Vivienda [2026]',
@@ -40,7 +51,6 @@ const ARTICULOS = [
     fecha: '1 de junio de 2026',
     categoria: 'Gestoría',
     lectura: '8 min',
-    etiqueta: 'Nuevo',
   },
   {
     slug: 'guia-arras-penitenciales',
