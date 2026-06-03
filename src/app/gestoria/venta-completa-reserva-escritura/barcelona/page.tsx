@@ -49,11 +49,7 @@ export default function VentaCompletaBarcelonaPage() {
       availability: 'https://schema.org/InStock',
       priceValidUntil: '2026-12-31',
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: '4',
-    },
+
   }
 
   const breadcrumbSchema = {
