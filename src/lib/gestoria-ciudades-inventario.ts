@@ -85,7 +85,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Gestoría Ciudad (Hub)',
     precio: 'Desde 120€',
     href: (c) => `/gestoria/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'palma', 'zaragoza', 'alicante'],
   },
   {
     id: 'venta-completa',
@@ -207,6 +207,10 @@ export const CIUDADES_SEO = [
   { slug: 'valencia', nombre: 'Valencia', texto: 'Contratos de alquiler, arras, asesoría compra' },
   { slug: 'sevilla', nombre: 'Sevilla', texto: 'Venta sin agencia, contratos LAU, due diligence' },
   { slug: 'malaga', nombre: 'Málaga', texto: 'Venta completa reserva→escritura, costa y centro' },
+  { slug: 'bilbao', nombre: 'Bilbao', texto: 'Contratos LAU, arras y normativa foral vasca' },
+  { slug: 'palma', nombre: 'Palma', texto: 'Normativa balear, IBAVI, zonas tensionadas' },
+  { slug: 'zaragoza', nombre: 'Zaragoza', texto: 'Contratos de alquiler y arras, mercado en crecimiento' },
+  { slug: 'alicante', nombre: 'Alicante', texto: 'Costa blanca, compradores extranjeros, cédula habitabilidad' },
   { slug: 'salamanca', nombre: 'Salamanca', texto: 'Venta universitaria, casco histórico, Castilla y León' },
   { slug: 'valladolid', nombre: 'Valladolid', texto: 'Venta particular, compradores desde Madrid, provincia' },
 ] as const

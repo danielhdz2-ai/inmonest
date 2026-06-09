@@ -12,9 +12,18 @@ import {
 const BASE_URL = 'https://inmonest.com'
 const WA = '34641008847'
 
+const GESTORIA_HUB_POR_CIUDAD: Record<string, string> = {
+  malaga: '/gestoria/malaga',
+  bilbao: '/gestoria/bilbao',
+  palma: '/gestoria/palma',
+  zaragoza: '/gestoria/zaragoza',
+  alicante: '/gestoria/alicante',
+}
+
 export default function ContratoAlquilerCiudadPremium({ config }: { config: ContratoAlquilerPremiumConfig }) {
   const precio = CONTRATO_ALQUILER_PREMIUM_PRECIO
   const waText = encodeURIComponent(`Hola, necesito un contrato de alquiler en ${config.nombre}`)
+  const gestoriaHubHref = GESTORIA_HUB_POR_CIUDAD[config.slug]
 
   const schemaJson = {
     '@context': 'https://schema.org',
@@ -172,6 +181,46 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
             </div>
           </div>
         </section>
+
+        {config.particularidadesRegionales && (
+          <section className="bg-white border border-gray-200 rounded-2xl p-8 space-y-8">
+            <h2 className="text-2xl font-bold text-gray-900">{config.particularidadesRegionales.titulo}</h2>
+            {config.particularidadesRegionales.secciones.map((sec) => (
+              <div key={sec.titulo}>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">{sec.titulo}</h3>
+                <p className="text-gray-600 leading-relaxed">{sec.contenido}</p>
+                {sec.bullets && (
+                  <ul className="mt-3 space-y-2">
+                    {sec.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2 text-gray-600 text-sm">
+                        <span className="text-[#c9a84c] mt-0.5 shrink-0">•</span>
+                        {b}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </section>
+        )}
+
+        {gestoriaHubHref && (
+          <section className="bg-[#fdf8ee] border border-[#e8d48a] rounded-2xl p-6 sm:p-8">
+            <h2 className="text-xl font-bold text-gray-900 mb-2">
+              ¿Necesitas más que un contrato de alquiler en {config.nombre}?
+            </h2>
+            <p className="text-gray-600 mb-4">
+              Arras, compraventa, revisión de contratos y acompañamiento completo hasta escritura — todo desde nuestra
+              gestoría inmobiliaria en {config.nombre}, sin comisiones de agencia.
+            </p>
+            <Link
+              href={gestoriaHubHref}
+              className="inline-flex items-center gap-2 text-[#7a5c1e] font-semibold hover:text-[#c9a84c] transition-colors"
+            >
+              Ver gestoría inmobiliaria en {config.nombre} →
+            </Link>
+          </section>
+        )}
 
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Qué llevas exactamente (no &quot;un word en blanco&quot;)</h2>

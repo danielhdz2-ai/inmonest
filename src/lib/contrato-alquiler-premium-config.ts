@@ -11,6 +11,12 @@ export type ContratoAlquilerPremiumConfig = {
     ogTitle: string
     ogDescription: string
     ogImageAlt: string
+    twitterTitle?: string
+    twitterDescription?: string
+  }
+  particularidadesRegionales?: {
+    titulo: string
+    secciones: { titulo: string; contenido: string; bullets?: string[] }[]
   }
   schema: {
     serviceName: string
@@ -459,18 +465,23 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'palma',
     nombre: 'Palma',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Palma? 120 € · 48 h | Inmonest',
-      description: 'Contrato LAU en Palma e Illes Balears. 120€, 48h. Ley de Vivienda 2026.',
+      title: 'Contrato de Alquiler en Palma y Baleares | LAU 2026 desde 120€',
+      description:
+        'Contrato de alquiler LAU en Palma e Illes Balears. 120€ IVA incluido, entrega en 48h. Adaptado a Ley de Vivienda 2026, normativa balear de fianzas y zonas tensionadas. Válido en Mallorca, Menorca, Ibiza y Formentera.',
       keywords: ['contrato alquiler Palma', 'LAU Mallorca', 'arrendamiento Baleares', 'contrato alquiler Ibiza'],
-      ogTitle: 'Contrato alquiler Palma — 120 € | Inmonest',
-      ogDescription: 'Redacción LAU en Palma y Balears.',
-      ogImageAlt: 'Contrato de alquiler Palma',
+      ogTitle: 'Contrato de Alquiler en Palma y Baleares | LAU 2026 desde 120€ | Inmonest',
+      ogDescription:
+        'Contrato de alquiler LAU para Palma y las Illes Balears. Adaptado a la Ley de Vivienda 2026, regulación balear de fianzas y zonas tensionadas. 120€ IVA incluido. Entrega en 48h.',
+      ogImageAlt: 'Contrato de alquiler Palma y Baleares',
+      twitterTitle: 'Contrato de Alquiler en Palma y Baleares | 120€ | Inmonest',
+      twitterDescription:
+        'Contrato LAU personalizado para Mallorca, Menorca, Ibiza y Formentera. Adaptado a normativa balear, fianza y zonas tensionadas. Entrega 48h.',
     },
     schema: {
-      serviceName: 'Contrato de Alquiler de Vivienda (LAU) en Palma',
-      serviceDescription: 'Contrato de alquiler en Palma de Mallorca e Illes Balears.',
-      areaType: 'City',
-      areaName: 'Palma',
+      serviceName: 'Contrato de Alquiler LAU Palma y Baleares',
+      serviceDescription: 'Contrato de alquiler LAU para Palma y las Illes Balears.',
+      areaType: 'State',
+      areaName: 'Illes Balears',
     },
     heroImageAlt: 'Contrato de alquiler en Palma',
     breadcrumbFinal: 'Contrato de Alquiler Palma',
@@ -489,10 +500,34 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     faqs: faqPack(
       'Palma',
       '¿Dónde se deposita la fianza en las Illes Balears?',
-      'La fianza legal de una mensualidad debe ingresarse según la normativa balear vigente en el organismo o modalidad que corresponda.',
+      "En las Illes Balears la fianza legal de una mensualidad debe depositarse en el Institut Balear de l'Habitatge (IBAVI). El propietario tiene 30 días desde la firma del contrato para realizar el depósito. El incumplimiento puede acarrear sanciones. Nuestros contratos incluyen las cláusulas correctas de depósito y referencia al IBAVI.",
       '¿El contrato es válido en todas las islas?',
       'Sí, en Mallorca, Menorca, Ibiza y Formentera, con adaptación a normativa estatal y autonómica.',
     ),
+    particularidadesRegionales: {
+      titulo: 'Particularidades del alquiler en Baleares (2026)',
+      secciones: [
+        {
+          titulo: 'Regulación de zonas tensionadas en Baleares',
+          contenido:
+            'Palma de Mallorca está declarada zona tensionada. Los contratos de alquiler en Palma deben respetar el índice de referencia de precios del Govern Balear. Los propietarios considerados grandes tenedores (más de 10 inmuebles) tienen limitaciones adicionales de precio. Nuestros contratos ya incluyen las cláusulas obligatorias para zonas tensionadas.',
+        },
+        {
+          titulo: 'Alquiler habitual vs alquiler turístico en Baleares',
+          contenido:
+            'Baleares tiene la regulación de vivienda turística más restrictiva de España. Desde 2017 existe una moratoria de nuevas licencias de alquiler turístico (ETV) en Mallorca e Ibiza. Un contrato de alquiler habitual (LAU) y uno de alquiler turístico son documentos completamente distintos — el LAU no sirve para alquilar a turistas ni en plataformas como Airbnb. Si tienes dudas sobre qué tipo de contrato necesitas, consúltanos antes de firmar.',
+        },
+        {
+          titulo: 'Diferencias por isla',
+          contenido: 'Cada isla tiene matices distintos en demanda y normativa:',
+          bullets: [
+            'Mallorca: Mayor regulación, muchas zonas tensionadas, moratoria ETV activa.',
+            'Menorca: Mercado más pequeño, normativa LAU estándar con matices insulares.',
+            'Ibiza y Formentera: Alta demanda de alquiler temporal. Los contratos de temporada (no LAU) son muy frecuentes — tienen normativa diferente y plazos distintos.',
+          ],
+        },
+      ],
+    },
   },
 
   pamplona: {
