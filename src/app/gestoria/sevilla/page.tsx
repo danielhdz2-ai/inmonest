@@ -69,11 +69,6 @@ const schemaData = {
         addressCountry: 'ES',
       },
       priceRange: '€€',
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '203',
-      },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Servicios Gestoría Inmobiliaria Sevilla',

@@ -58,11 +58,6 @@ const schemaData = {
         addressCountry: 'ES',
       },
       priceRange: '€€',
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.8',
-        reviewCount: '127',
-      },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Contratos Inmobiliarios Zaragoza',

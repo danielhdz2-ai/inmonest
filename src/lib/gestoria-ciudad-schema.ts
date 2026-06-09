@@ -17,11 +17,6 @@ export function buildLegalServiceSchema(ciudad: string, slug: string) {
       '@type': 'City',
       name: ciudad,
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: '4',
-    },
   }
 }
 

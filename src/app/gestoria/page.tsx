@@ -31,6 +31,12 @@ export const metadata: Metadata = {
   },
 }
 
+const SCHEMA_ITEM_REVIEWED = {
+  '@type': 'Organization',
+  name: 'Inmonest',
+  url: BASE_URL,
+}
+
 const schemaJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'LegalService',
@@ -94,11 +100,6 @@ const schemaJson = JSON.stringify({
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
             validFrom: '2026-01-01'
-          },
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '5.0',
-            reviewCount: '4'
           }
         }
       },
@@ -120,11 +121,6 @@ const schemaJson = JSON.stringify({
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
             validFrom: '2026-01-01'
-          },
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '5.0',
-            reviewCount: '4'
           }
         }
       },
@@ -146,11 +142,6 @@ const schemaJson = JSON.stringify({
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
             validFrom: '2026-01-01'
-          },
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '5.0',
-            reviewCount: '4'
           }
         }
       },
@@ -172,11 +163,6 @@ const schemaJson = JSON.stringify({
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
             validFrom: '2026-01-01'
-          },
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '5.0',
-            reviewCount: '4'
           }
         }
       },
@@ -198,11 +184,6 @@ const schemaJson = JSON.stringify({
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
             validFrom: '2026-01-01'
-          },
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '5.0',
-            reviewCount: '4'
           }
         }
       },
@@ -224,11 +205,6 @@ const schemaJson = JSON.stringify({
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
             validFrom: '2026-01-01'
-          },
-          aggregateRating: {
-            '@type': 'AggregateRating',
-            ratingValue: '5.0',
-            reviewCount: '4'
           }
         }
       }
@@ -249,13 +225,14 @@ const schemaJson = JSON.stringify({
     ratingValue: '5.0',
     reviewCount: '4',
     bestRating: '5',
-    worstRating: '5'
+    worstRating: '1'
   },
   
   // Reseñas individuales
   review: [
     {
       '@type': 'Review',
+      itemReviewed: SCHEMA_ITEM_REVIEWED,
       author: {
         '@type': 'Person',
         name: 'zonetechonline'
@@ -270,6 +247,7 @@ const schemaJson = JSON.stringify({
     },
     {
       '@type': 'Review',
+      itemReviewed: SCHEMA_ITEM_REVIEWED,
       author: {
         '@type': 'Person',
         name: 'Alicia Fernández'
@@ -284,6 +262,7 @@ const schemaJson = JSON.stringify({
     },
     {
       '@type': 'Review',
+      itemReviewed: SCHEMA_ITEM_REVIEWED,
       author: {
         '@type': 'Person',
         name: 'Daniel Mercat'
@@ -298,6 +277,7 @@ const schemaJson = JSON.stringify({
     },
     {
       '@type': 'Review',
+      itemReviewed: SCHEMA_ITEM_REVIEWED,
       author: {
         '@type': 'Person',
         name: 'Wendy Bermudez'
