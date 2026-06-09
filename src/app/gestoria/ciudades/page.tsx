@@ -134,7 +134,7 @@ export default function CiudadesPage() {
               </h1>
               <p className="text-xl text-white/90 max-w-3xl mx-auto mb-6">
                 Servicios profesionales de gestoría inmobiliaria online en las principales ciudades de España. 
-                Contratos, trámites y asesoría legal desde 49€.
+                Contratos, trámites y asesoría legal desde 29€.
               </p>
               <div className="flex flex-wrap justify-center gap-3 text-sm">
                 {CIUDADES.map(ciudad => (
@@ -449,7 +449,7 @@ export default function CiudadesPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#c9a84c] font-bold">✓</span>
-                <span><strong>Precios transparentes:</strong> Desde 49€, sin sorpresas</span>
+                <span><strong>Precios transparentes:</strong> Desde 29€, sin sorpresas</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-[#c9a84c] font-bold">✓</span>

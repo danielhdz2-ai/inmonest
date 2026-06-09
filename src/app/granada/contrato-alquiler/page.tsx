@@ -7,8 +7,8 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Alquiler en Granada 【DESDE 29€】 Estudiantes y LAU | Inmonest',
-  description: 'Contratos de alquiler en Granada para estudiantes y familias. LAU, temporal, arras y compraventa. Especialistas en zona universitaria. Desde 29€ con entrega en 48h.',
+  title: 'Contrato de Alquiler en Granada 【LAU 120€】 Estudiantes y Arras | Inmonest',
+  description: 'Contratos de alquiler en Granada para estudiantes y familias. LAU 120€, temporal 97€, arras 145€. Especialistas en zona universitaria. Entrega en 48h.',
   keywords: [
     'contrato alquiler granada',
     'contrato estudiantes granada',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/granada/contrato-alquiler`,
   },
   openGraph: {
-    title: 'Contrato de Alquiler en Granada - Estudiantes y LAU desde 29€',
+    title: 'Contrato de Alquiler en Granada - LAU 120€ · Temporada 97€',
     description: 'Contratos de alquiler en Granada para estudiantes, LAU, arras penitenciales y compraventa. Abogados expertos en zona universitaria.',
     url: `${BASE_URL}/granada/contrato-alquiler`,
     type: 'website',
@@ -69,11 +69,11 @@ const schemaData = {
         itemListElement: [
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler Estudiantes Granada', price: '35', priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler Estudiantes Granada', price: '97', priceCurrency: 'EUR' },
           },
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler LAU Granada', price: '29', priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler LAU Granada', price: '120', priceCurrency: 'EUR' },
           },
           {
             '@type': 'Offer',
@@ -90,7 +90,7 @@ const schemaData = {
           name: '¿Cuánto cuesta un contrato de alquiler para estudiantes en Granada?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Redactamos contratos de alquiler temporal para estudiantes en Granada desde 35€. Incluye cláusulas de duración académica, gastos compartidos y normativa específica para residencias estudiantiles.',
+            text: 'Redactamos contratos de alquiler temporal para estudiantes en Granada desde 97€. Incluye cláusulas de duración académica, gastos compartidos y normativa específica para residencias estudiantiles.',
           },
         },
         {
@@ -148,14 +148,14 @@ export default function GestoriaGranadaPage() {
           </h1>
           <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
             Redactamos contratos para <strong className="text-[#f4c94a]">estudiantes, familias e inversores</strong> en Granada.  
-            Alquiler LAU, temporal, arras y compraventa. <strong>Desde 29€. Entrega en 48 horas.</strong>
+            Alquiler LAU, temporal, arras y compraventa. <strong>LAU 120€ · Temporada 97€. Entrega en 48 horas.</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/gestoria/solicitar/contrato-alquiler-temporal"
               className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-all transform hover:scale-105"
             >
-              Contrato Estudiantes - 35€
+              Contrato Estudiantes - 97€
             </Link>
             <Link
               href="/gestoria/solicitar/arras-penitenciales"
@@ -215,7 +215,7 @@ export default function GestoriaGranadaPage() {
                 Específico para estudiantes en Granada. Duración curso académico (9-10 meses). 
                 Incluye cláusulas de gastos compartidos, normas de convivencia y fianza.
               </p>
-              <div className="text-3xl font-bold text-[#c9962a] mb-4">35€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-4">97€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
                 <li>✅ Adaptado a normativa estudiantil</li>
                 <li>✅ Duración flexible (3-11 meses)</li>
@@ -238,7 +238,7 @@ export default function GestoriaGranadaPage() {
                 Arrendamiento de vivienda habitual en Granada. Para familias o profesionales. 
                 Duración mínima 3 años. Conforme LAU 2026 y normativa andaluza.
               </p>
-              <div className="text-3xl font-bold text-[#c9962a] mb-4">29€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-4">120€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
                 <li>✅ Conforme LAU actualizada</li>
                 <li>✅ Protección propietarios e inquilinos</li>
@@ -310,7 +310,7 @@ export default function GestoriaGranadaPage() {
             <li>Normas de convivencia: horarios, limpieza, visitas</li>
           </ul>
           <p>
-            En <strong>Inmonest</strong> redactamos contratos de alquiler temporal para estudiantes desde <strong>35€</strong>. 
+            En <strong>Inmonest</strong> redactamos contratos de alquiler temporal para estudiantes desde <strong>97€</strong>. 
             Incluyen todas estas cláusulas adaptadas a la normativa andaluza.
           </p>
 
@@ -371,7 +371,7 @@ export default function GestoriaGranadaPage() {
                 ¿Cuánto cuesta un contrato de alquiler para estudiantes en Granada?
               </summary>
               <p className="mt-4 text-gray-700 leading-relaxed">
-                Redactamos contratos de alquiler temporal para estudiantes en Granada desde <strong>35€</strong>. Incluye cláusulas de duración académica (9-10 meses), 
+                Redactamos contratos de alquiler temporal para estudiantes en Granada desde <strong>97€</strong>. Incluye cláusulas de duración académica (9-10 meses), 
                 gastos compartidos, fianza y normativa específica para residencias estudiantiles. Perfecto para pisos en zona Fuentenueva, Centro o Realejo.
               </p>
             </details>
@@ -437,7 +437,7 @@ export default function GestoriaGranadaPage() {
               href="/gestoria/solicitar/contrato-alquiler-temporal"
               className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-transform transform hover:scale-105"
             >
-              Contrato Estudiantes - 35€
+              Contrato Estudiantes - 97€
             </Link>
             <Link
               href="/gestoria"

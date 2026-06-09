@@ -242,7 +242,7 @@ export default function AyudaPropietariosPage() {
                 5 años + 3 prórroga tácita.
               </p>
               <Link
-                href="/gestoria/solicitar/contrato-alquiler"
+                href="/gestoria/solicitar/ayuda-propietarios"
                 className="block text-center bg-[#c9962a] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar →
@@ -250,13 +250,13 @@ export default function AyudaPropietariosPage() {
             </div>
             <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler temporal</h3>
-              <div className="text-3xl font-bold text-[#c9962a] mb-3">67€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-3">97€</div>
               <p className="text-gray-600 mb-4">
                 Para estancias cortas (estudios, trabajo temporal). Menos de 1 año. 
                 Condiciones específicas para temporales.
               </p>
               <Link
-                href="/gestoria/solicitar/contrato-alquiler"
+                href="/gestoria/solicitar/alquiler-temporada"
                 className="block text-center bg-[#c9962a] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar →
@@ -264,7 +264,7 @@ export default function AyudaPropietariosPage() {
             </div>
             <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler de habitación</h3>
-              <div className="text-3xl font-bold text-[#c9962a] mb-3">73€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-3">121€</div>
               <p className="text-gray-600 mb-4">
                 Para alquilar una habitación en piso compartido. Espacios comunes, normas de convivencia, etc.
               </p>
@@ -331,11 +331,11 @@ export default function AyudaPropietariosPage() {
             <div className="grid md:grid-cols-3 gap-6 mb-6">
               <div>
                 <div className="text-3xl font-bold text-[#c9962a]">10 contratos</div>
-                <div className="text-gray-600">65€/ud → Ahorro 80€</div>
+                <div className="text-gray-600">73€/ud — consultar descuento</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#c9962a]">25 contratos</div>
-                <div className="text-gray-600">59€/ud → Ahorro 350€</div>
+                <div className="text-gray-600">73€/ud — consultar descuento</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#c9962a]">50+ contratos</div>

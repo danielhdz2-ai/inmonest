@@ -166,7 +166,7 @@ export default function ContratoCompraventaPage() {
                     <p className="text-sm text-gray-600">Menos frecuentes. No se puede desistir; si incumples, pagas las arras + daños y perjuicios.</p>
                   </div>
                 </div>
-                <p className="text-sm text-[#c9962a] font-semibold mt-4">Precio: 30€</p>
+                <p className="text-sm text-[#c9962a] font-semibold mt-4">Precio: 145€</p>
               </div>
 
               <div className="bg-white border-2 border-gray-200 rounded-xl p-6">

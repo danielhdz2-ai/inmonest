@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
+import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
 import { GESTORIA_PRECIOS } from '@/lib/gestoria-servicios-destacados'
 
@@ -209,6 +210,8 @@ export default function GestoriaSevillaPage() {
         subtitulo="Redactados por abogados colegiados con experiencia en el mercado inmobiliario sevillano. Precios iguales que en nuestra gestoría online."
       />
 
+      <CiudadHubComoTrabajamos ciudad="Sevilla" />
+
       {/* Contenido SEO: Mercado Sevilla */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
@@ -263,7 +266,7 @@ export default function GestoriaSevillaPage() {
             Estos contratos <strong>NO son LAU</strong>, tienen normativa diferente y plazos más flexibles.
           </p>
           <p>
-            Ofrecemos contratos de alquiler temporal adaptados a Sevilla desde <strong>35€</strong>. Incluyen:
+            Ofrecemos contratos de alquiler temporal adaptados a Sevilla desde <strong>97€</strong>. Incluyen:
           </p>
           <ul className="list-disc pl-6 space-y-2">
             <li>Duración flexible (3-11 meses)</li>
@@ -271,37 +274,6 @@ export default function GestoriaSevillaPage() {
             <li>Fianzas y gastos claros</li>
             <li>Cláusulas de rescisión anticipada</li>
           </ul>
-        </div>
-      </section>
-
-      {/* Cómo funciona */}
-      <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-12 sm:py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
-            ¿Cómo funciona nuestro servicio online?
-          </h2>
-          <div className="grid md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-[#c9962a] text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">1</div>
-              <h3 className="font-bold text-gray-900 mb-2">Solicita online</h3>
-              <p className="text-sm text-gray-600">Rellenas un formulario con los datos de tu operación inmobiliaria</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-[#c9962a] text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">2</div>
-              <h3 className="font-bold text-gray-900 mb-2">Pago seguro</h3>
-              <p className="text-sm text-gray-600">Abonas con Stripe (tarjeta o Bizum). Pago 100% seguro y encriptado</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-[#c9962a] text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">3</div>
-              <h3 className="font-bold text-gray-900 mb-2">Redacción</h3>
-              <p className="text-sm text-gray-600">Un abogado redacta tu contrato personalizado en 48h máximo</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-[#c9962a] text-white text-2xl font-bold flex items-center justify-center mx-auto mb-4">4</div>
-              <h3 className="font-bold text-gray-900 mb-2">Entrega</h3>
-              <p className="text-sm text-gray-600">Recibes el contrato por email. Revisiones ilimitadas incluidas</p>
-            </div>
-          </div>
         </div>
       </section>
 

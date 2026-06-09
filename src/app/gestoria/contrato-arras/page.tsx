@@ -5,12 +5,12 @@ import PageHeroImage from '@/components/PageHeroImage'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Arras Online | Desde 49€ | Gestoría Inmobiliaria | Inmonest',
-  description: 'Redacción profesional de contratos de arras y señal. Servicio online en toda España. Arras penitenciales, confirmatorias y señal. Desde 49€ + IVA.',
+  title: 'Contrato de Arras Online | Desde 145€ | Gestoría Inmobiliaria | Inmonest',
+  description: 'Redacción profesional de contratos de arras y señal. Servicio online en toda España. Arras penitenciales, confirmatorias y señal. Desde 145€ + IVA.',
   keywords: 'contrato de arras, contrato de señal, arras penitenciales, arras confirmatorias, contrato reserva vivienda, gestoría inmobiliaria',
   openGraph: {
-    title: 'Contrato de Arras Online | Desde 49€ | Inmonest',
-    description: 'Redacción profesional de contratos de arras y señal. Servicio online en toda España desde 49€.',
+    title: 'Contrato de Arras Online | Desde 145€ | Inmonest',
+    description: 'Redacción profesional de contratos de arras y señal. Servicio online en toda España desde 145€.',
     type: 'website',
   },
 }
@@ -30,19 +30,19 @@ const TIPOS_ARRAS = [
   {
     tipo: 'Arras Penitenciales',
     descripcion: 'La opción más común. Permite desistir del contrato perdiendo la señal (comprador) o devolviendo el doble (vendedor).',
-    precio: '49€',
+    precio: '145€',
     icono: '⚖️',
   },
   {
     tipo: 'Arras Confirmatorias',
     descripcion: 'Se exige el cumplimiento del contrato. No se puede desistir sin causa justificada.',
-    precio: '49€',
+    precio: '145€',
     icono: '✅',
   },
   {
     tipo: 'Arras Penales',
     descripcion: 'Similar a las penitenciales pero permite reclamar indemnización adicional por daños y perjuicios.',
-    precio: '59€',
+    precio: '145€',
     icono: '📋',
   },
 ]
@@ -65,7 +65,7 @@ export default function ContratoArrasPage() {
               </h1>
               <p className="text-xl sm:text-2xl text-white/95 max-w-3xl mx-auto mb-8">
                 Redacción profesional de contratos de arras y señal para compraventa de viviendas. 
-                <strong> Desde 49€ + IVA.</strong> Listo en 24-48 horas.
+                <strong> Desde 145€ + IVA.</strong> Listo en 24-48 horas.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
                 <a
@@ -316,7 +316,7 @@ export default function ContratoArrasPage() {
             </ul>
 
             <p className="text-gray-700 leading-relaxed">
-              Por solo <strong>49€ + IVA</strong>, tendrás un contrato profesional redactado específicamente para 
+              Por solo <strong>145€ + IVA</strong>, tendrás un contrato profesional redactado específicamente para 
               tu caso, con todas las garantías legales y la tranquilidad de saber que está bien hecho.
             </p>
           </div>

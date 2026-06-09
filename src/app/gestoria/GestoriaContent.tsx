@@ -551,7 +551,7 @@ export default function GestoriaPage() {
         <div className="text-center mb-10">
           <h2 className="text-3xl font-extrabold text-gray-900 mb-3">Nuestros servicios</h2>
           <p className="text-gray-500 text-base max-w-xl mx-auto">
-            Desde 30 € hasta 120 €. Cada contrato redactado a mano por nuestros gestores, adaptado a tu situación concreta.
+            Desde 29 € hasta 687 €. Cada contrato redactado a mano por nuestros gestores, adaptado a tu situación concreta.
           </p>
         </div>
 

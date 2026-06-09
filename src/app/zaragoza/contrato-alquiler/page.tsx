@@ -7,8 +7,8 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Alquiler en Zaragoza 【DESDE 29€】 LAU y Arras | Inmonest',
-  description: 'Contratos de alquiler en Zaragoza redactados por abogados. LAU, arras penitenciales y compraventa. Especialistas en derecho inmobiliario aragonés. Desde 29€. Entrega en 48h.',
+  title: 'Contrato de Alquiler en Zaragoza 【LAU 120€】 LAU y Arras | Inmonest',
+  description: 'Contratos de alquiler en Zaragoza redactados por abogados. LAU 120€, arras 145€, revisión 60€. Especialistas en derecho inmobiliario aragonés. Entrega en 48h.',
   keywords: [
     'contrato alquiler zaragoza',
     'contrato lau zaragoza',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/zaragoza/contrato-alquiler`,
   },
   openGraph: {
-    title: 'Contrato de Alquiler en Zaragoza - Desde 29€',
+    title: 'Contrato de Alquiler en Zaragoza - LAU 120€',
     description: 'Contratos de alquiler LAU en Zaragoza redactados por abogados. Arras, compraventa y asesoría legal especializada. Entrega 48h.',
     url: `${BASE_URL}/zaragoza/contrato-alquiler`,
     type: 'website',
@@ -69,7 +69,7 @@ const schemaData = {
         itemListElement: [
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler LAU Zaragoza', price: '29', priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler LAU Zaragoza', price: '120', priceCurrency: 'EUR' },
           },
           {
             '@type': 'Offer',
@@ -77,7 +77,7 @@ const schemaData = {
           },
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Revisión Contrato Alquiler Zaragoza', price: '59', priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Revisión Contrato Alquiler Zaragoza', price: '60', priceCurrency: 'EUR' },
           },
         ],
       },
@@ -90,7 +90,7 @@ const schemaData = {
           name: '¿Cuánto cuesta un contrato de alquiler en Zaragoza?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'En Inmonest redactamos contratos de alquiler LAU adaptados a la normativa aragonesa desde 29€. Incluye asesoramiento personalizado y entrega en 48h.',
+            text: 'En Inmonest redactamos contratos de alquiler LAU adaptados a la normativa aragonesa desde 120€. Incluye asesoramiento personalizado y entrega en 48h.',
           },
         },
         {
@@ -106,7 +106,7 @@ const schemaData = {
           name: '¿Necesito un abogado para firmar un contrato de alquiler en Zaragoza?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'No es obligatorio, pero muy recomendable. Un abogado especializado revisa cláusulas abusivas, garantiza cumplimiento de la LAU y evita problemas futuros. En Inmonest ofrecemos revisión desde 59€.',
+            text: 'No es obligatorio, pero muy recomendable. Un abogado especializado revisa cláusulas abusivas, garantiza cumplimiento de la LAU y evita problemas futuros. En Inmonest ofrecemos revisión desde 60€.',
           },
         },
         {
@@ -148,14 +148,14 @@ export default function GestoriaZaragozaPage() {
           </h1>
           <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
             Redactamos y revisamos contratos de alquiler, arras y compraventa adaptados a la legislación aragonesa. 
-            <strong className="text-[#f4c94a]"> Desde 29€. Entrega en 48 horas.</strong>
+            <strong className="text-[#f4c94a]"> LAU 120€. Entrega en 48 horas.</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/gestoria/solicitar/contrato-alquiler"
               className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-all transform hover:scale-105"
             >
-              Solicitar Contrato de Alquiler - 29€
+              Solicitar Contrato de Alquiler - 120€
             </Link>
             <Link
               href="/gestoria/solicitar/arras-penitenciales"
@@ -205,7 +205,7 @@ export default function GestoriaZaragozaPage() {
                 Contrato de arrendamiento de vivienda habitual adaptado a Zaragoza. Incluye cláusulas de fianza, 
                 duración, gastos de comunidad y normativa aragonesa específica.
               </p>
-              <div className="text-3xl font-bold text-[#c9962a] mb-4">29€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-4">120€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
                 <li>✅ Redacción personalizada</li>
                 <li>✅ Conforme LAU 2026</li>
@@ -254,7 +254,7 @@ export default function GestoriaZaragozaPage() {
                 ¿Te han dado un contrato para firmar en Zaragoza? Nuestros abogados lo revisan línea por línea, 
                 detectan cláusulas abusivas y te asesoran antes de firmar.
               </p>
-              <div className="text-3xl font-bold text-[#c9962a] mb-4">59€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-4">60€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
                 <li>✅ Revisión completa por abogado</li>
                 <li>✅ Detección cláusulas abusivas</li>
@@ -334,7 +334,7 @@ export default function GestoriaZaragozaPage() {
                 ¿Cuánto cuesta un contrato de alquiler en Zaragoza?
               </summary>
               <p className="mt-4 text-gray-700 leading-relaxed">
-                En Inmonest redactamos contratos de alquiler LAU adaptados a la normativa aragonesa desde <strong>29€</strong>. 
+                En Inmonest redactamos contratos de alquiler LAU adaptados a la normativa aragonesa desde <strong>120€</strong>. 
                 Incluye asesoramiento personalizado, revisiones ilimitadas y entrega en 48h. Otras gestorías cobran 80-120€ por el mismo servicio.
               </p>
             </details>
@@ -356,7 +356,7 @@ export default function GestoriaZaragozaPage() {
               </summary>
               <p className="mt-4 text-gray-700 leading-relaxed">
                 No es obligatorio, pero <strong>muy recomendable</strong>. Un abogado especializado revisa cláusulas abusivas (ej: prohibición de mascotas sin justificación, 
-                penalizaciones excesivas), garantiza cumplimiento de la LAU y evita problemas futuros. En Inmonest ofrecemos revisión desde <strong>59€</strong>.
+                penalizaciones excesivas), garantiza cumplimiento de la LAU y evita problemas futuros. En Inmonest ofrecemos revisión desde <strong>60€</strong>.
               </p>
             </details>
 

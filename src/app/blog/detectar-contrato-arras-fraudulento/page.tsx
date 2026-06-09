@@ -229,7 +229,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
             <li>
               <strong>Revisa el contrato ANTES de firmar:</strong> 
               <Link href="/gestoria/revision-contrato-arras" className="text-blue-600 underline ml-1">
-                Un abogado lo revisa en 24h por 45€
+                Un abogado lo revisa en 24h por 60€
               </Link>. Mucho más barato que perder 10.000€.
             </li>
             <li>
@@ -279,7 +279,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
             No lo harías con 10.000€ en la calle, no lo hagas con un piso.
           </p>
           <p>
-            Por 45€ puedes hacer revisar tu contrato y evitar perder 10.000€, 20.000€ o más. 
+            Por 60€ puedes hacer revisar tu contrato y evitar perder 10.000€, 20.000€ o más. 
             <strong>Vale la pena.</strong>
           </p>
         </div>
@@ -300,7 +300,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
               href="/gestoria/revision-contrato-arras"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-center"
             >
-              Revisar contrato de arras (45€)
+              Revisar contrato de arras (60€)
             </Link>
           </div>
         </div>

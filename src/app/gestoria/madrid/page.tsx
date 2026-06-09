@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
+import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
 
 const BASE_URL = 'https://inmonest.com'
@@ -339,55 +340,7 @@ export default function GestoriaMadridPage() {
 
         <CiudadHubServiciosGrid ciudad="Madrid" />
 
-        {/* Cómo trabajamos */}
-        <section className="py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-              Cómo trabajamos en Madrid
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#c9a84c] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  1
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Solicitas el servicio</h3>
-                <p className="text-gray-600">
-                  Nos envías los datos de tu operación online. Respondemos en menos de 2 horas.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#c9a84c] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  2
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Primera llamada con tu experto</h3>
-                <p className="text-gray-600">
-                  Coordinamos una primera llamada con el asesor asignado para analizar tu caso en profundidad.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#c9a84c] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  3
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Análisis completo</h3>
-                <p className="text-gray-600">
-                  Revisamos toda la documentación, identificamos riesgos y te informamos de cada detalle.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-[#c9a84c] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  4
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Te acompañamos hasta el final</h3>
-                <p className="text-gray-600">
-                  Estamos contigo en cada paso: negociaciones, firma de arras y coordinación hasta escritura.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <CiudadHubComoTrabajamos ciudad="Madrid" />
 
         {/* Quiénes somos */}
         <section className="py-16 bg-gray-50">

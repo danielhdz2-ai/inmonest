@@ -1,16 +1,19 @@
-/** Precios canónicos alineados con /gestoria y /gestoria/solicitar/[servicio] */
+import { getPrecioServicio } from './gestoria-catalogo'
+
+/** Precios canónicos alineados con Stripe y /gestoria/solicitar/[servicio] */
 export const GESTORIA_PRECIOS = {
-  contratoAlquiler: 120,
-  arrasPenitenciales: 145,
-  reservaCompra: 61,
-  revisionArras: 60,
-  revisionAlquiler: 60,
-  rescisionAlquiler: 73,
-  acompanamientoReservaArras: 424,
-  ventaCompleta: 687,
-  compraCompleta: 687,
-  asesoramientoArrasVenta: 166,
-  analisisFraude: 29,
+  contratoAlquiler: getPrecioServicio('contrato-alquiler')!,
+  arrasPenitenciales: getPrecioServicio('arras-penitenciales')!,
+  reservaCompra: getPrecioServicio('reserva-compra')!,
+  revisionArras: getPrecioServicio('revision-arras')!,
+  revisionAlquiler: getPrecioServicio('revision-alquiler')!,
+  rescisionAlquiler: getPrecioServicio('rescision-alquiler')!,
+  acompanamientoReservaArras: getPrecioServicio('acompanamiento-reserva-arras')!,
+  ventaCompleta: getPrecioServicio('venta-completa-reserva-escritura')!,
+  compraCompleta: getPrecioServicio('compra-completa-reserva-escritura')!,
+  asesoramientoArrasVenta: getPrecioServicio('asesoramiento-arras-venta')!,
+  analisisFraude: getPrecioServicio('contrato-ilegal')!,
+  alquilerTemporada: getPrecioServicio('alquiler-temporada')!,
 } as const
 
 export type ServicioDestacado = {

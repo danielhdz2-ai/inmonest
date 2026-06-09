@@ -373,14 +373,14 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                       ¿Listo para comprar?
                     </h3>
                     <p className="text-white/80 text-sm sm:text-base mb-4">
-                      Protege tu señal con un <strong>contrato de arras</strong> redactado por abogados. Evita problemas legales y asegura tu compra. <strong>Desde 30€.</strong>
+                      Protege tu señal con un <strong>contrato de arras</strong> redactado por abogados. Evita problemas legales y asegura tu compra. <strong>Desde 145€.</strong>
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Link
                         href="/gestoria/contrato-arras"
                         className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg"
                       >
-                        Crear contrato de arras desde 30€ →
+                        Crear contrato de arras desde 145€ →
                       </Link>
                       <Link
                         href="/gestoria"
