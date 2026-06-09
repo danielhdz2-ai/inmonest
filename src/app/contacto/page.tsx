@@ -1,5 +1,8 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import ContactForm from '@/components/ContactForm'
+import Navbar from '@/components/NavbarServer'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 export const metadata: Metadata = {
   title: 'Contacto — Inmonest',
@@ -8,8 +11,23 @@ export const metadata: Metadata = {
 
 export default function ContactoPage() {
   return (
-    <main className="min-h-screen bg-gray-50 py-16 px-4">
+    <>
+      <Navbar />
+      <WhatsAppButton />
+      <main className="min-h-screen bg-gray-50 py-16 px-4">
       <div className="max-w-2xl mx-auto">
+
+        <div className="relative mb-10 rounded-2xl overflow-hidden shadow-lg">
+          <Image
+            src="/inmonestexterior.png"
+            alt="Contacta con Inmonest — gestoría inmobiliaria"
+            width={800}
+            height={320}
+            className="w-full h-48 md:h-56 object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+        </div>
 
         {/* Cabecera */}
         <div className="text-center mb-10">
@@ -20,7 +38,7 @@ export default function ContactoPage() {
             ¿En qué podemos ayudarte?
           </h1>
           <p className="text-gray-500 text-base max-w-md mx-auto">
-            Escríbenos y un miembro del equipo te responderá en menos de 24 horas.
+            Escríbenos y un <strong>asesor experto en derecho inmobiliario</strong> te responderá en menos de 24 horas.
           </p>
         </div>
 
@@ -30,7 +48,7 @@ export default function ContactoPage() {
         </div>
 
         {/* Info alternativa */}
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-center">
           <div className="bg-white rounded-xl border border-gray-100 p-5">
             <div className="text-2xl mb-2">✉️</div>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Email</p>
@@ -39,20 +57,33 @@ export default function ContactoPage() {
             </a>
           </div>
           <div className="bg-white rounded-xl border border-gray-100 p-5">
+            <div className="text-2xl mb-2">📞</div>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Teléfono</p>
+            <a href="tel:+34641008847" className="text-sm text-[#c9962a] font-medium hover:underline">
+              641 008 847
+            </a>
+          </div>
+          <div className="bg-white rounded-xl border border-gray-100 p-5">
+            <div className="text-2xl mb-2">💬</div>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">WhatsApp</p>
+            <a
+              href="https://wa.me/34641008847?text=Hola,%20tengo%20una%20consulta%20sobre%20gestoría%20inmobiliaria"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-[#25d366] font-medium hover:underline"
+            >
+              641 008 847
+            </a>
+          </div>
+          <div className="bg-white rounded-xl border border-gray-100 p-5">
             <div className="text-2xl mb-2">⏱️</div>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Tiempo de respuesta</p>
             <p className="text-sm text-gray-700 font-medium">Menos de 24 h</p>
-          </div>
-          <div className="bg-white rounded-xl border border-gray-100 p-5">
-            <div className="text-2xl mb-2">🏢</div>
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">¿Eres agencia?</p>
-            <a href="/agencias" className="text-sm text-[#c9962a] font-medium hover:underline">
-              Ver planes →
-            </a>
           </div>
         </div>
 
       </div>
     </main>
+    </>
   )
 }

@@ -453,12 +453,14 @@ export default function GestoriaSevillaPage() {
             >
               Solicitar contrato - 29€
             </Link>
-            <Link
-              href="https://wa.me/34XXXXXXXXX?text=Hola, necesito un contrato inmobiliario en Sevilla"
+            <a
+              href="https://wa.me/34641008847?text=Hola,%20necesito%20un%20contrato%20inmobiliario%20en%20Sevilla"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-block px-8 py-4 rounded-full bg-green-600 hover:bg-green-700 text-white font-bold text-lg shadow-xl transition-all"
             >
-              💬 WhatsApp directo
-            </Link>
+              💬 WhatsApp: 641 008 847
+            </a>
           </div>
         </div>
       </section>

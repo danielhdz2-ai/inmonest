@@ -44,7 +44,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
         </header>
 
         <Image
-          src="/imagenes/gestoria3.jpg"
+          src="/gestoria1.jpg"
           alt="Persona revisando contrato de alquiler con lupa"
           width={800}
           height={400}
