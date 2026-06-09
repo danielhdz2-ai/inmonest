@@ -3,12 +3,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
+import CiudadHubExtras from '@/components/CiudadHubExtras'
+import { GESTORIA_PRECIOS } from '@/lib/gestoria-servicios-destacados'
 
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Sevilla 【DESDE 29€】 Contratos Online | Inmonest',
-  description: 'Gestoría inmobiliaria en Sevilla 100% online. Contratos de alquiler, arras, compraventa y rescisión. Especialistas en normativa andaluza. Desde 29€. Entrega en 48h.',
+  title: 'Gestoría Inmobiliaria Sevilla para Particulares | Contratos desde 61€ | Inmonest',
+  description: 'Gestoría inmobiliaria para particulares en Sevilla. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones de agencia. Normativa andaluza.',
   keywords: [
     'gestoria inmobiliaria sevilla',
     'contrato alquiler sevilla',
@@ -23,7 +26,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/gestoria/sevilla`,
   },
   openGraph: {
-    title: 'Gestoría Inmobiliaria en Sevilla - Contratos desde 29€',
+    title: 'Gestoría Inmobiliaria en Sevilla para Particulares - Contratos desde 61€',
     description: 'Gestoría inmobiliaria en Sevilla 100% online. Contratos de alquiler LAU, arras penitenciales y compraventa. Abogados especializados en normativa andaluza.',
     url: `${BASE_URL}/gestoria/sevilla`,
     type: 'website',
@@ -69,19 +72,19 @@ const schemaData = {
         itemListElement: [
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler Vivienda Sevilla', price: '29', priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler Vivienda Sevilla', price: String(GESTORIA_PRECIOS.contratoAlquiler), priceCurrency: 'EUR' },
           },
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Contrato Arras Penitenciales Sevilla', price: '145', priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Contrato Arras Penitenciales Sevilla', price: String(GESTORIA_PRECIOS.arrasPenitenciales), priceCurrency: 'EUR' },
           },
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Revisión Contrato Alquiler Sevilla', price: '59', priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Revisión Contrato Arras Sevilla', price: String(GESTORIA_PRECIOS.revisionArras), priceCurrency: 'EUR' },
           },
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Rescisión Contrato Alquiler Sevilla', price: '69', priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Rescisión Contrato Alquiler Sevilla', price: String(GESTORIA_PRECIOS.rescisionAlquiler), priceCurrency: 'EUR' },
           },
         ],
       },
@@ -94,7 +97,7 @@ const schemaData = {
           name: '¿Cuánto cuesta un contrato de alquiler en Sevilla?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'En Inmonest redactamos contratos de alquiler LAU para Sevilla desde 29€. Incluye personalización completa, asesoría legal y entrega en 48h. Todo 100% online.',
+            text: `En Inmonest redactamos contratos de alquiler LAU para Sevilla por ${GESTORIA_PRECIOS.contratoAlquiler}€ IVA incluido. Incluye personalización completa, asesoría legal y entrega en 48h. Todo 100% online.`,
           },
         },
         {
@@ -151,15 +154,15 @@ export default function GestoriaSevillaPage() {
             Gestoría Inmobiliaria Online en <span className="text-[#f4c94a]">Sevilla</span>
           </h1>
           <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Contratos de alquiler, arras y compraventa redactados por <strong className="text-[#f4c94a]">abogados expertos</strong> en normativa andaluza.  
-            Sin desplazamientos. <strong>Desde 29€. Entrega en 48 horas.</strong>
+            <strong>Gestoría inmobiliaria para particulares</strong> en Sevilla. Contratos de alquiler, arras y compraventa redactados por <strong className="text-[#f4c94a]">abogados expertos</strong> en normativa andaluza.  
+            Sin comisiones de agencia. <strong>Contrato LAU desde {GESTORIA_PRECIOS.contratoAlquiler}€.</strong> Entrega en 48 horas.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/gestoria/solicitar/contrato-alquiler"
               className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-all transform hover:scale-105"
             >
-              Solicitar Contrato - 29€
+              Contrato Alquiler LAU - {GESTORIA_PRECIOS.contratoAlquiler}€
             </Link>
             <Link
               href="/gestoria"
@@ -181,7 +184,7 @@ export default function GestoriaSevillaPage() {
             <div className="text-6xl mb-4">💰</div>
             <h3 className="text-xl font-bold text-gray-900 mb-3">Ahorra hasta el 60%</h3>
             <p className="text-gray-600 leading-relaxed">
-              Sin oficinas físicas, te ahorramos costes. Contratos desde 29€ vs 80-120€ en gestorías tradicionales de Sevilla.
+              Sin comisiones de agencia (3-5% del precio). Gestoría fija desde 687€ vs 9.000€-15.000€ de una inmobiliaria tradicional.
             </p>
           </div>
           <div className="text-center">
@@ -201,85 +204,10 @@ export default function GestoriaSevillaPage() {
         </div>
       </section>
 
-      {/* Servicios principales */}
-      <section className="bg-gray-50 py-12 sm:py-16">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
-            Servicios de Gestoría Inmobiliaria en Sevilla
-          </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Redactados por abogados colegiados con experiencia en el mercado inmobiliario sevillano
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Servicio 1 */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-gray-200 hover:border-[#c9962a] transition-all hover:shadow-2xl">
-              <div className="text-4xl mb-3">📄</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Contrato Alquiler LAU</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Arrendamiento vivienda habitual en Sevilla. Conforme LAU 2026.
-              </p>
-              <div className="text-2xl font-bold text-[#c9962a] mb-3">29€</div>
-              <Link
-                href="/gestoria/solicitar/contrato-alquiler"
-                className="block text-center py-2 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white text-sm font-semibold transition"
-              >
-                Solicitar
-              </Link>
-            </div>
-
-            {/* Servicio 2 */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-[#c9962a] hover:shadow-2xl transform hover:scale-105 transition-all">
-              <div className="inline-block px-2 py-0.5 rounded-full bg-yellow-500 text-white text-[10px] font-bold mb-2">
-                ⭐ POPULAR
-              </div>
-              <div className="text-4xl mb-3">🤝</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Arras Penitenciales</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Protege tu señal de compra. Permite desistir con penalización justa.
-              </p>
-              <div className="text-2xl font-bold text-[#c9962a] mb-3">145€</div>
-              <Link
-                href="/gestoria/solicitar/arras-penitenciales"
-                className="block text-center py-2 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white text-sm font-semibold transition"
-              >
-                Solicitar
-              </Link>
-            </div>
-
-            {/* Servicio 3 */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-gray-200 hover:border-[#c9962a] transition-all hover:shadow-2xl">
-              <div className="text-4xl mb-3">🔍</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Revisión Contratos</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Abogado revisa cláusulas, detecta abusos y te asesora.
-              </p>
-              <div className="text-2xl font-bold text-[#c9962a] mb-3">59€</div>
-              <Link
-                href="/gestoria/solicitar/revision-alquiler"
-                className="block text-center py-2 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white text-sm font-semibold transition"
-              >
-                Solicitar
-              </Link>
-            </div>
-
-            {/* Servicio 4 */}
-            <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-gray-200 hover:border-[#c9962a] transition-all hover:shadow-2xl">
-              <div className="text-4xl mb-3">✂️</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Rescisión Alquiler</h3>
-              <p className="text-gray-600 text-sm mb-4">
-                Finaliza tu contrato legalmente sin problemas.
-              </p>
-              <div className="text-2xl font-bold text-[#c9962a] mb-3">69€</div>
-              <Link
-                href="/gestoria/solicitar/rescision-alquiler"
-                className="block text-center py-2 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white text-sm font-semibold transition"
-              >
-                Solicitar
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <CiudadHubServiciosGrid
+        ciudad="Sevilla"
+        subtitulo="Redactados por abogados colegiados con experiencia en el mercado inmobiliario sevillano. Precios iguales que en nuestra gestoría online."
+      />
 
       {/* Contenido SEO: Mercado Sevilla */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
@@ -326,7 +254,7 @@ export default function GestoriaSevillaPage() {
           </ul>
           <p>
             Un contrato mal redactado puede costarte <strong>miles de euros</strong> en problemas legales, desahucios complicados o pérdida de fianzas. 
-            Nuestros abogados especializados en Sevilla evitan estos riesgos desde <strong>29€</strong>.
+            Nuestros abogados especializados en Sevilla evitan estos riesgos con contratos desde <strong>{GESTORIA_PRECIOS.contratoAlquiler}€</strong>.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Contratos de alquiler temporal en Sevilla</h3>
@@ -388,7 +316,7 @@ export default function GestoriaSevillaPage() {
               ¿Cuánto cuesta un contrato de alquiler en Sevilla?
             </summary>
             <p className="mt-4 text-gray-700 leading-relaxed">
-              En Inmonest redactamos contratos de alquiler LAU para Sevilla desde <strong>29€</strong>. Otras gestorías cobran 80-120€ por el mismo servicio. 
+              En Inmonest redactamos contratos de alquiler LAU para Sevilla por <strong>{GESTORIA_PRECIOS.contratoAlquiler}€ IVA incluido</strong>. Mismo precio en toda España, sin sorpresas. 
               Incluye personalización completa, asesoría legal y entrega en 48h. Todo 100% online.
             </p>
           </details>
@@ -430,11 +358,13 @@ export default function GestoriaSevillaPage() {
             <p className="mt-4 text-gray-700 leading-relaxed">
               Sí, pero hay que hacerlo legalmente. Si eres inquilino, puedes rescindir tras 6 meses con preaviso de 30 días (LAU). 
               Si eres propietario, solo puedes rescindir si el contrato lo permite o por causas justificadas. 
-              Ofrecemos servicio de <strong>rescisión de contrato desde 69€</strong> para evitar problemas legales.
+              Ofrecemos servicio de <strong>rescisión de contrato desde {GESTORIA_PRECIOS.rescisionAlquiler}€</strong> para evitar problemas legales.
             </p>
           </details>
         </div>
       </section>
+
+      <CiudadHubExtras ciudad="Sevilla" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Sevilla" />
 
       {/* CTA Final */}
       <section className="bg-gradient-to-br from-[#2e1900] to-[#5a3200] text-white py-16 sm:py-20">
@@ -451,7 +381,7 @@ export default function GestoriaSevillaPage() {
               href="/gestoria/solicitar/contrato-alquiler"
               className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-transform transform hover:scale-105"
             >
-              Solicitar contrato - 29€
+              Contrato Alquiler LAU - {GESTORIA_PRECIOS.contratoAlquiler}€
             </Link>
             <a
               href="https://wa.me/34641008847?text=Hola,%20necesito%20un%20contrato%20inmobiliario%20en%20Sevilla"

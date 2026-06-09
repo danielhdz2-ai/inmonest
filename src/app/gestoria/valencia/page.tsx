@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
+import CiudadHubExtras from '@/components/CiudadHubExtras'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -90,7 +92,7 @@ export default function GestoriaValenciaPage() {
                   Gestoría Inmobiliaria en <span className="text-[#c9a84c]">Valencia</span>
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
-                  Inmonest te acompaña en la compra o venta de tu vivienda con un asesor experto asignado. Te ayudamos a evitar las comisiones abusivas de agencias y a cerrar tu operación de forma segura y profesional.
+                  <strong>Gestoría inmobiliaria para particulares</strong> en Valencia. Asesor experto asignado, sin comisiones de agencia (3-5%) y contratos redactados por abogados con conocimiento del mercado valenciano.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link
@@ -341,6 +343,8 @@ export default function GestoriaValenciaPage() {
           </div>
         </section>
 
+        <CiudadHubServiciosGrid ciudad="Valencia" />
+
         {/* Cómo trabajamos */}
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -438,6 +442,8 @@ export default function GestoriaValenciaPage() {
             </div>
           </div>
         </section>
+
+        <CiudadHubExtras ciudad="Valencia" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Valencia" />
 
         {/* CTA Final */}
         <section className="py-16 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">

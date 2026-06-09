@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
+import CiudadHubExtras from '@/components/CiudadHubExtras'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -90,7 +92,7 @@ export default function GestoriaBarcelonaPage() {
                   Gestoría Inmobiliaria en <span className="text-[#c9a84c]">Barcelona</span>
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
-                  Inmonest te acompaña en la compra o venta de tu vivienda en Barcelona con un asesor experto asignado. Te ayudamos a evitar las comisiones abusivas de agencias y a cerrar tu operación de forma segura y profesional.
+                  <strong>Gestoría inmobiliaria para particulares</strong> en Barcelona. Te acompañamos en la compra o venta con un asesor experto asignado, sin comisiones abusivas de agencias (3-5%) y con contratos redactados por abogados.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link
@@ -341,6 +343,8 @@ export default function GestoriaBarcelonaPage() {
           </div>
         </section>
 
+        <CiudadHubServiciosGrid ciudad="Barcelona" />
+
         {/* Cómo trabajamos */}
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -438,6 +442,8 @@ export default function GestoriaBarcelonaPage() {
             </div>
           </div>
         </section>
+
+        <CiudadHubExtras ciudad="Barcelona" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Barcelona" />
 
         {/* CTA Final */}
         <section className="py-16 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">

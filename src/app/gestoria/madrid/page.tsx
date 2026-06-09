@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
+import CiudadHubExtras from '@/components/CiudadHubExtras'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -90,7 +92,7 @@ export default function GestoriaMadridPage() {
                   Gestoría Inmobiliaria en <span className="text-[#c9a84c]">Madrid</span>
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
-                  Inmonest te acompaña en la compra o venta de tu vivienda en Madrid con un asesor experto asignado. Te ayudamos a evitar las comisiones abusivas de agencias y a cerrar tu operación de forma segura y profesional.
+                  <strong>Gestoría inmobiliaria para particulares</strong> en Madrid. Asesor experto asignado, sin comisiones de agencia (3-5%) y contratos redactados por abogados especializados en el mercado madrileño.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link
@@ -335,6 +337,8 @@ export default function GestoriaMadridPage() {
           </div>
         </section>
 
+        <CiudadHubServiciosGrid ciudad="Madrid" />
+
         {/* Cómo trabajamos */}
         <section className="py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -432,6 +436,8 @@ export default function GestoriaMadridPage() {
             </div>
           </div>
         </section>
+
+        <CiudadHubExtras ciudad="Madrid" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Madrid" />
 
         {/* CTA Final */}
         <section className="py-16 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">
