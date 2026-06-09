@@ -8,7 +8,7 @@
 export default function OrganizationSchema() {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': ['Organization', 'LegalService', 'ProfessionalService'],
+    '@type': 'Organization',
     name: 'Inmonest',
     alternateName: 'Inmonest Gestoría Inmobiliaria',
     url: 'https://inmonest.com',

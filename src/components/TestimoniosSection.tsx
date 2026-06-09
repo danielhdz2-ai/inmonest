@@ -5,6 +5,8 @@ type TestimoniosSectionProps = {
   className?: string
   layout?: 'carousel' | 'stack'
   showGoogleReviews?: boolean
+  /** Oculta estrellas numéricas para evitar fragmentos de reseñas inválidos en landings de servicio */
+  hideRating?: boolean
   ciudad?: string
 }
 
@@ -12,10 +14,11 @@ export default function TestimoniosSection({
   className = 'bg-white',
   layout = 'carousel',
   showGoogleReviews = false,
+  hideRating = false,
   ciudad,
 }: TestimoniosSectionProps) {
   return (
-    <section className={`py-16 px-4 ${className}`}>
+    <section className={`py-16 px-4 ${className}`} {...(hideRating ? { 'data-nosnippet': true } : {})}>
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           {showGoogleReviews ? (
@@ -59,9 +62,9 @@ export default function TestimoniosSection({
           )}
         </div>
         {layout === 'stack' ? (
-          <TestimoniosStack ciudad={ciudad} />
+          <TestimoniosStack ciudad={ciudad} hideRating={hideRating} />
         ) : (
-          <TestimoniosCarousel ciudad={ciudad} />
+          <TestimoniosCarousel ciudad={ciudad} hideRating={hideRating} />
         )}
       </div>
     </section>
