@@ -5,75 +5,90 @@ import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
+import GestoriaBarcelonaFaq from '@/components/GestoriaBarcelonaFaq'
+import JsonLd from '@/components/JsonLd'
+import { gestoriaBarcelonaFaqSchema } from '@/lib/gestoria-barcelona-faq'
 
 const BASE_URL = 'https://inmonest.com'
 
+const META_DESCRIPTION =
+  'Gestoría inmobiliaria para particulares en Barcelona. Contratos adaptados a zona tensionada y normativa catalana. Desde 120€. Asesor experto asignado.'
+
 export const metadata: Metadata = {
   title: 'Gestoría Inmobiliaria Barcelona para Particulares | Contratos y Acompañamiento Legal',
-  description: 'Gestoría inmobiliaria para particulares en Barcelona. Asesor experto asignado para compra o venta de vivienda. Sin comisiones abusivas. Desde 424€. ✓ Generalitat ✓ Notarías Barcelona',
+  description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria barcelona, gestoría para particulares barcelona, comprar piso barcelona sin agencia, vender piso barcelona, contrato arras barcelona, asesoría compra vivienda barcelona',
   alternates: { canonical: `${BASE_URL}/gestoria/barcelona` },
   openGraph: {
-    title: 'Gestoría Inmobiliaria Barcelona | Inmonest',
-    description: 'Asesoramiento jurídico especializado en compraventa de inmuebles en Barcelona. Revisión de contratos, nota registral y documentación urbanística.',
+    title: 'Gestoría Inmobiliaria Barcelona para Particulares | Inmonest',
+    description: META_DESCRIPTION,
     url: `${BASE_URL}/gestoria/barcelona`,
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gestoría Inmobiliaria Barcelona para Particulares | Inmonest',
+    description:
+      'Contratos y acompañamiento legal en Barcelona desde 120€. Adaptados a zona tensionada, ITE y normativa catalana.',
+  },
 }
 
+const BARCELONA_ENLACES_CIUDAD = [
+  {
+    slug: 'arras-penitenciales',
+    href: '/barcelona/contrato-arras',
+    label: 'Ver información específica para Barcelona →',
+  },
+  {
+    slug: 'contrato-alquiler',
+    href: '/barcelona/contrato-alquiler',
+    label: 'Ver contrato alquiler Barcelona →',
+  },
+]
+
 export default function GestoriaBarcelonaPage() {
-  const schemaJson = JSON.stringify({
+  const legalServiceSchema = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    name: 'Gestoría Inmobiliaria Barcelona - Inmonest',
-    description: 'Servicios de gestoría inmobiliaria especializada en compraventa de viviendas en Barcelona',
+    '@type': 'LegalService',
+    name: 'Inmonest Gestoría Inmobiliaria Barcelona',
     url: `${BASE_URL}/gestoria/barcelona`,
+    telephone: '+34641008847',
+    priceRange: '€€',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Barcelona',
+      addressCountry: 'ES',
+    },
     areaServed: {
       '@type': 'City',
       name: 'Barcelona',
-      containedIn: { '@type': 'Country', name: 'España' },
     },
-    provider: {
-      '@type': 'Organization',
-      name: 'Inmonest',
-      url: BASE_URL,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5.0',
+      reviewCount: '4',
     },
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Servicios de Gestoría Inmobiliaria',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Acompañamiento Reserva hasta Arras',
-            description: 'Asesoramiento jurídico completo desde la reserva hasta el contrato de arras en Barcelona',
-          },
-          priceCurrency: 'EUR',
-          price: '424',
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Servicio Completo de Compra: Reserva a Escritura',
-            description: 'Servicio integral con gestor asignado para compraventa de vivienda en Barcelona',
-          },
-          priceCurrency: 'EUR',
-          price: '687',
-        },
-      ],
+  }
+
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Acompañamiento Reserva hasta Arras Barcelona',
+    provider: { '@type': 'Organization', name: 'Inmonest' },
+    areaServed: 'Barcelona',
+    offers: {
+      '@type': 'Offer',
+      price: '424',
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
     },
-  })
+  }
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: schemaJson }}
-      />
+      <JsonLd schema={[legalServiceSchema, serviceSchema, gestoriaBarcelonaFaqSchema()]} />
       <Navbar />
       <main className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -90,7 +105,7 @@ export default function GestoriaBarcelonaPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  Gestoría Inmobiliaria en <span className="text-[#c9a84c]">Barcelona</span>
+                  Gestoría Inmobiliaria <span className="text-[#c9a84c]">Barcelona</span> para Particulares
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
                   <strong>Gestoría inmobiliaria para particulares</strong> en Barcelona. Te acompañamos en la compra o venta con un asesor experto asignado, sin comisiones abusivas de agencias (3-5%) y con contratos redactados por abogados.
@@ -344,7 +359,10 @@ export default function GestoriaBarcelonaPage() {
           </div>
         </section>
 
-        <CiudadHubServiciosGrid ciudad="Barcelona" />
+        <CiudadHubServiciosGrid
+          ciudad="Barcelona"
+          enlacesCiudad={BARCELONA_ENLACES_CIUDAD}
+        />
 
         <CiudadHubComoTrabajamos ciudad="Barcelona" />
 
@@ -396,7 +414,14 @@ export default function GestoriaBarcelonaPage() {
           </div>
         </section>
 
-        <CiudadHubExtras ciudad="Barcelona" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Barcelona" />
+        <CiudadHubExtras
+          ciudad="Barcelona"
+          whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Barcelona"
+          testimoniosLayout="stack"
+          showGoogleReviews
+        />
+
+        <GestoriaBarcelonaFaq />
 
         {/* CTA Final */}
         <section className="py-16 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">

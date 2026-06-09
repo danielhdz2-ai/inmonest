@@ -1,14 +1,22 @@
 import Link from 'next/link'
 import { SERVICIOS_DESTACADOS_CIUDAD } from '@/lib/gestoria-servicios-destacados'
 
+type EnlaceCiudad = {
+  slug: string
+  href: string
+  label: string
+}
+
 type CiudadHubServiciosGridProps = {
   ciudad: string
   subtitulo?: string
+  enlacesCiudad?: EnlaceCiudad[]
 }
 
 export default function CiudadHubServiciosGrid({
   ciudad,
   subtitulo = 'Precios reales de nuestra gestoría para particulares. Sin comisiones de agencia.',
+  enlacesCiudad,
 }: CiudadHubServiciosGridProps) {
   return (
     <section className="bg-gray-50 py-12 sm:py-16">
@@ -43,6 +51,17 @@ export default function CiudadHubServiciosGrid({
               >
                 Solicitar
               </Link>
+              {enlacesCiudad
+                ?.filter((e) => e.slug === servicio.slug)
+                .map((e) => (
+                  <Link
+                    key={e.href}
+                    href={e.href}
+                    className="block text-center mt-2 text-sm text-[#c9962a] hover:underline font-medium"
+                  >
+                    {e.label}
+                  </Link>
+                ))}
             </div>
           ))}
         </div>

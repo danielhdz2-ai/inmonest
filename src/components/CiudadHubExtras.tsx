@@ -5,9 +5,16 @@ import TestimoniosSection from '@/components/TestimoniosSection'
 type CiudadHubExtrasProps = {
   ciudad: string
   whatsappMessage?: string
+  testimoniosLayout?: 'carousel' | 'stack'
+  showGoogleReviews?: boolean
 }
 
-export default function CiudadHubExtras({ ciudad, whatsappMessage }: CiudadHubExtrasProps) {
+export default function CiudadHubExtras({
+  ciudad,
+  whatsappMessage,
+  testimoniosLayout = 'carousel',
+  showGoogleReviews = false,
+}: CiudadHubExtrasProps) {
   const wa =
     whatsappMessage ??
     `Hola, necesito gestoría inmobiliaria para particulares en ${ciudad}`
@@ -35,7 +42,11 @@ export default function CiudadHubExtras({ ciudad, whatsappMessage }: CiudadHubEx
         subtitle={`Te explicamos cómo comprar o vender en ${ciudad} sin comisiones abusivas. Sin compromiso.`}
       />
 
-      <TestimoniosSection className="bg-gray-50" />
+      <TestimoniosSection
+        className="bg-gray-50"
+        layout={testimoniosLayout}
+        showGoogleReviews={showGoogleReviews}
+      />
     </>
   )
 }
