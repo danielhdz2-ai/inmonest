@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import TotalPurchaseCostCalculator from '@/components/TotalPurchaseCostCalculator'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 const BASE_URL = 'https://inmonest.com'
@@ -93,6 +94,12 @@ export default function CalculadoraGastosCompraPage() {
               <strong className="text-gray-900">Descubre el coste real antes de comprar.</strong>
             </p>
           </div>
+
+          <PageHeroImage
+            src="/familia10.jpg"
+            alt="Calculadora de gastos de compra de vivienda"
+            className="mb-8 max-w-3xl mx-auto"
+          />
 
           {/* Grid: Calculadora + Info */}
           <div className="grid lg:grid-cols-2 gap-8 items-start">

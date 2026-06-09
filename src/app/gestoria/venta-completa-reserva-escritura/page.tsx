@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import TestimoniosCarousel from '@/components/TestimoniosCarousel'
+import GestorContactBanner from '@/components/GestorContactBanner'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -228,31 +229,7 @@ export default function VentaCompletaPage() {
         </div>
       </section>
 
-      {/* Llama ahora */}
-      <section className="py-12 px-4 bg-gradient-to-r from-[#c9962a] to-[#a87a20]">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/30">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              ¿Tienes dudas sobre el proceso?
-            </h2>
-            <p className="text-xl text-white/90 mb-6">
-              Llámanos ahora y te informamos de todo sin compromiso
-            </p>
-            <a
-              href="tel:+34641008847"
-              className="inline-flex items-center gap-3 bg-white text-[#a87a20] px-8 py-5 rounded-xl font-bold text-2xl hover:bg-gray-100 transition shadow-2xl"
-            >
-              <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-              </svg>
-              <span>641 008 847</span>
-            </a>
-            <p className="mt-4 text-white/80 text-sm">
-              Horario: Lunes a Viernes 9:00 - 19:00h
-            </p>
-          </div>
-        </div>
-      </section>
+      <GestorContactBanner whatsappMessage="Hola, quiero vender mi piso a particular y necesito acompañamiento" />
 
       {/* Qué hacemos */}
       <section className="py-16 px-4 bg-gray-50">

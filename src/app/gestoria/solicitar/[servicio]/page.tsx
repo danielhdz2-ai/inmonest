@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 import SolicitarFormClient from './SolicitarFormClient'
 
 const BASE_URL = 'https://inmonest.com'
@@ -132,6 +133,12 @@ export default async function SolicitarServicioPage({
             <span>/</span>
             <span className="text-gray-700 font-medium">Solicitar</span>
           </nav>
+
+          <PageHeroImage
+            src="/gestoria1.jpg"
+            alt={`Solicitar ${data.nombre}`}
+            className="mb-8"
+          />
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
             {/* ── Panel izquierdo: resumen del servicio ── */}

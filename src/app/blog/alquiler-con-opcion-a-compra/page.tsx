@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
@@ -71,6 +72,11 @@ export default function AlquilerOpcionCompraPage() {
             Es el contrato más versátil del mercado inmobiliario español: alquilas ahora la vivienda que quieres comprar y, cuando estés listo (o la hipoteca esté aprobada), la compras a un precio ya fijado hoy. Pero hay cosas que debes saber antes de firmar.
           </p>
         </header>
+        <PageHeroImage
+          src="/keys.jpg"
+          alt="Alquiler con opción a compra: ventajas, riesgos y cómo funciona en España"
+          className="mb-12"
+        />
 
         <article className="prose prose-gray max-w-none">
           <h2>¿Qué es exactamente el alquiler con opción a compra?</h2>

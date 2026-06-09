@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
@@ -72,6 +73,11 @@ export default function PisosFondoBancarioPage() {
             Los bancos acumulan miles de inmuebles procedentes de ejecuciones hipotecarias y adjudicaciones. Muchos están disponibles entre 40.000 € y 150.000 €, muy por debajo del precio de mercado. Pero comprar un piso bancario tiene sus particularidades.
           </p>
         </header>
+        <PageHeroImage
+          src="/gestoria1.jpg"
+          alt="Pisos de fondo bancario baratos: cómo encontrarlos y qué tener en cuenta"
+          className="mb-12"
+        />
 
         <article className="prose prose-gray max-w-none">
           <h2>¿Qué son los pisos de fondo bancario?</h2>

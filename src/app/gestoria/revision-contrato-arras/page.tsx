@@ -2,19 +2,21 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import GestorContactBanner from '@/components/GestorContactBanner'
+import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Revisión de Contrato de Arras 【DESDE 45€】 Gestoría Experta | Inmonest',
-  description: '¿Te han dado un contrato de arras y no te fías? Nuestra gestoría inmobiliaria experta lo revisa en 24h. Detectamos cláusulas abusivas, errores y te protegemos. Desde 45€.',
+  title: 'Revisión de Contrato de Arras 【DESDE 60€】 Gestoría Experta | Inmonest',
+  description: '¿Te han dado un contrato de arras y no te fías? Nuestra gestoría inmobiliaria experta lo revisa en 24h. Detectamos cláusulas abusivas, errores y te protegemos. Desde 60€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/revision-contrato-arras`,
   },
   openGraph: {
     title: 'Revisión de Contrato de Arras por Gestoría Experta — Inmonest',
-    description: 'No firmes sin revisión legal. Detectamos cláusulas abusivas, errores registrales y condiciones perjudiciales. 24h. Desde 45€.',
+    description: 'No firmes sin revisión legal. Detectamos cláusulas abusivas, errores registrales y condiciones perjudiciales. 24h. Desde 60€.',
     url: `${BASE_URL}/gestoria/revision-contrato-arras`,
     type: 'website',
     siteName: 'Inmonest',
@@ -125,7 +127,7 @@ export default function RevisionContratosArrasPage() {
                   href="/gestoria/solicitar/revision-arras"
                   className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
-                  Revisar mi contrato ahora (45€)
+                  Revisar mi contrato ahora (60€)
                 </Link>
                 <a
                   href="https://wa.me/34641008847?text=Hola,%20necesito%20revisar%20un%20contrato%20de%20arras"
@@ -371,7 +373,7 @@ export default function RevisionContratosArrasPage() {
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-            Revisión profesional desde 45€
+            Revisión profesional desde 60€
           </h2>
           <p className="text-xl text-gray-600 mb-12">
             Mucho más barato que un error de 10.000€ en tu contrato
@@ -379,7 +381,7 @@ export default function RevisionContratosArrasPage() {
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             <div className="border-2 border-gray-200 rounded-lg p-8">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión Básica</h3>
-              <div className="text-5xl font-bold text-[#c9962a] mb-2">45€</div>
+              <div className="text-5xl font-bold text-[#c9962a] mb-2">60€</div>
               <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
               <ul className="text-left space-y-3 mb-8">
                 <li className="flex items-start gap-2">
@@ -496,6 +498,10 @@ export default function RevisionContratosArrasPage() {
         </div>
       </section>
 
+
+      <GestorContactBanner />
+      <TestimoniosSection />
+
       {/* CTA Final */}
       <section className="py-16 px-4 bg-[#c9962a] text-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -503,14 +509,14 @@ export default function RevisionContratosArrasPage() {
             No arriesgues tu dinero. Revisa tu contrato antes de firmar.
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Desde 45€ puedes dormir tranquilo sabiendo que nuestra gestoría ha revisado cada cláusula.
+            Desde 60€ puedes dormir tranquilo sabiendo que nuestra gestoría ha revisado cada cláusula.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/revision-arras"
               className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Revisar mi contrato (45€)
+              Revisar mi contrato (60€)
             </Link>
             <a
               href="https://wa.me/34641008847?text=Hola,%20necesito%20revisar%20un%20contrato%20de%20arras%20urgente"
@@ -537,7 +543,7 @@ export default function RevisionContratosArrasPage() {
               <p className="text-gray-600 text-sm mb-3">
                 Si necesitas un contrato desde cero, lo redactamos personalizado en 48h.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 145€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 160€ →</span>
             </Link>
             <Link href="/gestoria/solicitar/asesoria-compra" className="border rounded-lg p-6 hover:shadow-lg transition">
               <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Asesoría completa de compra</h3>

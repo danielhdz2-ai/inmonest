@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/NavbarServer'
+import GestorContactBanner from '@/components/GestorContactBanner'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import TestimoniosCarousel from '@/components/TestimoniosCarousel'
 
@@ -10,13 +11,13 @@ const PHONE = '641008847'
 const PHONE_DISPLAY = '641 008 847'
 
 export const metadata: Metadata = {
-  title: 'Vender Piso Sin Agencia | Gestor Personal 666€ - Ahorra +15,000€',
-  description: 'Vende tu piso sin pagar comisiones de agencia. Gestor inmobiliario te acompaña desde reserva hasta escritura por 666€. Ahorra más de 15,000€ en comisiones. ✓ Contratos incluidos ✓ Asesoramiento legal',
+  title: 'Vender Piso Sin Agencia | Gestor Personal 687€ - Ahorra +15,000€',
+  description: 'Vende tu piso sin pagar comisiones de agencia. Gestor inmobiliario te acompaña desde reserva hasta escritura por 687€. Ahorra más de 15,000€ en comisiones. ✓ Contratos incluidos ✓ Asesoramiento legal',
   alternates: { canonical: `${BASE_URL}/vender-piso-sin-agencia` },
   keywords: 'vender piso sin agencia, vender casa particular, ahorro comisiones inmobiliaria, gestor venta vivienda, venta entre particulares',
   openGraph: {
     title: 'Vende tu Piso Sin Agencia | Ahorra +15,000€ en Comisiones',
-    description: 'Gestor inmobiliario personal por 666€. Te acompañamos en toda la venta: contratos, documentación, notaría. Sin comisiones abusivas.',
+    description: 'Gestor inmobiliario personal por 687€. Te acompañamos en toda la venta: contratos, documentación, notaría. Sin comisiones abusivas.',
     url: `${BASE_URL}/vender-piso-sin-agencia`,
     type: 'website',
     siteName: 'Inmonest',
@@ -39,7 +40,7 @@ export default function VenderPisoSinAgenciaPage() {
     },
     offers: {
       '@type': 'Offer',
-      price: '666',
+      price: '687',
       priceCurrency: 'EUR',
       description: 'Servicio completo de venta: gestor personalizado, contratos de reserva y arras, documentación, coordinación notaría',
     },
@@ -58,12 +59,12 @@ export default function VenderPisoSinAgenciaPage() {
         name: '¿Cuánto ahorro vendiendo sin agencia inmobiliaria?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'En un piso de 300,000€, las agencias cobran entre 15,000€ y 18,150€ (5% + IVA). Con Inmonest pagas solo 666€ por el servicio completo. Ahorro real: más de 17,000€.'
+          text: 'En un piso de 300,000€, las agencias cobran entre 15,000€ y 18,150€ (5% + IVA). Con Inmonest pagas solo 687€ por el servicio completo. Ahorro real: más de 17,000€.'
         }
       },
       {
         '@type': 'Question',
-        name: '¿Qué incluye el servicio de 666€?',
+        name: '¿Qué incluye el servicio de 687€?',
         acceptedAnswer: {
           '@type': 'Answer',
           text: 'Incluye: gestor personal asignado durante todo el proceso, redacción de contrato de reserva y arras, ayuda para recabar documentación (nota simple, IBI, certificado energético), asesoramiento legal continuo, coordinación con notaría y acompañamiento hasta la firma de escrituras.'
@@ -116,7 +117,7 @@ export default function VenderPisoSinAgenciaPage() {
                 <p className="text-xl text-white/80 mb-8 leading-relaxed">
                   <strong className="text-white">Consulta gratuita primero.</strong> Sin compromiso resolvemos tus dudas. 
                   Si decides seguir, <strong className="text-white">gestor inmobiliario personal</strong> te acompaña 
-                  desde la reserva hasta la escritura por 666€.
+                  desde la reserva hasta la escritura por 687€.
                 </p>
 
                 {/* Key benefits */}
@@ -214,7 +215,7 @@ export default function VenderPisoSinAgenciaPage() {
 
                   <div className="bg-gradient-to-r from-[#c9a84c] to-[#a87a20] rounded-2xl p-6 text-center">
                     <div className="text-white/80 text-sm font-semibold mb-1">Precio total</div>
-                    <div className="text-5xl font-black text-white mb-1">666 €</div>
+                    <div className="text-5xl font-black text-white mb-1">687 €</div>
                     <div className="text-white/90 text-sm mb-3">IVA incluido · Pago único</div>
                     <a
                       href={`tel:+34${PHONE}`}
@@ -274,7 +275,7 @@ export default function VenderPisoSinAgenciaPage() {
                         <div className="text-xs text-gray-500 mt-2">15,000€ base + 3,150€ IVA</div>
                       </td>
                       <td className="px-6 py-6 text-center">
-                        <div className="text-3xl font-black text-[#c9a84c] mb-1">666€</div>
+                        <div className="text-3xl font-black text-[#c9a84c] mb-1">687€</div>
                         <div className="text-sm text-gray-600 font-semibold">(IVA ya incluido)</div>
                         <div className="text-xs text-gray-500 mt-2">Tarifa fija completa</div>
                       </td>
@@ -360,7 +361,7 @@ export default function VenderPisoSinAgenciaPage() {
                   href="/gestoria/solicitar/venta-completa-reserva-escritura"
                   className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-5 rounded-xl font-bold text-lg hover:bg-white/10 transition-all"
                 >
-                  O contratar directamente (666€)
+                  O contratar directamente (687€)
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -462,7 +463,7 @@ export default function VenderPisoSinAgenciaPage() {
                 {
                   num: '2',
                   titulo: 'Contratas el servicio',
-                  desc: 'Si decides seguir adelante, pago único de 666€ (IVA incluido). Sin costes ocultos.',
+                  desc: 'Si decides seguir adelante, pago único de 687€ (IVA incluido). Sin costes ocultos.',
                   icon: '💳'
                 },
                 {
@@ -525,6 +526,8 @@ export default function VenderPisoSinAgenciaPage() {
           </div>
         </section>
 
+        <GestorContactBanner whatsappMessage="Hola, quiero vender mi piso sin agencia y necesito información" />
+
         {/* FAQ */}
         <section className="py-20 px-4 bg-white">
           <div className="max-w-3xl mx-auto">
@@ -535,14 +538,14 @@ export default function VenderPisoSinAgenciaPage() {
               {[
                 {
                   q: '¿La consulta inicial es realmente gratuita?',
-                  a: 'Sí, 100% gratuita y sin compromiso. Llamas o escribes por WhatsApp, explicas tu caso, resolvemos todas tus dudas sobre el proceso de venta, documentación necesaria, plazos, etc. Solo pagas si decides contratar el servicio completo de 666€.'
+                  a: 'Sí, 100% gratuita y sin compromiso. Llamas o escribes por WhatsApp, explicas tu caso, resolvemos todas tus dudas sobre el proceso de venta, documentación necesaria, plazos, etc. Solo pagas si decides contratar el servicio completo de 687€.'
                 },
                 {
                   q: '¿Cuánto ahorro vendiendo sin agencia inmobiliaria?',
-                  a: 'En un piso de 300,000€, las agencias cobran entre 15,000€ y 18,150€ (5% + IVA). Con Inmonest pagas solo 666€ por el servicio completo. Ahorro real: más de 17,000€ que se quedan en tu bolsillo.'
+                  a: 'En un piso de 300,000€, las agencias cobran entre 15,000€ y 18,150€ (5% + IVA). Con Inmonest pagas solo 687€ por el servicio completo. Ahorro real: más de 17,000€ que se quedan en tu bolsillo.'
                 },
                 {
-                  q: '¿Qué incluye exactamente el servicio de 666€?',
+                  q: '¿Qué incluye exactamente el servicio de 687€?',
                   a: 'Incluye: gestor personal asignado durante todo el proceso, redacción de contrato de reserva y contrato de arras, ayuda para recabar toda la documentación necesaria (nota simple, IBI, certificado energético, etc.), asesoramiento legal continuo, coordinación con notaría y acompañamiento hasta la firma de escrituras.'
                 },
                 {
@@ -551,7 +554,7 @@ export default function VenderPisoSinAgenciaPage() {
                 },
                 {
                   q: '¿Cuándo pago el servicio?',
-                  a: 'PRIMERO hablamos contigo sin compromiso para resolver dudas y explicarte tu caso. Solo si decides seguir adelante, pagas los 666€ (IVA incluido) y comenzamos con tu gestor personalizado. Es un pago único, sin costes adicionales ocultos.'
+                  a: 'PRIMERO hablamos contigo sin compromiso para resolver dudas y explicarte tu caso. Solo si decides seguir adelante, pagas los 687€ (IVA incluido) y comenzamos con tu gestor personalizado. Es un pago único, sin costes adicionales ocultos.'
                 },
                 {
                   q: '¿Qué pasa si la venta no se completa?',
@@ -576,7 +579,7 @@ export default function VenderPisoSinAgenciaPage() {
           </div>
         </section>
 
-        {/* CTA Final */}
+      {/* CTA Final */}
         <section className="py-20 px-4 bg-gradient-to-br from-[#c9a84c] to-[#a87a20]">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
@@ -606,7 +609,7 @@ export default function VenderPisoSinAgenciaPage() {
               </a>
             </div>
             <p className="text-white/80 mt-6 text-sm">
-              ✓ Sin compromiso · ✓ Resolvemos todas tus dudas · ✓ Servicio 666€ (si decides contratar)
+              ✓ Sin compromiso · ✓ Resolvemos todas tus dudas · ✓ Servicio 687€ (si decides contratar)
             </p>
           </div>
         </section>

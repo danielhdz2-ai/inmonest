@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -112,6 +113,11 @@ export default async function AlquilerSinAgenciaPage({ params }: { params: Promi
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbJson }} />
 
       <main className="max-w-3xl mx-auto px-4 py-12 sm:py-16">
+        <PageHeroImage
+          src="/inmonestexterior.png"
+          alt={`Alquiler sin agencia en ${nombre}`}
+          className="mb-10"
+        />
 
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2">

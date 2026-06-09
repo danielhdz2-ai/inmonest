@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 
 export const metadata: Metadata = {
   title: 'Política de Cookies — Inmonest',
@@ -11,6 +12,11 @@ export default function CookiesPage() {
     <>
       <Navbar />
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-gray-700">
+        <PageHeroImage
+          src="/inmonestexterior.png"
+          alt="Política de Cookies"
+          className="mb-10"
+        />
         <h1 className="text-3xl font-extrabold text-gray-900 mb-2">Política de Cookies</h1>
         <p className="text-sm text-gray-400 mb-10">Última actualización: abril de 2026</p>
 

@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import PageHeroImage from '@/components/PageHeroImage'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ const CIUDADES = [
 
 // LANDING PAGES GENÉRICAS (SIN CIUDADES)
 const LANDING_GENERICAS = [
-  { slug: 'asesoria-compra-piso', nombre: 'Asesoría Compra de Piso', precio: '666€' },
+  { slug: 'asesoria-compra-piso', nombre: 'Asesoría Compra de Piso', precio: '687€' },
   { slug: 'due-diligence-precompra', nombre: 'Due Diligence Pre-Compra', precio: '350€' },
   { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento Arras a Venta', precio: '166€' },
   { slug: 'arras-vs-reserva-compra', nombre: 'Arras vs Reserva Compra', precio: 'Info' },
@@ -38,7 +39,7 @@ const LANDING_GENERICAS = [
   { slug: 'contrato-ilegal', nombre: 'Análisis Contrato Ilegal', precio: '29€' },
   { slug: 'ayuda-propietarios', nombre: 'Ayuda Propietarios LAU', precio: '73€' },
   { slug: 'contrato-arras', nombre: 'Contrato Arras (Info)', precio: 'Info' },
-  { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa Genérica', precio: '666€' },
+  { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa Genérica', precio: '687€' },
 ]
 
 // LANDING PAGES CON VARIANTES POR CIUDAD
@@ -124,7 +125,6 @@ export default function CiudadesPage() {
     <>
       <Navbar />
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-[#2b4c7e] to-[#1e3a5f] text-white py-16 px-6">
           <div className="max-w-6xl mx-auto">
@@ -146,6 +146,14 @@ export default function CiudadesPage() {
             </div>
           </div>
         </section>
+
+        <div className="max-w-6xl mx-auto px-6 py-10">
+          <PageHeroImage
+            src="/inmonestexterior.png"
+            alt="Gestoría inmobiliaria por ciudad en España"
+            className="mb-0"
+          />
+        </div>
 
         {/* Servicios Grid */}
         <section className="py-16 px-6">

@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 import ListingCard from '@/components/ListingCard'
 import { searchListings } from '@/lib/listings'
 
@@ -127,6 +128,14 @@ export default async function CiudadPage({
           </div>
         </div>
       </section>
+
+      <div className="max-w-5xl mx-auto px-4 py-8">
+        <PageHeroImage
+          src="/inmonestexterior.png"
+          alt={`Pisos en ${nombre} entre particulares`}
+          className="mb-0"
+        />
+      </div>
 
       {/* ── SECCIONES ────────────────────────────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-4 py-10">

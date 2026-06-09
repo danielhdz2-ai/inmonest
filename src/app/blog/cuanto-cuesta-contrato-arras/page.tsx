@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-05-27'
@@ -135,6 +136,11 @@ export default function CuantoCuestaArrasPage() {
             Estás a punto de dar una señal de 15.000€-30.000€ para reservar tu piso. Necesitas un contrato de arras que proteja ese dinero. ¿Cuánto te va a costar que lo redacte un profesional? Te lo contamos todo.
           </p>
         </header>
+        <PageHeroImage
+          src="/familia10.jpg"
+          alt="Cuánto cuesta un contrato de arras en 2026 — Precios reales de gestorías"
+          className="mb-12"
+        />
 
         <article className="prose prose-gray max-w-none">
           {/* Resumen ejecutivo */}

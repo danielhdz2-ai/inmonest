@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import GestorContactBanner from '@/components/GestorContactBanner'
+import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 const BASE_URL = 'https://inmonest.com'
@@ -389,6 +391,10 @@ export default function AyudaPropietariosPage() {
           </div>
         </div>
       </section>
+
+
+      <GestorContactBanner />
+      <TestimoniosSection />
 
       {/* CTA Final */}
       <section className="py-16 px-4 bg-[#c9962a] text-white">

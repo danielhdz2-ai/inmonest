@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import TotalRentalCostCalculator from '@/components/TotalRentalCostCalculator'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 const BASE_URL = 'https://inmonest.com'
@@ -105,6 +106,12 @@ export default function CalculadoraGastosAlquilerPage() {
               <strong className="text-gray-900">Descubre el coste real antes de alquilar.</strong>
             </p>
           </div>
+
+          <PageHeroImage
+            src="/gestoria1.jpg"
+            alt="Calculadora de gastos reales de alquiler"
+            className="mb-8 max-w-3xl mx-auto"
+          />
 
           {/* Grid: Calculadora + Info */}
           <div className="grid lg:grid-cols-2 gap-8 items-start">

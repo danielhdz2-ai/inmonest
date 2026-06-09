@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -52,6 +53,11 @@ export default function DueDiligenceBlogPage() {
             <span>⏱️ Lectura: 8 minutos</span>
           </div>
         </header>
+        <PageHeroImage
+          src="/inmonestexterior.png"
+          alt="Due Diligence Inmobiliaria: Qué Revisar Antes de Comprar una Vivienda"
+          className="mb-12"
+        />
 
         {/* Contenido */}
         <div className="prose prose-lg max-w-none">

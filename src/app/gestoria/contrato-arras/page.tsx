@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import PageHeroImage from '@/components/PageHeroImage'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
@@ -54,8 +55,8 @@ export default function ContratoArrasPage() {
         
         {/* Hero Section */}
         <section className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white py-20 px-6">
-          <div className="max-w-5xl mx-auto">
-            <div className="text-center">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
+            <div className="text-center lg:text-left">
               <div className="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-semibold mb-6">
                 ⚖️ Servicio Profesional de Gestoría
               </div>
@@ -66,7 +67,7 @@ export default function ContratoArrasPage() {
                 Redacción profesional de contratos de arras y señal para compraventa de viviendas. 
                 <strong> Desde 49€ + IVA.</strong> Listo en 24-48 horas.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
                 <a
                   href="tel:+34641008847"
                   className="px-8 py-4 bg-white text-emerald-700 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-xl"
@@ -84,6 +85,12 @@ export default function ContratoArrasPage() {
                 ✓ Sin desplazamientos · ✓ 100% online · ✓ Entrega en 24-48h
               </p>
             </div>
+            <PageHeroImage
+              src="/keys.jpg"
+              alt="Contrato de arras online redactado por abogados"
+              className="mb-0 shadow-2xl"
+              priority
+            />
           </div>
         </section>
 

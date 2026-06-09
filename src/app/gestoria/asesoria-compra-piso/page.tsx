@@ -3,18 +3,20 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import GestorContactBanner from '@/components/GestorContactBanner'
+import TestimoniosSection from '@/components/TestimoniosSection'
 
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Compra Piso sin Comisiones Abusivas 【666€】Gestoría Inmobiliaria | Inmonest',
-  description: 'Gestoría inmobiliaria para particulares. Te acompañamos desde la reserva hasta la escritura. Sin comisiones de agencia. Servicio completo 666€.',
+  title: 'Compra Piso sin Comisiones Abusivas 【687€】Gestoría Inmobiliaria | Inmonest',
+  description: 'Gestoría inmobiliaria para particulares. Te acompañamos desde la reserva hasta la escritura. Sin comisiones de agencia. Servicio completo 687€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/asesoria-compra-piso`,
   },
   openGraph: {
     title: 'Compra tu Piso sin Comisiones Abusivas — Inmonest',
-    description: 'Gestoría inmobiliaria especializada en compraventa. Te acompañamos en todo el proceso sin pagar comisiones a agencias. Servicio completo 666€.',
+    description: 'Gestoría inmobiliaria especializada en compraventa. Te acompañamos en todo el proceso sin pagar comisiones a agencias. Servicio completo 687€.',
     url: `${BASE_URL}/gestoria/asesoria-compra-piso`,
     type: 'website',
     siteName: 'Inmonest',
@@ -38,7 +40,7 @@ export default function AsesoriaCompraPisoPage() {
     },
     offers: {
       '@type': 'Offer',
-      price: '666',
+      price: '687',
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
     },
@@ -73,7 +75,7 @@ export default function AsesoriaCompraPisoPage() {
                   href="/gestoria/solicitar/compra-completa-reserva-escritura"
                   className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
-                  Contratar servicio completo (666€)
+                  Contratar servicio completo (687€)
                 </Link>
                 <a
                   href="https://wa.me/34641008847?text=Hola,%20estoy%20comprando%20piso%20y%20necesito%20ayuda%20con%20la%20gesti%C3%B3n"
@@ -128,6 +130,8 @@ export default function AsesoriaCompraPisoPage() {
         </div>
       </section>
 
+      <GestorContactBanner whatsappMessage="Hola, estoy comprando piso y necesito ayuda con la gestión" />
+
       {/* Por qué Inmonest */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
@@ -140,7 +144,7 @@ export default function AsesoriaCompraPisoPage() {
               <h3 className="text-xl font-bold mb-3 text-gray-900">Ahorras en comisiones</h3>
               <p className="text-gray-700">
                 Las agencias cobran entre 3% y 5% del precio (9.000€-15.000€ en un piso de 300k). 
-                Con Inmonest pagas <strong>666€ fijos</strong>.
+                Con Inmonest pagas <strong>687€ fijos</strong>.
               </p>
             </div>
             <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-500">
@@ -319,56 +323,20 @@ export default function AsesoriaCompraPisoPage() {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="py-16 px-4 bg-orange-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-            Lo que dicen nuestros clientes
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="text-yellow-500 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-              <p className="text-gray-700 mb-4 italic">
-                "La agencia me presionaba para firmar rápido. Inmonest detectó que el piso 
-                tenía una hipoteca de 120.000€ sin saldar. Me salvó de un desastre."
-              </p>
-              <div className="text-sm font-semibold text-gray-900">Roberto M.</div>
-              <div className="text-xs text-gray-500">Compró piso en Madrid</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="text-yellow-500 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-              <p className="text-gray-700 mb-4 italic">
-                "Iba a pagar 250.000€ por 85m². La nota simple decía 72m². Renegociamos a 220.000€. 
-                Ahorré 30.000€ y solo pagué 666€ a Inmonest."
-              </p>
-              <div className="text-sm font-semibold text-gray-900">Elena G.</div>
-              <div className="text-xs text-gray-500">Compró piso en Barcelona</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="text-yellow-500 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-              <p className="text-gray-700 mb-4 italic">
-                "Tener una gestoría a mi lado me dio tranquilidad total. Revisaron todo: arras, hipoteca, 
-                escritura. Compré sabiendo exactamente en qué me metía."
-              </p>
-              <div className="text-sm font-semibold text-gray-900">Javier L.</div>
-              <div className="text-xs text-gray-500">Compró piso en Valencia</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimoniosSection className="bg-orange-50" />
 
       {/* Precio */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-            Servicio completo por 666€
+            Servicio completo por 687€
           </h2>
           <p className="text-xl text-gray-600 mb-12">
             Mucho más barato que comisiones de agencia de 9.000€-15.000€
           </p>
           <div className="border-2 border-[#c9962a] rounded-lg p-8 shadow-lg">
             <h3 className="text-2xl font-bold mb-4 text-gray-900">Servicio Completo de Compra</h3>
-            <div className="text-5xl font-bold text-[#c9962a] mb-2">666€</div>
+            <div className="text-5xl font-bold text-[#c9962a] mb-2">687€</div>
             <div className="text-sm text-gray-500 mb-8">IVA incluido · Pago único</div>
             <ul className="text-left space-y-3 mb-8 max-w-md mx-auto">
               <li className="flex items-start gap-2">
@@ -406,7 +374,7 @@ export default function AsesoriaCompraPisoPage() {
               href="/gestoria/solicitar/compra-completa-reserva-escritura"
               className="inline-block bg-[#c9962a] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#b8872a] transition shadow-lg"
             >
-              Contratar servicio completo (666€)
+              Contratar servicio completo (687€)
             </Link>
           </div>
         </div>
@@ -430,7 +398,7 @@ export default function AsesoriaCompraPisoPage() {
               },
               {
                 q: '¿Qué diferencia hay con contratar una agencia?',
-                a: 'Las agencias cobran 3%-5% del precio (9.000€-15.000€). Nosotros cobramos 666€ fijos. Además, las agencias trabajan para el vendedor. Nosotros trabajamos para ti.',
+                a: 'Las agencias cobran 3%-5% del precio (9.000€-15.000€). Nosotros cobramos 687€ fijos. Además, las agencias trabajan para el vendedor. Nosotros trabajamos para ti.',
               },
               {
                 q: '¿Qué pasa si detectáis un problema grave?',
@@ -457,14 +425,14 @@ export default function AsesoriaCompraPisoPage() {
             No pagues comisiones abusivas. Compra con Inmonest.
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Por 666€ evitas comisiones de 9.000€-15.000€ y errores que pueden costarte mucho más.
+            Por 687€ evitas comisiones de 9.000€-15.000€ y errores que pueden costarte mucho más.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/compra-completa-reserva-escritura"
               className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Contratar servicio completo (666€)
+              Contratar servicio completo (687€)
             </Link>
             <a
               href="https://wa.me/34641008847?text=Hola,%20necesito%20ayuda%20para%20comprar%20un%20piso%20sin%20comisiones"

@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import GestorContactBanner from '@/components/GestorContactBanner'
+import TestimoniosSection from '@/components/TestimoniosSection'
+import PageHeroImage from '@/components/PageHeroImage'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 const BASE_URL = 'https://inmonest.com'
@@ -8,13 +11,13 @@ const PHONE = '641008847'
 const PHONE_DISPLAY = '641 008 847'
 
 export const metadata: Metadata = {
-  title: 'Vender Piso Sin Inmobiliaria | Gestoría Digital Alternativa 666€',
-  description: 'Alternativa legal a las inmobiliarias tradicionales. Vende tu piso de particular a particular con gestor experto online: contratos, legalidad y trámites por 666€. Sin comisiones ni exclusivas.',
+  title: 'Vender Piso Sin Inmobiliaria | Gestoría Digital Alternativa 687€',
+  description: 'Alternativa legal a las inmobiliarias tradicionales. Vende tu piso de particular a particular con gestor experto online: contratos, legalidad y trámites por 687€. Sin comisiones ni exclusivas.',
   alternates: { canonical: `${BASE_URL}/servicios/vender-piso-sin-inmobiliaria` },
   keywords: 'vender piso sin inmobiliaria, alternativa a las agencias inmobiliarias, gestoria para vender piso particular, como vender una casa sin agencia, venta particular a particular, evitar comisiones inmobiliaria',
   openGraph: {
     title: 'Alternativa Digital a las Inmobiliarias | Inmonest Gestoría',
-    description: 'Vende 100% de particular a particular sin comisiones. Gestoría inmobiliaria digital te asigna un experto que se encarga de la legalidad por 666€. Tú controlas la venta, nosotros aseguramos el proceso.',
+    description: 'Vende 100% de particular a particular sin comisiones. Gestoría inmobiliaria digital te asigna un experto que se encarga de la legalidad por 687€. Tú controlas la venta, nosotros aseguramos el proceso.',
     url: `${BASE_URL}/servicios/vender-piso-sin-inmobiliaria`,
     type: 'website',
     siteName: 'Inmonest',
@@ -28,7 +31,7 @@ export default function VenderSinInmobiliariaPage() {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     name: 'Inmonest Gestoría Inmobiliaria Digital',
-    description: 'Alternativa digital a las inmobiliarias tradicionales. Gestoría especializada en ventas de particular a particular con seguridad jurídica total por 666€.',
+    description: 'Alternativa digital a las inmobiliarias tradicionales. Gestoría especializada en ventas de particular a particular con seguridad jurídica total por 687€.',
     provider: {
       '@type': 'Organization',
       name: 'Inmonest',
@@ -37,7 +40,7 @@ export default function VenderSinInmobiliariaPage() {
     },
     offers: {
       '@type': 'Offer',
-      price: '666',
+      price: '687',
       priceCurrency: 'EUR',
       description: 'Servicio completo de gestoría para venta sin inmobiliaria: gestor asignado, contratos legales, tramitación y acompañamiento hasta escritura',
       priceValidUntil: '2027-12-31',
@@ -71,7 +74,7 @@ export default function VenderSinInmobiliariaPage() {
         name: 'Inmonest Gestoría Digital',
         offers: {
           '@type': 'Offer',
-          price: '666',
+          price: '687',
           priceCurrency: 'EUR',
           description: 'Tarifa plana todo incluido'
         }
@@ -88,7 +91,7 @@ export default function VenderSinInmobiliariaPage() {
         name: '¿Cómo vender una casa sin agencia inmobiliaria?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Puedes vender de particular a particular contratando una gestoría inmobiliaria como Inmonest. Por 666€ te asignan un gestor experto que redacta contratos, tramita documentación y te acompaña hasta la escritura, dándote la misma seguridad jurídica que una inmobiliaria pero sin comisiones abusivas.'
+          text: 'Puedes vender de particular a particular contratando una gestoría inmobiliaria como Inmonest. Por 687€ te asignan un gestor experto que redacta contratos, tramita documentación y te acompaña hasta la escritura, dándote la misma seguridad jurídica que una inmobiliaria pero sin comisiones abusivas.'
         }
       },
       {
@@ -104,7 +107,7 @@ export default function VenderSinInmobiliariaPage() {
         name: '¿Es seguro vender sin inmobiliaria?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Sí, con asesoramiento legal adecuado. El riesgo no está en prescindir de la inmobiliaria, sino en hacerlo sin contratos profesionales. Con Inmonest tienes la seguridad jurídica de un experto revisando cada documento por solo 666€, ahorrando más de 17.000€ en comisiones.'
+          text: 'Sí, con asesoramiento legal adecuado. El riesgo no está en prescindir de la inmobiliaria, sino en hacerlo sin contratos profesionales. Con Inmonest tienes la seguridad jurídica de un experto revisando cada documento por solo 687€, ahorrando más de 17.000€ en comisiones.'
         }
       },
       {
@@ -112,7 +115,7 @@ export default function VenderSinInmobiliariaPage() {
         name: '¿Cuánto cobran las inmobiliarias por vender un piso?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Entre 5% y 6% + IVA del precio de venta. En un piso de 300.000€ pagas entre 15.000€ y 18.150€. Con Inmonest pagas solo 666€ por el mismo servicio legal, ahorrando más de 17.000€.'
+          text: 'Entre 5% y 6% + IVA del precio de venta. En un piso de 300.000€ pagas entre 15.000€ y 18.150€. Con Inmonest pagas solo 687€ por el mismo servicio legal, ahorrando más de 17.000€.'
         }
       }
     ]
@@ -122,6 +125,11 @@ export default function VenderSinInmobiliariaPage() {
     <>
       <Navbar />
       <main className="min-h-screen bg-white">
+        <PageHeroImage
+          src="/inmonestexterior.png"
+          alt="Vende tu piso{' '} 100% de particular a particular Sin comisiones. Sin exclusivas."
+          className="mb-12"
+        />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schemaJson }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: comparisonSchema }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
@@ -168,7 +176,7 @@ export default function VenderSinInmobiliariaPage() {
                 <strong className="text-[#c9a84c] font-bold">Inmonest Gestoría Inmobiliaria</strong> es la alternativa digital 
                 a las inmobiliarias tradicionales: <strong className="text-white">te asignamos un gestor experto online</strong> que 
                 se encarga de la legalidad, contratos y trámites de tu venta por una{' '}
-                <strong className="text-[#f4c94a]">tarifa plana de 666€</strong>.
+                <strong className="text-[#f4c94a]">tarifa plana de 687€</strong>.
               </p>
               <p className="text-lg text-white/70 text-center mt-4 italic">
                 Tú controlas la venta, nosotros aseguramos el proceso.
@@ -219,7 +227,7 @@ export default function VenderSinInmobiliariaPage() {
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
                 ¿Por qué pagar <span className="text-red-600">18.150€</span> a una inmobiliaria<br />
-                cuando puedes tener <span className="text-[#c9a84c]">lo mismo por 666€</span>?
+                cuando puedes tener <span className="text-[#c9a84c]">lo mismo por 687€</span>?
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Comparativa real para un piso de <strong>300.000€</strong>
@@ -295,7 +303,7 @@ export default function VenderSinInmobiliariaPage() {
                   <div className="flex items-start gap-3">
                     <span className="text-green-300 font-bold text-xl">✓</span>
                     <div>
-                      <p className="font-semibold text-white">Tarifa plana 666€</p>
+                      <p className="font-semibold text-white">Tarifa plana 687€</p>
                       <p className="text-sm text-white/80">Sin sorpresas, todo incluido</p>
                     </div>
                   </div>
@@ -331,7 +339,7 @@ export default function VenderSinInmobiliariaPage() {
 
                 <div className="bg-white rounded-xl p-4 text-center shadow-xl">
                   <p className="text-sm text-gray-600 mb-1">Coste total</p>
-                  <p className="text-4xl font-black text-[#c9a84c]">666€</p>
+                  <p className="text-4xl font-black text-[#c9a84c]">687€</p>
                   <p className="text-xs text-green-600 font-bold mt-2">↓ AHORRO: 17.484€</p>
                 </div>
               </div>
@@ -347,7 +355,7 @@ export default function VenderSinInmobiliariaPage() {
                     <p className="text-lg leading-relaxed text-white/90">
                       Si <strong>ya tienes comprador</strong> (familiar, conocido, portal inmobiliario), 
                       <strong> no necesitas pagar 18.000€ por captación</strong>. Solo necesitas 
-                      <strong> seguridad jurídica en contratos y tramitación</strong>, que cuesta 666€.
+                      <strong> seguridad jurídica en contratos y tramitación</strong>, que cuesta 687€.
                       El resto es <span className="underline decoration-yellow-300">margen puro</span> de la inmobiliaria.
                     </p>
                   </div>
@@ -364,7 +372,7 @@ export default function VenderSinInmobiliariaPage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-                Qué incluye el servicio de 666€
+                Qué incluye el servicio de 687€
               </h2>
               <p className="text-xl text-gray-600">
                 Tu gestor personal se encarga de todo lo legal
@@ -456,7 +464,7 @@ export default function VenderSinInmobiliariaPage() {
                 },
                 {
                   step: '3',
-                  title: 'Contratas el servicio (666€)',
+                  title: 'Contratas el servicio (687€)',
                   desc: 'Pago seguro online. Se te asigna un gestor personal que te contacta en menos de 24h.',
                   bg: 'from-[#c9a84c] to-[#a87a20]'
                 },
@@ -508,7 +516,7 @@ export default function VenderSinInmobiliariaPage() {
               {[
                 {
                   q: '¿Cómo vender una casa sin agencia inmobiliaria?',
-                  a: 'Puedes vender de particular a particular contratando una gestoría inmobiliaria como Inmonest. Por 666€ te asignan un gestor experto que redacta contratos, tramita documentación y te acompaña hasta la escritura, dándote la misma seguridad jurídica que una inmobiliaria pero sin comisiones abusivas.'
+                  a: 'Puedes vender de particular a particular contratando una gestoría inmobiliaria como Inmonest. Por 687€ te asignan un gestor experto que redacta contratos, tramita documentación y te acompaña hasta la escritura, dándote la misma seguridad jurídica que una inmobiliaria pero sin comisiones abusivas.'
                 },
                 {
                   q: '¿Qué es una gestoría inmobiliaria digital?',
@@ -516,11 +524,11 @@ export default function VenderSinInmobiliariaPage() {
                 },
                 {
                   q: '¿Es seguro vender sin inmobiliaria?',
-                  a: 'Sí, con asesoramiento legal adecuado. El riesgo no está en prescindir de la inmobiliaria, sino en hacerlo sin contratos profesionales. Con Inmonest tienes la seguridad jurídica de un experto revisando cada documento por solo 666€, ahorrando más de 17.000€ en comisiones.'
+                  a: 'Sí, con asesoramiento legal adecuado. El riesgo no está en prescindir de la inmobiliaria, sino en hacerlo sin contratos profesionales. Con Inmonest tienes la seguridad jurídica de un experto revisando cada documento por solo 687€, ahorrando más de 17.000€ en comisiones.'
                 },
                 {
                   q: '¿Cuánto cobran las inmobiliarias por vender un piso?',
-                  a: 'Entre 5% y 6% + IVA del precio de venta. En un piso de 300.000€ pagas entre 15.000€ y 18.150€. Con Inmonest pagas solo 666€ por el mismo servicio legal, ahorrando más de 17.000€.'
+                  a: 'Entre 5% y 6% + IVA del precio de venta. En un piso de 300.000€ pagas entre 15.000€ y 18.150€. Con Inmonest pagas solo 687€ por el mismo servicio legal, ahorrando más de 17.000€.'
                 },
                 {
                   q: '¿Necesito tener comprador antes de contratar?',
@@ -543,6 +551,9 @@ export default function VenderSinInmobiliariaPage() {
             </div>
           </div>
         </section>
+
+        <GestorContactBanner whatsappMessage="Hola, quiero vender mi piso sin inmobiliaria y necesito información" />
+        <TestimoniosSection />
 
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             CTA FINAL

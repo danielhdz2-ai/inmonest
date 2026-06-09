@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import GestorContactBanner from '@/components/GestorContactBanner'
+import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 const BASE_URL = 'https://inmonest.com'
@@ -278,6 +280,10 @@ export default function VentaCompletaBarcelonaPage() {
           </div>
         </div>
       </section>
+
+
+      <GestorContactBanner />
+      <TestimoniosSection />
 
       {/* CTA Barcelona */}
       <section className="py-16 px-4 bg-gradient-to-br from-[#c9962a] to-[#a87a20]">

@@ -425,7 +425,7 @@ export default function GestoriaPage() {
       <section className="relative h-[480px] sm:h-[560px] overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/imagencabezera.jpg')" }}
+          style={{ backgroundImage: "url('/gestoria1.jpg')" }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#3d2a05]/90 via-[#7a5c1e]/70 to-transparent" />
         <div className="relative h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 max-w-4xl">

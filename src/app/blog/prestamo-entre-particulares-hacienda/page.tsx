@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
@@ -71,6 +72,11 @@ export default function PrestamoParticulaesHaciendaPage() {
             Millones de españoles prestan o reciben dinero de familiares o amigos sin contrato escrito. Pero lo que parece un favor entre conocidos puede convertirse en un problema fiscal grave si Hacienda lo interpreta como una donación encubierta.
           </p>
         </header>
+        <PageHeroImage
+          src="/familia10.jpg"
+          alt="Préstamo entre familiares: cómo formalizarlo y declararlo ante Hacienda"
+          className="mb-12"
+        />
 
         <article className="prose prose-gray max-w-none">
           <h2>El riesgo que nadie te cuenta: Hacienda y las donaciones encubiertas</h2>

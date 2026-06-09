@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
@@ -71,6 +72,11 @@ export default function AlquilerHabitacionColivingPage() {
             El alquiler de habitaciones es uno de los negocios más frecuentes entre propietarios que viven en pisos grandes o invierten en coliving. Pero muchos lo hacen sin contrato escrito, exponiéndose a problemas graves. Aquí tienes todo lo que necesitas saber.
           </p>
         </header>
+        <PageHeroImage
+          src="/gestoria1.jpg"
+          alt="Alquilar una habitación en 2026: contrato, fianza y derechos del propietario"
+          className="mb-12"
+        />
 
         <article className="prose prose-gray max-w-none">
           <h2>¿La LAU protege el alquiler de habitaciones?</h2>

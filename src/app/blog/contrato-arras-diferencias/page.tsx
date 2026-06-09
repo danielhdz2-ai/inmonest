@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
@@ -71,6 +72,11 @@ export default function ArrasDiferenciasPage() {
             Son los dos contratos más utilizados antes de firmar la escritura de compraventa, pero funcionan de forma muy diferente. Elegir mal puede costarte la operación.
           </p>
         </header>
+        <PageHeroImage
+          src="/keys.jpg"
+          alt="Arras penitenciales vs confirmatorias: ¿cuál te conviene en tu compraventa?"
+          className="mb-12"
+        />
 
         <article className="prose prose-gray max-w-none">
           <h2>¿Qué son las arras?</h2>

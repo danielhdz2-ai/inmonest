@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -64,6 +65,11 @@ export default function GestoriaCiudadesPost() {
               ITE en Barcelona, cédula en Valencia, IEE en Madrid... Cada ciudad tiene su normativa. Te explicamos qué debes revisar según dónde compres tu vivienda.
             </p>
           </header>
+        <PageHeroImage
+          src="/interior3.jpg"
+          alt="Gestoría inmobiliaria en Barcelona, Valencia y Madrid: diferencias clave por ciudad"
+          className="mb-12"
+        />
 
           <div className="prose prose-lg max-w-none">
             <p>

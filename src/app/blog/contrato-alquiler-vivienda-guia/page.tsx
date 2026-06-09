@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
@@ -71,6 +72,11 @@ export default function ContratoAlquilerGuiaPage() {
             La Ley de Vivienda 2023 y sus modificaciones de 2025-2026 han cambiado bastantes reglas del juego. Muchas plantillas que circulan por internet son directamente ilegales. Aquí tienes lo que realmente debe incluir un contrato de alquiler hoy.
           </p>
         </header>
+        <PageHeroImage
+          src="/interior3.jpg"
+          alt="Contrato de alquiler 2026: qué tiene que incluir para ser válido y protegerte"
+          className="mb-12"
+        />
 
         <article className="prose prose-gray max-w-none">
           <h2>¿Qué ley regula el alquiler de vivienda en España en 2026?</h2>

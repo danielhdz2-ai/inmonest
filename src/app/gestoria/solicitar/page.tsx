@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 import Footer from '@/components/Footer'
 
 const BASE_URL = 'https://inmonest.com'
@@ -102,7 +103,6 @@ export default function SolicitarIndexPage() {
     <>
       <Navbar />
       <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        
         {/* Hero */}
         <section className="bg-gradient-to-r from-[#2b4c7e] to-[#1e3a5f] text-white py-16 px-6">
           <div className="max-w-6xl mx-auto text-center">
@@ -120,6 +120,14 @@ export default function SolicitarIndexPage() {
             </div>
           </div>
         </section>
+
+        <div className="max-w-6xl mx-auto px-6 py-10">
+          <PageHeroImage
+            src="/familia10.jpg"
+            alt="Servicios de gestoría inmobiliaria Inmonest"
+            className="mb-0"
+          />
+        </div>
 
         {/* Servicios por Categoría */}
         <section className="py-16 px-6">

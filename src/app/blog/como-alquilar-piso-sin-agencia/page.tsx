@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
@@ -71,6 +72,11 @@ export default function ComoAlquilarSinAgenciaPage() {
             Alquilar sin agencia significa ahorrarte entre una y dos mensualidades de renta en honorarios. Aquí tienes todo el proceso, paso a paso, sin saltar ningún detalle legal importante.
           </p>
         </header>
+        <PageHeroImage
+          src="/inmonestexterior.png"
+          alt="Cómo alquilar tu piso sin agencia en 2026: guía completa para propietarios"
+          className="mb-12"
+        />
 
         <article className="prose prose-gray max-w-none">
           <h2>¿Cuánto me ahorro al alquilar sin agencia?</h2>

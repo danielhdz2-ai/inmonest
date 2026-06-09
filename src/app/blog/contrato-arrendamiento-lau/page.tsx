@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -43,6 +44,11 @@ export default function ContratoArrendamientoLAUPage() {
             <span>⏱ Lectura: 8 min</span>
           </div>
         </header>
+        <PageHeroImage
+          src="/gestoria1.jpg"
+          alt="Contrato de Arrendamiento LAU 2026:Guía Completa + Plantilla Gratis"
+          className="mb-12"
+        />
 
         {/* Índice */}
         <nav className="bg-gray-50 rounded-xl p-6 mb-10 border border-gray-200">

@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 import PublicarWizard from './PublicarWizard'
 
 export const metadata = {
@@ -28,6 +29,11 @@ export default async function PublicarPage() {
     <>
       <Navbar />
       <main className="min-h-screen bg-[#fef9e8] py-10 px-4">
+        <PageHeroImage
+          src="/gestoria1.jpg"
+          alt="Publicar anuncio gratis en Inmonest"
+          className="mb-10"
+        />
         {limitReached ? (
           <div className="max-w-lg mx-auto text-center pt-10">
             <div className="bg-white rounded-2xl shadow-lg p-8 border border-[#f4c94a]/30">

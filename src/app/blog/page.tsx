@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -216,6 +217,11 @@ export default function BlogPage() {
             Sin tecnicismos, sin letra pequeña.
           </p>
         </header>
+        <PageHeroImage
+          src="/keys.jpg"
+          alt="Blog para propietarios"
+          className="mb-12"
+        />
 
         {/* Recursos y landing pages destacadas */}
         {RECURSOS.length > 0 && (

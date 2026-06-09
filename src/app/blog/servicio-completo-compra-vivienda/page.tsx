@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -64,6 +65,11 @@ export default function ServicioCompletoCompraPost() {
               Revisión de contratos con agencias, análisis de honorarios, coordinación con notaría... Descubre cómo funciona el servicio integral que te acompaña en todo el proceso.
             </p>
           </header>
+        <PageHeroImage
+          src="/interior3.jpg"
+          alt="Servicio completo de compra: de la reserva a la escritura con todas las garantías"
+          className="mb-12"
+        />
 
           <div className="prose prose-lg max-w-none">
             <p>
@@ -305,7 +311,7 @@ export default function ServicioCompletoCompraPost() {
                 href="/gestoria/solicitar/compra-completa-reserva-escritura"
                 className="inline-block bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-amber-700 transition"
               >
-                Contratar servicio (666 €)
+                Contratar servicio (687 €)
               </Link>
               <Link
                 href="/gestoria/solicitar/acompanamiento-reserva-arras"

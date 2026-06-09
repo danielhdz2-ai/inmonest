@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 import Footer from '@/components/Footer'
 
 const BASE_URL = 'https://inmonest.com'
@@ -53,6 +54,11 @@ export default function QueEsGestoriaInmobiliariaPage() {
             <span>⏱️ Lectura: 7 minutos</span>
           </div>
         </header>
+        <PageHeroImage
+          src="/inmonestexterior.png"
+          alt="¿Qué es una Gestoría Inmobiliaria? Guía Completa 2026"
+          className="mb-12"
+        />
 
         {/* Contenido */}
         <div className="prose prose-lg max-w-none">

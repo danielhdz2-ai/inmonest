@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -64,6 +65,11 @@ export default function AsesoriaJuridicaCompraPost() {
               Comprar una vivienda sin asesoramiento puede costarte miles de euros en errores. Descubre qué revisa un gestor especializado y por qué es la mejor inversión que puedes hacer.
             </p>
           </header>
+        <PageHeroImage
+          src="/familia10.jpg"
+          alt="Asesoría jurídica en la compra de vivienda: ¿por qué necesitas un gestor inmobiliario?"
+          className="mb-12"
+        />
 
           <div className="prose prose-lg max-w-none">
             <h2>El problema: comprar sin asesoramiento</h2>

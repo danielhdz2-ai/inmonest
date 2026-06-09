@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 // ✅ OPTIMIZACIÓN: Cachear 2 horas
 export const revalidate = 43200  // 12 horas (antes: 2h - optimizado para reducir CPU)
@@ -211,6 +212,11 @@ export default async function PisosCiudadPage({ params }: { params: Promise<{ ci
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqJson }} />
 
       <main className="max-w-4xl mx-auto px-4 py-12 sm:py-16">
+        <PageHeroImage
+          src="/keys.jpg"
+          alt={`Pisos en ${nombre}: compra y alquiler entre particulares`}
+          className="mb-10"
+        />
 
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2 flex-wrap">

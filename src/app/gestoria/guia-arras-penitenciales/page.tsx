@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 const BASE_URL = 'https://inmonest.com'
@@ -100,6 +101,14 @@ export default function GuiaArrasPenitencialesPage() {
               </Link>
             </div>
           </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 py-10">
+          <PageHeroImage
+            src="/gestoria1.jpg"
+            alt="Guía completa sobre arras penitenciales"
+            className="mb-0"
+          />
         </div>
 
         {/* Contenido principal */}

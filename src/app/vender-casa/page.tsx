@@ -1,12 +1,14 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Navbar from '@/components/NavbarServer'
+import GestorContactBanner from '@/components/GestorContactBanner'
+import TestimoniosSection from '@/components/TestimoniosSection'
 import VenderForm from '@/components/VenderForm'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Vender Piso Sin Comisiones | 0% Agencia - Publica Gratis',
-  description: 'Vende tu piso sin pagar comisión a agencia inmobiliaria. Publica gratis, llega a compradores reales. Ahorra 10,000€+ en comisiones. ✓ Sin intermediarios ✓ Asesoría legal desde 666€',
+  description: 'Vende tu piso sin pagar comisión a agencia inmobiliaria. Publica gratis, llega a compradores reales. Ahorra 10,000€+ en comisiones. ✓ Sin intermediarios ✓ Asesoría legal desde 687€',
   alternates: { canonical: 'https://inmonest.com/vender-casa' },
   keywords: 'vender casa sin comisiones, vender piso sin comisiones, vender casa particulares, vender piso entre particulares, vender casa sin agencia',
   openGraph: {
@@ -222,6 +224,9 @@ export default function VenderCasaPage() {
           </div>
         </div>
       </section>
+
+      <GestorContactBanner whatsappMessage="Hola, quiero vender mi casa y necesito asesoramiento" />
+      <TestimoniosSection />
 
       {/* ── FOOTER CTA ───────────────────────────────────────────────────── */}
       <section className="py-14 bg-gradient-to-r from-[#2e1900] to-[#42300a]">

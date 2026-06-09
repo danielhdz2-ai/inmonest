@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import PageHeroImage from '@/components/PageHeroImage'
 import CalculadoraAhorroComisiones from '@/components/CalculadoraAhorroComisiones'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
@@ -78,6 +79,11 @@ export default function CalculadoraAhorroPage() {
     <>
       <Navbar />
       <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+        <PageHeroImage
+          src="/interior3.jpg"
+          alt="¿Cuánto ahorras vendiendosin agencia inmobiliaria?"
+          className="mb-12"
+        />
         {/* Schema markup */}
         <script
           type="application/ld+json"

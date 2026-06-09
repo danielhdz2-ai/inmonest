@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA_PUBLICACION = '2026-04-21'
@@ -94,6 +95,11 @@ export default function VenderPisoSinComisionesPage() {
             Publicado el 21 de abril de 2026
           </time>
         </header>
+        <PageHeroImage
+          src="/keys.jpg"
+          alt="Vender tu piso sin comisiones: guía completa para propietarios 2026"
+          className="mb-12"
+        />
 
         <article className="prose prose-gray max-w-none space-y-8">
 
