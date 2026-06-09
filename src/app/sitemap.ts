@@ -51,6 +51,14 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/barcelona`,                         lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/madrid`,                            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/valencia`,                          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/madrid`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/barcelona`,  lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/valencia`,   lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/sevilla`,    lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/malaga`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/salamanca`,  lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/valladolid`, lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
 
   // Gestoría — Landing pages SEO ciudad-específicas (NUEVAS - Mayo 2026 - URLs limpias)
   { url: `${BASE_URL}/zaragoza/contrato-alquiler`,           lastModified: today, changeFrequency: 'weekly', priority: 0.8 },

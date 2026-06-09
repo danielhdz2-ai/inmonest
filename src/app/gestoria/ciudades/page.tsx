@@ -19,6 +19,9 @@ const CIUDADES = [
   { slug: 'barcelona', nombre: 'Barcelona', emoji: '🏖️' },
   { slug: 'valencia', nombre: 'Valencia', emoji: '🌊' },
   { slug: 'sevilla', nombre: 'Sevilla', emoji: '☀️' },
+  { slug: 'malaga', nombre: 'Málaga', emoji: '🌴' },
+  { slug: 'salamanca', nombre: 'Salamanca', emoji: '🎓' },
+  { slug: 'valladolid', nombre: 'Valladolid', emoji: '🚄' },
 ]
 
 // LANDING PAGES GENÉRICAS (SIN CIUDADES)
@@ -43,7 +46,7 @@ const LANDING_POR_CIUDAD = [
   { 
     servicio: 'venta-completa-reserva-escritura', 
     nombre: 'Servicio Completo Venta',
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga']
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'salamanca', 'valladolid']
   },
   { 
     servicio: 'due-diligence-precompra', 
@@ -274,7 +277,7 @@ export default function CiudadesPage() {
                       {landing.nombre}
                     </h4>
                     
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
                       {CIUDADES.map(ciudad => {
                         const existe = landing.ciudades.includes(ciudad.slug)
                         const url = landing.servicio === 'ciudad-hub' 
@@ -320,24 +323,40 @@ export default function CiudadesPage() {
                 <h4 className="font-bold text-lg text-gray-900 mb-4">
                   Hubs de Ciudad (Genéricos)
                 </h4>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  {CIUDADES.map(ciudad => (
-                    <Link
-                      key={ciudad.slug}
-                      href={`/gestoria/${ciudad.slug}`}
-                      target="_blank"
-                      className="flex items-center gap-2 p-3 bg-white border-2 border-blue-500 rounded-lg hover:bg-blue-50 transition-all group"
-                    >
-                      <span className="text-lg">{ciudad.emoji}</span>
-                      <div className="flex-1">
-                        <div className="font-semibold text-gray-900 text-sm">{ciudad.nombre}</div>
-                        <div className="text-xs text-blue-600">Hub general</div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                  {CIUDADES.map(ciudad => {
+                    const hubCiudades = LANDING_POR_CIUDAD.find((l) => l.servicio === 'ciudad-hub')?.ciudades ?? []
+                    const tieneHub = hubCiudades.includes(ciudad.slug)
+
+                    return (
+                      <div key={ciudad.slug}>
+                        {tieneHub ? (
+                          <Link
+                            href={`/gestoria/${ciudad.slug}`}
+                            target="_blank"
+                            className="flex items-center gap-2 p-3 bg-white border-2 border-blue-500 rounded-lg hover:bg-blue-50 transition-all group"
+                          >
+                            <span className="text-lg">{ciudad.emoji}</span>
+                            <div className="flex-1">
+                              <div className="font-semibold text-gray-900 text-sm">{ciudad.nombre}</div>
+                              <div className="text-xs text-blue-600">Hub general</div>
+                            </div>
+                            <span className="text-blue-600 group-hover:translate-x-1 transition-transform">
+                              →
+                            </span>
+                          </Link>
+                        ) : (
+                          <div className="flex items-center gap-2 p-3 bg-gray-50 border-2 border-gray-300 rounded-lg opacity-50">
+                            <span className="text-lg grayscale">{ciudad.emoji}</span>
+                            <div className="flex-1">
+                              <div className="font-semibold text-gray-500 text-sm">{ciudad.nombre}</div>
+                              <div className="text-xs text-gray-400">✗ Sin hub</div>
+                            </div>
+                          </div>
+                        )}
                       </div>
-                      <span className="text-blue-600 group-hover:translate-x-1 transition-transform">
-                        →
-                      </span>
-                    </Link>
-                  ))}
+                    )
+                  })}
                 </div>
               </div>
 
@@ -463,6 +482,18 @@ export default function CiudadesPage() {
               <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
                 <h4 className="font-bold text-gray-900 mb-2">☀️ Sevilla</h4>
                 <p className="text-sm text-gray-600">Venta sin agencia, contratos LAU, due diligence</p>
+              </div>
+              <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                <h4 className="font-bold text-gray-900 mb-2">🌴 Málaga</h4>
+                <p className="text-sm text-gray-600">Venta completa reserva→escritura, costa y centro</p>
+              </div>
+              <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                <h4 className="font-bold text-gray-900 mb-2">🎓 Salamanca</h4>
+                <p className="text-sm text-gray-600">Venta universitaria, casco histórico, Castilla y León</p>
+              </div>
+              <div className="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+                <h4 className="font-bold text-gray-900 mb-2">🚄 Valladolid</h4>
+                <p className="text-sm text-gray-600">Venta particular, compradores desde Madrid, provincia</p>
               </div>
             </div>
 

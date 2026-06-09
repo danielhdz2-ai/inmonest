@@ -778,6 +778,41 @@ export default function VentaCompletaPage() {
         </div>
       </section>
 
+      {/* Por ciudad */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl font-bold text-center mb-4 text-gray-900">
+            Vende tu piso sin agencia en tu ciudad
+          </h2>
+          <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+            Información y acompañamiento adaptados a cada mercado local
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              { slug: 'madrid', nombre: 'Madrid', emoji: '🏛️' },
+              { slug: 'barcelona', nombre: 'Barcelona', emoji: '🏖️' },
+              { slug: 'valencia', nombre: 'Valencia', emoji: '🌊' },
+              { slug: 'sevilla', nombre: 'Sevilla', emoji: '☀️' },
+              { slug: 'malaga', nombre: 'Málaga', emoji: '🌴' },
+              { slug: 'salamanca', nombre: 'Salamanca', emoji: '🎓' },
+              { slug: 'valladolid', nombre: 'Valladolid', emoji: '🚄' },
+            ].map((ciudad) => (
+              <Link
+                key={ciudad.slug}
+                href={`/gestoria/venta-completa-reserva-escritura/${ciudad.slug}`}
+                className="flex items-center gap-3 bg-white p-4 rounded-lg border border-gray-100 hover:border-[#c9962a] hover:shadow-md transition"
+              >
+                <span className="text-2xl">{ciudad.emoji}</span>
+                <div>
+                  <div className="font-bold text-gray-900">{ciudad.nombre}</div>
+                  <div className="text-xs text-[#c9962a]">Ver servicio →</div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Otros servicios */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
