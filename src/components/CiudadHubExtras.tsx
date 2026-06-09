@@ -46,6 +46,7 @@ export default function CiudadHubExtras({
         className="bg-gray-50"
         layout={testimoniosLayout}
         showGoogleReviews={showGoogleReviews}
+        ciudad={ciudad}
       />
     </>
   )

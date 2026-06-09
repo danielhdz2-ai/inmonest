@@ -6,12 +6,13 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
+import CiudadHubVentajasOnline from '@/components/CiudadHubVentajasOnline'
 import { GESTORIA_PRECIOS } from '@/lib/gestoria-servicios-destacados'
 
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Sevilla para Particulares | Contratos desde 61€ | Inmonest',
+  title: 'Gestoría Inmobiliaria Sevilla para Particulares | Contratos desde 120€',
   description: 'Gestoría inmobiliaria para particulares en Sevilla. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones de agencia. Normativa andaluza.',
   keywords: [
     'gestoria inmobiliaria sevilla',
@@ -27,13 +28,19 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/gestoria/sevilla`,
   },
   openGraph: {
-    title: 'Gestoría Inmobiliaria en Sevilla para Particulares - Contratos desde 61€',
+    title: 'Gestoría Inmobiliaria Sevilla para Particulares | Contratos desde 120€',
     description: 'Gestoría inmobiliaria en Sevilla 100% online. Contratos de alquiler LAU, arras penitenciales y compraventa. Abogados especializados en normativa andaluza.',
     url: `${BASE_URL}/gestoria/sevilla`,
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
     images: [{ url: `${BASE_URL}/gestoria5.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria online en Sevilla' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gestoría Inmobiliaria Sevilla para Particulares | Contratos desde 120€',
+    description:
+      'Contratos de alquiler LAU, arras y compraventa en Sevilla desde 120€. Sin comisiones de agencia. Normativa andaluza.',
   },
 }
 
@@ -175,35 +182,7 @@ export default function GestoriaSevillaPage() {
         </div>
       </section>
 
-      {/* Ventajas servicio online */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
-          ¿Por qué elegir una gestoría <span className="text-[#c9962a]">online</span> en Sevilla?
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          <div className="text-center">
-            <div className="text-6xl mb-4">💰</div>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Ahorra hasta el 60%</h3>
-            <p className="text-gray-600 leading-relaxed">
-              Sin comisiones de agencia (3-5% del precio). Gestoría fija desde 687€ vs 9.000€-15.000€ de una inmobiliaria tradicional.
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="text-6xl mb-4">⚡</div>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Rapidez garantizada</h3>
-            <p className="text-gray-600 leading-relaxed">
-              Olvídate de citas y esperas. Recibes tu contrato en 48h por email. Servicio express en 24h disponible.
-            </p>
-          </div>
-          <div className="text-center">
-            <div className="text-6xl mb-4">🏠</div>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Sin moverte de casa</h3>
-            <p className="text-gray-600 leading-relaxed">
-              Todo online: solicitud, pago, asesoría y entrega. Ideal si vives en Triana, Nervión, Macarena o cualquier barrio de Sevilla.
-            </p>
-          </div>
-        </div>
-      </section>
+      <CiudadHubVentajasOnline ciudad="Sevilla" />
 
       <CiudadHubServiciosGrid
         ciudad="Sevilla"

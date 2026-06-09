@@ -9,7 +9,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contratos de Alquiler para Propietarios 【DESDE 73€】 LAU 2026 | Inmonest',
+  title: 'Contratos de Alquiler para Propietarios 【DESDE 73€】 LAU 2026',
   description: '¿Alquilas tu piso? Contratos LAU legales adaptados a la Ley de Vivienda 2026. Protege tu inversión. Redactados por nuestra gestoría en 24h. Desde 73€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/ayuda-propietarios`,

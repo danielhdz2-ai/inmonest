@@ -3,7 +3,20 @@
 import { useState, useEffect } from 'react'
 import { TESTIMONIOS } from '@/lib/testimonios-data'
 
-export default function TestimoniosCarousel() {
+type TestimoniosCarouselProps = {
+  ciudad?: string
+}
+
+function testimoniosParaCiudad(ciudad?: string) {
+  if (!ciudad) return TESTIMONIOS
+  const locales = TESTIMONIOS.filter(
+    (t) => t.ciudad.toLowerCase() === ciudad.toLowerCase(),
+  )
+  return locales.length > 0 ? locales : TESTIMONIOS
+}
+
+export default function TestimoniosCarousel({ ciudad }: TestimoniosCarouselProps) {
+  const testimonios = testimoniosParaCiudad(ciudad)
   const [current, setCurrent] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
@@ -12,11 +25,11 @@ export default function TestimoniosCarousel() {
     if (!isAutoPlaying) return
 
     const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % TESTIMONIOS.length)
+      setCurrent((prev) => (prev + 1) % testimonios.length)
     }, 6000) // Cambiar cada 6 segundos
 
     return () => clearInterval(interval)
-  }, [isAutoPlaying])
+  }, [isAutoPlaying, testimonios.length])
 
   const goToSlide = (index: number) => {
     setCurrent(index)
@@ -25,18 +38,18 @@ export default function TestimoniosCarousel() {
   }
 
   const next = () => {
-    setCurrent((prev) => (prev + 1) % TESTIMONIOS.length)
+    setCurrent((prev) => (prev + 1) % testimonios.length)
     setIsAutoPlaying(false)
     setTimeout(() => setIsAutoPlaying(true), 10000)
   }
 
   const prev = () => {
-    setCurrent((prev) => (prev - 1 + TESTIMONIOS.length) % TESTIMONIOS.length)
+    setCurrent((prev) => (prev - 1 + testimonios.length) % testimonios.length)
     setIsAutoPlaying(false)
     setTimeout(() => setIsAutoPlaying(true), 10000)
   }
 
-  const testimonio = TESTIMONIOS[current]
+  const testimonio = testimonios[current]
 
   return (
     <div className="relative max-w-4xl mx-auto">
@@ -117,7 +130,7 @@ export default function TestimoniosCarousel() {
 
         {/* Dots */}
         <div className="flex items-center gap-2">
-          {TESTIMONIOS.map((_, index) => (
+          {testimonios.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
@@ -145,7 +158,7 @@ export default function TestimoniosCarousel() {
 
       {/* Contador */}
       <div className="text-center mt-3 text-sm text-gray-500">
-        {current + 1} de {TESTIMONIOS.length}
+        {current + 1} de {testimonios.length}
       </div>
     </div>
   )

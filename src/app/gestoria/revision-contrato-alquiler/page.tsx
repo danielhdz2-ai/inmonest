@@ -9,7 +9,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Revisión Contrato Alquiler 【39€】 Protege tus Derechos como Inquilino | Inmonest',
+  title: 'Revisión Contrato Alquiler 【39€】 Protege tus Derechos como Inquilino',
   description: '¿Tu casero te ha dado un contrato de alquiler? Nuestra gestoría lo revisa en 24h. Detectamos cláusulas abusivas, abusos y condiciones ilegales. Desde 39€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/revision-contrato-alquiler`,

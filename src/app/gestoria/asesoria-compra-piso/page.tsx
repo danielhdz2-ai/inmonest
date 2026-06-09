@@ -9,7 +9,7 @@ import TestimoniosSection from '@/components/TestimoniosSection'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Compra Piso sin Comisiones Abusivas 【687€】Gestoría Inmobiliaria | Inmonest',
+  title: 'Compra Piso sin Comisiones Abusivas 【687€】Gestoría Inmobiliaria',
   description: 'Gestoría inmobiliaria para particulares. Te acompañamos desde la reserva hasta la escritura. Sin comisiones de agencia. Servicio completo 687€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/asesoria-compra-piso`,

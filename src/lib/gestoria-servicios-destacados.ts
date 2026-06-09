@@ -18,7 +18,8 @@ export const GESTORIA_PRECIOS = {
 
 export type ServicioDestacado = {
   slug: string
-  icono: string
+  imagen: string
+  categoria: string
   nombre: string
   descripcion: string
   precio: number
@@ -28,14 +29,16 @@ export type ServicioDestacado = {
 export const SERVICIOS_DESTACADOS_CIUDAD: ServicioDestacado[] = [
   {
     slug: 'contrato-alquiler',
-    icono: '📄',
+    imagen: '/gestoria4.jpg',
+    categoria: 'Alquiler',
     nombre: 'Contrato Alquiler LAU',
     descripcion: 'Arrendamiento de vivienda habitual. Adaptado a Ley de Vivienda 2026.',
     precio: GESTORIA_PRECIOS.contratoAlquiler,
   },
   {
     slug: 'arras-penitenciales',
-    icono: '🤝',
+    imagen: '/gestoria1.jpg',
+    categoria: 'Compraventa',
     nombre: 'Arras Penitenciales',
     descripcion: 'Protege tu señal de compra. Permite desistir con penalización justa.',
     precio: GESTORIA_PRECIOS.arrasPenitenciales,
@@ -43,28 +46,32 @@ export const SERVICIOS_DESTACADOS_CIUDAD: ServicioDestacado[] = [
   },
   {
     slug: 'revision-arras',
-    icono: '🔍',
+    imagen: '/gestoria6.jpg',
+    categoria: 'Revisión Legal',
     nombre: 'Revisión Contrato Arras',
     descripcion: 'Detectamos cláusulas abusivas y errores antes de firmar.',
     precio: GESTORIA_PRECIOS.revisionArras,
   },
   {
     slug: 'rescision-alquiler',
-    icono: '✂️',
+    imagen: '/gestoria10.jpg',
+    categoria: 'Rescisión',
     nombre: 'Rescisión de Alquiler',
     descripcion: 'Finaliza tu contrato legalmente con acta y liquidación de fianza.',
     precio: GESTORIA_PRECIOS.rescisionAlquiler,
   },
   {
     slug: 'venta-completa-reserva-escritura',
-    icono: '🏠',
+    imagen: '/gestoria11.jpg',
+    categoria: 'Premium',
     nombre: 'Venta Completa hasta Escritura',
     descripcion: 'Gestor asignado para vender entre particulares sin comisión de agencia.',
     precio: GESTORIA_PRECIOS.ventaCompleta,
   },
   {
     slug: 'compra-completa-reserva-escritura',
-    icono: '🔑',
+    imagen: '/gestoria3.jpg',
+    categoria: 'Premium',
     nombre: 'Compra Completa hasta Escritura',
     descripcion: 'Acompañamiento total para compradores particulares sin comisiones abusivas.',
     precio: GESTORIA_PRECIOS.compraCompleta,

@@ -7,7 +7,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Online | Contratos Arras, Alquiler y Compraventa | Inmonest',
+  title: 'Gestoría Inmobiliaria Online | Contratos Arras, Alquiler y Compraventa',
   description: 'Gestoría inmobiliaria especializada online. Contratos de arras, alquiler LAU, compraventa. Abogados expertos en derecho inmobiliario. Desde 29€. Servicio en toda España: Madrid, Barcelona, Valencia, Sevilla. Entrega 24-48h.',
   keywords: 'gestoría inmobiliaria, gestoría inmobiliaria online, contrato arras penitenciales, contrato alquiler LAU, gestoría compraventa vivienda, abogado inmobiliario, contratos inmobiliarios, gestoría barcelona, gestoría madrid, gestoría valencia',
   alternates: {
@@ -21,6 +21,13 @@ export const metadata: Metadata = {
     siteName: 'Inmonest',
     locale: 'es_ES',
     images: [{ url: `${BASE_URL}/gestoria1.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria — contratos redactados por abogados' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gestoría Inmobiliaria Online | Contratos Arras, Alquiler y Compraventa',
+    description:
+      'Contratos de arras, alquiler LAU y compraventa redactados por abogados. Desde 29€. Entrega en 48h. Servicio en toda España.',
+    images: [`${BASE_URL}/gestoria1.jpg`],
   },
 }
 

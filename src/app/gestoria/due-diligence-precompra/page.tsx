@@ -9,7 +9,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Due Diligence Pre-Compra 【350€】 Verificación Completa Post-Arras | Inmonest',
+  title: 'Due Diligence Pre-Compra 【350€】 Verificación Completa Post-Arras',
   description: 'Ya firmaste arras? Verificamos actas de comunidad, derramas, ITE, nota registral e información urbanística antes de escriturar. Informe completo en 3-5 días. 350€ IVA incluido.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/due-diligence-precompra`,

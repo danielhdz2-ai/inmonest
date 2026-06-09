@@ -5,7 +5,7 @@ import PageHeroImage from '@/components/PageHeroImage'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Arras Online | Desde 145€ | Gestoría Inmobiliaria | Inmonest',
+  title: 'Contrato de Arras Online | Desde 145€ | Gestoría Inmobiliaria',
   description: 'Redacción profesional de contratos de arras y señal. Servicio online en toda España. Arras penitenciales, confirmatorias y señal. Desde 145€ + IVA.',
   keywords: 'contrato de arras, contrato de señal, arras penitenciales, arras confirmatorias, contrato reserva vivienda, gestoría inmobiliaria',
   openGraph: {

@@ -1,3 +1,5 @@
+import { buildFaqSchema } from './gestoria-ciudad-schema'
+
 export const GESTORIA_BARCELONA_FAQ = [
   {
     q: '¿Es obligatoria la cédula de habitabilidad para vender un piso en Barcelona?',
@@ -18,16 +20,5 @@ export const GESTORIA_BARCELONA_FAQ = [
 ] as const
 
 export function gestoriaBarcelonaFaqSchema() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: GESTORIA_BARCELONA_FAQ.map((item) => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.a,
-      },
-    })),
-  }
+  return buildFaqSchema(GESTORIA_BARCELONA_FAQ)
 }

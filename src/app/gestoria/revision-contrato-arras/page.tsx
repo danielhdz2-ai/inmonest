@@ -9,7 +9,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Revisión de Contrato de Arras 【DESDE 60€】 Gestoría Experta | Inmonest',
+  title: 'Revisión de Contrato de Arras 【DESDE 60€】 Gestoría Experta',
   description: '¿Te han dado un contrato de arras y no te fías? Nuestra gestoría inmobiliaria experta lo revisa en 24h. Detectamos cláusulas abusivas, errores y te protegemos. Desde 60€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/revision-contrato-arras`,

@@ -2,10 +2,20 @@ import { TESTIMONIOS } from '@/lib/testimonios-data'
 
 type TestimoniosStackProps = {
   limit?: number
+  ciudad?: string
 }
 
-export default function TestimoniosStack({ limit }: TestimoniosStackProps) {
-  const items = limit ? TESTIMONIOS.slice(0, limit) : TESTIMONIOS
+function testimoniosParaCiudad(ciudad?: string) {
+  if (!ciudad) return TESTIMONIOS
+  const locales = TESTIMONIOS.filter(
+    (t) => t.ciudad.toLowerCase() === ciudad.toLowerCase(),
+  )
+  return locales.length > 0 ? locales : TESTIMONIOS
+}
+
+export default function TestimoniosStack({ limit, ciudad }: TestimoniosStackProps) {
+  const base = testimoniosParaCiudad(ciudad)
+  const items = limit ? base.slice(0, limit) : base
 
   return (
     <div className="grid gap-6 max-w-4xl mx-auto">

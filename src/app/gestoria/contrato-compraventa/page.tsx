@@ -9,7 +9,7 @@ import Script from 'next/script'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Compraventa Vivienda【DESDE 80€】Legal con Gestoría Experta | Inmonest',
+  title: 'Contrato de Compraventa Vivienda【DESDE 80€】Legal con Gestoría Experta',
   description: 'Contrato de compraventa de vivienda redactado por gestoría inmobiliaria experta. Protege tu compra o venta. Arras, reserva, cláusulas especiales. Desde 80€. Entrega en 24-48h ✓',
   alternates: {
     canonical: `${BASE_URL}/gestoria/contrato-compraventa`,

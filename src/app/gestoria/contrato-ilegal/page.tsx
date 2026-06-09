@@ -9,7 +9,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: '¿Tu Contrato es Ilegal? 【ANÁLISIS 29€】 Detectamos Fraudes y Abusos | Inmonest',
+  title: '¿Tu Contrato es Ilegal? 【ANÁLISIS 29€】 Detectamos Fraudes y Abusos',
   description: '¿Sospechas que tu contrato de alquiler o compra es ilegal? Nuestra gestoría lo analiza en 24h. Detectamos fraudes, documentos falsos y estafas. Desde 29€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/contrato-ilegal`,

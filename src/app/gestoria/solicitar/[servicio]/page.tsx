@@ -23,7 +23,7 @@ export async function generateMetadata({
   
   if (!data) {
     return {
-      title: 'Servicio no encontrado | Inmonest',
+      title: 'Servicio no encontrado',
       description: 'El servicio solicitado no está disponible.',
     }
   }

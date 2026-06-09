@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { SERVICIOS_DESTACADOS_CIUDAD } from '@/lib/gestoria-servicios-destacados'
 
@@ -29,39 +30,54 @@ export default function CiudadHubServiciosGrid({
           {SERVICIOS_DESTACADOS_CIUDAD.map((servicio) => (
             <div
               key={servicio.slug}
-              className={`bg-white rounded-xl p-6 shadow-lg border-2 transition-all hover:shadow-2xl ${
+              className={`bg-white rounded-xl shadow-lg border-2 transition-all hover:shadow-2xl overflow-hidden flex flex-col ${
                 servicio.popular
                   ? 'border-[#c9962a] transform hover:scale-[1.02]'
                   : 'border-gray-200 hover:border-[#c9962a]'
               }`}
             >
-              {servicio.popular && (
-                <div className="inline-block px-2 py-0.5 rounded-full bg-yellow-500 text-white text-[10px] font-bold mb-2">
-                  ⭐ POPULAR
-                </div>
-              )}
-              <div className="text-4xl mb-3">{servicio.icono}</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{servicio.nombre}</h3>
-              <p className="text-gray-600 text-sm mb-4">{servicio.descripcion}</p>
-              <div className="text-2xl font-bold text-[#c9962a] mb-1">{servicio.precio}€</div>
-              <p className="text-xs text-gray-500 mb-3">IVA incluido</p>
-              <Link
-                href={`/gestoria/solicitar/${servicio.slug}`}
-                className="block text-center py-2 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white text-sm font-semibold transition"
-              >
-                Solicitar
-              </Link>
-              {enlacesCiudad
-                ?.filter((e) => e.slug === servicio.slug)
-                .map((e) => (
-                  <Link
-                    key={e.href}
-                    href={e.href}
-                    className="block text-center mt-2 text-sm text-[#c9962a] hover:underline font-medium"
-                  >
-                    {e.label}
-                  </Link>
-                ))}
+              <div className="relative h-40 w-full bg-gray-100">
+                <Image
+                  src={servicio.imagen}
+                  alt={`${servicio.nombre} — gestoría inmobiliaria en ${ciudad}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                <span className="absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[#a87a20] border border-[#c9962a]/20">
+                  {servicio.categoria}
+                </span>
+                {servicio.popular && (
+                  <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-[#c9962a] text-white text-[10px] font-bold uppercase tracking-wide">
+                    Popular
+                  </span>
+                )}
+              </div>
+
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{servicio.nombre}</h3>
+                <p className="text-gray-600 text-sm mb-4 flex-1">{servicio.descripcion}</p>
+                <div className="text-2xl font-bold text-[#c9962a] mb-1">{servicio.precio}€</div>
+                <p className="text-xs text-gray-500 mb-3">IVA incluido</p>
+                <Link
+                  href={`/gestoria/solicitar/${servicio.slug}`}
+                  className="block text-center py-2 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white text-sm font-semibold transition"
+                >
+                  Solicitar
+                </Link>
+                {enlacesCiudad
+                  ?.filter((e) => e.slug === servicio.slug)
+                  .map((e) => (
+                    <Link
+                      key={e.href}
+                      href={e.href}
+                      className="block text-center mt-2 text-sm text-[#c9962a] hover:underline font-medium"
+                    >
+                      {e.label}
+                    </Link>
+                  ))}
+              </div>
             </div>
           ))}
         </div>

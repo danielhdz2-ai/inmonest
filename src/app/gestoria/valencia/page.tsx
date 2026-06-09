@@ -5,74 +5,65 @@ import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
+import CiudadHubMercado from '@/components/CiudadHubMercado'
+import CiudadHubFaq from '@/components/CiudadHubFaq'
+import JsonLd from '@/components/JsonLd'
+import { GESTORIA_VALENCIA_FAQ } from '@/lib/gestoria-valencia-faq'
+import {
+  buildFaqSchema,
+  buildLegalServiceSchema,
+  buildServiceOfferSchema,
+} from '@/lib/gestoria-ciudad-schema'
 
 const BASE_URL = 'https://inmonest.com'
 
+const META_DESCRIPTION =
+  'Gestoría inmobiliaria para particulares en Valencia. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones. Abogados especializados.'
+
+const VALENCIA_ENLACES_CIUDAD = [
+  {
+    slug: 'arras-penitenciales',
+    href: '/valencia/contrato-arras',
+    label: 'Ver información específica para Valencia →',
+  },
+  {
+    slug: 'contrato-alquiler',
+    href: '/valencia/contrato-alquiler',
+    label: 'Ver contrato alquiler Valencia →',
+  },
+]
+
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria en Valencia para Particulares | Contratos y Asesoramiento | Inmonest',
-  description: 'Gestoría inmobiliaria para particulares en Valencia. Asesor experto asignado para compra o venta de vivienda. Sin comisiones abusivas. Desde 424€.',
+  title: 'Gestoría Inmobiliaria Valencia para Particulares | Contratos y Asesoramiento',
+  description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria valencia, gestoría para particulares valencia, comprar piso valencia sin agencia, vender piso valencia, contrato arras valencia, asesoría compra vivienda valencia',
   alternates: { canonical: `${BASE_URL}/gestoria/valencia` },
   openGraph: {
-    title: 'Gestoría Inmobiliaria Valencia | Inmonest',
-    description: 'Inmonest te acompaña en la compra o venta de tu vivienda en Valencia con asesor experto asignado. Sin comisiones abusivas de agencias.',
+    title: 'Gestoría Inmobiliaria Valencia para Particulares | Inmonest',
+    description: META_DESCRIPTION,
     url: `${BASE_URL}/gestoria/valencia`,
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
+    images: [{ url: `${BASE_URL}/gestoria4.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria en Valencia' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gestoría Inmobiliaria Valencia para Particulares | Inmonest',
+    description:
+      'Contratos de alquiler, arras y compraventa en Valencia desde 120€. Sin comisiones de agencia. Entrega 48h.',
   },
 }
 
 export default function GestoriaValenciaPage() {
-  const schemaJson = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    name: 'Gestoría Inmobiliaria Valencia - Inmonest',
-    description: 'Gestoría inmobiliaria especializada en compra y venta de viviendas en Valencia. Asesor experto asignado, sin comisiones abusivas.',
-    url: `${BASE_URL}/gestoria/valencia`,
-    areaServed: {
-      '@type': 'City',
-      name: 'Valencia',
-      containedIn: { '@type': 'Country', name: 'España' },
-    },
-    provider: {
-      '@type': 'Organization',
-      name: 'Inmonest',
-      url: BASE_URL,
-    },
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Servicios de Gestoría Inmobiliaria',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Acompañamiento Reserva hasta Arras',
-            description: 'Asesor experto de Inmonest te acompaña desde la reserva hasta el contrato de arras en Valencia',
-          },
-          priceCurrency: 'EUR',
-          price: '424',
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Servicio Completo de Compra: Reserva a Escritura',
-            description: 'Servicio integral con gestor asignado para compraventa de vivienda en Valencia',
-          },
-          priceCurrency: 'EUR',
-          price: '687',
-        },
-      ],
-    },
-  })
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: schemaJson }}
+      <JsonLd
+        schema={[
+          buildLegalServiceSchema('Valencia', 'valencia'),
+          buildServiceOfferSchema('Acompañamiento Reserva hasta Arras', 'Valencia', 424),
+          buildFaqSchema(GESTORIA_VALENCIA_FAQ),
+        ]}
       />
       <Navbar />
       <main className="min-h-screen bg-gray-50">
@@ -90,7 +81,7 @@ export default function GestoriaValenciaPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  Gestoría Inmobiliaria en <span className="text-[#c9a84c]">Valencia</span>
+                  Gestoría Inmobiliaria <span className="text-[#c9a84c]">Valencia</span> para Particulares
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
                   <strong>Gestoría inmobiliaria para particulares</strong> en Valencia. Asesor experto asignado, sin comisiones de agencia (3-5%) y contratos redactados por abogados con conocimiento del mercado valenciano.
@@ -344,9 +335,36 @@ export default function GestoriaValenciaPage() {
           </div>
         </section>
 
-        <CiudadHubServiciosGrid ciudad="Valencia" />
+        <CiudadHubServiciosGrid ciudad="Valencia" enlacesCiudad={VALENCIA_ENLACES_CIUDAD} />
 
         <CiudadHubComoTrabajamos ciudad="Valencia" />
+
+        <CiudadHubMercado
+          ciudad="Valencia"
+          zonas={[
+            { nombre: 'Ruzafa', rango: '800-1.100€/mes', perfil: 'jóvenes profesionales' },
+            { nombre: 'Ciutat Vella', rango: '650-900€/mes', perfil: 'estudiantes y turismo' },
+            { nombre: 'Benimaclet', rango: '550-750€/mes', perfil: 'universitarios' },
+            { nombre: 'Mestalla-Nou Moles', rango: '700-950€/mes', perfil: 'familias' },
+            { nombre: 'Poblats Marítims', rango: '750-1.000€/mes', perfil: 'perfil mixto' },
+          ]}
+          compraventa={
+            <>
+              <p>
+                El precio medio en Valencia ronda los <strong>1.800-2.200€/m²</strong>. Un piso de 80m² en Ruzafa suele superar los <strong>200.000€</strong>. En Benimaclet, el rango habitual es de <strong>120.000-160.000€</strong>.
+              </p>
+              <p>
+                Con una comisión de agencia del 3-5%, hablamos de <strong>7.000-13.000€</strong> de honorarios solo por intermediar. Inmonest cobra honorarios fijos desde <strong>120€</strong>.
+              </p>
+            </>
+          }
+          particularidades={[
+            'Cédula de habitabilidad: obligatoria para vender y alquilar en la Comunitat Valenciana',
+            'Licencia VUT: restricciones en centro histórico y Ruzafa para alquiler turístico',
+            'Due diligence post-DANA: verificación adicional en Paiporta, Alfafar y Sedaví',
+            'Certificado energético: obligatorio; sanciones hasta 6.000€ por incumplimiento',
+          ]}
+        />
 
         {/* Quiénes somos */}
         <section className="py-16 bg-gray-50">
@@ -396,7 +414,18 @@ export default function GestoriaValenciaPage() {
           </div>
         </section>
 
-        <CiudadHubExtras ciudad="Valencia" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Valencia" />
+        <CiudadHubExtras
+          ciudad="Valencia"
+          whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Valencia"
+          testimoniosLayout="stack"
+          showGoogleReviews
+        />
+
+        <CiudadHubFaq
+          ciudad="Valencia"
+          items={GESTORIA_VALENCIA_FAQ}
+          subtitulo="Respuestas específicas para el mercado valenciano: cédula de habitabilidad, VUT y compraventa entre particulares."
+        />
 
         {/* CTA Final */}
         <section className="py-16 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">

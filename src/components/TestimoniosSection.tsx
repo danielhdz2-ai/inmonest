@@ -5,12 +5,14 @@ type TestimoniosSectionProps = {
   className?: string
   layout?: 'carousel' | 'stack'
   showGoogleReviews?: boolean
+  ciudad?: string
 }
 
 export default function TestimoniosSection({
   className = 'bg-white',
   layout = 'carousel',
   showGoogleReviews = false,
+  ciudad,
 }: TestimoniosSectionProps) {
   return (
     <section className={`py-16 px-4 ${className}`}>
@@ -56,7 +58,11 @@ export default function TestimoniosSection({
             </>
           )}
         </div>
-        {layout === 'stack' ? <TestimoniosStack /> : <TestimoniosCarousel />}
+        {layout === 'stack' ? (
+          <TestimoniosStack ciudad={ciudad} />
+        ) : (
+          <TestimoniosCarousel ciudad={ciudad} />
+        )}
       </div>
     </section>
   )

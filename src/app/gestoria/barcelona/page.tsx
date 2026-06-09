@@ -5,9 +5,13 @@ import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
-import GestoriaBarcelonaFaq from '@/components/GestoriaBarcelonaFaq'
+import CiudadHubFaq from '@/components/CiudadHubFaq'
 import JsonLd from '@/components/JsonLd'
-import { gestoriaBarcelonaFaqSchema } from '@/lib/gestoria-barcelona-faq'
+import { GESTORIA_BARCELONA_FAQ, gestoriaBarcelonaFaqSchema } from '@/lib/gestoria-barcelona-faq'
+import {
+  buildLegalServiceSchema,
+  buildServiceOfferSchema,
+} from '@/lib/gestoria-ciudad-schema'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -26,6 +30,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
+    images: [{ url: `${BASE_URL}/gestoria2.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria en Barcelona' }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -49,46 +54,15 @@ const BARCELONA_ENLACES_CIUDAD = [
 ]
 
 export default function GestoriaBarcelonaPage() {
-  const legalServiceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'LegalService',
-    name: 'Inmonest Gestoría Inmobiliaria Barcelona',
-    url: `${BASE_URL}/gestoria/barcelona`,
-    telephone: '+34641008847',
-    priceRange: '€€',
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: 'Barcelona',
-      addressCountry: 'ES',
-    },
-    areaServed: {
-      '@type': 'City',
-      name: 'Barcelona',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '5.0',
-      reviewCount: '4',
-    },
-  }
-
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: 'Acompañamiento Reserva hasta Arras Barcelona',
-    provider: { '@type': 'Organization', name: 'Inmonest' },
-    areaServed: 'Barcelona',
-    offers: {
-      '@type': 'Offer',
-      price: '424',
-      priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
-    },
-  }
-
   return (
     <>
-      <JsonLd schema={[legalServiceSchema, serviceSchema, gestoriaBarcelonaFaqSchema()]} />
+      <JsonLd
+        schema={[
+          buildLegalServiceSchema('Barcelona', 'barcelona'),
+          buildServiceOfferSchema('Acompañamiento Reserva hasta Arras', 'Barcelona', 424),
+          gestoriaBarcelonaFaqSchema(),
+        ]}
+      />
       <Navbar />
       <main className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -421,7 +395,11 @@ export default function GestoriaBarcelonaPage() {
           showGoogleReviews
         />
 
-        <GestoriaBarcelonaFaq />
+        <CiudadHubFaq
+          ciudad="Barcelona"
+          items={GESTORIA_BARCELONA_FAQ}
+          subtitulo="Respuestas específicas para el mercado barcelonés: normativa catalana, zona tensionada y compraventa entre particulares."
+        />
 
         {/* CTA Final */}
         <section className="py-16 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">

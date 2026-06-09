@@ -1,17 +1,23 @@
-import { GESTORIA_BARCELONA_FAQ } from '@/lib/gestoria-barcelona-faq'
+type FaqItem = { q: string; a: string }
 
-export default function GestoriaBarcelonaFaq() {
+type CiudadHubFaqProps = {
+  ciudad: string
+  items: readonly FaqItem[]
+  subtitulo?: string
+}
+
+export default function CiudadHubFaq({ ciudad, items, subtitulo }: CiudadHubFaqProps) {
   return (
     <section className="py-16 bg-white border-t border-gray-100">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
-          Preguntas frecuentes sobre gestoría inmobiliaria en Barcelona
+          Preguntas frecuentes sobre gestoría inmobiliaria en {ciudad}
         </h2>
-        <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-          Respuestas específicas para el mercado barcelonés: normativa catalana, zona tensionada y compraventa entre particulares.
-        </p>
+        {subtitulo && (
+          <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">{subtitulo}</p>
+        )}
         <div className="space-y-4">
-          {GESTORIA_BARCELONA_FAQ.map((item) => (
+          {items.map((item) => (
             <details
               key={item.q}
               className="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-100 group"

@@ -5,74 +5,65 @@ import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
+import CiudadHubMercado from '@/components/CiudadHubMercado'
+import CiudadHubFaq from '@/components/CiudadHubFaq'
+import JsonLd from '@/components/JsonLd'
+import { GESTORIA_MADRID_FAQ } from '@/lib/gestoria-madrid-faq'
+import {
+  buildFaqSchema,
+  buildLegalServiceSchema,
+  buildServiceOfferSchema,
+} from '@/lib/gestoria-ciudad-schema'
 
 const BASE_URL = 'https://inmonest.com'
 
+const META_DESCRIPTION =
+  'Gestoría inmobiliaria para particulares en Madrid. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones. Abogados especializados.'
+
+const MADRID_ENLACES_CIUDAD = [
+  {
+    slug: 'arras-penitenciales',
+    href: '/madrid/contrato-arras',
+    label: 'Ver información específica para Madrid →',
+  },
+  {
+    slug: 'contrato-alquiler',
+    href: '/madrid/contrato-alquiler',
+    label: 'Ver contrato alquiler Madrid →',
+  },
+]
+
 export const metadata: Metadata = {
   title: 'Gestoría Inmobiliaria Madrid para Particulares | Contratos y Asesoramiento',
-  description: 'Gestoría inmobiliaria para particulares en Madrid. Asesor experto asignado para compra o venta de vivienda. Sin comisiones abusivas. Desde 424€.',
+  description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria madrid, gestoría para particulares madrid, comprar piso madrid sin agencia, vender piso madrid, contrato arras madrid, asesoría compra vivienda madrid',
   alternates: { canonical: `${BASE_URL}/gestoria/madrid` },
   openGraph: {
-    title: 'Gestoría Inmobiliaria Madrid | Inmonest',
-    description: 'Asesoramiento jurídico especializado en compraventa de inmuebles en Madrid. Revisión de contratos, nota registral y documentación urbanística.',
+    title: 'Gestoría Inmobiliaria Madrid para Particulares | Inmonest',
+    description: META_DESCRIPTION,
     url: `${BASE_URL}/gestoria/madrid`,
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
+    images: [{ url: `${BASE_URL}/gestoria3.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria en Madrid' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gestoría Inmobiliaria Madrid para Particulares | Inmonest',
+    description:
+      'Contratos de alquiler, arras y compraventa en Madrid desde 120€. Sin comisiones de agencia. Entrega 48h.',
   },
 }
 
 export default function GestoriaMadridPage() {
-  const schemaJson = JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    name: 'Gestoría Inmobiliaria Madrid - Inmonest',
-    description: 'Servicios de gestoría inmobiliaria especializada en compraventa de viviendas en Madrid',
-    url: `${BASE_URL}/gestoria/madrid`,
-    areaServed: {
-      '@type': 'City',
-      name: 'Madrid',
-      containedIn: { '@type': 'Country', name: 'España' },
-    },
-    provider: {
-      '@type': 'Organization',
-      name: 'Inmonest',
-      url: BASE_URL,
-    },
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Servicios de Gestoría Inmobiliaria',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Acompañamiento Reserva hasta Arras',
-            description: 'Asesoramiento jurídico completo desde la reserva hasta el contrato de arras en Madrid',
-          },
-          priceCurrency: 'EUR',
-          price: '424',
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Servicio Completo de Compra: Reserva a Escritura',
-            description: 'Servicio integral con gestor asignado para compraventa de vivienda en Madrid',
-          },
-          priceCurrency: 'EUR',
-          price: '687',
-        },
-      ],
-    },
-  })
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: schemaJson }}
+      <JsonLd
+        schema={[
+          buildLegalServiceSchema('Madrid', 'madrid'),
+          buildServiceOfferSchema('Acompañamiento Reserva hasta Arras', 'Madrid', 424),
+          buildFaqSchema(GESTORIA_MADRID_FAQ),
+        ]}
       />
       <Navbar />
       <main className="min-h-screen bg-gray-50">
@@ -90,7 +81,7 @@ export default function GestoriaMadridPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  Gestoría Inmobiliaria en <span className="text-[#c9a84c]">Madrid</span>
+                  Gestoría Inmobiliaria <span className="text-[#c9a84c]">Madrid</span> para Particulares
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
                   <strong>Gestoría inmobiliaria para particulares</strong> en Madrid. Asesor experto asignado, sin comisiones de agencia (3-5%) y contratos redactados por abogados especializados en el mercado madrileño.
@@ -338,9 +329,36 @@ export default function GestoriaMadridPage() {
           </div>
         </section>
 
-        <CiudadHubServiciosGrid ciudad="Madrid" />
+        <CiudadHubServiciosGrid ciudad="Madrid" enlacesCiudad={MADRID_ENLACES_CIUDAD} />
 
         <CiudadHubComoTrabajamos ciudad="Madrid" />
+
+        <CiudadHubMercado
+          ciudad="Madrid"
+          zonas={[
+            { nombre: 'Salamanca', rango: '1.200-1.800€/mes', perfil: 'ejecutivos y familias' },
+            { nombre: 'Chamberí', rango: '900-1.300€/mes', perfil: 'contratos LAU larga duración' },
+            { nombre: 'Lavapiés-Embajadores', rango: 'desde 700€/mes', perfil: 'jóvenes y estudiantes' },
+            { nombre: 'Vallecas-Vicálvaro', rango: '600-850€/mes', perfil: 'familias trabajadoras' },
+            { nombre: 'Arganzuela-Legazpi', rango: '800-1.100€/mes', perfil: 'perfil mixto' },
+          ]}
+          compraventa={
+            <>
+              <p>
+                El precio medio en Madrid ronda los <strong>3.800-4.500€/m²</strong>. Un piso de 80m² en Salamanca supera los <strong>400.000€</strong>. En Vallecas, el rango habitual es de <strong>180.000-220.000€</strong>.
+              </p>
+              <p>
+                Con una comisión de agencia del 3-5%, hablamos de <strong>12.000-20.000€</strong> de honorarios solo por intermediar. Inmonest cobra honorarios fijos desde <strong>120€</strong>.
+              </p>
+            </>
+          }
+          particularidades={[
+            'Plusvalía municipal (IIVTNU): obligatoria en toda venta, liquidar en 30 días hábiles',
+            'IEE e ITE: obligatorias en edificios de más de 50 años; bloquean la inscripción registral sin ellas',
+            'Operaciones express: las agencias presionan para firmar en 24-48h; ofrecemos revisión urgente',
+            'Certificado energético: obligatorio para vender o alquilar; penalizaciones hasta 6.000€',
+          ]}
+        />
 
         {/* Quiénes somos */}
         <section className="py-16 bg-gray-50">
@@ -390,7 +408,18 @@ export default function GestoriaMadridPage() {
           </div>
         </section>
 
-        <CiudadHubExtras ciudad="Madrid" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Madrid" />
+        <CiudadHubExtras
+          ciudad="Madrid"
+          whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Madrid"
+          testimoniosLayout="stack"
+          showGoogleReviews
+        />
+
+        <CiudadHubFaq
+          ciudad="Madrid"
+          items={GESTORIA_MADRID_FAQ}
+          subtitulo="Respuestas específicas para el mercado madrileño: plusvalía, ITE y compraventa entre particulares."
+        />
 
         {/* CTA Final */}
         <section className="py-16 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">
