@@ -103,12 +103,9 @@ export const metadata: Metadata = {
     ],
   },
 
-  // Twitter / X Card
+  // Twitter / X Card — solo card; título/descripción heredan del openGraph de cada página
   twitter: {
     card: 'summary_large_image',
-    title: 'Inmonest | Pisos entre particulares sin comisiones',
-    description: 'Compra, vende o alquila tu piso directamente. Sin agencias, sin comisiones.',
-    images: ['/imagencabezera.jpg'],
   },
 };
 

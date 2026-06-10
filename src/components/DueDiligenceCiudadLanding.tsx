@@ -1,27 +1,25 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
+import JsonLd from '@/components/JsonLd'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import type { DueDiligenceCiudadConfig } from '@/lib/due-diligence-ciudad-data'
 import {
+  DUE_DILIGENCE_CIUDADES_LIST,
   DUE_DILIGENCE_PRECIO,
   comisionAgenciaMin,
   comisionAgenciaMax,
 } from '@/lib/due-diligence-ciudad-data'
+import { getDueDiligenceFaq } from '@/lib/due-diligence-ciudad-faq'
+import { buildFaqSchema } from '@/lib/gestoria-ciudad-schema'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/pack-due-diligence-precompra'
 const PHONE = '+34641008847'
 const WA = '34641008847'
-
-const OTRAS_CIUDADES = [
-  { slug: 'madrid', nombre: 'Madrid' },
-  { slug: 'barcelona', nombre: 'Barcelona' },
-  { slug: 'valencia', nombre: 'Valencia' },
-  { slug: 'sevilla', nombre: 'Sevilla' },
-] as const
 
 const PASOS = [
   {
@@ -68,6 +66,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - DUE_DILIGENCE_PRECIO
   const waText = encodeURIComponent(`Hola, necesito Due Diligence pre-compra en ${nombre}`)
+  const faq = getDueDiligenceFaq(nombre, region)
 
   const schemaJson = {
     '@context': 'https://schema.org',
@@ -129,8 +128,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <JsonLd schema={[schemaJson, breadcrumbSchema, buildFaqSchema(faq)]} />
       <Navbar />
       <WhatsAppButton />
 
@@ -153,7 +151,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
                 Compra entre particulares · {region}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Compras piso de particular en <span className="text-[#c9962a]">{nombre}</span>?
+                ¿Compras piso de particular en <span className="text-[#c9962a]">{nombre}</span>?
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Un <strong>gestor inmobiliario asignado</strong> revisa toda la documentación de la vivienda
@@ -376,7 +374,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm text-gray-500 mb-4">Due Diligence Pre-Compra también disponible en:</p>
           <div className="flex flex-wrap justify-center gap-3">
-            {OTRAS_CIUDADES.filter((c) => c.slug !== slug).map((c) => (
+            {DUE_DILIGENCE_CIUDADES_LIST.filter((c) => c.slug !== slug).map((c) => (
               <Link
                 key={c.slug}
                 href={`/gestoria/due-diligence-precompra/${c.slug}`}
@@ -410,7 +408,19 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         </div>
       </section>
 
-      <TestimoniosSection landing={config.testimoniosLanding} hideRating className="bg-white" />
+      <CiudadHubFaq
+        ciudad={nombre}
+        items={faq}
+        titulo={`Preguntas frecuentes sobre Due Diligence Pre-Compra en ${nombre}`}
+        subtitulo="Resolvemos las dudas más habituales antes de contratar la revisión documental de tu compra."
+      />
+
+      <TestimoniosSection
+        landing={config.testimoniosLanding}
+        layout="stack"
+        hideRating
+        className="bg-slate-50"
+      />
 
       {/* CTA final */}
       <section className="py-16 px-4 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">

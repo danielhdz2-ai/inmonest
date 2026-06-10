@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 
 const BASE_URL = 'https://inmonest.com'
 export const DUE_DILIGENCE_PRECIO = 350
@@ -32,6 +33,13 @@ export type DueDiligenceCiudadConfig = {
   }
 }
 
+export const DUE_DILIGENCE_CIUDADES_LIST = [
+  { slug: 'madrid', nombre: 'Madrid' },
+  { slug: 'barcelona', nombre: 'Barcelona' },
+  { slug: 'valencia', nombre: 'Valencia' },
+  { slug: 'sevilla', nombre: 'Sevilla' },
+] as const
+
 export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = {
   madrid: {
     slug: 'madrid',
@@ -41,9 +49,9 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     heroImage: '/madrid2.jpg',
     precioEjemploPiso: 320_000,
     gestor: {
-      nombre: 'Daniel Mercat',
-      rol: 'Gestor inmobiliario · Compras entre particulares',
-      foto: '/testimonios/testimonio8.jpg',
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: GESTOR_DANIEL_HERNANDEZ.rol,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Especialista en compraventas de particular a particular en Madrid. Revisa documentación registral, cargas, comunidad y normativa madrileña antes de que firmes en notaría.',
       especialidades: ['Due diligence post-arras', 'Compras sin agencia', 'Revisión ITE y cédula'],
     },
@@ -80,10 +88,10 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     heroImage: '/barcelona2.jpg',
     precioEjemploPiso: 350_000,
     gestor: {
-      nombre: 'Laura Ruiz',
-      rol: 'Gestora inmobiliaria · Compras en Cataluña',
-      foto: '/testimonios/testimonio3.jpg',
-      bio: 'Experta en compras entre particulares en Barcelona y área metropolitana. Domina la normativa de la Generalitat, cédula de habitabilidad, ITE y revisión de cargas ocultas.',
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Cataluña',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Experto en compras entre particulares en Barcelona y área metropolitana. Domina la normativa de la Generalitat, cédula de habitabilidad, ITE y revisión de cargas ocultas.',
       especialidades: ['Cédula Generalitat', 'Compras sin inmobiliaria', 'Informe pre-escritura'],
     },
     docTecnicaTitulo: 'Documentación Técnica y Generalitat',
@@ -119,9 +127,9 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     heroImage: '/valencia3.jpg',
     precioEjemploPiso: 260_000,
     gestor: {
-      nombre: 'Carmen Vidal',
+      nombre: GESTOR_CARMEN_VIDAL.nombre,
       rol: 'Gestora inmobiliaria · Compras en Valencia',
-      foto: '/testimonios/testimonio10.jpg',
+      foto: GESTOR_CARMEN_VIDAL.foto,
       bio: 'Acompaña a compradores que adquieren vivienda de particular en Valencia y provincia. Revisa cédula de habitabilidad, cargas registrales, deudas de comunidad y documentación de la Generalitat.',
       especialidades: ['Compras post-arras', 'Normativa valenciana', 'Acompañamiento hasta notaría'],
     },
@@ -158,10 +166,10 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     heroImage: '/sevilla2.jpg',
     precioEjemploPiso: 220_000,
     gestor: {
-      nombre: 'Antonio Gil',
-      rol: 'Gestor inmobiliario · Compras en Andalucía',
-      foto: '/testimonios/testimonio9.jpg',
-      bio: 'Especializado en compras entre particulares en Sevilla y provincia. Revisa nota simple, IEE andaluz, deudas de comunidad y toda la documentación antes de que firmes las escrituras.',
+      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      rol: 'Gestora inmobiliaria · Compras en Andalucía',
+      foto: GESTOR_CARMEN_VIDAL.foto,
+      bio: 'Especializada en compras entre particulares en Sevilla y provincia. Revisa nota simple, IEE andaluz, deudas de comunidad y toda la documentación antes de que firmes las escrituras.',
       especialidades: ['Due diligence andaluza', 'Compras sin agencia', 'Revisión pre-escritura'],
     },
     docTecnicaTitulo: 'Documentación Técnica y normativa andaluza',
@@ -213,6 +221,12 @@ export function buildDueDiligenceMetadata(config: DueDiligenceCiudadConfig): Met
           alt: `Due Diligence Pre-Compra ${config.nombre}`,
         },
       ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: config.meta.ogTitle,
+      description: config.meta.ogDescription,
+      images: [`${BASE_URL}${config.heroImage}`],
     },
   }
 }
