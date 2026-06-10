@@ -99,7 +99,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Due Diligence Pre-Compra',
     precio: '350€',
     href: (c) => `/gestoria/due-diligence-precompra/${c}`,
-    ciudades: ['madrid', 'barcelona'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla'],
   },
   {
     id: 'alquiler-particulares',

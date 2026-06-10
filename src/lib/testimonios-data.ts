@@ -209,6 +209,8 @@ export const TESTIMONIOS_POR_LANDING: Record<string, Testimonio[]> = {
   'due-diligence': pick(5, 11, 4),
   'due-diligence-madrid': pick(2, 5, 13),
   'due-diligence-barcelona': pick(1, 5, 14),
+  'due-diligence-valencia': pick(3, 11, 4),
+  'due-diligence-sevilla': pick(4, 15, 5),
   'revision-arras': pick(2, 6, 14),
   'revision-alquiler': pick(3, 7, 9),
   'contrato-ilegal': pick(7, 2, 6),
