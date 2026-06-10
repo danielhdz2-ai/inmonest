@@ -282,7 +282,7 @@ export default function VentaCompletaSevillaPage() {
 
 
       <GestorContactBanner />
-      <TestimoniosSection hideRating />
+      <TestimoniosSection landing="venta-completa-sevilla" hideRating />
 
       {/* CTA Sevilla */}
       <section className="py-16 px-4 bg-gradient-to-br from-[#c9962a] to-[#a87a20]">

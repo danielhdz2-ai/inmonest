@@ -8,6 +8,7 @@ type TestimoniosSectionProps = {
   /** Oculta estrellas numéricas para evitar fragmentos de reseñas inválidos en landings de servicio */
   hideRating?: boolean
   ciudad?: string
+  landing?: string
 }
 
 export default function TestimoniosSection({
@@ -16,6 +17,7 @@ export default function TestimoniosSection({
   showGoogleReviews = false,
   hideRating = false,
   ciudad,
+  landing,
 }: TestimoniosSectionProps) {
   return (
     <section className={`py-16 px-4 ${className}`} {...(hideRating ? { 'data-nosnippet': true } : {})}>
@@ -62,9 +64,9 @@ export default function TestimoniosSection({
           )}
         </div>
         {layout === 'stack' ? (
-          <TestimoniosStack ciudad={ciudad} hideRating={hideRating} />
+          <TestimoniosStack ciudad={ciudad} landing={landing} hideRating={hideRating} />
         ) : (
-          <TestimoniosCarousel ciudad={ciudad} hideRating={hideRating} />
+          <TestimoniosCarousel ciudad={ciudad} landing={landing} hideRating={hideRating} />
         )}
       </div>
     </section>

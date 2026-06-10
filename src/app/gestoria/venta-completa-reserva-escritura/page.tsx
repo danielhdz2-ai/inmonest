@@ -669,7 +669,7 @@ export default function VentaCompletaPage() {
               Lee sus experiencias reales.
             </p>
           </div>
-          <TestimoniosCarousel hideRating />
+          <TestimoniosCarousel landing="venta-completa" hideRating />
         </div>
       </section>
 

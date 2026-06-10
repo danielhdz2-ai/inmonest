@@ -337,7 +337,7 @@ export default function ContratoCompraventaPage() {
           </section>
 
           <GestorContactBanner whatsappMessage="Hola, necesito un contrato de compraventa de vivienda" />
-          <TestimoniosSection />
+          <TestimoniosSection landing="contrato-compraventa" />
 
           {/* CTA final */}
           <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-8 text-white text-center">

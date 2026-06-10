@@ -581,7 +581,7 @@ export default function AsesoramientoArrasVentaPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
             Lo que dicen nuestros clientes
           </h2>
-          <TestimoniosCarousel />
+          <TestimoniosCarousel landing="asesoramiento-arras" />
         </div>
       </section>
 

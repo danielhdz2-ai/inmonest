@@ -323,7 +323,7 @@ export default function AsesoriaCompraPisoPage() {
         </div>
       </section>
 
-      <TestimoniosSection className="bg-orange-50" />
+      <TestimoniosSection className="bg-orange-50" landing="asesoria-compra" />
 
       {/* Precio */}
       <section className="py-16 px-4 bg-white">

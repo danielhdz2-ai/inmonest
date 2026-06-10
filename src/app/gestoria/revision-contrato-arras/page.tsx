@@ -500,7 +500,7 @@ export default function RevisionContratosArrasPage() {
 
 
       <GestorContactBanner />
-      <TestimoniosSection />
+      <TestimoniosSection landing="revision-arras" />
 
       {/* CTA Final */}
       <section className="py-16 px-4 bg-[#c9962a] text-white">

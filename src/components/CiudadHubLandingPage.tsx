@@ -133,6 +133,7 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
 
         <CiudadHubExtras
           ciudad={nombre}
+          hubSlug={slug}
           whatsappMessage={`Hola, necesito gestoría inmobiliaria para particulares en ${nombre}`}
           testimoniosLayout="stack"
         />

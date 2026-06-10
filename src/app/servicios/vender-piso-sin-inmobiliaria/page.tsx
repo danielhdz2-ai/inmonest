@@ -553,7 +553,7 @@ export default function VenderSinInmobiliariaPage() {
         </section>
 
         <GestorContactBanner whatsappMessage="Hola, quiero vender mi piso sin inmobiliaria y necesito información" />
-        <TestimoniosSection />
+        <TestimoniosSection landing="vender-sin-inmobiliaria" />
 
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             CTA FINAL

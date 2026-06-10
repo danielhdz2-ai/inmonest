@@ -226,7 +226,7 @@ export default function VenderCasaPage() {
       </section>
 
       <GestorContactBanner whatsappMessage="Hola, quiero vender mi casa y necesito asesoramiento" />
-      <TestimoniosSection />
+      <TestimoniosSection landing="vender-casa" />
 
       {/* ── FOOTER CTA ───────────────────────────────────────────────────── */}
       <section className="py-14 bg-gradient-to-r from-[#2e1900] to-[#42300a]">

@@ -416,6 +416,7 @@ export default function GestoriaValenciaPage() {
 
         <CiudadHubExtras
           ciudad="Valencia"
+          hubSlug="valencia"
           whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Valencia"
           testimoniosLayout="stack"
           showGoogleReviews

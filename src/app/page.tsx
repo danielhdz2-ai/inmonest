@@ -328,7 +328,7 @@ export default function Home() {
               Descubre cómo ayudamos a nuestros clientes.
             </p>
           </div>
-          <TestimoniosCarousel />
+          <TestimoniosCarousel landing="home" />
           <div className="text-center mt-10">
             <p className="text-sm text-gray-500 mb-4">
               ¿Quieres ahorrar miles de euros en comisiones y tener todo el apoyo legal?

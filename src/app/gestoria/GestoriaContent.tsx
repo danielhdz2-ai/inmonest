@@ -711,7 +711,7 @@ export default function GestoriaPage() {
               Lee sus experiencias reales.
             </p>
           </div>
-          <TestimoniosCarousel />
+          <TestimoniosCarousel landing="gestoria" />
         </div>
       </section>
 

@@ -4,6 +4,7 @@ import TestimoniosSection from '@/components/TestimoniosSection'
 
 type CiudadHubExtrasProps = {
   ciudad: string
+  hubSlug?: string
   whatsappMessage?: string
   testimoniosLayout?: 'carousel' | 'stack'
   showGoogleReviews?: boolean
@@ -11,6 +12,7 @@ type CiudadHubExtrasProps = {
 
 export default function CiudadHubExtras({
   ciudad,
+  hubSlug,
   whatsappMessage,
   testimoniosLayout = 'carousel',
   showGoogleReviews = false,
@@ -47,6 +49,7 @@ export default function CiudadHubExtras({
         layout={testimoniosLayout}
         showGoogleReviews={showGoogleReviews}
         ciudad={ciudad}
+        landing={hubSlug ? `hub-${hubSlug}` : undefined}
       />
     </>
   )

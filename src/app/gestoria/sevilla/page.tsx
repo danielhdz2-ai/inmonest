@@ -310,7 +310,7 @@ export default function GestoriaSevillaPage() {
         </div>
       </section>
 
-      <CiudadHubExtras ciudad="Sevilla" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Sevilla" />
+      <CiudadHubExtras ciudad="Sevilla" hubSlug="sevilla" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Sevilla" />
 
       {/* CTA Final */}
       <section className="bg-gradient-to-br from-[#2e1900] to-[#5a3200] text-white py-16 sm:py-20">

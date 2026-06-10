@@ -398,7 +398,7 @@ export default function DueDiligenceMadridPage() {
 
 
       <GestorContactBanner />
-      <TestimoniosSection />
+      <TestimoniosSection landing="due-diligence-madrid" />
 
       {/* CTA Final */}
       <section className="py-16 px-4 bg-gradient-to-br from-[#1a0d00] to-[#2e1900] text-white">

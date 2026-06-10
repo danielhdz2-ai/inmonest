@@ -514,7 +514,7 @@ export default function DueDiligencePrecompraPage() {
 
 
       <GestorContactBanner />
-      <TestimoniosSection />
+      <TestimoniosSection landing="due-diligence" />
 
       {/* CTA Final */}
       <section className="py-16 px-4 bg-gradient-to-br from-blue-600 to-blue-700">

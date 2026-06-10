@@ -1,21 +1,14 @@
-import { TESTIMONIOS } from '@/lib/testimonios-data'
+import { getTestimonios } from '@/lib/testimonios-data'
 
 type TestimoniosStackProps = {
   limit?: number
   ciudad?: string
+  landing?: string
   hideRating?: boolean
 }
 
-function testimoniosParaCiudad(ciudad?: string) {
-  if (!ciudad) return TESTIMONIOS
-  const locales = TESTIMONIOS.filter(
-    (t) => t.ciudad.toLowerCase() === ciudad.toLowerCase(),
-  )
-  return locales.length > 0 ? locales : TESTIMONIOS
-}
-
-export default function TestimoniosStack({ limit, ciudad, hideRating = false }: TestimoniosStackProps) {
-  const base = testimoniosParaCiudad(ciudad)
+export default function TestimoniosStack({ limit, ciudad, landing, hideRating = false }: TestimoniosStackProps) {
+  const base = getTestimonios({ landing, ciudad })
   const items = limit ? base.slice(0, limit) : base
 
   return (

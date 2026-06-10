@@ -394,7 +394,7 @@ export default function AyudaPropietariosPage() {
 
 
       <GestorContactBanner />
-      <TestimoniosSection />
+      <TestimoniosSection landing="ayuda-propietarios" />
 
       {/* CTA Final */}
       <section className="py-16 px-4 bg-[#c9962a] text-white">

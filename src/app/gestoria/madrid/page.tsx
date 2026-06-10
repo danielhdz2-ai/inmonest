@@ -410,6 +410,7 @@ export default function GestoriaMadridPage() {
 
         <CiudadHubExtras
           ciudad="Madrid"
+          hubSlug="madrid"
           whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Madrid"
           testimoniosLayout="stack"
           showGoogleReviews

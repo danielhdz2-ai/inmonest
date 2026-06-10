@@ -478,7 +478,7 @@ export default function ContratoIlegalPage() {
 
 
       <GestorContactBanner />
-      <TestimoniosSection />
+      <TestimoniosSection landing="contrato-ilegal" />
 
       {/* CTA Final */}
       <section className="py-16 px-4 bg-red-600 text-white">

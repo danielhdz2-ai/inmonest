@@ -1,23 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { TESTIMONIOS } from '@/lib/testimonios-data'
+import { getTestimonios } from '@/lib/testimonios-data'
 
 type TestimoniosCarouselProps = {
   ciudad?: string
+  landing?: string
   hideRating?: boolean
 }
 
-function testimoniosParaCiudad(ciudad?: string) {
-  if (!ciudad) return TESTIMONIOS
-  const locales = TESTIMONIOS.filter(
-    (t) => t.ciudad.toLowerCase() === ciudad.toLowerCase(),
-  )
-  return locales.length > 0 ? locales : TESTIMONIOS
-}
-
-export default function TestimoniosCarousel({ ciudad, hideRating = false }: TestimoniosCarouselProps) {
-  const testimonios = testimoniosParaCiudad(ciudad)
+export default function TestimoniosCarousel({ ciudad, landing, hideRating = false }: TestimoniosCarouselProps) {
+  const testimonios = getTestimonios({ landing, ciudad })
   const [current, setCurrent] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 

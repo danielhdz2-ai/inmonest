@@ -522,7 +522,7 @@ export default function VenderPisoSinAgenciaPage() {
                 Más de 150 familias han vendido con nosotros ahorrando miles de euros
               </p>
             </div>
-            <TestimoniosCarousel />
+            <TestimoniosCarousel landing="vender-piso-sin-agencia" />
           </div>
         </section>
 

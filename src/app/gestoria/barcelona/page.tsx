@@ -390,6 +390,7 @@ export default function GestoriaBarcelonaPage() {
 
         <CiudadHubExtras
           ciudad="Barcelona"
+          hubSlug="barcelona"
           whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Barcelona"
           testimoniosLayout="stack"
           showGoogleReviews
