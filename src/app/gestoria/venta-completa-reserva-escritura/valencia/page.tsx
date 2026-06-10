@@ -6,6 +6,10 @@ import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import GestorContactBanner from '@/components/GestorContactBanner'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import {
+  buildVentaCompletaBreadcrumbSchema,
+  buildVentaCompletaServiceSchema,
+} from '@/lib/venta-completa-ciudad-schema'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -30,41 +34,8 @@ export const metadata: Metadata = {
 export const revalidate = 86400
 
 export default function VentaCompletaValenciaPage() {
-  const schemaJson = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: 'Servicio Completo de Venta en Valencia: Reserva a Escritura',
-    description: 'Acompañamiento completo para propietarios que venden su piso en Valencia sin agencia. Gestoría inmobiliaria experta en particulares vendedores. Contratos de arras, documentación y asesoramiento hasta escritura.',
-    areaServed: {
-      '@type': 'City',
-      name: 'Valencia',
-      containedIn: { '@type': 'Country', name: 'España' },
-    },
-    provider: {
-      '@type': 'Organization',
-      name: 'Inmonest',
-      url: BASE_URL,
-    },
-    offers: {
-      '@type': 'Offer',
-      price: '687',
-      priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
-      priceValidUntil: '2026-12-31',
-    },
-
-  }
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Gestoría', item: `${BASE_URL}/gestoria` },
-      { '@type': 'ListItem', position: 3, name: 'Venta Completa', item: `${BASE_URL}/gestoria/venta-completa-reserva-escritura` },
-      { '@type': 'ListItem', position: 4, name: 'Valencia', item: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/valencia` },
-    ],
-  }
+  const schemaJson = buildVentaCompletaServiceSchema('Valencia', 'valencia')
+  const breadcrumbSchema = buildVentaCompletaBreadcrumbSchema('Valencia', 'valencia')
 
   return (
     <>
@@ -608,7 +579,7 @@ export default function VentaCompletaValenciaPage() {
 
 
       <GestorContactBanner />
-      <TestimoniosSection landing="venta-completa-valencia" hideRating />
+      <TestimoniosSection landing="venta-completa-valencia" layout="stack" hideRating />
 
       {/* CTA Valencia */}
       <section className="py-16 px-4 bg-gradient-to-br from-[#c9962a] to-[#a87a20]">

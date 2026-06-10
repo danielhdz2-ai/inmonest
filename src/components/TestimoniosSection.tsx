@@ -19,9 +19,11 @@ export default function TestimoniosSection({
   ciudad,
   landing,
 }: TestimoniosSectionProps) {
+  const nosnippetProps = hideRating ? ({ 'data-nosnippet': true } as const) : {}
+
   return (
-    <section className={`py-16 px-4 ${className}`} {...(hideRating ? { 'data-nosnippet': true } : {})}>
-      <div className="max-w-6xl mx-auto">
+    <section className={`py-16 px-4 ${className}`} {...nosnippetProps}>
+      <div className="max-w-6xl mx-auto" {...nosnippetProps}>
         <div className="text-center mb-12">
           {showGoogleReviews ? (
             <>
@@ -54,11 +56,12 @@ export default function TestimoniosSection({
           ) : (
             <>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Lo que dicen nuestros clientes
+                {hideRating ? 'Experiencias con nuestro servicio' : 'Lo que dicen nuestros clientes'}
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Familias que han comprado o vendido con asesoramiento legal de Inmonest.
-                Experiencias reales con ciudad, servicio y fecha.
+                {hideRating
+                  ? 'Casos reales de particulares que vendieron o compraron con acompañamiento de gestoría Inmonest.'
+                  : 'Familias que han comprado o vendido con asesoramiento legal de Inmonest. Experiencias reales con ciudad, servicio y fecha.'}
               </p>
             </>
           )}

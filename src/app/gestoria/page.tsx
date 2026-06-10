@@ -3,6 +3,7 @@ import Script from 'next/script'
 import Navbar from '@/components/NavbarServer'
 import GestoriaContent from './GestoriaContent'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -32,9 +33,7 @@ export const metadata: Metadata = {
 }
 
 const SCHEMA_ITEM_REVIEWED = {
-  '@type': 'Organization',
-  name: 'Inmonest',
-  url: BASE_URL,
+  '@id': ORGANIZATION_SCHEMA_ID,
 }
 
 const schemaJson = JSON.stringify({

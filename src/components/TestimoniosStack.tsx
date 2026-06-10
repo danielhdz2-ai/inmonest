@@ -11,8 +11,10 @@ export default function TestimoniosStack({ limit, ciudad, landing, hideRating = 
   const base = getTestimonios({ landing, ciudad })
   const items = limit ? base.slice(0, limit) : base
 
+  const nosnippetProps = hideRating ? ({ 'data-nosnippet': true } as const) : {}
+
   return (
-    <div className="grid gap-6 max-w-4xl mx-auto">
+    <div className="grid gap-6 max-w-4xl mx-auto" {...nosnippetProps}>
       {items.map((t) => (
         <div
           key={t.id}

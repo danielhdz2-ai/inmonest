@@ -1,3 +1,5 @@
+import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
+
 /**
  * Schema.org Organization + LegalService
  * Marca estructurada para Google Knowledge Panel
@@ -9,6 +11,7 @@ export default function OrganizationSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': ORGANIZATION_SCHEMA_ID,
     name: 'Inmonest',
     alternateName: 'Inmonest Gestoría Inmobiliaria',
     url: 'https://inmonest.com',

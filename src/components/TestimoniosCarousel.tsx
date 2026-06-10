@@ -45,8 +45,10 @@ export default function TestimoniosCarousel({ ciudad, landing, hideRating = fals
 
   const testimonio = testimonios[current]
 
+  const nosnippetProps = hideRating ? ({ 'data-nosnippet': true } as const) : {}
+
   return (
-    <div className="relative max-w-4xl mx-auto">
+    <div className="relative max-w-4xl mx-auto" {...nosnippetProps}>
       {/* Testimonio principal */}
       <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10 border border-gray-100">
         <div className="flex flex-col md:flex-row gap-6 items-start">

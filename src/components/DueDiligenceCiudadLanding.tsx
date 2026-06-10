@@ -15,6 +15,7 @@ import {
 } from '@/lib/due-diligence-ciudad-data'
 import { getDueDiligenceFaq } from '@/lib/due-diligence-ciudad-faq'
 import { buildFaqSchema } from '@/lib/gestoria-ciudad-schema'
+import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/pack-due-diligence-precompra'
@@ -78,7 +79,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
       name: nombre,
       containedIn: { '@type': 'Country', name: 'España' },
     },
-    provider: { '@type': 'Organization', name: 'Inmonest', url: BASE_URL },
+    provider: { '@id': ORGANIZATION_SCHEMA_ID },
     offers: {
       '@type': 'Offer',
       price: String(DUE_DILIGENCE_PRECIO),
