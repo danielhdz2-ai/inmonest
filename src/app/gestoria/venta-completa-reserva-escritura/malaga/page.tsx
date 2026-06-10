@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import GestorContactBanner from '@/components/GestorContactBanner'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
@@ -447,6 +448,14 @@ export default function VentaCompletaMalagaPage() {
 
 
       <GestorContactBanner />
+
+      <CiudadHubServiciosGrid
+        ciudad="Málaga"
+        ciudadSlug="malaga"
+        subtitulo="Redactados por abogados colegiados con experiencia en el mercado inmobiliario malagueño."
+        excluirServicios={['venta-completa-reserva-escritura']}
+      />
+
       <TestimoniosSection landing="venta-completa-malaga" hideRating />
 
       {/* CTA Final */}

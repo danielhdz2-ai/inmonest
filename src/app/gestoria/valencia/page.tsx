@@ -20,19 +20,6 @@ const BASE_URL = 'https://inmonest.com'
 const META_DESCRIPTION =
   'Gestoría inmobiliaria para particulares en Valencia. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones. Abogados especializados.'
 
-const VALENCIA_ENLACES_CIUDAD = [
-  {
-    slug: 'arras-penitenciales',
-    href: '/valencia/contrato-arras',
-    label: 'Ver información específica para Valencia →',
-  },
-  {
-    slug: 'contrato-alquiler',
-    href: '/valencia/contrato-alquiler',
-    label: 'Ver contrato alquiler Valencia →',
-  },
-]
-
 export const metadata: Metadata = {
   title: 'Gestoría Inmobiliaria Valencia para Particulares | Contratos y Asesoramiento',
   description: META_DESCRIPTION,
@@ -335,7 +322,7 @@ export default function GestoriaValenciaPage() {
           </div>
         </section>
 
-        <CiudadHubServiciosGrid ciudad="Valencia" enlacesCiudad={VALENCIA_ENLACES_CIUDAD} />
+        <CiudadHubServiciosGrid ciudad="Valencia" ciudadSlug="valencia" />
 
         <CiudadHubComoTrabajamos ciudad="Valencia" />
 

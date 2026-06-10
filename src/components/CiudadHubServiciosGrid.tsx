@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { SERVICIOS_DESTACADOS_CIUDAD } from '@/lib/gestoria-servicios-destacados'
+import { buildEnlaceServicioCiudad } from '@/lib/gestoria-servicio-enlaces'
 
 type EnlaceCiudad = {
   slug: string
@@ -10,24 +11,46 @@ type EnlaceCiudad = {
 
 type CiudadHubServiciosGridProps = {
   ciudad: string
+  ciudadSlug?: string
   subtitulo?: string
   enlacesCiudad?: EnlaceCiudad[]
+  excluirServicios?: string[]
+  sectionId?: string
 }
 
 export default function CiudadHubServiciosGrid({
   ciudad,
+  ciudadSlug,
   subtitulo = 'Precios reales de nuestra gestoría para particulares. Sin comisiones de agencia.',
   enlacesCiudad,
+  excluirServicios = [],
+  sectionId = 'servicios',
 }: CiudadHubServiciosGridProps) {
+  const servicios = SERVICIOS_DESTACADOS_CIUDAD.filter(
+    (servicio) => !excluirServicios.includes(servicio.slug)
+  )
+
+  const resolverEnlace = (servicioSlug: string) => {
+    if (enlacesCiudad) {
+      return enlacesCiudad.find((enlace) => enlace.slug === servicioSlug) ?? null
+    }
+
+    if (!ciudadSlug) return null
+    return buildEnlaceServicioCiudad(servicioSlug, ciudadSlug, ciudad)
+  }
+
   return (
-    <section className="bg-gray-50 py-12 sm:py-16">
+    <section id={sectionId} className="bg-gray-50 py-12 sm:py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
           Contratos y servicios en {ciudad}
         </h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">{subtitulo}</p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {SERVICIOS_DESTACADOS_CIUDAD.map((servicio) => (
+          {servicios.map((servicio) => {
+            const enlaceLanding = resolverEnlace(servicio.slug)
+
+            return (
             <div
               key={servicio.slug}
               className={`bg-white rounded-xl shadow-lg border-2 transition-all hover:shadow-2xl overflow-hidden flex flex-col ${
@@ -66,20 +89,18 @@ export default function CiudadHubServiciosGrid({
                 >
                   Solicitar
                 </Link>
-                {enlacesCiudad
-                  ?.filter((e) => e.slug === servicio.slug)
-                  .map((e) => (
-                    <Link
-                      key={e.href}
-                      href={e.href}
-                      className="block text-center mt-2 text-sm text-[#c9962a] hover:underline font-medium"
-                    >
-                      {e.label}
-                    </Link>
-                  ))}
+                {enlaceLanding && (
+                  <Link
+                    href={enlaceLanding.href}
+                    className="block text-center mt-2 text-sm text-[#c9962a] hover:underline font-medium"
+                  >
+                    {enlaceLanding.label}
+                  </Link>
+                )}
               </div>
             </div>
-          ))}
+            )
+          })}
         </div>
         <div className="text-center mt-10">
           <Link

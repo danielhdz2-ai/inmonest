@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import type { ContratoAlquilerPremiumConfig } from '@/lib/contrato-alquiler-premium-config'
 import {
@@ -263,36 +264,16 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
           </div>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Otros contratos que pueden interesarte</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <Link
-              href="/gestoria/arras-penitenciales"
-              className="border border-gray-200 rounded-xl p-5 hover:border-[#c9a84c] hover:shadow-sm transition-all group"
-            >
-              <p className="text-sm text-gray-500 mb-1">Contrato</p>
-              <h3 className="font-semibold text-gray-800 group-hover:text-[#c9a84c] transition-colors mb-2">Arras Penitenciales</h3>
-              <p className="text-[#c9a84c] font-bold">145 €</p>
-            </Link>
-            <Link
-              href="/gestoria/rescision-alquiler"
-              className="border border-gray-200 rounded-xl p-5 hover:border-[#c9a84c] hover:shadow-sm transition-all group"
-            >
-              <p className="text-sm text-gray-500 mb-1">Rescisión</p>
-              <h3 className="font-semibold text-gray-800 group-hover:text-[#c9a84c] transition-colors mb-2">Rescisión de Alquiler</h3>
-              <p className="text-[#c9a84c] font-bold">73 €</p>
-            </Link>
-            <Link
-              href="/gestoria/revision-contrato-alquiler"
-              className="border border-gray-200 rounded-xl p-5 hover:border-[#c9a84c] hover:shadow-sm transition-all group"
-            >
-              <p className="text-sm text-gray-500 mb-1">Revisión</p>
-              <h3 className="font-semibold text-gray-800 group-hover:text-[#c9a84c] transition-colors mb-2">Revisión de Contrato de Alquiler</h3>
-              <p className="text-[#c9a84c] font-bold">60 €</p>
-            </Link>
-          </div>
-        </section>
+      </div>
 
+      <CiudadHubServiciosGrid
+        ciudad={config.nombre}
+        ciudadSlug={config.slug}
+        subtitulo={`Otros contratos y servicios de gestoría disponibles en ${config.nombre}.`}
+        excluirServicios={['contrato-alquiler']}
+      />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
         <section className="bg-[#0d1a0f] rounded-2xl p-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">¿Sigues retrasando el contrato? Eso te expone a los dos lados</h2>
           <p className="text-white/70 mb-6 max-w-lg mx-auto leading-relaxed">

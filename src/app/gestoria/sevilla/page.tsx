@@ -181,6 +181,7 @@ export default function GestoriaSevillaPage() {
 
       <CiudadHubServiciosGrid
         ciudad="Sevilla"
+        ciudadSlug="sevilla"
         subtitulo="Redactados por abogados colegiados con experiencia en el mercado inmobiliario sevillano. Precios iguales que en nuestra gestoría online."
       />
 

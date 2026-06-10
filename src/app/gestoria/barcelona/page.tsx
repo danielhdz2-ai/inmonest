@@ -40,19 +40,6 @@ export const metadata: Metadata = {
   },
 }
 
-const BARCELONA_ENLACES_CIUDAD = [
-  {
-    slug: 'arras-penitenciales',
-    href: '/barcelona/contrato-arras',
-    label: 'Ver información específica para Barcelona →',
-  },
-  {
-    slug: 'contrato-alquiler',
-    href: '/barcelona/contrato-alquiler',
-    label: 'Ver contrato alquiler Barcelona →',
-  },
-]
-
 export default function GestoriaBarcelonaPage() {
   return (
     <>
@@ -333,10 +320,7 @@ export default function GestoriaBarcelonaPage() {
           </div>
         </section>
 
-        <CiudadHubServiciosGrid
-          ciudad="Barcelona"
-          enlacesCiudad={BARCELONA_ENLACES_CIUDAD}
-        />
+        <CiudadHubServiciosGrid ciudad="Barcelona" ciudadSlug="barcelona" />
 
         <CiudadHubComoTrabajamos ciudad="Barcelona" />
 

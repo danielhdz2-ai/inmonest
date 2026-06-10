@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import type { ContratoArrasPremiumConfig } from '@/lib/contrato-arras-premium-config'
 import {
@@ -8,16 +9,12 @@ import {
   CONTRATO_ARRAS_PREMIUM_PASOS,
   CONTRATO_ARRAS_PREMIUM_PRECIO,
 } from '@/lib/contrato-arras-premium-config'
-import { getContratoAlquilerPremiumConfig } from '@/lib/contrato-alquiler-premium-config'
-
 const BASE_URL = 'https://inmonest.com'
 const WA = '34641008847'
 
 export default function ContratoArrasCiudadPremium({ config }: { config: ContratoArrasPremiumConfig }) {
   const precio = CONTRATO_ARRAS_PREMIUM_PRECIO
   const waText = encodeURIComponent(`Hola, necesito redactar un contrato de arras en ${config.nombre}`)
-  const alquilerEnCiudad = getContratoAlquilerPremiumConfig(config.slug)
-
   const schemaJson = {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -216,38 +213,16 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
           </div>
         </section>
 
-        <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Otros contratos que pueden interesarte</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <Link
-              href="/gestoria/arras-confirmatorias"
-              className="border border-gray-200 rounded-xl p-5 hover:border-[#c9a84c] hover:shadow-sm transition-all group"
-            >
-              <p className="text-sm text-gray-500 mb-1">Contrato</p>
-              <h3 className="font-semibold text-gray-800 group-hover:text-[#c9a84c] transition-colors mb-2">Arras confirmatorias</h3>
-              <p className="text-[#c9a84c] font-bold">145 €</p>
-            </Link>
-            <Link
-              href={alquilerEnCiudad ? `/${config.slug}/contrato-alquiler` : '/gestoria/solicitar/contrato-alquiler'}
-              className="border border-gray-200 rounded-xl p-5 hover:border-[#c9a84c] hover:shadow-sm transition-all group"
-            >
-              <p className="text-sm text-gray-500 mb-1">Contrato</p>
-              <h3 className="font-semibold text-gray-800 group-hover:text-[#c9a84c] transition-colors mb-2">
-                {alquilerEnCiudad ? `Contrato de alquiler en ${config.nombre}` : 'Contrato de alquiler LAU'}
-              </h3>
-              <p className="text-[#c9a84c] font-bold">120 €</p>
-            </Link>
-            <Link
-              href="/gestoria/revision-contrato-arras"
-              className="border border-gray-200 rounded-xl p-5 hover:border-[#c9a84c] hover:shadow-sm transition-all group"
-            >
-              <p className="text-sm text-gray-500 mb-1">Revisión</p>
-              <h3 className="font-semibold text-gray-800 group-hover:text-[#c9a84c] transition-colors mb-2">Revisión de contrato de arras</h3>
-              <p className="text-[#c9a84c] font-bold">60 €</p>
-            </Link>
-          </div>
-        </section>
+      </div>
 
+      <CiudadHubServiciosGrid
+        ciudad={config.nombre}
+        ciudadSlug={config.slug}
+        subtitulo={`Otros contratos y servicios de gestoría disponibles en ${config.nombre}.`}
+        excluirServicios={['arras-penitenciales']}
+      />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
         <section className="bg-[#0d1a0f] rounded-2xl p-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">¿Sigues retrasando las arras? Eso te expone a comprador y vendedor</h2>
           <p className="text-white/70 mb-6 max-w-lg mx-auto leading-relaxed">

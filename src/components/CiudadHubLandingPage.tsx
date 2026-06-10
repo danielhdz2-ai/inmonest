@@ -89,8 +89,8 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
 
         <CiudadHubServiciosGrid
           ciudad={nombre}
+          ciudadSlug={slug}
           subtitulo={config.serviciosSubtitulo}
-          enlacesCiudad={config.enlacesContrato}
         />
 
         <CiudadHubComoTrabajamos ciudad={nombre} />

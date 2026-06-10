@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import type { DueDiligenceCiudadConfig } from '@/lib/due-diligence-ciudad-data'
@@ -362,6 +363,13 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
           </div>
         </div>
       </section>
+
+      <CiudadHubServiciosGrid
+        ciudad={nombre}
+        ciudadSlug={slug}
+        subtitulo={`Otros contratos y servicios de gestoría disponibles en ${nombre}. Precios iguales que en nuestra gestoría online.`}
+        excluirServicios={['pack-due-diligence-precompra', 'due-diligence-precompra']}
+      />
 
       {/* Otras ciudades */}
       <section className="py-12 px-4 bg-white border-t border-gray-100">

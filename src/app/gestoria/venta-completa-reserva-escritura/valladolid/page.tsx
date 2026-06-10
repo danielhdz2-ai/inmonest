@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import GestorContactBanner from '@/components/GestorContactBanner'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
@@ -561,46 +562,12 @@ export default function VentaCompletaValladolidPage() {
         </div>
       </section>
 
-      {/* Servicios relacionados */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-8 text-gray-900">
-            Otros servicios en Valladolid
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Link
-              href="/gestoria"
-              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-[#c9962a] hover:shadow-md transition"
-            >
-              <h3 className="font-bold text-lg mb-2 text-gray-900">Gestoría Inmobiliaria</h3>
-              <p className="text-gray-600 text-sm mb-3">
-                Todos los servicios de gestoría inmobiliaria online en Valladolid y toda España.
-              </p>
-              <div className="text-[#c9962a] font-bold">Ver servicios →</div>
-            </Link>
-            <Link
-              href="/gestoria/solicitar/arras-penitenciales"
-              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-[#c9962a] hover:shadow-md transition"
-            >
-              <h3 className="font-bold text-lg mb-2 text-gray-900">Contrato de Arras</h3>
-              <p className="text-gray-600 text-sm mb-3">
-                Solo el contrato de arras penitenciales redactado.
-              </p>
-              <div className="text-[#c9962a] font-bold">Desde 145€</div>
-            </Link>
-            <Link
-              href="/gestoria/asesoria-compra-piso"
-              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-[#c9962a] hover:shadow-md transition"
-            >
-              <h3 className="font-bold text-lg mb-2 text-gray-900">Servicio de Compra</h3>
-              <p className="text-gray-600 text-sm mb-3">
-                Acompañamiento completo si estás comprando en Valladolid.
-              </p>
-              <div className="text-[#c9962a] font-bold">Desde 687€</div>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CiudadHubServiciosGrid
+        ciudad="Valladolid"
+        ciudadSlug="valladolid"
+        subtitulo="Redactados por abogados colegiados con experiencia en el mercado inmobiliario vallisoletano."
+        excluirServicios={['venta-completa-reserva-escritura']}
+      />
     </>
   )
 }

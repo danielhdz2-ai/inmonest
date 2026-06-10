@@ -20,19 +20,6 @@ const BASE_URL = 'https://inmonest.com'
 const META_DESCRIPTION =
   'Gestoría inmobiliaria para particulares en Madrid. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones. Abogados especializados.'
 
-const MADRID_ENLACES_CIUDAD = [
-  {
-    slug: 'arras-penitenciales',
-    href: '/madrid/contrato-arras',
-    label: 'Ver información específica para Madrid →',
-  },
-  {
-    slug: 'contrato-alquiler',
-    href: '/madrid/contrato-alquiler',
-    label: 'Ver contrato alquiler Madrid →',
-  },
-]
-
 export const metadata: Metadata = {
   title: 'Gestoría Inmobiliaria Madrid para Particulares | Contratos y Asesoramiento',
   description: META_DESCRIPTION,
@@ -329,7 +316,7 @@ export default function GestoriaMadridPage() {
           </div>
         </section>
 
-        <CiudadHubServiciosGrid ciudad="Madrid" enlacesCiudad={MADRID_ENLACES_CIUDAD} />
+        <CiudadHubServiciosGrid ciudad="Madrid" ciudadSlug="madrid" />
 
         <CiudadHubComoTrabajamos ciudad="Madrid" />
 
