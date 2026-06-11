@@ -38,6 +38,8 @@ export const DUE_DILIGENCE_CIUDADES_LIST = [
   { slug: 'barcelona', nombre: 'Barcelona' },
   { slug: 'valencia', nombre: 'Valencia' },
   { slug: 'sevilla', nombre: 'Sevilla' },
+  { slug: 'malaga', nombre: 'Málaga' },
+  { slug: 'bilbao', nombre: 'Bilbao' },
 ] as const
 
 export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = {
@@ -194,6 +196,84 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       ogTitle: 'Due Diligence Pre-Compra Sevilla — Gestor asignado revisa todo',
       ogDescription:
         'Compras de particular a particular en Sevilla. Gestor experto revisa toda la documentación hasta escritura. 350€. Sin comisiones de agencia.',
+    },
+  },
+
+  malaga: {
+    slug: 'malaga',
+    nombre: 'Málaga',
+    region: 'Andalucía',
+    testimoniosLanding: 'due-diligence-malaga',
+    heroImage: '/gestoria5.jpg',
+    precioEjemploPiso: 300_000,
+    gestor: {
+      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      rol: 'Gestora inmobiliaria · Compras en Málaga y Costa del Sol',
+      foto: GESTOR_CARMEN_VIDAL.foto,
+      bio: 'Acompaña a compradores que adquieren vivienda de particular en Málaga capital y área metropolitana. Revisa IEE andaluz, cargas registrales, deudas de comunidad y toda la documentación exigida por la Junta antes de escriturar.',
+      especialidades: ['Compras sin agencia', 'Normativa Junta de Andalucía', 'Acompañamiento hasta notaría'],
+    },
+    docTecnicaTitulo: 'Documentación Técnica y normativa andaluza',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente (obligatoria en Andalucía)',
+      'Certificado energético actualizado',
+      'IEE (Informe de Evaluación del Edificio) si aplica',
+      'Licencias de obra y legalización de reformas',
+    ],
+    zonasIntro: 'Servicio en Málaga capital, Costa del Sol y área metropolitana. Conocemos los requisitos de la Junta de Andalucía y las particularidades de cada barrio.',
+    zonas: [
+      'Centro Histórico', 'Soho', 'Teatinos', 'El Palo-Pedregalejo', 'La Malagueta',
+      'El Limonar', 'Huelin', 'Carretera de Cádiz', 'Benalmádena', 'Torremolinos',
+      'Rincón de la Victoria', 'Mijas',
+    ],
+    meta: {
+      title: 'Due Diligence Pre-Compra Málaga | Comprar Piso de Particular con Gestor',
+      description:
+        '¿Compras piso en Málaga de particular a particular? Gestor especializado en derecho inmobiliario revisa documentación hasta escritura: cargas, IEE, deudas comunidad. Evita sorpresas. 350€ IVA incluido.',
+      keywords:
+        'comprar piso particular málaga, due diligence compra vivienda málaga, revisar documentacion compra piso málaga, gestor compra vivienda málaga, comprar de particular a particular málaga, evitar estafa compra piso málaga, verificar cargas piso málaga, comprar piso sin agencia málaga, IEE compra vivienda málaga, due diligence costa del sol',
+      ogTitle: 'Due Diligence Pre-Compra Málaga — Gestor asignado revisa todo',
+      ogDescription:
+        'Compras de particular a particular en Málaga. Un gestor experto en derecho inmobiliario revisa toda la documentación hasta escritura. 350€. Sin comisiones de agencia.',
+    },
+  },
+
+  bilbao: {
+    slug: 'bilbao',
+    nombre: 'Bilbao',
+    region: 'País Vasco · Bizkaia',
+    testimoniosLanding: 'due-diligence-bilbao',
+    heroImage: '/gestoria7.jpg',
+    precioEjemploPiso: 280_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Bizkaia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en compraventas de particular a particular en Bilbao y área metropolitana. Domina el derecho foral vasco, revisión de cargas, plusvalía de Bizkaia y documentación técnica antes de la firma en notaría.',
+      especialidades: ['Due diligence post-arras', 'Normativa foral vasca', 'Informe pre-escritura'],
+    },
+    docTecnicaTitulo: 'Documentación Técnica y normativa foral vasca',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético actualizado',
+      'ITE / IEE en edificios de más de 50 años',
+      'Licencias de obra y conformidad urbanística del Ayuntamiento de Bilbao',
+    ],
+    zonasIntro: 'Cobertura en Bilbao, Gran Bilbao y normativa foral de Bizkaia. Conocemos las particularidades de cada distrito y los requisitos del mercado bilbaíno.',
+    zonas: [
+      'Indautxu', 'Abando', 'Deusto', 'Rekalde', 'Bilbao La Vieja',
+      'Santutxu', 'Basurto', 'Zorrotza', 'Getxo', 'Barakaldo',
+      'Portugalete', 'Leioa',
+    ],
+    meta: {
+      title: 'Due Diligence Pre-Compra Bilbao | Comprar Piso de Particular con Gestor',
+      description:
+        '¿Compras piso en Bilbao de particular a particular? Gestor especializado en derecho inmobiliario revisa documentación hasta escritura: cargas, plusvalía foral, deudas comunidad. 350€ IVA incluido.',
+      keywords:
+        'comprar piso particular bilbao, due diligence compra vivienda bilbao, revisar documentacion compra piso bilbao, gestor compra vivienda bilbao, comprar de particular a particular bilbao, evitar estafa compra piso bilbao, verificar cargas piso bilbao, comprar piso sin agencia bilbao, plusvalía foral bizkaia compra',
+      ogTitle: 'Due Diligence Pre-Compra Bilbao — Gestor asignado revisa todo',
+      ogDescription:
+        'Compras de particular a particular en Bilbao. Gestor experto en derecho inmobiliario revisa toda la documentación hasta escritura. 350€. Sin comisiones de agencia.',
     },
   },
 }

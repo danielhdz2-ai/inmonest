@@ -58,6 +58,8 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/barcelona`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/valencia`,  lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/sevilla`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
+  { url: `${BASE_URL}/gestoria/due-diligence-precompra/malaga`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
+  { url: `${BASE_URL}/gestoria/due-diligence-precompra/bilbao`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/reserva-compra`,                    lastModified: today, changeFrequency: 'monthly', priority: 0.84 },
   { url: `${BASE_URL}/gestoria/barcelona`,                         lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/madrid`,                            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },

@@ -230,6 +230,30 @@ export const TESTIMONIOS_POOL: Testimonio[] = [
       'Tras firmar arras en Triana contraté la revisión documental completa. El informe detectó el IEE caducado y deudas de IBI del anterior propietario. El vendedor las regularizó antes de notaría. Comprar con esa tranquilidad no tiene precio.',
     fecha: 'Abril 2026',
   },
+  {
+    id: 20,
+    nombre: 'Iñaki Aguirre',
+    ciudad: 'Bilbao',
+    servicio: 'Due diligence pre-compra',
+    foto: '/testimonios/testimonio6.jpg',
+    rating: 5,
+    texto:
+      'Compré un piso de particular en Indautxu y el vendedor me presionaba para escriturar en dos semanas. El gestor de Inmonest revisó la nota simple, la plusvalía foral de Bizkaia y deudas de comunidad de 3.800€ que no figuraban en el anuncio. Pude renegociar antes de firmar. Los 350€ me ahorraron un problema enorme.',
+    fecha: 'Mayo 2026',
+    ahorro: '3.800€',
+  },
+  {
+    id: 21,
+    nombre: 'Carmen Ruiz',
+    ciudad: 'Málaga',
+    servicio: 'Due diligence pre-compra',
+    foto: '/testimonios/testimonio10.jpg',
+    rating: 5,
+    texto:
+      'Encontré piso en Teatinos por Milanuncios, sin agencia. Tras las arras contraté el Due Diligence y detectaron un IEE desfavorable y una derrama de fachada de 5.400€. El gestor me explicó cada punto y negocié 7.000€ de descuento. Comprar de particular con asesoría legal es imprescindible en Málaga.',
+    fecha: 'Mayo 2026',
+    ahorro: '7.000€',
+  },
 ]
 
 function pick(...ids: number[]): Testimonio[] {
@@ -257,6 +281,8 @@ export const TESTIMONIOS_POR_LANDING: Record<string, Testimonio[]> = {
   'due-diligence-barcelona': pick(18, 5, 17),
   'due-diligence-valencia': pick(16, 5, 17),
   'due-diligence-sevilla': pick(19, 5, 16),
+  'due-diligence-malaga': pick(5, 21, 17),
+  'due-diligence-bilbao': pick(20, 6, 17),
   'revision-arras': pick(2, 6, 14),
   'revision-alquiler': pick(3, 7, 9),
   'contrato-ilegal': pick(7, 2, 6),
