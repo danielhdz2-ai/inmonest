@@ -61,6 +61,7 @@ export const LANDINGS_GENERICAS = [
   { slug: 'revision-contrato-alquiler', nombre: 'Revisión Contrato Alquiler', precio: '60€' },
   { slug: 'contrato-ilegal', nombre: 'Análisis Contrato Ilegal', precio: '29€' },
   { slug: 'ayuda-propietarios', nombre: 'Ayuda Propietarios LAU', precio: '120€' },
+  { slug: 'contrato-alquiler-habitacion', nombre: 'Contrato Alquiler Habitación', precio: '120€' },
   { slug: 'contrato-arras', nombre: 'Contrato Arras (Info)', precio: '145€' },
   { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa Genérica', precio: '687€' },
 ] as const

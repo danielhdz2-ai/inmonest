@@ -264,7 +264,7 @@ export default function AyudaPropietariosPage() {
             </div>
             <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler de habitación</h3>
-              <div className="text-3xl font-bold text-[#c9962a] mb-3">121€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-3">120€</div>
               <p className="text-gray-600 mb-4">
                 Para alquilar una habitación en piso compartido. Espacios comunes, normas de convivencia, etc.
               </p>

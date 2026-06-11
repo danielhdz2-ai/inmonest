@@ -47,6 +47,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso`,              lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/due-diligence-precompra`,           lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/ayuda-propietarios`,                lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/contrato-alquiler-habitacion`,      lastModified: today, changeFrequency: 'monthly', priority: 0.90 },
   { url: `${BASE_URL}/gestoria/contrato-ilegal`,                   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/contrato-arras`,                    lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/asesoramiento-arras-venta`,         lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
