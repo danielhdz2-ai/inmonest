@@ -1,41 +1,20 @@
-import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import JsonLd from '@/components/JsonLd'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import { GESTOR_CARMEN_VIDAL } from '@/lib/gestores-inmonest'
+import type { AlquilerHabitacionCiudadConfig } from '@/lib/alquiler-habitacion-ciudad-data'
+import {
+  ALQUILER_HABITACION_CIUDADES_LIST,
+  ALQUILER_HABITACION_PRECIO,
+} from '@/lib/alquiler-habitacion-ciudad-data'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
-const PRECIO = 120
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
 const PHONE = '+34641008847'
 const WA = '34641008847'
-
-export const metadata: Metadata = {
-  title: 'Contrato de Alquiler de Habitación | 120€ IVA incluido | Inmonest',
-  description:
-    '¿Alquilas una habitación en tu piso? Contrato profesional redactado por gestoría inmobiliaria. Asesor experto, bases legales del Código Civil, normas de convivencia y protección ante impagos. 120€ IVA incluido.',
-  keywords:
-    'contrato alquiler habitacion, alquilar habitacion piso compartido, contrato habitacion coliving, arrendamiento habitacion codigo civil, alquiler habitacion particular, normas convivencia alquiler habitacion, gestoria alquiler habitacion',
-  alternates: {
-    canonical: `${BASE_URL}/gestoria/contrato-alquiler-habitacion`,
-  },
-  openGraph: {
-    title: 'Contrato de Alquiler de Habitación — 120€ con asesor experto',
-    description:
-      'Particulares que alquilan habitaciones en piso compartido. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
-    url: `${BASE_URL}/gestoria/contrato-alquiler-habitacion`,
-    type: 'website',
-    siteName: 'Inmonest',
-    locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria6.jpg`, width: 1200, height: 630, alt: 'Contrato alquiler habitación' }],
-  },
-}
-
-export const revalidate = 86400
 
 const PASOS = [
   {
@@ -91,7 +70,7 @@ const INCLUYE = [
   'PDF firmable · Entrega en 48 horas laborables',
 ] as const
 
-const PARA_QUIEN = [
+const PARA_QUIEN_BASE = [
   'Propietarios que alquilan una o varias habitaciones en su vivienda habitual',
   'Inversores en pisos compartidos o coliving con varios inquilinos',
   'Particulares que buscan inquilino sin pasar por agencia inmobiliaria',
@@ -99,46 +78,7 @@ const PARA_QUIEN = [
   'Propietarios que quieren un contrato independiente por cada habitación',
 ] as const
 
-const OTROS_SERVICIOS = [
-  {
-    titulo: 'Contrato de Alquiler LAU (vivienda completa)',
-    desc: 'Para alquilar el piso íntegro con protección de la Ley de Arrendamientos Urbanos y Ley de Vivienda 2026.',
-    href: '/gestoria/solicitar/contrato-alquiler',
-    precio: '120€',
-  },
-  {
-    titulo: 'Revisión de Contrato de Alquiler',
-    desc: 'Si ya tienes un borrador o contrato del inquilino, lo revisamos antes de firmar.',
-    href: '/gestoria/revision-contrato-alquiler',
-    precio: '60€',
-  },
-  {
-    titulo: 'Rescisión de Alquiler',
-    desc: 'Documenta la entrega de llaves y el estado del inmueble al finalizar el arrendamiento.',
-    href: '/gestoria/solicitar/rescision-alquiler',
-    precio: '73€',
-  },
-  {
-    titulo: 'Liquidación de Fianza',
-    desc: 'Desglose de conceptos descontados y devolución de fianza sin conflictos.',
-    href: '/gestoria/solicitar/liquidacion-fianza',
-    precio: '36€',
-  },
-  {
-    titulo: 'Contrato de Arras',
-    desc: 'Si compras o vendes vivienda, arras penitenciales redactadas por gestoría.',
-    href: '/gestoria/contrato-arras',
-    precio: '145€',
-  },
-  {
-    titulo: 'Due Diligence Pre-Compra',
-    desc: 'Revisión documental completa antes de escriturar una compra entre particulares.',
-    href: '/gestoria/due-diligence-precompra',
-    precio: '350€',
-  },
-] as const
-
-const FAQ = [
+const FAQ_BASE = [
   {
     q: '¿Cuánto cuesta el contrato de alquiler de habitación?',
     a: '120€ IVA incluido. Tarifa plana por contrato personalizado, redacción jurídica y asesoramiento de un gestor inmobiliario experto. Entrega en 48 horas laborables.',
@@ -159,10 +99,6 @@ const FAQ = [
     q: '¿El asesor me acompaña después de entregar el contrato?',
     a: 'Sí. Antes de la firma resolvemos tus dudas. Si surge una incidencia durante el arrendamiento, puedes consultarnos para saber cómo actuar conforme al contrato y la ley.',
   },
-  {
-    q: '¿Sirve para coliving o pisos de estudiantes?',
-    a: 'Sí. Es uno de los casos más habituales. Adaptamos el contrato a convivencia compartida, estancias de varios meses y normas específicas del piso.',
-  },
 ] as const
 
 function CheckIcon() {
@@ -177,19 +113,69 @@ function CheckIcon() {
   )
 }
 
-export default function ContratoAlquilerHabitacionPage() {
-  const waText = encodeURIComponent('Hola, necesito un contrato de alquiler de habitación')
+type Props = {
+  config: AlquilerHabitacionCiudadConfig
+}
+
+export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
+  const { nombre, slug, region, gestor } = config
+  const waText = encodeURIComponent(`Hola, necesito un contrato de alquiler de habitación en ${nombre}`)
+  const paraQuien = [...PARA_QUIEN_BASE, ...config.paraQuienExtra]
+  const faq = [...FAQ_BASE, ...config.faqExtra]
+
+  const otrosServicios = [
+    {
+      titulo: `Contrato de Alquiler LAU en ${nombre}`,
+      desc: 'Para alquilar el piso íntegro con protección de la Ley de Arrendamientos Urbanos y Ley de Vivienda 2026.',
+      href: config.enlaceContratoLau,
+      precio: '120€',
+    },
+    {
+      titulo: 'Revisión de Contrato de Alquiler',
+      desc: 'Si ya tienes un borrador o contrato del inquilino, lo revisamos antes de firmar.',
+      href: '/gestoria/revision-contrato-alquiler',
+      precio: '60€',
+    },
+    {
+      titulo: 'Rescisión de Alquiler',
+      desc: 'Documenta la entrega de llaves y el estado del inmueble al finalizar el arrendamiento.',
+      href: '/gestoria/solicitar/rescision-alquiler',
+      precio: '73€',
+    },
+    {
+      titulo: 'Liquidación de Fianza',
+      desc: 'Desglose de conceptos descontados y devolución de fianza sin conflictos.',
+      href: '/gestoria/solicitar/liquidacion-fianza',
+      precio: '36€',
+    },
+    {
+      titulo: 'Contrato de Arras',
+      desc: 'Si compras o vendes vivienda, arras penitenciales redactadas por gestoría.',
+      href: `/gestoria/contrato-arras`,
+      precio: '145€',
+    },
+    {
+      titulo: `Due Diligence Pre-Compra ${nombre}`,
+      desc: 'Revisión documental completa antes de escriturar una compra entre particulares.',
+      href: `/gestoria/due-diligence-precompra/${slug}`,
+      precio: '350€',
+    },
+  ]
 
   const schemaJson = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Contrato de Alquiler de Habitación',
-    description:
-      'Redacción profesional de contratos de alquiler de habitación para particulares. Asesor experto, bases legales del Código Civil y entrega en 48h.',
+    name: `Contrato de Alquiler de Habitación en ${nombre}`,
+    description: `Redacción profesional de contratos de alquiler de habitación para particulares en ${nombre}. Asesor experto y entrega en 48h.`,
+    areaServed: {
+      '@type': 'City',
+      name: nombre,
+      containedIn: { '@type': 'Country', name: 'España' },
+    },
     provider: { '@id': ORGANIZATION_SCHEMA_ID },
     offers: {
       '@type': 'Offer',
-      price: String(PRECIO),
+      price: String(ALQUILER_HABITACION_PRECIO),
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
       priceValidUntil: '2026-12-31',
@@ -203,13 +189,14 @@ export default function ContratoAlquilerHabitacionPage() {
       { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE_URL },
       { '@type': 'ListItem', position: 2, name: 'Gestoría', item: `${BASE_URL}/gestoria` },
       { '@type': 'ListItem', position: 3, name: 'Contrato Alquiler Habitación', item: `${BASE_URL}/gestoria/contrato-alquiler-habitacion` },
+      { '@type': 'ListItem', position: 4, name: nombre, item: `${BASE_URL}/gestoria/contrato-alquiler-habitacion/${slug}` },
     ],
   }
 
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQ.map((item) => ({
+    mainEntity: faq.map((item) => ({
       '@type': 'Question',
       name: item.q,
       acceptedAnswer: { '@type': 'Answer', text: item.a },
@@ -222,36 +209,37 @@ export default function ContratoAlquilerHabitacionPage() {
       <Navbar />
       <WhatsAppButton />
 
-      {/* Hero */}
       <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-16 px-4 border-b border-gray-200">
         <div className="max-w-6xl mx-auto">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
+          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6 flex-wrap">
             <Link href="/" className="hover:text-[#c9962a]">Inicio</Link>
             <span>/</span>
             <Link href="/gestoria" className="hover:text-[#c9962a]">Gestoría</Link>
             <span>/</span>
-            <span className="text-gray-900 font-medium">Contrato Alquiler Habitación</span>
+            <Link href="/gestoria/contrato-alquiler-habitacion" className="hover:text-[#c9962a]">Alquiler Habitación</Link>
+            <span>/</span>
+            <span className="text-gray-900 font-medium">{nombre}</span>
           </nav>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#a87a20] bg-[#fdf8ee] border border-[#e8d48a] px-3 py-1 rounded-full mb-4">
-                Particulares · Piso compartido y coliving
+                Particulares · {region}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Contrato de alquiler de <span className="text-[#c9962a]">habitación</span> para particulares
+                Contrato de alquiler de habitación en <span className="text-[#c9962a]">{nombre}</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                ¿Alquilas una habitación en tu piso? Un <strong>asesor experto en derecho inmobiliario</strong> redacta
+                ¿Alquilas una habitación en {nombre}? Un <strong>asesor experto en derecho inmobiliario</strong> redacta
                 tu contrato conforme al Código Civil, regula la convivencia y te protege ante impagos, conflictos
-                y problemas de desalojo. <strong className="text-gray-900">120€ IVA incluido.</strong>
+                y problemas de desalojo. <strong className="text-gray-900">{ALQUILER_HABITACION_PRECIO}€ IVA incluido.</strong>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
                   href={SOLICITAR_URL}
                   className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors"
                 >
-                  Contratar — {PRECIO}€ IVA incluido
+                  Contratar — {ALQUILER_HABITACION_PRECIO}€ IVA incluido
                 </Link>
                 <a
                   href={`tel:${PHONE}`}
@@ -268,8 +256,8 @@ export default function ContratoAlquilerHabitacionPage() {
             </div>
             <div className="relative h-72 md:h-96 rounded-xl overflow-hidden shadow-lg">
               <Image
-                src="/gestoria6.jpg"
-                alt="Contrato de alquiler de habitación profesional"
+                src={config.heroImage}
+                alt={`Contrato alquiler habitación ${nombre}`}
                 fill
                 className="object-cover"
                 priority
@@ -280,43 +268,30 @@ export default function ContratoAlquilerHabitacionPage() {
         </div>
       </section>
 
-      {/* Asesor */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Un asesor experto en todo el proceso</h2>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              Inmonest es una <strong className="text-gray-900">gestoría inmobiliaria digital</strong> para
-              particulares. No somos una agencia: no cobramos comisiones sobre la renta ni sobre el precio del inmueble.
-            </p>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              Cuando contratas el contrato de habitación, se te asigna un <strong className="text-gray-900">gestor
-              especializado en alquileres entre particulares</strong>. Te explica las bases legales, qué cláusulas
-              necesitas según tu situación y cómo cubrirte ante los problemas más frecuentes: impagos, daños,
-              convivencia conflictiva o salida anticipada del inquilino.
-            </p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Mercado de habitaciones en {nombre}</h2>
+            <p className="text-gray-600 mb-4 leading-relaxed">{config.mercadoIntro}</p>
             <p className="text-gray-600 leading-relaxed">
-              Muchos propietarios alquilan habitaciones con un mensaje de WhatsApp o una plantilla genérica de
-              internet. Eso deja lagunas jurídicas que pueden costar miles de euros si el inquilino incumple.
+              Inmonest es una <strong className="text-gray-900">gestoría inmobiliaria digital</strong> para
+              particulares. Cuando contratas, se te asigna un gestor que te explica las bases legales, qué cláusulas
+              necesitas y cómo cubrirte ante impagos, daños o convivencia conflictiva.
             </p>
           </div>
 
           <div className="bg-slate-50 border border-gray-200 rounded-2xl p-8">
-            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">Tu asesor asignado</p>
+            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">Tu asesor en {nombre}</p>
             <div className="flex gap-5 items-start">
               <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-[#c9962a]/30">
-                <Image src={GESTOR_CARMEN_VIDAL.foto} alt={GESTOR_CARMEN_VIDAL.nombre} fill className="object-cover" sizes="80px" />
+                <Image src={gestor.foto} alt={gestor.nombre} fill className="object-cover" sizes="80px" />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900">{GESTOR_CARMEN_VIDAL.nombre}</h3>
-                <p className="text-sm text-[#a87a20] font-medium mb-3">Gestora inmobiliaria · Alquiler de habitaciones</p>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                  Acompaña a propietarios particulares que alquilan habitaciones en pisos compartidos. Conoce el
-                  régimen del Código Civil, la redacción de normas de convivencia y la resolución de conflictos
-                  habituales en coliving y alquiler entre particulares.
-                </p>
+                <h3 className="text-xl font-bold text-gray-900">{gestor.nombre}</h3>
+                <p className="text-sm text-[#a87a20] font-medium mb-3">{gestor.rol}</p>
+                <p className="text-sm text-gray-600 leading-relaxed mb-4">{gestor.bio}</p>
                 <ul className="space-y-1">
-                  {['Contratos por habitación', 'Normas de convivencia válidas', 'Asesoramiento pre y post firma'].map((e) => (
+                  {gestor.especialidades.map((e) => (
                     <li key={e} className="flex items-center gap-2 text-sm text-gray-700">
                       <CheckIcon />
                       {e}
@@ -329,12 +304,11 @@ export default function ContratoAlquilerHabitacionPage() {
         </div>
       </section>
 
-      {/* Bases legales */}
       <section className="py-16 px-4 bg-slate-50 border-y border-gray-200">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Bases legales del alquiler de habitación</h2>
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Conocer el marco jurídico es el primer paso para alquilar con seguridad. Tu asesor te lo explica en lenguaje claro.
+            En {nombre} el marco jurídico es el mismo Código Civil, pero el mercado local tiene sus particularidades. Tu asesor te lo explica con claridad.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             {BASES_LEGALES.map((block) => (
@@ -347,13 +321,9 @@ export default function ContratoAlquilerHabitacionPage() {
         </div>
       </section>
 
-      {/* Qué incluye */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Qué incluye el contrato ({PRECIO}€)</h2>
-          <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-            Redacción personalizada con tus datos reales. No es una plantilla genérica descargada de internet.
-          </p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Qué incluye el contrato ({ALQUILER_HABITACION_PRECIO}€)</h2>
           <ul className="grid md:grid-cols-2 gap-3 max-w-4xl mx-auto">
             {INCLUYE.map((item) => (
               <li key={item} className="flex items-start gap-3 p-4 bg-slate-50 rounded-lg border border-gray-100 text-sm text-gray-700">
@@ -365,13 +335,9 @@ export default function ContratoAlquilerHabitacionPage() {
         </div>
       </section>
 
-      {/* Proceso */}
       <section className="py-16 px-4 bg-slate-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Cómo trabajamos contigo</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Proceso claro desde el primer contacto hasta la entrega del contrato firmable.
-          </p>
           <div className="grid md:grid-cols-5 gap-6">
             {PASOS.map((paso, i) => (
               <div key={paso.titulo} className="text-center">
@@ -386,14 +352,13 @@ export default function ContratoAlquilerHabitacionPage() {
         </div>
       </section>
 
-      {/* Comparativa */}
       <section className="py-16 px-4 bg-white border-y border-gray-200">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
             Contrato profesional frente a no contratar o usar plantilla
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-            El ahorro de no pagar un contrato profesional suele convertirse en gastos mucho mayores cuando surge un conflicto.
+            En {nombre}, un conflicto por impago o convivencia sin contrato escrito puede costarte entre 2.000€ y 8.000€ en abogado, tiempo y rentas perdidas.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse bg-white shadow-sm rounded-xl overflow-hidden text-sm">
@@ -401,7 +366,7 @@ export default function ContratoAlquilerHabitacionPage() {
                 <tr className="bg-gray-100">
                   <th className="p-4 text-left font-semibold text-gray-900 w-1/4">Aspecto</th>
                   <th className="p-4 text-center font-bold text-[#a87a20] bg-[#fdf8ee] border-b-2 border-[#c9962a]">
-                    Inmonest — {PRECIO}€
+                    Inmonest — {ALQUILER_HABITACION_PRECIO}€
                   </th>
                   <th className="p-4 text-center font-semibold text-gray-600 border-b-2 border-gray-300">
                     Sin contrato / plantilla genérica
@@ -410,13 +375,13 @@ export default function ContratoAlquilerHabitacionPage() {
               </thead>
               <tbody>
                 {[
-                  ['Coste inicial', `${PRECIO}€ tarifa plana IVA incluido`, '0€ — riesgo elevado'],
+                  ['Coste inicial', `${ALQUILER_HABITACION_PRECIO}€ tarifa plana IVA incluido`, '0€ — riesgo elevado'],
                   ['Asesor experto asignado', 'Sí, durante todo el proceso', 'No'],
                   ['Normas de convivencia válidas', 'Redactadas y revisadas jurídicamente', 'Verbales o inexistentes'],
                   ['Resolución por impago', 'Cláusulas y procedimiento definidos', 'Procedimiento judicial largo'],
                   ['Recuperación de la habitación', 'Base contractual clara', '3-12 meses y costes legales'],
                   ['Disputa sobre fianza', 'Condiciones pactadas por escrito', '1.500€ - 4.000€ en abogado y tiempo'],
-                  ['Coste estimado si hay conflicto grave', `Inversión preventiva de ${PRECIO}€`, '2.000€ - 8.000€ en abogado, procurador y meses sin cobrar renta'],
+                  ['Coste estimado si hay conflicto grave', `Inversión preventiva de ${ALQUILER_HABITACION_PRECIO}€`, '2.000€ - 8.000€ en abogado, procurador y meses sin cobrar renta'],
                 ].map(([label, inmo, mal]) => (
                   <tr key={label} className="border-b border-gray-100">
                     <td className="p-4 font-medium text-gray-900">{label}</td>
@@ -424,54 +389,49 @@ export default function ContratoAlquilerHabitacionPage() {
                     <td className="p-4 text-center text-gray-600">{mal}</td>
                   </tr>
                 ))}
-                <tr className="bg-[#fdf8ee]">
-                  <td className="p-4 font-bold text-gray-900">Conclusión</td>
-                  <td colSpan={2} className="p-4 text-center font-bold text-[#a87a20]">
-                    Un contrato profesional de {PRECIO}€ puede evitar gastos de miles de euros en impagos, desalojos y disputas
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>
         </div>
       </section>
 
-      {/* Para quién */}
       <section className="py-16 px-4 bg-slate-50">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">¿Para quién es este servicio?</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">¿Para quién es este servicio en {nombre}?</h2>
           <ul className="space-y-4">
-            {PARA_QUIEN.map((item) => (
+            {paraQuien.map((item) => (
               <li key={item} className="flex items-start gap-3 p-4 bg-white rounded-lg border border-gray-100">
                 <CheckIcon />
                 <span className="text-gray-700">{item}</span>
               </li>
             ))}
           </ul>
-          <div className="mt-10 text-center">
-            <Link
-              href={SOLICITAR_URL}
-              className="inline-flex px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors"
-            >
-              Solicitar contrato — {PRECIO}€ IVA incluido
-            </Link>
+        </div>
+      </section>
+
+      <section className="py-16 px-4 bg-white border-t border-gray-200">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Barrios y zonas en {nombre}</h2>
+          <p className="text-gray-600 mb-8">{config.zonasIntro}</p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {config.zonas.map((z) => (
+              <span key={z} className="px-4 py-2 bg-slate-50 border border-gray-200 rounded-lg text-sm text-gray-700">
+                {z}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Otros servicios */}
-      <section className="py-16 px-4 bg-white border-t border-gray-200">
+      <section className="py-16 px-4 bg-slate-50 border-t border-gray-200">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Otros servicios de gestoría Inmonest</h2>
-          <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-            Además del contrato de habitación, ofrecemos asesoramiento legal inmobiliario para comprar, vender y alquilar entre particulares.
-          </p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Otros servicios en {nombre}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {OTROS_SERVICIOS.map((s) => (
+            {otrosServicios.map((s) => (
               <Link
                 key={s.titulo}
                 href={s.href}
-                className="block p-6 bg-slate-50 border border-gray-200 rounded-xl hover:border-[#c9962a]/50 hover:shadow-sm transition-all"
+                className="block p-6 bg-white border border-gray-200 rounded-xl hover:border-[#c9962a]/50 hover:shadow-sm transition-all"
               >
                 <h3 className="font-bold text-gray-900 mb-2">{s.titulo}</h3>
                 <p className="text-sm text-gray-600 mb-4 leading-relaxed">{s.desc}</p>
@@ -482,28 +442,31 @@ export default function ContratoAlquilerHabitacionPage() {
         </div>
       </section>
 
-      {/* Ciudades */}
       <section className="py-12 px-4 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm text-gray-500 mb-4">Contrato de alquiler de habitación también disponible en:</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/gestoria/contrato-alquiler-habitacion/madrid" className="text-sm font-semibold text-[#c9962a] hover:underline">
-              Madrid
+            <Link href="/gestoria/contrato-alquiler-habitacion" className="text-sm font-semibold text-[#c9962a] hover:underline">
+              España (general)
             </Link>
-            <span className="text-gray-300">·</span>
-            <Link href="/gestoria/contrato-alquiler-habitacion/barcelona" className="text-sm font-semibold text-[#c9962a] hover:underline">
-              Barcelona
-            </Link>
+            {ALQUILER_HABITACION_CIUDADES_LIST.filter((c) => c.slug !== slug).map((c) => (
+              <Link
+                key={c.slug}
+                href={`/gestoria/contrato-alquiler-habitacion/${c.slug}`}
+                className="text-sm font-semibold text-[#c9962a] hover:underline"
+              >
+                {c.nombre}
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="py-16 px-4 bg-slate-50 border-t border-gray-200">
+      <section className="py-16 px-4 bg-slate-50">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Preguntas frecuentes</h2>
+          <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Preguntas frecuentes en {nombre}</h2>
           <div className="space-y-4">
-            {FAQ.map((item) => (
+            {faq.map((item) => (
               <details key={item.q} className="bg-white p-6 rounded-xl border border-gray-200">
                 <summary className="font-bold text-gray-900 cursor-pointer">{item.q}</summary>
                 <p className="mt-4 text-gray-600 text-sm leading-relaxed">{item.a}</p>
@@ -513,10 +476,9 @@ export default function ContratoAlquilerHabitacionPage() {
         </div>
       </section>
 
-      {/* Contacto */}
       <section className="py-14 px-4 bg-[#1a2f1c] text-white">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-3">Consulta con un asesor especializado</h2>
+          <h2 className="text-2xl font-bold mb-3">Consulta con un asesor en {nombre}</h2>
           <p className="text-white/80 mb-8">Primera consulta sin compromiso. Te explicamos el proceso y resolvemos tus dudas.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={`tel:${PHONE}`} className="px-8 py-3 rounded-lg bg-white text-[#1a2f1c] font-semibold hover:bg-gray-100 transition-colors">
@@ -534,18 +496,17 @@ export default function ContratoAlquilerHabitacionPage() {
         </div>
       </section>
 
-      <TestimoniosSection landing="alquiler-habitacion" layout="stack" hideRating className="bg-white" />
+      <TestimoniosSection landing={config.testimoniosLanding} layout="stack" hideRating className="bg-white" />
 
-      {/* CTA final */}
       <section className="py-16 px-4 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Alquila tu habitación con respaldo jurídico</h2>
+          <h2 className="text-3xl font-bold mb-4">Alquila tu habitación en {nombre} con respaldo jurídico</h2>
           <p className="text-lg text-white/85 mb-8">
-            Contrato profesional por {PRECIO}€ IVA incluido. Asesor asignado y entrega en 48 horas.
+            Contrato profesional por {ALQUILER_HABITACION_PRECIO}€ IVA incluido. Asesor asignado y entrega en 48 horas.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href={SOLICITAR_URL} className="px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors">
-              Contratar ahora — {PRECIO}€
+              Contratar ahora — {ALQUILER_HABITACION_PRECIO}€
             </Link>
             <a href={`tel:${PHONE}`} className="px-8 py-4 rounded-lg border border-white/30 font-semibold hover:bg-white/10 transition-colors">
               641 008 847

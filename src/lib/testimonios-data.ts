@@ -254,6 +254,28 @@ export const TESTIMONIOS_POOL: Testimonio[] = [
     fecha: 'Mayo 2026',
     ahorro: '7.000€',
   },
+  {
+    id: 22,
+    nombre: 'Lucía Paredes',
+    ciudad: 'Madrid',
+    servicio: 'Contrato alquiler habitación',
+    foto: '/testimonios/testimonio3.jpg',
+    rating: 5,
+    texto:
+      'Alquilo tres habitaciones en un piso en Moncloa. Antes tenía acuerdos verbales y un lío con la fianza de la última inquilina. Inmonest me hizo un contrato por habitación con normas de convivencia claras. El asesor me explicó todo antes de firmar. Por 120€ tengo tranquilidad en cada entrada nueva.',
+    fecha: 'Mayo 2026',
+  },
+  {
+    id: 23,
+    nombre: 'Marc Vidal',
+    ciudad: 'Barcelona',
+    servicio: 'Contrato alquiler habitación',
+    foto: '/testimonios/testimonio1.jpg',
+    rating: 5,
+    texto:
+      'Tengo un piso de 4 habitaciones en Gràcia. Contraté el servicio para regularizar a los tres inquilinos con contratos independientes. El gestor incluyó normas de cocina, visitas y limpieza que antes eran discusiones constantes. Profesional y rápido.',
+    fecha: 'Abril 2026',
+  },
 ]
 
 function pick(...ids: number[]): Testimonio[] {
@@ -286,6 +308,8 @@ export const TESTIMONIOS_POR_LANDING: Record<string, Testimonio[]> = {
   'revision-arras': pick(2, 6, 14),
   'revision-alquiler': pick(3, 7, 9),
   'alquiler-habitacion': pick(3, 7, 9),
+  'alquiler-habitacion-madrid': pick(22, 3, 5),
+  'alquiler-habitacion-barcelona': pick(23, 14, 3),
   'contrato-ilegal': pick(7, 2, 6),
   'asesoria-compra': pick(4, 11, 8),
   'ayuda-propietarios': pick(3, 9, 15),

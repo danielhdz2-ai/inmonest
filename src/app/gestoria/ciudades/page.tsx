@@ -135,8 +135,8 @@ export default function CiudadesPage() {
                 </p>
                 <h2 className="text-3xl font-bold text-gray-900">Landing Pages por Ciudad</h2>
                 <p className="text-gray-600 mt-2 max-w-2xl">
-                  Todas las páginas locales activas: contratos de arras, alquiler LAU, hubs de gestoría,
-                  venta completa y portal inmobiliario por ciudad.
+                  Todas las páginas locales activas: contratos de arras, alquiler LAU, alquiler de habitación,
+                  due diligence, hubs de gestoría, venta completa y portal inmobiliario por ciudad.
                 </p>
               </div>
               <div className="flex gap-3">

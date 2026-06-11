@@ -103,6 +103,13 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao'],
   },
   {
+    id: 'contrato-alquiler-habitacion',
+    nombre: 'Contrato Alquiler Habitación',
+    precio: '120€',
+    href: (c) => `/gestoria/contrato-alquiler-habitacion/${c}`,
+    ciudades: ['madrid', 'barcelona'],
+  },
+  {
     id: 'alquiler-particulares',
     nombre: 'Alquiler de Particulares',
     precio: 'Portal',
@@ -166,6 +173,13 @@ export const SERVICIOS_GUIA = [
     categoria: 'Alquiler',
   },
   {
+    titulo: 'Contrato Alquiler Habitación',
+    descripcion: 'Piso compartido y coliving con asesor experto. 120€ IVA incluido',
+    slug: 'contrato-alquiler-habitacion',
+    imagen: '/gestoria6.jpg',
+    categoria: 'Alquiler',
+  },
+  {
     titulo: 'Acompañamiento de Venta',
     descripcion: 'Te ayudamos en todo el proceso de venta de tu propiedad',
     slug: 'asesoramiento-arras-venta',
@@ -203,8 +217,8 @@ export const SERVICIOS_GUIA = [
 ] as const
 
 export const CIUDADES_SEO = [
-  { slug: 'madrid', nombre: 'Madrid', texto: 'Contratos de arras, alquiler LAU, compraventa' },
-  { slug: 'barcelona', nombre: 'Barcelona', texto: 'Cesión de contrato, alquiler turístico, compraventa' },
+  { slug: 'madrid', nombre: 'Madrid', texto: 'Alquiler habitación, arras, LAU y due diligence' },
+  { slug: 'barcelona', nombre: 'Barcelona', texto: 'Alquiler habitación, LAU, arras y due diligence' },
   { slug: 'valencia', nombre: 'Valencia', texto: 'Contratos de alquiler, arras, asesoría compra' },
   { slug: 'sevilla', nombre: 'Sevilla', texto: 'Venta sin agencia, contratos LAU, due diligence' },
   { slug: 'malaga', nombre: 'Málaga', texto: 'Due diligence compra, venta completa, costa y centro' },

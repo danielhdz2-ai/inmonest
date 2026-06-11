@@ -14,6 +14,7 @@ export const GESTORIA_PRECIOS = {
   asesoramientoArrasVenta: getPrecioServicio('asesoramiento-arras-venta')!,
   analisisFraude: getPrecioServicio('contrato-ilegal')!,
   alquilerTemporada: getPrecioServicio('alquiler-temporada')!,
+  alquilerHabitaciones: getPrecioServicio('alquiler-habitaciones')!,
 } as const
 
 export type ServicioDestacado = {
@@ -34,6 +35,14 @@ export const SERVICIOS_DESTACADOS_CIUDAD: ServicioDestacado[] = [
     nombre: 'Contrato Alquiler LAU',
     descripcion: 'Arrendamiento de vivienda habitual. Adaptado a Ley de Vivienda 2026.',
     precio: GESTORIA_PRECIOS.contratoAlquiler,
+  },
+  {
+    slug: 'alquiler-habitaciones',
+    imagen: '/gestoria6.jpg',
+    categoria: 'Alquiler',
+    nombre: 'Contrato Alquiler Habitación',
+    descripcion: 'Piso compartido y coliving. Normas de convivencia y Código Civil.',
+    precio: GESTORIA_PRECIOS.alquilerHabitaciones,
   },
   {
     slug: 'arras-penitenciales',

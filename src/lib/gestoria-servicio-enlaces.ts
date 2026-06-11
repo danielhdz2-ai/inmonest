@@ -59,6 +59,12 @@ const SERVICIO_ENLACE_META: Record<string, ServicioEnlaceMeta> = {
     labelConCiudad: (ciudad) => `Ver due diligence ${ciudad} →`,
     labelGeneral: 'Ver due diligence pre-compra →',
   },
+  'alquiler-habitaciones': {
+    landingId: 'contrato-alquiler-habitacion',
+    generalHref: '/gestoria/contrato-alquiler-habitacion',
+    labelConCiudad: (ciudad) => `Ver alquiler habitación ${ciudad} →`,
+    labelGeneral: 'Ver contrato alquiler habitación →',
+  },
 }
 
 function getLandingPorId(landingId: string) {
