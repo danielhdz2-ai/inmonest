@@ -312,6 +312,7 @@ export const TESTIMONIOS_POR_LANDING: Record<string, Testimonio[]> = {
   'alquiler-habitacion-barcelona': pick(23, 14, 3),
   'contrato-ilegal': pick(7, 2, 6),
   'asesoria-compra': pick(4, 11, 8),
+  'compra-parking-trastero': pick(4, 11, 8),
   'ayuda-propietarios': pick(3, 9, 15),
   'contrato-compraventa': pick(1, 8, 13),
   'hub-barcelona': pick(1, 14, 6),

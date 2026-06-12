@@ -37,6 +37,7 @@ export const GESTORIA_FUERA_SITEMAP = [
   '/gestoria/contrato-alquiler-habitacion',
   '/gestoria/contrato-alquiler-habitacion/madrid',
   '/gestoria/contrato-alquiler-habitacion/barcelona',
+  '/gestoria/compra-parking-trastero',
   '/gestoria/reserva-compra',
   '/gestoria/gestoria',
   '/gestoria/solicitar',

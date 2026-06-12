@@ -82,6 +82,7 @@ const SERVICE_LABELS: Record<string, string> = {
   'alquiler-vivienda-lau': 'Alquiler Residencial (LAU)',
   'revision-contrato-arras': 'Revisión Contrato Arras',
   'revision-contrato-alquiler': 'Revisión Contrato Alquiler',
+  'compra-completa-parking-trastero': 'Compra Parking/Trastero',
 }
 
 interface ClienteGestoria {

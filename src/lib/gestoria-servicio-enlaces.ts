@@ -47,6 +47,11 @@ const SERVICIO_ENLACE_META: Record<string, ServicioEnlaceMeta> = {
     labelConCiudad: (ciudad) => `Ver compra completa ${ciudad} →`,
     labelGeneral: 'Ver asesoría compra de piso →',
   },
+  'compra-completa-parking-trastero': {
+    generalHref: '/gestoria/compra-parking-trastero',
+    labelConCiudad: (ciudad) => `Ver compra parking/trastero ${ciudad} →`,
+    labelGeneral: 'Ver compra parking o trastero →',
+  },
   'due-diligence-precompra': {
     landingId: 'due-diligence',
     generalHref: '/gestoria/due-diligence-precompra',

@@ -109,6 +109,7 @@ export async function POST(req: NextRequest) {
     'arras-parking-garage':   { name: 'Contrato de Arras para Compraventa de Parking o Garaje', price_eur: 73 },
     'acompanamiento-reserva-arras':        { name: 'Acompañamiento Reserva hasta Arras',              price_eur: 424 },
     'compra-completa-reserva-escritura':   { name: 'Servicio Completo de Compra: Reserva a Escritura', price_eur: 687 },
+    'compra-completa-parking-trastero':    { name: 'Compra Completa Parking o Trastero',               price_eur: 295 },
     'venta-completa-reserva-escritura':    { name: 'Servicio Completo de Venta: Reserva a Escritura', price_eur: 687 },
     'revision-alquiler':                   { name: 'Revisión de Contrato de Alquiler',                 price_eur: 60 },
     'revision-arras':                      { name: 'Revisión de Contrato de Arras',                    price_eur: 60 },

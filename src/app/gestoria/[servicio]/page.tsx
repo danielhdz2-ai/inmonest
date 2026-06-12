@@ -612,6 +612,62 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
   },
 
+  'compra-completa-parking-trastero': {
+    nombre: 'Compra Completa Parking o Trastero',
+    precio: 295,
+    categoria: 'Servicios Premium',
+    tagline: 'Gestor asignado desde la reserva hasta notaría, ITP y registro',
+    descripcion:
+      'Comprar una plaza de parking o un trastero parece sencillo, pero los problemas aparecen cuando no se verifica la nota simple, las servidumbres de acceso, la deuda de comunidad o el ITP. Un gestor inmobiliario de Inmonest te acompaña en todo el proceso: reserva, arras, negociación, tramitación, notaría, liquidación del impuesto e inscripción registral.',
+    image: '/gestoria9.jpg',
+    imageAlt: 'Compra de parking o trastero con gestoría inmobiliaria',
+    paraQuien: [
+      'Compradores de plaza de parking o trastero entre particulares',
+      'Quien compra un garaje vinculado o independiente de una vivienda',
+      'Personas que quieren evitar errores en el ITP o en la inscripción registral',
+      'Compradores que valoran tener un gestor experto en anejos a su lado',
+    ],
+    incluye: [
+      'Gestor inmobiliario asignado durante todo el proceso',
+      'Contrato de reserva de compra adaptado al inmueble',
+      'Redacción y revisión de contrato de arras',
+      'Asesoramiento en negociación con el vendedor',
+      'Verificación de nota simple registral y cargas',
+      'Comprobación de servidumbres y cuota de comunidad',
+      'Coordinación con notaría para la escritura pública',
+      'Liquidación del ITP y gestión de inscripción registral',
+    ],
+    pasos: [
+      { num: '01', titulo: 'Primera consulta', desc: 'Tu gestor analiza la operación: tipo de inmueble, precio, vendedor y documentación disponible.' },
+      { num: '02', titulo: 'Reserva y arras', desc: 'Redactamos reserva y arras adaptadas a parking o trastero. Te asesoramos en la negociación.' },
+      { num: '03', titulo: 'Tramitación y notaría', desc: 'Verificamos cargas, coordinamos con comunidad y vendedor, y preparamos la escritura.' },
+      { num: '04', titulo: 'ITP y registro', desc: 'Liquidamos el impuesto y gestionamos la inscripción del inmueble a tu nombre en el Registro.' },
+    ],
+    faq: [
+      {
+        q: '¿Cuánto cuesta el servicio completo?',
+        a: '295€ IVA incluido. Tarifa plana por acompañamiento integral desde la reserva hasta la inscripción registral.',
+      },
+      {
+        q: '¿Incluye la liquidación del ITP?',
+        a: 'Sí. Te guiamos en el cálculo y presentación del Impuesto de Transmisiones Patrimoniales. El importe del impuesto lo abona el comprador aparte del precio de compra.',
+      },
+      {
+        q: '¿Puedo contratar si ya firmé las arras?',
+        a: 'Sí. Podemos incorporarnos en la fase en que estés y acompañarte en los trámites restantes hasta notaría, ITP y registro.',
+      },
+      {
+        q: '¿Sirve para parking vinculado a un piso?',
+        a: 'Sí. Tanto para plazas independientes como anejas a una vivienda. Verificamos la concordancia registral y la cuota de participación en la comunidad.',
+      },
+    ],
+    relacionados: [
+      { slug: 'arras-parking-garage', nombre: 'Arras Parking/Garaje', precio: 73 },
+      { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa Vivienda', precio: 687 },
+      { slug: 'revision-arras', nombre: 'Revisión Contrato Arras', precio: 60 },
+    ],
+  },
+
   'pack-revision-reserva-alquiler': {
     nombre: 'Pack Revisión y Redacción: Reserva + Contrato de Alquiler',
     precio: 169,

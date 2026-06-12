@@ -200,6 +200,18 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
       'Atención prioritaria',
     ],
   },
+  'compra-completa-parking-trastero': {
+    nombre: 'Compra Completa Parking o Trastero',
+    precio: 295,
+    categoria: 'Servicios Premium',
+    incluye: [
+      'Gestor asignado desde reserva hasta registro',
+      'Contrato de reserva y arras adaptados',
+      'Verificación nota simple y cargas',
+      'Coordinación con notaría',
+      'Liquidación ITP y gestión registral',
+    ],
+  },
   'venta-completa-reserva-escritura': {
     nombre: 'Servicio Completo de Venta: Reserva a Escritura',
     precio: 687,
