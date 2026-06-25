@@ -13,6 +13,7 @@ import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
+const DUE_DILIGENCE_CIUDADES = new Set(['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao'])
 const PHONE = '+34745022862'
 const WA = '34745022862'
 
@@ -157,7 +158,9 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
     {
       titulo: `Due Diligence Pre-Compra ${nombre}`,
       desc: 'Revisión documental completa antes de escriturar una compra entre particulares.',
-      href: `/gestoria/due-diligence-precompra/${slug}`,
+      href: DUE_DILIGENCE_CIUDADES.has(slug)
+        ? `/gestoria/due-diligence-precompra/${slug}`
+        : '/gestoria/due-diligence-precompra',
       precio: '350€',
     },
   ]

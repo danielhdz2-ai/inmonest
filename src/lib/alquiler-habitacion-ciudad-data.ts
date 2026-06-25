@@ -40,6 +40,9 @@ export const ALQUILER_HABITACION_CIUDADES_LIST = [
   { slug: 'sevilla', nombre: 'Sevilla' },
   { slug: 'malaga', nombre: 'Málaga' },
   { slug: 'bilbao', nombre: 'Bilbao' },
+  { slug: 'valencia', nombre: 'Valencia' },
+  { slug: 'zaragoza', nombre: 'Zaragoza' },
+  { slug: 'asturias', nombre: 'Asturias' },
 ] as const
 
 export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiudadConfig> = {
@@ -296,6 +299,168 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
       ogTitle: 'Contrato Alquiler Habitación Bilbao — 145€ con asesor experto',
       ogDescription:
         'Particulares que alquilan habitaciones en Bilbao. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
+    },
+  },
+
+  valencia: {
+    slug: 'valencia',
+    nombre: 'Valencia',
+    region: 'Comunitat Valenciana',
+    testimoniosLanding: 'alquiler-habitacion-valencia',
+    heroImage: '/valencia3.jpg',
+    gestor: {
+      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      rol: 'Gestora inmobiliaria · Alquiler de habitaciones en Valencia',
+      foto: GESTOR_CARMEN_VIDAL.foto,
+      bio: 'Asesora a propietarios que alquilan habitaciones en Valencia capital y l\'Horta. Conoce el mercado de pisos compartidos en Ruzafa, Benimaclet y zona universitaria, y redacta contratos conforme al Código Civil con normas de convivencia válidas para el alquiler por habitación.',
+      especialidades: ['Pisos compartidos en Valencia', 'Coliving y estudiantes', 'Contratos entre particulares'],
+    },
+    mercadoIntro:
+      'Valencia tiene una demanda muy alta de habitaciones en piso compartido: estudiantes en Benimaclet y Tarongers, jóvenes profesionales en Ruzafa o Ciutat Vella y perfiles internacionales en la ciudad de las Artes y las Ciencias. Muchos propietarios alquilan habitaciones entre particulares sin contrato escrito y asumen riesgos evitables sobre fianza, convivencia o impago.',
+    zonasIntro:
+      'Cobertura en Valencia capital, l\'Horta, área metropolitana y barrios con mayor demanda de alquiler por habitaciones entre particulares.',
+    zonas: [
+      'Ruzafa', 'Benimaclet', 'El Carmen', 'Campanar', 'Eixample',
+      'Patraix', 'Quatre Carreres', 'Algirós', 'Ciutat Vella', 'Mislata',
+      'Paterna', 'Torrent', 'Sagunto',
+    ],
+    paraQuienExtra: [
+      'Propietarios en Ruzafa o Benimaclet con pisos de 3-4 habitaciones para alquilar a particulares',
+      'Quien alquila habitaciones a estudiantes de la Universitat de València o la UPV',
+      'Particulares con piso compartido cerca de Tarongers o Ciudad de las Artes',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de habitación es válido en Valencia y la Comunitat Valenciana?',
+        a: 'Sí. El arrendamiento de habitación se rige por el Código Civil y es válido en Valencia, Mislata, Paterna y resto de la Comunitat Valenciana. Tu asesor adapta las cláusulas a tu piso y al número de inquilinos.',
+      },
+      {
+        q: '¿Aplica la normativa de zonas tensionadas al alquiler de habitación en Valencia?',
+        a: 'El alquiler de una habitación dentro de una vivienda no se equipara al arrendamiento LAU de vivienda completa, por lo que las reglas de zona tensionada no se aplican igual. Tu asesor te explica las diferencias antes de fijar la renta.',
+      },
+      {
+        q: '¿Necesito un contrato distinto por cada habitación en Valencia?',
+        a: 'Sí, es lo recomendable. Si alquilas varias habitaciones a personas distintas en Ruzafa, Benimaclet u otro barrio, cada inquilino debe tener su propio contrato por 145€ IVA incluido.',
+      },
+    ],
+    enlaceContratoLau: '/valencia/contrato-alquiler',
+    meta: {
+      title: 'Contrato Alquiler Habitación Valencia | 145€ IVA incluido | Inmonest',
+      description:
+        '¿Alquilas una habitación en Valencia? Contrato profesional para particulares con asesor experto. Ruzafa, Benimaclet, Código Civil y normas de convivencia. 145€ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion valencia, alquilar habitacion valencia, contrato habitacion piso compartido valencia, coliving valencia contrato, arrendamiento habitacion valencia, gestoria alquiler habitacion valencia, alquiler habitacion ruzafa, alquiler habitacion benimaclet, piso compartido valencia contrato, alquiler habitacion particular valencia, alquiler habitacion estudiantes valencia',
+      ogTitle: 'Contrato Alquiler Habitación Valencia — 145€ con asesor experto',
+      ogDescription:
+        'Particulares que alquilan habitaciones en Valencia. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
+    },
+  },
+
+  zaragoza: {
+    slug: 'zaragoza',
+    nombre: 'Zaragoza',
+    region: 'Aragón',
+    testimoniosLanding: 'alquiler-habitacion-zaragoza',
+    heroImage: '/gestoria3.jpg',
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Alquiler de habitaciones en Zaragoza',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a propietarios particulares que alquilan habitaciones en Zaragoza capital y provincia. Conoce el mercado de pisos compartidos cerca del campus universitario, Delicias y el centro, y redacta contratos conforme al Código Civil con normas de convivencia adaptadas al alquiler por habitación en Aragón.',
+      especialidades: ['Pisos compartidos en Zaragoza', 'Contratos por habitación', 'Asesoramiento pre y post firma'],
+    },
+    mercadoIntro:
+      'Zaragoza concentra una demanda estable de habitaciones en piso compartido: estudiantes en San Francisco y cerca de la Universidad de Zaragoza, jóvenes profesionales en el centro y trabajadores temporales vinculados a logística y servicios. Alquilar habitaciones entre particulares sin contrato escrito es habitual, pero genera conflictos evitables sobre fianza, convivencia o impago.',
+    zonasIntro:
+      'Servicio en Zaragoza capital, área metropolitana y barrios con alta demanda de alquiler por habitaciones entre particulares en Aragón.',
+    zonas: [
+      'Centro', 'Delicias', 'San Francisco', 'Actur', 'La Almozara',
+      'Las Fuentes', 'Oliver-Valdefierro', 'Miralbueno', 'Torre Ramona',
+      'Universidad', 'Valdespartera', 'Utebo',
+    ],
+    paraQuienExtra: [
+      'Propietarios en Delicias o San Francisco con habitaciones para estudiantes universitarios',
+      'Particulares con piso compartido en el centro de Zaragoza sin pasar por agencia',
+      'Quien alquila varias habitaciones y necesita un contrato independiente por inquilino',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de habitación es válido en Zaragoza y Aragón?',
+        a: 'Sí. El alquiler de habitación se rige por el Código Civil y es válido en Zaragoza capital, Utebo, Cuarte de Huerva y resto de Aragón. Tu asesor adapta las cláusulas a tu situación concreta.',
+      },
+      {
+        q: '¿Es lo mismo que un contrato LAU de vivienda completa en Zaragoza?',
+        a: 'No. Si alquilas habitaciones sueltas dentro de tu vivienda, no aplica el contrato LAU de piso íntegro. Si alquilas el piso completo, necesitas contrato LAU (120€). Nosotros también lo redactamos.',
+      },
+      {
+        q: '¿Puedo incluir normas de convivencia en el contrato de habitación?',
+        a: 'Sí. Horarios, limpieza, visitas o uso de electrodomésticos pueden pactarse siempre que no sean abusivas. Tu gestor inmobiliario te ayuda a redactarlas con validez jurídica por 145€ IVA incluido.',
+      },
+    ],
+    enlaceContratoLau: '/zaragoza/contrato-alquiler',
+    meta: {
+      title: 'Contrato Alquiler Habitación Zaragoza | 145€ IVA incluido | Inmonest',
+      description:
+        '¿Alquilas una habitación en Zaragoza? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia, coliving y protección ante impagos. 145€ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion zaragoza, alquilar habitacion zaragoza, contrato habitacion piso compartido zaragoza, coliving zaragoza contrato, arrendamiento habitacion zaragoza, gestoria alquiler habitacion zaragoza, alquiler habitacion delicias, alquiler habitacion san francisco, piso compartido zaragoza contrato, alquiler habitacion particular zaragoza, alquiler habitacion estudiantes zaragoza',
+      ogTitle: 'Contrato Alquiler Habitación Zaragoza — 145€ con asesor experto',
+      ogDescription:
+        'Particulares que alquilan habitaciones en Zaragoza. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
+    },
+  },
+
+  asturias: {
+    slug: 'asturias',
+    nombre: 'Asturias',
+    region: 'Principado de Asturias',
+    testimoniosLanding: 'alquiler-habitacion-asturias',
+    heroImage: '/gestoria4.jpg',
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Alquiler de habitaciones en Asturias',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña a propietarios que alquilan habitaciones en Oviedo, Gijón, Avilés y resto del Principado. Especialista en contratos de habitación para estudiantes, profesionales y pisos compartidos, con cláusulas de convivencia válidas conforme al Código Civil.',
+      especialidades: ['Habitaciones en Oviedo y Gijón', 'Pisos compartidos Asturias', 'Contratos entre particulares'],
+    },
+    mercadoIntro:
+      'Asturias (Oviedo, Gijón, Avilés) tiene una demanda constante de habitaciones en piso compartido: estudiantes en el campus de El Milán y la Universidad de Oviedo, jóvenes profesionales en Gijón centro y trabajadores vinculados a la industria y servicios. El alquiler de habitación entre particulares es frecuente, pero sin contrato profesional los conflictos por fianza, convivencia o impago se alargan.',
+    zonasIntro:
+      'Cobertura en Oviedo, Gijón, Avilés, Langreo, Mieres y resto del Principado de Asturias. Conocemos el mercado de alquiler por habitaciones entre particulares.',
+    zonas: [
+      'Oviedo Centro', 'El Milán', 'La Ería', 'Teatinos-Oviedo', 'Gijón Centro',
+      'Cimadevilla', 'La Calzada', 'Lavandera', 'Avilés', 'Langreo',
+      'Mieres', 'Pumarín', 'Viesques',
+    ],
+    paraQuienExtra: [
+      'Propietarios en Oviedo o Gijón que alquilan habitaciones en piso compartido a particulares',
+      'Quien alquila habitaciones a estudiantes de la Universidad de Oviedo sin contrato escrito',
+      'Particulares con varias habitaciones en el mismo piso que necesitan un contrato por inquilino',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de habitación es válido en todo el Principado de Asturias?',
+        a: 'Sí. El arrendamiento de habitación se rige por el Código Civil y es válido en Oviedo, Gijón, Avilés, Langreo, Mieres y resto de Asturias. Tu asesor adapta las cláusulas a tu piso concreto.',
+      },
+      {
+        q: '¿Sirve para alquilar habitaciones a estudiantes en Oviedo o Gijón?',
+        a: 'Sí. Es uno de los casos más habituales en Asturias. El contrato regula renta, fianza, duración del curso o año académico, normas de convivencia y salida anticipada con validez jurídica.',
+      },
+      {
+        q: '¿Es lo mismo que un contrato LAU para alquilar el piso entero?',
+        a: 'No. El alquiler por habitación se rige por el Código Civil. Si alquilas la vivienda completa en Asturias, necesitas contrato LAU adaptado a la Ley de Vivienda 2026 (120€). También lo redactamos.',
+      },
+    ],
+    enlaceContratoLau: '/asturias/contrato-alquiler',
+    meta: {
+      title: 'Contrato Alquiler Habitación Asturias | 145€ IVA incluido | Inmonest',
+      description:
+        '¿Alquilas una habitación en Asturias? Contrato profesional para particulares en Oviedo, Gijón y Avilés. Código Civil, normas de convivencia y protección ante impagos. 145€ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion asturias, alquilar habitacion oviedo, contrato habitacion gijon, alquiler habitacion piso compartido asturias, coliving oviedo contrato, arrendamiento habitacion gijon, gestoria alquiler habitacion asturias, alquiler habitacion aviles, piso compartido oviedo contrato, alquiler habitacion particular asturias, alquiler habitacion estudiantes oviedo',
+      ogTitle: 'Contrato Alquiler Habitación Asturias — 145€ con asesor experto',
+      ogDescription:
+        'Particulares que alquilan habitaciones en Oviedo, Gijón y Asturias. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
     },
   },
 }

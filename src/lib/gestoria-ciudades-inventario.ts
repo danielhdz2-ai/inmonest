@@ -108,7 +108,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Contrato Alquiler Habitación',
     precio: '145€',
     href: (c) => `/gestoria/contrato-alquiler-habitacion/${c}`,
-    ciudades: ['madrid', 'barcelona', 'sevilla', 'malaga', 'bilbao'],
+    ciudades: ['madrid', 'barcelona', 'sevilla', 'malaga', 'bilbao', 'valencia', 'zaragoza', 'asturias'],
   },
   {
     id: 'alquiler-particulares',

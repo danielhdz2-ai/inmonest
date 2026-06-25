@@ -309,6 +309,39 @@ export const TESTIMONIOS_POOL: Testimonio[] = [
       'Comparto piso en Indautxu y alquilaba la tercera habitación sin contrato escrito. El asesor me preparó uno conforme al Código Civil con normas de visitas, cocina y resolución por impago. Tranquilidad total ante la alta demanda de habitaciones en Bilbao.',
     fecha: 'Junio 2026',
   },
+  {
+    id: 27,
+    nombre: 'Laura Martínez',
+    ciudad: 'Valencia',
+    servicio: 'Contrato alquiler habitación',
+    foto: '/testimonios/testimonio3.jpg',
+    rating: 5,
+    texto:
+      'Alquilo dos habitaciones en Ruzafa a particulares. Inmonest me preparó contratos independientes con normas de convivencia, fianza y preaviso de salida. El gestor me aclaró la diferencia con un contrato LAU de piso completo. Muy recomendable en Valencia.',
+    fecha: 'Junio 2026',
+  },
+  {
+    id: 28,
+    nombre: 'Javier Ortega',
+    ciudad: 'Zaragoza',
+    servicio: 'Contrato alquiler habitación',
+    foto: '/testimonios/testimonio7.jpg',
+    rating: 5,
+    texto:
+      'Tengo un piso de tres habitaciones cerca de Delicias para estudiantes. Contraté Inmonest para formalizar cada alquiler por separado. Por 145€ tengo contratos claros sobre cocina, visitas e impagos. Profesional y rápido.',
+    fecha: 'Junio 2026',
+  },
+  {
+    id: 29,
+    nombre: 'María Suárez',
+    ciudad: 'Asturias',
+    servicio: 'Contrato alquiler habitación',
+    foto: '/testimonios/testimonio9.jpg',
+    rating: 5,
+    texto:
+      'Alquilo una habitación en Oviedo en piso compartido. Antes solo tenía mensajes de WhatsApp con el inquilino. El asesor redactó un contrato conforme al Código Civil con normas de limpieza y duración. Tranquilidad total.',
+    fecha: 'Junio 2026',
+  },
 ]
 
 function pick(...ids: number[]): Testimonio[] {
@@ -346,6 +379,9 @@ export const TESTIMONIOS_POR_LANDING: Record<string, Testimonio[]> = {
   'alquiler-habitacion-sevilla': pick(24, 19, 22),
   'alquiler-habitacion-malaga': pick(25, 21, 8),
   'alquiler-habitacion-bilbao': pick(26, 20, 6),
+  'alquiler-habitacion-valencia': pick(27, 16, 12),
+  'alquiler-habitacion-zaragoza': pick(28, 7, 11),
+  'alquiler-habitacion-asturias': pick(29, 10, 22),
   'contrato-ilegal': pick(7, 2, 6),
   'asesoria-compra': pick(4, 11, 8),
   'compra-parking-trastero': pick(4, 11, 8),
