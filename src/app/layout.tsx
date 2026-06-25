@@ -33,11 +33,11 @@ export const metadata: Metadata = {
 
   // title.template: todas las subpáginas heredan automáticamente "Título | Inmonest"
   title: {
-    default: 'Inmonest | Gestoría Inmobiliaria Digital + Contratos desde 29€',
+    default: 'Inmonest | Gestoría Inmobiliaria Digital + Contratos desde 61€',
     template: '%s | Inmonest',
   },
   description:
-    'Gestoría inmobiliaria online: Contratos de arras, alquiler LAU, compraventa desde 29€. Redactados por expertos en 48h. También pisos entre particulares sin comisiones.',
+    'Gestoría inmobiliaria online: Contratos de arras, alquiler LAU, compraventa desde 61€. Redactados por expertos en 48h. También pisos entre particulares sin comisiones.',
   keywords: [
     'gestoría inmobiliaria online',
     'contratos de arras',
@@ -86,9 +86,9 @@ export const metadata: Metadata = {
 
   // Open Graph — imagen cuando alguien comparte un link
   openGraph: {
-    title: 'Inmonest | Gestoría Inmobiliaria Digital + Contratos desde 29€',
+    title: 'Inmonest | Gestoría Inmobiliaria Digital + Contratos desde 61€',
     description:
-      'Gestoría inmobiliaria online: Contratos de arras, alquiler LAU, compraventa desde 29€. Redactados por abogados en 48h.',
+      'Gestoría inmobiliaria online: Contratos de arras, alquiler LAU, compraventa desde 61€. Redactados por abogados en 48h.',
     url: 'https://inmonest.com',
     siteName: 'Inmonest',
     locale: 'es_ES',

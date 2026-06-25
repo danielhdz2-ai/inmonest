@@ -389,7 +389,7 @@ const SERVICES: Service[] = [
       'Nota fiscal: tributación correcta ante la AEAT',
       'Entrega en 48h · PDF firmable digitalmente',
     ],
-    price: 109,
+    price: 130,
     image: '/gestoria9.jpg',
     badge: 'Capital privado',
   },
@@ -482,7 +482,7 @@ export default function GestoriaPage() {
               Una <strong>gestoría inmobiliaria</strong> es un servicio profesional que se encarga de todos los <strong>trámites legales, administrativos y documentales</strong> relacionados con operaciones inmobiliarias de particulares: <strong>compraventa de viviendas, contratos de alquiler, contratos de arras y escrituras</strong>.
             </p>
             <p>
-              En <strong>Inmonest</strong> somos una <strong>gestoría inmobiliaria digital especializada en Barcelona, Madrid y Valencia</strong>, con abogados expertos que redactan contratos personalizados para particulares vendedores y compradores. A diferencia de las agencias inmobiliarias tradicionales, <strong className="text-[#c9962a]">no cobramos comisiones del 3-5%</strong>, sino honorarios fijos transparentes desde 29€.
+              En <strong>Inmonest</strong> somos una <strong>gestoría inmobiliaria digital especializada en Barcelona, Madrid y Valencia</strong>, con abogados expertos que redactan contratos personalizados para particulares vendedores y compradores. A diferencia de las agencias inmobiliarias tradicionales, <strong className="text-[#c9962a]">no cobramos comisiones del 3-5%</strong>, sino honorarios fijos transparentes desde 61€.
             </p>
             <div className="bg-[#fef9e8] border-l-4 border-[#c9962a] p-6 rounded-r-lg mt-6">
               <h3 className="font-bold text-gray-900 mb-3 text-xl">¿Cuándo contratar una gestoría inmobiliaria?</h3>

@@ -141,7 +141,7 @@ export default function SearchResults({
                           ¿Vas a comprar o vender un piso?
                         </h2>
                         <p className="text-white/90 text-base sm:text-lg mb-6 max-w-2xl mx-auto">
-                          Gestoría inmobiliaria especializada te acompaña en todo el proceso. <strong>Contratos profesionales, documentación completa, asesoramiento experto.</strong> Desde 29€.
+                          Gestoría inmobiliaria especializada te acompaña en todo el proceso. <strong>Contratos profesionales, documentación completa, asesoramiento experto.</strong> Desde 61€.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                           <Link
@@ -178,7 +178,7 @@ export default function SearchResults({
                           ¿Vas a comprar o vender un piso?
                         </h2>
                         <p className="text-white/90 text-base sm:text-lg mb-6 max-w-2xl mx-auto">
-                          Gestoría inmobiliaria especializada te acompaña en todo el proceso. <strong>Contratos profesionales, documentación completa, asesoramiento experto.</strong> Desde 29€.
+                          Gestoría inmobiliaria especializada te acompaña en todo el proceso. <strong>Contratos profesionales, documentación completa, asesoramiento experto.</strong> Desde 61€.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                           <Link

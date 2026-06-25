@@ -145,7 +145,7 @@ export default function PrestamoParticulaesHaciendaPage() {
             Redactado por abogados especializados. Incluye orientación sobre la declaración del Modelo 600 y la tributación correcta ante la AEAT. Entrega en 48h.
           </p>
           <Link href="/gestoria/prestamo-particulares" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors inline-block">
-            Solicitar contrato de préstamo — 90 €
+            Solicitar contrato de préstamo — 130 €
           </Link>
         </div>
 

@@ -131,7 +131,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'prestamo-particulares': {
     nombre: 'Contrato de Préstamo entre Particulares',
-    precio: 109,
+    precio: 130,
     categoria: 'Financiación',
     incluye: [
       'Importe, plazos y cuotas detalladas',

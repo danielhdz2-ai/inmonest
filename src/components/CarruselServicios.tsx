@@ -28,7 +28,7 @@ const SERVICIOS: Servicio[] = [
   { nombre: 'Servicio Completo Compra', precio: 687, categoria: 'Premium', slug: 'compra-completa-reserva-escritura', imagen: '/gestoria3.jpg', tiempo: '30d', descripcion: 'Gestión completa de reserva a escritura. Coordinación notaría. Análisis registral y urbanístico. Atención prioritaria.' },
   { nombre: 'Compra Parking/Trastero', precio: 295, categoria: 'Premium', slug: 'compra-completa-parking-trastero', imagen: '/gestoria9.jpg', tiempo: '30d', descripcion: 'Gestor asignado desde reserva hasta registro. Arras, notaría, ITP e inscripción registral para parking o trastero.' },
   { nombre: 'Asesoría Completa Compra', precio: 95, categoria: 'Premium', slug: 'asesoria-compra', imagen: '/gestoria4.jpg', tiempo: '48h', descripcion: 'Análisis nota simple + arras. Asesoramiento hipoteca. Acompañamiento hasta escritura por abogados.' },
-  { nombre: 'Préstamo entre Particulares', precio: 109, categoria: 'Financiación', slug: 'prestamo-particulares', imagen: '/gestoria5.jpg', tiempo: '48h', descripcion: 'Importe, plazos y cuotas detalladas. Nota fiscal ante AEAT. Protección legal para ambas partes.' },
+  { nombre: 'Préstamo entre Particulares', precio: 130, categoria: 'Financiación', slug: 'prestamo-particulares', imagen: '/gestoria5.jpg', tiempo: '48h', descripcion: 'Importe, plazos y cuotas detalladas. Nota fiscal ante AEAT. Protección legal para ambas partes.' },
   { nombre: 'Alquiler Local Comercial', precio: 121, categoria: 'Alquiler', slug: 'alquiler-local-comercial', imagen: '/gestoria6.jpg', tiempo: '48h', descripcion: 'Régimen LAU uso distinto vivienda. Actualización renta libre o IPC. Derecho de tanteo ante venta.' },
   { nombre: 'Pack Revisión + Alquiler', precio: 169, categoria: 'Alquiler', slug: 'pack-revision-reserva-alquiler', imagen: '/gestoria7.jpg', tiempo: '48h', descripcion: 'Revisión completa de reserva + Redacción contrato alquiler LAU. Todo en uno con ahorro.' },
 ]
@@ -77,7 +77,7 @@ export default function CarruselServicios() {
           Contratos redactados por expertos en 48h
         </h2>
         <p className="text-gray-600 text-[11px] sm:text-base max-w-2xl mx-auto px-2">
-          Redacción, revisión y asesoría legal inmobiliaria. Desde 29€. Pago seguro con Stripe.
+          Redacción, revisión y asesoría legal inmobiliaria. Desde 61€. Pago seguro con Stripe.
         </p>
       </div>
 

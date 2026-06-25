@@ -22,7 +22,7 @@ const STRIPE_SERVICES: Record<string, { name: string; price_eur: number }> = {
   'alquiler-local-comercial': { name: 'Contrato de Alquiler de Local Comercial', price_eur: 121 },
   'alquiler-garaje-trastero': { name: 'Contrato de Alquiler de Garaje o Trastero', price_eur: 48 },
   'alquiler-opcion-compra': { name: 'Contrato de Alquiler con Opción a Compra', price_eur: 182 },
-  'prestamo-particulares':  { name: 'Contrato de Préstamo entre Particulares', price_eur: 109 },
+  'prestamo-particulares':  { name: 'Contrato de Préstamo entre Particulares', price_eur: 130 },
   'pack-revision-reserva-alquiler': { name: 'Pack Revisión y Redacción: Reserva + Contrato de Alquiler', price_eur: 169 },
   'arras-parking-garage':   { name: 'Contrato de Arras para Compraventa de Parking o Garaje', price_eur: 73 },
   'acompanamiento-reserva-arras':        { name: 'Acompañamiento Reserva hasta Arras',              price_eur: 424 },

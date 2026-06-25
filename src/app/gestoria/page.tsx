@@ -9,14 +9,14 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   title: 'Gestoría Inmobiliaria Online | Contratos Arras, Alquiler y Compraventa',
-  description: 'Gestoría inmobiliaria especializada online. Contratos de arras, alquiler LAU, compraventa. Abogados expertos en derecho inmobiliario. Desde 29€. Servicio en toda España: Madrid, Barcelona, Valencia, Sevilla. Entrega 24-48h.',
+  description: 'Gestoría inmobiliaria especializada online. Contratos de arras, alquiler LAU, compraventa. Abogados expertos en derecho inmobiliario. Desde 61€. Servicio en toda España: Madrid, Barcelona, Valencia, Sevilla. Entrega 24-48h.',
   keywords: 'gestoría inmobiliaria, gestoría inmobiliaria online, contrato arras penitenciales, contrato alquiler LAU, gestoría compraventa vivienda, abogado inmobiliario, contratos inmobiliarios, gestoría barcelona, gestoría madrid, gestoría valencia',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
   },
   openGraph: {
     title: 'Gestoría Inmobiliaria Online — Inmonest',
-    description: 'Gestoría especializada en contratos de alquiler y compraventa. Tramitamos LAU, arras, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 29€.',
+    description: 'Gestoría especializada en contratos de alquiler y compraventa. Tramitamos LAU, arras, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 61€.',
     url: `${BASE_URL}/gestoria`,
     type: 'website',
     siteName: 'Inmonest',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Gestoría Inmobiliaria Online | Contratos Arras, Alquiler y Compraventa',
     description:
-      'Contratos de arras, alquiler LAU y compraventa redactados por abogados. Desde 29€. Entrega en 48h. Servicio en toda España.',
+      'Contratos de arras, alquiler LAU y compraventa redactados por abogados. Desde 61€. Entrega en 48h. Servicio en toda España.',
     images: [`${BASE_URL}/gestoria1.jpg`],
   },
 }
@@ -40,7 +40,7 @@ const schemaJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'LegalService',
   name: 'Inmonest Gestoría Inmobiliaria Online',
-  description: 'Gestoría inmobiliaria online especializada en contratos de alquiler LAU, arras penitenciales, compraventa, rescisión y revisión legal. Redactados por abogados expertos en derecho inmobiliario. Servicio en toda España. Entrega en 24-48h. Desde 29€.',
+  description: 'Gestoría inmobiliaria online especializada en contratos de alquiler LAU, arras penitenciales, compraventa, rescisión y revisión legal. Redactados por abogados expertos en derecho inmobiliario. Servicio en toda España. Entrega en 24-48h. Desde 61€.',
   url: `${BASE_URL}/gestoria`,
   image: `${BASE_URL}/logo.png`,
   priceRange: '€€',

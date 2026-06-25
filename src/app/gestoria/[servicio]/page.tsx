@@ -396,7 +396,7 @@ const SERVICIOS: Record<string, ServiceData> = {
 
   'prestamo-particulares': {
     nombre: 'Contrato de Préstamo entre Particulares',
-    precio: 109,
+    precio: 130,
     categoria: 'Financiación',
     tagline: 'Formaliza el préstamo de capital privado con plena validez jurídica y fiscal',
     descripcion:

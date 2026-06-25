@@ -8,14 +8,14 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   title: 'Solicitar Servicio de Gestoría Inmobiliaria | Todos los Servicios',
-  description: 'Contratos de arras, alquiler LAU, compraventa, revisión legal y asesoría completa. Gestoría inmobiliaria online desde 29€. Entrega en 24-48h.',
+  description: 'Contratos de arras, alquiler LAU, compraventa, revisión legal y asesoría completa. Gestoría inmobiliaria online desde 61€. Entrega en 24-48h.',
   keywords: 'solicitar contrato arras, contrato alquiler online, gestoria inmobiliaria, contrato compraventa, revision legal vivienda',
   alternates: {
     canonical: `${BASE_URL}/gestoria/solicitar`,
   },
   openGraph: {
     title: 'Solicitar Servicio de Gestoría Inmobiliaria | Inmonest',
-    description: 'Todos los servicios de gestoría inmobiliaria disponibles. Contratos, revisión legal y asesoría experta desde 29€.',
+    description: 'Todos los servicios de gestoría inmobiliaria disponibles. Contratos, revisión legal y asesoría experta desde 61€.',
     url: `${BASE_URL}/gestoria/solicitar`,
     type: 'website',
   },
@@ -94,7 +94,7 @@ const SERVICIOS = [
     categoria: 'Financiación',
     color: 'from-cyan-500 to-cyan-600',
     items: [
-      { slug: 'prestamo-particulares', nombre: 'Préstamo entre Particulares', precio: 109 },
+      { slug: 'prestamo-particulares', nombre: 'Préstamo entre Particulares', precio: 130 },
     ],
   },
 ]
@@ -111,7 +111,7 @@ export default function SolicitarIndexPage() {
               Servicios de <span className="text-[#c9a84c]">Gestoría Inmobiliaria</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-6">
-              Contratos redactados por abogados expertos, revisión legal profesional y asesoría completa. <strong>Desde 29€</strong>. Entrega en 24-48h.
+              Contratos redactados por abogados expertos, revisión legal profesional y asesoría completa. <strong>Desde 61€</strong>. Entrega en 24-48h.
             </p>
             <div className="flex flex-wrap justify-center gap-3 text-sm">
               <span className="px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm">✓ Redacción profesional</span>
@@ -220,7 +220,7 @@ export default function SolicitarIndexPage() {
               <strong>Inmonest</strong> es una gestoría inmobiliaria online especializada en contratos, trámites y asesoría legal para compraventa y alquiler de viviendas. Todos nuestros documentos son <strong>redactados por abogados expertos en derecho inmobiliario</strong>, no usamos plantillas genéricas.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Ofrecemos servicios desde <strong>29€</strong> (análisis de fraude) hasta <strong>687€</strong> (servicio completo reserva a escritura). La mayoría de contratos se entregan en <strong>24-48 horas</strong> en formato <strong>PDF firmable digitalmente</strong>.
+              Ofrecemos contratos desde <strong>61€</strong> hasta <strong>687€</strong> (servicio completo reserva a escritura). La mayoría de contratos se entregan en <strong>24-48 horas</strong> en formato <strong>PDF firmable digitalmente</strong>.
             </p>
             
             <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">

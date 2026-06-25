@@ -62,6 +62,7 @@ export const LANDINGS_GENERICAS = [
   { slug: 'contrato-ilegal', nombre: 'Análisis Contrato Ilegal', precio: '29€' },
   { slug: 'ayuda-propietarios', nombre: 'Ayuda Propietarios LAU', precio: '120€' },
   { slug: 'contrato-alquiler-habitacion', nombre: 'Contrato Alquiler Habitación', precio: '145€' },
+  { slug: 'prestamo-particulares', nombre: 'Préstamo entre Particulares', precio: '130€' },
   { slug: 'compra-parking-trastero', nombre: 'Compra Parking o Trastero', precio: '295€' },
   { slug: 'contrato-arras', nombre: 'Contrato Arras (Info)', precio: '145€' },
   { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa Genérica', precio: '687€' },
@@ -109,6 +110,13 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     precio: '145€',
     href: (c) => `/gestoria/contrato-alquiler-habitacion/${c}`,
     ciudades: ['madrid', 'barcelona', 'sevilla', 'malaga', 'bilbao', 'valencia', 'zaragoza', 'asturias'],
+  },
+  {
+    id: 'prestamo-particulares',
+    nombre: 'Préstamo entre Particulares',
+    precio: '130€',
+    href: (c) => `/gestoria/prestamo-particulares/${c}`,
+    ciudades: ['madrid', 'barcelona'],
   },
   {
     id: 'alquiler-particulares',
@@ -179,6 +187,13 @@ export const SERVICIOS_GUIA = [
     slug: 'contrato-alquiler-habitacion',
     imagen: '/gestoria6.jpg',
     categoria: 'Alquiler',
+  },
+  {
+    titulo: 'Préstamo entre Particulares',
+    descripcion: 'Formaliza préstamos privados con nota fiscal. 130€ IVA incluido',
+    slug: 'prestamo-particulares',
+    imagen: '/gestoria3.jpg',
+    categoria: 'Financiación',
   },
   {
     titulo: 'Acompañamiento de Venta',
