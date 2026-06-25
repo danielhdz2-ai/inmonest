@@ -152,13 +152,13 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
                 Contratar servicio premium
               </Link>
               <a
-                href="tel:+34641008847"
+                href="tel:+34745022862"
                 className="border border-white/30 px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
               >
-                Llamar: 641 008 847
+                Llamar: 745 022 862
               </a>
               <a
-                href={`https://wa.me/34641008847?text=${encodeURIComponent(`Hola, necesito gestoría inmobiliaria en ${nombre}`)}`}
+                href={`https://wa.me/34745022862?text=${encodeURIComponent(`Hola, necesito gestoría inmobiliaria en ${nombre}`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="border border-white/30 px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"

@@ -137,7 +137,7 @@ export default function VentaCompletaPage() {
                   Contratar servicio (687€)
                 </Link>
                 <a
-                  href="https://wa.me/34641008847?text=Hola,%20quiero%20vender%20mi%20piso%20a%20particular%20y%20necesito%20acompañamiento"
+                  href="https://wa.me/34745022862?text=Hola,%20quiero%20vender%20mi%20piso%20a%20particular%20y%20necesito%20acompañamiento"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white border-2 border-[#c9962a] text-[#a87a20] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#fef9e8] transition text-center shadow"
@@ -736,7 +736,7 @@ export default function VentaCompletaPage() {
               Contratar ahora (687€)
             </Link>
             <a
-              href="https://wa.me/34641008847?text=Hola,%20quiero%20información%20sobre%20el%20servicio%20de%20acompañamiento%20de%20venta"
+              href="https://wa.me/34745022862?text=Hola,%20quiero%20información%20sobre%20el%20servicio%20de%20acompañamiento%20de%20venta"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white/10 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition"

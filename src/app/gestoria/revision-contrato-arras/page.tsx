@@ -130,7 +130,7 @@ export default function RevisionContratosArrasPage() {
                   Revisar mi contrato ahora (60€)
                 </Link>
                 <a
-                  href="https://wa.me/34641008847?text=Hola,%20necesito%20revisar%20un%20contrato%20de%20arras"
+                  href="https://wa.me/34745022862?text=Hola,%20necesito%20revisar%20un%20contrato%20de%20arras"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
@@ -519,7 +519,7 @@ export default function RevisionContratosArrasPage() {
               Revisar mi contrato (60€)
             </Link>
             <a
-              href="https://wa.me/34641008847?text=Hola,%20necesito%20revisar%20un%20contrato%20de%20arras%20urgente"
+              href="https://wa.me/34745022862?text=Hola,%20necesito%20revisar%20un%20contrato%20de%20arras%20urgente"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition shadow-lg border-2 border-white"

@@ -110,6 +110,19 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
           body: file,
         })
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
+        // Registrar en BD para que aparezca en el panel admin
+        await fetch('/api/gestoria/register-doc', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            session_id: sessionId,
+            doc_key: doc.key,
+            file_name: file.name,
+            storage_path: urls[doc.key].path,
+          }),
+        }).catch(() => null)
+
         setFiles(prev => ({ ...prev, [doc.key]: { ...prev[doc.key], state: 'done' } }))
       } catch (err) {
         const msg = err instanceof Error ? err.message : 'Error al subir'

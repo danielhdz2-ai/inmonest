@@ -10,7 +10,7 @@ import {
   CONTRATO_ARRAS_PREMIUM_PRECIO,
 } from '@/lib/contrato-arras-premium-config'
 const BASE_URL = 'https://inmonest.com'
-const WA = '34641008847'
+const WA = '34745022862'
 
 export default function ContratoArrasCiudadPremium({ config }: { config: ContratoArrasPremiumConfig }) {
   const precio = CONTRATO_ARRAS_PREMIUM_PRECIO
@@ -154,13 +154,13 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
                 rel="noopener noreferrer"
                 className="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm"
               >
-                💬 WhatsApp: 641 008 847
+                💬 WhatsApp: 745 022 862
               </a>
               <a
-                href="tel:+34641008847"
+                href="tel:+34745022862"
                 className="block w-full text-center border border-[#c9a84c] text-[#c9a84c] hover:bg-[#fdf8ee] font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
-                📞 Llamar: 641 008 847
+                📞 Llamar: 745 022 862
               </a>
               <Link
                 href="/gestoria"
@@ -242,9 +242,9 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
               rel="noopener noreferrer"
               className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors"
             >
-              💬 WhatsApp: 641 008 847
+              💬 WhatsApp: 745 022 862
             </a>
-            <a href="tel:+34641008847" className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors">
+            <a href="tel:+34745022862" className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors">
               📞 Llamar ahora
             </a>
           </div>

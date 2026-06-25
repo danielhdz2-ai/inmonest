@@ -331,12 +331,12 @@ export default function GestoriaSevillaPage() {
               Contrato Alquiler LAU - {GESTORIA_PRECIOS.contratoAlquiler}€
             </Link>
             <a
-              href="https://wa.me/34641008847?text=Hola,%20necesito%20un%20contrato%20inmobiliario%20en%20Sevilla"
+              href="https://wa.me/34745022862?text=Hola,%20necesito%20un%20contrato%20inmobiliario%20en%20Sevilla"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-4 rounded-full bg-green-600 hover:bg-green-700 text-white font-bold text-lg shadow-xl transition-all"
             >
-              💬 WhatsApp: 641 008 847
+              💬 WhatsApp: 745 022 862
             </a>
           </div>
         </div>

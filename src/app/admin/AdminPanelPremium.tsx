@@ -36,19 +36,15 @@ interface Client {
 
 interface ClientDocument {
   id: string
-  request_id: string
-  session_id: string
+  source: 'gestoria' | 'usuario'
   doc_key: string
   file_name: string
   storage_path: string
   uploaded_at: string
-  gestoria_requests: {
-    id: string
-    client_name: string
-    client_email: string
-    service_key: string
-    created_at: string
-  }
+  bucket: 'gestoria-docs' | 'user-docs'
+  client_name: string | null
+  client_email: string | null
+  service_key: string | null
 }
 
 interface Metrics {
@@ -241,6 +237,21 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
     }
   }
 
+  async function handleDownloadDoc(doc: ClientDocument) {
+    try {
+      const res = await fetch('/api/admin/documents', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ storage_path: doc.storage_path, bucket: doc.bucket }),
+      })
+      const data = await res.json()
+      if (data.url) window.open(data.url, '_blank')
+      else alert('No se pudo generar el enlace de descarga.')
+    } catch {
+      alert('Error al descargar el documento.')
+    }
+  }
+
   async function loadClientDocuments(email: string) {
     try {
       const res = await fetch(`/api/admin/documents?email=${encodeURIComponent(email)}`)
@@ -290,10 +301,11 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       const res = await fetch('/api/admin/pedidos')
       const data = await res.json()
       setRequests(data.requests || [])
-      // También refrescar métricas y clientes
+      // También refrescar métricas, clientes y documentos
       await Promise.all([
         loadMetrics(),
-        loadClients()
+        loadClients(),
+        loadAllDocuments(),
       ])
     } catch (err) {
       console.error('Error refreshing pedidos:', err)
@@ -712,11 +724,12 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                   {allDocuments
                     .filter(doc =>
                       doc.file_name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                      doc.gestoria_requests.client_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                      doc.gestoria_requests.client_email?.toLowerCase().includes(searchQuery.toLowerCase())
+                      doc.client_name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                      doc.client_email?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                      doc.doc_key.toLowerCase().includes(searchQuery.toLowerCase())
                     )
                     .map(doc => (
-                      <tr key={doc.id} className="hover:bg-gray-50 transition-colors">
+                      <tr key={`${doc.source}-${doc.id}`} className="hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
@@ -731,8 +744,8 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                           </div>
                         </td>
                         <td className="px-6 py-4">
-                          <p className="text-sm font-semibold text-gray-900">{doc.gestoria_requests.client_name}</p>
-                          <p className="text-xs text-gray-500">{doc.gestoria_requests.client_email}</p>
+                          <p className="text-sm font-semibold text-gray-900">{doc.client_name || '—'}</p>
+                          <p className="text-xs text-gray-500">{doc.client_email || '—'}</p>
                         </td>
                         <td className="px-6 py-4">
                           <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded">
@@ -741,7 +754,9 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                         </td>
                         <td className="px-6 py-4">
                           <p className="text-sm text-gray-600">
-                            {SERVICE_LABELS[doc.gestoria_requests.service_key] || doc.gestoria_requests.service_key}
+                            {doc.service_key
+                              ? (SERVICE_LABELS[doc.service_key] || doc.service_key)
+                              : doc.source === 'usuario' ? 'Documento personal' : '—'}
                           </p>
                         </td>
                         <td className="px-6 py-4">
@@ -754,17 +769,16 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                           </p>
                         </td>
                         <td className="px-6 py-4 text-center">
-                          <a
-                            href={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/gestoria-docs/${doc.storage_path}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                          <button
+                            type="button"
+                            onClick={() => handleDownloadDoc(doc)}
                             className="px-3 py-1.5 bg-[#c9962a] text-white text-xs font-semibold rounded-lg hover:bg-amber-700 transition inline-flex items-center gap-1"
                           >
                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                             </svg>
                             Descargar
-                          </a>
+                          </button>
                         </td>
                       </tr>
                     ))}
@@ -1278,17 +1292,16 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                               </span>
                               {new Date(doc.uploaded_at).toLocaleDateString('es-ES')}
                             </p>
-                            <a
-                              href={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/gestoria-docs/${doc.storage_path}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
+                            <button
+                              type="button"
+                              onClick={() => handleDownloadDoc(doc)}
                               className="mt-2 inline-flex items-center gap-1 text-xs text-[#c9962a] hover:text-amber-700 font-semibold"
                             >
                               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                               </svg>
                               Descargar
-                            </a>
+                            </button>
                           </div>
                         </div>
                       </div>

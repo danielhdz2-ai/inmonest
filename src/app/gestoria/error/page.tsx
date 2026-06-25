@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 }
 
-const WA_PHONE = '34641008847'
+const WA_PHONE = '34745022862'
 
 export default async function GestoriaErrorPage({
   searchParams,

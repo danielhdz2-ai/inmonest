@@ -64,10 +64,49 @@ export async function POST(req: NextRequest) {
   const fecha = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
   const clientEmail = session.customer_details?.email ?? session.customer_email ?? 'Desconocido'
 
-  // Generar signed download URLs (7 días)
+  // Registrar documentos en client_docs para que aparezcan en el panel admin
+  const { data: request } = await supabase
+    .from('gestoria_requests')
+    .select('id')
+    .eq('session_id', session_id)
+    .maybeSingle()
+
+  let registeredCount = 0
+
+  // Generar signed download URLs (7 días) y registrar en BD
   const linkItems: string[] = []
   for (const doc of DOCS) {
     const path = `${session_id}/${doc}.pdf`
+    const { data: fileList } = await supabase.storage
+      .from('gestoria-docs')
+      .list(session_id, { search: `${doc}.pdf` })
+
+    const fileExists = (fileList ?? []).some(f => f.name === `${doc}.pdf`)
+
+    if (request && fileExists) {
+      const { data: existing } = await supabase
+        .from('client_docs')
+        .select('id')
+        .eq('request_id', request.id)
+        .eq('doc_key', doc)
+        .maybeSingle()
+
+      const docData = {
+        request_id: request.id,
+        session_id,
+        doc_key: doc,
+        file_name: `${doc}.pdf`,
+        storage_path: path,
+        uploaded_at: new Date().toISOString(),
+      }
+
+      const { error: regError } = existing
+        ? await supabase.from('client_docs').update(docData).eq('id', existing.id)
+        : await supabase.from('client_docs').insert(docData)
+
+      if (!regError) registeredCount++
+    }
+
     const { data } = await supabase.storage
       .from('gestoria-docs')
       .createSignedUrl(path, 60 * 60 * 24 * 7)
@@ -76,6 +115,14 @@ export async function POST(req: NextRequest) {
         `<li style="margin-bottom:6px"><a href="${data.signedUrl}" style="color:#c9962a">${DOC_NAMES[doc]}</a></li>`
       )
     }
+  }
+
+  if (request && registeredCount > 0) {
+    await supabase
+      .from('gestoria_requests')
+      .update({ step: 2 })
+      .eq('id', request.id)
+      .lt('step', 2)
   }
 
   const RESEND_KEY = process.env.RESEND_API_KEY

@@ -11,8 +11,8 @@ import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 const BASE_URL = 'https://inmonest.com'
 const PRECIO = 295
 const SOLICITAR_URL = '/gestoria/solicitar/compra-completa-parking-trastero'
-const PHONE = '+34641008847'
-const WA = '34641008847'
+const PHONE = '+34745022862'
+const WA = '34745022862'
 
 export const metadata: Metadata = {
   title: 'Compra Parking o Trastero Completa | 295€ IVA incluido | Inmonest',
@@ -166,7 +166,7 @@ export default function CompraParkingTrasteroPage() {
                   Contratar — {PRECIO}€ IVA incluido
                 </Link>
                 <a href={`tel:${PHONE}`} className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-[#c9962a] transition-colors">
-                  641 008 847
+                  745 022 862
                 </a>
               </div>
               <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">

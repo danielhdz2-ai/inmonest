@@ -295,7 +295,7 @@ const localBusinessSchema = {
   "image": "https://inmonest.com/gestoria1.jpg",
   "@id": "https://inmonest.com/gestoria/barcelona",
   "url": "https://inmonest.com/gestoria/barcelona",
-  "telephone": "+34641008847",
+  "telephone": "+34745022862",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Barcelona",

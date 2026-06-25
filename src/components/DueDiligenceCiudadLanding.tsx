@@ -19,8 +19,8 @@ import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/pack-due-diligence-precompra'
-const PHONE = '+34641008847'
-const WA = '34641008847'
+const PHONE = '+34745022862'
+const WA = '34745022862'
 
 const PASOS = [
   {
@@ -170,7 +170,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
                   href={`tel:${PHONE}`}
                   className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-[#c9962a] hover:text-[#a87a20] transition-colors"
                 >
-                  641 008 847
+                  745 022 862
                 </a>
               </div>
               <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
@@ -395,7 +395,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
           <p className="text-white/80 mb-8">Primera consulta sin compromiso. Te explicamos el proceso y resolvemos tus dudas.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href={`tel:${PHONE}`} className="px-8 py-3 rounded-lg bg-white text-[#1a2f1c] font-semibold hover:bg-gray-100 transition-colors">
-              641 008 847
+              745 022 862
             </a>
             <a
               href={`https://wa.me/${WA}?text=${waText}`}
@@ -435,7 +435,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
               Contratar ahora — {DUE_DILIGENCE_PRECIO}€
             </Link>
             <a href={`tel:${PHONE}`} className="px-8 py-4 rounded-lg border border-white/30 font-semibold hover:bg-white/10 transition-colors">
-              641 008 847
+              745 022 862
             </a>
           </div>
         </div>

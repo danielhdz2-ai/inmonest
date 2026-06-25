@@ -1,7 +1,16 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
+import { GESTORIA_PHONE_WA, shouldShowGestoriaPhone } from '@/lib/gestoria-contact'
+
 export default function WhatsAppButton() {
-  const phone = '34641008847'
+  const pathname = usePathname()
+
+  if (!shouldShowGestoriaPhone(pathname)) {
+    return null
+  }
+
+  const phone = GESTORIA_PHONE_WA
   const message = encodeURIComponent(
     'Hola Inmonest, estoy interesado en recibir información sobre vuestros servicios inmobiliarios.'
   )

@@ -6,7 +6,7 @@ export function buildLegalServiceSchema(ciudad: string, slug: string) {
     '@type': 'LegalService',
     name: `Inmonest Gestoría Inmobiliaria ${ciudad}`,
     url: `${BASE_URL}/gestoria/${slug}`,
-    telephone: '+34641008847',
+    telephone: '+34745022862',
     priceRange: '€€',
     address: {
       '@type': 'PostalAddress',

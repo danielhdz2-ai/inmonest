@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import ContactForm from '@/components/ContactForm'
 import Navbar from '@/components/NavbarServer'
-import WhatsAppButton from '@/components/WhatsAppButton'
 
 export const metadata: Metadata = {
   title: 'Contacto — Inmonest',
@@ -13,7 +13,6 @@ export default function ContactoPage() {
   return (
     <>
       <Navbar />
-      <WhatsAppButton />
       <main className="min-h-screen bg-gray-50 py-16 px-4">
       <div className="max-w-2xl mx-auto">
 
@@ -57,28 +56,16 @@ export default function ContactoPage() {
             </a>
           </div>
           <div className="bg-white rounded-xl border border-gray-100 p-5">
-            <div className="text-2xl mb-2">📞</div>
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Teléfono</p>
-            <a href="tel:+34641008847" className="text-sm text-[#c9962a] font-medium hover:underline">
-              641 008 847
-            </a>
-          </div>
-          <div className="bg-white rounded-xl border border-gray-100 p-5">
-            <div className="text-2xl mb-2">💬</div>
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">WhatsApp</p>
-            <a
-              href="https://wa.me/34641008847?text=Hola,%20tengo%20una%20consulta%20sobre%20gestoría%20inmobiliaria"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm text-[#25d366] font-medium hover:underline"
-            >
-              641 008 847
-            </a>
-          </div>
-          <div className="bg-white rounded-xl border border-gray-100 p-5">
             <div className="text-2xl mb-2">⏱️</div>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Tiempo de respuesta</p>
             <p className="text-sm text-gray-700 font-medium">Menos de 24 h</p>
+          </div>
+          <div className="bg-white rounded-xl border border-gray-100 p-5 sm:col-span-2">
+            <div className="text-2xl mb-2">⚖️</div>
+            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Gestoría inmobiliaria</p>
+            <Link href="/gestoria" className="text-sm text-[#c9962a] font-medium hover:underline">
+              Ver servicios de gestoría y contratos
+            </Link>
           </div>
         </div>
 

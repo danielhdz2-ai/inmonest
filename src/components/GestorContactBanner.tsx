@@ -4,9 +4,9 @@ type GestorContactBannerProps = {
   subtitle?: string
 }
 
-const PHONE = '641 008 847'
-const PHONE_HREF = 'tel:+34641008847'
-const WA_NUMBER = '34641008847'
+const PHONE = '745 022 862'
+const PHONE_HREF = 'tel:+34745022862'
+const WA_NUMBER = '34745022862'
 
 export default function GestorContactBanner({
   whatsappMessage = 'Hola, necesito información sobre gestoría inmobiliaria',

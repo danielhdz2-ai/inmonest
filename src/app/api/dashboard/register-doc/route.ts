@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 
 export const dynamic = 'force-dynamic'
 
@@ -15,32 +16,46 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Faltan campos' }, { status: 400 })
   }
 
-  // Verificar que session pertenece al usuario
+  // Verificar que la sesión pertenece al usuario (por email o user_id)
   const { data: record } = await supabase
     .from('gestoria_requests')
     .select('id')
     .eq('session_id', session_id)
-    .eq('client_email', user.email)
+    .or(`client_email.eq.${user.email},user_id.eq.${user.id}`)
     .single()
 
   if (!record) return NextResponse.json({ error: 'No autorizado' }, { status: 403 })
 
-  // Usar admin client para insertar en client_docs (service_role)
-  const adminSupabase = await import('@/lib/supabase/server').then(m => m.createClient())
+  const adminSupabase = createAdminClient()
 
-  const { error } = await adminSupabase
+  const { data: existing } = await adminSupabase
     .from('client_docs')
-    .upsert({
-      request_id:   record.id,
-      session_id,
-      doc_key,
-      file_name,
-      storage_path,
-    }, { onConflict: 'request_id,doc_key' })
+    .select('id')
+    .eq('request_id', record.id)
+    .eq('doc_key', doc_key)
+    .maybeSingle()
+
+  const docData = {
+    request_id: record.id,
+    session_id,
+    doc_key,
+    file_name,
+    storage_path,
+    uploaded_at: new Date().toISOString(),
+  }
+
+  const { error } = existing
+    ? await adminSupabase.from('client_docs').update(docData).eq('id', existing.id)
+    : await adminSupabase.from('client_docs').insert(docData)
 
   if (error) {
     console.error('[register-doc] error:', error)
-    // No fallar — el archivo ya se subió
+  } else {
+    await adminSupabase
+      .from('gestoria_requests')
+      .update({ step: 2 })
+      .eq('id', record.id)
+      .lt('step', 2)
   }
 
   // Notificar al admin

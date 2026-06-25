@@ -144,7 +144,7 @@ export default function AsesoramientoArrasVentaPage() {
                   Contratar servicio (166€)
                 </Link>
                 <a
-                  href="https://wa.me/34641008847?text=Hola,%20ya%20firmé%20arras%20y%20necesito%20ayuda%20para%20vender%20mi%20piso"
+                  href="https://wa.me/34745022862?text=Hola,%20ya%20firmé%20arras%20y%20necesito%20ayuda%20para%20vender%20mi%20piso"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white border-2 border-[#c9962a] text-[#a87a20] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#fef9e8] transition text-center shadow"
@@ -256,16 +256,16 @@ export default function AsesoramientoArrasVentaPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+34641008847"
+                href="tel:+34745022862"
                 className="inline-flex items-center justify-center gap-3 bg-white text-[#a87a20] px-8 py-5 rounded-xl font-bold text-2xl hover:bg-gray-100 transition shadow-2xl"
               >
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
-                <span>641 008 847</span>
+                <span>745 022 862</span>
               </a>
               <a
-                href="https://wa.me/34641008847?text=Hola,%20necesito%20ayuda%20para%20vender%20mi%20piso,%20ya%20firmé%20arras"
+                href="https://wa.me/34745022862?text=Hola,%20necesito%20ayuda%20para%20vender%20mi%20piso,%20ya%20firmé%20arras"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-3 bg-green-500 text-white px-8 py-5 rounded-xl font-bold text-xl hover:bg-green-600 transition shadow-2xl"
@@ -564,7 +564,7 @@ export default function AsesoramientoArrasVentaPage() {
               Contratar servicio ahora
             </Link>
             <a
-              href="https://wa.me/34641008847?text=Hola,%20quiero%20información%20sobre%20asesoramiento%20venta%20piso"
+              href="https://wa.me/34745022862?text=Hola,%20quiero%20información%20sobre%20asesoramiento%20venta%20piso"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 text-white px-10 py-5 rounded-xl font-bold text-xl hover:bg-green-600 transition shadow-2xl"

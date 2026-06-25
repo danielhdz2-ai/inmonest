@@ -130,7 +130,7 @@ export default function RevisionContratoAlquilerPage() {
                   Revisar mi contrato (60€)
                 </Link>
                 <a
-                  href="https://wa.me/34641008847?text=Hola,%20necesito%20revisar%20mi%20contrato%20de%20alquiler"
+                  href="https://wa.me/34745022862?text=Hola,%20necesito%20revisar%20mi%20contrato%20de%20alquiler"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition text-center shadow-lg"
@@ -543,7 +543,7 @@ export default function RevisionContratoAlquilerPage() {
               Revisar mi contrato (60€)
             </Link>
             <a
-              href="https://wa.me/34641008847?text=Tengo%20dudas%20sobre%20mi%20contrato%20de%20alquiler"
+              href="https://wa.me/34745022862?text=Tengo%20dudas%20sobre%20mi%20contrato%20de%20alquiler"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition shadow-lg border-2 border-white"

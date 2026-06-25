@@ -27,7 +27,7 @@
 Nombre: Inmonest Gestoría Inmobiliaria Barcelona
 Categoría: Gestoría administrativa, Servicio jurídico
 Dirección: Puede ser virtual/domicilio fiscal
-Teléfono: 641 008 847
+Teléfono: 745 022 862
 Web: https://inmonest.com/gestoria/barcelona
 Horario: Lunes a Viernes 9:00-18:00
 Descripción: Gestoría inmobiliaria especializada en compraventa 
@@ -249,7 +249,7 @@ documentación y acompañamiento hasta escritura por 687€,
 frente a los 10.000€+ que cobran las agencias tradicionales.
 
 Más información: https://inmonest.com/gestoria
-Contacto: 641 008 847
+Contacto: 745 022 862
 ```
 
 **Enviar a:**

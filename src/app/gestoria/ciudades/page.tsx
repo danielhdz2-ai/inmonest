@@ -221,13 +221,13 @@ export default function CiudadesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+34641008847"
+                href="tel:+34745022862"
                 className="px-8 py-4 bg-white text-[#2b4c7e] rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
               >
-                Llamar: 641 008 847
+                Llamar: 745 022 862
               </a>
               <a
-                href="https://wa.me/34641008847?text=Hola,%20necesito%20información%20sobre%20servicios%20de%20gestoría"
+                href="https://wa.me/34745022862?text=Hola,%20necesito%20información%20sobre%20servicios%20de%20gestoría"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-[#25d366] text-white rounded-lg font-bold text-lg hover:bg-[#20ba5a] transition-colors shadow-lg"

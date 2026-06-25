@@ -44,7 +44,7 @@ const schemaJson = JSON.stringify({
   url: `${BASE_URL}/gestoria`,
   image: `${BASE_URL}/logo.png`,
   priceRange: '€€',
-  telephone: '+34641008847',
+  telephone: '+34745022862',
   email: 'hola@inmonest.com',
   
   // Proveedor
@@ -53,7 +53,7 @@ const schemaJson = JSON.stringify({
     name: 'Inmonest',
     url: BASE_URL,
     logo: `${BASE_URL}/logo.png`,
-    telephone: '+34641008847',
+    telephone: '+34745022862',
     email: 'hola@inmonest.com',
   },
   

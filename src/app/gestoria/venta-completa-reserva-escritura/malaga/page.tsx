@@ -86,13 +86,13 @@ export default function VentaCompletaMalagaPage() {
                   Contratar servicio (687€)
                 </Link>
                 <a
-                  href="tel:+34641008847"
+                  href="tel:+34745022862"
                   className="bg-white border-2 border-[#c9962a] text-[#a87a20] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#fef9e8] transition text-center shadow flex items-center justify-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                   </svg>
-                  641 008 847
+                  745 022 862
                 </a>
               </div>
               <div className="flex flex-wrap gap-4 text-sm text-gray-600">
@@ -298,7 +298,7 @@ export default function VentaCompletaMalagaPage() {
               <div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Contratas el servicio</h3>
                 <p className="text-gray-600">
-                  Rellenas el formulario online o llamas al 641 008 847. Te asignamos un gestor dedicado en Málaga.
+                  Rellenas el formulario online o llamas al 745 022 862. Te asignamos un gestor dedicado en Málaga.
                 </p>
               </div>
             </div>
@@ -448,10 +448,10 @@ export default function VentaCompletaMalagaPage() {
               Contratar servicio (687€)
             </Link>
             <a
-              href="tel:+34641008847"
+              href="tel:+34745022862"
               className="bg-transparent border-2 border-white text-white px-10 py-4 rounded-lg font-semibold text-lg hover:bg-white/10 transition"
             >
-              Llamar 641 008 847
+              Llamar 745 022 862
             </a>
           </div>
         </div>

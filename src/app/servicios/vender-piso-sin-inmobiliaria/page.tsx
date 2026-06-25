@@ -7,8 +7,8 @@ import PageHeroImage from '@/components/PageHeroImage'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 const BASE_URL = 'https://inmonest.com'
-const PHONE = '641008847'
-const PHONE_DISPLAY = '641 008 847'
+const PHONE = '745022862'
+const PHONE_DISPLAY = '745 022 862'
 
 export const metadata: Metadata = {
   title: 'Vender Piso Sin Inmobiliaria | Gestoría Digital Alternativa 687€',

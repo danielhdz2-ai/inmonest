@@ -191,7 +191,7 @@ const serviceSchema = {
     "@type": "LocalBusiness",
     "name": "Inmonest",
     "image": "https://inmonest.com/logo.png",
-    "telephone": "+34641008847",
+    "telephone": "+34745022862",
     "address": {
       "@type": "PostalAddress",
       "addressCountry": "ES"

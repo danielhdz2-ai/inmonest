@@ -1,4 +1,4 @@
-﻿'use server'
+'use server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
@@ -413,12 +413,12 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                       >
                         Ver servicio completo (687€) →
                       </Link>
-                      <a
-                        href="tel:+34641008847"
+                      <Link
+                        href="/gestoria/solicitar"
                         className="inline-flex items-center justify-center px-5 py-3 rounded-full border-2 border-[#c9962a] text-[#a87a20] font-semibold hover:bg-[#c9962a] hover:text-white transition-colors text-sm"
                       >
-                        📞 Llamar: 641 008 847
-                      </a>
+                        Solicitar información →
+                      </Link>
                     </div>
                   </div>
                 </div>

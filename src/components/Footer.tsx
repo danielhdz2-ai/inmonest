@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import FooterGestoriaContact from '@/components/FooterGestoriaContact'
 
 const CIUDADES = [
   { slug: 'madrid',    nombre: 'Madrid' },
@@ -166,11 +167,7 @@ export default function Footer() {
               <ul className="space-y-2.5 text-sm text-white/60 mb-6">
                 <li><Link href="/sobre-nosotros" className="hover:text-[#f4c94a] transition-colors">Quiénes somos</Link></li>
                 <li><Link href="/blog" className="hover:text-[#f4c94a] transition-colors">Blog inmobiliario</Link></li>
-                <li>
-                  <a href="https://wa.me/34641008847?text=Hola%20Inmonest,%20necesito%20información" target="_blank" rel="noopener noreferrer" className="hover:text-[#25d366] transition-colors">
-                    WhatsApp: 641 008 847
-                  </a>
-                </li>
+                <li><FooterGestoriaContact /></li>
                 <li>
                   <a href="mailto:info@inmonest.com" className="hover:text-[#f4c94a] transition-colors">
                     info@inmonest.com

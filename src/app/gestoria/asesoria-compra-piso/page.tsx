@@ -78,7 +78,7 @@ export default function AsesoriaCompraPisoPage() {
                   Contratar servicio completo (687€)
                 </Link>
                 <a
-                  href="https://wa.me/34641008847?text=Hola,%20estoy%20comprando%20piso%20y%20necesito%20ayuda%20con%20la%20gesti%C3%B3n"
+                  href="https://wa.me/34745022862?text=Hola,%20estoy%20comprando%20piso%20y%20necesito%20ayuda%20con%20la%20gesti%C3%B3n"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="bg-white text-[#c9962a] border-2 border-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-50 transition text-center shadow-lg"
@@ -435,7 +435,7 @@ export default function AsesoriaCompraPisoPage() {
               Contratar servicio completo (687€)
             </Link>
             <a
-              href="https://wa.me/34641008847?text=Hola,%20necesito%20ayuda%20para%20comprar%20un%20piso%20sin%20comisiones"
+              href="https://wa.me/34745022862?text=Hola,%20necesito%20ayuda%20para%20comprar%20un%20piso%20sin%20comisiones"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition shadow-lg border-2 border-white"
