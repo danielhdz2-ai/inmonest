@@ -151,7 +151,7 @@ const SERVICES: Service[] = [
       'Fianza y condiciones de salida',
       'Entrega en 48h · PDF firmable digitalmente',
     ],
-    price: 120,
+    price: 145,
     image: '/gestoria6.jpg',
   },
   {
@@ -215,7 +215,7 @@ const SERVICES: Service[] = [
       'Duración, prórrogas y salida anticipada',
       'Entrega en 48h · PDF firmable digitalmente',
     ],
-    price: 120,
+    price: 145,
     image: '/gestoria6.jpg',
     badge: 'Coliving',
   },

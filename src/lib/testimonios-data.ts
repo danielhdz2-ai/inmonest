@@ -262,7 +262,7 @@ export const TESTIMONIOS_POOL: Testimonio[] = [
     foto: '/testimonios/testimonio3.jpg',
     rating: 5,
     texto:
-      'Alquilo tres habitaciones en un piso en Moncloa. Antes tenía acuerdos verbales y un lío con la fianza de la última inquilina. Inmonest me hizo un contrato por habitación con normas de convivencia claras. El asesor me explicó todo antes de firmar. Por 120€ tengo tranquilidad en cada entrada nueva.',
+      'Alquilo tres habitaciones en un piso en Moncloa. Antes tenía acuerdos verbales y un lío con la fianza de la última inquilina. Inmonest me hizo un contrato por habitación con normas de convivencia claras. El asesor me explicó todo antes de firmar. Por 145€ tengo tranquilidad en cada entrada nueva.',
     fecha: 'Mayo 2026',
   },
   {
@@ -275,6 +275,39 @@ export const TESTIMONIOS_POOL: Testimonio[] = [
     texto:
       'Tengo un piso de 4 habitaciones en Gràcia. Contraté el servicio para regularizar a los tres inquilinos con contratos independientes. El gestor incluyó normas de cocina, visitas y limpieza que antes eran discusiones constantes. Profesional y rápido.',
     fecha: 'Abril 2026',
+  },
+  {
+    id: 24,
+    nombre: 'Antonio Molina',
+    ciudad: 'Sevilla',
+    servicio: 'Contrato alquiler habitación',
+    foto: '/testimonios/testimonio4.jpg',
+    rating: 5,
+    texto:
+      'Alquilo dos habitaciones en Triana a particulares. El gestor redactó contratos separados con normas de convivencia, fianza y preaviso de salida bien definidos. Me explicó que no es un contrato LAU de vivienda completa. Imprescindible para propietarios en Sevilla.',
+    fecha: 'Junio 2026',
+  },
+  {
+    id: 25,
+    nombre: 'Patricia Gómez',
+    ciudad: 'Málaga',
+    servicio: 'Contrato alquiler habitación',
+    foto: '/testimonios/testimonio8.jpg',
+    rating: 5,
+    texto:
+      'Tengo un piso compartido en Teatinos para estudiantes de la UMA. Inmonest preparó tres contratos con entradas y salidas independientes, normas de cocina y limpieza. Por 145€ evité repetir los problemas de fianza que tuve con la inquilina anterior.',
+    fecha: 'Junio 2026',
+  },
+  {
+    id: 26,
+    nombre: 'Ane López',
+    ciudad: 'Bilbao',
+    servicio: 'Contrato alquiler habitación',
+    foto: '/testimonios/testimonio6.jpg',
+    rating: 5,
+    texto:
+      'Comparto piso en Indautxu y alquilaba la tercera habitación sin contrato escrito. El asesor me preparó uno conforme al Código Civil con normas de visitas, cocina y resolución por impago. Tranquilidad total ante la alta demanda de habitaciones en Bilbao.',
+    fecha: 'Junio 2026',
   },
 ]
 
@@ -307,9 +340,12 @@ export const TESTIMONIOS_POR_LANDING: Record<string, Testimonio[]> = {
   'due-diligence-bilbao': pick(20, 6, 17),
   'revision-arras': pick(2, 6, 14),
   'revision-alquiler': pick(3, 7, 9),
-  'alquiler-habitacion': pick(3, 7, 9),
-  'alquiler-habitacion-madrid': pick(22, 3, 5),
-  'alquiler-habitacion-barcelona': pick(23, 14, 3),
+  'alquiler-habitacion': pick(24, 25, 26),
+  'alquiler-habitacion-madrid': pick(22, 24, 3),
+  'alquiler-habitacion-barcelona': pick(23, 25, 3),
+  'alquiler-habitacion-sevilla': pick(24, 19, 22),
+  'alquiler-habitacion-malaga': pick(25, 21, 8),
+  'alquiler-habitacion-bilbao': pick(26, 20, 6),
   'contrato-ilegal': pick(7, 2, 6),
   'asesoria-compra': pick(4, 11, 8),
   'compra-parking-trastero': pick(4, 11, 8),

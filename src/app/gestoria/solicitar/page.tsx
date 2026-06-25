@@ -42,7 +42,7 @@ const SERVICIOS = [
     items: [
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120, badge: 'Ley 2026' },
       { slug: 'ayuda-propietarios', nombre: 'LAU para Propietarios', precio: 73 },
-      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 120 },
+      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
       { slug: 'alquiler-local-comercial', nombre: 'Alquiler Local Comercial', precio: 121 },
       { slug: 'alquiler-garaje-trastero', nombre: 'Alquiler Garaje/Trastero', precio: 48 },
     ],

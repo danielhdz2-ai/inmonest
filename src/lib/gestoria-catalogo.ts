@@ -98,7 +98,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'alquiler-habitaciones': {
     nombre: 'Contrato de Alquiler de Habitación',
-    precio: 120,
+    precio: 145,
     categoria: 'Alquiler',
     incluye: [
       'Regulación de zonas comunes',

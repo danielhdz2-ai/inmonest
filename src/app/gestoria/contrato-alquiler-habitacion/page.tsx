@@ -6,27 +6,31 @@ import JsonLd from '@/components/JsonLd'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import { GESTOR_CARMEN_VIDAL } from '@/lib/gestores-inmonest'
+import {
+  ALQUILER_HABITACION_CIUDADES_LIST,
+  ALQUILER_HABITACION_PRECIO,
+} from '@/lib/alquiler-habitacion-ciudad-data'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
-const PRECIO = 120
+const PRECIO = ALQUILER_HABITACION_PRECIO
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
 const PHONE = '+34745022862'
 const WA = '34745022862'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Alquiler de Habitación | 120€ IVA incluido | Inmonest',
+  title: `Contrato de Alquiler de Habitación | ${PRECIO}€ IVA incluido | Inmonest`,
   description:
-    '¿Alquilas una habitación en tu piso? Contrato profesional redactado por gestoría inmobiliaria. Asesor experto, bases legales del Código Civil, normas de convivencia y protección ante impagos. 120€ IVA incluido.',
+    `¿Alquilas una habitación en tu piso? Contrato profesional redactado por gestoría inmobiliaria. Asesor experto, bases legales del Código Civil, normas de convivencia y protección ante impagos. ${PRECIO}€ IVA incluido.`,
   keywords:
     'contrato alquiler habitacion, alquilar habitacion piso compartido, contrato habitacion coliving, arrendamiento habitacion codigo civil, alquiler habitacion particular, normas convivencia alquiler habitacion, gestoria alquiler habitacion',
   alternates: {
     canonical: `${BASE_URL}/gestoria/contrato-alquiler-habitacion`,
   },
   openGraph: {
-    title: 'Contrato de Alquiler de Habitación — 120€ con asesor experto',
+    title: `Contrato de Alquiler de Habitación — ${PRECIO}€ con asesor experto`,
     description:
-      'Particulares que alquilan habitaciones en piso compartido. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
+      `Particulares que alquilan habitaciones en piso compartido. Contrato profesional, asesoramiento legal y entrega en 48h. ${PRECIO}€ IVA incluido.`,
     url: `${BASE_URL}/gestoria/contrato-alquiler-habitacion`,
     type: 'website',
     siteName: 'Inmonest',
@@ -44,7 +48,7 @@ const PASOS = [
   },
   {
     titulo: 'Contratas el servicio',
-    desc: 'Pago único de 120€ IVA incluido. Sin costes ocultos. Comenzamos la redacción personalizada del contrato de habitación.',
+    desc: `Pago único de ${PRECIO}€ IVA incluido. Sin costes ocultos. Comenzamos la redacción personalizada del contrato de habitación.`,
   },
   {
     titulo: 'Recopilación de datos',
@@ -141,7 +145,7 @@ const OTROS_SERVICIOS = [
 const FAQ = [
   {
     q: '¿Cuánto cuesta el contrato de alquiler de habitación?',
-    a: '120€ IVA incluido. Tarifa plana por contrato personalizado, redacción jurídica y asesoramiento de un gestor inmobiliario experto. Entrega en 48 horas laborables.',
+    a: `${PRECIO}€ IVA incluido. Tarifa plana por contrato personalizado, redacción jurídica y asesoramiento de un gestor inmobiliario experto. Entrega en 48 horas laborables.`,
   },
   {
     q: '¿Necesito un contrato distinto por cada habitación?',
@@ -244,7 +248,7 @@ export default function ContratoAlquilerHabitacionPage() {
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 ¿Alquilas una habitación en tu piso? Un <strong>asesor experto en derecho inmobiliario</strong> redacta
                 tu contrato conforme al Código Civil, regula la convivencia y te protege ante impagos, conflictos
-                y problemas de desalojo. <strong className="text-gray-900">120€ IVA incluido.</strong>
+                y problemas de desalojo. <strong className="text-gray-900">{PRECIO}€ IVA incluido.</strong>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
@@ -487,13 +491,17 @@ export default function ContratoAlquilerHabitacionPage() {
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm text-gray-500 mb-4">Contrato de alquiler de habitación también disponible en:</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/gestoria/contrato-alquiler-habitacion/madrid" className="text-sm font-semibold text-[#c9962a] hover:underline">
-              Madrid
-            </Link>
-            <span className="text-gray-300">·</span>
-            <Link href="/gestoria/contrato-alquiler-habitacion/barcelona" className="text-sm font-semibold text-[#c9962a] hover:underline">
-              Barcelona
-            </Link>
+            {ALQUILER_HABITACION_CIUDADES_LIST.map((c, i) => (
+              <span key={c.slug} className="inline-flex items-center gap-3">
+                {i > 0 && <span className="text-gray-300">·</span>}
+                <Link
+                  href={`/gestoria/contrato-alquiler-habitacion/${c.slug}`}
+                  className="text-sm font-semibold text-[#c9962a] hover:underline"
+                >
+                  {c.nombre}
+                </Link>
+              </span>
+            ))}
           </div>
         </div>
       </section>

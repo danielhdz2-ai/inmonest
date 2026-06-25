@@ -237,7 +237,7 @@ const SERVICIOS: Record<string, ServiceData> = {
 
   'alquiler-habitaciones': {
     nombre: 'Contrato de Alquiler de Habitación',
-    precio: 121,
+    precio: 145,
     categoria: 'Alquiler',
     tagline: 'Alquila habitaciones en piso compartido con todas las garantías jurídicas',
     descripcion:
@@ -335,7 +335,7 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 120 },
+      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
       { slug: 'alquiler-garaje-trastero', nombre: 'Garaje o Trastero', precio: 48 },
       { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
@@ -495,7 +495,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     relacionados: [
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
-      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 120 },
+      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
       { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
   },
@@ -716,7 +716,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     relacionados: [
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
       { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
-      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 120 },
+      { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
     ],
   },
 

@@ -23,7 +23,7 @@ const PASOS = [
   },
   {
     titulo: 'Contratas el servicio',
-    desc: 'Pago único de 120€ IVA incluido. Sin costes ocultos. Comenzamos la redacción personalizada del contrato de habitación.',
+    desc: `Pago único de ${ALQUILER_HABITACION_PRECIO}€ IVA incluido. Sin costes ocultos. Comenzamos la redacción personalizada del contrato de habitación.`,
   },
   {
     titulo: 'Recopilación de datos',
@@ -81,7 +81,7 @@ const PARA_QUIEN_BASE = [
 const FAQ_BASE = [
   {
     q: '¿Cuánto cuesta el contrato de alquiler de habitación?',
-    a: '120€ IVA incluido. Tarifa plana por contrato personalizado, redacción jurídica y asesoramiento de un gestor inmobiliario experto. Entrega en 48 horas laborables.',
+    a: `${ALQUILER_HABITACION_PRECIO}€ IVA incluido. Tarifa plana por contrato personalizado, redacción jurídica y asesoramiento de un gestor inmobiliario experto. Entrega en 48 horas laborables.`,
   },
   {
     q: '¿Necesito un contrato distinto por cada habitación?',

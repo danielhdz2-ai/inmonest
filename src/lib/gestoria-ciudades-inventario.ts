@@ -61,7 +61,7 @@ export const LANDINGS_GENERICAS = [
   { slug: 'revision-contrato-alquiler', nombre: 'Revisión Contrato Alquiler', precio: '60€' },
   { slug: 'contrato-ilegal', nombre: 'Análisis Contrato Ilegal', precio: '29€' },
   { slug: 'ayuda-propietarios', nombre: 'Ayuda Propietarios LAU', precio: '120€' },
-  { slug: 'contrato-alquiler-habitacion', nombre: 'Contrato Alquiler Habitación', precio: '120€' },
+  { slug: 'contrato-alquiler-habitacion', nombre: 'Contrato Alquiler Habitación', precio: '145€' },
   { slug: 'compra-parking-trastero', nombre: 'Compra Parking o Trastero', precio: '295€' },
   { slug: 'contrato-arras', nombre: 'Contrato Arras (Info)', precio: '145€' },
   { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa Genérica', precio: '687€' },
@@ -106,9 +106,9 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
   {
     id: 'contrato-alquiler-habitacion',
     nombre: 'Contrato Alquiler Habitación',
-    precio: '120€',
+    precio: '145€',
     href: (c) => `/gestoria/contrato-alquiler-habitacion/${c}`,
-    ciudades: ['madrid', 'barcelona'],
+    ciudades: ['madrid', 'barcelona', 'sevilla', 'malaga', 'bilbao'],
   },
   {
     id: 'alquiler-particulares',
@@ -175,7 +175,7 @@ export const SERVICIOS_GUIA = [
   },
   {
     titulo: 'Contrato Alquiler Habitación',
-    descripcion: 'Piso compartido y coliving con asesor experto. 120€ IVA incluido',
+    descripcion: 'Piso compartido y coliving con asesor experto. 145€ IVA incluido',
     slug: 'contrato-alquiler-habitacion',
     imagen: '/gestoria6.jpg',
     categoria: 'Alquiler',
