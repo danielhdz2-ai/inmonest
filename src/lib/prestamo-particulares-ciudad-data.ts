@@ -39,6 +39,10 @@ export type PrestamoParticularesCiudadConfig = {
 export const PRESTAMO_PARTICULARES_CIUDADES_LIST = [
   { slug: 'madrid', nombre: 'Madrid' },
   { slug: 'barcelona', nombre: 'Barcelona' },
+  { slug: 'valencia', nombre: 'Valencia' },
+  { slug: 'sevilla', nombre: 'Sevilla' },
+  { slug: 'malaga', nombre: 'Málaga' },
+  { slug: 'bilbao', nombre: 'Bilbao' },
 ] as const
 
 export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticularesCiudadConfig> = {
@@ -112,10 +116,10 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
     testimoniosLanding: 'prestamo-particulares-barcelona',
     heroImage: '/barcelona2.jpg',
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
-      rol: 'Gestora inmobiliaria · Préstamos entre particulares en Barcelona',
-      foto: GESTOR_CARMEN_VIDAL.foto,
-      bio: 'Acompaña a prestamistas y prestatarios en Barcelona y área metropolitana. Domina la redacción de contratos de préstamo privado, préstamos familiares para compra de vivienda, declaración ante la Generalitat y protección ante reclamaciones de la AEAT.',
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en Barcelona',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en Barcelona y área metropolitana. Especialista en contratos de préstamo privado, préstamos familiares para compra de vivienda, declaración ante la Generalitat y protección ante reclamaciones de la AEAT.',
       especialidades: ['Préstamos entre familiares', 'Modelo 600 Cataluña', 'Reclamación por impago'],
     },
     mercadoIntro:
@@ -165,6 +169,258 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
       ogTitle: 'Contrato Préstamo entre Particulares Barcelona — 130€ con asesor experto',
       ogDescription:
         'Formaliza préstamos privados en Barcelona con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  valencia: {
+    slug: 'valencia',
+    nombre: 'Valencia',
+    region: 'Comunitat Valenciana',
+    testimoniosLanding: 'prestamo-particulares-valencia',
+    heroImage: '/valencia3.jpg',
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en Valencia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en Valencia y l\'Horta. Especialista en contratos de préstamo privado, financiación familiar para entrada de vivienda, declaración ante la Generalitat Valenciana y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos entre familiares', 'Modelo 600 Comunitat Valenciana', 'Reclamación por impago'],
+    },
+    mercadoIntro:
+      'En Valencia y el área metropolitana es habitual que familiares presten capital para la entrada de un piso, que autónomos reciban financiación privada o que particulares se presten dinero para reformas. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta, con consecuencias fiscales graves para ambas partes.',
+    fiscalIntro:
+      'En la Comunitat Valenciana el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en Valencia y la Comunitat Valenciana:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en Valencia',
+      'Préstamo entre socios de negocio o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en Valencia capital, l\'Horta y principales municipios de la Comunitat Valenciana. Servicio 100 % online.',
+    zonas: [
+      'Ruzafa', 'Campanar', 'Benimaclet', 'El Carmen', 'Eixample',
+      'Patraix', 'Mislata', 'Paterna', 'Torrent', 'Sagunto',
+      'Ciutat Vella', 'Quatre Carreres', 'Algirós',
+    ],
+    paraQuienExtra: [
+      'Familias en Valencia que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Particulares que quieren proteger un préstamo ya realizado por transferencia',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en Valencia y la Comunitat Valenciana?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en Valencia, Mislata, Torrent y resto del territorio valenciano. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en Valencia?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Qué pasa si el prestatario deja de pagar en Valencia?',
+        a: 'El contrato incluye cláusulas de vencimiento anticipado e intereses de demora. Puedes reclamar mediante juicio monitorio en los juzgados de Valencia con mayor solvencia que con un acuerdo verbal.',
+      },
+    ],
+    meta: {
+      title: 'Contrato Préstamo entre Particulares Valencia | 130€ IVA incluido | Inmonest',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Valencia? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares valencia, prestamo entre familiares valencia, prestamo privado valencia hacienda, modelo 600 prestamo comunitat valenciana, prestamo padres hijos entrada piso valencia, prestamo sin intereses valencia, contrato prestamo privado valencia, formalizar prestamo familiar valencia, prestamo entre amigos valencia contrato',
+      ogTitle: 'Contrato Préstamo entre Particulares Valencia — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Valencia con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  sevilla: {
+    slug: 'sevilla',
+    nombre: 'Sevilla',
+    region: 'Andalucía',
+    testimoniosLanding: 'prestamo-particulares-sevilla',
+    heroImage: '/sevilla2.jpg',
+    gestor: {
+      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      rol: 'Gestora inmobiliaria · Préstamos entre particulares en Sevilla',
+      foto: GESTOR_CARMEN_VIDAL.foto,
+      bio: 'Acompaña a prestamistas y prestatarios en Sevilla y área metropolitana. Domina la redacción de contratos de préstamo privado, préstamos familiares para compra de vivienda, declaración ante la Junta de Andalucía y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos entre familiares', 'Modelo 600 Andalucía', 'Reclamación por impago'],
+    },
+    mercadoIntro:
+      'En Sevilla y el área metropolitana es habitual que familiares presten capital para la entrada de un piso, que emprendedores reciban financiación privada o que particulares se presten dinero para reformas. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta, con consecuencias fiscales graves para ambas partes.',
+    fiscalIntro:
+      'En Andalucía el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en Sevilla y Andalucía:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en Sevilla',
+      'Préstamo entre socios de negocio o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en Sevilla capital, área metropolitana y principales municipios de Andalucía. Servicio 100 % online.',
+    zonas: [
+      'Triana', 'Nervión', 'Los Remedios', 'Macarena', 'Centro',
+      'Santa Cruz', 'Este-Alcosa', 'Cerro-Amate', 'Bellavista',
+      'Dos Hermanas', 'Alcalá de Guadaíra', 'Camas',
+    ],
+    paraQuienExtra: [
+      'Familias en Sevilla que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Particulares que quieren proteger un préstamo ya realizado por transferencia',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en Sevilla y Andalucía?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en Sevilla, Dos Hermanas, Alcalá de Guadaíra y resto de Andalucía. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en Sevilla?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Qué pasa si el prestatario deja de pagar en Sevilla?',
+        a: 'El contrato incluye cláusulas de vencimiento anticipado e intereses de demora. Puedes reclamar mediante juicio monitorio en los juzgados de Sevilla con mayor solvencia que con un acuerdo verbal.',
+      },
+    ],
+    meta: {
+      title: 'Contrato Préstamo entre Particulares Sevilla | 130€ IVA incluido | Inmonest',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Sevilla? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares sevilla, prestamo entre familiares sevilla, prestamo privado sevilla hacienda, modelo 600 prestamo andalucia, prestamo padres hijos entrada piso sevilla, prestamo sin intereses sevilla, contrato prestamo privado sevilla, formalizar prestamo familiar sevilla, prestamo entre amigos sevilla contrato',
+      ogTitle: 'Contrato Préstamo entre Particulares Sevilla — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Sevilla con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  malaga: {
+    slug: 'malaga',
+    nombre: 'Málaga',
+    region: 'Andalucía · Costa del Sol',
+    testimoniosLanding: 'prestamo-particulares-malaga',
+    heroImage: '/gestoria5.jpg',
+    gestor: {
+      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      rol: 'Gestora inmobiliaria · Préstamos entre particulares en Málaga',
+      foto: GESTOR_CARMEN_VIDAL.foto,
+      bio: 'Acompaña a prestamistas y prestatarios en Málaga capital y Costa del Sol. Especialista en contratos de préstamo privado, financiación familiar para entrada de vivienda, declaración ante la Junta de Andalucía y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos entre familiares', 'Modelo 600 Andalucía', 'Reclamación por impago'],
+    },
+    mercadoIntro:
+      'En Málaga y la Costa del Sol es habitual que familiares presten capital para la entrada de un piso, que autónomos reciban financiación privada o que particulares se presten dinero para reformas. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta, con consecuencias fiscales graves para ambas partes.',
+    fiscalIntro:
+      'En Andalucía el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en Málaga y la Costa del Sol:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en Málaga',
+      'Préstamo entre socios de negocio o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en Málaga capital, Costa del Sol y área metropolitana. Servicio 100 % online.',
+    zonas: [
+      'Centro Histórico', 'Soho', 'Teatinos', 'El Palo-Pedregalejo', 'La Malagueta',
+      'El Limonar', 'Huelin', 'Carretera de Cádiz', 'Benalmádena', 'Torremolinos',
+      'Rincón de la Victoria', 'Mijas',
+    ],
+    paraQuienExtra: [
+      'Familias en Málaga que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Particulares que quieren proteger un préstamo ya realizado por transferencia',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en Málaga y la Costa del Sol?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en Málaga, Torremolinos, Benalmádena y resto de Andalucía. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en Málaga?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Qué pasa si el prestatario deja de pagar en Málaga?',
+        a: 'El contrato incluye cláusulas de vencimiento anticipado e intereses de demora. Puedes reclamar mediante juicio monitorio en los juzgados de Málaga con mayor solvencia que con un acuerdo verbal.',
+      },
+    ],
+    meta: {
+      title: 'Contrato Préstamo entre Particulares Málaga | 130€ IVA incluido | Inmonest',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Málaga? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares malaga, prestamo entre familiares malaga, prestamo privado malaga hacienda, modelo 600 prestamo andalucia, prestamo padres hijos entrada piso malaga, prestamo sin intereses malaga, contrato prestamo privado malaga, formalizar prestamo familiar malaga, prestamo entre amigos malaga contrato, prestamo privado costa del sol',
+      ogTitle: 'Contrato Préstamo entre Particulares Málaga — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Málaga con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  bilbao: {
+    slug: 'bilbao',
+    nombre: 'Bilbao',
+    region: 'País Vasco · Bizkaia',
+    testimoniosLanding: 'prestamo-particulares-bilbao',
+    heroImage: '/gestoria7.jpg',
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en Bilbao',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en Bilbao y Gran Bilbao. Especialista en contratos de préstamo privado, financiación familiar para entrada de vivienda, declaración ante la Hacienda Foral de Bizkaia y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos entre familiares', 'Modelo 600 Bizkaia', 'Reclamación por impago'],
+    },
+    mercadoIntro:
+      'En Bilbao y el área metropolitana es habitual que familiares presten capital para la entrada de un piso, que emprendedores reciban financiación privada o que particulares se presten dinero para reformas. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta, con consecuencias fiscales graves para ambas partes.',
+    fiscalIntro:
+      'En Bizkaia el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en Bilbao y Bizkaia:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en Bilbao',
+      'Préstamo entre socios de negocio o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en Bilbao, Gran Bilbao y municipios de Bizkaia. Servicio 100 % online.',
+    zonas: [
+      'Indautxu', 'Abando', 'Deusto', 'Rekalde', 'Bilbao La Vieja',
+      'Santutxu', 'Basurto', 'Zorrotza', 'Getxo', 'Barakaldo',
+      'Portugalete', 'Leioa',
+    ],
+    paraQuienExtra: [
+      'Familias en Bilbao que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Particulares que quieren proteger un préstamo ya realizado por transferencia',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en Bilbao y Bizkaia?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en Bilbao, Getxo, Barakaldo y resto de Bizkaia. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en Bilbao?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Qué pasa si el prestatario deja de pagar en Bilbao?',
+        a: 'El contrato incluye cláusulas de vencimiento anticipado e intereses de demora. Puedes reclamar mediante juicio monitorio en los juzgados de Bilbao con mayor solvencia que con un acuerdo verbal.',
+      },
+    ],
+    meta: {
+      title: 'Contrato Préstamo entre Particulares Bilbao | 130€ IVA incluido | Inmonest',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Bilbao? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares bilbao, prestamo entre familiares bilbao, prestamo privado bilbao hacienda, modelo 600 prestamo bizkaia, prestamo padres hijos entrada piso bilbao, prestamo sin intereses bilbao, contrato prestamo privado bilbao, formalizar prestamo familiar bilbao, prestamo entre amigos bilbao contrato, prestamo privado gran bilbao',
+      ogTitle: 'Contrato Préstamo entre Particulares Bilbao — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Bilbao con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
     },
   },
 }
