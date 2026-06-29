@@ -28,10 +28,10 @@ const VENTAJAS = [
 ]
 
 const BARRIOS = [
-  { nombre: 'Centro', precio: '1.100€/mes', desc: 'Calle Larios, Catedral, playa a 10 min. El corazón de Málaga.', link: '/pisos?city=malaga&district=centro', imagen: '/ciudades/malaga2.jpg' },
-  { nombre: 'Pedregalejo', precio: '1.200€/mes', desc: 'Primera línea de playa, chiringuitos, ambiente familiar.', link: '/pisos?city=malaga&district=pedregalejo', imagen: '/interior1.jpg' },
-  { nombre: 'Teatinos', precio: '950€/mes', desc: 'Universidad, residencial, bien comunicado. Ideal estudiantes.', link: '/pisos?city=malaga&district=teatinos', imagen: '/interior3.jpg' },
-  { nombre: 'Soho', precio: '1.150€/mes', desc: 'Arte urbano, zona moderna, CAC Málaga. Muy de moda.', link: '/pisos?city=malaga&district=soho', imagen: '/interior4.jpg' },
+  { nombre: 'Centro', precio: '1.100€/mes', desc: 'Calle Larios, Catedral, playa a 10 min. El corazón de Málaga.', link: '/pisos?ciudad=malaga&district=centro', imagen: '/ciudades/malaga2.jpg' },
+  { nombre: 'Pedregalejo', precio: '1.200€/mes', desc: 'Primera línea de playa, chiringuitos, ambiente familiar.', link: '/pisos?ciudad=malaga&district=pedregalejo', imagen: '/interior1.jpg' },
+  { nombre: 'Teatinos', precio: '950€/mes', desc: 'Universidad, residencial, bien comunicado. Ideal estudiantes.', link: '/pisos?ciudad=malaga&district=teatinos', imagen: '/interior3.jpg' },
+  { nombre: 'Soho', precio: '1.150€/mes', desc: 'Arte urbano, zona moderna, CAC Málaga. Muy de moda.', link: '/pisos?ciudad=malaga&district=soho', imagen: '/interior4.jpg' },
 ]
 
 const TESTIMONIOS = [
@@ -87,10 +87,10 @@ export default function PisosMalagaPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pisos?city=malaga&operation=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
+              <Link href="/pisos?ciudad=malaga&operacion=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
                 Ver pisos en alquiler →
               </Link>
-              <Link href="/pisos?city=malaga&operation=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
+              <Link href="/pisos?ciudad=malaga&operacion=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
                 Ver pisos en venta →
               </Link>
             </div>

@@ -28,10 +28,10 @@ const VENTAJAS = [
 ]
 
 const BARRIOS = [
-  { nombre: 'Eixample', precio: '1.400€/mes', desc: 'El barrio modernista. Edificios de Gaudí, excelente transporte.', link: '/pisos?city=barcelona&district=eixample', imagen: '/ciudades/barcelona2.jpg' },
-  { nombre: 'Gràcia', precio: '1.250€/mes', desc: 'Bohemio, plazas con terrazas. Popular entre jóvenes profesionales.', link: '/pisos?city=barcelona&district=gracia', imagen: '/interior1.jpg' },
-  { nombre: 'Sants', precio: '1.100€/mes', desc: 'Residencial y bien conectado. Perfecto para familias.', link: '/pisos?city=barcelona&district=sants', imagen: '/interior2.jpg' },
-  { nombre: 'Poblenou', precio: '1.350€/mes', desc: 'Barrio tecnológico. Startups, coworkings y playa.', link: '/pisos?city=barcelona&district=poblenou', imagen: '/ciudades/barcelona3.jpg' },
+  { nombre: 'Eixample', precio: '1.400€/mes', desc: 'El barrio modernista. Edificios de Gaudí, excelente transporte.', link: '/pisos?ciudad=barcelona&district=eixample', imagen: '/ciudades/barcelona2.jpg' },
+  { nombre: 'Gràcia', precio: '1.250€/mes', desc: 'Bohemio, plazas con terrazas. Popular entre jóvenes profesionales.', link: '/pisos?ciudad=barcelona&district=gracia', imagen: '/interior1.jpg' },
+  { nombre: 'Sants', precio: '1.100€/mes', desc: 'Residencial y bien conectado. Perfecto para familias.', link: '/pisos?ciudad=barcelona&district=sants', imagen: '/interior2.jpg' },
+  { nombre: 'Poblenou', precio: '1.350€/mes', desc: 'Barrio tecnológico. Startups, coworkings y playa.', link: '/pisos?ciudad=barcelona&district=poblenou', imagen: '/ciudades/barcelona3.jpg' },
 ]
 
 const TESTIMONIOS = [
@@ -87,10 +87,10 @@ export default function PisosBarcelonaPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pisos?city=barcelona&operation=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
+              <Link href="/pisos?ciudad=barcelona&operacion=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
                 Ver pisos en alquiler →
               </Link>
-              <Link href="/pisos?city=barcelona&operation=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
+              <Link href="/pisos?ciudad=barcelona&operacion=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
                 Ver pisos en venta →
               </Link>
             </div>

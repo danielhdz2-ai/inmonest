@@ -40,7 +40,6 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/seguridad`,            lastModified: today, changeFrequency: 'yearly',  priority: 0.2 },
 
   // Gestoría — páginas de aterrizaje SEO
-  { url: `${BASE_URL}/gestoria/burofax-desistimiento-alquiler`,    lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/contrato-compraventa`,              lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/revision-contrato-arras`,           lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/revision-contrato-alquiler`,        lastModified: today, changeFrequency: 'monthly', priority: 0.88 },

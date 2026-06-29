@@ -28,10 +28,10 @@ const VENTAJAS = [
 ]
 
 const BARRIOS = [
-  { nombre: 'Salamanca', precio: '1.800€/mes', desc: 'Barrio elegante con comercios de lujo. Serrano, Velázquez.', link: '/pisos?city=madrid&district=salamanca', imagen: '/ciudades/madrid2.jpg' },
-  { nombre: 'Chamberí', precio: '1.500€/mes', desc: 'Residencial y céntrico. Perfecto para profesionales.', link: '/pisos?city=madrid&district=chamberi', imagen: '/interior1.jpg' },
-  { nombre: 'Malasaña', precio: '1.400€/mes', desc: 'Bohemio y alternativo. Bares, vintage y ambiente joven.', link: '/pisos?city=madrid&district=malasana', imagen: '/interior3.jpg' },
-  { nombre: 'Retiro', precio: '1.600€/mes', desc: 'Junto al parque. Tranquilo, verde. Ideal para familias.', link: '/pisos?city=madrid&district=retiro', imagen: '/interior4.jpg' },
+  { nombre: 'Salamanca', precio: '1.800€/mes', desc: 'Barrio elegante con comercios de lujo. Serrano, Velázquez.', link: '/pisos?ciudad=madrid&district=salamanca', imagen: '/ciudades/madrid2.jpg' },
+  { nombre: 'Chamberí', precio: '1.500€/mes', desc: 'Residencial y céntrico. Perfecto para profesionales.', link: '/pisos?ciudad=madrid&district=chamberi', imagen: '/interior1.jpg' },
+  { nombre: 'Malasaña', precio: '1.400€/mes', desc: 'Bohemio y alternativo. Bares, vintage y ambiente joven.', link: '/pisos?ciudad=madrid&district=malasana', imagen: '/interior3.jpg' },
+  { nombre: 'Retiro', precio: '1.600€/mes', desc: 'Junto al parque. Tranquilo, verde. Ideal para familias.', link: '/pisos?ciudad=madrid&district=retiro', imagen: '/interior4.jpg' },
 ]
 
 const TESTIMONIOS = [
@@ -87,10 +87,10 @@ export default function PisosMadridPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pisos?city=madrid&operation=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
+              <Link href="/pisos?ciudad=madrid&operacion=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
                 Ver pisos en alquiler →
               </Link>
-              <Link href="/pisos?city=madrid&operation=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
+              <Link href="/pisos?ciudad=madrid&operacion=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
                 Ver pisos en venta →
               </Link>
             </div>

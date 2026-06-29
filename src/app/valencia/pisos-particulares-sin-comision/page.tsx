@@ -28,10 +28,10 @@ const VENTAJAS = [
 ]
 
 const BARRIOS = [
-  { nombre: 'Ciutat Vella', precio: '950€/mes', desc: 'Casco histórico, Plaza de la Virgen, Mercado Central.', link: '/pisos?city=valencia&district=ciutat-vella', imagen: '/interior1.jpg' },
-  { nombre: 'Ruzafa', precio: '1.100€/mes', desc: 'Barrio de moda, multicultural, lleno de bares y restaurantes.', link: '/pisos?city=valencia&district=ruzafa', imagen: '/interior2.jpg' },
-  { nombre: 'Benimaclet', precio: '850€/mes', desc: 'Tranquilo, universitario, bien comunicado con metro.', link: '/pisos?city=valencia&district=benimaclet', imagen: '/interior3.jpg' },
-  { nombre: 'El Carmen', precio: '1.050€/mes', desc: 'Arte urbano, vida nocturna, ambiente bohemio.', link: '/pisos?city=valencia&district=carmen', imagen: '/interior4.jpg' },
+  { nombre: 'Ciutat Vella', precio: '950€/mes', desc: 'Casco histórico, Plaza de la Virgen, Mercado Central.', link: '/pisos?ciudad=valencia&district=ciutat-vella', imagen: '/interior1.jpg' },
+  { nombre: 'Ruzafa', precio: '1.100€/mes', desc: 'Barrio de moda, multicultural, lleno de bares y restaurantes.', link: '/pisos?ciudad=valencia&district=ruzafa', imagen: '/interior2.jpg' },
+  { nombre: 'Benimaclet', precio: '850€/mes', desc: 'Tranquilo, universitario, bien comunicado con metro.', link: '/pisos?ciudad=valencia&district=benimaclet', imagen: '/interior3.jpg' },
+  { nombre: 'El Carmen', precio: '1.050€/mes', desc: 'Arte urbano, vida nocturna, ambiente bohemio.', link: '/pisos?ciudad=valencia&district=carmen', imagen: '/interior4.jpg' },
 ]
 
 const TESTIMONIOS = [
@@ -88,10 +88,10 @@ export default function PisosValenciaPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pisos?city=valencia&operation=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
+              <Link href="/pisos?ciudad=valencia&operacion=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
                 Ver pisos en alquiler →
               </Link>
-              <Link href="/pisos?city=valencia&operation=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
+              <Link href="/pisos?ciudad=valencia&operacion=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
                 Ver pisos en venta →
               </Link>
             </div>

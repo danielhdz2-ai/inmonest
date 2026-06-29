@@ -79,15 +79,36 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 308)
   }
 
-  // Parámetro legacy inglés en búsqueda de pisos → operacion español
-  if (pathname === '/pisos' && searchParams.has('operation') && !searchParams.has('operacion')) {
+  // Parámetros legacy en búsqueda de pisos → nombres canónicos españoles
+  if (pathname === '/pisos') {
     const url = request.nextUrl.clone()
-    const op = searchParams.get('operation')
-    if (op === 'rent' || op === 'sale') {
-      url.searchParams.delete('operation')
-      url.searchParams.set('operacion', op)
+    let changed = false
+
+    if (searchParams.has('city') && !searchParams.has('ciudad')) {
+      url.searchParams.set('ciudad', searchParams.get('city')!.toLowerCase())
+      url.searchParams.delete('city')
+      changed = true
+    }
+
+    if (searchParams.has('operation') && !searchParams.has('operacion')) {
+      const op = searchParams.get('operation')
+      if (op === 'rent' || op === 'sale') {
+        url.searchParams.delete('operation')
+        url.searchParams.set('operacion', op)
+        changed = true
+      }
+    }
+
+    if (changed) {
       return NextResponse.redirect(url, 301)
     }
+  }
+
+  // URLs basura rastreadas por bots (GSC: /$, /&)
+  if (pathname === '/$' || pathname === '/&') {
+    const url = request.nextUrl.clone()
+    url.pathname = '/'
+    return NextResponse.redirect(url, 301)
   }
 
   // ── 1. RATE LIMITING (primero para evitar spam) ───────────────────────────

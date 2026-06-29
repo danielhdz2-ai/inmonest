@@ -28,10 +28,10 @@ const VENTAJAS = [
 ]
 
 const BARRIOS = [
-  { nombre: 'Centro', precio: '800€/mes', desc: 'Catedral, Giralda, calles con encanto. El corazón de Sevilla.', link: '/pisos?city=sevilla&district=centro', imagen: '/ciudades/sevilla2.jpg' },
-  { nombre: 'Triana', precio: '850€/mes', desc: 'Barrio con alma, cerámica, mercado. Muy auténtico.', link: '/pisos?city=sevilla&district=triana', imagen: '/interior1.jpg' },
-  { nombre: 'Nervión', precio: '750€/mes', desc: 'Residencial, comercios, bien comunicado. Ideal familias.', link: '/pisos?city=sevilla&district=nervion', imagen: '/interior2.jpg' },
-  { nombre: 'Macarena', precio: '700€/mes', desc: 'Tradicional, Basílica, murallas. Ambiente local.', link: '/pisos?city=sevilla&district=macarena', imagen: '/interior4.jpg' },
+  { nombre: 'Centro', precio: '800€/mes', desc: 'Catedral, Giralda, calles con encanto. El corazón de Sevilla.', link: '/pisos?ciudad=sevilla&district=centro', imagen: '/ciudades/sevilla2.jpg' },
+  { nombre: 'Triana', precio: '850€/mes', desc: 'Barrio con alma, cerámica, mercado. Muy auténtico.', link: '/pisos?ciudad=sevilla&district=triana', imagen: '/interior1.jpg' },
+  { nombre: 'Nervión', precio: '750€/mes', desc: 'Residencial, comercios, bien comunicado. Ideal familias.', link: '/pisos?ciudad=sevilla&district=nervion', imagen: '/interior2.jpg' },
+  { nombre: 'Macarena', precio: '700€/mes', desc: 'Tradicional, Basílica, murallas. Ambiente local.', link: '/pisos?ciudad=sevilla&district=macarena', imagen: '/interior4.jpg' },
 ]
 
 const TESTIMONIOS = [
@@ -87,10 +87,10 @@ export default function PisosSevillaPage() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pisos?city=sevilla&operation=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
+              <Link href="/pisos?ciudad=sevilla&operacion=rent" className="bg-[#f4c94a] hover:bg-[#e8b52a] text-gray-900 font-bold px-8 py-4 rounded-full text-lg shadow-xl hover:scale-105 transition-all">
                 Ver pisos en alquiler →
               </Link>
-              <Link href="/pisos?city=sevilla&operation=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
+              <Link href="/pisos?ciudad=sevilla&operacion=sale" className="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white border-2 border-white font-bold px-8 py-4 rounded-full text-lg transition-all">
                 Ver pisos en venta →
               </Link>
             </div>

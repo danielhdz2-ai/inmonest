@@ -83,6 +83,11 @@ export const SEO_REDIRECTS: Redirect[] = [
 
   // ═══ CIUDADES — ATAJOS RAÍZ ═══
   {
+    source: '/mes',
+    destination: '/',
+    permanent: true,
+  },
+  {
     source: '/mallorca',
     destination: '/mallorca/contrato-alquiler',
     permanent: true,
