@@ -58,16 +58,22 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
                 <p className="text-xl text-gray-300 mb-8">{config.heroSubtitulo}</p>
                 <div className="flex flex-wrap gap-4">
                   <Link
-                    href="#servicios"
-                    className="bg-[#c9a84c] text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition"
+                    href="/gestoria/solicitar/contrato-alquiler"
+                    className="bg-[#c9a84c] text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition shadow-lg"
                   >
-                    Ver servicios
+                    Contrato alquiler desde 120€ →
                   </Link>
                   <Link
-                    href="/gestoria"
+                    href="/gestoria/solicitar/arras-penitenciales"
+                    className="bg-white/10 border border-[#c9a84c]/50 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/15 transition"
+                  >
+                    Arras desde 145€
+                  </Link>
+                  <Link
+                    href="#servicios"
                     className="border border-white/30 px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
                   >
-                    Hub principal gestoría
+                    Ver todos los servicios
                   </Link>
                 </div>
               </div>

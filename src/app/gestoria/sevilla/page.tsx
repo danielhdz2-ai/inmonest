@@ -44,6 +44,11 @@ export const metadata: Metadata = {
   },
 }
 
+import {
+  buildGestoriaAggregateRatingSchema,
+  buildGestoriaReviewSchema,
+} from '@/lib/gestoria-reviews-schema'
+
 // Schema.org: Breadcrumbs + Service + FAQ
 const schemaData = {
   '@context': 'https://schema.org',
@@ -69,6 +74,8 @@ const schemaData = {
         addressCountry: 'ES',
       },
       priceRange: '€€',
+      aggregateRating: buildGestoriaAggregateRatingSchema(),
+      review: buildGestoriaReviewSchema(),
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
         name: 'Servicios Gestoría Inmobiliaria Sevilla',

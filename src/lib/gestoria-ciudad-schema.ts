@@ -1,3 +1,8 @@
+import {
+  buildGestoriaAggregateRatingSchema,
+  buildGestoriaReviewSchema,
+} from '@/lib/gestoria-reviews-schema'
+
 const BASE_URL = 'https://inmonest.com'
 
 export function buildLegalServiceSchema(ciudad: string, slug: string) {
@@ -8,6 +13,8 @@ export function buildLegalServiceSchema(ciudad: string, slug: string) {
     url: `${BASE_URL}/gestoria/${slug}`,
     telephone: '+34745022862',
     priceRange: '€€',
+    aggregateRating: buildGestoriaAggregateRatingSchema(),
+    review: buildGestoriaReviewSchema(),
     address: {
       '@type': 'PostalAddress',
       addressLocality: ciudad,

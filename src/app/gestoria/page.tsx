@@ -3,7 +3,10 @@ import Script from 'next/script'
 import Navbar from '@/components/NavbarServer'
 import GestoriaContent from './GestoriaContent'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
+import {
+  buildGestoriaAggregateRatingSchema,
+  buildGestoriaReviewSchema,
+} from '@/lib/gestoria-reviews-schema'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -30,10 +33,6 @@ export const metadata: Metadata = {
       'Contratos de arras, alquiler LAU y compraventa redactados por abogados. Desde 61€. Entrega en 48h. Servicio en toda España.',
     images: [`${BASE_URL}/gestoria1.jpg`],
   },
-}
-
-const SCHEMA_ITEM_REVIEWED = {
-  '@id': ORGANIZATION_SCHEMA_ID,
 }
 
 const schemaJson = JSON.stringify({
@@ -108,7 +107,7 @@ const schemaJson = JSON.stringify({
           '@type': 'Service',
           name: 'Contrato de Alquiler LAU',
           description: 'Contrato de arrendamiento de vivienda habitual según Ley 29/1994 actualizado a Ley de Vivienda 2026.',
-          url: `${BASE_URL}/gestoria/solicitar/alquiler-vivienda-lau`,
+          url: `${BASE_URL}/gestoria/solicitar/contrato-alquiler`,
           provider: {
             '@type': 'Organization',
             name: 'Inmonest'
@@ -219,77 +218,10 @@ const schemaJson = JSON.stringify({
   },
   
   // Reseñas agregadas (para mostrar estrellas ⭐⭐⭐⭐⭐ en Google)
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    reviewCount: '4',
-    bestRating: '5',
-    worstRating: '1'
-  },
+  aggregateRating: buildGestoriaAggregateRatingSchema(),
   
-  // Reseñas individuales
-  review: [
-    {
-      '@type': 'Review',
-      itemReviewed: SCHEMA_ITEM_REVIEWED,
-      author: {
-        '@type': 'Person',
-        name: 'zonetechonline'
-      },
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: '5',
-        bestRating: '5'
-      },
-      reviewBody: 'Tramite el contrato de arras, me ayudaron en todo el proceso de documentación, lo recomiendo bastante, muy ágiles, muy rápidos y muy profesionales',
-      datePublished: '2026-05-26'
-    },
-    {
-      '@type': 'Review',
-      itemReviewed: SCHEMA_ITEM_REVIEWED,
-      author: {
-        '@type': 'Person',
-        name: 'Alicia Fernández'
-      },
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: '5',
-        bestRating: '5'
-      },
-      reviewBody: 'Contraté servicio de acompañamiento de compra, y estoy super contenta, por el trato de Daniel y toda la ayuda con la documentación, super recomendable muchas gracias',
-      datePublished: '2026-05-26'
-    },
-    {
-      '@type': 'Review',
-      itemReviewed: SCHEMA_ITEM_REVIEWED,
-      author: {
-        '@type': 'Person',
-        name: 'Daniel Mercat'
-      },
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: '5',
-        bestRating: '5'
-      },
-      reviewBody: 'Tramite un contrato de arras con inmonest, ya que no me fiaba de el que me daba la agencia, y me ayudaron en varios puntos importantes, a si que merece la pena',
-      datePublished: '2026-05-20'
-    },
-    {
-      '@type': 'Review',
-      itemReviewed: SCHEMA_ITEM_REVIEWED,
-      author: {
-        '@type': 'Person',
-        name: 'Wendy Bermudez'
-      },
-      reviewRating: {
-        '@type': 'Rating',
-        ratingValue: '5',
-        bestRating: '5'
-      },
-      reviewBody: 'Necesitaba hacer un contrato de arras para el piso de mi madre, y el equipo jurídico de inmonest nos ayudo con la gestión, muchas gracias',
-      datePublished: '2026-05-06'
-    }
-  ]
+  // Reseñas individuales (Google Business)
+  review: buildGestoriaReviewSchema(),
 })
 
 // Schema para breadcrumb (mejora SEO)

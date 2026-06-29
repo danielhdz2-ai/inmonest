@@ -50,28 +50,47 @@ export default function Footer() {
           <Link href="/gestoria/contrato-alquiler" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
             Contrato de Alquiler
           </Link>
-          <Link href="/gestoria/acompanamiento-venta" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
-            Acompañamiento de Venta
+          <Link href="/gestoria/cuanto-cuesta-contrato-alquiler" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Precio contrato alquiler
           </Link>
-          <Link href="/gestoria/revision-contrato-alquiler" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
-            Revisión Contrato Alquiler
+          <Link href="/gestoria/prestamo-particulares" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Préstamo entre particulares
           </Link>
-          <Link href="/gestoria/contrato-compraventa" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
-            Contrato de Compraventa
+          <Link href="/gestoria/contrato-alquiler-habitacion" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Alquiler habitación
           </Link>
           <Link href="/gestoria/venta-completa-reserva-escritura" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
-            Venta Completa + Escritura
+            Venta completa + escritura
+          </Link>
+          <Link href="/gestoria/revision-contrato-alquiler" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Revisión contrato alquiler
+          </Link>
+          <Link href="/gestoria/contrato-compraventa" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+            Contrato de compraventa
           </Link>
           <Link href="/gestoria/asesoria-compra-piso" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
-            Asesoría Compra de Piso
+            Asesoría compra de piso
           </Link>
           <Link href="/gestoria/due-diligence-precompra" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
-            Due Diligence Precompra
+            Due diligence (350€)
           </Link>
           <Link href="/vender-piso-sin-agencia" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
-            Vender sin Agencia
+            Vender sin agencia
           </Link>
         </div>
+        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
+          <Link href="/gestoria/bilbao" className="text-xs text-white/45 hover:text-[#f4c94a] transition-colors">
+            Gestoría Bilbao
+          </Link>
+          <Link href="/gestoria/alicante" className="text-xs text-white/45 hover:text-[#f4c94a] transition-colors">
+            Gestoría Alicante
+          </Link>
+          <Link href="/gestoria/palma" className="text-xs text-white/45 hover:text-[#f4c94a] transition-colors">
+            Gestoría Palma
+          </Link>
+          <Link href="/gestoria/ciudades" className="text-xs text-white/45 hover:text-[#f4c94a] transition-colors">
+            Todas las ciudades →
+          </Link>
       </div>
 
       {/* ── HUB SEO: Contratos e información por ciudad ─────────── */}
