@@ -6,7 +6,7 @@ export const revalidate = 86400  // 24 horas (antes: 6h - consumía CPU excesivo
 
 const BASE_URL = 'https://inmonest.com'
 // Reducido de 49k a 10k para optimizar CPU (Google sitemap limit = 50k URLs)
-const MAX_LISTINGS = 10_000  // Antes: 49_000 - consumía demasiado CPU
+const MAX_LISTINGS = 5_000  // Top por ranking — reduce "descubierta sin indexar" en GSC
 
 // ✅ IMPORTANTE: Estas ciudades DEBEN coincidir con las de src/app/[ciudad]/page.tsx
 const CIUDADES = [
@@ -59,6 +59,8 @@ export async function GET() {
       .from('listings')
       .select('id, updated_at, published_at')
       .eq('status', 'published')
+      .eq('has_images', true)
+      .order('ranking_score', { ascending: false })
       .order('published_at', { ascending: false })
       .range(from, from + PAGE - 1)
 

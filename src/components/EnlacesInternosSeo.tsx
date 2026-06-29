@@ -39,6 +39,12 @@ const ENLACES_HOME: EnlaceSeo[] = [
     badge: 'Blog',
   },
   {
+    href: '/gestoria/alicante',
+    title: 'Gestoría inmobiliaria Alicante',
+    description: 'Contratos LAU y arras en la Costa Blanca.',
+    badge: 'Ciudad',
+  },
+  {
     href: '/gestoria/prestamo-particulares',
     title: 'Préstamo entre particulares',
     description: 'Contrato legal con registro en Hacienda.',
@@ -72,10 +78,16 @@ const ENLACES_GESTORIA: EnlaceSeo[] = [
     badge: 'Ciudad',
   },
   {
-    href: '/gestoria/due-diligence-precompra',
-    title: 'Due diligence precompra',
-    description: 'Revisión legal completa antes de comprar. 350€.',
-    badge: 'Servicio',
+    href: '/gestoria/due-diligence-precompra/valencia',
+    title: 'Due diligence Valencia',
+    description: 'Revisión legal precompra en la Comunidad Valenciana.',
+    badge: 'Ciudad',
+  },
+  {
+    href: '/gestoria/bilbao',
+    title: 'Gestoría inmobiliaria Bilbao',
+    description: 'Contratos y asesoría legal en el País Vasco.',
+    badge: 'Ciudad',
   },
   {
     href: '/blog/vender-piso-sin-comisiones',

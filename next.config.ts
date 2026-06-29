@@ -99,12 +99,6 @@ const nextConfig: NextConfig = {
         destination: '/bilbao/contrato-arras',
         permanent: true,
       },
-      // Alicante
-      {
-        source: '/gestoria/alicante',
-        destination: '/gestoria/ciudades',
-        permanent: true,
-      },
       
       // ═══ PISOS - PARÁMETROS LEGACY ═══
       // URLs con parámetros antiguos → Redirigir a URLs limpias

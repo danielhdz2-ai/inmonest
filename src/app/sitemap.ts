@@ -76,15 +76,13 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/sevilla`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/malaga`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/bilbao`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
-  { url: `${BASE_URL}/gestoria/reserva-compra`,                    lastModified: today, changeFrequency: 'monthly', priority: 0.84 },
+  // Hubs gestoría por ciudad (malaga/zaragoza redirigen → landings en ALQUILER_PAGES)
   { url: `${BASE_URL}/gestoria/barcelona`,                         lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/madrid`,                            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/valencia`,                          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
-  { url: `${BASE_URL}/gestoria/malaga`,                            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/bilbao`,                            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
-  { url: `${BASE_URL}/gestoria/palma`,                             lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
-  { url: `${BASE_URL}/gestoria/zaragoza`,                          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/alicante`,                          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/gestoria/palma`,                             lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/madrid`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/barcelona`,  lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
@@ -208,6 +206,8 @@ const ALQUILER_PARTICULARES_PAGES: MetadataRoute.Sitemap = CIUDADES.map((ciudad)
   priority: 0.92,
 }))
 
+const MAX_SITEMAP_LISTINGS = 5_000
+
 async function getListingUrls(): Promise<MetadataRoute.Sitemap> {
   try {
     const supabase = createClient(
@@ -215,13 +215,15 @@ async function getListingUrls(): Promise<MetadataRoute.Sitemap> {
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
     )
 
-    // Solo listings publicados, con imágenes y activos
+    // Solo listings de calidad: publicados, con imágenes, ordenados por ranking
     const { data, error } = await supabase
       .from('listings')
       .select('id, updated_at')
       .eq('status', 'published')
       .eq('has_images', true)
-      .limit(10000)
+      .order('ranking_score', { ascending: false })
+      .order('published_at', { ascending: false })
+      .limit(MAX_SITEMAP_LISTINGS)
 
     if (error || !data) return []
 
