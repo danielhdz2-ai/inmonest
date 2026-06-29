@@ -21,6 +21,7 @@ import { getPriceAnalysis } from '@/lib/price-analysis'
 import { generateNeighborhoodInfo, getNeighborhoodFallback } from '@/lib/neighborhood-info'
 import { createClient } from '@/lib/supabase/server'
 import { decodeHtml } from '@/lib/html'
+import { buildListingSeoDescription, buildListingSeoTitle } from '@/lib/listing-seo'
 import type { Metadata } from 'next'
 
 interface Props {
@@ -33,8 +34,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const listing = await getListingById(id)
   if (!listing) return { title: 'Anuncio no encontrado' }
   return {
-    title: `${decodeHtml(listing.title)} — Inmonest`,
-    description: decodeHtml(listing.description)?.slice(0, 160) ?? undefined,
+    title: buildListingSeoTitle(listing),
+    description: buildListingSeoDescription(listing),
   }
 }
 

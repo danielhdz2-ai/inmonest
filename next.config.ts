@@ -1,6 +1,7 @@
 // Deploy: 2026-04-28 - Calculadoras interactivas
 import type { NextConfig } from "next";
 import path from "path";
+import { SEO_REDIRECTS } from "./src/lib/seo-redirects";
 
 const nextConfig: NextConfig = {
   turbopack: {
@@ -89,7 +90,7 @@ const nextConfig: NextConfig = {
       // Málaga
       {
         source: '/gestoria/malaga',
-        destination: '/malaga/pisos-particulares-sin-comision',
+        destination: '/malaga/contrato-alquiler',
         permanent: true,
       },
       // Bilbao
@@ -180,6 +181,9 @@ const nextConfig: NextConfig = {
         destination: '/vender-piso-sin-agencia',
         permanent: true,
       },
+
+      // Redirects SEO adicionales (GSC / enlaces legacy)
+      ...SEO_REDIRECTS,
     ]
   },
   

@@ -124,7 +124,7 @@ export default function CalculadoraGastosAlquilerPage() {
                   💡 <strong>¿Ya sabes tu presupuesto?</strong> Encuentra pisos de particulares sin comisión de agencia.
                 </p>
                 <Link 
-                  href="/pisos?operation=rent" 
+                  href="/pisos?operacion=rent" 
                   className="block w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg text-center transition-colors"
                 >
                   Ver pisos en alquiler sin comisión

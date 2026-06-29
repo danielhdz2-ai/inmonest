@@ -79,6 +79,17 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 308)
   }
 
+  // Parámetro legacy inglés en búsqueda de pisos → operacion español
+  if (pathname === '/pisos' && searchParams.has('operation') && !searchParams.has('operacion')) {
+    const url = request.nextUrl.clone()
+    const op = searchParams.get('operation')
+    if (op === 'rent' || op === 'sale') {
+      url.searchParams.delete('operation')
+      url.searchParams.set('operacion', op)
+      return NextResponse.redirect(url, 301)
+    }
+  }
+
   // ── 1. RATE LIMITING (primero para evitar spam) ───────────────────────────
 
   const ip = getIP(request)

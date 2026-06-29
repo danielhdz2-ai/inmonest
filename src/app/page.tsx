@@ -6,6 +6,7 @@ import SearchForm from '@/components/SearchForm'
 import BentoVentajas from '@/components/BentoVentajas'
 import CarruselServicios from '@/components/CarruselServicios'
 import TestimoniosCarousel from '@/components/TestimoniosCarousel'
+import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
 
 const CIUDADES_POPULARES = [
   { nombre: 'Madrid', slug: 'madrid' },
@@ -141,6 +142,8 @@ export default function Home() {
 
       {/* ── Servicios de Gestoría Destacados (Carrusel Animado) ──────────────────────── */}
       <CarruselServicios />
+
+      <EnlacesInternosSeo variant="home" />
 
       {/* ── Ciudades populares (pisos) ──────────────────────────────────── */}
       <section className="bg-gray-50 py-12">

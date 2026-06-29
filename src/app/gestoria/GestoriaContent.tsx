@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
 import SolicitarModal from './SolicitarModal'
 import { gtmPush } from '@/components/GTMProvider'
 import TestimoniosCarousel from '@/components/TestimoniosCarousel'
@@ -1081,6 +1082,8 @@ export default function GestoriaPage() {
           </div>
         </div>
       </section>
+
+      <EnlacesInternosSeo variant="gestoria" />
 
       {/* CTA FINAL */}
       <section className="bg-gradient-to-r from-[#7a5c1e] to-[#c9962a] py-14 px-4">

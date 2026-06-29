@@ -112,7 +112,7 @@ export default function CalculadoraGastosCompraPage() {
                   💡 <strong>¿Ya sabes cuánto necesitas?</strong> Encuentra pisos sin comisión de agencia y ahorra aún más.
                 </p>
                 <Link 
-                  href="/pisos?operation=sale" 
+                  href="/pisos?operacion=sale" 
                   className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg text-center transition-colors"
                 >
                   Ver pisos en venta sin comisión
