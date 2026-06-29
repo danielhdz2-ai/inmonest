@@ -84,9 +84,9 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'bilbao',
     nombre: 'Bilbao',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Bilbao? 120 € · 48 h | Inmonest',
+      title: 'Contrato de Alquiler Bilbao 120€ | LAU · Entrega 48h | Inmonest',
       description:
-        '¿Necesitas redactar un contrato de alquiler en Bilbao? Deja la plantilla del Word: LAU + Ley Vivienda 2026, 48h, precio cerrado 120€. Bilbao, Getxo, Barakaldo.',
+        'Contrato de alquiler LAU en Bilbao por 120€. Entrega 48h, Ley Vivienda 2026. Válido en Bizkaia, Getxo, Barakaldo y País Vasco. Redactado por abogados, no plantilla.',
       keywords: [
         'contratar contrato alquiler Bilbao',
         'comprar contrato alquiler Bilbao',
@@ -305,8 +305,9 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'malaga',
     nombre: 'Málaga',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Málaga? 120 € · 48 h | Inmonest',
-      description: 'Contrato LAU en Málaga y Costa del Sol. 120€, 48h. Ley de Vivienda 2026.',
+      title: 'Contrato de Alquiler Málaga 120€ | LAU · Entrega 48h | Inmonest',
+      description:
+        'Contrato de alquiler LAU en Málaga por 120€. Entrega 48h, Ley Vivienda 2026. Para propietarios e inquilinos en Málaga, Costa del Sol y provincia. Sin plantillas genéricas.',
       keywords: ['contrato alquiler Málaga', 'LAU Málaga', 'alquiler piso Málaga', 'contrato arrendamiento'],
       ogTitle: 'Contrato alquiler Málaga — 120 € | Inmonest',
       ogDescription: 'Contrato de alquiler personalizado en Málaga. LAU + 2026.',

@@ -8,12 +8,12 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Calculadora de Gastos de Alquiler 2026 — Calcula el Coste Mensual Real',
-  description: 'Calculadora gratuita de gastos totales de alquiler: renta + luz + agua + gas + internet + comunidad + seguro. Descubre cuánto pagarás realmente cada mes.',
+  title: 'Calculadora Gastos de Alquiler 2026 Gratis | + Contrato LAU desde 120€',
+  description: 'Calcula gratis el coste mensual real del alquiler: renta, luz, agua, gas, internet y comunidad. ¿Vas a firmar? Contrato LAU profesional desde 120€ en 48h.',
   alternates: { canonical: `${BASE_URL}/calculadora-gastos-alquiler` },
   openGraph: {
-    title: 'Calculadora de Gastos de Alquiler Mensual — Inmonest',
-    description: 'Calcula todos los gastos mensuales de alquiler: renta, suministros, internet, comunidad. 100% gratis.',
+    title: 'Calculadora Gastos Alquiler Gratis + Contrato LAU desde 120€',
+    description: 'Calcula el coste mensual total del alquiler gratis. Contrato LAU redactado por abogados desde 120€, entrega en 48h.',
     url: `${BASE_URL}/calculadora-gastos-alquiler`,
     type: 'website',
     siteName: 'Inmonest',
@@ -220,15 +220,23 @@ export default function CalculadoraGastosAlquilerPage() {
               <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl p-8 text-center text-white">
                 <h3 className="text-2xl font-bold mb-3">¿Listo para alquilar sin sorpresas?</h3>
                 <p className="text-emerald-100 mb-5">
-                  Encuentra pisos de particulares sin comisión de agencia.<br />
-                  Contacta directamente con el propietario y ahorra tiempo.
+                  Encuentra pisos de particulares sin comisión de agencia<br />
+                  o contrata un contrato LAU profesional desde 120€.
                 </p>
-                <Link 
-                  href="/pisos?operation=rent" 
-                  className="inline-block bg-white text-emerald-600 hover:bg-emerald-50 font-bold px-8 py-3.5 rounded-full transition-colors"
-                >
-                  Explorar pisos en alquiler →
-                </Link>
+                <div className="flex flex-wrap justify-center gap-3">
+                  <Link
+                    href="/pisos?operacion=rent"
+                    className="inline-block bg-white text-emerald-600 hover:bg-emerald-50 font-bold px-8 py-3.5 rounded-full transition-colors"
+                  >
+                    Explorar pisos en alquiler →
+                  </Link>
+                  <Link
+                    href="/gestoria/solicitar/contrato-alquiler"
+                    className="inline-block border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-3.5 rounded-full transition-colors"
+                  >
+                    Contrato LAU desde 120€ →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

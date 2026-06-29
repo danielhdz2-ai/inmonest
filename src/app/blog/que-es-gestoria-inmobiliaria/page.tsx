@@ -7,8 +7,8 @@ import Footer from '@/components/Footer'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: '¿Qué es una Gestoría Inmobiliaria? Funciones, Servicios y Precios [2026]',
-  description: 'Descubre qué hace una gestoría inmobiliaria, qué servicios ofrece, cuánto cuesta y cuándo necesitas una. Guía completa con ejemplos y comparativas de precios.',
+  title: 'Gestoría Inmobiliaria: Qué Es, Servicios y Precios desde 61€ [2026]',
+  description: '¿Qué es una gestoría inmobiliaria y para qué sirve? Contratos de arras, alquiler LAU y compraventa desde 61€. Comparativa con notaría y agencias. Guía completa 2026.',
   keywords: 'que es una gestoria inmobiliaria, gestoria inmobiliaria funciones, servicios gestoria inmobiliaria, cuanto cuesta gestoria inmobiliaria, para que sirve gestoria inmobiliaria',
   alternates: {
     canonical: `${BASE_URL}/blog/que-es-gestoria-inmobiliaria`,

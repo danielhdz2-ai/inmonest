@@ -18,10 +18,10 @@ import {
 const BASE_URL = 'https://inmonest.com'
 
 const META_DESCRIPTION =
-  'Gestoría inmobiliaria para particulares en Valencia. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones. Abogados especializados.'
+  'Gestoría inmobiliaria en Valencia para particulares. Contratos LAU desde 120€, arras 145€. Sin comisiones de agencia. Abogados expertos, entrega 48h.'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Valencia para Particulares | Contratos y Asesoramiento',
+  title: 'Gestoría Inmobiliaria Valencia | Contratos desde 61€ · Entrega 48h',
   description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria valencia, gestoría para particulares valencia, comprar piso valencia sin agencia, vender piso valencia, contrato arras valencia, asesoría compra vivienda valencia',
   alternates: { canonical: `${BASE_URL}/gestoria/valencia` },

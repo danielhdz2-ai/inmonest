@@ -7,14 +7,14 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: '¿Cuánto Cuesta un Contrato de Alquiler en 2026? Precios Reales y Comparativa',
-  description: 'Precios reales de contratos de alquiler LAU: notario (300-500€), gestoría online (120€), plantillas (gratis pero inseguras). Comparativa completa y qué incluye cada opción.',
+  title: '¿Cuánto Cuesta un Contrato de Alquiler? 120€ Online vs 500€ Notario [2026]',
+  description: 'Contrato de alquiler LAU desde 120€ en 48h. Notario 300-500€, plantilla gratis con riesgos. Comparativa real de precios y qué incluye cada opción. Contrata online.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/cuanto-cuesta-contrato-alquiler`,
   },
   openGraph: {
-    title: 'Precio Real Contrato Alquiler 2026: Notario vs Gestoría vs Plantilla',
-    description: 'Comparativa de precios: notario 300-500€, gestoría online 120€, plantilla gratis. Descubre qué opción te conviene según tu situación.',
+    title: 'Contrato de Alquiler desde 120€ | Notario vs Gestoría Online 2026',
+    description: '¿Cuánto cuesta un contrato de alquiler? Gestoría online 120€ en 48h, notario 300-500€. Comparativa con precios reales y contratación directa.',
     url: `${BASE_URL}/gestoria/cuanto-cuesta-contrato-alquiler`,
     type: 'article',
   },
@@ -563,6 +563,25 @@ export default function CuantoCuestaContratoAlquilerPage() {
               </div>
             </div>
           </div>
+
+          {/* Enlaces relacionados */}
+          <section className="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-200">
+            <h2 className="text-lg font-bold text-gray-900 mb-4">También te puede interesar</h2>
+            <div className="grid sm:grid-cols-2 gap-3 text-sm">
+              <Link href="/calculadora-gastos-alquiler" className="text-[#c9962a] hover:underline font-medium">
+                → Calculadora de gastos de alquiler (gratis)
+              </Link>
+              <Link href="/bilbao/contrato-alquiler" className="text-[#c9962a] hover:underline font-medium">
+                → Contrato de alquiler en Bilbao (120€)
+              </Link>
+              <Link href="/malaga/contrato-alquiler" className="text-[#c9962a] hover:underline font-medium">
+                → Contrato de alquiler en Málaga (120€)
+              </Link>
+              <Link href="/blog/que-es-gestoria-inmobiliaria" className="text-[#c9962a] hover:underline font-medium">
+                → ¿Qué es una gestoría inmobiliaria?
+              </Link>
+            </div>
+          </section>
 
           {/* Breadcrumbs */}
           <nav className="mt-12 text-sm text-gray-500" aria-label="Breadcrumb">

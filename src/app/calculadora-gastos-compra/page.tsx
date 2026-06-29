@@ -8,12 +8,12 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Calculadora de Gastos de Compra de Vivienda 2026 — Calcula ITP, Notaría, Registro',
-  description: 'Calculadora gratuita de gastos totales de compra: ITP/IVA por provincia, notaría, registro, gestoría y tasación. Descubre cuánto necesitas realmente para comprar tu piso.',
+  title: 'Calculadora Gastos Compra Vivienda 2026 Gratis | ITP, Notaría y Gestoría',
+  description: 'Calcula gratis cuánto cuesta comprar un piso: ITP/IVA por provincia, notaría, registro y gestoría. Due diligence y contratos de compraventa desde 61€ en Inmonest.',
   alternates: { canonical: `${BASE_URL}/calculadora-gastos-compra` },
   openGraph: {
-    title: 'Calculadora de Gastos de Compra de Vivienda 2026 — Inmonest',
-    description: 'Calcula todos los gastos de compra: ITP, notaría, registro, gestoría. 100% gratis y sin registro.',
+    title: 'Calculadora Gastos Compra Vivienda 2026 — ITP, Notaría, Registro',
+    description: 'Calcula el coste total de comprar un piso gratis. Gestoría inmobiliaria y contratos desde 61€. Sin registro.',
     url: `${BASE_URL}/calculadora-gastos-compra`,
     type: 'website',
     siteName: 'Inmonest',
@@ -204,15 +204,23 @@ export default function CalculadoraGastosCompraPage() {
               <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-8 text-center text-white">
                 <h3 className="text-2xl font-bold mb-3">¿Listo para comprar sin sorpresas?</h3>
                 <p className="text-blue-100 mb-5">
-                  Encuentra pisos vendidos por particulares sin comisión de agencia.<br />
-                  Ahorra hasta 6.000€ en intermediarios.
+                  Encuentra pisos de particulares sin comisión de agencia<br />
+                  o contrata due diligence y contratos de compraventa desde 61€.
                 </p>
-                <Link 
-                  href="/pisos?operation=sale" 
-                  className="inline-block bg-white text-blue-600 hover:bg-blue-50 font-bold px-8 py-3.5 rounded-full transition-colors"
-                >
-                  Explorar pisos en venta →
-                </Link>
+                <div className="flex flex-wrap justify-center gap-3">
+                  <Link
+                    href="/pisos?operacion=sale"
+                    className="inline-block bg-white text-blue-600 hover:bg-blue-50 font-bold px-8 py-3.5 rounded-full transition-colors"
+                  >
+                    Explorar pisos en venta →
+                  </Link>
+                  <Link
+                    href="/gestoria/due-diligence-precompra"
+                    className="inline-block border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-3.5 rounded-full transition-colors"
+                  >
+                    Due Diligence desde 350€ →
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

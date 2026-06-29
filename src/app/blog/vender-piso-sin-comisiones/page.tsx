@@ -6,11 +6,11 @@ const BASE_URL = 'https://inmonest.com'
 const FECHA_PUBLICACION = '2026-04-21'
 
 export const metadata: Metadata = {
-  title: 'Vender tu piso sin comisiones: guía completa para propietarios 2026',
+  title: 'Vender Piso Sin Comisiones (2026) | Guía Completa + Ahorra hasta 15.000€',
   description:
-    'Aprende a vender tu piso sin pagar comisiones a agencias inmobiliarias en 2026. Guía paso a paso: documentación, precio, anuncio y negociación sin intermediarios.',
+    'Cómo vender tu piso o casa sin comisiones de agencia en 2026. Guía paso a paso: precio, documentación, anuncio y contrato de arras. Publica gratis en Inmonest.',
   keywords:
-    'vender piso sin comisiones, vender piso sin agencia, vender piso particular, cómo vender un piso, guía venta piso 2026',
+    'vender piso sin comisiones, vender casa sin comisiones, vender piso sin agencia, vender piso particular, cómo vender un piso, inmobiliaria sin comisiones',
   alternates: { canonical: '/blog/vender-piso-sin-comisiones' },
   openGraph: {
     title: 'Vender tu piso sin comisiones: guía completa para propietarios 2026',
@@ -28,9 +28,9 @@ export default function VenderPisoSinComisionesPage() {
   const articleSchema = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: 'Vender tu piso sin comisiones: guía completa para propietarios 2026',
+    headline: 'Vender Piso Sin Comisiones: Guía Completa para Propietarios 2026',
     description:
-      'Aprende a vender tu piso sin pagar comisiones a agencias inmobiliarias en 2026. Guía paso a paso: documentación, precio, anuncio y negociación sin intermediarios.',
+      'Cómo vender tu piso o casa sin comisiones de agencia en 2026. Guía paso a paso: precio, documentación, anuncio y contrato de arras.',
     author: { '@type': 'Organization', name: 'Inmonest', url: BASE_URL },
     publisher: {
       '@type': 'Organization',
@@ -61,10 +61,42 @@ export default function VenderPisoSinComisionesPage() {
     ],
   })
 
+  const faqSchema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: '¿Se puede vender un piso sin comisiones de agencia?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Sí. Puedes vender tu piso entre particulares publicando en portales sin comisión como Inmonest, fijando el precio, gestionando visitas y firmando un contrato de arras con asesoría legal desde 145€.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Cuánto se ahorra vendiendo casa sin comisiones?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'En una vivienda de 250.000€, las comisiones de agencia (3-6%) suponen entre 7.500€ y 15.000€. Vender sin intermediarios permite quedarte con ese importe o repercutirlo en el precio final.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: '¿Qué documentos necesito para vender mi piso sin inmobiliaria?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Necesitas nota simple registral, certificado energético, cédula de habitabilidad, último IBI, escrituras y un contrato de arras o compraventa redactado por profesionales. Inmonest ofrece gestoría desde 61€.',
+        },
+      },
+    ],
+  })
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: articleSchema }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: breadcrumbSchema }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
 
       <main className="max-w-3xl mx-auto px-4 py-12 text-gray-800">
         {/* Breadcrumb */}
@@ -329,10 +361,10 @@ export default function VenderPisoSinComisionesPage() {
                 Publicar mi anuncio gratis
               </Link>
               <Link
-                href="/gestoria"
+                href="/gestoria/solicitar/arras-penitenciales"
                 className="bg-white hover:bg-gray-50 text-gray-800 font-semibold px-6 py-3 rounded-xl border border-gray-200 transition-colors"
               >
-                Ver servicios de gestoría
+                Contrato de arras desde 145€
               </Link>
             </div>
             <p className="mt-4 text-sm text-gray-400">

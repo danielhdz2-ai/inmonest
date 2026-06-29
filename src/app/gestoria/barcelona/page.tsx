@@ -16,10 +16,10 @@ import {
 const BASE_URL = 'https://inmonest.com'
 
 const META_DESCRIPTION =
-  'Gestoría inmobiliaria para particulares en Barcelona. Contratos adaptados a zona tensionada y normativa catalana. Desde 120€. Asesor experto asignado.'
+  'Gestoría inmobiliaria en Barcelona para particulares. Contratos LAU y arras adaptados a zona tensionada. Desde 61€, entrega 48h. Abogados expertos, sin comisiones de agencia.'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Barcelona para Particulares | Contratos y Acompañamiento Legal',
+  title: 'Gestoría Inmobiliaria Barcelona | Contratos desde 61€ · Entrega 48h',
   description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria barcelona, gestoría para particulares barcelona, comprar piso barcelona sin agencia, vender piso barcelona, contrato arras barcelona, asesoría compra vivienda barcelona',
   alternates: { canonical: `${BASE_URL}/gestoria/barcelona` },

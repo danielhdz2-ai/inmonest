@@ -8,9 +8,9 @@ import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Online | Contratos Arras, Alquiler y Compraventa',
-  description: 'Gestoría inmobiliaria especializada online. Contratos de arras, alquiler LAU, compraventa. Abogados expertos en derecho inmobiliario. Desde 61€. Servicio en toda España: Madrid, Barcelona, Valencia, Sevilla. Entrega 24-48h.',
-  keywords: 'gestoría inmobiliaria, gestoría inmobiliaria online, contrato arras penitenciales, contrato alquiler LAU, gestoría compraventa vivienda, abogado inmobiliario, contratos inmobiliarios, gestoría barcelona, gestoría madrid, gestoría valencia',
+  title: 'Gestoría Inmobiliaria Online España | Contratos desde 61€ · Entrega 48h',
+  description: 'Gestoría inmobiliaria online para particulares. Contratos de arras, alquiler LAU y compraventa redactados por abogados. Desde 61€, entrega 48h. Madrid, Barcelona, Valencia, Sevilla y toda España.',
+  keywords: 'gestoría inmobiliaria, gestoría inmobiliaria online, gestor inmobiliario, contrato arras penitenciales, contrato alquiler LAU, gestoría compraventa vivienda, abogado inmobiliario, gestoría barcelona, gestoría madrid, gestoría valencia',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
   },

@@ -6,8 +6,8 @@ import PageHeroImage from '@/components/PageHeroImage'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Due Diligence Inmobiliaria: Qué Revisar Antes de Comprar una Vivienda [2026]',
-  description: '¿Compras piso de particular a particular? Descubre qué documentación debes revisar para evitar sorpresas de 10.000€+: cargas, deudas, hipotecas, IBI, cédula de habitabilidad, ITE...',
+  title: 'Due Diligence Inmobiliaria: Qué Revisar Antes de Comprar [2026] | Desde 350€',
+  description: 'Guía de due diligence inmobiliaria: nota simple, cargas, IBI, cédula e ITE. Evita sorpresas de 10.000€ al comprar. Pack de revisión profesional desde 350€ en Inmonest.',
   keywords: 'due diligence inmobiliaria, que revisar antes de comprar piso, documentacion compra vivienda, evitar estafa compra casa, comprar piso particular, nota simple registro, cedula habitabilidad',
   alternates: {
     canonical: `${BASE_URL}/blog/due-diligence-compra-vivienda`,
