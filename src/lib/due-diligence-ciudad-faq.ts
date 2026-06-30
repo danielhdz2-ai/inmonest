@@ -1,7 +1,11 @@
 export type DueDiligenceFaqItem = { q: string; a: string }
 
-export function getDueDiligenceFaq(nombre: string, region: string): DueDiligenceFaqItem[] {
-  return [
+export function getDueDiligenceFaq(
+  nombre: string,
+  region: string,
+  prioritarias: DueDiligenceFaqItem[] = []
+): DueDiligenceFaqItem[] {
+  const base: DueDiligenceFaqItem[] = [
     {
       q: '¿Qué incluye exactamente el informe de Due Diligence?',
       a: `Recibes un informe escrito con el resultado de la revisión documental: titularidad registral, cargas y gravámenes, deudas de comunidad, IBI y suministros, cédula de habitabilidad, certificado energético, ITE/IEE si aplica y licencias de obra. Tu gestor te explica cada hallazgo y qué implica antes de ir a notaría en ${nombre}.`,
@@ -35,4 +39,6 @@ export function getDueDiligenceFaq(nombre: string, region: string): DueDiligence
       a: 'Con la referencia catastral, dirección del inmueble y copia del contrato de arras (si ya lo tienes) podemos iniciar. Tu gestor solicita al vendedor la nota simple, certificados de comunidad, IBI, cédula y el resto de documentación oficial.',
     },
   ]
+
+  return prioritarias.length > 0 ? [...prioritarias, ...base] : base
 }

@@ -78,6 +78,12 @@ const ENLACES_GESTORIA: EnlaceSeo[] = [
     badge: 'Ciudad',
   },
   {
+    href: '/gestoria/due-diligence-precompra/barcelona',
+    title: 'Revisar documentación compra piso Barcelona',
+    description: 'Gestor asignado revisa cargas, cédula e ITE. 350€.',
+    badge: 'Ciudad',
+  },
+  {
     href: '/gestoria/due-diligence-precompra/valencia',
     title: 'Due diligence Valencia',
     description: 'Revisión legal precompra en la Comunidad Valenciana.',

@@ -76,6 +76,8 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/sevilla`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/malaga`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/bilbao`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
+  { url: `${BASE_URL}/gestoria/due-diligence-precompra/zaragoza`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
+  { url: `${BASE_URL}/gestoria/due-diligence-precompra/coruna`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   // Hubs gestoría por ciudad (malaga/zaragoza redirigen → landings en ALQUILER_PAGES)
   { url: `${BASE_URL}/gestoria/barcelona`,                         lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/madrid`,                            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import type { DueDiligenceFaqItem } from './due-diligence-ciudad-faq'
 import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 
 const BASE_URL = 'https://inmonest.com'
@@ -31,6 +32,12 @@ export type DueDiligenceCiudadConfig = {
     ogTitle: string
     ogDescription: string
   }
+  hero?: {
+    h1: string
+    lead: string
+    badge?: string
+  }
+  faqPrioritarias?: DueDiligenceFaqItem[]
 }
 
 export const DUE_DILIGENCE_CIUDADES_LIST = [
@@ -40,6 +47,8 @@ export const DUE_DILIGENCE_CIUDADES_LIST = [
   { slug: 'sevilla', nombre: 'Sevilla' },
   { slug: 'malaga', nombre: 'Málaga' },
   { slug: 'bilbao', nombre: 'Bilbao' },
+  { slug: 'zaragoza', nombre: 'Zaragoza' },
+  { slug: 'coruna', nombre: 'A Coruña' },
 ] as const
 
 export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = {
@@ -110,15 +119,35 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       "L'Hospitalet", 'Badalona', 'Sabadell',
     ],
     meta: {
-      title: 'Due Diligence Pre-Compra Barcelona | Comprar Piso de Particular con Gestor',
+      title: 'Revisar Documentación Compra Piso Barcelona | Gestor 350€',
       description:
-        '¿Compras piso en Barcelona de particular a particular? Gestor asignado revisa documentación hasta escritura: cargas, cédula habitabilidad, ITE. Evita sorpresas de 10.000€+. 350€.',
+        'Revisión documental antes de comprar piso en Barcelona. Gestor asignado verifica nota simple, cargas, cédula Generalitat, ITE y deudas de comunidad. 350€ IVA incluido. Sin comisión de agencia.',
       keywords:
-        'comprar piso particular barcelona, due diligence compra vivienda barcelona, revisar documentacion compra piso barcelona, gestor compra vivienda barcelona, comprar de particular a particular barcelona, evitar estafa compra piso barcelona, verificar cargas piso barcelona, comprar piso sin agencia barcelona, cédula habitabilidad compra barcelona',
-      ogTitle: 'Due Diligence Pre-Compra Barcelona — Gestor asignado revisa todo',
+        'revisar documentacion compra piso barcelona, revision compra de piso barcelona, que revisar antes de comprar piso barcelona, comprar piso particular barcelona, due diligence compra vivienda barcelona, gestor compra vivienda barcelona, comprar piso sin agencia barcelona, verificar cargas piso barcelona, cédula habitabilidad compra barcelona',
+      ogTitle: 'Revisar documentación compra piso Barcelona — Gestor 350€',
       ogDescription:
-        'Compras de particular a particular en Barcelona. Gestor experto revisa toda la documentación hasta escritura. 350€. Sin comisiones de agencia.',
+        'Revisión documental de compra entre particulares en Barcelona. Gestor experto hasta escritura. 350€. Sin comisiones de agencia.',
     },
+    hero: {
+      badge: 'Revisión documental · Compra entre particulares',
+      h1: 'Revisión documental antes de comprar piso en Barcelona',
+      lead:
+        '¿Compras de particular a particular? Un gestor asignado revisa nota simple, cargas registrales, cédula de la Generalitat, ITE y deudas de comunidad antes de la escritura. Evita sorpresas de 10.000€+ por 350€ fijos.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Qué revisar antes de comprar un piso en Barcelona?',
+        a: 'Nota simple registral, certificado de deudas de la comunidad, IBI al día, cédula de habitabilidad de la Generalitat, certificado energético, ITE si el edificio lo exige y licencias de obra si hubo reformas. Sin esta revisión puedes heredar cargas o bloquear la operación en notaría.',
+      },
+      {
+        q: '¿Cuánto cuesta revisar la documentación de una compra en Barcelona?',
+        a: '350€ IVA incluido por el pack Due Diligence Pre-Compra: gestor asignado, informe escrito y acompañamiento hasta escritura. Frente a 10.500–17.500€ de comisión de agencia en un piso medio de Barcelona.',
+      },
+      {
+        q: '¿Puedo comprar piso de particular en Barcelona sin agencia?',
+        a: 'Sí, pero necesitas revisión jurídica profesional. Inmonest no es agencia: somos gestoría. Revisamos la operación por ti sin cobrar porcentaje sobre el precio del piso.',
+      },
+    ],
   },
 
   valencia: {
@@ -275,6 +304,116 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       ogDescription:
         'Compras de particular a particular en Bilbao. Gestor experto en derecho inmobiliario revisa toda la documentación hasta escritura. 350€. Sin comisiones de agencia.',
     },
+  },
+
+  zaragoza: {
+    slug: 'zaragoza',
+    nombre: 'Zaragoza',
+    region: 'Aragón',
+    testimoniosLanding: 'due-diligence-zaragoza',
+    heroImage: '/gestoria4.jpg',
+    precioEjemploPiso: 185_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Aragón',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña a compradores que adquieren vivienda de particular en Zaragoza y provincia. Revisa nota simple, cargas registrales, deudas de comunidad y documentación técnica exigida en Aragón antes de la firma en notaría.',
+      especialidades: ['Compras sin agencia', 'Normativa aragonesa', 'Informe pre-escritura'],
+    },
+    docTecnicaTitulo: 'Documentación Técnica y Gobierno de Aragón',
+    docTecnicaItems: [
+      'Cédula de habitabilidad o certificado equivalente',
+      'Certificado energético actualizado',
+      'ITE / IEE en edificios de más de 50 años',
+      'Licencias de obra y conformidad urbanística',
+    ],
+    zonasIntro: 'Servicio en Zaragoza capital, área metropolitana y principales municipios de la provincia.',
+    zonas: [
+      'Centro', 'Delicias', 'Las Fuentes', 'San José', 'Actur',
+      'Montecanal', 'Valdespartera', 'La Almozara', 'Torre Ramona',
+      'Utebo', 'Cuarte de Huerva', 'La Muela',
+    ],
+    meta: {
+      title: 'Revisar Documentación Compra Piso Zaragoza | Gestor 350€',
+      description:
+        'Revisión documental antes de comprar piso en Zaragoza. Gestor asignado verifica nota simple, cargas, deudas de comunidad e ITE. 350€ IVA incluido. Compra entre particulares sin agencia.',
+      keywords:
+        'revisar documentacion compra piso zaragoza, revision compra de piso zaragoza, comprar piso particular zaragoza, due diligence compra vivienda zaragoza, gestor compra vivienda zaragoza, comprar piso sin agencia zaragoza, que revisar antes de comprar piso zaragoza, verificar cargas piso zaragoza',
+      ogTitle: 'Revisar documentación compra piso Zaragoza — Gestor 350€',
+      ogDescription:
+        'Revisión documental de compra entre particulares en Zaragoza. Gestor experto hasta escritura. 350€. Sin comisiones de agencia.',
+    },
+    hero: {
+      badge: 'Revisión documental · Aragón',
+      h1: 'Revisión documental antes de comprar piso en Zaragoza',
+      lead:
+        'Compras de particular a particular en Zaragoza? Un gestor revisa nota simple, cargas, deudas de comunidad, IBI y documentación técnica antes de escriturar. Tarifa plana 350€, sin comisión sobre el precio del piso.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Qué revisar antes de comprar un piso en Zaragoza?',
+        a: 'Nota simple registral, certificado de deudas de la comunidad, IBI al día, cédula de habitabilidad, certificado energético, ITE si aplica y licencias de reformas. En operaciones entre particulares nadie lo hace por ti si no contratas gestoría.',
+      },
+      {
+        q: '¿Cuánto cuesta la revisión documental de una compra en Zaragoza?',
+        a: '350€ IVA incluido con gestor asignado, informe completo y acompañamiento hasta escritura. Mucho menos que una comisión de agencia del 3-5% sobre el precio del piso.',
+      },
+    ],
+  },
+
+  coruna: {
+    slug: 'coruna',
+    nombre: 'A Coruña',
+    region: 'Galicia',
+    testimoniosLanding: 'due-diligence-coruna',
+    heroImage: '/gestoria2.jpg',
+    precioEjemploPiso: 210_000,
+    gestor: {
+      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      rol: 'Gestora inmobiliaria · Compras en Galicia',
+      foto: GESTOR_CARMEN_VIDAL.foto,
+      bio: 'Especializada en compras entre particulares en A Coruña, área metropolitana y costa gallega. Revisa cargas registrales, deudas de comunidad, documentación técnica y normativa autonómica antes de la escritura.',
+      especialidades: ['Compras sin agencia', 'Normativa gallega', 'Acompañamiento hasta notaría'],
+    },
+    docTecnicaTitulo: 'Documentación Técnica y Xunta de Galicia',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético actualizado',
+      'ITE / IEE en edificios de más de 50 años',
+      'Licencias de obra y legalización de reformas',
+    ],
+    zonasIntro: 'Cobertura en A Coruña capital, Oleiros, Arteixo, Ferrol y área metropolitana.',
+    zonas: [
+      'Ciudad Vieja', 'Ensanche', 'Monte Alto', 'Los Rosales', 'Matadero',
+      'Elviña', 'Mesoiro', 'Cuatro Caminos', 'Oleiros', 'Arteixo',
+      'Cambre', 'Ferrol',
+    ],
+    meta: {
+      title: 'Revisar Documentación Compra Piso A Coruña | Gestor 350€',
+      description:
+        'Revisión documental antes de comprar piso en A Coruña. Gestor asignado verifica nota simple, cargas, deudas de comunidad e ITE. 350€ IVA incluido. Compra entre particulares sin agencia.',
+      keywords:
+        'revisar documentacion compra piso coruña, revision compra de piso a coruña, comprar piso particular coruña, due diligence compra vivienda galicia, gestor compra vivienda coruña, comprar piso sin agencia coruña, que revisar antes de comprar piso coruña, verificar cargas piso a coruña',
+      ogTitle: 'Revisar documentación compra piso A Coruña — Gestor 350€',
+      ogDescription:
+        'Revisión documental de compra entre particulares en A Coruña. Gestora experta hasta escritura. 350€. Sin comisiones de agencia.',
+    },
+    hero: {
+      badge: 'Revisión documental · Galicia',
+      h1: 'Revisión documental antes de comprar piso en A Coruña',
+      lead:
+        '¿Compras de particular a particular en A Coruña? Una gestora asignada revisa nota simple, cargas, deudas de comunidad, IBI y documentación técnica gallega antes de ir a notaría. 350€ fijos, sin comisión de agencia.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Qué revisar antes de comprar un piso en A Coruña?',
+        a: 'Nota simple registral, certificado de deudas de la comunidad, IBI al día, cédula de habitabilidad, certificado energético, ITE si el edificio lo requiere y licencias de obra. En Galicia, la documentación incompleta puede paralizar la compraventa en notaría.',
+      },
+      {
+        q: '¿Cuánto cuesta revisar la documentación de una compra en A Coruña?',
+        a: '350€ IVA incluido por el pack Due Diligence Pre-Compra con gestora asignada, informe escrito y seguimiento hasta escritura.',
+      },
+    ],
   },
 }
 

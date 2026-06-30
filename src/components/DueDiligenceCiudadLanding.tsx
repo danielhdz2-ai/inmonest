@@ -67,7 +67,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - DUE_DILIGENCE_PRECIO
   const waText = encodeURIComponent(`Hola, necesito Due Diligence pre-compra en ${nombre}`)
-  const faq = getDueDiligenceFaq(nombre, region)
+  const faq = getDueDiligenceFaq(nombre, region, config.faqPrioritarias)
 
   const schemaJson = {
     '@context': 'https://schema.org',
@@ -149,15 +149,23 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#a87a20] bg-[#fdf8ee] border border-[#e8d48a] px-3 py-1 rounded-full mb-4">
-                Compra entre particulares · {region}
+                {config.hero?.badge ?? `Compra entre particulares · ${region}`}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                ¿Compras piso de particular en <span className="text-[#c9962a]">{nombre}</span>?
+                {config.hero?.h1 ?? (
+                  <>
+                    ¿Compras piso de particular en <span className="text-[#c9962a]">{nombre}</span>?
+                  </>
+                )}
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Un <strong>gestor inmobiliario asignado</strong> revisa toda la documentación de la vivienda
-                antes de la escritura: cargas registrales, deudas de comunidad, hipotecas, cédula de habitabilidad
-                e informes técnicos. <strong className="text-gray-900">Evita riesgos que pueden costarte miles de euros.</strong>
+                {config.hero?.lead ?? (
+                  <>
+                    Un <strong>gestor inmobiliario asignado</strong> revisa toda la documentación de la vivienda
+                    antes de la escritura: cargas registrales, deudas de comunidad, hipotecas, cédula de habitabilidad
+                    e informes técnicos. <strong className="text-gray-900">Evita riesgos que pueden costarte miles de euros.</strong>
+                  </>
+                )}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
