@@ -36,20 +36,20 @@ export default function LlamaGestorBanner({
 
   if (variant === 'strip') {
     return (
-      <section className="py-6 px-4 bg-[#1a0d00] border-y-4 border-[#f4c94a]">
+      <section className="py-6 px-4 bg-gradient-to-r from-[#c9962a] to-[#a87a20] shadow-md">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4 text-white">
-            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#c9962a] animate-pulse shrink-0">
-              <PhoneIcon className="w-7 h-7" />
+            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/25 backdrop-blur animate-pulse shrink-0">
+              <PhoneIcon className="w-7 h-7 text-white" />
             </span>
             <div>
               <p className="font-bold text-lg md:text-xl">{title ?? '¿Dudas? Habla con un gestor ahora'}</p>
-              <p className="text-white/70 text-sm">{subtitle ?? 'Respuesta en horario laboral · Asignación en 24h'}</p>
+              <p className="text-white/85 text-sm">{subtitle ?? 'Respuesta en horario laboral · Asignación en 24h'}</p>
             </div>
           </div>
           <a
             href={PHONE_HREF}
-            className="inline-flex items-center gap-3 bg-[#f4c94a] text-[#1a0d00] px-8 py-4 rounded-xl font-black text-2xl hover:bg-white transition shadow-2xl shrink-0"
+            className="inline-flex items-center gap-3 bg-white text-[#a87a20] px-8 py-4 rounded-xl font-black text-2xl hover:bg-[#fdf8ee] transition shadow-2xl shrink-0"
           >
             <PhoneIcon className="w-7 h-7" />
             {PHONE_DISPLAY}
