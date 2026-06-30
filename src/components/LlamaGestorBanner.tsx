@@ -11,6 +11,9 @@ const PHONE_DISPLAY = '745 022 862'
 const PHONE_HREF = 'tel:+34745022862'
 const WA_NUMBER = '34745022862'
 
+const PHONE_BTN =
+  'inline-flex items-center justify-center gap-2 bg-green-600 text-white hover:bg-green-700 transition shadow-lg'
+
 function PhoneIcon({ className }: { className?: string }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 20 20" aria-hidden>
@@ -49,7 +52,7 @@ export default function LlamaGestorBanner({
           </div>
           <a
             href={PHONE_HREF}
-            className="inline-flex items-center gap-3 bg-white text-[#a87a20] px-8 py-4 rounded-xl font-black text-2xl hover:bg-[#fdf8ee] transition shadow-2xl shrink-0"
+            className={`${PHONE_BTN} gap-3 px-8 py-4 rounded-xl font-black text-2xl shadow-2xl shrink-0`}
           >
             <PhoneIcon className="w-7 h-7" />
             {PHONE_DISPLAY}
@@ -61,31 +64,31 @@ export default function LlamaGestorBanner({
 
   if (variant === 'dark') {
     return (
-      <section className="py-14 px-4 bg-gradient-to-br from-[#1a0d00] via-[#2e1900] to-[#1a0d00]">
+      <section className="py-14 px-4 bg-gradient-to-br from-green-600 via-green-500 to-emerald-600">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-[#c9962a]/20 text-[#f4c94a] px-4 py-2 rounded-full text-sm font-bold mb-6 border border-[#c9962a]/40">
+          <div className="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 border border-white/30">
             <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-white" />
             </span>
             Gestores disponibles ahora
           </div>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">{title ?? defaultTitle}</h2>
-          <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">{subtitle ?? defaultSubtitle}</p>
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">{subtitle ?? defaultSubtitle}</p>
           <a
             href={PHONE_HREF}
-            className="inline-flex items-center gap-4 bg-[#f4c94a] text-[#1a0d00] px-10 py-6 rounded-2xl font-black text-3xl md:text-4xl hover:bg-white transition shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
+            className={`${PHONE_BTN} gap-4 px-10 py-6 rounded-2xl font-black text-3xl md:text-4xl shadow-2xl hover:scale-[1.02] active:scale-[0.98]`}
           >
             <PhoneIcon className="w-10 h-10" />
             {PHONE_DISPLAY}
           </a>
-          <p className="mt-4 text-white/50 text-sm">L-V 9:00–19:00 · S 10:00–14:00</p>
+          <p className="mt-4 text-white/80 text-sm">L-V 9:00–19:00 · S 10:00–14:00</p>
           <div className="mt-6">
             <a
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[#f4c94a] font-semibold hover:underline"
+              className="inline-flex items-center gap-2 text-white font-semibold hover:underline"
             >
               O escríbenos por WhatsApp →
             </a>
@@ -109,7 +112,7 @@ export default function LlamaGestorBanner({
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={PHONE_HREF}
-              className="inline-flex items-center justify-center gap-3 bg-[#1a0d00] text-[#f4c94a] px-8 py-5 rounded-xl font-black text-2xl md:text-3xl hover:bg-[#2e1900] transition shadow-xl flex-1 sm:flex-none"
+              className={`${PHONE_BTN} gap-3 px-8 py-5 rounded-xl font-black text-2xl md:text-3xl shadow-xl flex-1 sm:flex-none`}
             >
               <PhoneIcon className="w-8 h-8" />
               {PHONE_DISPLAY}

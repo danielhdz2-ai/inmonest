@@ -95,7 +95,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
                 </Link>
                 <a
                   href={`tel:${PHONE}`}
-                  className="inline-flex justify-center items-center gap-2 px-8 py-4 rounded-lg bg-[#1a0d00] text-[#f4c94a] font-black text-xl hover:bg-[#2e1900] transition-colors shadow-lg"
+                  className="inline-flex justify-center items-center gap-2 px-8 py-4 rounded-lg bg-green-600 text-white font-black text-xl hover:bg-green-700 transition-colors shadow-lg"
                 >
                   📞 745 022 862
                 </a>
@@ -317,7 +317,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
             <p className="text-gray-700 mb-4">{gestor.bio}</p>
             <a
               href={`tel:${PHONE}`}
-              className="inline-flex items-center gap-2 bg-[#1a0d00] text-[#f4c94a] px-6 py-3 rounded-lg font-bold text-lg hover:bg-[#2e1900] transition"
+              className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-bold text-lg hover:bg-green-700 transition"
             >
               📞 Llamar a {gestor.nombre.split(' ')[0]} — 745 022 862
             </a>
@@ -371,22 +371,22 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
 
       <TestimoniosSection landing={config.testimoniosLanding} layout="stack" hideRating />
 
-      <section className="py-16 px-4 bg-gradient-to-br from-[#1a0d00] to-[#2e1900] text-white">
+      <section className="py-16 px-4 bg-gradient-to-br from-green-600 to-emerald-600 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Vende en {nombre} con total seguridad</h2>
-          <p className="text-white/80 mb-8">
+          <p className="text-white/90 mb-8">
             {VENTA_COMPLETA_PRECIO}€ fijos · Gestor asignado · Sin comisión de agencia · Respuesta en 24h
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href={SOLICITAR_URL}
-              className="px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold text-lg hover:bg-[#f4c94a] hover:text-[#1a0d00] transition-colors"
+              className="px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold text-lg hover:bg-[#f4c94a] transition-colors"
             >
               Contratar online — {VENTA_COMPLETA_PRECIO}€
             </Link>
             <a
               href={`tel:${PHONE}`}
-              className="px-8 py-4 rounded-lg bg-[#f4c94a] text-[#1a0d00] font-black text-xl hover:bg-white transition-colors"
+              className="px-8 py-4 rounded-lg bg-green-700 text-white font-black text-xl hover:bg-green-800 transition-colors shadow-lg"
             >
               📞 745 022 862
             </a>
