@@ -3,7 +3,7 @@ import type { Listing } from '@/types/listings'
 
 type ListingSeoFields = Pick<
   Listing,
-  'title' | 'bedrooms' | 'city' | 'price_eur' | 'operation' | 'area_m2'
+  'title' | 'description' | 'bedrooms' | 'city' | 'price_eur' | 'operation' | 'area_m2'
 >
 
 function formatListingPrice(price: number, operation: Listing['operation']): string {

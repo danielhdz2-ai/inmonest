@@ -91,6 +91,7 @@ export default function Footer() {
           <Link href="/gestoria/ciudades" className="text-xs text-white/45 hover:text-[#f4c94a] transition-colors">
             Todas las ciudades →
           </Link>
+        </div>
       </div>
 
       {/* ── HUB SEO: Contratos e información por ciudad ─────────── */}
