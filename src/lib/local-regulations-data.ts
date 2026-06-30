@@ -102,6 +102,25 @@ const REGULATIONS_BY_REGION: Record<string, LocalRegulationBlock[]> = {
       ],
     },
   ],
+  'Castilla y León': [
+    {
+      titulo: 'Documentación para vender en Castilla y León',
+      items: [
+        'Cédula de habitabilidad vigente',
+        'Certificado energético actualizado',
+        'Nota simple registral sin cargas ocultas',
+        'Certificado de deudas de la comunidad',
+      ],
+    },
+    {
+      titulo: 'Particularidades en Salamanca y Valladolid',
+      items: [
+        'Plusvalía municipal (IIVTNU) a cargo del vendedor',
+        'Verificar estado de conservación en edificios históricos del centro',
+        'IBI y suministros al corriente antes de escritura',
+      ],
+    },
+  ],
   Galicia: [
     {
       titulo: 'Documentación en Galicia',

@@ -3,7 +3,7 @@ import { getLocalRegulations } from '@/lib/local-regulations-data'
 type LocalRegulationsBlockProps = {
   ciudad: string
   region: string
-  servicio?: 'compra' | 'due-diligence' | 'arras'
+  servicio?: 'compra' | 'due-diligence' | 'arras' | 'venta'
 }
 
 export default function LocalRegulationsBlock({
@@ -17,7 +17,9 @@ export default function LocalRegulationsBlock({
       ? 'due diligence'
       : servicio === 'arras'
         ? 'contrato de arras'
-        : 'compra de vivienda'
+        : servicio === 'venta'
+          ? 'venta de vivienda'
+          : 'compra de vivienda'
 
   return (
     <section className="py-14 px-4 bg-white border-t border-gray-100">

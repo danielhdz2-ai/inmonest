@@ -1,0 +1,406 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import Navbar from '@/components/NavbarServer'
+import CiudadHubFaq from '@/components/CiudadHubFaq'
+import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
+import JsonLd from '@/components/JsonLd'
+import LlamaGestorBanner from '@/components/LlamaGestorBanner'
+import LocalRegulationsBlock from '@/components/LocalRegulationsBlock'
+import TestimoniosSection from '@/components/TestimoniosSection'
+import WhatsAppButton from '@/components/WhatsAppButton'
+import type { VentaCompletaCiudadConfig } from '@/lib/venta-completa-ciudad-data'
+import {
+  VENTA_COMPLETA_CIUDADES_LIST,
+  VENTA_COMPLETA_PRECIO,
+  comisionAgenciaMax,
+  comisionAgenciaMin,
+} from '@/lib/venta-completa-ciudad-data'
+import { getVentaCompletaFaq } from '@/lib/venta-completa-ciudad-faq'
+import {
+  VENTA_COMPLETA_BLOQUES_SERVICIO,
+  VENTA_COMPLETA_COMPARATIVA,
+  VENTA_COMPLETA_DOCUMENTOS_CHECKLIST,
+  VENTA_COMPLETA_PASOS_PROCESO,
+} from '@/lib/venta-completa-servicio-content'
+import { buildFaqSchema, buildServiceOfferSchema } from '@/lib/gestoria-ciudad-schema'
+import {
+  buildVentaCompletaBreadcrumbSchema,
+  buildVentaCompletaServiceSchema,
+} from '@/lib/venta-completa-ciudad-schema'
+
+const SOLICITAR_URL = '/gestoria/solicitar/venta-completa-reserva-escritura'
+const PHONE = '+34745022862'
+
+type VentaCompletaCiudadLandingProps = {
+  config: VentaCompletaCiudadConfig
+}
+
+export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiudadLandingProps) {
+  const { nombre, slug, region, gestor, precioEjemploPiso, ventasAcompanadas } = config
+  const agenciaMin = comisionAgenciaMin(precioEjemploPiso)
+  const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
+  const ahorroMin = agenciaMin - VENTA_COMPLETA_PRECIO
+  const faq = getVentaCompletaFaq(nombre, region, precioEjemploPiso, config.faqPrioritarias)
+  const waText = encodeURIComponent(`Hola, quiero vender mi piso en ${nombre} a un particular y necesito gestor`)
+
+  return (
+    <>
+      <JsonLd
+        schema={[
+          buildVentaCompletaServiceSchema(nombre, slug),
+          buildVentaCompletaBreadcrumbSchema(nombre, slug),
+          buildServiceOfferSchema('Venta Completa hasta Escritura', nombre, VENTA_COMPLETA_PRECIO),
+          buildFaqSchema(faq),
+        ]}
+      />
+      <Navbar />
+      <WhatsAppButton />
+
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-amber-50 via-white to-orange-50 py-16 px-4 border-b border-gray-200">
+        <div className="max-w-6xl mx-auto">
+          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6 flex-wrap">
+            <Link href="/" className="hover:text-[#c9962a]">Inicio</Link>
+            <span>/</span>
+            <Link href="/gestoria" className="hover:text-[#c9962a]">Gestoría</Link>
+            <span>/</span>
+            <Link href="/gestoria/venta-completa-reserva-escritura" className="hover:text-[#c9962a]">Venta Completa</Link>
+            <span>/</span>
+            <span className="text-gray-900 font-medium">{nombre}</span>
+          </nav>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#a87a20] bg-[#fdf8ee] border border-[#e8d48a] px-3 py-1 rounded-full mb-4">
+                Vendedor particular · {region}
+              </span>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                {config.hero.h1}
+              </h1>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">{config.hero.lead}</p>
+
+              <div className="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-6 rounded-r-lg">
+                <p className="text-sm text-emerald-900">
+                  <strong>✓ Ya tienes comprador particular:</strong> perfecto, no buscamos comprador ni cobramos comisión.
+                  Nos encargamos de contratos, documentación y notaría hasta que firmes la escritura.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 mb-4">
+                <Link
+                  href={SOLICITAR_URL}
+                  className="inline-flex justify-center px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold text-lg hover:bg-[#a87a20] transition-colors shadow-lg"
+                >
+                  Contratar — {VENTA_COMPLETA_PRECIO}€
+                </Link>
+                <a
+                  href={`tel:${PHONE}`}
+                  className="inline-flex justify-center items-center gap-2 px-8 py-4 rounded-lg bg-[#1a0d00] text-[#f4c94a] font-black text-xl hover:bg-[#2e1900] transition-colors shadow-lg"
+                >
+                  📞 745 022 862
+                </a>
+              </div>
+              <p className="text-sm text-gray-500">
+                Gestor asignado en 24h · IVA incluido · Sin comisión sobre el precio de venta
+              </p>
+            </div>
+
+            <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden shadow-xl">
+              <Image
+                src={config.heroImage}
+                alt={`Venta piso particular ${nombre}`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur px-5 py-3 rounded-xl shadow-lg border border-[#e8d48a]">
+                <div className="font-black text-2xl text-gray-900">{ventasAcompanadas}</div>
+                <div className="text-sm text-gray-600">ventas acompañadas en {nombre}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <LlamaGestorBanner
+        variant="strip"
+        ciudad={nombre}
+        whatsappMessage={`Hola, quiero vender mi piso en ${nombre} a particular`}
+        title={`Llama a tu gestor en ${nombre} — respuesta hoy`}
+      />
+
+      {/* Para quién es */}
+      <section className="py-14 px-4 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10">
+            Este servicio es para ti si…
+          </h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              { icon: '🤝', titulo: 'Ya tienes comprador', desc: 'Has llegado a un acuerdo de precio con un particular, sin agencia.' },
+              { icon: '📋', titulo: 'Necesitas contratos', desc: 'Quieres reserva y arras redactados por profesionales, no plantillas de internet.' },
+              { icon: '📁', titulo: 'Te falta documentación', desc: 'No sabes qué papeles necesita la notaría ni cómo conseguirlos.' },
+              { icon: '🏛️', titulo: 'Quieres cerrar sin sustos', desc: 'Buscas coordinación con notaría y alguien que responda el teléfono.' },
+            ].map((item) => (
+              <div key={item.titulo} className="bg-amber-50 border border-amber-100 rounded-xl p-5 text-center">
+                <div className="text-3xl mb-3">{item.icon}</div>
+                <h3 className="font-bold text-gray-900 mb-2">{item.titulo}</h3>
+                <p className="text-sm text-gray-600">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Servicio detallado — 6 bloques */}
+      <section className="py-16 px-4 bg-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-3">
+            Qué hace tu gestor — al detalle
+          </h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+            Todo lo incluido en los {VENTA_COMPLETA_PRECIO}€: desde la primera llamada hasta el día que firmas en notaría.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {VENTA_COMPLETA_BLOQUES_SERVICIO.map((bloque) => (
+              <div key={bloque.numero} className="bg-white rounded-xl p-6 shadow-sm border-t-4 border-[#c9962a]">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="bg-[#c9962a]/20 text-[#a87a20] w-10 h-10 rounded-full flex items-center justify-center font-black">
+                    {bloque.numero}
+                  </span>
+                  <h3 className="font-bold text-gray-900 text-lg">{bloque.titulo}</h3>
+                </div>
+                <ul className="space-y-2">
+                  {bloque.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
+                      <span className="text-[#c9962a] mt-0.5 shrink-0">✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <LlamaGestorBanner
+        variant="full"
+        ciudad={nombre}
+        gestorNombre={gestor.nombre}
+        whatsappMessage={`Hola, quiero vender mi piso en ${nombre} y hablar con un gestor`}
+        title={`¿Prefieres hablar antes de contratar? Llama ahora`}
+        subtitle={`Te explicamos qué documentación necesitas en ${nombre} y cuánto tardará tu venta.`}
+      />
+
+      {/* Checklist documentos */}
+      <section className="py-14 px-4 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-3">
+            Documentación que preparamos para notaría
+          </h2>
+          <p className="text-center text-gray-600 mb-8">
+            Tu gestor te indica cómo conseguir cada documento y verifica que esté correcto antes de enviarlo.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-3">
+            {VENTA_COMPLETA_DOCUMENTOS_CHECKLIST.map((doc) => (
+              <div key={doc} className="flex items-start gap-3 bg-slate-50 border border-gray-200 rounded-lg p-4">
+                <span className="text-[#c9962a] font-bold shrink-0">✓</span>
+                <span className="text-sm text-gray-800">{doc}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Proceso 6 pasos */}
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+            Proceso completo de venta en {nombre}
+          </h2>
+          <div className="space-y-6">
+            {VENTA_COMPLETA_PASOS_PROCESO.map((item) => (
+              <div key={item.paso} className="flex gap-4 items-start">
+                <div className="bg-[#c9962a] text-white w-12 h-12 rounded-full flex items-center justify-center font-black text-lg shrink-0">
+                  {item.paso}
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-1">{item.titulo}</h3>
+                  <p className="text-gray-600">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <LocalRegulationsBlock ciudad={nombre} region={region} servicio="venta" />
+
+      {/* Tabla precios */}
+      <section className="py-14 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-6">Cuánto ahorras en {nombre}</h2>
+          <div className="overflow-x-auto bg-white rounded-xl shadow border border-gray-200">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-gray-50 border-b">
+                  <th className="p-4 text-left font-semibold">Opción</th>
+                  <th className="p-4 text-center font-semibold text-[#a87a20]">Inmonest</th>
+                  <th className="p-4 text-center font-semibold text-gray-500">Agencia tradicional</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b">
+                  <td className="p-4">Venta completa ({nombre})</td>
+                  <td className="p-4 text-center font-bold text-green-700">{VENTA_COMPLETA_PRECIO}€</td>
+                  <td className="p-4 text-center text-red-600">
+                    {agenciaMin.toLocaleString('es-ES')}–{agenciaMax.toLocaleString('es-ES')}€ (3-5%)
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-4 font-medium">Tu ahorro estimado</td>
+                  <td className="p-4 text-center font-bold text-[#a87a20]" colSpan={2}>
+                    Hasta {ahorroMin.toLocaleString('es-ES')}€ en un piso de {precioEjemploPiso.toLocaleString('es-ES')}€
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparativa */}
+      <section className="py-14 px-4 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">Vender con Inmonest vs. por tu cuenta</h2>
+          <div className="overflow-x-auto bg-white rounded-xl shadow border border-gray-200">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-gray-50 border-b">
+                  <th className="p-4 text-left">Aspecto</th>
+                  <th className="p-4 text-center text-[#a87a20]">Con Inmonest</th>
+                  <th className="p-4 text-center text-gray-500">Por tu cuenta</th>
+                </tr>
+              </thead>
+              <tbody>
+                {VENTA_COMPLETA_COMPARATIVA.map((row, i) => (
+                  <tr key={row.aspecto} className={i % 2 === 1 ? 'bg-gray-50' : ''}>
+                    <td className="p-4 font-medium text-gray-900">{row.aspecto}</td>
+                    <td className="p-4 text-center text-green-700 font-semibold">{row.inmonest}</td>
+                    <td className="p-4 text-center text-gray-600">{row.solo}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <LlamaGestorBanner variant="dark" ciudad={nombre} gestorNombre={gestor.nombre} />
+
+      {/* Gestor */}
+      <section className="py-14 px-4 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-center">
+          <Image
+            src={gestor.foto}
+            alt={gestor.nombre}
+            width={120}
+            height={120}
+            className="rounded-full object-cover border-4 border-[#e8d48a] shrink-0"
+          />
+          <div className="flex-1 text-center md:text-left">
+            <p className="text-sm text-[#a87a20] font-semibold mb-1">Tu gestor en {nombre}</p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-1">{gestor.nombre}</h2>
+            <p className="text-gray-500 text-sm mb-3">{gestor.rol}</p>
+            <p className="text-gray-700 mb-4">{gestor.bio}</p>
+            <a
+              href={`tel:${PHONE}`}
+              className="inline-flex items-center gap-2 bg-[#1a0d00] text-[#f4c94a] px-6 py-3 rounded-lg font-bold text-lg hover:bg-[#2e1900] transition"
+            >
+              📞 Llamar a {gestor.nombre.split(' ')[0]} — 745 022 862
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-10 px-4 bg-slate-50">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-sm text-gray-500 mb-4">Zonas con cobertura en {nombre}</p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {config.zonas.map((z) => (
+              <span key={z} className="px-3 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-700">
+                {z}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CiudadHubServiciosGrid
+        ciudad={nombre}
+        ciudadSlug={slug}
+        subtitulo={`Otros servicios de gestoría en ${nombre} para propietarios.`}
+        excluirServicios={['venta-completa-reserva-escritura']}
+      />
+
+      <section className="py-10 px-4 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-sm text-gray-500 mb-3">Venta completa también en:</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {VENTA_COMPLETA_CIUDADES_LIST.filter((c) => c.slug !== slug).map((c) => (
+              <Link
+                key={c.slug}
+                href={`/gestoria/venta-completa-reserva-escritura/${c.slug}`}
+                className="text-sm font-semibold text-[#c9962a] hover:underline"
+              >
+                {c.nombre} →
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CiudadHubFaq
+        ciudad={nombre}
+        items={faq}
+        titulo={`Preguntas frecuentes — Vender piso en ${nombre}`}
+        subtitulo="Resolvemos las dudas más habituales de vendedores particulares."
+      />
+
+      <TestimoniosSection landing={config.testimoniosLanding} layout="stack" hideRating />
+
+      <section className="py-16 px-4 bg-gradient-to-br from-[#1a0d00] to-[#2e1900] text-white">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">Vende en {nombre} con total seguridad</h2>
+          <p className="text-white/80 mb-8">
+            {VENTA_COMPLETA_PRECIO}€ fijos · Gestor asignado · Sin comisión de agencia · Respuesta en 24h
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href={SOLICITAR_URL}
+              className="px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold text-lg hover:bg-[#f4c94a] hover:text-[#1a0d00] transition-colors"
+            >
+              Contratar online — {VENTA_COMPLETA_PRECIO}€
+            </Link>
+            <a
+              href={`tel:${PHONE}`}
+              className="px-8 py-4 rounded-lg bg-[#f4c94a] text-[#1a0d00] font-black text-xl hover:bg-white transition-colors"
+            >
+              📞 745 022 862
+            </a>
+            <a
+              href={`https://wa.me/34745022862?text=${waText}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-4 rounded-lg border border-white/30 font-semibold hover:bg-white/10"
+            >
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
