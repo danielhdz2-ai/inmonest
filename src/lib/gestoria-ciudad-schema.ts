@@ -5,12 +5,16 @@ import {
 
 const BASE_URL = 'https://inmonest.com'
 
-export function buildLegalServiceSchema(ciudad: string, slug: string) {
+export function buildLegalServiceSchema(
+  ciudad: string,
+  slug: string,
+  options?: { path?: string; name?: string }
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'LegalService',
-    name: `Inmonest Gestoría Inmobiliaria ${ciudad}`,
-    url: `${BASE_URL}/gestoria/${slug}`,
+    name: options?.name ?? `Inmonest Gestoría Inmobiliaria ${ciudad}`,
+    url: options?.path ?? `${BASE_URL}/gestoria/${slug}`,
     telephone: '+34745022862',
     priceRange: '€€',
     aggregateRating: buildGestoriaAggregateRatingSchema(),

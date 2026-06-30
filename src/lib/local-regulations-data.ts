@@ -1,0 +1,132 @@
+export type LocalRegulationBlock = {
+  titulo: string
+  items: string[]
+}
+
+const REGULATIONS_BY_REGION: Record<string, LocalRegulationBlock[]> = {
+  'Comunidad de Madrid': [
+    {
+      titulo: 'Documentación obligatoria en Madrid',
+      items: [
+        'Cédula de habitabilidad vigente',
+        'Certificado energético actualizado',
+        'IEE / ITE en edificios de más de 50 años',
+        'Nota simple registral sin cargas ocultas',
+      ],
+    },
+    {
+      titulo: 'Particularidades de compra en Madrid',
+      items: [
+        'Plusvalía municipal (IIVTNU) a cargo del vendedor',
+        'Operaciones rápidas: revisar contrato de reserva antes de firmar',
+        'Verificar deudas de comunidad y derramas pendientes',
+      ],
+    },
+  ],
+  'Cataluña · Generalitat': [
+    {
+      titulo: 'Documentación obligatoria en Cataluña',
+      items: [
+        'Cédula de habitabilidad de la Generalitat (obligatoria)',
+        'Certificado energético vigente',
+        'ITE en edificios que la exijan',
+        'Licencias de obra y reformas legalizadas',
+      ],
+    },
+    {
+      titulo: 'Particularidades en Barcelona y área metropolitana',
+      items: [
+        'Zonas tensionadas: límites de precio en alquiler (relevante si compras para invertir)',
+        'Compradores extranjeros: verificar NIE y documentación bancaria',
+        'Comunidades con estatutos restrictivos (alquiler turístico, mascotas)',
+      ],
+    },
+  ],
+  'Comunitat Valenciana': [
+    {
+      titulo: 'Documentación obligatoria en Valencia',
+      items: [
+        'Cédula de habitabilidad de la Generalitat Valenciana',
+        'Certificado energético',
+        'IEE en edificios antiguos',
+        'Certificado de deudas de la comunidad',
+      ],
+    },
+    {
+      titulo: 'Riesgos frecuentes en compraventa valenciana',
+      items: [
+        'Viviendas turísticas mal inscritas en el Registro de Turisme',
+        'Derramas de rehabilitación de fachada en edificios costeros',
+        'Discrepancias entre catastro y superficie real',
+      ],
+    },
+  ],
+  Andalucía: [
+    {
+      titulo: 'Documentación obligatoria en Andalucía',
+      items: [
+        'Cédula de habitabilidad o certificado equivalente',
+        'Certificado energético vigente',
+        'IEE (Informe de Evaluación del Edificio) si aplica',
+        'Licencias de obra en reformas recientes',
+      ],
+    },
+    {
+      titulo: 'Particularidades en Sevilla y Málaga',
+      items: [
+        'Verificar situación urbanística en suelos rústicos o semi-rústicos en periferia',
+        'Comunidades con alto peso de turismo: estatutos restrictivos',
+        'IBI y plusvalía municipal al día antes de escritura',
+      ],
+    },
+  ],
+  Aragón: [
+    {
+      titulo: 'Documentación en Aragón',
+      items: [
+        'Cédula de habitabilidad vigente',
+        'Certificado energético',
+        'ITE / IEE si el edificio lo exige',
+        'Nota simple y certificado de comunidad',
+      ],
+    },
+  ],
+  'País Vasco · Bizkaia': [
+    {
+      titulo: 'Documentación en Bizkaia',
+      items: [
+        'Cédula de habitabilidad',
+        'Certificado energético',
+        'ITE en edificios antiguos',
+        'Verificación de normativa foral en transmisión',
+      ],
+    },
+  ],
+  Galicia: [
+    {
+      titulo: 'Documentación en Galicia',
+      items: [
+        'Cédula de habitabilidad de la Xunta',
+        'Certificado energético',
+        'ITE si aplica por antigüedad del edificio',
+        'Licencias de obra en reformas',
+      ],
+    },
+  ],
+}
+
+const DEFAULT_REGULATIONS: LocalRegulationBlock[] = [
+  {
+    titulo: 'Documentación mínima en toda compraventa',
+    items: [
+      'Nota simple registral actualizada',
+      'Certificado de deudas de la comunidad',
+      'IBI y suministros al día',
+      'Certificado energético y cédula de habitabilidad si aplica',
+    ],
+  },
+]
+
+export function getLocalRegulations(region: string): LocalRegulationBlock[] {
+  return REGULATIONS_BY_REGION[region] ?? DEFAULT_REGULATIONS
+}

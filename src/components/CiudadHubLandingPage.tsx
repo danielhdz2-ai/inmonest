@@ -7,6 +7,7 @@ import CiudadHubExtras from '@/components/CiudadHubExtras'
 import CiudadHubMercado from '@/components/CiudadHubMercado'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubRazones from '@/components/CiudadHubRazones'
+import ComprarConSeguridad from '@/components/ComprarConSeguridad'
 import JsonLd from '@/components/JsonLd'
 import type { CiudadHubConfig } from '@/lib/gestoria-ciudad-hub-data'
 import {
@@ -92,6 +93,8 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
         </section>
 
         <CiudadHubRazones ciudad={nombre} razones={config.razones} />
+
+        <ComprarConSeguridad ciudad={nombre} ciudadSlug={slug} />
 
         <CiudadHubServiciosGrid
           ciudad={nombre}

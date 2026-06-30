@@ -5,6 +5,7 @@ import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
+import ComprarConSeguridad from '@/components/ComprarConSeguridad'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import JsonLd from '@/components/JsonLd'
 import { GESTORIA_BARCELONA_FAQ, gestoriaBarcelonaFaqSchema } from '@/lib/gestoria-barcelona-faq'
@@ -319,6 +320,8 @@ export default function GestoriaBarcelonaPage() {
             </div>
           </div>
         </section>
+
+        <ComprarConSeguridad ciudad="Barcelona" ciudadSlug="barcelona" />
 
         <CiudadHubServiciosGrid ciudad="Barcelona" ciudadSlug="barcelona" />
 

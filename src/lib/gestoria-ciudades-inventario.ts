@@ -98,6 +98,13 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'salamanca', 'valladolid'],
   },
   {
+    id: 'asesoria-compra',
+    nombre: 'Asesoría Compra de Piso',
+    precio: '687€',
+    href: (c) => `/gestoria/asesoria-compra-piso/${c}`,
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga'],
+  },
+  {
     id: 'due-diligence',
     nombre: 'Due Diligence Pre-Compra',
     precio: '350€',

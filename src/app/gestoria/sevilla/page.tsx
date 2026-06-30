@@ -7,6 +7,7 @@ import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
 import CiudadHubVentajasOnline from '@/components/CiudadHubVentajasOnline'
+import ComprarConSeguridad from '@/components/ComprarConSeguridad'
 import { GESTORIA_PRECIOS } from '@/lib/gestoria-servicios-destacados'
 
 const BASE_URL = 'https://inmonest.com'
@@ -185,6 +186,8 @@ export default function GestoriaSevillaPage() {
       </section>
 
       <CiudadHubVentajasOnline ciudad="Sevilla" />
+
+      <ComprarConSeguridad ciudad="Sevilla" ciudadSlug="sevilla" />
 
       <CiudadHubServiciosGrid
         ciudad="Sevilla"

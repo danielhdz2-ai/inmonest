@@ -5,6 +5,7 @@ import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
+import ComprarConSeguridad from '@/components/ComprarConSeguridad'
 import CiudadHubMercado from '@/components/CiudadHubMercado'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import JsonLd from '@/components/JsonLd'
@@ -321,6 +322,8 @@ export default function GestoriaValenciaPage() {
             </div>
           </div>
         </section>
+
+        <ComprarConSeguridad ciudad="Valencia" ciudadSlug="valencia" />
 
         <CiudadHubServiciosGrid ciudad="Valencia" ciudadSlug="valencia" />
 

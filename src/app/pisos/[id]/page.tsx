@@ -16,6 +16,7 @@ import PriceAnalysisSection from '@/components/PriceAnalysisSection'
 import NeighborhoodSection from '@/components/NeighborhoodSection'
 import ListingSchema from '@/components/ListingSchema'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
+import ComprarPisoDueDiligenceBanner from '@/components/ComprarPisoDueDiligenceBanner'
 import { getListingById, getSimilarListings } from '@/lib/listings'
 import { getPriceAnalysis } from '@/lib/price-analysis'
 import { generateNeighborhoodInfo, getNeighborhoodFallback } from '@/lib/neighborhood-info'
@@ -366,6 +367,8 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                 </div>
               </div>
             ) : (
+              <>
+              <ComprarPisoDueDiligenceBanner city={listing.city} />
               <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-6 sm:p-8 text-white shadow-lg">
                 <div className="flex items-start gap-4">
                   <span className="text-4xl">🏠</span>
@@ -393,6 +396,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                   </div>
                 </div>
               </div>
+              </>
             )}
 
             {/* ── BANNER VENDEDORES (Solo en ventas) ── */}
