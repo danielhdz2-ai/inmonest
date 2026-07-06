@@ -71,7 +71,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     relacionados: [
       { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
       { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
   },
@@ -124,14 +124,14 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     relacionados: [
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
       { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
   },
 
   'contrato-alquiler': {
     nombre: 'Contrato de Alquiler de Vivienda (LAU)',
-    precio: 120,
+    precio: 145,
     categoria: 'Alquiler',
     tagline: 'El contrato de alquiler más completo, adaptado a la Ley de Vivienda 2026',
     descripcion:
@@ -229,7 +229,7 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
     ],
@@ -282,15 +282,15 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
-      { slug: 'alquiler-local-comercial', nombre: 'Alquiler Local Comercial', precio: 121 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
+      { slug: 'alquiler-local-comercial', nombre: 'Alquiler Local Comercial', precio: 145 },
       { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
   },
 
   'alquiler-local-comercial': {
     nombre: 'Contrato de Alquiler de Local Comercial',
-    precio: 121,
+    precio: 145,
     categoria: 'Alquiler',
     tagline: 'Protege tu negocio con un contrato adaptado a la LAU empresarial',
     descripcion:
@@ -336,7 +336,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     relacionados: [
       { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
-      { slug: 'alquiler-garaje-trastero', nombre: 'Garaje o Trastero', precio: 48 },
+      { slug: 'alquiler-garaje-trastero', nombre: 'Garaje o Trastero', precio: 130 },
       { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
   },
@@ -390,7 +390,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     relacionados: [
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
     ],
   },
 
@@ -443,13 +443,13 @@ const SERVICIOS: Record<string, ServiceData> = {
     relacionados: [
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'alquiler-opcion-compra', nombre: 'Alquiler con Opción a Compra', precio: 182 },
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
     ],
   },
 
   'alquiler-garaje-trastero': {
     nombre: 'Contrato de Alquiler de Garaje o Trastero',
-    precio: 48,
+    precio: 130,
     categoria: 'Alquiler',
     tagline: 'El contrato más ágil y económico para alquilar tu plaza de garaje o trastero',
     descripcion:
@@ -494,7 +494,7 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
       { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
       { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
     ],
@@ -714,7 +714,7 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120 },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
       { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
       { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
     ],
@@ -768,7 +768,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     relacionados: [
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
-      { slug: 'alquiler-garaje-trastero', nombre: 'Alquiler Garaje/Trastero', precio: 48 },
+      { slug: 'alquiler-garaje-trastero', nombre: 'Alquiler Garaje/Trastero', precio: 130 },
     ],
   },
 }

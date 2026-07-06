@@ -77,7 +77,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
       },
       {
         q: '¿Es lo mismo que un contrato LAU de vivienda completa?',
-        a: 'No. El alquiler de habitación no queda amparado por la LAU como vivienda íntegra. Si alquilas el piso completo, necesitas un contrato LAU distinto. Nosotros también lo redactamos por 120€ (vivienda completa).',
+        a: 'No. El alquiler de habitación no queda amparado por la LAU como vivienda íntegra. Si alquilas el piso completo, necesitas un contrato LAU distinto. Nosotros también lo redactamos por 145€ (vivienda completa).',
       },
     ],
     enlaceContratoLau: '/madrid/contrato-alquiler',
@@ -174,7 +174,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
       },
       {
         q: '¿Puedo alquilar habitaciones en Sevilla sin contrato LAU de vivienda completa?',
-        a: 'Correcto. Si alquilas habitaciones sueltas dentro de tu vivienda, no aplica el contrato LAU de piso íntegro. Necesitas un contrato de habitación por inquilino. Si alquilas el piso completo, sí necesitas contrato LAU (120€).',
+        a: 'Correcto. Si alquilas habitaciones sueltas dentro de tu vivienda, no aplica el contrato LAU de piso íntegro. Necesitas un contrato de habitación por inquilino. Si alquilas el piso completo, sí necesitas contrato LAU (145€).',
       },
       {
         q: '¿Qué incluye el contrato para pisos compartidos en Sevilla?',
@@ -232,7 +232,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
       },
       {
         q: '¿Es lo mismo que un contrato LAU para alquilar el piso entero?',
-        a: 'No. El alquiler por habitación se rige por el Código Civil. Si alquilas la vivienda completa en Málaga, necesitas contrato LAU adaptado a la Ley de Vivienda 2026. También lo redactamos por 120€.',
+        a: 'No. El alquiler por habitación se rige por el Código Civil. Si alquilas la vivienda completa en Málaga, necesitas contrato LAU adaptado a la Ley de Vivienda 2026. También lo redactamos por 145€.',
       },
     ],
     enlaceContratoLau: '/malaga/contrato-alquiler',
@@ -390,7 +390,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
       },
       {
         q: '¿Es lo mismo que un contrato LAU de vivienda completa en Zaragoza?',
-        a: 'No. Si alquilas habitaciones sueltas dentro de tu vivienda, no aplica el contrato LAU de piso íntegro. Si alquilas el piso completo, necesitas contrato LAU (120€). Nosotros también lo redactamos.',
+        a: 'No. Si alquilas habitaciones sueltas dentro de tu vivienda, no aplica el contrato LAU de piso íntegro. Si alquilas el piso completo, necesitas contrato LAU (145€). Nosotros también lo redactamos.',
       },
       {
         q: '¿Puedo incluir normas de convivencia en el contrato de habitación?',
@@ -448,7 +448,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
       },
       {
         q: '¿Es lo mismo que un contrato LAU para alquilar el piso entero?',
-        a: 'No. El alquiler por habitación se rige por el Código Civil. Si alquilas la vivienda completa en Asturias, necesitas contrato LAU adaptado a la Ley de Vivienda 2026 (120€). También lo redactamos.',
+        a: 'No. El alquiler por habitación se rige por el Código Civil. Si alquilas la vivienda completa en Asturias, necesitas contrato LAU adaptado a la Ley de Vivienda 2026 (145€). También lo redactamos.',
       },
     ],
     enlaceContratoLau: '/asturias/contrato-alquiler',

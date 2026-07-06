@@ -5,7 +5,7 @@ export const GESTORIA_ZARAGOZA_FAQ = [
   },
   {
     q: '¿Cuánto cuesta un contrato de alquiler en Zaragoza?',
-    a: '120€ IVA incluido, entrega en 48h. Adaptado a la LAU, Ley de Vivienda 2026 y normativa aragonesa.',
+    a: '145€ IVA incluido, entrega en 48h. Adaptado a la LAU, Ley de Vivienda 2026 y normativa aragonesa.',
   },
   {
     q: '¿Qué documentos necesito para vender un piso en Zaragoza?',

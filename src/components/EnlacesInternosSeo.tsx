@@ -17,13 +17,13 @@ const ENLACES_HOME: EnlaceSeo[] = [
   {
     href: '/bilbao/contrato-alquiler',
     title: 'Contrato alquiler Bilbao',
-    description: 'LAU adaptado a normativa vasca. Desde 120€.',
+    description: 'LAU adaptado a normativa vasca. Desde 145€.',
     badge: 'Ciudad',
   },
   {
     href: '/malaga/contrato-alquiler',
     title: 'Contrato alquiler Málaga',
-    description: 'Redacción profesional en 48h. Desde 120€.',
+    description: 'Redacción profesional en 48h. Desde 145€.',
     badge: 'Ciudad',
   },
   {

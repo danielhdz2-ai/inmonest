@@ -40,15 +40,15 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     nombre: 'Málaga',
     region: 'Andalucía',
     metaDescription:
-      'Gestoría inmobiliaria para particulares en Málaga. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones. Abogados especializados en normativa andaluza.',
+      'Gestoría inmobiliaria para particulares en Málaga. Contratos LAU desde 145€, arras 145€, servicio completo 687€. Sin comisiones. Abogados especializados en normativa andaluza.',
     keywords:
       'gestoría inmobiliaria málaga, gestoría particulares málaga, contrato arras málaga, contrato alquiler málaga, comprar piso málaga sin agencia',
     heroBadge: 'Gestoría 100% Online | Especialistas en Andalucía',
     heroSubtitulo:
-      'Gestoría inmobiliaria para particulares en Málaga. Mercado en máximos históricos, alta demanda extranjera y normativa VFT de la Junta. Contratos desde 120€. Sin comisiones de agencia.',
+      'Gestoría inmobiliaria para particulares en Málaga. Mercado en máximos históricos, alta demanda extranjera y normativa VFT de la Junta. Contratos desde 145€. Sin comisiones de agencia.',
     ogImage: '/gestoria5.jpg',
     twitterDescription:
-      'Contratos de alquiler, arras y compraventa en Málaga desde 120€. Sin comisiones de agencia. Normativa andaluza.',
+      'Contratos de alquiler, arras y compraventa en Málaga desde 145€. Sin comisiones de agencia. Normativa andaluza.',
     razones: [
       {
         titulo: 'Mercado en máximos históricos',
@@ -100,15 +100,15 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     nombre: 'Bilbao',
     region: 'País Vasco',
     metaDescription:
-      'Gestoría inmobiliaria para particulares en Bilbao. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones. Conocimiento del derecho foral vasco.',
+      'Gestoría inmobiliaria para particulares en Bilbao. Contratos LAU desde 145€, arras 145€, servicio completo 687€. Sin comisiones. Conocimiento del derecho foral vasco.',
     keywords:
       'gestoría inmobiliaria bilbao, gestoría particulares bilbao, contrato arras bilbao, contrato alquiler bilbao, comprar piso bilbao',
     heroBadge: 'Gestoría 100% Online | Bizkaia',
     heroSubtitulo:
-      'Gestoría inmobiliaria para particulares en Bilbao. Derecho foral vasco, mercado estable con precios elevados y operaciones rápidas. Contratos desde 120€. Sin comisiones.',
+      'Gestoría inmobiliaria para particulares en Bilbao. Derecho foral vasco, mercado estable con precios elevados y operaciones rápidas. Contratos desde 145€. Sin comisiones.',
     ogImage: '/gestoria7.jpg',
     twitterDescription:
-      'Contratos de alquiler, arras y compraventa en Bilbao desde 120€. Sin comisiones. Normativa foral vasca.',
+      'Contratos de alquiler, arras y compraventa en Bilbao desde 145€. Sin comisiones. Normativa foral vasca.',
     razones: [
       {
         titulo: 'Derecho foral vasco',
@@ -160,15 +160,15 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     nombre: 'Palma',
     region: 'Illes Balears',
     metaDescription:
-      'Gestoría inmobiliaria para particulares en Palma e Illes Balears. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones. Normativa balear.',
+      'Gestoría inmobiliaria para particulares en Palma e Illes Balears. Contratos LAU desde 145€, arras 145€, servicio completo 687€. Sin comisiones. Normativa balear.',
     keywords:
       'gestoría inmobiliaria palma, gestoría mallorca, contrato arras palma, contrato alquiler palma, comprar piso baleares',
     heroBadge: 'Gestoría 100% Online | Illes Balears',
     heroSubtitulo:
-      'Gestoría inmobiliaria para particulares en Palma. Precios entre los más altos de España, regulación balear específica y alta demanda extranjera. Contratos desde 120€. Sin comisiones.',
+      'Gestoría inmobiliaria para particulares en Palma. Precios entre los más altos de España, regulación balear específica y alta demanda extranjera. Contratos desde 145€. Sin comisiones.',
     ogImage: '/gestoria2.jpg',
     twitterDescription:
-      'Contratos de alquiler, arras y compraventa en Palma desde 120€. Normativa balear. Sin comisiones.',
+      'Contratos de alquiler, arras y compraventa en Palma desde 145€. Normativa balear. Sin comisiones.',
     razones: [
       {
         titulo: 'Precio/m² entre los más altos de España',
@@ -220,15 +220,15 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     nombre: 'Zaragoza',
     region: 'Aragón',
     metaDescription:
-      'Gestoría inmobiliaria para particulares en Zaragoza. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones. Normativa aragonesa.',
+      'Gestoría inmobiliaria para particulares en Zaragoza. Contratos LAU desde 145€, arras 145€, servicio completo 687€. Sin comisiones. Normativa aragonesa.',
     keywords:
       'gestoría inmobiliaria zaragoza, gestoría particulares zaragoza, contrato arras zaragoza, contrato alquiler zaragoza',
     heroBadge: 'Gestoría 100% Online | Aragón',
     heroSubtitulo:
-      'Gestoría inmobiliaria para particulares en Zaragoza. Mercado en crecimiento, normativa aragonesa y poca competencia en gestoría online. Contratos desde 120€. Sin comisiones.',
+      'Gestoría inmobiliaria para particulares en Zaragoza. Mercado en crecimiento, normativa aragonesa y poca competencia en gestoría online. Contratos desde 145€. Sin comisiones.',
     ogImage: '/gestoria3.jpg',
     twitterDescription:
-      'Contratos de alquiler, arras y compraventa en Zaragoza desde 120€. Sin comisiones de agencia.',
+      'Contratos de alquiler, arras y compraventa en Zaragoza desde 145€. Sin comisiones de agencia.',
     razones: [
       {
         titulo: 'Mercado en crecimiento sostenido',
@@ -280,15 +280,15 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     nombre: 'Alicante',
     region: 'Comunitat Valenciana',
     metaDescription:
-      'Gestoría inmobiliaria para particulares en Alicante. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones. Alta demanda extranjera y normativa valenciana.',
+      'Gestoría inmobiliaria para particulares en Alicante. Contratos LAU desde 145€, arras 145€, servicio completo 687€. Sin comisiones. Alta demanda extranjera y normativa valenciana.',
     keywords:
       'gestoría inmobiliaria alicante, gestoría particulares alicante, contrato arras alicante, contrato alquiler alicante',
     heroBadge: 'Gestoría 100% Online | Costa Blanca',
     heroSubtitulo:
-      'Gestoría inmobiliaria para particulares en Alicante. Alta demanda extranjera, mercado turístico y cédula de habitabilidad obligatoria. Contratos desde 120€. Sin comisiones.',
+      'Gestoría inmobiliaria para particulares en Alicante. Alta demanda extranjera, mercado turístico y cédula de habitabilidad obligatoria. Contratos desde 145€. Sin comisiones.',
     ogImage: '/gestoria4.jpg',
     twitterDescription:
-      'Contratos de alquiler, arras y compraventa en Alicante desde 120€. Sin comisiones. Normativa valenciana.',
+      'Contratos de alquiler, arras y compraventa en Alicante desde 145€. Sin comisiones. Normativa valenciana.',
     razones: [
       {
         titulo: 'Alta demanda extranjera',
@@ -337,7 +337,7 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
 }
 
 export function buildCiudadHubMetadata(config: CiudadHubConfig): Metadata {
-  const title = `Gestoría Inmobiliaria ${config.nombre} para Particulares | Contratos desde 120€`
+  const title = `Gestoría Inmobiliaria ${config.nombre} para Particulares | Contratos desde 145€`
   return {
     title,
     description: config.metaDescription,

@@ -250,7 +250,7 @@ export default function AyudaPropietariosPage() {
             </div>
             <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler temporal</h3>
-              <div className="text-3xl font-bold text-[#c9962a] mb-3">97€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-3">165€</div>
               <p className="text-gray-600 mb-4">
                 Para estancias cortas (estudios, trabajo temporal). Menos de 1 año. 
                 Condiciones específicas para temporales.

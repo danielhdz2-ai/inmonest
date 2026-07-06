@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Gestoría Inmobiliaria Barcelona para Particulares | Inmonest',
     description:
-      'Contratos y acompañamiento legal en Barcelona desde 120€. Adaptados a zona tensionada, ITE y normativa catalana.',
+      'Contratos y acompañamiento legal en Barcelona desde 145€. Adaptados a zona tensionada, ITE y normativa catalana.',
   },
 }
 

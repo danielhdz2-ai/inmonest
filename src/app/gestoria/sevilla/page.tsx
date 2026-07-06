@@ -13,8 +13,8 @@ import { GESTORIA_PRECIOS } from '@/lib/gestoria-servicios-destacados'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Sevilla para Particulares | Contratos desde 120€',
-  description: 'Gestoría inmobiliaria para particulares en Sevilla. Contratos LAU desde 120€, arras 145€, servicio completo 687€. Sin comisiones de agencia. Normativa andaluza.',
+  title: 'Gestoría Inmobiliaria Sevilla para Particulares | Contratos desde 145€',
+  description: 'Gestoría inmobiliaria para particulares en Sevilla. Contratos LAU desde 145€, arras 145€, servicio completo 687€. Sin comisiones de agencia. Normativa andaluza.',
   keywords: [
     'gestoria inmobiliaria sevilla',
     'contrato alquiler sevilla',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/gestoria/sevilla`,
   },
   openGraph: {
-    title: 'Gestoría Inmobiliaria Sevilla para Particulares | Contratos desde 120€',
+    title: 'Gestoría Inmobiliaria Sevilla para Particulares | Contratos desde 145€',
     description: 'Gestoría inmobiliaria en Sevilla 100% online. Contratos de alquiler LAU, arras penitenciales y compraventa. Abogados especializados en normativa andaluza.',
     url: `${BASE_URL}/gestoria/sevilla`,
     type: 'website',
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Gestoría Inmobiliaria Sevilla para Particulares | Contratos desde 120€',
+    title: 'Gestoría Inmobiliaria Sevilla para Particulares | Contratos desde 145€',
     description:
-      'Contratos de alquiler LAU, arras y compraventa en Sevilla desde 120€. Sin comisiones de agencia. Normativa andaluza.',
+      'Contratos de alquiler LAU, arras y compraventa en Sevilla desde 145€. Sin comisiones de agencia. Normativa andaluza.',
   },
 }
 
@@ -251,7 +251,7 @@ export default function GestoriaSevillaPage() {
             Estos contratos <strong>NO son LAU</strong>, tienen normativa diferente y plazos más flexibles.
           </p>
           <p>
-            Ofrecemos contratos de alquiler temporal adaptados a Sevilla desde <strong>97€</strong>. Incluyen:
+            Ofrecemos contratos de alquiler temporal adaptados a Sevilla desde <strong>165€</strong>. Incluyen:
           </p>
           <ul className="list-disc pl-6 space-y-2">
             <li>Duración flexible (3-11 meses)</li>

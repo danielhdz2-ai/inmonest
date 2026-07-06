@@ -11,7 +11,7 @@ export const GESTORIA_BARCELONA_FAQ = [
   },
   {
     q: '¿Qué diferencia hay entre contratar una gestoría y una agencia inmobiliaria en Barcelona?',
-    a: 'Una agencia cobra entre el 3% y el 5% del precio de venta (entre 12.000€ y 20.000€ en Barcelona). Una gestoría como Inmonest cobra honorarios fijos desde 120€ por contrato o 687€ por acompañamiento completo hasta escritura.',
+    a: 'Una agencia cobra entre el 3% y el 5% del precio de venta (entre 12.000€ y 20.000€ en Barcelona). Una gestoría como Inmonest cobra honorarios fijos desde 145€ por contrato o 687€ por acompañamiento completo hasta escritura.',
   },
   {
     q: '¿Cuánto tiempo tarda la gestión de una compraventa en Barcelona?',

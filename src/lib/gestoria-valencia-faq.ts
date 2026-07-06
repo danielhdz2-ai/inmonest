@@ -1,7 +1,7 @@
 export const GESTORIA_VALENCIA_FAQ = [
   {
     q: '¿Cuánto cuesta un contrato de alquiler en Valencia?',
-    a: 'En Inmonest redactamos contratos de alquiler LAU para Valencia por 120€ IVA incluido. Entrega en 48h, personalización completa y asesoría legal. Servicio 100% online.',
+    a: 'En Inmonest redactamos contratos de alquiler LAU para Valencia por 145€ IVA incluido. Entrega en 48h, personalización completa y asesoría legal. Servicio 100% online.',
   },
   {
     q: '¿Es obligatoria la cédula de habitabilidad para alquilar en Valencia?',
@@ -17,6 +17,6 @@ export const GESTORIA_VALENCIA_FAQ = [
   },
   {
     q: '¿Qué diferencia hay entre gestoría e inmobiliaria en Valencia?',
-    a: 'Una agencia cobra entre el 3% y el 5% del precio de venta (7.000€-13.000€ en Valencia). Inmonest cobra honorarios fijos: desde 120€ por contrato o 687€ por acompañamiento completo hasta escritura, sin comisión sobre el precio del piso.',
+    a: 'Una agencia cobra entre el 3% y el 5% del precio de venta (7.000€-13.000€ en Valencia). Inmonest cobra honorarios fijos: desde 145€ por contrato o 687€ por acompañamiento completo hasta escritura, sin comisión sobre el precio del piso.',
   },
 ] as const

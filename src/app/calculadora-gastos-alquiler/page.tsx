@@ -8,12 +8,12 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Calculadora Gastos de Alquiler 2026 Gratis | + Contrato LAU desde 120€',
-  description: 'Calcula gratis el coste mensual real del alquiler: renta, luz, agua, gas, internet y comunidad. ¿Vas a firmar? Contrato LAU profesional desde 120€ en 48h.',
+  title: 'Calculadora Gastos de Alquiler 2026 Gratis | + Contrato LAU desde 145€',
+  description: 'Calcula gratis el coste mensual real del alquiler: renta, luz, agua, gas, internet y comunidad. ¿Vas a firmar? Contrato LAU profesional desde 145€ en 48h.',
   alternates: { canonical: `${BASE_URL}/calculadora-gastos-alquiler` },
   openGraph: {
-    title: 'Calculadora Gastos Alquiler Gratis + Contrato LAU desde 120€',
-    description: 'Calcula el coste mensual total del alquiler gratis. Contrato LAU redactado por abogados desde 120€, entrega en 48h.',
+    title: 'Calculadora Gastos Alquiler Gratis + Contrato LAU desde 145€',
+    description: 'Calcula el coste mensual total del alquiler gratis. Contrato LAU redactado por abogados desde 145€, entrega en 48h.',
     url: `${BASE_URL}/calculadora-gastos-alquiler`,
     type: 'website',
     siteName: 'Inmonest',
@@ -221,7 +221,7 @@ export default function CalculadoraGastosAlquilerPage() {
                 <h3 className="text-2xl font-bold mb-3">¿Listo para alquilar sin sorpresas?</h3>
                 <p className="text-emerald-100 mb-5">
                   Encuentra pisos de particulares sin comisión de agencia<br />
-                  o contrata un contrato LAU profesional desde 120€.
+                  o contrata un contrato LAU profesional desde 145€.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
                   <Link
@@ -234,7 +234,7 @@ export default function CalculadoraGastosAlquilerPage() {
                     href="/gestoria/solicitar/contrato-alquiler"
                     className="inline-block border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-3.5 rounded-full transition-colors"
                   >
-                    Contrato LAU desde 120€ →
+                    Contrato LAU desde 145€ →
                   </Link>
                 </div>
               </div>

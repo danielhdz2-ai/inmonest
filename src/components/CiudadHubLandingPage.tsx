@@ -62,7 +62,7 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
                     href="/gestoria/solicitar/contrato-alquiler"
                     className="bg-[#c9a84c] text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition shadow-lg"
                   >
-                    Contrato alquiler desde 120€ →
+                    Contrato alquiler desde 145€ →
                   </Link>
                   <Link
                     href="/gestoria/solicitar/arras-penitenciales"

@@ -9,7 +9,7 @@ export const GESTORIA_BILBAO_FAQ = [
   },
   {
     q: '¿Cuánto cuesta un contrato de alquiler en Bilbao?',
-    a: '120€ IVA incluido, con entrega en 48h. Adaptado a la LAU, Ley de Vivienda 2026 y normativa foral vasca.',
+    a: '145€ IVA incluido, entrega en 48h. Adaptado a la LAU, Ley de Vivienda 2026 y normativa foral vasca.',
   },
   {
     q: '¿Qué diferencia hay entre contratar gestoría e inmobiliaria en Bilbao?',

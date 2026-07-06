@@ -19,7 +19,7 @@ import {
 const BASE_URL = 'https://inmonest.com'
 
 const META_DESCRIPTION =
-  'Gestoría inmobiliaria en Madrid para particulares. Contratos LAU desde 120€, arras 145€. Sin comisiones de agencia. Abogados expertos, entrega 48h.'
+  'Gestoría inmobiliaria en Madrid para particulares. Contratos LAU desde 145€, arras 145€. Sin comisiones de agencia. Abogados expertos, entrega 48h.'
 
 export const metadata: Metadata = {
   title: 'Gestoría Inmobiliaria Madrid | Contratos desde 61€ · Entrega 48h',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Gestoría Inmobiliaria Madrid para Particulares | Inmonest',
     description:
-      'Contratos de alquiler, arras y compraventa en Madrid desde 120€. Sin comisiones de agencia. Entrega 48h.',
+      'Contratos de alquiler, arras y compraventa en Madrid desde 145€. Sin comisiones de agencia. Entrega 48h.',
   },
 }
 

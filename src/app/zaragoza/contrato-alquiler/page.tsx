@@ -7,8 +7,8 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Alquiler en Zaragoza 【LAU 120€】 LAU y Arras | Inmonest',
-  description: 'Contratos de alquiler en Zaragoza redactados por abogados. LAU 120€, arras 145€, revisión 60€. Especialistas en derecho inmobiliario aragonés. Entrega en 48h.',
+  title: 'Contrato de Alquiler en Zaragoza 【LAU 145€】 LAU y Arras | Inmonest',
+  description: 'Contratos de alquiler en Zaragoza redactados por abogados. LAU 145€, arras 145€, revisión 60€. Especialistas en derecho inmobiliario aragonés. Entrega en 48h.',
   keywords: [
     'contrato alquiler zaragoza',
     'contrato lau zaragoza',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/zaragoza/contrato-alquiler`,
   },
   openGraph: {
-    title: 'Contrato de Alquiler en Zaragoza - LAU 120€',
+    title: 'Contrato de Alquiler en Zaragoza - LAU 145€',
     description: 'Contratos de alquiler LAU en Zaragoza redactados por abogados. Arras, compraventa y asesoría legal especializada. Entrega 48h.',
     url: `${BASE_URL}/zaragoza/contrato-alquiler`,
     type: 'website',
@@ -85,7 +85,7 @@ const schemaData = {
           name: '¿Cuánto cuesta un contrato de alquiler en Zaragoza?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'En Inmonest redactamos contratos de alquiler LAU adaptados a la normativa aragonesa desde 120€. Incluye asesoramiento personalizado y entrega en 48h.',
+            text: 'En Inmonest redactamos contratos de alquiler LAU adaptados a la normativa aragonesa desde 145€. Incluye asesoramiento personalizado y entrega en 48h.',
           },
         },
         {
@@ -143,14 +143,14 @@ export default function GestoriaZaragozaPage() {
           </h1>
           <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
             Redactamos y revisamos contratos de alquiler, arras y compraventa adaptados a la legislación aragonesa. 
-            <strong className="text-[#f4c94a]"> LAU 120€. Entrega en 48 horas.</strong>
+            <strong className="text-[#f4c94a]"> LAU 145€. Entrega en 48 horas.</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/gestoria/solicitar/contrato-alquiler"
               className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-all transform hover:scale-105"
             >
-              Solicitar Contrato de Alquiler - 120€
+              Solicitar Contrato de Alquiler - 145€
             </Link>
             <Link
               href="/gestoria/solicitar/arras-penitenciales"
@@ -200,7 +200,7 @@ export default function GestoriaZaragozaPage() {
                 Contrato de arrendamiento de vivienda habitual adaptado a Zaragoza. Incluye cláusulas de fianza, 
                 duración, gastos de comunidad y normativa aragonesa específica.
               </p>
-              <div className="text-3xl font-bold text-[#c9962a] mb-4">120€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-4">145€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
                 <li>✅ Redacción personalizada</li>
                 <li>✅ Conforme LAU 2026</li>
@@ -329,8 +329,8 @@ export default function GestoriaZaragozaPage() {
                 ¿Cuánto cuesta un contrato de alquiler en Zaragoza?
               </summary>
               <p className="mt-4 text-gray-700 leading-relaxed">
-                En Inmonest redactamos contratos de alquiler LAU adaptados a la normativa aragonesa desde <strong>120€</strong>. 
-                Incluye asesoramiento personalizado, revisiones ilimitadas y entrega en 48h. Otras gestorías cobran 80-120€ por el mismo servicio.
+                En Inmonest redactamos contratos de alquiler LAU adaptados a la normativa aragonesa desde <strong>145€</strong>. 
+                Incluye asesoramiento personalizado, revisiones ilimitadas y entrega en 48h. Otras gestorías cobran 80-145€ por el mismo servicio.
               </p>
             </details>
 

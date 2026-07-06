@@ -43,7 +43,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'contrato-alquiler': {
     nombre: 'Contrato de Alquiler de Vivienda (LAU)',
-    precio: 120,
+    precio: 145,
     categoria: 'Alquiler',
     incluye: [
       'Adaptado a la Ley de Vivienda 2026',
@@ -54,7 +54,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'alquiler-temporada': {
     nombre: 'Contrato de Alquiler por Temporada',
-    precio: 97,
+    precio: 165,
     categoria: 'Alquiler',
     incluye: [
       'Duración y causa de temporalidad específica',
@@ -109,7 +109,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'alquiler-local-comercial': {
     nombre: 'Contrato de Alquiler de Local Comercial',
-    precio: 121,
+    precio: 145,
     categoria: 'Alquiler',
     incluye: [
       'Régimen LAU uso distinto de vivienda',
@@ -142,7 +142,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'alquiler-garaje-trastero': {
     nombre: 'Contrato de Alquiler de Garaje o Trastero',
-    precio: 48,
+    precio: 130,
     categoria: 'Alquiler',
     incluye: [
       'Descripción del espacio y vehículos',

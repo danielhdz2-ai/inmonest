@@ -445,7 +445,7 @@ export default function RevisionContratoAlquilerPage() {
                 Recomendado
               </div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión + Corrección</h3>
-              <div className="text-5xl font-bold text-[#c9962a] mb-2">120€</div>
+              <div className="text-5xl font-bold text-[#c9962a] mb-2">145€</div>
               <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
               <ul className="text-left space-y-3 mb-8">
                 <li className="flex items-start gap-2">
@@ -564,7 +564,7 @@ export default function RevisionContratoAlquilerPage() {
               <p className="text-gray-600 text-sm mb-3">
                 Si eres propietario, te redactamos un contrato legal adaptado a la Ley de Vivienda 2026.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 120€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde 145€ →</span>
             </Link>
             <Link href="/gestoria" className="border rounded-lg p-6 hover:shadow-lg transition">
               <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Más servicios de gestoría</h3>

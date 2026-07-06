@@ -110,8 +110,8 @@ export default function QueEsGestoriaInmobiliariaPage() {
             2. Contratos de Alquiler
           </h3>
           <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
-            <li><strong>Contrato de alquiler LAU</strong> (vivienda habitual) — 120€</li>
-            <li><strong>Contrato de alquiler temporal</strong> — 97€</li>
+            <li><strong>Contrato de alquiler LAU</strong> (vivienda habitual) — 145€</li>
+            <li><strong>Contrato de alquiler temporal</strong> — 165€</li>
             <li><strong>Contrato de alquiler de habitación</strong> — 121€</li>
             <li><strong>Contrato de rescisión de alquiler</strong> — 73€</li>
             <li><strong>Contrato de reserva de alquiler</strong> — 61€</li>
@@ -230,7 +230,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
           </p>
           <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
             <li><strong>29€ - 61€</strong> — Servicios básicos (análisis de fraude, reservas)</li>
-            <li><strong>120€ - 145€</strong> — Contratos estándar (LAU, arras)</li>
+            <li><strong>145€</strong> — Contratos estándar (LAU, arras)</li>
             <li><strong>350€ - 424€</strong> — Servicios avanzados (Due Diligence, acompañamiento)</li>
             <li><strong>687€</strong> — Servicio completo premium (reserva a escritura)</li>
           </ul>

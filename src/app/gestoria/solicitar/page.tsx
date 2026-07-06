@@ -40,11 +40,12 @@ const SERVICIOS = [
     categoria: 'Alquiler',
     color: 'from-green-500 to-green-600',
     items: [
-      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 120, badge: 'Ley 2026' },
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145, badge: 'Ley 2026' },
+      { slug: 'alquiler-temporada', nombre: 'Alquiler por Temporada', precio: 165 },
       { slug: 'ayuda-propietarios', nombre: 'LAU para Propietarios', precio: 73 },
       { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
-      { slug: 'alquiler-local-comercial', nombre: 'Alquiler Local Comercial', precio: 121 },
-      { slug: 'alquiler-garaje-trastero', nombre: 'Alquiler Garaje/Trastero', precio: 48 },
+      { slug: 'alquiler-local-comercial', nombre: 'Alquiler Local Comercial', precio: 145 },
+      { slug: 'alquiler-garaje-trastero', nombre: 'Alquiler Garaje/Trastero', precio: 130 },
     ],
   },
   // RESCISIÓN Y FIANZAS
@@ -228,7 +229,7 @@ export default function SolicitarIndexPage() {
             </h3>
             <ul className="list-disc list-inside text-gray-700 space-y-2">
               <li><strong>Contrato de Arras Penitenciales</strong> (145€) — El más vendido</li>
-              <li><strong>Contrato de Alquiler LAU</strong> (120€) — Adaptado a Ley de Vivienda 2026</li>
+              <li><strong>Contrato de Alquiler LAU</strong> (145€) — Adaptado a Ley de Vivienda 2026</li>
               <li><strong>Pack Due Diligence Pre-Compra</strong> (350€) — Revisión completa antes de escriturar</li>
               <li><strong>Servicio Completo Venta</strong> (687€) — Acompañamiento desde reserva hasta escritura</li>
             </ul>
