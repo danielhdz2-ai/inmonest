@@ -50,12 +50,14 @@ async function main() {
 
   const sb = createClient(SUPABASE_URL, SUPABASE_KEY)
 
+  // Mismos filtros que sitemap.ts: solo listings publicados con imágenes
   const { data, error } = await sb
     .from('listings')
     .select('id')
     .eq('status', 'published')
-    .not('ai_description', 'is', null)  // Solo listings premium con IA
-    .order('created_at', { ascending: false })
+    .eq('has_images', true)
+    .order('ranking_score', { ascending: false })
+    .order('published_at', { ascending: false })
     .limit(50)
 
   if (error) {

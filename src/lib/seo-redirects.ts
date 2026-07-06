@@ -51,13 +51,48 @@ export const SEO_REDIRECTS: Redirect[] = [
     permanent: true,
   },
   {
+    source: '/gestoria/acompanamiento-venta/:ciudad',
+    destination: '/gestoria/venta-completa-reserva-escritura/:ciudad',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/alquiler-temporada',
+    destination: '/gestoria/solicitar/alquiler-temporada',
+    permanent: true,
+  },
+  {
     source: '/gestoria/revision-alquiler',
+    destination: '/gestoria/revision-contrato-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/revision-alquiler/:ciudad',
     destination: '/gestoria/revision-contrato-alquiler',
     permanent: true,
   },
   {
     source: '/gestoria/revision-arras',
     destination: '/gestoria/revision-contrato-arras',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/revision-arras/:ciudad',
+    destination: '/gestoria/revision-contrato-arras',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/contrato-compraventa/:ciudad',
+    destination: '/gestoria/contrato-compraventa',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/revision-contrato-alquiler/:ciudad',
+    destination: '/gestoria/revision-contrato-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/gestoria/:ciudad',
+    destination: '/gestoria/:ciudad',
     permanent: true,
   },
   {

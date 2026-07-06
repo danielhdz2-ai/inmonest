@@ -51,8 +51,9 @@ async function main() {
     .from('listings')
     .select('id, title, city, operation, price_eur, created_at')
     .eq('status', 'published')
-    .not('ai_description', 'is', null)
-    .order('created_at', { ascending: false })
+    .eq('has_images', true)
+    .order('ranking_score', { ascending: false })
+    .order('published_at', { ascending: false })
     .limit(500)
   
   if (error || !listings) {
