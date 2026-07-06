@@ -8,7 +8,12 @@ export const SEO_REDIRECTS: Redirect[] = [
   // ═══ ALIASES DE SLUGS GESTORÍA ═══
   {
     source: '/gestoria/alquiler-vivienda-lau',
-    destination: '/gestoria/contrato-alquiler',
+    destination: '/gestoria/solicitar/contrato-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/contrato-alquiler',
+    destination: '/gestoria/solicitar/contrato-alquiler',
     permanent: true,
   },
   {
@@ -93,6 +98,16 @@ export const SEO_REDIRECTS: Redirect[] = [
   {
     source: '/gestoria/gestoria/:ciudad',
     destination: '/gestoria/:ciudad',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/gestoria',
+    destination: '/gestoria',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/reserva-compra',
+    destination: '/gestoria/arras-vs-reserva-compra',
     permanent: true,
   },
   {

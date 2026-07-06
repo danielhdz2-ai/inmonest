@@ -129,6 +129,11 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/solicitar/asesoria-compra`,               lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/solicitar/pack-due-diligence-precompra`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/solicitar/contrato-compraventa`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/gestoria/solicitar/alquiler-temporada`,            lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
+  { url: `${BASE_URL}/gestoria/solicitar/reserva-alquiler`,              lastModified: today, changeFrequency: 'monthly', priority: 0.80 },
+  { url: `${BASE_URL}/gestoria/solicitar/liquidacion-fianza`,            lastModified: today, changeFrequency: 'monthly', priority: 0.78 },
+  { url: `${BASE_URL}/gestoria/solicitar/venta-completa-reserva-escritura`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
+  { url: `${BASE_URL}/gestoria/solicitar/asesoramiento-arras-venta`,     lastModified: today, changeFrequency: 'monthly', priority: 0.84 },
 
   // Páginas de oportunidades especiales
   { url: `${BASE_URL}/oportunidades-bancarias`, lastModified: today, changeFrequency: 'weekly' as const, priority: 0.92 },
@@ -149,6 +154,9 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/blog/detectar-contrato-arras-fraudulento`,   lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/blog/gestoria-barcelona-valencia-madrid`,    lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/blog/servicio-completo-compra-vivienda`,     lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
+  { url: `${BASE_URL}/blog/due-diligence-compra-vivienda`,        lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
+  { url: `${BASE_URL}/blog/que-es-gestoria-inmobiliaria`,         lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/blog/cuanto-cuesta-contrato-arras`,         lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
 
   // Páginas de pisos-particulares por ciudad
   { url: `${BASE_URL}/barcelona/pisos-particulares-sin-comision`,  lastModified: today, changeFrequency: 'daily', priority: 0.95 },

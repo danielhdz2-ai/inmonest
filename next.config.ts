@@ -35,11 +35,6 @@ const nextConfig: NextConfig = {
         destination: '/gestoria/solicitar/:slug',
         permanent: true,
       },
-      {
-        source: '/servicios/:slug',
-        destination: '/gestoria/solicitar/:slug',
-        permanent: true,
-      },
       
       // ═══ NORMALIZACIÓN GESTORÍA POR CIUDAD ═══
       {
