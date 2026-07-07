@@ -5,6 +5,14 @@ import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmones
 const BASE_URL = 'https://inmonest.com'
 export const ASESORIA_COMPRA_PRECIO = 687
 
+export type CasoRealCompra = {
+  titulo: string
+  perfil: string
+  situacion: string
+  resultado: string
+  ahorro?: string
+}
+
 export type AsesoriaCompraCiudadConfig = {
   slug: string
   nombre: string
@@ -32,14 +40,29 @@ export type AsesoriaCompraCiudadConfig = {
     lead: string
   }
   faqPrioritarias?: DueDiligenceFaqItem[]
+  casosReales: CasoRealCompra[]
 }
 
 export const ASESORIA_COMPRA_CIUDADES_LIST = [
-  { slug: 'madrid', nombre: 'Madrid' },
-  { slug: 'barcelona', nombre: 'Barcelona' },
-  { slug: 'valencia', nombre: 'Valencia' },
-  { slug: 'sevilla', nombre: 'Sevilla' },
-  { slug: 'malaga', nombre: 'Málaga' },
+  { slug: 'madrid', nombre: 'Madrid', emoji: '🏛️' },
+  { slug: 'barcelona', nombre: 'Barcelona', emoji: '🏖️' },
+  { slug: 'valencia', nombre: 'Valencia', emoji: '🌊' },
+  { slug: 'sevilla', nombre: 'Sevilla', emoji: '☀️' },
+  { slug: 'malaga', nombre: 'Málaga', emoji: '🌴' },
+  { slug: 'zaragoza', nombre: 'Zaragoza', emoji: '🏔️' },
+  { slug: 'valladolid', nombre: 'Valladolid', emoji: '🏰' },
+  { slug: 'mallorca', nombre: 'Mallorca', emoji: '🏝️' },
+] as const
+
+export const ASESORIA_COMPRA_TRAMITES = [
+  'Revisión del contrato de reserva antes de firmar',
+  'Análisis y redacción de contrato de arras penitenciales o confirmatorias',
+  'Solicitud y estudio de nota simple registral (cargas, hipotecas, embargos)',
+  'Verificación de deudas de comunidad, derramas e IBI',
+  'Comprobación de cédula de habitabilidad y certificado energético',
+  'Coordinación con notaría y preparación de documentación para escritura',
+  'Asesoramiento sobre ITP, gastos de compra y plazos de la operación',
+  'Seguimiento por WhatsApp y teléfono con tu gestor hasta las llaves',
 ] as const
 
 export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig> = {
@@ -76,6 +99,33 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
       {
         q: '¿Qué revisar antes de comprar un piso en Madrid?',
         a: 'Nota simple, deudas de comunidad, IBI, IEE/ITE en edificios de +50 años, cédula de habitabilidad y contrato de reserva. En Madrid las operaciones van rápido: no firmes sin revisión profesional.',
+      },
+      {
+        q: '¿Puedo comprar en Idealista o Fotocasa sin pagar comisión de agencia?',
+        a: 'Sí. Si el anuncio es de particular, no debes pagar comisión al vendedor. Inmonest te acompaña jurídicamente por 687€ fijos: revisamos contratos y documentación mientras tú negocias el precio directamente.',
+      },
+      {
+        q: '¿Cuánto me ahorro frente a una inmobiliaria en Madrid?',
+        a: 'En un piso de 320.000€, una agencia cobraría 9.600–16.000€ (3-5%). Con Inmonest pagas 687€ IVA incluido por todo el acompañamiento hasta escritura.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra en Chamberí sin agencia',
+        perfil: 'Pareja joven, primer piso',
+        situacion:
+          'Encontraron piso de particular en Idealista. El vendedor les pasó un contrato de reserva con penalización del 20% si desistían.',
+        resultado:
+          'Revisamos la reserva, negociamos cláusulas más equilibradas y verificamos la nota simple antes de entregar la señal. Llegaron a escritura sin sorpresas.',
+        ahorro: '14.000€ vs comisión de agencia',
+      },
+      {
+        titulo: 'Comprador desde fuera de Madrid',
+        perfil: 'Profesional que se muda por trabajo',
+        situacion:
+          'Tenía 48h para firmar arras en Carabanchel. No conocía la normativa madrileña ni qué documentos pedir al vendedor.',
+        resultado:
+          'Gestor asignado en 24h, checklist documental completo y coordinación con notaría. Operación cerrada en 6 semanas.',
       },
     ],
   },
@@ -114,6 +164,33 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
         q: '¿Es obligatoria la cédula de habitabilidad al comprar en Barcelona?',
         a: 'Sí en la Comunitat. Sin cédula vigente la operación puede bloquearse en notaría. La verificamos como parte del servicio.',
       },
+      {
+        q: '¿Comprar piso de particular en Barcelona es seguro?',
+        a: 'Sí, si revisas documentación antes de firmar. Muchos compradores encuentran piso en portales y contactan directo con el propietario. Nosotros cubrimos la parte legal que la agencia haría, sin cobrar % sobre el precio.',
+      },
+      {
+        q: '¿Qué pasa con las zonas tensionadas al comprar?',
+        a: 'Si compras para alquilar en zona tensionada, hay límites de renta. Si es vivienda habitual para ti, te informamos de las implicaciones en estatutos de comunidad y normativa catalana.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Piso en Gràcia de particular',
+        perfil: 'Compradora extranjera con NIE',
+        situacion:
+          'Compraba en el Eixample a un particular. El contrato de arras no mencionaba la ITE obligatoria del edificio.',
+        resultado:
+          'Detectamos la ITE pendiente, el vendedor la tramitó antes de escritura y evitamos un bloqueo en notaría.',
+        ahorro: '12.000€ vs comisión inmobiliaria',
+      },
+      {
+        titulo: 'Reserva bajo presión en Sants',
+        perfil: 'Familia con hipoteca aprobada',
+        situacion:
+          'Tres familias pujaban por el mismo piso. El vendedor exigía firmar reserva en 24h con señal de 10.000€.',
+        resultado:
+          'Revisión express del borrador, cláusulas de devolución si fallaba la hipoteca y verificación registral previa a la señal.',
+      },
     ],
   },
 
@@ -146,6 +223,27 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
       lead:
         'Gestora asignada que revisa contratos, cédula valenciana, nota simple y deudas de comunidad. 687€ por todo el proceso hasta notaría.',
     },
+    faqPrioritarias: [
+      {
+        q: '¿Cómo comprar piso de particular en Valencia sin riesgos?',
+        a: 'Pide nota simple, certificado de deudas de comunidad y cédula de habitabilidad antes de entregar señal. Nosotros verificamos todo y te explicamos cada documento en lenguaje claro.',
+      },
+      {
+        q: '¿Qué documentos exige la Comunitat Valenciana?',
+        a: 'Cédula de habitabilidad, certificado energético, IEE en edificios antiguos y, en muchos casos, certificado de eficiencia energética de la comunidad.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra en Benimaclet entre particulares',
+        perfil: 'Compradores locales, sin agencia',
+        situacion:
+          'Ya tenían acuerdo de precio con el propietario. El contrato de arras tenía plazos imposibles para obtener la hipoteca.',
+        resultado:
+          'Renegociamos plazos, revisamos cargas registrales y acompañamiento hasta escritura. Ahorro total frente a agencia: más de 11.000€.',
+        ahorro: '11.000€',
+      },
+    ],
   },
 
   sevilla: {
@@ -177,6 +275,26 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
       lead:
         'Sin agencia, pero con gestoría profesional. Revisamos arras, documentación andaluza y te acompañamos hasta escritura por 687€ fijos.',
     },
+    faqPrioritarias: [
+      {
+        q: '¿Qué particularidades tiene comprar en Sevilla entre particulares?',
+        a: 'Verificamos IEE en edificios antiguos del centro, licencias de obra en reformas y situación de viviendas con uso turístico mal declarado.',
+      },
+      {
+        q: '¿El vendedor puede exigirme una comisión si compro de particular?',
+        a: 'No. La comisión la cobra quien contrata la agencia (normalmente el vendedor). Tú solo pagas el precio acordado más gastos legales e impuestos.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Primer piso en Triana',
+        perfil: 'Joven profesional, compra sin agencia',
+        situacion:
+          'Encontró piso en un portal de particulares. Iba a firmar arras sin revisar la nota simple ni las actas de la comunidad.',
+        resultado:
+          'Detectamos derrama pendiente de 4.200€. Renegoció con el vendedor antes de firmar. Gestor disponible por WhatsApp durante todo el proceso.',
+      },
+    ],
   },
 
   malaga: {
@@ -208,6 +326,211 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
       lead:
         'Gestora asignada para compradores que no quieren pagar el 3-5% a una inmobiliaria. 687€ por acompañamiento completo hasta notaría.',
     },
+    faqPrioritarias: [
+      {
+        q: '¿Comprar en la Costa del Sol sin agencia es habitual?',
+        a: 'Cada vez más. Muchos vendedores publican en portales y negocian directo. Lo crítico es la revisión legal: VFT, cargas y documentación andaluza.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra en Teatinos con due diligence',
+        perfil: 'Familia que compra vivienda habitual',
+        situacion:
+          'Tras firmar arras detectaron discrepancias en los metros cuadrados registrales vs el anuncio.',
+        resultado:
+          'Due diligence documental, renegociación del precio y cierre en notaría con pleno conocimiento de la situación.',
+        ahorro: '8.000€',
+      },
+    ],
+  },
+
+  zaragoza: {
+    slug: 'zaragoza',
+    nombre: 'Zaragoza',
+    region: 'Aragón',
+    testimoniosLanding: 'asesoria-compra-zaragoza',
+    heroImage: '/gestoria2.jpg',
+    precioEjemploPiso: 185_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Aragón',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en compras entre particulares en Zaragoza. Mercado en crecimiento, operaciones rápidas y revisión de documentación aragonesa hasta escritura.',
+    },
+    zonasIntro: 'Zaragoza capital y área metropolitana.',
+    zonas: ['Centro', 'Delicias', 'Actur', 'Las Fuentes', 'San José', 'Utebo'],
+    meta: {
+      title: 'Asesoría Compra Piso Zaragoza | Particular sin comisión desde 687€',
+      description:
+        'Compra piso de particular en Zaragoza con gestor asignado. Revisión de arras, nota simple y normativa aragonesa. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'asesoria compra piso zaragoza, comprar piso particular zaragoza, comprar piso sin agencia zaragoza, gestor compra vivienda zaragoza, gestoria compra piso zaragoza',
+      ogTitle: 'Compra piso particular Zaragoza — 687€ sin comisión',
+      ogDescription: 'Gestor asignado desde reserva hasta escritura en Zaragoza.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Zaragoza con gestor profesional a tu lado',
+      lead:
+        '¿Has encontrado piso en un portal de particulares? Te acompañamos en reserva, arras, documentación registral y firma en notaría. 687€ fijos — sin pagar comisión de agencia sobre el precio del piso.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Es seguro comprar piso de particular en Zaragoza?',
+        a: 'Sí, si revisas documentación antes de entregar señal. En Zaragoza el mercado crece y muchas operaciones son entre particulares. Nosotros verificamos nota simple, comunidad e impuestos pendientes.',
+      },
+      {
+        q: '¿Qué documentación necesito pedir al vendedor en Aragón?',
+        a: 'Nota simple registral, cédula de habitabilidad, certificado energético, certificado de deudas de comunidad e IBI al corriente. Si el edificio es antiguo, puede exigirse ITE.',
+      },
+      {
+        q: '¿Cuánto ahorro respecto a una inmobiliaria en Zaragoza?',
+        a: 'En un piso de 185.000€, una agencia cobraría unos 5.550–9.250€. Con Inmonest pagas 687€ por acompañamiento completo hasta escritura.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Piso en Delicias de particular',
+        perfil: 'Pareja primer comprador',
+        situacion:
+          'Encontraron anuncio en portal sin agencia. El vendedor les presionó para firmar reserva el mismo fin de semana.',
+        resultado:
+          'Revisión del borrador en 24h, checklist documental y arras con plazos realistas para la hipoteca. Compra cerrada sin comisión de intermediario.',
+        ahorro: '7.500€ vs agencia',
+      },
+      {
+        titulo: 'Comprador que venía de Madrid',
+        perfil: 'Teletrabajador reubicado en Zaragoza',
+        situacion:
+          'No conocía plazos ni impuestos en Aragón. Tenía miedo de firmar arras sin entender las cláusulas.',
+        resultado:
+          'Gestor explicó cada paso, coordinó con notaría zaragozana y verificó que la vivienda no tenía cargas ocultas.',
+      },
+    ],
+  },
+
+  valladolid: {
+    slug: 'valladolid',
+    nombre: 'Valladolid',
+    region: 'Castilla y León',
+    testimoniosLanding: 'asesoria-compra-valladolid',
+    heroImage: '/keys.jpg',
+    precioEjemploPiso: 190_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Castilla y León',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores de particular en Valladolid y provincia. Ideal si compras desde Madrid u otra ciudad: revisión documental y coordinación notarial a distancia.',
+    },
+    zonasIntro: 'Valladolid capital y provincia.',
+    zonas: ['Centro', 'Parquesol', 'Delicias', 'Rondilla', 'La Victoria', 'Laguna de Duero'],
+    meta: {
+      title: 'Asesoría Compra Piso Valladolid | Particular sin comisión 687€',
+      description:
+        'Compra piso de particular en Valladolid con gestor asignado. Revisión arras, Registro y normativa castellanoleonesa. 687€ IVA incl. Sin comisión de agencia.',
+      keywords:
+        'asesoria compra piso valladolid, comprar piso particular valladolid, comprar piso sin agencia valladolid, gestor compra vivienda valladolid',
+      ogTitle: 'Compra piso particular Valladolid — 687€ fijos',
+      ogDescription: 'Gestor hasta escritura en Valladolid. Compra sin comisión de agencia.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Valladolid sin pagar comisión de agencia',
+      lead:
+        'Muchos compradores llegan desde Madrid u otras provincias. Tu gestor revisa contratos, documentación del Registro y te acompaña hasta la escritura por 687€ IVA incluido.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Puedo comprar en Valladolid viviendo en otra ciudad?',
+        a: 'Sí. Trabajamos 100% online: revisión documental, videollamadas y coordinación con notaría en Valladolid. No necesitas gestoría presencial.',
+      },
+      {
+        q: '¿Qué revisar en edificios históricos del centro de Valladolid?',
+        a: 'Estado de conservación, licencias de reforma, protección patrimonial y deudas de comunidad. En el casco antiguo hay particularidades urbanísticas que verificamos.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra desde Madrid a Valladolid',
+        perfil: 'Profesional que se muda',
+        situacion:
+          'Compró en Valladolid sin conocer el proceso local ni qué documentos exigir al vendedor particular.',
+        resultado:
+          'Revisión de arras, documentación registral y coordinación de firma. Operación completada sin desplazamientos innecesarios.',
+      },
+      {
+        titulo: 'Piso en Parquesol entre particulares',
+        perfil: 'Familia con hipoteca',
+        situacion:
+          'El banco pedía plazos ajustados para la escritura. El contrato de arras del vendedor no encajaba con la hipoteca.',
+        resultado:
+          'Renegociación de plazos, verificación de cargas y acompañamiento hasta notaría en 5 semanas.',
+        ahorro: '6.500€ vs comisión inmobiliaria',
+      },
+    ],
+  },
+
+  mallorca: {
+    slug: 'mallorca',
+    nombre: 'Mallorca',
+    region: 'Illes Balears · Normativa balear',
+    testimoniosLanding: 'asesoria-compra-mallorca',
+    heroImage: '/gestoria5.jpg',
+    precioEjemploPiso: 320_000,
+    gestor: {
+      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      rol: 'Gestora inmobiliaria · Compras en Baleares',
+      foto: GESTOR_CARMEN_VIDAL.foto,
+      bio: 'Experta en compras entre particulares en Mallorca. Conoce normativa balear, IBAVI, zonas tensionadas y operaciones con compradores nacionales e internacionales.',
+    },
+    zonasIntro: 'Palma, cala y municipios de la isla.',
+    zonas: ['Palma', 'Calvià', 'Inca', 'Manacor', 'Llucmajor', 'Pollença'],
+    meta: {
+      title: 'Asesoría Compra Piso Mallorca | Particular sin comisión desde 687€',
+      description:
+        'Compra piso de particular en Mallorca con gestora asignada. Normativa balear, IBAVI, arras y escritura. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'asesoria compra piso mallorca, comprar piso particular mallorca, comprar piso sin agencia palma, gestor compra vivienda baleares, gestoria compra piso mallorca',
+      ogTitle: 'Compra piso particular Mallorca — 687€ sin comisión',
+      ogDescription: 'Gestora experta en Baleares. De reserva a escritura.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Mallorca con gestoría profesional',
+      lead:
+        'Comprar en Baleares tiene normativa propia (IBAVI, zonas tensionadas, turismo). Te acompañamos desde la reserva hasta escritura por 687€ — sin comisión de agencia sobre el precio.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Qué es el depósito IBAVI al comprar en Mallorca?',
+        a: 'En muchas operaciones en Baleares interviene el Instituto Balear de la Vivienda. Verificamos si aplica a tu compra y qué implicaciones tiene en contrato y escritura.',
+      },
+      {
+        q: '¿Puedo comprar piso turístico de particular en Mallorca?',
+        a: 'Depende de la licencia turística y estatutos de comunidad. Revisamos si la vivienda puede usarse como pretendes y si hay sanciones o limitaciones pendientes.',
+      },
+      {
+        q: '¿Compradores extranjeros pueden usar Inmonest?',
+        a: 'Sí. Acompañamos compradores con NIE, residentes y no residentes. Revisamos documentación bancaria y requisitos notariales en operaciones internacionales.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra en Palma de particular',
+        perfil: 'Comprador peninsular',
+        situacion:
+          'Encontró piso en portal sin agencia. No conocía la normativa balear ni las cláusulas de zona tensionada.',
+        resultado:
+          'Contrato adaptado a Ley de Vivienda y normativa autonómica. Verificación de cédula, energético y situación registral antes de arras.',
+      },
+      {
+        titulo: 'Piso en Calvià con comprador británico',
+        perfil: 'Familia que compra segunda residencia',
+        situacion:
+          'Operación entre particulares con plazos cortos. Documentación en castellano e inglés y dudas sobre impuestos.',
+        resultado:
+          'Coordinación documental, revisión de arras y acompañamiento hasta escritura. Ahorro frente a agencia local de lujo.',
+        ahorro: '12.000€',
+      },
+    ],
   },
 }
 

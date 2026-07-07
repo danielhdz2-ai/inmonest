@@ -20,7 +20,11 @@ export function getAsesoriaCompraFaq(
     },
     {
       q: '¿Puedo comprar sin agencia inmobiliaria?',
-      a: 'Sí. Inmonest no es agencia: somos gestoría. No cobramos porcentaje sobre el precio del piso. Te acompañamos jurídicamente sin conflicto de interés con el vendedor.',
+      a: 'Sí. Inmonest no es agencia: somos gestoría. No cobramos porcentaje sobre el precio del piso. Te acompañamos jurídicamente mientras tú negocias directamente con el vendedor en portales de particulares.',
+    },
+    {
+      q: '¿Trabajáis con hipotecas de cualquier banco?',
+      a: 'Sí. Revisamos plazos de arras para que encajen con tu financiación. Somos independientes: no cobramos comisión de bancos ni inmobiliarias.',
     },
     {
       q: `¿Conocéis la normativa de ${region}?`,
@@ -29,6 +33,10 @@ export function getAsesoriaCompraFaq(
     {
       q: '¿Cuándo debo contratar el servicio?',
       a: 'Lo ideal es antes de firmar la reserva o inmediatamente después. Cuanto antes revisemos contratos y documentación, más margen tienes para renegociar o desistir sin pérdidas.',
+    },
+    {
+      q: '¿Qué pasa si detectáis un problema grave en la documentación?',
+      a: 'Te damos informe claro con opciones: renegociar condiciones, cancelar la compra y recuperar arras si procede, o continuar asumiendo el riesgo con pleno conocimiento.',
     },
   ]
 

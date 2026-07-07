@@ -5,6 +5,7 @@ import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import GestorContactBanner from '@/components/GestorContactBanner'
 import TestimoniosSection from '@/components/TestimoniosSection'
+import { ASESORIA_COMPRA_CIUDADES_LIST } from '@/lib/asesoria-compra-ciudad-data'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -455,14 +456,8 @@ export default function AsesoriaCompraPisoPage() {
           <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
             Asesoría adaptada al mercado local: normativa, plazos y documentación de cada ciudad
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-            {[
-              { slug: 'madrid', nombre: 'Madrid', emoji: '🏛️' },
-              { slug: 'barcelona', nombre: 'Barcelona', emoji: '🏖️' },
-              { slug: 'valencia', nombre: 'Valencia', emoji: '🌊' },
-              { slug: 'sevilla', nombre: 'Sevilla', emoji: '☀️' },
-              { slug: 'malaga', nombre: 'Málaga', emoji: '🌴' },
-            ].map((ciudad) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {ASESORIA_COMPRA_CIUDADES_LIST.map((ciudad) => (
               <Link
                 key={ciudad.slug}
                 href={`/gestoria/asesoria-compra-piso/${ciudad.slug}`}

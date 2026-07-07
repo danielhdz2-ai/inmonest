@@ -90,6 +90,14 @@ const REGULATIONS_BY_REGION: Record<string, LocalRegulationBlock[]> = {
         'Nota simple y certificado de comunidad',
       ],
     },
+    {
+      titulo: 'Comprar de particular en Zaragoza',
+      items: [
+        'Mercado en crecimiento: operaciones rápidas, revisar reserva antes de señal',
+        'Verificar plusvalía municipal e IBI al corriente',
+        'Compradores desde fuera: coordinación online con notaría zaragozana',
+      ],
+    },
   ],
   'País Vasco · Bizkaia': [
     {
@@ -118,6 +126,26 @@ const REGULATIONS_BY_REGION: Record<string, LocalRegulationBlock[]> = {
         'Plusvalía municipal (IIVTNU) a cargo del vendedor',
         'Verificar estado de conservación en edificios históricos del centro',
         'IBI y suministros al corriente antes de escritura',
+        'Compradores desde Madrid: operación 100% online con notaría local',
+      ],
+    },
+  ],
+  'Illes Balears · Normativa balear': [
+    {
+      titulo: 'Documentación en Baleares',
+      items: [
+        'Cédula de habitabilidad balear vigente',
+        'Certificado energético',
+        'Depósito IBAVI si aplica a la operación',
+        'Nota simple y certificado de deudas de comunidad',
+      ],
+    },
+    {
+      titulo: 'Comprar de particular en Mallorca',
+      items: [
+        'Zonas tensionadas: límites de precio si compras para alquilar',
+        'Viviendas turísticas: verificar licencia y estatutos de comunidad',
+        'Compradores no residentes: NIE y documentación bancaria',
       ],
     },
   ],

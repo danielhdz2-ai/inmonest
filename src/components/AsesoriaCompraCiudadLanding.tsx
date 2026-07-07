@@ -11,6 +11,7 @@ import type { AsesoriaCompraCiudadConfig } from '@/lib/asesoria-compra-ciudad-da
 import {
   ASESORIA_COMPRA_CIUDADES_LIST,
   ASESORIA_COMPRA_PRECIO,
+  ASESORIA_COMPRA_TRAMITES,
   comisionAgenciaMax,
   comisionAgenciaMin,
 } from '@/lib/asesoria-compra-ciudad-data'
@@ -25,6 +26,33 @@ import { getDueDiligenceHref } from '@/lib/gestoria-compra-cross-sell'
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/compra-completa-reserva-escritura'
 const PHONE = '+34745022862'
+
+const BENEFICIOS = [
+  {
+    titulo: 'Sin comisión sobre el piso',
+    desc: 'Las agencias cobran 3-5% del precio. Inmonest cobra 687€ fijos aunque el piso cueste 200.000€ o 500.000€.',
+  },
+  {
+    titulo: 'Gestor asignado de verdad',
+    desc: 'No eres un ticket: tienes nombre, teléfono y WhatsApp de un gestor inmobiliario que conoce tu operación.',
+  },
+  {
+    titulo: 'Trabajamos para ti, no para el vendedor',
+    desc: 'La agencia defiende al que paga la comisión (el vendedor). Nosotros revisamos contratos pensando en tu interés como comprador.',
+  },
+  {
+    titulo: 'Evitas errores de miles de euros',
+    desc: 'Arras mal redactadas, cargas ocultas o derramas no detectadas pueden costarte mucho más que 687€.',
+  },
+  {
+    titulo: '100% online, respuesta en 24h',
+    desc: 'Ideal si compras desde otra ciudad o tienes poco tiempo. Videollamada, WhatsApp y revisión documental a distancia.',
+  },
+  {
+    titulo: 'De reserva a llaves',
+    desc: 'No solo revisamos un contrato suelto: te acompañamos en todo el proceso hasta la firma en notaría.',
+  },
+] as const
 
 const PASOS = [
   {
@@ -128,6 +156,45 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
         </div>
       </section>
 
+      <section className="py-14 px-4 bg-slate-50 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-3">
+            ¿Por qué contratar Inmonest si compras de particular?
+          </h2>
+          <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+            Comprar sin agencia ahorra comisiones, pero no elimina el riesgo legal. Un gestor profesional
+            te protege en cada trámite.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {BENEFICIOS.map((b) => (
+              <div key={b.titulo} className="bg-white border border-gray-200 rounded-xl p-5">
+                <h3 className="font-bold text-gray-900 mb-2">{b.titulo}</h3>
+                <p className="text-sm text-gray-600">{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-3">
+            Trámites que gestionamos por ti en {nombre}
+          </h2>
+          <p className="text-center text-gray-600 mb-8">
+            Todo lo que una agencia haría en la parte legal — sin cobrarte un porcentaje del piso.
+          </p>
+          <ul className="grid sm:grid-cols-2 gap-3">
+            {ASESORIA_COMPRA_TRAMITES.map((t) => (
+              <li key={t} className="flex items-start gap-2 text-sm text-gray-700 bg-slate-50 rounded-lg p-3">
+                <span className="text-[#c9962a] shrink-0 mt-0.5">✓</span>
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <section className="py-14 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10">
@@ -180,6 +247,34 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
       </section>
 
       <section className="py-14 px-4 bg-white border-t border-gray-100">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-3">
+            Casos reales en {nombre}
+          </h2>
+          <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+            Compradores particulares que encontraron piso sin agencia y contrataron gestoría profesional.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {config.casosReales.map((caso) => (
+              <article key={caso.titulo} className="border border-gray-200 rounded-xl p-6 bg-slate-50">
+                <p className="text-xs font-semibold uppercase tracking-wide text-[#a87a20] mb-2">{caso.perfil}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">{caso.titulo}</h3>
+                <p className="text-sm text-gray-600 mb-3">
+                  <strong className="text-gray-800">Situación:</strong> {caso.situacion}
+                </p>
+                <p className="text-sm text-gray-700 mb-3">
+                  <strong className="text-gray-800">Resultado:</strong> {caso.resultado}
+                </p>
+                {caso.ahorro && (
+                  <p className="text-sm font-semibold text-green-700">Ahorro estimado: {caso.ahorro}</p>
+                )}
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-14 px-4 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-center">
           <Image
             src={gestor.foto}
@@ -227,7 +322,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
                 href={`/gestoria/asesoria-compra-piso/${c.slug}`}
                 className="text-sm font-semibold text-[#c9962a] hover:underline"
               >
-                {c.nombre} →
+                {c.emoji ? `${c.emoji} ` : ''}{c.nombre} →
               </Link>
             ))}
           </div>
