@@ -44,18 +44,18 @@ export type AsesoriaCompraCiudadConfig = {
 }
 
 export const ASESORIA_COMPRA_CIUDADES_LIST = [
-  { slug: 'madrid', nombre: 'Madrid', emoji: '🏛️' },
-  { slug: 'barcelona', nombre: 'Barcelona', emoji: '🏖️' },
-  { slug: 'valencia', nombre: 'Valencia', emoji: '🌊' },
-  { slug: 'sevilla', nombre: 'Sevilla', emoji: '☀️' },
-  { slug: 'malaga', nombre: 'Málaga', emoji: '🌴' },
-  { slug: 'zaragoza', nombre: 'Zaragoza', emoji: '🏔️' },
-  { slug: 'valladolid', nombre: 'Valladolid', emoji: '🏰' },
-  { slug: 'mallorca', nombre: 'Mallorca', emoji: '🏝️' },
-  { slug: 'bilbao', nombre: 'Bilbao', emoji: '🏔️' },
-  { slug: 'coruna', nombre: 'A Coruña', emoji: '🌊' },
-  { slug: 'murcia', nombre: 'Murcia', emoji: '🌅' },
-  { slug: 'pamplona', nombre: 'Pamplona', emoji: '🏃' },
+  { slug: 'madrid', nombre: 'Madrid' },
+  { slug: 'barcelona', nombre: 'Barcelona' },
+  { slug: 'valencia', nombre: 'Valencia' },
+  { slug: 'sevilla', nombre: 'Sevilla' },
+  { slug: 'malaga', nombre: 'Málaga' },
+  { slug: 'zaragoza', nombre: 'Zaragoza' },
+  { slug: 'valladolid', nombre: 'Valladolid' },
+  { slug: 'mallorca', nombre: 'Mallorca' },
+  { slug: 'bilbao', nombre: 'Bilbao' },
+  { slug: 'coruna', nombre: 'A Coruña' },
+  { slug: 'murcia', nombre: 'Murcia' },
+  { slug: 'pamplona', nombre: 'Pamplona' },
 ] as const
 
 export const ASESORIA_COMPRA_TRAMITES = [

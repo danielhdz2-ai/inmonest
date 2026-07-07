@@ -461,13 +461,10 @@ export default function AsesoriaCompraPisoPage() {
               <Link
                 key={ciudad.slug}
                 href={`/gestoria/asesoria-compra-piso/${ciudad.slug}`}
-                className="flex items-center gap-3 bg-white p-4 rounded-lg border border-gray-100 hover:border-[#c9962a] hover:shadow-md transition"
+                className="block bg-white p-4 rounded-lg border border-gray-100 hover:border-[#c9962a] hover:shadow-md transition"
               >
-                <span className="text-2xl">{ciudad.emoji}</span>
-                <div>
-                  <div className="font-bold text-gray-900">{ciudad.nombre}</div>
-                  <div className="text-xs text-[#c9962a]">Ver servicio →</div>
-                </div>
+                <div className="font-bold text-gray-900">{ciudad.nombre}</div>
+                <div className="text-xs text-[#c9962a] mt-1">Ver servicio →</div>
               </Link>
             ))}
           </div>

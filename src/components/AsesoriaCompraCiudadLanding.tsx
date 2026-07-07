@@ -322,7 +322,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
                 href={`/gestoria/asesoria-compra-piso/${c.slug}`}
                 className="text-sm font-semibold text-[#c9962a] hover:underline"
               >
-                {c.emoji ? `${c.emoji} ` : ''}{c.nombre} →
+                {c.nombre} →
               </Link>
             ))}
           </div>
