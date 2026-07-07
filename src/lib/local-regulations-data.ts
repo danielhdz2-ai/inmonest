@@ -109,6 +109,15 @@ const REGULATIONS_BY_REGION: Record<string, LocalRegulationBlock[]> = {
         'Verificación de normativa foral en transmisión',
       ],
     },
+    {
+      titulo: 'Comprar de particular en Bilbao',
+      items: [
+        'Plusvalía municipal de Bizkaia: verificar liquidación del vendedor',
+        'Edificios del casco histórico: ITE y estado de conservación',
+        'Operaciones rápidas: revisar reserva y arras antes de entregar señal',
+        'Compradores desde fuera: coordinación online con notaría bilbaína',
+      ],
+    },
   ],
   'Castilla y León': [
     {
@@ -157,6 +166,55 @@ const REGULATIONS_BY_REGION: Record<string, LocalRegulationBlock[]> = {
         'Certificado energético',
         'ITE si aplica por antigüedad del edificio',
         'Licencias de obra en reformas',
+      ],
+    },
+    {
+      titulo: 'Comprar de particular en A Coruña',
+      items: [
+        'Mercado con muchas operaciones directas: revisar reserva antes de señal',
+        'Verificar deudas de comunidad y derramas en edificios costeros',
+        'Discrepancias entre catastro y superficie real en viviendas antiguas',
+        'Compradores desde fuera: operación 100% online con notaría local',
+      ],
+    },
+  ],
+  'Región de Murcia': [
+    {
+      titulo: 'Documentación en la Región de Murcia',
+      items: [
+        'Cédula de habitabilidad vigente',
+        'Certificado energético actualizado',
+        'Nota simple registral sin cargas ocultas',
+        'Certificado de deudas de la comunidad',
+      ],
+    },
+    {
+      titulo: 'Comprar de particular en Murcia',
+      items: [
+        'Mercado accesible: muchas operaciones entre particulares sin intermediario',
+        'Verificar IBI y plusvalía municipal al corriente',
+        'Operaciones en Cartagena y Lorca: misma coordinación online',
+        'Revisar arras antes de entregar señal: plazos para hipoteca',
+      ],
+    },
+  ],
+  Navarra: [
+    {
+      titulo: 'Documentación en Navarra',
+      items: [
+        'Cédula de habitabilidad vigente',
+        'Certificado energético',
+        'ITE en edificios que la exijan',
+        'Nota simple y certificado de deudas de comunidad',
+      ],
+    },
+    {
+      titulo: 'Comprar de particular en Pamplona',
+      items: [
+        'Normativa foral navarra en impuestos de transmisión (ITP)',
+        'Plusvalía municipal: liquidación a cargo del vendedor',
+        'Casco antiguo: verificar protección patrimonial y licencias',
+        'Compradores desde Madrid u otras CCAA: gestión online con notaría pamplonesa',
       ],
     },
   ],

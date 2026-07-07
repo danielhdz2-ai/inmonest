@@ -52,6 +52,10 @@ export const ASESORIA_COMPRA_CIUDADES_LIST = [
   { slug: 'zaragoza', nombre: 'Zaragoza', emoji: '🏔️' },
   { slug: 'valladolid', nombre: 'Valladolid', emoji: '🏰' },
   { slug: 'mallorca', nombre: 'Mallorca', emoji: '🏝️' },
+  { slug: 'bilbao', nombre: 'Bilbao', emoji: '🏔️' },
+  { slug: 'coruna', nombre: 'A Coruña', emoji: '🌊' },
+  { slug: 'murcia', nombre: 'Murcia', emoji: '🌅' },
+  { slug: 'pamplona', nombre: 'Pamplona', emoji: '🏃' },
 ] as const
 
 export const ASESORIA_COMPRA_TRAMITES = [
@@ -529,6 +533,262 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
         resultado:
           'Coordinación documental, revisión de arras y acompañamiento hasta escritura. Ahorro frente a agencia local de lujo.',
         ahorro: '12.000€',
+      },
+    ],
+  },
+
+  bilbao: {
+    slug: 'bilbao',
+    nombre: 'Bilbao',
+    region: 'País Vasco · Bizkaia',
+    testimoniosLanding: 'asesoria-compra-bilbao',
+    heroImage: '/gestoria7.jpg',
+    precioEjemploPiso: 280_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Bizkaia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en compras entre particulares en Bilbao y Gran Bilbao. Conoce normativa foral vasca, plusvalía de Bizkaia y revisión documental hasta escritura sin comisión de agencia.',
+    },
+    zonasIntro: 'Bilbao capital, Gran Bilbao y área metropolitana.',
+    zonas: ['Indautxu', 'Abando', 'Deusto', 'Rekalde', 'Getxo', 'Barakaldo', 'Portugalete'],
+    meta: {
+      title: 'Asesoría Compra Piso Bilbao | Particular sin comisión desde 687€',
+      description:
+        'Compra piso de particular en Bilbao con gestor asignado. Normativa foral, arras, nota simple y escritura. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'asesoria compra piso bilbao, comprar piso particular bilbao, comprar piso sin agencia bilbao, gestor compra vivienda bilbao, gestoria compra piso bizkaia',
+      ogTitle: 'Compra piso particular Bilbao — 687€ sin comisión',
+      ogDescription: 'Gestor experto en Bizkaia. De reserva a escritura.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Bilbao sin pagar comisión de agencia',
+      lead:
+        '¿Has encontrado piso en un portal de particulares en Bilbao? Tu gestor revisa contratos, normativa foral y documentación registral. 687€ fijos — sin el 3-5% de una inmobiliaria.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Qué particularidades tiene comprar piso en Bizkaia?',
+        a: 'En el País Vasco conviene verificar normativa foral, plusvalía municipal de Bizkaia e ITE en edificios antiguos del casco. Revisamos todo antes de que firmes arras o entregues señal.',
+      },
+      {
+        q: '¿Puedo comprar en Bilbao sin pagar comisión al vendedor?',
+        a: 'Sí, si el anuncio es de particular. Inmonest te acompaña jurídicamente por 687€ fijos mientras tú negocias el precio directamente con el propietario.',
+      },
+      {
+        q: '¿Cuánto ahorro frente a una agencia en Bilbao?',
+        a: 'En un piso de 280.000€, una inmobiliaria cobraría unos 8.400–14.000€. Con Inmonest pagas 687€ por acompañamiento completo hasta escritura.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Piso en Indautxu de particular',
+        perfil: 'Pareja con hipoteca aprobada',
+        situacion:
+          'Encontraron anuncio sin agencia. El contrato de arras incluía plazos imposibles para el banco y penalización del 15%.',
+        resultado:
+          'Renegociación de cláusulas, verificación de nota simple y coordinación con notaría bilbaína. Compra cerrada en 6 semanas.',
+        ahorro: '10.500€ vs comisión inmobiliaria',
+      },
+      {
+        titulo: 'Compra en Deusto entre particulares',
+        perfil: 'Profesional que se muda a Bilbao',
+        situacion:
+          'No conocía la documentación exigida en Bizkaia ni qué revisar en un edificio de más de 50 años.',
+        resultado:
+          'Checklist documental completo, revisión de ITE y acompañamiento hasta escritura sin sorpresas registrales.',
+      },
+    ],
+  },
+
+  coruna: {
+    slug: 'coruna',
+    nombre: 'A Coruña',
+    region: 'Galicia',
+    testimoniosLanding: 'asesoria-compra-coruna',
+    heroImage: '/gestoria2.jpg',
+    precioEjemploPiso: 210_000,
+    gestor: {
+      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      rol: 'Gestora inmobiliaria · Compras en Galicia',
+      foto: GESTOR_CARMEN_VIDAL.foto,
+      bio: 'Especializada en compras entre particulares en A Coruña, área metropolitana y costa gallega. Revisa cargas, deudas de comunidad y documentación de la Xunta hasta la escritura.',
+    },
+    zonasIntro: 'A Coruña capital, Oleiros, Arteixo y área metropolitana.',
+    zonas: ['Ciudad Vieja', 'Ensanche', 'Monte Alto', 'Elviña', 'Mesoiro', 'Oleiros', 'Arteixo'],
+    meta: {
+      title: 'Asesoría Compra Piso A Coruña | Particular sin comisión 687€',
+      description:
+        'Compra piso de particular en A Coruña con gestora asignada. Revisión arras, nota simple y normativa gallega. 687€ IVA incl. Sin comisión de agencia.',
+      keywords:
+        'asesoria compra piso coruña, comprar piso particular a coruña, comprar piso sin agencia coruña, gestor compra vivienda galicia, gestoria compra piso coruña',
+      ogTitle: 'Compra piso particular A Coruña — 687€ fijos',
+      ogDescription: 'Gestora experta en Galicia. De reserva a escritura.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en A Coruña con gestoría profesional',
+      lead:
+        'Muchos pisos en Galicia se venden entre particulares. Te acompañamos en reserva, arras, documentación de la Xunta y firma en notaría por 687€ — sin pagar comisión de agencia.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Es seguro comprar piso de particular en A Coruña?',
+        a: 'Sí, si revisas documentación antes de entregar señal. Verificamos nota simple, deudas de comunidad, cédula de habitabilidad gallega e ITE si el edificio lo exige.',
+      },
+      {
+        q: '¿Puedo comprar en A Coruña viviendo en otra ciudad?',
+        a: 'Sí. Trabajamos 100% online: revisión documental, videollamadas y coordinación con notaría en A Coruña. Ideal si vienes de Madrid, Santiago u otra provincia.',
+      },
+      {
+        q: '¿Cuánto ahorro respecto a una inmobiliaria en A Coruña?',
+        a: 'En un piso de 210.000€, una agencia cobraría unos 6.300–10.500€. Con Inmonest pagas 687€ por acompañamiento completo hasta escritura.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Piso en Ensanche de particular',
+        perfil: 'Familia primer comprador',
+        situacion:
+          'Encontraron piso en portal sin agencia. El vendedor les pasó un contrato de reserva con cláusulas confusas sobre la hipoteca.',
+        resultado:
+          'Revisión del borrador en 24h, arras con plazos realistas y verificación de cargas antes de la señal. Escritura sin incidencias.',
+        ahorro: '7.800€ vs agencia',
+      },
+      {
+        titulo: 'Compra en Oleiros entre particulares',
+        perfil: 'Teletrabajador reubicado en Galicia',
+        situacion:
+          'No conocía qué documentación pedir al vendedor ni los plazos del Registro de la Propiedad en Galicia.',
+        resultado:
+          'Gestora coordinó documentación, revisó deudas de comunidad y acompañó hasta notaría con pleno conocimiento de la operación.',
+      },
+    ],
+  },
+
+  murcia: {
+    slug: 'murcia',
+    nombre: 'Murcia',
+    region: 'Región de Murcia',
+    testimoniosLanding: 'asesoria-compra-murcia',
+    heroImage: '/gestoria3.jpg',
+    precioEjemploPiso: 175_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Región de Murcia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores de particular en Murcia capital y Región. Mercado accesible, muchas operaciones directas y revisión documental hasta escritura sin comisión de agencia.',
+    },
+    zonasIntro: 'Murcia capital, Cartagena, Lorca y área metropolitana.',
+    zonas: ['Centro', 'Vista Alegre', 'El Carmen', 'San Andrés', 'La Flota', 'Cartagena', 'Lorca'],
+    meta: {
+      title: 'Asesoría Compra Piso Murcia | Particular sin comisión desde 687€',
+      description:
+        'Compra piso de particular en Murcia con gestor asignado. Revisión arras, nota simple y normativa regional. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'asesoria compra piso murcia, comprar piso particular murcia, comprar piso sin agencia murcia, gestor compra vivienda murcia, gestoria compra piso cartagena',
+      ogTitle: 'Compra piso particular Murcia — 687€ sin comisión',
+      ogDescription: 'Gestor asignado desde reserva hasta escritura en Murcia.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Murcia sin pagar comisión de agencia',
+      lead:
+        'En Murcia muchos compradores encuentran piso directamente con el propietario. Tu gestor revisa contratos, documentación registral y te acompaña hasta la escritura por 687€ IVA incluido.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Qué revisar antes de comprar un piso en Murcia?',
+        a: 'Nota simple registral, certificado de deudas de comunidad, IBI al corriente, cédula de habitabilidad y certificado energético. En la Región de Murcia las operaciones entre particulares son habituales pero pocos revisan la documentación.',
+      },
+      {
+        q: '¿Sirve el servicio en Cartagena y Lorca?',
+        a: 'Sí. Cubrimos Murcia capital y principales municipios de la región. La coordinación con notaría local se hace online.',
+      },
+      {
+        q: '¿Cuánto ahorro frente a una inmobiliaria en Murcia?',
+        a: 'En un piso de 175.000€, una agencia cobraría unos 5.250–8.750€. Con Inmonest pagas 687€ fijos por todo el acompañamiento.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Piso en Vista Alegre de particular',
+        perfil: 'Pareja joven, primer piso',
+        situacion:
+          'Encontraron anuncio en portal sin intermediarios. El vendedor quería señal el mismo día sin dar tiempo a revisar documentación.',
+        resultado:
+          'Negociamos plazo de 48h para revisión, verificamos nota simple y arras equilibradas. Compra cerrada sin comisión de agencia.',
+        ahorro: '6.500€ vs inmobiliaria',
+      },
+      {
+        titulo: 'Compra en Cartagena entre particulares',
+        perfil: 'Inversor que compra segunda vivienda',
+        situacion:
+          'Operación con plazos cortos y dudas sobre plusvalía municipal e impuestos de transmisión en la región.',
+        resultado:
+          'Revisión documental completa, asesoramiento sobre ITP y acompañamiento hasta escritura en 4 semanas.',
+      },
+    ],
+  },
+
+  pamplona: {
+    slug: 'pamplona',
+    nombre: 'Pamplona',
+    region: 'Navarra',
+    testimoniosLanding: 'asesoria-compra-pamplona',
+    heroImage: '/keys.jpg',
+    precioEjemploPiso: 240_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Navarra',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en compras entre particulares en Pamplona y Navarra. Revisa arras, documentación registral y normativa foral navarra hasta la escritura.',
+    },
+    zonasIntro: 'Pamplona capital, Comarca de Pamplona y Navarra.',
+    zonas: ['Casco Antiguo', 'Iturrama', 'San Juan', 'Rochapea', 'Burlada', 'Barañáin', 'Tudela'],
+    meta: {
+      title: 'Asesoría Compra Piso Pamplona | Particular sin comisión 687€',
+      description:
+        'Compra piso de particular en Pamplona con gestor asignado. Normativa navarra, arras, nota simple y escritura. 687€ IVA incl. Sin comisión de agencia.',
+      keywords:
+        'asesoria compra piso pamplona, comprar piso particular pamplona, comprar piso sin agencia pamplona, gestor compra vivienda navarra, gestoria compra piso pamplona',
+      ogTitle: 'Compra piso particular Pamplona — 687€ fijos',
+      ogDescription: 'Gestor experto en Navarra. De reserva a escritura.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Pamplona con gestor profesional a tu lado',
+      lead:
+        '¿Has encontrado piso en un portal de particulares en Pamplona? Te acompañamos en reserva, arras, documentación y firma en notaría. 687€ fijos — sin el porcentaje de una agencia.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Qué particularidades tiene comprar piso en Navarra?',
+        a: 'Navarra tiene normativa foral propia en materia fiscal y registral. Verificamos documentación técnica, plusvalía municipal e ITP antes de que firmes arras.',
+      },
+      {
+        q: '¿Puedo comprar en Pamplona sin agencia inmobiliaria?',
+        a: 'Sí. Si el vendedor es particular, no pagas comisión. Inmonest cubre la parte legal y de trámites por 687€ mientras tú negocias el precio directamente.',
+      },
+      {
+        q: '¿Cuánto ahorro respecto a una inmobiliaria en Pamplona?',
+        a: 'En un piso de 240.000€, una agencia cobraría unos 7.200–12.000€. Con Inmonest pagas 687€ por acompañamiento completo hasta escritura.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Piso en Iturrama de particular',
+        perfil: 'Familia con hipoteca',
+        situacion:
+          'Contrato de arras del vendedor no encajaba con los plazos del banco. Presión para firmar antes de revisar la nota simple.',
+        resultado:
+          'Renegociación de plazos, verificación de cargas registrales y coordinación con notaría pamplonesa. Operación completada en 5 semanas.',
+        ahorro: '9.000€ vs comisión inmobiliaria',
+      },
+      {
+        titulo: 'Compra en Burlada entre particulares',
+        perfil: 'Profesional que se muda a Pamplona',
+        situacion:
+          'Primera compra en Navarra. No sabía qué documentos exigir ni cómo funciona el ITP foral.',
+        resultado:
+          'Gestor explicó cada trámite, revisó documentación y acompañó hasta escritura con informe previo de la situación registral.',
       },
     ],
   },
