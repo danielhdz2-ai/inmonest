@@ -108,7 +108,7 @@ const OTROS_SERVICIOS = [
     titulo: 'Contrato de Alquiler LAU (vivienda completa)',
     desc: 'Para alquilar el piso íntegro con protección de la Ley de Arrendamientos Urbanos y Ley de Vivienda 2026.',
     href: '/gestoria/solicitar/contrato-alquiler',
-    precio: '120€',
+    precio: '145€',
   },
   {
     titulo: 'Revisión de Contrato de Alquiler',

@@ -114,7 +114,7 @@ const schemaJson = JSON.stringify({
           },
           offers: {
             '@type': 'Offer',
-            price: '120',
+            price: '145',
             priceCurrency: 'EUR',
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',

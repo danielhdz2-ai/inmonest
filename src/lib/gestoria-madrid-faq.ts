@@ -1,7 +1,7 @@
 export const GESTORIA_MADRID_FAQ = [
   {
     q: '¿Cuánto cuesta un contrato de alquiler en Madrid?',
-    a: 'En Inmonest redactamos contratos de alquiler LAU para Madrid por 145€ IVA incluido. Mismo precio en toda España, sin sorpresas. Incluye personalización completa, asesoría legal y entrega en 48h. Todo 100% online.',
+    a: 'En Inmonest redactamos contratos de alquiler LAU para Madrid por 145€ IVA incluido. Incluye personalización completa, asesoría legal y entrega en 48h. Todo 100% online.',
   },
   {
     q: '¿Qué es la plusvalía municipal y quién la paga en Madrid?',

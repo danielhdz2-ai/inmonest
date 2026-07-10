@@ -10,6 +10,7 @@ import {
   ALQUILER_HABITACION_PRECIO,
 } from '@/lib/alquiler-habitacion-ciudad-data'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
+import { getContratoAlquilerPrecio } from '@/lib/gestoria-catalogo'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
@@ -123,13 +124,14 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
   const waText = encodeURIComponent(`Hola, necesito un contrato de alquiler de habitación en ${nombre}`)
   const paraQuien = [...PARA_QUIEN_BASE, ...config.paraQuienExtra]
   const faq = [...FAQ_BASE, ...config.faqExtra]
+  const precioLau = `${getContratoAlquilerPrecio(slug)}€`
 
   const otrosServicios = [
     {
       titulo: `Contrato de Alquiler LAU en ${nombre}`,
       desc: 'Para alquilar el piso íntegro con protección de la Ley de Arrendamientos Urbanos y Ley de Vivienda 2026.',
       href: config.enlaceContratoLau,
-      precio: '120€',
+      precio: precioLau,
     },
     {
       titulo: 'Revisión de Contrato de Alquiler',

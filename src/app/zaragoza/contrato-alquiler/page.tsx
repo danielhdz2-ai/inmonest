@@ -64,7 +64,7 @@ const schemaData = {
         itemListElement: [
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler LAU Zaragoza', price: '120', priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler LAU Zaragoza', price: '145', priceCurrency: 'EUR' },
           },
           {
             '@type': 'Offer',

@@ -1,4 +1,9 @@
 /** Config for the Bilbao-style premium landing (/[ciudad]/contrato-alquiler). */
+import {
+  getContratoAlquilerPrecio,
+  getContratoAlquilerSolicitarHref,
+} from './gestoria-catalogo'
+
 export type ContratoAlquilerPremiumAreaType = 'City' | 'State' | 'AdministrativeArea'
 
 export type ContratoAlquilerPremiumConfig = {
@@ -35,8 +40,6 @@ export type ContratoAlquilerPremiumConfig = {
   faqs: { q: string; a: string }[]
 }
 
-const PRECIO = '120'
-
 const INCLUYE = [
   'Adaptado a la Ley de Vivienda 2026 y LAU vigente',
   'Cláusulas de actualización de renta (IPC limitado)',
@@ -54,7 +57,14 @@ const PASOS = [
 
 export const CONTRATO_ALQUILER_PREMIUM_INCLUDES = INCLUYE
 export const CONTRATO_ALQUILER_PREMIUM_PASOS = PASOS
-export const CONTRATO_ALQUILER_PREMIUM_PRECIO = PRECIO
+
+export function getContratoAlquilerPremiumPrecio(slug: string): string {
+  return String(getContratoAlquilerPrecio(slug))
+}
+
+export function getContratoAlquilerPremiumSolicitarHref(slug: string): string {
+  return getContratoAlquilerSolicitarHref(slug)
+}
 
 const rentaAnswer =
   'Desde 2024, los grandes tenedores están limitados al IPC negociado (máx. 3%). Para pequeños propietarios, el límite es el IPC + 2%. Nuestro contrato incorpora la fórmula correcta según tu caso.'
@@ -183,11 +193,11 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'barcelona',
     nombre: 'Barcelona',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Barcelona? 145 € · 48 h | Inmonest',
+      title: '¿Necesitas redactar el contrato de alquiler en Barcelona? 120 € · 48 h | Inmonest',
       description:
-        '¿Necesitas redactar un contrato de alquiler en Barcelona? LAU, zonas tensionadas e índice de referencia. 48h, 145€. Barcelona y área metropolitana.',
+        '¿Necesitas redactar un contrato de alquiler en Barcelona? LAU, zonas tensionadas e índice de referencia. 48h, 120€. Barcelona y área metropolitana.',
       keywords: ['contrato alquiler Barcelona', 'LAU Barcelona', 'zona tensionada alquiler', 'INCASOL fianza', 'contrato arrendamiento Barcelona'],
-      ogTitle: 'Contrato alquiler Barcelona — 145 €, 48 h | Inmonest',
+      ogTitle: 'Contrato alquiler Barcelona — 120 €, 48 h | Inmonest',
       ogDescription: 'LAU + Ley Vivienda 2026. Adaptado a normativa catalana y zonas tensionadas cuando aplique.',
       ogImageAlt: 'Contrato de alquiler Barcelona',
     },

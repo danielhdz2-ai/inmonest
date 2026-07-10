@@ -74,7 +74,7 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     ],
     mercadoCompraventa: [
       'El precio medio en el centro de Málaga ronda los **3.000-3.500€/m²**. En la Costa del Sol (Marbella, Estepona) el rango habitual es de **3.500-6.000€/m²**.',
-      'Con una comisión de agencia del 3-5%, en un piso de 300.000€ hablamos de **9.000-15.000€** solo por intermediar. Inmonest cobra honorarios fijos desde **120€**.',
+      'Con una comisión de agencia del 3-5%, en un piso de 300.000€ hablamos de **9.000-15.000€** solo por intermediar. Inmonest cobra honorarios fijos desde **145€**.',
     ],
     mercadoParticularidades: [
       'VFT (Vivienda con Fines Turísticos): registro obligatorio ante la Junta de Andalucía',

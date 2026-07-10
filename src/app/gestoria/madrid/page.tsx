@@ -338,7 +338,7 @@ export default function GestoriaMadridPage() {
                 El precio medio en Madrid ronda los <strong>3.800-4.500€/m²</strong>. Un piso de 80m² en Salamanca supera los <strong>400.000€</strong>. En Vallecas, el rango habitual es de <strong>180.000-220.000€</strong>.
               </p>
               <p>
-                Con una comisión de agencia del 3-5%, hablamos de <strong>12.000-20.000€</strong> de honorarios solo por intermediar. Inmonest cobra honorarios fijos desde <strong>120€</strong>.
+                Con una comisión de agencia del 3-5%, hablamos de <strong>12.000-20.000€</strong> de honorarios solo por intermediar. Inmonest cobra honorarios fijos desde <strong>145€</strong>.
               </p>
             </>
           }

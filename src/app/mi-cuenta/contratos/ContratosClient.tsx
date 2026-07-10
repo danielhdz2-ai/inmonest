@@ -8,6 +8,8 @@ const SERVICE_LABELS: Record<string, string> = {
   'arras-confirmatorias':  'Contrato de Arras Confirmatorias',
   'arras-penitenciales':   'Contrato de Arras Penitenciales',
   'alquiler-vivienda-lau': 'Alquiler Residencial (LAU)',
+  'contrato-alquiler': 'Contrato de Alquiler (LAU)',
+  'contrato-alquiler-barcelona': 'Contrato de Alquiler LAU — Barcelona',
   'alquiler-temporada':    'Alquiler de Temporada',
   'opcion-compra':         'Opcion de Compra',
   'reserva-compra':        'Reserva de Compra',

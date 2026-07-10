@@ -116,6 +116,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/solicitar/arras-penitenciales`,           lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/solicitar/arras-confirmatorias`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/solicitar/contrato-alquiler`,             lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/gestoria/solicitar/contrato-alquiler-barcelona`,  lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/solicitar/rescision-alquiler`,            lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
   { url: `${BASE_URL}/gestoria/solicitar/alquiler-habitaciones`,         lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
   { url: `${BASE_URL}/gestoria/solicitar/alquiler-local-comercial`,      lastModified: today, changeFrequency: 'monthly', priority: 0.82 },

@@ -11,6 +11,10 @@ import ComprarConSeguridad from '@/components/ComprarConSeguridad'
 import JsonLd from '@/components/JsonLd'
 import type { CiudadHubConfig } from '@/lib/gestoria-ciudad-hub-data'
 import {
+  getContratoAlquilerPrecio,
+  getContratoAlquilerSolicitarHref,
+} from '@/lib/gestoria-catalogo'
+import {
   buildFaqSchema,
   buildLegalServiceSchema,
   buildServiceOfferSchema,
@@ -22,6 +26,8 @@ type CiudadHubLandingPageProps = {
 
 export default function CiudadHubLandingPage({ config }: CiudadHubLandingPageProps) {
   const { nombre, slug } = config
+  const precioLau = getContratoAlquilerPrecio(slug)
+  const solicitarLauHref = getContratoAlquilerSolicitarHref(slug)
 
   return (
     <>
@@ -59,10 +65,10 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
                 <p className="text-xl text-gray-300 mb-8">{config.heroSubtitulo}</p>
                 <div className="flex flex-wrap gap-4">
                   <Link
-                    href="/gestoria/solicitar/contrato-alquiler"
+                    href={solicitarLauHref}
                     className="bg-[#c9a84c] text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition shadow-lg"
                   >
-                    Contrato alquiler desde 145€ →
+                    Contrato alquiler desde {precioLau}€ →
                   </Link>
                   <Link
                     href="/gestoria/solicitar/arras-penitenciales"

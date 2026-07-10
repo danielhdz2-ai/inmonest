@@ -7,7 +7,8 @@ import type { ContratoAlquilerPremiumConfig } from '@/lib/contrato-alquiler-prem
 import {
   CONTRATO_ALQUILER_PREMIUM_INCLUDES,
   CONTRATO_ALQUILER_PREMIUM_PASOS,
-  CONTRATO_ALQUILER_PREMIUM_PRECIO,
+  getContratoAlquilerPremiumPrecio,
+  getContratoAlquilerPremiumSolicitarHref,
 } from '@/lib/contrato-alquiler-premium-config'
 
 const BASE_URL = 'https://inmonest.com'
@@ -22,7 +23,8 @@ const GESTORIA_HUB_POR_CIUDAD: Record<string, string> = {
 }
 
 export default function ContratoAlquilerCiudadPremium({ config }: { config: ContratoAlquilerPremiumConfig }) {
-  const precio = CONTRATO_ALQUILER_PREMIUM_PRECIO
+  const precio = getContratoAlquilerPremiumPrecio(config.slug)
+  const solicitarHref = getContratoAlquilerPremiumSolicitarHref(config.slug)
   const waText = encodeURIComponent(`Hola, necesito un contrato de alquiler en ${config.nombre}`)
   const gestoriaHubHref = GESTORIA_HUB_POR_CIUDAD[config.slug]
 
@@ -154,7 +156,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
                 ))}
               </ul>
               <Link
-                href="/gestoria/solicitar/contrato-alquiler"
+                href={solicitarHref}
                 className="block w-full text-center bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-4 rounded-xl transition-colors"
               >
                 Pedir contrato ahora — {precio} €
@@ -282,7 +284,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="/gestoria/solicitar/contrato-alquiler"
+              href={solicitarHref}
               className="bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-8 rounded-xl transition-colors"
             >
               Lo quiero ya — {precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>

@@ -68,7 +68,7 @@ const schemaData = {
           },
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler LAU Granada', price: '120', priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler LAU Granada', price: '145', priceCurrency: 'EUR' },
           },
           {
             '@type': 'Offer',

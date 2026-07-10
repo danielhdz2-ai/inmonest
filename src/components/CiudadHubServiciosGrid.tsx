@@ -2,6 +2,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { SERVICIOS_DESTACADOS_CIUDAD } from '@/lib/gestoria-servicios-destacados'
 import { buildEnlaceServicioCiudad } from '@/lib/gestoria-servicio-enlaces'
+import {
+  getContratoAlquilerPrecio,
+  getContratoAlquilerSolicitarSlug,
+} from '@/lib/gestoria-catalogo'
 
 type EnlaceCiudad = {
   slug: string
@@ -49,6 +53,14 @@ export default function CiudadHubServiciosGrid({
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {servicios.map((servicio) => {
             const enlaceLanding = resolverEnlace(servicio.slug)
+            const precio =
+              servicio.slug === 'contrato-alquiler' && ciudadSlug
+                ? getContratoAlquilerPrecio(ciudadSlug)
+                : servicio.precio
+            const solicitarSlug =
+              servicio.slug === 'contrato-alquiler' && ciudadSlug
+                ? getContratoAlquilerSolicitarSlug(ciudadSlug)
+                : servicio.slug
 
             return (
             <div
@@ -81,10 +93,10 @@ export default function CiudadHubServiciosGrid({
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{servicio.nombre}</h3>
                 <p className="text-gray-600 text-sm mb-4 flex-1">{servicio.descripcion}</p>
-                <div className="text-2xl font-bold text-[#c9962a] mb-1">{servicio.precio}€</div>
+                <div className="text-2xl font-bold text-[#c9962a] mb-1">{precio}€</div>
                 <p className="text-xs text-gray-500 mb-3">IVA incluido</p>
                 <Link
-                  href={`/gestoria/solicitar/${servicio.slug}`}
+                  href={`/gestoria/solicitar/${solicitarSlug}`}
                   className="block text-center py-2 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white text-sm font-semibold transition"
                 >
                   Solicitar

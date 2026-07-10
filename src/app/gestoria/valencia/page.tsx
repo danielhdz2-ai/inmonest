@@ -344,7 +344,7 @@ export default function GestoriaValenciaPage() {
                 El precio medio en Valencia ronda los <strong>1.800-2.200€/m²</strong>. Un piso de 80m² en Ruzafa suele superar los <strong>200.000€</strong>. En Benimaclet, el rango habitual es de <strong>120.000-160.000€</strong>.
               </p>
               <p>
-                Con una comisión de agencia del 3-5%, hablamos de <strong>7.000-13.000€</strong> de honorarios solo por intermediar. Inmonest cobra honorarios fijos desde <strong>120€</strong>.
+                Con una comisión de agencia del 3-5%, hablamos de <strong>7.000-13.000€</strong> de honorarios solo por intermediar. Inmonest cobra honorarios fijos desde <strong>145€</strong>.
               </p>
             </>
           }

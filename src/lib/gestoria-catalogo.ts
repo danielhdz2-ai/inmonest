@@ -52,6 +52,17 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
       'PDF firmable en 48h',
     ],
   },
+  'contrato-alquiler-barcelona': {
+    nombre: 'Contrato de Alquiler de Vivienda (LAU) — Barcelona',
+    precio: 120,
+    categoria: 'Alquiler',
+    incluye: [
+      'Adaptado a la Ley de Vivienda 2026',
+      'Cláusulas de actualización de renta',
+      'Fianza y garantías adicionales',
+      'PDF firmable en 48h',
+    ],
+  },
   'alquiler-temporada': {
     nombre: 'Contrato de Alquiler por Temporada',
     precio: 165,
@@ -374,4 +385,19 @@ export function formatPrecioEuro(precio: number): string {
 export function formatPrecioDesde(slug: string): string {
   const precio = getPrecioServicio(slug)
   return precio != null ? `Desde ${formatPrecioEuro(precio)}` : 'Consultar precio'
+}
+
+export const CONTRATO_ALQUILER_PRECIO_ESPANA = 145
+export const CONTRATO_ALQUILER_PRECIO_BARCELONA = 120
+
+export function getContratoAlquilerPrecio(ciudadSlug?: string | null): number {
+  return ciudadSlug === 'barcelona' ? CONTRATO_ALQUILER_PRECIO_BARCELONA : CONTRATO_ALQUILER_PRECIO_ESPANA
+}
+
+export function getContratoAlquilerSolicitarSlug(ciudadSlug?: string | null): string {
+  return ciudadSlug === 'barcelona' ? 'contrato-alquiler-barcelona' : 'contrato-alquiler'
+}
+
+export function getContratoAlquilerSolicitarHref(ciudadSlug?: string | null): string {
+  return `/gestoria/solicitar/${getContratoAlquilerSolicitarSlug(ciudadSlug)}`
 }
