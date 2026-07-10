@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
+import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
+const PRECIO_ARRAS = precioLabel('arras-penitenciales')
 
 export const metadata: Metadata = {
   title: 'Arras penitenciales vs confirmatorias: diferencias y cuándo usar cada una — Inmonest',
@@ -161,10 +163,10 @@ export default function ArrasDiferenciasPage() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/gestoria/arras-penitenciales" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
-              Arras Penitenciales — 120 €
+              Arras Penitenciales — {PRECIO_ARRAS}
             </Link>
             <Link href="/gestoria/arras-confirmatorias" className="border border-amber-400 text-amber-700 hover:bg-amber-50 font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
-              Arras Confirmatorias — 120 €
+              Arras Confirmatorias — {PRECIO_ARRAS}
             </Link>
           </div>
         </div>

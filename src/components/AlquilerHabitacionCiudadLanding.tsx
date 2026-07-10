@@ -11,6 +11,7 @@ import {
 } from '@/lib/alquiler-habitacion-ciudad-data'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 import { getContratoAlquilerPrecio } from '@/lib/gestoria-catalogo'
+import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
@@ -137,25 +138,25 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
       titulo: 'Revisión de Contrato de Alquiler',
       desc: 'Si ya tienes un borrador o contrato del inquilino, lo revisamos antes de firmar.',
       href: '/gestoria/revision-contrato-alquiler',
-      precio: '60€',
+      precio: precioLabel('revision-alquiler'),
     },
     {
       titulo: 'Rescisión de Alquiler',
       desc: 'Documenta la entrega de llaves y el estado del inmueble al finalizar el arrendamiento.',
       href: '/gestoria/solicitar/rescision-alquiler',
-      precio: '73€',
+      precio: precioLabel('rescision-alquiler'),
     },
     {
       titulo: 'Liquidación de Fianza',
       desc: 'Desglose de conceptos descontados y devolución de fianza sin conflictos.',
       href: '/gestoria/solicitar/liquidacion-fianza',
-      precio: '36€',
+      precio: precioLabel('liquidacion-fianza'),
     },
     {
       titulo: 'Contrato de Arras',
       desc: 'Si compras o vendes vivienda, arras penitenciales redactadas por gestoría.',
       href: `/gestoria/contrato-arras`,
-      precio: '145€',
+      precio: precioLabel('arras-penitenciales'),
     },
     {
       titulo: `Due Diligence Pre-Compra ${nombre}`,
@@ -163,7 +164,7 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
       href: DUE_DILIGENCE_CIUDADES.has(slug)
         ? `/gestoria/due-diligence-precompra/${slug}`
         : '/gestoria/due-diligence-precompra',
-      precio: '350€',
+      precio: precioLabel('pack-due-diligence-precompra'),
     },
   ]
 

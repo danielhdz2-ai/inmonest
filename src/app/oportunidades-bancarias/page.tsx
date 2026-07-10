@@ -3,8 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import NavbarServer from '@/components/NavbarServer'
 import Footer from '@/components/Footer'
+import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
+const PRECIO_ARRAS = precioLabel('arras-penitenciales')
+const PRECIO_COMPRAVENTA = precioLabel('contrato-compraventa')
 
 export const metadata: Metadata = {
   title: 'Pisos de Banco Baratos | Oportunidades de Fondos Bancarios 2026 — Inmonest',
@@ -86,7 +89,7 @@ const PASOS = [
   {
     n: '3',
     titulo: 'Asegura la operación',
-    texto: 'Protégete con un contrato de arras redactado por abogados especializados. Entrega en 48h desde 120 €.',
+    texto: `Protégete con un contrato de arras redactado por abogados especializados. Entrega en 48h desde ${PRECIO_ARRAS}.`,
   },
 ]
 
@@ -132,7 +135,7 @@ const FAQ = [
   },
   {
     q: '¿Qué servicios ofrece Inmonest para este tipo de compras?',
-    a: 'Nota simple (9 €), contrato de arras (120 €), contrato de compraventa (120 €) y asesoría legal personalizada. Todo en nuestra gestoría online.',
+    a: `Nota simple (9 €), contrato de arras (${PRECIO_ARRAS}), contrato de compraventa (${PRECIO_COMPRAVENTA}) y asesoría legal personalizada. Todo en nuestra gestoría online.`,
   },
 ]
 

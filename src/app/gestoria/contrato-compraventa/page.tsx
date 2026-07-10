@@ -5,8 +5,10 @@ import TestimoniosSection from '@/components/TestimoniosSection'
 import Link from 'next/link'
 import Image from 'next/image'
 import Script from 'next/script'
+import { precio, precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
+const PRECIO_COMPRAVENTA = precio('contrato-compraventa')
 
 export const metadata: Metadata = {
   title: 'Contrato de Compraventa Vivienda【DESDE 80€】Legal con Gestoría Experta',
@@ -34,7 +36,7 @@ const schemaJson = JSON.stringify({
   },
   offers: {
     '@type': 'Offer',
-    price: '80',
+    price: String(PRECIO_COMPRAVENTA),
     priceCurrency: 'EUR',
   },
 
@@ -181,7 +183,7 @@ export default function ContratoCompraventaPage() {
                   <li>✓ Garantías del vendedor (sin cargas, certificado energético, IBI al día)</li>
                   <li>✓ Estado del inmueble y vicios ocultos</li>
                 </ul>
-                <p className="text-sm text-[#c9962a] font-semibold mt-4">Precio: 120€</p>
+                <p className="text-sm text-[#c9962a] font-semibold mt-4">Precio: {precioLabel('contrato-compraventa')}</p>
               </div>
 
               <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
@@ -189,7 +191,7 @@ export default function ContratoCompraventaPage() {
                 <p className="text-gray-700 mb-3">
                   Para compras al contado o con ahorros propios. Más sencillo pero igualmente vinculante.
                 </p>
-                <p className="text-sm text-[#c9962a] font-semibold mt-4">Precio: 80€</p>
+                <p className="text-sm text-[#c9962a] font-semibold mt-4">Precio: {precioLabel('contrato-compraventa')}</p>
               </div>
 
               <div className="bg-white border-2 border-gray-200 rounded-xl p-6">

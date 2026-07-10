@@ -11,6 +11,7 @@ import {
   LANDINGS_POR_CIUDAD,
   SERVICIOS_GUIA,
   contarLandingsPorCiudad,
+  getLandingPrecioDisplay,
   getNombreCiudad,
 } from '@/lib/gestoria-ciudades-inventario'
 
@@ -157,9 +158,9 @@ export default function CiudadesPage() {
                 >
                   <div className="flex flex-wrap items-center gap-3 mb-5">
                     <h3 className="text-lg font-bold text-gray-900">{servicio.nombre}</h3>
-                    {servicio.precio && (
+                    {getLandingPrecioDisplay(servicio) && (
                       <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#c9a84c]/15 text-[#8a6420] border border-[#c9a84c]/25">
-                        {servicio.precio}
+                        {getLandingPrecioDisplay(servicio)}
                       </span>
                     )}
                     <span className="text-xs text-gray-500">
@@ -204,7 +205,7 @@ export default function CiudadesPage() {
                       </p>
                       <p className="text-xs text-gray-500">/{page.slug}</p>
                     </div>
-                    <span className="text-xs font-bold text-[#c9a84c] shrink-0">{page.precio}</span>
+                    <span className="text-xs font-bold text-[#c9a84c] shrink-0">{getLandingPrecioDisplay(page)}</span>
                   </Link>
                 ))}
               </div>

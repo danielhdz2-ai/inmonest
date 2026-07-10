@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
+import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
+const PRECIO_ARRAS = precioLabel('arras-penitenciales')
 
 export const metadata: Metadata = {
   title: 'Pisos de fondo bancario baratos: cómo encontrarlos y qué revisar — Inmonest',
@@ -170,7 +172,7 @@ export default function PisosFondoBancarioPage() {
               Ver pisos bancarios en Inmonest
             </Link>
             <Link href="/gestoria/arras-penitenciales" className="border border-amber-400 text-amber-700 hover:bg-amber-50 font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
-              Contrato de arras — 120 €
+              Contrato de arras — {PRECIO_ARRAS}
             </Link>
           </div>
         </div>

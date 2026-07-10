@@ -4,6 +4,7 @@ import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { gtmPush } from '@/components/GTMProvider'
+import { precioPorNombreServicio } from '@/lib/gestoria-precios-ui'
 
 function ConfirmacionContent() {
   const searchParams = useSearchParams()
@@ -68,19 +69,7 @@ function ConfirmacionContent() {
 
   // Helper para extraer precio del nombre del servicio
   const extractPriceFromService = (serviceName: string): number | null => {
-    const servicesPricing: Record<string, number> = {
-      'Contrato de Arras Penitenciales': 145,
-      'Contrato de Arras Confirmatorias': 145,
-      'Contrato de Reserva de Compra': 61,
-      'Contrato de Alquiler de Vivienda (LAU)': 145,
-      'Contrato de Alquiler de Vivienda (LAU) — Barcelona': 120,
-      'Contrato de Alquiler por Temporada': 97,
-      'Contrato de Alquiler de Habitación': 73,
-      'Contrato de Reserva de Alquiler': 61,
-      'Contrato de Rescisión de Alquiler': 73,
-      'Liquidación de Fianza': 36,
-    }
-    return servicesPricing[serviceName] || null
+    return precioPorNombreServicio(serviceName) ?? null
   }
 
   if (status === 'loading') {

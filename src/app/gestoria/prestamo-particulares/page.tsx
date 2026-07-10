@@ -10,6 +10,7 @@ import {
   PRESTAMO_PARTICULARES_CIUDADES_LIST,
   PRESTAMO_PARTICULARES_PRECIO,
 } from '@/lib/prestamo-particulares-ciudad-data'
+import { precioLabel } from '@/lib/gestoria-precios-ui'
 import {
   GESTORIA_PHONE_DISPLAY,
   GESTORIA_PHONE_TEL,
@@ -111,37 +112,37 @@ const OTROS_SERVICIOS = [
     titulo: 'Contrato de Arras Penitenciales',
     desc: 'Si el préstamo financia la compra de vivienda, las arras formalizan el compromiso de compraventa.',
     href: '/gestoria/contrato-arras',
-    precio: '145€',
+    precio: precioLabel('arras-penitenciales'),
   },
   {
     titulo: 'Due Diligence Pre-Compra',
     desc: 'Revisión documental completa antes de escriturar una compra entre particulares.',
     href: '/gestoria/due-diligence-precompra',
-    precio: '350€',
+    precio: precioLabel('pack-due-diligence-precompra'),
   },
   {
     titulo: 'Asesoría Compra de Piso',
     desc: 'Acompañamiento integral si el préstamo va destinado a comprar vivienda.',
     href: '/gestoria/asesoria-compra-piso',
-    precio: '687€',
+    precio: precioLabel('compra-completa-reserva-escritura'),
   },
   {
     titulo: 'Contrato de Alquiler LAU',
     desc: 'Para alquilar el piso íntegro con protección de la Ley de Arrendamientos Urbanos.',
     href: '/gestoria/solicitar/contrato-alquiler',
-    precio: '120€',
+    precio: precioLabel('contrato-alquiler'),
   },
   {
     titulo: 'Alquiler con Opción a Compra',
     desc: 'Arrendamiento con opción de compra integrada en un solo contrato.',
     href: '/gestoria/solicitar/alquiler-opcion-compra',
-    precio: '182€',
+    precio: precioLabel('alquiler-opcion-compra'),
   },
   {
     titulo: 'Revisión Contrato Arras',
     desc: 'Si ya tienes borrador del vendedor, lo revisamos antes de firmar.',
     href: '/gestoria/revision-contrato-arras',
-    precio: '60€',
+    precio: precioLabel('revision-arras'),
   },
 ] as const
 

@@ -1,5 +1,7 @@
 import { CONTRATO_ARRAS_PREMIUM } from './contrato-arras-premium-config'
 import { CONTRATO_ALQUILER_PREMIUM } from './contrato-alquiler-premium-config'
+import { formatPrecioDesde, formatPrecioEuro, getPrecioServicio } from './gestoria-catalogo'
+import { precioLabel, precioLauInventarioLabel } from './gestoria-precios-ui'
 
 export type CiudadRef = {
   slug: string
@@ -9,9 +11,32 @@ export type CiudadRef = {
 export type LandingPorCiudad = {
   id: string
   nombre: string
-  precio?: string
+  precioSlug?: string
+  precioInfo?: string
+  precioLauRango?: boolean
   href: (ciudad: string) => string
   ciudades: string[]
+}
+
+export type LandingGenerica = {
+  slug: string
+  nombre: string
+  precioSlug?: string
+  precioInfo?: string
+}
+
+export function getLandingPrecioDisplay(item: {
+  precioSlug?: string
+  precioInfo?: string
+  precioLauRango?: boolean
+}): string {
+  if (item.precioInfo) return item.precioInfo
+  if (item.precioLauRango) return precioLauInventarioLabel()
+  if (item.precioSlug) {
+    const p = getPrecioServicio(item.precioSlug)
+    return p != null ? formatPrecioEuro(p) : 'Info'
+  }
+  return ''
 }
 
 const NOMBRES_EXTRA: Record<string, string> = {
@@ -49,114 +74,114 @@ export const CIUDADES_DESTACADAS: CiudadRef[] = [
 
 const CIUDADES_PORTAL = ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante']
 
-export const LANDINGS_GENERICAS = [
-  { slug: 'asesoria-compra-piso', nombre: 'Asesoría Compra de Piso', precio: '687€' },
-  { slug: 'due-diligence-precompra', nombre: 'Due Diligence Pre-Compra', precio: '350€' },
-  { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento Arras a Venta', precio: '166€' },
-  { slug: 'arras-vs-reserva-compra', nombre: 'Arras vs Reserva Compra', precio: 'Info' },
-  { slug: 'guia-arras-penitenciales', nombre: 'Guía Arras Penitenciales', precio: 'Info' },
-  { slug: 'revision-contrato-arras', nombre: 'Revisión Contrato Arras', precio: '60€' },
-  { slug: 'contrato-compraventa', nombre: 'Contrato Compraventa', precio: '80€' },
-  { slug: 'cuanto-cuesta-contrato-alquiler', nombre: 'Cuánto Cuesta Contrato Alquiler', precio: 'Info' },
-  { slug: 'revision-contrato-alquiler', nombre: 'Revisión Contrato Alquiler', precio: '60€' },
-  { slug: 'contrato-ilegal', nombre: 'Análisis Contrato Ilegal', precio: '29€' },
-  { slug: 'ayuda-propietarios', nombre: 'Ayuda Propietarios LAU', precio: '145€' },
-  { slug: 'contrato-alquiler-habitacion', nombre: 'Contrato Alquiler Habitación', precio: '145€' },
-  { slug: 'prestamo-particulares', nombre: 'Préstamo entre Particulares', precio: '130€' },
-  { slug: 'compra-parking-trastero', nombre: 'Compra Parking o Trastero', precio: '295€' },
-  { slug: 'contrato-arras', nombre: 'Contrato Arras (Info)', precio: '145€' },
-  { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa Genérica', precio: '687€' },
-] as const
+export const LANDINGS_GENERICAS: LandingGenerica[] = [
+  { slug: 'asesoria-compra-piso', nombre: 'Asesoría Compra de Piso', precioSlug: 'compra-completa-reserva-escritura' },
+  { slug: 'due-diligence-precompra', nombre: 'Due Diligence Pre-Compra', precioSlug: 'pack-due-diligence-precompra' },
+  { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento Arras a Venta', precioSlug: 'asesoramiento-arras-venta' },
+  { slug: 'arras-vs-reserva-compra', nombre: 'Arras vs Reserva Compra', precioInfo: 'Info' },
+  { slug: 'guia-arras-penitenciales', nombre: 'Guía Arras Penitenciales', precioInfo: 'Info' },
+  { slug: 'revision-contrato-arras', nombre: 'Revisión Contrato Arras', precioSlug: 'revision-arras' },
+  { slug: 'contrato-compraventa', nombre: 'Contrato Compraventa', precioSlug: 'contrato-compraventa' },
+  { slug: 'cuanto-cuesta-contrato-alquiler', nombre: 'Cuánto Cuesta Contrato Alquiler', precioInfo: 'Info' },
+  { slug: 'revision-contrato-alquiler', nombre: 'Revisión Contrato Alquiler', precioSlug: 'revision-alquiler' },
+  { slug: 'contrato-ilegal', nombre: 'Análisis Contrato Ilegal', precioSlug: 'contrato-ilegal' },
+  { slug: 'ayuda-propietarios', nombre: 'Ayuda Propietarios LAU', precioSlug: 'ayuda-propietarios' },
+  { slug: 'contrato-alquiler-habitacion', nombre: 'Contrato Alquiler Habitación', precioSlug: 'alquiler-habitaciones' },
+  { slug: 'prestamo-particulares', nombre: 'Préstamo entre Particulares', precioSlug: 'prestamo-particulares' },
+  { slug: 'compra-parking-trastero', nombre: 'Compra Parking o Trastero', precioSlug: 'compra-completa-parking-trastero' },
+  { slug: 'contrato-arras', nombre: 'Contrato Arras (Info)', precioSlug: 'arras-penitenciales' },
+  { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa Genérica', precioSlug: 'venta-completa-reserva-escritura' },
+]
 
 export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
   {
     id: 'contrato-arras',
     nombre: 'Contrato de Arras Penitenciales',
-    precio: '145€',
+    precioSlug: 'arras-penitenciales',
     href: (c) => `/${c}/contrato-arras`,
     ciudades: Object.keys(CONTRATO_ARRAS_PREMIUM).sort(),
   },
   {
     id: 'contrato-alquiler',
     nombre: 'Contrato de Alquiler LAU',
-    precio: '145€',
+    precioLauRango: true,
     href: (c) => `/${c}/contrato-alquiler`,
     ciudades: [...new Set([...Object.keys(CONTRATO_ALQUILER_PREMIUM), 'granada'])].sort(),
   },
   {
     id: 'gestoria-hub',
     nombre: 'Gestoría Ciudad (Hub)',
-    precio: 'Desde 145€',
+    precioInfo: formatPrecioDesde('contrato-alquiler-barcelona'),
     href: (c) => `/gestoria/${c}`,
     ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'palma', 'zaragoza', 'alicante'],
   },
   {
     id: 'venta-completa',
     nombre: 'Venta Completa hasta Escritura',
-    precio: '687€',
+    precioSlug: 'venta-completa-reserva-escritura',
     href: (c) => `/gestoria/venta-completa-reserva-escritura/${c}`,
     ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'salamanca', 'valladolid'],
   },
   {
     id: 'asesoria-compra',
     nombre: 'Asesoría Compra de Piso',
-    precio: '687€',
+    precioSlug: 'compra-completa-reserva-escritura',
     href: (c) => `/gestoria/asesoria-compra-piso/${c}`,
     ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'zaragoza', 'valladolid', 'mallorca', 'bilbao', 'coruna', 'murcia', 'pamplona'],
   },
   {
     id: 'due-diligence',
     nombre: 'Due Diligence Pre-Compra',
-    precio: '350€',
+    precioSlug: 'pack-due-diligence-precompra',
     href: (c) => `/gestoria/due-diligence-precompra/${c}`,
     ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'coruna'],
   },
   {
     id: 'contrato-alquiler-habitacion',
     nombre: 'Contrato Alquiler Habitación',
-    precio: '145€',
+    precioSlug: 'alquiler-habitaciones',
     href: (c) => `/gestoria/contrato-alquiler-habitacion/${c}`,
     ciudades: ['madrid', 'barcelona', 'sevilla', 'malaga', 'bilbao', 'valencia', 'zaragoza', 'asturias'],
   },
   {
     id: 'prestamo-particulares',
     nombre: 'Préstamo entre Particulares',
-    precio: '130€',
+    precioSlug: 'prestamo-particulares',
     href: (c) => `/gestoria/prestamo-particulares/${c}`,
     ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao'],
   },
   {
     id: 'alquiler-particulares',
     nombre: 'Alquiler de Particulares',
-    precio: 'Portal',
+    precioInfo: 'Portal',
     href: (c) => `/${c}/alquiler-particulares`,
     ciudades: CIUDADES_PORTAL,
   },
   {
     id: 'alquiler-sin-agencia',
     nombre: 'Alquiler sin Agencia',
-    precio: 'Portal',
+    precioInfo: 'Portal',
     href: (c) => `/${c}/alquiler-sin-agencia`,
     ciudades: CIUDADES_PORTAL,
   },
   {
     id: 'vender-piso',
     nombre: 'Vender Piso en Ciudad',
-    precio: 'Portal',
+    precioInfo: 'Portal',
     href: (c) => `/${c}/vender-piso`,
     ciudades: CIUDADES_PORTAL,
   },
   {
     id: 'pisos-ciudad',
     nombre: 'Pisos en Ciudad',
-    precio: 'Portal',
+    precioInfo: 'Portal',
     href: (c) => `/${c}/pisos`,
     ciudades: CIUDADES_PORTAL,
   },
   {
     id: 'pisos-sin-comision',
     nombre: 'Pisos Particulares sin Comisión',
-    precio: 'Portal',
+    precioInfo: 'Portal',
     href: (c) => `/${c}/pisos-particulares-sin-comision`,
     ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga'],
   },
@@ -190,14 +215,14 @@ export const SERVICIOS_GUIA = [
   },
   {
     titulo: 'Contrato Alquiler Habitación',
-    descripcion: 'Piso compartido y coliving con asesor experto. 145€ IVA incluido',
+    descripcion: `Piso compartido y coliving con asesor experto. ${precioLabel('alquiler-habitaciones')} IVA incluido`,
     slug: 'contrato-alquiler-habitacion',
     imagen: '/gestoria6.jpg',
     categoria: 'Alquiler',
   },
   {
     titulo: 'Préstamo entre Particulares',
-    descripcion: 'Formaliza préstamos privados con nota fiscal. 130€ IVA incluido',
+    descripcion: `Formaliza préstamos privados con nota fiscal. ${precioLabel('prestamo-particulares')} IVA incluido`,
     slug: 'prestamo-particulares',
     imagen: '/gestoria3.jpg',
     categoria: 'Financiación',

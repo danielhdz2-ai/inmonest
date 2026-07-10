@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
+import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -68,7 +69,7 @@ const ARTICULOS = [
     href: '/gestoria/cuanto-cuesta-contrato-alquiler',
     titulo: '¿Cuánto cuesta un contrato de alquiler? Plantilla vs Gestoría vs Notario — Comparativa 2026',
     resumen:
-      'Descubre cuánto cuesta cada opción: plantilla gratis (0€ pero arriesgada), gestoría profesional (120€) o notario (300-500€). Comparativa completa con qué incluye cada una.',
+      `Descubre cuánto cuesta cada opción: plantilla gratis (0€ pero arriesgada), gestoría profesional (${precioLabel('contrato-alquiler')}) o notario (300-500€). Comparativa completa con qué incluye cada una.`,
     fecha: '21 de mayo de 2026',
     categoria: 'Gestoría',
     lectura: '8 min',

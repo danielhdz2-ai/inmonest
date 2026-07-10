@@ -15,6 +15,7 @@ import {
   GESTORIA_PHONE_WA,
 } from '@/lib/gestoria-contact'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
+import { precioLabel, precioLauLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/prestamo-particulares'
@@ -131,7 +132,7 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
       titulo: 'Contrato de Arras Penitenciales',
       desc: 'Si el préstamo financia la compra de vivienda, las arras formalizan el compromiso de compraventa.',
       href: `/gestoria/contrato-arras`,
-      precio: '145€',
+      precio: precioLabel('arras-penitenciales'),
     },
     {
       titulo: `Due Diligence Pre-Compra ${nombre}`,
@@ -139,31 +140,31 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
       href: slug === 'madrid' || slug === 'barcelona'
         ? `/gestoria/due-diligence-precompra/${slug}`
         : '/gestoria/due-diligence-precompra',
-      precio: '350€',
+      precio: precioLabel('pack-due-diligence-precompra'),
     },
     {
       titulo: 'Asesoría Compra de Piso',
       desc: 'Acompañamiento integral si el préstamo va destinado a comprar vivienda.',
       href: '/gestoria/asesoria-compra-piso',
-      precio: '687€',
+      precio: precioLabel('compra-completa-reserva-escritura'),
     },
     {
       titulo: `Contrato de Alquiler LAU en ${nombre}`,
       desc: 'Para alquilar el piso íntegro con protección de la Ley de Arrendamientos Urbanos.',
       href: `/${slug}/contrato-alquiler`,
-      precio: '120€',
+      precio: precioLauLabel(slug),
     },
     {
       titulo: 'Alquiler con Opción a Compra',
       desc: 'Arrendamiento con opción de compra integrada en un solo contrato.',
       href: '/gestoria/solicitar/alquiler-opcion-compra',
-      precio: '182€',
+      precio: precioLabel('alquiler-opcion-compra'),
     },
     {
       titulo: 'Revisión Contrato Arras',
       desc: 'Si ya tienes borrador del vendedor, lo revisamos antes de firmar.',
       href: '/gestoria/revision-contrato-arras',
-      precio: '60€',
+      precio: precioLabel('revision-arras'),
     },
   ]
 

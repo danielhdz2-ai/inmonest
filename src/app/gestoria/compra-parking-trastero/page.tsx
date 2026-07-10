@@ -7,6 +7,7 @@ import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import { GESTOR_DANIEL_HERNANDEZ } from '@/lib/gestores-inmonest'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
+import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
 const PRECIO = 295
@@ -87,10 +88,10 @@ const FAQ = [
 ] as const
 
 const OTROS = [
-  { titulo: 'Arras Parking o Garaje', desc: 'Solo necesitas el contrato de arras para cerrar la operación.', href: '/gestoria/solicitar/arras-parking-garage', precio: '73€' },
-  { titulo: 'Compra Completa Vivienda', desc: 'Acompañamiento integral para comprar un piso entre particulares.', href: '/gestoria/asesoria-compra-piso', precio: '687€' },
-  { titulo: 'Due Diligence Pre-Compra', desc: 'Revisión documental tras las arras antes de escriturar.', href: '/gestoria/due-diligence-precompra', precio: '350€' },
-  { titulo: 'Revisión Contrato Arras', desc: 'Si ya tienes borrador del vendedor, lo revisamos antes de firmar.', href: '/gestoria/revision-contrato-arras', precio: '60€' },
+  { titulo: 'Arras Parking o Garaje', desc: 'Solo necesitas el contrato de arras para cerrar la operación.', href: '/gestoria/solicitar/arras-parking-garage', precio: precioLabel('arras-parking-garage') },
+  { titulo: 'Compra Completa Vivienda', desc: 'Acompañamiento integral para comprar un piso entre particulares.', href: '/gestoria/asesoria-compra-piso', precio: precioLabel('compra-completa-reserva-escritura') },
+  { titulo: 'Due Diligence Pre-Compra', desc: 'Revisión documental tras las arras antes de escriturar.', href: '/gestoria/due-diligence-precompra', precio: precioLabel('pack-due-diligence-precompra') },
+  { titulo: 'Revisión Contrato Arras', desc: 'Si ya tienes borrador del vendedor, lo revisamos antes de firmar.', href: '/gestoria/revision-contrato-arras', precio: precioLabel('revision-arras') },
 ] as const
 
 function CheckIcon() {

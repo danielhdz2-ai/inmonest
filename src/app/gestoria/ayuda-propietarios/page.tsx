@@ -6,17 +6,23 @@ import GestorContactBanner from '@/components/GestorContactBanner'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
+import { precio, precioLabel } from '@/lib/gestoria-precios-ui'
+
 const BASE_URL = 'https://inmonest.com'
+const LABEL_AYUDA = precioLabel('ayuda-propietarios')
+const LABEL_TEMPORADA = precioLabel('alquiler-temporada')
+const LABEL_HABITACION = precioLabel('alquiler-habitaciones')
+const PRECIO_AYUDA = precio('ayuda-propietarios')
 
 export const metadata: Metadata = {
-  title: 'Contratos de Alquiler para Propietarios 【DESDE 73€】 LAU 2026',
-  description: '¿Alquilas tu piso? Contratos LAU legales adaptados a la Ley de Vivienda 2026. Protege tu inversión. Redactados por nuestra gestoría en 24h. Desde 73€.',
+  title: `Contratos de Alquiler para Propietarios 【DESDE ${PRECIO_AYUDA}€】 LAU 2026`,
+  description: `¿Alquilas tu piso? Contratos LAU legales adaptados a la Ley de Vivienda 2026. Protege tu inversión. Redactados por nuestra gestoría en 24h. Desde ${PRECIO_AYUDA}€.`,
   alternates: {
     canonical: `${BASE_URL}/gestoria/ayuda-propietarios`,
   },
   openGraph: {
     title: 'Contratos de Alquiler para Propietarios — Inmonest',
-    description: 'Contratos LAU legales que cumplen Ley de Vivienda 2026. Protege tu piso de inquilinos morosos. Redactados por nuestra gestoría. 24h. Desde 73€.',
+    description: `Contratos LAU legales que cumplen Ley de Vivienda 2026. Protege tu piso de inquilinos morosos. Redactados por nuestra gestoría. 24h. Desde ${PRECIO_AYUDA}€.`,
     url: `${BASE_URL}/gestoria/ayuda-propietarios`,
     type: 'website',
     siteName: 'Inmonest',
@@ -40,7 +46,7 @@ export default function AyudaPropietariosPage() {
     },
     offers: {
       '@type': 'Offer',
-      price: '73',
+      price: String(PRECIO_AYUDA),
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
     },
@@ -76,7 +82,7 @@ export default function AyudaPropietariosPage() {
                   href="/gestoria/solicitar/ayuda-propietarios"
                   className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
-                  Solicitar contrato (73€)
+                  Solicitar contrato ({LABEL_AYUDA})
                 </Link>
                 <a
                   href="https://wa.me/34745022862?text=Hola,%20necesito%20un%20contrato%20de%20alquiler%20para%20mi%20piso"
@@ -236,7 +242,7 @@ export default function AyudaPropietariosPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler LAU (vivienda habitual)</h3>
-              <div className="text-3xl font-bold text-[#c9962a] mb-3">73€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-3">{LABEL_AYUDA}</div>
               <p className="text-gray-600 mb-4">
                 Para alquilar como vivienda principal del inquilino. Protección LAU completa, 
                 5 años + 3 prórroga tácita.
@@ -250,7 +256,7 @@ export default function AyudaPropietariosPage() {
             </div>
             <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler temporal</h3>
-              <div className="text-3xl font-bold text-[#c9962a] mb-3">165€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-3">{LABEL_TEMPORADA}</div>
               <p className="text-gray-600 mb-4">
                 Para estancias cortas (estudios, trabajo temporal). Menos de 1 año. 
                 Condiciones específicas para temporales.
@@ -264,7 +270,7 @@ export default function AyudaPropietariosPage() {
             </div>
             <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler de habitación</h3>
-              <div className="text-3xl font-bold text-[#c9962a] mb-3">120€</div>
+              <div className="text-3xl font-bold text-[#c9962a] mb-3">{LABEL_HABITACION}</div>
               <p className="text-gray-600 mb-4">
                 Para alquilar una habitación en piso compartido. Espacios comunes, normas de convivencia, etc.
               </p>
@@ -331,11 +337,11 @@ export default function AyudaPropietariosPage() {
             <div className="grid md:grid-cols-3 gap-6 mb-6">
               <div>
                 <div className="text-3xl font-bold text-[#c9962a]">10 contratos</div>
-                <div className="text-gray-600">73€/ud — consultar descuento</div>
+                <div className="text-gray-600">{LABEL_AYUDA}/ud — consultar descuento</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#c9962a]">25 contratos</div>
-                <div className="text-gray-600">73€/ud — consultar descuento</div>
+                <div className="text-gray-600">{LABEL_AYUDA}/ud — consultar descuento</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-[#c9962a]">50+ contratos</div>
@@ -410,7 +416,7 @@ export default function AyudaPropietariosPage() {
               href="/gestoria/solicitar/ayuda-propietarios"
               className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Solicitar contrato (73€)
+              Solicitar contrato ({LABEL_AYUDA})
             </Link>
             <a
               href="https://wa.me/34745022862?text=Hola,%20necesito%20asesoramiento%20para%20alquilar%20mi%20piso"
@@ -434,7 +440,7 @@ export default function AyudaPropietariosPage() {
               <p className="text-gray-600 text-sm mb-3">
                 Si necesitas rescindir un contrato de alquiler por incumplimiento del inquilino.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 73€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde {LABEL_AYUDA} →</span>
             </Link>
             <Link href="/gestoria" className="border rounded-lg p-6 hover:shadow-lg transition">
               <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Más servicios de gestoría</h3>

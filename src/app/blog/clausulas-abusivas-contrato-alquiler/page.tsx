@@ -3,8 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
+const PRECIO_REVISION = precioLabel('revision-alquiler')
+const PRECIO_AYUDA = precioLabel('ayuda-propietarios')
 
 export const metadata: Metadata = {
   title: '10 Cláusulas Abusivas en Contratos de Alquiler que Debes Evitar【2026】',
@@ -70,7 +73,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
           </p>
           <p className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
             ✅ <strong>Qué hacer:</strong> Exige eliminar la cláusula. Si el casero insiste, es señal de alerta. 
-            <Link href="/gestoria/revision-contrato-alquiler" className="text-green-700 underline">Haz revisar tu contrato por un abogado (desde 39€)</Link>.
+            <Link href="/gestoria/revision-contrato-alquiler" className="text-green-700 underline">Haz revisar tu contrato por un abogado (desde {PRECIO_REVISION})</Link>.
           </p>
 
           <h2>2. Prohibición total de mascotas 🐕</h2>
@@ -205,7 +208,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
               <li>
                 <strong>Antes de firmar:</strong> Negocia con el propietario para eliminar las cláusulas abusivas. 
                 <Link href="/gestoria/revision-contrato-alquiler" className="text-blue-700 underline ml-1">
-                  Haz revisar el contrato por un abogado (39€)
+                  Haz revisar el contrato por un abogado ({PRECIO_REVISION})
                 </Link> para tener argumentos legales sólidos.
               </li>
               <li>
@@ -230,7 +233,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
           <ul className="list-disc pl-6">
             <li><Link href="/gestoria/revision-contrato-alquiler" className="text-blue-600 underline">Revisión de contrato de alquiler (60€)</Link> - Detectamos cláusulas ilegales en 24h</li>
             <li><Link href="/gestoria/contrato-ilegal" className="text-blue-600 underline">¿Tu contrato es completamente ilegal? (29€)</Link> - Análisis forense completo</li>
-            <li><Link href="/gestoria/ayuda-propietarios" className="text-blue-600 underline">Contratos legales para propietarios (73€)</Link> - Si eres casero y quieres hacerlo bien</li>
+            <li><Link href="/gestoria/ayuda-propietarios" className="text-blue-600 underline">Contratos legales para propietarios ({PRECIO_AYUDA})</Link> - Si eres casero y quieres hacerlo bien</li>
           </ul>
         </div>
 

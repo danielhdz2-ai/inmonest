@@ -3,8 +3,11 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
 import Footer from '@/components/Footer'
+import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
+const PRECIO_HABITACION = precioLabel('alquiler-habitaciones')
+const PRECIO_LAU = precioLabel('contrato-alquiler')
 
 export const metadata: Metadata = {
   title: 'Gestoría Inmobiliaria: Qué Es, Servicios y Precios desde 61€ [2026]',
@@ -112,7 +115,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
           <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
             <li><strong>Contrato de alquiler LAU</strong> (vivienda habitual) — 145€</li>
             <li><strong>Contrato de alquiler temporal</strong> — 165€</li>
-            <li><strong>Contrato de alquiler de habitación</strong> — 121€</li>
+            <li><strong>Contrato de alquiler de habitación</strong> — {PRECIO_HABITACION}</li>
             <li><strong>Contrato de rescisión de alquiler</strong> — 73€</li>
             <li><strong>Contrato de reserva de alquiler</strong> — 61€</li>
           </ul>
@@ -195,7 +198,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
                 </tr>
                 <tr>
                   <td className="px-6 py-4 border-b text-gray-700">Contrato alquiler LAU</td>
-                  <td className="px-6 py-4 border-b text-green-700 font-semibold">✓ 120€</td>
+                  <td className="px-6 py-4 border-b text-green-700 font-semibold">✓ {PRECIO_LAU}</td>
                   <td className="px-6 py-4 border-b text-yellow-700">300-500€</td>
                   <td className="px-6 py-4 border-b text-yellow-700">Plantilla gratis (genérica)</td>
                 </tr>

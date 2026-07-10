@@ -5,18 +5,23 @@ import Navbar from '@/components/NavbarServer'
 import GestorContactBanner from '@/components/GestorContactBanner'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import { precio, precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
+const PRECIO_REVISION = precio('revision-alquiler')
+const LABEL_REVISION = precioLabel('revision-alquiler')
+const LABEL_REVISION_CORRECCION = precioLabel('revision-correccion')
+const LABEL_CONTRATO_LAU = precioLabel('contrato-alquiler')
 
 export const metadata: Metadata = {
-  title: 'Revisión Contrato Alquiler 【39€】 Protege tus Derechos como Inquilino',
-  description: '¿Tu casero te ha dado un contrato de alquiler? Nuestra gestoría lo revisa en 24h. Detectamos cláusulas abusivas, abusos y condiciones ilegales. Desde 39€.',
+  title: `Revisión Contrato Alquiler 【${PRECIO_REVISION}€】 Protege tus Derechos como Inquilino`,
+  description: `¿Tu casero te ha dado un contrato de alquiler? Nuestra gestoría lo revisa en 24h. Detectamos cláusulas abusivas, abusos y condiciones ilegales. Desde ${PRECIO_REVISION}€.`,
   alternates: {
     canonical: `${BASE_URL}/gestoria/revision-contrato-alquiler`,
   },
   openGraph: {
     title: 'Revisión de Contrato de Alquiler para Inquilinos — Inmonest',
-    description: 'No firmes sin saber tus derechos. Detectamos cláusulas abusivas, fianzas ilegales y abusos. 24h. Desde 39€.',
+    description: `No firmes sin saber tus derechos. Detectamos cláusulas abusivas, fianzas ilegales y abusos. 24h. Desde ${PRECIO_REVISION}€.`,
     url: `${BASE_URL}/gestoria/revision-contrato-alquiler`,
     type: 'website',
     siteName: 'Inmonest',
@@ -40,7 +45,7 @@ export default function RevisionContratoAlquilerPage() {
     },
     offers: {
       '@type': 'Offer',
-      price: '60',
+      price: String(PRECIO_REVISION),
       priceCurrency: 'EUR',
       availability: 'https://schema.org/InStock',
     },
@@ -127,7 +132,7 @@ export default function RevisionContratoAlquilerPage() {
                   href="/gestoria/solicitar/revision-alquiler"
                   className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
-                  Revisar mi contrato (60€)
+                  Revisar mi contrato ({LABEL_REVISION})
                 </Link>
                 <a
                   href="https://wa.me/34745022862?text=Hola,%20necesito%20revisar%20mi%20contrato%20de%20alquiler"
@@ -397,7 +402,7 @@ export default function RevisionContratoAlquilerPage() {
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
-            Revisión profesional desde 60€
+            Revisión profesional desde {LABEL_REVISION}
           </h2>
           <p className="text-xl text-gray-600 mb-12">
             Mucho más barato que pagar 3 meses de fianza ilegal (1.500€+)
@@ -405,7 +410,7 @@ export default function RevisionContratoAlquilerPage() {
           <div className="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
             <div className="border-2 border-gray-200 rounded-lg p-8">
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión Básica</h3>
-              <div className="text-5xl font-bold text-[#c9962a] mb-2">60€</div>
+              <div className="text-5xl font-bold text-[#c9962a] mb-2">{LABEL_REVISION}</div>
               <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
               <ul className="text-left space-y-3 mb-8">
                 <li className="flex items-start gap-2">
@@ -445,7 +450,7 @@ export default function RevisionContratoAlquilerPage() {
                 Recomendado
               </div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión + Corrección</h3>
-              <div className="text-5xl font-bold text-[#c9962a] mb-2">145€</div>
+              <div className="text-5xl font-bold text-[#c9962a] mb-2">{LABEL_REVISION_CORRECCION}</div>
               <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
               <ul className="text-left space-y-3 mb-8">
                 <li className="flex items-start gap-2">
@@ -533,14 +538,14 @@ export default function RevisionContratoAlquilerPage() {
             Protege tus derechos como inquilino
           </h2>
           <p className="text-xl mb-8 opacity-90">
-            Por 39€ evitas pagar cláusulas abusivas que pueden costarte miles de euros.
+            Por {LABEL_REVISION} evitas pagar cláusulas abusivas que pueden costarte miles de euros.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/revision-alquiler"
               className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
-              Revisar mi contrato (60€)
+              Revisar mi contrato ({LABEL_REVISION})
             </Link>
             <a
               href="https://wa.me/34745022862?text=Tengo%20dudas%20sobre%20mi%20contrato%20de%20alquiler"
@@ -564,7 +569,7 @@ export default function RevisionContratoAlquilerPage() {
               <p className="text-gray-600 text-sm mb-3">
                 Si eres propietario, te redactamos un contrato legal adaptado a la Ley de Vivienda 2026.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 145€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde {LABEL_CONTRATO_LAU} →</span>
             </Link>
             <Link href="/gestoria" className="border rounded-lg p-6 hover:shadow-lg transition">
               <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Más servicios de gestoría</h3>

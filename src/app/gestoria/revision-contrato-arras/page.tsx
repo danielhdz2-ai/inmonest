@@ -5,18 +5,23 @@ import Navbar from '@/components/NavbarServer'
 import GestorContactBanner from '@/components/GestorContactBanner'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import { precio, precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
+const PRECIO_REVISION = precio('revision-arras')
+const LABEL_REVISION = precioLabel('revision-arras')
+const LABEL_REVISION_CORRECCION = precioLabel('revision-correccion-arras')
+const LABEL_ARRAS = precioLabel('arras-penitenciales')
 
 export const metadata: Metadata = {
-  title: 'Revisión de Contrato de Arras 【DESDE 60€】 Gestoría Experta',
-  description: '¿Te han dado un contrato de arras y no te fías? Nuestra gestoría inmobiliaria experta lo revisa en 24h. Detectamos cláusulas abusivas, errores y te protegemos. Desde 60€.',
+  title: `Revisión de Contrato de Arras 【DESDE ${PRECIO_REVISION}€】 Gestoría Experta`,
+  description: `¿Te han dado un contrato de arras y no te fías? Nuestra gestoría inmobiliaria experta lo revisa en 24h. Detectamos cláusulas abusivas, errores y te protegemos. Desde ${PRECIO_REVISION}€.`,
   alternates: {
     canonical: `${BASE_URL}/gestoria/revision-contrato-arras`,
   },
   openGraph: {
     title: 'Revisión de Contrato de Arras por Gestoría Experta — Inmonest',
-    description: 'No firmes sin revisión legal. Detectamos cláusulas abusivas, errores registrales y condiciones perjudiciales. 24h. Desde 60€.',
+    description: `No firmes sin revisión legal. Detectamos cláusulas abusivas, errores registrales y condiciones perjudiciales. 24h. Desde ${PRECIO_REVISION}€.`,
     url: `${BASE_URL}/gestoria/revision-contrato-arras`,
     type: 'website',
     siteName: 'Inmonest',
@@ -64,7 +69,7 @@ export default function RevisionContratosArrasPage() {
         name: '¿Qué pasa si encuentran errores graves?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Te enviamos un informe detallado explicando los errores, el riesgo que suponen, y recomendaciones concretas. Si contratas la revisión completa (89€), te damos la versión corregida y argumentos legales para negociar con el vendedor.',
+          text: `Te enviamos un informe detallado explicando los errores, el riesgo que suponen, y recomendaciones concretas. Si contratas la revisión completa (${LABEL_REVISION_CORRECCION}), te damos la versión corregida y argumentos legales para negociar con el vendedor.`,
         },
       },
       {
@@ -421,7 +426,7 @@ export default function RevisionContratosArrasPage() {
                 Recomendado
               </div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Revisión + Corrección</h3>
-              <div className="text-5xl font-bold text-[#c9962a] mb-2">89€</div>
+              <div className="text-5xl font-bold text-[#c9962a] mb-2">{LABEL_REVISION_CORRECCION}</div>
               <div className="text-sm text-gray-500 mb-6">IVA incluido</div>
               <ul className="text-left space-y-3 mb-8">
                 <li className="flex items-start gap-2">
@@ -474,7 +479,7 @@ export default function RevisionContratosArrasPage() {
               },
               {
                 q: '¿Qué pasa si encuentran errores graves?',
-                a: 'Te enviamos un informe detallado explicando los errores, el riesgo que suponen, y recomendaciones concretas. Si contratas la revisión completa (89€), te damos la versión corregida y argumentos legales para negociar con el vendedor.',
+                a: `Te enviamos un informe detallado explicando los errores, el riesgo que suponen, y recomendaciones concretas. Si contratas la revisión completa (${LABEL_REVISION_CORRECCION}), te damos la versión corregida y argumentos legales para negociar con el vendedor.`,
               },
               {
                 q: '¿Puedo usar el informe para cancelar la compra?',
@@ -543,7 +548,7 @@ export default function RevisionContratosArrasPage() {
               <p className="text-gray-600 text-sm mb-3">
                 Si necesitas un contrato desde cero, lo redactamos personalizado en 48h.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 160€ →</span>
+              <span className="text-[#c9962a] font-semibold">Desde {LABEL_ARRAS} →</span>
             </Link>
             <Link href="/gestoria/solicitar/asesoria-compra" className="border rounded-lg p-6 hover:shadow-lg transition">
               <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Asesoría completa de compra</h3>

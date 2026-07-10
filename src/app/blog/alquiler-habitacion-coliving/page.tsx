@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
+import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
+const PRECIO_HABITACION = precioLabel('alquiler-habitaciones')
 
 export const metadata: Metadata = {
   title: 'Alquilar una habitación en 2026: contrato, fianza y derechos del propietario — Inmonest',
@@ -141,7 +143,7 @@ export default function AlquilerHabitacionColivingPage() {
             Personalizado con tus normas de convivencia, fianza y condiciones de salida. Entrega en 48h. PDF firmable digitalmente.
           </p>
           <Link href="/gestoria/contrato-alquiler-habitacion" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors inline-block mr-3">
-            Ver servicio — 120 € IVA incluido
+            Ver servicio — {PRECIO_HABITACION} IVA incluido
           </Link>
           <Link href="/gestoria/solicitar/alquiler-habitaciones" className="text-amber-700 hover:text-amber-800 font-semibold text-sm underline">
             Contratar directamente

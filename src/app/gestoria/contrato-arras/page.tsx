@@ -3,12 +3,14 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import PageHeroImage from '@/components/PageHeroImage'
 import Footer from '@/components/Footer'
+import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
+const PRECIO_ARRAS = precioLabel('arras-penitenciales')
 
 export const metadata: Metadata = {
   title: 'Contrato de Arras Online | Desde 145€ | Gestoría Inmobiliaria',
-  description: 'Redacción profesional de contratos de arras y señal. Servicio online en toda España. Arras penitenciales, confirmatorias y señal. Desde 145€ + IVA.',
+  description: `Redacción profesional de contratos de arras y señal. Servicio online en toda España. Arras penitenciales, confirmatorias y señal. Desde ${PRECIO_ARRAS} IVA incluido.`,
   keywords: 'contrato de arras, contrato de señal, arras penitenciales, arras confirmatorias, contrato reserva vivienda, gestoría inmobiliaria',
   alternates: { canonical: `${BASE_URL}/gestoria/contrato-arras` },
   openGraph: {
@@ -34,19 +36,19 @@ const TIPOS_ARRAS = [
   {
     tipo: 'Arras Penitenciales',
     descripcion: 'La opción más común. Permite desistir del contrato perdiendo la señal (comprador) o devolviendo el doble (vendedor).',
-    precio: '145€',
+    precio: PRECIO_ARRAS,
     icono: '⚖️',
   },
   {
     tipo: 'Arras Confirmatorias',
     descripcion: 'Se exige el cumplimiento del contrato. No se puede desistir sin causa justificada.',
-    precio: '145€',
+    precio: PRECIO_ARRAS,
     icono: '✅',
   },
   {
     tipo: 'Arras Penales',
     descripcion: 'Similar a las penitenciales pero permite reclamar indemnización adicional por daños y perjuicios.',
-    precio: '145€',
+    precio: PRECIO_ARRAS,
     icono: '📋',
   },
 ]
@@ -69,7 +71,7 @@ export default function ContratoArrasPage() {
               </h1>
               <p className="text-xl sm:text-2xl text-white/95 max-w-3xl mx-auto mb-8">
                 Redacción profesional de contratos de arras y señal para compraventa de viviendas. 
-                <strong> Desde 145€ + IVA.</strong> Listo en 24-48 horas.
+                <strong> Desde {PRECIO_ARRAS} IVA incluido.</strong> Listo en 24-48 horas.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
                 <a
@@ -120,7 +122,7 @@ export default function ContratoArrasPage() {
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{item.tipo}</h3>
                   <p className="text-gray-600 mb-4 text-sm leading-relaxed">{item.descripcion}</p>
                   <div className="text-2xl font-bold text-emerald-600">
-                    {item.precio} <span className="text-sm text-gray-500">+ IVA</span>
+                    {item.precio} <span className="text-sm text-gray-500">IVA incluido</span>
                   </div>
                 </div>
               ))}
@@ -320,7 +322,7 @@ export default function ContratoArrasPage() {
             </ul>
 
             <p className="text-gray-700 leading-relaxed">
-              Por solo <strong>145€ + IVA</strong>, tendrás un contrato profesional redactado específicamente para 
+              Por solo <strong>{PRECIO_ARRAS} IVA incluido</strong>, tendrás un contrato profesional redactado específicamente para 
               tu caso, con todas las garantías legales y la tranquilidad de saber que está bien hecho.
             </p>
           </div>
