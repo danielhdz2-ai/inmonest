@@ -47,7 +47,7 @@ export async function sendEmail(payload: EmailPayload): Promise<boolean> {
 
 // ── Plantilla base ─────────────────────────────────────────────────────────
 
-function baseLayout(contenido: string) {
+export function baseLayout(contenido: string) {
   return `
     <!DOCTYPE html>
     <html lang="es">
@@ -199,7 +199,7 @@ export function emailAcuseRecibo(nombre: string, tipoLead: 'vendedor' | 'agencia
 
 // ── Helpers internos ───────────────────────────────────────────────────────
 
-function esc(s: string) {
+export function esc(s: string) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 }
 

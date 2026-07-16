@@ -171,6 +171,13 @@ interface LeadContacto {
   }>
 }
 
+interface BulkEmailTemplateMeta {
+  id: string
+  name: string
+  subject: string
+  previewHtml: string
+}
+
 export default function AdminPanelPremium({ initialRequests }: { initialRequests: GestoriaRequest[] }) {
   const [tab, setTab] = useState<'dashboard' | 'pedidos' | 'clientes' | 'documentos' | 'particulares'>('dashboard')
   const [particularesTab, setParticularesTab] = useState<'gestoria' | 'clientes' | 'propietarios' | 'leads'>('gestoria')
@@ -187,6 +194,13 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
   const [clientesParticulares, setClientesParticulares] = useState<ClienteParticular[]>([])
   const [propietariosParticulares, setPropietariosParticulares] = useState<PropietarioParticular[]>([])
   const [leadsContactos, setLeadsContactos] = useState<LeadContacto[]>([])
+  const [selectedLeadEmails, setSelectedLeadEmails] = useState<Set<string>>(new Set())
+  const [bulkEmailOpen, setBulkEmailOpen] = useState(false)
+  const [bulkTemplates, setBulkTemplates] = useState<BulkEmailTemplateMeta[]>([])
+  const [bulkTemplateId, setBulkTemplateId] = useState('')
+  const [bulkSending, setBulkSending] = useState(false)
+  const [bulkResult, setBulkResult] = useState<{ sent: string[]; failed: string[] } | null>(null)
+  const [bulkError, setBulkError] = useState<string | null>(null)
   const [selectedPropietario, setSelectedPropietario] = useState<PropietarioParticular | null>(null)
   const [particularesStats, setParticularesStats] = useState({
     totalUsers: 0,
@@ -196,6 +210,90 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
     totalLeads: 0,
     totalLeadsNoRegistrados: 0,
   })
+
+  const filteredLeads = leadsContactos.filter(
+    (lead) =>
+      lead.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      lead.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (lead.phone && lead.phone.includes(searchQuery))
+  )
+
+  const allFilteredSelected =
+    filteredLeads.length > 0 && filteredLeads.every((l) => selectedLeadEmails.has(l.email))
+
+  function toggleLeadEmail(email: string) {
+    setSelectedLeadEmails((prev) => {
+      const next = new Set(prev)
+      if (next.has(email)) next.delete(email)
+      else next.add(email)
+      return next
+    })
+  }
+
+  function toggleSelectAllFilteredLeads() {
+    setSelectedLeadEmails((prev) => {
+      const next = new Set(prev)
+      if (allFilteredSelected) {
+        filteredLeads.forEach((l) => next.delete(l.email))
+      } else {
+        filteredLeads.forEach((l) => next.add(l.email))
+      }
+      return next
+    })
+  }
+
+  async function openBulkEmailModal() {
+    setBulkResult(null)
+    setBulkError(null)
+    setBulkEmailOpen(true)
+    try {
+      const res = await fetch('/api/admin/bulk-email')
+      const data = await res.json()
+      if (!res.ok) {
+        setBulkError(data.error || 'No se pudieron cargar las plantillas')
+        return
+      }
+      const templates: BulkEmailTemplateMeta[] = data.templates || []
+      setBulkTemplates(templates)
+      if (templates.length > 0) {
+        setBulkTemplateId((current) =>
+          templates.some((t) => t.id === current) ? current : templates[0].id
+        )
+      }
+    } catch {
+      setBulkError('Error al cargar plantillas')
+    }
+  }
+
+  async function sendBulkEmail() {
+    if (!bulkTemplateId || selectedLeadEmails.size === 0) return
+    setBulkSending(true)
+    setBulkError(null)
+    setBulkResult(null)
+    try {
+      const recipients = leadsContactos
+        .filter((l) => selectedLeadEmails.has(l.email))
+        .map((l) => ({ email: l.email, name: l.name }))
+
+      const res = await fetch('/api/admin/bulk-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ templateId: bulkTemplateId, recipients }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setBulkError(data.error || 'Error al enviar')
+        return
+      }
+      setBulkResult({ sent: data.sent || [], failed: data.failed || [] })
+    } catch {
+      setBulkError('Error de red al enviar')
+    } finally {
+      setBulkSending(false)
+    }
+  }
+
+  const selectedBulkTemplate = bulkTemplates.find((t) => t.id === bulkTemplateId)
 
   // Cargar métricas, documentos y particulares al montar
   useEffect(() => {
@@ -1094,10 +1192,37 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
           {/* SUB-TAB 4: LEADS/CONTACTOS */}
           {particularesTab === 'leads' && (
             <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <div className="flex flex-wrap items-center justify-between gap-3 px-6 py-4 border-b border-gray-200 bg-gray-50">
+                <div className="flex items-center gap-3">
+                  <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer select-none">
+                    <input
+                      type="checkbox"
+                      checked={allFilteredSelected}
+                      onChange={toggleSelectAllFilteredLeads}
+                      className="w-4 h-4 rounded border-gray-300 text-[#c9962a] focus:ring-[#c9962a]"
+                    />
+                    Seleccionar todos ({filteredLeads.length})
+                  </label>
+                  {selectedLeadEmails.size > 0 && (
+                    <span className="text-sm font-semibold text-[#c9962a]">
+                      {selectedLeadEmails.size} seleccionados
+                    </span>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  disabled={selectedLeadEmails.size === 0}
+                  onClick={openBulkEmailModal}
+                  className="px-4 py-2 bg-[#c9962a] text-white text-sm font-semibold rounded-lg hover:bg-amber-700 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  Enviar email ({selectedLeadEmails.size})
+                </button>
+              </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
+                      <th className="px-4 py-4 w-12" />
                       <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
                       <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Teléfono</th>
                       <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Mensajes</th>
@@ -1108,14 +1233,16 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
-                    {leadsContactos
-                      .filter(lead =>
-                        lead.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                        lead.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                        (lead.phone && lead.phone.includes(searchQuery))
-                      )
-                      .map(lead => (
+                    {filteredLeads.map(lead => (
                         <tr key={lead.email} className="hover:bg-gray-50 transition-colors">
+                          <td className="px-4 py-4">
+                            <input
+                              type="checkbox"
+                              checked={selectedLeadEmails.has(lead.email)}
+                              onChange={() => toggleLeadEmail(lead.email)}
+                              className="w-4 h-4 rounded border-gray-300 text-[#c9962a] focus:ring-[#c9962a]"
+                            />
+                          </td>
                           <td className="px-6 py-4">
                             <div className="flex items-center gap-3">
                               <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${
@@ -1190,6 +1317,116 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
               )}
             </div>
           )}
+        </div>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════
+          MODAL: ENVÍO MASIVO EMAIL A LEADS
+      ═══════════════════════════════════════════════════════════════ */}
+      {bulkEmailOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+              <div>
+                <h2 className="text-lg font-bold text-gray-900">Enviar email a leads</h2>
+                <p className="text-sm text-gray-500">
+                  {selectedLeadEmails.size} destinatario{selectedLeadEmails.size === 1 ? '' : 's'}
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => !bulkSending && setBulkEmailOpen(false)}
+                className="text-gray-400 hover:text-gray-700 text-2xl leading-none px-2"
+                aria-label="Cerrar"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="px-6 py-4 space-y-4 overflow-y-auto flex-1">
+              <div>
+                <label className="block text-xs font-semibold text-gray-600 uppercase mb-2">Plantilla</label>
+                <select
+                  value={bulkTemplateId}
+                  onChange={(e) => {
+                    setBulkTemplateId(e.target.value)
+                    setBulkResult(null)
+                  }}
+                  disabled={bulkSending}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                >
+                  {bulkTemplates.map((t) => (
+                    <option key={t.id} value={t.id}>{t.name}</option>
+                  ))}
+                </select>
+                {selectedBulkTemplate && (
+                  <p className="mt-2 text-sm text-gray-600">
+                    <span className="font-semibold">Asunto:</span> {selectedBulkTemplate.subject}
+                  </p>
+                )}
+              </div>
+
+              {selectedBulkTemplate && (
+                <div>
+                  <p className="text-xs font-semibold text-gray-600 uppercase mb-2">Vista previa</p>
+                  <div className="border border-gray-200 rounded-xl overflow-hidden bg-gray-50 max-h-72 overflow-y-auto">
+                    <iframe
+                      title="Vista previa email"
+                      srcDoc={selectedBulkTemplate.previewHtml}
+                      className="w-full h-72 bg-white"
+                      sandbox=""
+                    />
+                  </div>
+                </div>
+              )}
+
+              {bulkError && (
+                <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+                  {bulkError}
+                </div>
+              )}
+
+              {bulkResult && (
+                <div className="rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800 space-y-1">
+                  <p className="font-semibold">Envío completado</p>
+                  <p>✓ Enviados: {bulkResult.sent.length}</p>
+                  <p>✗ Fallidos: {bulkResult.failed.length}</p>
+                  {bulkResult.failed.length > 0 && (
+                    <p className="text-xs text-red-600 break-all">
+                      Fallidos: {bulkResult.failed.join(', ')}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {bulkSending && (
+                <p className="text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
+                  Enviando emails… puede tardar unos segundos (unos {selectedLeadEmails.size} destinatarios).
+                </p>
+              )}
+            </div>
+
+            <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-gray-200 bg-gray-50">
+              <button
+                type="button"
+                disabled={bulkSending}
+                onClick={() => setBulkEmailOpen(false)}
+                className="px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-200 rounded-lg transition"
+              >
+                {bulkResult ? 'Cerrar' : 'Cancelar'}
+              </button>
+              {!bulkResult && (
+                <button
+                  type="button"
+                  disabled={bulkSending || !bulkTemplateId || selectedLeadEmails.size === 0}
+                  onClick={sendBulkEmail}
+                  className="px-5 py-2 bg-[#c9962a] text-white text-sm font-semibold rounded-lg hover:bg-amber-700 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  {bulkSending ? 'Enviando…' : `Confirmar envío (${selectedLeadEmails.size})`}
+                </button>
+              )}
+            </div>
+          </div>
         </div>
       )}
 
