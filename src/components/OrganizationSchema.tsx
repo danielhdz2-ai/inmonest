@@ -1,4 +1,3 @@
-import { NUEVA_HABITAT_OFFICE } from '@/lib/business-location'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 /**
@@ -14,7 +13,7 @@ export default function OrganizationSchema() {
     '@type': 'Organization',
     '@id': ORGANIZATION_SCHEMA_ID,
     name: 'Inmonest',
-    alternateName: ['Inmonest Gestoría Inmobiliaria', NUEVA_HABITAT_OFFICE.name],
+    alternateName: 'Inmonest Gestoría Inmobiliaria',
     url: 'https://inmonest.com',
     logo: 'https://inmonest.com/logo.png',
     description:
@@ -23,16 +22,7 @@ export default function OrganizationSchema() {
     foundingDate: '2026',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: NUEVA_HABITAT_OFFICE.streetAddress,
-      addressLocality: NUEVA_HABITAT_OFFICE.addressLocality,
-      addressRegion: NUEVA_HABITAT_OFFICE.addressRegion,
-      postalCode: NUEVA_HABITAT_OFFICE.postalCode,
-      addressCountry: NUEVA_HABITAT_OFFICE.addressCountry,
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: NUEVA_HABITAT_OFFICE.geo.latitude,
-      longitude: NUEVA_HABITAT_OFFICE.geo.longitude,
+      addressCountry: 'ES',
     },
     areaServed: {
       '@type': 'Country',
