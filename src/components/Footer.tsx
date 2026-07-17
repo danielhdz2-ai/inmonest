@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import FooterGestoriaContact from '@/components/FooterGestoriaContact'
+import { NUEVA_HABITAT_OFFICE } from '@/lib/business-location'
 
 const CIUDADES = [
   { slug: 'madrid',    nombre: 'Madrid' },
@@ -19,6 +20,51 @@ const SERVICIOS_CIUDAD = [
   { titulo: 'Alquiler de Particulares', ruta: 'alquiler-particulares' },
   { titulo: 'Alquiler sin Agencia',     ruta: 'alquiler-sin-agencia' },
 ]
+
+const TRUST_SEALS = [
+  {
+    src: '/sellos-confianza/api.jpg',
+    alt: 'API — Agente de la Propiedad Inmobiliaria',
+    width: 120,
+    height: 120,
+    className: 'h-[72px] w-auto max-w-[88px] object-contain',
+  },
+  {
+    src: '/sellos-confianza/banner-consejo.jpg',
+    alt: 'Consejo General de Colegios de Administradores de Fincas de España',
+    width: 320,
+    height: 80,
+    className: 'h-[56px] w-auto max-w-[260px] object-contain',
+  },
+  {
+    src: '/sellos-confianza/efqm500.png',
+    alt: 'Certificación EFQM 500',
+    width: 100,
+    height: 140,
+    className: 'h-[80px] w-auto max-w-[72px] object-contain',
+  },
+  {
+    src: '/sellos-confianza/pyme_innovadora_meic-SP_web.png',
+    alt: 'PYME Innovadora — Ministerio de Economía',
+    width: 200,
+    height: 120,
+    className: 'h-[64px] w-auto max-w-[160px] object-contain',
+  },
+  {
+    src: '/sellos-confianza/RGPD.jpg',
+    alt: 'Cumplimiento RGPD — Protección de datos',
+    width: 140,
+    height: 100,
+    className: 'h-[64px] w-auto max-w-[120px] object-contain',
+  },
+  {
+    src: '/sellos-confianza/Sello-Confianza-Online.png',
+    alt: 'Sello Confianza Online',
+    width: 240,
+    height: 80,
+    className: 'h-[56px] w-auto max-w-[220px] object-contain',
+  },
+] as const
 
 export default function Footer() {
   return (
@@ -217,6 +263,46 @@ export default function Footer() {
 
           </div>
 
+          {/* ── Oficina Nueva Habitat + mapa (SEO local) ─────────────── */}
+          <div className="border-t border-white/10 pt-10 mb-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+              <div>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-4">
+                  Oficina — {NUEVA_HABITAT_OFFICE.name}
+                </h3>
+                <address className="not-italic text-sm text-white/60 leading-relaxed mb-4">
+                  <span className="block font-semibold text-white/80">{NUEVA_HABITAT_OFFICE.name}</span>
+                  <span className="block">{NUEVA_HABITAT_OFFICE.streetAddress}</span>
+                  <span className="block">
+                    {NUEVA_HABITAT_OFFICE.neighborhood}, {NUEVA_HABITAT_OFFICE.postalCode}{' '}
+                    {NUEVA_HABITAT_OFFICE.addressLocality}
+                  </span>
+                  <span className="block">{NUEVA_HABITAT_OFFICE.addressRegion}, España</span>
+                </address>
+                <a
+                  href={NUEVA_HABITAT_OFFICE.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-[#c9962a] hover:text-[#f4c94a] transition-colors"
+                >
+                  Ver en Google Maps
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+
+              <div className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                <iframe
+                  title={`Mapa ${NUEVA_HABITAT_OFFICE.name} — ${NUEVA_HABITAT_OFFICE.fullAddress}`}
+                  src={NUEVA_HABITAT_OFFICE.mapsEmbedUrl}
+                  className="w-full h-56 sm:h-64 border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+
           {/* ── Copyright ─────────────────────────────────────────── */}
           <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
             <span>© 2026 Inmonest — Tu portal inmobiliario de confianza</span>
@@ -225,6 +311,29 @@ export default function Footer() {
 
         </div>{/* /mitad derecha */}
       </div>{/* /flex layout */}
+
+      {/* ── Sellos de confianza (ancho completo) ──────────────────── */}
+      <div className="border-t border-white/10 px-6 sm:px-10 lg:px-16 py-10">
+        <p className="text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-6 text-center sm:text-left">
+          Sellos de confianza
+        </p>
+        <ul className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-4">
+          {TRUST_SEALS.map((seal) => (
+            <li
+              key={seal.src}
+              className="flex items-center justify-center rounded-xl bg-white px-4 py-4 min-h-[104px] shadow-sm"
+            >
+              <Image
+                src={seal.src}
+                alt={seal.alt}
+                width={seal.width}
+                height={seal.height}
+                className={seal.className}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
     </footer>
   )
 }
