@@ -255,6 +255,27 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     ctaStickyLabel: 'Alquiler · Valencia',
     introLargo:
       'El arrendamiento de vivienda habitual en Valencia y la Comunitat Valenciana se rige por la LAU y la Ley de Vivienda. La fianza y la actualización de renta deben constar correctamente para evitar reclamaciones. Redactamos tu contrato a medida con las cláusulas que exige la normativa estatal y el marco autonómico. Precio cerrado desde 145€, entrega en 48h.',
+    particularidadesRegionales: {
+      titulo: 'Fianza y contrato de alquiler ante la Generalitat Valenciana',
+      secciones: [
+        {
+          titulo: 'Depósito de la fianza en la Comunitat Valenciana',
+          contenido:
+            'En vivienda habitual, la fianza legal (una mensualidad) debe ingresarse en el organismo de la Generalitat Valenciana según la normativa vigente. El contrato LAU debe reflejar el importe, el plazo de depósito y quién lo gestiona. Si no se deposita correctamente, el propietario puede tener problemas al reclamar o al devolver la fianza.',
+          bullets: [
+            'Fianza legal: 1 mensualidad de renta',
+            'Depósito en organismo autonómico de la Generalitat',
+            'Garantías adicionales solo dentro de los límites legales',
+            'Cláusulas claras de devolución al finalizar el contrato',
+          ],
+        },
+        {
+          titulo: 'Qué debe incluir un contrato de alquiler de vivienda (Valencia)',
+          contenido:
+            'Además de las cláusulas LAU estatales, en Valencia conviene dejar explícitas la fianza autonómica, el índice de actualización aplicable y si la vivienda está en zona tensionada. Evita plantillas genéricas que no mencionan el depósito ante la Generalitat.',
+        },
+      ],
+    },
     alertaTitulo: 'Vas a firmar un alquiler en Valencia: ¿vas a hacerlo con un PDF "genérico"?',
     paraQuienTitulo: '¿Para quién es este contrato en Valencia?',
     paraQuien: [
@@ -267,6 +288,10 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
       {
         q: '¿Cuánto cuesta un contrato de alquiler en Valencia?',
         a: 'En Inmonest el contrato LAU en Valencia cuesta desde 145€ IVA incluido, con entrega en 48h. Un notario suele cobrar 300–500€; las plantillas gratis no se adaptan a la fianza de la Generalitat ni a la Ley de Vivienda 2026.',
+      },
+      {
+        q: '¿Cómo es el contrato de alquiler de vivienda ante la Generalitat Valenciana?',
+        a: 'El contrato es privado (LAU), pero la fianza legal de una mensualidad debe depositarse en el organismo autonómico de la Generalitat. Nuestro contrato incluye las cláusulas de fianza, depósito y devolución adaptadas a la Comunitat Valenciana.',
       },
       {
         q: '¿Cuánto puede actualizarse el alquiler cada año en Valencia?',

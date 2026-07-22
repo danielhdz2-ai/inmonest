@@ -85,11 +85,29 @@ const DATOS: Record<string, {
   bilbao: {
     precio_medio: '900 – 1.400 €/mes',
     barrios: ['Abando', 'Deusto', 'Indautxu', 'Begoña', 'Rekalde', 'Basurto'],
-    descripcion_seo: 'Bilbao tiene un mercado de alquiler sólido y estable. Alquilar de particular en Bilbao ofrece seguridad jurídica y ahorro en comisiones en una ciudad con alta demanda y bajo índice de vivienda vacía.',
+    descripcion_seo:
+      'Pisos en alquiler en Bilbao de particulares sin comisión de agencia. Trato directo con el propietario en Abando, Deusto, Indautxu y más. Ahorra honorarios y firma con contrato LAU si lo necesitas. Precio medio orientativo: 900–1.400 €/mes.',
     faq: [
-      { q: '¿Cuánto cuesta alquilar de particular en Bilbao?', a: 'Un piso de dos habitaciones en Bilbao de particular cuesta entre 900 € y 1.200 €/mes según el barrio. Los más céntricos como Abando o Indautxu son los más demandados y caros.' },
-      { q: '¿Qué es el depósito de garantía en el alquiler en el País Vasco?', a: 'En Euskadi la fianza legal es de una mensualidad para vivienda habitual. Debe depositarse en el organismo autonómico correspondiente (ASAP). El contrato de alquiler debe recoger este extremo.' },
-      { q: '¿Cómo es el mercado de alquiler de habitaciones en Bilbao?', a: 'Existe una demanda creciente de habitaciones en Bilbao, especialmente cerca de las universidades (Deusto, UPV). Los precios van de 350 € a 600 €/mes por habitación.' },
+      {
+        q: '¿Dónde encontrar pisos en alquiler en Bilbao de particulares?',
+        a: 'En Inmonest filtramos anuncios de particulares verificados en Bilbao (Abando, Deusto, Indautxu, Rekalde, etc.). Alquilas sin comisión de agencia y con trato directo con el propietario.',
+      },
+      {
+        q: '¿Cuánto cuesta alquilar de particular en Bilbao?',
+        a: 'Un piso de dos habitaciones en Bilbao de particular cuesta entre 900 € y 1.200 €/mes según el barrio. Los más céntricos como Abando o Indautxu son los más demandados y caros.',
+      },
+      {
+        q: '¿Qué es el depósito de garantía en el alquiler en el País Vasco?',
+        a: 'En Euskadi la fianza legal es de una mensualidad para vivienda habitual. Debe depositarse en el organismo autonómico correspondiente (ASAP). El contrato de alquiler debe recoger este extremo.',
+      },
+      {
+        q: '¿Cómo es el mercado de alquiler de habitaciones en Bilbao?',
+        a: 'Existe una demanda creciente de habitaciones en Bilbao, especialmente cerca de las universidades (Deusto, UPV). Los precios van de 350 € a 600 €/mes por habitación.',
+      },
+      {
+        q: '¿Necesito contrato si alquilo un piso de particular en Bilbao?',
+        a: 'Sí. Aunque sea entre particulares, un contrato LAU protege fianza, duración y actualización de renta. Puedes encargarlo en Inmonest desde 145 € con entrega en 48 h.',
+      },
     ],
   },
   zaragoza: {
@@ -129,12 +147,21 @@ export async function generateMetadata({
   const datos = DATOS[ciudad]
   return {
     // Sin "| Inmonest" aquí: layout.tsx ya aplica template "%s | Inmonest"
-    title: `Alquiler de particulares en ${nombre} sin comisión`,
-    description: `Pisos de alquiler de particulares en ${nombre} sin comisión de agencia. Trato directo con el propietario. Precio medio: ${datos?.precio_medio ?? 'consultar'}.`,
-    keywords: `alquiler particulares ${nombre.toLowerCase()}, pisos alquiler sin agencia ${nombre.toLowerCase()}, alquiler directo propietario ${nombre.toLowerCase()}, piso alquiler ${nombre.toLowerCase()} sin comision, habitaciones alquiler ${nombre.toLowerCase()}`,
+    title:
+      ciudad === 'bilbao'
+        ? 'Pisos alquiler Bilbao particulares sin comisión'
+        : `Alquiler de particulares en ${nombre} sin comisión`,
+    description:
+      ciudad === 'bilbao'
+        ? 'Pisos en alquiler en Bilbao de particulares sin comisión. Trato directo con el propietario. Abando, Deusto, Indautxu y más. Contrato LAU opcional desde 145€.'
+        : `Pisos de alquiler de particulares en ${nombre} sin comisión de agencia. Trato directo con el propietario. Precio medio: ${datos?.precio_medio ?? 'consultar'}.`,
+    keywords: `alquiler particulares ${nombre.toLowerCase()}, pisos alquiler ${nombre.toLowerCase()} particulares, pisos en alquiler en ${nombre.toLowerCase()} particulares, alquiler directo propietario ${nombre.toLowerCase()}, piso alquiler ${nombre.toLowerCase()} sin comision`,
     alternates: { canonical: `/${ciudad}/alquiler-particulares` },
     openGraph: {
-      title: `Alquiler de particulares en ${nombre} sin comisión`,
+      title:
+        ciudad === 'bilbao'
+          ? 'Pisos alquiler Bilbao particulares sin comisión'
+          : `Alquiler de particulares en ${nombre} sin comisión`,
       description: `Pisos de alquiler en ${nombre} directamente de propietarios. Sin intermediarios ni comisión de agencia.`,
       url: `${BASE_URL}/${ciudad}/alquiler-particulares`,
       locale: 'es_ES',

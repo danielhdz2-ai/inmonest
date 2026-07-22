@@ -8,14 +8,16 @@ const FECHA = '2026-04-22'
 const PRECIO_HABITACION = precioLabel('alquiler-habitaciones')
 
 export const metadata: Metadata = {
-  title: 'Alquilar habitación: contrato y fianza',
+  title: 'Derechos al alquilar una habitación 2026',
   description:
-    'El alquiler de habitaciones no lo cubre la LAU. Aprende qué ley aplica, cómo protegerte como propietario, qué normas puedes exigir y cómo recuperar la habitación.',
-  keywords: 'alquiler habitacion contrato, alquiler habitacion coliving, contrato habitacion piso compartido, arrendamiento habitacion',
+    'Derechos del inquilino y del propietario al alquilar una habitación en 2026: contrato, fianza, normas y cómo recuperar la habitación. No lo cubre la LAU.',
+  keywords:
+    'derechos alquilar habitacion 2026, alquiler habitacion contrato, derechos inquilino habitacion, fianza habitacion, coliving contrato',
   alternates: { canonical: '/blog/alquiler-habitacion-coliving' },
   openGraph: {
-    title: 'Alquilar una habitación: contrato, fianza y derechos en 2026',
-    description: 'Todo lo que necesitas saber si alquilas habitaciones en un piso compartido.',
+    title: 'Derechos al alquilar una habitación en 2026',
+    description:
+      'Qué derechos tienes como inquilino o propietario al alquilar una habitación. Contrato, fianza y salida.',
     url: `${BASE_URL}/blog/alquiler-habitacion-coliving`,
     locale: 'es_ES',
     type: 'article',
@@ -28,7 +30,7 @@ export default function AlquilerHabitacionColivingPage() {
   const articleSchema = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: 'Alquilar una habitación en 2026: contrato, fianza y derechos del propietario',
+    headline: 'Derechos al alquilar una habitación en 2026: contrato, fianza e inquilino',
     author: { '@type': 'Organization', name: 'Inmonest', url: BASE_URL },
     publisher: { '@type': 'Organization', name: 'Inmonest', url: BASE_URL, logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.png` } },
     datePublished: FECHA,
@@ -68,10 +70,11 @@ export default function AlquilerHabitacionColivingPage() {
             <span className="text-xs text-gray-400">5 min de lectura · 22 de abril de 2026</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 leading-tight">
-            Alquilar una habitación en 2026: contrato, fianza y derechos del propietario
+            Derechos al alquilar una habitación en 2026: contrato, fianza e inquilino
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
-            El alquiler de habitaciones es uno de los negocios más frecuentes entre propietarios que viven en pisos grandes o invierten en coliving. Pero muchos lo hacen sin contrato escrito, exponiéndose a problemas graves. Aquí tienes todo lo que necesitas saber.
+            Si eres inquilino de una habitación o propietario que alquila por habitaciones, la LAU no te protege igual que un piso completo.
+            Aquí tienes los derechos clave, qué debe llevar el contrato y cómo evitar problemas en 2026.
           </p>
         </header>
         <PageHeroImage
@@ -81,6 +84,17 @@ export default function AlquilerHabitacionColivingPage() {
         />
 
         <article className="prose prose-gray max-w-none">
+          <h2>Derechos del inquilino de una habitación en 2026</h2>
+          <p>
+            Aunque no aplique la LAU, el inquilino tiene derechos derivados del contrato y del Código Civil:
+            uso pacífico de la habitación y zonas comunes pactadas, devolución de la fianza si no hay daños ni deudas,
+            y que no se le expulse sin el procedimiento legal si hay contrato en vigor. Sin contrato escrito, esos derechos son mucho más difíciles de probar.
+          </p>
+          <p>
+            El propietario, a su vez, puede exigir el pago de la renta, el respeto a las normas de convivencia pactadas
+            y la devolución de la habitación en el estado acordado.
+          </p>
+
           <h2>¿La LAU protege el alquiler de habitaciones?</h2>
           <p>
             No directamente. La Ley de Arrendamientos Urbanos (LAU) regula el arrendamiento de la <strong>vivienda completa</strong> como residencia habitual. El alquiler de una habitación dentro de una vivienda (donde el arrendador también reside o donde ya hay más inquilinos) no encaja en ese régimen y se rige por el <strong>Código Civil</strong> (artículos 1542 y siguientes sobre arrendamientos de cosas).
@@ -148,6 +162,12 @@ export default function AlquilerHabitacionColivingPage() {
           <Link href="/gestoria/solicitar/alquiler-habitaciones" className="text-amber-700 hover:text-amber-800 font-semibold text-sm underline">
             Contratar directamente
           </Link>
+          <div className="mt-4 flex flex-wrap gap-3 text-sm">
+            <Link href="/gestoria/contrato-alquiler-habitacion/bilbao" className="text-amber-800 underline">Bilbao</Link>
+            <Link href="/gestoria/contrato-alquiler-habitacion/valencia" className="text-amber-800 underline">Valencia</Link>
+            <Link href="/gestoria/contrato-alquiler-habitacion/barcelona" className="text-amber-800 underline">Barcelona</Link>
+            <Link href="/calculadora-gastos-alquiler" className="text-amber-800 underline">Calculadora gastos alquiler</Link>
+          </div>
         </div>
 
         <div className="mt-8 pt-8 border-t border-gray-200">

@@ -105,10 +105,38 @@ export default function CuantoCuestaContratoAlquilerPage() {
                 </svg>
               </Link>
               <Link
+                href="/valencia/contrato-alquiler"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-white text-white font-semibold hover:bg-white/10 transition"
+              >
+                Ejemplo Valencia desde 145€
+              </Link>
+              <Link
                 href="/gestoria/solicitar/revision-alquiler"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-white text-white font-semibold hover:bg-white/10 transition"
               >
                 Revisar Contrato Existente (60€)
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 -mt-8 relative z-10">
+          <div className="bg-white rounded-xl border border-blue-100 shadow-sm p-5 sm:p-6">
+            <p className="text-sm font-semibold text-blue-800 mb-2">Respuesta rápida (gestoría)</p>
+            <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+              <strong>¿Cuánto cuesta hacer un contrato de alquiler en una gestoría?</strong>{' '}
+              Online desde <strong>145€</strong> (48h). Presencial suele ir de 200 a 400€. Notario: 300–500€.
+              Abajo tienes la comparativa completa y qué incluye cada opción.
+            </p>
+            <div className="mt-3 flex flex-wrap gap-3 text-sm">
+              <Link href="/calculadora-gastos-alquiler" className="text-blue-700 font-medium underline">
+                Calculadora gastos alquiler
+              </Link>
+              <Link href="/bilbao/alquiler-particulares" className="text-blue-700 font-medium underline">
+                Alquiler particulares Bilbao
+              </Link>
+              <Link href="/malaga/alquiler-particulares" className="text-blue-700 font-medium underline">
+                Particulares Málaga
               </Link>
             </div>
           </div>

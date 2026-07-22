@@ -413,14 +413,14 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
       },
     ],
     meta: {
-      title: 'Préstamo particulares Bilbao desde 130€',
+      title: 'Préstamo particulares Bilbao y Bizkaia 130€',
       description:
-        '¿Prestas o recibes dinero entre particulares en Bilbao? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+        'Contrato de préstamo entre particulares en Bilbao y Bizkaia desde 130€. Modelo 600, nota fiscal y entrega 48h. Evita donación encubierta ante Hacienda.',
       keywords:
-        'contrato prestamo entre particulares bilbao, prestamo entre familiares bilbao, prestamo privado bilbao hacienda, modelo 600 prestamo bizkaia, prestamo padres hijos entrada piso bilbao, prestamo sin intereses bilbao, contrato prestamo privado bilbao, formalizar prestamo familiar bilbao, prestamo entre amigos bilbao contrato, prestamo privado gran bilbao',
-      ogTitle: 'Contrato Préstamo entre Particulares Bilbao — 130€ con asesor experto',
+        'prestamo entre particulares bizkaia, contrato prestamo entre particulares bilbao, prestamo entre familiares bilbao, prestamo privado bilbao hacienda, modelo 600 prestamo bizkaia, prestamo padres hijos entrada piso bilbao, prestamo sin intereses bilbao, contrato prestamo privado bilbao, formalizar prestamo familiar bilbao',
+      ogTitle: 'Préstamo particulares Bilbao y Bizkaia desde 130€',
       ogDescription:
-        'Formaliza préstamos privados en Bilbao con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+        'Formaliza préstamos privados en Bilbao y Bizkaia con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
     },
   },
 }
