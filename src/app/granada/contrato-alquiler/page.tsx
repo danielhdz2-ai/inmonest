@@ -7,8 +7,9 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Alquiler en Granada 【LAU 145€】 Estudiantes y Arras | Inmonest',
-  description: 'Contratos de alquiler en Granada para estudiantes y familias. LAU 145€, temporal 165€, arras 145€. Especialistas en zona universitaria. Entrega en 48h.',
+  title: 'Contrato de alquiler Granada desde 145€',
+  description:
+    'Contrato LAU en Granada desde 145€ (temporal 165€). Ideal para estudiantes y familias. Arras desde 145€. Entrega en 48h.',
   keywords: [
     'contrato alquiler granada',
     'contrato estudiantes granada',
@@ -23,8 +24,9 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/granada/contrato-alquiler`,
   },
   openGraph: {
-    title: 'Contrato de Alquiler en Granada - LAU 145€ · Temporada 165€',
-    description: 'Contratos de alquiler en Granada para estudiantes, LAU, arras penitenciales y compraventa. Abogados expertos en zona universitaria.',
+    title: 'Contrato de alquiler Granada desde 145€',
+    description:
+      'Contratos de alquiler en Granada para estudiantes y familias. LAU desde 145€, temporada 165€. Entrega 48h.',
     url: `${BASE_URL}/granada/contrato-alquiler`,
     type: 'website',
     siteName: 'Inmonest',

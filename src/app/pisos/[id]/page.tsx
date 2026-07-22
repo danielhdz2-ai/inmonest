@@ -1,5 +1,5 @@
 'use server'
-import { notFound } from 'next/navigation'
+import { notFound, permanentRedirect } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import ContactForm from './ContactForm'
@@ -17,7 +17,7 @@ import NeighborhoodSection from '@/components/NeighborhoodSection'
 import ListingSchema from '@/components/ListingSchema'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 import ComprarPisoDueDiligenceBanner from '@/components/ComprarPisoDueDiligenceBanner'
-import { getListingById, getSimilarListings } from '@/lib/listings'
+import { getGoneListingRedirect, getListingById, getSimilarListings } from '@/lib/listings'
 import { getPriceAnalysis } from '@/lib/price-analysis'
 import { generateNeighborhoodInfo, getNeighborhoodFallback } from '@/lib/neighborhood-info'
 import { createClient } from '@/lib/supabase/server'
@@ -33,7 +33,11 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params
   const listing = await getListingById(id)
-  if (!listing) return { title: 'Anuncio no encontrado' }
+  if (!listing) {
+    const redirectTo = await getGoneListingRedirect(id)
+    if (redirectTo) return { title: 'Anuncio no disponible', robots: { index: false, follow: true } }
+    return { title: 'Anuncio no encontrado', robots: { index: false, follow: false } }
+  }
   return {
     title: buildListingSeoTitle(listing),
     description: buildListingSeoDescription(listing),
@@ -136,7 +140,12 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
   const justPublished = sp.publicado === '1'
   const listing = await getListingById(id)
 
-  if (!listing) notFound()
+  if (!listing) {
+    // Anuncios dados de baja: 301 a hub de ciudad (reduce 404 en GSC)
+    const redirectTo = await getGoneListingRedirect(id)
+    if (redirectTo) permanentRedirect(redirectTo)
+    notFound()
+  }
 
   // Decode HTML entities in all text fields from scrapers
   const title    = decodeHtml(listing.title)

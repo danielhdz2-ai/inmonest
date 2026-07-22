@@ -94,7 +94,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'bilbao',
     nombre: 'Bilbao',
     meta: {
-      title: 'Contrato de Alquiler Bilbao 145€ | LAU · Entrega 48h | Inmonest',
+      title: 'Contrato de alquiler Bilbao desde 145€',
       description:
         'Contrato de alquiler LAU en Bilbao por 145€. Entrega 48h, Ley Vivienda 2026. Válido en Bizkaia, Getxo, Barakaldo y País Vasco. Redactado por abogados, no plantilla.',
       keywords: [
@@ -104,7 +104,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
         'precio contrato alquiler Bilbao',
         'gestoría contrato alquiler Bizkaia',
       ],
-      ogTitle: '¿Redactar contrato de alquiler en Bilbao? 145 €, entrega 48 h | Inmonest',
+      ogTitle: 'Contrato de alquiler Bilbao desde 145€',
       ogDescription:
         '¿Necesitas redactar el contrato? Te lo dejamos listo en 48h por 145€. LAU y Ley Vivienda 2026, sin letra pequeña.',
       ogImageAlt: 'Contrato de alquiler Bilbao',
@@ -152,11 +152,11 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'madrid',
     nombre: 'Madrid',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Madrid? 145 € · 48 h | Inmonest',
+      title: 'Contrato de alquiler Madrid desde 145€',
       description:
         '¿Necesitas redactar un contrato de alquiler en Madrid? LAU + Ley Vivienda 2026, 48h, precio cerrado 145€. Madrid capital y Comunidad de Madrid.',
       keywords: ['contrato alquiler Madrid', 'LAU Madrid', 'contrato arrendamiento Madrid', 'gestoría alquiler Madrid', 'alquiler vivienda Madrid 2026'],
-      ogTitle: '¿Redactar contrato de alquiler en Madrid? 145 €, 48 h | Inmonest',
+      ogTitle: 'Contrato de alquiler Madrid desde 145€',
       ogDescription: 'Contrato LAU en Madrid. 145 €, entrega 48 h, sin plantillas genéricas.',
       ogImageAlt: 'Contrato de alquiler Madrid',
     },
@@ -193,11 +193,11 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'barcelona',
     nombre: 'Barcelona',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Barcelona? 120 € · 48 h | Inmonest',
+      title: 'Contrato de alquiler Barcelona desde 120€',
       description:
         '¿Necesitas redactar un contrato de alquiler en Barcelona? LAU, zonas tensionadas e índice de referencia. 48h, 120€. Barcelona y área metropolitana.',
       keywords: ['contrato alquiler Barcelona', 'LAU Barcelona', 'zona tensionada alquiler', 'INCASOL fianza', 'contrato arrendamiento Barcelona'],
-      ogTitle: 'Contrato alquiler Barcelona — 120 €, 48 h | Inmonest',
+      ogTitle: 'Contrato de alquiler Barcelona desde 120€',
       ogDescription: 'LAU + Ley Vivienda 2026. Adaptado a normativa catalana y zonas tensionadas cuando aplique.',
       ogImageAlt: 'Contrato de alquiler Barcelona',
     },
@@ -234,12 +234,13 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'valencia',
     nombre: 'Valencia',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Valencia? 145 € · 48 h | Inmonest',
+      // Corto: layout añade " | Inmonest" — precio visible en SERP (antes se truncaba)
+      title: 'Contrato de alquiler Valencia desde 145€',
       description:
-        'Contrato de alquiler LAU en Valencia y Comunitat Valenciana. 48h, precio cerrado 145€. Ley de Vivienda 2026.',
+        'Contrato LAU en Valencia y Comunitat Valenciana desde 145€, entrega en 48h. Fianza Generalitat, Ley de Vivienda 2026. Sin plantillas genéricas.',
       keywords: ['contrato alquiler Valencia', 'LAU Valencia', 'IVIMA fianza', 'arrendamiento Valencia'],
-      ogTitle: 'Contrato alquiler Valencia — 145 € | Inmonest',
-      ogDescription: 'Redacción LAU en Valencia. 48 h, PDF firmable.',
+      ogTitle: 'Contrato de alquiler Valencia desde 145€',
+      ogDescription: 'LAU en Valencia desde 145€. Entrega 48h, PDF firmable. Ley de Vivienda 2026.',
       ogImageAlt: 'Contrato de alquiler Valencia',
     },
     schema: {
@@ -275,10 +276,10 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'sevilla',
     nombre: 'Sevilla',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Sevilla? 145 € · 48 h | Inmonest',
+      title: 'Contrato de alquiler Sevilla desde 145€',
       description: 'Contrato LAU en Sevilla y Andalucía. 145€, entrega 48h. Ley de Vivienda 2026.',
       keywords: ['contrato alquiler Sevilla', 'LAU Sevilla', 'AVRA fianza', 'arrendamiento Sevilla'],
-      ogTitle: 'Contrato alquiler Sevilla — 145 € | Inmonest',
+      ogTitle: 'Contrato de alquiler Sevilla desde 145€',
       ogDescription: 'Redacción profesional de contrato de alquiler en Sevilla. LAU actualizada.',
       ogImageAlt: 'Contrato de alquiler Sevilla',
     },
@@ -315,12 +316,12 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'malaga',
     nombre: 'Málaga',
     meta: {
-      title: 'Contrato de Alquiler Málaga 145€ | LAU · Entrega 48h | Inmonest',
+      title: 'Contrato de alquiler Málaga desde 145€',
       description:
-        'Contrato de alquiler LAU en Málaga por 145€. Entrega 48h, Ley Vivienda 2026. Para propietarios e inquilinos en Málaga, Costa del Sol y provincia. Sin plantillas genéricas.',
+        'Contrato LAU en Málaga y Costa del Sol desde 145€, entrega en 48h. Ley de Vivienda 2026. Para propietarios e inquilinos. Sin plantillas genéricas.',
       keywords: ['contrato alquiler Málaga', 'LAU Málaga', 'alquiler piso Málaga', 'contrato arrendamiento'],
-      ogTitle: 'Contrato alquiler Málaga — 145 € | Inmonest',
-      ogDescription: 'Contrato de alquiler personalizado en Málaga. LAU + 2026.',
+      ogTitle: 'Contrato de alquiler Málaga desde 145€',
+      ogDescription: 'Contrato de alquiler personalizado en Málaga desde 145€. LAU + Ley de Vivienda 2026.',
       ogImageAlt: 'Contrato de alquiler Málaga',
     },
     schema: {
@@ -356,10 +357,10 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'zaragoza',
     nombre: 'Zaragoza',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Zaragoza? 145 € · 48 h | Inmonest',
+      title: 'Contrato de alquiler Zaragoza desde 145€',
       description: 'Contrato LAU en Zaragoza y Aragón. 145€ fijos, entrega 48h.',
       keywords: ['contrato alquiler Zaragoza', 'LAU Zaragoza', 'arrendamiento vivienda Zaragoza'],
-      ogTitle: 'Contrato alquiler Zaragoza — 145 € | Inmonest',
+      ogTitle: 'Contrato de alquiler Zaragoza desde 145€',
       ogDescription: 'Contrato personalizado LAU en Zaragoza.',
       ogImageAlt: 'Contrato de alquiler Zaragoza',
     },
@@ -396,10 +397,10 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'alicante',
     nombre: 'Alicante',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Alicante? 145 € · 48 h | Inmonest',
+      title: 'Contrato de alquiler Alicante desde 145€',
       description: 'Contrato LAU en Alicante y Comunitat Valenciana. 145€, 48h.',
       keywords: ['contrato alquiler Alicante', 'LAU Alicante', 'arrendamiento Alicante', 'torrevieja alquiler contrato'],
-      ogTitle: 'Contrato alquiler Alicante — 145 € | Inmonest',
+      ogTitle: 'Contrato de alquiler Alicante desde 145€',
       ogDescription: 'Redacción LAU profesional en Alicante.',
       ogImageAlt: 'Contrato de alquiler Alicante',
     },
@@ -436,10 +437,10 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'murcia',
     nombre: 'Murcia',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Murcia? 145 € · 48 h | Inmonest',
+      title: 'Contrato de alquiler Murcia desde 145€',
       description: 'Contrato LAU en Murcia y Región de Murcia. 145€, entrega 48h. Ley de Vivienda 2026.',
       keywords: ['contrato alquiler Murcia', 'LAU Murcia', 'arrendamiento Cartagena', 'alquiler vivienda Región Murcia'],
-      ogTitle: 'Contrato alquiler Murcia — 145 € | Inmonest',
+      ogTitle: 'Contrato de alquiler Murcia desde 145€',
       ogDescription: 'Contrato LAU personalizado en Murcia y la región.',
       ogImageAlt: 'Contrato de alquiler Murcia',
     },
@@ -476,15 +477,15 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'palma',
     nombre: 'Palma',
     meta: {
-      title: 'Contrato de Alquiler en Palma y Baleares | LAU 2026 desde 145€',
+      title: 'Contrato de alquiler Palma desde 145€',
       description:
         'Contrato de alquiler LAU en Palma e Illes Balears. 145€ IVA incluido, entrega en 48h. Adaptado a Ley de Vivienda 2026, normativa balear de fianzas y zonas tensionadas. Válido en Mallorca, Menorca, Ibiza y Formentera.',
       keywords: ['contrato alquiler Palma', 'LAU Mallorca', 'arrendamiento Baleares', 'contrato alquiler Ibiza'],
-      ogTitle: 'Contrato de Alquiler en Palma y Baleares | LAU 2026 desde 145€ | Inmonest',
+      ogTitle: 'Contrato de alquiler Palma desde 145€',
       ogDescription:
         'Contrato de alquiler LAU para Palma y las Illes Balears. Adaptado a la Ley de Vivienda 2026, regulación balear de fianzas y zonas tensionadas. 145€ IVA incluido. Entrega en 48h.',
       ogImageAlt: 'Contrato de alquiler Palma y Baleares',
-      twitterTitle: 'Contrato de Alquiler en Palma y Baleares | 145€ | Inmonest',
+      twitterTitle: 'Contrato de alquiler Palma desde 145€',
       twitterDescription:
         'Contrato LAU personalizado para Mallorca, Menorca, Ibiza y Formentera. Adaptado a normativa balear, fianza y zonas tensionadas. Entrega 48h.',
     },
@@ -545,10 +546,10 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'pamplona',
     nombre: 'Pamplona',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Pamplona? 145 € · 48 h | Inmonest',
+      title: 'Contrato de alquiler Pamplona desde 145€',
       description: 'Contrato LAU en Pamplona y Navarra. 145€, 48h. Ley de Vivienda 2026.',
       keywords: ['contrato alquiler Pamplona', 'LAU Navarra', 'arrendamiento Iruña'],
-      ogTitle: 'Contrato alquiler Pamplona — 145 € | Inmonest',
+      ogTitle: 'Contrato de alquiler Pamplona desde 145€',
       ogDescription: 'Contrato LAU en Navarra.',
       ogImageAlt: 'Contrato de alquiler Pamplona',
     },
@@ -585,11 +586,11 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'asturias',
     nombre: 'Asturias',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Asturias? 145 € · 48 h | Inmonest',
+      title: 'Contrato de alquiler Asturias desde 145€',
       description:
         '¿Necesitas redactar un contrato de alquiler en Asturias? LAU + Ley Vivienda 2026, 48h, 145€. Oviedo, Gijón, Avilés.',
       keywords: ['contratar contrato alquiler Asturias', 'comprar contrato alquiler Oviedo', 'solicitar contrato alquiler LAU Gijón', 'precio contrato alquiler Asturias', 'gestoría contrato alquiler Avilés'],
-      ogTitle: '¿Redactar contrato de alquiler en Asturias? 145 €, entrega 48 h | Inmonest',
+      ogTitle: 'Contrato de alquiler Asturias desde 145€',
       ogDescription:
         '¿Necesitas redactar el contrato? Te lo dejamos listo en 48h por 145€. LAU y Ley Vivienda 2026, sin letra pequeña.',
       ogImageAlt: 'Contrato de alquiler Asturias',
@@ -628,11 +629,11 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'coruna',
     nombre: 'A Coruña',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en A Coruña? 145 € · 48 h | Inmonest',
+      title: 'Contrato de alquiler A Coruña desde 145€',
       description:
         '¿Necesitas redactar un contrato de alquiler en A Coruña? LAU + Ley Vivienda 2026, 48h, 145€. Coruña, Santiago, Ferrol.',
       keywords: ['contratar contrato alquiler A Coruña', 'comprar contrato alquiler Galicia', 'solicitar contrato alquiler LAU Santiago', 'precio contrato alquiler A Coruña', 'gestoría contrato alquiler Ferrol'],
-      ogTitle: '¿Redactar contrato de alquiler en A Coruña? 145 €, entrega 48 h | Inmonest',
+      ogTitle: 'Contrato de alquiler A Coruña desde 145€',
       ogDescription:
         '¿Necesitas redactar el contrato? Te lo dejamos listo en 48h por 145€. LAU y Ley Vivienda 2026, sin letra pequeña.',
       ogImageAlt: 'Contrato de alquiler A Coruña',
@@ -670,7 +671,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'mallorca',
     nombre: 'Mallorca',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Mallorca? 145 € · 48 h | Inmonest',
+      title: 'Contrato de alquiler Mallorca desde 145€',
       description:
         '¿Necesitas redactar un contrato de alquiler en Mallorca? LAU + Ley Vivienda 2026, 48h, precio cerrado 145€. Palma, Calvià, Manacor, Inca.',
       keywords: [
@@ -680,7 +681,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
         'gestoría alquiler Baleares',
         'alquiler vivienda Mallorca 2026',
       ],
-      ogTitle: '¿Redactar contrato de alquiler en Mallorca? 145 €, 48 h | Inmonest',
+      ogTitle: 'Contrato de alquiler Mallorca desde 145€',
       ogDescription: 'Contrato LAU en Mallorca. 145 €, entrega 48 h, sin plantillas genéricas. Adaptado a Baleares.',
       ogImageAlt: 'Contrato de alquiler Mallorca',
     },
@@ -718,7 +719,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'castellon',
     nombre: 'Castellón',
     meta: {
-      title: '¿Necesitas redactar el contrato de alquiler en Castellón? 145 € · 48 h | Inmonest',
+      title: 'Contrato de alquiler Castellón desde 145€',
       description:
         '¿Necesitas redactar un contrato de alquiler en Castellón? LAU + Ley Vivienda 2026, 48h, precio cerrado 145€. Castellón ciudad, Benicàssim, Vila-real.',
       keywords: [
@@ -728,7 +729,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
         'gestoría alquiler Comunidad Valenciana',
         'alquiler vivienda Castellón 2026',
       ],
-      ogTitle: '¿Redactar contrato de alquiler en Castellón? 145 €, 48 h | Inmonest',
+      ogTitle: 'Contrato de alquiler Castellón desde 145€',
       ogDescription: 'Contrato LAU en Castellón. 145 €, entrega 48 h, sin plantillas genéricas. Adaptado a la Comunidad Valenciana.',
       ogImageAlt: 'Contrato de alquiler Castellón',
     },

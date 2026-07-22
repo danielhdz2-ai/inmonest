@@ -166,6 +166,59 @@ export async function getListingById(id: string): Promise<Listing | null> {
   } as Listing
 }
 
+/** Hubs de ciudad con landing /{slug}/pisos — para redirigir anuncios dados de baja. */
+const LISTING_CITY_HUBS = new Set([
+  'madrid',
+  'barcelona',
+  'valencia',
+  'sevilla',
+  'malaga',
+  'bilbao',
+  'zaragoza',
+  'alicante',
+  'granada',
+  'murcia',
+  'pamplona',
+  'valladolid',
+])
+
+function cityToHubSlug(city: string | null | undefined): string | null {
+  if (!city) return null
+  const slug = city
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+  // Alias frecuentes
+  if (slug === 'palma' || slug === 'palma-de-mallorca' || slug === 'mallorca') return null
+  if (slug === 'a-coruna' || slug === 'coruna' || slug === 'la-coruna') return null
+  return LISTING_CITY_HUBS.has(slug) ? slug : null
+}
+
+/**
+ * Si el anuncio existió pero ya no está publicado, devolver destino 301.
+ * Si el id no existe en BD, devolver null (mantener 404).
+ */
+export async function getGoneListingRedirect(id: string): Promise<string | null> {
+  const supabase = await createClient()
+  const { data } = await supabase
+    .from('listings')
+    .select('city, status')
+    .eq('id', id)
+    .maybeSingle()
+
+  if (!data || data.status === 'published') return null
+
+  const hub = cityToHubSlug(data.city)
+  if (hub) return `/${hub}/pisos`
+
+  if (data.city) {
+    return `/pisos?ciudad=${encodeURIComponent(data.city)}`
+  }
+  return '/pisos'
+}
+
 export async function recordView(listingId: string, sessionId: string) {
   const supabase = await createClient()
   await supabase

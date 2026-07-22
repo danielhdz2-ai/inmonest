@@ -7,8 +7,9 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Contrato de Alquiler en Zaragoza 【LAU 145€】 LAU y Arras | Inmonest',
-  description: 'Contratos de alquiler en Zaragoza redactados por abogados. LAU 145€, arras 145€, revisión 60€. Especialistas en derecho inmobiliario aragonés. Entrega en 48h.',
+  title: 'Contrato de alquiler Zaragoza desde 145€',
+  description:
+    'Contrato LAU en Zaragoza desde 145€. Arras desde 145€, revisión desde 60€. Derecho inmobiliario aragonés. Entrega en 48h.',
   keywords: [
     'contrato alquiler zaragoza',
     'contrato lau zaragoza',
@@ -23,8 +24,9 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/zaragoza/contrato-alquiler`,
   },
   openGraph: {
-    title: 'Contrato de Alquiler en Zaragoza - LAU 145€',
-    description: 'Contratos de alquiler LAU en Zaragoza redactados por abogados. Arras, compraventa y asesoría legal especializada. Entrega 48h.',
+    title: 'Contrato de alquiler Zaragoza desde 145€',
+    description:
+      'Contrato LAU en Zaragoza desde 145€. Arras, compraventa y asesoría legal. Entrega 48h.',
     url: `${BASE_URL}/zaragoza/contrato-alquiler`,
     type: 'website',
     siteName: 'Inmonest',

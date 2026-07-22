@@ -8,12 +8,14 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Calculadora Gastos Compra Vivienda 2026 Gratis | ITP, Notaría y Gestoría',
-  description: 'Calcula gratis cuánto cuesta comprar un piso: ITP/IVA por provincia, notaría, registro y gestoría. Due diligence y contratos de compraventa desde 61€ en Inmonest.',
+  title: 'Calculadora gastos compra vivienda gratis',
+  description:
+    'Calcula gratis cuánto cuesta comprar un piso en 2026: ITP/IVA por provincia, notaría, registro y gestoría. Sin registro. Contratos y due diligence desde 61€.',
   alternates: { canonical: `${BASE_URL}/calculadora-gastos-compra` },
   openGraph: {
-    title: 'Calculadora Gastos Compra Vivienda 2026 — ITP, Notaría, Registro',
-    description: 'Calcula el coste total de comprar un piso gratis. Gestoría inmobiliaria y contratos desde 61€. Sin registro.',
+    title: 'Calculadora gastos compra vivienda gratis',
+    description:
+      'ITP/IVA, notaría, registro y gestoría por provincia. Coste total de comprar un piso, gratis y sin registro.',
     url: `${BASE_URL}/calculadora-gastos-compra`,
     type: 'website',
     siteName: 'Inmonest',

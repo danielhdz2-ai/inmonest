@@ -8,12 +8,15 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Calculadora Gastos de Alquiler 2026 Gratis | + Contrato LAU desde 145€',
-  description: 'Calcula gratis el coste mensual real del alquiler: renta, luz, agua, gas, internet y comunidad. ¿Vas a firmar? Contrato LAU profesional desde 145€ en 48h.',
+  // Intent = herramienta gratis; el CTA comercial va en la description (no satura el title)
+  title: 'Calculadora de gastos de alquiler gratis',
+  description:
+    'Calcula gratis el coste mensual real del alquiler: renta, luz, agua, gas, internet y comunidad. Sin registro. Si vas a firmar, contrato LAU desde 145€ en 48h.',
   alternates: { canonical: `${BASE_URL}/calculadora-gastos-alquiler` },
   openGraph: {
-    title: 'Calculadora Gastos Alquiler Gratis + Contrato LAU desde 145€',
-    description: 'Calcula el coste mensual total del alquiler gratis. Contrato LAU redactado por abogados desde 145€, entrega en 48h.',
+    title: 'Calculadora de gastos de alquiler gratis',
+    description:
+      'Coste mensual real del alquiler (renta + suministros + comunidad). Gratis, sin registro.',
     url: `${BASE_URL}/calculadora-gastos-alquiler`,
     type: 'website',
     siteName: 'Inmonest',

@@ -126,13 +126,14 @@ export async function generateMetadata({
   if (!nombre) return {}
   const datos = DATOS[ciudad]
   return {
-    title: `Pisos de Alquiler de Particulares en ${nombre} | Sin Comisión — Inmonest`,
-    description: `Encuentra tu próximo hogar en ${nombre} sin pagar comisión de agencia. Alquiler directo de particulares verificados. Precio medio: ${datos?.precio_medio ?? 'consultar'}.`,
+    // Sin "| Inmonest" aquí: layout.tsx ya aplica template "%s | Inmonest"
+    title: `Alquiler de particulares en ${nombre} sin comisión`,
+    description: `Pisos de alquiler de particulares en ${nombre} sin comisión de agencia. Trato directo con el propietario. Precio medio: ${datos?.precio_medio ?? 'consultar'}.`,
     keywords: `alquiler particulares ${nombre.toLowerCase()}, pisos alquiler sin agencia ${nombre.toLowerCase()}, alquiler directo propietario ${nombre.toLowerCase()}, piso alquiler ${nombre.toLowerCase()} sin comision, habitaciones alquiler ${nombre.toLowerCase()}`,
     alternates: { canonical: `/${ciudad}/alquiler-particulares` },
     openGraph: {
-      title: `Alquiler de Particulares en ${nombre} — Sin Comisión`,
-      description: `Pisos de alquiler en ${nombre} directamente de sus propietarios. Sin intermediarios. Trato directo y contratos legales.`,
+      title: `Alquiler de particulares en ${nombre} sin comisión`,
+      description: `Pisos de alquiler en ${nombre} directamente de propietarios. Sin intermediarios ni comisión de agencia.`,
       url: `${BASE_URL}/${ciudad}/alquiler-particulares`,
       locale: 'es_ES',
       type: 'article',

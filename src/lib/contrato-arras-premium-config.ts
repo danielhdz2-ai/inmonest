@@ -83,11 +83,12 @@ function baseMeta(
   keywords: string[],
 ): ContratoArrasPremiumConfig['meta'] {
   return {
-    title: `¿Necesitas redactar un contrato de arras en ${nombre}? 145 € · 48 h | Inmonest`,
-    description: `¿Necesitas redactar un contrato de arras penitenciales en ${nombre}? ${extraDesc} Precio cerrado 145 €, entrega en 48 h. Gestoría inmobiliaria.`,
+    // Sin "| Inmonest": layout.tsx aplica template "%s | Inmonest"
+    title: `Contrato de arras ${nombre} desde 145€`,
+    description: `Contrato de arras penitenciales en ${nombre} desde 145€, entrega en 48h. ${extraDesc} Redacción profesional, sin plantillas genéricas.`,
     keywords,
-    ogTitle: `Contrato de arras en ${nombre} — 145 €, 48 h | Inmonest`,
-    ogDescription: `¿Necesitas redactar un contrato de arras? Te lo dejamos listo en 48 h por 145 €. Sin plantillas genéricas.`,
+    ogTitle: `Contrato de arras ${nombre} desde 145€`,
+    ogDescription: `Arras en ${nombre} desde 145€. Entrega en 48h, PDF firmable. Sin plantillas genéricas.`,
     ogImageAlt: `Contrato de arras en ${nombre}`,
   }
 }

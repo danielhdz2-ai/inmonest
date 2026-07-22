@@ -7,14 +7,17 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: '¿Cuánto Cuesta un Contrato de Alquiler? 145€ Online vs 500€ Notario [2026]',
-  description: 'Contrato de alquiler LAU desde 145€ en 48h. Notario 300-500€, plantilla gratis con riesgos. Comparativa real de precios y qué incluye cada opción. Contrata online.',
+  // ≤48 chars: layout añade " | Inmonest" → precio visible en SERP
+  title: 'Contrato de alquiler desde 145€ — Precio 2026',
+  description:
+    'Precio real 2026: gestoría online desde 145€ en 48h, notario 300–500€, plantilla gratis con riesgos. Comparativa clara de qué incluye cada opción y contratación online.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/cuanto-cuesta-contrato-alquiler`,
   },
   openGraph: {
-    title: 'Contrato de Alquiler desde 145€ | Notario vs Gestoría Online 2026',
-    description: '¿Cuánto cuesta un contrato de alquiler? Gestoría online 145€ en 48h, notario 300-500€. Comparativa con precios reales y contratación directa.',
+    title: 'Contrato de alquiler desde 145€ — Precio 2026',
+    description:
+      'Gestoría online desde 145€ en 48h vs notario 300–500€. Comparativa de precios reales y qué incluye cada opción.',
     url: `${BASE_URL}/gestoria/cuanto-cuesta-contrato-alquiler`,
     type: 'article',
   },
@@ -69,11 +72,11 @@ export default function CuantoCuestaContratoAlquilerPage() {
               Guía de Precios 2026
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              ¿Cuánto Cuesta un Contrato de Alquiler? Comparativa Real 2026
+              ¿Cuánto cuesta un contrato de alquiler? Desde 145€
             </h1>
             <p className="text-xl text-white/90 mb-6">
-              Precios reales de notario, gestoría online y plantillas gratuitas. 
-              Descubre qué opción te conviene según tu presupuesto y necesidades.
+              Precio real 2026: gestoría online desde 145€ en 48h, notario 300–500€
+              o plantilla gratis (con riesgos). Elige según presupuesto y protección legal.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
