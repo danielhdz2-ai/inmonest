@@ -11,12 +11,12 @@ const PHONE = '745022862'
 const PHONE_DISPLAY = '745 022 862'
 
 export const metadata: Metadata = {
-  title: 'Vender Piso Sin Agencia | Gestor Personal 687€ - Ahorra +15,000€',
+  title: 'Vender piso sin agencia desde 687€',
   description: 'Vende tu piso sin pagar comisiones de agencia. Gestor inmobiliario te acompaña desde reserva hasta escritura por 687€. Ahorra más de 15,000€ en comisiones. ✓ Contratos incluidos ✓ Asesoramiento legal',
   alternates: { canonical: `${BASE_URL}/vender-piso-sin-agencia` },
   keywords: 'vender piso sin agencia, vender casa particular, ahorro comisiones inmobiliaria, gestor venta vivienda, venta entre particulares',
   openGraph: {
-    title: 'Vende tu Piso Sin Agencia | Ahorra +15,000€ en Comisiones',
+    title: 'Vender piso sin agencia: ahorra comisiones',
     description: 'Gestor inmobiliario personal por 687€. Te acompañamos en toda la venta: contratos, documentación, notaría. Sin comisiones abusivas.',
     url: `${BASE_URL}/vender-piso-sin-agencia`,
     type: 'website',

@@ -9,10 +9,34 @@ export type EnlaceSeo = {
 
 const ENLACES_HOME: EnlaceSeo[] = [
   {
+    href: '/calculadora-gastos-alquiler',
+    title: 'Calculadora gastos de alquiler',
+    description: 'Coste mensual real gratis: renta + suministros.',
+    badge: 'Gratis',
+  },
+  {
     href: '/gestoria/cuanto-cuesta-contrato-alquiler',
     title: '¿Cuánto cuesta un contrato de alquiler?',
-    description: 'Precios reales, comparativa y guía LAU 2026.',
+    description: 'Desde 145€ online vs notario. Comparativa 2026.',
     badge: 'Guía',
+  },
+  {
+    href: '/valencia/contrato-alquiler',
+    title: 'Contrato alquiler Valencia',
+    description: 'LAU desde 145€. Fianza Generalitat. Entrega 48h.',
+    badge: 'Ciudad',
+  },
+  {
+    href: '/bilbao/alquiler-particulares',
+    title: 'Alquiler particulares Bilbao',
+    description: 'Pisos sin comisión de agencia. Trato directo.',
+    badge: 'Ciudad',
+  },
+  {
+    href: '/malaga/alquiler-particulares',
+    title: 'Alquiler particulares Málaga',
+    description: 'Sin intermediarios. Contrato LAU opcional.',
+    badge: 'Ciudad',
   },
   {
     href: '/bilbao/contrato-alquiler',
@@ -21,28 +45,10 @@ const ENLACES_HOME: EnlaceSeo[] = [
     badge: 'Ciudad',
   },
   {
-    href: '/malaga/contrato-alquiler',
-    title: 'Contrato alquiler Málaga',
-    description: 'Redacción profesional en 48h. Desde 145€.',
-    badge: 'Ciudad',
-  },
-  {
-    href: '/blog/vender-piso-sin-comisiones',
-    title: 'Vender piso sin comisiones',
-    description: 'Guía completa para vender entre particulares.',
-    badge: 'Blog',
-  },
-  {
     href: '/blog/detectar-contrato-arras-fraudulento',
     title: 'Detectar arras fraudulentas',
     description: 'Señales de alerta antes de firmar.',
     badge: 'Blog',
-  },
-  {
-    href: '/gestoria/alicante',
-    title: 'Gestoría inmobiliaria Alicante',
-    description: 'Contratos LAU y arras en la Costa Blanca.',
-    badge: 'Ciudad',
   },
   {
     href: '/gestoria/prestamo-particulares',
@@ -54,21 +60,21 @@ const ENLACES_HOME: EnlaceSeo[] = [
 
 const ENLACES_GESTORIA: EnlaceSeo[] = [
   {
+    href: '/calculadora-gastos-alquiler',
+    title: 'Calculadora gastos de alquiler',
+    description: 'Herramienta gratis antes de firmar el contrato.',
+    badge: 'Gratis',
+  },
+  {
     href: '/gestoria/cuanto-cuesta-contrato-alquiler',
     title: 'Precio contrato alquiler 2026',
     description: 'Tabla comparativa y desglose de costes.',
     badge: 'Guía',
   },
   {
-    href: '/blog/que-es-gestoria-inmobiliaria',
-    title: '¿Qué es una gestoría inmobiliaria?',
-    description: 'Cuándo la necesitas y qué incluye.',
-    badge: 'Blog',
-  },
-  {
-    href: '/bilbao/contrato-alquiler',
-    title: 'Alquiler en Bilbao',
-    description: 'Contrato LAU con normativa autonómica.',
+    href: '/valencia/contrato-alquiler',
+    title: 'Contrato alquiler Valencia',
+    description: 'Desde 145€. Normativa Comunitat Valenciana.',
     badge: 'Ciudad',
   },
   {
@@ -78,28 +84,28 @@ const ENLACES_GESTORIA: EnlaceSeo[] = [
     badge: 'Ciudad',
   },
   {
-    href: '/gestoria/due-diligence-precompra/barcelona',
-    title: 'Revisar documentación compra piso Barcelona',
-    description: 'Gestor asignado revisa cargas, cédula e ITE. 350€.',
+    href: '/bilbao/contrato-alquiler',
+    title: 'Alquiler en Bilbao',
+    description: 'Contrato LAU con normativa autonómica.',
     badge: 'Ciudad',
+  },
+  {
+    href: '/malaga/alquiler-particulares',
+    title: 'Particulares en Málaga',
+    description: 'Alquiler sin comisión de agencia.',
+    badge: 'Ciudad',
+  },
+  {
+    href: '/blog/que-es-gestoria-inmobiliaria',
+    title: '¿Qué es una gestoría inmobiliaria?',
+    description: 'Cuándo la necesitas y qué incluye.',
+    badge: 'Blog',
   },
   {
     href: '/gestoria/due-diligence-precompra/valencia',
     title: 'Due diligence Valencia',
     description: 'Revisión legal precompra en la Comunidad Valenciana.',
     badge: 'Ciudad',
-  },
-  {
-    href: '/gestoria/bilbao',
-    title: 'Gestoría inmobiliaria Bilbao',
-    description: 'Contratos y asesoría legal en el País Vasco.',
-    badge: 'Ciudad',
-  },
-  {
-    href: '/blog/vender-piso-sin-comisiones',
-    title: 'Vender sin agencia',
-    description: 'Estrategia para vender entre particulares.',
-    badge: 'Blog',
   },
 ]
 

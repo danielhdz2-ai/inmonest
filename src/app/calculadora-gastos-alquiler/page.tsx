@@ -239,6 +239,24 @@ export default function CalculadoraGastosAlquilerPage() {
                   >
                     Contrato LAU desde 145€ →
                   </Link>
+                  <Link
+                    href="/valencia/contrato-alquiler"
+                    className="inline-block border-2 border-white/70 text-white hover:bg-white/10 font-semibold px-6 py-3.5 rounded-full transition-colors text-sm"
+                  >
+                    Valencia
+                  </Link>
+                  <Link
+                    href="/malaga/contrato-alquiler"
+                    className="inline-block border-2 border-white/70 text-white hover:bg-white/10 font-semibold px-6 py-3.5 rounded-full transition-colors text-sm"
+                  >
+                    Málaga
+                  </Link>
+                  <Link
+                    href="/bilbao/alquiler-particulares"
+                    className="inline-block border-2 border-white/70 text-white hover:bg-white/10 font-semibold px-6 py-3.5 rounded-full transition-colors text-sm"
+                  >
+                    Particulares Bilbao
+                  </Link>
                 </div>
               </div>
             </div>

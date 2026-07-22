@@ -8,14 +8,14 @@ import TestimoniosCarousel from '@/components/TestimoniosCarousel'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Asesoramiento Venta Piso desde Arras hasta Escritura | Gestor 166€',
+  title: 'Asesoramiento venta desde arras 166€',
   description: 'Ya firmaste arras y necesitas ayuda para vender? Gestor experto te acompaña recabando documentación, gestionando trámites hasta escritura. Solo 166€ IVA incluido. ✓ Particulares vendedores ✓ Sin sorpresas',
   keywords: 'tramites venta piso particular, gestor venta inmueble, asesoramiento venta vivienda, documentacion venta casa, ayuda vender piso, gestoria venta particular, tramites escritura publica, vender inmueble sin inmobiliaria',
   alternates: {
     canonical: `${BASE_URL}/gestoria/asesoramiento-arras-venta`,
   },
   openGraph: {
-    title: 'Asesoramiento Venta Piso desde Arras | Gestoría Inmonest',
+    title: 'Asesoramiento venta desde arras',
     description: 'Gestor experto te acompaña desde arras hasta escritura. Recabamos documentación, gestionamos trámites. Ideal para particulares vendedores. 166€.',
     url: `${BASE_URL}/gestoria/asesoramiento-arras-venta`,
     type: 'website',

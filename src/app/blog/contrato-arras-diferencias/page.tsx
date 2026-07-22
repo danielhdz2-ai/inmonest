@@ -8,7 +8,7 @@ const FECHA = '2026-04-22'
 const PRECIO_ARRAS = precioLabel('arras-penitenciales')
 
 export const metadata: Metadata = {
-  title: 'Arras penitenciales vs confirmatorias: diferencias y cuándo usar cada una — Inmonest',
+  title: 'Arras penitenciales vs confirmatorias',
   description:
     'Descubre las diferencias entre arras penitenciales y confirmatorias en la compraventa de inmuebles, cuándo elegir cada tipo y qué consecuencias tiene el incumplimiento.',
   keywords: 'arras penitenciales, arras confirmatorias, diferencias arras, contrato arras, compraventa piso',

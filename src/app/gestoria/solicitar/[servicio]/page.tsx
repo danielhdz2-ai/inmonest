@@ -34,7 +34,7 @@ export async function generateMetadata({
     : `Solicita ${data.nombre} por ${data.precio}€. ${data.incluye.slice(0, 2).join('. ')}. Redactado por gestoría inmobiliaria experta. Entrega en 48h.`
 
   return {
-    title: `${data.nombre} - ${data.precio}€ | Gestoría Inmonest`,
+    title: `${data.nombre} desde ${data.precio}€`,
     description,
     alternates: {
       canonical: `${BASE_URL}/gestoria/solicitar/${servicio}`,

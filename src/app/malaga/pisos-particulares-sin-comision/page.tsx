@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: 'Encuentra pisos de particulares en Málaga sin comisión de agencia. Alquiler y venta directo del propietario. Ahorra hasta 5.500€ en intermediarios. 100% verificados.',
   alternates: { canonical: `${BASE_URL}/malaga/pisos-particulares-sin-comision` },
   openGraph: {
-    title: 'Pisos de Particulares en Málaga Sin Comisión — Inmonest',
+    title: 'Pisos de particulares en Málaga sin comisión',
     description: 'Contacta directamente con propietarios. Sin intermediarios, sin comisiones.',
     url: `${BASE_URL}/malaga/pisos-particulares-sin-comision`,
     type: 'website',

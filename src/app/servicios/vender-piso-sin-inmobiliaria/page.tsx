@@ -11,12 +11,12 @@ const PHONE = '745022862'
 const PHONE_DISPLAY = '745 022 862'
 
 export const metadata: Metadata = {
-  title: 'Vender Piso Sin Inmobiliaria | Gestoría Digital Alternativa 687€',
+  title: 'Vender piso sin inmobiliaria desde 687€',
   description: 'Alternativa legal a las inmobiliarias tradicionales. Vende tu piso de particular a particular con gestor experto online: contratos, legalidad y trámites por 687€. Sin comisiones ni exclusivas.',
   alternates: { canonical: `${BASE_URL}/servicios/vender-piso-sin-inmobiliaria` },
   keywords: 'vender piso sin inmobiliaria, alternativa a las agencias inmobiliarias, gestoria para vender piso particular, como vender una casa sin agencia, venta particular a particular, evitar comisiones inmobiliaria',
   openGraph: {
-    title: 'Alternativa Digital a las Inmobiliarias | Inmonest Gestoría',
+    title: 'Alternativa digital a inmobiliarias',
     description: 'Vende 100% de particular a particular sin comisiones. Gestoría inmobiliaria digital te asigna un experto que se encarga de la legalidad por 687€. Tú controlas la venta, nosotros aseguramos el proceso.',
     url: `${BASE_URL}/servicios/vender-piso-sin-inmobiliaria`,
     type: 'website',

@@ -114,7 +114,7 @@ export async function generateMetadata({ params }: { params: Promise<{ ciudad: s
   const mercado = MERCADO[ciudad]
 
   return {
-    title: `Pisos en ${nombre} | Compra y Alquiler sin Comisiones — Inmonest`,
+    title: `Pisos en ${nombre}: compra y alquiler`,
     description: `Encuentra pisos en ${nombre} directamente de particulares. Precio medio ${mercado?.precio_m2 ?? ''} en venta, ${mercado?.precio_alquiler ?? ''} en alquiler. Sin agencias, sin comisiones.`,
     keywords: `pisos en ${nombre.toLowerCase()}, piso en venta ${nombre.toLowerCase()}, piso alquiler ${nombre.toLowerCase()}, comprar piso ${nombre.toLowerCase()}, pisos particulares ${nombre.toLowerCase()}, inmuebles ${nombre.toLowerCase()}`,
     alternates: { canonical: `/${ciudad}/pisos` },

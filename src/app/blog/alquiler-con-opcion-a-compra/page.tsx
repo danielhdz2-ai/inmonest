@@ -6,7 +6,7 @@ const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
 
 export const metadata: Metadata = {
-  title: 'Alquiler con opción a compra: cómo funciona y qué debes saber — Inmonest',
+  title: 'Alquiler con opción a compra: guía',
   description:
     'Alquilas hoy y compras cuando quieras. Aprende cómo funciona el alquiler con opción a compra en España, qué se descuenta del precio, cuándo te conviene y los riesgos.',
   keywords: 'alquiler con opcion a compra, como funciona opcion compra, contrato alquiler opcion compra, alquiler compra piso',

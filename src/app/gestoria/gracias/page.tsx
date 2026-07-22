@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import GraciasContent from './GraciasContent'
 
 export const metadata = {
-  title: 'Pedido confirmado — Inmonest Gestoría',
+  title: 'Pedido confirmado',
   robots: 'noindex, nofollow',
 }
 

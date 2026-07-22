@@ -20,12 +20,12 @@ const META_DESCRIPTION =
   'Gestoría inmobiliaria en Barcelona para particulares. Contratos LAU y arras adaptados a zona tensionada. Desde 61€, entrega 48h. Abogados expertos, sin comisiones de agencia.'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Barcelona | Contratos desde 61€ · Entrega 48h',
+  title: 'Gestoría inmobiliaria Barcelona desde 61€',
   description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria barcelona, gestoría para particulares barcelona, comprar piso barcelona sin agencia, vender piso barcelona, contrato arras barcelona, asesoría compra vivienda barcelona',
   alternates: { canonical: `${BASE_URL}/gestoria/barcelona` },
   openGraph: {
-    title: 'Gestoría Inmobiliaria Barcelona para Particulares | Inmonest',
+    title: 'Gestoría inmobiliaria Barcelona',
     description: META_DESCRIPTION,
     url: `${BASE_URL}/gestoria/barcelona`,
     type: 'website',
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Gestoría Inmobiliaria Barcelona para Particulares | Inmonest',
+    title: 'Gestoría inmobiliaria Barcelona',
     description:
       'Contratos y acompañamiento legal en Barcelona desde 120€ (LAU) y 145€ (arras). Adaptados a zona tensionada, ITE y normativa catalana.',
   },

@@ -6,7 +6,7 @@ import PageHeroImage from '@/components/PageHeroImage'
 import PublicarWizard from './PublicarWizard'
 
 export const metadata = {
-  title: 'Publicar anuncio gratis — Inmonest',
+  title: 'Publicar anuncio gratis',
   description: 'Publica tu piso gratis. Sin comisiones, trato directo entre propietario e inquilino.',
 }
 

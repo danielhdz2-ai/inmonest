@@ -5,7 +5,7 @@ import ContactForm from '@/components/ContactForm'
 import Navbar from '@/components/NavbarServer'
 
 export const metadata: Metadata = {
-  title: 'Contacto — Inmonest',
+  title: 'Contacto',
   description: 'Escríbenos y te respondemos en menos de 24 horas.',
 }
 

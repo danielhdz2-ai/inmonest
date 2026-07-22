@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: 'Encuentra pisos de particulares en Madrid sin comisión de agencia. Alquiler y venta directo del propietario. Ahorra hasta 6.000€ en intermediarios. 100% verificados.',
   alternates: { canonical: `${BASE_URL}/madrid/pisos-particulares-sin-comision` },
   openGraph: {
-    title: 'Pisos de Particulares en Madrid Sin Comisión — Inmonest',
+    title: 'Pisos de particulares en Madrid sin comisión',
     description: 'Contacta directamente con propietarios. Sin intermediarios, sin comisiones.',
     url: `${BASE_URL}/madrid/pisos-particulares-sin-comision`,
     type: 'website',

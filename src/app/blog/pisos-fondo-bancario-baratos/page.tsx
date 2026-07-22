@@ -8,7 +8,7 @@ const FECHA = '2026-04-22'
 const PRECIO_ARRAS = precioLabel('arras-penitenciales')
 
 export const metadata: Metadata = {
-  title: 'Pisos de fondo bancario baratos: cómo encontrarlos y qué revisar — Inmonest',
+  title: 'Pisos de fondo bancario: qué revisar',
   description:
     'Solvia, Aliseda, Servihabitat... Los bancos tienen miles de pisos entre 40.000 € y 150.000 €. Aprende cómo acceder, negociar el precio y qué revisar antes de comprar un piso bancario.',
   keywords: 'pisos fondo bancario, pisos baratos banco, solvia pisos, aliseda pisos, servihabitat pisos, pisos banco baratos',

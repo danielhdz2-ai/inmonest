@@ -3,7 +3,7 @@ import Navbar from '@/components/NavbarServer'
 import CargaDocumentosContent from './CargaDocumentosContent'
 
 export const metadata: Metadata = {
-  title: 'Cargar documentación — Inmonest Gestoría',
+  title: 'Cargar documentación',
   robots: 'noindex, nofollow',
 }
 

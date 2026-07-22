@@ -5,7 +5,7 @@ import Navbar from '@/components/NavbarServer'
 import AdminPanelPremium from './AdminPanelPremium'
 
 export const metadata: Metadata = {
-  title: 'Admin Premium - Inmonest',
+  title: 'Admin Premium',
   description: 'Panel de administración avanzado con métricas, clientes y analytics'
 }
 

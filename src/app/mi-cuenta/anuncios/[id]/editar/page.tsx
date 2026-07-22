@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const metadata: Metadata = {
-  title: 'Editar anuncio — Inmonest',
+  title: 'Editar anuncio',
   robots: { index: false },
 }
 

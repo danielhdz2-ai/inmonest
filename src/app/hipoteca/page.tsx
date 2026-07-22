@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: 'Calculadora hipoteca gratis + comparativa de las mejores ofertas (desde 2,5% TIN). Gestión completa sin coste para ti. Respuesta en 24-48h. Ahorra hasta 15.000€ en intereses.',
   alternates: { canonical: `${BASE_URL}/hipoteca` },
   openGraph: {
-    title: '¿Buscas hipoteca? Te ayudamos a conseguir la mejor financiación — Inmonest',
+    title: 'Hipoteca: te ayudamos con la financiación',
     description: 'Calculadora hipotecaria, comparativa de las mejores ofertas y asesoramiento personalizado. Sin compromiso.',
     url: `${BASE_URL}/hipoteca`,
     type: 'website',

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/gestoria/contrato-ilegal`,
   },
   openGraph: {
-    title: 'Detectar Contratos Ilegales o Fraudulentos — Inmonest',
+    title: 'Detectar contratos ilegales',
     description: 'Análisis legal de contratos sospechosos. Detectamos fraudes, documentos falsificados, estafas inmobiliarias. 24h. Desde 29€.',
     url: `${BASE_URL}/gestoria/contrato-ilegal`,
     type: 'website',

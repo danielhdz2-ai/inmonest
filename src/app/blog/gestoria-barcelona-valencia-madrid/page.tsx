@@ -6,7 +6,7 @@ import PageHeroImage from '@/components/PageHeroImage'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria: Barcelona, Valencia y Madrid | Diferencias Clave | Inmonest',
+  title: 'Gestoría en Barcelona, Valencia y Madrid',
   description:
     'ITE en Barcelona, cédula en Valencia, IEE en Madrid... Cada ciudad tiene su normativa específica. Descubre qué necesitas según dónde compres.',
   alternates: { canonical: `${BASE_URL}/blog/gestoria-barcelona-valencia-madrid` },

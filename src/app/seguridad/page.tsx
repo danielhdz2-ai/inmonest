@@ -3,7 +3,7 @@ import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
 
 export const metadata: Metadata = {
-  title: 'Seguridad — Inmonest',
+  title: 'Seguridad',
   description: 'Cómo Inmonest protege tus datos y tu cuenta. Medidas de seguridad, buenas prácticas y cómo reportar vulnerabilidades.',
 }
 

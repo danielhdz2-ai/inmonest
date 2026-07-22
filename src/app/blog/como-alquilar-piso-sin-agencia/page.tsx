@@ -6,7 +6,7 @@ const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
 
 export const metadata: Metadata = {
-  title: 'Cómo alquilar tu piso sin agencia en 2026: guía completa para propietarios — Inmonest',
+  title: 'Alquilar piso sin agencia: guía 2026',
   description:
     'Guía paso a paso para alquilar tu piso sin pagar comisión a ninguna agencia: publicar anuncio, seleccionar inquilino, redactar contrato y depositar fianza en 2026.',
   keywords: 'alquilar piso sin agencia, como alquilar piso particular, alquiler sin intermediarios, propietario alquiler',

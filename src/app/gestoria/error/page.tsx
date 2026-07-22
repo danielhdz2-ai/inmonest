@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 
 export const metadata: Metadata = {
-  title: 'Pago cancelado — Inmonest',
+  title: 'Pago cancelado',
   robots: { index: false, follow: false },
 }
 

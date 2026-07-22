@@ -3,7 +3,7 @@ import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
 
 export const metadata: Metadata = {
-  title: 'Aviso Legal — Inmonest',
+  title: 'Aviso legal',
   description: 'Aviso legal de Inmonest. Información sobre el titular del sitio web, condiciones de uso y responsabilidad.',
 }
 

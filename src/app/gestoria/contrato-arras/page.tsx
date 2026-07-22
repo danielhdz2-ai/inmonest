@@ -9,12 +9,12 @@ const BASE_URL = 'https://inmonest.com'
 const PRECIO_ARRAS = precioLabel('arras-penitenciales')
 
 export const metadata: Metadata = {
-  title: 'Contrato de Arras Online | Desde 145€ | Gestoría Inmobiliaria',
+  title: 'Contrato de arras online desde 145€',
   description: `Redacción profesional de contratos de arras y señal. Servicio online en toda España. Arras penitenciales, confirmatorias y señal. Desde ${PRECIO_ARRAS} IVA incluido.`,
   keywords: 'contrato de arras, contrato de señal, arras penitenciales, arras confirmatorias, contrato reserva vivienda, gestoría inmobiliaria',
   alternates: { canonical: `${BASE_URL}/gestoria/contrato-arras` },
   openGraph: {
-    title: 'Contrato de Arras Online | Desde 145€ | Inmonest',
+    title: 'Contrato de arras online desde 145€',
     description: 'Redacción profesional de contratos de arras y señal. Servicio online en toda España desde 145€.',
     url: `${BASE_URL}/gestoria/contrato-arras`,
     type: 'website',

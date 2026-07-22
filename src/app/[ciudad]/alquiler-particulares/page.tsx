@@ -73,11 +73,13 @@ const DATOS: Record<string, {
   malaga: {
     precio_medio: '1.000 – 1.600 €/mes',
     barrios: ['Centro Histórico', 'Teatinos', 'El Palo', 'Churriana', 'Pedregalejo', 'Cruz de Humilladero'],
-    descripcion_seo: 'Málaga lidera el crecimiento de precios inmobiliarios en España. Alquilar de particular en Málaga sin agencia es especialmente valioso aquí, donde las comisiones pueden superar los 2.000 €. Inmonest te conecta con propietarios reales que alquilan sin intermediarios.',
+    descripcion_seo: 'Málaga lidera el crecimiento de precios inmobiliarios en España. Alquilar de particular en Málaga sin agencia es especialmente valioso aquí, donde las comisiones pueden superar los 2.000 €. Inmonest te conecta con propietarios reales que alquilan sin intermediarios. Usa la calculadora de gastos de alquiler para estimar el coste mensual real y, al firmar, un contrato LAU desde 145 €.',
     faq: [
       { q: '¿Por qué son tan caros los alquileres en Málaga?', a: 'Málaga atrae trabajadores remotos europeos, expats tecnológicos y estudiantes internacionales. La oferta de vivienda no ha crecido al ritmo de esta demanda, disparando los precios un 18 % en 2024.' },
       { q: '¿Dónde encontrar alquiler más barato en Málaga?', a: 'Barrios como Cruz de Humilladero, Churriana o las zonas alejadas del centro ofrecen alquileres desde 750 €/mes, manteniendo buena conexión con el centro por metro y autobús.' },
       { q: '¿Puedo alquilar en Málaga siendo autónomo?', a: 'Sí. Los propietarios particulares son más flexibles que las agencias y suelen aceptar la declaración de IRPF como justificante de ingresos para autónomos.' },
+      { q: '¿Hace falta contrato si alquillo de particular en Málaga?', a: 'Sí. Aunque sea entre particulares, el contrato LAU protege a ambas partes (fianza, duración, actualización de renta). En Inmonest puedes encargarlo desde 145 € con entrega en 48 h.' },
+      { q: '¿Cuánto se ahorra alquilando sin agencia en Málaga?', a: 'La comisión típica de agencia ronda una mensualidad (a menudo 1.000–2.000 €). Alquilar de particular evita ese coste; solo necesitas un contrato legal sólido.' },
     ],
   },
   bilbao: {
@@ -516,13 +518,13 @@ export default async function AlquilerParticularesPage({
               Protégete con un contrato legal en minutos
             </h2>
             <p className="text-white/60 text-sm max-w-lg mx-auto">
-              Genera un contrato de alquiler LAU homologado, revisado por abogados especializados.
-              Solo 90 € — sin sorpresas, sin desplazamientos.
+              Genera un contrato de alquiler LAU homologado, revisado por gestoría especializada.
+              Desde 145 € — sin sorpresas, sin desplazamientos.
             </p>
           </div>
           <LeadCaptureForm
             serviceKey="alquiler-vivienda-lau"
-            price={90}
+            price={145}
             label={`Contrato de alquiler para ${nombre} — revisado por gestoría`}
           />
         </div>
@@ -534,11 +536,12 @@ export default async function AlquilerParticularesPage({
           <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-5">
             También puede interesarte
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             {[
               { label: `Alquiler sin agencia en ${nombre}`, href: `/${ciudad}/alquiler-sin-agencia` },
               { label: `Pisos en ${nombre}`, href: `/${ciudad}/pisos` },
               { label: `Contrato de alquiler en ${nombre}`, href: `/${ciudad}/contrato-alquiler` },
+              { label: 'Calculadora gastos de alquiler', href: '/calculadora-gastos-alquiler' },
               { label: `Vender piso en ${nombre}`, href: `/${ciudad}/vender-piso` },
             ].map(({ label, href }) => (
               <Link

@@ -22,12 +22,12 @@ const META_DESCRIPTION =
   'Gestoría inmobiliaria en Valencia para particulares. Contratos LAU desde 145€, arras 145€. Sin comisiones de agencia. Abogados expertos, entrega 48h.'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Valencia | Contratos desde 61€ · Entrega 48h',
+  title: 'Gestoría inmobiliaria Valencia desde 61€',
   description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria valencia, gestoría para particulares valencia, comprar piso valencia sin agencia, vender piso valencia, contrato arras valencia, asesoría compra vivienda valencia',
   alternates: { canonical: `${BASE_URL}/gestoria/valencia` },
   openGraph: {
-    title: 'Gestoría Inmobiliaria Valencia para Particulares | Inmonest',
+    title: 'Gestoría inmobiliaria Valencia',
     description: META_DESCRIPTION,
     url: `${BASE_URL}/gestoria/valencia`,
     type: 'website',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Gestoría Inmobiliaria Valencia para Particulares | Inmonest',
+    title: 'Gestoría inmobiliaria Valencia',
     description:
       'Contratos de alquiler, arras y compraventa en Valencia desde 145€. Sin comisiones de agencia. Entrega 48h.',
   },

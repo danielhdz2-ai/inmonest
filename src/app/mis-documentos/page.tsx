@@ -5,7 +5,7 @@ import Navbar from '@/components/NavbarServer'
 import MisDocumentosClient, { type GestoriaRequest } from './MisDocumentosClient'
 
 export const metadata: Metadata = {
-  title: 'Mi area personal - Inmonest',
+  title: 'Mi área personal',
   description: 'Gestiona tus contratos, sube documentos y sigue el estado de tu tramite.',
 }
 

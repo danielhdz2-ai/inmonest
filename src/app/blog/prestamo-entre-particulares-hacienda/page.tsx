@@ -6,7 +6,7 @@ const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
 
 export const metadata: Metadata = {
-  title: 'Préstamo entre familiares: cómo formalizarlo y declararlo ante Hacienda — Inmonest',
+  title: 'Préstamo familiar: formalizar y declarar',
   description:
     'Un préstamo sin contrato entre familiares puede convertirse en una donación sujeta a impuestos. Aprende a documentarlo correctamente: modelo 600, ITP y obligaciones fiscales.',
   keywords: 'prestamo entre familiares hacienda, contrato prestamo particulares, prestamo privado impuestos, modelo 600 prestamo',

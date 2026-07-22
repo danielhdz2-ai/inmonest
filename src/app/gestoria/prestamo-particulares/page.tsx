@@ -23,7 +23,7 @@ const PRECIO = PRESTAMO_PARTICULARES_PRECIO
 const SOLICITAR_URL = '/gestoria/solicitar/prestamo-particulares'
 
 export const metadata: Metadata = {
-  title: `Contrato de Préstamo entre Particulares | ${PRECIO}€ IVA incluido | Inmonest`,
+  title: `Préstamo entre particulares desde ${PRECIO}€`,
   description:
     `¿Prestas o recibes dinero entre particulares? Contrato profesional redactado por gestoría inmobiliaria. Asesor experto, nota fiscal, Modelo 600 y protección ante Hacienda. ${PRECIO}€ IVA incluido.`,
   keywords:

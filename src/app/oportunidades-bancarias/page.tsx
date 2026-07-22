@@ -10,7 +10,7 @@ const PRECIO_ARRAS = precioLabel('arras-penitenciales')
 const PRECIO_COMPRAVENTA = precioLabel('contrato-compraventa')
 
 export const metadata: Metadata = {
-  title: 'Pisos de Banco Baratos | Oportunidades de Fondos Bancarios 2026 — Inmonest',
+  title: 'Pisos de banco baratos 2026',
   description:
     'Encuentra pisos de Solvia, Aliseda, Servihabitat y otros fondos bancarios desde 40.000 €. Verificados, con documentación completa y gestión de compraventa incluida.',
   keywords:

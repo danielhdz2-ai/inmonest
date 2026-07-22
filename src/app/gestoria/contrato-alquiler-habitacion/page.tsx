@@ -20,7 +20,7 @@ const PHONE = '+34745022862'
 const WA = '34745022862'
 
 export const metadata: Metadata = {
-  title: `Contrato de Alquiler de Habitación | ${PRECIO}€ IVA incluido | Inmonest`,
+  title: `Contrato alquiler habitación desde ${PRECIO}€`,
   description:
     `¿Alquilas una habitación en tu piso? Contrato profesional redactado por gestoría inmobiliaria. Asesor experto, bases legales del Código Civil, normas de convivencia y protección ante impagos. ${PRECIO}€ IVA incluido.`,
   keywords:

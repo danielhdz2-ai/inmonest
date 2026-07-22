@@ -86,7 +86,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Servicio en Madrid capital y área metropolitana.',
     zonas: ['Salamanca', 'Chamberí', 'Retiro', 'Carabanchel', 'Vallecas', 'Móstoles', 'Getafe'],
     meta: {
-      title: 'Asesoría Compra Piso Madrid | Sin comisión agencia desde 687€',
+      title: 'Asesoría compra piso Madrid desde 687€',
       description:
         'Compra piso de particular en Madrid con gestor asignado. Desde reserva hasta escritura. 687€ IVA incl. Sin comisión del 3-5%. Respuesta en 24h.',
       keywords:
@@ -150,7 +150,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Barcelona capital y área metropolitana.',
     zonas: ['Eixample', 'Gràcia', 'Sants', 'Sant Martí', "L'Hospitalet", 'Badalona'],
     meta: {
-      title: 'Asesoría Compra Piso Barcelona | Sin comisión agencia desde 687€',
+      title: 'Asesoría compra piso Barcelona desde 687€',
       description:
         'Compra piso de particular en Barcelona con gestor asignado. 687€ IVA incl. Revisión documental y acompañamiento hasta escritura. Sin comisión 3-5%.',
       keywords:
@@ -214,7 +214,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Valencia capital y l\'Horta.',
     zonas: ['Ruzafa', 'Benimaclet', 'Campanar', 'Ciutat Vella', 'Mislata', 'Paterna'],
     meta: {
-      title: 'Asesoría Compra Piso Valencia | Sin comisión agencia desde 687€',
+      title: 'Asesoría compra piso Valencia desde 687€',
       description:
         'Compra piso de particular en Valencia con gestora asignada. 687€ IVA incl. Desde reserva hasta escritura. Sin comisión de agencia.',
       keywords:
@@ -266,7 +266,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Sevilla capital y área metropolitana.',
     zonas: ['Triana', 'Nervión', 'Los Remedios', 'Macarena', 'Este-Alcosa', 'Dos Hermanas'],
     meta: {
-      title: 'Asesoría Compra Piso Sevilla | Sin comisión agencia desde 687€',
+      title: 'Asesoría compra piso Sevilla desde 687€',
       description:
         'Compra piso de particular en Sevilla con gestora asignada. 687€ IVA incl. Acompañamiento completo hasta escritura.',
       keywords:
@@ -317,7 +317,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Málaga capital y Costa del Sol.',
     zonas: ['Centro', 'Teatinos', 'El Palo', 'La Malagueta', 'Benalmádena', 'Torremolinos'],
     meta: {
-      title: 'Asesoría Compra Piso Málaga | Sin comisión agencia desde 687€',
+      title: 'Asesoría compra piso Málaga desde 687€',
       description:
         'Compra piso de particular en Málaga con gestora asignada. 687€ IVA incl. Desde reserva hasta escritura en la Costa del Sol.',
       keywords:
@@ -365,7 +365,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Zaragoza capital y área metropolitana.',
     zonas: ['Centro', 'Delicias', 'Actur', 'Las Fuentes', 'San José', 'Utebo'],
     meta: {
-      title: 'Asesoría Compra Piso Zaragoza | Particular sin comisión desde 687€',
+      title: 'Asesoría compra piso Zaragoza desde 687€',
       description:
         'Compra piso de particular en Zaragoza con gestor asignado. Revisión de arras, nota simple y normativa aragonesa. 687€ IVA incl. Sin comisión 3-5%.',
       keywords:
@@ -429,7 +429,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Valladolid capital y provincia.',
     zonas: ['Centro', 'Parquesol', 'Delicias', 'Rondilla', 'La Victoria', 'Laguna de Duero'],
     meta: {
-      title: 'Asesoría Compra Piso Valladolid | Particular sin comisión 687€',
+      title: 'Asesoría compra piso Valladolid desde 687€',
       description:
         'Compra piso de particular en Valladolid con gestor asignado. Revisión arras, Registro y normativa castellanoleonesa. 687€ IVA incl. Sin comisión de agencia.',
       keywords:
@@ -489,7 +489,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Palma, cala y municipios de la isla.',
     zonas: ['Palma', 'Calvià', 'Inca', 'Manacor', 'Llucmajor', 'Pollença'],
     meta: {
-      title: 'Asesoría Compra Piso Mallorca | Particular sin comisión desde 687€',
+      title: 'Asesoría compra piso Mallorca desde 687€',
       description:
         'Compra piso de particular en Mallorca con gestora asignada. Normativa balear, IBAVI, arras y escritura. 687€ IVA incl. Sin comisión 3-5%.',
       keywords:
@@ -553,7 +553,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Bilbao capital, Gran Bilbao y área metropolitana.',
     zonas: ['Indautxu', 'Abando', 'Deusto', 'Rekalde', 'Getxo', 'Barakaldo', 'Portugalete'],
     meta: {
-      title: 'Asesoría Compra Piso Bilbao | Particular sin comisión desde 687€',
+      title: 'Asesoría compra piso Bilbao desde 687€',
       description:
         'Compra piso de particular en Bilbao con gestor asignado. Normativa foral, arras, nota simple y escritura. 687€ IVA incl. Sin comisión 3-5%.',
       keywords:
@@ -617,7 +617,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'A Coruña capital, Oleiros, Arteixo y área metropolitana.',
     zonas: ['Ciudad Vieja', 'Ensanche', 'Monte Alto', 'Elviña', 'Mesoiro', 'Oleiros', 'Arteixo'],
     meta: {
-      title: 'Asesoría Compra Piso A Coruña | Particular sin comisión 687€',
+      title: 'Asesoría compra piso A Coruña desde 687€',
       description:
         'Compra piso de particular en A Coruña con gestora asignada. Revisión arras, nota simple y normativa gallega. 687€ IVA incl. Sin comisión de agencia.',
       keywords:
@@ -681,7 +681,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Murcia capital, Cartagena, Lorca y área metropolitana.',
     zonas: ['Centro', 'Vista Alegre', 'El Carmen', 'San Andrés', 'La Flota', 'Cartagena', 'Lorca'],
     meta: {
-      title: 'Asesoría Compra Piso Murcia | Particular sin comisión desde 687€',
+      title: 'Asesoría compra piso Murcia desde 687€',
       description:
         'Compra piso de particular en Murcia con gestor asignado. Revisión arras, nota simple y normativa regional. 687€ IVA incl. Sin comisión 3-5%.',
       keywords:
@@ -745,7 +745,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Pamplona capital, Comarca de Pamplona y Navarra.',
     zonas: ['Casco Antiguo', 'Iturrama', 'San Juan', 'Rochapea', 'Burlada', 'Barañáin', 'Tudela'],
     meta: {
-      title: 'Asesoría Compra Piso Pamplona | Particular sin comisión 687€',
+      title: 'Asesoría compra piso Pamplona desde 687€',
       description:
         'Compra piso de particular en Pamplona con gestor asignado. Normativa navarra, arras, nota simple y escritura. 687€ IVA incl. Sin comisión de agencia.',
       keywords:

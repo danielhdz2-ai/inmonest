@@ -7,14 +7,14 @@ import Footer from '@/components/Footer'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Solicitar Servicio de Gestoría Inmobiliaria | Todos los Servicios',
+  title: 'Solicitar servicio de gestoría',
   description: 'Contratos de arras, alquiler LAU, compraventa, revisión legal y asesoría completa. Gestoría inmobiliaria online desde 61€. Entrega en 24-48h.',
   keywords: 'solicitar contrato arras, contrato alquiler online, gestoria inmobiliaria, contrato compraventa, revision legal vivienda',
   alternates: {
     canonical: `${BASE_URL}/gestoria/solicitar`,
   },
   openGraph: {
-    title: 'Solicitar Servicio de Gestoría Inmobiliaria | Inmonest',
+    title: 'Solicitar servicio de gestoría',
     description: 'Todos los servicios de gestoría inmobiliaria disponibles. Contratos, revisión legal y asesoría experta desde 61€.',
     url: `${BASE_URL}/gestoria/solicitar`,
     type: 'website',

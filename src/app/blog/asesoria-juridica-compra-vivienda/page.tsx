@@ -6,7 +6,7 @@ import PageHeroImage from '@/components/PageHeroImage'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Asesoría Jurídica en la Compra de Vivienda: Por Qué la Necesitas | Inmonest',
+  title: 'Asesoría jurídica al comprar vivienda',
   description:
     'Comprar una vivienda sin asesoramiento puede costarte miles de euros. Descubre qué revisa un gestor inmobiliario especializado y por qué es la mejor inversión.',
   alternates: { canonical: `${BASE_URL}/blog/asesoria-juridica-compra-vivienda` },

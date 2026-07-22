@@ -11,14 +11,14 @@ import {
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria Online España | Contratos desde 61€ · Entrega 48h',
+  title: 'Gestoría inmobiliaria online desde 61€',
   description: 'Gestoría inmobiliaria online para particulares. Contratos de arras, alquiler LAU y compraventa redactados por abogados. Desde 61€, entrega 48h. Madrid, Barcelona, Valencia, Sevilla y toda España.',
   keywords: 'gestoría inmobiliaria, gestoría inmobiliaria online, gestor inmobiliario, contrato arras penitenciales, contrato alquiler LAU, gestoría compraventa vivienda, abogado inmobiliario, gestoría barcelona, gestoría madrid, gestoría valencia',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
   },
   openGraph: {
-    title: 'Gestoría Inmobiliaria Online — Inmonest',
+    title: 'Gestoría inmobiliaria online',
     description: 'Gestoría especializada en contratos de alquiler y compraventa. Tramitamos LAU, arras, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 61€.',
     url: `${BASE_URL}/gestoria`,
     type: 'website',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Gestoría Inmobiliaria Online | Contratos Arras, Alquiler y Compraventa',
+    title: 'Gestoría online: arras, alquiler y compraventa',
     description:
       'Contratos de arras, alquiler LAU y compraventa redactados por abogados. Desde 61€. Entrega en 48h. Servicio en toda España.',
     images: [`${BASE_URL}/gestoria1.jpg`],

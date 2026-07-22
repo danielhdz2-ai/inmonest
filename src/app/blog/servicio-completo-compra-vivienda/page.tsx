@@ -6,7 +6,7 @@ import PageHeroImage from '@/components/PageHeroImage'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Servicio Completo de Compra de Vivienda: Reserva a Escritura | Inmonest',
+  title: 'Compra vivienda: de reserva a escritura',
   description:
     'Revisión de contratos con agencias, análisis de honorarios, coordinación con notaría... Descubre el servicio integral que te acompaña en todo el proceso de compra.',
   alternates: { canonical: `${BASE_URL}/blog/servicio-completo-compra-vivienda` },

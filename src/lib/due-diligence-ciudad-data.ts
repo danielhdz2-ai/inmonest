@@ -80,7 +80,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       'Móstoles', 'Alcalá de Henares', 'Getafe', 'Leganés',
     ],
     meta: {
-      title: 'Due Diligence Pre-Compra Madrid | Comprar Piso de Particular con Gestor',
+      title: 'Due diligence precompra Madrid desde 350€',
       description:
         '¿Compras piso en Madrid de particular a particular? Gestor asignado revisa toda la documentación hasta escritura: cargas, deudas, hipotecas, ITE. Evita sorpresas. 350€ IVA incluido.',
       keywords:
@@ -119,7 +119,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       "L'Hospitalet", 'Badalona', 'Sabadell',
     ],
     meta: {
-      title: 'Revisar Documentación Compra Piso Barcelona | Gestor 350€',
+      title: 'Revisar documentación compra piso Barcelona 350€',
       description:
         'Revisión documental antes de comprar piso en Barcelona. Gestor asignado verifica nota simple, cargas, cédula Generalitat, ITE y deudas de comunidad. 350€ IVA incluido. Sin comisión de agencia.',
       keywords:
@@ -178,7 +178,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       'Ciutat Vella', 'Quatre Carreres', 'Algirós',
     ],
     meta: {
-      title: 'Due Diligence Pre-Compra Valencia | Comprar Piso de Particular con Gestor',
+      title: 'Due diligence precompra Valencia desde 350€',
       description:
         '¿Compras piso en Valencia de particular a particular? Gestor asignado revisa toda la documentación hasta escritura: cargas, cédula, deudas comunidad. Evita sorpresas. 350€ IVA incluido.',
       keywords:
@@ -217,7 +217,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       'Dos Hermanas', 'Alcalá de Guadaíra', 'Camas',
     ],
     meta: {
-      title: 'Due Diligence Pre-Compra Sevilla | Comprar Piso de Particular con Gestor',
+      title: 'Due diligence precompra Sevilla desde 350€',
       description:
         '¿Compras piso en Sevilla de particular a particular? Gestor asignado revisa documentación hasta escritura: cargas, IEE, deudas comunidad. Evita sorpresas. 350€ IVA incluido.',
       keywords:
@@ -256,7 +256,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       'Rincón de la Victoria', 'Mijas',
     ],
     meta: {
-      title: 'Due Diligence Pre-Compra Málaga | Comprar Piso de Particular con Gestor',
+      title: 'Due diligence precompra Málaga desde 350€',
       description:
         '¿Compras piso en Málaga de particular a particular? Gestor especializado en derecho inmobiliario revisa documentación hasta escritura: cargas, IEE, deudas comunidad. Evita sorpresas. 350€ IVA incluido.',
       keywords:
@@ -295,7 +295,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       'Portugalete', 'Leioa',
     ],
     meta: {
-      title: 'Due Diligence Pre-Compra Bilbao | Comprar Piso de Particular con Gestor',
+      title: 'Due diligence precompra Bilbao desde 350€',
       description:
         '¿Compras piso en Bilbao de particular a particular? Gestor especializado en derecho inmobiliario revisa documentación hasta escritura: cargas, plusvalía foral, deudas comunidad. 350€ IVA incluido.',
       keywords:
@@ -334,7 +334,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       'Utebo', 'Cuarte de Huerva', 'La Muela',
     ],
     meta: {
-      title: 'Revisar Documentación Compra Piso Zaragoza | Gestor 350€',
+      title: 'Revisar documentación compra piso Zaragoza 350€',
       description:
         'Revisión documental antes de comprar piso en Zaragoza. Gestor asignado verifica nota simple, cargas, deudas de comunidad e ITE. 350€ IVA incluido. Compra entre particulares sin agencia.',
       keywords:
@@ -389,7 +389,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       'Cambre', 'Ferrol',
     ],
     meta: {
-      title: 'Revisar Documentación Compra Piso A Coruña | Gestor 350€',
+      title: 'Revisar documentación compra piso A Coruña 350€',
       description:
         'Revisión documental antes de comprar piso en A Coruña. Gestor asignado verifica nota simple, cargas, deudas de comunidad e ITE. 350€ IVA incluido. Compra entre particulares sin agencia.',
       keywords:

@@ -344,7 +344,7 @@ export function buildCiudadHubMetadata(config: CiudadHubConfig): Metadata {
     keywords: config.keywords,
     alternates: { canonical: `${BASE_URL}/gestoria/${config.slug}` },
     openGraph: {
-      title: `Gestoría Inmobiliaria ${config.nombre} para Particulares | Inmonest`,
+      title: `Gestoría inmobiliaria ${config.nombre}`,
       description: config.metaDescription,
       url: `${BASE_URL}/gestoria/${config.slug}`,
       type: 'website',
@@ -361,7 +361,7 @@ export function buildCiudadHubMetadata(config: CiudadHubConfig): Metadata {
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Gestoría Inmobiliaria ${config.nombre} para Particulares | Inmonest`,
+      title: `Gestoría inmobiliaria ${config.nombre}`,
       description: config.twitterDescription,
     },
   }

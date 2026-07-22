@@ -20,6 +20,10 @@ const GESTORIA_HUB_POR_CIUDAD: Record<string, string> = {
   palma: '/gestoria/palma',
   zaragoza: '/gestoria/zaragoza',
   alicante: '/gestoria/alicante',
+  valencia: '/gestoria/valencia',
+  madrid: '/gestoria/madrid',
+  barcelona: '/gestoria/barcelona',
+  sevilla: '/gestoria/sevilla',
 }
 
 export default function ContratoAlquilerCiudadPremium({ config }: { config: ContratoAlquilerPremiumConfig }) {
@@ -274,6 +278,38 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
         subtitulo={`Otros contratos y servicios de gestoría disponibles en ${config.nombre}.`}
         excluirServicios={['contrato-alquiler']}
       />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-4">
+        <p className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">También te puede interesar</p>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
+          {[
+            {
+              href: '/calculadora-gastos-alquiler',
+              label: 'Calculadora de gastos de alquiler',
+              desc: 'Coste mensual real gratis',
+            },
+            {
+              href: `/${config.slug}/alquiler-particulares`,
+              label: `Alquiler de particulares en ${config.nombre}`,
+              desc: 'Sin comisión de agencia',
+            },
+            {
+              href: '/gestoria/cuanto-cuesta-contrato-alquiler',
+              label: '¿Cuánto cuesta el contrato?',
+              desc: `Desde ${precio}€ online`,
+            },
+          ].map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="block rounded-xl border border-gray-200 bg-white px-4 py-3 hover:border-[#c9a84c]/50 hover:shadow-sm transition-all"
+            >
+              <span className="block text-sm font-semibold text-gray-900">{item.label}</span>
+              <span className="block text-xs text-gray-500 mt-0.5">{item.desc}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
         <section className="bg-[#0d1a0f] rounded-2xl p-8 text-center">

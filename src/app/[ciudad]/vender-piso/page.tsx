@@ -37,12 +37,12 @@ export async function generateMetadata({ params }: { params: Promise<{ ciudad: s
   const nombre = CIUDADES[ciudad]
   if (!nombre) return {}
   return {
-    title: `Vender piso sin comisión en ${nombre} | Guía Completa — Inmonest`,
+    title: `Vender piso sin comisión en ${nombre}`,
     description: `¿Quieres vender tu piso en ${nombre} sin pagar comisiones a agencias? Aprende cómo hacerlo paso a paso: documentación, precio, anuncio y firma. Gratis en Inmonest.`,
     keywords: `vender piso sin comision ${nombre.toLowerCase()}, vender casa sin agencia ${nombre.toLowerCase()}, como vender piso particular ${nombre.toLowerCase()}, vender inmueble ${nombre.toLowerCase()}`,
     alternates: { canonical: `/${ciudad}/vender-piso` },
     openGraph: {
-      title: `Vender piso sin comisión en ${nombre} — Inmonest`,
+      title: `Vender piso sin comisión en ${nombre}`,
       description: `Guía paso a paso para vender tu piso en ${nombre} sin agencia y sin pagar comisiones.`,
       url: `${BASE_URL}/${ciudad}/vender-piso`,
       locale: 'es_ES',

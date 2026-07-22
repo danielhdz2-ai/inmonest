@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/gestoria/contrato-compraventa`,
   },
   openGraph: {
-    title: 'Contrato de Compraventa - Desde 80€ | Inmonest',
+    title: 'Contrato de compraventa desde 80€',
     description: 'Contrato de compraventa profesional redactado por gestoría inmobiliaria experta. Protege tu inversión inmobiliaria.',
     url: `${BASE_URL}/gestoria/contrato-compraventa`,
     type: 'website',

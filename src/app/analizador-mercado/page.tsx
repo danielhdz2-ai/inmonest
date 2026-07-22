@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: 'Descubre el precio medio por m² de compra y alquiler en las principales ciudades de España. Temperatura del mercado, evolución de precios y datos actualizados.',
   alternates: { canonical: `${BASE_URL}/analizador-mercado` },
   openGraph: {
-    title: 'Analizador de Mercado Inmobiliario — Inmonest',
+    title: 'Analizador de mercado inmobiliario',
     description: 'Precio medio del m² en toda España. Venta, alquiler, temperatura del mercado y evolución histórica de precios.',
     url: `${BASE_URL}/analizador-mercado`,
     type: 'website',

@@ -3,7 +3,7 @@ import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
 
 export const metadata: Metadata = {
-  title: 'Política de Cookies — Inmonest',
+  title: 'Política de cookies',
   description: 'Información sobre las cookies que utiliza Inmonest, su finalidad y cómo gestionarlas.',
 }
 

@@ -3,7 +3,7 @@ import Navbar from '@/components/NavbarServer'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '¡Inmonest Turbo activado!',
+  title: 'Turbo activado',
   // Private post-payment page — must not appear in search results
   robots: { index: false, follow: false },
 }

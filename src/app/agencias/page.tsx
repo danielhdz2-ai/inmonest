@@ -3,12 +3,12 @@ import Navbar from '@/components/NavbarServer'
 import AgenciasContent from './AgenciasContent'
 
 export const metadata: Metadata = {
-  title: 'Agencias Inmobiliarias | Publica Pisos Sin Comisión de Portal — Inmonest',
+  title: 'Publica pisos sin comisión de portal',
   description: 'Portal inmobiliario sin comisión para agencias. Sube tus inmuebles y llega a compradores e inquilinos reales en toda España. Sin cuotas de publicación.',
   alternates: { canonical: 'https://inmonest.com/agencias' },
   keywords: 'portal inmobiliario agencias, publicar pisos inmobiliaria, agencias inmobiliarias sin comision portal, portal pisos agencias',
   openGraph: {
-    title: 'Publica pisos sin comisión de portal — Inmonest para Agencias',
+    title: 'Publica pisos sin comisión de portal',
     description: 'Portal inmobiliario 0% comisión para agencias. Llega a compradores e inquilinos reales en toda España.',
     url: 'https://inmonest.com/agencias',
     type: 'website',

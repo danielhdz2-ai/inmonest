@@ -69,7 +69,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     },
     zonas: ['Salamanca', 'Chamberí', 'Retiro', 'Carabanchel', 'Vallecas', 'Móstoles', 'Getafe'],
     meta: {
-      title: 'Vender Piso Particular Madrid | Gestor hasta escritura 687€',
+      title: 'Vender piso particular Madrid desde 687€',
       description:
         '¿Ya tienes comprador en Madrid? Gestor inmobiliario te acompaña: contratos, documentación, notaría y escritura. 687€ IVA incl. Sin comisión de agencia.',
       keywords:
@@ -106,7 +106,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     },
     zonas: ['Eixample', 'Gràcia', 'Sants', 'Sant Martí', "L'Hospitalet", 'Badalona'],
     meta: {
-      title: 'Vender Piso Particular Barcelona | Gestor hasta escritura 687€',
+      title: 'Vender piso particular Barcelona desde 687€',
       description:
         'Vende tu piso a particular en Barcelona con gestor asignado. Contratos, cédula Generalitat, documentación y notaría. 687€ sin comisión de agencia.',
       keywords:
@@ -143,7 +143,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     },
     zonas: ['Ruzafa', 'Benimaclet', 'Campanar', 'Ciutat Vella', 'Mislata', 'Paterna'],
     meta: {
-      title: 'Vender Piso Particular Valencia | Gestor hasta escritura 687€',
+      title: 'Vender piso particular Valencia desde 687€',
       description:
         '¿Comprador particular en Valencia? Gestor asignado: contratos, cédula valenciana, documentación y notaría. 687€ IVA incl. Sin comisión 3-5%.',
       keywords:
@@ -174,7 +174,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     },
     zonas: ['Triana', 'Nervión', 'Macarena', 'Los Remedios', 'Centro', 'Este-Alcosa'],
     meta: {
-      title: 'Vender Piso Particular Sevilla | Gestor hasta escritura 687€',
+      title: 'Vender piso particular Sevilla desde 687€',
       description:
         '¿Ya tienes comprador en Sevilla? Gestor inmobiliario: contratos, documentación andaluza y coordinación notarial. 687€ sin comisión de agencia.',
       keywords:
@@ -211,7 +211,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     },
     zonas: ['Centro', 'Teatinos', 'El Palo', 'Huelin', 'Torremolinos', 'Rincón de la Victoria'],
     meta: {
-      title: 'Vender Piso Particular Málaga | Gestor hasta escritura 687€',
+      title: 'Vender piso particular Málaga desde 687€',
       description:
         'Vende a particular en Málaga con gestor asignado. Contratos, documentación andaluza, notaría. 687€ IVA incl. Ahorra comisión de agencia.',
       keywords:
@@ -242,7 +242,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     },
     zonas: ['Centro', 'Garrido', 'San Bernardo', 'Vista Hermosa', 'Alamedilla'],
     meta: {
-      title: 'Vender Piso Particular Salamanca | Gestor hasta escritura 687€',
+      title: 'Vender piso particular Salamanca desde 687€',
       description:
         'Vende tu piso a particular en Salamanca. Gestor asignado, contratos, documentación y notaría. 687€ sin comisión de agencia.',
       keywords:
@@ -273,7 +273,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     },
     zonas: ['Centro', 'Delicias', 'Parquesol', 'Rondilla', 'La Victoria'],
     meta: {
-      title: 'Vender Piso Particular Valladolid | Gestor hasta escritura 687€',
+      title: 'Vender piso particular Valladolid desde 687€',
       description:
         '¿Comprador particular en Valladolid? Gestor inmobiliario: contratos, documentación y notaría. 687€ IVA incl.',
       keywords:

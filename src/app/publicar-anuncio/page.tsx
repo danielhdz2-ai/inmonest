@@ -4,7 +4,7 @@ import NavbarServer from '@/components/NavbarServer'
 import PublicarLandingClient from './PublicarLandingClient'
 
 export const metadata = {
-  title: 'Publica tu anuncio gratis — Inmonest',
+  title: 'Publica tu anuncio gratis',
   description: 'Publica tu piso o casa en Inmonest. 2 anuncios gratis, visibilidad Turbo inmediata, trato directo con compradores e inquilinos verificados.',
 }
 

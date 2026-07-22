@@ -25,12 +25,12 @@ export async function generateMetadata({ params }: { params: Promise<{ ciudad: s
   const nombre = CIUDADES[ciudad]
   if (!nombre) return {}
   return {
-    title: `Alquiler sin agencia en ${nombre} | Pisos de particulares — Inmonest`,
+    title: `Alquiler sin agencia en ${nombre}`,
     description: `Encuentra pisos de alquiler en ${nombre} directamente de particulares. Sin intermediarios, sin comisiones de agencia. Miles de anuncios reales y actualizados.`,
     keywords: `alquiler sin agencia ${nombre.toLowerCase()}, pisos alquiler particulares ${nombre.toLowerCase()}, alquiler directo propietario ${nombre.toLowerCase()}, piso alquiler sin comision ${nombre.toLowerCase()}`,
     alternates: { canonical: `/${ciudad}/alquiler-sin-agencia` },
     openGraph: {
-      title: `Alquiler sin agencia en ${nombre} — Inmonest`,
+      title: `Alquiler sin agencia en ${nombre}`,
       description: `Pisos de alquiler en ${nombre} directamente de sus propietarios. Sin comisiones.`,
       url: `${BASE_URL}/${ciudad}/alquiler-sin-agencia`,
       locale: 'es_ES',

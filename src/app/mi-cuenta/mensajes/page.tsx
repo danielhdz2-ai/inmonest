@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import MensajesConvClient from './MensajesConvClient'
 
-export const metadata = { title: 'Mensajes — Inmonest' }
+export const metadata = { title: 'Mensajes' }
 
 export default async function MensajesPage() {
   const supabase = await createClient()

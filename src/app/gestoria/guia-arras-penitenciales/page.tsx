@@ -7,7 +7,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Arras Penitenciales: Qué Son, Cómo Funcionan y Precio 2026 | Guía Completa',
+  title: 'Arras penitenciales: guía y precio 2026',
   description: 'Todo sobre arras penitenciales: diferencias con confirmatorias, qué pasa si el comprador o vendedor incumple, ejemplos reales y cómo redactar un contrato seguro. Desde 145€.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/guia-arras-penitenciales`,

@@ -38,7 +38,7 @@ export async function generateMetadata({
     keywords: `pisos ${nombre.toLowerCase()}, alquiler ${nombre.toLowerCase()} particulares, comprar piso ${nombre.toLowerCase()}, inmuebles ${nombre.toLowerCase()} sin agencia`,
     alternates: { canonical: `${BASE_URL}/${ciudad}` },
     openGraph: {
-      title: `Pisos en ${nombre} | Inmonest`,
+      title: `Pisos en ${nombre} sin comisión`,
       description: data.descripcion,
       url: `${BASE_URL}/${ciudad}`,
       locale: 'es_ES',

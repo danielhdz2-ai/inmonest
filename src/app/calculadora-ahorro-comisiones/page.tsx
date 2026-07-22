@@ -8,7 +8,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Calculadora Ahorro Comisiones | Cuánto Ahorras Vendiendo Sin Agencia',
+  title: 'Calculadora de ahorro en comisiones',
   description: 'Calcula cuánto dinero ahorras vendiendo tu piso sin agencia inmobiliaria. Descubre tu ahorro real vs. comisión tradicional 4-5%. Informe gratuito por email.',
   alternates: { canonical: `${BASE_URL}/calculadora-ahorro-comisiones` },
   openGraph: {

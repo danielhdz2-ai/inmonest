@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/gestoria/revision-contrato-alquiler`,
   },
   openGraph: {
-    title: 'Revisión de Contrato de Alquiler para Inquilinos — Inmonest',
+    title: 'Revisión de contrato de alquiler',
     description: `No firmes sin saber tus derechos. Detectamos cláusulas abusivas, fianzas ilegales y abusos. 24h. Desde ${PRECIO_REVISION}€.`,
     url: `${BASE_URL}/gestoria/revision-contrato-alquiler`,
     type: 'website',

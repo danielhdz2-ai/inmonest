@@ -106,7 +106,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
       ],
       ogTitle: 'Contrato de alquiler Bilbao desde 145€',
       ogDescription:
-        '¿Necesitas redactar el contrato? Te lo dejamos listo en 48h por 145€. LAU y Ley Vivienda 2026, sin letra pequeña.',
+        'Contrato LAU listo en 48h por 145€. Ley de Vivienda 2026, sin letra pequeña.',
       ogImageAlt: 'Contrato de alquiler Bilbao',
     },
     schema: {
@@ -154,7 +154,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     meta: {
       title: 'Contrato de alquiler Madrid desde 145€',
       description:
-        '¿Necesitas redactar un contrato de alquiler en Madrid? LAU + Ley Vivienda 2026, 48h, precio cerrado 145€. Madrid capital y Comunidad de Madrid.',
+        'Contrato LAU en Madrid desde 145€, entrega 48h. Ley de Vivienda 2026. Madrid capital y Comunidad de Madrid.',
       keywords: ['contrato alquiler Madrid', 'LAU Madrid', 'contrato arrendamiento Madrid', 'gestoría alquiler Madrid', 'alquiler vivienda Madrid 2026'],
       ogTitle: 'Contrato de alquiler Madrid desde 145€',
       ogDescription: 'Contrato LAU en Madrid. 145 €, entrega 48 h, sin plantillas genéricas.',
@@ -195,7 +195,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     meta: {
       title: 'Contrato de alquiler Barcelona desde 120€',
       description:
-        '¿Necesitas redactar un contrato de alquiler en Barcelona? LAU, zonas tensionadas e índice de referencia. 48h, 120€. Barcelona y área metropolitana.',
+        'Contrato LAU en Barcelona desde 120€ (48h). Zonas tensionadas e índice de referencia. Barcelona y área metropolitana.',
       keywords: ['contrato alquiler Barcelona', 'LAU Barcelona', 'zona tensionada alquiler', 'INCASOL fianza', 'contrato arrendamiento Barcelona'],
       ogTitle: 'Contrato de alquiler Barcelona desde 120€',
       ogDescription: 'LAU + Ley Vivienda 2026. Adaptado a normativa catalana y zonas tensionadas cuando aplique.',
@@ -237,8 +237,8 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
       // Corto: layout añade " | Inmonest" — precio visible en SERP (antes se truncaba)
       title: 'Contrato de alquiler Valencia desde 145€',
       description:
-        'Contrato LAU en Valencia y Comunitat Valenciana desde 145€, entrega en 48h. Fianza Generalitat, Ley de Vivienda 2026. Sin plantillas genéricas.',
-      keywords: ['contrato alquiler Valencia', 'LAU Valencia', 'IVIMA fianza', 'arrendamiento Valencia'],
+        'Contrato LAU en Valencia desde 145€ (48h). Fianza Generalitat, Ley de Vivienda 2026. Sin plantillas genéricas. Comparativa: gestoría online vs notario.',
+      keywords: ['contrato alquiler Valencia', 'LAU Valencia', 'cuanto cuesta contrato alquiler Valencia', 'fianza Generalitat', 'arrendamiento Valencia'],
       ogTitle: 'Contrato de alquiler Valencia desde 145€',
       ogDescription: 'LAU en Valencia desde 145€. Entrega 48h, PDF firmable. Ley de Vivienda 2026.',
       ogImageAlt: 'Contrato de alquiler Valencia',
@@ -254,7 +254,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     badgeLine: 'Alquiler · Valencia',
     ctaStickyLabel: 'Alquiler · Valencia',
     introLargo:
-      'El arrendamiento de vivienda habitual en Valencia y la Comunitat Valenciana se rige por la LAU y la Ley de Vivienda. La fianza y la actualización de renta deben constar correctamente para evitar reclamaciones. Redactamos tu contrato a medida con las cláusulas que exige la normativa estatal y el marco autonómico.',
+      'El arrendamiento de vivienda habitual en Valencia y la Comunitat Valenciana se rige por la LAU y la Ley de Vivienda. La fianza y la actualización de renta deben constar correctamente para evitar reclamaciones. Redactamos tu contrato a medida con las cláusulas que exige la normativa estatal y el marco autonómico. Precio cerrado desde 145€, entrega en 48h.',
     alertaTitulo: 'Vas a firmar un alquiler en Valencia: ¿vas a hacerlo con un PDF "genérico"?',
     paraQuienTitulo: '¿Para quién es este contrato en Valencia?',
     paraQuien: [
@@ -263,13 +263,26 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
       'Inquilinos que quieren seguridad antes de firmar',
       'Alquileres de larga duración en Valencia y provincia',
     ],
-    faqs: faqPack(
-      'Valencia',
-      '¿Dónde va la fianza en la Comunitat Valenciana?',
-      'La fianza legal de una mensualidad debe ingresarse en el organismo autonómico de la Generalitat Valenciana según la normativa vigente. Las garantías adicionales deben respetar los límites legales.',
-      '¿Sirve en toda la Comunitat Valenciana?',
-      'Sí. El contrato LAU es válido en Valencia capital y resto de la Comunitat Valenciana, con las adaptaciones que correspondan.',
-    ),
+    faqs: [
+      {
+        q: '¿Cuánto cuesta un contrato de alquiler en Valencia?',
+        a: 'En Inmonest el contrato LAU en Valencia cuesta desde 145€ IVA incluido, con entrega en 48h. Un notario suele cobrar 300–500€; las plantillas gratis no se adaptan a la fianza de la Generalitat ni a la Ley de Vivienda 2026.',
+      },
+      {
+        q: '¿Cuánto puede actualizarse el alquiler cada año en Valencia?',
+        a: rentaAnswer,
+      },
+      duracionFaq,
+      {
+        q: '¿Dónde va la fianza en la Comunitat Valenciana?',
+        a: 'La fianza legal de una mensualidad debe ingresarse en el organismo autonómico de la Generalitat Valenciana según la normativa vigente. Las garantías adicionales deben respetar los límites legales.',
+      },
+      {
+        q: '¿Sirve en toda la Comunitat Valenciana?',
+        a: 'Sí. El contrato LAU es válido en Valencia capital y resto de la Comunitat Valenciana, con las adaptaciones que correspondan.',
+      },
+      zonaFaq,
+    ],
   },
 
   sevilla: {
@@ -588,11 +601,11 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     meta: {
       title: 'Contrato de alquiler Asturias desde 145€',
       description:
-        '¿Necesitas redactar un contrato de alquiler en Asturias? LAU + Ley Vivienda 2026, 48h, 145€. Oviedo, Gijón, Avilés.',
+        'Contrato LAU en Asturias desde 145€ (48h). Oviedo, Gijón y Avilés. Ley de Vivienda 2026.',
       keywords: ['contratar contrato alquiler Asturias', 'comprar contrato alquiler Oviedo', 'solicitar contrato alquiler LAU Gijón', 'precio contrato alquiler Asturias', 'gestoría contrato alquiler Avilés'],
       ogTitle: 'Contrato de alquiler Asturias desde 145€',
       ogDescription:
-        '¿Necesitas redactar el contrato? Te lo dejamos listo en 48h por 145€. LAU y Ley Vivienda 2026, sin letra pequeña.',
+        'Contrato LAU listo en 48h por 145€. Ley de Vivienda 2026, sin letra pequeña.',
       ogImageAlt: 'Contrato de alquiler Asturias',
     },
     schema: {
@@ -631,11 +644,11 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     meta: {
       title: 'Contrato de alquiler A Coruña desde 145€',
       description:
-        '¿Necesitas redactar un contrato de alquiler en A Coruña? LAU + Ley Vivienda 2026, 48h, 145€. Coruña, Santiago, Ferrol.',
+        'Contrato LAU en A Coruña desde 145€ (48h). Coruña, Santiago y Ferrol. Ley de Vivienda 2026.',
       keywords: ['contratar contrato alquiler A Coruña', 'comprar contrato alquiler Galicia', 'solicitar contrato alquiler LAU Santiago', 'precio contrato alquiler A Coruña', 'gestoría contrato alquiler Ferrol'],
       ogTitle: 'Contrato de alquiler A Coruña desde 145€',
       ogDescription:
-        '¿Necesitas redactar el contrato? Te lo dejamos listo en 48h por 145€. LAU y Ley Vivienda 2026, sin letra pequeña.',
+        'Contrato LAU listo en 48h por 145€. Ley de Vivienda 2026, sin letra pequeña.',
       ogImageAlt: 'Contrato de alquiler A Coruña',
     },
     schema: {
@@ -673,7 +686,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     meta: {
       title: 'Contrato de alquiler Mallorca desde 145€',
       description:
-        '¿Necesitas redactar un contrato de alquiler en Mallorca? LAU + Ley Vivienda 2026, 48h, precio cerrado 145€. Palma, Calvià, Manacor, Inca.',
+        'Contrato LAU en Mallorca desde 145€ (48h). Palma, Calvià, Manacor e Inca. Ley de Vivienda 2026.',
       keywords: [
         'contrato alquiler Mallorca',
         'LAU Mallorca',
@@ -721,7 +734,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     meta: {
       title: 'Contrato de alquiler Castellón desde 145€',
       description:
-        '¿Necesitas redactar un contrato de alquiler en Castellón? LAU + Ley Vivienda 2026, 48h, precio cerrado 145€. Castellón ciudad, Benicàssim, Vila-real.',
+        'Contrato LAU en Castellón desde 145€ (48h). Castellón, Benicàssim y Vila-real. Ley de Vivienda 2026.',
       keywords: [
         'contrato alquiler Castellón',
         'LAU Castellón',

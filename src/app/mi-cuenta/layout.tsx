@@ -4,7 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 import DashboardSidebar from './DashboardSidebar'
 
 export const metadata: Metadata = {
-  title: 'Mi cuenta — Inmonest',
+  title: 'Mi cuenta',
 }
 
 export default async function MiCuentaLayout({

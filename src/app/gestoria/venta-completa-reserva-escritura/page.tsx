@@ -9,7 +9,7 @@ import GestorContactBanner from '@/components/GestorContactBanner'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Vender Piso Sin Inmobiliaria | Acompañamiento Completo 687€',
+  title: 'Vender piso sin inmobiliaria desde 687€',
   description: 'Vende tu piso de particular a particular con gestor inmobiliario. Redactamos contratos, recabamos documentación y te acompañamos hasta escrituras. Solo 687€. ✓ Ahorra 10,000€+ en comisiones ✓ Sin sorpresas',
   keywords: 'vender piso particular, asesoría venta vivienda, acompañamiento venta piso, contratos venta particular, gestoría venta inmueble, ayuda vender piso',
   alternates: {

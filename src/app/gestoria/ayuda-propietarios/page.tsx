@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/gestoria/ayuda-propietarios`,
   },
   openGraph: {
-    title: 'Contratos de Alquiler para Propietarios — Inmonest',
+    title: 'Contratos de alquiler para propietarios',
     description: `Contratos LAU legales que cumplen Ley de Vivienda 2026. Protege tu piso de inquilinos morosos. Redactados por nuestra gestoría. 24h. Desde ${PRECIO_AYUDA}€.`,
     url: `${BASE_URL}/gestoria/ayuda-propietarios`,
     type: 'website',

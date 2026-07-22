@@ -6,7 +6,7 @@ const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-04-22'
 
 export const metadata: Metadata = {
-  title: 'Contrato de alquiler 2026: qué tiene que incluir para ser válido — Inmonest',
+  title: 'Contrato de alquiler 2026: qué debe incluir',
   description:
     'La Ley de Vivienda 2023 cambió muchas reglas del alquiler. Descubre qué cláusulas son obligatorias, cuáles están prohibidas y qué pasa si tu contrato tiene errores.',
   keywords: 'contrato alquiler 2026, ley vivienda alquiler, contrato arrendamiento LAU, clausulas contrato alquiler',

@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import AlertasClient from './AlertasClient'
 
-export const metadata = { title: 'Mis alertas — Inmonest' }
+export const metadata = { title: 'Mis alertas' }
 
 export default async function AlertasPage() {
   const supabase = await createClient()

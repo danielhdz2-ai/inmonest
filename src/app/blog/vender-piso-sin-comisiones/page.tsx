@@ -6,7 +6,7 @@ const BASE_URL = 'https://inmonest.com'
 const FECHA_PUBLICACION = '2026-04-21'
 
 export const metadata: Metadata = {
-  title: 'Vender Piso Sin Comisiones (2026) | Guía Completa + Ahorra hasta 15.000€',
+  title: 'Vender piso sin comisiones: guía 2026',
   description:
     'Cómo vender tu piso o casa sin comisiones de agencia en 2026. Guía paso a paso: precio, documentación, anuncio y contrato de arras. Publica gratis en Inmonest.',
   keywords:

@@ -6,7 +6,7 @@ const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-05-27'
 
 export const metadata: Metadata = {
-  title: 'Cuánto cuesta un contrato de arras en 2026 — Precios reales de gestorías | Inmonest',
+  title: 'Cuánto cuesta un contrato de arras 2026',
   description:
     'Descubre cuánto cobran las gestorías por hacer un contrato de arras en España: desde 145€ online hasta 600€ presencial. Comparativa completa de precios, qué incluye cada servicio y cuándo necesitas un abogado.',
   keywords: 'cuánto cuesta contrato arras, precio contrato arras, coste gestoría arras, cuánto cobran por arras, contrato arras precio, gestoría inmobiliaria precio',

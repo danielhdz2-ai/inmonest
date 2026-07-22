@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/gestoria/asesoria-compra-piso`,
   },
   openGraph: {
-    title: 'Compra tu Piso sin Comisiones Abusivas — Inmonest',
+    title: 'Compra piso sin comisiones abusivas',
     description: 'Gestoría inmobiliaria especializada en compraventa. Te acompañamos en todo el proceso sin pagar comisiones a agencias. Servicio completo 687€.',
     url: `${BASE_URL}/gestoria/asesoria-compra-piso`,
     type: 'website',

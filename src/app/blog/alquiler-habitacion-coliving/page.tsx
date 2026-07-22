@@ -8,7 +8,7 @@ const FECHA = '2026-04-22'
 const PRECIO_HABITACION = precioLabel('alquiler-habitaciones')
 
 export const metadata: Metadata = {
-  title: 'Alquilar una habitación en 2026: contrato, fianza y derechos del propietario — Inmonest',
+  title: 'Alquilar habitación: contrato y fianza',
   description:
     'El alquiler de habitaciones no lo cubre la LAU. Aprende qué ley aplica, cómo protegerte como propietario, qué normas puedes exigir y cómo recuperar la habitación.',
   keywords: 'alquiler habitacion contrato, alquiler habitacion coliving, contrato habitacion piso compartido, arrendamiento habitacion',

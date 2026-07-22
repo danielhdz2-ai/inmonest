@@ -16,7 +16,7 @@ const PHONE = '+34745022862'
 const WA = '34745022862'
 
 export const metadata: Metadata = {
-  title: 'Compra Parking o Trastero Completa | 295€ IVA incluido | Inmonest',
+  title: 'Compra parking o trastero desde 295€',
   description:
     '¿Compras plaza de parking o trastero? Gestoría inmobiliaria te acompaña desde la reserva hasta notaría: arras, negociación, ITP, registro y tramitación. 295€ IVA incluido.',
   keywords:

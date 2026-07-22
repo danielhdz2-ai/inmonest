@@ -98,7 +98,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
       },
     ],
     meta: {
-      title: 'Contrato Préstamo entre Particulares Madrid | 130€ IVA incluido | Inmonest',
+      title: 'Préstamo particulares Madrid desde 130€',
       description:
         '¿Prestas o recibes dinero entre particulares en Madrid? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
       keywords:
@@ -161,7 +161,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
       },
     ],
     meta: {
-      title: 'Contrato Préstamo entre Particulares Barcelona | 130€ IVA incluido | Inmonest',
+      title: 'Préstamo particulares Barcelona desde 130€',
       description:
         '¿Prestas o recibes dinero entre particulares en Barcelona? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
       keywords:
@@ -224,7 +224,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
       },
     ],
     meta: {
-      title: 'Contrato Préstamo entre Particulares Valencia | 130€ IVA incluido | Inmonest',
+      title: 'Préstamo particulares Valencia desde 130€',
       description:
         '¿Prestas o recibes dinero entre particulares en Valencia? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
       keywords:
@@ -287,7 +287,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
       },
     ],
     meta: {
-      title: 'Contrato Préstamo entre Particulares Sevilla | 130€ IVA incluido | Inmonest',
+      title: 'Préstamo particulares Sevilla desde 130€',
       description:
         '¿Prestas o recibes dinero entre particulares en Sevilla? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
       keywords:
@@ -350,7 +350,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
       },
     ],
     meta: {
-      title: 'Contrato Préstamo entre Particulares Málaga | 130€ IVA incluido | Inmonest',
+      title: 'Préstamo particulares Málaga desde 130€',
       description:
         '¿Prestas o recibes dinero entre particulares en Málaga? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
       keywords:
@@ -413,7 +413,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
       },
     ],
     meta: {
-      title: 'Contrato Préstamo entre Particulares Bilbao | 130€ IVA incluido | Inmonest',
+      title: 'Préstamo particulares Bilbao desde 130€',
       description:
         '¿Prestas o recibes dinero entre particulares en Bilbao? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
       keywords:

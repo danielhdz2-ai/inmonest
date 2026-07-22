@@ -37,6 +37,22 @@ const faqSchema = {
     },
     {
       '@type': 'Question',
+      name: '¿Cuánto cuesta hacer un contrato de alquiler en una gestoría?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'En una gestoría online como Inmonest, desde 145€ IVA incluido con entrega en 48h. En gestorías presenciales el rango habitual es 200–400€. Un notario suele cobrar 300–500€. La diferencia está en plazo, personalización LAU y si incluye inventario y cláusulas actualizadas a 2026.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cuánto vale hacer un contrato de alquiler?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Desde 145€ online (profesional), 0€ con plantilla genérica (mayor riesgo legal) o 300–500€ ante notario. Para alquileres habituales, un contrato privado LAU profesional es suficiente y más económico que el notario.',
+      },
+    },
+    {
+      '@type': 'Question',
       name: '¿Es obligatorio hacer el contrato de alquiler ante notario?',
       acceptedAnswer: {
         '@type': 'Answer',
@@ -481,6 +497,24 @@ export default function CuantoCuestaContratoAlquilerPage() {
               Preguntas Frecuentes sobre Precios
             </h2>
             <div className="space-y-4">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+                <summary className="font-bold text-gray-900">
+                  ¿Cuánto cuesta hacer un contrato de alquiler en una gestoría?
+                </summary>
+                <p className="text-gray-700 mt-3 text-sm">
+                  En gestoría online (Inmonest): desde 145€ IVA incluido en 48h. Presencial: suele ir de 200 a 400€.
+                  Notario: 300–500€. La opción online cubre LAU + Ley de Vivienda 2026 con inventario y cláusulas a medida.
+                </p>
+              </details>
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+                <summary className="font-bold text-gray-900">
+                  ¿Cuánto vale hacer un contrato de alquiler?
+                </summary>
+                <p className="text-gray-700 mt-3 text-sm">
+                  Desde 145€ profesional online, 0€ con plantilla genérica (mayor riesgo) o 300–500€ ante notario.
+                  Para vivienda habitual, un contrato privado LAU bien hecho es suficiente y más barato que el notario.
+                </p>
+              </details>
               <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
                 <summary className="font-bold text-gray-900">
                   ¿Por qué una gestoría online es más barata que un notario?

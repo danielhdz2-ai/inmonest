@@ -7,13 +7,13 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Sobre Nosotros — Inmonest | Portal Inmobiliario y Gestoría Digital',
+  title: 'Sobre nosotros',
   description: 'Inmonest es el portal inmobiliario que conecta particulares sin comisiones y ofrece gestoría legal especializada. Conoce nuestra misión, valores y equipo.',
   alternates: {
     canonical: `${BASE_URL}/sobre-nosotros`,
   },
   openGraph: {
-    title: 'Sobre Nosotros — Inmonest',
+    title: 'Sobre nosotros',
     description: 'El portal inmobiliario que conecta particulares sin comisiones y ofrece gestoría legal especializada en derecho inmobiliario.',
     url: `${BASE_URL}/sobre-nosotros`,
     type: 'website',

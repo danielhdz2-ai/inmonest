@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     canonical: `${BASE_URL}/gestoria/revision-contrato-arras`,
   },
   openGraph: {
-    title: 'Revisión de Contrato de Arras por Gestoría Experta — Inmonest',
+    title: 'Revisión de contrato de arras',
     description: `No firmes sin revisión legal. Detectamos cláusulas abusivas, errores registrales y condiciones perjudiciales. 24h. Desde ${PRECIO_REVISION}€.`,
     url: `${BASE_URL}/gestoria/revision-contrato-arras`,
     type: 'website',

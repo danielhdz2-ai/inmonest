@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: 'Encuentra pisos de particulares en Valencia sin comisión de agencia. Alquiler y venta directo del propietario. Ahorra hasta 5.000€ en intermediarios. 100% verificados.',
   alternates: { canonical: `${BASE_URL}/valencia/pisos-particulares-sin-comision` },
   openGraph: {
-    title: 'Pisos de Particulares en Valencia Sin Comisión — Inmonest',
+    title: 'Pisos de particulares en Valencia sin comisión',
     description: 'Contacta directamente con propietarios. Sin intermediarios, sin comisiones.',
     url: `${BASE_URL}/valencia/pisos-particulares-sin-comision`,
     type: 'website',

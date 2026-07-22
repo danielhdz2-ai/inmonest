@@ -82,7 +82,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/madrid/contrato-alquiler',
     meta: {
-      title: 'Contrato Alquiler Habitación Madrid | 145€ IVA incluido | Inmonest',
+      title: 'Contrato alquiler habitación Madrid desde 145€',
       description:
         '¿Alquilas una habitación en Madrid? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia y protección ante impagos. 145€ IVA incluido.',
       keywords:
@@ -129,7 +129,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/barcelona/contrato-alquiler',
     meta: {
-      title: 'Contrato Alquiler Habitación Barcelona | 145€ IVA incluido | Inmonest',
+      title: 'Contrato alquiler habitación Barcelona desde 145€',
       description:
         '¿Alquilas una habitación en Barcelona? Contrato profesional para particulares con asesor experto. Normas de convivencia, Código Civil y protección legal. 145€ IVA incluido.',
       keywords:
@@ -183,7 +183,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/sevilla/contrato-alquiler',
     meta: {
-      title: 'Contrato Alquiler Habitación Sevilla | 145€ IVA incluido | Inmonest',
+      title: 'Contrato alquiler habitación Sevilla desde 145€',
       description:
         '¿Alquilas una habitación en Sevilla? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia, coliving y protección ante impagos. 145€ IVA incluido.',
       keywords:
@@ -237,7 +237,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/malaga/contrato-alquiler',
     meta: {
-      title: 'Contrato Alquiler Habitación Málaga | 145€ IVA incluido | Inmonest',
+      title: 'Contrato alquiler habitación Málaga desde 145€',
       description:
         '¿Alquilas una habitación en Málaga? Contrato profesional para particulares con asesor experto. Teatinos, coliving, Código Civil y normas de convivencia. 145€ IVA incluido.',
       keywords:
@@ -291,7 +291,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/bilbao/contrato-alquiler',
     meta: {
-      title: 'Contrato Alquiler Habitación Bilbao | 145€ IVA incluido | Inmonest',
+      title: 'Contrato alquiler habitación Bilbao desde 145€',
       description:
         '¿Alquilas una habitación en Bilbao? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia y protección ante impagos en Gran Bilbao. 145€ IVA incluido.',
       keywords:
@@ -345,7 +345,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/valencia/contrato-alquiler',
     meta: {
-      title: 'Contrato Alquiler Habitación Valencia | 145€ IVA incluido | Inmonest',
+      title: 'Contrato alquiler habitación Valencia desde 145€',
       description:
         '¿Alquilas una habitación en Valencia? Contrato profesional para particulares con asesor experto. Ruzafa, Benimaclet, Código Civil y normas de convivencia. 145€ IVA incluido.',
       keywords:
@@ -399,7 +399,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/zaragoza/contrato-alquiler',
     meta: {
-      title: 'Contrato Alquiler Habitación Zaragoza | 145€ IVA incluido | Inmonest',
+      title: 'Contrato alquiler habitación Zaragoza desde 145€',
       description:
         '¿Alquilas una habitación en Zaragoza? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia, coliving y protección ante impagos. 145€ IVA incluido.',
       keywords:
@@ -453,7 +453,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/asturias/contrato-alquiler',
     meta: {
-      title: 'Contrato Alquiler Habitación Asturias | 145€ IVA incluido | Inmonest',
+      title: 'Contrato alquiler habitación Asturias desde 145€',
       description:
         '¿Alquilas una habitación en Asturias? Contrato profesional para particulares en Oviedo, Gijón y Avilés. Código Civil, normas de convivencia y protección ante impagos. 145€ IVA incluido.',
       keywords:

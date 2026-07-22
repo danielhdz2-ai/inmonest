@@ -6,12 +6,12 @@ import { precioLabel } from '@/lib/gestoria-precios-ui'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Blog inmobiliario para propietarios | Guías y consejos — Inmonest',
+  title: 'Blog inmobiliario: guías para propietarios',
   description:
     'Guías prácticas para vender o alquilar tu piso sin agencia en España. Documentación, precios, contratos, impuestos y más. Actualizado en 2026.',
   alternates: { canonical: '/blog' },
   openGraph: {
-    title: 'Blog de Inmonest — Guías para propietarios',
+    title: 'Blog inmobiliario: guías para propietarios',
     description: 'Guías prácticas para vender o alquilar tu piso sin agencia en España.',
     url: `${BASE_URL}/blog`,
     locale: 'es_ES',

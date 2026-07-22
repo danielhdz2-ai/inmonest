@@ -3,7 +3,7 @@ import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
 
 export const metadata: Metadata = {
-  title: 'Política de Privacidad — Inmonest',
+  title: 'Política de privacidad',
   description: 'Cómo Inmonest recopila, usa y protege tus datos personales de acuerdo con el RGPD y la LOPDGDD.',
 }
 

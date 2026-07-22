@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 
 // CRÍTICO: Forzar status HTTP 404 (no 200)
 export const metadata: Metadata = {
-  title: 'Página no encontrada (404) | Inmonest',
+  title: 'Página no encontrada (404)',
   description: 'La página que buscas no existe o ha sido movida. Vuelve al inicio o explora nuestros pisos y servicios de gestoría.',
   robots: 'noindex, nofollow', // No indexar páginas 404
 }

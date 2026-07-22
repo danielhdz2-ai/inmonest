@@ -790,7 +790,7 @@ export async function generateMetadata({
     description: `${data.tagline}. Redactado por abogados especializados. Desde ${data.precio} €. Entrega en 48h.`,
     alternates: { canonical: `${BASE_URL}/gestoria/${servicio}` },
     openGraph: {
-      title: `${data.nombre} | Inmonest Gestoría`,
+      title: `${data.nombre}`,
       description: `${data.tagline}. ${data.precio} € · Entrega en 48h.`,
       url: `${BASE_URL}/gestoria/${servicio}`,
       type: 'website',

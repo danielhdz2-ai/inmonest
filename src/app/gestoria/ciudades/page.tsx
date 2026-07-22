@@ -16,11 +16,11 @@ import {
 } from '@/lib/gestoria-ciudades-inventario'
 
 export const metadata: Metadata = {
-  title: 'Gestoría Inmobiliaria por Ciudad | Servicios en toda España',
+  title: 'Gestoría inmobiliaria por ciudad',
   description: 'Servicios de gestoría inmobiliaria en las principales ciudades de España: Madrid, Barcelona, Valencia, Sevilla y más. Contratos, trámites y asesoría legal online.',
   keywords: 'gestoría inmobiliaria madrid, gestoría inmobiliaria barcelona, contrato arras ciudad, contrato alquiler ciudad, servicios gestoría españa',
   openGraph: {
-    title: 'Gestoría Inmobiliaria por Ciudad | Inmonest',
+    title: 'Gestoría inmobiliaria por ciudad',
     description: 'Servicios de gestoría inmobiliaria en las principales ciudades de España. Contratos, trámites y asesoría legal online.',
     type: 'website',
   },
