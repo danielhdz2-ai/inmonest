@@ -1,5 +1,5 @@
 'use server'
-import { notFound, permanentRedirect } from 'next/navigation'
+import { permanentRedirect } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import ContactForm from './ContactForm'
@@ -141,10 +141,9 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
   const listing = await getListingById(id)
 
   if (!listing) {
-    // Anuncios dados de baja: 301 a hub de ciudad (reduce 404 en GSC)
+    // Anuncios dados de baja o IDs fantasma: 301 (evita 404 en GSC)
     const redirectTo = await getGoneListingRedirect(id)
-    if (redirectTo) permanentRedirect(redirectTo)
-    notFound()
+    permanentRedirect(redirectTo ?? '/pisos')
   }
 
   // Decode HTML entities in all text fields from scrapers

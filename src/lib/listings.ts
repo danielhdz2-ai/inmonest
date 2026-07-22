@@ -198,7 +198,7 @@ function cityToHubSlug(city: string | null | undefined): string | null {
 
 /**
  * Si el anuncio existió pero ya no está publicado, devolver destino 301.
- * Si el id no existe en BD, devolver null (mantener 404).
+ * Si el id no existe en BD, también redirigir a /pisos (evita 404 eternas en GSC).
  */
 export async function getGoneListingRedirect(id: string): Promise<string | null> {
   const supabase = await createClient()
@@ -208,7 +208,11 @@ export async function getGoneListingRedirect(id: string): Promise<string | null>
     .eq('id', id)
     .maybeSingle()
 
-  if (!data || data.status === 'published') return null
+  // ID desconocido o ya borrado: 301 al listado general
+  if (!data) return '/pisos'
+
+  // Sigue publicado: no redirigir (la página lo mostrará)
+  if (data.status === 'published') return null
 
   const hub = cityToHubSlug(data.city)
   if (hub) return `/${hub}/pisos`

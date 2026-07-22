@@ -1,32 +1,122 @@
+import { config } from 'dotenv'
+config({ path: '.env.local' })
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
+  process.env.SUPABASE_SERVICE_ROLE_KEY!,
 )
 
-const MAX = parseInt(process.env.MAX_LISTINGS || '100', 10)
+const MAX = parseInt(process.env.MAX_LISTINGS || '300', 10)
+const DRY_RUN = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true'
+
+const DEAD_PATTERNS = [
+  /anuncio\s+no\s+disponible/i,
+  /este\s+anuncio\s+ya\s+no\s+est[aá]\s+disponible/i,
+  /el\s+inmueble\s+ya\s+no\s+est[aá]\s+disponible/i,
+  /ha\s+sido\s+eliminad/i,
+  /ha\s+sido\s+retirad/i,
+  /anuncio\s+eliminad/i,
+  /anuncio\s+caducad/i,
+  /no\s+encontramos\s+esta\s+p[aá]gina/i,
+  /p[aá]gina\s+no\s+encontrada/i,
+  /error\s+404/i,
+  /vendido\s+o\s+alquilado/i,
+  /ya\s+est[aá]\s+alquilad/i,
+  /ya\s+est[aá]\s+vendid/i,
+  /este\s+anuncio\s+no\s+existe/i,
+]
+
+/** pisos.com: URL …-62500413734_109800/ → el detalle vivo incluye ese id; la búsqueda de zona no. */
+function extractPisosComId(url: string): string | null {
+  const m = url.match(/-(\d{8,})_\d+\//)
+  return m?.[1] ?? null
+}
+
+function looksLikePisosComSearchPage(pageTitle: string): boolean {
+  return /^(Alquiler de (pisos|áticos|casas|chalets|estudios|duplex|dúplex|locales)|Pisos en |Casas en |Áticos en |Chalets en )/i.test(
+    pageTitle.trim(),
+  )
+}
+
+async function isSourceDead(
+  url: string,
+  portal: string | null,
+): Promise<{ dead: boolean; reason: string }> {
+  try {
+    const res = await fetch(url, {
+      method: 'GET',
+      signal: AbortSignal.timeout(14000),
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+        Accept: 'text/html,application/xhtml+xml',
+        'Accept-Language': 'es-ES,es;q=0.9',
+      },
+      redirect: 'follow',
+    })
+
+    if (res.status === 404 || res.status === 410) {
+      return { dead: true, reason: `HTTP ${res.status}` }
+    }
+
+    if (!(res.status >= 200 && res.status < 400)) {
+      return { dead: false, reason: `HTTP ${res.status} (skip)` }
+    }
+
+    const html = await res.text()
+    const pageTitle = (html.match(/<title[^>]*>([^<]+)/i) || [])[1]?.replace(/\s+/g, ' ').trim() || ''
+
+    for (const re of DEAD_PATTERNS) {
+      if (re.test(html) || re.test(pageTitle)) {
+        return { dead: true, reason: `soft404` }
+      }
+    }
+
+    if (portal === 'pisos.com' || url.includes('pisos.com')) {
+      const id = extractPisosComId(url)
+      if (id && !html.includes(id)) {
+        return { dead: true, reason: `pisos.com:id-missing` }
+      }
+      if (looksLikePisosComSearchPage(pageTitle)) {
+        return { dead: true, reason: `pisos.com:search-page` }
+      }
+    }
+
+    if (portal === 'gilmar.es' || url.includes('gilmar.es')) {
+      if (/no\s+encontr|no\s+disponible|404/i.test(pageTitle) || !/referencia|inmueble/i.test(html.slice(0, 5000))) {
+        // solo si title sugiere error
+        if (/404|no encontrado|error/i.test(pageTitle)) {
+          return { dead: true, reason: `gilmar:title` }
+        }
+      }
+    }
+
+    return { dead: false, reason: `OK` }
+  } catch (err) {
+    return { dead: false, reason: `error:${String(err).slice(0, 50)}` }
+  }
+}
 
 async function checkAvailability() {
-  console.log(`🔍 Verificando pisos más antiguos...`)
-  console.log(`📊 Límite: ${MAX} pisos\n`)
+  console.log(`🔍 Detector orígenes muertos (pisos.com id + soft-404)`)
+  console.log(`📊 Límite: ${MAX} | DRY_RUN: ${DRY_RUN}\n`)
 
-  // Obtener pisos más antiguos (probable que ya no existan)
   const { data: listings, error } = await supabase
     .from('listings')
-    .select('id, title, source_url, source_portal, scraped_at')
+    .select('id, title, source_url, source_portal, updated_at, city')
     .eq('status', 'published')
     .not('source_url', 'is', null)
-    .order('scraped_at', { ascending: true })
+    .order('updated_at', { ascending: true })
     .limit(MAX)
 
   if (error) {
     console.error('❌ Error:', error)
-    return
+    process.exit(1)
   }
 
-  if (!listings || listings.length === 0) {
-    console.log('✅ No hay pisos antiguos para verificar')
+  if (!listings?.length) {
+    console.log('✅ No hay pisos para verificar')
     return
   }
 
@@ -34,50 +124,46 @@ async function checkAvailability() {
 
   let removed = 0
   let available = 0
-  let errors = 0
+  let skipped = 0
+  const dead: { id: string; title: string; reason: string; portal: string | null }[] = []
 
-  // Verificar en lotes de 10 (concurrencia controlada)
-  for (let i = 0; i < listings.length; i += 10) {
-    const batch = listings.slice(i, i + 10)
-
-    await Promise.all(batch.map(async (listing) => {
-      try {
-        const response = await fetch(listing.source_url!, {
-          method: 'HEAD',
-          signal: AbortSignal.timeout(8000),
-          headers: {
-            'User-Agent': 'Mozilla/5.0 (compatible; InmonestBot/1.0; +https://inmonest.com)'
+  for (let i = 0; i < listings.length; i += 8) {
+    const batch = listings.slice(i, i + 8)
+    await Promise.all(
+      batch.map(async (listing) => {
+        const result = await isSourceDead(listing.source_url!, listing.source_portal)
+        if (result.dead) {
+          console.log(`❌ [${result.reason}] ${listing.title.slice(0, 50)} — ${listing.source_portal}`)
+          dead.push({
+            id: listing.id,
+            title: listing.title,
+            reason: result.reason,
+            portal: listing.source_portal,
+          })
+          if (!DRY_RUN) {
+            await supabase.from('listings').update({ status: 'archived' }).eq('id', listing.id)
           }
-        })
-
-        // Códigos que indican que el piso ya no existe
-        if (response.status === 404 || response.status === 410 || response.status === 403) {
-          console.log(`❌ [${response.status}] ${listing.title} - ${listing.source_portal}`)
-
-          // Eliminar de la BD
-          await supabase
-            .from('listings')
-            .delete()
-            .eq('id', listing.id)
-
           removed++
-        } else if (response.status === 200) {
+        } else if (result.reason.startsWith('error:') || result.reason.includes('skip')) {
+          skipped++
+        } else {
           available++
         }
-      } catch (err) {
-        // Timeout o error de red - no eliminar (podría ser transitorio)
-        errors++
-      }
-    }))
-
-    // Pausa entre lotes para no saturar
-    await new Promise(resolve => setTimeout(resolve, 2000))
+      }),
+    )
+    await new Promise((r) => setTimeout(r, 1000))
+    if ((i + 8) % 40 === 0 || i + 8 >= listings.length) {
+      console.log(`… ${Math.min(i + 8, listings.length)}/${listings.length} (bajas: ${removed})`)
+    }
   }
 
   console.log(`\n📊 RESUMEN:`)
   console.log(`✅ Disponibles: ${available}`)
-  console.log(`❌ Eliminados (404/410): ${removed}`)
-  console.log(`⚠️  Errores/Timeout: ${errors}`)
+  console.log(`❌ Archivados: ${removed}${DRY_RUN ? ' (dry-run)' : ''}`)
+  console.log(`⚠️  Skip/error: ${skipped}`)
 }
 
-checkAvailability().catch(console.error)
+checkAvailability().catch((err) => {
+  console.error(err)
+  process.exit(1)
+})
