@@ -3,6 +3,9 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import GestorContactBanner from '@/components/GestorContactBanner'
+import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
+import TrackedContactLink from '@/components/TrackedContactLink'
 import type { ContratoAlquilerPremiumConfig } from '@/lib/contrato-alquiler-premium-config'
 import {
   CONTRATO_ALQUILER_PREMIUM_INCLUDES,
@@ -98,19 +101,44 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
 
           <span className="inline-block bg-[#c9a84c] text-[#3d2a05] text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit">{config.badgeLine}</span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 max-w-2xl leading-tight">
-            ¿Necesitas redactar un contrato de alquiler en {config.nombre}?
+            Contrato de alquiler en {config.nombre} desde {precio}€
           </h1>
           <p className="text-white/90 text-lg sm:text-xl max-w-xl mb-5 font-medium">
-            Olvídate de plantillas descargables: aquí va tu contrato{' '}
-            <strong className="text-white">LAU + Ley de Vivienda 2026</strong>, personalizado, en{' '}
-            <strong className="text-[#c9a84c]">48 h</strong> y por <strong className="text-[#c9a84c]">{precio} €</strong> todo incluido.
+            LAU + Ley de Vivienda 2026, personalizado, entrega en{' '}
+            <strong className="text-[#c9a84c]">48 h</strong>. Precio cerrado{' '}
+            <strong className="text-[#c9a84c]">{precio} €</strong> IVA incluido.
           </p>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
             <div>
               <span className="text-3xl font-bold text-[#c9a84c]">{precio} €</span>
-              <span className="text-white/50 text-xs ml-2">IVA incluido</span>
+              <span className="text-white/50 text-xs ml-2">IVA incluido · 48h</span>
             </div>
-            <span className="text-white/60 text-sm">· Entrega en 48h · PDF firmable</span>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href={solicitarHref}
+              className="inline-flex items-center justify-center bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-5 rounded-xl transition-colors text-sm"
+            >
+              Pedir contrato — {precio}€
+            </Link>
+            <TrackedContactLink
+              event="click_whatsapp"
+              city={config.slug}
+              href={`https://wa.me/${WA}?text=${waText}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
+            >
+              WhatsApp
+            </TrackedContactLink>
+            <TrackedContactLink
+              event="click_phone"
+              city={config.slug}
+              href="tel:+34745022862"
+              className="inline-flex items-center justify-center border border-white/40 text-white hover:bg-white/10 font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
+            >
+              Llamar 745 022 862
+            </TrackedContactLink>
           </div>
         </div>
       </section>
@@ -165,20 +193,31 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
               >
                 Pedir contrato ahora — {precio} €
               </Link>
-              <a
+              <TrackedContactLink
+                event="click_whatsapp"
+                city={config.slug}
                 href={`https://wa.me/${WA}?text=${waText}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm"
               >
-                💬 WhatsApp: 745 022 862
-              </a>
-              <a
+                WhatsApp: 745 022 862
+              </TrackedContactLink>
+              <TrackedContactLink
+                event="click_phone"
+                city={config.slug}
                 href="tel:+34745022862"
                 className="block w-full text-center border border-[#c9a84c] text-[#c9a84c] hover:bg-[#fdf8ee] font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
-                📞 Llamar: 745 022 862
-              </a>
+                Llamar: 745 022 862
+              </TrackedContactLink>
+              <div className="border-t border-[#e8d48a] pt-4">
+                <GestoriaPideInfoForm
+                  ciudad={config.nombre}
+                  servicio="contrato de alquiler LAU"
+                  precioLabel={`${precio}€`}
+                />
+              </div>
               <Link
                 href="/gestoria"
                 className="block w-full text-center border border-gray-300 text-gray-600 hover:bg-gray-50 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
@@ -325,20 +364,33 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
             >
               Lo quiero ya — {precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>
             </Link>
-            <a
+            <TrackedContactLink
+              event="click_whatsapp"
+              city={config.slug}
               href={`https://wa.me/${WA}?text=${waText}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors"
             >
-              💬 WhatsApp: 745 022 862
-            </a>
-            <a href="tel:+34745022862" className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors">
-              📞 Llamar ahora
-            </a>
+              WhatsApp: 745 022 862
+            </TrackedContactLink>
+            <TrackedContactLink
+              event="click_phone"
+              city={config.slug}
+              href="tel:+34745022862"
+              className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors"
+            >
+              Llamar ahora
+            </TrackedContactLink>
           </div>
         </section>
       </div>
+
+      <GestorContactBanner
+        whatsappMessage={`Hola, necesito información sobre el contrato de alquiler en ${config.nombre}`}
+        title={`¿Listo para el contrato en ${config.nombre}?`}
+        subtitle="Te llamamos, resolvemos dudas y te explicamos el proceso sin compromiso"
+      />
     </>
   )
 }

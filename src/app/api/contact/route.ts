@@ -24,16 +24,19 @@ export async function POST(req: NextRequest) {
 
   const { nombre, email, telefono, asunto, mensaje } = body
 
-  if (!nombre || !email || !mensaje) {
-    return NextResponse.json({ error: 'nombre, email y mensaje son obligatorios' }, { status: 400 })
+  if (!nombre || !mensaje) {
+    return NextResponse.json({ error: 'nombre y mensaje son obligatorios' }, { status: 400 })
   }
-  if (!validateEmail(email)) {
+  if (!email && !telefono) {
+    return NextResponse.json({ error: 'Indica email o teléfono' }, { status: 400 })
+  }
+  if (email && !validateEmail(email)) {
     return NextResponse.json({ error: 'Email inválido' }, { status: 400 })
   }
 
   // Truncar entradas para evitar payloads excesivos
   const safeNombre  = nombre.slice(0, 100)
-  const safeEmail   = email.slice(0, 200)
+  const safeEmail   = email?.slice(0, 200) ?? ''
   const safeTel     = telefono?.slice(0, 30) ?? '—'
   const safeAsunto  = (asunto ?? 'Consulta general').slice(0, 200)
   const safeMensaje = mensaje.slice(0, 2000)
@@ -54,7 +57,7 @@ export async function POST(req: NextRequest) {
   const notifyPayload = {
     from: FROM_EMAIL,
     to:   [NOTIFY_EMAIL],
-    reply_to: safeEmail,
+    ...(safeEmail ? { reply_to: safeEmail } : {}),
     subject: `📩 Nuevo contacto: ${safeAsunto}`,
     html: `
       <div style="font-family:sans-serif;max-width:600px;margin:auto">
@@ -67,11 +70,11 @@ export async function POST(req: NextRequest) {
           </tr>
           <tr>
             <td style="padding:8px 12px;font-weight:600;color:#555">Email</td>
-            <td style="padding:8px 12px"><a href="mailto:${safeEmail}" style="color:#c9962a">${safeEmail}</a></td>
+            <td style="padding:8px 12px">${safeEmail ? `<a href="mailto:${safeEmail}" style="color:#c9962a">${safeEmail}</a>` : '—'}</td>
           </tr>
           <tr>
             <td style="padding:8px 12px;font-weight:600;color:#555;background:#f9f9f9">Teléfono</td>
-            <td style="padding:8px 12px;background:#f9f9f9">${safeTel}</td>
+            <td style="padding:8px 12px;background:#f9f9f9">${safeTel !== '—' ? `<a href="tel:${safeTel}">${safeTel}</a>` : '—'}</td>
           </tr>
           <tr>
             <td style="padding:8px 12px;font-weight:600;color:#555">Asunto</td>
@@ -89,14 +92,15 @@ export async function POST(req: NextRequest) {
     `,
   }
 
-  // ── Auto-respuesta al remitente ────────────────────────────────────────
-  const autoReplyPayload = {
-    from: FROM_EMAIL,
-    to:   [safeEmail],
-    subject: 'Hemos recibido tu mensaje — Inmonest',
-    html: `
+  // ── Auto-respuesta al remitente (solo si hay email real) ───────────────
+  const autoReplyPayload = safeEmail
+    ? {
+        from: FROM_EMAIL,
+        to:   [safeEmail],
+        subject: 'Hemos recibido tu mensaje — Inmonest',
+        html: `
       <div style="font-family:sans-serif;max-width:600px;margin:auto">
-        <h2 style="color:#c9962a">Hola, ${safeNombre} 👋</h2>
+        <h2 style="color:#c9962a">Hola, ${safeNombre}</h2>
         <p style="font-size:15px;color:#333;line-height:1.6">
           Hemos recibido tu mensaje y te responderemos en menos de <strong>24 horas</strong>.
         </p>
@@ -106,37 +110,42 @@ export async function POST(req: NextRequest) {
         </div>
         <p style="font-size:13px;color:#888">
           Si tienes alguna urgencia puedes responder directamente a este correo o escribirnos a
-          <a href="mailto:info@inmonest.com" style="color:#c9962a">info@inmonest.com</a>.
+          <a href="mailto:info@inmonest.com" style="color:#c9962a">info@inmonest.com</a>
+          o al <a href="tel:+34745022862" style="color:#c9962a">745 022 862</a>.
         </p>
         <hr style="border:none;border-top:1px solid #eee;margin:32px 0"/>
         <p style="font-size:12px;color:#aaa;text-align:center">
           <a href="https://inmonest.com" style="color:#c9962a;text-decoration:none">inmonest.com</a>
-          &nbsp;·&nbsp; Inmuebles sin intermediarios
         </p>
       </div>
     `,
-  }
+      }
+    : null
 
   try {
-    const [notifyRes, autoRes] = await Promise.all([
+    const jobs: Promise<Response>[] = [
       fetch(RESEND_API, {
         method: 'POST',
         headers: { Authorization: `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
         body: JSON.stringify(notifyPayload),
       }),
-      fetch(RESEND_API, {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify(autoReplyPayload),
-      }),
-    ])
-
-    if (!notifyRes.ok) {
-      const err = await notifyRes.text()
+    ]
+    if (autoReplyPayload) {
+      jobs.push(
+        fetch(RESEND_API, {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify(autoReplyPayload),
+        }),
+      )
+    }
+    const results = await Promise.all(jobs)
+    if (!results[0].ok) {
+      const err = await results[0].text()
       console.error('[contact] Resend notificación error:', err)
     }
-    if (!autoRes.ok) {
-      const err = await autoRes.text()
+    if (results[1] && !results[1].ok) {
+      const err = await results[1].text()
       console.error('[contact] Resend auto-reply error:', err)
     }
   } catch (err) {

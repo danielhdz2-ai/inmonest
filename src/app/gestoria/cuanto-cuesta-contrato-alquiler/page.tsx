@@ -88,7 +88,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
               Guía de Precios 2026
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              ¿Cuánto cuesta un contrato de alquiler? Desde 145€
+              Contrato de alquiler desde 145€ — Precio 2026
             </h1>
             <p className="text-xl text-white/90 mb-6">
               Precio real 2026: gestoría online desde 145€ en 48h, notario 300–500€
