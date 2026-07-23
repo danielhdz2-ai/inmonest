@@ -20,6 +20,16 @@ const SERVICIOS_CIUDAD = [
   { titulo: 'Alquiler sin Agencia',     ruta: 'alquiler-sin-agencia' },
 ]
 
+const SELLOS_CONFIANZA = [
+  { src: '/sellos-confianza/Sello-Confianza-Online.png', alt: 'Sello Confianza Online', w: 140, h: 56 },
+  { src: '/sellos-confianza/pyme_innovadora_meic-SP_web.png', alt: 'Pyme Innovadora MEIC', w: 120, h: 56 },
+  { src: '/sellos-confianza/efqm500.png', alt: 'EFQM Recognised', w: 72, h: 56 },
+  { src: '/sellos-confianza/RGPD.jpg', alt: 'Cumplimiento RGPD', w: 72, h: 56 },
+  { src: '/sellos-confianza/api.jpg', alt: 'Agente de la Propiedad Inmobiliaria (API)', w: 72, h: 56 },
+  { src: '/sellos-confianza/banner-consejo.jpg', alt: 'Consejo General de Colegios de Gestores Administrativos de España', w: 160, h: 56 },
+  { src: '/sellos-confianza/Logo-ICAB-2023-scaled.jpg', alt: 'Ilustre Colegio de la Abogacía de Barcelona (ICAB)', w: 100, h: 56 },
+]
+
 export default function Footer() {
   return (
     <footer className="overflow-hidden bg-[#0d1a0f] text-white">
@@ -91,6 +101,29 @@ export default function Footer() {
           <Link href="/gestoria/ciudades" className="text-xs text-white/45 hover:text-[#f4c94a] transition-colors">
             Todas las ciudades →
           </Link>
+        </div>
+      </div>
+
+      {/* ── Banner sellos de confianza (contraste blanco) ───────── */}
+      <div className="bg-white px-6 sm:px-10 lg:px-16 py-7 border-y border-gray-100">
+        <p className="text-center text-[11px] font-bold uppercase tracking-[0.14em] text-gray-400 mb-5">
+          Sellos de confianza
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-5 sm:gap-x-10">
+          {SELLOS_CONFIANZA.map((sello) => (
+            <div
+              key={sello.src}
+              className="relative flex h-12 sm:h-14 w-auto items-center justify-center opacity-90 hover:opacity-100 transition-opacity"
+            >
+              <Image
+                src={sello.src}
+                alt={sello.alt}
+                width={sello.w}
+                height={sello.h}
+                className="h-10 sm:h-12 w-auto object-contain"
+              />
+            </div>
+          ))}
         </div>
       </div>
 
