@@ -11,6 +11,7 @@ import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
 import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
 import TestimoniosSection from '@/components/TestimoniosSection'
+import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import type { ContratoAlquilerPremiumConfig } from '@/lib/contrato-alquiler-premium-config'
 import {
   CONTRATO_ALQUILER_PREMIUM_INCLUDES,
@@ -433,6 +434,13 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
         whatsappMessage={`Hola, necesito información sobre el contrato de alquiler en ${config.nombre}`}
         title={`¿Listo para el contrato en ${config.nombre}?`}
         subtitle="Te llamamos, resolvemos dudas y te explicamos el proceso sin compromiso"
+      />
+
+      <div className="h-20 md:hidden" aria-hidden />
+      <StickyMobileContratoCta
+        ciudad={config.nombre}
+        ciudadSlug={config.slug}
+        servicio="alquiler"
       />
     </>
   )

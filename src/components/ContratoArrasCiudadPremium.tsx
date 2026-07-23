@@ -11,6 +11,7 @@ import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
 import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
 import TestimoniosSection from '@/components/TestimoniosSection'
+import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import type { ContratoArrasPremiumConfig } from '@/lib/contrato-arras-premium-config'
 import {
   CONTRATO_ARRAS_PREMIUM_INCLUDES,
@@ -350,6 +351,13 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
         whatsappMessage={`Hola, necesito información sobre el contrato de arras en ${config.nombre}`}
         title={`¿Listo para las arras en ${config.nombre}?`}
         subtitle="Te llamamos, resolvemos dudas y te explicamos el proceso sin compromiso"
+      />
+
+      <div className="h-20 md:hidden" aria-hidden />
+      <StickyMobileContratoCta
+        ciudad={config.nombre}
+        ciudadSlug={config.slug}
+        servicio="arras"
       />
     </>
   )

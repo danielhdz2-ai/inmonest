@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useRef, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 
 interface Message {
   role: 'user' | 'assistant'
@@ -15,6 +15,8 @@ const SUGERENCIAS = [
   'Piso barato Sevilla menos de 600€',
 ]
 
+const CONTRACT_LANDING = /\/contrato-(alquiler|arras)(\/|$)/
+
 export default function ChatWidget() {
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
@@ -22,6 +24,8 @@ export default function ChatWidget() {
   const [loading, setLoading] = useState(false)
   const bottomRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
+  const pathname = usePathname()
+  const hideOnMobileContract = CONTRACT_LANDING.test(pathname ?? '')
 
   useEffect(() => {
     if (open && messages.length === 0) {
@@ -113,7 +117,9 @@ export default function ChatWidget() {
       {/* Botón flotante */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-[#c9962a] text-white shadow-lg hover:bg-[#a87a20] transition-all active:scale-95"
+        className={`fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-[#c9962a] text-white shadow-lg hover:bg-[#a87a20] transition-all active:scale-95 ${
+          hideOnMobileContract ? 'hidden md:flex' : ''
+        }`}
         aria-label="Abrir asistente de búsqueda"
       >
         {open ? (
