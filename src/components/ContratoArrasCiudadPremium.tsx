@@ -3,18 +3,29 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import GestorContactBanner from '@/components/GestorContactBanner'
+import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
+import TrackedContactLink from '@/components/TrackedContactLink'
+import LlamaGestorBanner from '@/components/LlamaGestorBanner'
+import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
+import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
+import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
+import TestimoniosSection from '@/components/TestimoniosSection'
 import type { ContratoArrasPremiumConfig } from '@/lib/contrato-arras-premium-config'
 import {
   CONTRATO_ARRAS_PREMIUM_INCLUDES,
   CONTRATO_ARRAS_PREMIUM_PASOS,
   CONTRATO_ARRAS_PREMIUM_PRECIO,
 } from '@/lib/contrato-arras-premium-config'
+
 const BASE_URL = 'https://inmonest.com'
 const WA = '34745022862'
 
 export default function ContratoArrasCiudadPremium({ config }: { config: ContratoArrasPremiumConfig }) {
   const precio = CONTRATO_ARRAS_PREMIUM_PRECIO
+  const solicitarHref = '/gestoria/solicitar/arras-penitenciales'
   const waText = encodeURIComponent(`Hola, necesito redactar un contrato de arras en ${config.nombre}`)
+
   const schemaJson = {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -79,24 +90,58 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
             <span className="text-white/80">{config.breadcrumbFinal}</span>
           </nav>
 
-          <span className="inline-block bg-[#c9a84c] text-[#3d2a05] text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit">{config.badgeLine}</span>
+          <span className="inline-block bg-[#c9a84c] text-[#3d2a05] text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit">
+            {config.badgeLine}
+          </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 max-w-2xl leading-tight">
-            ¿Necesitas redactar un contrato de arras en {config.nombre}?
+            Contrato de arras en {config.nombre} desde {precio}€
           </h1>
           <p className="text-white/90 text-lg sm:text-xl max-w-xl mb-5 font-medium">
-            Olvídate de plantillas descargables: aquí va tu contrato de{' '}
-            <strong className="text-white">arras penitenciales</strong>, personalizado, en{' '}
-            <strong className="text-[#c9a84c]">48 h</strong> y por <strong className="text-[#c9a84c]">{precio} €</strong> todo incluido.
+            Arras penitenciales personalizadas, entrega en <strong className="text-[#c9a84c]">48 h</strong>. Precio
+            cerrado <strong className="text-[#c9a84c]">{precio} €</strong> IVA incluido. Habla primero con un gestor.
           </p>
-          <div className="flex flex-wrap items-center gap-4">
+          <div className="flex flex-wrap items-center gap-3 mb-4">
             <div>
               <span className="text-3xl font-bold text-[#c9a84c]">{precio} €</span>
-              <span className="text-white/50 text-xs ml-2">IVA incluido</span>
+              <span className="text-white/50 text-xs ml-2">IVA incluido · 48h</span>
             </div>
-            <span className="text-white/60 text-sm">· Entrega en 48h · PDF firmable</span>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href={solicitarHref}
+              className="inline-flex items-center justify-center bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-5 rounded-xl transition-colors text-sm"
+            >
+              Pedir contrato — {precio}€
+            </Link>
+            <TrackedContactLink
+              event="click_whatsapp"
+              city={config.slug}
+              href={`https://wa.me/${WA}?text=${waText}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
+            >
+              WhatsApp
+            </TrackedContactLink>
+            <TrackedContactLink
+              event="click_phone"
+              city={config.slug}
+              href="tel:+34745022862"
+              className="inline-flex items-center justify-center border border-white/40 text-white hover:bg-white/10 font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
+            >
+              Llamar 745 022 862
+            </TrackedContactLink>
           </div>
         </div>
       </section>
+
+      <LlamaGestorBanner
+        variant="strip"
+        ciudad={config.nombre}
+        title={`¿Dudas sobre las arras en ${config.nombre}?`}
+        subtitle="Llama a tu gestor Inmonest: te atendemos, resolvemos dudas y luego decides si contratas"
+        whatsappMessage={`Hola, necesito información sobre el contrato de arras en ${config.nombre}`}
+      />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -105,9 +150,9 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
               <p className="text-gray-900 font-bold text-xl leading-snug">{config.alertaTitulo}</p>
               <p className="text-gray-700 text-sm sm:text-base mt-2 leading-relaxed">
                 Unas arras mal redactadas te pueden costar{' '}
-                <strong>perder la señal, litigios o meses sin cerrar la escritura</strong>. Nosotros lo redactamos por ti:{' '}
-                <strong>precio cerrado {precio} €</strong>, gestoría que sabe de inmuebles, entrega en <strong>48 h</strong>. Pulsa
-                &quot;Pedir contrato&quot; y lo movemos hoy.
+                <strong>perder la señal, litigios o meses sin cerrar la escritura</strong>. Habla con un gestor, resuelve
+                dudas y, si te encaja, redactamos por ti: <strong>precio cerrado {precio} €</strong>, entrega en{' '}
+                <strong>48 h</strong>.
               </p>
             </div>
             <h2 className="text-2xl font-bold text-gray-900">¿Qué es el contrato de arras penitenciales?</h2>
@@ -143,25 +188,36 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
                 ))}
               </ul>
               <Link
-                href="/gestoria/solicitar/arras-penitenciales"
+                href={solicitarHref}
                 className="block w-full text-center bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-4 rounded-xl transition-colors"
               >
                 Pedir contrato ahora — {precio} €
               </Link>
-              <a
+              <TrackedContactLink
+                event="click_whatsapp"
+                city={config.slug}
                 href={`https://wa.me/${WA}?text=${waText}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm"
               >
-                💬 WhatsApp: 745 022 862
-              </a>
-              <a
+                WhatsApp: 745 022 862
+              </TrackedContactLink>
+              <TrackedContactLink
+                event="click_phone"
+                city={config.slug}
                 href="tel:+34745022862"
                 className="block w-full text-center border border-[#c9a84c] text-[#c9a84c] hover:bg-[#fdf8ee] font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
-                📞 Llamar: 745 022 862
-              </a>
+                Llamar: 745 022 862
+              </TrackedContactLink>
+              <div className="border-t border-[#e8d48a] pt-4">
+                <GestoriaPideInfoForm
+                  ciudad={config.nombre}
+                  servicio="contrato de arras penitenciales"
+                  precioLabel={`${precio}€`}
+                />
+              </div>
               <Link
                 href="/gestoria"
                 className="block w-full text-center border border-gray-300 text-gray-600 hover:bg-gray-50 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
@@ -171,6 +227,17 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
             </div>
           </div>
         </section>
+
+        <ComoTrabajamosContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="arras" />
+
+        <BarriosCiudadContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="arras" />
+
+        <CalculadoraAhorroContrato
+          mode="arras"
+          ciudad={config.nombre}
+          ciudadSlug={config.slug}
+          precioContrato={Number(precio) || 145}
+        />
 
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Qué llevas exactamente (no &quot;un word en blanco&quot;)</h2>
@@ -185,12 +252,14 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">¿Cómo funciona?</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">¿Cómo funciona la redacción?</h2>
           <div className="space-y-6">
             {CONTRATO_ARRAS_PREMIUM_PASOS.map((paso) => (
               <div key={paso.num} className="flex gap-6">
                 <div className="shrink-0">
-                  <div className="w-14 h-14 rounded-full bg-[#c9a84c] flex items-center justify-center text-white font-bold text-lg">{paso.num}</div>
+                  <div className="w-14 h-14 rounded-full bg-[#c9a84c] flex items-center justify-center text-white font-bold text-lg">
+                    {paso.num}
+                  </div>
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg mb-1">{paso.titulo}</h3>
@@ -200,7 +269,25 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
             ))}
           </div>
         </section>
+      </div>
 
+      <LlamaGestorBanner
+        variant="full"
+        ciudad={config.nombre}
+        title={`Llama a tu gestor en ${config.nombre}`}
+        subtitle="Te explicamos las arras, la señal y el plazo de escritura. Sin compromiso: decides tú si contratas."
+        whatsappMessage={`Hola, quiero hablar con un gestor sobre el contrato de arras en ${config.nombre}`}
+      />
+
+      <TestimoniosSection
+        landing="contrato-arras"
+        ciudad={config.nombre}
+        layout="stack"
+        hideRating
+        className="bg-gray-50"
+      />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Preguntas frecuentes</h2>
           <div className="space-y-4">
@@ -212,7 +299,6 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
             ))}
           </div>
         </section>
-
       </div>
 
       <CiudadHubServiciosGrid
@@ -224,32 +310,47 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
         <section className="bg-[#0d1a0f] rounded-2xl p-8 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">¿Sigues retrasando las arras? Eso te expone a comprador y vendedor</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+            ¿Sigues retrasando las arras? Eso te expone a comprador y vendedor
+          </h2>
           <p className="text-white/70 mb-6 max-w-lg mx-auto leading-relaxed">
-            Cada día sin un contrato bien hecho es una apuesta. Pide el tuyo ahora: <strong className="text-white">menos de 48 h</strong> en tu correo, firma
-            digital y cláusulas pensadas para la compraventa.
+            Llama primero, resuelve dudas y, si te encaja, pide el contrato:{' '}
+            <strong className="text-white">menos de 48 h</strong> en tu correo.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
-              href="/gestoria/solicitar/arras-penitenciales"
+              href={solicitarHref}
               className="bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-8 rounded-xl transition-colors"
             >
               Lo quiero ya — {precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>
             </Link>
-            <a
+            <TrackedContactLink
+              event="click_whatsapp"
+              city={config.slug}
               href={`https://wa.me/${WA}?text=${waText}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors"
             >
-              💬 WhatsApp: 745 022 862
-            </a>
-            <a href="tel:+34745022862" className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors">
-              📞 Llamar ahora
-            </a>
+              WhatsApp: 745 022 862
+            </TrackedContactLink>
+            <TrackedContactLink
+              event="click_phone"
+              city={config.slug}
+              href="tel:+34745022862"
+              className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors"
+            >
+              Llamar ahora
+            </TrackedContactLink>
           </div>
         </section>
       </div>
+
+      <GestorContactBanner
+        whatsappMessage={`Hola, necesito información sobre el contrato de arras en ${config.nombre}`}
+        title={`¿Listo para las arras en ${config.nombre}?`}
+        subtitle="Te llamamos, resolvemos dudas y te explicamos el proceso sin compromiso"
+      />
     </>
   )
 }

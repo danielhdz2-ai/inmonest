@@ -408,6 +408,8 @@ export const TESTIMONIOS_POR_LANDING: Record<string, Testimonio[]> = {
   'compra-parking-trastero': pick(4, 11, 8),
   'ayuda-propietarios': pick(3, 9, 15),
   'contrato-compraventa': pick(1, 8, 13),
+  'contrato-alquiler': pick(3, 7, 9, 26),
+  'contrato-arras': pick(2, 6, 14, 20),
   'hub-barcelona': pick(1, 14, 6),
   'hub-madrid': pick(2, 13, 7),
   'hub-valencia': pick(12, 16, 9),

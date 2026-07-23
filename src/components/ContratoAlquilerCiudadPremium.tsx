@@ -6,6 +6,11 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import GestorContactBanner from '@/components/GestorContactBanner'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import TrackedContactLink from '@/components/TrackedContactLink'
+import LlamaGestorBanner from '@/components/LlamaGestorBanner'
+import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
+import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
+import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
+import TestimoniosSection from '@/components/TestimoniosSection'
 import type { ContratoAlquilerPremiumConfig } from '@/lib/contrato-alquiler-premium-config'
 import {
   CONTRATO_ALQUILER_PREMIUM_INCLUDES,
@@ -143,6 +148,14 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
         </div>
       </section>
 
+      <LlamaGestorBanner
+        variant="strip"
+        ciudad={config.nombre}
+        title={`¿Dudas sobre el contrato de alquiler en ${config.nombre}?`}
+        subtitle="Llama a tu gestor Inmonest: te atendemos, resolvemos dudas y luego decides si contratas"
+        whatsappMessage={`Hola, necesito información sobre el contrato de alquiler en ${config.nombre}`}
+      />
+
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
@@ -228,6 +241,17 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
           </div>
         </section>
 
+        <ComoTrabajamosContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="alquiler" />
+
+        <BarriosCiudadContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="alquiler" />
+
+        <CalculadoraAhorroContrato
+          mode="alquiler"
+          ciudad={config.nombre}
+          ciudadSlug={config.slug}
+          precioContrato={Number(precio) || 145}
+        />
+
         {config.particularidadesRegionales && (
           <section className="bg-white border border-gray-200 rounded-2xl p-8 space-y-8">
             <h2 className="text-2xl font-bold text-gray-900">{config.particularidadesRegionales.titulo}</h2>
@@ -281,7 +305,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
         </section>
 
         <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">¿Cómo funciona?</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">¿Cómo funciona la redacción?</h2>
           <div className="space-y-6">
             {CONTRATO_ALQUILER_PREMIUM_PASOS.map((paso) => (
               <div key={paso.num} className="flex gap-6">
@@ -297,6 +321,25 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
           </div>
         </section>
 
+      </div>
+
+      <LlamaGestorBanner
+        variant="full"
+        ciudad={config.nombre}
+        title={`Llama a tu gestor en ${config.nombre}`}
+        subtitle="Te explicamos el contrato LAU, la fianza y el precio. Sin compromiso: decides tú si contratas."
+        whatsappMessage={`Hola, quiero hablar con un gestor sobre el contrato de alquiler en ${config.nombre}`}
+      />
+
+      <TestimoniosSection
+        landing="contrato-alquiler"
+        ciudad={config.nombre}
+        layout="stack"
+        hideRating
+        className="bg-gray-50"
+      />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Preguntas frecuentes</h2>
           <div className="space-y-4">
