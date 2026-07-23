@@ -196,4 +196,26 @@ export const SEO_REDIRECTS: Redirect[] = [
     destination: '/:ciudad/contrato-arras',
     permanent: true,
   },
+
+  // ═══ ALIASES NUEVAS CIUDADES NORTE ═══
+  {
+    source: '/donostia/contrato-alquiler',
+    destination: '/san-sebastian/contrato-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/donostia/contrato-arras',
+    destination: '/san-sebastian/contrato-arras',
+    permanent: true,
+  },
+  {
+    source: '/vitoria-gasteiz/contrato-alquiler',
+    destination: '/vitoria/contrato-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/vitoria-gasteiz/contrato-arras',
+    destination: '/vitoria/contrato-arras',
+    permanent: true,
+  },
 ]

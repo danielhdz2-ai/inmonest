@@ -537,6 +537,120 @@ export const CONTRATO_ARRAS_PREMIUM: Record<string, ContratoArrasPremiumConfig> 
       'Sí, en A Coruña y el resto de Galicia, con sujeción al Código Civil y a lo pactado.',
     ),
   },
+
+  santander: {
+    slug: 'santander',
+    nombre: 'Santander',
+    meta: baseMeta('Santander', 'santander', 'Santander, El Sardinero, Camargo y Cantabria.', [
+      'contrato arras Santander',
+      'arras penitenciales Cantabria',
+      'contrato arras El Sardinero',
+      'precio contrato arras Santander',
+      'gestoría arras Santander',
+    ]),
+    schema: {
+      serviceName: 'Contrato de Arras Penitenciales en Santander',
+      serviceDescription:
+        'Redacción de contrato de arras para compraventa de inmuebles en Santander y Cantabria. Cláusulas de desistimiento, hipoteca y plazo de escritura.',
+      areaType: 'City',
+      areaName: 'Santander',
+    },
+    heroImageAlt: 'Contrato de arras en Santander',
+    breadcrumbFinal: 'Contrato de Arras Santander',
+    badgeLine: 'Compraventa · Santander',
+    ctaStickyLabel: 'Compraventa · Santander',
+    introLargo:
+      'El contrato de arras penitenciales es el documento que más se usa en Santander y Cantabria para reservar una compraventa antes del notario. Da igual si el piso está en el Centro, El Sardinero, Puertochico, Cueto o en Camargo/Torrelavega: la señal (habitualmente 5–10 %) y las cláusulas de desistimiento deben quedar claras. Si el comprador se echa atrás pierde la señal; si lo hace el vendedor, devuelve el doble. Redacción profesional desde 145€, entrega en 48h.',
+    alertaTitulo: 'Vas a dejar una señal en Santander: ¿vas a firmarlo con un PDF "genérico"?',
+    paraQuienTitulo: '¿Para quién es este contrato en Santander?',
+    paraQuien: [
+      'Compradores en Santander (Centro, Sardinero, Cueto) que reservan con garantías',
+      'Vendedores en Cantabria que quieren asegurar la operación sin ir aún al notario',
+      'Operaciones con hipoteca pendiente de aprobación bancaria',
+      'Compraventa en Camargo, Torrelavega, Castro Urdiales o costa cántabra',
+    ],
+    faqs: faqRegion(
+      'Santander',
+      '¿El contrato de arras es válido en toda Cantabria?',
+      'Sí. Es válido en Santander capital y en el resto de Cantabria. Se rige por el Código Civil español y por lo pactado en el documento (penitenciales, confirmatorias, condiciones suspensivas).',
+    ),
+  },
+
+  vitoria: {
+    slug: 'vitoria',
+    nombre: 'Vitoria',
+    meta: baseMeta('Vitoria', 'vitoria', 'Vitoria-Gasteiz, Ensanche, Lakua, Zabalgana y Álava.', [
+      'contrato arras Vitoria',
+      'contrato arras Vitoria-Gasteiz',
+      'arras penitenciales Álava',
+      'arras País Vasco',
+      'precio contrato arras Vitoria',
+    ]),
+    schema: {
+      serviceName: 'Contrato de Arras Penitenciales en Vitoria-Gasteiz',
+      serviceDescription:
+        'Contrato de arras para compraventa en Vitoria-Gasteiz y Álava. Señal, desistimiento e hipoteca condicionada.',
+      areaType: 'City',
+      areaName: 'Vitoria-Gasteiz',
+    },
+    heroImageAlt: 'Contrato de arras en Vitoria',
+    breadcrumbFinal: 'Contrato de Arras Vitoria',
+    badgeLine: 'Compraventa · Vitoria',
+    ctaStickyLabel: 'Compraventa · Vitoria',
+    introLargo:
+      'En Vitoria-Gasteiz y Álava las arras penitenciales formalizan la intención de compraventa antes de la escritura. Tanto en el Ensanche como en Lakua, Zabalgana, Salburua o San Martín, un modelo genérico suele olvidar la cláusula de hipoteca, el plazo de notario o la doble penalización. Nosotros lo redactamos a medida desde 145€, en menos de 48h, con el mismo estándar jurídico que en Bilbao y Donostia.',
+    alertaTitulo: 'Vas a dejar una señal en Vitoria: ¿vas a firmarlo con un PDF "genérico"?',
+    paraQuienTitulo: '¿Para quién es este contrato en Vitoria?',
+    paraQuien: [
+      'Compradores en Vitoria-Gasteiz que quieren reservar con seguridad jurídica',
+      'Vendedores en Álava (Ensanche, Lakua, Zabalgana, Salburua)',
+      'Operaciones con financiación hipotecaria aún pendiente',
+      'Quien necesita semanas para preparar la escritura notarial',
+    ],
+    faqs: faqRegion(
+      'Vitoria',
+      '¿El contrato de arras es válido en todo el País Vasco?',
+      'Sí. Válido en Vitoria-Gasteiz, resto de Álava y en todo el País Vasco (Bilbao, Donostia-San Sebastián). Se aplica el Código Civil y lo pactado en el contrato.',
+    ),
+  },
+
+  'san-sebastian': {
+    slug: 'san-sebastian',
+    nombre: 'San Sebastián',
+    meta: baseMeta('San Sebastián', 'san-sebastian', 'Donostia, Gros, Amara, Antiguo, Irun y Gipuzkoa.', [
+      'contrato arras San Sebastián',
+      'contrato arras Donostia',
+      'arras penitenciales Gipuzkoa',
+      'arras País Vasco',
+      'precio contrato arras Donostia',
+    ]),
+    schema: {
+      serviceName: 'Contrato de Arras Penitenciales en San Sebastián',
+      serviceDescription:
+        'Contrato de arras para compraventa en Donostia-San Sebastián y Gipuzkoa. Señal, desistimiento y condiciones de hipoteca.',
+      areaType: 'City',
+      areaName: 'San Sebastián',
+    },
+    heroImageAlt: 'Contrato de arras en San Sebastián',
+    breadcrumbFinal: 'Contrato de Arras San Sebastián',
+    badgeLine: 'Compraventa · San Sebastián',
+    ctaStickyLabel: 'Compraventa · Donostia',
+    introLargo:
+      'En Donostia-San Sebastián y Gipuzkoa las arras penitenciales protegen la señal de compraventa antes del notario. Da igual si el inmueble está en Gros, Amara, Antiguo, Centro o en Irun/Hondarribia: hace falta un contrato claro (porcentaje de señal, desistimiento, hipoteca suspensiva y plazo de escritura). Redacción profesional desde 145€, entrega en 48h — el mismo patrón que ya posiciona en Bilbao.',
+    alertaTitulo: 'Vas a dejar una señal en San Sebastián: ¿vas a firmarlo con un PDF "genérico"?',
+    paraQuienTitulo: '¿Para quién es este contrato en San Sebastián?',
+    paraQuien: [
+      'Compradores en Donostia (Gros, Amara, Antiguo, Centro) que reservan con garantías',
+      'Vendedores en Gipuzkoa (Irun, Errenteria, Hondarribia) que quieren asegurar la operación',
+      'Operaciones con hipoteca pendiente de aprobación',
+      'Compraventa en el País Vasco con plazo hasta escritura pública',
+    ],
+    faqs: faqRegion(
+      'San Sebastián',
+      '¿El contrato de arras sirve en toda Gipuzkoa y el País Vasco?',
+      'Sí. Válido en Donostia-San Sebastián, Irun, Hondarribia, Errenteria y resto de Gipuzkoa, así como en Bilbao y Vitoria. Se rige por el Código Civil español.',
+    ),
+  },
 }
 
 export function getContratoArrasPremiumConfig(slug: string): ContratoArrasPremiumConfig | undefined {

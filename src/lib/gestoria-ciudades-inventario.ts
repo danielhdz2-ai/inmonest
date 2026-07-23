@@ -47,6 +47,10 @@ const NOMBRES_EXTRA: Record<string, string> = {
   palma: 'Palma de Mallorca',
   mallorca: 'Mallorca',
   asturias: 'Asturias',
+  santander: 'Santander',
+  vitoria: 'Vitoria',
+  'san-sebastian': 'San Sebastián',
+  donostia: 'San Sebastián',
 }
 
 export function getNombreCiudad(slug: string): string {
@@ -70,6 +74,9 @@ export const CIUDADES_DESTACADAS: CiudadRef[] = [
   'zaragoza',
   'alicante',
   'granada',
+  'santander',
+  'vitoria',
+  'san-sebastian',
 ].map((slug) => ({ slug, nombre: getNombreCiudad(slug) }))
 
 const CIUDADES_PORTAL = ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante']

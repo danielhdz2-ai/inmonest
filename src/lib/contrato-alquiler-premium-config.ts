@@ -800,6 +800,252 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
       'Sí, el contrato de alquiler LAU es válido en toda la provincia de Castellón y la Comunidad Valenciana (Valencia, Alicante, Castellón). Se adapta a la legislación estatal y autonómica vigente.',
     ),
   },
+
+  santander: {
+    slug: 'santander',
+    nombre: 'Santander',
+    meta: {
+      title: 'Contrato de alquiler Santander desde 145€',
+      description:
+        'Contrato LAU en Santander desde 145€ (48h). Centro, El Sardinero, Cueto, Camargo y Cantabria. Fianza y Ley de Vivienda 2026. Sin plantillas genéricas.',
+      keywords: [
+        'contrato alquiler Santander',
+        'contrato LAU Santander',
+        'contrato alquiler Cantabria',
+        'precio contrato alquiler Santander',
+        'gestoría alquiler Santander',
+        'contrato arrendamiento El Sardinero',
+      ],
+      ogTitle: 'Contrato de alquiler Santander desde 145€',
+      ogDescription: 'LAU en Santander desde 145€. Entrega 48h. Válido en Cantabria.',
+      ogImageAlt: 'Contrato de alquiler Santander',
+    },
+    particularidadesRegionales: {
+      titulo: 'Alquiler en Santander y Cantabria: barrios y fianza',
+      secciones: [
+        {
+          titulo: 'Barrios y zonas con más demanda de alquiler',
+          contenido:
+            'En Santander el contrato LAU se usa igual en el Centro (General Dávila, Vargas), El Sardinero y Puertochico, Cueto, Peñacastillo, Cazoña o el área metropolitana (Camargo, Torrelavega, Astillero, El Astillero). Cada zona cambia la renta y el perfil del inquilino, pero las obligaciones legales (duración mínima, fianza, actualización) son las mismas: hay que dejarlas bien escritas.',
+          bullets: [
+            'Centro y Puertochico: piso urbano, rotación alta',
+            'El Sardinero / Cueto: demanda residencial y de temporada larga',
+            'Camargo, Astillero y Torrelavega: área metropolitana de Cantabria',
+            'Cláusulas de mascotas, obras y comunidad adaptadas al edificio',
+          ],
+        },
+        {
+          titulo: 'Fianza y normativa en Cantabria',
+          contenido:
+            'La fianza legal mínima es una mensualidad (LAU). En Cantabria debe gestionarse según la normativa autonómica vigente (depósito y devolución). El contrato debe reflejar importe, plazo de depósito y reglas de devolución al finalizar. Una plantilla genérica suele olvidar estos puntos y genera conflictos al salir el inquilino.',
+          bullets: [
+            'Fianza legal: 1 mensualidad de renta',
+            'Garantías adicionales solo dentro de los límites legales',
+            'Actualización de renta conforme a Ley de Vivienda 2026',
+            'Inventario de mobiliario recomendable en pisos amueblados del Sardinero o Centro',
+          ],
+        },
+      ],
+    },
+    schema: {
+      serviceName: 'Contrato de Alquiler de Vivienda (LAU) en Santander',
+      serviceDescription:
+        'Redacción de contrato de alquiler en Santander y Cantabria. Adaptado a LAU y Ley de Vivienda 2026. Gestoría inmobiliaria online.',
+      areaType: 'City',
+      areaName: 'Santander',
+    },
+    heroImageAlt: 'Contrato de alquiler en Santander',
+    breadcrumbFinal: 'Contrato de Alquiler Santander',
+    badgeLine: 'Alquiler · Santander',
+    ctaStickyLabel: 'Alquiler · Santander',
+    introLargo:
+      'El arrendamiento de vivienda habitual en Santander y Cantabria se rige por la LAU y la Ley de Vivienda 2026. En barrios como El Sardinero, Centro, Puertochico, Cueto o en el cinturón (Camargo, Torrelavega), un PDF genérico no cubre fianza, actualización de renta ni inventario. Redactamos tu contrato a medida: precio cerrado desde 145€, entrega en 48h, PDF firmable.',
+    alertaTitulo: 'Vas a firmar un alquiler en Santander: ¿vas a hacerlo con un PDF "genérico"?',
+    paraQuienTitulo: '¿Para quién es este contrato en Santander?',
+    paraQuien: [
+      'Propietarios en Santander (Centro, Sardinero, Cueto) que alquilan vivienda habitual',
+      'Arrendadores en Camargo, Torrelavega o costa cántabra que quieren actualizarse a 2026',
+      'Inquilinos que quieren revisar cláusulas antes de firmar',
+      'Alquileres de larga duración en Cantabria sin plantilla descargable',
+    ],
+    faqs: [
+      {
+        q: '¿Cuánto cuesta un contrato de alquiler en Santander?',
+        a: 'En Inmonest el contrato LAU en Santander cuesta desde 145€ IVA incluido, con entrega en 48h. Un notario suele cobrar 300–500€; las plantillas gratis no se adaptan a tu piso ni a la fianza en Cantabria.',
+      },
+      ...faqPack(
+        'Santander',
+        '¿Qué fianza es obligatoria en Cantabria?',
+        'Una mensualidad de renta como fianza legal mínima (LAU), que debe gestionarse según la normativa autonómica de Cantabria. Podéis pactar garantías adicionales dentro de los límites legales.',
+        '¿El contrato es válido en toda Cantabria?',
+        'Sí. Sirve en Santander capital y en el resto de Cantabria (Camargo, Torrelavega, Castro Urdiales, Laredo, Reinosa…), adaptado a la legislación estatal y autonómica vigente.',
+      ),
+    ],
+  },
+
+  vitoria: {
+    slug: 'vitoria',
+    nombre: 'Vitoria',
+    meta: {
+      title: 'Contrato de alquiler Vitoria desde 145€',
+      description:
+        'Contrato LAU en Vitoria-Gasteiz desde 145€ (48h). Ensanche, Lakua, Zabalgana, Salburua. Fianza País Vasco + Ley de Vivienda 2026.',
+      keywords: [
+        'contrato alquiler Vitoria',
+        'contrato alquiler Vitoria-Gasteiz',
+        'contrato LAU Álava',
+        'contrato alquiler País Vasco',
+        'precio contrato alquiler Vitoria',
+        'fianza alquiler Gobierno Vasco',
+      ],
+      ogTitle: 'Contrato de alquiler Vitoria desde 145€',
+      ogDescription: 'LAU en Vitoria-Gasteiz desde 145€. Entrega 48h. Válido en Álava y País Vasco.',
+      ogImageAlt: 'Contrato de alquiler Vitoria',
+    },
+    particularidadesRegionales: {
+      titulo: 'Alquiler en Vitoria-Gasteiz: barrios y fianza vasca',
+      secciones: [
+        {
+          titulo: 'Barrios donde más se firma contrato LAU',
+          contenido:
+            'En Vitoria-Gasteiz el mercado de alquiler se concentra en el Ensanche y Casco Histórico, Lovaina, San Martín, Lakua, Zabalgana, Salburua, Arriaga y Adurtza. También hay demanda en municipios del área (Iruña de Oca, Alegría-Dulantzi). El contrato debe ser el mismo estándar legal en todos: lo que cambia es la renta y el uso del inmueble, no la obligación de un LAU bien hecho.',
+          bullets: [
+            'Ensanche / Casco: pisos urbanos y rotación de inquilinos',
+            'Lakua, Zabalgana y Salburua: tipología familiar y rentas medias',
+            'Área de Álava: válido el mismo contrato LAU estatal + marco foral',
+            'Inventario recomendable en viviendas amuebladas del centro',
+          ],
+        },
+        {
+          titulo: 'Fianza ante el Gobierno Vasco',
+          contenido:
+            'En el País Vasco la fianza legal (una mensualidad en vivienda habitual) debe depositarse en el organismo competente del Gobierno Vasco. El contrato tiene que dejar claro importe, depósito y devolución. Si no se deposita bien, el propietario puede tener problemas al reclamar o al liquidar al final del arrendamiento.',
+          bullets: [
+            'Fianza legal: 1 mensualidad',
+            'Depósito en organismo autonómico del País Vasco',
+            'Actualización de renta limitada por Ley de Vivienda 2026',
+            'Zonas tensionadas: adaptamos cláusulas si aplican en tu municipio',
+          ],
+        },
+      ],
+    },
+    schema: {
+      serviceName: 'Contrato de Alquiler de Vivienda (LAU) en Vitoria-Gasteiz',
+      serviceDescription:
+        'Redacción de contrato de alquiler en Vitoria-Gasteiz y Álava. LAU, Ley de Vivienda 2026 y depósito de fianza en el País Vasco.',
+      areaType: 'City',
+      areaName: 'Vitoria-Gasteiz',
+    },
+    heroImageAlt: 'Contrato de alquiler en Vitoria-Gasteiz',
+    breadcrumbFinal: 'Contrato de Alquiler Vitoria',
+    badgeLine: 'Alquiler · Vitoria',
+    ctaStickyLabel: 'Alquiler · Vitoria',
+    introLargo:
+      'En Vitoria-Gasteiz y Álava el alquiler de vivienda habitual se rige por la LAU y la Ley de Vivienda 2026, con el depósito de fianza propio del País Vasco. Da igual si el piso está en el Ensanche, Lakua, Zabalgana o Salburua: un contrato genérico no cubre esos matices. Lo redactamos personalizado desde 145€, entrega en 48h.',
+    alertaTitulo: 'Vas a firmar un alquiler en Vitoria: ¿vas a hacerlo con un PDF "genérico"?',
+    paraQuienTitulo: '¿Para quién es este contrato en Vitoria?',
+    paraQuien: [
+      'Propietarios en Vitoria-Gasteiz (Ensanche, Lakua, Zabalgana, Salburua)',
+      'Arrendadores en Álava que actualizan contratos antiguos a 2026',
+      'Inquilinos que quieren seguridad antes de firmar',
+      'Alquileres de larga duración en el País Vasco (además de Bilbao y Donostia)',
+    ],
+    faqs: [
+      {
+        q: '¿Cuánto cuesta un contrato de alquiler en Vitoria?',
+        a: 'Desde 145€ IVA incluido en Inmonest, con entrega en 48h. Incluye cláusulas LAU, fianza vasca e inventario. Notario suele ir de 300 a 500€.',
+      },
+      ...faqPack(
+        'Vitoria',
+        '¿Qué fianza es obligatoria en el País Vasco (Vitoria)?',
+        'Una mensualidad de renta como fianza legal, que debe depositarse en el organismo autonómico del País Vasco. Podéis pactar garantías adicionales dentro de los límites de la LAU.',
+        '¿El contrato es válido en toda Álava y el País Vasco?',
+        'Sí. Es válido en Vitoria-Gasteiz, resto de Álava y en todo el País Vasco (Bilbao, Donostia-San Sebastián), adaptado a la normativa estatal y foral vigente.',
+      ),
+    ],
+  },
+
+  'san-sebastian': {
+    slug: 'san-sebastian',
+    nombre: 'San Sebastián',
+    meta: {
+      title: 'Contrato de alquiler San Sebastián desde 145€',
+      description:
+        'Contrato LAU en Donostia-San Sebastián desde 145€ (48h). Centro, Gros, Amara, Antiguo, Irun. Fianza País Vasco + Ley de Vivienda 2026.',
+      keywords: [
+        'contrato alquiler San Sebastián',
+        'contrato alquiler Donostia',
+        'contrato LAU Gipuzkoa',
+        'contrato alquiler País Vasco',
+        'precio contrato alquiler Donostia',
+        'alquiler Gros Amara San Sebastián',
+      ],
+      ogTitle: 'Contrato de alquiler San Sebastián desde 145€',
+      ogDescription: 'LAU en Donostia desde 145€. Entrega 48h. Válido en Gipuzkoa y País Vasco.',
+      ogImageAlt: 'Contrato de alquiler San Sebastián',
+    },
+    particularidadesRegionales: {
+      titulo: 'Alquiler en Donostia-San Sebastián: barrios y fianza vasca',
+      secciones: [
+        {
+          titulo: 'Barrios y comarca con más contratos de alquiler',
+          contenido:
+            'En Donostia-San Sebastián la demanda de alquiler se concentra en Centro / Parte Vieja, Gros, Amara, Antiguo, Egia, Intxaurrondo y Ayete. También hay mucha operativa en la comarca: Irun, Hondarribia, Errenteria, Hernani o Lasarte-Oria. El LAU es el mismo marco legal; lo que no puede faltar es un contrato que refleje fianza vasca, renta y uso real del piso.',
+          bullets: [
+            'Gros y Centro: alta demanda y rentas elevadas',
+            'Amara y Antiguo: tipología familiar y larga duración',
+            'Irun / Hondarribia / Errenteria: misma validez legal del contrato',
+            'Inventario clave en pisos amueblados cerca de la playa o del centro',
+          ],
+        },
+        {
+          titulo: 'Fianza ante el Gobierno Vasco (Gipuzkoa)',
+          contenido:
+            'Como en el resto del País Vasco, la fianza legal de una mensualidad debe depositarse en el organismo competente del Gobierno Vasco. El contrato debe fijar importe, depósito y devolución. En zonas con presión turística o de temporada, conviene delimitar bien si el uso es vivienda habitual (LAU) o temporal.',
+          bullets: [
+            'Fianza legal: 1 mensualidad + depósito autonómico',
+            'Distinguir vivienda habitual vs uso temporal cuando aplique',
+            'Actualización de renta según Ley de Vivienda 2026',
+            'Zonas tensionadas: adaptamos el contrato si tu municipio está afectado',
+          ],
+        },
+      ],
+    },
+    schema: {
+      serviceName: 'Contrato de Alquiler de Vivienda (LAU) en San Sebastián',
+      serviceDescription:
+        'Redacción de contrato de alquiler en Donostia-San Sebastián y Gipuzkoa. LAU, Ley de Vivienda 2026 y fianza del País Vasco.',
+      areaType: 'City',
+      areaName: 'San Sebastián',
+    },
+    heroImageAlt: 'Contrato de alquiler en San Sebastián',
+    breadcrumbFinal: 'Contrato de Alquiler San Sebastián',
+    badgeLine: 'Alquiler · San Sebastián',
+    ctaStickyLabel: 'Alquiler · Donostia',
+    introLargo:
+      'En Donostia-San Sebastián y Gipuzkoa el alquiler habitual se rige por la LAU y la Ley de Vivienda 2026, con depósito de fianza en el País Vasco. Tanto si el piso está en Gros, Amara, Antiguo o en Irun, un modelo descargable no protege igual. Contrato personalizado desde 145€, listo en 48h.',
+    alertaTitulo: 'Vas a firmar un alquiler en San Sebastián: ¿vas a hacerlo con un PDF "genérico"?',
+    paraQuienTitulo: '¿Para quién es este contrato en San Sebastián?',
+    paraQuien: [
+      'Propietarios en Donostia (Gros, Amara, Centro, Antiguo, Egia)',
+      'Arrendadores en Irun, Errenteria o comarca que quieren un LAU al día',
+      'Inquilinos que quieren revisar condiciones antes de firmar',
+      'Alquileres de larga duración en Gipuzkoa y País Vasco',
+    ],
+    faqs: [
+      {
+        q: '¿Cuánto cuesta un contrato de alquiler en San Sebastián / Donostia?',
+        a: 'Desde 145€ IVA incluido, entrega en 48h. Incluye redacción LAU, menciones de fianza vasca e inventario. Evita plantillas genéricas que no distinguen vivienda habitual y uso temporal.',
+      },
+      ...faqPack(
+        'San Sebastián',
+        '¿Qué fianza es obligatoria en Gipuzkoa?',
+        'Una mensualidad de renta como fianza legal, depositada en el organismo autonómico del País Vasco. Las garantías adicionales deben respetar los límites de la LAU.',
+        '¿El contrato sirve en toda Gipuzkoa?',
+        'Sí. Válido en Donostia-San Sebastián, Irun, Hondarribia, Errenteria y resto de Gipuzkoa, y en el conjunto del País Vasco.',
+      ),
+    ],
+  },
 }
 
 export function getContratoAlquilerPremiumConfig(slug: string): ContratoAlquilerPremiumConfig | undefined {
