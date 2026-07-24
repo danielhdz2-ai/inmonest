@@ -16,6 +16,8 @@ const SUGERENCIAS = [
 ]
 
 const CONTRACT_LANDING = /\/contrato-(alquiler|arras)(\/|$)/
+const GESTORIA_HUB =
+  /^\/gestoria\/(madrid|barcelona|valencia|sevilla|malaga|bilbao|zaragoza|alicante|palma)(\/|$)/
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false)
@@ -25,7 +27,10 @@ export default function ChatWidget() {
   const bottomRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   const pathname = usePathname()
-  const hideOnMobileContract = CONTRACT_LANDING.test(pathname ?? '')
+  const hideOnMobileSticky =
+    CONTRACT_LANDING.test(pathname ?? '') ||
+    GESTORIA_HUB.test(pathname ?? '') ||
+    (pathname ?? '').includes('due-diligence-precompra')
 
   useEffect(() => {
     if (open && messages.length === 0) {
@@ -118,7 +123,7 @@ export default function ChatWidget() {
       <button
         onClick={() => setOpen((v) => !v)}
         className={`fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-[#c9962a] text-white shadow-lg hover:bg-[#a87a20] transition-all active:scale-95 ${
-          hideOnMobileContract ? 'hidden md:flex' : ''
+          hideOnMobileSticky ? 'hidden md:flex' : ''
         }`}
         aria-label="Abrir asistente de búsqueda"
       >

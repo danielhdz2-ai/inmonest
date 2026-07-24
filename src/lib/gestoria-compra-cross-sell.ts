@@ -5,6 +5,13 @@ export const ASESORIA_COMPRA_CIUDADES = [
   'valencia',
   'sevilla',
   'malaga',
+  'zaragoza',
+  'valladolid',
+  'mallorca',
+  'bilbao',
+  'coruna',
+  'murcia',
+  'pamplona',
 ] as const
 
 /** Ciudades con landing de due diligence (350€) */

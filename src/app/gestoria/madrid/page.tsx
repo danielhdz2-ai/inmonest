@@ -9,6 +9,7 @@ import ComprarConSeguridad from '@/components/ComprarConSeguridad'
 import CiudadHubMercado from '@/components/CiudadHubMercado'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import JsonLd from '@/components/JsonLd'
+import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
 import { GESTORIA_MADRID_FAQ } from '@/lib/gestoria-madrid-faq'
 import {
   buildFaqSchema,
@@ -411,33 +412,14 @@ export default function GestoriaMadridPage() {
           items={GESTORIA_MADRID_FAQ}
           subtitulo="Respuestas específicas para el mercado madrileño: plusvalía, ITE y compraventa entre particulares."
         />
-
-        {/* CTA Final */}
-        <section className="py-16 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              ¿Vas a comprar una vivienda en Madrid?
-            </h2>
-            <p className="text-xl text-gray-300 mb-8">
-              En el mercado más caro de España, un error puede costarte decenas de miles de euros. Contrata asesoramiento especializado y compra con total seguridad jurídica.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/gestoria/solicitar/acompanamiento-reserva-arras"
-                className="bg-[#c9a84c] text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition"
-              >
-                Contratar servicio premium
-              </Link>
-              <Link
-                href="mailto:info@inmonest.com"
-                className="border border-white/30 px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
-              >
-                Consultar por email
-              </Link>
-            </div>
-          </div>
-        </section>
       </main>
+
+      <GestoriaHubConversionFooter
+        ciudad="Madrid"
+        ciudadSlug="madrid"
+        ctaTitulo="¿Vas a comprar o alquilar en Madrid?"
+        ctaTexto="En el mercado más caro de España, un error sale caro. Empieza por el contrato que necesitas o llama a un gestor."
+      />
     </>
   )
 }

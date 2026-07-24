@@ -91,11 +91,14 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/bilbao`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/zaragoza`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/due-diligence-precompra/coruna`,   lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
-  // Hubs gestoría por ciudad (malaga/zaragoza redirigen → landings en ALQUILER_PAGES)
+  // Hubs gestoría por ciudad
   { url: `${BASE_URL}/gestoria/barcelona`,                         lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/madrid`,                            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/valencia`,                          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/gestoria/sevilla`,                           lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/gestoria/malaga`,                            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/bilbao`,                            lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/gestoria/zaragoza`,                          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/alicante`,                          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/palma`,                             lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
@@ -108,8 +111,8 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/valladolid`, lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
 
   // Gestoría — Landing pages SEO ciudad-específicas (NUEVAS - Mayo 2026 - URLs limpias)
+  // Zaragoza: hub + contrato (legacy page aún en árbol)
   { url: `${BASE_URL}/zaragoza/contrato-alquiler`,           lastModified: today, changeFrequency: 'weekly', priority: 0.8 },
-  { url: `${BASE_URL}/gestoria/sevilla`,                     lastModified: today, changeFrequency: 'weekly', priority: 0.8 },
   { url: `${BASE_URL}/granada/contrato-alquiler`,            lastModified: today, changeFrequency: 'weekly', priority: 0.8 },
 
   // Gestoría — formularios de solicitud (21 servicios)

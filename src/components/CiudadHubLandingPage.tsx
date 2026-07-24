@@ -8,6 +8,7 @@ import CiudadHubMercado from '@/components/CiudadHubMercado'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubRazones from '@/components/CiudadHubRazones'
 import ComprarConSeguridad from '@/components/ComprarConSeguridad'
+import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
 import JsonLd from '@/components/JsonLd'
 import type { CiudadHubConfig } from '@/lib/gestoria-ciudad-hub-data'
 import {
@@ -154,36 +155,14 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
         />
 
         <CiudadHubFaq ciudad={nombre} items={config.faq} subtitulo={config.faqSubtitulo} />
-
-        <section className="py-16 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">{config.ctaFinalTitulo}</h2>
-            <p className="text-xl text-gray-300 mb-8">{config.ctaFinalTexto}</p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/gestoria/solicitar/acompanamiento-reserva-arras"
-                className="bg-[#c9a84c] text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition"
-              >
-                Contratar servicio premium
-              </Link>
-              <a
-                href="tel:+34745022862"
-                className="border border-white/30 px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
-              >
-                Llamar: 745 022 862
-              </a>
-              <a
-                href={`https://wa.me/34745022862?text=${encodeURIComponent(`Hola, necesito gestoría inmobiliaria en ${nombre}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-white/30 px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
-              >
-                WhatsApp
-              </a>
-            </div>
-          </div>
-        </section>
       </main>
+
+      <GestoriaHubConversionFooter
+        ciudad={nombre}
+        ciudadSlug={slug}
+        ctaTitulo={config.ctaFinalTitulo}
+        ctaTexto={config.ctaFinalTexto}
+      />
     </>
   )
 }

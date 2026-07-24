@@ -8,6 +8,7 @@ import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
 import CiudadHubVentajasOnline from '@/components/CiudadHubVentajasOnline'
 import ComprarConSeguridad from '@/components/ComprarConSeguridad'
+import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
 import { GESTORIA_PRECIOS } from '@/lib/gestoria-servicios-destacados'
 
 const BASE_URL = 'https://inmonest.com'
@@ -323,34 +324,12 @@ export default function GestoriaSevillaPage() {
 
       <CiudadHubExtras ciudad="Sevilla" hubSlug="sevilla" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Sevilla" />
 
-      {/* CTA Final */}
-      <section className="bg-gradient-to-br from-[#2e1900] to-[#5a3200] text-white py-16 sm:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-6">
-            ¿Necesitas un contrato inmobiliario en Sevilla?
-          </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Más de 200 clientes en Andalucía confían en nuestros abogados. Sin desplazamientos, sin esperas. 
-            Servicio 100% online con la garantía de profesionales colegiados.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/gestoria/solicitar/contrato-alquiler"
-              className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-transform transform hover:scale-105"
-            >
-              Contrato Alquiler LAU - {GESTORIA_PRECIOS.contratoAlquiler}€
-            </Link>
-            <a
-              href="https://wa.me/34745022862?text=Hola,%20necesito%20un%20contrato%20inmobiliario%20en%20Sevilla"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-8 py-4 rounded-full bg-green-600 hover:bg-green-700 text-white font-bold text-lg shadow-xl transition-all"
-            >
-              💬 WhatsApp: 745 022 862
-            </a>
-          </div>
-        </div>
-      </section>
+      <GestoriaHubConversionFooter
+        ciudad="Sevilla"
+        ciudadSlug="sevilla"
+        ctaTitulo="¿Necesitas un contrato inmobiliario en Sevilla?"
+        ctaTexto="Más de 200 clientes en Andalucía confían en nosotros. Empieza por alquiler o arras, o llama a un gestor."
+      />
 
       {/* Enlaces internos SEO */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 border-t border-gray-200">

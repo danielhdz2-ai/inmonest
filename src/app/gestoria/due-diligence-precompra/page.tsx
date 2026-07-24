@@ -5,6 +5,10 @@ import Navbar from '@/components/NavbarServer'
 import GestorContactBanner from '@/components/GestorContactBanner'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
+import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
+import TrackedContactLink from '@/components/TrackedContactLink'
+import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -513,7 +517,28 @@ export default function DueDiligencePrecompraPage() {
       </section>
 
 
-      <GestorContactBanner />
+      <LlamaGestorBanner
+        variant="strip"
+        title="¿Firmaste arras? Habla con un gestor antes de escriturar"
+        subtitle="Te explicamos la due diligence sin compromiso. Luego decides si contratas."
+        whatsappMessage="Hola, firmé arras y necesito due diligence pre-compra"
+      />
+
+      <section className="py-12 px-4 bg-[#fdf8ee] border-y border-[#e8d48a]">
+        <div className="max-w-lg mx-auto bg-white rounded-2xl border border-[#e8d48a] p-5 sm:p-6 shadow-sm">
+          <GestoriaPideInfoForm
+            ciudad="España"
+            servicio="due diligence pre-compra"
+            precioLabel="350€"
+          />
+        </div>
+      </section>
+
+      <GestorContactBanner
+        whatsappMessage="Hola, firmé arras y necesito due diligence pre-compra"
+        title="¿Listo para verificar antes de escriturar?"
+        subtitle="Te llamamos, resolvemos dudas y te explicamos el pack de 350€ sin compromiso"
+      />
       <TestimoniosSection landing="due-diligence" />
 
       {/* CTA Final */}
@@ -532,20 +557,38 @@ export default function DueDiligencePrecompraPage() {
             >
               Contratar por 350€ →
             </Link>
-            <a
+            <TrackedContactLink
+              event="click_whatsapp"
+              city="due-diligence"
               href="https://wa.me/34745022862?text=Hola,%20firm%C3%A9%20arras%20y%20necesito%20due%20diligence"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 text-white px-10 py-4 rounded-lg font-bold text-lg hover:bg-green-600 transition shadow-lg"
             >
-              💬 WhatsApp
-            </a>
+              WhatsApp
+            </TrackedContactLink>
+            <TrackedContactLink
+              event="click_phone"
+              city="due-diligence"
+              href="tel:+34745022862"
+              className="border border-white/40 text-white px-10 py-4 rounded-lg font-bold text-lg hover:bg-white/10 transition shadow-lg"
+            >
+              Llamar 745 022 862
+            </TrackedContactLink>
           </div>
           <p className="mt-6 text-sm opacity-75">
             ✓ IVA incluido · ✓ Informe en 3-5 días · ✓ Análisis en 48h
           </p>
         </div>
       </section>
+
+      <div className="h-20 md:hidden" aria-hidden />
+      <StickyMobileContratoCta
+        ciudad="España"
+        ciudadSlug="due-diligence"
+        servicio="due-diligence"
+        whatsappMessage="Hola, firmé arras y necesito due diligence pre-compra"
+      />
 
     </>
   )

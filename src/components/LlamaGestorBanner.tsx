@@ -25,7 +25,7 @@ function PhoneIcon({ className }: { className?: string }) {
 export default function LlamaGestorBanner({
   ciudad,
   gestorNombre,
-  whatsappMessage = 'Hola, quiero vender mi piso a particular y necesito un gestor',
+  whatsappMessage = 'Hola, necesito información sobre gestoría inmobiliaria',
   variant = 'full',
   title,
   subtitle,
@@ -35,7 +35,7 @@ export default function LlamaGestorBanner({
     ? `Llama a ${gestorNombre}, tu gestor${ciudad ? ` en ${ciudad}` : ''}`
     : `Llama a tu gestor inmobiliario${ciudad ? ` en ${ciudad}` : ''} ahora`
   const defaultSubtitle =
-    'Te explicamos el proceso de venta, resolvemos dudas y te asignamos gestor en menos de 24h. Sin compromiso.'
+    'Te explicamos el proceso, resolvemos dudas y te informamos sin compromiso. Tú decides si contratas.'
 
   if (variant === 'strip') {
     return (

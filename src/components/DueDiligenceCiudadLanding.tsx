@@ -6,6 +6,10 @@ import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import JsonLd from '@/components/JsonLd'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import LlamaGestorBanner from '@/components/LlamaGestorBanner'
+import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
+import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
+import TrackedContactLink from '@/components/TrackedContactLink'
 import type { DueDiligenceCiudadConfig } from '@/lib/due-diligence-ciudad-data'
 import {
   DUE_DILIGENCE_CIUDADES_LIST,
@@ -397,22 +401,47 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
       </section>
 
       {/* Contacto */}
+      <LlamaGestorBanner
+        variant="strip"
+        ciudad={nombre}
+        title={`¿Firmaste arras en ${nombre}? Habla con un gestor`}
+        subtitle="Te explicamos la due diligence sin compromiso. Luego decides si contratas."
+        whatsappMessage={`Hola, firmé arras y necesito due diligence pre-compra en ${nombre}`}
+      />
+
+      <section className="py-12 px-4 bg-[#fdf8ee] border-y border-[#e8d48a]">
+        <div className="max-w-lg mx-auto bg-white rounded-2xl border border-[#e8d48a] p-5 sm:p-6 shadow-sm">
+          <GestoriaPideInfoForm
+            ciudad={nombre}
+            servicio="due diligence pre-compra"
+            precioLabel={`${DUE_DILIGENCE_PRECIO}€`}
+          />
+        </div>
+      </section>
+
       <section className="py-14 px-4 bg-[#1a2f1c] text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-3">Habla con un gestor especializado</h2>
           <p className="text-white/80 mb-8">Primera consulta sin compromiso. Te explicamos el proceso y resolvemos tus dudas.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={`tel:${PHONE}`} className="px-8 py-3 rounded-lg bg-white text-[#1a2f1c] font-semibold hover:bg-gray-100 transition-colors">
+            <TrackedContactLink
+              event="click_phone"
+              city={slug}
+              href={`tel:${PHONE}`}
+              className="px-8 py-3 rounded-lg bg-white text-[#1a2f1c] font-semibold hover:bg-gray-100 transition-colors"
+            >
               745 022 862
-            </a>
-            <a
+            </TrackedContactLink>
+            <TrackedContactLink
+              event="click_whatsapp"
+              city={slug}
               href={`https://wa.me/${WA}?text=${waText}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-3 rounded-lg border border-white/40 font-semibold hover:bg-white/10 transition-colors"
             >
               WhatsApp
-            </a>
+            </TrackedContactLink>
           </div>
         </div>
       </section>
@@ -442,12 +471,20 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
             <Link href={SOLICITAR_URL} className="px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors">
               Contratar ahora — {DUE_DILIGENCE_PRECIO}€
             </Link>
-            <a href={`tel:${PHONE}`} className="px-8 py-4 rounded-lg border border-white/30 font-semibold hover:bg-white/10 transition-colors">
+            <TrackedContactLink
+              event="click_phone"
+              city={slug}
+              href={`tel:${PHONE}`}
+              className="px-8 py-4 rounded-lg border border-white/30 font-semibold hover:bg-white/10 transition-colors"
+            >
               745 022 862
-            </a>
+            </TrackedContactLink>
           </div>
         </div>
       </section>
+
+      <div className="h-20 md:hidden" aria-hidden />
+      <StickyMobileContratoCta ciudad={nombre} ciudadSlug={slug} servicio="due-diligence" />
     </>
   )
 }

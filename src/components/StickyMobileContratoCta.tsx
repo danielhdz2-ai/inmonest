@@ -2,20 +2,37 @@
 
 import TrackedContactLink from '@/components/TrackedContactLink'
 
+type Servicio = 'alquiler' | 'arras' | 'gestoria' | 'due-diligence'
+
 type Props = {
   ciudad: string
   ciudadSlug: string
-  servicio: 'alquiler' | 'arras'
+  servicio: Servicio
+  whatsappMessage?: string
 }
 
 const WA = '34745022862'
 
-export default function StickyMobileContratoCta({ ciudad, ciudadSlug, servicio }: Props) {
-  const waText = encodeURIComponent(
-    servicio === 'alquiler'
-      ? `Hola, necesito info sobre el contrato de alquiler en ${ciudad}`
-      : `Hola, necesito info sobre el contrato de arras en ${ciudad}`,
-  )
+function defaultWa(servicio: Servicio, ciudad: string) {
+  switch (servicio) {
+    case 'alquiler':
+      return `Hola, necesito info sobre el contrato de alquiler en ${ciudad}`
+    case 'arras':
+      return `Hola, necesito info sobre el contrato de arras en ${ciudad}`
+    case 'due-diligence':
+      return `Hola, firmé arras y necesito due diligence pre-compra en ${ciudad}`
+    default:
+      return `Hola, necesito gestoría inmobiliaria en ${ciudad}`
+  }
+}
+
+export default function StickyMobileContratoCta({
+  ciudad,
+  ciudadSlug,
+  servicio,
+  whatsappMessage,
+}: Props) {
+  const waText = encodeURIComponent(whatsappMessage ?? defaultWa(servicio, ciudad))
 
   return (
     <div
