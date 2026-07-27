@@ -217,6 +217,7 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
                   ciudad={config.nombre}
                   servicio="contrato de arras penitenciales"
                   precioLabel={`${precio}€`}
+                  serviceKey="contrato-arras"
                 />
               </div>
               <Link

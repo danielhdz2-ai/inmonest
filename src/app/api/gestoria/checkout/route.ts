@@ -108,6 +108,11 @@ export async function POST(req: NextRequest) {
     ? '/gestoria/carga-documentos'
     : '/mi-cuenta/contratos'
 
+  const successQuery =
+    successPath === '/mi-cuenta/contratos'
+      ? 'pago=1&session_id={CHECKOUT_SESSION_ID}'
+      : 'session_id={CHECKOUT_SESSION_ID}'
+
   // Llamada directa a la API REST de Stripe con fetch nativo (sin SDK)
   const params = new URLSearchParams()
   params.set('mode', 'payment')
@@ -116,7 +121,7 @@ export async function POST(req: NextRequest) {
   params.set('line_items[0][price_data][unit_amount]', String(service.price_eur * 100))
   params.set('line_items[0][price_data][product_data][name]', service.name)
   params.set('line_items[0][price_data][product_data][description]', 'Inmonest — Gestoría inmobiliaria')
-  params.set('success_url', `${BASE_URL}${successPath}?session_id={CHECKOUT_SESSION_ID}`)
+  params.set('success_url', `${BASE_URL}${successPath}?${successQuery}`)
   params.set('cancel_url', `${BASE_URL}/gestoria/error?service_key=${encodeURIComponent(service_key)}&service_name=${encodeURIComponent(service.name)}&price=${service.price_eur}`)
   params.set('locale', 'es')
   params.set('payment_method_types[0]', 'card')

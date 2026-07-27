@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { sendEmail, emailGestoriaCliente, ADMIN_EMAIL } from '@/lib/email'
+import { createAdminClient } from '@/lib/supabase/admin'
+import { sendEmail, baseLayout } from '@/lib/email'
 import { getIP } from '@/lib/rate-limit'
 import { verifyBotSubmission, validateHumanFields } from '@/lib/verify-bot'
+import {
+  buildAuthRedirectUrl,
+  buildGestoriaPanelUrl,
+} from '@/lib/gestoria-leads'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const RESEND_API = 'https://api.resend.com/emails'
-const NOTIFY_TO = 'info@inmonest.com'
+const NOTIFY_TO = process.env.CONTACT_NOTIFY_EMAIL ?? 'info@inmonest.com'
 const DUPLICATE_WINDOW_MIN = 30
 
 export async function POST(req: NextRequest) {
@@ -20,7 +24,9 @@ export async function POST(req: NextRequest) {
   const ip = getIP(req)
   const botCheck = await verifyBotSubmission(body, ip)
   if (!botCheck.allowed) {
-    if (botCheck.isHoneypot) return NextResponse.json({ ok: true })
+    if (botCheck.isHoneypot) {
+      return NextResponse.json({ ok: true, redirect: buildGestoriaPanelUrl({ lead: true }) })
+    }
     return NextResponse.json({ error: botCheck.error }, { status: botCheck.status })
   }
 
@@ -46,127 +52,74 @@ export async function POST(req: NextRequest) {
   }
 
   const supabase = await createClient()
-
-  // Evitar duplicados recientes (mismo email + servicio)
-  const since = new Date(Date.now() - DUPLICATE_WINDOW_MIN * 60_000).toISOString()
   const normalizedEmail = client_email.trim().toLowerCase()
-  const { data: recent } = await supabase
+  const serviceKey = service_key.trim()
+
+  const since = new Date(Date.now() - DUPLICATE_WINDOW_MIN * 60_000).toISOString()
+  const admin = createAdminClient()
+  const { data: recent } = await admin
     .from('gestoria_requests')
     .select('id')
     .eq('client_email', normalizedEmail)
-    .eq('service_key', service_key.trim())
+    .eq('service_key', serviceKey)
     .gte('created_at', since)
     .limit(1)
 
-  if (recent && recent.length > 0) {
-    return NextResponse.json(
-      { error: 'Ya tienes una solicitud reciente para este servicio. Revisa tu email o espera unos minutos.' },
-      { status: 429 },
-    )
-  }
-
-  // Obtener usuario autenticado si existe
   const { data: { user } } = await supabase.auth.getUser()
 
-  const { error } = await supabase.from('gestoria_requests').insert({
-    service_key:  service_key.trim(),
+  if (recent && recent.length > 0) {
+    const redirect = user
+      ? buildGestoriaPanelUrl({ lead: true })
+      : buildAuthRedirectUrl('registro', { email: normalizedEmail, lead: true })
+    return NextResponse.json({ ok: true, redirect, duplicate: true })
+  }
+
+  const { error } = await admin.from('gestoria_requests').insert({
+    service_key: serviceKey,
     service_name: service_name.trim(),
-    price_eur:    parseInt(String(price_eur), 10),
-    client_name:  client_name.trim().slice(0, 120),
-    client_email: client_email.trim().toLowerCase().slice(0, 200),
+    price_eur: parseInt(String(price_eur), 10),
+    client_name: client_name.trim().slice(0, 120),
+    client_email: normalizedEmail.slice(0, 200),
     client_phone: client_phone?.trim().slice(0, 30) || null,
-    notes:        notes?.trim().slice(0, 1000) || null,
-    status:       'pending',
-    ...(user?.id ? { user_id: user.id } : {}),
+    notes: notes?.trim().slice(0, 1000) || null,
+    status: 'lead',
+    step: 0,
+    user_id: user?.id ?? null,
   })
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
 
-  // ── Email de confirmación al cliente ──────────────────────────────────────
-  sendEmail({
-    to: client_email.trim().toLowerCase(),
-    subject: `✅ Solicitud recibida — ${service_name.trim()} · Inmonest`,
-    html: emailGestoriaCliente(client_name.trim(), service_name.trim(), parseInt(String(price_eur), 10)),
-  }).catch(() => { /* no crítico */ })
-
-  // ── Enviar email de notificación a info@inmonest.com ──────────────────────
-  const RESEND_KEY = process.env.RESEND_API_KEY
-  if (RESEND_KEY) {
-    const fecha = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
-    const safeName   = client_name.trim().replace(/</g, '&lt;')
-    const safeEmail  = client_email.trim().replace(/</g, '&lt;')
-    const safePhone  = (client_phone ?? '—').replace(/</g, '&lt;')
-    const safeNotes  = (notes ?? '—').replace(/</g, '&lt;')
-    const safeService = service_name.trim().replace(/</g, '&lt;')
-
-    const html = `
-      <div style="font-family:sans-serif;max-width:600px;margin:auto;color:#222;padding:24px">
-        <div style="background:linear-gradient(to right,#7a5c1e,#c9962a);border-radius:12px;padding:20px 24px;margin-bottom:24px">
-          <h2 style="color:#fff;margin:0">📋 Nueva solicitud de gestoría</h2>
-          <p style="color:#ffedd5;margin:4px 0 0">${safeService} — Inmonest</p>
-        </div>
-        <table style="width:100%;border-collapse:collapse;font-size:14px">
-          <tr style="background:#f9fafb">
-            <td style="padding:10px 14px;font-weight:600;color:#555;width:35%">Nombre</td>
-            <td style="padding:10px 14px">${safeName}</td>
-          </tr>
-          <tr>
-            <td style="padding:10px 14px;font-weight:600;color:#555">Email</td>
-            <td style="padding:10px 14px"><a href="mailto:${safeEmail}" style="color:#c9962a">${safeEmail}</a></td>
-          </tr>
-          <tr style="background:#f9fafb">
-            <td style="padding:10px 14px;font-weight:600;color:#555">Teléfono</td>
-            <td style="padding:10px 14px">${safePhone}</td>
-          </tr>
-          <tr>
-            <td style="padding:10px 14px;font-weight:600;color:#555">Servicio</td>
-            <td style="padding:10px 14px">${safeService}</td>
-          </tr>
-          <tr style="background:#f9fafb">
-            <td style="padding:10px 14px;font-weight:600;color:#555">Precio</td>
-            <td style="padding:10px 14px"><strong>${price_eur} €</strong></td>
-          </tr>
-          <tr>
-            <td style="padding:10px 14px;font-weight:600;color:#555">Notas</td>
-            <td style="padding:10px 14px;white-space:pre-wrap">${safeNotes}</td>
-          </tr>
-          <tr style="background:#f9fafb">
-            <td style="padding:10px 14px;font-weight:600;color:#555">Fecha</td>
-            <td style="padding:10px 14px">${fecha}</td>
-          </tr>
-        </table>
-        <div style="margin-top:24px;padding:16px;background:#fffbeb;border-left:4px solid #c9962a;border-radius:0 8px 8px 0">
-          <p style="margin:0;font-size:13px;color:#92400e">
-            <strong>Acción requerida:</strong> Contactar al cliente en menos de 24 horas para confirmar detalles y proceder al pago.
-          </p>
-        </div>
-        <p style="font-size:11px;color:#9ca3af;margin-top:20px">
-          Solicitud recibida desde inmonest.com · ${fecha}
-        </p>
-      </div>
-    `
-
-    try {
-      await fetch(RESEND_API, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${RESEND_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: process.env.CONTACT_FROM_EMAIL ?? 'Inmonest Gestoría <info@inmonest.com>',
-          to: [NOTIFY_TO],
-          reply_to: safeEmail,
-          subject: `📋 Nueva solicitud — ${safeService} · ${safeName}`,
-          html,
-        }),
-      })
-    } catch {
-      // No crítico: la solicitud ya está guardada en BD
-    }
+  if (user?.id) {
+    await admin
+      .from('gestoria_requests')
+      .update({ user_id: user.id })
+      .eq('client_email', normalizedEmail)
+      .is('user_id', null)
   }
 
-  return NextResponse.json({ ok: true })
+  const fecha = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
+  sendEmail({
+    to: NOTIFY_TO,
+    subject: `📋 Nueva solicitud gestoría — ${service_name.trim()}`,
+    html: baseLayout(`
+      <h2 style="margin:0 0 12px;color:#c9962a">Nueva solicitud (lead)</h2>
+      <p style="color:#666;font-size:13px">${fecha}</p>
+      <table style="width:100%;border-collapse:collapse;font-size:14px">
+        <tr><td style="padding:8px;font-weight:600">Nombre</td><td style="padding:8px">${client_name.trim()}</td></tr>
+        <tr><td style="padding:8px;font-weight:600">Email</td><td style="padding:8px">${normalizedEmail}</td></tr>
+        <tr><td style="padding:8px;font-weight:600">Teléfono</td><td style="padding:8px">${client_phone ?? '—'}</td></tr>
+        <tr><td style="padding:8px;font-weight:600">Servicio</td><td style="padding:8px">${service_name.trim()}</td></tr>
+        <tr><td style="padding:8px;font-weight:600">Precio</td><td style="padding:8px">${price_eur} €</td></tr>
+      </table>
+    `),
+    reply_to: normalizedEmail,
+  }).catch(() => {})
+
+  const redirect = user
+    ? buildGestoriaPanelUrl({ lead: true })
+    : buildAuthRedirectUrl('registro', { email: normalizedEmail, lead: true })
+
+  return NextResponse.json({ ok: true, redirect })
 }

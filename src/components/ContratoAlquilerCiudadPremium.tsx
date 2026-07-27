@@ -230,6 +230,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
                   ciudad={config.nombre}
                   servicio="contrato de alquiler LAU"
                   precioLabel={`${precio}€`}
+                  serviceKey={config.slug === 'barcelona' ? 'contrato-alquiler-barcelona' : 'contrato-alquiler'}
                 />
               </div>
               <Link

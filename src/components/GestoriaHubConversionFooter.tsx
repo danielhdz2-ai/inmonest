@@ -67,11 +67,12 @@ export default function GestoriaHubConversionFooter({
             </ul>
           </div>
           <div className="bg-white rounded-2xl border border-[#e8d48a] p-5 sm:p-6 shadow-sm">
-            <GestoriaPideInfoForm
-              ciudad={ciudad}
-              servicio="gestoría inmobiliaria"
-              precioLabel={`desde ${precioLau}€`}
-            />
+          <GestoriaPideInfoForm
+            ciudad={ciudad}
+            servicio="gestoría inmobiliaria"
+            precioLabel={`desde ${precioLau}€`}
+            serviceKey={ciudadSlug === 'barcelona' ? 'contrato-alquiler-barcelona' : 'contrato-alquiler'}
+          />
           </div>
         </div>
       </section>

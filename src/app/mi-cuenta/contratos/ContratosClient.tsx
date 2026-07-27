@@ -1,61 +1,33 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-
-const SERVICE_LABELS: Record<string, string> = {
-  'arras-confirmatorias':  'Contrato de Arras Confirmatorias',
-  'arras-penitenciales':   'Contrato de Arras Penitenciales',
-  'alquiler-vivienda-lau': 'Alquiler Residencial (LAU)',
-  'contrato-alquiler': 'Contrato de Alquiler (LAU)',
-  'contrato-alquiler-barcelona': 'Contrato de Alquiler LAU — Barcelona',
-  'alquiler-temporada':    'Alquiler de Temporada',
-  'opcion-compra':         'Opcion de Compra',
-  'reserva-compra':        'Reserva de Compra',
-  'rescision-alquiler':    'Rescision de Alquiler',
-  'compraventa-privada':   'Compraventa Privada',
-  'cesion-derechos':       'Cesion de Derechos',
-  'alquiler-habitacion':   'Alquiler de Habitacion',
-  'liquidacion-fianza':    'Liquidacion de Fianza',
-}
-
-const STEP_INFO = [
-  { n: 1, label: 'Pago recibido',       desc: 'Tu pago ha sido procesado',          icon: '💳', color: 'bg-blue-100 text-blue-700'   },
-  { n: 2, label: 'Docs recibidos',      desc: 'Documentacion recibida y revisada',   icon: '📋', color: 'bg-purple-100 text-purple-700' },
-  { n: 3, label: 'En elaboracion',      desc: 'Tu contrato esta siendo preparado',   icon: '⚙️', color: 'bg-amber-100 text-amber-700'  },
-  { n: 4, label: 'Entregado',           desc: 'Contrato listo para descargar',       icon: '✅', color: 'bg-green-100 text-green-700'  },
-]
-
-const DOC_DEFS = [
-  { key: 'dni',                  label: 'DNI / CIF',                      desc: 'Ambas caras en un PDF o imagen',           icon: '🪪' },
-  { key: 'nomina',               label: 'Nomina',                         desc: 'Ultimas 3 nominas (PDF)',                  icon: '💼' },
-  { key: 'escrituras',           label: 'Escrituras',                     desc: 'Escritura de propiedad del inmueble',      icon: '📜' },
-  { key: 'nota-simple',          label: 'Nota Simple',                    desc: 'Del Registro de la Propiedad',             icon: '🏛️' },
-  { key: 'contrato-alquiler',    label: 'Contrato de Alquiler/Arras',     desc: 'Contrato firmado o borrador',              icon: '📋' },
-  { key: 'cert-energetico',      label: 'Certificado Energetico',         desc: 'Certificado de eficiencia energetica',     icon: '⚡' },
-  { key: 'cedula-habitabilidad', label: 'Cedula de Habitabilidad',        desc: 'Cedula de habitabilidad vigente',          icon: '🏠' },
-  { key: 'facturas',             label: 'Facturas',                       desc: 'Facturas de suministros u otros',          icon: '🧾' },
-  { key: 'otro',                 label: 'Otros documentos',               desc: 'Cualquier otro documento relevante',       icon: '📄' },
-]
-
-const STATUS_CONFIG: Record<string, { label: string; color: string; icon: string }> = {
-  uploaded:  { label: 'Subido',     color: 'bg-blue-100 text-blue-700',   icon: '📤' },
-  reviewing: { label: 'En revision', color: 'bg-amber-100 text-amber-700', icon: '🔍' },
-  validated: { label: 'Validado',   color: 'bg-green-100 text-green-700', icon: '✅' },
-  rejected:  { label: 'Rechazado',  color: 'bg-red-100 text-red-700',     icon: '❌' },
-}
+import GestoriaLeadPanel from '@/components/GestoriaLeadPanel'
+import GestoriaPaidPanel from '@/components/GestoriaPaidPanel'
+import type { PartesFormData } from '@/components/GestoriaPartesForm'
+import { isLeadStatus, isPaidStatus } from '@/lib/gestoria-leads'
+import { WORKFLOW_STEPS } from '@/lib/gestoria-client-progress'
+import { validateUploadFile } from '@/lib/gestoria-upload'
+import { uploadFileWithProgress } from '@/lib/gestoria-upload-client'
+import { useBotProtection } from '@/hooks/useBotProtection'
 
 interface Contrato {
   id: string
   session_id: string | null
   service_key: string
+  service_name: string | null
   client_name: string | null
+  client_email?: string | null
   amount_eur: number | null
   status: string
   step: number | null
   paid_at: string | null
   contract_path: string | null
+  contract_delivered_at?: string | null
+  expected_delivery_date?: string | null
+  assigned_to?: string | null
+  created_at?: string | null
 }
 
 interface UserDoc {
@@ -65,33 +37,58 @@ interface UserDoc {
   status: string
   uploaded_at: string
   notes: string | null
+  gestoria_request_id?: string | null
+  partes_data?: Record<string, unknown> | null
 }
 
 interface Props {
   contratos: Contrato[]
   userDocs: UserDoc[]
   userId: string
+  userEmail: string
 }
 
-type TabId = 'historial' | 'documentos'
+type TabId = 'servicio' | 'historial'
 
-export default function ContratosClient({ contratos, userDocs, userId }: Props) {
-  const [tab, setTab] = useState<TabId>('historial')
-  const [docs, setDocs] = useState<UserDoc[]>(userDocs)
+export default function ContratosClient({ contratos, userDocs: initialDocs, userEmail }: Props) {
+  const hasPaidService = contratos.some((c) => isPaidStatus(c.status, c.paid_at))
+  const [tab, setTab] = useState<TabId>(hasPaidService ? 'servicio' : 'historial')
+  const [docs, setDocs] = useState<UserDoc[]>(initialDocs)
   const [downloading, setDownloading] = useState<string | null>(null)
-  const [uploading, setUploading]     = useState<string | null>(null)
-  const [paying, setPaying]           = useState<string | null>(null)
+  const [uploading, setUploading] = useState<string | null>(null)
+  const [uploadProgress, setUploadProgress] = useState<number | null>(null)
+  const [paying, setPaying] = useState<string | null>(null)
+  const [activePaidId, setActivePaidId] = useState<string | null>(null)
+  const [uploadFeedback, setUploadFeedback] = useState<{ type: 'error' | 'success'; message: string } | null>(null)
+  const { getProtectionPayload } = useBotProtection()
+
+  const leads = useMemo(
+    () => contratos.filter((c) => isLeadStatus(c.status, c.paid_at)),
+    [contratos],
+  )
+  const paidContratos = useMemo(
+    () => contratos.filter((c) => isPaidStatus(c.status, c.paid_at)),
+    [contratos],
+  )
+  const primaryLead = leads[0] ?? null
+  const activePaid = paidContratos.find((c) => c.id === activePaidId) ?? paidContratos[0] ?? null
+
+  const showPagoBanner =
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('pago') === '1'
+  const showLeadBanner =
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('lead') === '1'
 
   async function handlePagar(contrato: Contrato) {
     setPaying(contrato.id)
     try {
-      const res  = await fetch('/api/gestoria/checkout', {
+      const res = await fetch('/api/gestoria/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          service_key:  contrato.service_key,
-          client_name:  contrato.client_name ?? '',
-          client_email: '',
+          service_key: contrato.service_key,
+          client_name: contrato.client_name ?? '',
+          client_email: userEmail || contrato.client_email || '',
+          ...getProtectionPayload(),
         }),
       })
       const data = await res.json()
@@ -100,16 +97,12 @@ export default function ContratosClient({ contratos, userDocs, userId }: Props) 
       setPaying(null)
     }
   }
-  const [selectedDocType, setSelectedDocType] = useState(DOC_DEFS[0].key)
-  const [pendingFile, setPendingFile]         = useState<File | null>(null)
-  const newDocInputRef = useRef<HTMLInputElement | null>(null)
-  const fileRefs = useRef<Record<string, HTMLInputElement | null>>({}) // kept for potential future per-key inputs
 
   async function handleDownload(contrato: Contrato) {
     if (!contrato.contract_path) return
     setDownloading(contrato.id)
     try {
-      const res  = await fetch(`/api/dashboard/download-contract?request_id=${contrato.id}`)
+      const res = await fetch(`/api/dashboard/download-contract?request_id=${contrato.id}`)
       const data = await res.json()
       if (data.url) window.open(data.url, '_blank')
     } finally {
@@ -117,177 +110,307 @@ export default function ContratosClient({ contratos, userDocs, userId }: Props) 
     }
   }
 
-  async function handleUploadDoc(docKey: string, file: File) {
+  async function handleUploadDoc(docKey: string, file: File, requestId?: string) {
+    const targetRequestId = requestId ?? activePaid?.id
+    if (!targetRequestId) {
+      setUploadFeedback({ type: 'error', message: 'Selecciona un servicio activo' })
+      return
+    }
+
+    const check = validateUploadFile(file.name, file.type, file.size)
+    if (!check.ok) {
+      setUploadFeedback({ type: 'error', message: check.error })
+      return
+    }
+
+    setUploadFeedback(null)
     setUploading(docKey)
+    setUploadProgress(0)
     try {
-      // 1. Obtener signed upload URL
       const urlRes = await fetch('/api/documentos/upload-url', {
-        method:  'POST',
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ doc_key: docKey, file_name: file.name, mime_type: file.type }),
+        body: JSON.stringify({
+          doc_key: docKey,
+          file_name: file.name,
+          mime_type: file.type,
+          file_size: file.size,
+          gestoria_request_id: targetRequestId,
+        }),
       })
-      const { signedUrl, path, error } = await urlRes.json()
-      if (error || !signedUrl) throw new Error(error ?? 'No se obtuvo URL')
+      const { signedUrl, path, contentType, error } = await urlRes.json()
+      if (error || !signedUrl) throw new Error(error ?? 'No se obtuvo URL de subida')
 
-      // 2. Upload directo
-      const uploadRes = await fetch(signedUrl, {
-        method:  'PUT',
-        headers: { 'Content-Type': file.type },
-        body:    file,
-      })
-      if (!uploadRes.ok) throw new Error('Error al subir')
+      await uploadFileWithProgress(
+        signedUrl,
+        file,
+        contentType ?? check.mime,
+        (state) => setUploadProgress(state.percent),
+      )
 
-      // 3. Registrar
-      const regRes  = await fetch('/api/documentos/registrar', {
-        method:  'POST',
+      const regRes = await fetch('/api/documentos/registrar', {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ doc_key: docKey, file_name: file.name, storage_path: path }),
+        body: JSON.stringify({
+          doc_key: docKey,
+          file_name: file.name,
+          storage_path: path,
+          gestoria_request_id: targetRequestId,
+        }),
       })
       const regData = await regRes.json()
+      if (!regRes.ok) throw new Error(regData.error ?? 'No se pudo registrar el documento')
+
       if (regData.doc) {
-        setDocs(prev => {
-          const exists = prev.findIndex(d => d.doc_key === docKey)
-          if (exists >= 0) { const n = [...prev]; n[exists] = regData.doc; return n }
+        setDocs((prev) => {
+          const exists = prev.findIndex(
+            (d) => d.doc_key === docKey && d.gestoria_request_id === targetRequestId,
+          )
+          if (exists >= 0) {
+            const n = [...prev]
+            n[exists] = regData.doc
+            return n
+          }
           return [...prev, regData.doc]
         })
+        setUploadFeedback({ type: 'success', message: 'Documento subido correctamente' })
       }
     } catch (err) {
-      alert(err instanceof Error ? err.message : 'Error al subir el documento')
+      setUploadFeedback({
+        type: 'error',
+        message: err instanceof Error ? err.message : 'Error al subir el documento',
+      })
+    } finally {
+      setUploading(null)
+      setUploadProgress(null)
+    }
+  }
+
+  async function handleSubmitPartes(data: PartesFormData) {
+    if (!activePaid?.id) {
+      setUploadFeedback({ type: 'error', message: 'Selecciona un servicio activo' })
+      return
+    }
+
+    setUploadFeedback(null)
+    setUploading('partes')
+    try {
+      const res = await fetch('/api/documentos/partes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          gestoria_request_id: activePaid.id,
+          partes: data,
+        }),
+      })
+      const result = await res.json()
+      if (!res.ok) throw new Error(result.error ?? 'No se pudieron guardar los datos')
+
+      if (result.doc) {
+        setDocs((prev) => {
+          const exists = prev.findIndex(
+            (d) => d.doc_key === 'partes' && d.gestoria_request_id === activePaid.id,
+          )
+          if (exists >= 0) {
+            const n = [...prev]
+            n[exists] = result.doc
+            return n
+          }
+          return [...prev, result.doc]
+        })
+        setUploadFeedback({ type: 'success', message: 'Datos de las partes guardados' })
+      }
+    } catch (err) {
+      setUploadFeedback({
+        type: 'error',
+        message: err instanceof Error ? err.message : 'Error al guardar',
+      })
     } finally {
       setUploading(null)
     }
   }
 
   return (
-    <div className="space-y-6">
-      {/* Tabs */}
-      <div className="flex gap-1 bg-gray-100 p-1 rounded-xl w-fit">
-        {([
-          { id: 'historial',   label: '📄 Historial de compras' },
-          { id: 'documentos',  label: '📤 Mi documentacion' },
-        ] as const).map(t => (
+    <div className="space-y-4 sm:space-y-6">
+      {uploadFeedback && (
+        <div
+          className={`rounded-xl px-4 py-3 text-sm ${
+            uploadFeedback.type === 'error'
+              ? 'bg-red-50 border border-red-200 text-red-800'
+              : 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+          }`}
+          role="alert"
+        >
+          {uploadFeedback.message}
+        </div>
+      )}
+      {showPagoBanner && (
+        <div className="relative overflow-hidden rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-white p-5">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-200/30 rounded-full blur-3xl -mr-10 -mt-10" />
+          <div className="relative flex items-start gap-4">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-white text-lg flex-shrink-0">✓</span>
+            <div>
+              <p className="font-bold text-emerald-900 text-base">¡Pago confirmado!</p>
+              <p className="text-sm text-emerald-800/90 mt-1">
+                Tu servicio está activo. Completa el checklist de documentos abajo para que empecemos a redactar tu contrato.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showLeadBanner && primaryLead && (
+        <div className="bg-[#fdf8ee] border border-[#e8d48a] rounded-2xl p-4 text-sm text-[#5c4a1a]">
+          <p className="font-semibold">Bienvenido a tu área de gestoría</p>
+          <p className="mt-0.5 opacity-90">
+            Hemos registrado tu interés. Contrata cuando quieras o espera nuestra llamada.
+          </p>
+        </div>
+      )}
+
+      {primaryLead && !hasPaidService && (
+        <GestoriaLeadPanel
+          lead={primaryLead}
+          paying={paying === primaryLead.id}
+          onPay={() => handlePagar(primaryLead)}
+        />
+      )}
+
+      {(hasPaidService || paidContratos.length > 0 || primaryLead) && (
+        <div className={`gap-1 bg-gray-100/80 p-1 rounded-xl w-full sm:w-fit ${hasPaidService ? 'grid grid-cols-2 sm:flex' : 'flex'}`}>
+          {hasPaidService && (
+            <button
+              type="button"
+              onClick={() => setTab('servicio')}
+              className={`px-3 sm:px-4 py-2.5 sm:py-2 rounded-lg text-sm font-semibold transition-all min-h-[44px] touch-manipulation ${
+                tab === 'servicio'
+                  ? 'bg-white text-[#c9962a] shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Mi servicio activo
+            </button>
+          )}
           <button
-            key={t.id}
-            onClick={() => setTab(t.id)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              tab === t.id ? 'bg-white text-[#c9962a] shadow-sm' : 'text-gray-600 hover:text-gray-900'
+            type="button"
+            onClick={() => setTab('historial')}
+            className={`px-3 sm:px-4 py-2.5 sm:py-2 rounded-lg text-sm font-semibold transition-all min-h-[44px] touch-manipulation ${
+              tab === 'historial'
+                ? 'bg-white text-[#c9962a] shadow-sm'
+                : 'text-gray-600 hover:text-gray-900'
             }`}
           >
-            {t.label}
+            Historial
           </button>
-        ))}
-      </div>
+        </div>
+      )}
 
-      {/* ── HISTORIAL ─────────────────────────────────────────────────── */}
-      {tab === 'historial' && (
-        <div>
-          {/* Banner tras nueva solicitud */}
-          {typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('solicitud') === '1' && (
-            <div className="bg-green-50 border border-green-200 rounded-2xl p-4 flex items-start gap-3 mb-4">
-              <span className="text-xl flex-shrink-0">✅</span>
-              <div className="text-sm text-green-800">
-                <p className="font-semibold">¡Solicitud recibida!</p>
-                <p className="text-green-700 mt-0.5">Tu solicitud ha sido registrada. Completa el pago para que nuestro equipo empiece a redactar tu contrato.</p>
-              </div>
+      {tab === 'servicio' && activePaid && (
+        <div className="space-y-4">
+          {paidContratos.length > 1 && (
+            <div className="flex flex-wrap gap-2">
+              {paidContratos.map((c) => (
+                <button
+                  key={c.id}
+                  type="button"
+                  onClick={() => setActivePaidId(c.id)}
+                  className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors ${
+                    c.id === activePaid.id
+                      ? 'bg-[#0d1a0f] text-white border-[#0d1a0f]'
+                      : 'bg-white text-gray-600 border-gray-200 hover:border-[#c9962a]'
+                  }`}
+                >
+                  {c.service_name ?? c.service_key.replace(/-/g, ' ')}
+                </button>
+              ))}
             </div>
           )}
-          {contratos.length === 0 ? (
-            <div className="bg-white rounded-2xl border border-gray-200 p-16 text-center">
+          <GestoriaPaidPanel
+            contrato={activePaid}
+            userDocs={docs}
+            uploading={uploading}
+            uploadProgress={uploadProgress}
+            downloading={downloading === activePaid.id}
+            onUpload={(docKey, file) => handleUploadDoc(docKey, file, activePaid.id)}
+            onSubmitPartes={handleSubmitPartes}
+            onDownload={() => handleDownload(activePaid)}
+            onUploadError={(message) => setUploadFeedback({ type: 'error', message })}
+          />
+        </div>
+      )}
+
+      {tab === 'historial' && (
+        <div>
+          {paidContratos.length === 0 && !primaryLead ? (
+            <div className="bg-white rounded-2xl border border-gray-200 p-8 sm:p-16 text-center">
               <div className="relative w-full h-40 rounded-xl overflow-hidden mb-6">
                 <Image src="/interior3.jpg" alt="" fill className="object-cover opacity-40" />
               </div>
               <div className="text-4xl mb-3">📄</div>
-              <h2 className="text-lg font-semibold text-gray-700 mb-2">Sin contratos aun</h2>
-              <p className="text-sm text-gray-400 mb-6">Contrata nuestros servicios de gestoria para redactar tus contratos legalmente.</p>
-              <Link href="/gestoria" className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
-                Ver gestoria →
+              <h2 className="text-lg font-semibold text-gray-700 mb-2">Sin contratos aún</h2>
+              <p className="text-sm text-gray-400 mb-6">
+                Contrata nuestros servicios de gestoría para redactar tus contratos legalmente.
+              </p>
+              <Link
+                href="/gestoria"
+                className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
+              >
+                Ver gestoría →
               </Link>
             </div>
+          ) : paidContratos.length === 0 ? (
+            <p className="text-sm text-gray-500 text-center py-8">
+              Cuando completes el pago, tu servicio aparecerá en &quot;Mi servicio activo&quot;.
+            </p>
           ) : (
-            <div className="space-y-4">
-              {contratos.map(c => {
-                const currentStep = c.step ?? 1
+            <div className="space-y-3">
+              {paidContratos.map((c) => {
+                const step = Math.min(c.step ?? 1, 4)
                 return (
-                  <div key={c.id} className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-sm transition-shadow">
-                    {/* Header */}
-                    <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-                      <div>
-                        <h3 className="font-semibold text-gray-900 text-base">
-                          {SERVICE_LABELS[c.service_key] ?? c.service_key.replace(/-/g, ' ')}
-                        </h3>
-                        <p className="text-xs text-gray-400 mt-0.5">
-                          {c.paid_at ? new Date(c.paid_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}
-                          {c.client_name ? ` · ${c.client_name}` : ''}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <span className="text-lg font-bold text-[#c9962a]">
-                          {c.amount_eur ? `${c.amount_eur} EUR` : ''}
-                        </span>
-                        {/* Contrato entregado: descargar */}
-                        {c.contract_path ? (
-                          <button
-                            onClick={() => handleDownload(c)}
-                            disabled={downloading === c.id}
-                            className="flex items-center gap-1.5 bg-[#c9962a] hover:bg-[#b8841e] text-white text-xs font-semibold px-3 py-2 rounded-lg transition-colors disabled:opacity-60"
-                          >
-                            {downloading === c.id ? (
-                              <span className="animate-spin w-3 h-3 border-2 border-white border-t-transparent rounded-full" />
-                            ) : (
-                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                              </svg>
-                            )}
-                            Descargar
-                          </button>
-                        ) : c.status === 'pending' && !c.paid_at ? (
-                          /* Solicitud sin pago: mostrar botón Pagar ahora */
-                          <button
-                            onClick={() => handlePagar(c)}
-                            disabled={paying === c.id}
-                            className="flex items-center gap-1.5 bg-green-600 hover:bg-green-700 text-white text-xs font-semibold px-3 py-2 rounded-lg transition-colors disabled:opacity-60"
-                          >
-                            {paying === c.id ? (
-                              <span className="animate-spin w-3 h-3 border-2 border-white border-t-transparent rounded-full" />
-                            ) : (
-                              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                              </svg>
-                            )}
-                            Pagar ahora
-                          </button>
-                        ) : (
-                          <span className="text-xs bg-gray-100 text-gray-400 px-3 py-2 rounded-lg">En preparacion</span>
-                        )}
-                      </div>
+                  <div
+                    key={c.id}
+                    className="bg-white rounded-xl border border-gray-200 px-5 py-4 flex flex-wrap items-center justify-between gap-3 hover:shadow-sm transition-shadow"
+                  >
+                    <div>
+                      <p className="font-semibold text-gray-900 text-sm">
+                        {c.service_name ?? c.service_key.replace(/-/g, ' ')}
+                      </p>
+                      <p className="text-xs text-gray-400 mt-0.5">
+                        {c.paid_at
+                          ? new Date(c.paid_at).toLocaleDateString('es-ES', {
+                              day: 'numeric',
+                              month: 'short',
+                              year: 'numeric',
+                            })
+                          : ''}
+                        {' · '}
+                        Paso {step} de 4 — {WORKFLOW_STEPS[step - 1]?.label}
+                      </p>
                     </div>
-                    {/* Progress */}
-                    <div className="px-6 py-4">
-                      <div className="flex items-center gap-2">
-                        {STEP_INFO.map((s, i) => (
-                          <div key={s.n} className="flex items-center gap-2 flex-1">
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm flex-shrink-0 font-semibold transition-all ${
-                              currentStep > s.n  ? 'bg-green-500 text-white' :
-                              currentStep === s.n ? 'bg-[#c9962a] text-white shadow-md shadow-amber-200 ring-2 ring-amber-200' :
-                              'bg-gray-100 text-gray-400'
-                            }`}>
-                              {currentStep > s.n ? '✓' : s.n}
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <p className={`text-xs font-medium truncate ${currentStep >= s.n ? 'text-gray-800' : 'text-gray-400'}`}>
-                                {s.label}
-                              </p>
-                            </div>
-                            {i < STEP_INFO.length - 1 && (
-                              <div className={`h-0.5 w-4 flex-shrink-0 rounded ${currentStep > s.n ? 'bg-green-400' : 'bg-gray-200'}`} />
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                      {currentStep < 4 && (
-                        <p className="text-xs text-gray-400 mt-2">
-                          {STEP_INFO[currentStep - 1]?.desc}
-                        </p>
+                    <div className="flex items-center gap-3">
+                      {c.amount_eur != null && (
+                        <span className="text-sm font-bold text-[#c9962a]">{c.amount_eur} €</span>
+                      )}
+                      {c.contract_path ? (
+                        <button
+                          type="button"
+                          onClick={() => handleDownload(c)}
+                          disabled={downloading === c.id}
+                          className="text-xs font-semibold text-[#c9962a] hover:underline"
+                        >
+                          Descargar
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setActivePaidId(c.id)
+                            setTab('servicio')
+                          }}
+                          className="text-xs font-semibold bg-[#0d1a0f] text-white px-3 py-1.5 rounded-lg hover:bg-[#1a2e1c]"
+                        >
+                          Ver checklist
+                        </button>
                       )}
                     </div>
                   </div>
@@ -295,136 +418,6 @@ export default function ContratosClient({ contratos, userDocs, userId }: Props) 
               })}
             </div>
           )}
-        </div>
-      )}
-
-      {/* ── DOCUMENTACION ─────────────────────────────────────────────── */}
-      {tab === 'documentos' && (
-        <div className="space-y-5">
-          {/* Banner informativo */}
-          <div className="bg-blue-50 border border-blue-200 rounded-2xl p-4 flex items-start gap-3">
-            <span className="text-xl flex-shrink-0">ℹ️</span>
-            <div className="text-sm text-blue-800">
-              <p className="font-semibold mb-1">Zona segura de entrega de documentos</p>
-              <p>Sube aqui tu documentacion para que nuestro equipo pueda revisar y validar tu identidad. Todos los archivos se almacenan de forma cifrada.</p>
-            </div>
-          </div>
-
-          {/* ── Subir nuevo documento ── */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-5">
-            <h3 className="font-semibold text-gray-900 text-sm mb-4">Subir nuevo documento</h3>
-            <div className="flex flex-col sm:flex-row gap-3">
-              {/* Selector tipo */}
-              <div className="flex-1">
-                <label className="block text-xs text-gray-500 mb-1">Tipo de documento</label>
-                <select
-                  value={selectedDocType}
-                  onChange={e => { setSelectedDocType(e.target.value); setPendingFile(null) }}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-[#c9962a]/40"
-                >
-                  {DOC_DEFS.map(d => (
-                    <option key={d.key} value={d.key}>{d.icon} {d.label}</option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Selector archivo */}
-              <div className="flex-1">
-                <label className="block text-xs text-gray-500 mb-1">Archivo</label>
-                <button
-                  type="button"
-                  onClick={() => newDocInputRef.current?.click()}
-                  className="w-full border border-dashed border-gray-300 hover:border-[#c9962a] rounded-xl px-3 py-2.5 text-sm text-left transition-colors"
-                >
-                  {pendingFile
-                    ? <span className="text-gray-800 truncate block">{pendingFile.name}</span>
-                    : <span className="text-gray-400">Seleccionar PDF / imagen…</span>}
-                </button>
-                <input
-                  ref={newDocInputRef}
-                  type="file"
-                  accept=".pdf,.jpg,.jpeg,.png,.webp"
-                  className="hidden"
-                  onChange={e => setPendingFile(e.target.files?.[0] ?? null)}
-                />
-              </div>
-
-              {/* Botón subir */}
-              <div className="flex items-end">
-                <button
-                  disabled={!pendingFile || uploading === selectedDocType}
-                  onClick={async () => {
-                    if (!pendingFile) return
-                    await handleUploadDoc(selectedDocType, pendingFile)
-                    setPendingFile(null)
-                    if (newDocInputRef.current) newDocInputRef.current.value = ''
-                  }}
-                  className="w-full sm:w-auto px-5 py-2.5 bg-[#c9962a] hover:bg-[#b8841e] disabled:opacity-50 text-white text-sm font-semibold rounded-xl transition-colors"
-                >
-                  {uploading === selectedDocType ? (
-                    <span className="flex items-center gap-2">
-                      <span className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full" />
-                      Subiendo…
-                    </span>
-                  ) : 'Subir'}
-                </button>
-              </div>
-            </div>
-            {/* Hint del tipo seleccionado */}
-            {(() => { const def = DOC_DEFS.find(d => d.key === selectedDocType); return def ? <p className="text-xs text-gray-400 mt-2">{def.desc}</p> : null })()}
-          </div>
-
-          {/* ── Documentos ya subidos ── */}
-          {docs.length > 0 && (
-            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
-              <div className="px-5 py-4 border-b border-gray-100">
-                <h3 className="font-semibold text-gray-900 text-sm">Mis documentos</h3>
-              </div>
-              <div className="divide-y divide-gray-100">
-                {docs.map(doc => {
-                  const def = DOC_DEFS.find(d => d.key === doc.doc_key)
-                  const cfg = STATUS_CONFIG[doc.status] ?? STATUS_CONFIG.uploaded
-                  return (
-                    <div key={doc.id} className="flex items-center justify-between px-5 py-3 gap-4">
-                      <div className="flex items-center gap-3 min-w-0">
-                        <span className="text-xl flex-shrink-0">{def?.icon ?? '📄'}</span>
-                        <div className="min-w-0">
-                          <p className="text-sm font-medium text-gray-800">{def?.label ?? doc.doc_key}</p>
-                          <p className="text-xs text-gray-400 truncate">{doc.file_name}</p>
-                          {doc.notes && <p className="text-xs text-gray-500 mt-0.5">{doc.notes}</p>}
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-3 flex-shrink-0">
-                        <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold ${cfg.color}`}>
-                          <span>{cfg.icon}</span>{cfg.label}
-                        </span>
-                        {doc.status !== 'validated' && (
-                          <button
-                            onClick={() => { setSelectedDocType(doc.doc_key); newDocInputRef.current?.click() }}
-                            className="text-xs text-[#c9962a] hover:underline whitespace-nowrap"
-                          >
-                            Reemplazar
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          )}
-
-          {/* Banner decorativo */}
-          <div className="relative overflow-hidden rounded-2xl h-28">
-            <Image src="/decorado1.jpg" alt="" fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a0f]/80 to-transparent flex items-center pl-6">
-              <div className="text-white">
-                <p className="text-xs font-medium text-green-300 mb-1">Seguridad</p>
-                <p className="font-semibold text-base">Tus archivos estan protegidos</p>
-                <p className="text-xs text-gray-300">Cifrado en reposo y en transito</p>
-              </div>
-            </div>
-          </div>
         </div>
       )}
     </div>

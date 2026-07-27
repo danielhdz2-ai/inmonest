@@ -269,8 +269,8 @@ export async function POST(req: NextRequest) {
               </div>
               <p style="color:#374151;font-size:14px">Nuestro equipo te contactará en las próximas <strong>24 horas</strong> para coordinar la entrega de documentos.</p>
               <div style="text-align:center;margin:28px 0">
-                <a href="${BASE_URL}/mis-documentos" style="background:#c9962a;color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;display:inline-block">
-                  Ver mi zona de documentos →
+                <a href="${BASE_URL}/mi-cuenta/contratos?pago=1" style="background:#c9962a;color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;display:inline-block">
+                  Ver mi panel de gestoría →
                 </a>
               </div>
               <p style="color:#9ca3af;font-size:12px;text-align:center">¿Tienes dudas? Escríbenos a <a href="mailto:${NOTIFY_EMAIL}" style="color:#c9962a">${NOTIFY_EMAIL}</a></p>

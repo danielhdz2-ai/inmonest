@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { sendEmail, emailBienvenida } from '@/lib/email'
-import { getRedirectUrl } from '@/lib/admin'
+import { getRedirectUrl, isAdminEmail } from '@/lib/admin'
+import { safeInternalPath } from '@/lib/gestoria-leads'
 
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
@@ -30,8 +31,10 @@ export async function GET(request: Request) {
         }).catch(() => { /* no crítico */ })
       }
 
-      // Redirigir a /admin si es admin, sino usar next o /mi-cuenta por defecto
-      const redirectUrl = getRedirectUrl(email) || next || '/mi-cuenta'
+      const nextPath = safeInternalPath(next)
+      const redirectUrl = isAdminEmail(email)
+        ? '/admin'
+        : (nextPath ?? getRedirectUrl(email))
       return NextResponse.redirect(`${origin}${redirectUrl}`)
     }
   }

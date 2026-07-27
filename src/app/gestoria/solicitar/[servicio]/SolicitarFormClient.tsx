@@ -54,8 +54,11 @@ export default function SolicitarFormClient({ servicioSlug, servicioNombre, serv
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Error al enviar la solicitud')
 
-      // Redirigir al panel de contratos donde aparece el método de pago
-      router.push('/mi-cuenta/contratos?solicitud=1')
+      if (data.redirect) {
+        router.push(data.redirect)
+        return
+      }
+      router.push('/mi-cuenta/contratos?lead=1')
     } catch (err: unknown) {
       setErrMsg(err instanceof Error ? err.message : 'Error al enviar')
       setStatus('error')

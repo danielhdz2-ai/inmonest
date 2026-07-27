@@ -1,43 +1,83 @@
 'use client'
 
-import { useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { getRedirectUrl } from '@/lib/admin'
+import { getRedirectUrl, isAdminEmail } from '@/lib/admin'
+import { safeInternalPath } from '@/lib/gestoria-leads'
 import SocialAuthButtons from '@/components/SocialAuthButtons'
 
-export default function LoginPage() {
+function LoginForm() {
+  const searchParams = useSearchParams()
+  const nextParam = safeInternalPath(searchParams.get('next'))
+  const emailParam = searchParams.get('email') ?? ''
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (emailParam) setEmail(emailParam)
+  }, [emailParam])
+
+  const oauthRedirect = nextParam
+    ? `/auth/callback?next=${encodeURIComponent(nextParam)}`
+    : '/auth/callback'
+
+  const registroHref = (() => {
+    const q = new URLSearchParams()
+    if (nextParam) q.set('next', nextParam)
+    if (email.trim()) q.set('email', email.trim())
+    const qs = q.toString()
+    return qs ? `/registro?${qs}` : '/registro'
+  })()
 
   async function handlePasswordLogin(e: React.FormEvent) {
     e.preventDefault()
     if (!email.trim() || !password.trim()) return
     setLoading(true)
     setError(null)
-    
+
     const supabase = createClient()
     const { data, error } = await supabase.auth.signInWithPassword({
       email: email.trim().toLowerCase(),
       password: password.trim(),
     })
-    
+
     if (error) {
       setError('Email o contraseña incorrectos')
       setLoading(false)
     } else {
-      // Redirigir a /admin si es admin, sino a /mi-cuenta
-      const redirectUrl = getRedirectUrl(data.user?.email)
-      window.location.href = redirectUrl
+      const userEmail = data.user?.email
+      if (isAdminEmail(userEmail)) {
+        window.location.href = '/admin'
+        return
+      }
+      if (nextParam) {
+        window.location.href = nextParam
+        return
+      }
+      try {
+        const r = await fetch('/api/gestoria/panel-redirect')
+        if (r.ok) {
+          const { url } = await r.json() as { url?: string | null }
+          if (url) {
+            window.location.href = url
+            return
+          }
+        }
+      } catch {
+        /* fallback */
+      }
+      window.location.href = getRedirectUrl(userEmail)
     }
   }
 
   return (
     <div className="w-full max-w-sm">
       <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
-        {/* Cabecera */}
         <div className="text-center mb-6">
           <h1 className="text-2xl font-black text-gray-900 mb-1">
             Inicia sesión
@@ -47,7 +87,6 @@ export default function LoginPage() {
           </p>
         </div>
 
-        {/* Badges de beneficios */}
         <div className="flex gap-2 justify-center flex-wrap mb-6">
           {[
             { icon: '📢', text: '2 anuncios gratis' },
@@ -60,20 +99,17 @@ export default function LoginPage() {
           ))}
         </div>
 
-        {/* Botones OAuth Social */}
-        <SocialAuthButtons 
-          redirectTo="/auth/callback"
+        <SocialAuthButtons
+          redirectTo={oauthRedirect}
           onError={setError}
         />
 
-        {/* Divisor */}
         <div className="flex items-center gap-3 my-5">
           <div className="flex-1 h-px bg-gray-200" />
           <span className="text-xs text-gray-400">o con email</span>
           <div className="flex-1 h-px bg-gray-200" />
         </div>
 
-        {/* Formulario */}
         <form onSubmit={handlePasswordLogin} className="space-y-3">
           <div>
             <label htmlFor="email" className="block text-xs font-medium text-gray-600 mb-1">
@@ -125,7 +161,6 @@ export default function LoginPage() {
           </button>
         </form>
 
-        {/* Texto legal */}
         <p className="text-center text-[11px] text-gray-400 mt-4">
           Al continuar aceptas nuestros{' '}
           <Link href="/terminos" className="underline hover:text-gray-600">términos</Link>
@@ -136,12 +171,20 @@ export default function LoginPage() {
         <div className="mt-4 pt-4 border-t border-gray-100 text-center">
           <p className="text-xs text-gray-500">
             ¿Primera vez?{' '}
-            <Link href="/registro" className="text-[#c9962a] font-semibold hover:underline">
+            <Link href={registroHref} className="text-[#c9962a] font-semibold hover:underline">
               Crea tu cuenta gratis
             </Link>
           </p>
         </div>
       </div>
     </div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div className="w-full max-w-sm h-96 animate-pulse bg-gray-100 rounded-2xl" />}>
+      <LoginForm />
+    </Suspense>
   )
 }

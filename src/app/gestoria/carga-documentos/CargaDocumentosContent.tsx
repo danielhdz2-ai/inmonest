@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import { MAX_UPLOAD_BYTES, formatFileSize, storageUploadHeaders, validateUploadFile } from '@/lib/gestoria-upload'
 
 interface UploadEntry {
   signedUrl: string
@@ -81,6 +82,13 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
   }, [sessionId])
 
   const setFile = (key: DocKey, file: File | null) => {
+    if (file) {
+      const check = validateUploadFile(file.name, file.type, file.size)
+      if (!check.ok) {
+        alert(check.error)
+        return
+      }
+    }
     setFiles(prev => ({ ...prev, [key]: { file, state: 'idle' } }))
   }
 
@@ -106,7 +114,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
       try {
         const res = await fetch(urls[doc.key].signedUrl, {
           method: 'PUT',
-          headers: { 'Content-Type': 'application/pdf' },
+          headers: storageUploadHeaders('application/pdf'),
           body: file,
         })
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
@@ -349,7 +357,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
           )}
         </button>
         <p className="text-center text-xs text-gray-400 mt-3">
-          Archivos cifrados en tránsito · Solo PDF · Máx. 20 MB por archivo
+          Archivos cifrados en tránsito · Solo PDF · Hasta {formatFileSize(MAX_UPLOAD_BYTES)} por archivo
         </p>
       </div>
     </main>

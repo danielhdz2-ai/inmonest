@@ -63,7 +63,7 @@ export async function GET(req: NextRequest) {
     const path = `${session_id}/${doc}.pdf`
     const { data, error } = await supabase.storage
       .from('gestoria-docs')
-      .createSignedUploadUrl(path)
+      .createSignedUploadUrl(path, { upsert: true })
 
     if (error || !data) {
       console.error('[upload-urls] Error generando URL para', doc, ':', error?.message)

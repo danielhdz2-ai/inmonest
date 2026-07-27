@@ -415,6 +415,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
             ciudad={nombre}
             servicio="due diligence pre-compra"
             precioLabel={`${DUE_DILIGENCE_PRECIO}€`}
+            serviceKey="pack-due-diligence-precompra"
           />
         </div>
       </section>

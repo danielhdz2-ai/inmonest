@@ -530,6 +530,7 @@ export default function DueDiligencePrecompraPage() {
             ciudad="España"
             servicio="due diligence pre-compra"
             precioLabel="350€"
+            serviceKey="pack-due-diligence-precompra"
           />
         </div>
       </section>

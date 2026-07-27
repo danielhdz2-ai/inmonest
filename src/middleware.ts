@@ -149,6 +149,7 @@ export async function middleware(request: NextRequest) {
   // Formularios de gestoría (solicitudes y checkout)
   if (
     pathname === '/api/gestoria/solicitar' ||
+    pathname === '/api/gestoria/lead' ||
     pathname === '/api/gestoria/checkout'
   ) {
     const rateLimitResponse = await applyRateLimit(gestoriaLimit, identifier, request)
