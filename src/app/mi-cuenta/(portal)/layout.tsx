@@ -39,10 +39,14 @@ export default async function PortalLayout({
         .in('listing_id', anuncioIds)
     : { count: 0 }
 
-  const { data: convs } = await supabase
+  const { data: convs, error: convErr } = await supabase
     .from('conversations')
     .select('buyer_id, unread_buyer, unread_seller')
     .or(`buyer_id.eq.${user!.id},seller_id.eq.${user!.id}`)
+
+  if (convErr) {
+    console.warn('[portal/layout] conversations:', convErr.message)
+  }
 
   const unreadConvs = (convs ?? []).reduce((acc, c) => {
     return acc + (c.buyer_id === user!.id ? (c.unread_buyer ?? 0) : (c.unread_seller ?? 0))

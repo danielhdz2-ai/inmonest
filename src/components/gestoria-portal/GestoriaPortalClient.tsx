@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import GestoriaLeadPanel from '@/components/GestoriaLeadPanel'
 import GestoriaPaidPanel from '@/components/GestoriaPaidPanel'
 import GestoriaPortalShell from '@/components/gestoria-portal/GestoriaPortalShell'
@@ -71,27 +72,26 @@ export default function GestoriaPortalClient({
     return p.checklist.filter((c) => c.required && (c.state === 'pending' || c.state === 'rejected')).length
   }, [activePaid, docs])
 
-  const showPagoBanner =
-    typeof window !== 'undefined' &&
-    (new URLSearchParams(window.location.search).get('pago') === '1' || hasPaidService)
+  const searchParams = useSearchParams()
+  const pagoParam = searchParams.get('pago')
+  const sessionIdParam = searchParams.get('session_id')
+  const awaitingPaymentLink =
+    pagoParam === '1' || (sessionIdParam?.startsWith('cs_') ?? false)
+  const showPagoBanner = pagoParam === '1' || hasPaidService
 
   const navigate = useCallback((next: GestoriaPortalSection) => {
     setSection(next)
-    if (typeof window !== 'undefined') {
-      const url = new URL(window.location.href)
-      url.searchParams.set('v', next)
-      window.history.replaceState({}, '', url.toString())
-    }
+    const url = new URL(window.location.href)
+    url.searchParams.set('v', next)
+    window.history.replaceState({}, '', url.toString())
   }, [])
 
   useEffect(() => {
-    if (typeof window === 'undefined') return
-    const params = new URLSearchParams(window.location.search)
-    setSection(parseSection(params.get('v')))
-    if (params.get('pago') === '1' && !params.get('v')) {
+    setSection(parseSection(searchParams.get('v')))
+    if (pagoParam === '1' && !searchParams.get('v')) {
       setSection('expediente')
     }
-  }, [])
+  }, [pagoParam, searchParams])
 
   useEffect(() => {
     setContratos(initialContratos)
@@ -104,11 +104,7 @@ export default function GestoriaPortalClient({
   useEffect(() => {
     const hasPaid = initialContratos.some((c) => isPaidStatus(c.status, c.paid_at))
     if (hasPaid) return
-
-    const params = new URLSearchParams(window.location.search)
-    const awaitingLink =
-      params.get('pago') === '1' || params.get('session_id')?.startsWith('cs_')
-    if (!awaitingLink) return
+    if (!awaitingPaymentLink) return
 
     let cancelled = false
 
@@ -130,7 +126,7 @@ export default function GestoriaPortalClient({
       cancelled = true
       window.clearTimeout(timer)
     }
-  }, [initialContratos])
+  }, [initialContratos, awaitingPaymentLink])
 
   async function handlePagar(contrato: GestoriaContrato) {
     setPaying(contrato.id)
@@ -300,11 +296,6 @@ export default function GestoriaPortalClient({
   }
 
   /* ── Activar expediente tras pago (reintentos automáticos) ── */
-  const awaitingPaymentLink =
-    typeof window !== 'undefined' &&
-    (new URLSearchParams(window.location.search).get('pago') === '1' ||
-      new URLSearchParams(window.location.search).get('session_id')?.startsWith('cs_'))
-
   if (!hasPaidService && awaitingPaymentLink) {
     return (
       <GestoriaPortalShell displayName={displayName} activeSection="inicio" onSectionChange={navigate}>
@@ -367,7 +358,7 @@ export default function GestoriaPortalClient({
           contratos={contratos}
           userDocs={docs}
           activeContrato={activePaid}
-          showPagoBanner={showPagoBanner && typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('pago') === '1'}
+          showPagoBanner={showPagoBanner && pagoParam === '1'}
           onNavigate={navigate}
         />
       )}

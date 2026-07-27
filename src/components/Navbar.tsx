@@ -75,7 +75,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             </Link>
             {isLoggedIn ? (
               <Link
-                href="/mi-cuenta/contratos"
+                href="/mi-cuenta"
                 className="inline-flex items-center justify-center gap-1.5 rounded-full border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap min-h-[36px] sm:min-h-[40px] px-2.5 sm:px-4 py-1.5 text-xs sm:text-sm touch-manipulation"
                 aria-label="Mi cuenta"
               >
@@ -159,7 +159,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           </Link>
           {isLoggedIn ? (
             <Link
-              href="/mi-cuenta/contratos"
+              href="/mi-cuenta"
               onClick={close}
               className="block text-center py-2.5 rounded-full border border-[#c9962a]/40 text-[#c9962a] text-sm font-medium hover:bg-[#fef9e8] transition-colors"
             >

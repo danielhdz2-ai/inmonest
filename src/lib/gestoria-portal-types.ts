@@ -54,5 +54,15 @@ export const GESTORIA_PORTAL_SECTIONS: {
   { id: 'publicar', label: 'Publicar piso', shortLabel: 'Publicar', icon: '📢', desc: 'Anuncio sin comisiones' },
 ]
 
+export const GESTORIA_ORDER_SELECT_CORE =
+  'id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at'
+
+/** Columnas opcionales — pueden no existir si faltan migraciones 040/041 */
 export const GESTORIA_ORDER_SELECT =
-  'id,session_id,service_key,service_name,client_name,client_email,client_phone,amount_eur,status,step,paid_at,contract_path,contract_delivered_at,expected_delivery_date,assigned_to,notes,created_at'
+  `${GESTORIA_ORDER_SELECT_CORE},client_phone,contract_delivered_at,expected_delivery_date,assigned_to,notes`
+
+export const USER_DOCS_SELECT_CORE =
+  'id,doc_key,file_name,status,uploaded_at,notes'
+
+export const USER_DOCS_SELECT =
+  `${USER_DOCS_SELECT_CORE},gestoria_request_id,partes_data`

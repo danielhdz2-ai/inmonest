@@ -1,8 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { fetchGestoriaOrdersForUser } from '@/lib/gestoria-link-user'
-import { GESTORIA_ORDER_SELECT } from '@/lib/gestoria-portal-types'
-import GestoriaPortalClient from '@/components/gestoria-portal/GestoriaPortalClient'
+import { fetchGestoriaOrdersForUser, fetchGestoriaOrdersForUserSafe } from '@/lib/gestoria-link-user'
+import { USER_DOCS_SELECT, USER_DOCS_SELECT_CORE } from '@/lib/gestoria-portal-types'
+import GestoriaPortalClientSuspense from '@/components/gestoria-portal/GestoriaPortalClientSuspense'
 import GestoriaPanelBootstrap from '@/components/GestoriaPanelBootstrap'
 import { Suspense } from 'react'
 import { redirect } from 'next/navigation'
@@ -22,22 +22,18 @@ export default async function ContratosPage({
 
   const emailNorm = user.email.trim().toLowerCase()
   let contratos: Awaited<ReturnType<typeof fetchGestoriaOrdersForUser>> = []
-  let userDocs: Awaited<ReturnType<typeof fetchUserDocs>> = []
+  let userDocs: Awaited<ReturnType<typeof fetchUserDocsSafe>> = []
 
   try {
     const admin = createAdminClient()
     ;[contratos, userDocs] = await Promise.all([
       fetchGestoriaOrdersForUser(admin, user.id, emailNorm),
-      fetchUserDocs(supabase, user.id),
+      fetchUserDocsSafe(supabase, user.id),
     ])
   } catch (err) {
-    console.error('[contratos/page] admin fetch:', err)
-    contratos = await fetchContratosFallback(supabase, user.id, emailNorm)
-    const { data: fallbackDocs } = await supabase
-      .from('user_documents')
-      .select('id,doc_key,file_name,status,uploaded_at,notes,gestoria_request_id,partes_data')
-      .eq('user_id', user.id)
-    userDocs = fallbackDocs ?? []
+    console.error('[contratos/page] fetch:', err)
+    contratos = await fetchGestoriaOrdersForUserSafe(supabase, user.id, emailNorm)
+    userDocs = await fetchUserDocsSafe(supabase, user.id)
   }
 
   const isPostPayment =
@@ -64,7 +60,7 @@ export default async function ContratosPage({
       <Suspense fallback={null}>
         <GestoriaPanelBootstrap />
       </Suspense>
-      <GestoriaPortalClient
+      <GestoriaPortalClientSuspense
         contratos={contratos}
         userDocs={userDocs}
         userEmail={emailNorm}
@@ -74,35 +70,21 @@ export default async function ContratosPage({
   )
 }
 
-async function fetchContratosFallback(
-  supabase: Awaited<ReturnType<typeof createClient>>,
-  userId: string,
-  emailNorm: string,
-) {
-  const { data: byUser } = await supabase
-    .from('gestoria_requests')
-    .select(GESTORIA_ORDER_SELECT)
-    .eq('user_id', userId)
-    .order('created_at', { ascending: false })
-
-  if ((byUser ?? []).length > 0) return byUser ?? []
-
-  const { data: byEmail } = await supabase
-    .from('gestoria_requests')
-    .select(GESTORIA_ORDER_SELECT)
-    .ilike('client_email', emailNorm)
-    .order('created_at', { ascending: false })
-
-  return byEmail ?? []
-}
-
-async function fetchUserDocs(
+async function fetchUserDocsSafe(
   supabase: Awaited<ReturnType<typeof createClient>>,
   userId: string,
 ) {
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('user_documents')
-    .select('id,doc_key,file_name,status,uploaded_at,notes,gestoria_request_id,partes_data')
+    .select(USER_DOCS_SELECT)
     .eq('user_id', userId)
-  return data ?? []
+
+  if (!error) return data ?? []
+
+  const { data: fallback } = await supabase
+    .from('user_documents')
+    .select(USER_DOCS_SELECT_CORE)
+    .eq('user_id', userId)
+
+  return fallback ?? []
 }
