@@ -23,8 +23,13 @@ function hideMobileSticky(pathname: string) {
   return (
     CONTRACT_LANDING.test(pathname) ||
     GESTORIA_HUB.test(pathname) ||
-    pathname.includes('due-diligence-precompra')
+    pathname.includes('due-diligence-precompra') ||
+    pathname.startsWith('/mi-cuenta/contratos')
   )
+}
+
+function hideChatWidget(pathname: string) {
+  return pathname.startsWith('/mi-cuenta/contratos')
 }
 
 export default function ChatWidget() {
@@ -36,6 +41,9 @@ export default function ChatWidget() {
   const router = useRouter()
   const pathname = usePathname()
   const hideOnMobileSticky = hideMobileSticky(pathname ?? '')
+  const hideWidget = hideChatWidget(pathname ?? '')
+
+  if (hideWidget) return null
 
   useEffect(() => {
     if (open && messages.length === 0) {

@@ -2,12 +2,10 @@
 
 import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import GestoriaLeadPanel from '@/components/GestoriaLeadPanel'
 import GestoriaPaidPanel from '@/components/GestoriaPaidPanel'
 import type { PartesFormData } from '@/components/GestoriaPartesForm'
 import { isLeadStatus, isPaidStatus } from '@/lib/gestoria-leads'
-import { WORKFLOW_STEPS } from '@/lib/gestoria-client-progress'
 import { validateUploadFile } from '@/lib/gestoria-upload'
 import { uploadFileWithProgress } from '@/lib/gestoria-upload-client'
 import { useBotProtection } from '@/hooks/useBotProtection'
@@ -24,9 +22,6 @@ interface Contrato {
   step: number | null
   paid_at: string | null
   contract_path: string | null
-  contract_delivered_at?: string | null
-  expected_delivery_date?: string | null
-  assigned_to?: string | null
   created_at?: string | null
 }
 
@@ -48,11 +43,17 @@ interface Props {
   userEmail: string
 }
 
-type TabId = 'servicio' | 'historial'
-
 export default function ContratosClient({ contratos, userDocs: initialDocs, userEmail }: Props) {
-  const hasPaidService = contratos.some((c) => isPaidStatus(c.status, c.paid_at))
-  const [tab, setTab] = useState<TabId>(hasPaidService ? 'servicio' : 'historial')
+  const paidContratos = useMemo(
+    () => contratos.filter((c) => isPaidStatus(c.status, c.paid_at)),
+    [contratos],
+  )
+  const primaryLead = useMemo(
+    () => contratos.find((c) => isLeadStatus(c.status, c.paid_at)) ?? null,
+    [contratos],
+  )
+  const hasPaidService = paidContratos.length > 0
+
   const [docs, setDocs] = useState<UserDoc[]>(initialDocs)
   const [downloading, setDownloading] = useState<string | null>(null)
   const [uploading, setUploading] = useState<string | null>(null)
@@ -62,27 +63,15 @@ export default function ContratosClient({ contratos, userDocs: initialDocs, user
   const [uploadFeedback, setUploadFeedback] = useState<{ type: 'error' | 'success'; message: string } | null>(null)
   const { getProtectionPayload } = useBotProtection()
 
-  const leads = useMemo(
-    () => contratos.filter((c) => isLeadStatus(c.status, c.paid_at)),
-    [contratos],
-  )
-  const paidContratos = useMemo(
-    () => contratos.filter((c) => isPaidStatus(c.status, c.paid_at)),
-    [contratos],
-  )
-  const primaryLead = leads[0] ?? null
   const activePaid = paidContratos.find((c) => c.id === activePaidId) ?? paidContratos[0] ?? null
 
   const showPagoBanner =
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('pago') === '1'
-  const showLeadBanner =
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('lead') === '1'
+    typeof window !== 'undefined' &&
+    (new URLSearchParams(window.location.search).get('pago') === '1' || hasPaidService)
 
   useEffect(() => {
-    if (hasPaidService && tab === 'historial' && showPagoBanner) {
-      setTab('servicio')
-    }
-  }, [hasPaidService, showPagoBanner, tab])
+    setDocs(initialDocs)
+  }, [initialDocs])
 
   async function handlePagar(contrato: Contrato) {
     setPaying(contrato.id)
@@ -119,7 +108,7 @@ export default function ContratosClient({ contratos, userDocs: initialDocs, user
   async function handleUploadDoc(docKey: string, file: File, requestId?: string) {
     const targetRequestId = requestId ?? activePaid?.id
     if (!targetRequestId) {
-      setUploadFeedback({ type: 'error', message: 'Selecciona un servicio activo' })
+      setUploadFeedback({ type: 'error', message: 'No se encontró tu pedido activo' })
       return
     }
 
@@ -194,7 +183,7 @@ export default function ContratosClient({ contratos, userDocs: initialDocs, user
 
   async function handleSubmitPartes(data: PartesFormData) {
     if (!activePaid?.id) {
-      setUploadFeedback({ type: 'error', message: 'Selecciona un servicio activo' })
+      setUploadFeedback({ type: 'error', message: 'No se encontró tu pedido activo' })
       return
     }
 
@@ -236,211 +225,125 @@ export default function ContratosClient({ contratos, userDocs: initialDocs, user
     }
   }
 
-  return (
-    <div className="space-y-4 sm:space-y-6">
-      {uploadFeedback && (
-        <div
-          className={`rounded-xl px-4 py-3 text-sm ${
-            uploadFeedback.type === 'error'
-              ? 'bg-red-50 border border-red-200 text-red-800'
-              : 'bg-emerald-50 border border-emerald-200 text-emerald-800'
-          }`}
-          role="alert"
-        >
-          {uploadFeedback.message}
-        </div>
-      )}
-      {showPagoBanner && (
-        <div className="relative overflow-hidden rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-white p-5">
-          <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-200/30 rounded-full blur-3xl -mr-10 -mt-10" />
-          <div className="relative flex items-start gap-4">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-white text-lg flex-shrink-0">✓</span>
-            <div>
-              <p className="font-bold text-emerald-900 text-base">¡Pago confirmado!</p>
-              <p className="text-sm text-emerald-800/90 mt-1">
-                Tu servicio está activo. Completa el checklist de documentos abajo para que empecemos a redactar tu contrato.
-              </p>
+  /* ── Cliente con pago confirmado: solo checklist + subida ── */
+  if (hasPaidService && activePaid) {
+    return (
+      <div className="space-y-4">
+        {uploadFeedback && (
+          <div
+            className={`rounded-xl px-4 py-3 text-sm ${
+              uploadFeedback.type === 'error'
+                ? 'bg-red-50 border border-red-200 text-red-800'
+                : 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+            }`}
+            role="alert"
+          >
+            {uploadFeedback.message}
+          </div>
+        )}
+
+        {showPagoBanner && (
+          <div className="relative overflow-hidden rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-white p-4">
+            <div className="flex items-start gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-white text-lg flex-shrink-0">✓</span>
+              <div>
+                <p className="font-bold text-emerald-900">¡Pago confirmado!</p>
+                <p className="text-sm text-emerald-800/90 mt-1">
+                  Sube los documentos del checklist para que empecemos a redactar tu contrato.
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
 
-      {showLeadBanner && primaryLead && (
-        <div className="bg-[#fdf8ee] border border-[#e8d48a] rounded-2xl p-4 text-sm text-[#5c4a1a]">
-          <p className="font-semibold">Bienvenido a tu área de gestoría</p>
-          <p className="mt-0.5 opacity-90">
-            Hemos registrado tu interés. Contrata cuando quieras o espera nuestra llamada.
-          </p>
-        </div>
-      )}
+        {paidContratos.length > 1 && (
+          <div className="flex flex-wrap gap-2">
+            {paidContratos.map((c) => (
+              <button
+                key={c.id}
+                type="button"
+                onClick={() => setActivePaidId(c.id)}
+                className={`text-xs font-semibold px-3 py-2 rounded-full border min-h-[40px] touch-manipulation ${
+                  c.id === activePaid.id
+                    ? 'bg-[#0d1a0f] text-white border-[#0d1a0f]'
+                    : 'bg-white text-gray-600 border-gray-200'
+                }`}
+              >
+                {c.service_name ?? c.service_key.replace(/-/g, ' ')}
+              </button>
+            ))}
+          </div>
+        )}
 
-      {primaryLead && !hasPaidService && (
+        <GestoriaPaidPanel
+          contrato={activePaid}
+          userDocs={docs}
+          uploading={uploading}
+          uploadProgress={uploadProgress}
+          downloading={downloading === activePaid.id}
+          onUpload={(docKey, file) => handleUploadDoc(docKey, file, activePaid.id)}
+          onSubmitPartes={handleSubmitPartes}
+          onDownload={() => handleDownload(activePaid)}
+          onUploadError={(message) => setUploadFeedback({ type: 'error', message })}
+        />
+      </div>
+    )
+  }
+
+  /* ── Lead sin pago aún ── */
+  if (primaryLead) {
+    return (
+      <div className="space-y-4">
         <GestoriaLeadPanel
           lead={primaryLead}
           paying={paying === primaryLead.id}
           onPay={() => handlePagar(primaryLead)}
         />
-      )}
+      </div>
+    )
+  }
 
-      {(hasPaidService || paidContratos.length > 0 || primaryLead) && (
-        <div className={`gap-1 bg-gray-100/80 p-1 rounded-xl w-full sm:w-fit ${hasPaidService ? 'grid grid-cols-2 sm:flex' : 'flex'}`}>
-          {hasPaidService && (
-            <button
-              type="button"
-              onClick={() => setTab('servicio')}
-              className={`px-3 sm:px-4 py-2.5 sm:py-2 rounded-lg text-sm font-semibold transition-all min-h-[44px] touch-manipulation ${
-                tab === 'servicio'
-                  ? 'bg-white text-[#c9962a] shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Mi servicio activo
-            </button>
-          )}
-          <button
-            type="button"
-            onClick={() => setTab('historial')}
-            className={`px-3 sm:px-4 py-2.5 sm:py-2 rounded-lg text-sm font-semibold transition-all min-h-[44px] touch-manipulation ${
-              tab === 'historial'
-                ? 'bg-white text-[#c9962a] shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Historial
-          </button>
-        </div>
-      )}
+  /* ── Sin pedidos: cargando o vincular pago ── */
+  const awaitingPaymentLink =
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('pago') === '1'
 
-      {tab === 'servicio' && activePaid && (
-        <div className="space-y-4">
-          {paidContratos.length > 1 && (
-            <div className="flex flex-wrap gap-2">
-              {paidContratos.map((c) => (
-                <button
-                  key={c.id}
-                  type="button"
-                  onClick={() => setActivePaidId(c.id)}
-                  className={`text-xs font-semibold px-3 py-1.5 rounded-full border transition-colors ${
-                    c.id === activePaid.id
-                      ? 'bg-[#0d1a0f] text-white border-[#0d1a0f]'
-                      : 'bg-white text-gray-600 border-gray-200 hover:border-[#c9962a]'
-                  }`}
-                >
-                  {c.service_name ?? c.service_key.replace(/-/g, ' ')}
-                </button>
-              ))}
-            </div>
-          )}
-          <GestoriaPaidPanel
-            contrato={activePaid}
-            userDocs={docs}
-            uploading={uploading}
-            uploadProgress={uploadProgress}
-            downloading={downloading === activePaid.id}
-            onUpload={(docKey, file) => handleUploadDoc(docKey, file, activePaid.id)}
-            onSubmitPartes={handleSubmitPartes}
-            onDownload={() => handleDownload(activePaid)}
-            onUploadError={(message) => setUploadFeedback({ type: 'error', message })}
-          />
-        </div>
-      )}
+  if (awaitingPaymentLink) {
+    return (
+      <div className="bg-white rounded-2xl border border-amber-200 p-8 text-center space-y-4">
+        <div className="text-4xl">⏳</div>
+        <h2 className="text-lg font-bold text-gray-900">Vinculando tu pago…</h2>
+        <p className="text-sm text-gray-500">
+          Tu pago está confirmado. Recarga en unos segundos o contacta con nosotros si no aparece tu servicio.
+        </p>
+        <button
+          type="button"
+          onClick={() => window.location.reload()}
+          className="inline-block bg-[#c9962a] text-white text-sm font-bold px-6 py-3 rounded-xl min-h-[48px] touch-manipulation"
+        >
+          Recargar
+        </button>
+        <p className="text-xs text-gray-400">
+          <a href="mailto:info@inmonest.com" className="text-[#c9962a] underline">info@inmonest.com</a>
+          {' · '}
+          <a href="tel:+34745022862" className="text-[#c9962a] underline">745 022 862</a>
+        </p>
+      </div>
+    )
+  }
 
-      {tab === 'historial' && (
-        <div>
-          {showPagoBanner && paidContratos.length === 0 ? (
-            <div className="bg-white rounded-2xl border border-amber-200 p-8 text-center">
-              <div className="text-4xl mb-3">⏳</div>
-              <h2 className="text-lg font-semibold text-gray-900 mb-2">Vinculando tu pago…</h2>
-              <p className="text-sm text-gray-500 mb-4">
-                Estamos cargando tu servicio. Si no aparece en unos segundos, recarga la página.
-              </p>
-              <button
-                type="button"
-                onClick={() => window.location.reload()}
-                className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
-              >
-                Recargar panel
-              </button>
-            </div>
-          ) : paidContratos.length === 0 && !primaryLead ? (
-            <div className="bg-white rounded-2xl border border-gray-200 p-8 sm:p-16 text-center">
-              <div className="relative w-full h-40 rounded-xl overflow-hidden mb-6">
-                <Image src="/interior3.jpg" alt="" fill className="object-cover opacity-40" />
-              </div>
-              <div className="text-4xl mb-3">📄</div>
-              <h2 className="text-lg font-semibold text-gray-700 mb-2">Sin contratos aún</h2>
-              <p className="text-sm text-gray-400 mb-6">
-                Contrata nuestros servicios de gestoría para redactar tus contratos legalmente.
-              </p>
-              <Link
-                href="/gestoria"
-                className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
-              >
-                Ver gestoría →
-              </Link>
-            </div>
-          ) : paidContratos.length === 0 ? (
-            <p className="text-sm text-gray-500 text-center py-8">
-              Cuando completes el pago, tu servicio aparecerá en &quot;Mi servicio activo&quot;.
-            </p>
-          ) : (
-            <div className="space-y-3">
-              {paidContratos.map((c) => {
-                const step = Math.min(c.step ?? 1, 4)
-                return (
-                  <div
-                    key={c.id}
-                    className="bg-white rounded-xl border border-gray-200 px-5 py-4 flex flex-wrap items-center justify-between gap-3 hover:shadow-sm transition-shadow"
-                  >
-                    <div>
-                      <p className="font-semibold text-gray-900 text-sm">
-                        {c.service_name ?? c.service_key.replace(/-/g, ' ')}
-                      </p>
-                      <p className="text-xs text-gray-400 mt-0.5">
-                        {c.paid_at
-                          ? new Date(c.paid_at).toLocaleDateString('es-ES', {
-                              day: 'numeric',
-                              month: 'short',
-                              year: 'numeric',
-                            })
-                          : ''}
-                        {' · '}
-                        Paso {step} de 4 — {WORKFLOW_STEPS[step - 1]?.label}
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      {c.amount_eur != null && (
-                        <span className="text-sm font-bold text-[#c9962a]">{c.amount_eur} €</span>
-                      )}
-                      {c.contract_path ? (
-                        <button
-                          type="button"
-                          onClick={() => handleDownload(c)}
-                          disabled={downloading === c.id}
-                          className="text-xs font-semibold text-[#c9962a] hover:underline"
-                        >
-                          Descargar
-                        </button>
-                      ) : (
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setActivePaidId(c.id)
-                            setTab('servicio')
-                          }}
-                          className="text-xs font-semibold bg-[#0d1a0f] text-white px-3 py-1.5 rounded-lg hover:bg-[#1a2e1c]"
-                        >
-                          Ver checklist
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          )}
-        </div>
-      )}
+  return (
+    <div className="bg-white rounded-2xl border border-gray-200 p-8 text-center space-y-4">
+      <div className="text-4xl">📋</div>
+      <h2 className="text-lg font-bold text-gray-900">Aún no tienes un contrato activo</h2>
+      <p className="text-sm text-gray-500">
+        Cuando completes el pago de gestoría, aquí verás tu checklist de documentos.
+      </p>
+      <Link
+        href="/gestoria"
+        className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-bold px-6 py-3 rounded-xl min-h-[48px] touch-manipulation"
+      >
+        Ver servicios de gestoría
+      </Link>
     </div>
   )
 }

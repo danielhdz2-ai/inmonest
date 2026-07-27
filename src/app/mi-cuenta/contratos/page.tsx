@@ -24,7 +24,6 @@ export default async function ContratosPage() {
       .from('gestoria_requests')
       .update({ user_id: user.id })
       .ilike('client_email', emailNorm)
-      .is('user_id', null)
 
     ;[contratos, userDocs] = await Promise.all([
       fetchContratos(admin, user.id, emailNorm),
@@ -48,17 +47,10 @@ export default async function ContratosPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <Suspense fallback={null}>
         <GestoriaPanelBootstrap />
       </Suspense>
-      <div>
-        <p className="text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-1">Gestoría Inmonest</p>
-        <h1 className="text-xl sm:text-3xl font-bold text-gray-900">Tu panel de cliente</h1>
-        <p className="text-sm text-gray-500 mt-1">
-          Seguimiento, documentación y entrega de tu contrato
-        </p>
-      </div>
       <ContratosClient
         contratos={contratos}
         userDocs={userDocs}
@@ -81,7 +73,16 @@ async function fetchContratos(
     .order('created_at', { ascending: false })
 
   if (error) throw error
-  return data ?? []
+
+  if ((data ?? []).length > 0) return data ?? []
+
+  const { data: byIlike } = await admin
+    .from('gestoria_requests')
+    .select('id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at')
+    .ilike('client_email', emailNorm)
+    .order('created_at', { ascending: false })
+
+  return byIlike ?? []
 }
 
 async function fetchUserDocs(

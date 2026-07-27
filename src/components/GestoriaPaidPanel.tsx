@@ -199,7 +199,7 @@ export default function GestoriaPaidPanel({
         <p className="text-xs text-gray-500 mt-2 text-center px-2">{progress.stepDesc}</p>
       </div>
 
-      <div className="p-4 sm:p-8 space-y-5 sm:space-y-6 pb-28 sm:pb-8">
+      <div className="p-4 sm:p-8 space-y-5 sm:space-y-6 pb-8">
         {/* Tu gestor */}
         <div className="rounded-2xl border border-gray-100 bg-white p-4 flex gap-4 items-start shadow-sm">
           <div className="relative h-14 w-14 rounded-full overflow-hidden flex-shrink-0 ring-2 ring-[#e8d48a]">
@@ -359,7 +359,7 @@ export default function GestoriaPaidPanel({
 
       {/* Barra fija móvil — ayuda rápida si faltan docs */}
       {pendingCount > 0 && (
-        <div className="sm:hidden fixed bottom-[calc(4.25rem+env(safe-area-inset-bottom))] left-0 right-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur-md px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)]">
+        <div className="sm:hidden fixed bottom-[4.75rem] left-0 right-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur-md px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] max-w-lg mx-auto">
           <div className="flex items-center gap-3 max-w-lg mx-auto">
             <p className="text-xs text-gray-600 flex-1 leading-snug">
               <span className="font-bold text-gray-900">{pendingCount}</span> doc{pendingCount > 1 ? 's' : ''} pendiente{pendingCount > 1 ? 's' : ''}
