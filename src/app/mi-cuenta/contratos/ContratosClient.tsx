@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import GestoriaLeadPanel from '@/components/GestoriaLeadPanel'
@@ -77,6 +77,12 @@ export default function ContratosClient({ contratos, userDocs: initialDocs, user
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('pago') === '1'
   const showLeadBanner =
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('lead') === '1'
+
+  useEffect(() => {
+    if (hasPaidService && tab === 'historial' && showPagoBanner) {
+      setTab('servicio')
+    }
+  }, [hasPaidService, showPagoBanner, tab])
 
   async function handlePagar(contrato: Contrato) {
     setPaying(contrato.id)
@@ -341,7 +347,22 @@ export default function ContratosClient({ contratos, userDocs: initialDocs, user
 
       {tab === 'historial' && (
         <div>
-          {paidContratos.length === 0 && !primaryLead ? (
+          {showPagoBanner && paidContratos.length === 0 ? (
+            <div className="bg-white rounded-2xl border border-amber-200 p-8 text-center">
+              <div className="text-4xl mb-3">⏳</div>
+              <h2 className="text-lg font-semibold text-gray-900 mb-2">Vinculando tu pago…</h2>
+              <p className="text-sm text-gray-500 mb-4">
+                Estamos cargando tu servicio. Si no aparece en unos segundos, recarga la página.
+              </p>
+              <button
+                type="button"
+                onClick={() => window.location.reload()}
+                className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
+              >
+                Recargar panel
+              </button>
+            </div>
+          ) : paidContratos.length === 0 && !primaryLead ? (
             <div className="bg-white rounded-2xl border border-gray-200 p-8 sm:p-16 text-center">
               <div className="relative w-full h-40 rounded-xl overflow-hidden mb-6">
                 <Image src="/interior3.jpg" alt="" fill className="object-cover opacity-40" />

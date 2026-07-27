@@ -12,10 +12,11 @@ export async function POST() {
   }
 
   const admin = createAdminClient()
+  const emailNorm = user.email.trim().toLowerCase()
   const { error } = await admin
     .from('gestoria_requests')
     .update({ user_id: user.id })
-    .eq('client_email', user.email.toLowerCase())
+    .ilike('client_email', emailNorm)
     .is('user_id', null)
 
   if (error) {

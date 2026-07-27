@@ -8,34 +8,44 @@ export default async function ContratosPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Vincular leads anteriores (mismo email, sin user_id)
-  if (user?.email) {
-    try {
-      const admin = createAdminClient()
-      await admin
-        .from('gestoria_requests')
-        .update({ user_id: user.id })
-        .eq('client_email', user.email.toLowerCase())
-        .is('user_id', null)
-    } catch {
-      /* admin key opcional en dev */
-    }
+  if (!user?.email) {
+    return null
   }
 
-  const [
-    { data: contratos },
-    { data: userDocs },
-  ] = await Promise.all([
-    supabase
+  const emailNorm = user.email.trim().toLowerCase()
+  let contratos: Awaited<ReturnType<typeof fetchContratos>> = []
+  let userDocs: Awaited<ReturnType<typeof fetchUserDocs>> = []
+
+  try {
+    const admin = createAdminClient()
+
+    // Vincular pedidos del mismo email (pago Stripe sin sesión o email distinto en mayúsculas)
+    await admin
       .from('gestoria_requests')
-      .select('id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at')
-      .or(`client_email.eq.${user!.email},user_id.eq.${user!.id}`)
-      .order('created_at', { ascending: false }),
-    supabase
-      .from('user_documents')
-      .select('id,doc_key,file_name,status,uploaded_at,notes')
-      .eq('user_id', user!.id),
-  ])
+      .update({ user_id: user.id })
+      .ilike('client_email', emailNorm)
+      .is('user_id', null)
+
+    ;[contratos, userDocs] = await Promise.all([
+      fetchContratos(admin, user.id, emailNorm),
+      fetchUserDocs(supabase, user.id),
+    ])
+  } catch (err) {
+    console.error('[contratos/page] admin fetch:', err)
+    const [{ data: fallbackContratos }, { data: fallbackDocs }] = await Promise.all([
+      supabase
+        .from('gestoria_requests')
+        .select('id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at')
+        .or(`client_email.eq.${emailNorm},user_id.eq.${user.id}`)
+        .order('created_at', { ascending: false }),
+      supabase
+        .from('user_documents')
+        .select('id,doc_key,file_name,status,uploaded_at,notes')
+        .eq('user_id', user.id),
+    ])
+    contratos = fallbackContratos ?? []
+    userDocs = fallbackDocs ?? []
+  }
 
   return (
     <div className="space-y-6">
@@ -50,11 +60,37 @@ export default async function ContratosPage() {
         </p>
       </div>
       <ContratosClient
-        contratos={contratos ?? []}
-        userDocs={userDocs ?? []}
-        userId={user!.id}
-        userEmail={user!.email ?? ''}
+        contratos={contratos}
+        userDocs={userDocs}
+        userId={user.id}
+        userEmail={emailNorm}
       />
     </div>
   )
+}
+
+async function fetchContratos(
+  admin: ReturnType<typeof createAdminClient>,
+  userId: string,
+  emailNorm: string,
+) {
+  const { data, error } = await admin
+    .from('gestoria_requests')
+    .select('id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at')
+    .or(`client_email.eq.${emailNorm},user_id.eq.${userId}`)
+    .order('created_at', { ascending: false })
+
+  if (error) throw error
+  return data ?? []
+}
+
+async function fetchUserDocs(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  userId: string,
+) {
+  const { data } = await supabase
+    .from('user_documents')
+    .select('id,doc_key,file_name,status,uploaded_at,notes')
+    .eq('user_id', userId)
+  return data ?? []
 }
