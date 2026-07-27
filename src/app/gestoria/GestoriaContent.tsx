@@ -567,28 +567,30 @@ export default function GestoriaPage() {
 
       {/* SERVICIOS */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-extrabold text-gray-900 mb-3">Nuestros servicios</h2>
-          <p className="text-gray-500 text-base max-w-xl mx-auto">
+        <div className="text-center mb-8 sm:mb-10 px-2">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-3">Nuestros servicios</h2>
+          <p className="text-gray-500 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
             Desde 29 € hasta 687 €. Cada contrato redactado a mano por nuestros gestores, adaptado a tu situación concreta.
           </p>
         </div>
 
-        {/* Filtros por categoría */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {CATEGORIES.map(cat => (
-            <button
-              key={cat.key}
-              onClick={() => setActiveCategory(cat.key)}
-              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
-                activeCategory === cat.key
-                  ? 'bg-[#c9962a] text-white shadow-sm'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
+        {/* Filtros — scroll horizontal en móvil */}
+        <div className="-mx-4 sm:mx-0 mb-8 sm:mb-10">
+          <div className="flex gap-2 overflow-x-auto px-4 sm:px-0 pb-2 snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden sm:flex-wrap sm:justify-center">
+            {CATEGORIES.map(cat => (
+              <button
+                key={cat.key}
+                onClick={() => setActiveCategory(cat.key)}
+                className={`flex-shrink-0 snap-start px-4 py-2.5 rounded-full text-sm font-semibold transition-all min-h-[44px] touch-manipulation whitespace-nowrap ${
+                  activeCategory === cat.key
+                    ? 'bg-[#c9962a] text-white shadow-sm'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Grid de tarjetas */}

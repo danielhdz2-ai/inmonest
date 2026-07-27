@@ -36,7 +36,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
   return (
     <>
       <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-        <div className="flex items-center h-16 px-3 sm:px-5 gap-3">
+        <div className="flex items-center h-14 sm:h-16 px-2 sm:px-5 gap-1.5 sm:gap-3 min-w-0">
 
           {/* Hamburger — siempre visible */}
           <button
@@ -49,21 +49,25 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             </svg>
           </button>
 
-          {/* Logo - Solo texto */}
-          <Link href="/" className="flex items-center flex-shrink-0">
-            <span className="text-3xl font-extrabold tracking-tight leading-none">
+          {/* Logo */}
+          <Link href="/" className="flex items-center flex-shrink min-w-0">
+            <span className="text-2xl sm:text-3xl font-extrabold tracking-tight leading-none truncate">
               <span className="text-[#1a0d00]">Inmo</span><span className="text-[#c9962a]">nest</span>
             </span>
           </Link>
 
           {/* Spacer */}
-          <div className="flex-1" />
+          <div className="flex-1 min-w-0" />
 
-          {/* CTAs principales — siempre visibles */}
-          <div className="flex items-center gap-2">
+          {/* CTAs — compactos en móvil */}
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
             <Link
               href="/gestoria"
-              className="inline-flex items-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
+              className={`inline-flex items-center rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap ${
+                isLoggedIn
+                  ? 'hidden sm:inline-flex px-4 py-2 text-sm'
+                  : 'px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm'
+              }`}
             >
               Gestoría
             </Link>
@@ -75,10 +79,15 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             </Link>
             {isLoggedIn ? (
               <Link
-                href="/mi-cuenta"
-                className="inline-flex items-center px-4 py-2 rounded-full border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap"
+                href="/mi-cuenta/contratos"
+                className="inline-flex items-center justify-center gap-1.5 rounded-full border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap min-h-[36px] sm:min-h-[40px] px-2.5 sm:px-4 py-1.5 text-xs sm:text-sm"
+                aria-label="Mi cuenta"
               >
-                Mi cuenta
+                <svg className="w-4 h-4 sm:hidden flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+                <span className="hidden sm:inline">Mi cuenta</span>
+                <span className="sm:hidden">Cuenta</span>
               </Link>
             ) : (
               <Link
