@@ -55,11 +55,6 @@ const nextConfig: NextConfig = {
         destination: '/zaragoza/contrato-alquiler',
         permanent: true,
       },
-      {
-        source: '/gestoria/zaragoza',
-        destination: '/zaragoza/contrato-alquiler',
-        permanent: true,
-      },
       // Sevilla
       {
         source: '/gestoria/sevilla/gestoria-online',
@@ -80,12 +75,6 @@ const nextConfig: NextConfig = {
       {
         source: '/gestoria/granada',
         destination: '/granada/contrato-alquiler',
-        permanent: true,
-      },
-      // Málaga
-      {
-        source: '/gestoria/malaga',
-        destination: '/malaga/contrato-alquiler',
         permanent: true,
       },
       // Bilbao

@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import HoneypotField from '@/components/HoneypotField'
+import TurnstileWidget from '@/components/TurnstileWidget'
+import { useBotProtection } from '@/hooks/useBotProtection'
 
 interface Props {
   servicioSlug: string
@@ -14,6 +17,14 @@ export default function SolicitarFormClient({ servicioSlug, servicioNombre, serv
   const [form, setForm] = useState({ name: '', email: '', phone: '', notes: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle')
   const [errMsg, setErrMsg] = useState('')
+  const {
+    honeypot,
+    setHoneypot,
+    turnstileEnabled,
+    turnstileSiteKey,
+    setTurnstileToken,
+    getProtectionPayload,
+  } = useBotProtection()
 
   const set = (k: keyof typeof form, v: string) => setForm(p => ({ ...p, [k]: v }))
 
@@ -36,6 +47,7 @@ export default function SolicitarFormClient({ servicioSlug, servicioNombre, serv
           client_email: form.email,
           client_phone: form.phone,
           notes:        form.notes,
+          ...getProtectionPayload(),
         }),
       })
 
@@ -59,7 +71,8 @@ export default function SolicitarFormClient({ servicioSlug, servicioNombre, serv
         <p className="text-white/70 text-sm mt-1">Rellena el formulario y te redirigimos al pago</p>
       </div>
 
-      <form onSubmit={handleSubmit} className="p-6 space-y-5">
+      <form onSubmit={handleSubmit} className="p-6 space-y-5 relative">
+        <HoneypotField value={honeypot} onChange={setHoneypot} />
         {/* Nombre */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1.5">
@@ -134,6 +147,13 @@ export default function SolicitarFormClient({ servicioSlug, servicioNombre, serv
         </div>
 
         {/* Botón */}
+        {turnstileEnabled && (
+          <TurnstileWidget
+            siteKey={turnstileSiteKey}
+            onVerify={setTurnstileToken}
+            onExpire={() => setTurnstileToken('')}
+          />
+        )}
         <button
           type="submit"
           disabled={status === 'sending'}

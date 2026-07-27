@@ -26,6 +26,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/hipoteca`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.9 },
   { url: `${BASE_URL}/calculadora-gastos-compra`,   lastModified: today, changeFrequency: 'monthly', priority: 0.9 },
   { url: `${BASE_URL}/calculadora-gastos-alquiler`, lastModified: today, changeFrequency: 'monthly', priority: 0.9 },
+  { url: `${BASE_URL}/calculadora-ahorro-comisiones`, lastModified: today, changeFrequency: 'monthly', priority: 0.92 },
   { url: `${BASE_URL}/publicar-anuncio`,     lastModified: today, changeFrequency: 'monthly', priority: 0.8 },
   { url: `${BASE_URL}/vender-casa`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   

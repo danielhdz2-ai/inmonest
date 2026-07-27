@@ -1,6 +1,9 @@
 'use client'
 
 import { useState, FormEvent } from 'react'
+import HoneypotField from '@/components/HoneypotField'
+import TurnstileWidget from '@/components/TurnstileWidget'
+import { useBotProtection } from '@/hooks/useBotProtection'
 
 interface ContactFormProps {
   /** Asunto preseleccionado (p.ej. desde una página de producto) */
@@ -32,6 +35,15 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
   const [sending, setSending] = useState(false)
   const [sent, setSent]       = useState(false)
   const [error, setError]     = useState('')
+  const {
+    honeypot,
+    setHoneypot,
+    turnstileEnabled,
+    turnstileSiteKey,
+    setTurnstileToken,
+    getProtectionPayload,
+    resetProtection,
+  } = useBotProtection()
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -47,7 +59,7 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, ...getProtectionPayload() }),
       })
 
       if (!res.ok) {
@@ -73,7 +85,7 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
           Te responderemos en menos de 24 horas en <strong>{form.email}</strong>.
         </p>
         <button
-          onClick={() => { setSent(false); setForm({ ...INITIAL, asunto: defaultAsunto }) }}
+          onClick={() => { setSent(false); setForm({ ...INITIAL, asunto: defaultAsunto }); resetProtection() }}
           className="mt-6 text-sm text-green-600 underline hover:text-green-800 transition-colors"
         >
           Enviar otro mensaje
@@ -83,7 +95,8 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
   }
 
   return (
-    <form onSubmit={handleSubmit} className={`space-y-4 ${className}`} noValidate>
+    <form onSubmit={handleSubmit} className={`space-y-4 relative ${className}`} noValidate>
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
 
       {/* Nombre + Email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -186,6 +199,13 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
       )}
 
       {/* Submit */}
+      {turnstileEnabled && (
+        <TurnstileWidget
+          siteKey={turnstileSiteKey}
+          onVerify={setTurnstileToken}
+          onExpire={() => setTurnstileToken('')}
+        />
+      )}
       <button
         type="submit"
         disabled={sending}

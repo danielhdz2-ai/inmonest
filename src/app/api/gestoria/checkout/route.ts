@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getStripeKey } from '@/lib/stripe-key'
 import { createClient } from '@/lib/supabase/server'
+import { getIP } from '@/lib/rate-limit'
+import { verifyBotSubmission, validateHumanFields } from '@/lib/verify-bot'
 
 export const dynamic = 'force-dynamic'
 
@@ -51,11 +53,26 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  let body: { service_key?: string; client_email?: string; client_name?: string; client_phone?: string }
+  let body: {
+    service_key?: string
+    client_email?: string
+    client_name?: string
+    client_phone?: string
+    _hp?: string
+    _ts?: number | string
+    turnstile_token?: string
+  }
   try {
     body = await req.json()
   } catch {
     return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
+  }
+
+  const ip = getIP(req)
+  const botCheck = await verifyBotSubmission(body, ip)
+  if (!botCheck.allowed) {
+    if (botCheck.isHoneypot) return NextResponse.json({ url: `${BASE_URL}/gestoria/error` })
+    return NextResponse.json({ error: botCheck.error }, { status: botCheck.status })
   }
 
   // Obtener usuario autenticado (opcional — el checkout funciona también sin cuenta)
@@ -71,6 +88,14 @@ export async function POST(req: NextRequest) {
   const service = STRIPE_SERVICES[service_key]
   if (!service) {
     return NextResponse.json({ error: 'Servicio no encontrado' }, { status: 404 })
+  }
+
+  const humanError = validateHumanFields({
+    name: client_name ?? '',
+    phone: client_phone ?? '',
+  })
+  if (humanError) {
+    return NextResponse.json({ error: humanError }, { status: 422 })
   }
 
   const safeEmail = client_email?.trim().slice(0, 200) || undefined

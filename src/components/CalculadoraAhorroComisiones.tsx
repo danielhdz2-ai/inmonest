@@ -1,6 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import HoneypotField from '@/components/HoneypotField'
+import TurnstileWidget from '@/components/TurnstileWidget'
+import { gtmPush } from '@/components/GTMProvider'
+import { useBotProtection } from '@/hooks/useBotProtection'
 
 interface ResultadoCalculo {
   precioVenta: number
@@ -16,22 +20,27 @@ export default function CalculadoraAhorroComisiones() {
   const [resultado, setResultado] = useState<ResultadoCalculo | null>(null)
   const [emailEnviado, setEmailEnviado] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [errMsg, setErrMsg] = useState('')
+  const {
+    honeypot,
+    setHoneypot,
+    turnstileEnabled,
+    turnstileSiteKey,
+    setTurnstileToken,
+    getProtectionPayload,
+  } = useBotProtection()
 
   const calcularAhorro = () => {
     const precioVenta = parseFloat(precio.replace(/\./g, '').replace(',', '.'))
-    
+
     if (!precioVenta || precioVenta < 10000) {
-      alert('Por favor, introduce un precio de venta válido (mínimo 10,000€)')
+      setErrMsg('Introduce un precio de venta válido (mínimo 10.000€)')
       return
     }
 
-    // Comisión típica agencia: 3-5% (usamos 4% como promedio)
+    setErrMsg('')
     const comisionAgencia = precioVenta * 0.04
-    
-    // Costo servicio Inmonest (venta completa)
     const costoInmonest = 687
-    
-    // Ahorro total
     const ahorroTotal = comisionAgencia - costoInmonest
     const porcentajeAhorro = (ahorroTotal / comisionAgencia) * 100
 
@@ -40,52 +49,50 @@ export default function CalculadoraAhorroComisiones() {
       comisionAgencia,
       costoInmonest,
       ahorroTotal,
-      porcentajeAhorro
+      porcentajeAhorro,
     })
+    setEmailEnviado(false)
   }
 
   const enviarResultado = async () => {
     if (!email || !email.includes('@')) {
-      alert('Por favor, introduce un email válido')
+      setErrMsg('Introduce un email válido')
       return
     }
-
     if (!resultado) return
 
     setLoading(true)
+    setErrMsg('')
 
     try {
-      // TODO: Integrar con API de email marketing (Mailchimp, Brevo, etc.)
-      // Por ahora solo simulamos el envío
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
-      // Aquí iría la llamada real a tu API
-      /*
-      await fetch('/api/lead-magnet/calculadora', {
+      const res = await fetch('/api/lead-magnet/calculadora', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email,
+          email: email.trim(),
           precioVenta: resultado.precioVenta,
           ahorroCalculado: resultado.ahorroTotal,
-          timestamp: new Date().toISOString()
-        })
+          comisionAgencia: resultado.comisionAgencia,
+          costoInmonest: resultado.costoInmonest,
+          source: 'calculadora_ahorro_comisiones',
+          ...getProtectionPayload(),
+        }),
       })
-      */
+
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        throw new Error(data.error || 'No se pudo enviar el informe')
+      }
 
       setEmailEnviado(true)
-      
-      // GTM event para tracking
-      if (typeof window !== 'undefined' && (window as any).dataLayer) {
-        (window as any).dataLayer.push({
-          event: 'lead_captured',
-          lead_source: 'calculadora_ahorro',
-          lead_value: resultado.ahorroTotal
-        })
-      }
+
+      gtmPush({
+        event: 'lead_captured',
+        lead_source: 'calculadora_ahorro',
+        lead_value: resultado.ahorroTotal,
+      })
     } catch (error) {
-      console.error('Error al enviar:', error)
-      alert('Hubo un error al enviar el resultado. Por favor, inténtalo de nuevo.')
+      setErrMsg(error instanceof Error ? error.message : 'Error al enviar. Inténtalo de nuevo.')
     } finally {
       setLoading(false)
     }
@@ -96,27 +103,26 @@ export default function CalculadoraAhorroComisiones() {
       style: 'currency',
       currency: 'EUR',
       minimumFractionDigits: 0,
-      maximumFractionDigits: 0
+      maximumFractionDigits: 0,
     }).format(value)
   }
 
   const formatPrecio = (value: string) => {
-    // Eliminar caracteres no numéricos
     const numeros = value.replace(/\D/g, '')
-    
-    // Formatear con puntos de miles
     return numeros.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
   }
 
   const handlePrecioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const valor = e.target.value
-    setPrecio(formatPrecio(valor))
+    setPrecio(formatPrecio(e.target.value))
     setResultado(null)
     setEmailEnviado(false)
+    setErrMsg('')
   }
 
   return (
-    <div className="bg-gradient-to-br from-[#fef9e8] to-white rounded-2xl shadow-xl border border-[#c9962a]/20 overflow-hidden">
+    <div className="bg-gradient-to-br from-[#fef9e8] to-white rounded-2xl shadow-xl border border-[#c9962a]/20 overflow-hidden relative">
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
+
       <div className="bg-gradient-to-r from-[#c9962a] to-[#a87a20] px-6 py-8 text-center">
         <div className="text-4xl mb-3">💰</div>
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
@@ -128,7 +134,6 @@ export default function CalculadoraAhorroComisiones() {
       </div>
 
       <div className="p-6 md:p-8">
-        {/* Input precio */}
         <div className="mb-6">
           <label className="block text-sm font-semibold text-gray-700 mb-2">
             ¿Por cuánto vendes tu piso?
@@ -147,7 +152,12 @@ export default function CalculadoraAhorroComisiones() {
           </div>
         </div>
 
-        {/* Botón calcular */}
+        {errMsg && !resultado && (
+          <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2 mb-4">
+            {errMsg}
+          </p>
+        )}
+
         {!resultado && (
           <button
             onClick={calcularAhorro}
@@ -158,26 +168,21 @@ export default function CalculadoraAhorroComisiones() {
           </button>
         )}
 
-        {/* Resultado */}
         {resultado && !emailEnviado && (
           <div className="space-y-4">
-            {/* Breakdown */}
             <div className="bg-white rounded-xl border-2 border-[#c9962a]/30 p-5 space-y-3">
               <div className="flex justify-between items-center pb-3 border-b border-gray-100">
                 <span className="text-gray-600 text-sm">Precio de venta</span>
                 <span className="font-bold text-gray-900">{formatCurrency(resultado.precioVenta)}</span>
               </div>
-              
               <div className="flex justify-between items-center pb-3 border-b border-gray-100">
                 <span className="text-gray-600 text-sm">Comisión agencia (4%)</span>
                 <span className="font-semibold text-red-600">-{formatCurrency(resultado.comisionAgencia)}</span>
               </div>
-
               <div className="flex justify-between items-center pb-3 border-b border-gray-100">
                 <span className="text-gray-600 text-sm">Servicio Inmonest</span>
                 <span className="font-semibold text-green-600">-{formatCurrency(resultado.costoInmonest)}</span>
               </div>
-
               <div className="flex justify-between items-center pt-2">
                 <span className="font-bold text-gray-900">Tu ahorro total</span>
                 <span className="font-bold text-2xl text-[#c9962a]">
@@ -186,7 +191,6 @@ export default function CalculadoraAhorroComisiones() {
               </div>
             </div>
 
-            {/* Destaque ahorro */}
             <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center border border-green-200">
               <div className="text-green-600 text-5xl font-black mb-2">
                 {resultado.porcentajeAhorro.toFixed(0)}%
@@ -199,7 +203,6 @@ export default function CalculadoraAhorroComisiones() {
               </p>
             </div>
 
-            {/* Captura email */}
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200">
               <div className="text-center mb-4">
                 <div className="text-2xl mb-2">📧</div>
@@ -207,10 +210,10 @@ export default function CalculadoraAhorroComisiones() {
                   Recibe un informe detallado gratis
                 </h3>
                 <p className="text-sm text-gray-600">
-                  Te enviamos un PDF con tu cálculo personalizado + guía de venta sin comisiones
+                  Te enviamos un email con tu cálculo personalizado + guía de venta sin comisiones
                 </p>
               </div>
-              
+
               <div className="space-y-3">
                 <input
                   type="email"
@@ -219,21 +222,30 @@ export default function CalculadoraAhorroComisiones() {
                   placeholder="tu@email.com"
                   className="w-full px-4 py-3 border-2 border-blue-200 rounded-lg focus:border-blue-400 focus:outline-none"
                 />
+                {turnstileEnabled && (
+                  <TurnstileWidget
+                    siteKey={turnstileSiteKey}
+                    onVerify={setTurnstileToken}
+                    onExpire={() => setTurnstileToken('')}
+                  />
+                )}
+                {errMsg && (
+                  <p className="text-sm text-red-600">{errMsg}</p>
+                )}
                 <button
                   onClick={enviarResultado}
                   disabled={loading}
                   className="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors disabled:bg-gray-400 shadow-lg"
                 >
-                  {loading ? 'Enviando...' : 'Enviar informe gratuito'}
+                  {loading ? 'Enviando…' : 'Enviar informe gratuito'}
                 </button>
               </div>
-              
+
               <p className="text-xs text-gray-500 text-center mt-3">
                 🔒 No spam. Solo información útil sobre venta sin comisiones.
               </p>
             </div>
 
-            {/* CTA gestoría */}
             <div className="text-center pt-4 border-t border-gray-200">
               <p className="text-sm text-gray-600 mb-3">
                 ¿Quieres acompañamiento legal completo por solo 687€?
@@ -248,7 +260,6 @@ export default function CalculadoraAhorroComisiones() {
           </div>
         )}
 
-        {/* Confirmación envío */}
         {emailEnviado && (
           <div className="text-center py-8">
             <div className="text-6xl mb-4">✅</div>
@@ -276,7 +287,6 @@ export default function CalculadoraAhorroComisiones() {
           </div>
         )}
 
-        {/* Beneficios */}
         {!resultado && (
           <div className="mt-8 pt-6 border-t border-gray-200">
             <h3 className="font-bold text-gray-900 mb-4 text-center">
@@ -287,8 +297,8 @@ export default function CalculadoraAhorroComisiones() {
                 { icon: '💸', text: 'Sin comisiones' },
                 { icon: '📋', text: 'Contratos legales' },
                 { icon: '👨‍⚖️', text: 'Asesor personal' },
-                { icon: '⚡', text: 'Proceso rápido' }
-              ].map(item => (
+                { icon: '⚡', text: 'Proceso rápido' },
+              ].map((item) => (
                 <div key={item.text} className="flex items-center gap-2 bg-white rounded-lg p-3 border border-gray-100">
                   <span className="text-xl">{item.icon}</span>
                   <span className="text-gray-700 font-medium">{item.text}</span>

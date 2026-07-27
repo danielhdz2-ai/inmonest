@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -470,6 +471,13 @@ export default function GestoriaGranadaPage() {
           </Link>
         </div>
       </section>
+
+      <div className="h-20 md:hidden" aria-hidden />
+      <StickyMobileContratoCta
+        ciudad="Granada"
+        ciudadSlug="granada"
+        servicio="alquiler"
+      />
     </div>
   )
 }

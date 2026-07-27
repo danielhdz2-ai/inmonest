@@ -3,6 +3,9 @@
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { gtmPush } from '@/components/GTMProvider'
+import HoneypotField from '@/components/HoneypotField'
+import TurnstileWidget from '@/components/TurnstileWidget'
+import { useBotProtection } from '@/hooks/useBotProtection'
 
 interface Props {
   serviceKey: string
@@ -52,8 +55,15 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
   const [form, setForm] = useState({ name: '', email: '', phone: '' })
   const [status, setStatus] = useState<'idle' | 'loading' | 'sending' | 'error'>('loading')
   const [errMsg, setErrMsg] = useState('')
-  // When user is logged-in we can skip the form entirely and go straight to Stripe
   const [loggedIn, setLoggedIn] = useState(false)
+  const {
+    honeypot,
+    setHoneypot,
+    turnstileEnabled,
+    turnstileSiteKey,
+    setTurnstileToken,
+    getProtectionPayload,
+  } = useBotProtection()
 
   const set = (k: keyof typeof form, v: string) => setForm(p => ({ ...p, [k]: v }))
 
@@ -109,6 +119,7 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
           client_name:  form.name.trim().slice(0, 120),
           client_email: form.email.trim().slice(0, 200),
           client_phone: form.phone.trim().slice(0, 30),
+          ...getProtectionPayload(),
         }),
       })
       const data = await res.json()
@@ -200,7 +211,8 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
               {SPINNER} Cargando…
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+            <form onSubmit={handleSubmit} className="space-y-4 relative" noValidate>
+              <HoneypotField value={honeypot} onChange={setHoneypot} />
               <div>
                 <label className="block text-xs font-semibold text-gray-700 mb-1.5">
                   Nombre completo <span className="text-red-500">*</span>
@@ -256,6 +268,13 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
                 </p>
               )}
 
+              {turnstileEnabled && (
+                <TurnstileWidget
+                  siteKey={turnstileSiteKey}
+                  onVerify={setTurnstileToken}
+                  onExpire={() => setTurnstileToken('')}
+                />
+              )}
               <button
                 type="submit"
                 disabled={isSending}

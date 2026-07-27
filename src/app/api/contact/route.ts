@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { getIP } from '@/lib/rate-limit'
+import { verifyBotSubmission, validateHumanFields } from '@/lib/verify-bot'
 
 const RESEND_API = 'https://api.resend.com/emails'
 
@@ -8,6 +10,9 @@ interface ContactBody {
   telefono?: string
   asunto?: string
   mensaje?: string
+  _hp?: string
+  _ts?: number | string
+  turnstile_token?: string
 }
 
 function validateEmail(email: string) {
@@ -24,6 +29,13 @@ export async function POST(req: NextRequest) {
 
   const { nombre, email, telefono, asunto, mensaje } = body
 
+  const ip = getIP(req)
+  const botCheck = await verifyBotSubmission(body, ip)
+  if (!botCheck.allowed) {
+    if (botCheck.isHoneypot) return NextResponse.json({ ok: true })
+    return NextResponse.json({ error: botCheck.error }, { status: botCheck.status })
+  }
+
   if (!nombre || !mensaje) {
     return NextResponse.json({ error: 'nombre y mensaje son obligatorios' }, { status: 400 })
   }
@@ -32,6 +44,15 @@ export async function POST(req: NextRequest) {
   }
   if (email && !validateEmail(email)) {
     return NextResponse.json({ error: 'Email inválido' }, { status: 400 })
+  }
+
+  const humanError = validateHumanFields({
+    name: nombre,
+    phone: telefono ?? '',
+    notes: mensaje,
+  })
+  if (humanError) {
+    return NextResponse.json({ error: humanError }, { status: 422 })
   }
 
   // Truncar entradas para evitar payloads excesivos

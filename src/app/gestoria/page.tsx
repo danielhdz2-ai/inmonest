@@ -3,6 +3,7 @@ import Script from 'next/script'
 import Navbar from '@/components/NavbarServer'
 import GestoriaContent from './GestoriaContent'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import {
   buildGestoriaAggregateRatingSchema,
   buildGestoriaReviewSchema,
@@ -259,6 +260,13 @@ export default function GestoriaPage() {
       />
       <Navbar />
       <GestoriaContent />
+      <div className="h-20 md:hidden" aria-hidden />
+      <StickyMobileContratoCta
+        ciudad="España"
+        ciudadSlug="gestoria"
+        servicio="gestoria"
+        whatsappMessage="Hola, necesito información sobre gestoría inmobiliaria en Inmonest"
+      />
       <WhatsAppButton />
     </>
   )

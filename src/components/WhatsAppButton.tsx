@@ -5,7 +5,15 @@ import { GESTORIA_PHONE_WA, shouldShowGestoriaPhone } from '@/lib/gestoria-conta
 
 const CONTRACT_LANDING = /\/contrato-(alquiler|arras)(\/|$)/
 const GESTORIA_HUB =
-  /^\/gestoria\/(madrid|barcelona|valencia|sevilla|malaga|bilbao|zaragoza|alicante|palma)(\/|$)/
+  /^\/gestoria(\/(madrid|barcelona|valencia|sevilla|malaga|bilbao|zaragoza|alicante|palma))?$/
+
+function hideMobileSticky(pathname: string) {
+  return (
+    CONTRACT_LANDING.test(pathname) ||
+    GESTORIA_HUB.test(pathname) ||
+    pathname.includes('due-diligence-precompra')
+  )
+}
 
 export default function WhatsAppButton() {
   const pathname = usePathname()
@@ -20,10 +28,7 @@ export default function WhatsAppButton() {
   )
   const href = `https://wa.me/${phone}?text=${message}`
   // Sticky móvil ya cubre Llamar/WA en contratos, hubs y due diligence
-  const hideOnMobileSticky =
-    CONTRACT_LANDING.test(pathname) ||
-    GESTORIA_HUB.test(pathname) ||
-    pathname.includes('due-diligence-precompra')
+  const hideOnMobileSticky = hideMobileSticky(pathname ?? '')
 
   return (
     <>

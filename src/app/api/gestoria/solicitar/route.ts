@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { sendEmail, emailGestoriaCliente, ADMIN_EMAIL } from '@/lib/email'
+import { getIP } from '@/lib/rate-limit'
+import { verifyBotSubmission, validateHumanFields } from '@/lib/verify-bot'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const RESEND_API = 'https://api.resend.com/emails'
 const NOTIFY_TO = 'info@inmonest.com'
+const DUPLICATE_WINDOW_MIN = 30
 
 export async function POST(req: NextRequest) {
   let body: Record<string, string>
@@ -12,6 +15,13 @@ export async function POST(req: NextRequest) {
     body = await req.json()
   } catch {
     return NextResponse.json({ error: 'JSON inválido' }, { status: 400 })
+  }
+
+  const ip = getIP(req)
+  const botCheck = await verifyBotSubmission(body, ip)
+  if (!botCheck.allowed) {
+    if (botCheck.isHoneypot) return NextResponse.json({ ok: true })
+    return NextResponse.json({ error: botCheck.error }, { status: botCheck.status })
   }
 
   const { service_key, service_name, price_eur, client_name, client_email, client_phone, notes } = body
@@ -26,7 +36,34 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Email inválido' }, { status: 422 })
   }
 
+  const humanError = validateHumanFields({
+    name: client_name,
+    phone: client_phone ?? '',
+    notes: notes ?? '',
+  })
+  if (humanError) {
+    return NextResponse.json({ error: humanError }, { status: 422 })
+  }
+
   const supabase = await createClient()
+
+  // Evitar duplicados recientes (mismo email + servicio)
+  const since = new Date(Date.now() - DUPLICATE_WINDOW_MIN * 60_000).toISOString()
+  const normalizedEmail = client_email.trim().toLowerCase()
+  const { data: recent } = await supabase
+    .from('gestoria_requests')
+    .select('id')
+    .eq('client_email', normalizedEmail)
+    .eq('service_key', service_key.trim())
+    .gte('created_at', since)
+    .limit(1)
+
+  if (recent && recent.length > 0) {
+    return NextResponse.json(
+      { error: 'Ya tienes una solicitud reciente para este servicio. Revisa tu email o espera unos minutos.' },
+      { status: 429 },
+    )
+  }
 
   // Obtener usuario autenticado si existe
   const { data: { user } } = await supabase.auth.getUser()

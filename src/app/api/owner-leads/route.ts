@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { sendEmail, emailAcuseRecibo } from '@/lib/email'
+import { getIP } from '@/lib/rate-limit'
+import { verifyBotSubmission, validateHumanFields } from '@/lib/verify-bot'
 
 const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!
@@ -50,10 +52,25 @@ export async function POST(req: NextRequest) {
   try {
     const data = await req.json() as Record<string, unknown>
 
+    const ip = getIP(req)
+    const botCheck = await verifyBotSubmission(data as { _hp?: string; _ts?: number | string; turnstile_token?: string }, ip)
+    if (!botCheck.allowed) {
+      if (botCheck.isHoneypot) return NextResponse.json({ ok: true })
+      return NextResponse.json({ error: botCheck.error }, { status: botCheck.status })
+    }
+
     // Validación mínima
     const { name, phone, email, address } = data
     if (!name || !phone || !email || !address) {
       return NextResponse.json({ error: 'Faltan campos obligatorios' }, { status: 400 })
+    }
+
+    const humanError = validateHumanFields({
+      name: String(name),
+      phone: String(phone),
+    })
+    if (humanError) {
+      return NextResponse.json({ error: humanError }, { status: 422 })
     }
 
     // Insertar en Supabase

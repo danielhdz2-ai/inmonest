@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 import { gtmPush } from '@/components/GTMProvider'
+import HoneypotField from '@/components/HoneypotField'
+import TurnstileWidget from '@/components/TurnstileWidget'
+import { useBotProtection } from '@/hooks/useBotProtection'
 
 interface Service {
   key: string
@@ -41,6 +44,14 @@ export default function SolicitarModal({ service, onClose }: Props) {
   const [form, setForm] = useState({ name: '', email: '', phone: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle')
   const [errMsg, setErrMsg] = useState('')
+  const {
+    honeypot,
+    setHoneypot,
+    turnstileEnabled,
+    turnstileSiteKey,
+    setTurnstileToken,
+    getProtectionPayload,
+  } = useBotProtection()
 
   if (!service) return null
 
@@ -75,6 +86,7 @@ export default function SolicitarModal({ service, onClose }: Props) {
           client_email: form.email,
           client_name:  form.name,
           client_phone: form.phone,
+          ...getProtectionPayload(),
         }),
       })
       const data = await res.json()
@@ -175,7 +187,8 @@ export default function SolicitarModal({ service, onClose }: Props) {
           </div>
 
           <div className="p-6 flex-1">
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4 relative">
+              <HoneypotField value={honeypot} onChange={setHoneypot} />
               <div>
                 <label className="block text-xs font-medium text-gray-700 mb-1">Nombre completo *</label>
                 <input type="text" required value={form.name} onChange={e => set('name', e.target.value)} placeholder="María García López" className={inp} />
@@ -194,6 +207,13 @@ export default function SolicitarModal({ service, onClose }: Props) {
               )}
 
               <div className="pt-2">
+                {turnstileEnabled && (
+                  <TurnstileWidget
+                    siteKey={turnstileSiteKey}
+                    onVerify={setTurnstileToken}
+                    onExpire={() => setTurnstileToken('')}
+                  />
+                )}
                 <button
                   type="submit"
                   disabled={status === 'sending'}

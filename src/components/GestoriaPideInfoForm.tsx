@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 import { gtmPush } from '@/components/GTMProvider'
+import HoneypotField from '@/components/HoneypotField'
+import TurnstileWidget from '@/components/TurnstileWidget'
+import { useBotProtection } from '@/hooks/useBotProtection'
 
 type Props = {
   ciudad: string
@@ -17,6 +20,14 @@ export default function GestoriaPideInfoForm({
   const [form, setForm] = useState({ nombre: '', telefono: '', email: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'error'>('idle')
   const [errMsg, setErrMsg] = useState('')
+  const {
+    honeypot,
+    setHoneypot,
+    turnstileEnabled,
+    turnstileSiteKey,
+    setTurnstileToken,
+    getProtectionPayload,
+  } = useBotProtection()
 
   const set = (k: keyof typeof form, v: string) => setForm((p) => ({ ...p, [k]: v }))
 
@@ -55,6 +66,7 @@ export default function GestoriaPideInfoForm({
           ]
             .filter(Boolean)
             .join('\n'),
+          ...getProtectionPayload(),
         }),
       })
 
@@ -96,7 +108,8 @@ export default function GestoriaPideInfoForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
+    <form onSubmit={handleSubmit} className="space-y-3 relative">
+      <HoneypotField value={honeypot} onChange={setHoneypot} />
       <p className="text-sm font-semibold text-gray-900">¿Dudas? Te llamamos gratis</p>
       <p className="text-xs text-gray-500 -mt-1">Sin compromiso. Solo nombre y teléfono.</p>
       <input
@@ -127,6 +140,13 @@ export default function GestoriaPideInfoForm({
         className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-sm focus:border-[#c9a84c] focus:outline-none focus:ring-1 focus:ring-[#c9a84c]"
       />
       {errMsg && <p className="text-xs text-red-600">{errMsg}</p>}
+      {turnstileEnabled && (
+        <TurnstileWidget
+          siteKey={turnstileSiteKey}
+          onVerify={setTurnstileToken}
+          onExpire={() => setTurnstileToken('')}
+        />
+      )}
       <button
         type="submit"
         disabled={status === 'sending'}

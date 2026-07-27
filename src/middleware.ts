@@ -8,6 +8,8 @@ import {
   publishLimit,
   contactLimit,
   scraperLimit,
+  gestoriaLimit,
+  ownerLeadsLimit,
   getIP,
   applyRateLimit,
 } from '@/lib/rate-limit'
@@ -137,9 +139,25 @@ export async function middleware(request: NextRequest) {
   if (
     pathname.includes('/contact') ||
     pathname.includes('/contacto') ||
-    pathname.match(/\/api\/listings\/[^/]+\/contact/)
+    pathname.match(/\/api\/listings\/[^/]+\/contact/) ||
+    pathname === '/api/lead-magnet/calculadora'
   ) {
     const rateLimitResponse = await applyRateLimit(contactLimit, identifier, request)
+    if (rateLimitResponse) return rateLimitResponse
+  }
+
+  // Formularios de gestoría (solicitudes y checkout)
+  if (
+    pathname === '/api/gestoria/solicitar' ||
+    pathname === '/api/gestoria/checkout'
+  ) {
+    const rateLimitResponse = await applyRateLimit(gestoriaLimit, identifier, request)
+    if (rateLimitResponse) return rateLimitResponse
+  }
+
+  // Leads de propietarios
+  if (pathname === '/api/owner-leads') {
+    const rateLimitResponse = await applyRateLimit(ownerLeadsLimit, identifier, request)
     if (rateLimitResponse) return rateLimitResponse
   }
 

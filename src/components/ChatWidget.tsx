@@ -17,7 +17,15 @@ const SUGERENCIAS = [
 
 const CONTRACT_LANDING = /\/contrato-(alquiler|arras)(\/|$)/
 const GESTORIA_HUB =
-  /^\/gestoria\/(madrid|barcelona|valencia|sevilla|malaga|bilbao|zaragoza|alicante|palma)(\/|$)/
+  /^\/gestoria(\/(madrid|barcelona|valencia|sevilla|malaga|bilbao|zaragoza|alicante|palma))?$/
+
+function hideMobileSticky(pathname: string) {
+  return (
+    CONTRACT_LANDING.test(pathname) ||
+    GESTORIA_HUB.test(pathname) ||
+    pathname.includes('due-diligence-precompra')
+  )
+}
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false)
@@ -27,10 +35,7 @@ export default function ChatWidget() {
   const bottomRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   const pathname = usePathname()
-  const hideOnMobileSticky =
-    CONTRACT_LANDING.test(pathname ?? '') ||
-    GESTORIA_HUB.test(pathname ?? '') ||
-    (pathname ?? '').includes('due-diligence-precompra')
+  const hideOnMobileSticky = hideMobileSticky(pathname ?? '')
 
   useEffect(() => {
     if (open && messages.length === 0) {

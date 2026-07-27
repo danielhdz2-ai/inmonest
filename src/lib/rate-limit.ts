@@ -97,6 +97,32 @@ export const scraperLimit = redis
     })
   : null
 
+/**
+ * Formularios de gestoría (solicitudes + checkout)
+ * 5 envíos por hora por IP
+ */
+export const gestoriaLimit = redis
+  ? new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(5, '1 h'),
+      analytics: true,
+      prefix: 'ratelimit:gestoria',
+    })
+  : null
+
+/**
+ * Leads de propietarios
+ * 5 envíos por hora por IP
+ */
+export const ownerLeadsLimit = redis
+  ? new Ratelimit({
+      redis,
+      limiter: Ratelimit.slidingWindow(5, '1 h'),
+      analytics: true,
+      prefix: 'ratelimit:owner-leads',
+    })
+  : null
+
 // ── HELPERS ────────────────────────────────────────────────────────────────
 
 /**
