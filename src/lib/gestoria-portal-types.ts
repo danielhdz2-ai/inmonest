@@ -1,0 +1,58 @@
+/** Tipos compartidos del portal cliente de gestoría */
+
+export type GestoriaContrato = {
+  id: string
+  session_id: string | null
+  service_key: string
+  service_name: string | null
+  client_name: string | null
+  client_email?: string | null
+  client_phone?: string | null
+  amount_eur: number | null
+  status: string
+  step: number | null
+  paid_at: string | null
+  contract_path: string | null
+  contract_delivered_at?: string | null
+  expected_delivery_date?: string | null
+  assigned_to?: string | null
+  notes?: string | null
+  created_at?: string | null
+}
+
+export type GestoriaUserDoc = {
+  id: string
+  doc_key: string
+  file_name: string
+  status: string
+  uploaded_at: string
+  notes: string | null
+  gestoria_request_id?: string | null
+  partes_data?: Record<string, unknown> | null
+}
+
+export type GestoriaPortalSection =
+  | 'inicio'
+  | 'expediente'
+  | 'contratos'
+  | 'inmueble'
+  | 'servicios'
+  | 'publicar'
+
+export const GESTORIA_PORTAL_SECTIONS: {
+  id: GestoriaPortalSection
+  label: string
+  shortLabel: string
+  icon: string
+  desc: string
+}[] = [
+  { id: 'inicio', label: 'Panel', shortLabel: 'Inicio', icon: '◉', desc: 'Resumen de tu expediente' },
+  { id: 'expediente', label: 'Expediente', shortLabel: 'Docs', icon: '📋', desc: 'Documentación y seguimiento' },
+  { id: 'contratos', label: 'Mis contratos', shortLabel: 'Contratos', icon: '📄', desc: 'Historial de servicios' },
+  { id: 'inmueble', label: 'Mi inmueble', shortLabel: 'Inmueble', icon: '🏠', desc: 'Datos del inmueble' },
+  { id: 'servicios', label: 'Contratar más', shortLabel: 'Servicios', icon: '✦', desc: 'Nuevos contratos y packs' },
+  { id: 'publicar', label: 'Publicar piso', shortLabel: 'Publicar', icon: '📢', desc: 'Anuncio sin comisiones' },
+]
+
+export const GESTORIA_ORDER_SELECT =
+  'id,session_id,service_key,service_name,client_name,client_email,client_phone,amount_eur,status,step,paid_at,contract_path,contract_delivered_at,expected_delivery_date,assigned_to,notes,created_at'

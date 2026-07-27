@@ -1,6 +1,9 @@
 import type { createAdminClient } from '@/lib/supabase/admin'
+import { GESTORIA_ORDER_SELECT } from '@/lib/gestoria-portal-types'
 
 type AdminClient = ReturnType<typeof createAdminClient>
+
+const ORDER_FIELDS = GESTORIA_ORDER_SELECT
 
 /** Vincula todos los pedidos de gestoría del email al usuario autenticado */
 export async function linkGestoriaOrdersToUser(
@@ -26,7 +29,7 @@ export async function fetchGestoriaOrdersForUser(
 
   const { data, error } = await admin
     .from('gestoria_requests')
-    .select('id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at')
+    .select(ORDER_FIELDS)
     .or(`client_email.eq.${emailNorm},user_id.eq.${userId}`)
     .order('created_at', { ascending: false })
 
@@ -35,7 +38,7 @@ export async function fetchGestoriaOrdersForUser(
 
   const { data: byIlike } = await admin
     .from('gestoria_requests')
-    .select('id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at')
+    .select(ORDER_FIELDS)
     .ilike('client_email', emailNorm)
     .order('created_at', { ascending: false })
 

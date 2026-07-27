@@ -1,11 +1,17 @@
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { fetchGestoriaOrdersForUser } from '@/lib/gestoria-link-user'
-import ContratosClient from './ContratosClient'
+import GestoriaPortalClient from '@/components/gestoria-portal/GestoriaPortalClient'
 import GestoriaPanelBootstrap from '@/components/GestoriaPanelBootstrap'
 import { Suspense } from 'react'
+import { redirect } from 'next/navigation'
 
-export default async function ContratosPage() {
+export default async function ContratosPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ pago?: string; session_id?: string; v?: string }>
+}) {
+  const params = await searchParams
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -28,30 +34,49 @@ export default async function ContratosPage() {
     const [{ data: fallbackContratos }, { data: fallbackDocs }] = await Promise.all([
       supabase
         .from('gestoria_requests')
-        .select('id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at')
+        .select('id,session_id,service_key,service_name,client_name,client_email,client_phone,amount_eur,status,step,paid_at,contract_path,contract_delivered_at,expected_delivery_date,assigned_to,notes,created_at')
         .or(`client_email.eq.${emailNorm},user_id.eq.${user.id}`)
         .order('created_at', { ascending: false }),
       supabase
         .from('user_documents')
-        .select('id,doc_key,file_name,status,uploaded_at,notes')
+        .select('id,doc_key,file_name,status,uploaded_at,notes,gestoria_request_id,partes_data')
         .eq('user_id', user.id),
     ])
     contratos = fallbackContratos ?? []
     userDocs = fallbackDocs ?? []
   }
 
+  const isPostPayment =
+    params.pago === '1' || (params.session_id?.startsWith('cs_') ?? false)
+
+  if (contratos.length === 0 && !isPostPayment) {
+    redirect('/gestoria/acceso-cliente')
+  }
+
+  const { data: profile } = await supabase
+    .from('user_profiles')
+    .select('full_name')
+    .eq('user_id', user.id)
+    .maybeSingle()
+
+  const displayName =
+    profile?.full_name?.trim() ||
+    contratos[0]?.client_name?.trim() ||
+    user.email.split('@')[0] ||
+    'Cliente'
+
   return (
-    <div className="space-y-4">
+    <>
       <Suspense fallback={null}>
         <GestoriaPanelBootstrap />
       </Suspense>
-      <ContratosClient
+      <GestoriaPortalClient
         contratos={contratos}
         userDocs={userDocs}
-        userId={user.id}
         userEmail={emailNorm}
+        displayName={displayName}
       />
-    </div>
+    </>
   )
 }
 
@@ -61,7 +86,7 @@ async function fetchUserDocs(
 ) {
   const { data } = await supabase
     .from('user_documents')
-    .select('id,doc_key,file_name,status,uploaded_at,notes')
+    .select('id,doc_key,file_name,status,uploaded_at,notes,gestoria_request_id,partes_data')
     .eq('user_id', userId)
   return data ?? []
 }
