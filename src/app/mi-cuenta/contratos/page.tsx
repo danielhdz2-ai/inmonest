@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { fetchGestoriaOrdersForUser } from '@/lib/gestoria-link-user'
+import { GESTORIA_ORDER_SELECT } from '@/lib/gestoria-portal-types'
 import GestoriaPortalClient from '@/components/gestoria-portal/GestoriaPortalClient'
 import GestoriaPanelBootstrap from '@/components/GestoriaPanelBootstrap'
 import { Suspense } from 'react'
@@ -31,18 +32,11 @@ export default async function ContratosPage({
     ])
   } catch (err) {
     console.error('[contratos/page] admin fetch:', err)
-    const [{ data: fallbackContratos }, { data: fallbackDocs }] = await Promise.all([
-      supabase
-        .from('gestoria_requests')
-        .select('id,session_id,service_key,service_name,client_name,client_email,client_phone,amount_eur,status,step,paid_at,contract_path,contract_delivered_at,expected_delivery_date,assigned_to,notes,created_at')
-        .or(`client_email.eq.${emailNorm},user_id.eq.${user.id}`)
-        .order('created_at', { ascending: false }),
-      supabase
-        .from('user_documents')
-        .select('id,doc_key,file_name,status,uploaded_at,notes,gestoria_request_id,partes_data')
-        .eq('user_id', user.id),
-    ])
-    contratos = fallbackContratos ?? []
+    contratos = await fetchContratosFallback(supabase, user.id, emailNorm)
+    const { data: fallbackDocs } = await supabase
+      .from('user_documents')
+      .select('id,doc_key,file_name,status,uploaded_at,notes,gestoria_request_id,partes_data')
+      .eq('user_id', user.id)
     userDocs = fallbackDocs ?? []
   }
 
@@ -78,6 +72,28 @@ export default async function ContratosPage({
       />
     </>
   )
+}
+
+async function fetchContratosFallback(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  userId: string,
+  emailNorm: string,
+) {
+  const { data: byUser } = await supabase
+    .from('gestoria_requests')
+    .select(GESTORIA_ORDER_SELECT)
+    .eq('user_id', userId)
+    .order('created_at', { ascending: false })
+
+  if ((byUser ?? []).length > 0) return byUser ?? []
+
+  const { data: byEmail } = await supabase
+    .from('gestoria_requests')
+    .select(GESTORIA_ORDER_SELECT)
+    .ilike('client_email', emailNorm)
+    .order('created_at', { ascending: false })
+
+  return byEmail ?? []
 }
 
 async function fetchUserDocs(

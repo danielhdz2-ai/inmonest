@@ -10,6 +10,7 @@ import GestoriaPortalContratos from '@/components/gestoria-portal/GestoriaPortal
 import GestoriaPortalInmueble from '@/components/gestoria-portal/GestoriaPortalInmueble'
 import GestoriaPortalServicios from '@/components/gestoria-portal/GestoriaPortalServicios'
 import GestoriaPortalPublicar from '@/components/gestoria-portal/GestoriaPortalPublicar'
+import GestoriaExpedienteActivador from '@/components/gestoria-portal/GestoriaExpedienteActivador'
 import type { PartesFormData } from '@/components/GestoriaPartesForm'
 import type { GestoriaContrato, GestoriaPortalSection, GestoriaUserDoc } from '@/lib/gestoria-portal-types'
 import { computeGestoriaProgress } from '@/lib/gestoria-client-progress'
@@ -298,27 +299,22 @@ export default function GestoriaPortalClient({
     )
   }
 
-  /* ── Vinculando pago ── */
+  /* ── Activar expediente tras pago (reintentos automáticos) ── */
   const awaitingPaymentLink =
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('pago') === '1'
+    typeof window !== 'undefined' &&
+    (new URLSearchParams(window.location.search).get('pago') === '1' ||
+      new URLSearchParams(window.location.search).get('session_id')?.startsWith('cs_'))
 
-  if (!hasPaidService && awaitingPaymentLink && contratos.length === 0) {
+  if (!hasPaidService && awaitingPaymentLink) {
     return (
       <GestoriaPortalShell displayName={displayName} activeSection="inicio" onSectionChange={navigate}>
-        <div className="bg-white rounded-2xl border border-amber-200 p-8 text-center space-y-4">
-          <div className="text-4xl animate-pulse">⏳</div>
-          <h2 className="text-lg font-bold text-gray-900">Activando tu expediente…</h2>
-          <p className="text-sm text-gray-500">
-            Tu pago está confirmado. Estamos preparando tu panel de gestoría.
-          </p>
-          <button
-            type="button"
-            onClick={() => window.location.reload()}
-            className="inline-block bg-[#c9962a] text-white text-sm font-bold px-6 py-3 rounded-xl min-h-[48px] touch-manipulation"
-          >
-            Recargar panel
-          </button>
-        </div>
+        <GestoriaExpedienteActivador
+          userEmail={userEmail}
+          onLoaded={({ contratos: loaded, userDocs: loadedDocs }) => {
+            setContratos(loaded)
+            setDocs(loadedDocs)
+          }}
+        />
       </GestoriaPortalShell>
     )
   }
