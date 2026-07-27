@@ -63,11 +63,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
             <Link
               href="/gestoria"
-              className={`inline-flex items-center rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap ${
-                isLoggedIn
-                  ? 'hidden sm:inline-flex px-4 py-2 text-sm'
-                  : 'px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm'
-              }`}
+              className="inline-flex items-center rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm touch-manipulation"
             >
               Gestoría
             </Link>
@@ -80,7 +76,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             {isLoggedIn ? (
               <Link
                 href="/mi-cuenta/contratos"
-                className="inline-flex items-center justify-center gap-1.5 rounded-full border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap min-h-[36px] sm:min-h-[40px] px-2.5 sm:px-4 py-1.5 text-xs sm:text-sm"
+                className="inline-flex items-center justify-center gap-1.5 rounded-full border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap min-h-[36px] sm:min-h-[40px] px-2.5 sm:px-4 py-1.5 text-xs sm:text-sm touch-manipulation"
                 aria-label="Mi cuenta"
               >
                 <svg className="w-4 h-4 sm:hidden flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -92,9 +88,10 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             ) : (
               <Link
                 href="/login"
-                className="hidden sm:inline-flex items-center px-4 py-2 rounded-full border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors whitespace-nowrap"
+                className="inline-flex items-center justify-center rounded-full border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap min-h-[36px] sm:min-h-[40px] px-2.5 sm:px-4 py-1.5 text-xs sm:text-sm touch-manipulation"
               >
-                Entrar
+                <span className="sm:hidden">Acceder</span>
+                <span className="hidden sm:inline">Entrar</span>
               </Link>
             )}
           </div>
