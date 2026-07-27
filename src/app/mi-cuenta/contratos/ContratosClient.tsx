@@ -43,7 +43,8 @@ interface Props {
   userEmail: string
 }
 
-export default function ContratosClient({ contratos, userDocs: initialDocs, userEmail }: Props) {
+export default function ContratosClient({ contratos: initialContratos, userDocs: initialDocs, userEmail }: Props) {
+  const [contratos, setContratos] = useState(initialContratos)
   const paidContratos = useMemo(
     () => contratos.filter((c) => isPaidStatus(c.status, c.paid_at)),
     [contratos],
@@ -70,8 +71,44 @@ export default function ContratosClient({ contratos, userDocs: initialDocs, user
     (new URLSearchParams(window.location.search).get('pago') === '1' || hasPaidService)
 
   useEffect(() => {
+    setContratos(initialContratos)
+  }, [initialContratos])
+
+  useEffect(() => {
     setDocs(initialDocs)
   }, [initialDocs])
+
+  useEffect(() => {
+    const hasPaid = initialContratos.some((c) => isPaidStatus(c.status, c.paid_at))
+    if (hasPaid) return
+
+    const params = new URLSearchParams(window.location.search)
+    const awaitingLink =
+      params.get('pago') === '1' || params.get('session_id')?.startsWith('cs_')
+    if (!awaitingLink) return
+
+    let cancelled = false
+
+    async function refetchPedidos() {
+      try {
+        const res = await fetch('/api/gestoria/mis-pedidos')
+        if (!res.ok || cancelled) return
+        const data = await res.json() as { contratos?: Contrato[]; userDocs?: UserDoc[] }
+        if (data.contratos?.length) setContratos(data.contratos)
+        if (data.userDocs) setDocs(data.userDocs)
+      } catch {
+        /* GestoriaPanelBootstrap hará refresh */
+      }
+    }
+
+    refetchPedidos()
+    const timer = window.setTimeout(refetchPedidos, 3000)
+
+    return () => {
+      cancelled = true
+      window.clearTimeout(timer)
+    }
+  }, [initialContratos])
 
   async function handlePagar(contrato: Contrato) {
     setPaying(contrato.id)

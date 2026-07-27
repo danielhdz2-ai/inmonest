@@ -15,7 +15,7 @@ export default async function MiCuentaLayout({
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  if (!user) redirect('/login?next=/mi-cuenta/contratos')
+  if (!user) redirect('/login?next=/mi-cuenta')
 
   return <div className="min-h-screen bg-[#f4f5f7]">{children}</div>
 }

@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { linkGestoriaOrdersToUser } from '@/lib/gestoria-link-user'
 
-/** Vincula gestoria_requests del email del usuario autenticado (post-login/registro) */
+/** Vincula gestoria_requests del email del usuario autenticado (post-login/registro/pago) */
 export async function POST() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -13,11 +14,7 @@ export async function POST() {
 
   const admin = createAdminClient()
   const emailNorm = user.email.trim().toLowerCase()
-  const { error } = await admin
-    .from('gestoria_requests')
-    .update({ user_id: user.id })
-    .ilike('client_email', emailNorm)
-    .is('user_id', null)
+  const { error } = await linkGestoriaOrdersToUser(admin, user.id, emailNorm)
 
   if (error) {
     console.error('[gestoria/vincular-leads]', error.message)

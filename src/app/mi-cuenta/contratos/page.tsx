@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { fetchGestoriaOrdersForUser } from '@/lib/gestoria-link-user'
 import ContratosClient from './ContratosClient'
 import GestoriaPanelBootstrap from '@/components/GestoriaPanelBootstrap'
 import { Suspense } from 'react'
@@ -13,20 +14,13 @@ export default async function ContratosPage() {
   }
 
   const emailNorm = user.email.trim().toLowerCase()
-  let contratos: Awaited<ReturnType<typeof fetchContratos>> = []
+  let contratos: Awaited<ReturnType<typeof fetchGestoriaOrdersForUser>> = []
   let userDocs: Awaited<ReturnType<typeof fetchUserDocs>> = []
 
   try {
     const admin = createAdminClient()
-
-    // Vincular pedidos del mismo email (pago Stripe sin sesión o email distinto en mayúsculas)
-    await admin
-      .from('gestoria_requests')
-      .update({ user_id: user.id })
-      .ilike('client_email', emailNorm)
-
     ;[contratos, userDocs] = await Promise.all([
-      fetchContratos(admin, user.id, emailNorm),
+      fetchGestoriaOrdersForUser(admin, user.id, emailNorm),
       fetchUserDocs(supabase, user.id),
     ])
   } catch (err) {
@@ -59,30 +53,6 @@ export default async function ContratosPage() {
       />
     </div>
   )
-}
-
-async function fetchContratos(
-  admin: ReturnType<typeof createAdminClient>,
-  userId: string,
-  emailNorm: string,
-) {
-  const { data, error } = await admin
-    .from('gestoria_requests')
-    .select('id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at')
-    .or(`client_email.eq.${emailNorm},user_id.eq.${userId}`)
-    .order('created_at', { ascending: false })
-
-  if (error) throw error
-
-  if ((data ?? []).length > 0) return data ?? []
-
-  const { data: byIlike } = await admin
-    .from('gestoria_requests')
-    .select('id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at')
-    .ilike('client_email', emailNorm)
-    .order('created_at', { ascending: false })
-
-  return byIlike ?? []
 }
 
 async function fetchUserDocs(

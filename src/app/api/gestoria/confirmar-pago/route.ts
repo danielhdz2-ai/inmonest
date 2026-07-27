@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { getStripeKey } from '@/lib/stripe-key'
 
 export const dynamic = 'force-dynamic'
@@ -91,20 +91,23 @@ export async function GET(req: NextRequest) {
 
   // ── 3. Guardar en gestoria_requests (idempotente) ─────────────────────
   try {
-    const supabase = await createClient()
+    const supabase = createAdminClient()
+    const emailNorm = client_email.trim().toLowerCase()
     const { error: dbErr } = await supabase
       .from('gestoria_requests')
       .upsert(
         {
           session_id:   session.id,
           service_key,
-          client_email,
+          service_name,
+          client_email: emailNorm,
           client_name,
           client_phone,
           amount_eur,
           status:       'paid',
           paid_at:      new Date().toISOString(),
           stripe_payment_intent: session.payment_intent ?? null,
+          step:         1,
         },
         { onConflict: 'session_id' }
       )

@@ -167,7 +167,7 @@ export async function POST(req: NextRequest) {
       service_key:            serviceKey,
       service_name:           serviceName,
       price_eur:              priceEur,
-      client_email:           clientEmail,
+      client_email:           clientEmail.trim().toLowerCase(),
       client_name:            clientName,
       client_phone:           clientPhone,
       amount_eur:             parseFloat(amount),
@@ -175,6 +175,7 @@ export async function POST(req: NextRequest) {
       paid_at:                new Date().toISOString(),
       created_at:             new Date().toISOString(),
       step:                   1, // Iniciado
+      user_id:                meta.user_id || null,
     }
     console.log('[webhooks/stripe] gestoria_requests upsert payload:', JSON.stringify(upsertPayload))
 
