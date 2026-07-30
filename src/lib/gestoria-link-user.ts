@@ -51,7 +51,8 @@ async function queryOrders(
   ])
 
   const merged = new Map<string, GestoriaContrato>()
-  for (const row of [...(byEmail ?? []), ...(byUser ?? [])] as GestoriaContrato[]) {
+  const rows = [...(byEmail ?? []), ...(byUser ?? [])] as unknown as GestoriaContrato[]
+  for (const row of rows) {
     if (row?.id) merged.set(row.id, row)
   }
   return Array.from(merged.values())
