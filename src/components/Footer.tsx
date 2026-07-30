@@ -209,6 +209,7 @@ export default function Footer() {
                 <li><Link href="/pisos?operacion=rent&solo_particulares=true" className="hover:text-[#f4c94a] transition-colors">Pisos de Particulares</Link></li>
                 <li><Link href="/pisos?operacion=sale" className="hover:text-[#f4c94a] transition-colors">Compra</Link></li>
                 <li><Link href="/publicar-anuncio" className="hover:text-[#f4c94a] transition-colors">Publicar anuncio</Link></li>
+                <li><Link href="/servicios" className="hover:text-[#f4c94a] transition-colors">Servicios</Link></li>
                 <li><Link href="/gestoria" className="hover:text-[#f4c94a] transition-colors">Gestoría online</Link></li>
                 <li><Link href="/vender-casa" className="hover:text-[#f4c94a] transition-colors">Vender sin comisión</Link></li>
               </ul>

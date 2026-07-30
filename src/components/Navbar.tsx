@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface NavbarProps {
   isLoggedIn?: boolean
@@ -15,6 +15,7 @@ const NAV_ITEMS = [
   { label: 'Publicar gratis',      href: '/publicar-anuncio' },
   { label: 'Vender casa',          href: '/vender-casa' },
   { label: 'Gestoría',             href: '/gestoria' },
+  { label: 'Servicios',            href: '/servicios' },
   { label: 'Agencias',             href: '/agencias' },
   { label: 'Hipotecas',            href: '/hipoteca' },
   { label: 'Analizador de Mercado', href: '/analizador-mercado' },
@@ -22,14 +23,46 @@ const NAV_ITEMS = [
   { label: 'Ciudades',             href: '/gestoria/ciudades' },
 ]
 
+/** Accesos rápidos del menú desplegable Servicios */
+const SERVICIOS_QUICK: Array<{ label: string; href: string; highlight?: boolean }> = [
+  { label: 'Arras penitenciales', href: '/gestoria/arras-penitenciales' },
+  { label: 'Contrato de alquiler', href: '/gestoria/contrato-alquiler' },
+  { label: 'Préstamo particulares', href: '/gestoria/prestamo-particulares' },
+  { label: 'Due diligence', href: '/gestoria/due-diligence-precompra' },
+  { label: 'Venta completa', href: '/gestoria/venta-completa-reserva-escritura' },
+  { label: 'Ver todos los servicios', href: '/servicios', highlight: true },
+]
+
 export default function Navbar({ isLoggedIn = false }: NavbarProps) {
   const [sideOpen, setSideOpen] = useState(false)
+  const [serviciosOpen, setServiciosOpen] = useState(false)
+  const serviciosRef = useRef<HTMLDivElement>(null)
 
   // Bloquear scroll del body cuando el panel está abierto
   useEffect(() => {
     document.body.style.overflow = sideOpen ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
   }, [sideOpen])
+
+  useEffect(() => {
+    if (!serviciosOpen) return
+    const onPointerDown = (e: MouseEvent | TouchEvent) => {
+      if (serviciosRef.current && !serviciosRef.current.contains(e.target as Node)) {
+        setServiciosOpen(false)
+      }
+    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setServiciosOpen(false)
+    }
+    document.addEventListener('mousedown', onPointerDown)
+    document.addEventListener('touchstart', onPointerDown)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown)
+      document.removeEventListener('touchstart', onPointerDown)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [serviciosOpen])
 
   const close = () => setSideOpen(false)
 
@@ -67,6 +100,63 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             >
               Gestoría
             </Link>
+
+            {/* Servicios — pestaña interactiva */}
+            <div
+              ref={serviciosRef}
+              className="relative"
+              onMouseEnter={() => setServiciosOpen(true)}
+              onMouseLeave={() => setServiciosOpen(false)}
+            >
+              <button
+                type="button"
+                onClick={() => setServiciosOpen((v) => !v)}
+                aria-expanded={serviciosOpen}
+                aria-haspopup="menu"
+                className="inline-flex items-center gap-1 rounded-full border-2 border-[#c9962a] text-[#c9962a] font-semibold hover:bg-[#fef9e8] transition-colors whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm touch-manipulation"
+              >
+                Servicios
+                <svg
+                  className={`w-3.5 h-3.5 transition-transform ${serviciosOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {serviciosOpen && (
+                <div
+                  role="menu"
+                  className="absolute right-0 top-full pt-2 z-[80] w-[min(100vw-1.5rem,18rem)]"
+                >
+                  <div className="rounded-2xl border border-gray-100 bg-white shadow-xl overflow-hidden py-2">
+                    <p className="px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-gray-400">
+                      Contratos y packs
+                    </p>
+                    {SERVICIOS_QUICK.map((item) => (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        role="menuitem"
+                        onClick={() => setServiciosOpen(false)}
+                        className={`block px-4 py-2.5 text-sm transition-colors ${
+                          item.highlight
+                            ? 'font-bold text-[#c9962a] bg-[#fef9e8] hover:bg-[#fdf3d4] mt-1 border-t border-gray-50'
+                            : 'text-gray-800 hover:bg-gray-50 hover:text-[#c9962a]'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
             <Link
               href="/publicar-anuncio"
               className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
