@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { fetchGestoriaOrdersForUser, fetchGestoriaOrdersForUserSafe } from '@/lib/gestoria-link-user'
@@ -25,8 +25,8 @@ async function fetchUserDocsSafe(
   return fallback ?? []
 }
 
-/** Pedidos de gestoría del usuario (vincula por email + bypass RLS si hay service role) */
-export async function GET() {
+/** Pedidos de gestoría del usuario. ?session_id=cs_xxx fuerza vínculo de ese pago. */
+export async function GET(req: NextRequest) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
@@ -34,15 +34,21 @@ export async function GET() {
     return NextResponse.json({ error: 'No autenticado' }, { status: 401 })
   }
 
+  const sessionId = req.nextUrl.searchParams.get('session_id')
   const emailNorm = user.email.trim().toLowerCase()
   let contratos: Awaited<ReturnType<typeof fetchGestoriaOrdersForUser>> = []
 
   try {
     const admin = createAdminClient()
-    contratos = await fetchGestoriaOrdersForUser(admin, user.id, emailNorm)
+    contratos = await fetchGestoriaOrdersForUser(admin, user.id, emailNorm, sessionId)
   } catch (err) {
     console.error('[gestoria/mis-pedidos] admin fallback:', err)
-    contratos = await fetchGestoriaOrdersForUserSafe(supabase, user.id, emailNorm)
+    try {
+      const admin = createAdminClient()
+      contratos = await fetchGestoriaOrdersForUserSafe(supabase, user.id, emailNorm, admin, sessionId)
+    } catch {
+      contratos = await fetchGestoriaOrdersForUserSafe(supabase, user.id, emailNorm)
+    }
   }
 
   const userDocs = await fetchUserDocsSafe(supabase, user.id)

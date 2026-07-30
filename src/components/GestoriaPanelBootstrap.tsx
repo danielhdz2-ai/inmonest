@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-/** Tras login/registro o pago Stripe: confirma sesión, vincula pedidos y refresca el panel */
+/** Tras pago Stripe: confirma sesión, vincula pedido y refresca el panel (rápido) */
 export default function GestoriaPanelBootstrap() {
   const router = useRouter()
   const params = useSearchParams()
@@ -19,27 +19,34 @@ export default function GestoriaPanelBootstrap() {
         try {
           await fetch(`/api/gestoria/confirmar-pago?session_id=${encodeURIComponent(sessionId)}`)
         } catch {
-          /* webhook puede haberlo guardado ya */
+          /* ok */
+        }
+        try {
+          await fetch('/api/gestoria/vincular-leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ session_id: sessionId }),
+          })
+        } catch {
+          /* ok */
+        }
+      } else {
+        try {
+          await fetch('/api/gestoria/vincular-leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: '{}',
+          })
+        } catch {
+          /* ok */
         }
       }
 
-      try {
-        await fetch('/api/gestoria/vincular-leads', { method: 'POST' })
-      } catch {
-        /* reintento en refresh */
-      }
-
       if (cancelled || !needsRefresh) return
-
       router.refresh()
-
-      // Segundo intento por si el webhook tarda unos segundos
-      window.setTimeout(() => {
-        if (!cancelled) router.refresh()
-      }, 2500)
     }
 
-    bootstrap()
+    void bootstrap()
 
     return () => {
       cancelled = true

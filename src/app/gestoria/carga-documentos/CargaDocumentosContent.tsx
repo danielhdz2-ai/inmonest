@@ -33,8 +33,8 @@ const DOCS: DocDef[] = [
   },
   {
     key: 'escrituras',
-    label: 'Escrituras del inmueble',
-    hint: 'PDF o imagen de la escritura / título de propiedad',
+    label: 'Otros',
+    hint: 'PDF o imagen de cualquier otro documento útil',
     required: false,
   },
 ]
@@ -232,7 +232,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
   }
 
   if (globalState === 'done') {
-    const panelNext = `/mi-cuenta/contratos?pago=1&session_id=${encodeURIComponent(sessionId)}&v=expediente`
+    const panelHref = `/mi-cuenta/contratos?pago=1&session_id=${encodeURIComponent(sessionId)}&v=expediente`
     return (
       <main className="min-h-screen bg-[#faf8f4] flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
@@ -247,7 +247,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
             {email ? <> en <strong>{email}</strong></> : ''} en menos de <strong>24 horas</strong>.
           </p>
           <a
-            href={`/login?next=${encodeURIComponent(panelNext)}`}
+            href={panelHref}
             className="inline-block w-full px-6 py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors mb-3"
           >
             Ir a mi panel de documentos

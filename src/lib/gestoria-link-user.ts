@@ -9,39 +9,73 @@ import {
 type AdminClient = ReturnType<typeof createAdminClient>
 type ServerClient = Awaited<ReturnType<typeof createClient>>
 
+function normalizeEmail(email: string): string {
+  return email.trim().toLowerCase()
+}
+
+/** PostgREST .or() rompe con @ si el valor no va entre comillas */
+function quoteFilterValue(value: string): string {
+  return `"${value.replace(/"/g, '')}"`
+}
+
 async function queryOrders(
   client: AdminClient | ServerClient,
   userId: string,
   emailNorm: string,
   select: string,
 ): Promise<GestoriaContrato[]> {
+  const emailQ = quoteFilterValue(emailNorm)
+
   const { data, error } = await client
     .from('gestoria_requests')
     .select(select)
-    .or(`client_email.eq.${emailNorm},user_id.eq.${userId}`)
+    .or(`client_email.eq.${emailQ},user_id.eq.${userId}`)
     .order('created_at', { ascending: false })
 
-  if (error) return []
+  if (!error && (data ?? []).length > 0) {
+    return (data ?? []) as unknown as GestoriaContrato[]
+  }
 
-  if ((data ?? []).length > 0) return (data ?? []) as unknown as GestoriaContrato[]
+  // Fallback por email (ilike exacto) y por user_id por separado
+  const [{ data: byEmail }, { data: byUser }] = await Promise.all([
+    client
+      .from('gestoria_requests')
+      .select(select)
+      .ilike('client_email', emailNorm)
+      .order('created_at', { ascending: false }),
+    client
+      .from('gestoria_requests')
+      .select(select)
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false }),
+  ])
 
-  const { data: byIlike, error: ilikeErr } = await client
-    .from('gestoria_requests')
-    .select(select)
-    .ilike('client_email', emailNorm)
-    .order('created_at', { ascending: false })
-
-  if (ilikeErr) return []
-  return (byIlike ?? []) as unknown as GestoriaContrato[]
+  const merged = new Map<string, GestoriaContrato>()
+  for (const row of [...(byEmail ?? []), ...(byUser ?? [])] as GestoriaContrato[]) {
+    if (row?.id) merged.set(row.id, row)
+  }
+  return Array.from(merged.values())
 }
 
-/** Vincula todos los pedidos de gestoría del email al usuario autenticado */
+/** Vincula pedidos del email (y opcionalmente una session_id concreta) al usuario */
 export async function linkGestoriaOrdersToUser(
   admin: AdminClient,
   userId: string,
   email: string,
+  sessionId?: string | null,
 ) {
-  const emailNorm = email.trim().toLowerCase()
+  const emailNorm = normalizeEmail(email)
+
+  if (sessionId?.startsWith('cs_')) {
+    const bySession = await admin
+      .from('gestoria_requests')
+      .update({ user_id: userId, client_email: emailNorm })
+      .eq('session_id', sessionId)
+    if (bySession.error) {
+      return bySession
+    }
+  }
+
   return admin
     .from('gestoria_requests')
     .update({ user_id: userId })
@@ -52,14 +86,31 @@ export async function fetchGestoriaOrdersForUser(
   admin: AdminClient,
   userId: string,
   email: string,
+  sessionId?: string | null,
 ): Promise<GestoriaContrato[]> {
-  const emailNorm = email.trim().toLowerCase()
+  const emailNorm = normalizeEmail(email)
 
-  await linkGestoriaOrdersToUser(admin, userId, emailNorm)
+  await linkGestoriaOrdersToUser(admin, userId, emailNorm, sessionId)
 
   let rows = await queryOrders(admin, userId, emailNorm, GESTORIA_ORDER_SELECT)
   if (rows.length === 0) {
     rows = await queryOrders(admin, userId, emailNorm, GESTORIA_ORDER_SELECT_CORE)
+  }
+
+  // Si aún vacío pero hay session_id, lee ese pedido directo (pago recién hecho)
+  if (rows.length === 0 && sessionId?.startsWith('cs_')) {
+    const { data } = await admin
+      .from('gestoria_requests')
+      .select(GESTORIA_ORDER_SELECT)
+      .eq('session_id', sessionId)
+      .maybeSingle()
+    if (data) return [data as unknown as GestoriaContrato]
+    const { data: core } = await admin
+      .from('gestoria_requests')
+      .select(GESTORIA_ORDER_SELECT_CORE)
+      .eq('session_id', sessionId)
+      .maybeSingle()
+    if (core) return [core as unknown as GestoriaContrato]
   }
 
   return rows
@@ -70,12 +121,13 @@ export async function fetchGestoriaOrdersForUserSafe(
   userId: string,
   email: string,
   linkFirst?: AdminClient,
+  sessionId?: string | null,
 ): Promise<GestoriaContrato[]> {
-  const emailNorm = email.trim().toLowerCase()
+  const emailNorm = normalizeEmail(email)
 
   if (linkFirst) {
     try {
-      await linkGestoriaOrdersToUser(linkFirst, userId, emailNorm)
+      await linkGestoriaOrdersToUser(linkFirst, userId, emailNorm, sessionId)
     } catch {
       /* ok */
     }
@@ -85,6 +137,5 @@ export async function fetchGestoriaOrdersForUserSafe(
   if (rows.length === 0) {
     rows = await queryOrders(client, userId, emailNorm, GESTORIA_ORDER_SELECT_CORE)
   }
-
   return rows
 }

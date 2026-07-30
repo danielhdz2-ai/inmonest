@@ -108,7 +108,8 @@ export default function GestoriaPortalClient({
 
     async function refetchPedidos() {
       try {
-        const res = await fetch('/api/gestoria/mis-pedidos')
+        const sid = sessionIdParam?.startsWith('cs_') ? `?session_id=${encodeURIComponent(sessionIdParam)}` : ''
+        const res = await fetch(`/api/gestoria/mis-pedidos${sid}`)
         if (!res.ok || cancelled) return
         const data = await res.json() as { contratos?: GestoriaContrato[]; userDocs?: GestoriaUserDoc[] }
         if (data.contratos?.length) setContratos(data.contratos)
@@ -124,7 +125,7 @@ export default function GestoriaPortalClient({
       cancelled = true
       window.clearTimeout(timer)
     }
-  }, [initialContratos, awaitingPaymentLink])
+  }, [initialContratos, awaitingPaymentLink, sessionIdParam])
 
   async function handlePagar(contrato: GestoriaContrato) {
     setPaying(contrato.id)
