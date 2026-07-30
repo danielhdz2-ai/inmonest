@@ -5,6 +5,7 @@ import {
   GESTORIA_ORDER_SELECT,
   GESTORIA_ORDER_SELECT_CORE,
 } from '@/lib/gestoria-portal-types'
+import { getStripeKey } from '@/lib/stripe-key'
 
 type AdminClient = ReturnType<typeof createAdminClient>
 type ServerClient = Awaited<ReturnType<typeof createClient>>
@@ -81,6 +82,60 @@ export async function linkGestoriaOrdersToUser(
     .from('gestoria_requests')
     .update({ user_id: userId })
     .ilike('client_email', emailNorm)
+}
+
+interface StripeSession {
+  id: string
+  payment_status: string
+  customer_email: string | null
+  customer_details?: { email?: string | null }
+  metadata?: Record<string, string>
+  amount_total?: number | null
+  payment_intent?: string | null
+}
+
+/**
+ * Verifica el pago directo contra la API de Stripe (sin pasar por nuestras
+ * propias rutas HTTP, para evitar auto-llamadas frágiles en serverless) y
+ * marca el pedido como pagado si corresponde. Nunca lanza: es best-effort.
+ */
+export async function ensureOrderPaidFromStripe(
+  admin: AdminClient,
+  sessionId: string,
+  fallbackUserId?: string | null,
+): Promise<void> {
+  if (!sessionId?.startsWith('cs_')) return
+  const key = getStripeKey()
+  if (!key) return
+
+  try {
+    const res = await fetch(
+      `https://api.stripe.com/v1/checkout/sessions/${encodeURIComponent(sessionId)}`,
+      { headers: { Authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(6000) },
+    )
+    if (!res.ok) return
+    const session = (await res.json()) as StripeSession
+    if (session.payment_status !== 'paid') return
+
+    const meta = session.metadata ?? {}
+    const client_email = (session.customer_details?.email ?? session.customer_email ?? '')
+      .trim()
+      .toLowerCase()
+
+    await admin
+      .from('gestoria_requests')
+      .update({
+        status: 'paid',
+        paid_at: new Date().toISOString(),
+        stripe_payment_intent: session.payment_intent ?? null,
+        ...(client_email ? { client_email } : {}),
+        user_id: meta.user_id || fallbackUserId || null,
+      })
+      .eq('session_id', sessionId)
+      .is('paid_at', null)
+  } catch {
+    /* best-effort: no bloquear el panel si Stripe tarda o falla */
+  }
 }
 
 export async function fetchGestoriaOrdersForUser(

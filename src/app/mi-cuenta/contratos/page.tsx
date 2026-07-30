@@ -1,6 +1,11 @@
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { fetchGestoriaOrdersForUser, fetchGestoriaOrdersForUserSafe, linkGestoriaOrdersToUser } from '@/lib/gestoria-link-user'
+import {
+  ensureOrderPaidFromStripe,
+  fetchGestoriaOrdersForUser,
+  fetchGestoriaOrdersForUserSafe,
+  linkGestoriaOrdersToUser,
+} from '@/lib/gestoria-link-user'
 import { USER_DOCS_SELECT, USER_DOCS_SELECT_CORE } from '@/lib/gestoria-portal-types'
 import GestoriaPortalClientSuspense from '@/components/gestoria-portal/GestoriaPortalClientSuspense'
 import { redirect } from 'next/navigation'
@@ -38,17 +43,9 @@ export default async function ContratosPage({
   try {
     const admin = createAdminClient()
 
-    // Si venimos del pago, forzar confirmación Stripe → status paid (antes de leer pedidos)
+    // Si venimos del pago, verificar directo con Stripe (sin auto-llamada HTTP)
     if (sessionId) {
-      try {
-        const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://inmonest.com'
-        await fetch(
-          `${base}/api/gestoria/confirmar-pago?session_id=${encodeURIComponent(sessionId)}`,
-          { cache: 'no-store' },
-        )
-      } catch {
-        /* no bloquear el panel */
-      }
+      await ensureOrderPaidFromStripe(admin, sessionId, user.id)
     }
 
     // Vincular pago a esta cuenta (email + session)
