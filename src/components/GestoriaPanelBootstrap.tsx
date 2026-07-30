@@ -1,49 +1,51 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-/** Tras pago Stripe: confirma sesión, vincula pedido y refresca el panel (rápido) */
+/** Al entrar al panel: vincula pedidos del email y refresca si hace falta */
 export default function GestoriaPanelBootstrap() {
   const router = useRouter()
   const params = useSearchParams()
+  const ran = useRef(false)
 
   useEffect(() => {
+    if (ran.current) return
+    ran.current = true
+
     let cancelled = false
 
     async function bootstrap() {
       const sessionId = params.get('session_id')
-      const needsRefresh = params.get('pago') === '1' || params.get('lead') === '1' || Boolean(sessionId)
 
       if (sessionId?.startsWith('cs_')) {
-        try {
-          await fetch(`/api/gestoria/confirmar-pago?session_id=${encodeURIComponent(sessionId)}`)
-        } catch {
-          /* ok */
-        }
-        try {
-          await fetch('/api/gestoria/vincular-leads', {
+        await Promise.allSettled([
+          fetch(`/api/gestoria/confirmar-pago?session_id=${encodeURIComponent(sessionId)}`),
+          fetch('/api/gestoria/vincular-leads', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ session_id: sessionId }),
-          })
-        } catch {
-          /* ok */
-        }
+          }),
+        ])
       } else {
-        try {
-          await fetch('/api/gestoria/vincular-leads', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: '{}',
-          })
-        } catch {
-          /* ok */
-        }
+        await fetch('/api/gestoria/vincular-leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: '{}',
+        }).catch(() => null)
       }
 
-      if (cancelled || !needsRefresh) return
-      router.refresh()
+      if (cancelled) return
+
+      // Si venimos de pago, limpia la URL y refresca datos del servidor
+      if (params.get('pago') === '1' || sessionId?.startsWith('cs_')) {
+        const url = new URL(window.location.href)
+        url.searchParams.delete('pago')
+        url.searchParams.delete('session_id')
+        if (!url.searchParams.get('v')) url.searchParams.set('v', 'expediente')
+        window.history.replaceState({}, '', url.pathname + url.search)
+        router.refresh()
+      }
     }
 
     void bootstrap()

@@ -237,7 +237,8 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
   }
 
   if (globalState === 'done') {
-    const panelHref = `/mi-cuenta/contratos?pago=1&session_id=${encodeURIComponent(sessionId)}&v=expediente`
+    // Sin ?pago=1: el panel abre directo el expediente (sin pantalla de vinculación)
+    const panelHref = '/mi-cuenta/contratos?v=expediente'
     return (
       <main className="min-h-screen bg-[#faf8f4] flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">

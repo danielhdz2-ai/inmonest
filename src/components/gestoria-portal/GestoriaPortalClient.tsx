@@ -73,8 +73,9 @@ export default function GestoriaPortalClient({
   const searchParams = useSearchParams()
   const pagoParam = searchParams.get('pago')
   const sessionIdParam = searchParams.get('session_id')
-  const awaitingPaymentLink =
-    pagoParam === '1' || (sessionIdParam?.startsWith('cs_') ?? false)
+  // Solo bloquear UI con el activador si venimos explícitamente de Stripe (?pago=1)
+  // Nunca por solo tener session_id (si no, "Entrar al panel" vuelve a esta pantalla)
+  const awaitingPaymentLink = pagoParam === '1' && !hasPaidService
   const showPagoBanner = pagoParam === '1' || hasPaidService
 
   const navigate = useCallback((next: GestoriaPortalSection) => {
