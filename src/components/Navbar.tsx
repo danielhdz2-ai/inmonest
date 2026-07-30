@@ -101,32 +101,40 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
               Gestoría
             </Link>
 
-            {/* Servicios — pestaña interactiva */}
+            {/* Servicios → /servicios (landing hub) + atajos al hover */}
             <div
               ref={serviciosRef}
               className="relative"
               onMouseEnter={() => setServiciosOpen(true)}
               onMouseLeave={() => setServiciosOpen(false)}
             >
-              <button
-                type="button"
-                onClick={() => setServiciosOpen((v) => !v)}
-                aria-expanded={serviciosOpen}
-                aria-haspopup="menu"
-                className="inline-flex items-center gap-1 rounded-full border-2 border-[#c9962a] text-[#c9962a] font-semibold hover:bg-[#fef9e8] transition-colors whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm touch-manipulation"
-              >
-                Servicios
-                <svg
-                  className={`w-3.5 h-3.5 transition-transform ${serviciosOpen ? 'rotate-180' : ''}`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                  aria-hidden
+              <div className="inline-flex items-stretch rounded-full border-2 border-[#c9962a] overflow-hidden">
+                <Link
+                  href="/servicios"
+                  className="inline-flex items-center text-[#c9962a] font-semibold hover:bg-[#fef9e8] transition-colors whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm touch-manipulation"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                  Servicios
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setServiciosOpen((v) => !v)}
+                  aria-expanded={serviciosOpen}
+                  aria-haspopup="menu"
+                  aria-label="Abrir accesos rápidos de servicios"
+                  className="inline-flex items-center border-l border-[#c9962a]/40 text-[#c9962a] hover:bg-[#fef9e8] px-2 touch-manipulation"
+                >
+                  <svg
+                    className={`w-3.5 h-3.5 transition-transform ${serviciosOpen ? 'rotate-180' : ''}`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                    aria-hidden
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
 
               {serviciosOpen && (
                 <div
@@ -135,7 +143,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
                 >
                   <div className="rounded-2xl border border-gray-100 bg-white shadow-xl overflow-hidden py-2">
                     <p className="px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider text-gray-400">
-                      Contratos y packs
+                      Accesos rápidos
                     </p>
                     {SERVICIOS_QUICK.map((item) => (
                       <Link

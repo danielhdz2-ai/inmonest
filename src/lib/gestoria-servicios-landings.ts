@@ -13,6 +13,7 @@ export type ServicioLandingCard = {
   /** Landing SEO genérica; null = aún no existe → usar /gestoria/solicitar/[slug] */
   landingHref: string | null
   badge?: string
+  incluye?: string[]
 }
 
 /**
