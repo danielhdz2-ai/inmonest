@@ -175,7 +175,12 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
             file_name: file.name,
             storage_path: urlData.path,
           }),
-        }).catch(() => null)
+        }).then(async (r) => {
+          if (!r.ok) {
+            const err = await r.json().catch(() => ({})) as { error?: string }
+            console.error('[register-doc]', err.error || r.status)
+          }
+        }).catch((e) => console.error('[register-doc]', e))
 
         setFiles(prev => ({ ...prev, [doc.key]: { ...prev[doc.key], state: 'done' } }))
       } catch (err) {

@@ -1506,12 +1506,17 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                 </div>
               </div>
 
-              {/* Documentos del Cliente */}
-              {clientDocuments.length > 0 && (
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
-                  <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    📂 Documentos Aportados ({clientDocuments.length})
-                  </h3>
+              {/* Documentos del Cliente — siempre visible */}
+              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
+                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                  📂 Documentos Aportados ({clientDocuments.length})
+                </h3>
+                {clientDocuments.length === 0 ? (
+                  <p className="text-sm text-gray-500 bg-gray-50 rounded-xl border border-dashed border-gray-200 px-4 py-6 text-center">
+                    Aún no hay documentos registrados para este cliente.
+                    Si el cliente acaba de subirlos, pulsa actualizar o revisa la pestaña Documentos.
+                  </p>
+                ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {clientDocuments.map((doc) => (
                       <div key={doc.id} className="bg-gray-50 rounded-xl p-4 border border-gray-200 hover:shadow-md transition-shadow">
@@ -1534,9 +1539,6 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                               onClick={() => handleDownloadDoc(doc)}
                               className="mt-2 inline-flex items-center gap-1 text-xs text-[#c9962a] hover:text-amber-700 font-semibold"
                             >
-                              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                              </svg>
                               Descargar
                             </button>
                           </div>
@@ -1544,8 +1546,15 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                       </div>
                     ))}
                   </div>
-                </div>
-              )}
+                )}
+                <button
+                  type="button"
+                  onClick={() => selectedClient && loadClientDocuments(selectedClient.email)}
+                  className="mt-4 text-sm font-semibold text-[#c9962a] hover:underline"
+                >
+                  Actualizar documentos
+                </button>
+              </div>
 
               {/* Orders List */}
               <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
