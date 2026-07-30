@@ -10,15 +10,14 @@ export type ServicioLandingCard = {
   categoria: ServicioCategoria
   precio: number
   image: string
-  /** Landing SEO genérica; null = aún no existe → usar /gestoria/solicitar/[slug] */
-  landingHref: string | null
+  /** URL de la página del servicio en el catálogo */
+  landingHref: string
   badge?: string
   incluye?: string[]
 }
 
 /**
- * Catálogo visible en /servicios.
- * landingHref = URL de landing genérica SEO cuando existe.
+ * Catálogo público en /servicios (solo servicios con página propia).
  */
 export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
   // Compraventa
@@ -87,16 +86,6 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     badge: 'Core',
   },
   {
-    slug: 'alquiler-temporada',
-    nombre: 'Contrato de Alquiler por Temporada',
-    shortName: 'Alquiler temporada',
-    descripcion: 'Arrendamiento temporal (estudios, trabajo, estancias). No es vivienda habitual LAU.',
-    categoria: 'alquiler',
-    precio: getPrecioServicio('alquiler-temporada') ?? 165,
-    image: '/contrato1.jpg',
-    landingHref: null,
-  },
-  {
     slug: 'alquiler-habitaciones',
     nombre: 'Contrato de Alquiler de Habitación',
     shortName: 'Alquiler habitación',
@@ -147,26 +136,6 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     landingHref: '/gestoria/rescision-alquiler',
   },
   {
-    slug: 'reserva-alquiler',
-    nombre: 'Contrato de Reserva de Alquiler',
-    shortName: 'Reserva alquiler',
-    descripcion: 'Señal de reserva del piso de alquiler mientras se prepara el LAU.',
-    categoria: 'alquiler',
-    precio: getPrecioServicio('reserva-alquiler') ?? 61,
-    image: '/contrato1.jpg',
-    landingHref: null,
-  },
-  {
-    slug: 'liquidacion-fianza',
-    nombre: 'Liquidación de Fianza',
-    shortName: 'Liquidación fianza',
-    descripcion: 'Documento de liquidación y devolución de fianza al finalizar el alquiler.',
-    categoria: 'alquiler',
-    precio: getPrecioServicio('liquidacion-fianza') ?? 36,
-    image: '/contrato2.jpg',
-    landingHref: null,
-  },
-  {
     slug: 'ayuda-propietarios',
     nombre: 'Redacción LAU para Propietarios',
     shortName: 'Ayuda propietarios',
@@ -197,26 +166,6 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     precio: getPrecioServicio('revision-alquiler') ?? 60,
     image: '/contrato5.jpg',
     landingHref: '/gestoria/revision-contrato-alquiler',
-  },
-  {
-    slug: 'revision-correccion',
-    nombre: 'Revisión + Corrección de Contrato',
-    shortName: 'Revisión + corrección',
-    descripcion: 'Revisamos y corregimos el contrato de alquiler con cambios incluidos.',
-    categoria: 'revision',
-    precio: getPrecioServicio('revision-correccion') ?? 120,
-    image: '/contrato6.jpg',
-    landingHref: null,
-  },
-  {
-    slug: 'revision-correccion-arras',
-    nombre: 'Revisión + Corrección de Arras',
-    shortName: 'Corrección arras',
-    descripcion: 'Revisión y corrección del contrato de arras antes de firmar.',
-    categoria: 'revision',
-    precio: getPrecioServicio('revision-correccion-arras') ?? 120,
-    image: '/contrato1.jpg',
-    landingHref: null,
   },
   {
     slug: 'contrato-ilegal',
@@ -315,16 +264,6 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     image: '/contrato4.jpg',
     landingHref: '/gestoria/prestamo-particulares',
   },
-  {
-    slug: 'asesoria-compra',
-    nombre: 'Asesoría Completa Compra de Vivienda',
-    shortName: 'Asesoría compra',
-    descripcion: 'Asesoría jurídica de compra (SKU 95€). Para acompañamiento completo hasta escritura usa Compra completa.',
-    categoria: 'otros',
-    precio: getPrecioServicio('asesoria-compra') ?? 95,
-    image: '/contrato5.jpg',
-    landingHref: null,
-  },
 ]
 
 export const SERVICIOS_CATEGORIA_LABELS: Record<ServicioCategoria | 'todos', string> = {
@@ -336,10 +275,15 @@ export const SERVICIOS_CATEGORIA_LABELS: Record<ServicioCategoria | 'todos', str
   otros: 'Otros',
 }
 
-/** Servicios del catálogo sin landing genérica SEO propia (hay que crearla). */
-export function getServiciosSinLanding(): ServicioLandingCard[] {
-  return SERVICIOS_LANDING_CARDS.filter((s) => !s.landingHref)
-}
+/** Servicios pendientes de página propia (referencia interna). */
+export const SERVICIOS_SIN_PAGINA = [
+  'alquiler-temporada',
+  'reserva-alquiler',
+  'liquidacion-fianza',
+  'revision-correccion',
+  'revision-correccion-arras',
+  'asesoria-compra',
+] as const
 
 /** Comprueba que el slug existe en el catálogo Stripe/precios. */
 export function assertServicioEnCatalogo(slug: string): boolean {

@@ -9,13 +9,13 @@ const BASE_URL = 'https://inmonest.com'
 export const metadata: Metadata = {
   title: 'Servicios de contratos inmobiliarios — Arras, alquiler y packs',
   description:
-    'Página de servicios Inmonest: arras, alquiler LAU, revisiones y packs con precio cerrado desde ' +
+    'Catálogo de servicios Inmonest: arras, alquiler LAU, revisiones y packs con precio cerrado desde ' +
     GESTORIA_PRECIO_MIN +
-    '€. Cada tarjeta abre la landing del contrato.',
+    '€. Consulta cada servicio y contrata online.',
   alternates: { canonical: `${BASE_URL}/servicios` },
   openGraph: {
     title: 'Servicios de contratos inmobiliarios | Inmonest',
-    description: 'Elige el contrato, abre su landing y contrata online. Desde ' + GESTORIA_PRECIO_MIN + '€.',
+    description: 'Consulta el catálogo de contratos y packs. Desde ' + GESTORIA_PRECIO_MIN + '€.',
     url: `${BASE_URL}/servicios`,
     type: 'website',
     siteName: 'Inmonest',

@@ -17,7 +17,12 @@ export default async function ContratosPage({
   const { data: { user } } = await supabase.auth.getUser()
 
   if (!user?.email) {
-    return null
+    const q = new URLSearchParams()
+    if (params.pago) q.set('pago', params.pago)
+    if (params.session_id) q.set('session_id', params.session_id)
+    if (params.v) q.set('v', params.v)
+    const qs = q.toString()
+    redirect(`/login?next=${encodeURIComponent(`/mi-cuenta/contratos${qs ? `?${qs}` : ''}`)}`)
   }
 
   const emailNorm = user.email.trim().toLowerCase()

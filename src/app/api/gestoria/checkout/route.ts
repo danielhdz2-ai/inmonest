@@ -69,15 +69,18 @@ export async function POST(req: NextRequest) {
   }
 
   const ip = getIP(req)
-  const botCheck = await verifyBotSubmission(body, ip)
-  if (!botCheck.allowed) {
-    if (botCheck.isHoneypot) return NextResponse.json({ url: `${BASE_URL}/gestoria/error` })
-    return NextResponse.json({ error: botCheck.error }, { status: botCheck.status })
-  }
 
-  // Obtener usuario autenticado (opcional — el checkout funciona también sin cuenta)
+  // Usuario autenticado: checkout de confianza (panel mi-cuenta). Sin Turnstile/timing.
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
+
+  if (!user) {
+    const botCheck = await verifyBotSubmission(body, ip)
+    if (!botCheck.allowed) {
+      if (botCheck.isHoneypot) return NextResponse.json({ url: `${BASE_URL}/gestoria/error` })
+      return NextResponse.json({ error: botCheck.error }, { status: botCheck.status })
+    }
+  }
 
   const { service_key, client_email, client_name, client_phone } = body
 
@@ -90,28 +93,29 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Servicio no encontrado' }, { status: 404 })
   }
 
+  const safeName = (client_name?.trim() || user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Cliente').slice(0, 120)
+  const safePhone = (client_phone?.trim() ?? '').slice(0, 30)
+
   const humanError = validateHumanFields({
-    name: client_name ?? '',
-    phone: client_phone ?? '',
+    name: safeName,
+    ...(safePhone ? { phone: safePhone } : {}),
   })
   if (humanError) {
     return NextResponse.json({ error: humanError }, { status: 422 })
   }
 
-  const safeEmail = client_email?.trim().slice(0, 200) || undefined
+  const safeEmail =
+    client_email?.trim().slice(0, 200) ||
+    user?.email?.trim().slice(0, 200) ||
+    undefined
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (safeEmail && !EMAIL_RE.test(safeEmail)) {
-    return NextResponse.json({ error: 'Email inválido' }, { status: 400 })
+  if (!safeEmail || !EMAIL_RE.test(safeEmail)) {
+    return NextResponse.json({ error: 'Email válido requerido para el pago' }, { status: 400 })
   }
 
-  const successPath = service_key === 'reserva-compra'
-    ? '/gestoria/carga-documentos'
-    : '/mi-cuenta/contratos'
-
-  const successQuery =
-    successPath === '/mi-cuenta/contratos'
-      ? 'pago=1&session_id={CHECKOUT_SESSION_ID}'
-      : 'session_id={CHECKOUT_SESSION_ID}'
+  // Tras pagar: página pública de documentos (sin login). Desde ahí se puede entrar al panel.
+  const successPath = '/gestoria/carga-documentos'
+  const successQuery = 'session_id={CHECKOUT_SESSION_ID}'
 
   // Llamada directa a la API REST de Stripe con fetch nativo (sin SDK)
   const params = new URLSearchParams()
@@ -127,11 +131,11 @@ export async function POST(req: NextRequest) {
   params.set('payment_method_types[0]', 'card')
   params.set('billing_address_collection', 'auto')
   params.set('phone_number_collection[enabled]', 'true')
+  params.set('customer_email', safeEmail)
   params.set('metadata[service_key]', service_key)
-  params.set('metadata[client_name]',  (client_name?.trim() ?? '').slice(0, 120))
-  params.set('metadata[client_phone]', (client_phone?.trim() ?? '').slice(0, 30))
+  params.set('metadata[client_name]', safeName)
+  params.set('metadata[client_phone]', safePhone)
   if (user?.id) params.set('metadata[user_id]', user.id)
-  if (safeEmail) params.set('customer_email', safeEmail)
 
   try {
     const res = await fetch('https://api.stripe.com/v1/checkout/sessions', {
@@ -158,9 +162,9 @@ export async function POST(req: NextRequest) {
           {
             session_id:   data.id,
             service_key,
-            client_email: safeEmail ?? null,
-            client_name:  (client_name?.trim() ?? null),
-            client_phone: (client_phone?.trim() ?? null),
+            client_email: safeEmail,
+            client_name:  safeName,
+            client_phone: safePhone || null,
             amount_eur:   service.price_eur,
             status:       'pending',
             user_id:      user?.id ?? null,

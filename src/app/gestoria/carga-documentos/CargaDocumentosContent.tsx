@@ -67,9 +67,13 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
       setLoading(false)
       return
     }
-    fetch(`/api/gestoria/upload-urls?session_id=${sessionId}`)
-      .then(r => r.json() as Promise<ApiResponse>)
-      .then(data => {
+    // Confirmar pago + generar URLs de subida
+    Promise.all([
+      fetch(`/api/gestoria/confirmar-pago?session_id=${sessionId}`).catch(() => null),
+      fetch(`/api/gestoria/upload-urls?session_id=${sessionId}`),
+    ])
+      .then(async ([, uploadRes]) => {
+        const data = await uploadRes.json() as ApiResponse
         if (data.error) {
           setPaymentError(true)
         } else {
@@ -202,6 +206,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
 
   // ─── Success ─────────────────────────────────────────────────────────────────
   if (globalState === 'done') {
+    const panelNext = `/mi-cuenta/contratos?pago=1&session_id=${encodeURIComponent(sessionId)}&v=expediente`
     return (
       <main className="min-h-screen bg-[#faf8f4] flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
@@ -211,15 +216,19 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
             </svg>
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">¡Documentos recibidos!</h2>
-          <p className="text-sm text-gray-500 leading-relaxed mb-1">
-            Hemos recibido tu documentación correctamente.
-          </p>
           <p className="text-sm text-gray-500 leading-relaxed mb-6">
-            Nuestro equipo la revisará y se pondrá en contacto contigo{email ? ` en <strong>${email}</strong>` : ''} en menos de <strong>24 horas</strong>.
+            Nuestro equipo los revisará y te contactará
+            {email ? <> en <strong>{email}</strong></> : ''} en menos de <strong>24 horas</strong>.
           </p>
           <a
+            href={`/login?next=${encodeURIComponent(panelNext)}`}
+            className="inline-block w-full px-6 py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors mb-3"
+          >
+            Ir a mi panel de documentos
+          </a>
+          <a
             href="/gestoria"
-            className="inline-block px-6 py-2.5 bg-[#c9962a] text-white rounded-full text-sm font-semibold hover:bg-[#a87a20] transition-colors"
+            className="inline-block text-sm text-gray-500 hover:text-[#c9962a]"
           >
             Volver a gestoría
           </a>
@@ -242,9 +251,15 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
           </div>
           <h1 className="text-3xl font-extrabold text-gray-900 mb-2">Carga tu documentación</h1>
           <p className="text-gray-500 text-sm max-w-md mx-auto">
-            Para redactar el contrato de reserva necesitamos los siguientes documentos en formato PDF.
-            {email && <span className="block mt-1">Los resultados se enviarán a <strong className="text-gray-700">{email}</strong>.</span>}
+            Pago confirmado. Adjunta estos documentos en PDF para que redactemos tu contrato.
+            {email && <span className="block mt-1">Te contactaremos en <strong className="text-gray-700">{email}</strong>.</span>}
           </p>
+          <a
+            href={`/login?next=${encodeURIComponent(`/mi-cuenta/contratos?pago=1&session_id=${encodeURIComponent(sessionId)}&v=expediente`)}`}
+            className="inline-block mt-4 text-sm font-semibold text-[#c9962a] hover:underline"
+          >
+            Prefiero subirlos desde mi panel →
+          </a>
         </div>
 
         {/* Upload zones */}

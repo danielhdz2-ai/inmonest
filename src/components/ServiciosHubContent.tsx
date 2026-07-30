@@ -29,7 +29,7 @@ const CATEGORY_PILL: Record<ServicioCategoria, string> = {
 }
 
 function cardHref(s: ServicioLandingCard) {
-  return s.landingHref ?? `/gestoria/solicitar/${s.slug}`
+  return s.landingHref
 }
 
 function incluye(s: ServicioLandingCard): string[] {
@@ -105,8 +105,8 @@ export default function ServiciosHubContent() {
           {[
             'Contratos personalizados, no plantillas',
             'Precio cerrado con IVA incluido',
-            'Sin pago por adelantado obligatorio',
-            'Landing propia de cada servicio',
+            'Entrega habitual en 48h',
+            'Catálogo completo de servicios',
           ].map((text) => (
             <div key={text} className="flex items-center gap-2 text-white/90 text-sm font-medium">
               <span className="text-[#f4c94a]">✓</span>
@@ -125,13 +125,13 @@ export default function ServiciosHubContent() {
           <p className="text-lg text-gray-700 leading-relaxed mb-4">
             En Inmonest redactamos <strong>contratos inmobiliarios a medida</strong>: arras penitenciales y
             confirmatorias, alquiler LAU, reserva, rescisión, préstamos entre particulares y packs de
-            acompañamiento hasta escritura. Cada tarjeta abre la <strong>landing del servicio</strong> con
-            detalle, FAQ y contratación.
+            acompañamiento hasta escritura. Consulta el <strong>catálogo de servicios</strong> y entra en
+            cada uno para ver detalle, precios y contratación.
           </p>
           <div className="bg-[#fef9e8] border-l-4 border-[#c9962a] p-5 rounded-r-lg">
             <p className="text-gray-800 text-base leading-relaxed">
-              Usa las pestañas de abajo para filtrar por tipo. Pulsa <strong>Ver landing</strong> o la
-              imagen de la tarjeta para ir a la página concreta del contrato.
+              Usa las pestañas de abajo para filtrar por tipo. Pulsa <strong>Ver más información</strong> o
+              la imagen de la tarjeta para abrir la página del servicio.
             </p>
           </div>
         </div>
@@ -150,7 +150,7 @@ export default function ServiciosHubContent() {
               },
               {
                 step: '02',
-                title: 'Lee su landing',
+                title: 'Lee el servicio',
                 desc: 'Entras en la página del servicio: qué incluye, para quién es, precios y preguntas frecuentes.',
               },
               {
@@ -174,10 +174,9 @@ export default function ServiciosHubContent() {
       {/* SERVICIOS + PESTAÑAS */}
       <section id="lista-servicios" className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
         <div className="text-center mb-8 sm:mb-10 px-2">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-3">Nuestros servicios</h2>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-3">Catálogo de servicios</h2>
           <p className="text-gray-500 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-            Desde {GESTORIA_PRECIO_MIN} €. Cada tarjeta lleva a la landing del servicio con imagen, precio e
-            información completa.
+            Desde {GESTORIA_PRECIO_MIN} €. Elige un servicio para ver imagen, precio e información completa.
           </p>
         </div>
 
@@ -275,7 +274,7 @@ export default function ServiciosHubContent() {
                     href={href}
                     className="block w-full text-center py-2.5 bg-[#c9962a] text-white rounded-xl font-bold text-sm hover:bg-[#a87a20] transition-colors"
                   >
-                    Ver landing — {service.precio} €{' '}
+                    Ver más información — {service.precio} €{' '}
                     <span className="font-normal text-xs opacity-90">(IVA incl.)</span>
                   </Link>
                 </div>

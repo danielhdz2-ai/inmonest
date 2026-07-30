@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { getAllCatalogServices, getRecommendedServices } from '@/lib/gestoria-upsell'
-import { useBotProtection } from '@/hooks/useBotProtection'
 
 type Props = {
   activeServiceKey: string | null
@@ -19,8 +18,8 @@ export default function GestoriaPortalServicios({
   clientName,
 }: Props) {
   const [paying, setPaying] = useState<string | null>(null)
+  const [payError, setPayError] = useState<string | null>(null)
   const [showAll, setShowAll] = useState(false)
-  const { getProtectionPayload } = useBotProtection()
 
   const recommended = getRecommendedServices(activeServiceKey, ownedServiceKeys)
   const allServices = getAllCatalogServices()
@@ -28,6 +27,7 @@ export default function GestoriaPortalServicios({
 
   async function handleCheckout(serviceKey: string) {
     setPaying(serviceKey)
+    setPayError(null)
     try {
       const res = await fetch('/api/gestoria/checkout', {
         method: 'POST',
@@ -36,11 +36,18 @@ export default function GestoriaPortalServicios({
           service_key: serviceKey,
           client_name: clientName,
           client_email: userEmail,
-          ...getProtectionPayload(),
         }),
       })
       const data = await res.json()
-      if (data.url) window.location.href = data.url
+      if (!res.ok || !data.url) {
+        setPayError(
+          data.error || 'No se pudo abrir Stripe. Prueba de nuevo o escribe a info@inmonest.com',
+        )
+        return
+      }
+      window.location.href = data.url
+    } catch {
+      setPayError('Error de red al iniciar el pago. Revisa tu conexión e inténtalo de nuevo.')
     } finally {
       setPaying(null)
     }
@@ -58,6 +65,15 @@ export default function GestoriaPortalServicios({
           </p>
         </div>
       </div>
+
+      {payError && (
+        <div
+          className="rounded-xl px-4 py-3 text-sm bg-red-50 border border-red-200 text-red-800"
+          role="alert"
+        >
+          {payError}
+        </div>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {displayed.map((svc) => (
@@ -82,7 +98,7 @@ export default function GestoriaPortalServicios({
               disabled={paying === svc.key}
               className="mt-4 w-full rounded-xl bg-[#0d1a0f] text-[#f4d98a] text-sm font-bold py-3 min-h-[48px] touch-manipulation disabled:opacity-60"
             >
-              {paying === svc.key ? 'Redirigiendo…' : 'Contratar ahora'}
+              {paying === svc.key ? 'Abriendo Stripe…' : `Pagar ${svc.precio} €`}
             </button>
           </article>
         ))}

@@ -18,7 +18,6 @@ import { computeGestoriaProgress } from '@/lib/gestoria-client-progress'
 import { isLeadStatus, isPaidStatus } from '@/lib/gestoria-leads'
 import { validateUploadFile } from '@/lib/gestoria-upload'
 import { uploadFileWithProgress } from '@/lib/gestoria-upload-client'
-import { useBotProtection } from '@/hooks/useBotProtection'
 
 const VALID_SECTIONS: GestoriaPortalSection[] = [
   'inicio', 'expediente', 'contratos', 'inmueble', 'servicios', 'publicar',
@@ -53,7 +52,6 @@ export default function GestoriaPortalClient({
   const [uploadProgress, setUploadProgress] = useState<number | null>(null)
   const [paying, setPaying] = useState<string | null>(null)
   const [uploadFeedback, setUploadFeedback] = useState<{ type: 'error' | 'success'; message: string } | null>(null)
-  const { getProtectionPayload } = useBotProtection()
 
   const paidContratos = useMemo(
     () => contratos.filter((c) => isPaidStatus(c.status, c.paid_at)),
@@ -130,6 +128,7 @@ export default function GestoriaPortalClient({
 
   async function handlePagar(contrato: GestoriaContrato) {
     setPaying(contrato.id)
+    setUploadFeedback(null)
     try {
       const res = await fetch('/api/gestoria/checkout', {
         method: 'POST',
@@ -138,11 +137,23 @@ export default function GestoriaPortalClient({
           service_key: contrato.service_key,
           client_name: contrato.client_name ?? displayName,
           client_email: userEmail || contrato.client_email || '',
-          ...getProtectionPayload(),
+          client_phone: contrato.client_phone ?? '',
         }),
       })
       const data = await res.json()
-      if (data.url) window.location.href = data.url
+      if (!res.ok || !data.url) {
+        setUploadFeedback({
+          type: 'error',
+          message: data.error || 'No se pudo abrir Stripe. Prueba de nuevo o escribe a info@inmonest.com',
+        })
+        return
+      }
+      window.location.href = data.url
+    } catch {
+      setUploadFeedback({
+        type: 'error',
+        message: 'Error de red al iniciar el pago. Revisa tu conexión e inténtalo de nuevo.',
+      })
     } finally {
       setPaying(null)
     }
