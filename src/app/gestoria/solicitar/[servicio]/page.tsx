@@ -47,10 +47,9 @@ export async function generateMetadata({
       url: `${BASE_URL}/gestoria/solicitar/${servicio}`,
       type: 'website',
     },
-    robots: {
-      index: true,
-      follow: true,
-    },
+    robots: data.interno
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
   }
 }
 

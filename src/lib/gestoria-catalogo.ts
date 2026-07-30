@@ -5,6 +5,8 @@ export type GestoriaServicio = {
   precio: number
   categoria: string
   incluye: string[]
+  /** No mostrar en catálogo público / upsell; no afecta precio mínimo marketing */
+  interno?: boolean
 }
 
 export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
@@ -309,6 +311,18 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
       'Entrega urgente en 12h',
     ],
   },
+  /** Servicio real 5€ solo para probar Stripe de punta a punta */
+  'prueba-pago-stripe': {
+    nombre: 'Prueba de pago Stripe',
+    precio: 5,
+    categoria: 'Interno',
+    interno: true,
+    incluye: [
+      'Cobro real de 5 € vía Stripe',
+      'Redirección a carga de documentos',
+      'Solo para verificación interna',
+    ],
+  },
   'asesoria-compra': {
     nombre: 'Asesoría Completa Compra de Vivienda',
     precio: 95,
@@ -368,7 +382,9 @@ export const GESTORIA_SLUG_ALIASES: Record<string, string> = {
   'contrato-alquiler-temporal': 'alquiler-temporada',
 }
 
-const PRECIOS = Object.values(GESTORIA_SERVICIOS).map((s) => s.precio)
+const PRECIOS = Object.values(GESTORIA_SERVICIOS)
+  .filter((s) => !s.interno)
+  .map((s) => s.precio)
 
 export const GESTORIA_PRECIO_MIN = Math.min(...PRECIOS)
 export const GESTORIA_PRECIO_MAX = Math.max(...PRECIOS)

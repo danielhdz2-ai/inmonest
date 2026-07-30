@@ -118,6 +118,7 @@ export async function POST(req: NextRequest) {
     'revision-correccion-arras':           { name: 'Revisión + Corrección de Contrato de Arras',       price_eur: 120 },
     'ayuda-propietarios':                  { name: 'Redacción de Contrato LAU para Propietarios',      price_eur: 73 },
     'contrato-ilegal':                     { name: 'Análisis de Fraude Inmobiliario',                  price_eur: 29 },
+    'prueba-pago-stripe':                  { name: 'Prueba de pago Stripe',                            price_eur: 5  },
     'asesoria-compra':                     { name: 'Asesoría Completa Compra de Vivienda',             price_eur: 95 },
     'pack-due-diligence-precompra':        { name: 'Pack Due Diligence Pre-Compra',                    price_eur: 350 },
     'contrato-compraventa':                { name: 'Contrato de Compraventa de Vivienda',              price_eur: 80 },

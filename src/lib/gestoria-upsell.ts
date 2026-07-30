@@ -60,11 +60,13 @@ export function getRecommendedServices(
 }
 
 export function getAllCatalogServices(): UpsellService[] {
-  return Object.entries(GESTORIA_SERVICIOS).map(([key, svc]) => ({
-    key,
-    nombre: svc.nombre,
-    precio: svc.precio,
-    categoria: svc.categoria,
-    incluye: svc.incluye.slice(0, 3),
-  }))
+  return Object.entries(GESTORIA_SERVICIOS)
+    .filter(([, svc]) => !svc.interno)
+    .map(([key, svc]) => ({
+      key,
+      nombre: svc.nombre,
+      precio: svc.precio,
+      categoria: svc.categoria,
+      incluye: svc.incluye.slice(0, 3),
+    }))
 }
