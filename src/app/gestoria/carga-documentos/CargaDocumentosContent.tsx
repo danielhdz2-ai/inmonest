@@ -1,25 +1,13 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-import { MAX_UPLOAD_BYTES, formatFileSize, storageUploadHeaders, validateUploadFile } from '@/lib/gestoria-upload'
-
-interface UploadEntry {
-  signedUrl: string
-  token: string
-  path: string
-}
-
-interface UploadUrls {
-  dni: UploadEntry
-  'nota-simple': UploadEntry
-  escrituras: UploadEntry
-}
-
-interface ApiResponse {
-  urls: UploadUrls
-  customer_email: string
-  error?: string
-}
+import {
+  MAX_UPLOAD_BYTES,
+  MOBILE_FILE_ACCEPT,
+  formatFileSize,
+  storageUploadHeaders,
+  validateUploadFile,
+} from '@/lib/gestoria-upload'
 
 type DocKey = 'dni' | 'nota-simple' | 'escrituras'
 
@@ -27,12 +15,28 @@ interface DocDef {
   key: DocKey
   label: string
   hint: string
+  required: boolean
 }
 
 const DOCS: DocDef[] = [
-  { key: 'dni', label: 'DNI / NIE (ambas caras)', hint: 'PDF con anverso y reverso del documento de identidad' },
-  { key: 'nota-simple', label: 'Nota Simple registral', hint: 'Nota simple del Registro de la Propiedad del inmueble' },
-  { key: 'escrituras', label: 'Escrituras del inmueble', hint: 'Escritura de propiedad o contrato de compraventa previo' },
+  {
+    key: 'dni',
+    label: 'DNI / NIE (ambas caras)',
+    hint: 'PDF o foto (JPG/PNG) del anverso y reverso',
+    required: true,
+  },
+  {
+    key: 'nota-simple',
+    label: 'Nota Simple registral',
+    hint: 'PDF o imagen de la nota simple del Registro',
+    required: false,
+  },
+  {
+    key: 'escrituras',
+    label: 'Escrituras del inmueble',
+    hint: 'PDF o imagen de la escritura / título de propiedad',
+    required: false,
+  },
 ]
 
 type UploadState = 'idle' | 'uploading' | 'done' | 'error'
@@ -47,13 +51,13 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
   const [loading, setLoading] = useState(true)
   const [paymentError, setPaymentError] = useState(false)
   const [email, setEmail] = useState('')
-  const [urls, setUrls] = useState<UploadUrls | null>(null)
   const [files, setFiles] = useState<Record<DocKey, FileState>>({
     dni: { file: null, state: 'idle' },
     'nota-simple': { file: null, state: 'idle' },
     escrituras: { file: null, state: 'idle' },
   })
   const [globalState, setGlobalState] = useState<'idle' | 'uploading' | 'done' | 'error'>('idle')
+  const [formHint, setFormHint] = useState('')
   const [drag, setDrag] = useState<DocKey | null>(null)
   const inputRefs = useRef<Record<DocKey, HTMLInputElement | null>>({
     dni: null,
@@ -67,18 +71,16 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
       setLoading(false)
       return
     }
-    // Confirmar pago + generar URLs de subida
     Promise.all([
       fetch(`/api/gestoria/confirmar-pago?session_id=${sessionId}`).catch(() => null),
       fetch(`/api/gestoria/upload-urls?session_id=${sessionId}`),
     ])
       .then(async ([, uploadRes]) => {
-        const data = await uploadRes.json() as ApiResponse
+        const data = await uploadRes.json() as { customer_email?: string; error?: string }
         if (data.error) {
           setPaymentError(true)
         } else {
-          setUrls(data.urls)
-          setEmail(data.customer_email)
+          setEmail(data.customer_email ?? '')
         }
       })
       .catch(() => setPaymentError(true))
@@ -89,10 +91,11 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
     if (file) {
       const check = validateUploadFile(file.name, file.type, file.size)
       if (!check.ok) {
-        alert(check.error)
+        setFormHint(check.error)
         return
       }
     }
+    setFormHint('')
     setFiles(prev => ({ ...prev, [key]: { file, state: 'idle' } }))
   }
 
@@ -100,30 +103,69 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
     e.preventDefault()
     setDrag(null)
     const f = e.dataTransfer.files[0]
-    if (f && f.type === 'application/pdf') setFile(key, f)
+    if (f) setFile(key, f)
   }
 
-  const allSelected = DOCS.every(d => files[d.key].file !== null)
+  const selectedCount = DOCS.filter(d => files[d.key].file).length
+  const missingRequired = DOCS.filter(d => d.required && !files[d.key].file)
+  const canSubmit = selectedCount >= 1 && globalState !== 'uploading'
 
   const handleUpload = async () => {
-    if (!urls || !allSelected) return
-    setGlobalState('uploading')
+    if (!canSubmit) {
+      if (missingRequired.length) {
+        setFormHint(`Falta adjuntar: ${missingRequired.map(d => d.label).join(', ')}`)
+      } else {
+        setFormHint('Adjunta al menos un documento para continuar.')
+      }
+      return
+    }
 
-    // Upload each file sequentially to its signed URL
-    for (const doc of DOCS) {
+    // Si falta el DNI (recomendado), avisar pero permitir si hay otros
+    if (missingRequired.length && selectedCount > 0) {
+      setFormHint(`Vas a enviar sin: ${missingRequired.map(d => d.label).join(', ')}. Si puedes, súbelo ahora.`)
+    }
+
+    setGlobalState('uploading')
+    setFormHint('')
+
+    const toUpload = DOCS.filter(d => files[d.key].file)
+
+    for (const doc of toUpload) {
       const { file } = files[doc.key]
       if (!file) continue
       setFiles(prev => ({ ...prev, [doc.key]: { ...prev[doc.key], state: 'uploading' } }))
 
       try {
-        const res = await fetch(urls[doc.key].signedUrl, {
+        const check = validateUploadFile(file.name, file.type, file.size)
+        if (!check.ok) throw new Error(check.error)
+
+        const urlRes = await fetch('/api/gestoria/upload-urls', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            session_id: sessionId,
+            doc_key: doc.key,
+            file_name: file.name,
+            mime_type: file.type,
+          }),
+        })
+        const urlData = await urlRes.json() as {
+          signedUrl?: string
+          path?: string
+          contentType?: string
+          error?: string
+        }
+        if (!urlRes.ok || !urlData.signedUrl || !urlData.path) {
+          throw new Error(urlData.error || 'No se obtuvo URL de subida')
+        }
+
+        const putRes = await fetch(urlData.signedUrl, {
           method: 'PUT',
-          headers: storageUploadHeaders('application/pdf'),
+          headers: storageUploadHeaders(urlData.contentType ?? check.mime),
           body: file,
         })
-        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        if (!putRes.ok) throw new Error(`Error al subir (${putRes.status})`)
 
-        // Registrar en BD para que aparezca en el panel admin
         await fetch('/api/gestoria/register-doc', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -131,7 +173,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
             session_id: sessionId,
             doc_key: doc.key,
             file_name: file.name,
-            storage_path: urls[doc.key].path,
+            storage_path: urlData.path,
           }),
         }).catch(() => null)
 
@@ -140,11 +182,11 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
         const msg = err instanceof Error ? err.message : 'Error al subir'
         setFiles(prev => ({ ...prev, [doc.key]: { ...prev[doc.key], state: 'error', error: msg } }))
         setGlobalState('error')
+        setFormHint(msg)
         return
       }
     }
 
-    // Notify via email
     try {
       await fetch('/api/gestoria/notify-upload', {
         method: 'POST',
@@ -152,18 +194,12 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
         body: JSON.stringify({ session_id: sessionId }),
       })
     } catch {
-      // non-critical — docs already uploaded
+      /* non-critical */
     }
 
     setGlobalState('done')
   }
 
-  const fmtSize = (bytes: number) => {
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`
-  }
-
-  // ─── Loading ────────────────────────────────────────────────────────────────
   if (loading) {
     return (
       <main className="min-h-screen bg-[#faf8f4] flex items-center justify-center">
@@ -178,25 +214,16 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
     )
   }
 
-  // ─── Payment error ───────────────────────────────────────────────────────────
   if (paymentError) {
     return (
       <main className="min-h-screen bg-[#faf8f4] flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
-          <div className="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-7 h-7 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </div>
           <h2 className="text-xl font-bold text-gray-900 mb-2">Pago no completado</h2>
           <p className="text-sm text-gray-500 mb-6">
-            No hemos podido verificar tu pago. Si crees que es un error, escríbenos a{' '}
+            No hemos podido verificar tu pago. Escríbenos a{' '}
             <a href="mailto:info@inmonest.com" className="text-[#c9962a] font-medium">info@inmonest.com</a>.
           </p>
-          <a
-            href="/gestoria"
-            className="inline-block px-6 py-2.5 bg-[#c9962a] text-white rounded-full text-sm font-semibold hover:bg-[#a87a20] transition-colors"
-          >
+          <a href="/gestoria" className="inline-block px-6 py-2.5 bg-[#c9962a] text-white rounded-full text-sm font-semibold">
             Volver a gestoría
           </a>
         </div>
@@ -204,7 +231,6 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
     )
   }
 
-  // ─── Success ─────────────────────────────────────────────────────────────────
   if (globalState === 'done') {
     const panelNext = `/mi-cuenta/contratos?pago=1&session_id=${encodeURIComponent(sessionId)}&v=expediente`
     return (
@@ -226,10 +252,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
           >
             Ir a mi panel de documentos
           </a>
-          <a
-            href="/gestoria"
-            className="inline-block text-sm text-gray-500 hover:text-[#c9962a]"
-          >
+          <a href="/gestoria" className="inline-block text-sm text-gray-500 hover:text-[#c9962a]">
             Volver a gestoría
           </a>
         </div>
@@ -237,32 +260,26 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
     )
   }
 
-  // ─── Upload form ─────────────────────────────────────────────────────────────
   return (
     <main className="min-h-screen bg-[#faf8f4] py-12 px-4">
       <div className="max-w-2xl mx-auto">
-        {/* Header */}
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-4">
-            <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-            </svg>
             Pago confirmado
           </div>
           <h1 className="text-3xl font-extrabold text-gray-900 mb-2">Carga tu documentación</h1>
           <p className="text-gray-500 text-sm max-w-md mx-auto">
-            Pago confirmado. Adjunta estos documentos en PDF para que redactemos tu contrato.
+            Adjunta los documentos (PDF o foto). El DNI es el más importante.
             {email && <span className="block mt-1">Te contactaremos en <strong className="text-gray-700">{email}</strong>.</span>}
           </p>
-          <a
-            href={`/login?next=${encodeURIComponent(`/mi-cuenta/contratos?pago=1&session_id=${encodeURIComponent(sessionId)}&v=expediente`)}`}
-            className="inline-block mt-4 text-sm font-semibold text-[#c9962a] hover:underline"
-          >
-            Prefiero subirlos desde mi panel →
-          </a>
+          <p className="text-xs text-gray-400 mt-2">
+            {selectedCount}/3 archivos listos
+            {missingRequired.length > 0 && (
+              <span className="text-amber-700 font-semibold"> · Falta: {missingRequired.map(d => d.label).join(', ')}</span>
+            )}
+          </p>
         </div>
 
-        {/* Upload zones */}
         <div className="space-y-4 mb-8">
           {DOCS.map(doc => {
             const state = files[doc.key]
@@ -270,12 +287,15 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
             const isDone = state.state === 'done'
             const isError = state.state === 'error'
             const isUploading = state.state === 'uploading'
+            const isMissing = doc.required && !state.file
 
             return (
-              <div key={doc.key}
+              <div
+                key={doc.key}
                 className={`relative bg-white rounded-2xl border-2 transition-all duration-200 ${
                   isDone ? 'border-green-400 bg-green-50/30' :
                   isError ? 'border-red-400 bg-red-50/30' :
+                  isMissing ? 'border-amber-300 bg-amber-50/40' :
                   isDragging ? 'border-[#c9962a] bg-amber-50/40 scale-[1.01]' :
                   state.file ? 'border-[#c9962a]/60' : 'border-dashed border-gray-200 hover:border-[#c9962a]/50'
                 }`}
@@ -286,38 +306,35 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
                 <input
                   ref={el => { inputRefs.current[doc.key] = el }}
                   type="file"
-                  accept="application/pdf"
+                  accept={MOBILE_FILE_ACCEPT}
                   className="hidden"
                   onChange={e => setFile(doc.key, e.target.files?.[0] ?? null)}
                 />
 
                 <div className="p-5 flex items-center gap-4">
-                  {/* Icon */}
                   <div className={`flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center ${
                     isDone ? 'bg-green-100' : isError ? 'bg-red-100' : 'bg-amber-50'
                   }`}>
                     {isDone ? (
-                      <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                      <span className="text-green-600 font-bold">✓</span>
                     ) : isUploading ? (
                       <svg className="animate-spin w-5 h-5 text-[#c9962a]" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z" />
                       </svg>
                     ) : (
-                      <svg className="w-5 h-5 text-[#c9962a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                      </svg>
+                      <span className="text-[#c9962a] text-lg">📄</span>
                     )}
                   </div>
 
-                  {/* Text */}
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-gray-900">{doc.label}</p>
+                    <p className="text-sm font-semibold text-gray-900">
+                      {doc.label}
+                      {doc.required && <span className="text-amber-700 text-xs font-bold ml-1">Obligatorio</span>}
+                    </p>
                     {state.file ? (
                       <p className="text-xs text-gray-500 truncate">
-                        {state.file.name} · {fmtSize(state.file.size)}
+                        {state.file.name} · {formatFileSize(state.file.size)}
                         {isError && <span className="text-red-500 ml-1">— {state.error}</span>}
                       </p>
                     ) : (
@@ -325,12 +342,11 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
                     )}
                   </div>
 
-                  {/* Action */}
                   {!isDone && !isUploading && (
                     <button
                       type="button"
                       onClick={() => inputRefs.current[doc.key]?.click()}
-                      className="flex-shrink-0 px-3 py-1.5 text-xs font-semibold text-[#c9962a] border border-[#c9962a]/40 rounded-lg hover:bg-amber-50 transition-colors"
+                      className="flex-shrink-0 px-3 py-2 text-xs font-semibold text-[#c9962a] border border-[#c9962a]/40 rounded-lg hover:bg-amber-50 transition-colors min-h-[40px]"
                     >
                       {state.file ? 'Cambiar' : 'Seleccionar'}
                     </button>
@@ -341,38 +357,30 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
           })}
         </div>
 
-        {/* Error global */}
-        {globalState === 'error' && (
-          <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700 mb-4">
-            Hubo un error al subir uno de los archivos. Inténtalo de nuevo o contacta con <a href="mailto:info@inmonest.com" className="font-medium underline">info@inmonest.com</a>.
+        {(formHint || globalState === 'error') && (
+          <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-900 mb-4">
+            {formHint || 'Hubo un error al subir. Inténtalo de nuevo o escribe a info@inmonest.com.'}
           </div>
         )}
 
-        {/* Submit button */}
         <button
+          type="button"
           onClick={handleUpload}
-          disabled={!allSelected || globalState === 'uploading'}
-          className="w-full py-4 bg-gradient-to-r from-[#7a5c1e] to-[#c9962a] text-white rounded-2xl font-bold text-base hover:opacity-90 transition-opacity disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg shadow-amber-200"
+          disabled={globalState === 'uploading'}
+          className="w-full py-4 bg-gradient-to-r from-[#7a5c1e] to-[#c9962a] text-white rounded-2xl font-bold text-base hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2 shadow-lg shadow-amber-200 min-h-[56px]"
         >
           {globalState === 'uploading' ? (
-            <>
-              <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z" />
-              </svg>
-              Subiendo documentos…
-            </>
+            <>Subiendo documentos…</>
+          ) : selectedCount === 0 ? (
+            <>Adjunta al menos un archivo</>
+          ) : missingRequired.length > 0 ? (
+            <>Enviar {selectedCount} documento{selectedCount === 1 ? '' : 's'} (falta DNI)</>
           ) : (
-            <>
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-              </svg>
-              Enviar documentación
-            </>
+            <>Enviar documentación ({selectedCount})</>
           )}
         </button>
         <p className="text-center text-xs text-gray-400 mt-3">
-          Archivos cifrados en tránsito · Solo PDF · Hasta {formatFileSize(MAX_UPLOAD_BYTES)} por archivo
+          PDF o foto · Hasta {formatFileSize(MAX_UPLOAD_BYTES)} por archivo · Cifrado en tránsito
         </p>
       </div>
     </main>
