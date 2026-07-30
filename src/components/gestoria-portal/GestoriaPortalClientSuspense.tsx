@@ -9,6 +9,7 @@ type Props = {
   userDocs: GestoriaUserDoc[]
   userEmail: string
   displayName: string
+  initialSessionId?: string | null
 }
 
 function PortalLoading() {

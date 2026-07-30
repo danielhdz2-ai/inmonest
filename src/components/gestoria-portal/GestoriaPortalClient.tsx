@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useMemo, useEffect, useCallback } from 'react'
-import Link from 'next/link'
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
 import GestoriaLeadPanel from '@/components/GestoriaLeadPanel'
 import GestoriaPaidPanel from '@/components/GestoriaPaidPanel'
@@ -11,7 +10,6 @@ import GestoriaPortalContratos from '@/components/gestoria-portal/GestoriaPortal
 import GestoriaPortalInmueble from '@/components/gestoria-portal/GestoriaPortalInmueble'
 import GestoriaPortalServicios from '@/components/gestoria-portal/GestoriaPortalServicios'
 import GestoriaPortalPublicar from '@/components/gestoria-portal/GestoriaPortalPublicar'
-import GestoriaExpedienteActivador from '@/components/gestoria-portal/GestoriaExpedienteActivador'
 import type { PartesFormData } from '@/components/GestoriaPartesForm'
 import type { GestoriaContrato, GestoriaPortalSection, GestoriaUserDoc } from '@/lib/gestoria-portal-types'
 import { computeGestoriaProgress } from '@/lib/gestoria-client-progress'
@@ -27,7 +25,7 @@ function parseSection(value: string | null): GestoriaPortalSection {
   if (value && VALID_SECTIONS.includes(value as GestoriaPortalSection)) {
     return value as GestoriaPortalSection
   }
-  return 'inicio'
+  return 'expediente'
 }
 
 type Props = {
@@ -35,6 +33,7 @@ type Props = {
   userDocs: GestoriaUserDoc[]
   userEmail: string
   displayName: string
+  initialSessionId?: string | null
 }
 
 export default function GestoriaPortalClient({
@@ -42,16 +41,20 @@ export default function GestoriaPortalClient({
   userDocs: initialDocs,
   userEmail,
   displayName,
+  initialSessionId = null,
 }: Props) {
   const [contratos, setContratos] = useState(initialContratos)
   const [docs, setDocs] = useState(initialDocs)
-  const [section, setSection] = useState<GestoriaPortalSection>('inicio')
+  const [section, setSection] = useState<GestoriaPortalSection>('expediente')
   const [activePaidId, setActivePaidId] = useState<string | null>(null)
   const [downloading, setDownloading] = useState<string | null>(null)
   const [uploading, setUploading] = useState<string | null>(null)
   const [uploadProgress, setUploadProgress] = useState<number | null>(null)
   const [paying, setPaying] = useState<string | null>(null)
   const [uploadFeedback, setUploadFeedback] = useState<{ type: 'error' | 'success'; message: string } | null>(null)
+  const [linking, setLinking] = useState(
+    Boolean(initialSessionId) && initialContratos.length === 0,
+  )
 
   const paidContratos = useMemo(
     () => contratos.filter((c) => isPaidStatus(c.status, c.paid_at)),
@@ -71,26 +74,20 @@ export default function GestoriaPortalClient({
   }, [activePaid, docs])
 
   const searchParams = useSearchParams()
-  const pagoParam = searchParams.get('pago')
-  const sessionIdParam = searchParams.get('session_id')
-  // Solo bloquear UI con el activador si venimos explícitamente de Stripe (?pago=1)
-  // Nunca por solo tener session_id (si no, "Entrar al panel" vuelve a esta pantalla)
-  const awaitingPaymentLink = pagoParam === '1' && !hasPaidService
-  const showPagoBanner = pagoParam === '1' || hasPaidService
+  const showPagoBanner = hasPaidService
 
   const navigate = useCallback((next: GestoriaPortalSection) => {
     setSection(next)
     const url = new URL(window.location.href)
     url.searchParams.set('v', next)
+    url.searchParams.delete('pago')
     window.history.replaceState({}, '', url.toString())
   }, [])
 
   useEffect(() => {
-    setSection(parseSection(searchParams.get('v')))
-    if (pagoParam === '1' && !searchParams.get('v')) {
-      setSection('expediente')
-    }
-  }, [pagoParam, searchParams])
+    const v = parseSection(searchParams.get('v'))
+    setSection(v)
+  }, [searchParams])
 
   useEffect(() => {
     setContratos(initialContratos)
@@ -100,33 +97,60 @@ export default function GestoriaPortalClient({
     setDocs(initialDocs)
   }, [initialDocs])
 
+  // Un único intento si el servidor aún no traía el pedido pagado
+  const linkTriedRef = useRef(false)
   useEffect(() => {
-    const hasPaid = initialContratos.some((c) => isPaidStatus(c.status, c.paid_at))
-    if (hasPaid) return
-    if (!awaitingPaymentLink) return
+    if (hasPaidService) {
+      setLinking(false)
+      return
+    }
+    const sid = initialSessionId || searchParams.get('session_id')
+    if (!sid?.startsWith('cs_')) {
+      setLinking(false)
+      return
+    }
+    if (linkTriedRef.current) return
+    linkTriedRef.current = true
 
     let cancelled = false
-
-    async function refetchPedidos() {
+    async function once() {
       try {
-        const sid = sessionIdParam?.startsWith('cs_') ? `?session_id=${encodeURIComponent(sessionIdParam)}` : ''
-        const res = await fetch(`/api/gestoria/mis-pedidos${sid}`)
+        await Promise.allSettled([
+          fetch(`/api/gestoria/confirmar-pago?session_id=${encodeURIComponent(sid!)}`),
+          fetch('/api/gestoria/vincular-leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ session_id: sid }),
+          }),
+        ])
+        const res = await fetch(
+          `/api/gestoria/mis-pedidos?session_id=${encodeURIComponent(sid!)}`,
+          { cache: 'no-store' },
+        )
         if (!res.ok || cancelled) return
-        const data = await res.json() as { contratos?: GestoriaContrato[]; userDocs?: GestoriaUserDoc[] }
+        const data = (await res.json()) as {
+          contratos?: GestoriaContrato[]
+          userDocs?: GestoriaUserDoc[]
+        }
         if (data.contratos?.length) setContratos(data.contratos)
         if (data.userDocs) setDocs(data.userDocs)
-      } catch {
-        /* bootstrap */
+      } finally {
+        if (!cancelled) {
+          setLinking(false)
+          const url = new URL(window.location.href)
+          url.searchParams.delete('pago')
+          url.searchParams.delete('session_id')
+          if (!url.searchParams.get('v')) url.searchParams.set('v', 'expediente')
+          window.history.replaceState({}, '', url.pathname + url.search)
+        }
       }
     }
 
-    refetchPedidos()
-    const timer = window.setTimeout(refetchPedidos, 3000)
+    void once()
     return () => {
       cancelled = true
-      window.clearTimeout(timer)
     }
-  }, [initialContratos, awaitingPaymentLink, sessionIdParam])
+  }, [hasPaidService, initialSessionId, searchParams])
 
   async function handlePagar(contrato: GestoriaContrato) {
     setPaying(contrato.id)
@@ -308,18 +332,15 @@ export default function GestoriaPortalClient({
     )
   }
 
-  /* ── Activar expediente tras pago (reintentos automáticos) ── */
-  if (!hasPaidService && awaitingPaymentLink) {
+  /* ── Un momento mientras llega el pedido (máx. 1 petición, sin bucles) ── */
+  if (linking && !hasPaidService) {
     return (
-      <GestoriaPortalShell displayName={displayName} activeSection="inicio" onSectionChange={navigate}>
-        <GestoriaExpedienteActivador
-          userEmail={userEmail}
-          onLoaded={({ contratos: loaded, userDocs: loadedDocs }) => {
-            setContratos(loaded)
-            setDocs(loadedDocs)
-          }}
-        />
-      </GestoriaPortalShell>
+      <div className="min-h-screen bg-[#eef0f2] flex items-center justify-center p-4">
+        <div className="text-center space-y-3">
+          <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-[#c9962a] border-t-transparent" />
+          <p className="text-sm text-gray-600 font-medium">Abriendo tu expediente…</p>
+        </div>
+      </div>
     )
   }
 
@@ -327,17 +348,20 @@ export default function GestoriaPortalClient({
     return (
       <div className="min-h-screen bg-[#eef0f2] flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl border border-gray-200 p-8 text-center space-y-4 max-w-md">
-          <div className="text-4xl">🔒</div>
-          <h2 className="text-lg font-bold text-gray-900">Panel exclusivo para clientes</h2>
+          <div className="text-4xl">✅</div>
+          <h2 className="text-lg font-bold text-gray-900">Pago recibido</h2>
           <p className="text-sm text-gray-500">
-            Este portal es solo para quienes han contratado un servicio de gestoría inmobiliaria.
+            Tu expediente se está activando. Si en unos segundos no ves tu servicio, recarga o escribe a{' '}
+            <a href="mailto:info@inmonest.com" className="text-[#c9962a] font-semibold">info@inmonest.com</a>
+            {' '}con el email del pago.
           </p>
-          <Link
-            href="/gestoria"
-            className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-bold px-6 py-3 rounded-xl min-h-[48px] touch-manipulation"
+          <button
+            type="button"
+            onClick={() => window.location.reload()}
+            className="inline-block bg-[#c9962a] text-white text-sm font-bold px-6 py-3 rounded-xl min-h-[48px]"
           >
-            Ver servicios de gestoría
-          </Link>
+            Recargar panel
+          </button>
         </div>
       </div>
     )
@@ -371,7 +395,7 @@ export default function GestoriaPortalClient({
           contratos={contratos}
           userDocs={docs}
           activeContrato={activePaid}
-          showPagoBanner={showPagoBanner && pagoParam === '1'}
+          showPagoBanner={showPagoBanner && searchParams.get('pago') === '1'}
           onNavigate={navigate}
         />
       )}

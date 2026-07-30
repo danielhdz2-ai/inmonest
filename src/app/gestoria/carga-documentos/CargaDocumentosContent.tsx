@@ -47,6 +47,38 @@ interface FileState {
   error?: string
 }
 
+function DoneRedirect({ panelHref, email }: { panelHref: string; email: string }) {
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      window.location.replace(panelHref)
+    }, 1200)
+    return () => window.clearTimeout(t)
+  }, [panelHref])
+
+  return (
+    <main className="min-h-screen bg-[#faf8f4] flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
+        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
+          <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">¡Documentos recibidos!</h2>
+        <p className="text-sm text-gray-500 leading-relaxed mb-6">
+          Abriendo tu panel de gestoría…
+          {email ? <> Te contactaremos en <strong>{email}</strong>.</> : null}
+        </p>
+        <a
+          href={panelHref}
+          className="inline-block w-full px-6 py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors mb-3"
+        >
+          Ir ahora a mi panel
+        </a>
+      </div>
+    </main>
+  )
+}
+
 export default function CargaDocumentosContent({ sessionId }: { sessionId: string }) {
   const [loading, setLoading] = useState(true)
   const [paymentError, setPaymentError] = useState(false)
@@ -237,32 +269,10 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
   }
 
   if (globalState === 'done') {
-    // Sin ?pago=1: el panel abre directo el expediente (sin pantalla de vinculación)
-    const panelHref = '/mi-cuenta/contratos?v=expediente'
+    // session_id obligatorio: sin él el panel no encuentra el pago
+    const panelHref = `/mi-cuenta/contratos?v=expediente&session_id=${encodeURIComponent(sessionId)}`
     return (
-      <main className="min-h-screen bg-[#faf8f4] flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full text-center">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
-            <svg className="w-8 h-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
-          </div>
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">¡Documentos recibidos!</h2>
-          <p className="text-sm text-gray-500 leading-relaxed mb-6">
-            Nuestro equipo los revisará y te contactará
-            {email ? <> en <strong>{email}</strong></> : ''} en menos de <strong>24 horas</strong>.
-          </p>
-          <a
-            href={panelHref}
-            className="inline-block w-full px-6 py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors mb-3"
-          >
-            Ir a mi panel de documentos
-          </a>
-          <a href="/gestoria" className="inline-block text-sm text-gray-500 hover:text-[#c9962a]">
-            Volver a gestoría
-          </a>
-        </div>
-      </main>
+      <DoneRedirect panelHref={panelHref} email={email} />
     )
   }
 

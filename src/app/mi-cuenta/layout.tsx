@@ -15,8 +15,8 @@ export default async function MiCuentaLayout({
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  // Middleware ya redirige con ?next=ruta-completa; este fallback no debe tirar session_id
-  if (!user) redirect('/login?next=/mi-cuenta/contratos')
+  // Middleware ya protege /mi-cuenta. No redirigir aquí (perdería ?session_id).
+  if (!user) redirect('/login')
 
   return <div className="min-h-screen">{children}</div>
 }

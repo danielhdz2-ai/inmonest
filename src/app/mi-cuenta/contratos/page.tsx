@@ -1,12 +1,16 @@
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { fetchGestoriaOrdersForUser, fetchGestoriaOrdersForUserSafe } from '@/lib/gestoria-link-user'
+import { fetchGestoriaOrdersForUser, fetchGestoriaOrdersForUserSafe, linkGestoriaOrdersToUser } from '@/lib/gestoria-link-user'
 import { USER_DOCS_SELECT, USER_DOCS_SELECT_CORE } from '@/lib/gestoria-portal-types'
 import GestoriaPortalClientSuspense from '@/components/gestoria-portal/GestoriaPortalClientSuspense'
-import GestoriaPanelBootstrap from '@/components/GestoriaPanelBootstrap'
-import { Suspense } from 'react'
 import { redirect } from 'next/navigation'
 
+export const dynamic = 'force-dynamic'
+
+/**
+ * Panel de gestoría del cliente.
+ * Flujo simple: si hay session_id de Stripe, vincula el pedido y muestra el expediente.
+ */
 export default async function ContratosPage({
   searchParams,
 }: {
@@ -14,37 +18,54 @@ export default async function ContratosPage({
 }) {
   const params = await searchParams
   const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
 
   if (!user?.email) {
     const q = new URLSearchParams()
-    if (params.pago) q.set('pago', params.pago)
     if (params.session_id) q.set('session_id', params.session_id)
-    if (params.v) q.set('v', params.v)
-    const qs = q.toString()
-    redirect(`/login?next=${encodeURIComponent(`/mi-cuenta/contratos${qs ? `?${qs}` : ''}`)}`)
+    q.set('v', params.v || 'expediente')
+    redirect(`/login?next=${encodeURIComponent(`/mi-cuenta/contratos?${q.toString()}`)}`)
   }
 
   const emailNorm = user.email.trim().toLowerCase()
+  const sessionId = params.session_id?.startsWith('cs_') ? params.session_id : null
+
   let contratos: Awaited<ReturnType<typeof fetchGestoriaOrdersForUser>> = []
   let userDocs: Awaited<ReturnType<typeof fetchUserDocsSafe>> = []
 
   try {
     const admin = createAdminClient()
+
+    // Si venimos del pago, forzar confirmación Stripe → status paid (antes de leer pedidos)
+    if (sessionId) {
+      try {
+        const base = process.env.NEXT_PUBLIC_SITE_URL || 'https://inmonest.com'
+        await fetch(
+          `${base}/api/gestoria/confirmar-pago?session_id=${encodeURIComponent(sessionId)}`,
+          { cache: 'no-store' },
+        )
+      } catch {
+        /* no bloquear el panel */
+      }
+    }
+
+    // Vincular pago a esta cuenta (email + session)
+    await linkGestoriaOrdersToUser(admin, user.id, emailNorm, sessionId)
+
     ;[contratos, userDocs] = await Promise.all([
-      fetchGestoriaOrdersForUser(admin, user.id, emailNorm),
+      fetchGestoriaOrdersForUser(admin, user.id, emailNorm, sessionId),
       fetchUserDocsSafe(supabase, user.id),
     ])
   } catch (err) {
-    console.error('[contratos/page] fetch:', err)
+    console.error('[contratos/page]', err)
     contratos = await fetchGestoriaOrdersForUserSafe(supabase, user.id, emailNorm)
     userDocs = await fetchUserDocsSafe(supabase, user.id)
   }
 
-  const isPostPayment =
-    params.pago === '1' || (params.session_id?.startsWith('cs_') ?? false)
-
-  if (contratos.length === 0 && !isPostPayment) {
+  // Nunca expulsar si venimos de un pago (session_id) o ya hay pedidos
+  if (contratos.length === 0 && !sessionId) {
     redirect('/gestoria/acceso-cliente')
   }
 
@@ -61,17 +82,13 @@ export default async function ContratosPage({
     'Cliente'
 
   return (
-    <>
-      <Suspense fallback={null}>
-        <GestoriaPanelBootstrap />
-      </Suspense>
-      <GestoriaPortalClientSuspense
-        contratos={contratos}
-        userDocs={userDocs}
-        userEmail={emailNorm}
-        displayName={displayName}
-      />
-    </>
+    <GestoriaPortalClientSuspense
+      contratos={contratos}
+      userDocs={userDocs}
+      userEmail={emailNorm}
+      displayName={displayName}
+      initialSessionId={sessionId}
+    />
   )
 }
 
