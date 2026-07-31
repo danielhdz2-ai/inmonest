@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { sendEmail, emailBienvenida } from '@/lib/email'
 import { getRedirectUrl, isAdminEmail } from '@/lib/admin'
-import { safeInternalPath } from '@/lib/gestoria-leads'
+import { buildGestoriaPanelUrl, safeInternalPath } from '@/lib/gestoria-leads'
+import { fetchGestoriaOrdersForUser } from '@/lib/gestoria-link-user'
 
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
@@ -32,9 +34,23 @@ export async function GET(request: Request) {
       }
 
       const nextPath = safeInternalPath(next)
-      const redirectUrl = isAdminEmail(email)
-        ? '/admin'
-        : (nextPath ?? getRedirectUrl(email))
+      let redirectUrl: string
+      if (isAdminEmail(email)) {
+        redirectUrl = '/admin'
+      } else if (nextPath) {
+        redirectUrl = nextPath
+      } else {
+        // Email con algún pedido de gestoría → siempre a su panel, nunca al portal de anuncios
+        let hasGestoriaOrder = false
+        try {
+          const admin = createAdminClient()
+          const contratos = await fetchGestoriaOrdersForUser(admin, user.id, email)
+          hasGestoriaOrder = contratos.length > 0
+        } catch {
+          /* best-effort */
+        }
+        redirectUrl = hasGestoriaOrder ? buildGestoriaPanelUrl() : getRedirectUrl(email)
+      }
       return NextResponse.redirect(`${origin}${redirectUrl}`)
     }
   }

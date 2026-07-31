@@ -18,7 +18,7 @@ interface StripeSession {
   error?: { message: string }
 }
 
-const DOCS = ['dni', 'nota-simple', 'escrituras'] as const
+const DOCS = ['dni', 'dni-reverso', 'nota-simple', 'escrituras'] as const
 type DocKey = (typeof DOCS)[number]
 
 function isDocKey(v: string): v is DocKey {

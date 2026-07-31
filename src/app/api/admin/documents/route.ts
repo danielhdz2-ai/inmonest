@@ -3,7 +3,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 
 export const dynamic = 'force-dynamic'
 
-const DOC_KEYS = ['dni', 'nota-simple', 'escrituras'] as const
+const DOC_KEYS = ['dni', 'dni-reverso', 'nota-simple', 'escrituras'] as const
 
 async function syncStorageDocs(supabase: ReturnType<typeof createAdminClient>) {
   const { data: requests } = await supabase

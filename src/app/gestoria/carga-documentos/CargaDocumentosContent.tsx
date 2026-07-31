@@ -4,41 +4,14 @@ import { useEffect, useRef, useState } from 'react'
 import {
   MAX_UPLOAD_BYTES,
   MOBILE_FILE_ACCEPT,
+  buildStorageUploadForm,
   formatFileSize,
+  isPdfFileName,
   storageUploadHeaders,
   validateUploadFile,
 } from '@/lib/gestoria-upload'
 
-type DocKey = 'dni' | 'nota-simple' | 'escrituras'
-
-interface DocDef {
-  key: DocKey
-  label: string
-  hint: string
-  required: boolean
-}
-
-const DOCS: DocDef[] = [
-  {
-    key: 'dni',
-    label: 'DNI / NIE (ambas caras)',
-    hint: 'PDF o foto (JPG/PNG) del anverso y reverso',
-    required: true,
-  },
-  {
-    key: 'nota-simple',
-    label: 'Nota Simple registral',
-    hint: 'PDF o imagen de la nota simple del Registro',
-    required: false,
-  },
-  {
-    key: 'escrituras',
-    label: 'Otros',
-    hint: 'PDF o imagen de cualquier otro documento útil',
-    required: false,
-  },
-]
-
+type ExtraDocKey = 'nota-simple' | 'escrituras'
 type UploadState = 'idle' | 'uploading' | 'done' | 'error'
 
 interface FileState {
@@ -46,6 +19,21 @@ interface FileState {
   state: UploadState
   error?: string
 }
+
+const IDLE: FileState = { file: null, state: 'idle' }
+
+const EXTRA_DOCS: { key: ExtraDocKey; label: string; hint: string }[] = [
+  {
+    key: 'nota-simple',
+    label: 'Nota Simple registral',
+    hint: 'PDF o imagen de la nota simple del Registro',
+  },
+  {
+    key: 'escrituras',
+    label: 'Otros',
+    hint: 'PDF o imagen de cualquier otro documento útil',
+  },
+]
 
 function DoneRedirect({ panelHref, email }: { panelHref: string; email: string }) {
   useEffect(() => {
@@ -83,16 +71,20 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
   const [loading, setLoading] = useState(true)
   const [paymentError, setPaymentError] = useState(false)
   const [email, setEmail] = useState('')
-  const [files, setFiles] = useState<Record<DocKey, FileState>>({
-    dni: { file: null, state: 'idle' },
-    'nota-simple': { file: null, state: 'idle' },
-    escrituras: { file: null, state: 'idle' },
+
+  // DNI: PDF único, o foto anverso + reverso
+  const [dniFront, setDniFront] = useState<FileState>(IDLE)
+  const [dniBack, setDniBack] = useState<FileState>(IDLE)
+
+  const [files, setFiles] = useState<Record<ExtraDocKey, FileState>>({
+    'nota-simple': IDLE,
+    escrituras: IDLE,
   })
   const [globalState, setGlobalState] = useState<'idle' | 'uploading' | 'done' | 'error'>('idle')
   const [formHint, setFormHint] = useState('')
-  const [drag, setDrag] = useState<DocKey | null>(null)
-  const inputRefs = useRef<Record<DocKey, HTMLInputElement | null>>({
-    dni: null,
+  const dniFrontRef = useRef<HTMLInputElement | null>(null)
+  const dniBackRef = useRef<HTMLInputElement | null>(null)
+  const inputRefs = useRef<Record<ExtraDocKey, HTMLInputElement | null>>({
     'nota-simple': null,
     escrituras: null,
   })
@@ -119,7 +111,39 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
       .finally(() => setLoading(false))
   }, [sessionId])
 
-  const setFile = (key: DocKey, file: File | null) => {
+  const dniFrontIsPdf = dniFront.file ? isPdfFileName(dniFront.file.name) : false
+  // El reverso solo hace falta si el anverso es una foto (no PDF)
+  const needsDniBack = Boolean(dniFront.file) && !dniFrontIsPdf
+  const dniComplete = dniFrontIsPdf ? Boolean(dniFront.file) : Boolean(dniFront.file && dniBack.file)
+  const dniMissing = !dniComplete
+
+  const setDniFrontFile = (file: File | null) => {
+    if (file) {
+      const check = validateUploadFile(file.name, file.type, file.size)
+      if (!check.ok) {
+        setFormHint(check.error)
+        return
+      }
+      // Si cambian el anverso a PDF, el reverso (si lo hubiera) ya no aplica
+      if (isPdfFileName(file.name)) setDniBack(IDLE)
+    }
+    setFormHint('')
+    setDniFront({ file, state: 'idle' })
+  }
+
+  const setDniBackFile = (file: File | null) => {
+    if (file) {
+      const check = validateUploadFile(file.name, file.type, file.size)
+      if (!check.ok) {
+        setFormHint(check.error)
+        return
+      }
+    }
+    setFormHint('')
+    setDniBack({ file, state: 'idle' })
+  }
+
+  const setFile = (key: ExtraDocKey, file: File | null) => {
     if (file) {
       const check = validateUploadFile(file.name, file.type, file.size)
       if (!check.ok) {
@@ -131,89 +155,111 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
     setFiles(prev => ({ ...prev, [key]: { file, state: 'idle' } }))
   }
 
-  const handleDrop = (key: DocKey, e: React.DragEvent) => {
-    e.preventDefault()
-    setDrag(null)
-    const f = e.dataTransfer.files[0]
-    if (f) setFile(key, f)
-  }
+  const extraSelectedCount = EXTRA_DOCS.filter(d => files[d.key].file).length
+  const selectedCount = (dniFront.file ? 1 : 0) + (dniBack.file ? 1 : 0) + extraSelectedCount
+  const canSubmit = (Boolean(dniFront.file) || extraSelectedCount > 0) && globalState !== 'uploading'
 
-  const selectedCount = DOCS.filter(d => files[d.key].file).length
-  const missingRequired = DOCS.filter(d => d.required && !files[d.key].file)
-  const canSubmit = selectedCount >= 1 && globalState !== 'uploading'
+  async function uploadOne(docKey: string, file: File): Promise<void> {
+    const check = validateUploadFile(file.name, file.type, file.size)
+    if (!check.ok) throw new Error(check.error)
+
+    const urlRes = await fetch('/api/gestoria/upload-urls', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        session_id: sessionId,
+        doc_key: docKey,
+        file_name: file.name,
+        mime_type: file.type,
+      }),
+    })
+    const urlData = await urlRes.json() as {
+      signedUrl?: string
+      path?: string
+      contentType?: string
+      error?: string
+    }
+    if (!urlRes.ok || !urlData.signedUrl || !urlData.path) {
+      throw new Error(urlData.error || 'No se obtuvo URL de subida')
+    }
+
+    const putRes = await fetch(urlData.signedUrl, {
+      method: 'PUT',
+      headers: storageUploadHeaders(),
+      body: buildStorageUploadForm(file),
+    })
+    if (!putRes.ok) throw new Error(`Error al subir (${putRes.status})`)
+
+    await fetch('/api/gestoria/register-doc', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        session_id: sessionId,
+        doc_key: docKey,
+        file_name: file.name,
+        storage_path: urlData.path,
+      }),
+    }).then(async (r) => {
+      if (!r.ok) {
+        const err = await r.json().catch(() => ({})) as { error?: string }
+        console.error('[register-doc]', err.error || r.status)
+      }
+    }).catch((e) => console.error('[register-doc]', e))
+  }
 
   const handleUpload = async () => {
     if (!canSubmit) {
-      if (missingRequired.length) {
-        setFormHint(`Falta adjuntar: ${missingRequired.map(d => d.label).join(', ')}`)
-      } else {
-        setFormHint('Adjunta al menos un documento para continuar.')
-      }
+      setFormHint('Adjunta al menos un documento para continuar.')
       return
     }
 
-    // Si falta el DNI (recomendado), avisar pero permitir si hay otros
-    if (missingRequired.length && selectedCount > 0) {
-      setFormHint(`Vas a enviar sin: ${missingRequired.map(d => d.label).join(', ')}. Si puedes, súbelo ahora.`)
+    if (dniMissing && selectedCount > 0) {
+      setFormHint(
+        needsDniBack
+          ? 'Vas a enviar sin el reverso del DNI. Si puedes, súbelo ahora.'
+          : 'Vas a enviar sin el DNI. Si puedes, súbelo ahora.',
+      )
     }
 
     setGlobalState('uploading')
     setFormHint('')
 
-    const toUpload = DOCS.filter(d => files[d.key].file)
+    // DNI (anverso, y reverso si aplica)
+    if (dniFront.file) {
+      setDniFront(prev => ({ ...prev, state: 'uploading' }))
+      try {
+        await uploadOne('dni', dniFront.file)
+        setDniFront(prev => ({ ...prev, state: 'done' }))
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : 'Error al subir'
+        setDniFront(prev => ({ ...prev, state: 'error', error: msg }))
+        setGlobalState('error')
+        setFormHint(msg)
+        return
+      }
+    }
+    if (dniBack.file) {
+      setDniBack(prev => ({ ...prev, state: 'uploading' }))
+      try {
+        await uploadOne('dni-reverso', dniBack.file)
+        setDniBack(prev => ({ ...prev, state: 'done' }))
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : 'Error al subir'
+        setDniBack(prev => ({ ...prev, state: 'error', error: msg }))
+        setGlobalState('error')
+        setFormHint(msg)
+        return
+      }
+    }
 
+    // Nota simple / otros
+    const toUpload = EXTRA_DOCS.filter(d => files[d.key].file)
     for (const doc of toUpload) {
       const { file } = files[doc.key]
       if (!file) continue
       setFiles(prev => ({ ...prev, [doc.key]: { ...prev[doc.key], state: 'uploading' } }))
-
       try {
-        const check = validateUploadFile(file.name, file.type, file.size)
-        if (!check.ok) throw new Error(check.error)
-
-        const urlRes = await fetch('/api/gestoria/upload-urls', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            session_id: sessionId,
-            doc_key: doc.key,
-            file_name: file.name,
-            mime_type: file.type,
-          }),
-        })
-        const urlData = await urlRes.json() as {
-          signedUrl?: string
-          path?: string
-          contentType?: string
-          error?: string
-        }
-        if (!urlRes.ok || !urlData.signedUrl || !urlData.path) {
-          throw new Error(urlData.error || 'No se obtuvo URL de subida')
-        }
-
-        const putRes = await fetch(urlData.signedUrl, {
-          method: 'PUT',
-          headers: storageUploadHeaders(urlData.contentType ?? check.mime),
-          body: file,
-        })
-        if (!putRes.ok) throw new Error(`Error al subir (${putRes.status})`)
-
-        await fetch('/api/gestoria/register-doc', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            session_id: sessionId,
-            doc_key: doc.key,
-            file_name: file.name,
-            storage_path: urlData.path,
-          }),
-        }).then(async (r) => {
-          if (!r.ok) {
-            const err = await r.json().catch(() => ({})) as { error?: string }
-            console.error('[register-doc]', err.error || r.status)
-          }
-        }).catch((e) => console.error('[register-doc]', e))
-
+        await uploadOne(doc.key, file)
         setFiles(prev => ({ ...prev, [doc.key]: { ...prev[doc.key], state: 'done' } }))
       } catch (err) {
         const msg = err instanceof Error ? err.message : 'Error al subir'
@@ -276,6 +322,114 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
     )
   }
 
+  function renderDniCard() {
+    const isDone = dniComplete && dniFront.state !== 'error' && dniBack.state !== 'error'
+    const isError = dniFront.state === 'error' || dniBack.state === 'error'
+    const isUploading = dniFront.state === 'uploading' || dniBack.state === 'uploading'
+
+    return (
+      <div
+        className={`relative bg-white rounded-2xl border-2 transition-all duration-200 ${
+          isDone ? 'border-green-400 bg-green-50/30' :
+          isError ? 'border-red-400 bg-red-50/30' :
+          dniMissing ? 'border-amber-300 bg-amber-50/40' :
+          'border-dashed border-gray-200'
+        }`}
+      >
+        <input
+          ref={dniFrontRef}
+          type="file"
+          accept={MOBILE_FILE_ACCEPT}
+          className="hidden"
+          onChange={e => setDniFrontFile(e.target.files?.[0] ?? null)}
+        />
+        <input
+          ref={dniBackRef}
+          type="file"
+          accept={MOBILE_FILE_ACCEPT}
+          className="hidden"
+          onChange={e => setDniBackFile(e.target.files?.[0] ?? null)}
+        />
+
+        <div className="p-5 flex items-center gap-4">
+          <div className={`flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center ${
+            isDone ? 'bg-green-100' : isError ? 'bg-red-100' : 'bg-amber-50'
+          }`}>
+            {isDone ? (
+              <span className="text-green-600 font-bold">✓</span>
+            ) : isUploading ? (
+              <svg className="animate-spin w-5 h-5 text-[#c9962a]" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z" />
+              </svg>
+            ) : (
+              <span className="text-[#c9962a] text-lg">🪪</span>
+            )}
+          </div>
+
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-gray-900">
+              DNI / NIE
+              <span className="text-amber-700 text-xs font-bold ml-1">Obligatorio</span>
+            </p>
+            {dniFront.file ? (
+              <p className="text-xs text-gray-500 truncate">
+                {dniFront.file.name} · {formatFileSize(dniFront.file.size)}
+                {dniFront.state === 'error' && <span className="text-red-500 ml-1">— {dniFront.error}</span>}
+              </p>
+            ) : (
+              <p className="text-xs text-gray-400">PDF (ambas caras) o foto del anverso</p>
+            )}
+          </div>
+
+          {dniFront.state !== 'uploading' && (
+            <button
+              type="button"
+              onClick={() => dniFrontRef.current?.click()}
+              className="flex-shrink-0 px-3 py-2 text-xs font-semibold text-[#c9962a] border border-[#c9962a]/40 rounded-lg hover:bg-amber-50 transition-colors min-h-[40px]"
+            >
+              {dniFront.file ? 'Cambiar' : 'Seleccionar'}
+            </button>
+          )}
+        </div>
+
+        {needsDniBack && (
+          <div className="px-5 pb-5 -mt-1">
+            <div className={`rounded-xl border-2 p-4 flex items-center gap-3 ${
+              dniBack.file
+                ? dniBack.state === 'error' ? 'border-red-300 bg-red-50/40' : 'border-emerald-300 bg-emerald-50/40'
+                : 'border-amber-300 bg-amber-50/60'
+            }`}>
+              <span className="text-lg flex-shrink-0">
+                {dniBack.file ? (dniBack.state === 'error' ? '⚠️' : '✓') : '📷'}
+              </span>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs font-bold text-gray-900">Reverso del DNI · Obligatorio con foto</p>
+                {dniBack.file ? (
+                  <p className="text-xs text-gray-500 truncate">
+                    {dniBack.file.name} · {formatFileSize(dniBack.file.size)}
+                    {dniBack.state === 'error' && <span className="text-red-500 ml-1">— {dniBack.error}</span>}
+                  </p>
+                ) : (
+                  <p className="text-xs text-amber-800">Sube también la parte de atrás del documento</p>
+                )}
+              </div>
+              {dniBack.state !== 'uploading' && (
+                <button
+                  type="button"
+                  onClick={() => dniBackRef.current?.click()}
+                  className="flex-shrink-0 px-3 py-2 text-xs font-semibold text-[#c9962a] border border-[#c9962a]/40 rounded-lg bg-white hover:bg-amber-50 transition-colors min-h-[40px]"
+                >
+                  {dniBack.file ? 'Cambiar' : 'Añadir reverso'}
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    )
+  }
+
   return (
     <main className="min-h-screen bg-[#faf8f4] py-12 px-4">
       <div className="max-w-2xl mx-auto">
@@ -285,25 +439,27 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
           </div>
           <h1 className="text-3xl font-extrabold text-gray-900 mb-2">Carga tu documentación</h1>
           <p className="text-gray-500 text-sm max-w-md mx-auto">
-            Adjunta los documentos (PDF o foto). El DNI es el más importante.
+            Sube el DNI en PDF, o en foto (anverso y reverso). El DNI es el más importante.
             {email && <span className="block mt-1">Te contactaremos en <strong className="text-gray-700">{email}</strong>.</span>}
           </p>
           <p className="text-xs text-gray-400 mt-2">
-            {selectedCount}/3 archivos listos
-            {missingRequired.length > 0 && (
-              <span className="text-amber-700 font-semibold"> · Falta: {missingRequired.map(d => d.label).join(', ')}</span>
+            {selectedCount} archivo{selectedCount === 1 ? '' : 's'} listo{selectedCount === 1 ? '' : 's'}
+            {dniMissing && (
+              <span className="text-amber-700 font-semibold">
+                {' '}· Falta: {needsDniBack ? 'reverso del DNI' : 'DNI'}
+              </span>
             )}
           </p>
         </div>
 
         <div className="space-y-4 mb-8">
-          {DOCS.map(doc => {
+          {renderDniCard()}
+
+          {EXTRA_DOCS.map(doc => {
             const state = files[doc.key]
-            const isDragging = drag === doc.key
             const isDone = state.state === 'done'
             const isError = state.state === 'error'
             const isUploading = state.state === 'uploading'
-            const isMissing = doc.required && !state.file
 
             return (
               <div
@@ -311,13 +467,8 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
                 className={`relative bg-white rounded-2xl border-2 transition-all duration-200 ${
                   isDone ? 'border-green-400 bg-green-50/30' :
                   isError ? 'border-red-400 bg-red-50/30' :
-                  isMissing ? 'border-amber-300 bg-amber-50/40' :
-                  isDragging ? 'border-[#c9962a] bg-amber-50/40 scale-[1.01]' :
                   state.file ? 'border-[#c9962a]/60' : 'border-dashed border-gray-200 hover:border-[#c9962a]/50'
                 }`}
-                onDragOver={e => { e.preventDefault(); setDrag(doc.key) }}
-                onDragLeave={() => setDrag(null)}
-                onDrop={e => handleDrop(doc.key, e)}
               >
                 <input
                   ref={el => { inputRefs.current[doc.key] = el }}
@@ -344,10 +495,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-gray-900">
-                      {doc.label}
-                      {doc.required && <span className="text-amber-700 text-xs font-bold ml-1">Obligatorio</span>}
-                    </p>
+                    <p className="text-sm font-semibold text-gray-900">{doc.label}</p>
                     {state.file ? (
                       <p className="text-xs text-gray-500 truncate">
                         {state.file.name} · {formatFileSize(state.file.size)}
@@ -389,14 +537,18 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
             <>Subiendo documentos…</>
           ) : selectedCount === 0 ? (
             <>Adjunta al menos un archivo</>
-          ) : missingRequired.length > 0 ? (
-            <>Enviar {selectedCount} documento{selectedCount === 1 ? '' : 's'} (falta DNI)</>
+          ) : dniMissing ? (
+            <>Enviar {selectedCount} documento{selectedCount === 1 ? '' : 's'} (falta el DNI)</>
           ) : (
             <>Enviar documentación ({selectedCount})</>
           )}
         </button>
         <p className="text-center text-xs text-gray-400 mt-3">
           PDF o foto · Hasta {formatFileSize(MAX_UPLOAD_BYTES)} por archivo · Cifrado en tránsito
+        </p>
+        <p className="text-center text-xs text-gray-400 mt-2">
+          ¿Prefieres enviarlos por email?{' '}
+          <a href="mailto:info@inmonest.com" className="text-[#c9962a] font-semibold">info@inmonest.com</a>
         </p>
       </div>
     </main>

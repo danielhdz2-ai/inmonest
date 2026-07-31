@@ -2,6 +2,7 @@
 
 export const GESTORIA_DOC_KEYS = [
   'dni',
+  'dni-reverso',
   'nomina',
   'escrituras',
   'nota-simple',
@@ -39,6 +40,10 @@ const EXT_TO_MIME: Record<string, string> = {
 
 export function sanitizeExtension(fileName: string): string {
   return fileName.split('.').pop()?.toLowerCase().replace(/[^a-z0-9]/g, '') ?? 'bin'
+}
+
+export function isPdfFileName(fileName: string | null | undefined): boolean {
+  return sanitizeExtension(fileName ?? '') === 'pdf'
 }
 
 export function resolveUploadMimeType(fileName: string, reportedMime?: string | null): string | null {
@@ -117,10 +122,25 @@ export function buildUserDocStoragePath(
   return `${userId}/${scope}/${docKey}/${Date.now()}.${ext}`
 }
 
-/** Cabeceras recomendadas para PUT directo a Supabase Storage */
-export function storageUploadHeaders(contentType: string, upsert = true): HeadersInit {
-  return {
-    'Content-Type': contentType,
-    ...(upsert ? { 'x-upsert': 'true' } : {}),
-  }
+/**
+ * Cabeceras para PUT directo a una signed upload URL de Supabase Storage.
+ * NO se fija 'Content-Type' a mano: el body es FormData y el navegador
+ * genera el boundary multipart automáticamente (igual que hace el SDK oficial).
+ */
+export function storageUploadHeaders(upsert = true): HeadersInit {
+  return upsert ? { 'x-upsert': 'true' } : {}
+}
+
+/**
+ * Construye el body multipart/form-data que exige el endpoint de subida con
+ * signed URL de Supabase Storage (`/object/upload/sign/...`). Un PUT con el
+ * archivo "en crudo" y un header Content-Type manual devuelve 400: el
+ * propio storage-js siempre envía FormData con un campo 'cacheControl' y el
+ * archivo en un campo sin nombre.
+ */
+export function buildStorageUploadForm(file: File, cacheControlSeconds = 3600): FormData {
+  const form = new FormData()
+  form.append('cacheControl', String(cacheControlSeconds))
+  form.append('', file)
+  return form
 }

@@ -151,12 +151,23 @@ export function getDocsPreviewForService(serviceKey: string): { key: string; lab
   return getRequiredDocsForService(serviceKey).map(({ key, label, icon }) => ({ key, label, icon }))
 }
 
+/** Documentos auxiliares que no forman parte de ningún listado por servicio */
+const EXTRA_DOC_META: Record<string, ServiceDocRequirement> = {
+  'dni-reverso': {
+    key: 'dni-reverso',
+    label: 'DNI / NIE (reverso)',
+    icon: '🪪',
+    desc: 'Reverso del documento de identidad',
+    required: false,
+  },
+}
+
 export function getDocMeta(docKey: string): ServiceDocRequirement | null {
   for (const entry of Object.values(BY_SERVICE)) {
     const found = entry.find((d) => d.key === docKey)
     if (found) return found
   }
-  return DEFAULT_DOCS.find((d) => d.key === docKey) ?? null
+  return DEFAULT_DOCS.find((d) => d.key === docKey) ?? EXTRA_DOC_META[docKey] ?? null
 }
 
 export function resolveServiceKeyFromLabel(servicio: string, ciudad?: string): string {

@@ -114,9 +114,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Email válido requerido para el pago' }, { status: 400 })
   }
 
-  // Tras pagar: página pública de documentos (sin login). Desde ahí se puede entrar al panel.
-  const successPath = '/gestoria/carga-documentos'
-  const successQuery = 'session_id={CHECKOUT_SESSION_ID}'
+  // Tras pagar: directo al panel de gestoría. Desde ahí el cliente decide si
+  // sube la documentación en el panel o la envía por email a info@inmonest.com.
+  const successPath = '/mi-cuenta/contratos'
+  const successQuery = 'v=expediente&session_id={CHECKOUT_SESSION_ID}'
 
   // Llamada directa a la API REST de Stripe con fetch nativo (sin SDK)
   const params = new URLSearchParams()

@@ -3,6 +3,7 @@
 import { useMemo } from 'react'
 import Image from 'next/image'
 import GestoriaUploadActions from '@/components/GestoriaUploadActions'
+import GestoriaDniUpload from '@/components/GestoriaDniUpload'
 import GestoriaPartesForm, { type PartesFormData } from '@/components/GestoriaPartesForm'
 import { MAX_UPLOAD_BYTES, formatFileSize, validateUploadFile } from '@/lib/gestoria-upload'
 import { resolveGestorForRequest } from '@/lib/gestoria-gestor'
@@ -10,6 +11,7 @@ import {
   WORKFLOW_STEPS,
   buildTimelineDates,
   computeGestoriaProgress,
+  getDniParts,
   getServiceShortTitle,
   type UserDocRecord,
 } from '@/lib/gestoria-client-progress'
@@ -95,6 +97,7 @@ export default function GestoriaPaidPanel({
   const requiredChecklist = progress.checklist.filter((c) => c.required)
   const optionalChecklist = progress.checklist.filter((c) => !c.required)
   const pendingCount = requiredChecklist.filter((c) => c.state === 'pending' || c.state === 'rejected').length
+  const dniParts = useMemo(() => getDniParts(userDocs, contrato.id), [userDocs, contrato.id])
 
   const handleFilePick = async (docKey: string, file: File) => {
     const check = validateUploadFile(file.name, file.type, file.size)
@@ -267,7 +270,7 @@ export default function GestoriaPaidPanel({
                   <div className="min-w-0 flex-1">
                     <p className="text-sm font-semibold text-gray-900 leading-snug">{item.label}</p>
                     <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{item.desc}</p>
-                    {item.uploaded && (
+                    {item.uploaded && item.key !== 'dni' && (
                       <p className="text-xs text-gray-400 mt-1 break-all">
                         {item.uploaded.file_name}
                         {item.state === 'reviewing' && ' · En revisión'}
@@ -289,6 +292,14 @@ export default function GestoriaPaidPanel({
                       uploadProgress={uploading === item.key ? uploadProgress : null}
                       onSubmitForm={onSubmitPartes}
                       onUploadPdf={(file) => handleFilePick(item.key, file)}
+                    />
+                  ) : item.key === 'dni' ? (
+                    <GestoriaDniUpload
+                      front={dniParts.front}
+                      back={dniParts.back}
+                      uploadingKey={uploading}
+                      uploadProgress={uploadProgress}
+                      onPick={(docKey, file) => void handleFilePick(docKey, file)}
                     />
                   ) : (
                     <GestoriaUploadActions

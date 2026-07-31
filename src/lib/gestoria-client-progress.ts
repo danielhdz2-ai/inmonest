@@ -84,11 +84,41 @@ function docState(uploaded: UserDocRecord | null): ChecklistItem['state'] {
   return 'reviewing'
 }
 
+function isPdfDocName(fileName: string | null | undefined): boolean {
+  return /\.pdf$/i.test(fileName ?? '')
+}
+
+/**
+ * El DNI admite PDF único (ambas caras) o foto anverso + reverso.
+ * Solo se considera completo si es PDF, o si hay foto de ambas caras.
+ */
+function dniState(front: UserDocRecord | null, back: UserDocRecord | null): ChecklistItem['state'] {
+  if (!front) return 'pending'
+  if (isPdfDocName(front.file_name)) return docState(front)
+
+  if (!back) return 'pending'
+  const states = [docState(front), docState(back)]
+  if (states.includes('rejected')) return 'rejected'
+  if (states.every((s) => s === 'done')) return 'done'
+  return 'reviewing'
+}
+
 export function filterDocsForRequest(userDocs: UserDocRecord[], requestId: string): UserDocRecord[] {
   const scoped = userDocs.filter((d) => d.gestoria_request_id === requestId)
   if (scoped.length > 0) return scoped
   // Compatibilidad: docs antiguos sin request_id
   return userDocs.filter((d) => !d.gestoria_request_id)
+}
+
+/** Devuelve anverso/reverso del DNI y si el anverso es un PDF (no requiere reverso) */
+export function getDniParts(
+  userDocs: UserDocRecord[],
+  requestId?: string,
+): { front: UserDocRecord | null; back: UserDocRecord | null; frontIsPdf: boolean } {
+  const docs = requestId ? filterDocsForRequest(userDocs, requestId) : userDocs
+  const front = docs.find((d) => d.doc_key === 'dni') ?? null
+  const back = docs.find((d) => d.doc_key === 'dni-reverso') ?? null
+  return { front, back, frontIsPdf: isPdfDocName(front?.file_name) }
 }
 
 export function buildDocChecklist(
@@ -100,6 +130,12 @@ export function buildDocChecklist(
   const requirements = getRequiredDocsForService(serviceKey)
   return requirements.map((req) => {
     const uploaded = docs.find((d) => d.doc_key === req.key) ?? null
+
+    if (req.key === 'dni') {
+      const back = docs.find((d) => d.doc_key === 'dni-reverso') ?? null
+      return { ...req, uploaded, state: dniState(uploaded, back) }
+    }
+
     const hasPartesForm =
       req.key === 'partes' &&
       uploaded?.partes_data &&
