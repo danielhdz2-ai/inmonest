@@ -156,7 +156,20 @@ export async function applyRateLimit(
     return null
   }
 
-  const { success, limit, reset, remaining } = await limiter.limit(identifier)
+  let success: boolean, limit: number, reset: number, remaining: number
+  try {
+    const timeout = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('rate-limit timeout')), 3000)
+    )
+    ;({ success, limit, reset, remaining } = await Promise.race([
+      limiter.limit(identifier),
+      timeout,
+    ]))
+  } catch (err) {
+    // Si Upstash falla o tarda, no tumbamos la petición: dejamos pasar.
+    console.error('[rate-limit] check failed, allowing request through:', err)
+    return null
+  }
 
   // Headers informativos
   const headers = {

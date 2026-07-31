@@ -190,47 +190,65 @@ export async function middleware(request: NextRequest) {
   }
 
   // ── 2. SUPABASE AUTH + PROTECCIÓN DE RUTAS ────────────────────────────────
+  //
+  // IMPORTANTE: llamar a Supabase Auth en middleware puede colgarse o fallar
+  // (red, cold start, blip puntual). Como el middleware corre en TODAS las
+  // rutas, un fallo aquí tumbaba el sitio entero (home, login, paneles...).
+  // Por eso: try/catch + timeout, y en caso de duda dejamos pasar la petición
+  // (las páginas protegidas ya hacen su propia comprobación de sesión).
 
   let supabaseResponse = NextResponse.next({ request })
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return request.cookies.getAll()
+  try {
+    const supabase = createServerClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        cookies: {
+          getAll() {
+            return request.cookies.getAll()
+          },
+          setAll(cookiesToSet) {
+            cookiesToSet.forEach(({ name, value }) =>
+              request.cookies.set(name, value)
+            )
+            supabaseResponse = NextResponse.next({ request })
+            cookiesToSet.forEach(({ name, value, options }) =>
+              supabaseResponse.cookies.set(name, value, options)
+            )
+          },
         },
-        setAll(cookiesToSet) {
-          cookiesToSet.forEach(({ name, value }) =>
-            request.cookies.set(name, value)
-          )
-          supabaseResponse = NextResponse.next({ request })
-          cookiesToSet.forEach(({ name, value, options }) =>
-            supabaseResponse.cookies.set(name, value, options)
-          )
-        },
-      },
+      }
+    )
+
+    // Refresca la sesión sin bloquear rutas públicas, con timeout de seguridad
+    const timeout = new Promise<never>((_, reject) =>
+      setTimeout(() => reject(new Error('supabase auth timeout')), 4000)
+    )
+    const { data: { user } } = await Promise.race([
+      supabase.auth.getUser(),
+      timeout,
+    ])
+
+    // Proteger /mi-cuenta y /publicar — redirigir a login si no autenticado
+    const protectedPaths = ['/mi-cuenta', '/publicar']
+    const publicPaths = ['/publicar-anuncio']
+    const isProtected =
+      protectedPaths.some((p) => pathname.startsWith(p)) &&
+      !publicPaths.some((p) => pathname.startsWith(p))
+
+    if (isProtected && !user) {
+      const url = request.nextUrl.clone()
+      const returnTo = `${pathname}${request.nextUrl.search}`
+      url.pathname = '/login'
+      url.search = ''
+      url.searchParams.set('next', returnTo)
+      return NextResponse.redirect(url)
     }
-  )
-
-  // Refresca la sesión sin bloquear rutas públicas
-  const { data: { user } } = await supabase.auth.getUser()
-
-  // Proteger /mi-cuenta y /publicar — redirigir a login si no autenticado
-  const protectedPaths = ['/mi-cuenta', '/publicar']
-  const publicPaths = ['/publicar-anuncio']
-  const isProtected =
-    protectedPaths.some((p) => pathname.startsWith(p)) &&
-    !publicPaths.some((p) => pathname.startsWith(p))
-
-  if (isProtected && !user) {
-    const url = request.nextUrl.clone()
-    const returnTo = `${pathname}${request.nextUrl.search}`
-    url.pathname = '/login'
-    url.search = ''
-    url.searchParams.set('next', returnTo)
-    return NextResponse.redirect(url)
+  } catch (err) {
+    // No tumbamos la petición por un fallo puntual de Supabase: dejamos pasar.
+    // Las páginas de /mi-cuenta y /admin verifican la sesión por su cuenta.
+    console.error('[middleware] auth check failed, allowing request through:', err)
   }
 
   return supabaseResponse
