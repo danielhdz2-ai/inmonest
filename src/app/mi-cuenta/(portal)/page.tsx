@@ -1,10 +1,33 @@
 ﻿import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
+import { fetchGestoriaOrdersForUser } from '@/lib/gestoria-link-user'
+import { buildGestoriaPanelUrl } from '@/lib/gestoria-leads'
+import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 
 export default async function DashboardHomePage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
+
+  // Cliente de gestoría (cualquier pedido, sea cual sea su estado) → su panel
+  // siempre, sin importar cómo haya llegado a /mi-cuenta (login, OAuth, o
+  // sesión ya abierta al hacer clic en "Cuenta").
+  // OJO: redirect() lanza una excepción especial de Next.js — nunca debe
+  // quedar dentro de un try/catch o se "traga" la redirección.
+  let isGestoriaClient = false
+  if (user?.email) {
+    try {
+      const admin = createAdminClient()
+      const contratos = await fetchGestoriaOrdersForUser(admin, user.id, user.email)
+      isGestoriaClient = contratos.length > 0
+    } catch {
+      /* si falla la comprobación, no bloquear el portal normal */
+    }
+  }
+  if (isGestoriaClient) {
+    redirect(buildGestoriaPanelUrl())
+  }
 
   const [
     { count: anunciosCount },
