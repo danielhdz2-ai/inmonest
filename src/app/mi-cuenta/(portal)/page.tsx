@@ -6,6 +6,9 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 
+export const dynamic = 'force-dynamic'
+export const maxDuration = 30
+
 export default async function DashboardHomePage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -29,24 +32,45 @@ export default async function DashboardHomePage() {
     redirect(buildGestoriaPanelUrl())
   }
 
-  const [
-    { count: anunciosCount },
-    { count: favCount },
-    { data: anuncios },
-    { data: contratos },
-    { data: profileData },
-  ] = await Promise.all([
-    supabase.from('listings').select('id', { count: 'exact', head: true }).eq('owner_user_id', user!.id).eq('status', 'published'),
-    supabase.from('user_favorites').select('id', { count: 'exact', head: true }).eq('user_id', user!.id),
-    supabase.from('listings').select('id').eq('owner_user_id', user!.id),
-    supabase.from('gestoria_requests').select('id,service_key,step,paid_at,amount_eur').eq('client_email', user!.email).order('paid_at', { ascending: false }).limit(3),
-    supabase.from('user_profiles').select('full_name').eq('user_id', user!.id).single(),
-  ])
+  let anunciosCount = 0
+  let favCount = 0
+  let anuncios: { id: string }[] = []
+  let contratos: { id: string; service_key: string; step: number | null; paid_at: string | null; amount_eur: number | null }[] = []
+  let profileData: { full_name: string | null } | null = null
 
-  const anuncioIds = (anuncios ?? []).map((a: { id: string }) => a.id)
-  const { count: msgCount } = anuncioIds.length > 0
-    ? await supabase.from('listing_contacts').select('id', { count: 'exact', head: true }).in('listing_id', anuncioIds)
-    : { count: 0 }
+  try {
+    const [
+      anunciosRes,
+      favRes,
+      anunciosListRes,
+      contratosRes,
+      profileRes,
+    ] = await Promise.all([
+      supabase.from('listings').select('id', { count: 'exact', head: true }).eq('owner_user_id', user!.id).eq('status', 'published'),
+      supabase.from('user_favorites').select('id', { count: 'exact', head: true }).eq('user_id', user!.id),
+      supabase.from('listings').select('id').eq('owner_user_id', user!.id),
+      supabase.from('gestoria_requests').select('id,service_key,step,paid_at,amount_eur').eq('client_email', user!.email).order('paid_at', { ascending: false }).limit(3),
+      supabase.from('user_profiles').select('full_name').eq('user_id', user!.id).maybeSingle(),
+    ])
+    anunciosCount = anunciosRes.count ?? 0
+    favCount = favRes.count ?? 0
+    anuncios = anunciosListRes.data ?? []
+    contratos = contratosRes.data ?? []
+    profileData = profileRes.data
+  } catch (err) {
+    console.error('[mi-cuenta/page] fallo cargando datos del dashboard', err)
+  }
+
+  const anuncioIds = anuncios.map((a) => a.id)
+  let msgCount = 0
+  try {
+    if (anuncioIds.length > 0) {
+      const res = await supabase.from('listing_contacts').select('id', { count: 'exact', head: true }).in('listing_id', anuncioIds)
+      msgCount = res.count ?? 0
+    }
+  } catch (err) {
+    console.error('[mi-cuenta/page] fallo contando mensajes', err)
+  }
 
   const displayName = profileData?.full_name ?? user!.email?.split('@')[0] ?? 'Usuario'
   const hour = new Date().getHours()

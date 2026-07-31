@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 }
 
 export const dynamic = 'force-dynamic'
+export const maxDuration = 30
 
 export default async function AdminPage() {
   const supabase = await createClient()
@@ -17,19 +18,26 @@ export default async function AdminPage() {
 
   // Lista de emails con acceso admin
   const adminEmails = [
-    process.env.CONTACT_NOTIFY_EMAIL,
+    (process.env.CONTACT_NOTIFY_EMAIL ?? '').trim(),
     'daniel.hdz.trader@gmail.com',
   ].filter(Boolean)
-  
-  if (!user || !adminEmails.includes(user.email || '')) {
+
+  if (!user || !adminEmails.includes((user.email || '').trim())) {
     redirect('/')
   }
 
-  // Cargar todos los pedidos server-side
-  const { data } = await supabase
-    .from('gestoria_requests')
-    .select('*')
-    .order('created_at', { ascending: false })
+  // Cargar todos los pedidos server-side (nunca debe tumbar el panel si falla)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let data: any[] | null = null
+  try {
+    const res = await supabase
+      .from('gestoria_requests')
+      .select('*')
+      .order('created_at', { ascending: false })
+    data = res.data
+  } catch (err) {
+    console.error('[admin/page] fallo cargando pedidos', err)
+  }
 
   return (
     <>

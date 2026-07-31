@@ -4,13 +4,13 @@ import {
   ensureOrderPaidFromStripe,
   fetchGestoriaOrdersForUser,
   fetchGestoriaOrdersForUserSafe,
-  linkGestoriaOrdersToUser,
 } from '@/lib/gestoria-link-user'
 import { USER_DOCS_SELECT, USER_DOCS_SELECT_CORE } from '@/lib/gestoria-portal-types'
 import GestoriaPortalClientSuspense from '@/components/gestoria-portal/GestoriaPortalClientSuspense'
 import { redirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
+export const maxDuration = 30
 
 /**
  * Panel de gestoría del cliente.
@@ -48,17 +48,25 @@ export default async function ContratosPage({
       await ensureOrderPaidFromStripe(admin, sessionId, user.id)
     }
 
-    // Vincular pago a esta cuenta (email + session)
-    await linkGestoriaOrdersToUser(admin, user.id, emailNorm, sessionId)
-
+    // fetchGestoriaOrdersForUser ya vincula el pedido (email + session) antes de leerlo
     ;[contratos, userDocs] = await Promise.all([
       fetchGestoriaOrdersForUser(admin, user.id, emailNorm, sessionId),
       fetchUserDocsSafe(supabase, user.id),
     ])
   } catch (err) {
-    console.error('[contratos/page]', err)
-    contratos = await fetchGestoriaOrdersForUserSafe(supabase, user.id, emailNorm)
-    userDocs = await fetchUserDocsSafe(supabase, user.id)
+    console.error('[contratos/page] fallo con admin client, usando fallback RLS', err)
+    try {
+      contratos = await fetchGestoriaOrdersForUserSafe(supabase, user.id, emailNorm)
+    } catch (err2) {
+      console.error('[contratos/page] fallback de contratos también falló', err2)
+      contratos = []
+    }
+    try {
+      userDocs = await fetchUserDocsSafe(supabase, user.id)
+    } catch (err3) {
+      console.error('[contratos/page] fallback de docs también falló', err3)
+      userDocs = []
+    }
   }
 
   // Nunca expulsar si venimos de un pago (session_id) o ya hay pedidos
@@ -66,11 +74,17 @@ export default async function ContratosPage({
     redirect('/gestoria/acceso-cliente')
   }
 
-  const { data: profile } = await supabase
-    .from('user_profiles')
-    .select('full_name')
-    .eq('user_id', user.id)
-    .maybeSingle()
+  let profile: { full_name: string | null } | null = null
+  try {
+    const res = await supabase
+      .from('user_profiles')
+      .select('full_name')
+      .eq('user_id', user.id)
+      .maybeSingle()
+    profile = res.data
+  } catch (err) {
+    console.error('[contratos/page] fallo leyendo perfil', err)
+  }
 
   const displayName =
     profile?.full_name?.trim() ||
