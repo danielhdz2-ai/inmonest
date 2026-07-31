@@ -319,7 +319,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
     interno: true,
     incluye: [
       'Cobro real de 5 € vía Stripe',
-      'Redirección a carga de documentos',
+      'Redirección directa a tu panel',
       'Solo para verificación interna',
     ],
   },
