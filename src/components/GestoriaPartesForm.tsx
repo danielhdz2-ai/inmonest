@@ -65,6 +65,12 @@ function field(
   )
 }
 
+function hasAnyValue(form: PartesFormData, keys: (keyof PartesFormData)[]): boolean {
+  return keys.some((k) => form[k]?.trim())
+}
+
+const PARTE2_KEYS: (keyof PartesFormData)[] = ['parte2_nombre', 'parte2_dni', 'parte2_email', 'parte2_telefono']
+
 export default function GestoriaPartesForm({
   requestId,
   initialData,
@@ -77,17 +83,25 @@ export default function GestoriaPartesForm({
     ...EMPTY,
     ...(initialData as Partial<PartesFormData> | undefined),
   }))
+  const [showParte2, setShowParte2] = useState(() =>
+    hasAnyValue({ ...EMPTY, ...(initialData as Partial<PartesFormData> | undefined) }, PARTE2_KEYS),
+  )
   const [saving, setSaving] = useState(false)
 
   const update = (id: keyof PartesFormData, value: string) => {
     setForm((prev) => ({ ...prev, [id]: value }))
   }
 
+  const removeParte2 = () => {
+    setShowParte2(false)
+    setForm((prev) => ({ ...prev, parte2_nombre: '', parte2_dni: '', parte2_email: '', parte2_telefono: '' }))
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSaving(true)
     try {
-      await onSubmitForm(form)
+      await onSubmitForm(showParte2 ? form : { ...form, ...Object.fromEntries(PARTE2_KEYS.map((k) => [k, ''])) })
     } finally {
       setSaving(false)
     }
@@ -108,13 +122,32 @@ export default function GestoriaPartesForm({
           {field('parte1_telefono', 'Teléfono', form.parte1_telefono, update, { type: 'tel' })}
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-3">
-          <p className="sm:col-span-2 text-xs font-bold uppercase tracking-wide text-[#7a5c1e]">Parte 2</p>
-          {field('parte2_nombre', 'Nombre completo *', form.parte2_nombre, update, { required: true })}
-          {field('parte2_dni', 'DNI / NIE', form.parte2_dni, update)}
-          {field('parte2_email', 'Email', form.parte2_email, update, { type: 'email' })}
-          {field('parte2_telefono', 'Teléfono', form.parte2_telefono, update, { type: 'tel' })}
-        </div>
+        {showParte2 ? (
+          <div className="grid sm:grid-cols-2 gap-3">
+            <div className="sm:col-span-2 flex items-center justify-between">
+              <p className="text-xs font-bold uppercase tracking-wide text-[#7a5c1e]">Parte 2</p>
+              <button
+                type="button"
+                onClick={removeParte2}
+                className="text-xs font-semibold text-gray-400 hover:text-red-600"
+              >
+                Quitar
+              </button>
+            </div>
+            {field('parte2_nombre', 'Nombre completo *', form.parte2_nombre, update, { required: true })}
+            {field('parte2_dni', 'DNI / NIE', form.parte2_dni, update)}
+            {field('parte2_email', 'Email', form.parte2_email, update, { type: 'email' })}
+            {field('parte2_telefono', 'Teléfono', form.parte2_telefono, update, { type: 'tel' })}
+          </div>
+        ) : (
+          <button
+            type="button"
+            onClick={() => setShowParte2(true)}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl border-2 border-dashed border-[#c9962a]/50 text-[#7a5c1e] text-sm font-semibold min-h-[44px] px-4 hover:bg-[#fef9e8] touch-manipulation"
+          >
+            + Añadir Parte 2 (si aplica)
+          </button>
+        )}
 
         <div className="grid sm:grid-cols-2 gap-3">
           {field('direccion_inmueble', 'Dirección del inmueble', form.direccion_inmueble, update, {

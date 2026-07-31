@@ -1,4 +1,11 @@
-/** Documentación requerida por servicio de gestoría */
+/**
+ * Documentación orientativa por servicio de gestoría.
+ *
+ * Ningún documento es obligatorio para avanzar el expediente: el cliente
+ * decide si sube la documentación aquí o si prefiere enviarla directamente
+ * a info@inmonest.com para que el gestor empiece a trabajar. El campo
+ * `required` se mantiene por compatibilidad mostrando siempre `false`.
+ */
 
 export type ServiceDocRequirement = {
   key: string
@@ -14,7 +21,7 @@ const DEFAULT_DOCS: ServiceDocRequirement[] = [
     label: 'DNI / NIE de las partes',
     icon: '🪪',
     desc: 'Ambas caras en PDF o imagen',
-    required: true,
+    required: false,
   },
   {
     key: 'otro',
@@ -27,107 +34,107 @@ const DEFAULT_DOCS: ServiceDocRequirement[] = [
 
 const BY_SERVICE: Record<string, ServiceDocRequirement[]> = {
   'contrato-alquiler': [
-    { key: 'dni', label: 'DNI / NIE propietario e inquilino', icon: '🪪', desc: 'Ambas caras de cada parte', required: true },
-    { key: 'nomina', label: 'Nóminas o solvencia del inquilino', icon: '💼', desc: 'Últimas 3 nóminas o aval bancario', required: true },
-    { key: 'escrituras', label: 'Escrituras o título del inmueble', icon: '📜', desc: 'Documento de propiedad del arrendador', required: true },
-    { key: 'cert-energetico', label: 'Certificado energético', icon: '⚡', desc: 'CE vigente del inmueble', required: true },
+    { key: 'dni', label: 'DNI / NIE propietario e inquilino', icon: '🪪', desc: 'Ambas caras de cada parte', required: false },
+    { key: 'nomina', label: 'Nóminas o solvencia del inquilino', icon: '💼', desc: 'Últimas 3 nóminas o aval bancario', required: false },
+    { key: 'escrituras', label: 'Escrituras o título del inmueble', icon: '📜', desc: 'Documento de propiedad del arrendador', required: false },
+    { key: 'cert-energetico', label: 'Certificado energético', icon: '⚡', desc: 'CE vigente del inmueble', required: false },
     { key: 'cedula-habitabilidad', label: 'Cédula de habitabilidad', icon: '🏠', desc: 'Si aplica en tu comunidad autónoma', required: false },
   ],
   'contrato-alquiler-barcelona': [
-    { key: 'dni', label: 'DNI / NIE propietario e inquilino', icon: '🪪', desc: 'Ambas caras de cada parte', required: true },
-    { key: 'nomina', label: 'Nóminas o solvencia del inquilino', icon: '💼', desc: 'Últimas 3 nóminas o aval bancario', required: true },
-    { key: 'escrituras', label: 'Escrituras o título del inmueble', icon: '📜', desc: 'Documento de propiedad del arrendador', required: true },
-    { key: 'cert-energetico', label: 'Certificado energético', icon: '⚡', desc: 'CE vigente del inmueble', required: true },
+    { key: 'dni', label: 'DNI / NIE propietario e inquilino', icon: '🪪', desc: 'Ambas caras de cada parte', required: false },
+    { key: 'nomina', label: 'Nóminas o solvencia del inquilino', icon: '💼', desc: 'Últimas 3 nóminas o aval bancario', required: false },
+    { key: 'escrituras', label: 'Escrituras o título del inmueble', icon: '📜', desc: 'Documento de propiedad del arrendador', required: false },
+    { key: 'cert-energetico', label: 'Certificado energético', icon: '⚡', desc: 'CE vigente del inmueble', required: false },
   ],
   'alquiler-temporada': [
-    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Propietario e inquilino temporal', required: true },
-    { key: 'escrituras', label: 'Título del inmueble', icon: '📜', desc: 'Escritura o contrato de propiedad', required: true },
-    { key: 'partes', label: 'Datos de las partes y fechas', icon: '📋', desc: 'Periodo del alquiler, renta y condiciones acordadas', required: true },
+    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Propietario e inquilino temporal', required: false },
+    { key: 'escrituras', label: 'Título del inmueble', icon: '📜', desc: 'Escritura o contrato de propiedad', required: false },
+    { key: 'partes', label: 'Datos de las partes y fechas', icon: '📋', desc: 'Periodo del alquiler, renta y condiciones acordadas', required: false },
   ],
   'alquiler-habitaciones': [
-    { key: 'dni', label: 'DNI / NIE propietario e inquilino', icon: '🪪', desc: 'Ambas caras de cada parte', required: true },
-    { key: 'escrituras', label: 'Escrituras del inmueble', icon: '📜', desc: 'Documento de propiedad', required: true },
-    { key: 'partes', label: 'Datos de habitación y renta', icon: '📋', desc: 'Habitación, importe y reglas de convivencia', required: true },
+    { key: 'dni', label: 'DNI / NIE propietario e inquilino', icon: '🪪', desc: 'Ambas caras de cada parte', required: false },
+    { key: 'escrituras', label: 'Escrituras del inmueble', icon: '📜', desc: 'Documento de propiedad', required: false },
+    { key: 'partes', label: 'Datos de habitación y renta', icon: '📋', desc: 'Habitación, importe y reglas de convivencia', required: false },
   ],
   'alquiler-local-comercial': [
-    { key: 'dni', label: 'DNI / CIF de las partes', icon: '🪪', desc: 'Arrendador y arrendatario', required: true },
-    { key: 'escrituras', label: 'Escrituras del local', icon: '📜', desc: 'Título de propiedad o contrato de arrendamiento superior', required: true },
-    { key: 'partes', label: 'Condiciones del local', icon: '📋', desc: 'Superficie, actividad, renta y duración', required: true },
+    { key: 'dni', label: 'DNI / CIF de las partes', icon: '🪪', desc: 'Arrendador y arrendatario', required: false },
+    { key: 'escrituras', label: 'Escrituras del local', icon: '📜', desc: 'Título de propiedad o contrato de arrendamiento superior', required: false },
+    { key: 'partes', label: 'Condiciones del local', icon: '📋', desc: 'Superficie, actividad, renta y duración', required: false },
   ],
   'arras-penitenciales': [
-    { key: 'dni', label: 'DNI / NIE comprador y vendedor', icon: '🪪', desc: 'Documento de identidad de ambas partes', required: true },
-    { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del Registro de la Propiedad (menos de 3 meses)', required: true },
-    { key: 'partes', label: 'Datos de las partes', icon: '📋', desc: 'Nombre, contacto, precio y condiciones acordadas', required: true },
+    { key: 'dni', label: 'DNI / NIE comprador y vendedor', icon: '🪪', desc: 'Documento de identidad de ambas partes', required: false },
+    { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del Registro de la Propiedad (menos de 3 meses)', required: false },
+    { key: 'partes', label: 'Datos de las partes', icon: '📋', desc: 'Nombre, contacto, precio y condiciones acordadas', required: false },
   ],
   'arras-confirmatorias': [
-    { key: 'dni', label: 'DNI / NIE comprador y vendedor', icon: '🪪', desc: 'Documento de identidad de ambas partes', required: true },
-    { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del Registro de la Propiedad', required: true },
-    { key: 'partes', label: 'Condiciones de la operación', icon: '📋', desc: 'Precio, plazos y condiciones suspensivas', required: true },
+    { key: 'dni', label: 'DNI / NIE comprador y vendedor', icon: '🪪', desc: 'Documento de identidad de ambas partes', required: false },
+    { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del Registro de la Propiedad', required: false },
+    { key: 'partes', label: 'Condiciones de la operación', icon: '📋', desc: 'Precio, plazos y condiciones suspensivas', required: false },
   ],
   'arras-parking-garage': [
-    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Comprador y vendedor', required: true },
-    { key: 'nota-simple', label: 'Nota simple del parking', icon: '🏛️', desc: 'Registro de la Propiedad', required: true },
-    { key: 'partes', label: 'Datos de la operación', icon: '📋', desc: 'Plaza, precio y condiciones', required: true },
+    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Comprador y vendedor', required: false },
+    { key: 'nota-simple', label: 'Nota simple del parking', icon: '🏛️', desc: 'Registro de la Propiedad', required: false },
+    { key: 'partes', label: 'Datos de la operación', icon: '📋', desc: 'Plaza, precio y condiciones', required: false },
   ],
   'reserva-compra': [
-    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Comprador y vendedor', required: true },
-    { key: 'partes', label: 'Condiciones de la reserva', icon: '📋', desc: 'Precio, señal y plazo para firmar arras', required: true },
+    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Comprador y vendedor', required: false },
+    { key: 'partes', label: 'Condiciones de la reserva', icon: '📋', desc: 'Precio, señal y plazo para firmar arras', required: false },
   ],
   'reserva-alquiler': [
-    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Propietario e inquilino', required: true },
-    { key: 'partes', label: 'Condiciones de la reserva', icon: '📋', desc: 'Inmueble, renta y fecha de entrada', required: true },
+    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Propietario e inquilino', required: false },
+    { key: 'partes', label: 'Condiciones de la reserva', icon: '📋', desc: 'Inmueble, renta y fecha de entrada', required: false },
   ],
   'pack-due-diligence-precompra': [
-    { key: 'dni', label: 'DNI / NIE del comprador', icon: '🪪', desc: 'Documento de identidad', required: true },
-    { key: 'nota-simple', label: 'Nota simple del inmueble', icon: '🏛️', desc: 'Registro de la Propiedad', required: true },
-    { key: 'contrato-alquiler', label: 'Contrato de arras firmado', icon: '📋', desc: 'Copia del contrato de arras', required: true },
+    { key: 'dni', label: 'DNI / NIE del comprador', icon: '🪪', desc: 'Documento de identidad', required: false },
+    { key: 'nota-simple', label: 'Nota simple del inmueble', icon: '🏛️', desc: 'Registro de la Propiedad', required: false },
+    { key: 'contrato-alquiler', label: 'Contrato de arras firmado', icon: '📋', desc: 'Copia del contrato de arras', required: false },
     { key: 'otro', label: 'Actas de comunidad', icon: '📄', desc: 'Si las tienes disponibles', required: false },
   ],
   'venta-completa-reserva-escritura': [
-    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Vendedor y comprador', required: true },
-    { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del inmueble en venta', required: true },
-    { key: 'escrituras', label: 'Documentación del inmueble', icon: '📜', desc: 'Escrituras y certificados disponibles', required: true },
-    { key: 'partes', label: 'Datos de la operación', icon: '📋', desc: 'Precio, hipoteca y condiciones', required: true },
+    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Vendedor y comprador', required: false },
+    { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del inmueble en venta', required: false },
+    { key: 'escrituras', label: 'Documentación del inmueble', icon: '📜', desc: 'Escrituras y certificados disponibles', required: false },
+    { key: 'partes', label: 'Datos de la operación', icon: '📋', desc: 'Precio, hipoteca y condiciones', required: false },
   ],
   'compra-completa-reserva-escritura': [
-    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Comprador y vendedor', required: true },
-    { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del inmueble', required: true },
-    { key: 'nomina', label: 'Solvencia / financiación', icon: '💼', desc: 'Preaprobación hipotecaria o solvencia', required: true },
-    { key: 'partes', label: 'Condiciones de compra', icon: '📋', desc: 'Precio, plazos y condiciones acordadas', required: true },
+    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Comprador y vendedor', required: false },
+    { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del inmueble', required: false },
+    { key: 'nomina', label: 'Solvencia / financiación', icon: '💼', desc: 'Preaprobación hipotecaria o solvencia', required: false },
+    { key: 'partes', label: 'Condiciones de compra', icon: '📋', desc: 'Precio, plazos y condiciones acordadas', required: false },
   ],
   'revision-alquiler': [
-    { key: 'contrato-alquiler', label: 'Contrato a revisar', icon: '📋', desc: 'PDF del borrador o contrato recibido', required: true },
+    { key: 'contrato-alquiler', label: 'Contrato a revisar', icon: '📋', desc: 'PDF del borrador o contrato recibido', required: false },
     { key: 'partes', label: 'Tus dudas o cláusulas a revisar', icon: '📄', desc: 'Indica qué te preocupa', required: false },
   ],
   'revision-arras': [
-    { key: 'contrato-alquiler', label: 'Contrato de arras a revisar', icon: '📋', desc: 'PDF del documento', required: true },
+    { key: 'contrato-alquiler', label: 'Contrato de arras a revisar', icon: '📋', desc: 'PDF del documento', required: false },
     { key: 'partes', label: 'Tus dudas o cláusulas a revisar', icon: '📄', desc: 'Indica qué te preocupa', required: false },
   ],
   'revision-correccion': [
-    { key: 'contrato-alquiler', label: 'Contrato a corregir', icon: '📋', desc: 'PDF del borrador actual', required: true },
-    { key: 'partes', label: 'Correcciones solicitadas', icon: '📄', desc: 'Detalla los cambios que necesitas', required: true },
+    { key: 'contrato-alquiler', label: 'Contrato a corregir', icon: '📋', desc: 'PDF del borrador actual', required: false },
+    { key: 'partes', label: 'Correcciones solicitadas', icon: '📄', desc: 'Detalla los cambios que necesitas', required: false },
   ],
   'revision-correccion-arras': [
-    { key: 'contrato-alquiler', label: 'Contrato de arras a corregir', icon: '📋', desc: 'PDF del borrador actual', required: true },
-    { key: 'partes', label: 'Correcciones solicitadas', icon: '📄', desc: 'Detalla los cambios que necesitas', required: true },
+    { key: 'contrato-alquiler', label: 'Contrato de arras a corregir', icon: '📋', desc: 'PDF del borrador actual', required: false },
+    { key: 'partes', label: 'Correcciones solicitadas', icon: '📄', desc: 'Detalla los cambios que necesitas', required: false },
   ],
   'prestamo-particulares': [
-    { key: 'dni', label: 'DNI / NIE prestamista y prestatario', icon: '🪪', desc: 'Documento de identidad de ambos', required: true },
-    { key: 'partes', label: 'Condiciones del préstamo', icon: '📋', desc: 'Importe, interés, plazo y garantías', required: true },
+    { key: 'dni', label: 'DNI / NIE prestamista y prestatario', icon: '🪪', desc: 'Documento de identidad de ambos', required: false },
+    { key: 'partes', label: 'Condiciones del préstamo', icon: '📋', desc: 'Importe, interés, plazo y garantías', required: false },
   ],
   'liquidacion-fianza': [
-    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Propietario e inquilino', required: true },
-    { key: 'contrato-alquiler', label: 'Contrato de alquiler', icon: '📋', desc: 'Contrato vigente o finalizado', required: true },
+    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Propietario e inquilino', required: false },
+    { key: 'contrato-alquiler', label: 'Contrato de alquiler', icon: '📋', desc: 'Contrato vigente o finalizado', required: false },
     { key: 'facturas', label: 'Facturas o estado del piso', icon: '🧾', desc: 'Suministros, reparaciones o inventario', required: false },
   ],
   'asesoria-compra': [
-    { key: 'dni', label: 'DNI / NIE del comprador', icon: '🪪', desc: 'Documento de identidad', required: true },
-    { key: 'partes', label: 'Datos del inmueble y operación', icon: '📋', desc: 'Dirección, precio y situación actual', required: true },
+    { key: 'dni', label: 'DNI / NIE del comprador', icon: '🪪', desc: 'Documento de identidad', required: false },
+    { key: 'partes', label: 'Datos del inmueble y operación', icon: '📋', desc: 'Dirección, precio y situación actual', required: false },
   ],
   'contrato-compraventa': [
-    { key: 'dni', label: 'DNI / NIE comprador y vendedor', icon: '🪪', desc: 'Documento de identidad', required: true },
-    { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del inmueble', required: true },
-    { key: 'partes', label: 'Condiciones de compraventa', icon: '📋', desc: 'Precio, forma de pago y entrega', required: true },
+    { key: 'dni', label: 'DNI / NIE comprador y vendedor', icon: '🪪', desc: 'Documento de identidad', required: false },
+    { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del inmueble', required: false },
+    { key: 'partes', label: 'Condiciones de compraventa', icon: '📋', desc: 'Precio, forma de pago y entrega', required: false },
   ],
 }
 

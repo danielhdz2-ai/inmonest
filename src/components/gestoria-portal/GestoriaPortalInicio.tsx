@@ -31,6 +31,8 @@ export default function GestoriaPortalInicio({
     : null
   const gestor = resolveGestorForRequest(activeContrato?.assigned_to)
   const firstName = displayName.split(' ')[0]
+  const totalDocs = progress?.checklist.length ?? 0
+  const uploadedDocs = progress?.checklist.filter((c) => c.state !== 'pending' && c.state !== 'rejected').length ?? 0
 
   return (
     <div className="space-y-5">
@@ -42,7 +44,7 @@ export default function GestoriaPortalInicio({
             <div>
               <p className="text-lg font-bold">Pago confirmado</p>
               <p className="text-sm text-emerald-100 mt-1">
-                Tu expediente está activo. Sube la documentación para que empecemos a trabajar.
+                Tu expediente está activo. Si quieres, sube tu documentación aquí o envíala a info@inmonest.com.
               </p>
               <button
                 type="button"
@@ -81,9 +83,9 @@ export default function GestoriaPortalInicio({
               <div className="rounded-xl bg-white/10 backdrop-blur border border-white/10 p-4">
                 <p className="text-[10px] uppercase tracking-widest text-white/50">Documentos</p>
                 <p className="text-3xl font-extrabold text-white mt-1">
-                  {progress.requiredUploaded}/{progress.requiredTotal}
+                  {uploadedDocs}/{totalDocs}
                 </p>
-                <p className="text-xs text-white/60 mt-1">Obligatorios subidos</p>
+                <p className="text-xs text-white/60 mt-1">Subidos (opcional)</p>
               </div>
               <div className="rounded-xl bg-white/10 backdrop-blur border border-white/10 p-4">
                 <p className="text-[10px] uppercase tracking-widest text-white/50">Servicios</p>

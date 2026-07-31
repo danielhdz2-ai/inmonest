@@ -70,7 +70,7 @@ export default function GestoriaPortalClient({
   const pendingDocsCount = useMemo(() => {
     if (!activePaid) return 0
     const p = computeGestoriaProgress(activePaid, docs)
-    return p.checklist.filter((c) => c.required && (c.state === 'pending' || c.state === 'rejected')).length
+    return p.checklist.filter((c) => c.state === 'pending' || c.state === 'rejected').length
   }, [activePaid, docs])
 
   const searchParams = useSearchParams()

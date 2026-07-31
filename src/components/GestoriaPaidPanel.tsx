@@ -94,9 +94,10 @@ export default function GestoriaPaidPanel({
     ? new Date(contrato.paid_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'short', year: 'numeric' })
     : null
 
-  const requiredChecklist = progress.checklist.filter((c) => c.required)
-  const optionalChecklist = progress.checklist.filter((c) => !c.required)
-  const pendingCount = requiredChecklist.filter((c) => c.state === 'pending' || c.state === 'rejected').length
+  // Ningún documento es obligatorio: el cliente decide si sube aquí su
+  // documentación o si prefiere enviarla por email a info@inmonest.com.
+  const docChecklist = progress.checklist
+  const pendingCount = docChecklist.filter((c) => c.state === 'pending' || c.state === 'rejected').length
   const dniParts = useMemo(() => getDniParts(userDocs, contrato.id), [userDocs, contrato.id])
 
   const handleFilePick = async (docKey: string, file: File) => {
@@ -232,14 +233,17 @@ export default function GestoriaPaidPanel({
         </div>
 
         <div>
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-4">
-            <h3 className="text-base font-bold text-gray-900">Tu checklist</h3>
-            {progress.requiredTotal > 0 && (
-              <span className="self-start text-xs font-semibold text-[#7a5c1e] bg-[#fef9e8] border border-[#e8d48a] px-2.5 py-1 rounded-full">
-                {progress.requiredUploaded}/{progress.requiredTotal} obligatorios
-              </span>
-            )}
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between mb-1">
+            <h3 className="text-base font-bold text-gray-900">Tu documentación</h3>
+            <span className="self-start text-xs font-semibold text-gray-500 bg-gray-100 border border-gray-200 px-2.5 py-1 rounded-full">
+              Opcional
+            </span>
           </div>
+          <p className="text-xs text-gray-500 mb-4 leading-relaxed">
+            Sube aquí lo que tengas a mano, o envíalo directamente a{' '}
+            <a href="mailto:info@inmonest.com" className="text-[#c9962a] font-medium underline">info@inmonest.com</a>
+            {' '}para que tu gestor empiece a trabajar.
+          </p>
 
           <ul className="space-y-3">
             <li className="flex items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/80 px-3 sm:px-4 py-3.5">
@@ -251,7 +255,7 @@ export default function GestoriaPaidPanel({
               <span className="text-[10px] font-bold text-emerald-700 uppercase">OK</span>
             </li>
 
-            {requiredChecklist.map((item) => (
+            {docChecklist.map((item) => (
               <li
                 key={item.key}
                 className={`rounded-2xl border px-3 sm:px-4 py-3.5 space-y-3 ${
@@ -319,29 +323,6 @@ export default function GestoriaPaidPanel({
           </p>
         </div>
 
-        {optionalChecklist.length > 0 && (
-          <div>
-            <h4 className="text-sm font-semibold text-gray-600 mb-3">Opcionales</h4>
-            <ul className="space-y-2">
-              {optionalChecklist.map((item) => (
-                <li key={item.key} className="rounded-xl border border-dashed border-gray-200 px-3 py-3 space-y-2">
-                  <div className="flex items-center gap-2">
-                    <span>{item.icon}</span>
-                    <span className="text-sm text-gray-600 flex-1">{item.label}</span>
-                  </div>
-                  <GestoriaUploadActions
-                    docKey={`opt-${item.key}`}
-                    uploading={uploading === item.key}
-                    uploadProgress={uploading === item.key ? uploadProgress : null}
-                    variant={item.uploaded ? 'replace' : 'primary'}
-                    onPick={(file) => void handleFilePick(item.key, file)}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
         <div className="rounded-2xl border border-gray-100 bg-gradient-to-r from-[#fdf8ee] to-white p-4 space-y-3">
           <p className="text-sm font-bold text-gray-900">¿Prefieres enviar por email?</p>
           <p className="text-xs text-gray-500 leading-relaxed">
@@ -373,7 +354,7 @@ export default function GestoriaPaidPanel({
         <div className="sm:hidden fixed bottom-[4.75rem] left-0 right-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur-md px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] max-w-lg mx-auto">
           <div className="flex items-center gap-3 max-w-lg mx-auto">
             <p className="text-xs text-gray-600 flex-1 leading-snug">
-              <span className="font-bold text-gray-900">{pendingCount}</span> doc{pendingCount > 1 ? 's' : ''} pendiente{pendingCount > 1 ? 's' : ''}
+              <span className="font-bold text-gray-900">{pendingCount}</span> doc{pendingCount > 1 ? 's' : ''} por subir (opcional)
             </p>
             <a
               href="https://wa.me/34745022862?text=Hola,%20necesito%20ayuda%20subiendo%20documentos%20en%20mi%20panel%20de%20gestoría"

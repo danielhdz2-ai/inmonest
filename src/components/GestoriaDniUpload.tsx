@@ -115,7 +115,7 @@ export default function GestoriaDniUpload({ front, back, uploadingKey, uploadPro
       {needsBack && (
         <div
           className={`rounded-xl border-2 p-3.5 flex items-center gap-3 ${
-            back ? 'border-emerald-200 bg-emerald-50/50' : 'border-amber-300 bg-amber-50/60'
+            back ? 'border-emerald-200 bg-emerald-50/50' : 'border-gray-200 bg-gray-50/60'
           }`}
         >
           <input
@@ -135,11 +135,11 @@ export default function GestoriaDniUpload({ front, back, uploadingKey, uploadPro
           />
           <span className="text-lg flex-shrink-0">{back ? '✓' : '📷'}</span>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-bold text-gray-900">Reverso del DNI · Obligatorio</p>
+            <p className="text-xs font-bold text-gray-900">Reverso del DNI</p>
             {back ? (
               <p className="text-xs text-gray-500 truncate">{back.file_name}</p>
             ) : (
-              <p className="text-xs text-amber-800">Falta la parte de atrás del documento</p>
+              <p className="text-xs text-gray-500">Si quieres, añade también la parte de atrás</p>
             )}
             {uploadingBack && uploadProgress != null && <MiniProgress percent={uploadProgress} />}
           </div>
