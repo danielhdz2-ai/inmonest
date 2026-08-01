@@ -6,16 +6,24 @@ export const metadata: Metadata = {
   title: 'Mi cuenta',
 }
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 /** Solo autenticación — cada sección elige su propio shell (portal vs gestoría cliente) */
 export default async function MiCuentaLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
+  let user = null
+  try {
+    const supabase = await createClient()
+    const { data } = await supabase.auth.getUser()
+    user = data.user
+  } catch (err) {
+    console.error('[mi-cuenta/layout] getUser falló', err)
+  }
 
-  // Middleware ya protege /mi-cuenta. No redirigir aquí (perdería ?session_id).
   if (!user) redirect('/login')
 
   return <div className="min-h-screen">{children}</div>
