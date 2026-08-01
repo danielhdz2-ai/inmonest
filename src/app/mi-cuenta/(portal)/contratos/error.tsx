@@ -10,7 +10,7 @@ export default function ContratosError({
   reset: () => void
 }) {
   return (
-    <div className="min-h-screen bg-[#eef0f2] flex items-center justify-center p-4">
+    <div className="min-h-[50vh] flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white rounded-2xl border border-gray-200 shadow-lg p-8 text-center space-y-4">
         <div className="text-4xl">⚠️</div>
         <h1 className="text-lg font-bold text-gray-900">No se pudo cargar Contratos</h1>

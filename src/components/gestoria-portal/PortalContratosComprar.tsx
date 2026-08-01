@@ -1,7 +1,6 @@
 'use client'
 
 import { useMemo, useState } from 'react'
-import Link from 'next/link'
 import { getAllCatalogServices } from '@/lib/gestoria-upsell'
 
 const FEATURED_KEYS = [
@@ -68,25 +67,8 @@ export default function PortalContratosComprar({
   }
 
   return (
-    <div className="min-h-screen bg-[#eef0f2]">
-      <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
-          <Link
-            href="/mi-cuenta"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-600 hover:text-gray-900 min-h-[44px] touch-manipulation"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Mi cuenta
-          </Link>
-          <p className="text-sm font-bold text-gray-900">Contratar gestoría</p>
-          <div className="w-20" aria-hidden />
-        </div>
-      </header>
-
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-8">
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1008] to-[#0d1a0f] p-6 sm:p-8 text-white">
+    <div className="space-y-8">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1008] to-[#0d1a0f] p-6 sm:p-8 text-white">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(201,150,42,0.25),transparent)]" />
           <div className="relative">
             <p className="text-[#f4d98a] text-xs font-bold uppercase tracking-widest">Gestoría Inmonest</p>
@@ -152,7 +134,7 @@ export default function PortalContratosComprar({
           </button>
         )}
 
-        <p className="text-center text-xs text-gray-400 pb-8">
+        <p className="text-center text-xs text-gray-400 pb-4">
           ¿Dudas?{' '}
           <a href="tel:+34745022862" className="text-[#c9962a] underline">
             745 022 862
@@ -162,7 +144,6 @@ export default function PortalContratosComprar({
             info@inmonest.com
           </a>
         </p>
-      </main>
     </div>
   )
 }

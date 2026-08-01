@@ -1,8 +1,7 @@
 import { Suspense } from 'react'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import { isAdminEmail } from '@/lib/admin'
-import { safeInternalPath } from '@/lib/gestoria-leads'
+import { resolvePostLoginRedirect } from '@/lib/post-login-redirect'
 import LoginForm from './LoginForm'
 
 export const dynamic = 'force-dynamic'
@@ -21,10 +20,7 @@ export default async function LoginPage({
       const supabase = await createClient()
       const { data: { user } } = await supabase.auth.getUser()
       if (user?.email) {
-        const next = safeInternalPath(params.next)
-        if (next) redirect(next)
-        if (isAdminEmail(user.email)) redirect('/admin')
-        redirect('/mi-cuenta')
+        redirect(await resolvePostLoginRedirect(user.id, user.email, params.next))
       }
     } catch {
       /* mostrar formulario de login */

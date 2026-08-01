@@ -1,11 +1,8 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { createAdminClient } from '@/lib/supabase/admin'
 import { sendEmail, emailBienvenida } from '@/lib/email'
-import { getRedirectUrl, isAdminEmail } from '@/lib/admin'
-import { buildGestoriaPanelUrl, safeInternalPath } from '@/lib/gestoria-leads'
-import { fetchGestoriaOrdersForUser } from '@/lib/gestoria-link-user'
-
+import { safeInternalPath } from '@/lib/gestoria-leads'
+import { resolvePostLoginRedirect } from '@/lib/post-login-redirect'
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
   const code = searchParams.get('code')
@@ -35,21 +32,10 @@ export async function GET(request: Request) {
 
       const nextPath = safeInternalPath(next)
       let redirectUrl: string
-      if (isAdminEmail(email)) {
-        redirectUrl = '/admin'
-      } else if (nextPath) {
+      if (nextPath) {
         redirectUrl = nextPath
       } else {
-        // Email con algún pedido de gestoría → siempre a su panel, nunca al portal de anuncios
-        let hasGestoriaOrder = false
-        try {
-          const admin = createAdminClient()
-          const contratos = await fetchGestoriaOrdersForUser(admin, user.id, email)
-          hasGestoriaOrder = contratos.length > 0
-        } catch {
-          /* best-effort */
-        }
-        redirectUrl = hasGestoriaOrder ? buildGestoriaPanelUrl() : getRedirectUrl(email)
+        redirectUrl = await resolvePostLoginRedirect(user.id, email)
       }
       return NextResponse.redirect(`${origin}${redirectUrl}`)
     }

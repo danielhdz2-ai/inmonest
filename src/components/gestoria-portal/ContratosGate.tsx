@@ -1,10 +1,36 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
-import GestoriaPortalClientSuspense from '@/components/gestoria-portal/GestoriaPortalClientSuspense'
-import PortalContratosComprar from '@/components/gestoria-portal/PortalContratosComprar'
 import type { GestoriaContrato, GestoriaUserDoc } from '@/lib/gestoria-portal-types'
+
+const PortalContratosComprar = dynamic(
+  () => import('@/components/gestoria-portal/PortalContratosComprar'),
+  {
+    loading: () => <ContratosLoadingState label="Cargando catálogo…" />,
+    ssr: false,
+  },
+)
+
+const GestoriaPortalClientSuspense = dynamic(
+  () => import('@/components/gestoria-portal/GestoriaPortalClientSuspense'),
+  {
+    loading: () => <ContratosLoadingState label="Cargando tu panel de gestoría…" />,
+    ssr: false,
+  },
+)
+
+function ContratosLoadingState({ label }: { label: string }) {
+  return (
+    <div className="min-h-[50vh] flex items-center justify-center p-4">
+      <div className="text-center space-y-3">
+        <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-[#c9962a] border-t-transparent" />
+        <p className="text-sm text-gray-500">{label}</p>
+      </div>
+    </div>
+  )
+}
 
 function ContratosGateInner() {
   const searchParams = useSearchParams()
@@ -64,19 +90,12 @@ function ContratosGateInner() {
   }, [sessionId, router])
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-[#eef0f2] flex items-center justify-center p-4">
-        <div className="text-center space-y-3">
-          <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-[#c9962a] border-t-transparent" />
-          <p className="text-sm text-gray-500">Cargando tu panel de gestoría…</p>
-        </div>
-      </div>
-    )
+    return <ContratosLoadingState label="Cargando contratos…" />
   }
 
   if (error) {
     return (
-      <div className="min-h-screen bg-[#eef0f2] flex items-center justify-center p-4">
+      <div className="min-h-[50vh] flex items-center justify-center p-4">
         <div className="max-w-md w-full bg-white rounded-2xl border border-gray-200 shadow-lg p-8 text-center space-y-4">
           <p className="text-lg font-bold text-gray-900">No se pudo cargar el panel</p>
           <p className="text-sm text-gray-500">{error}</p>
@@ -103,26 +122,22 @@ function ContratosGateInner() {
   }
 
   return (
-    <GestoriaPortalClientSuspense
-      contratos={contratos}
-      userDocs={userDocs}
-      userEmail={userEmail}
-      displayName={displayName}
-      initialSessionId={sessionId}
-      initialPhone={phone}
-    />
+    <div className="fixed inset-0 z-[200] overflow-auto bg-[#eef0f2]">
+      <GestoriaPortalClientSuspense
+        contratos={contratos}
+        userDocs={userDocs}
+        userEmail={userEmail}
+        displayName={displayName}
+        initialSessionId={sessionId}
+        initialPhone={phone}
+      />
+    </div>
   )
 }
 
 export default function ContratosGate() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-[#eef0f2] flex items-center justify-center p-4">
-          <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-[#c9962a] border-t-transparent" />
-        </div>
-      }
-    >
+    <Suspense fallback={<ContratosLoadingState label="Cargando contratos…" />}>
       <ContratosGateInner />
     </Suspense>
   )
