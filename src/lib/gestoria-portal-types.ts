@@ -39,6 +39,7 @@ export type GestoriaPortalSection =
   | 'inmueble'
   | 'servicios'
   | 'publicar'
+  | 'configuracion'
 
 export const GESTORIA_PORTAL_SECTIONS: {
   id: GestoriaPortalSection
@@ -54,6 +55,7 @@ export const GESTORIA_PORTAL_SECTIONS: {
   { id: 'inmueble', label: 'Mi inmueble', shortLabel: 'Inmueble', icon: '🏠', desc: 'Datos del inmueble' },
   { id: 'servicios', label: 'Contratar más', shortLabel: 'Servicios', icon: '✦', desc: 'Nuevos contratos y packs' },
   { id: 'publicar', label: 'Publicar piso', shortLabel: 'Publicar', icon: '📢', desc: 'Anuncio sin comisiones' },
+  { id: 'configuracion', label: 'Configuración', shortLabel: 'Ajustes', icon: '⚙️', desc: 'Datos personales y cuenta' },
 ]
 
 export const GESTORIA_ORDER_SELECT_CORE =

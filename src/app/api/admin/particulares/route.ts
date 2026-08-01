@@ -41,6 +41,25 @@ export async function GET() {
   const clientesParticulares: Array<any> = []
   const propietariosParticulares: Array<any> = []
 
+  // Cargar TODOS los pedidos de gestoría de una sola vez y agruparlos por
+  // email normalizado (trim + lowercase). Antes se hacía una consulta por
+  // cada usuario con `.eq('client_email', user.email)`, que fallaba en
+  // silencio si había diferencias de mayúsculas/espacios entre el email de
+  // Supabase Auth y el guardado en el pedido — dejando la sección
+  // "Clientes gestoría" vacía o incompleta.
+  const { data: allGestoriaOrders } = await adminSb
+    .from('gestoria_requests')
+    .select('id, client_email, service_key, amount_eur, status, created_at, paid_at')
+    .order('created_at', { ascending: false })
+
+  const gestoriaByEmail = new Map<string, typeof allGestoriaOrders>()
+  for (const order of allGestoriaOrders ?? []) {
+    const key = (order.client_email || '').trim().toLowerCase()
+    if (!key) continue
+    if (!gestoriaByEmail.has(key)) gestoriaByEmail.set(key, [])
+    gestoriaByEmail.get(key)!.push(order)
+  }
+
   // Para cada usuario, clasificarlo en la categoría correcta
   for (const user of allUsers) {
     // Datos base del usuario (TODA LA INFORMACIÓN DISPONIBLE)
@@ -75,14 +94,10 @@ export async function GET() {
       }
     }
 
-    // 1. Verificar si tiene pedidos de gestoría pagados
-    const { data: gestoriaOrders } = await adminSb
-      .from('gestoria_requests')
-      .select('id, service_key, amount_eur, status, created_at, paid_at')
-      .eq('client_email', user.email)
-      .order('created_at', { ascending: false })
+    // 1. Verificar si tiene pedidos de gestoría pagados (email normalizado)
+    const gestoriaOrders = gestoriaByEmail.get((user.email || '').trim().toLowerCase()) ?? []
 
-    const hasPaidGestoria = gestoriaOrders?.some(o => o.status === 'paid')
+    const hasPaidGestoria = gestoriaOrders.some(o => o.status === 'paid')
 
     // 2. Verificar si tiene listings como propietario
     const { data: userListings } = await adminSb
@@ -144,11 +159,11 @@ export async function GET() {
     if (hasPaidGestoria) {
       clientesGestoria.push({
         ...userInfo,
-        totalOrders: gestoriaOrders?.length || 0,
-        paidOrders: gestoriaOrders?.filter(o => o.status === 'paid').length || 0,
-        totalRevenue: gestoriaOrders?.filter(o => o.status === 'paid').reduce((sum, o) => sum + (o.amount_eur || 0), 0) || 0,
-        orders: gestoriaOrders || [],
-        lastOrder: gestoriaOrders?.[0]?.created_at || null,
+        totalOrders: gestoriaOrders.length,
+        paidOrders: gestoriaOrders.filter(o => o.status === 'paid').length,
+        totalRevenue: gestoriaOrders.filter(o => o.status === 'paid').reduce((sum, o) => sum + (o.amount_eur || 0), 0),
+        orders: gestoriaOrders,
+        lastOrder: gestoriaOrders[0]?.created_at || null,
       })
     }
     // 2. PROPIETARIOS PARTICULARES (publicaron pisos)

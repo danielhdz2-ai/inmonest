@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import AdminPanelPremium from './AdminPanelPremium'
 
 export const metadata: Metadata = {
@@ -25,11 +26,14 @@ export default async function AdminPage() {
     redirect('/')
   }
 
-  // Cargar todos los pedidos server-side (nunca debe tumbar el panel si falla)
+  // Cargar todos los pedidos server-side con el cliente admin (bypass RLS,
+  // que solo deja ver a cada usuario sus propios pedidos por email).
+  // Nunca debe tumbar el panel si falla.
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let data: any[] | null = null
   try {
-    const res = await supabase
+    const adminSb = createAdminClient()
+    const res = await adminSb
       .from('gestoria_requests')
       .select('*')
       .order('created_at', { ascending: false })

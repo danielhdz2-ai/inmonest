@@ -10,6 +10,7 @@ type Props = {
   userEmail: string
   displayName: string
   initialSessionId?: string | null
+  initialPhone?: string
 }
 
 function PortalLoading() {

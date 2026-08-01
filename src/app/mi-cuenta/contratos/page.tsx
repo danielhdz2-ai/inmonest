@@ -74,11 +74,11 @@ export default async function ContratosPage({
     redirect('/gestoria/acceso-cliente')
   }
 
-  let profile: { full_name: string | null } | null = null
+  let profile: { full_name: string | null; phone: string | null } | null = null
   try {
     const res = await supabase
       .from('user_profiles')
-      .select('full_name')
+      .select('full_name, phone')
       .eq('user_id', user.id)
       .maybeSingle()
     profile = res.data
@@ -99,6 +99,7 @@ export default async function ContratosPage({
       userEmail={emailNorm}
       displayName={displayName}
       initialSessionId={sessionId}
+      initialPhone={profile?.phone?.trim() || contratos[0]?.client_phone?.trim() || ''}
     />
   )
 }

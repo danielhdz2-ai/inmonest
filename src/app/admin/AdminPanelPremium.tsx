@@ -39,6 +39,33 @@ interface GestoriaRequest {
   tags: string[] | null
   priority: string | null
   internal_notes: string | null
+  payment_method?: string | null
+  source?: string | null
+}
+
+type VentasPeriod = 'todo' | 'semana' | 'mes'
+
+function isWithinPeriod(dateStr: string | null | undefined, period: VentasPeriod): boolean {
+  if (period === 'todo') return true
+  if (!dateStr) return false
+  const d = new Date(dateStr)
+  if (Number.isNaN(d.getTime())) return false
+  const now = new Date()
+  if (period === 'semana') {
+    const weekAgo = new Date(now)
+    weekAgo.setDate(weekAgo.getDate() - 7)
+    return d >= weekAgo && d <= now
+  }
+  // mes: mes natural en curso
+  return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth()
+}
+
+const PAYMENT_METHOD_LABELS: Record<string, string> = {
+  stripe: 'Tarjeta (Stripe)',
+  transferencia: 'Transferencia',
+  bizum: 'Bizum',
+  efectivo: 'Efectivo',
+  otro: 'Otro',
 }
 
 interface Client {
@@ -281,6 +308,20 @@ export default function AdminPanelPremium({
   const [loading, setLoading] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
   const [ventasFilter, setVentasFilter] = useState<'todas' | 'pagadas' | 'pendientes'>('todas')
+  const [ventasPeriod, setVentasPeriod] = useState<VentasPeriod>('todo')
+  const [manualSaleOpen, setManualSaleOpen] = useState(false)
+  const [manualSaleSaving, setManualSaleSaving] = useState(false)
+  const [manualSaleError, setManualSaleError] = useState<string | null>(null)
+  const [manualSaleForm, setManualSaleForm] = useState({
+    client_name: '',
+    client_email: '',
+    client_phone: '',
+    service_key: '',
+    amount_eur: '',
+    payment_method: 'transferencia',
+    paid_at: new Date().toISOString().slice(0, 10),
+    notes: '',
+  })
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
   const [clientDocuments, setClientDocuments] = useState<ClientDocument[]>([])
   const [allDocuments, setAllDocuments] = useState<ClientDocument[]>([])
@@ -571,6 +612,64 @@ export default function AdminPanelPremium({
       if (ventasFilter === 'pendientes') return r.status !== 'paid'
       return true
     })
+    .filter(r => isWithinPeriod(r.paid_at || r.created_at, ventasPeriod))
+
+  const periodTotal = filteredRequests
+    .filter(r => r.status === 'paid')
+    .reduce((sum, r) => sum + (r.amount_eur || 0), 0)
+
+  async function handleCreateManualSale(e: React.FormEvent) {
+    e.preventDefault()
+    setManualSaleError(null)
+    const amount = Number(manualSaleForm.amount_eur)
+    if (!manualSaleForm.client_name.trim()) {
+      setManualSaleError('Falta el nombre del cliente')
+      return
+    }
+    if (!manualSaleForm.client_email.trim().includes('@')) {
+      setManualSaleError('Email no válido')
+      return
+    }
+    if (!Number.isFinite(amount) || amount <= 0) {
+      setManualSaleError('Importe no válido')
+      return
+    }
+    setManualSaleSaving(true)
+    try {
+      const res = await fetch('/api/admin/pedidos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...manualSaleForm,
+          service_name: manualSaleForm.service_key
+            ? (SERVICE_LABELS[manualSaleForm.service_key] || manualSaleForm.service_key)
+            : 'Venta manual',
+          amount_eur: amount,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setManualSaleError(data.error || 'No se pudo registrar la venta')
+        return
+      }
+      setManualSaleOpen(false)
+      setManualSaleForm({
+        client_name: '',
+        client_email: '',
+        client_phone: '',
+        service_key: '',
+        amount_eur: '',
+        payment_method: 'transferencia',
+        paid_at: new Date().toISOString().slice(0, 10),
+        notes: '',
+      })
+      await refreshPedidos()
+    } catch {
+      setManualSaleError('Error de red al registrar la venta')
+    } finally {
+      setManualSaleSaving(false)
+    }
+  }
 
   const topbarActions = (
     <>
@@ -800,6 +899,16 @@ export default function AdminPanelPremium({
                   className="w-full pl-11 pr-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
                 />
               </div>
+              <button
+                type="button"
+                onClick={() => setManualSaleOpen(true)}
+                className="px-3.5 py-2.5 bg-[#c9962a] text-white rounded-lg text-xs font-semibold hover:bg-[#b8841e] transition flex items-center justify-center gap-1.5 flex-shrink-0"
+              >
+                + Venta manual
+              </button>
+            </div>
+
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
               <div className="flex gap-1.5 bg-gray-100 p-1 rounded-lg flex-shrink-0">
                 {([
                   { id: 'todas', label: 'Todas' },
@@ -817,6 +926,27 @@ export default function AdminPanelPremium({
                   </button>
                 ))}
               </div>
+              <div className="flex gap-1.5 bg-gray-100 p-1 rounded-lg flex-shrink-0">
+                {([
+                  { id: 'semana', label: 'Esta semana' },
+                  { id: 'mes', label: 'Este mes' },
+                  { id: 'todo', label: 'Todo' },
+                ] as const).map(f => (
+                  <button
+                    key={f.id}
+                    onClick={() => setVentasPeriod(f.id)}
+                    className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+                      ventasPeriod === f.id ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    {f.label}
+                  </button>
+                ))}
+              </div>
+              <p className="text-xs text-gray-500 sm:ml-auto">
+                {filteredRequests.length} venta{filteredRequests.length !== 1 ? 's' : ''} ·{' '}
+                <span className="font-bold text-[#8a6a1e]">{periodTotal.toFixed(2)} €</span>
+              </p>
             </div>
 
             <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
@@ -850,6 +980,11 @@ export default function AdminPanelPremium({
                               Ver en Stripe
                               <IconExternalLink className="w-3 h-3" />
                             </a>
+                          )}
+                          {!req.session_id && req.payment_method && (
+                            <span className="text-[11px] text-gray-400">
+                              {PAYMENT_METHOD_LABELS[req.payment_method] || req.payment_method}
+                            </span>
                           )}
                         </td>
                         <td className="px-5 py-3.5">
@@ -1367,6 +1502,163 @@ export default function AdminPanelPremium({
               )}
             </div>
           )}
+        </div>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════
+          MODAL: NUEVA VENTA MANUAL (transferencia, Bizum, efectivo...)
+      ═══════════════════════════════════════════════════════════════ */}
+      {manualSaleOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-hidden flex flex-col">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+              <div>
+                <h2 className="text-lg font-bold text-gray-900">Registrar venta manual</h2>
+                <p className="text-sm text-gray-500">Para pagos por transferencia, Bizum o efectivo</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => !manualSaleSaving && setManualSaleOpen(false)}
+                className="text-gray-400 hover:text-gray-700 p-1"
+                aria-label="Cerrar"
+              >
+                <IconClose className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleCreateManualSale} className="px-6 py-4 space-y-4 overflow-y-auto flex-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Nombre del cliente</label>
+                  <input
+                    type="text"
+                    required
+                    value={manualSaleForm.client_name}
+                    onChange={e => setManualSaleForm(f => ({ ...f, client_name: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                    placeholder="Nombre y apellidos"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Email</label>
+                  <input
+                    type="email"
+                    required
+                    value={manualSaleForm.client_email}
+                    onChange={e => setManualSaleForm(f => ({ ...f, client_email: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                    placeholder="cliente@email.com"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Teléfono (opcional)</label>
+                  <input
+                    type="tel"
+                    value={manualSaleForm.client_phone}
+                    onChange={e => setManualSaleForm(f => ({ ...f, client_phone: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                    placeholder="+34 6XX XXX XXX"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Servicio</label>
+                  <select
+                    value={manualSaleForm.service_key}
+                    onChange={e => setManualSaleForm(f => ({ ...f, service_key: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                  >
+                    <option value="">Otro / no listado</option>
+                    {Object.entries(SERVICE_LABELS).map(([key, label]) => (
+                      <option key={key} value={key}>{label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Importe (€)</label>
+                  <input
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    required
+                    value={manualSaleForm.amount_eur}
+                    onChange={e => setManualSaleForm(f => ({ ...f, amount_eur: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                    placeholder="61"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Fecha de pago</label>
+                  <input
+                    type="date"
+                    value={manualSaleForm.paid_at}
+                    onChange={e => setManualSaleForm(f => ({ ...f, paid_at: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Método de pago</label>
+                <div className="flex gap-2 flex-wrap">
+                  {(['transferencia', 'bizum', 'efectivo', 'otro'] as const).map(pm => (
+                    <button
+                      key={pm}
+                      type="button"
+                      onClick={() => setManualSaleForm(f => ({ ...f, payment_method: pm }))}
+                      className={`px-3.5 py-2 rounded-lg text-xs font-semibold border transition ${
+                        manualSaleForm.payment_method === pm
+                          ? 'bg-gray-900 text-white border-gray-900'
+                          : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-50'
+                      }`}
+                    >
+                      {PAYMENT_METHOD_LABELS[pm]}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Notas (opcional)</label>
+                <textarea
+                  value={manualSaleForm.notes}
+                  onChange={e => setManualSaleForm(f => ({ ...f, notes: e.target.value }))}
+                  rows={2}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a] resize-none"
+                  placeholder="Referencia de la transferencia, contexto, etc."
+                />
+              </div>
+
+              {manualSaleError && (
+                <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+                  {manualSaleError}
+                </div>
+              )}
+
+              <div className="flex items-center justify-end gap-3 pt-2">
+                <button
+                  type="button"
+                  disabled={manualSaleSaving}
+                  onClick={() => setManualSaleOpen(false)}
+                  className="px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 rounded-lg transition"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={manualSaleSaving}
+                  className="px-5 py-2 bg-[#c9962a] text-white text-sm font-semibold rounded-lg hover:bg-[#b8841e] transition disabled:opacity-50"
+                >
+                  {manualSaleSaving ? 'Guardando…' : 'Registrar venta'}
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
 

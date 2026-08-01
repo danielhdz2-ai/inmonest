@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import ChatWidget from "@/components/ChatWidget";
-import Footer from "@/components/Footer";
+import ConditionalFooter from "@/components/ConditionalFooter";
 import GTMProvider from "@/components/GTMProvider";
 import OrganizationSchema from "@/components/OrganizationSchema";
 
@@ -146,7 +146,7 @@ export default function RootLayout({
         <OrganizationSchema />
 
         {children}
-        <Footer />
+        <ConditionalFooter />
         <ChatWidget />
       </body>
     </html>

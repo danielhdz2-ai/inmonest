@@ -11,6 +11,7 @@ import GestoriaPortalDocumentos from '@/components/gestoria-portal/GestoriaPorta
 import GestoriaPortalInmueble from '@/components/gestoria-portal/GestoriaPortalInmueble'
 import GestoriaPortalServicios from '@/components/gestoria-portal/GestoriaPortalServicios'
 import GestoriaPortalPublicar from '@/components/gestoria-portal/GestoriaPortalPublicar'
+import GestoriaPortalConfiguracion from '@/components/gestoria-portal/GestoriaPortalConfiguracion'
 import type { PartesFormData } from '@/components/GestoriaPartesForm'
 import type { GestoriaContrato, GestoriaPortalSection, GestoriaUserDoc } from '@/lib/gestoria-portal-types'
 import { computeGestoriaProgress } from '@/lib/gestoria-client-progress'
@@ -19,7 +20,7 @@ import { validateUploadFile } from '@/lib/gestoria-upload'
 import { uploadFileWithProgress } from '@/lib/gestoria-upload-client'
 
 const VALID_SECTIONS: GestoriaPortalSection[] = [
-  'inicio', 'expediente', 'documentos', 'contratos', 'inmueble', 'servicios', 'publicar',
+  'inicio', 'expediente', 'documentos', 'contratos', 'inmueble', 'servicios', 'publicar', 'configuracion',
 ]
 
 function parseSection(value: string | null): GestoriaPortalSection {
@@ -35,6 +36,7 @@ type Props = {
   userEmail: string
   displayName: string
   initialSessionId?: string | null
+  initialPhone?: string
 }
 
 export default function GestoriaPortalClient({
@@ -43,6 +45,7 @@ export default function GestoriaPortalClient({
   userEmail,
   displayName,
   initialSessionId = null,
+  initialPhone = '',
 }: Props) {
   const [contratos, setContratos] = useState(initialContratos)
   const [docs, setDocs] = useState(initialDocs)
@@ -484,6 +487,14 @@ export default function GestoriaPortalClient({
       )}
 
       {section === 'publicar' && <GestoriaPortalPublicar />}
+
+      {section === 'configuracion' && (
+        <GestoriaPortalConfiguracion
+          email={userEmail}
+          initialName={displayName}
+          initialPhone={initialPhone}
+        />
+      )}
     </GestoriaPortalShell>
   )
 }

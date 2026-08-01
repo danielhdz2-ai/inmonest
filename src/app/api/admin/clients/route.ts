@@ -49,11 +49,15 @@ export async function GET(req: NextRequest) {
   }>()
 
   requests?.forEach(req => {
-    const email = req.client_email || 'Sin email'
-    
+    // Normalizar email (trim + lowercase) para agrupar correctamente aunque
+    // el mismo cliente tenga pedidos guardados con distinta capitalización
+    // o espacios — si no, un mismo cliente aparecía duplicado con datos
+    // incompletos en cada "duplicado".
+    const email = (req.client_email || '').trim().toLowerCase() || 'sin-email'
+
     if (!clientsMap.has(email)) {
       clientsMap.set(email, {
-        email,
+        email: req.client_email?.trim() || 'Sin email',
         name: req.client_name || 'Sin nombre',
         phone: req.client_phone,
         first_purchase: req.created_at,
