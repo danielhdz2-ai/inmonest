@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react'
 import Image from 'next/image'
+import PrivacidadDatosPanel from '@/components/account/PrivacidadDatosPanel'
 
 interface Props {
   userId: string
@@ -11,7 +12,7 @@ interface Props {
   initialAvatar: string | null
 }
 
-type Tab = 'datos' | 'seguridad' | 'baja'
+type Tab = 'datos' | 'seguridad' | 'privacidad'
 
 export default function PerfilClient({ userId, email, initialName, initialPhone, initialAvatar }: Props) {
   const [tab, setTab] = useState<Tab>('datos')
@@ -110,14 +111,52 @@ export default function PerfilClient({ userId, email, initialName, initialPhone,
 
   const initials = (name || email).slice(0, 2).toUpperCase()
 
+  const deleteAccountForm = (
+    <div className="bg-white rounded-2xl border border-red-200 p-5 sm:p-6">
+      <div className="flex items-start gap-3 mb-4">
+        <span className="text-xl flex-shrink-0">⚠️</span>
+        <div>
+          <h3 className="font-semibold text-red-800">Eliminar mi cuenta</h3>
+          <p className="text-sm text-red-700/90 mt-1">
+            Se eliminarán tus anuncios, favoritos y mensajes. Esta acción es permanente.
+          </p>
+        </div>
+      </div>
+      <form onSubmit={handleDeleteAccount} className="space-y-4">
+        <p className="text-sm text-gray-500">
+          Para confirmar, escribe <strong className="text-gray-700">ELIMINAR</strong>:
+        </p>
+        <input
+          type="text"
+          value={bajaConfirm}
+          onChange={e => setBajaConfirm(e.target.value)}
+          placeholder="Escribe ELIMINAR"
+          className="w-full border border-red-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400 min-h-[48px]"
+        />
+        {bajaMsg && (
+          <div className={`rounded-xl px-4 py-3 text-sm ${bajaMsg.ok ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+            {bajaMsg.text}
+          </div>
+        )}
+        <button
+          type="submit"
+          disabled={bajaSaving || bajaConfirm !== 'ELIMINAR'}
+          className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-xl transition-colors min-h-[48px]"
+        >
+          {bajaSaving ? 'Procesando...' : 'Eliminar mi cuenta definitivamente'}
+        </button>
+      </form>
+    </div>
+  )
+
   return (
     <div className="max-w-2xl space-y-6">
       {/* Tabs */}
-      <div className="flex gap-1 bg-gray-100 p-1 rounded-xl w-fit">
+      <div className="flex gap-1 bg-gray-100 p-1 rounded-xl w-full sm:w-fit overflow-x-auto">
         {([
-          { id: 'datos',    label: '👤 Datos personales' },
-          { id: 'seguridad', label: '🔒 Seguridad' },
-          { id: 'baja',     label: '🗑️ Dar de baja' },
+          { id: 'datos', label: 'Datos personales' },
+          { id: 'seguridad', label: 'Seguridad' },
+          { id: 'privacidad', label: 'Privacidad y datos' },
         ] as const).map(t => (
           <button
             key={t.id}
@@ -280,51 +319,12 @@ export default function PerfilClient({ userId, email, initialName, initialPhone,
       )}
 
       {/* ── TAB BAJA ─────────────────────────────────────────────────── */}
-      {tab === 'baja' && (
-        <div className="space-y-4">
-          <div className="bg-red-50 border border-red-200 rounded-2xl p-5">
-            <div className="flex items-start gap-3">
-              <div className="text-2xl flex-shrink-0">⚠️</div>
-              <div>
-                <h3 className="font-semibold text-red-800">Esta accion es irreversible</h3>
-                <ul className="mt-2 space-y-1 text-sm text-red-700">
-                  <li>• Se eliminaran todos tus anuncios publicados</li>
-                  <li>• Se eliminaran todos tus favoritos y mensajes</li>
-                  <li>• No podras recuperar el acceso a tus contratos</li>
-                  <li>• Tu cuenta de acceso sera desactivada</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
-            <h2 className="font-semibold text-gray-900 mb-1">Eliminar mi cuenta</h2>
-            <p className="text-sm text-gray-400 mb-5">
-              Para confirmar, escribe <strong className="text-gray-700">ELIMINAR</strong> en el campo de texto.
-            </p>
-            <form onSubmit={handleDeleteAccount} className="space-y-4">
-              <input
-                type="text"
-                value={bajaConfirm}
-                onChange={e => setBajaConfirm(e.target.value)}
-                placeholder="Escribe ELIMINAR"
-                className="w-full border border-red-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400"
-              />
-              {bajaMsg && (
-                <div className={`rounded-xl px-4 py-3 text-sm ${bajaMsg.ok ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700 border border-red-200'}`}>
-                  {bajaMsg.text}
-                </div>
-              )}
-              <button
-                type="submit"
-                disabled={bajaSaving || bajaConfirm !== 'ELIMINAR'}
-                className="w-full bg-red-600 hover:bg-red-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-xl transition-colors"
-              >
-                {bajaSaving ? 'Procesando...' : 'Eliminar mi cuenta definitivamente'}
-              </button>
-            </form>
-          </div>
-        </div>
+      {tab === 'privacidad' && (
+        <PrivacidadDatosPanel
+          email={email}
+          variant="portal"
+          deleteAccountForm={deleteAccountForm}
+        />
       )}
     </div>
   )
