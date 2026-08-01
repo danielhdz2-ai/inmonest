@@ -7,6 +7,7 @@ import {
 } from '@/lib/gestoria-link-user'
 import { USER_DOCS_SELECT, USER_DOCS_SELECT_CORE } from '@/lib/gestoria-portal-types'
 import GestoriaPortalClientSuspense from '@/components/gestoria-portal/GestoriaPortalClientSuspense'
+import PortalContratosComprar from '@/components/gestoria-portal/PortalContratosComprar'
 import { redirect } from 'next/navigation'
 
 export const dynamic = 'force-dynamic'
@@ -69,11 +70,6 @@ export default async function ContratosPage({
     }
   }
 
-  // Nunca expulsar si venimos de un pago (session_id) o ya hay pedidos
-  if (contratos.length === 0 && !sessionId) {
-    redirect('/gestoria/acceso-cliente')
-  }
-
   let profile: { full_name: string | null; phone: string | null } | null = null
   try {
     const res = await supabase
@@ -92,6 +88,19 @@ export default async function ContratosPage({
     user.email.split('@')[0] ||
     'Cliente'
 
+  const phone = profile?.phone?.trim() || contratos[0]?.client_phone?.trim() || ''
+
+  // Sin pedidos todavía: catálogo + modal + Stripe (usuario del portal inmobiliario)
+  if (contratos.length === 0 && !sessionId) {
+    return (
+      <PortalContratosComprar
+        userEmail={emailNorm}
+        displayName={displayName}
+        initialPhone={phone}
+      />
+    )
+  }
+
   return (
     <GestoriaPortalClientSuspense
       contratos={contratos}
@@ -99,7 +108,7 @@ export default async function ContratosPage({
       userEmail={emailNorm}
       displayName={displayName}
       initialSessionId={sessionId}
-      initialPhone={profile?.phone?.trim() || contratos[0]?.client_phone?.trim() || ''}
+      initialPhone={phone}
     />
   )
 }

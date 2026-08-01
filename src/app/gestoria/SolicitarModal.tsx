@@ -1,6 +1,6 @@
 ﻿'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { gtmPush } from '@/components/GTMProvider'
 import HoneypotField from '@/components/HoneypotField'
 import TurnstileWidget from '@/components/TurnstileWidget'
@@ -15,6 +15,11 @@ interface Service {
 interface Props {
   service: Service | null
   onClose: () => void
+  /** Datos precargados (p. ej. usuario ya logueado en mi-cuenta) */
+  initialForm?: { name: string; email: string; phone: string }
+  lockEmail?: boolean
+  /** Sin captcha Turnstile — el checkout ya confía en la sesión autenticada */
+  authenticated?: boolean
 }
 
 const BENEFITS = [
@@ -40,7 +45,13 @@ const BENEFITS = [
   },
 ]
 
-export default function SolicitarModal({ service, onClose }: Props) {
+export default function SolicitarModal({
+  service,
+  onClose,
+  initialForm,
+  lockEmail = false,
+  authenticated = false,
+}: Props) {
   const [form, setForm] = useState({ name: '', email: '', phone: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'error'>('idle')
   const [errMsg, setErrMsg] = useState('')
@@ -53,7 +64,19 @@ export default function SolicitarModal({ service, onClose }: Props) {
     getProtectionPayload,
   } = useBotProtection()
 
+  useEffect(() => {
+    if (initialForm) {
+      setForm({
+        name: initialForm.name,
+        email: initialForm.email,
+        phone: initialForm.phone,
+      })
+    }
+  }, [initialForm])
+
   if (!service) return null
+
+  const showTurnstile = turnstileEnabled && !authenticated
 
   const set = (k: keyof typeof form, v: string) => setForm(p => ({ ...p, [k]: v }))
 
@@ -195,7 +218,15 @@ export default function SolicitarModal({ service, onClose }: Props) {
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-700 mb-1">Email *</label>
-                <input type="email" required value={form.email} onChange={e => set('email', e.target.value)} placeholder="maria@ejemplo.com" className={inp} />
+                <input
+                  type="email"
+                  required
+                  readOnly={lockEmail}
+                  value={form.email}
+                  onChange={e => set('email', e.target.value)}
+                  placeholder="maria@ejemplo.com"
+                  className={`${inp}${lockEmail ? ' bg-gray-50 text-gray-600 cursor-default' : ''}`}
+                />
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-700 mb-1">Teléfono</label>
@@ -207,7 +238,7 @@ export default function SolicitarModal({ service, onClose }: Props) {
               )}
 
               <div className="pt-2">
-                {turnstileEnabled && (
+                {showTurnstile && (
                   <TurnstileWidget
                     siteKey={turnstileSiteKey}
                     onVerify={setTurnstileToken}

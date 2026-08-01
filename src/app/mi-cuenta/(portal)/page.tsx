@@ -111,7 +111,7 @@ export default async function DashboardHomePage() {
               Publicar anuncio
             </Link>
             <Link
-              href="/gestoria"
+              href="/mi-cuenta/contratos"
               className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors backdrop-blur-sm border border-white/20"
             >
               Contratar gestoria
@@ -158,8 +158,8 @@ export default async function DashboardHomePage() {
             <div className="p-10 text-center">
               <div className="text-4xl mb-3">📄</div>
               <p className="text-sm text-gray-500">No has contratado ningun servicio aun.</p>
-              <Link href="/gestoria" className="inline-block mt-4 text-sm text-[#c9962a] font-semibold hover:underline">
-                Ver gestoria →
+              <Link href="/mi-cuenta/contratos" className="inline-block mt-4 text-sm text-[#c9962a] font-semibold hover:underline">
+                Contratar gestoría →
               </Link>
             </div>
           ) : (
@@ -236,10 +236,10 @@ export default async function DashboardHomePage() {
                 Redactados por abogados especializados.
               </p>
               <Link
-                href="/gestoria"
+                href="/mi-cuenta/contratos"
                 className="inline-block bg-white text-[#7a5c1e] text-sm font-bold px-4 py-2 rounded-xl hover:bg-amber-50 transition-colors"
               >
-                Ver contratos →
+                Contratar contrato →
               </Link>
             </div>
           </div>

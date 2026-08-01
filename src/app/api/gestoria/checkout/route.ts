@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getStripeKey } from '@/lib/stripe-key'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import { getIP } from '@/lib/rate-limit'
 import { verifyBotSubmission, validateHumanFields } from '@/lib/verify-bot'
 
@@ -156,9 +157,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: data.error?.message ?? 'Error en Stripe' }, { status: 500 })
     }
 
-    // Crear registro pendiente en gestoria_requests para que el dashboard lo muestre de inmediato
+    // Crear registro pendiente (admin client evita bloqueos RLS en usuarios del portal)
     if (data.id) {
-      const { error: grErr } = await supabase
+      const adminSb = createAdminClient()
+      const { error: grErr } = await adminSb
         .from('gestoria_requests')
         .upsert(
           {
