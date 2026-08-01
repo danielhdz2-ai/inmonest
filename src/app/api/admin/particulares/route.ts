@@ -49,6 +49,8 @@ export async function GET() {
   const { data: allGestoriaOrders } = await adminSb
     .from('gestoria_requests')
     .select('id, client_name, client_email, client_phone, service_key, amount_eur, status, created_at, paid_at')
+    .neq('client_email', 'daniel.trading.sniper@gmail.com')
+    .neq('service_key', 'prueba-pago-stripe')
     .order('created_at', { ascending: false })
 
   const gestoriaByEmail = new Map<string, typeof allGestoriaOrders>()

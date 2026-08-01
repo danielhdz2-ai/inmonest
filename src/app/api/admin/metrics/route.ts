@@ -30,6 +30,7 @@ export async function GET(req: NextRequest) {
     .from('gestoria_requests')
     .select('*')
     .neq('client_email', 'daniel.trading.sniper@gmail.com')
+    .neq('service_key', 'prueba-pago-stripe')
 
   const totalOrders = requests?.length || 0
   const paidOrders = requests?.filter(r => r.status === 'paid').length || 0
@@ -65,23 +66,25 @@ export async function GET(req: NextRequest) {
     .sort((a, b) => b.revenue - a.revenue)
     .slice(0, 5)
 
-  // Métricas por día (últimos 30 días para gráfico)
-  const dailyMetrics = []
-  for (let i = 29; i >= 0; i--) {
-    const date = new Date()
-    date.setDate(date.getDate() - i)
-    const dateStr = date.toISOString().split('T')[0]
-    
-    const dayRequests = requests?.filter(r => r.created_at.startsWith(dateStr)) || []
-    const dayRevenue = dayRequests.filter(r => r.status === 'paid').reduce((sum, r) => sum + (Number(r.amount_eur) || 0), 0)
-    
-    dailyMetrics.push({
-      date: dateStr,
-      orders: dayRequests.length,
-      revenue: dayRevenue,
-      paid: dayRequests.filter(r => r.status === 'paid').length
-    })
-  }
+  // Métricas por día (histórico completo, agrupado por fecha real de pago)
+  const dailyMap = new Map<string, { orders: number; revenue: number; paid: number }>()
+  requests?.forEach(r => {
+    const source = r.paid_at || r.created_at
+    if (!source) return
+    const d = new Date(source)
+    if (Number.isNaN(d.getTime())) return
+    const dateStr = d.toISOString().split('T')[0]
+    const entry = dailyMap.get(dateStr) || { orders: 0, revenue: 0, paid: 0 }
+    entry.orders += 1
+    if (r.status === 'paid') {
+      entry.revenue += Number(r.amount_eur) || 0
+      entry.paid += 1
+    }
+    dailyMap.set(dateStr, entry)
+  })
+  const dailyMetrics = Array.from(dailyMap.entries())
+    .map(([date, v]) => ({ date, ...v }))
+    .sort((a, b) => a.date.localeCompare(b.date))
 
   // Tasa de conversión (pedidos pagados / total)
   const conversionRate = totalOrders > 0 ? (paidOrders / totalOrders) * 100 : 0

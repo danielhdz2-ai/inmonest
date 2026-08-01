@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import AdminShell, { type AdminTab } from './AdminShell'
 import SalesCalendar from './SalesCalendar'
@@ -635,6 +635,47 @@ export default function AdminPanelPremium({
     .filter(r => r.status === 'paid')
     .reduce((sum, r) => sum + (r.amount_eur || 0), 0)
 
+  // Calendario: se calcula directamente de "requests" (todo el histórico, sin
+  // límite de 30 días) usando la fecha real de pago (paid_at, con fallback a
+  // created_at) para que coincida exactamente con la tabla de Ventas y con
+  // cualquier mes al que se navegue (mayo, junio...).
+  const calendarDailyMetrics = useMemo(() => {
+    const map = new Map<
+      string,
+      { revenue: number; paid: number; orders: number; items: Array<{ id: string; name: string; email: string | null; service: string; amount: number; time: string }> }
+    >()
+
+    requests.forEach(r => {
+      if (r.status !== 'paid') return
+      const source = r.paid_at || r.created_at
+      if (!source) return
+      const d = new Date(source)
+      if (Number.isNaN(d.getTime())) return
+      const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
+
+      const entry = map.get(dateStr) || { revenue: 0, paid: 0, orders: 0, items: [] }
+      entry.revenue += Number(r.amount_eur) || 0
+      entry.paid += 1
+      entry.orders += 1
+      entry.items.push({
+        id: r.id,
+        name: r.client_name || r.client_email || 'Cliente',
+        email: r.client_email,
+        service: SERVICE_LABELS[r.service_key] || r.service_key,
+        amount: Number(r.amount_eur) || 0,
+        time: d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }),
+      })
+      map.set(dateStr, entry)
+    })
+
+    return Array.from(map.entries())
+      .map(([date, v]) => ({
+        date,
+        ...v,
+        items: v.items.sort((a, b) => a.time.localeCompare(b.time)),
+      }))
+  }, [requests])
+
   async function handleCreateManualSale(e: React.FormEvent) {
     e.preventDefault()
     setManualSaleError(null)
@@ -889,7 +930,7 @@ export default function AdminPanelPremium({
             </ModuleCard>
 
             <ModuleCard title="Calendario">
-              <SalesCalendar dailyMetrics={metrics.dailyMetrics} compact />
+              <SalesCalendar dailyMetrics={calendarDailyMetrics} compact />
             </ModuleCard>
           </div>
         </div>
@@ -1141,11 +1182,9 @@ export default function AdminPanelPremium({
           </div>
 
           <div className="space-y-6">
-            {metrics && (
-              <div className="bg-white rounded-2xl border border-gray-200 p-5">
-                <SalesCalendar dailyMetrics={metrics.dailyMetrics} compact />
-              </div>
-            )}
+            <div className="bg-white rounded-2xl border border-gray-200 p-5">
+              <SalesCalendar dailyMetrics={calendarDailyMetrics} compact />
+            </div>
           </div>
         </div>
       )}

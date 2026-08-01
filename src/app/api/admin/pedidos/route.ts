@@ -24,6 +24,7 @@ export async function GET() {
     .from('gestoria_requests')
     .select('*')
     .neq('client_email', 'daniel.trading.sniper@gmail.com')
+    .neq('service_key', 'prueba-pago-stripe')
     .order('created_at', { ascending: false })
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 })
