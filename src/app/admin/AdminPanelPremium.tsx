@@ -22,6 +22,8 @@ import {
   IconFolder,
   IconSales,
   IconHome,
+  IconEdit,
+  IconTrash,
 } from './AdminIcons'
 
 interface GestoriaRequest {
@@ -322,6 +324,21 @@ export default function AdminPanelPremium({
     paid_at: new Date().toISOString().slice(0, 10),
     notes: '',
   })
+  const [editSaleTarget, setEditSaleTarget] = useState<GestoriaRequest | null>(null)
+  const [editSaleForm, setEditSaleForm] = useState({
+    client_name: '',
+    client_email: '',
+    client_phone: '',
+    service_key: '',
+    amount_eur: '',
+    status: 'paid',
+    payment_method: 'otro',
+    paid_at: '',
+    internal_notes: '',
+  })
+  const [editSaleSaving, setEditSaleSaving] = useState(false)
+  const [editSaleError, setEditSaleError] = useState<string | null>(null)
+  const [deletingSaleId, setDeletingSaleId] = useState<string | null>(null)
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
   const [clientDocuments, setClientDocuments] = useState<ClientDocument[]>([])
   const [allDocuments, setAllDocuments] = useState<ClientDocument[]>([])
@@ -671,6 +688,93 @@ export default function AdminPanelPremium({
     }
   }
 
+  function openEditSale(req: GestoriaRequest) {
+    setEditSaleError(null)
+    setEditSaleTarget(req)
+    setEditSaleForm({
+      client_name: req.client_name || '',
+      client_email: req.client_email || '',
+      client_phone: req.client_phone || '',
+      service_key: req.service_key || '',
+      amount_eur: req.amount_eur != null ? String(req.amount_eur) : '',
+      status: req.status || 'paid',
+      payment_method: req.payment_method || (req.session_id ? 'stripe' : 'otro'),
+      paid_at: req.paid_at ? req.paid_at.slice(0, 10) : '',
+      internal_notes: req.internal_notes || '',
+    })
+  }
+
+  async function handleUpdateSale(e: React.FormEvent) {
+    e.preventDefault()
+    if (!editSaleTarget) return
+    setEditSaleError(null)
+    const amount = Number(editSaleForm.amount_eur)
+    if (!editSaleForm.client_name.trim()) {
+      setEditSaleError('Falta el nombre del cliente')
+      return
+    }
+    if (!editSaleForm.client_email.trim().includes('@')) {
+      setEditSaleError('Email no válido')
+      return
+    }
+    if (!Number.isFinite(amount) || amount < 0) {
+      setEditSaleError('Importe no válido')
+      return
+    }
+    setEditSaleSaving(true)
+    try {
+      const res = await fetch(`/api/admin/pedidos/${editSaleTarget.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          client_name: editSaleForm.client_name,
+          client_email: editSaleForm.client_email,
+          client_phone: editSaleForm.client_phone,
+          service_key: editSaleForm.service_key,
+          service_name: SERVICE_LABELS[editSaleForm.service_key] || editSaleForm.service_key,
+          amount_eur: amount,
+          status: editSaleForm.status,
+          payment_method: editSaleForm.payment_method,
+          paid_at: editSaleForm.paid_at,
+          internal_notes: editSaleForm.internal_notes,
+        }),
+      })
+      const data = await res.json()
+      if (!res.ok) {
+        setEditSaleError(data.error || 'No se pudo actualizar la venta')
+        return
+      }
+      setEditSaleTarget(null)
+      await refreshPedidos()
+    } catch {
+      setEditSaleError('Error de red al actualizar la venta')
+    } finally {
+      setEditSaleSaving(false)
+    }
+  }
+
+  async function handleDeleteSale(req: GestoriaRequest) {
+    const label = req.client_name || req.client_email || 'esta venta'
+    if (!window.confirm(`¿Eliminar definitivamente el pedido de "${label}"? Esta acción no se puede deshacer.`)) {
+      return
+    }
+    setDeletingSaleId(req.id)
+    try {
+      const res = await fetch(`/api/admin/pedidos/${req.id}`, { method: 'DELETE' })
+      const data = await res.json()
+      if (!res.ok) {
+        alert(data.error || 'No se pudo eliminar la venta')
+        return
+      }
+      setRequests((prev) => prev.filter((r) => r.id !== req.id))
+      await Promise.all([loadMetrics(), loadClients(), loadParticulares()])
+    } catch {
+      alert('Error de red al eliminar la venta')
+    } finally {
+      setDeletingSaleId(null)
+    }
+  }
+
   const topbarActions = (
     <>
       <button
@@ -959,6 +1063,7 @@ export default function AdminPanelPremium({
                       <th className="px-5 py-3 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Fecha</th>
                       <th className="px-5 py-3 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Estado</th>
                       <th className="px-5 py-3 text-right text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Importe</th>
+                      <th className="px-5 py-3 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Acciones</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
@@ -998,6 +1103,27 @@ export default function AdminPanelPremium({
                         </td>
                         <td className="px-5 py-3.5 text-right">
                           <p className="text-sm font-bold text-gray-900">{req.amount_eur || 0} €</p>
+                        </td>
+                        <td className="px-5 py-3.5">
+                          <div className="flex items-center justify-center gap-2">
+                            <button
+                              type="button"
+                              onClick={() => openEditSale(req)}
+                              className="p-1.5 border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition"
+                              title="Editar"
+                            >
+                              <IconEdit className="w-4 h-4" />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteSale(req)}
+                              disabled={deletingSaleId === req.id}
+                              className="p-1.5 border border-red-200 text-red-600 rounded-lg hover:bg-red-50 transition disabled:opacity-50"
+                              title="Eliminar"
+                            >
+                              <IconTrash className="w-4 h-4" />
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -1656,6 +1782,190 @@ export default function AdminPanelPremium({
                 >
                   {manualSaleSaving ? 'Guardando…' : 'Registrar venta'}
                 </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════
+          MODAL: EDITAR VENTA / PEDIDO
+      ═══════════════════════════════════════════════════════════════ */}
+      {editSaleTarget && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-hidden flex flex-col">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
+              <div>
+                <h2 className="text-lg font-bold text-gray-900">Editar venta</h2>
+                <p className="text-sm text-gray-500">{editSaleTarget.client_email}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => !editSaleSaving && setEditSaleTarget(null)}
+                className="text-gray-400 hover:text-gray-700 p-1"
+                aria-label="Cerrar"
+              >
+                <IconClose className="w-5 h-5" />
+              </button>
+            </div>
+
+            <form onSubmit={handleUpdateSale} className="px-6 py-4 space-y-4 overflow-y-auto flex-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Nombre del cliente</label>
+                  <input
+                    type="text"
+                    required
+                    value={editSaleForm.client_name}
+                    onChange={e => setEditSaleForm(f => ({ ...f, client_name: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Email</label>
+                  <input
+                    type="email"
+                    required
+                    value={editSaleForm.client_email}
+                    onChange={e => setEditSaleForm(f => ({ ...f, client_email: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Teléfono</label>
+                  <input
+                    type="tel"
+                    value={editSaleForm.client_phone}
+                    onChange={e => setEditSaleForm(f => ({ ...f, client_phone: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Servicio</label>
+                  <select
+                    value={editSaleForm.service_key}
+                    onChange={e => setEditSaleForm(f => ({ ...f, service_key: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                  >
+                    <option value={editSaleForm.service_key}>
+                      {SERVICE_LABELS[editSaleForm.service_key] || editSaleForm.service_key || 'Otro'}
+                    </option>
+                    {Object.entries(SERVICE_LABELS)
+                      .filter(([key]) => key !== editSaleForm.service_key)
+                      .map(([key, label]) => (
+                        <option key={key} value={key}>{label}</option>
+                      ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Importe (€)</label>
+                  <input
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    required
+                    value={editSaleForm.amount_eur}
+                    onChange={e => setEditSaleForm(f => ({ ...f, amount_eur: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Fecha de pago</label>
+                  <input
+                    type="date"
+                    value={editSaleForm.paid_at}
+                    onChange={e => setEditSaleForm(f => ({ ...f, paid_at: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Estado</label>
+                  <div className="flex gap-2 flex-wrap">
+                    {(['paid', 'pending', 'lead'] as const).map(st => (
+                      <button
+                        key={st}
+                        type="button"
+                        onClick={() => setEditSaleForm(f => ({ ...f, status: st }))}
+                        className={`px-3.5 py-2 rounded-lg text-xs font-semibold border transition ${
+                          editSaleForm.status === st
+                            ? 'bg-gray-900 text-white border-gray-900'
+                            : 'bg-white text-gray-600 border-gray-300 hover:bg-gray-50'
+                        }`}
+                      >
+                        {st === 'paid' ? 'Pagado' : st === 'pending' ? 'Pendiente' : 'Lead'}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Método de pago</label>
+                  <select
+                    value={editSaleForm.payment_method}
+                    onChange={e => setEditSaleForm(f => ({ ...f, payment_method: e.target.value }))}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                  >
+                    {Object.entries(PAYMENT_METHOD_LABELS).map(([key, label]) => (
+                      <option key={key} value={key}>{label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-600 uppercase mb-1.5">Notas internas</label>
+                <textarea
+                  value={editSaleForm.internal_notes}
+                  onChange={e => setEditSaleForm(f => ({ ...f, internal_notes: e.target.value }))}
+                  rows={2}
+                  className="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a] resize-none"
+                />
+              </div>
+
+              {editSaleError && (
+                <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+                  {editSaleError}
+                </div>
+              )}
+
+              <div className="flex items-center justify-between gap-3 pt-2">
+                <button
+                  type="button"
+                  disabled={editSaleSaving}
+                  onClick={() => {
+                    setEditSaleTarget(null)
+                    handleDeleteSale(editSaleTarget)
+                  }}
+                  className="px-4 py-2 text-sm font-semibold text-red-600 hover:bg-red-50 rounded-lg transition flex items-center gap-1.5"
+                >
+                  <IconTrash className="w-4 h-4" />
+                  Eliminar
+                </button>
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    disabled={editSaleSaving}
+                    onClick={() => setEditSaleTarget(null)}
+                    className="px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100 rounded-lg transition"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={editSaleSaving}
+                    className="px-5 py-2 bg-[#c9962a] text-white text-sm font-semibold rounded-lg hover:bg-[#b8841e] transition disabled:opacity-50"
+                  >
+                    {editSaleSaving ? 'Guardando…' : 'Guardar cambios'}
+                  </button>
+                </div>
               </div>
             </form>
           </div>

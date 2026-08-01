@@ -37,7 +37,6 @@ export async function GET() {
     })
   }
 
-  const clientesGestoria: Array<any> = []
   const clientesParticulares: Array<any> = []
   const propietariosParticulares: Array<any> = []
 
@@ -49,7 +48,7 @@ export async function GET() {
   // "Clientes gestoría" vacía o incompleta.
   const { data: allGestoriaOrders } = await adminSb
     .from('gestoria_requests')
-    .select('id, client_email, service_key, amount_eur, status, created_at, paid_at')
+    .select('id, client_name, client_email, client_phone, service_key, amount_eur, status, created_at, paid_at')
     .order('created_at', { ascending: false })
 
   const gestoriaByEmail = new Map<string, typeof allGestoriaOrders>()
@@ -60,7 +59,39 @@ export async function GET() {
     gestoriaByEmail.get(key)!.push(order)
   }
 
-  // Para cada usuario, clasificarlo en la categoría correcta
+  // "Clientes gestoría" se construye directamente desde gestoria_requests
+  // (igual que Ventas y Expedientes), NO a partir de los usuarios
+  // registrados: la mayoría de clientes de gestoría pagan como invitados sin
+  // crear cuenta, así que filtrar por auth.users los dejaba fuera. Solo se
+  // consideran "cliente" los emails con AL MENOS un pedido pagado (los leads
+  // pendientes sin pagar, incluidos los bots, no cuentan aquí).
+  const clientesGestoria: Array<any> = []
+  for (const [emailKey, orders] of gestoriaByEmail.entries()) {
+    const paidOrders = (orders ?? []).filter((o) => o.status === 'paid')
+    if (paidOrders.length === 0) continue
+
+    const matchedUser = allUsers.find((u) => (u.email || '').trim().toLowerCase() === emailKey)
+    const latestOrder = (orders ?? [])[0]
+
+    clientesGestoria.push({
+      userId: matchedUser?.id ?? null,
+      email: latestOrder?.client_email?.trim() || emailKey,
+      name: latestOrder?.client_name?.trim() || matchedUser?.user_metadata?.full_name || emailKey.split('@')[0],
+      phone: latestOrder?.client_phone?.trim() || (matchedUser?.user_metadata?.phone as string | null) || null,
+      isRegistered: Boolean(matchedUser),
+      registeredAt: matchedUser?.created_at ?? latestOrder?.created_at,
+      lastSignIn: matchedUser?.last_sign_in_at ?? null,
+      totalOrders: (orders ?? []).length,
+      paidOrders: paidOrders.length,
+      totalRevenue: paidOrders.reduce((sum, o) => sum + (o.amount_eur || 0), 0),
+      orders: orders ?? [],
+      lastOrder: latestOrder?.created_at ?? null,
+    })
+  }
+  clientesGestoria.sort((a, b) => b.totalRevenue - a.totalRevenue)
+
+  // Para cada usuario registrado, clasificarlo en particulares o
+  // propietarios (los que ya son clientes de gestoría no entran aquí).
   for (const user of allUsers) {
     // Datos base del usuario (TODA LA INFORMACIÓN DISPONIBLE)
     const userInfo = {
@@ -79,6 +110,14 @@ export async function GET() {
       banned: user.banned_until ? true : false,
     }
 
+    // 1. Verificar si tiene pedidos de gestoría pagados (email normalizado).
+    // Ya están incluidos en clientesGestoria (construido arriba directamente
+    // desde gestoria_requests) — se omiten aquí para no duplicarlos ni
+    // gastar consultas de más en "Clientes particulares" / "Propietarios".
+    const gestoriaOrders = gestoriaByEmail.get((user.email || '').trim().toLowerCase()) ?? []
+    const hasPaidGestoria = gestoriaOrders.some(o => o.status === 'paid')
+    if (hasPaidGestoria) continue
+
     // Si no tiene teléfono en metadata, buscar en listing_contacts
     if (!userInfo.phone) {
       const { data: userContacts } = await adminSb
@@ -93,11 +132,6 @@ export async function GET() {
         userInfo.phone = userContacts.from_phone
       }
     }
-
-    // 1. Verificar si tiene pedidos de gestoría pagados (email normalizado)
-    const gestoriaOrders = gestoriaByEmail.get((user.email || '').trim().toLowerCase()) ?? []
-
-    const hasPaidGestoria = gestoriaOrders.some(o => o.status === 'paid')
 
     // 2. Verificar si tiene listings como propietario
     const { data: userListings } = await adminSb
@@ -154,20 +188,9 @@ export async function GET() {
     }
 
     // CLASIFICACIÓN EN CATEGORÍAS (orden de prioridad)
-    
-    // 1. CLIENTES GESTORÍA (tienen pedidos pagados)
-    if (hasPaidGestoria) {
-      clientesGestoria.push({
-        ...userInfo,
-        totalOrders: gestoriaOrders.length,
-        paidOrders: gestoriaOrders.filter(o => o.status === 'paid').length,
-        totalRevenue: gestoriaOrders.filter(o => o.status === 'paid').reduce((sum, o) => sum + (o.amount_eur || 0), 0),
-        orders: gestoriaOrders,
-        lastOrder: gestoriaOrders[0]?.created_at || null,
-      })
-    }
+
     // 2. PROPIETARIOS PARTICULARES (publicaron pisos)
-    else if (hasListings) {
+    if (hasListings) {
       propietariosParticulares.push({
         ...userInfo,
         totalListings: userListings.length,
@@ -189,8 +212,7 @@ export async function GET() {
     }
   }
 
-  // Ordenar cada categoría
-  clientesGestoria.sort((a, b) => b.totalRevenue - a.totalRevenue)
+  // Ordenar cada categoría (clientesGestoria ya se ordenó arriba)
   propietariosParticulares.sort((a, b) => b.totalListings - a.totalListings)
   clientesParticulares.sort((a, b) => new Date(b.registeredAt).getTime() - new Date(a.registeredAt).getTime())
 
