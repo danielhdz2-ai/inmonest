@@ -4,6 +4,7 @@ import { useMemo } from 'react'
 import Image from 'next/image'
 import GestoriaUploadActions from '@/components/GestoriaUploadActions'
 import GestoriaDniUpload from '@/components/GestoriaDniUpload'
+import GestoriaExtraUpload from '@/components/GestoriaExtraUpload'
 import GestoriaPartesForm, { type PartesFormData } from '@/components/GestoriaPartesForm'
 import { MAX_UPLOAD_BYTES, formatFileSize, validateUploadFile } from '@/lib/gestoria-upload'
 import { resolveGestorForRequest } from '@/lib/gestoria-gestor'
@@ -11,6 +12,7 @@ import {
   WORKFLOW_STEPS,
   buildTimelineDates,
   computeGestoriaProgress,
+  filterDocsForRequest,
   getDniParts,
   getServiceShortTitle,
   type UserDocRecord,
@@ -99,6 +101,14 @@ export default function GestoriaPaidPanel({
   const docChecklist = progress.checklist
   const pendingCount = docChecklist.filter((c) => c.state === 'pending' || c.state === 'rejected').length
   const dniParts = useMemo(() => getDniParts(userDocs, contrato.id), [userDocs, contrato.id])
+  const docsForRequest = useMemo(
+    () => filterDocsForRequest(userDocs, contrato.id),
+    [userDocs, contrato.id],
+  )
+  const checklistKeys = useMemo(
+    () => docChecklist.map((c) => c.key).concat('dni-reverso'),
+    [docChecklist],
+  )
 
   const handleFilePick = async (docKey: string, file: File) => {
     const check = validateUploadFile(file.name, file.type, file.size)
@@ -322,6 +332,14 @@ export default function GestoriaPaidPanel({
             En móvil puedes fotografiar el DNI o subir PDF · Hasta {maxSizeLabel}
           </p>
         </div>
+
+        <GestoriaExtraUpload
+          docsForRequest={docsForRequest}
+          excludeKeys={checklistKeys}
+          uploading={uploading}
+          uploadProgress={uploadProgress}
+          onPick={(docKey, file) => void handleFilePick(docKey, file)}
+        />
 
         <div className="rounded-2xl border border-gray-100 bg-gradient-to-r from-[#fdf8ee] to-white p-4 space-y-3">
           <p className="text-sm font-bold text-gray-900">¿Prefieres enviar por email?</p>

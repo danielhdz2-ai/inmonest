@@ -7,6 +7,7 @@ import GestoriaPaidPanel from '@/components/GestoriaPaidPanel'
 import GestoriaPortalShell from '@/components/gestoria-portal/GestoriaPortalShell'
 import GestoriaPortalInicio from '@/components/gestoria-portal/GestoriaPortalInicio'
 import GestoriaPortalContratos from '@/components/gestoria-portal/GestoriaPortalContratos'
+import GestoriaPortalDocumentos from '@/components/gestoria-portal/GestoriaPortalDocumentos'
 import GestoriaPortalInmueble from '@/components/gestoria-portal/GestoriaPortalInmueble'
 import GestoriaPortalServicios from '@/components/gestoria-portal/GestoriaPortalServicios'
 import GestoriaPortalPublicar from '@/components/gestoria-portal/GestoriaPortalPublicar'
@@ -18,7 +19,7 @@ import { validateUploadFile } from '@/lib/gestoria-upload'
 import { uploadFileWithProgress } from '@/lib/gestoria-upload-client'
 
 const VALID_SECTIONS: GestoriaPortalSection[] = [
-  'inicio', 'expediente', 'contratos', 'inmueble', 'servicios', 'publicar',
+  'inicio', 'expediente', 'documentos', 'contratos', 'inmueble', 'servicios', 'publicar',
 ]
 
 function parseSection(value: string | null): GestoriaPortalSection {
@@ -438,6 +439,14 @@ export default function GestoriaPortalClient({
         <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center">
           <p className="text-sm text-gray-500">No hay un expediente activo con pago confirmado.</p>
         </div>
+      )}
+
+      {section === 'documentos' && (
+        <GestoriaPortalDocumentos
+          contratos={contratos}
+          userDocs={docs}
+          onDeleted={(docId) => setDocs((prev) => prev.filter((d) => d.id !== docId))}
+        />
       )}
 
       {section === 'contratos' && (

@@ -34,6 +34,7 @@ export type GestoriaUserDoc = {
 export type GestoriaPortalSection =
   | 'inicio'
   | 'expediente'
+  | 'documentos'
   | 'contratos'
   | 'inmueble'
   | 'servicios'
@@ -48,6 +49,7 @@ export const GESTORIA_PORTAL_SECTIONS: {
 }[] = [
   { id: 'inicio', label: 'Panel', shortLabel: 'Inicio', icon: '◉', desc: 'Resumen de tu expediente' },
   { id: 'expediente', label: 'Expediente', shortLabel: 'Docs', icon: '📋', desc: 'Documentación y seguimiento' },
+  { id: 'documentos', label: 'Mis documentos', shortLabel: 'Archivos', icon: '🗂️', desc: 'Ver, descargar o eliminar' },
   { id: 'contratos', label: 'Mis contratos', shortLabel: 'Contratos', icon: '📄', desc: 'Historial de servicios' },
   { id: 'inmueble', label: 'Mi inmueble', shortLabel: 'Inmueble', icon: '🏠', desc: 'Datos del inmueble' },
   { id: 'servicios', label: 'Contratar más', shortLabel: 'Servicios', icon: '✦', desc: 'Nuevos contratos y packs' },

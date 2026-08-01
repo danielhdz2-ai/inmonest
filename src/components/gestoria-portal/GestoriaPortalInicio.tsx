@@ -175,9 +175,10 @@ export default function GestoriaPortalInicio({
       </div>
 
       {/* Acciones rápidas */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {[
           { id: 'expediente' as const, label: 'Subir documentos', icon: '📤', color: 'from-amber-50 to-amber-100/50 border-amber-200' },
+          { id: 'documentos' as const, label: 'Mis documentos', icon: '🗂️', color: 'from-rose-50 to-rose-100/50 border-rose-200' },
           { id: 'inmueble' as const, label: 'Datos inmueble', icon: '🏠', color: 'from-blue-50 to-blue-100/50 border-blue-200' },
           { id: 'contratos' as const, label: 'Mis contratos', icon: '📄', color: 'from-emerald-50 to-emerald-100/50 border-emerald-200' },
           { id: 'servicios' as const, label: 'Contratar más', icon: '✦', color: 'from-violet-50 to-violet-100/50 border-violet-200' },

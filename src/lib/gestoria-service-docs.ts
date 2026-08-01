@@ -167,7 +167,47 @@ const EXTRA_DOC_META: Record<string, ServiceDocRequirement> = {
     desc: 'Reverso del documento de identidad',
     required: false,
   },
+  'contrato-arras': {
+    key: 'contrato-arras',
+    label: 'Contrato de arras',
+    icon: '📋',
+    desc: 'Copia del contrato de arras firmado',
+    required: false,
+  },
+  'contrato-reserva': {
+    key: 'contrato-reserva',
+    label: 'Contrato de reserva',
+    icon: '📝',
+    desc: 'Copia del contrato de reserva',
+    required: false,
+  },
+  contrato: {
+    key: 'contrato',
+    label: 'Otro contrato',
+    icon: '📑',
+    desc: 'Cualquier otro contrato relacionado con tu caso',
+    required: false,
+  },
 }
+
+/**
+ * Catálogo fijo de documentación que el cliente puede subir al expediente en
+ * cualquier momento, independientemente de la lista de requisitos de su
+ * servicio. Todo es opcional (ver comentario superior del fichero).
+ */
+export const EXTRA_UPLOAD_CATALOG: { key: string; label: string; icon: string; desc: string }[] = [
+  { key: 'nota-simple', label: 'Nota simple', icon: '🏛️', desc: 'Del Registro de la Propiedad' },
+  { key: 'contrato-arras', label: 'Contrato de arras', icon: '📋', desc: 'Firmado por ambas partes' },
+  { key: 'contrato-reserva', label: 'Contrato de reserva', icon: '📝', desc: 'Documento de reserva del inmueble' },
+  { key: 'contrato-alquiler', label: 'Contrato de alquiler', icon: '📄', desc: 'Contrato vigente o borrador' },
+  { key: 'escrituras', label: 'Escrituras', icon: '📜', desc: 'Escritura de propiedad del inmueble' },
+  { key: 'nomina', label: 'Nóminas', icon: '💼', desc: 'Últimas nóminas o justificante de ingresos' },
+  { key: 'facturas', label: 'Facturas', icon: '🧾', desc: 'Suministros, reparaciones u otros gastos' },
+  { key: 'contrato', label: 'Otro contrato', icon: '📑', desc: 'Cualquier otro contrato de tu caso' },
+  { key: 'cedula-habitabilidad', label: 'Cédula de habitabilidad', icon: '🏠', desc: 'Si aplica en tu comunidad autónoma' },
+  { key: 'cert-energetico', label: 'Certificado energético', icon: '⚡', desc: 'CE vigente del inmueble' },
+  { key: 'otro', label: 'Más documentación', icon: '📎', desc: 'Cualquier otro documento relevante' },
+]
 
 export function getDocMeta(docKey: string): ServiceDocRequirement | null {
   for (const entry of Object.values(BY_SERVICE)) {
