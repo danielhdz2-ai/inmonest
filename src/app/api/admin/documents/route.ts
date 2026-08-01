@@ -258,7 +258,7 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const { storage_path, bucket } = await request.json()
+    const { storage_path, bucket, mode, file_name } = await request.json()
     if (!storage_path) {
       return NextResponse.json({ error: 'storage_path requerido' }, { status: 400 })
     }
@@ -268,7 +268,11 @@ export async function POST(request: Request) {
 
     const { data, error } = await supabase.storage
       .from(bucketName)
-      .createSignedUrl(storage_path, 3600)
+      .createSignedUrl(
+        storage_path,
+        3600,
+        mode === 'download' ? { download: file_name || true } : undefined,
+      )
 
     if (error || !data?.signedUrl) {
       return NextResponse.json({ error: error?.message ?? 'Error' }, { status: 500 })

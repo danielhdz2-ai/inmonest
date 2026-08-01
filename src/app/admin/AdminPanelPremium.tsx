@@ -2,7 +2,27 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import AdminShell, { type AdminTab } from './AdminShell'
 import SalesCalendar from './SalesCalendar'
+import {
+  IconRefresh,
+  IconExport,
+  IconAudit,
+  IconSearch,
+  IconEye,
+  IconDownload,
+  IconClose,
+  IconMail,
+  IconExternalLink,
+  IconWallet,
+  IconCheck,
+  IconUsers,
+  IconTarget,
+  IconClock,
+  IconFolder,
+  IconSales,
+  IconHome,
+} from './AdminIcons'
 
 interface GestoriaRequest {
   id: string
@@ -107,7 +127,7 @@ interface ClienteParticular {
   email: string
   name: string
   phone: string | null
-  metadata: Record<string, any>
+  metadata: Record<string, unknown>
   provider: string
   emailConfirmed: boolean
   registeredAt: string
@@ -178,18 +198,93 @@ interface BulkEmailTemplateMeta {
   previewHtml: string
 }
 
-export default function AdminPanelPremium({ initialRequests }: { initialRequests: GestoriaRequest[] }) {
-  const [tab, setTab] = useState<'dashboard' | 'pedidos' | 'clientes' | 'documentos' | 'particulares'>('dashboard')
+function formatDate(value: string, opts: Intl.DateTimeFormatOptions = { day: '2-digit', month: 'short', year: 'numeric' }) {
+  return new Date(value).toLocaleDateString('es-ES', opts)
+}
+
+function StatCard({
+  label,
+  value,
+  icon: Icon,
+  tone = 'default',
+}: {
+  label: string
+  value: string | number
+  icon: (p: { className?: string }) => React.ReactElement
+  tone?: 'default' | 'accent'
+}) {
+  return (
+    <div className="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
+      <div
+        className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
+          tone === 'accent' ? 'bg-[#c9962a]/15 text-[#8a6a1e]' : 'bg-gray-100 text-gray-500'
+        }`}
+      >
+        <Icon className="w-5 h-5" />
+      </div>
+      <div className="min-w-0">
+        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">{label}</p>
+        <p className="text-2xl font-bold text-gray-900 mt-1 truncate">{value}</p>
+      </div>
+    </div>
+  )
+}
+
+function ModuleCard({
+  title,
+  action,
+  children,
+  className = '',
+}: {
+  title: string
+  action?: React.ReactNode
+  children: React.ReactNode
+  className?: string
+}) {
+  return (
+    <div className={`bg-white rounded-2xl border border-gray-200 p-5 flex flex-col ${className}`}>
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide">{title}</h3>
+        {action}
+      </div>
+      <div className="flex-1 min-h-0">{children}</div>
+    </div>
+  )
+}
+
+function StatusBadge({ status }: { status: string }) {
+  const isPaid = status === 'paid'
+  return (
+    <span
+      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold ${
+        isPaid ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200'
+      }`}
+    >
+      {isPaid && <IconCheck className="w-3 h-3" />}
+      {isPaid ? 'Pagado' : 'Pendiente'}
+    </span>
+  )
+}
+
+export default function AdminPanelPremium({
+  initialRequests,
+  adminEmail,
+}: {
+  initialRequests: GestoriaRequest[]
+  adminEmail?: string
+}) {
+  const [tab, setTab] = useState<AdminTab>('dashboard')
   const [particularesTab, setParticularesTab] = useState<'gestoria' | 'clientes' | 'propietarios' | 'leads'>('gestoria')
   const [requests, setRequests] = useState<GestoriaRequest[]>(initialRequests)
   const [clients, setClients] = useState<Client[]>([])
   const [metrics, setMetrics] = useState<Metrics | null>(null)
   const [loading, setLoading] = useState(false)
   const [searchQuery, setSearchQuery] = useState('')
+  const [ventasFilter, setVentasFilter] = useState<'todas' | 'pagadas' | 'pendientes'>('todas')
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
   const [clientDocuments, setClientDocuments] = useState<ClientDocument[]>([])
   const [allDocuments, setAllDocuments] = useState<ClientDocument[]>([])
-  
+
   const [clientesGestoria, setClientesGestoria] = useState<ClienteGestoria[]>([])
   const [clientesParticulares, setClientesParticulares] = useState<ClienteParticular[]>([])
   const [propietariosParticulares, setPropietariosParticulares] = useState<PropietarioParticular[]>([])
@@ -295,20 +390,17 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
 
   const selectedBulkTemplate = bulkTemplates.find((t) => t.id === bulkTemplateId)
 
-  // Cargar métricas, documentos y particulares al montar
   useEffect(() => {
     loadMetrics()
     loadAllDocuments()
     loadParticulares()
   }, [])
-  
-  // Recargar datos cuando cambian las requests
+
   useEffect(() => {
     setRequests(initialRequests)
     loadClients()
   }, [initialRequests])
 
-  // Cargar documentos del cliente seleccionado
   useEffect(() => {
     if (selectedClient) {
       loadClientDocuments(selectedClient.email)
@@ -335,15 +427,35 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
     }
   }
 
+  async function getDocUrl(doc: ClientDocument, mode: 'view' | 'download') {
+    const res = await fetch('/api/admin/documents', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        storage_path: doc.storage_path,
+        bucket: doc.bucket,
+        mode,
+        file_name: doc.file_name,
+      }),
+    })
+    const data = await res.json()
+    return data.url as string | undefined
+  }
+
+  async function handleViewDoc(doc: ClientDocument) {
+    try {
+      const url = await getDocUrl(doc, 'view')
+      if (url) window.open(url, '_blank')
+      else alert('No se pudo generar el enlace del documento.')
+    } catch {
+      alert('Error al abrir el documento.')
+    }
+  }
+
   async function handleDownloadDoc(doc: ClientDocument) {
     try {
-      const res = await fetch('/api/admin/documents', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ storage_path: doc.storage_path, bucket: doc.bucket }),
-      })
-      const data = await res.json()
-      if (data.url) window.open(data.url, '_blank')
+      const url = await getDocUrl(doc, 'download')
+      if (url) window.open(url, '_blank')
       else alert('No se pudo generar el enlace de descarga.')
     } catch {
       alert('Error al descargar el documento.')
@@ -392,14 +504,12 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
     }
   }
 
-  // ── NUEVA FUNCIÓN: Refrescar pedidos ──────────────────────────────────
   async function refreshPedidos() {
     setLoading(true)
     try {
       const res = await fetch('/api/admin/pedidos')
       const data = await res.json()
       setRequests(data.requests || [])
-      // También refrescar métricas, clientes y documentos
       await Promise.all([
         loadMetrics(),
         loadClients(),
@@ -412,11 +522,10 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
     }
   }
 
-  // ── Auto-refresh cada 30 segundos ──────────────────────────────────────
   useEffect(() => {
     const interval = setInterval(() => {
       refreshPedidos()
-    }, 30000) // 30 segundos
+    }, 30000)
 
     return () => clearInterval(interval)
   }, [])
@@ -445,201 +554,176 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
     URL.revokeObjectURL(url)
   }
 
-  // Filtrar solo clientes que han pagado (total_paid > 0)
   const paidClients = clients.filter(c => c.total_paid > 0)
-  
+
   const filteredClients = paidClients.filter(c =>
     c.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
     c.name.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
-  const filteredRequests = requests.filter(r =>
-    (r.client_email?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
-    (r.client_name?.toLowerCase() || '').includes(searchQuery.toLowerCase())
+  const filteredRequests = requests
+    .filter(r =>
+      (r.client_email?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
+      (r.client_name?.toLowerCase() || '').includes(searchQuery.toLowerCase())
+    )
+    .filter(r => {
+      if (ventasFilter === 'pagadas') return r.status === 'paid'
+      if (ventasFilter === 'pendientes') return r.status !== 'paid'
+      return true
+    })
+
+  const topbarActions = (
+    <>
+      <button
+        onClick={refreshPedidos}
+        disabled={loading}
+        className="px-3.5 py-2 bg-gray-900 text-white rounded-lg text-xs font-semibold hover:bg-gray-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-1.5"
+      >
+        <IconRefresh className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+        {loading ? 'Actualizando…' : 'Actualizar'}
+      </button>
+      <Link
+        href="/gestoria/ciudades"
+        className="px-3.5 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg text-xs font-semibold hover:bg-gray-50 transition flex items-center gap-1.5"
+      >
+        <IconAudit className="w-3.5 h-3.5" />
+        Auditoría SEO
+      </Link>
+      <button
+        onClick={exportToCSV}
+        className="px-3.5 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg text-xs font-semibold hover:bg-gray-50 transition flex items-center gap-1.5"
+      >
+        <IconExport className="w-3.5 h-3.5" />
+        Exportar CSV
+      </button>
+      <div className="hidden xl:flex items-center gap-1.5 pl-1">
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+        <span className="text-[11px] text-gray-400">Auto-refresh 30s</span>
+      </div>
+    </>
   )
 
+  const TAB_META: Record<AdminTab, { title: string; subtitle: string }> = {
+    dashboard: { title: 'Dashboard', subtitle: 'Control total de Inmonest' },
+    ventas: { title: 'Ventas', subtitle: 'Seguimiento de ingresos y pedidos' },
+    expedientes: { title: 'Expedientes', subtitle: 'Clientes de gestoría inmobiliaria' },
+    particulares: { title: 'Base de datos de particulares', subtitle: 'Compradores, propietarios y leads' },
+    documentos: { title: 'Documentos', subtitle: 'Archivos subidos por los clientes' },
+  }
+
   return (
-    <div className="max-w-7xl mx-auto">
-      {/* Header */}
-      <div className="mb-8 flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Panel de Administración Premium</h1>
-          <p className="text-gray-500 text-sm mt-1">Control total de Inmonest</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <button
-            onClick={refreshPedidos}
-            disabled={loading}
-            className="px-4 py-2 bg-[#c9962a] text-white rounded-xl text-sm font-semibold hover:bg-[#a87a20] transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-          >
-            {loading ? (
-              <>
-                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                </svg>
-                Actualizando...
-              </>
-            ) : (
-              <>
-                🔄 Actualizar
-              </>
-            )}
-          </button>
-          <Link
-            href="/gestoria/ciudades"
-            className="px-4 py-2 bg-blue-600 text-white rounded-xl text-sm font-semibold hover:bg-blue-700 transition"
-          >
-            🔍 Auditoría SEO
-          </Link>
-          <button
-            onClick={exportToCSV}
-            className="px-4 py-2 bg-green-600 text-white rounded-xl text-sm font-semibold hover:bg-green-700 transition"
-          >
-            📥 Exportar CSV
-          </button>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" />
-            <span className="text-sm text-gray-500">Auto-refresh 30s</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Tabs Navigation */}
-      <div className="flex gap-2 bg-gray-100 p-1.5 rounded-xl mb-8 w-fit overflow-x-auto">
-        {([
-          { id: 'dashboard', label: '📊 Dashboard', icon: '📊' },
-          { id: 'pedidos', label: '📋 Pedidos', icon: '📋' },
-          { id: 'clientes', label: '👥 Clientes Gestoría', icon: '👥' },
-          { id: 'particulares', label: '🏠 Base de Datos Particulares', icon: '🏠' },
-          { id: 'documentos', label: '📂 Documentos', icon: '📂' },
-        ] as const).map(t => (
-          <button
-            key={t.id}
-            onClick={() => setTab(t.id)}
-            className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all whitespace-nowrap ${
-              tab === t.id
-                ? 'bg-white text-[#c9962a] shadow-lg scale-105'
-                : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-            }`}
-          >
-            {t.label}
-          </button>
-        ))}
-      </div>
-
+    <AdminShell
+      activeTab={tab}
+      onTabChange={setTab}
+      title={TAB_META[tab].title}
+      subtitle={TAB_META[tab].subtitle}
+      actions={topbarActions}
+      adminEmail={adminEmail}
+    >
       {/* ═══════════════════════════════════════════════════════════════
-          TAB 1: DASHBOARD - Métricas y Analytics
+          DASHBOARD
       ═══════════════════════════════════════════════════════════════ */}
       {tab === 'dashboard' && metrics && (
         <div className="space-y-6">
-          {/* KPIs Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {[
-              { label: 'Ingresos Totales', value: `${metrics.overview.totalRevenue.toFixed(2)} €`, color: 'bg-gradient-to-br from-green-500 to-emerald-600', icon: '💰' },
-              { label: 'Pedidos Pagados', value: metrics.overview.paidOrders, color: 'bg-gradient-to-br from-blue-500 to-indigo-600', icon: '✅' },
-              { label: 'Clientes Únicos', value: metrics.overview.uniqueClients, color: 'bg-gradient-to-br from-purple-500 to-pink-600', icon: '👥' },
-              { label: 'Ticket Promedio', value: `${metrics.overview.avgOrderValue.toFixed(2)} €`, color: 'bg-gradient-to-br from-amber-500 to-orange-600', icon: '🎯' },
-            ].map(stat => (
-              <div key={stat.label} className={`${stat.color} rounded-2xl p-6 text-white shadow-xl`}>
-                <div className="text-3xl mb-2">{stat.icon}</div>
-                <p className="text-sm opacity-90 mb-1">{stat.label}</p>
-                <p className="text-3xl font-bold">{stat.value}</p>
-              </div>
-            ))}
+          <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
+            <StatCard label="Ingresos totales" value={`${metrics.overview.totalRevenue.toFixed(2)} €`} icon={IconWallet} tone="accent" />
+            <StatCard label="Pedidos pagados" value={metrics.overview.paidOrders} icon={IconCheck} />
+            <StatCard label="Clientes únicos" value={metrics.overview.uniqueClients} icon={IconUsers} />
+            <StatCard label="Ticket promedio" value={`${metrics.overview.avgOrderValue.toFixed(2)} €`} icon={IconTarget} />
           </div>
 
-          {/* Secondary Metrics */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {[
-              { label: 'Total Pedidos', value: metrics.overview.totalOrders },
-              { label: 'Pendientes', value: metrics.overview.pendingOrders },
-              { label: 'Tasa Conversión', value: `${metrics.overview.conversionRate.toFixed(1)}%` },
-              { label: 'Tiempo Procesamiento', value: `${metrics.overview.avgProcessingTime.toFixed(1)} días` },
-            ].map(stat => (
-              <div key={stat.label} className="bg-white rounded-xl border border-gray-200 p-4">
-                <p className="text-xs text-gray-500 mb-1">{stat.label}</p>
-                <p className="text-xl font-bold text-gray-900">{stat.value}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Top Services */}
-          <div className="bg-white rounded-2xl border border-gray-200 p-6">
-            <h3 className="text-lg font-bold text-gray-900 mb-4">🏆 Servicios Más Vendidos</h3>
-            <div className="space-y-3">
-              {metrics.topServices.map((service, idx) => {
-                const maxRevenue = metrics.topServices[0]?.revenue || 1
-                const percentage = (service.revenue / maxRevenue) * 100
-                return (
-                  <div key={service.service} className="flex items-center gap-4">
-                    <div className="w-8 h-8 rounded-full bg-[#c9962a] text-white flex items-center justify-center font-bold text-sm">
-                      {idx + 1}
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-1">
-                        <p className="text-sm font-semibold text-gray-900">
-                          {SERVICE_LABELS[service.service] || service.service}
-                        </p>
-                        <p className="text-sm font-bold text-[#c9962a]">{service.revenue.toFixed(2)} €</p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="flex-1 bg-gray-100 rounded-full h-2">
-                          <div
-                            className="bg-[#c9962a] h-2 rounded-full transition-all duration-500"
-                            style={{ width: `${percentage}%` }}
-                          />
-                        </div>
-                        <p className="text-xs text-gray-500">{service.count} ventas</p>
-                      </div>
-                    </div>
+          <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+            <ModuleCard title="Resumen operativo">
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { label: 'Total pedidos', value: metrics.overview.totalOrders },
+                  { label: 'Pendientes', value: metrics.overview.pendingOrders },
+                  { label: 'Tasa conversión', value: `${metrics.overview.conversionRate.toFixed(1)}%` },
+                  { label: 'Tiempo proceso', value: `${metrics.overview.avgProcessingTime.toFixed(1)} días` },
+                ].map(stat => (
+                  <div key={stat.label} className="bg-gray-50 rounded-xl border border-gray-100 p-3.5">
+                    <p className="text-[11px] text-gray-500 mb-1">{stat.label}</p>
+                    <p className="text-lg font-bold text-gray-900">{stat.value}</p>
                   </div>
-                )
-              })}
-            </div>
-          </div>
+                ))}
+              </div>
+            </ModuleCard>
 
-          {/* Sales Calendar */}
-          <SalesCalendar dailyMetrics={metrics.dailyMetrics} />
+            <ModuleCard title="Servicios más vendidos">
+              <div className="space-y-3">
+                {metrics.topServices.length === 0 && (
+                  <p className="text-sm text-gray-400 py-6 text-center">Sin ventas registradas todavía.</p>
+                )}
+                {metrics.topServices.map((service, idx) => {
+                  const maxRevenue = metrics.topServices[0]?.revenue || 1
+                  const percentage = (service.revenue / maxRevenue) * 100
+                  return (
+                    <div key={service.service} className="flex items-center gap-3">
+                      <div className="w-6 h-6 rounded-full bg-[#c9962a] text-white flex items-center justify-center font-bold text-[11px] flex-shrink-0">
+                        {idx + 1}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between mb-1 gap-2">
+                          <p className="text-xs font-semibold text-gray-900 truncate">
+                            {SERVICE_LABELS[service.service] || service.service}
+                          </p>
+                          <p className="text-xs font-bold text-[#8a6a1e] flex-shrink-0">{service.revenue.toFixed(2)} €</p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="flex-1 bg-gray-100 rounded-full h-1.5">
+                            <div
+                              className="bg-[#c9962a] h-1.5 rounded-full transition-all duration-500"
+                              style={{ width: `${percentage}%` }}
+                            />
+                          </div>
+                          <p className="text-[10px] text-gray-400 flex-shrink-0">{service.count} ventas</p>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </ModuleCard>
+
+            <ModuleCard title="Calendario">
+              <SalesCalendar dailyMetrics={metrics.dailyMetrics} compact />
+            </ModuleCard>
+          </div>
         </div>
       )}
 
       {/* ═══════════════════════════════════════════════════════════════
-          TAB 2: CLIENTES - Base de Datos Completa
+          EXPEDIENTES (antes "Clientes Gestoría")
       ═══════════════════════════════════════════════════════════════ */}
-      {tab === 'clientes' && (
+      {tab === 'expedientes' && (
         <div className="space-y-6">
-          {/* Search Bar */}
           <div className="flex items-center gap-4">
             <div className="flex-1 relative">
-              <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+              <IconSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 type="text"
-                placeholder="Buscar cliente por email o nombre..."
+                placeholder="Buscar expediente por email o nombre..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                className="w-full pl-11 pr-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
               />
             </div>
-            <p className="text-sm text-gray-500">
-              {filteredClients.length} cliente{filteredClients.length !== 1 ? 's' : ''}
+            <p className="text-sm text-gray-500 flex-shrink-0">
+              {filteredClients.length} expediente{filteredClients.length !== 1 ? 's' : ''}
             </p>
           </div>
 
-          {/* Clients Table */}
           <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Cliente</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
-                    <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Pedidos</th>
-                    <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase">Ingresos</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Fechas</th>
-                    <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Acciones</th>
+                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Cliente</th>
+                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Contacto</th>
+                    <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Pedidos</th>
+                    <th className="px-6 py-3.5 text-right text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Ingresos</th>
+                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Fechas</th>
+                    <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Expediente</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
@@ -647,12 +731,12 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                     <tr key={client.email} className="hover:bg-gray-50 transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c9962a] to-amber-600 flex items-center justify-center text-white font-bold text-sm">
+                          <div className="w-9 h-9 rounded-full bg-gray-900 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">
                             {client.name.charAt(0).toUpperCase()}
                           </div>
-                          <div>
-                            <p className="text-sm font-semibold text-gray-900">{client.name}</p>
-                            <p className="text-xs text-gray-500">{client.email}</p>
+                          <div className="min-w-0">
+                            <p className="text-sm font-semibold text-gray-900 truncate">{client.name}</p>
+                            <p className="text-xs text-gray-500 truncate">{client.email}</p>
                           </div>
                         </div>
                       </td>
@@ -660,31 +744,27 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                         <p className="text-sm text-gray-600">{client.phone || '—'}</p>
                       </td>
                       <td className="px-6 py-4 text-center">
-                        <div className="inline-flex flex-col items-center gap-1">
-                          <span className="text-lg font-bold text-gray-900">{client.total_paid}</span>
-                          <span className="text-xs text-gray-400">de {client.total_orders}</span>
+                        <div className="inline-flex flex-col items-center gap-0.5">
+                          <span className="text-base font-bold text-gray-900">{client.total_paid}</span>
+                          <span className="text-[11px] text-gray-400">de {client.total_orders}</span>
                         </div>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <p className="text-lg font-bold text-[#c9962a]">{client.total_revenue.toFixed(2)} €</p>
-                        <p className="text-xs text-gray-400">
+                        <p className="text-base font-bold text-[#8a6a1e]">{client.total_revenue.toFixed(2)} €</p>
+                        <p className="text-[11px] text-gray-400">
                           {client.total_paid > 0 ? `${(client.total_revenue / client.total_paid).toFixed(0)} €/pedido` : '—'}
                         </p>
                       </td>
                       <td className="px-6 py-4">
-                        <p className="text-xs text-gray-500">
-                          Primera: {new Date(client.first_purchase).toLocaleDateString('es-ES')}
-                        </p>
-                        <p className="text-xs text-gray-500">
-                          Última: {new Date(client.last_purchase).toLocaleDateString('es-ES')}
-                        </p>
+                        <p className="text-xs text-gray-500">Primera: {formatDate(client.first_purchase)}</p>
+                        <p className="text-xs text-gray-500">Última: {formatDate(client.last_purchase)}</p>
                       </td>
                       <td className="px-6 py-4 text-center">
                         <button
                           onClick={() => setSelectedClient(client)}
-                          className="px-3 py-1.5 bg-[#c9962a] text-white text-xs font-semibold rounded-lg hover:bg-amber-700 transition"
+                          className="px-3.5 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg hover:bg-gray-700 transition"
                         >
-                          Ver pedidos →
+                          Ver expediente
                         </button>
                       </td>
                     </tr>
@@ -692,130 +772,155 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                 </tbody>
               </table>
             </div>
-          </div>
-        </div>
-      )}
-
-      {/* ═══════════════════════════════════════════════════════════════
-          TAB 3: PEDIDOS - Lista de pedidos
-      ═══════════════════════════════════════════════════════════════ */}
-      {tab === 'pedidos' && (
-        <div className="space-y-6">
-          {/* Search */}
-          <div className="relative">
-            <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <input
-              type="text"
-              placeholder="Buscar pedido por email o nombre..."
-              value={searchQuery}
-              onChange={e => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
-            />
-          </div>
-
-          {/* Orders Grid */}
-          <div className="grid grid-cols-1 gap-4">
-            {filteredRequests.map(req => (
-              <div key={req.id} className="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow">
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-lg font-bold text-gray-900">
-                        {SERVICE_LABELS[req.service_key] || req.service_key}
-                      </h3>
-                      <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                        req.status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                      }`}>
-                        {req.status === 'paid' ? '✓ PAGADO' : 'Pendiente'}
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4 mb-3">
-                      <div>
-                        <p className="text-xs text-gray-500">Cliente</p>
-                        <p className="text-sm font-semibold text-gray-900">{req.client_name || '—'}</p>
-                        <p className="text-xs text-[#c9962a]">{req.client_email}</p>
-                      </div>
-                      <div>
-                        <p className="text-xs text-gray-500">Teléfono</p>
-                        <p className="text-sm font-semibold text-gray-900">{req.client_phone || '—'}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-6 text-xs text-gray-500">
-                      <span>📅 {new Date(req.created_at).toLocaleString('es-ES')}</span>
-                      {req.paid_at && <span>💰 Pagado: {new Date(req.paid_at).toLocaleString('es-ES')}</span>}
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-2xl font-bold text-[#c9962a] mb-2">{req.amount_eur || 0} €</p>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="text-xs text-gray-500">Paso {req.step || 1}/4</span>
-                      <div className="flex gap-1">
-                        {[1, 2, 3, 4].map(step => (
-                          <div
-                            key={step}
-                            className={`w-2 h-2 rounded-full ${
-                              step <= (req.step || 1) ? 'bg-[#c9962a]' : 'bg-gray-200'
-                            }`}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    {req.session_id && (
-                      <a
-                        href={`https://dashboard.stripe.com/payments/${req.session_id}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-xs text-indigo-600 hover:underline"
-                      >
-                        Ver en Stripe ↗
-                      </a>
-                    )}
-                  </div>
-                </div>
+            {filteredClients.length === 0 && (
+              <div className="p-14 text-center">
+                <IconFolder className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+                <h3 className="text-base font-bold text-gray-900 mb-1">No hay expedientes</h3>
+                <p className="text-sm text-gray-500">Los clientes que contraten servicios aparecerán aquí.</p>
               </div>
-            ))}
+            )}
           </div>
         </div>
       )}
 
       {/* ═══════════════════════════════════════════════════════════════
-          TAB 4: DOCUMENTOS - Gestión de Archivos
+          VENTAS (antes "Pedidos")
+      ═══════════════════════════════════════════════════════════════ */}
+      {tab === 'ventas' && (
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <div className="xl:col-span-2 space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+              <div className="flex-1 relative">
+                <IconSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Buscar venta por email o nombre..."
+                  value={searchQuery}
+                  onChange={e => setSearchQuery(e.target.value)}
+                  className="w-full pl-11 pr-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                />
+              </div>
+              <div className="flex gap-1.5 bg-gray-100 p-1 rounded-lg flex-shrink-0">
+                {([
+                  { id: 'todas', label: 'Todas' },
+                  { id: 'pagadas', label: 'Pagadas' },
+                  { id: 'pendientes', label: 'Pendientes' },
+                ] as const).map(f => (
+                  <button
+                    key={f.id}
+                    onClick={() => setVentasFilter(f.id)}
+                    className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+                      ventasFilter === f.id ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                    }`}
+                  >
+                    {f.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                      <th className="px-5 py-3 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Cliente</th>
+                      <th className="px-5 py-3 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Servicio</th>
+                      <th className="px-5 py-3 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Fecha</th>
+                      <th className="px-5 py-3 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Estado</th>
+                      <th className="px-5 py-3 text-right text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Importe</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {filteredRequests.map(req => (
+                      <tr key={req.id} className="hover:bg-gray-50 transition-colors">
+                        <td className="px-5 py-3.5">
+                          <p className="text-sm font-semibold text-gray-900">{req.client_name || '—'}</p>
+                          <p className="text-xs text-gray-500">{req.client_email}</p>
+                        </td>
+                        <td className="px-5 py-3.5">
+                          <p className="text-sm text-gray-700">{SERVICE_LABELS[req.service_key] || req.service_key}</p>
+                          {req.session_id && (
+                            <a
+                              href={`https://dashboard.stripe.com/payments/${req.session_id}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-[11px] text-indigo-600 hover:underline inline-flex items-center gap-1"
+                            >
+                              Ver en Stripe
+                              <IconExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                        </td>
+                        <td className="px-5 py-3.5">
+                          <p className="text-xs text-gray-500">{new Date(req.created_at).toLocaleString('es-ES')}</p>
+                          {req.paid_at && (
+                            <p className="text-[11px] text-emerald-600">Pagado: {new Date(req.paid_at).toLocaleDateString('es-ES')}</p>
+                          )}
+                        </td>
+                        <td className="px-5 py-3.5 text-center">
+                          <StatusBadge status={req.status} />
+                        </td>
+                        <td className="px-5 py-3.5 text-right">
+                          <p className="text-sm font-bold text-gray-900">{req.amount_eur || 0} €</p>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              {filteredRequests.length === 0 && (
+                <div className="p-14 text-center">
+                  <IconSales className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+                  <h3 className="text-base font-bold text-gray-900 mb-1">No hay ventas</h3>
+                  <p className="text-sm text-gray-500">Los pedidos realizados aparecerán aquí.</p>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="space-y-6">
+            {metrics && (
+              <div className="bg-white rounded-2xl border border-gray-200 p-5">
+                <SalesCalendar dailyMetrics={metrics.dailyMetrics} compact />
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ═══════════════════════════════════════════════════════════════
+          DOCUMENTOS
       ═══════════════════════════════════════════════════════════════ */}
       {tab === 'documentos' && (
         <div className="space-y-6">
-          {/* Search */}
           <div className="flex items-center gap-4">
             <div className="flex-1 relative">
-              <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+              <IconSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
                 type="text"
                 placeholder="Buscar documento por nombre o cliente..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+                className="w-full pl-11 pr-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
               />
             </div>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-500 flex-shrink-0">
               {allDocuments.length} documento{allDocuments.length !== 1 ? 's' : ''}
             </p>
           </div>
 
-          {/* Documents Grid */}
           <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead className="bg-gray-50 border-b border-gray-200">
                   <tr>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Archivo</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Cliente</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Tipo</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Servicio</th>
-                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Subido</th>
-                    <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Acciones</th>
+                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Archivo</th>
+                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Cliente</th>
+                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Tipo</th>
+                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Servicio</th>
+                    <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Subido</th>
+                    <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Acciones</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
@@ -828,55 +933,55 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                     )
                     .map(doc => (
                       <tr key={`${doc.source}-${doc.id}`} className="hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-3.5">
                           <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
-                              <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                              </svg>
+                            <div className="w-9 h-9 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                              <IconFolder className="w-4 h-4 text-gray-500" />
                             </div>
-                            <div>
-                              <p className="text-sm font-semibold text-gray-900">{doc.file_name}</p>
-                              <p className="text-xs text-gray-500">{doc.storage_path}</p>
+                            <div className="min-w-0">
+                              <p className="text-sm font-semibold text-gray-900 truncate max-w-[220px]">{doc.file_name}</p>
+                              <p className="text-[11px] text-gray-400 truncate max-w-[220px]">{doc.storage_path}</p>
                             </div>
                           </div>
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-3.5">
                           <p className="text-sm font-semibold text-gray-900">{doc.client_name || '—'}</p>
                           <p className="text-xs text-gray-500">{doc.client_email || '—'}</p>
                         </td>
-                        <td className="px-6 py-4">
-                          <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded">
+                        <td className="px-6 py-3.5">
+                          <span className="px-2 py-0.5 bg-gray-100 text-gray-600 text-[11px] font-semibold rounded">
                             {doc.doc_key}
                           </span>
                         </td>
-                        <td className="px-6 py-4">
+                        <td className="px-6 py-3.5">
                           <p className="text-sm text-gray-600">
                             {doc.service_key
                               ? (SERVICE_LABELS[doc.service_key] || doc.service_key)
                               : doc.source === 'usuario' ? 'Documento personal' : '—'}
                           </p>
                         </td>
-                        <td className="px-6 py-4">
-                          <p className="text-sm text-gray-600">
-                            {new Date(doc.uploaded_at).toLocaleDateString('es-ES', {
-                              day: '2-digit',
-                              month: 'short',
-                              year: 'numeric',
-                            })}
-                          </p>
+                        <td className="px-6 py-3.5">
+                          <p className="text-sm text-gray-600">{formatDate(doc.uploaded_at)}</p>
                         </td>
-                        <td className="px-6 py-4 text-center">
-                          <button
-                            type="button"
-                            onClick={() => handleDownloadDoc(doc)}
-                            className="px-3 py-1.5 bg-[#c9962a] text-white text-xs font-semibold rounded-lg hover:bg-amber-700 transition inline-flex items-center gap-1"
-                          >
-                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                            </svg>
-                            Descargar
-                          </button>
+                        <td className="px-6 py-3.5">
+                          <div className="flex items-center justify-center gap-2">
+                            <button
+                              type="button"
+                              onClick={() => handleViewDoc(doc)}
+                              className="p-1.5 border border-gray-300 text-gray-600 rounded-lg hover:bg-gray-50 transition"
+                              title="Ver"
+                            >
+                              <IconEye className="w-4 h-4" />
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleDownloadDoc(doc)}
+                              className="p-1.5 bg-gray-900 text-white rounded-lg hover:bg-gray-700 transition"
+                              title="Descargar"
+                            >
+                              <IconDownload className="w-4 h-4" />
+                            </button>
+                          </div>
                         </td>
                       </tr>
                     ))}
@@ -885,10 +990,10 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
             </div>
 
             {allDocuments.length === 0 && (
-              <div className="p-12 text-center">
-                <div className="text-6xl mb-4">📂</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">No hay documentos</h3>
-                <p className="text-gray-500">Los documentos subidos por los clientes aparecerán aquí.</p>
+              <div className="p-14 text-center">
+                <IconFolder className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+                <h3 className="text-base font-bold text-gray-900 mb-1">No hay documentos</h3>
+                <p className="text-sm text-gray-500">Los documentos subidos por los clientes aparecerán aquí.</p>
               </div>
             )}
           </div>
@@ -896,78 +1001,60 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       )}
 
       {/* ═══════════════════════════════════════════════════════════════
-          TAB 5: PARTICULARES - 3 Categorías de Usuarios
+          PARTICULARES
       ═══════════════════════════════════════════════════════════════ */}
       {tab === 'particulares' && (
         <div className="space-y-6">
-          {/* Header Stats */}
-          <div className="grid grid-cols-4 gap-4">
-            <div className="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl p-6 text-white shadow-xl">
-              <p className="text-sm opacity-90 mb-2">👥 Total Usuarios</p>
-              <p className="text-4xl font-bold">{particularesStats.totalUsers}</p>
-            </div>
-            <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-xl">
-              <p className="text-sm opacity-90 mb-2">💼 Clientes Gestoría</p>
-              <p className="text-4xl font-bold">{particularesStats.totalGestoria}</p>
-            </div>
-            <div className="bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl p-6 text-white shadow-xl">
-              <p className="text-sm opacity-90 mb-2">👤 Clientes Particulares</p>
-              <p className="text-4xl font-bold">{particularesStats.totalParticulares}</p>
-            </div>
-            <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-6 text-white shadow-xl">
-              <p className="text-sm opacity-90 mb-2">🏠 Propietarios</p>
-              <p className="text-4xl font-bold">{particularesStats.totalPropietarios}</p>
-            </div>
+          <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
+            <StatCard label="Total usuarios" value={particularesStats.totalUsers} icon={IconUsers} tone="accent" />
+            <StatCard label="Clientes gestoría" value={particularesStats.totalGestoria} icon={IconFolder} />
+            <StatCard label="Clientes particulares" value={particularesStats.totalParticulares} icon={IconUsers} />
+            <StatCard label="Propietarios" value={particularesStats.totalPropietarios} icon={IconHome} />
           </div>
 
-          {/* Sub-Tabs para las 4 categorías */}
           <div className="flex gap-2 bg-gray-100 p-1.5 rounded-xl w-fit overflow-x-auto">
             {([
-              { id: 'gestoria', label: '💼 Clientes Gestoría', count: clientesGestoria.length },
-              { id: 'clientes', label: '👤 Clientes Particulares', count: clientesParticulares.length },
-              { id: 'propietarios', label: '🏠 Propietarios', count: propietariosParticulares.length },
-              { id: 'leads', label: '📩 Leads/Contactos', count: leadsContactos.length },
+              { id: 'gestoria', label: 'Clientes gestoría', count: clientesGestoria.length },
+              { id: 'clientes', label: 'Clientes particulares', count: clientesParticulares.length },
+              { id: 'propietarios', label: 'Propietarios', count: propietariosParticulares.length },
+              { id: 'leads', label: 'Leads / Contactos', count: leadsContactos.length },
             ] as const).map(t => (
               <button
                 key={t.id}
                 onClick={() => setParticularesTab(t.id)}
-                className={`px-6 py-3 rounded-lg text-sm font-semibold transition-all whitespace-nowrap ${
+                className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all whitespace-nowrap ${
                   particularesTab === t.id
-                    ? 'bg-white text-[#c9962a] shadow-lg scale-105'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    ? 'bg-white text-gray-900 shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                {t.label} <span className="ml-2 opacity-70">({t.count})</span>
+                {t.label} <span className="ml-1 opacity-60">({t.count})</span>
               </button>
             ))}
           </div>
 
-          {/* Search Bar */}
           <div className="relative">
-            <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+            <IconSearch className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
               placeholder="Buscar por email, nombre..."
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
+              className="w-full pl-11 pr-4 py-2.5 text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#c9962a]"
             />
           </div>
 
-          {/* SUB-TAB 1: CLIENTES GESTORÍA */}
           {particularesTab === 'gestoria' && (
             <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Cliente</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
-                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Pedidos</th>
-                      <th className="px-6 py-4 text-right text-xs font-semibold text-gray-600 uppercase">Ingresos</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Registrado</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Cliente</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Contacto</th>
+                      <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Pedidos</th>
+                      <th className="px-6 py-3.5 text-right text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Ingresos</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Registrado</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
@@ -978,9 +1065,9 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                       )
                       .map(cliente => (
                         <tr key={cliente.userId} className="hover:bg-gray-50 transition-colors">
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-3.5">
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white font-bold text-sm">
+                              <div className="w-9 h-9 rounded-full bg-gray-900 flex items-center justify-center text-white font-bold text-xs">
                                 {cliente.name.charAt(0).toUpperCase()}
                               </div>
                               <div>
@@ -989,22 +1076,20 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-3.5">
                             <p className="text-sm text-gray-600">{cliente.phone || '—'}</p>
                           </td>
-                          <td className="px-6 py-4 text-center">
-                            <div className="inline-flex flex-col items-center gap-1">
-                              <span className="text-lg font-bold text-gray-900">{cliente.paidOrders}</span>
-                              <span className="text-xs text-gray-400">de {cliente.totalOrders}</span>
+                          <td className="px-6 py-3.5 text-center">
+                            <div className="inline-flex flex-col items-center gap-0.5">
+                              <span className="text-base font-bold text-gray-900">{cliente.paidOrders}</span>
+                              <span className="text-[11px] text-gray-400">de {cliente.totalOrders}</span>
                             </div>
                           </td>
-                          <td className="px-6 py-4 text-right">
-                            <p className="text-lg font-bold text-[#c9962a]">{cliente.totalRevenue.toFixed(2)} €</p>
+                          <td className="px-6 py-3.5 text-right">
+                            <p className="text-base font-bold text-[#8a6a1e]">{cliente.totalRevenue.toFixed(2)} €</p>
                           </td>
-                          <td className="px-6 py-4">
-                            <p className="text-xs text-gray-500">
-                              {new Date(cliente.registeredAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
-                            </p>
+                          <td className="px-6 py-3.5">
+                            <p className="text-xs text-gray-500">{formatDate(cliente.registeredAt)}</p>
                           </td>
                         </tr>
                       ))}
@@ -1012,28 +1097,27 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                 </table>
               </div>
               {clientesGestoria.length === 0 && (
-                <div className="p-12 text-center">
-                  <div className="text-6xl mb-4">💼</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">No hay clientes de gestoría</h3>
-                  <p className="text-gray-500">Los clientes que contraten servicios aparecerán aquí.</p>
+                <div className="p-14 text-center">
+                  <IconFolder className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+                  <h3 className="text-base font-bold text-gray-900 mb-1">No hay clientes de gestoría</h3>
+                  <p className="text-sm text-gray-500">Los clientes que contraten servicios aparecerán aquí.</p>
                 </div>
               )}
             </div>
           )}
 
-          {/* SUB-TAB 2: CLIENTES PARTICULARES */}
           {particularesTab === 'clientes' && (
             <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Usuario</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Teléfono</th>
-                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Provider</th>
-                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Email ✓</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Registrado</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Último acceso</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Usuario</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Teléfono</th>
+                      <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Proveedor</th>
+                      <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Email verificado</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Registrado</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Último acceso</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
@@ -1044,52 +1128,37 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                       )
                       .map(cliente => (
                         <tr key={cliente.userId} className="hover:bg-gray-50 transition-colors">
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-3.5">
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center text-white font-bold text-sm">
+                              <div className="w-9 h-9 rounded-full bg-gray-900 flex items-center justify-center text-white font-bold text-xs">
                                 {cliente.name.charAt(0).toUpperCase()}
                               </div>
                               <div>
                                 <p className="text-sm font-semibold text-gray-900">{cliente.name}</p>
                                 <p className="text-xs text-gray-500">{cliente.email}</p>
-                                {Object.keys(cliente.metadata).length > 0 && (
-                                  <p className="text-xs text-indigo-600 mt-1" title={JSON.stringify(cliente.metadata)}>📦 {Object.keys(cliente.metadata).length} metadata</p>
-                                )}
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-3.5">
                             <p className="text-sm text-gray-900 font-mono">{cliente.phone || '—'}</p>
                           </td>
-                          <td className="px-6 py-4 text-center">
-                            <span className={`px-2 py-1 rounded-full text-xs font-bold ${
-                              cliente.provider === 'google' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700'
-                            }`}>
+                          <td className="px-6 py-3.5 text-center">
+                            <span className="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-gray-100 text-gray-600">
                               {cliente.provider === 'google' ? 'Google' : 'Email'}
                             </span>
                           </td>
-                          <td className="px-6 py-4 text-center">
+                          <td className="px-6 py-3.5 text-center">
                             {cliente.emailConfirmed ? (
-                              <span className="text-green-600 text-xl">✓</span>
+                              <IconCheck className="w-4 h-4 text-emerald-600 mx-auto" />
                             ) : (
-                              <span className="text-gray-400 text-xl">✗</span>
+                              <span className="text-gray-300">—</span>
                             )}
                           </td>
-                          <td className="px-6 py-4">
-                            <p className="text-sm text-gray-600">
-                              {new Date(cliente.registeredAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
-                            </p>
-                            <p className="text-xs text-gray-400">
-                              {new Date(cliente.registeredAt).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
-                            </p>
+                          <td className="px-6 py-3.5">
+                            <p className="text-sm text-gray-600">{formatDate(cliente.registeredAt)}</p>
                           </td>
-                          <td className="px-6 py-4">
-                            <p className="text-sm text-gray-600">
-                              {new Date(cliente.lastSignIn).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
-                            </p>
-                            <p className="text-xs text-gray-400">
-                              {new Date(cliente.lastSignIn).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
-                            </p>
+                          <td className="px-6 py-3.5">
+                            <p className="text-sm text-gray-600">{formatDate(cliente.lastSignIn)}</p>
                           </td>
                         </tr>
                       ))}
@@ -1097,28 +1166,27 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                 </table>
               </div>
               {clientesParticulares.length === 0 && (
-                <div className="p-12 text-center">
-                  <div className="text-6xl mb-4">👤</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">No hay clientes particulares</h3>
-                  <p className="text-gray-500">Los usuarios registrados aparecerán aquí.</p>
+                <div className="p-14 text-center">
+                  <IconUsers className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+                  <h3 className="text-base font-bold text-gray-900 mb-1">No hay clientes particulares</h3>
+                  <p className="text-sm text-gray-500">Los usuarios registrados aparecerán aquí.</p>
                 </div>
               )}
             </div>
           )}
 
-          {/* SUB-TAB 3: PROPIETARIOS PARTICULARES */}
           {particularesTab === 'propietarios' && (
             <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Propietario</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
-                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Anuncios</th>
-                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Contactos</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Registrado</th>
-                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Acciones</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Propietario</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Contacto</th>
+                      <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Anuncios</th>
+                      <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Contactos</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Registrado</th>
+                      <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Acciones</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
@@ -1129,9 +1197,9 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                       )
                       .map(propietario => (
                         <tr key={propietario.userId} className="hover:bg-gray-50 transition-colors">
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-3.5">
                             <div className="flex items-center gap-3">
-                              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-bold text-sm">
+                              <div className="w-9 h-9 rounded-full bg-gray-900 flex items-center justify-center text-white font-bold text-xs">
                                 {propietario.name.charAt(0).toUpperCase()}
                               </div>
                               <div>
@@ -1140,38 +1208,31 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-3.5">
                             <p className="text-sm text-gray-600">{propietario.phone || '—'}</p>
                           </td>
-                          <td className="px-6 py-4 text-center">
-                            <div className="inline-flex flex-col items-center gap-1">
-                              <span className="text-lg font-bold text-gray-900">{propietario.activeListings}</span>
-                              <span className="text-xs text-gray-400">de {propietario.totalListings}</span>
+                          <td className="px-6 py-3.5 text-center">
+                            <div className="inline-flex flex-col items-center gap-0.5">
+                              <span className="text-base font-bold text-gray-900">{propietario.activeListings}</span>
+                              <span className="text-[11px] text-gray-400">de {propietario.totalListings}</span>
                             </div>
                           </td>
-                          <td className="px-6 py-4 text-center">
-                            <span className={`px-3 py-1 rounded-full text-sm font-bold ${
-                              propietario.contacts.length > 0 ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
+                          <td className="px-6 py-3.5 text-center">
+                            <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
+                              propietario.contacts.length > 0 ? 'bg-emerald-50 text-emerald-700' : 'bg-gray-100 text-gray-400'
                             }`}>
                               {propietario.contacts.length}
                             </span>
                           </td>
-                          <td className="px-6 py-4">
-                            <p className="text-xs text-gray-500">
-                              {new Date(propietario.registeredAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
-                            </p>
-                            {propietario.firstListing && (
-                              <p className="text-xs text-gray-500">
-                                Primer anuncio: {new Date(propietario.firstListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'short' })}
-                              </p>
-                            )}
+                          <td className="px-6 py-3.5">
+                            <p className="text-xs text-gray-500">{formatDate(propietario.registeredAt)}</p>
                           </td>
-                          <td className="px-6 py-4 text-center">
+                          <td className="px-6 py-3.5 text-center">
                             <button
                               onClick={() => setSelectedPropietario(propietario)}
-                              className="px-3 py-1.5 bg-[#c9962a] text-white text-xs font-semibold rounded-lg hover:bg-amber-700 transition"
+                              className="px-3.5 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg hover:bg-gray-700 transition"
                             >
-                              Ver detalles →
+                              Ver detalles
                             </button>
                           </td>
                         </tr>
@@ -1180,16 +1241,15 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                 </table>
               </div>
               {propietariosParticulares.length === 0 && (
-                <div className="p-12 text-center">
-                  <div className="text-6xl mb-4">🏠</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">No hay propietarios</h3>
-                  <p className="text-gray-500">Los propietarios que publiquen pisos aparecerán aquí.</p>
+                <div className="p-14 text-center">
+                  <IconHome className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+                  <h3 className="text-base font-bold text-gray-900 mb-1">No hay propietarios</h3>
+                  <p className="text-sm text-gray-500">Los propietarios que publiquen pisos aparecerán aquí.</p>
                 </div>
               )}
             </div>
           )}
 
-          {/* SUB-TAB 4: LEADS/CONTACTOS */}
           {particularesTab === 'leads' && (
             <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
               <div className="flex flex-wrap items-center justify-between gap-3 px-6 py-4 border-b border-gray-200 bg-gray-50">
@@ -1204,7 +1264,7 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                     Seleccionar todos ({filteredLeads.length})
                   </label>
                   {selectedLeadEmails.size > 0 && (
-                    <span className="text-sm font-semibold text-[#c9962a]">
+                    <span className="text-sm font-semibold text-[#8a6a1e]">
                       {selectedLeadEmails.size} seleccionados
                     </span>
                   )}
@@ -1213,7 +1273,7 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                   type="button"
                   disabled={selectedLeadEmails.size === 0}
                   onClick={openBulkEmailModal}
-                  className="px-4 py-2 bg-[#c9962a] text-white text-sm font-semibold rounded-lg hover:bg-amber-700 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="px-4 py-2 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-700 transition disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   Enviar email ({selectedLeadEmails.size})
                 </button>
@@ -1222,20 +1282,20 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                 <table className="w-full">
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
-                      <th className="px-4 py-4 w-12" />
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Contacto</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Teléfono</th>
-                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Mensajes</th>
-                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Estado</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Primer contacto</th>
-                      <th className="px-6 py-4 text-left text-xs font-semibold text-gray-600 uppercase">Último contacto</th>
-                      <th className="px-6 py-4 text-center text-xs font-semibold text-gray-600 uppercase">Detalles</th>
+                      <th className="px-4 py-3.5 w-12" />
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Contacto</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Teléfono</th>
+                      <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Mensajes</th>
+                      <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Estado</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Primer contacto</th>
+                      <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Último contacto</th>
+                      <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Detalles</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
                     {filteredLeads.map(lead => (
                         <tr key={lead.email} className="hover:bg-gray-50 transition-colors">
-                          <td className="px-4 py-4">
+                          <td className="px-4 py-3.5">
                             <input
                               type="checkbox"
                               checked={selectedLeadEmails.has(lead.email)}
@@ -1243,11 +1303,11 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                               className="w-4 h-4 rounded border-gray-300 text-[#c9962a] focus:ring-[#c9962a]"
                             />
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-3.5">
                             <div className="flex items-center gap-3">
-                              <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${
-                                lead.isRegistered ? 'from-green-500 to-emerald-600' : 'from-gray-400 to-gray-600'
-                              } flex items-center justify-center text-white font-bold text-sm`}>
+                              <div className={`w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-xs ${
+                                lead.isRegistered ? 'bg-emerald-600' : 'bg-gray-400'
+                              }`}>
                                 {lead.name.charAt(0).toUpperCase()}
                               </div>
                               <div>
@@ -1256,51 +1316,41 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                               </div>
                             </div>
                           </td>
-                          <td className="px-6 py-4">
+                          <td className="px-6 py-3.5">
                             <p className="text-sm text-gray-900 font-mono">{lead.phone || '—'}</p>
                           </td>
-                          <td className="px-6 py-4 text-center">
-                            <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 font-bold">
+                          <td className="px-6 py-3.5 text-center">
+                            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 text-gray-700 font-bold text-xs">
                               {lead.totalMessages}
                             </span>
                           </td>
-                          <td className="px-6 py-4 text-center">
+                          <td className="px-6 py-3.5 text-center">
                             {lead.isRegistered ? (
-                              <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">
-                                ✓ Registrado
+                              <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                Registrado
                               </span>
                             ) : (
-                              <span className="px-3 py-1 rounded-full text-xs font-bold bg-yellow-100 text-yellow-700">
-                                ⚠ No registrado
+                              <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+                                No registrado
                               </span>
                             )}
                           </td>
-                          <td className="px-6 py-4">
-                            <p className="text-sm text-gray-600">
-                              {new Date(lead.firstContact).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
-                            </p>
-                            <p className="text-xs text-gray-400">
-                              {new Date(lead.firstContact).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
-                            </p>
+                          <td className="px-6 py-3.5">
+                            <p className="text-sm text-gray-600">{formatDate(lead.firstContact)}</p>
                           </td>
-                          <td className="px-6 py-4">
-                            <p className="text-sm text-gray-600">
-                              {new Date(lead.lastContact).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
-                            </p>
-                            <p className="text-xs text-gray-400">
-                              {new Date(lead.lastContact).toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' })}
-                            </p>
+                          <td className="px-6 py-3.5">
+                            <p className="text-sm text-gray-600">{formatDate(lead.lastContact)}</p>
                           </td>
-                          <td className="px-6 py-4 text-center">
+                          <td className="px-6 py-3.5 text-center">
                             <button
                               onClick={() => {
-                                alert(`Mensajes de ${lead.name}:\n\n${lead.messages.map(m => 
-                                  `📋 ${m.listingTitle} (${m.listingCity})\n💬 ${m.message}\n📅 ${new Date(m.createdAt).toLocaleString('es-ES')}`
+                                alert(`Mensajes de ${lead.name}:\n\n${lead.messages.map(m =>
+                                  `${m.listingTitle} (${m.listingCity})\n${m.message}\n${new Date(m.createdAt).toLocaleString('es-ES')}`
                                 ).join('\n\n───────────\n\n')}`)
                               }}
-                              className="px-4 py-2 bg-indigo-600 text-white text-xs font-semibold rounded-lg hover:bg-indigo-700 transition"
+                              className="px-3.5 py-1.5 bg-gray-900 text-white text-xs font-semibold rounded-lg hover:bg-gray-700 transition"
                             >
-                              Ver mensajes →
+                              Ver mensajes
                             </button>
                           </td>
                         </tr>
@@ -1309,10 +1359,10 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                 </table>
               </div>
               {leadsContactos.length === 0 && (
-                <div className="p-12 text-center">
-                  <div className="text-6xl mb-4">📩</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">No hay leads/contactos</h3>
-                  <p className="text-gray-500">Los contactos que envíen mensajes aparecerán aquí.</p>
+                <div className="p-14 text-center">
+                  <IconMail className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+                  <h3 className="text-base font-bold text-gray-900 mb-1">No hay leads / contactos</h3>
+                  <p className="text-sm text-gray-500">Los contactos que envíen mensajes aparecerán aquí.</p>
                 </div>
               )}
             </div>
@@ -1336,10 +1386,10 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
               <button
                 type="button"
                 onClick={() => !bulkSending && setBulkEmailOpen(false)}
-                className="text-gray-400 hover:text-gray-700 text-2xl leading-none px-2"
+                className="text-gray-400 hover:text-gray-700 p-1"
                 aria-label="Cerrar"
               >
-                ×
+                <IconClose className="w-5 h-5" />
               </button>
             </div>
 
@@ -1387,10 +1437,10 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
               )}
 
               {bulkResult && (
-                <div className="rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800 space-y-1">
+                <div className="rounded-lg bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm text-emerald-800 space-y-1">
                   <p className="font-semibold">Envío completado</p>
-                  <p>✓ Enviados: {bulkResult.sent.length}</p>
-                  <p>✗ Fallidos: {bulkResult.failed.length}</p>
+                  <p>Enviados: {bulkResult.sent.length}</p>
+                  <p>Fallidos: {bulkResult.failed.length}</p>
                   {bulkResult.failed.length > 0 && (
                     <p className="text-xs text-red-600 break-all">
                       Fallidos: {bulkResult.failed.join(', ')}
@@ -1420,7 +1470,7 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                   type="button"
                   disabled={bulkSending || !bulkTemplateId || selectedLeadEmails.size === 0}
                   onClick={sendBulkEmail}
-                  className="px-5 py-2 bg-[#c9962a] text-white text-sm font-semibold rounded-lg hover:bg-amber-700 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="px-5 py-2 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-700 transition disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   {bulkSending ? 'Enviando…' : `Confirmar envío (${selectedLeadEmails.size})`}
                 </button>
@@ -1431,85 +1481,79 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       )}
 
       {/* ═══════════════════════════════════════════════════════════════
-          MODAL: DETALLE DEL CLIENTE (PANTALLA COMPLETA)
+          MODAL: EXPEDIENTE DEL CLIENTE (PANTALLA COMPLETA)
       ═══════════════════════════════════════════════════════════════ */}
       {selectedClient && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-hidden">
-          {/* Header */}
-          <div className="bg-gradient-to-r from-[#c9962a] to-amber-600 p-6 text-white flex items-center justify-between shadow-lg">
+          <div className="bg-[#0a1410] p-6 text-white flex items-center justify-between shadow-lg flex-shrink-0">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-3xl font-bold">
+              <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-2xl font-bold text-[#f4d98a]">
                 {selectedClient.name.charAt(0).toUpperCase()}
               </div>
               <div>
-                <h2 className="text-2xl font-bold">{selectedClient.name}</h2>
-                <p className="text-sm opacity-90">{selectedClient.email}</p>
+                <p className="text-[11px] uppercase tracking-widest text-[#c9962a]">Expediente de cliente</p>
+                <h2 className="text-xl font-bold">{selectedClient.name}</h2>
+                <p className="text-sm text-white/60">{selectedClient.email}</p>
               </div>
             </div>
             <button
               onClick={() => setSelectedClient(null)}
-              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 transition flex items-center justify-center"
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition flex items-center justify-center"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <IconClose className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Content - Scrollable */}
-          <div className="flex-1 overflow-y-auto bg-gray-50 p-8">
+          <div className="flex-1 overflow-y-auto bg-gray-50 p-5 sm:p-8">
             <div className="max-w-6xl mx-auto space-y-6">
-              {/* Stats Grid */}
-              <div className="grid grid-cols-3 gap-6">
-                <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-xl">
-                  <p className="text-sm opacity-90 mb-2">💰 Total Ingresos</p>
-                  <p className="text-4xl font-bold">{selectedClient.total_revenue.toFixed(2)} €</p>
-                </div>
-                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 text-white shadow-xl">
-                  <p className="text-sm opacity-90 mb-2">✅ Pedidos Pagados</p>
-                  <p className="text-4xl font-bold">{selectedClient.total_paid}</p>
-                </div>
-                <div className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-6 text-white shadow-xl">
-                  <p className="text-sm opacity-90 mb-2">🎯 Ticket Promedio</p>
-                  <p className="text-4xl font-bold">
-                    {selectedClient.total_paid > 0 ? (selectedClient.total_revenue / selectedClient.total_paid).toFixed(0) : '0'} €
-                  </p>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <StatCard label="Total ingresos" value={`${selectedClient.total_revenue.toFixed(2)} €`} icon={IconWallet} tone="accent" />
+                <StatCard label="Pedidos pagados" value={selectedClient.total_paid} icon={IconCheck} />
+                <StatCard
+                  label="Ticket promedio"
+                  value={`${selectedClient.total_paid > 0 ? (selectedClient.total_revenue / selectedClient.total_paid).toFixed(0) : '0'} €`}
+                  icon={IconTarget}
+                />
               </div>
 
-              {/* Contact Info */}
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
-                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  📞 Información de Contacto
-                </h3>
-                <div className="grid grid-cols-2 gap-6">
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
+                <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide mb-4">Información de contacto</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Email</p>
+                    <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Email</p>
                     <p className="text-sm font-semibold text-gray-900">{selectedClient.email}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Teléfono</p>
+                    <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Teléfono</p>
                     <p className="text-sm font-semibold text-gray-900">{selectedClient.phone || '—'}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Primera Compra</p>
+                    <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Primera compra</p>
                     <p className="text-sm font-semibold text-gray-900">
-                      {new Date(selectedClient.first_purchase).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                      {formatDate(selectedClient.first_purchase, { day: '2-digit', month: 'long', year: 'numeric' })}
                     </p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Última Compra</p>
+                    <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Última compra</p>
                     <p className="text-sm font-semibold text-gray-900">
-                      {new Date(selectedClient.last_purchase).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                      {formatDate(selectedClient.last_purchase, { day: '2-digit', month: 'long', year: 'numeric' })}
                     </p>
                   </div>
                 </div>
+                {selectedClient.orders.length > 0 && (
+                  <div className="mt-5 pt-5 border-t border-gray-100 flex flex-wrap gap-2">
+                    {[...new Set(selectedClient.orders.map(o => o.service_key))].map(key => (
+                      <span key={key} className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-gray-100 text-gray-600">
+                        {SERVICE_LABELS[key] || key}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
 
-              {/* Documentos del Cliente — siempre visible */}
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
-                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  📂 Documentos Aportados ({clientDocuments.length})
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
+                <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide mb-4">
+                  Documentos aportados ({clientDocuments.length})
                 </h3>
                 {clientDocuments.length === 0 ? (
                   <p className="text-sm text-gray-500 bg-gray-50 rounded-xl border border-dashed border-gray-200 px-4 py-6 text-center">
@@ -1519,28 +1563,37 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {clientDocuments.map((doc) => (
-                      <div key={doc.id} className="bg-gray-50 rounded-xl p-4 border border-gray-200 hover:shadow-md transition-shadow">
+                      <div key={doc.id} className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                         <div className="flex items-start gap-3">
-                          <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
-                            <svg className="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                            </svg>
+                          <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                            <IconFolder className="w-5 h-5 text-gray-500" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-bold text-gray-900 truncate">{doc.file_name}</p>
                             <p className="text-xs text-gray-500 mt-1">
-                              <span className="px-2 py-0.5 bg-purple-100 text-purple-700 rounded font-semibold mr-2">
+                              <span className="px-2 py-0.5 bg-gray-200 text-gray-600 rounded font-semibold mr-2">
                                 {doc.doc_key}
                               </span>
-                              {new Date(doc.uploaded_at).toLocaleDateString('es-ES')}
+                              {formatDate(doc.uploaded_at)}
                             </p>
-                            <button
-                              type="button"
-                              onClick={() => handleDownloadDoc(doc)}
-                              className="mt-2 inline-flex items-center gap-1 text-xs text-[#c9962a] hover:text-amber-700 font-semibold"
-                            >
-                              Descargar
-                            </button>
+                            <div className="flex items-center gap-3 mt-2.5">
+                              <button
+                                type="button"
+                                onClick={() => handleViewDoc(doc)}
+                                className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-gray-900 font-semibold"
+                              >
+                                <IconEye className="w-3.5 h-3.5" />
+                                Ver
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => handleDownloadDoc(doc)}
+                                className="inline-flex items-center gap-1 text-xs text-[#8a6a1e] hover:text-[#6b5117] font-semibold"
+                              >
+                                <IconDownload className="w-3.5 h-3.5" />
+                                Descargar
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -1550,71 +1603,63 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                 <button
                   type="button"
                   onClick={() => selectedClient && loadClientDocuments(selectedClient.email)}
-                  className="mt-4 text-sm font-semibold text-[#c9962a] hover:underline"
+                  className="mt-4 text-xs font-semibold text-gray-500 hover:text-gray-800"
                 >
                   Actualizar documentos
                 </button>
               </div>
 
-              {/* Orders List */}
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
-                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  📋 Historial de Pedidos ({selectedClient.total_orders})
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
+                <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide mb-4">
+                  Historial de pedidos ({selectedClient.total_orders})
                 </h3>
                 <div className="space-y-4">
                   {selectedClient.orders.map((order) => (
-                    <div key={order.id} className="bg-gray-50 rounded-xl p-5 border border-gray-200 hover:shadow-md transition-shadow">
+                    <div key={order.id} className="bg-gray-50 rounded-xl p-5 border border-gray-200">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-3">
-                            <h4 className="text-base font-bold text-gray-900">
+                            <h4 className="text-sm font-bold text-gray-900">
                               {SERVICE_LABELS[order.service_key] || order.service_key}
                             </h4>
-                            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                              order.status === 'paid' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'
-                            }`}>
-                              {order.status === 'paid' ? '✓ Pagado' : 'Pendiente'}
-                            </span>
+                            <StatusBadge status={order.status} />
                           </div>
-                          <div className="flex items-center gap-6 text-xs text-gray-500 mb-3">
+                          <div className="flex items-center gap-5 text-xs text-gray-500 mb-3">
                             <span className="flex items-center gap-1">
-                              📅 {new Date(order.created_at).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                              <IconClock className="w-3.5 h-3.5" />
+                              {formatDate(order.created_at, { day: '2-digit', month: 'long', year: 'numeric' })}
                             </span>
                             {order.paid_at && (
-                              <span className="flex items-center gap-1">
-                                💰 Pagado: {new Date(order.paid_at).toLocaleDateString('es-ES')}
-                              </span>
+                              <span className="text-emerald-600">Pagado: {formatDate(order.paid_at)}</span>
                             )}
                           </div>
-                          
-                          {/* Notas internas si existen */}
+
                           {order.internal_notes && (
                             <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg p-3">
-                              <p className="text-xs font-semibold text-amber-800 mb-1">📝 Notas Internas:</p>
+                              <p className="text-xs font-semibold text-amber-800 mb-1">Notas internas</p>
                               <p className="text-xs text-amber-700">{order.internal_notes}</p>
                             </div>
                           )}
 
-                          {/* Progreso */}
                           <div className="mt-4 flex items-center gap-3">
                             <span className="text-xs text-gray-600 font-semibold">Progreso:</span>
-                            <div className="flex gap-2">
+                            <div className="flex gap-1.5">
                               {[1, 2, 3, 4].map(step => (
                                 <div
                                   key={step}
-                                  className={`w-4 h-4 rounded-full ${
+                                  className={`w-3 h-3 rounded-full ${
                                     step <= (order.step || 1) ? 'bg-[#c9962a]' : 'bg-gray-300'
                                   }`}
                                   title={`Paso ${step}/4`}
                                 />
                               ))}
                             </div>
-                            <span className="text-xs text-gray-600">Paso {order.step || 1}/4</span>
+                            <span className="text-xs text-gray-500">Paso {order.step || 1}/4</span>
                           </div>
                         </div>
 
-                        <div className="text-right">
-                          <p className="text-2xl font-bold text-[#c9962a] mb-3">{order.amount_eur || 0} €</p>
+                        <div className="text-right flex-shrink-0">
+                          <p className="text-xl font-bold text-gray-900 mb-2">{order.amount_eur || 0} €</p>
                           {order.session_id && (
                             <a
                               href={`https://dashboard.stripe.com/payments/${order.session_id}`}
@@ -1623,9 +1668,7 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                               className="text-xs text-indigo-600 hover:underline inline-flex items-center gap-1"
                             >
                               Ver en Stripe
-                              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                              </svg>
+                              <IconExternalLink className="w-3 h-3" />
                             </a>
                           )}
                         </div>
@@ -1637,22 +1680,19 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
             </div>
           </div>
 
-          {/* Footer - Fixed */}
-          <div className="border-t border-gray-200 bg-white p-6 flex justify-between items-center shadow-lg">
+          <div className="border-t border-gray-200 bg-white p-5 sm:p-6 flex justify-between items-center shadow-lg flex-shrink-0">
             <button
               onClick={() => setSelectedClient(null)}
-              className="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl font-semibold hover:bg-gray-300 transition"
+              className="px-5 py-2.5 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition text-sm"
             >
-              ← Volver a Clientes
+              Volver a expedientes
             </button>
             <a
               href={`mailto:${selectedClient.email}`}
-              className="px-6 py-3 bg-[#c9962a] text-white rounded-xl font-semibold hover:bg-amber-700 transition inline-flex items-center gap-2"
+              className="px-5 py-2.5 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-700 transition inline-flex items-center gap-2 text-sm"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Enviar Email
+              <IconMail className="w-4 h-4" />
+              Enviar email
             </a>
           </div>
         </div>
@@ -1663,82 +1703,65 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
       ═══════════════════════════════════════════════════════════════ */}
       {selectedPropietario && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-hidden">
-          {/* Header */}
-          <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-6 text-white flex items-center justify-between shadow-lg">
+          <div className="bg-[#0a1410] p-6 text-white flex items-center justify-between shadow-lg flex-shrink-0">
             <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur flex items-center justify-center text-3xl font-bold">
+              <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-2xl font-bold text-[#f4d98a]">
                 {selectedPropietario.name.charAt(0).toUpperCase()}
               </div>
               <div>
-                <h2 className="text-2xl font-bold">{selectedPropietario.name}</h2>
-                <p className="text-sm opacity-90">{selectedPropietario.email}</p>
+                <p className="text-[11px] uppercase tracking-widest text-[#c9962a]">Propietario particular</p>
+                <h2 className="text-xl font-bold">{selectedPropietario.name}</h2>
+                <p className="text-sm text-white/60">{selectedPropietario.email}</p>
               </div>
             </div>
             <button
               onClick={() => setSelectedPropietario(null)}
-              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 transition flex items-center justify-center"
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition flex items-center justify-center"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <IconClose className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Content - Scrollable */}
-          <div className="flex-1 overflow-y-auto bg-gray-50 p-8">
+          <div className="flex-1 overflow-y-auto bg-gray-50 p-5 sm:p-8">
             <div className="max-w-6xl mx-auto space-y-6">
-              {/* Stats Grid */}
-              <div className="grid grid-cols-3 gap-6">
-                <div className="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 text-white shadow-xl">
-                  <p className="text-sm opacity-90 mb-2">🏠 Total Anuncios</p>
-                  <p className="text-4xl font-bold">{selectedPropietario.totalListings}</p>
-                </div>
-                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl p-6 text-white shadow-xl">
-                  <p className="text-sm opacity-90 mb-2">✅ Anuncios Activos</p>
-                  <p className="text-4xl font-bold">{selectedPropietario.activeListings}</p>
-                </div>
-                <div className="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl p-6 text-white shadow-xl">
-                  <p className="text-sm opacity-90 mb-2">💬 Contactos Recibidos</p>
-                  <p className="text-4xl font-bold">{selectedPropietario.contacts.length}</p>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <StatCard label="Total anuncios" value={selectedPropietario.totalListings} icon={IconHome} tone="accent" />
+                <StatCard label="Anuncios activos" value={selectedPropietario.activeListings} icon={IconCheck} />
+                <StatCard label="Contactos recibidos" value={selectedPropietario.contacts.length} icon={IconMail} />
               </div>
 
-              {/* Contact Info */}
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
-                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  📞 Información de Contacto
-                </h3>
-                <div className="grid grid-cols-2 gap-6">
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
+                <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide mb-4">Información de contacto</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Email</p>
+                    <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Email</p>
                     <p className="text-sm font-semibold text-gray-900">{selectedPropietario.email}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Teléfono</p>
+                    <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Teléfono</p>
                     <p className="text-sm font-semibold text-gray-900">{selectedPropietario.phone || '—'}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Fecha de Registro</p>
+                    <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Fecha de registro</p>
                     <p className="text-sm font-semibold text-gray-900">
-                      {new Date(selectedPropietario.registeredAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                      {formatDate(selectedPropietario.registeredAt, { day: '2-digit', month: 'long', year: 'numeric' })}
                     </p>
                   </div>
                   {selectedPropietario.firstListing && (
                     <div>
-                      <p className="text-xs text-gray-500 mb-1 font-semibold uppercase">Primer Anuncio</p>
+                      <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Primer anuncio</p>
                       <p className="text-sm font-semibold text-gray-900">
-                        {new Date(selectedPropietario.firstListing).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                        {formatDate(selectedPropietario.firstListing, { day: '2-digit', month: 'long', year: 'numeric' })}
                       </p>
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Contactos Recibidos */}
               {selectedPropietario.contacts.length > 0 && (
-                <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
-                  <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    💬 Mensajes de Contacto ({selectedPropietario.contacts.length})
+                <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
+                  <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide mb-4">
+                    Mensajes de contacto ({selectedPropietario.contacts.length})
                   </h3>
                   <div className="space-y-4">
                     {selectedPropietario.contacts.map((contact) => (
@@ -1746,7 +1769,7 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                         <div className="flex items-start justify-between gap-4 mb-3">
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2">
-                              <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-sm font-bold text-blue-600">
+                              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-xs font-bold text-gray-600">
                                 {contact.fromName.charAt(0).toUpperCase()}
                               </div>
                               <div>
@@ -1758,17 +1781,15 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                               Anuncio: <span className="font-semibold text-gray-700">{contact.listingTitle}</span>
                             </p>
                           </div>
-                          <div className="text-right">
-                            <p className="text-xs text-gray-500">
-                              {new Date(contact.createdAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' })}
-                            </p>
+                          <div className="text-right flex-shrink-0">
+                            <p className="text-xs text-gray-500">{formatDate(contact.createdAt)}</p>
                             {contact.fromPhone && (
                               <p className="text-xs font-semibold text-gray-700 mt-1">{contact.fromPhone}</p>
                             )}
                           </div>
                         </div>
                         <div className="bg-white rounded-lg p-4 border border-gray-200">
-                          <p className="text-xs font-semibold text-gray-500 mb-2">📝 Mensaje:</p>
+                          <p className="text-xs font-semibold text-gray-500 mb-2">Mensaje</p>
                           <p className="text-sm text-gray-700 whitespace-pre-wrap">{contact.message}</p>
                         </div>
                       </div>
@@ -1777,54 +1798,53 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                 </div>
               )}
 
-              {/* Anuncios del Particular */}
-              <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200">
-                <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  🏠 Anuncios Publicados ({selectedPropietario.totalListings})
+              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
+                <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide mb-4">
+                  Anuncios publicados ({selectedPropietario.totalListings})
                 </h3>
                 <div className="grid grid-cols-1 gap-4">
                   {selectedPropietario.listings.map((listing) => (
-                    <div key={listing.id} className="bg-gray-50 rounded-xl p-5 border border-gray-200 hover:shadow-md transition-shadow">
+                    <div key={listing.id} className="bg-gray-50 rounded-xl p-5 border border-gray-200">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-2">
-                            <h4 className="text-base font-bold text-gray-900">{listing.title}</h4>
-                            <span className={`px-3 py-1 rounded-full text-xs font-bold ${
-                              listing.status === 'published' ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'
+                            <h4 className="text-sm font-bold text-gray-900">{listing.title}</h4>
+                            <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
+                              listing.status === 'published' ? 'bg-emerald-50 text-emerald-700' : 'bg-gray-100 text-gray-500'
                             }`}>
-                              {listing.status === 'published' ? '✅ Activo' : '⏸ Inactivo'}
+                              {listing.status === 'published' ? 'Activo' : 'Inactivo'}
                             </span>
                           </div>
                           <div className="grid grid-cols-2 gap-4 mb-3">
                             <div>
-                              <p className="text-xs text-gray-500">📍 Ubicación</p>
+                              <p className="text-[11px] text-gray-500">Ubicación</p>
                               <p className="text-sm font-semibold text-gray-900">{listing.city || '—'}</p>
                             </div>
                             <div>
-                              <p className="text-xs text-gray-500">🏷 Operación</p>
+                              <p className="text-[11px] text-gray-500">Operación</p>
                               <p className="text-sm font-semibold text-gray-900">
                                 {listing.operation === 'rent' ? 'Alquiler' : 'Venta'}
                               </p>
                             </div>
                             {listing.bedrooms && (
                               <div>
-                                <p className="text-xs text-gray-500">🛏 Habitaciones</p>
+                                <p className="text-[11px] text-gray-500">Habitaciones</p>
                                 <p className="text-sm font-semibold text-gray-900">{listing.bedrooms}</p>
                               </div>
                             )}
                             {listing.area_m2 && (
                               <div>
-                                <p className="text-xs text-gray-500">📐 Superficie</p>
+                                <p className="text-[11px] text-gray-500">Superficie</p>
                                 <p className="text-sm font-semibold text-gray-900">{listing.area_m2} m²</p>
                               </div>
                             )}
                           </div>
                           <p className="text-xs text-gray-500">
-                            Publicado: {new Date(listing.created_at).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' })}
+                            Publicado: {formatDate(listing.created_at, { day: '2-digit', month: 'long', year: 'numeric' })}
                           </p>
                         </div>
-                        <div className="text-right">
-                          <p className="text-2xl font-bold text-[#c9962a] mb-2">
+                        <div className="text-right flex-shrink-0">
+                          <p className="text-xl font-bold text-gray-900 mb-2">
                             {listing.price_eur ? `${listing.price_eur.toLocaleString('es-ES')} €` : 'Consultar'}
                           </p>
                           <a
@@ -1834,9 +1854,7 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
                             className="text-xs text-indigo-600 hover:underline inline-flex items-center gap-1"
                           >
                             Ver anuncio
-                            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                            </svg>
+                            <IconExternalLink className="w-3 h-3" />
                           </a>
                         </div>
                       </div>
@@ -1847,26 +1865,23 @@ export default function AdminPanelPremium({ initialRequests }: { initialRequests
             </div>
           </div>
 
-          {/* Footer - Fixed */}
-          <div className="border-t border-gray-200 bg-white p-6 flex justify-between items-center shadow-lg">
+          <div className="border-t border-gray-200 bg-white p-5 sm:p-6 flex justify-between items-center shadow-lg flex-shrink-0">
             <button
               onClick={() => setSelectedPropietario(null)}
-              className="px-6 py-3 bg-gray-200 text-gray-700 rounded-xl font-semibold hover:bg-gray-300 transition"
+              className="px-5 py-2.5 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition text-sm"
             >
-              ← Volver a Particulares
+              Volver a particulares
             </button>
             <a
               href={`mailto:${selectedPropietario.email}`}
-              className="px-6 py-3 bg-[#c9962a] text-white rounded-xl font-semibold hover:bg-amber-700 transition inline-flex items-center gap-2"
+              className="px-5 py-2.5 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-700 transition inline-flex items-center gap-2 text-sm"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Enviar Email
+              <IconMail className="w-4 h-4" />
+              Enviar email
             </a>
           </div>
         </div>
       )}
-    </div>
+    </AdminShell>
   )
 }

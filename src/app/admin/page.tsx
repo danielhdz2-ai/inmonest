@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import Navbar from '@/components/NavbarServer'
 import AdminPanelPremium from './AdminPanelPremium'
 
 export const metadata: Metadata = {
@@ -39,12 +38,5 @@ export default async function AdminPage() {
     console.error('[admin/page] fallo cargando pedidos', err)
   }
 
-  return (
-    <>
-      <Navbar />
-      <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 pt-24 pb-16 px-4">
-        <AdminPanelPremium initialRequests={data ?? []} />
-      </main>
-    </>
-  )
+  return <AdminPanelPremium initialRequests={data ?? []} adminEmail={(user.email || '').trim()} />
 }

@@ -11,9 +11,10 @@ interface DailySale {
 
 interface SalesCalendarProps {
   dailyMetrics: DailySale[]
+  compact?: boolean
 }
 
-export default function SalesCalendar({ dailyMetrics }: SalesCalendarProps) {
+export default function SalesCalendar({ dailyMetrics, compact = false }: SalesCalendarProps) {
   const [currentDate, setCurrentDate] = useState(new Date())
 
   // Navegar meses
@@ -79,30 +80,39 @@ export default function SalesCalendar({ dailyMetrics }: SalesCalendarProps) {
 
   const dayNames = ['L', 'M', 'X', 'J', 'V', 'S', 'D']
 
+  const monthTotal = calendarDays.reduce((sum: number, day) => {
+    if (day === null) return sum
+    const data = getSaleData(day)
+    return sum + (data?.revenue ?? 0)
+  }, 0)
+
   return (
-    <div className="bg-white rounded-2xl border border-gray-200 p-6">
+    <div className={compact ? '' : 'bg-white rounded-2xl border border-gray-200 p-6'}>
       {/* Header con navegación */}
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-bold text-gray-900">📅 Calendario de Ventas</h3>
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between mb-5">
+        <div>
+          <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">Calendario de ventas</h3>
+          <p className="text-xs text-gray-500 mt-0.5">{monthTotal.toFixed(0)} € este mes</p>
+        </div>
+        <div className="flex items-center gap-2">
           <button
             onClick={goToPreviousMonth}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors border border-gray-200"
             aria-label="Mes anterior"
           >
-            <svg className="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
-          <span className="text-base font-semibold text-gray-900 min-w-[140px] text-center">
+          <span className="text-xs font-semibold text-gray-700 min-w-[92px] text-center">
             {monthNames[month]} {year}
           </span>
           <button
             onClick={goToNextMonth}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            className="p-1.5 hover:bg-gray-100 rounded-lg transition-colors border border-gray-200"
             aria-label="Mes siguiente"
           >
-            <svg className="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-4 h-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -110,11 +120,11 @@ export default function SalesCalendar({ dailyMetrics }: SalesCalendarProps) {
       </div>
 
       {/* Nombres de los días */}
-      <div className="grid grid-cols-7 gap-2 mb-2">
+      <div className="grid grid-cols-7 gap-1.5 mb-1.5">
         {dayNames.map((dayName, idx) => (
           <div
             key={idx}
-            className="text-center text-xs font-semibold text-gray-500 uppercase py-2"
+            className="text-center text-[10px] font-semibold text-gray-400 uppercase py-1"
           >
             {dayName}
           </div>
@@ -122,7 +132,7 @@ export default function SalesCalendar({ dailyMetrics }: SalesCalendarProps) {
       </div>
 
       {/* Grid del calendario */}
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-1.5">
         {calendarDays.map((day, idx) => {
           if (day === null) {
             return <div key={`empty-${idx}`} className="aspect-square" />
@@ -137,41 +147,32 @@ export default function SalesCalendar({ dailyMetrics }: SalesCalendarProps) {
               key={day}
               className={`
                 aspect-square flex flex-col items-center justify-center rounded-lg
-                border-2 relative group cursor-default transition-all
-                ${today ? 'border-blue-500 bg-blue-50' : 'border-gray-200'}
-                ${hasSale ? 'bg-green-100 border-green-500 hover:bg-green-200' : 'bg-white hover:bg-gray-50'}
+                border relative group cursor-default transition-all
+                ${today ? 'border-[#c9962a] ring-1 ring-[#c9962a]/30' : 'border-gray-200'}
+                ${hasSale ? 'bg-[#c9962a]/10 border-[#c9962a]/50' : 'bg-white hover:bg-gray-50'}
               `}
             >
-              {/* Número del día */}
-              <span className={`text-sm font-semibold ${hasSale ? 'text-green-900' : 'text-gray-700'}`}>
+              <span className={`text-xs font-semibold ${hasSale ? 'text-[#8a6a1e]' : 'text-gray-600'}`}>
                 {day}
               </span>
 
-              {/* Indicador de venta */}
               {hasSale && (
-                <div className="flex items-center gap-1 mt-1">
-                  <div className="w-1.5 h-1.5 bg-green-600 rounded-full" />
-                  <span className="text-[10px] font-bold text-green-700">
-                    {saleData.revenue.toFixed(0)}€
-                  </span>
-                </div>
+                <span className="text-[9px] font-bold text-[#8a6a1e] mt-0.5">
+                  {saleData.revenue.toFixed(0)}€
+                </span>
               )}
 
-              {/* Tooltip al hover */}
               {hasSale && (
                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 hidden group-hover:block z-10">
                   <div className="bg-gray-900 text-white text-xs rounded-lg px-3 py-2 whitespace-nowrap shadow-lg">
-                    <div className="font-semibold text-green-400">
+                    <div className="font-semibold text-[#f4d98a]">
                       {day} de {monthNames[month]}
                     </div>
-                    <div className="mt-1">
-                      💰 {saleData.revenue.toFixed(2)} €
-                    </div>
-                    <div>
-                      📦 {saleData.paid} venta{saleData.paid > 1 ? 's' : ''}
+                    <div className="mt-1">{saleData.revenue.toFixed(2)} €</div>
+                    <div className="text-gray-300">
+                      {saleData.paid} venta{saleData.paid > 1 ? 's' : ''}
                     </div>
                   </div>
-                  {/* Flecha del tooltip */}
                   <div className="absolute top-full left-1/2 transform -translate-x-1/2 -mt-px">
                     <div className="border-4 border-transparent border-t-gray-900" />
                   </div>
@@ -183,18 +184,14 @@ export default function SalesCalendar({ dailyMetrics }: SalesCalendarProps) {
       </div>
 
       {/* Leyenda */}
-      <div className="flex items-center justify-center gap-6 mt-6 pt-4 border-t border-gray-200">
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded border-2 border-blue-500 bg-blue-50" />
-          <span className="text-xs text-gray-600">Hoy</span>
+      <div className="flex items-center justify-center gap-5 mt-5 pt-4 border-t border-gray-100">
+        <div className="flex items-center gap-1.5">
+          <div className="w-3 h-3 rounded border border-[#c9962a] ring-1 ring-[#c9962a]/30" />
+          <span className="text-[11px] text-gray-500">Hoy</span>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded bg-green-100 border-2 border-green-500" />
-          <span className="text-xs text-gray-600">Con ventas</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded bg-white border-2 border-gray-200" />
-          <span className="text-xs text-gray-600">Sin ventas</span>
+        <div className="flex items-center gap-1.5">
+          <div className="w-3 h-3 rounded bg-[#c9962a]/10 border border-[#c9962a]/50" />
+          <span className="text-[11px] text-gray-500">Con ventas</span>
         </div>
       </div>
     </div>
