@@ -92,7 +92,7 @@ El panel está en: **https://inmonest.com/admin**
 
 Solo los siguientes emails tienen acceso:
 - Email configurado en `CONTACT_NOTIFY_EMAIL` (Vercel)
-- `daniel.hdz.trader@gmail.com`
+- `inmonest.admin@gmail.com`
 
 ### **Navegación**
 
@@ -267,7 +267,7 @@ Verifica que tu email esté en la lista de admins:
 ## 📞 Soporte
 
 Para preguntas o problemas, contacta:
-- Email: daniel.hdz.trader@gmail.com
+- Email: inmonest.admin@gmail.com
 - Supabase Project: [Tu proyecto ID]
 - Vercel: https://vercel.com/danielhdz2-ai/inmonest
 

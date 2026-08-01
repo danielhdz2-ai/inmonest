@@ -19,7 +19,7 @@ export default async function AdminPage() {
   // Lista de emails con acceso admin
   const adminEmails = [
     (process.env.CONTACT_NOTIFY_EMAIL ?? '').trim(),
-    'daniel.hdz.trader@gmail.com',
+    'inmonest.admin@gmail.com',
   ].filter(Boolean)
 
   if (!user || !adminEmails.includes((user.email || '').trim())) {

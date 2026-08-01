@@ -6,7 +6,7 @@ export function isAdminEmail(email: string | null | undefined): boolean {
   
   const adminEmails = [
     process.env.NEXT_PUBLIC_CONTACT_NOTIFY_EMAIL,
-    'daniel.hdz.trader@gmail.com',
+    'inmonest.admin@gmail.com',
   ].filter(Boolean)
   
   return adminEmails.includes(email)
