@@ -38,7 +38,7 @@ export default function StickyMobileContratoCta({
 
   return (
     <div
-      className="lg:hidden fixed inset-x-0 z-[54] border-t border-gold-500/20 bg-forest-950/95 backdrop-blur-md px-3 pt-2 pb-2 shadow-[0_-4px_24px_rgba(0,0,0,0.25)]"
+      className="lg:hidden fixed inset-x-0 z-[54] border-t border-gold-500/20 bg-black/95 backdrop-blur-md px-3 pt-2 pb-2 shadow-[0_-4px_24px_rgba(0,0,0,0.25)]"
       style={{ bottom: mobileNavBottom }}
       role="navigation"
       aria-label="Contactar gestor"

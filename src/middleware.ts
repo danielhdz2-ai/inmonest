@@ -191,11 +191,15 @@ export async function middleware(request: NextRequest) {
 
   // ── 2. SUPABASE AUTH + PROTECCIÓN DE RUTAS ────────────────────────────────
   //
-  // IMPORTANTE: llamar a Supabase Auth en middleware puede colgarse o fallar
-  // (red, cold start, blip puntual). Como el middleware corre en TODAS las
-  // rutas, un fallo aquí tumbaba el sitio entero (home, login, paneles...).
-  // Por eso: try/catch + timeout, y en caso de duda dejamos pasar la petición
-  // (las páginas protegidas ya hacen su propia comprobación de sesión).
+  // Solo verificamos sesión en rutas protegidas. En páginas públicas (/pisos, /gestoria…)
+  // evitamos una llamada a Supabase en cada request (gran mejora de TTFB).
+
+  const protectedPaths = ['/mi-cuenta', '/publicar', '/admin', '/mis-documentos']
+  const needsAuthCheck = protectedPaths.some((p) => pathname.startsWith(p))
+
+  if (!needsAuthCheck) {
+    return NextResponse.next({ request })
+  }
 
   let supabaseResponse = NextResponse.next({ request })
 
@@ -231,7 +235,6 @@ export async function middleware(request: NextRequest) {
     ])
 
     // Proteger /mi-cuenta y /publicar — redirigir a login si no autenticado
-    const protectedPaths = ['/mi-cuenta', '/publicar']
     const publicPaths = ['/publicar-anuncio']
     const isProtected =
       protectedPaths.some((p) => pathname.startsWith(p)) &&

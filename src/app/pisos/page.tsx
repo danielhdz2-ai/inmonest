@@ -104,6 +104,7 @@ export default async function PisosPage({ searchParams }: PisosPageProps) {
     area_min: areaMin,
     area_max: areaMax,
     pagina,
+    page_size: PAGE_SIZE,
     estado,
     caract,
     planta,

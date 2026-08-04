@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
+import { createClient } from '@/lib/supabase/client'
 
 interface NavbarProps {
   isLoggedIn?: boolean
@@ -36,7 +37,15 @@ const SERVICIOS_QUICK: Array<{ label: string; href: string; highlight?: boolean 
 export default function Navbar({ isLoggedIn = false }: NavbarProps) {
   const [sideOpen, setSideOpen] = useState(false)
   const [serviciosOpen, setServiciosOpen] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(isLoggedIn)
   const serviciosRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setLoggedIn(!!user)
+    })
+  }, [])
 
   // Bloquear scroll del body cuando el panel está abierto
   useEffect(() => {
@@ -65,13 +74,13 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
   }, [serviciosOpen])
 
   const close = () => setSideOpen(false)
-  const accountHref = isLoggedIn ? '/mi-cuenta' : '/login'
-  const accountLabelMobile = isLoggedIn ? 'Cuenta' : 'Acceder'
-  const accountLabelDesktop = isLoggedIn ? 'Mi cuenta' : 'Entrar'
+  const accountHref = loggedIn ? '/mi-cuenta' : '/login'
+  const accountLabelMobile = loggedIn ? 'Cuenta' : 'Acceder'
+  const accountLabelDesktop = loggedIn ? 'Mi cuenta' : 'Entrar'
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b shadow-sm bg-forest-950 border-white/10 lg:bg-white lg:border-gray-100 lg:shadow-sm">
+      <header className="sticky top-0 z-50 border-b shadow-sm bg-black border-white/10 lg:bg-white lg:border-gray-100 lg:shadow-sm">
         <div className="relative flex items-center h-14 lg:h-16 px-3 lg:px-5 gap-2 lg:gap-3 min-w-0">
 
           {/* Hamburger */}

@@ -69,6 +69,7 @@ export interface SearchParams {
   ordenar?: SortOption
   vista?: VistaOption
   pagina?: number
+  page_size?: number
   // Filtros pro
   estado?: string
   caract?: string

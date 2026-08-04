@@ -7,6 +7,10 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
+
+  experimental: {
+    optimizePackageImports: ['@/components/ui/Icons'],
+  },
   
   // Redirects 301 para URLs antiguas o eliminadas
   async redirects() {
@@ -166,6 +170,8 @@ const nextConfig: NextConfig = {
   },
   
   images: {
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 86400,
     // CDNs externos usados por los scrapers — evita errores de dominio no permitido
     remotePatterns: [
       { protocol: 'https', hostname: 'cdnsolvproep.solvia.es' },

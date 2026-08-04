@@ -56,7 +56,7 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
   if (tipoAnunciante === 'bancarios')    liveOverrides.solo_bancarias = 'true'
   if (tipoAnunciante === 'agencias')     liveOverrides.solo_agencias = 'true'
 
-  const { count: liveCount, loading: countLoading } = useListingCount(liveOverrides)
+  const { count: liveCount, loading: countLoading } = useListingCount(liveOverrides, !compact)
 
   // Pills de tipo de anunciante (4 opciones, mutuamente excluyentes)
   const TIPO_PILLS: { value: TipoAnunciante; label: string; icon: string; activeClass: string }[] = [

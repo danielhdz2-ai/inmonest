@@ -18,7 +18,7 @@ import { applyProFilters, parseProParams } from '@/lib/search-filters'
 
 const DEBOUNCE_MS = 350
 
-export function useListingCount(overrides?: Record<string, string>) {
+export function useListingCount(overrides?: Record<string, string>, enabled = true) {
   const sp = useSearchParams()
   const [count, setCount]     = useState<number | null>(null)
   const [loading, setLoading] = useState(false)
@@ -28,6 +28,12 @@ export function useListingCount(overrides?: Record<string, string>) {
   const overridesKey = overrides ? JSON.stringify(overrides) : ''
 
   useEffect(() => {
+    if (!enabled) {
+      setCount(null)
+      setLoading(false)
+      return
+    }
+
     // Helper: prefer override value, otherwise fall back to URL param
     const get = (key: string) => overrides?.[key] ?? sp.get(key)
 
@@ -93,7 +99,7 @@ export function useListingCount(overrides?: Record<string, string>) {
       if (timer.current) clearTimeout(timer.current)
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sp, overridesKey])
+  }, [sp, overridesKey, enabled])
 
   return { count, loading }
 }

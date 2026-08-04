@@ -44,7 +44,7 @@ export default function MobileBottomNav() {
   return (
     <nav
       aria-label="Navegación principal"
-      className="app-mobile-bottom-nav lg:hidden fixed inset-x-0 bottom-0 z-[55] border-t border-white/10 bg-forest-950/95 backdrop-blur-xl supports-[backdrop-filter]:bg-forest-950/90"
+      className="app-mobile-bottom-nav lg:hidden fixed inset-x-0 bottom-0 z-[55] border-t border-white/10 bg-black/95 backdrop-blur-xl supports-[backdrop-filter]:bg-black/90"
       style={{ paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
     >
       <div className="mx-auto flex max-w-lg items-stretch justify-around px-1 pt-1.5 pb-1">

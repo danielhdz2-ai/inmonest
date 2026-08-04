@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import ChatWidget from "@/components/ChatWidget";
+import LazyChatWidget from "@/components/LazyChatWidget";
 import ConditionalFooter from "@/components/ConditionalFooter";
 import ConditionalMobileBottomNav from "@/components/ConditionalMobileBottomNav";
 import GTMProvider from "@/components/GTMProvider";
@@ -25,8 +25,8 @@ export const viewport = {
   initialScale: 1,
   viewportFit: 'cover',
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#1a0d00' },
-    { media: '(prefers-color-scheme: dark)', color: '#1a0d00' },
+    { media: '(prefers-color-scheme: light)', color: '#000000' },
+    { media: '(prefers-color-scheme: dark)', color: '#000000' },
   ],
 }
 
@@ -121,7 +121,7 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col overflow-x-hidden" data-app-shell="3">
+      <body className="min-h-full flex flex-col overflow-x-hidden" data-app-shell="4">
         {/* GTM noscript fallback */}
         <noscript>
           <iframe
@@ -150,7 +150,7 @@ export default function RootLayout({
         {children}
         <ConditionalFooter />
         <ConditionalMobileBottomNav />
-        <ChatWidget />
+        <LazyChatWidget />
       </body>
     </html>
   );
