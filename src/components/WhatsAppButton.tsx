@@ -44,8 +44,8 @@ export default function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"
-        className={`wa-pulse fixed z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25d366] shadow-lg hover:bg-[#1ebe5d] transition-colors max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))] max-md:right-4 bottom-24 right-6 ${
-          hideOnMobileSticky ? 'hidden md:flex' : ''
+        className={`wa-pulse fixed z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25d366] shadow-lg hover:bg-[#1ebe5d] transition-colors max-lg:bottom-[calc(5.5rem+env(safe-area-inset-bottom))] max-lg:right-4 bottom-24 right-6 ${
+          hideOnMobileSticky ? 'hidden lg:flex' : ''
         }`}
       >
         <svg viewBox="0 0 32 32" width="30" height="30" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

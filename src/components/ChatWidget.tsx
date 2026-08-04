@@ -135,8 +135,8 @@ export default function ChatWidget() {
       {/* Botón flotante */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className={`fixed z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-gold-500 text-white shadow-lg hover:bg-gold-600 transition-all active:scale-95 max-md:bottom-[calc(4.75rem+env(safe-area-inset-bottom))] max-md:right-4 bottom-6 right-6 ${
-          hideOnMobileSticky ? 'hidden md:flex' : ''
+        className={`fixed z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-gold-500 text-white shadow-lg hover:bg-gold-600 transition-all active:scale-95 max-lg:bottom-[calc(4.75rem+env(safe-area-inset-bottom))] max-lg:right-4 bottom-6 right-6 ${
+          hideOnMobileSticky ? 'hidden lg:flex' : ''
         }`}
         aria-label="Abrir asistente de búsqueda"
       >
@@ -156,7 +156,7 @@ export default function ChatWidget() {
 
       {/* Panel del chat */}
       {open && (
-        <div className="fixed z-50 w-[min(360px,calc(100vw-24px))] rounded-2xl shadow-2xl border border-gray-200 bg-white flex flex-col overflow-hidden max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))] max-md:right-4 max-md:left-4 max-md:w-auto bottom-20 right-6"
+        <div className="fixed z-50 w-[min(360px,calc(100vw-24px))] rounded-2xl shadow-2xl border border-gray-200 bg-white flex flex-col overflow-hidden max-lg:bottom-[calc(5.5rem+env(safe-area-inset-bottom))] max-lg:right-4 max-lg:left-4 max-lg:w-auto bottom-20 right-6"
           style={{ maxHeight: 'min(520px, calc(100vh - 120px))' }}>
           {/* Cabecera */}
           <div className="bg-gold-500 px-4 py-3 flex items-center gap-2">

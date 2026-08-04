@@ -64,9 +64,13 @@ html {
 }
 
 /* Espacio inferior en móvil para la barra de navegación tipo app */
-@media (max-width: 767px) {
+@media (max-width: 1023px), ((hover: none) and (pointer: coarse)) {
   body {
     padding-bottom: calc(4.25rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  .app-mobile-bottom-nav {
+    display: block;
   }
 
   /* iOS hace zoom automático si font-size < 16px en inputs */
@@ -81,5 +85,11 @@ html {
   svg {
     max-width: 100%;
     height: auto;
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+  .app-mobile-bottom-nav {
+    display: none !important;
   }
 }

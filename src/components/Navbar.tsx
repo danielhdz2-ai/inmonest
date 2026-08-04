@@ -71,13 +71,13 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b shadow-sm bg-forest-950 border-white/10 md:bg-white md:border-gray-100 md:shadow-sm">
-        <div className="relative flex items-center h-14 md:h-16 px-3 md:px-5 gap-2 md:gap-3 min-w-0">
+      <header className="sticky top-0 z-50 border-b shadow-sm bg-forest-950 border-white/10 lg:bg-white lg:border-gray-100 lg:shadow-sm">
+        <div className="relative flex items-center h-14 lg:h-16 px-3 lg:px-5 gap-2 lg:gap-3 min-w-0">
 
           {/* Hamburger */}
           <button
             onClick={() => setSideOpen(true)}
-            className="relative z-10 flex-shrink-0 p-2 rounded-lg text-white/80 hover:bg-white/10 hover:text-gold-300 transition-colors md:text-gray-500 md:hover:bg-cream-100 md:hover:text-gold-500"
+            className="relative z-10 flex-shrink-0 p-2 rounded-lg text-white/80 hover:bg-white/10 hover:text-gold-300 transition-colors lg:text-gray-500 lg:hover:bg-cream-100 lg:hover:text-gold-500"
             aria-label="Abrir menú"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -88,18 +88,18 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           {/* Logo — centrado en móvil, izquierda en desktop */}
           <Link
             href="/"
-            className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex items-center flex-shrink-0"
+            className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 flex items-center flex-shrink-0"
           >
-            <span className="text-xl md:text-3xl font-extrabold tracking-tight leading-none whitespace-nowrap">
-              <span className="text-white md:text-forest-950">Inmo</span>
-              <span className="text-gold-400 md:text-gold-500">nest</span>
+            <span className="text-xl lg:text-3xl font-extrabold tracking-tight leading-none whitespace-nowrap">
+              <span className="text-white lg:text-forest-950">Inmo</span>
+              <span className="text-gold-400 lg:text-gold-500">nest</span>
             </span>
           </Link>
 
-          <div className="flex-1 min-w-0 hidden md:block" />
+          <div className="flex-1 min-w-0 hidden lg:block" />
 
-          {/* CTAs desktop — Gestoría + Servicios + Publicar */}
-          <div className="hidden md:flex items-center gap-2 flex-shrink-0">
+          {/* CTAs desktop */}
+          <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
             <Link
               href="/gestoria"
               className="inline-flex items-center rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors whitespace-nowrap px-4 py-2 text-sm touch-manipulation"
@@ -188,7 +188,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           {/* Acceder — solo móvil (derecha) */}
           <Link
             href={accountHref}
-            className="relative z-10 ml-auto md:hidden inline-flex items-center justify-center rounded-full border border-gold-500/50 text-gold-300 font-semibold hover:bg-gold-500/10 transition-colors whitespace-nowrap min-h-[36px] px-3.5 py-1.5 text-xs touch-manipulation"
+            className="relative z-10 ml-auto lg:hidden inline-flex items-center justify-center rounded-full border border-gold-500/50 text-gold-300 font-semibold hover:bg-gold-500/10 transition-colors whitespace-nowrap min-h-[36px] px-3.5 py-1.5 text-xs touch-manipulation"
           >
             {accountLabelMobile}
           </Link>

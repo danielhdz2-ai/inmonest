@@ -17,7 +17,7 @@ export default function ConditionalFooter() {
   )
   if (isPlatform) return null
   return (
-    <div className="max-md:hidden">
+    <div className="max-lg:hidden">
       <Footer />
     </div>
   )
