@@ -14,7 +14,7 @@ export default function AccesoClientePage() {
       <main className="min-h-screen bg-gradient-to-b from-[#f4f5f7] to-[#eef0f2] pt-24 pb-16 px-4">
         <div className="max-w-lg mx-auto">
           <div className="rounded-3xl border border-gray-200 bg-white shadow-xl overflow-hidden">
-            <div className="bg-gradient-to-br from-[#0a1410] to-[#152318] px-8 py-10 text-white text-center">
+            <div className="bg-gradient-to-br from-black to-black px-8 py-10 text-white text-center">
               <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gold-500/20 border border-gold-500/40 text-3xl mb-4">
                 🔐
               </div>

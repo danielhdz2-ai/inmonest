@@ -32,7 +32,7 @@ const SELLOS_CONFIANZA = [
 
 export default function Footer() {
   return (
-    <footer className="overflow-hidden bg-forest-900 text-white">
+    <footer className="overflow-hidden bg-black text-white">
 
       {/* ── Separador dorado ───────────────────────────────────── */}
       <div className="h-[3px] bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
@@ -168,7 +168,7 @@ export default function Footer() {
             sizes="(max-width: 1024px) 100vw, 40vw"
             priority={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-transparent to-forest-900" />
+          <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-transparent to-black" />
         </div>
 
         {/* Mitad derecha — logo + columnas */}

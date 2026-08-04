@@ -57,7 +57,7 @@ export default function GestoriaValenciaPage() {
       <Navbar />
       <main className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-forest-800 to-forest-900 text-white py-20">
+        <section className="relative bg-gradient-to-br from-black to-black text-white py-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-8">
               <Link href="/" className="hover:text-gray-300">Inicio</Link>

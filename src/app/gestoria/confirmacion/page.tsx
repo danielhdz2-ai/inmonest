@@ -74,7 +74,7 @@ function ConfirmacionContent() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-forest-800 to-forest-900">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black to-black">
         <div className="text-center">
           <div className="inline-block w-16 h-16 border-4 border-gold-300 border-t-transparent rounded-full animate-spin mb-4" />
           <p className="text-white text-lg">Verificando tu pago...</p>
@@ -106,7 +106,7 @@ function ConfirmacionContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-forest-800 to-forest-900 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-black to-black flex items-center justify-center px-4 py-12">
       <div className="max-w-2xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden">
         {/* Header de éxito */}
         <div className="bg-gradient-to-r from-cream-500 to-gold-600 px-8 py-10 text-center">
@@ -196,7 +196,7 @@ function ConfirmacionContent() {
 export default function ConfirmacionPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-forest-800 to-forest-900">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black to-black">
         <div className="text-center">
           <div className="inline-block w-16 h-16 border-4 border-gold-300 border-t-transparent rounded-full animate-spin mb-4" />
           <p className="text-white text-lg">Cargando...</p>

@@ -248,7 +248,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
           </div>
 
           {/* CTA */}
-          <div className="bg-gradient-to-r from-forest-950 to-forest-950 p-8 rounded-2xl text-white mb-8">
+          <div className="bg-gradient-to-r from-black to-black p-8 rounded-2xl text-white mb-8">
             <h3 className="text-2xl font-bold mb-4">¿Necesitas servicios de gestoría inmobiliaria?</h3>
             <p className="text-white/90 mb-6">
               En <strong>Inmonest</strong> somos una gestoría inmobiliaria online con abogados especializados. Contratos redactados a medida, revisión legal profesional y asesoría completa. <strong>Desde 29€</strong>.

@@ -47,7 +47,7 @@ export default function ComoTrabajamosContrato({ ciudad, ciudadSlug, servicio }:
           className="object-cover object-center"
           sizes="(max-width: 1024px) 100vw, 50vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d1a0f]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4 text-white">
           <p className="text-sm font-semibold">Tu gestor Inmonest</p>
           <p className="text-xs text-white/80">Resuelve dudas antes de contratar · {ciudad}</p>

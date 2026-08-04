@@ -159,7 +159,7 @@ export default function GestoriaPortalDocumentos({ contratos, userDocs, onDelete
                       type="button"
                       disabled={busy}
                       onClick={() => void handleOpen(doc, false)}
-                      className="min-h-[44px] rounded-xl border-2 border-[#0d1a0f] text-[#0d1a0f] text-xs font-bold disabled:opacity-60 touch-manipulation"
+                      className="min-h-[44px] rounded-xl border-2 border-black text-[#0d1a0f] text-xs font-bold disabled:opacity-60 touch-manipulation"
                     >
                       👁️ Ver
                     </button>

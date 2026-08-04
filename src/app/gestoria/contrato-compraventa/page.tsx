@@ -54,7 +54,7 @@ export default function ContratoCompraventaPage() {
       
       <div className="min-h-screen bg-white">
         {/* Hero */}
-        <section className="relative bg-gradient-to-r from-forest-950 to-forest-950 text-white py-16 sm:py-24">
+        <section className="relative bg-gradient-to-r from-black to-black text-white py-16 sm:py-24">
           <div className="absolute inset-0 opacity-10">
             <Image
               src="/gestoria1.jpg"
@@ -342,7 +342,7 @@ export default function ContratoCompraventaPage() {
           <TestimoniosSection landing="contrato-compraventa" />
 
           {/* CTA final */}
-          <div className="bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-8 text-white text-center">
+          <div className="bg-gradient-to-r from-black to-black rounded-2xl p-8 text-white text-center">
             <h3 className="text-2xl font-bold mb-4">¿Listo para proteger tu compraventa?</h3>
             <p className="text-white/80 mb-6">
               Contrato redactado por nuestra gestoría en 24-48h. Con todas las cláusulas legales necesarias.

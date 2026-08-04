@@ -14,6 +14,7 @@ type CtaBandProps = {
   imageSrc: string
   imageAlt: string
   imagePosition?: 'left' | 'right'
+  /** @deprecated Ambos tonos usan negro mate */
   tone?: 'warm' | 'forest'
   className?: string
 }
@@ -29,24 +30,19 @@ export function CtaBand({
   imageSrc,
   imageAlt,
   imagePosition = 'right',
-  tone = 'warm',
   className,
 }: CtaBandProps) {
-  const bg = tone === 'warm' ? 'bg-forest-950' : 'bg-forest-900'
-  const fadeFrom = tone === 'warm' ? 'from-forest-950' : 'from-forest-900'
-
   return (
     <div
       className={cn(
-        'relative overflow-hidden rounded-3xl shadow-xl min-h-[280px] flex',
-        bg,
+        'relative overflow-hidden rounded-3xl shadow-xl min-h-[280px] flex bg-black',
         className
       )}
     >
       {imagePosition === 'left' && (
         <div className="hidden lg:block relative w-[400px] shrink-0 order-first">
           <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="400px" />
-          <div className={cn('absolute inset-0 bg-gradient-to-l', fadeFrom, 'via-transparent to-transparent')} />
+          <div className="absolute inset-0 bg-gradient-to-l from-black via-black/40 to-transparent" />
         </div>
       )}
 
@@ -71,7 +67,7 @@ export function CtaBand({
       {imagePosition === 'right' && (
         <div className="hidden lg:block relative w-[400px] shrink-0">
           <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="400px" />
-          <div className={cn('absolute inset-0 bg-gradient-to-r', fadeFrom, 'via-transparent to-transparent')} />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent" />
         </div>
       )}
     </div>

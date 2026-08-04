@@ -154,7 +154,7 @@ export default function GestoriaSevillaPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-forest-950 via-[#2e1900] to-[#5a3200] text-white py-16 sm:py-24">
+      <section className="relative bg-gradient-to-br from-black via-black to-black text-white py-16 sm:py-24">
         <div className="absolute inset-0 opacity-10">
           <Image src="/gestoria5.jpg" alt="Gestoría Sevilla" fill className="object-cover" />
         </div>
@@ -178,7 +178,7 @@ export default function GestoriaSevillaPage() {
             </Link>
             <Link
               href="/gestoria"
-              className="inline-block px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-[#2e1900] font-bold text-lg shadow-xl transition-all"
+              className="inline-block px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-black font-bold text-lg shadow-xl transition-all"
             >
               Ver todos los servicios
             </Link>

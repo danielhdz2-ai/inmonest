@@ -348,7 +348,7 @@ export default function AnalizadorClient() {
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0d1a0f]/60 via-transparent to-forest-900" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 pt-20 w-full">
           <span className="inline-flex items-center gap-2 bg-gold-500/20 border border-gold-500/40 text-gold-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-5">

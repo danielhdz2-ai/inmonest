@@ -91,7 +91,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-950/90 via-gold-700/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
 
         <div className="relative h-full max-w-5xl mx-auto px-4 sm:px-6 flex flex-col justify-end pb-12">
           <nav className="flex items-center gap-1.5 text-xs text-white/50 mb-4">

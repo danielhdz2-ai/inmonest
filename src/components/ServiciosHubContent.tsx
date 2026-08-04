@@ -66,7 +66,7 @@ export default function ServiciosHubContent() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-forest-950/95 via-forest-950/70 to-forest-950/50 sm:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-black/95 via-black/70 to-black/50 sm:to-transparent" />
         <div className="relative sm:absolute sm:inset-0 flex flex-col justify-center px-4 sm:px-12 lg:px-20 max-w-4xl mx-auto sm:mx-0">
           <span className="inline-block bg-gold-500 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-3 sm:mb-4 w-fit">
             Contratos · Arras · Alquiler LAU
@@ -280,7 +280,7 @@ export default function ServiciosHubContent() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-forest-800 text-white py-14 px-6">
+      <section className="bg-black text-white py-14 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-extrabold mb-3">¿No sabes qué contrato necesitas?</h2>
           <p className="text-white/80 mb-6">
@@ -289,7 +289,7 @@ export default function ServiciosHubContent() {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/gestoria"
-              className="inline-flex rounded-full bg-gold-500 text-forest-900 font-semibold px-6 py-3 text-sm hover:bg-gold-600 transition"
+              className="inline-flex rounded-full bg-gold-500 text-black font-semibold px-6 py-3 text-sm hover:bg-gold-600 transition"
             >
               Ir a gestoría
             </Link>

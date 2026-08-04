@@ -17,7 +17,7 @@ export default function GestoriaPortalPublicar() {
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div className="relative min-h-[200px] md:min-h-full">
             <Image src="/interior2.jpg" alt="" fill className="object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a0f]/80 to-transparent md:hidden" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent md:hidden" />
           </div>
           <div className="p-6 sm:p-8 flex flex-col justify-center">
             <p className="text-[10px] font-bold uppercase tracking-widest text-gold-500">Portal inmobiliario</p>

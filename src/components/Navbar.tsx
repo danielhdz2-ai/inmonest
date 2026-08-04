@@ -100,7 +100,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             className="absolute left-1/2 -translate-x-1/2 lg:static lg:translate-x-0 flex items-center flex-shrink-0"
           >
             <span className="text-xl lg:text-3xl font-extrabold tracking-tight leading-none whitespace-nowrap">
-              <span className="text-white lg:text-forest-950">Inmo</span>
+              <span className="text-white lg:text-black">Inmo</span>
               <span className="text-gold-400 lg:text-gold-500">nest</span>
             </span>
           </Link>
@@ -223,7 +223,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           <Link href="/" onClick={close} className="flex items-center gap-2">
             <Image src="/logo.png" alt="Inmonest" width={32} height={32} className="h-8 w-8 object-contain" />
             <span className="text-xl font-extrabold tracking-tight leading-none">
-              <span className="text-forest-950">Inmo</span><span className="text-gold-500">nest</span>
+              <span className="text-black">Inmo</span><span className="text-gold-500">nest</span>
             </span>
           </Link>
           <button

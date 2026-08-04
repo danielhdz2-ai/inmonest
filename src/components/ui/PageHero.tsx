@@ -9,6 +9,7 @@ type PageHeroProps = {
   title: React.ReactNode
   description?: string
   children?: React.ReactNode
+  /** @deprecated Todos los overlays usan negro mate */
   tone?: 'forest' | 'warm'
   minHeight?: string
   className?: string
@@ -22,20 +23,14 @@ export function PageHero({
   title,
   description,
   children,
-  tone = 'forest',
   minHeight = 'min-h-0 py-14 sm:min-h-[480px] sm:py-20 lg:min-h-[560px]',
   className,
   priority = false,
 }: PageHeroProps) {
-  const overlay =
-    tone === 'forest'
-      ? 'from-forest-950/92 via-forest-950/75 to-forest-950/40'
-      : 'from-forest-950/90 via-gold-900/30 to-transparent'
-
   return (
     <section className={cn('relative overflow-hidden flex items-center', minHeight, className)}>
       <Image src={imageSrc} alt={imageAlt} fill className="object-cover" priority={priority} sizes="100vw" />
-      <div className={cn('absolute inset-0 bg-gradient-to-r', overlay)} />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/70 to-black/25 sm:to-transparent" />
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
         {eyebrow && (
           <Badge variant="dark" className="mb-5 normal-case tracking-wide">

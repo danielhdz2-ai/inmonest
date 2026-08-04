@@ -5,9 +5,9 @@
   --foreground: #1a1008;
   --brand-gold: #c9962a;
   --brand-gold-light: #f4c94a;
-  --brand-forest: #0d1a0f;
-  --brand-forest-mid: #1a2f1c;
-  --brand-warm-dark: #1a0d00;
+  --brand-forest: #000000;
+  --brand-forest-mid: #000000;
+  --brand-warm-dark: #000000;
 }
 
 @theme inline {
@@ -33,10 +33,10 @@
   --color-cream-100: #fef9e8;
   --color-cream-200: #faf0cc;
 
-  /* Verde bosque — gestoría / CTAs oscuros */
-  --color-forest-800: #1a2f1c;
-  --color-forest-900: #0d1a0f;
-  --color-forest-950: #1a0d00;
+  /* Negro boutique — fondos oscuros y fundidos (antes verde/marrón) */
+  --color-forest-800: #000000;
+  --color-forest-900: #000000;
+  --color-forest-950: #000000;
 }
 
 body {

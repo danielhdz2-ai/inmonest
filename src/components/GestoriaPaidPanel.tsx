@@ -123,7 +123,7 @@ export default function GestoriaPaidPanel({
   return (
     <div className="overflow-hidden rounded-2xl sm:rounded-3xl border border-gold-300/40 bg-white shadow-xl shadow-[#c9962a]/5 -mx-1 sm:mx-0">
       {/* Hero */}
-      <div className="relative bg-gradient-to-br from-[#0d1a0f] via-[#1a2f1c] to-forest-900 px-4 sm:px-8 py-5 sm:py-7 text-white">
+      <div className="relative bg-gradient-to-br from-black via-black to-black px-4 sm:px-8 py-5 sm:py-7 text-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(201,150,42,0.18)_0%,_transparent_55%)]" />
         <div className="relative space-y-4">
           <div className="flex items-start justify-between gap-3">

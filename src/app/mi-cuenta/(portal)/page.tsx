@@ -92,7 +92,7 @@ export default async function DashboardHomePage() {
       <div className="relative overflow-hidden rounded-2xl text-white p-8 shadow-xl min-h-[200px]">
         <div className="absolute inset-0">
           <Image src="/interior2.jpg" alt="" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a1008]/95 via-[#1a1008]/80 to-[#1a1008]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/40" />
         </div>
         <div className="relative z-10">
           <p className="text-amber-300 text-sm font-medium mb-1">{greeting}</p>

@@ -18,7 +18,7 @@ export default function ComprarConSeguridad({ ciudad, ciudadSlug }: ComprarConSe
   const tieneAsesoria = hasAsesoriaCompraCiudad(ciudadSlug)
 
   return (
-    <section className="py-12 px-4 bg-gradient-to-br from-forest-800 to-forest-900 text-white">
+    <section className="py-12 px-4 bg-gradient-to-br from-black to-black text-white">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-8">
           <p className="text-xs font-semibold uppercase tracking-widest text-gold-500 mb-2">

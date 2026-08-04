@@ -51,9 +51,9 @@ export default function GestoriaDniUpload({ front, back, uploadingKey, uploadPro
   }
 
   const primaryClass =
-    'inline-flex items-center justify-center gap-2 rounded-xl bg-forest-900 active:bg-[#1a2e1c] text-white text-sm font-bold min-h-[48px] px-4 transition-colors disabled:opacity-60 touch-manipulation'
+    'inline-flex items-center justify-center gap-2 rounded-xl bg-forest-900 active:bg-neutral-900 text-white text-sm font-bold min-h-[48px] px-4 transition-colors disabled:opacity-60 touch-manipulation'
   const secondaryClass =
-    'inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#0d1a0f] bg-white active:bg-gray-50 text-[#0d1a0f] text-sm font-bold min-h-[48px] px-4 transition-colors disabled:opacity-60 touch-manipulation'
+    'inline-flex items-center justify-center gap-2 rounded-xl border-2 border-black bg-white active:bg-gray-50 text-[#0d1a0f] text-sm font-bold min-h-[48px] px-4 transition-colors disabled:opacity-60 touch-manipulation'
   const replaceClass = 'text-sm text-gold-500 font-semibold min-h-[44px] px-2 touch-manipulation'
 
   return (

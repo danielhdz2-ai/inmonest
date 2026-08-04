@@ -246,7 +246,7 @@ export default function ContratoArrendamientoLAUPage() {
               Puedes descargar una <strong>plantilla básica</strong> de contrato de arrendamiento LAU, pero recuerda que cada situación es única y es recomendable una <strong>revisión legal</strong> para evitar problemas futuros.
             </p>
 
-            <div className="bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-8 text-white mb-6">
+            <div className="bg-gradient-to-r from-black to-black rounded-2xl p-8 text-white mb-6">
               <h3 className="text-2xl font-bold mb-3">¿Necesitas un contrato profesional?</h3>
               <p className="text-white/80 mb-6">
                 Nuestros abogados especializados redactan tu contrato de arrendamiento LAU personalizado con cláusulas adaptadas a tu situación. <strong>Desde 7€.</strong>

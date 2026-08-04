@@ -453,7 +453,7 @@ export default function GestoriaPage() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-forest-950/95 via-forest-950/80 to-forest-950/50 sm:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-black/95 via-black/80 to-black/50 sm:to-transparent" />
         <div className="relative sm:absolute sm:inset-0 flex flex-col justify-center px-4 sm:px-12 lg:px-20 max-w-4xl mx-auto sm:mx-0 py-2 sm:py-0">
           <span className="inline-block bg-gold-500 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-3 sm:mb-4 w-fit">
             Gestoría · Alquiler LAU
@@ -883,7 +883,7 @@ export default function GestoriaPage() {
       {/* REGÍSTRATE — CTA */}
       <section className="py-16 px-4 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-forest-950 to-gold-700 rounded-3xl p-8 sm:p-12 text-white overflow-hidden relative">
+          <div className="bg-gradient-to-br from-black to-gold-700 rounded-3xl p-8 sm:p-12 text-white overflow-hidden relative">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/20 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
             <div className="relative">
               <span className="inline-block bg-gold-500 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5">

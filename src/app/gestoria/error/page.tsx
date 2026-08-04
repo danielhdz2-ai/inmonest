@@ -35,7 +35,7 @@ export default async function GestoriaErrorPage({
         <div className="w-full max-w-3xl bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
 
           {/* ── Columna izquierda: confianza ─────────────────────────── */}
-          <div className="hidden md:flex flex-col justify-between w-[42%] bg-gradient-to-br from-forest-800 to-forest-900 p-8 text-white flex-shrink-0">
+          <div className="hidden md:flex flex-col justify-between w-[42%] bg-gradient-to-br from-black to-black p-8 text-white flex-shrink-0">
             <div>
               <div className="mb-8">
                 <span className="text-2xl font-extrabold tracking-tight">

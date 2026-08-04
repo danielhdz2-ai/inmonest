@@ -159,7 +159,7 @@ export default function GestoriaPideInfoForm({
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full rounded-xl bg-forest-900 hover:bg-[#1a2e1c] text-white font-semibold py-3.5 min-h-[52px] text-base transition-colors disabled:opacity-60 touch-manipulation"
+        className="w-full rounded-xl bg-forest-900 hover:bg-neutral-900 text-white font-semibold py-3.5 min-h-[52px] text-base transition-colors disabled:opacity-60 touch-manipulation"
       >
         {status === 'sending' ? 'Accediendo a tu panel…' : 'Ver mi área de gestoría'}
       </button>

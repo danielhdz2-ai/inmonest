@@ -54,7 +54,7 @@ export default function PisosMadridPage() {
       <section className="relative pt-24 pb-20 px-4 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/ciudades/madrid1.jpg" alt="Madrid" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest-950/85 via-[#2e1900]/65 to-forest-950/35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/35" />
         </div>
         
         <div className="relative max-w-7xl mx-auto">

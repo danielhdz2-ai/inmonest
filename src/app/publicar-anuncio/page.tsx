@@ -115,7 +115,7 @@ export default async function PublicarAnuncioPage() {
           sizes="100vw"
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-950/92 via-forest-950/80 to-forest-950/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/92 via-black/80 to-black/50" />
 
         {/* Destellos decorativos */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl" />
@@ -228,7 +228,7 @@ export default async function PublicarAnuncioPage() {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest-950/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-white/95 backdrop-blur rounded-2xl px-5 py-4 shadow-lg">
                   <p className="text-sm font-bold text-gray-900">Miles de tratos cerrados</p>
@@ -287,7 +287,7 @@ export default async function PublicarAnuncioPage() {
             </div>
 
             {/* Plan Profesional */}
-            <div className="bg-gradient-to-br from-forest-950 to-forest-900 rounded-2xl p-7 text-left shadow-xl relative overflow-hidden">
+            <div className="bg-gradient-to-br from-black to-black rounded-2xl p-7 text-left shadow-xl relative overflow-hidden">
               <div className="absolute top-4 right-4 bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 Popular
               </div>
@@ -343,7 +343,7 @@ export default async function PublicarAnuncioPage() {
       </section>
 
       {/* ── CTA FINAL ──────────────────────────────────────────────── */}
-      <section className="py-20 px-4 bg-gradient-to-br from-forest-950 via-forest-900 to-forest-950">
+      <section className="py-20 px-4 bg-gradient-to-br from-black via-black to-black">
         <div className="max-w-3xl mx-auto text-center">
           <FileText className="w-10 h-10 text-gold-400 mx-auto mb-6" />
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">

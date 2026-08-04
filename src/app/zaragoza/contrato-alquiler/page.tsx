@@ -134,7 +134,7 @@ export default function GestoriaZaragozaPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-forest-950 via-[#2e1900] to-[#4a2e00] text-white py-16 sm:py-24">
+      <section className="relative bg-gradient-to-br from-black via-black to-black text-white py-16 sm:py-24">
         <div className="absolute inset-0 opacity-10">
           <Image src="/gestoria3.jpg" alt="Gestoría Zaragoza" fill className="object-cover" />
         </div>
@@ -158,7 +158,7 @@ export default function GestoriaZaragozaPage() {
             </Link>
             <Link
               href="/gestoria/solicitar/arras-penitenciales"
-              className="inline-block px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-[#2e1900] font-bold text-lg shadow-xl transition-all"
+              className="inline-block px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-black font-bold text-lg shadow-xl transition-all"
             >
               Contrato de Arras - 145€
             </Link>
@@ -383,7 +383,7 @@ export default function GestoriaZaragozaPage() {
       </section>
 
       {/* CTA Final */}
-      <section className="bg-gradient-to-br from-[#2e1900] to-[#4a2e00] text-white py-16 sm:py-20">
+      <section className="bg-gradient-to-br from-black to-black text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-6">
             ¿Listo para proteger tu operación inmobiliaria en Zaragoza?
@@ -401,7 +401,7 @@ export default function GestoriaZaragozaPage() {
             </Link>
             <Link
               href="/contacto"
-              className="inline-block px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-[#2e1900] font-bold text-lg shadow-xl transition-all"
+              className="inline-block px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-black font-bold text-lg shadow-xl transition-all"
             >
               Hablar con un asesor
             </Link>

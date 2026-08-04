@@ -281,7 +281,7 @@ export default function DueDiligenceBlogPage() {
             <li>Te ahorra 20-30 horas de trabajo</li>
           </ul>
 
-          <div className="bg-gradient-to-r from-forest-950 to-forest-950 p-8 rounded-2xl text-white mb-8">
+          <div className="bg-gradient-to-r from-black to-black p-8 rounded-2xl text-white mb-8">
             <h3 className="text-2xl font-bold mb-4">Pack Due Diligence Pre-Compra — 350€</h3>
             <p className="text-white/90 mb-6">
               Gestor inmobiliario experto revisa toda la documentación de tu futura vivienda. Detectamos problemas ANTES de firmar. Evita sorpresas de 10.000€+.

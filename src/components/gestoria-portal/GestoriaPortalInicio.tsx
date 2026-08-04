@@ -59,7 +59,7 @@ export default function GestoriaPortalInicio({
       )}
 
       {/* Hero */}
-      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#0a1410] via-[#152318] to-forest-900 p-6 sm:p-8 text-white shadow-2xl">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-black via-black to-black p-6 sm:p-8 text-white shadow-2xl">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(201,150,42,0.25),transparent_50%)]" />
         <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl" />
         <div className="relative">

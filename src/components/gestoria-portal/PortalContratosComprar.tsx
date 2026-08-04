@@ -68,7 +68,7 @@ export default function PortalContratosComprar({
 
   return (
     <div className="space-y-8">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1008] to-forest-900 p-6 sm:p-8 text-white">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-black to-black p-6 sm:p-8 text-white">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(201,150,42,0.25),transparent)]" />
           <div className="relative">
             <p className="text-[#f4d98a] text-xs font-bold uppercase tracking-widest">Gestoría Inmonest</p>
@@ -116,7 +116,7 @@ export default function PortalContratosComprar({
                 type="button"
                 onClick={() => handleCheckout(svc.key)}
                 disabled={paying === svc.key}
-                className="mt-4 w-full rounded-xl bg-forest-900 text-[#f4d98a] text-sm font-bold py-3 min-h-[48px] touch-manipulation hover:bg-[#152318] transition-colors disabled:opacity-60"
+                className="mt-4 w-full rounded-xl bg-forest-900 text-[#f4d98a] text-sm font-bold py-3 min-h-[48px] touch-manipulation hover:bg-neutral-900 transition-colors disabled:opacity-60"
               >
                 {paying === svc.key ? 'Abriendo Stripe…' : `Pagar ${svc.precio} €`}
               </button>

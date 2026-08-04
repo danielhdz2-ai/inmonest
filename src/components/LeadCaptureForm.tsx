@@ -156,7 +156,7 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
       <div className="flex flex-col md:flex-row">
 
         {/* ── Columna izquierda: confianza ──────────────────────────── */}
-        <div className="md:w-[42%] bg-gradient-to-br from-forest-800 to-forest-900 p-8 flex flex-col text-white">
+        <div className="md:w-[42%] bg-gradient-to-br from-black to-black p-8 flex flex-col text-white">
 
           {/* Logo */}
           <div className="flex items-center mb-7 gap-0">

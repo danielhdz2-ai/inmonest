@@ -229,7 +229,7 @@ export default function VenderCasaPage() {
       <TestimoniosSection landing="vender-casa" />
 
       {/* ── FOOTER CTA ───────────────────────────────────────────────────── */}
-      <section className="py-14 bg-gradient-to-r from-[#2e1900] to-[#42300a]">
+      <section className="py-14 bg-gradient-to-r from-black to-black">
         <div className="max-w-2xl mx-auto px-4 text-center">
           <p className="text-gold-300 font-bold text-lg mb-2">¿Listado para agencias?</p>
           <p className="text-white/70 text-sm mb-6">Si eres una agencia inmobiliaria, accede a los leads de tu zona.</p>

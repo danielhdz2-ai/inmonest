@@ -84,7 +84,7 @@ export default function NotificacionesConfigPanel() {
 
   return (
     <div className="space-y-5">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1008] to-forest-900 p-5 sm:p-6 text-white">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-black to-black p-5 sm:p-6 text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(201,150,42,0.2),transparent)]" />
         <div className="relative">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f4d98a]">Inmonest</p>

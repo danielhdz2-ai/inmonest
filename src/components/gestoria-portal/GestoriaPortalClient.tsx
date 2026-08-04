@@ -415,7 +415,7 @@ export default function GestoriaPortalClient({
                   onClick={() => setActivePaidId(c.id)}
                   className={`text-xs font-semibold px-3 py-2 rounded-full border min-h-[40px] touch-manipulation ${
                     c.id === activePaid.id
-                      ? 'bg-forest-900 text-white border-[#0d1a0f]'
+                      ? 'bg-forest-900 text-white border-black'
                       : 'bg-white text-gray-600 border-gray-200'
                   }`}
                 >

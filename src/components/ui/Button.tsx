@@ -5,13 +5,13 @@ const variants = {
   primary:
     'bg-gold-500 text-white hover:bg-gold-600 shadow-sm shadow-gold-500/25',
   secondary:
-    'bg-forest-900 text-white hover:bg-forest-800',
+    'bg-black text-white hover:bg-neutral-900',
   outline:
     'border border-gold-500/40 text-gold-700 hover:bg-cream-100 bg-white',
   ghost:
     'border border-white/25 text-white/90 hover:bg-white/10',
   dark:
-    'bg-forest-950 text-white hover:bg-forest-900',
+    'bg-black text-white hover:bg-neutral-900',
 } as const
 
 const sizes = {

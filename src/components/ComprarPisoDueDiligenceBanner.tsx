@@ -15,7 +15,7 @@ export default function ComprarPisoDueDiligenceBanner({ city }: ComprarPisoDueDi
   const ciudadLabel = city?.trim() || 'tu ciudad'
 
   return (
-    <div className="bg-gradient-to-r from-slate-900 to-[#1a2f1c] rounded-2xl p-6 sm:p-8 text-white shadow-lg border border-gold-500/20">
+    <div className="bg-gradient-to-r from-black to-black rounded-2xl p-6 sm:p-8 text-white shadow-lg border border-gold-500/20">
       <div className="flex items-start gap-4">
         <span className="text-4xl" aria-hidden>
           🔍

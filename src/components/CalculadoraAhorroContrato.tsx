@@ -92,7 +92,7 @@ export default function CalculadoraAhorroContrato({ mode, ciudad, ciudadSlug, pr
           event="click_phone"
           city={ciudadSlug}
           href="tel:+34745022862"
-          className="inline-flex items-center justify-center rounded-xl bg-forest-900 hover:bg-[#1a2e1c] text-white font-semibold px-5 py-3 text-sm"
+          className="inline-flex items-center justify-center rounded-xl bg-forest-900 hover:bg-neutral-900 text-white font-semibold px-5 py-3 text-sm"
         >
           Llamar al gestor — 745 022 862
         </TrackedContactLink>

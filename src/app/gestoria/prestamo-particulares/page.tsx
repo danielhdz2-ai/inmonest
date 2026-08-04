@@ -519,7 +519,7 @@ export default function PrestamoParticularesPage() {
 
       <TestimoniosSection landing="prestamo-particulares" layout="stack" hideRating className="bg-white" />
 
-      <section className="py-16 px-4 bg-gradient-to-br from-forest-800 to-forest-900 text-white">
+      <section className="py-16 px-4 bg-gradient-to-br from-black to-black text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Formaliza tu préstamo privado hoy</h2>
           <p className="text-lg text-white/85 mb-8">

@@ -1,0 +1,304 @@
+
+> inmonest@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.2.3 (Turbopack)
+- Environments: .env.local
+- Experiments (use with caution):
+  ┬À optimizePackageImports
+
+ÔÜá The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 10.1s
+  Running TypeScript ...
+  Finished TypeScript in 24.6s ...
+  Collecting page data using 11 workers ...
+ÔÜá´©Å [Push] VAPID keys no configuradas. Notificaciones push deshabilitadas.
+  Generating static pages using 11 workers (0/284) ...
+  Generating static pages using 11 workers (71/284) 
+  Generating static pages using 11 workers (142/284) 
+  Generating static pages using 11 workers (213/284) 
+Ô£ô Generating static pages using 11 workers (284/284) in 3.8s
+  Finalizing page optimization ...
+
+Route (app)                                                Revalidate  Expire
+Ôöî Ôùï /
+Ôö£ ãÆ /_not-found
+Ôö£ ÔùÅ /[ciudad]
+Ôöé Ôö£ /madrid
+Ôöé Ôö£ /barcelona
+Ôöé Ôö£ /valencia
+Ôöé Ôöö [+5 more paths]
+Ôö£ ÔùÅ /[ciudad]/alquiler-particulares                               12h      1y
+Ôöé Ôö£ /madrid/alquiler-particulares                                 12h      1y
+Ôöé Ôö£ /barcelona/alquiler-particulares                              12h      1y
+Ôöé Ôö£ /valencia/alquiler-particulares                               12h      1y
+Ôöé Ôöö [+5 more paths]
+Ôö£ ÔùÅ /[ciudad]/alquiler-sin-agencia
+Ôöé Ôö£ /madrid/alquiler-sin-agencia
+Ôöé Ôö£ /barcelona/alquiler-sin-agencia
+Ôöé Ôö£ /valencia/alquiler-sin-agencia
+Ôöé Ôöö [+5 more paths]
+Ôö£ ÔùÅ /[ciudad]/contrato-alquiler
+Ôöé Ôö£ /madrid/contrato-alquiler                                      1d      1y
+Ôöé Ôö£ /barcelona/contrato-alquiler                                   1d      1y
+Ôöé Ôö£ /valencia/contrato-alquiler                                    1d      1y
+Ôöé Ôöö [+14 more paths]
+Ôö£ ÔùÅ /[ciudad]/contrato-arras                                       1d      1y
+Ôöé Ôö£ /madrid/contrato-arras                                         1d      1y
+Ôöé Ôö£ /barcelona/contrato-arras                                      1d      1y
+Ôöé Ôö£ /valencia/contrato-arras                                       1d      1y
+Ôöé Ôöö [+13 more paths]
+Ôö£ ÔùÅ /[ciudad]/pisos                                               12h      1y
+Ôöé Ôö£ /madrid/pisos                                                 12h      1y
+Ôöé Ôö£ /barcelona/pisos                                              12h      1y
+Ôöé Ôö£ /valencia/pisos                                               12h      1y
+Ôöé Ôöö [+5 more paths]
+Ôö£ ÔùÅ /[ciudad]/vender-piso
+Ôöé Ôö£ /madrid/vender-piso
+Ôöé Ôö£ /barcelona/vender-piso
+Ôöé Ôö£ /valencia/vender-piso
+Ôöé Ôöö [+5 more paths]
+Ôö£ Ôùï /actualizar-contrasena
+Ôö£ ãÆ /admin
+Ôö£ Ôùï /agencias
+Ôö£ Ôùï /analizador-mercado
+Ôö£ ãÆ /api/admin/activity
+Ôö£ ãÆ /api/admin/bulk-email
+Ôö£ ãÆ /api/admin/clients
+Ôö£ ãÆ /api/admin/docs
+Ôö£ ãÆ /api/admin/documents
+Ôö£ ãÆ /api/admin/metrics
+Ôö£ ãÆ /api/admin/particulares
+Ôö£ ãÆ /api/admin/pedidos
+Ôö£ ãÆ /api/admin/pedidos/[id]
+Ôö£ ãÆ /api/admin/sync-stripe
+Ôö£ ãÆ /api/admin/update-step
+Ôö£ ãÆ /api/admin/upload-contract
+Ôö£ ãÆ /api/admin/user-docs
+Ôö£ ãÆ /api/agencias/contacto
+Ôö£ ãÆ /api/agencias/feed
+Ôö£ ãÆ /api/alertas
+Ôö£ ãÆ /api/alertas/[id]
+Ôö£ ãÆ /api/chat
+Ôö£ ãÆ /api/contact
+Ôö£ ãÆ /api/cron/alertas
+Ôö£ ãÆ /api/cron/generate-descriptions
+Ôö£ ãÆ /api/cron/scraper-hipoges
+Ôö£ ãÆ /api/cron/scraper-indomio
+Ôö£ ãÆ /api/cron/scraper-pisoscom
+Ôö£ ãÆ /api/cron/scraper-properstar
+Ôö£ ãÆ /api/cron/scraper-solvia
+Ôö£ ãÆ /api/dashboard/download-contract
+Ôö£ ãÆ /api/dashboard/register-doc
+Ôö£ ãÆ /api/dashboard/upload-url
+Ôö£ ãÆ /api/debug-db
+Ôö£ ãÆ /api/debug/force-order
+Ôö£ ãÆ /api/documentos/[id]
+Ôö£ ãÆ /api/documentos/partes
+Ôö£ ãÆ /api/documentos/registrar
+Ôö£ ãÆ /api/documentos/upload-url
+Ôö£ ãÆ /api/favoritos/toggle
+Ôö£ ãÆ /api/generar-descripcion
+Ôö£ ãÆ /api/gestoria/checkout
+Ôö£ ãÆ /api/gestoria/confirm-payment
+Ôö£ ãÆ /api/gestoria/confirmar-pago
+Ôö£ ãÆ /api/gestoria/expediente-timeline
+Ôö£ ãÆ /api/gestoria/lead
+Ôö£ ãÆ /api/gestoria/mis-pedidos
+Ôö£ ãÆ /api/gestoria/notify-upload
+Ôö£ ãÆ /api/gestoria/panel-redirect
+Ôö£ ãÆ /api/gestoria/register-doc
+Ôö£ ãÆ /api/gestoria/solicitar
+Ôö£ ãÆ /api/gestoria/upload-urls
+Ôö£ ãÆ /api/gestoria/vincular-leads
+Ôö£ ãÆ /api/img-proxy
+Ôö£ ãÆ /api/ingest
+Ôö£ ãÆ /api/lead-magnet/calculadora
+Ôö£ ãÆ /api/listings/[id]/contact
+Ôö£ ãÆ /api/maintenance
+Ôö£ ãÆ /api/mensajes
+Ôö£ ãÆ /api/mensajes/[id]
+Ôö£ ãÆ /api/mis-anuncios/[id]
+Ôö£ ãÆ /api/owner-leads
+Ôö£ ãÆ /api/perfil/actualizar
+Ôö£ ãÆ /api/perfil/avatar
+Ôö£ ãÆ /api/perfil/cambiar-password
+Ôö£ ãÆ /api/perfil/eliminar-cuenta
+Ôö£ ãÆ /api/perfil/notificaciones
+Ôö£ ãÆ /api/pisos/[id]/contact
+Ôö£ ãÆ /api/pisos/map-pins
+Ôö£ ãÆ /api/publicar
+Ôö£ ãÆ /api/push/subscribe
+Ôö£ ãÆ /api/push/unsubscribe
+Ôö£ ãÆ /api/scraper
+Ôö£ ãÆ /api/sitemap
+Ôö£ ãÆ /api/stripe/checkout
+Ôö£ ãÆ /api/stripe/webhook
+Ôö£ ãÆ /api/test-alertas
+Ôö£ ãÆ /api/webhooks/stripe
+Ôö£ Ôùï /apple-icon
+Ôö£ Ôùï /apple-icon.png
+Ôö£ ãÆ /auth/callback
+Ôö£ ãÆ /auth/signout
+Ôö£ Ôùï /aviso-legal
+Ôö£ Ôùï /barcelona/pisos-particulares-sin-comision
+Ôö£ Ôùï /bilbao/contrato-alquiler                                      1d      1y
+Ôö£ Ôùï /bilbao/contrato-arras                                         1d      1y
+Ôö£ Ôùï /blog
+Ôö£ Ôùï /blog/alquiler-con-opcion-a-compra
+Ôö£ Ôùï /blog/alquiler-habitacion-coliving
+Ôö£ Ôùï /blog/asesoria-juridica-compra-vivienda
+Ôö£ Ôùï /blog/clausulas-abusivas-contrato-alquiler                     1d      1y
+Ôö£ Ôùï /blog/como-alquilar-piso-sin-agencia
+Ôö£ Ôùï /blog/contrato-alquiler-vivienda-guia
+Ôö£ Ôùï /blog/contrato-arras-diferencias
+Ôö£ Ôùï /blog/contrato-arrendamiento-lau
+Ôö£ Ôùï /blog/cuanto-cuesta-contrato-arras
+Ôö£ Ôùï /blog/detectar-contrato-arras-fraudulento                      1d      1y
+Ôö£ Ôùï /blog/due-diligence-compra-vivienda
+Ôö£ Ôùï /blog/gestoria-barcelona-valencia-madrid
+Ôö£ Ôùï /blog/pisos-fondo-bancario-baratos
+Ôö£ Ôùï /blog/prestamo-entre-particulares-hacienda
+Ôö£ Ôùï /blog/que-es-gestoria-inmobiliaria
+Ôö£ Ôùï /blog/servicio-completo-compra-vivienda
+Ôö£ Ôùï /blog/vender-piso-sin-comisiones
+Ôö£ Ôùï /calculadora-ahorro-comisiones
+Ôö£ Ôùï /calculadora-gastos-alquiler
+Ôö£ Ôùï /calculadora-gastos-compra
+Ôö£ Ôùï /castellon/contrato-alquiler                                   1d      1y
+Ôö£ Ôùï /contacto
+Ôö£ Ôùï /cookies
+Ôö£ ãÆ /debug-session
+Ôö£ Ôùï /gestoria
+Ôö£ ÔùÅ /gestoria/[servicio]
+Ôöé Ôö£ /gestoria/arras-penitenciales
+Ôöé Ôö£ /gestoria/arras-confirmatorias
+Ôöé Ôö£ /gestoria/contrato-alquiler
+Ôöé Ôöö [+11 more paths]
+Ôö£ Ôùï /gestoria/acceso-cliente
+Ôö£ Ôùï /gestoria/alicante
+Ôö£ Ôùï /gestoria/arras-vs-reserva-compra
+Ôö£ Ôùï /gestoria/asesoramiento-arras-venta                            1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso                                 1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/barcelona                       1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/bilbao                          1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/coruna                          1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/madrid                          1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/malaga                          1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/mallorca                        1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/murcia                          1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/pamplona                        1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/sevilla                         1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/valencia                        1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/valladolid                      1d      1y
+Ôö£ Ôùï /gestoria/asesoria-compra-piso/zaragoza                        1d      1y
+Ôö£ Ôùï /gestoria/ayuda-propietarios                                   1d      1y
+Ôö£ Ôùï /gestoria/barcelona
+Ôö£ Ôùï /gestoria/bilbao
+Ôö£ ãÆ /gestoria/carga-documentos
+Ôö£ Ôùï /gestoria/ciudades
+Ôö£ Ôùï /gestoria/compra-parking-trastero                              1d      1y
+Ôö£ Ôùï /gestoria/confirmacion
+Ôö£ Ôùï /gestoria/contrato-alquiler-habitacion                         1d      1y
+Ôö£ Ôùï /gestoria/contrato-alquiler-habitacion/asturias                1d      1y
+Ôö£ Ôùï /gestoria/contrato-alquiler-habitacion/barcelona               1d      1y
+Ôö£ Ôùï /gestoria/contrato-alquiler-habitacion/bilbao                  1d      1y
+Ôö£ Ôùï /gestoria/contrato-alquiler-habitacion/madrid                  1d      1y
+Ôö£ Ôùï /gestoria/contrato-alquiler-habitacion/malaga                  1d      1y
+Ôö£ Ôùï /gestoria/contrato-alquiler-habitacion/sevilla                 1d      1y
+Ôö£ Ôùï /gestoria/contrato-alquiler-habitacion/valencia                1d      1y
+Ôö£ Ôùï /gestoria/contrato-alquiler-habitacion/zaragoza                1d      1y
+Ôö£ Ôùï /gestoria/contrato-arras
+Ôö£ Ôùï /gestoria/contrato-compraventa
+Ôö£ Ôùï /gestoria/contrato-ilegal                                      1d      1y
+Ôö£ Ôùï /gestoria/cuanto-cuesta-contrato-alquiler
+Ôö£ Ôùï /gestoria/due-diligence-precompra                              1d      1y
+Ôö£ Ôùï /gestoria/due-diligence-precompra/barcelona                    1d      1y
+Ôö£ Ôùï /gestoria/due-diligence-precompra/bilbao                       1d      1y
+Ôö£ Ôùï /gestoria/due-diligence-precompra/coruna                       1d      1y
+Ôö£ Ôùï /gestoria/due-diligence-precompra/madrid                       1d      1y
+Ôö£ Ôùï /gestoria/due-diligence-precompra/malaga                       1d      1y
+Ôö£ Ôùï /gestoria/due-diligence-precompra/sevilla                      1d      1y
+Ôö£ Ôùï /gestoria/due-diligence-precompra/valencia                     1d      1y
+Ôö£ Ôùï /gestoria/due-diligence-precompra/zaragoza                     1d      1y
+Ôö£ ãÆ /gestoria/error
+Ôö£ Ôùï /gestoria/gestoria
+Ôö£ Ôùï /gestoria/gracias
+Ôö£ Ôùï /gestoria/guia-arras-penitenciales
+Ôö£ Ôùï /gestoria/madrid
+Ôö£ Ôùï /gestoria/malaga
+Ôö£ Ôùï /gestoria/palma
+Ôö£ Ôùï /gestoria/prestamo-particulares                                1d      1y
+Ôö£ Ôùï /gestoria/prestamo-particulares/barcelona                      1d      1y
+Ôö£ Ôùï /gestoria/prestamo-particulares/bilbao                         1d      1y
+Ôö£ Ôùï /gestoria/prestamo-particulares/madrid                         1d      1y
+Ôö£ Ôùï /gestoria/prestamo-particulares/malaga                         1d      1y
+Ôö£ Ôùï /gestoria/prestamo-particulares/sevilla                        1d      1y
+Ôö£ Ôùï /gestoria/prestamo-particulares/valencia                       1d      1y
+Ôö£ Ôùï /gestoria/reserva-compra
+Ôö£ Ôùï /gestoria/revision-contrato-alquiler                           1d      1y
+Ôö£ Ôùï /gestoria/revision-contrato-arras                              1d      1y
+Ôö£ Ôùï /gestoria/sevilla
+Ôö£ Ôùï /gestoria/solicitar
+Ôö£ ÔùÅ /gestoria/solicitar/[servicio]
+Ôöé Ôö£ /gestoria/solicitar/arras-penitenciales
+Ôöé Ôö£ /gestoria/solicitar/arras-confirmatorias
+Ôöé Ôö£ /gestoria/solicitar/reserva-compra
+Ôöé Ôöö [+28 more paths]
+Ôö£ Ôùï /gestoria/valencia
+Ôö£ Ôùï /gestoria/venta-completa-reserva-escritura                     1d      1y
+Ôö£ Ôùï /gestoria/venta-completa-reserva-escritura/barcelona           1d      1y
+Ôö£ Ôùï /gestoria/venta-completa-reserva-escritura/madrid              1d      1y
+Ôö£ Ôùï /gestoria/venta-completa-reserva-escritura/malaga              1d      1y
+Ôö£ Ôùï /gestoria/venta-completa-reserva-escritura/salamanca           1d      1y
+Ôö£ Ôùï /gestoria/venta-completa-reserva-escritura/sevilla             1d      1y
+Ôö£ Ôùï /gestoria/venta-completa-reserva-escritura/valencia            1d      1y
+Ôö£ Ôùï /gestoria/venta-completa-reserva-escritura/valladolid          1d      1y
+Ôö£ Ôùï /gestoria/zaragoza
+Ôö£ Ôùï /granada/contrato-alquiler
+Ôö£ Ôùï /hipoteca
+Ôö£ Ôùï /icon
+Ôö£ Ôùï /icon.png
+Ôö£ ãÆ /login
+Ôö£ Ôùï /madrid/pisos-particulares-sin-comision
+Ôö£ Ôùï /malaga/pisos-particulares-sin-comision
+Ôö£ Ôùï /mallorca/contrato-alquiler                                    1d      1y
+Ôö£ ãÆ /mi-cuenta
+Ôö£ ãÆ /mi-cuenta/alertas
+Ôö£ ãÆ /mi-cuenta/anuncios
+Ôö£ ãÆ /mi-cuenta/anuncios/[id]/editar
+Ôö£ ãÆ /mi-cuenta/contratos
+Ôö£ ãÆ /mi-cuenta/favoritos
+Ôö£ ãÆ /mi-cuenta/mensajes
+Ôö£ ãÆ /mi-cuenta/perfil
+Ôö£ ãÆ /mis-documentos
+Ôö£ Ôùï /oportunidades-bancarias
+Ôö£ ãÆ /pisos
+Ôö£ ãÆ /pisos/[id]
+Ôö£ Ôùï /privacidad
+Ôö£ ãÆ /publicar
+Ôö£ ãÆ /publicar-anuncio
+Ôö£ Ôùï /recuperar-contrasena
+Ôö£ Ôùï /registro
+Ôö£ Ôùï /robots.txt
+Ôö£ Ôùï /seguridad
+Ôö£ Ôùï /servicios                                                     1d      1y
+Ôö£ Ôùï /servicios/vender-piso-sin-inmobiliaria
+Ôö£ Ôùï /sevilla/pisos-particulares-sin-comision
+Ôö£ Ôùï /sitemap.xml                                                   1d      1y
+Ôö£ Ôùï /sobre-nosotros
+Ôö£ ãÆ /turbo/cancelado
+Ôö£ ãÆ /turbo/exito
+Ôö£ Ôùï /valencia/pisos-particulares-sin-comision
+Ôö£ Ôùï /vender-casa
+Ôö£ Ôùï /vender-piso-sin-agencia
+Ôöö Ôùï /zaragoza/contrato-alquiler
+
+
+ãÆ Proxy (Middleware)
+
+Ôùï  (Static)   prerendered as static content
+ÔùÅ  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ãÆ  (Dynamic)  server-rendered on demand
+

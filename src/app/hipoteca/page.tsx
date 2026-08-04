@@ -128,7 +128,7 @@ export default function HipotecaPage() {
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a0f] via-[#0d1a0f]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent" />
         </div>
 
         <div className="relative max-w-6xl mx-auto px-6 sm:px-10 py-20 flex flex-col lg:flex-row gap-12 items-center w-full">
@@ -284,7 +284,7 @@ export default function HipotecaPage() {
               className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0d1a0f]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-6 left-6 right-6">
               <p className="text-white font-bold text-xl">Más de 200 familias</p>
               <p className="text-white/70 text-sm">ya han conseguido su hipoteca con Inmonest</p>

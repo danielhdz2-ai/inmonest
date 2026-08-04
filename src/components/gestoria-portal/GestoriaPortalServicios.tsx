@@ -55,7 +55,7 @@ export default function GestoriaPortalServicios({
 
   return (
     <div className="space-y-5">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1008] to-forest-900 p-6 text-white">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-black to-black p-6 text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(201,150,42,0.3),transparent)]" />
         <div className="relative">
           <p className="text-[#f4d98a] text-xs font-bold uppercase tracking-widest">Ampliar tu expediente</p>

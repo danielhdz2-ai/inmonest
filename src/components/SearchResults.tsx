@@ -135,7 +135,7 @@ export default function SearchResults({
                   
                   {/* Banner gestoría después del piso #6 (solo en página 1) */}
                   {index === 5 && pagina === 1 && (
-                    <div className="bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-6 sm:p-8 my-4 shadow-lg">
+                    <div className="bg-gradient-to-r from-black to-black rounded-2xl p-6 sm:p-8 my-4 shadow-lg">
                       <div className="max-w-4xl mx-auto text-center">
                         <div className="flex items-center justify-center gap-3 mb-4">
                           <HomeIcon className="w-10 h-10 text-gold-300" />
@@ -175,7 +175,7 @@ export default function SearchResults({
                   
                   {/* Banner gestoría después del piso #6 (solo en página 1) */}
                   {index === 5 && pagina === 1 && (
-                    <div className="col-span-full bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-6 sm:p-8 my-4 shadow-lg">
+                    <div className="col-span-full bg-gradient-to-r from-black to-black rounded-2xl p-6 sm:p-8 my-4 shadow-lg">
                       <div className="max-w-4xl mx-auto text-center">
                         <div className="flex items-center justify-center gap-3 mb-4">
                           <HomeIcon className="w-10 h-10 text-gold-300" />

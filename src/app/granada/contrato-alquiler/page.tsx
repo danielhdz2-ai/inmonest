@@ -134,7 +134,7 @@ export default function GestoriaGranadaPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-forest-950 via-[#3d2100] to-[#5a2d00] text-white py-16 sm:py-24">
+      <section className="relative bg-gradient-to-br from-black via-black to-black text-white py-16 sm:py-24">
         <div className="absolute inset-0 opacity-10">
           <Image src="/gestoria2.jpg" alt="Gestoría Granada" fill className="object-cover" />
         </div>
@@ -158,7 +158,7 @@ export default function GestoriaGranadaPage() {
             </Link>
             <Link
               href="/gestoria/solicitar/arras-penitenciales"
-              className="inline-block px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-[#2e1900] font-bold text-lg shadow-xl transition-all"
+              className="inline-block px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-black font-bold text-lg shadow-xl transition-all"
             >
               Contrato de Arras - 145€
             </Link>
@@ -422,7 +422,7 @@ export default function GestoriaGranadaPage() {
       </section>
 
       {/* CTA Final */}
-      <section className="bg-gradient-to-br from-[#2e1900] to-[#5a2d00] text-white py-16 sm:py-20">
+      <section className="bg-gradient-to-br from-black to-black text-white py-16 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-6">
             ¿Necesitas un contrato inmobiliario en Granada?
@@ -440,7 +440,7 @@ export default function GestoriaGranadaPage() {
             </Link>
             <Link
               href="/gestoria"
-              className="inline-block px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-[#2e1900] font-bold text-lg shadow-xl transition-all"
+              className="inline-block px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-black font-bold text-lg shadow-xl transition-all"
             >
               Ver todos los servicios
             </Link>

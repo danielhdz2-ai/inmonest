@@ -1,4 +1,4 @@
-﻿'use client'
+'use client'
 
 import { useState, useEffect } from 'react'
 import { gtmPush } from '@/components/GTMProvider'
@@ -147,7 +147,7 @@ export default function SolicitarModal({
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl flex overflow-hidden max-h-[90vh]">
 
         {/* ── Columna izquierda: confianza ─────────────────────────────── */}
-        <div className="hidden md:flex flex-col w-[42%] bg-gradient-to-br from-forest-800 to-forest-900 p-8 text-white flex-shrink-0">
+        <div className="hidden md:flex flex-col w-[42%] bg-gradient-to-br from-black to-black p-8 text-white flex-shrink-0">
           {/* Logo */}
           <div className="flex items-center mb-8">
             <span className="text-2xl font-extrabold tracking-tight">

@@ -121,7 +121,7 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col overflow-x-hidden" data-app-shell="4">
+      <body className="min-h-full flex flex-col overflow-x-hidden" data-app-shell="5">
         {/* GTM noscript fallback */}
         <noscript>
           <iframe

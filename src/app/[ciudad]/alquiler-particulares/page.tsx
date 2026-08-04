@@ -267,7 +267,7 @@ export default async function AlquilerParticularesPage({
         {/* Overlay oscuro para legibilidad del texto */}
         <div className="absolute inset-0 bg-forest-900/75" />
         {/* Gradiente dorado sutil en la parte inferior */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0d1a0f] to-transparent" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
 
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-14">
 

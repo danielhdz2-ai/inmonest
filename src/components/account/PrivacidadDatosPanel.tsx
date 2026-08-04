@@ -87,7 +87,7 @@ export default function PrivacidadDatosPanel({
   return (
     <div className="space-y-5">
       {/* Banner Inmonest */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1008] to-forest-900 p-5 sm:p-6 text-white">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-black to-black p-5 sm:p-6 text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(201,150,42,0.2),transparent)]" />
         <div className="relative flex items-start gap-4">
           <div className="w-11 h-11 rounded-xl bg-gold-500/20 border border-gold-500/30 flex items-center justify-center text-xl flex-shrink-0">
