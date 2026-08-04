@@ -7,6 +7,7 @@ import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
 import SolicitarModal from './SolicitarModal'
 import { gtmPush } from '@/components/GTMProvider'
 import TestimoniosCarousel from '@/components/TestimoniosCarousel'
+import { Scale, Zap, Shield, FileText, Building2, BadgeCheck, Star, Users } from '@/components/ui/Icons'
 
 interface Service {
   key: string
@@ -460,13 +461,16 @@ export default function GestoriaPage() {
           </p>
           <div className="flex flex-wrap gap-3 mt-6">
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white text-sm">
-              <span>⚖️</span> Gestoría inmobiliaria experta
+              <Scale className="w-4 h-4 text-gold-300 shrink-0" />
+              Gestoría inmobiliaria experta
             </div>
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white text-sm">
-              <span>⏱️</span> Respuesta en 24h
+              <Zap className="w-4 h-4 text-gold-300 shrink-0" />
+              Respuesta en 24 h
             </div>
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white text-sm">
-              <span>📜</span> +500 contratos redactados
+              <FileText className="w-4 h-4 text-gold-300 shrink-0" />
+              +500 contratos redactados
             </div>
           </div>
         </div>
@@ -511,17 +515,17 @@ export default function GestoriaPage() {
       </section>
 
       {/* TRUST BAR */}
-      <section className="bg-[#7a5c1e] py-5 px-6">
+      <section className="bg-gold-700 py-5 px-6">
         <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-x-10 gap-y-3 text-center">
           {[
-            { icon: '🏛️', text: 'Gestoría especializada: tramita contratos de alquiler' },
-            { icon: '📋', text: 'Contratos personalizados, no plantillas' },
-            { icon: '🔒', text: 'Sin pago por adelantado' },
-            { icon: '📧', text: 'Entrega por email en PDF firmable' },
-          ].map((item) => (
-            <div key={item.text} className="flex items-center gap-2 text-white/90 text-sm font-medium">
-              <span>{item.icon}</span>
-              <span>{item.text}</span>
+            { Icon: Scale, text: 'Gestoría especializada en contratos de alquiler' },
+            { Icon: FileText, text: 'Contratos personalizados, no plantillas' },
+            { Icon: Shield, text: 'Sin pago por adelantado' },
+            { Icon: BadgeCheck, text: 'Entrega por email en PDF firmable' },
+          ].map(({ Icon, text }) => (
+            <div key={text} className="flex items-center gap-2 text-white/90 text-sm font-medium">
+              <Icon className="w-4 h-4 text-gold-200 shrink-0" />
+              <span>{text}</span>
             </div>
           ))}
         </div>
@@ -703,15 +707,15 @@ export default function GestoriaPage() {
             {/* Stats */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { num: '+500', label: 'Contratos redactados', icon: '📋' },
-                { num: '48h', label: 'Tiempo medio de entrega', icon: '⚡' },
-                { num: '98%', label: 'Clientes satisfechos', icon: '⭐' },
-                { num: '17', label: 'CCAA cubiertas', icon: '🗺️' },
-              ].map(stat => (
-                <div key={stat.label} className="bg-[#fef9e8] rounded-2xl p-5 text-center border border-[#f4c94a]/30">
-                  <div className="text-2xl mb-1">{stat.icon}</div>
-                  <div className="text-2xl font-extrabold text-[#c9962a]">{stat.num}</div>
-                  <div className="text-xs text-gray-600 mt-1 leading-tight">{stat.label}</div>
+                { num: '+500', label: 'Contratos redactados', Icon: FileText },
+                { num: '48h', label: 'Tiempo medio de entrega', Icon: Zap },
+                { num: '98%', label: 'Clientes satisfechos', Icon: Star },
+                { num: '17', label: 'CCAA cubiertas', Icon: Building2 },
+              ].map(({ num, label, Icon }) => (
+                <div key={label} className="bg-cream-100 rounded-2xl p-5 text-center border border-gold-300/30">
+                  <Icon className="w-6 h-6 text-gold-500 mx-auto mb-2" />
+                  <div className="text-2xl font-extrabold text-gold-600">{num}</div>
+                  <div className="text-xs text-gray-600 mt-1 leading-tight">{label}</div>
                 </div>
               ))}
             </div>
@@ -789,48 +793,18 @@ export default function GestoriaPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
-              {
-                icon: '🏠',
-                titulo: 'Ley de Arrendamientos Urbanos (LAU)',
-                ley: 'Ley 29/1994 · Actualiz. 2023-2026',
-                desc: 'Regula el arrendamiento de vivienda habitual (Título II) y de uso distinto de vivienda como locales comerciales (Título III). Define duración mínima, prórrogas, actualización de renta y derechos del inquilino.',
-              },
-              {
-                icon: '🏛️',
-                titulo: 'Ley de Vivienda 2023',
-                ley: 'Ley 12/2023 · Vigente en 2026',
-                desc: 'Introduce límites a la actualización de renta en zonas tensionadas, define "gran tenedor" y establece nuevos derechos del inquilino en todo el territorio nacional. Todos nuestros contratos de alquiler incorporan sus disposiciones.',
-              },
-              {
-                icon: '⚖️',
-                titulo: 'Código Civil',
-                ley: 'Arts. 1254–1314 y 1542 ss.',
-                desc: 'Rige los contratos entre particulares no cubiertos por la LAU: alquiler de habitaciones, préstamos privados y contratos atípicos. Establece los principios de autonomía de la voluntad, obligaciones y consecuencias del incumplimiento.',
-              },
-              {
-                icon: '🤝',
-                titulo: 'Ley de Transmisiones Patrimoniales',
-                ley: 'Real Decreto Leg. 1/1993',
-                desc: 'Regula la tributación de los contratos de arras, arrendamientos y préstamos entre particulares. Los préstamos privados sin interés tributan por ITP a cuota cero pero deben declararse. Incluimos la nota fiscal en nuestros contratos de préstamo.',
-              },
-              {
-                icon: '🔏',
-                titulo: 'Reglamento Europeo de Firma Electrónica (eIDAS)',
-                ley: 'Reglamento UE 910/2014',
-                desc: 'Todos nuestros contratos se entregan en formato PDF firmable con firma electrónica simple o avanzada, con plena validez legal en toda la Unión Europea y ante los tribunales españoles.',
-              },
-              {
-                icon: '📜',
-                titulo: 'Ley de Propiedad Horizontal',
-                ley: 'Ley 49/1960 · Mod. 2022',
-                desc: 'Aplica en contratos que afectan a elementos comunes de comunidades de propietarios: garajes, trasteros, zonas comunes. Nuestros contratos respetan los estatutos de comunidad y la normativa interna aplicable.',
-              },
-            ].map(item => (
-              <div key={item.titulo} className="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-[#f4c94a]/40 transition-colors">
-                <div className="text-2xl mb-3">{item.icon}</div>
-                <p className="text-[10px] font-bold text-[#c9962a] uppercase tracking-wider mb-1">{item.ley}</p>
-                <h3 className="font-bold text-gray-900 text-sm mb-2 leading-snug">{item.titulo}</h3>
-                <p className="text-xs text-gray-600 leading-relaxed">{item.desc}</p>
+              { Icon: Building2, titulo: 'Ley de Arrendamientos Urbanos (LAU)', ley: 'Ley 29/1994 · Actualiz. 2023-2026', desc: 'Regula el arrendamiento de vivienda habitual (Título II) y de uso distinto de vivienda como locales comerciales (Título III). Define duración mínima, prórrogas, actualización de renta y derechos del inquilino.' },
+              { Icon: Building2, titulo: 'Ley de Vivienda 2023', ley: 'Ley 12/2023 · Vigente en 2026', desc: 'Introduce límites a la actualización de renta en zonas tensionadas, define "gran tenedor" y establece nuevos derechos del inquilino en todo el territorio nacional. Todos nuestros contratos de alquiler incorporan sus disposiciones.' },
+              { Icon: Scale, titulo: 'Código Civil', ley: 'Arts. 1254–1314 y 1542 ss.', desc: 'Rige los contratos entre particulares no cubiertos por la LAU: alquiler de habitaciones, préstamos privados y contratos atípicos. Establece los principios de autonomía de la voluntad, obligaciones y consecuencias del incumplimiento.' },
+              { Icon: Users, titulo: 'Ley de Transmisiones Patrimoniales', ley: 'Real Decreto Leg. 1/1993', desc: 'Regula la tributación de los contratos de arras, arrendamientos y préstamos entre particulares. Los préstamos privados sin interés tributan por ITP a cuota cero pero deben declararse. Incluimos la nota fiscal en nuestros contratos de préstamo.' },
+              { Icon: Shield, titulo: 'Reglamento Europeo de Firma Electrónica (eIDAS)', ley: 'Reglamento UE 910/2014', desc: 'Todos nuestros contratos se entregan en formato PDF firmable con firma electrónica simple o avanzada, con plena validez legal en toda la Unión Europea y ante los tribunales españoles.' },
+              { Icon: FileText, titulo: 'Ley de Propiedad Horizontal', ley: 'Ley 49/1960 · Mod. 2022', desc: 'Aplica en contratos que afectan a elementos comunes de comunidades de propietarios: garajes, trasteros, zonas comunes. Nuestros contratos respetan los estatutos de comunidad y la normativa interna aplicable.' },
+            ].map(({ Icon, titulo, ley, desc }) => (
+              <div key={titulo} className="bg-gray-50 rounded-2xl p-5 border border-gray-100 hover:border-gold-300/40 transition-colors">
+                <Icon className="w-6 h-6 text-gold-600 mb-3" />
+                <p className="text-[10px] font-bold text-gold-600 uppercase tracking-wider mb-1">{ley}</p>
+                <h3 className="font-bold text-gray-900 text-sm mb-2 leading-snug">{titulo}</h3>
+                <p className="text-xs text-gray-600 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
@@ -854,15 +828,15 @@ export default function GestoriaPage() {
               </p>
               <div className="space-y-3">
                 {[
-                  { icon: '🎓', text: 'Equipo de gestoría con especialización en contratos inmobiliarios' },
-                  { icon: '📍', text: 'Conocimiento de normativa autonómica: Cataluña, Madrid, Valencia, Andalucía...' },
-                  { icon: '🔄', text: 'Revisiones gratuitas dentro de los 7 días tras la entrega' },
-                  { icon: '📞', text: 'Consultas post-entrega incluidas sin coste adicional' },
-                  { icon: '🔐', text: 'Confidencialidad total: tus datos nunca se comparten con terceros' },
-                ].map(item => (
-                  <div key={item.text} className="flex items-start gap-3 text-sm text-gray-700">
-                    <span className="text-lg shrink-0 mt-0.5">{item.icon}</span>
-                    {item.text}
+                  { Icon: Scale, text: 'Equipo de gestoría con especialización en contratos inmobiliarios' },
+                  { Icon: Building2, text: 'Conocimiento de normativa autonómica: Cataluña, Madrid, Valencia, Andalucía...' },
+                  { Icon: BadgeCheck, text: 'Revisiones gratuitas dentro de los 7 días tras la entrega' },
+                  { Icon: Users, text: 'Consultas post-entrega incluidas sin coste adicional' },
+                  { Icon: Shield, text: 'Confidencialidad total: tus datos nunca se comparten con terceros' },
+                ].map(({ Icon, text }) => (
+                  <div key={text} className="flex items-start gap-3 text-sm text-gray-700">
+                    <Icon className="w-5 h-5 text-gold-600 shrink-0 mt-0.5" />
+                    {text}
                   </div>
                 ))}
               </div>
@@ -872,13 +846,15 @@ export default function GestoriaPage() {
                 <h3 className="font-bold text-gray-900 mb-3 text-base">¿Por qué no usar una plantilla gratuita?</h3>
                 <div className="space-y-2">
                   {[
-                    ['❌', 'Plantilla genérica', 'Sin adaptar a tu CCAA, situación ni partes concretas'],
-                    ['❌', 'Cláusulas nulas', 'Muchas plantillas incluyen cláusulas prohibidas por la LAU 2026'],
-                    ['❌', 'Sin actualización', 'La Ley de Vivienda cambia y las plantillas no se actualizan'],
-                    ['✅', 'Contrato Inmonest', 'Personalizado, actualizado y revisado por nuestra gestoría experta'],
-                  ].map(([icon, titulo, desc]) => (
+                    { ok: false, titulo: 'Plantilla genérica', desc: 'Sin adaptar a tu CCAA, situación ni partes concretas' },
+                    { ok: false, titulo: 'Cláusulas nulas', desc: 'Muchas plantillas incluyen cláusulas prohibidas por la LAU 2026' },
+                    { ok: false, titulo: 'Sin actualización', desc: 'La Ley de Vivienda cambia y las plantillas no se actualizan' },
+                    { ok: true, titulo: 'Contrato Inmonest', desc: 'Personalizado, actualizado y revisado por nuestra gestoría experta' },
+                  ].map(({ ok, titulo, desc }) => (
                     <div key={titulo} className="flex items-start gap-2 text-sm">
-                      <span className="shrink-0 mt-0.5">{icon}</span>
+                      <span className={`shrink-0 mt-0.5 w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-bold ${ok ? 'bg-gold-500 text-white' : 'bg-gray-200 text-gray-500'}`}>
+                        {ok ? '✓' : '×'}
+                      </span>
                       <div>
                         <span className="font-semibold text-gray-800">{titulo}: </span>
                         <span className="text-gray-600">{desc}</span>

@@ -57,7 +57,7 @@ export default function ServiciosHubContent() {
       {/* BREADCRUMB */}
       <nav className="max-w-6xl mx-auto px-6 pt-6 pb-2">
         <div className="flex items-center gap-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-[#c9962a] transition">
+          <Link href="/" className="hover:text-gold-600 transition">
             Inicio
           </Link>
           <span>→</span>
@@ -73,13 +73,13 @@ export default function ServiciosHubContent() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#3d2a05]/90 via-[#7a5c1e]/65 to-transparent" />
         <div className="relative h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 max-w-4xl">
-          <span className="inline-block bg-[#c9962a] text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 w-fit">
+          <span className="inline-block bg-gold-500 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 w-fit">
             Contratos · Arras · Alquiler LAU
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-4">
             Servicios de contratos
             <br />
-            <span className="text-[#f4c94a]">inmobiliarios con precio cerrado</span>
+            <span className="text-gold-300">inmobiliarios con precio cerrado</span>
           </h1>
           <p className="text-white/90 text-base sm:text-lg max-w-xl leading-relaxed">
             Elige el servicio, abre su página y contrata online. Arras, alquiler LAU, revisiones y packs
@@ -100,7 +100,7 @@ export default function ServiciosHubContent() {
       </section>
 
       {/* TRUST BAR */}
-      <section className="bg-[#7a5c1e] py-5 px-6">
+      <section className="bg-gold-700 py-5 px-6">
         <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-x-10 gap-y-3 text-center">
           {[
             'Contratos personalizados, no plantillas',
@@ -109,7 +109,7 @@ export default function ServiciosHubContent() {
             'Catálogo completo de servicios',
           ].map((text) => (
             <div key={text} className="flex items-center gap-2 text-white/90 text-sm font-medium">
-              <span className="text-[#f4c94a]">✓</span>
+              <span className="text-gold-300">✓</span>
               <span>{text}</span>
             </div>
           ))}
@@ -128,7 +128,7 @@ export default function ServiciosHubContent() {
             acompañamiento hasta escritura. Consulta el <strong>catálogo de servicios</strong> y entra en
             cada uno para ver detalle, precios y contratación.
           </p>
-          <div className="bg-[#fef9e8] border-l-4 border-[#c9962a] p-5 rounded-r-lg">
+          <div className="bg-cream-100 border-l-4 border-gold-500 p-5 rounded-r-lg">
             <p className="text-gray-800 text-base leading-relaxed">
               Usa las pestañas de abajo para filtrar por tipo. Pulsa <strong>Ver más información</strong> o
               la imagen de la tarjeta para abrir la página del servicio.
@@ -138,7 +138,7 @@ export default function ServiciosHubContent() {
       </section>
 
       {/* CÓMO FUNCIONA */}
-      <section className="bg-[#fef9e8] py-14 px-4">
+      <section className="bg-cream-100 py-14 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-10">¿Cómo funciona?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
@@ -160,7 +160,7 @@ export default function ServiciosHubContent() {
               },
             ].map((item) => (
               <div key={item.step} className="text-center">
-                <div className="w-14 h-14 bg-[#c9962a] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+                <div className="w-14 h-14 bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
                   <span className="text-white font-extrabold text-lg">{item.step}</span>
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
@@ -189,7 +189,7 @@ export default function ServiciosHubContent() {
                 onClick={() => setActive(cat.key)}
                 className={`flex-shrink-0 snap-start px-4 py-2.5 rounded-full text-sm font-semibold transition-all min-h-[44px] touch-manipulation whitespace-nowrap ${
                   active === cat.key
-                    ? 'bg-[#c9962a] text-white shadow-sm'
+                    ? 'bg-gold-500 text-white shadow-sm'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -241,13 +241,13 @@ export default function ServiciosHubContent() {
                     {SERVICIOS_CATEGORIA_LABELS[service.categoria]}
                   </span>
                   {service.badge && (
-                    <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full bg-[#c9962a] text-white">
+                    <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full bg-gold-500 text-white">
                       {service.badge}
                     </span>
                   )}
                   <div className="absolute bottom-3 right-3 bg-white/95 rounded-lg px-3 py-1.5">
                     <div className="text-right">
-                      <div className="text-xl font-extrabold text-[#c9962a]">{service.precio} €</div>
+                      <div className="text-xl font-extrabold text-gold-500">{service.precio} €</div>
                       <div className="text-[10px] text-gray-500 font-medium -mt-0.5">IVA incluido</div>
                     </div>
                   </div>
@@ -255,7 +255,7 @@ export default function ServiciosHubContent() {
 
                 <div className="p-5 flex flex-col flex-1">
                   <h3 className="font-bold text-gray-900 text-base leading-snug mb-2">
-                    <Link href={href} className="hover:text-[#a87a20] transition-colors">
+                    <Link href={href} className="hover:text-gold-700 transition-colors">
                       {service.nombre}
                     </Link>
                   </h3>
@@ -264,7 +264,7 @@ export default function ServiciosHubContent() {
                   <ul className="space-y-1.5 mb-5 flex-1">
                     {items.slice(0, 4).map((item) => (
                       <li key={item} className="flex items-start gap-2 text-xs text-gray-600">
-                        <span className="text-[#c9962a] mt-0.5 shrink-0">✓</span>
+                        <span className="text-gold-500 mt-0.5 shrink-0">✓</span>
                         {item}
                       </li>
                     ))}
@@ -272,7 +272,7 @@ export default function ServiciosHubContent() {
 
                   <Link
                     href={href}
-                    className="block w-full text-center py-2.5 bg-[#c9962a] text-white rounded-xl font-bold text-sm hover:bg-[#a87a20] transition-colors"
+                    className="block w-full text-center py-2.5 bg-gold-500 text-white rounded-xl font-bold text-sm hover:bg-gold-600 transition-colors"
                   >
                     Ver más información — {service.precio} €{' '}
                     <span className="font-normal text-xs opacity-90">(IVA incl.)</span>
@@ -294,7 +294,7 @@ export default function ServiciosHubContent() {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="/gestoria"
-              className="inline-flex rounded-full bg-[#c9962a] text-[#1a2f1c] font-semibold px-6 py-3 text-sm hover:bg-[#b8841e] transition"
+              className="inline-flex rounded-full bg-gold-500 text-forest-900 font-semibold px-6 py-3 text-sm hover:bg-gold-600 transition"
             >
               Ir a gestoría
             </Link>

@@ -2,67 +2,74 @@ import Image from 'next/image'
 import { createClient } from '@/lib/supabase/server'
 import NavbarServer from '@/components/NavbarServer'
 import PublicarLandingClient from './PublicarLandingClient'
+import {
+  HomeIcon,
+  Camera,
+  Zap,
+  Shield,
+  Gift,
+  Users,
+  ChartBar,
+  Scale,
+  FileText,
+} from '@/components/ui/Icons'
+import type { ComponentType } from 'react'
 
 export const metadata = {
   title: 'Publica tu anuncio gratis',
   description: 'Publica tu piso o casa en Inmonest. 2 anuncios gratis, visibilidad Turbo inmediata, trato directo con compradores e inquilinos verificados.',
 }
 
-const PASOS = [
+const PASOS: {
+  num: string
+  Icon: ComponentType<{ className?: string }>
+  titulo: string
+  desc: string
+  detalle: string
+  highlight?: boolean
+}[] = [
   {
     num: '01',
-    icon: '🏠',
+    Icon: HomeIcon,
     titulo: 'Describe tu inmueble',
-    desc: 'Nuestro formulario inteligente autocompleta tu dirección y te sugiere el precio óptimo basado en propiedades similares en tu zona.',
-    detalle: 'Título automático, descripción IA, datos de m² y habitaciones.',
-    color: 'from-blue-50 to-indigo-50',
-    border: 'border-blue-100',
-    iconBg: 'bg-blue-100',
-    numColor: 'text-blue-300',
+    desc: 'Formulario inteligente con autocompletado de dirección y sugerencia de precio según propiedades similares en tu zona.',
+    detalle: 'Título automático, descripción con IA, datos de m² y habitaciones.',
   },
   {
     num: '02',
-    icon: '📸',
+    Icon: Camera,
     titulo: 'Sube fotos de calidad',
-    desc: 'Sistema drag & drop para cargar hasta 30 fotos. Ordénalas fácilmente y destaca las mejores.',
-    detalle: '💡 Consejo Inmovía: Los anuncios con más de 10 fotos reciben un 40% más de contactos.',
-    color: 'from-amber-50 to-yellow-50',
-    border: 'border-amber-100',
-    iconBg: 'bg-amber-100',
-    numColor: 'text-amber-300',
+    desc: 'Carga hasta 30 fotos con drag and drop. Ordena y destaca las mejores imágenes de tu propiedad.',
+    detalle: 'Los anuncios con más de 10 fotos reciben un 40 % más de contactos.',
     highlight: true,
   },
   {
     num: '03',
-    icon: '🚀',
+    Icon: Zap,
     titulo: 'Activa Inmonest Turbo',
-    desc: 'Al publicar, tu anuncio se distribuye automáticamente a nuestra red de compradores e inversores verificados en toda España.',
+    desc: 'Tu anuncio se distribuye a compradores e inversores verificados en toda España.',
     detalle: 'Alertas inmediatas a usuarios que buscan propiedades como la tuya.',
-    color: 'from-orange-50 to-red-50',
-    border: 'border-orange-100',
-    iconBg: 'bg-orange-100',
-    numColor: 'text-orange-300',
   },
   {
     num: '04',
-    icon: '🔒',
+    Icon: Shield,
     titulo: 'Tú controlas el contacto',
-    desc: 'Decide si muestras tu teléfono o gestionas todo a través de nuestro chat interno. Sin acoso de agencias, solo contactos serios.',
+    desc: 'Muestra tu teléfono o gestiona todo por chat interno. Sin acoso de agencias.',
     detalle: 'Filtro anti-spam integrado. Bloquea contactos no deseados.',
-    color: 'from-green-50 to-emerald-50',
-    border: 'border-green-100',
-    iconBg: 'bg-green-100',
-    numColor: 'text-green-300',
   },
 ]
 
-const VENTAJAS = [
-  { icon: '🆓', titulo: '2 anuncios gratuitos', desc: 'Publica tus primeros 2 anuncios completamente gratis. Sin tarjeta de crédito.' },
-  { icon: '⚡', titulo: 'Publicación inmediata', desc: 'Tu anuncio aparece en segundos. Sin moderación manual ni esperas.' },
-  { icon: '👥', titulo: 'Compradores verificados', desc: 'Nuestra red Inmonest Turbo solo incluye usuarios con intención real de compra o alquiler.' },
-  { icon: '📊', titulo: 'Estadísticas en tiempo real', desc: 'Ve cuántas visitas y contactos ha recibido tu anuncio desde tu panel privado.' },
-  { icon: '⚖️', titulo: 'Contratos legales incluidos', desc: 'Accede a contratos de arras, alquiler y reserva redactados por nuestro equipo jurídico.' },
-  { icon: '🛡️', titulo: 'Protección de datos', desc: 'Tu teléfono nunca se muestra públicamente a menos que tú lo decidas.' },
+const VENTAJAS: {
+  Icon: ComponentType<{ className?: string }>
+  titulo: string
+  desc: string
+}[] = [
+  { Icon: Gift, titulo: '2 anuncios gratuitos', desc: 'Publica tus primeros 2 anuncios sin tarjeta de crédito.' },
+  { Icon: Zap, titulo: 'Publicación inmediata', desc: 'Tu anuncio aparece en segundos, sin moderación manual.' },
+  { Icon: Users, titulo: 'Compradores verificados', desc: 'Red Turbo con usuarios con intención real de compra o alquiler.' },
+  { Icon: ChartBar, titulo: 'Estadísticas en tiempo real', desc: 'Visitas y contactos desde tu panel privado.' },
+  { Icon: Scale, titulo: 'Contratos legales incluidos', desc: 'Acceso a arras, alquiler y reserva redactados por el equipo jurídico.' },
+  { Icon: Shield, titulo: 'Protección de datos', desc: 'Tu teléfono no se muestra públicamente salvo que tú lo decidas.' },
 ]
 
 const FAQS = [
@@ -108,7 +115,7 @@ export default async function PublicarAnuncioPage() {
           sizes="100vw"
         />
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a0d00]/92 via-[#2e1900]/80 to-[#1a0d00]/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-950/92 via-forest-950/80 to-forest-950/50" />
 
         {/* Destellos decorativos */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-[#c9962a]/10 rounded-full blur-3xl" />
@@ -117,14 +124,15 @@ export default async function PublicarAnuncioPage() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
           <div className="max-w-2xl">
             {/* Badge */}
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[#c9962a]/20 text-[#f4c94a] border border-[#c9962a]/30 mb-5 backdrop-blur-sm">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#f4c94a] animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-gold-500/20 text-gold-300 border border-gold-500/30 mb-5 backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-gold-300 animate-pulse" />
               2 anuncios completamente gratis
             </span>
 
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 leading-tight">
-              Cómo poner un anuncio<br />
-              <span className="text-[#f4c94a]">en Inmonest</span>
+              Cómo poner un anuncio
+              <br />
+              <span className="text-gold-300">en Inmonest</span>
             </h1>
             <p className="text-lg text-white/75 mb-8 leading-relaxed">
               Tus 2 primeros anuncios son gratuitos. Sin comisiones, trato directo
@@ -165,7 +173,7 @@ export default async function PublicarAnuncioPage() {
       <section className="py-20 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-3 block">Proceso simplificado</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-gold-600 mb-3 block">Proceso simplificado</span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
               ¿Qué pasos seguir para publicar<br className="hidden sm:block" /> tu anuncio como propietario?
             </h2>
@@ -174,25 +182,22 @@ export default async function PublicarAnuncioPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {PASOS.map((paso) => (
               <div
                 key={paso.num}
-                className={`relative rounded-2xl border ${paso.border} bg-gradient-to-br ${paso.color} p-7 overflow-hidden`}
+                className="relative rounded-2xl border border-gray-100 bg-white p-7 overflow-hidden shadow-sm hover:border-gold-400/30 transition-colors"
               >
-                {/* Número grande decorativo */}
-                <span className={`absolute -top-4 -right-2 text-8xl font-black ${paso.numColor} select-none pointer-events-none`}>
+                <span className="absolute -top-4 -right-2 text-8xl font-black text-cream-200 select-none pointer-events-none">
                   {paso.num}
                 </span>
-
-                <div className={`w-12 h-12 ${paso.iconBg} rounded-xl flex items-center justify-center text-2xl mb-4`}>
-                  {paso.icon}
+                <div className="w-11 h-11 bg-cream-100 border border-gold-500/20 rounded-xl flex items-center justify-center mb-4">
+                  <paso.Icon className="w-5 h-5 text-gold-600" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900 mb-2">{paso.titulo}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed mb-3">{paso.desc}</p>
-
                 {paso.highlight ? (
-                  <div className="bg-[#c9962a]/10 border border-[#c9962a]/20 rounded-xl px-4 py-2.5 text-xs text-[#8a6520] font-medium leading-snug">
+                  <div className="bg-cream-100 border border-gold-500/20 rounded-xl px-4 py-2.5 text-xs text-gold-800 font-medium leading-snug">
                     {paso.detalle}
                   </div>
                 ) : (
@@ -226,7 +231,7 @@ export default async function PublicarAnuncioPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#1a0d00]/50 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-white/95 backdrop-blur rounded-2xl px-5 py-4 shadow-lg">
-                  <p className="text-sm font-bold text-gray-900">🤝 Miles de tratos cerrados</p>
+                  <p className="text-sm font-bold text-gray-900">Miles de tratos cerrados</p>
                   <p className="text-xs text-gray-500 mt-0.5">Entre propietarios y compradores particulares, sin pagar comisiones.</p>
                 </div>
               </div>
@@ -234,17 +239,19 @@ export default async function PublicarAnuncioPage() {
 
             {/* Ventajas */}
             <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-3 block">Por qué elegirnos</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-gold-600 mb-3 block">Por qué elegirnos</span>
               <h2 className="text-3xl font-extrabold text-gray-900 mb-8">
                 Todo lo que necesitas<br />en un solo lugar
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {VENTAJAS.map((v) => (
-                  <div key={v.titulo} className="flex gap-3">
-                    <span className="text-2xl flex-shrink-0 mt-0.5">{v.icon}</span>
+                {VENTAJAS.map(({ Icon, titulo, desc }) => (
+                  <div key={titulo} className="flex gap-3">
+                    <div className="w-9 h-9 rounded-lg bg-cream-100 border border-gold-500/20 flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4 text-gold-600" />
+                    </div>
                     <div>
-                      <p className="text-sm font-bold text-gray-900">{v.titulo}</p>
-                      <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{v.desc}</p>
+                      <p className="text-sm font-bold text-gray-900">{titulo}</p>
+                      <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{desc}</p>
                     </div>
                   </div>
                 ))}
@@ -255,9 +262,9 @@ export default async function PublicarAnuncioPage() {
       </section>
 
       {/* ── PLANES ─────────────────────────────────────────────────── */}
-      <section className="py-20 px-4 bg-[#fef9e8]">
+      <section className="py-20 px-4 bg-cream-100">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-3 block">Precios transparentes</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-gold-600 mb-3 block">Precios transparentes</span>
           <h2 className="text-3xl font-extrabold text-gray-900 mb-10">Elige tu plan</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
@@ -280,11 +287,11 @@ export default async function PublicarAnuncioPage() {
             </div>
 
             {/* Plan Profesional */}
-            <div className="bg-gradient-to-br from-[#1a0d00] to-[#2e1900] rounded-2xl p-7 text-left shadow-xl relative overflow-hidden">
-              <div className="absolute top-4 right-4 bg-[#c9962a] text-white text-xs font-bold px-3 py-1 rounded-full">
+            <div className="bg-gradient-to-br from-forest-950 to-forest-900 rounded-2xl p-7 text-left shadow-xl relative overflow-hidden">
+              <div className="absolute top-4 right-4 bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 Popular
               </div>
-              <p className="text-xs font-bold uppercase tracking-widest text-[#f4c94a]/70 mb-2">Profesional</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-gold-300/70 mb-2">Profesional</p>
               <p className="text-3xl font-black text-white mb-1">29€<span className="text-base font-medium text-white/50">/mes</span></p>
               <p className="text-xs text-white/40 mb-5">Sin permanencia · Cancela cuando quieras</p>
               <ul className="space-y-2.5 text-sm text-white/80 mb-6">
@@ -336,9 +343,9 @@ export default async function PublicarAnuncioPage() {
       </section>
 
       {/* ── CTA FINAL ──────────────────────────────────────────────── */}
-      <section className="py-20 px-4 bg-gradient-to-br from-[#1a0d00] via-[#2e1900] to-[#1a0d00]">
+      <section className="py-20 px-4 bg-gradient-to-br from-forest-950 via-forest-900 to-forest-950">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="mb-6 text-5xl">🏡</div>
+          <FileText className="w-10 h-10 text-gold-400 mx-auto mb-6" />
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
             Empieza a publicar gratis hoy
           </h2>

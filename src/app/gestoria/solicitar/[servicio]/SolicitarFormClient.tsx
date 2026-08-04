@@ -27,7 +27,7 @@ export default function SolicitarFormClient({ servicioSlug, servicioNombre, serv
 
   const set = (k: keyof typeof form, v: string) => setForm(p => ({ ...p, [k]: v }))
 
-  const inp = 'w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9a84c]/40 focus:border-[#c9a84c] transition-colors bg-white'
+  const inp = 'w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-gold-500/40 focus:border-gold-500 transition-colors bg-white'
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -165,7 +165,7 @@ export default function SolicitarFormClient({ servicioSlug, servicioNombre, serv
         <div className="bg-[#fdf8ee] border border-[#e8d48a] rounded-xl px-4 py-3 flex items-center justify-between">
           <span className="text-sm text-gray-700 font-medium">{servicioNombre}</span>
           <div className="text-right">
-            <div className="text-xl font-bold text-[#c9a84c]">{servicioPrecio} €</div>
+            <div className="text-xl font-bold text-gold-500">{servicioPrecio} €</div>
             <div className="text-[10px] text-gray-500 -mt-0.5">IVA incluido</div>
           </div>
         </div>
@@ -180,7 +180,7 @@ export default function SolicitarFormClient({ servicioSlug, servicioNombre, serv
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="w-full py-3.5 bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold text-sm rounded-xl transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+          className="w-full py-3.5 bg-gold-500 hover:bg-gold-600 text-white font-bold text-sm rounded-xl transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
         >
           {status === 'sending' ? (
             <>

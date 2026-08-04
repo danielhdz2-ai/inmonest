@@ -3,6 +3,7 @@ import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import TrackedContactLink from '@/components/TrackedContactLink'
+import { Button } from '@/components/ui/Button'
 import {
   getContratoAlquilerPrecio,
   getContratoAlquilerSolicitarHref,
@@ -11,15 +12,10 @@ import {
 type Props = {
   ciudad: string
   ciudadSlug: string
-  /** Título del CTA final oscuro */
   ctaTitulo?: string
   ctaTexto?: string
 }
 
-/**
- * Bloque de conversión compartido para hubs /gestoria/[ciudad]:
- * banner llamar, form pide info, CTA a contratos 145€, sticky móvil.
- */
 export default function GestoriaHubConversionFooter({
   ciudad,
   ciudadSlug,
@@ -40,44 +36,42 @@ export default function GestoriaHubConversionFooter({
         whatsappMessage={waMsg}
       />
 
-      <section className="py-12 px-4 bg-[#fdf8ee] border-y border-[#e8d48a]">
+      <section className="py-12 px-4 bg-cream-100 border-y border-gold-300/40">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-[#7a5c1e] mb-2">Sin compromiso</p>
-            <h2 className="text-2xl font-bold text-gray-900 mb-3">
-              ¿Prefieres que te llamemos?
-            </h2>
+            <p className="text-xs font-bold uppercase tracking-widest text-gold-700 mb-2">Sin compromiso</p>
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">¿Prefieres que te llamemos?</h2>
             <p className="text-gray-600 text-sm leading-relaxed mb-4">
               Déjanos nombre y teléfono. Un gestor de Inmonest te contacta, resuelve dudas sobre contratos,
               arras o compraventa en {ciudad}, y tú decides si contratas.
             </p>
             <ul className="space-y-2 text-sm text-gray-700">
               <li className="flex gap-2">
-                <span className="text-[#c9a84c]">✓</span>
+                <span className="text-gold-500">✓</span>
                 Contrato alquiler desde {precioLau}€ · Arras 145€
               </li>
               <li className="flex gap-2">
-                <span className="text-[#c9a84c]">✓</span>
+                <span className="text-gold-500">✓</span>
                 Respuesta en horario laboral
               </li>
               <li className="flex gap-2">
-                <span className="text-[#c9a84c]">✓</span>
+                <span className="text-gold-500">✓</span>
                 Sin comisión de agencia
               </li>
             </ul>
           </div>
-          <div className="bg-white rounded-2xl border border-[#e8d48a] p-5 sm:p-6 shadow-sm">
-          <GestoriaPideInfoForm
-            ciudad={ciudad}
-            servicio="gestoría inmobiliaria"
-            precioLabel={`desde ${precioLau}€`}
-            serviceKey={ciudadSlug === 'barcelona' ? 'contrato-alquiler-barcelona' : 'contrato-alquiler'}
-          />
+          <div className="bg-white rounded-2xl border border-gold-300/40 p-5 sm:p-6 shadow-sm">
+            <GestoriaPideInfoForm
+              ciudad={ciudad}
+              servicio="gestoría inmobiliaria"
+              precioLabel={`desde ${precioLau}€`}
+              serviceKey={ciudadSlug === 'barcelona' ? 'contrato-alquiler-barcelona' : 'contrato-alquiler'}
+            />
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">
+      <section className="py-16 bg-gradient-to-br from-forest-800 to-forest-900 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             {ctaTitulo ?? `Gestoría inmobiliaria en ${ciudad}: empieza por lo que necesitas`}
@@ -87,18 +81,12 @@ export default function GestoriaHubConversionFooter({
               `Contrato de alquiler o arras desde ${precioLau}€, o habla con un gestor ahora. Sin compromiso.`}
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href={solicitarLauHref}
-              className="bg-[#c9a84c] text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition"
-            >
+            <Button href={solicitarLauHref} variant="primary">
               Contrato alquiler desde {precioLau}€
-            </Link>
-            <Link
-              href="/gestoria/solicitar/arras-penitenciales"
-              className="bg-white/10 border border-[#c9a84c]/50 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/15 transition"
-            >
+            </Button>
+            <Button href="/gestoria/solicitar/arras-penitenciales" variant="ghost">
               Arras desde 145€
-            </Link>
+            </Button>
             <TrackedContactLink
               event="click_phone"
               city={ciudadSlug}

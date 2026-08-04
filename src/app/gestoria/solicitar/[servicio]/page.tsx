@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Navbar from '@/components/NavbarServer'
+import { Scale, Shield, Zap } from '@/components/ui/Icons'
 import PageHeroImage from '@/components/PageHeroImage'
 import SolicitarFormClient from './SolicitarFormClient'
 import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
@@ -117,18 +118,18 @@ export default async function SolicitarServicioPage({
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
             {/* ── Panel izquierdo: resumen del servicio ── */}
             <div className="lg:col-span-2">
-              <div className="bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] rounded-2xl p-7 text-white sticky top-24">
-                <span className="inline-block bg-[#c9a84c]/20 text-[#c9a84c] text-xs font-bold px-3 py-1 rounded-full mb-4">
+              <div className="bg-gradient-to-br from-forest-800 to-forest-900 rounded-2xl p-7 text-white sticky top-24">
+                <span className="inline-block bg-gold-500/20 text-gold-300 text-xs font-bold px-3 py-1 rounded-full mb-4">
                   {data.categoria}
                 </span>
                 <h1 className="text-xl font-bold text-white mb-2 leading-snug">{data.nombre}</h1>
-                <p className="text-4xl font-extrabold text-[#c9a84c] mb-1">{data.precio} €</p>
+                <p className="text-4xl font-extrabold text-gold-400 mb-1">{data.precio} €</p>
                 <p className="text-white/50 text-xs mb-6">Pago único · Sin suscripción</p>
 
                 <div className="space-y-3 mb-6">
                   {data.incluye.map((item, i) => (
                     <div key={i} className="flex items-start gap-2.5">
-                      <span className="text-[#c9a84c] mt-0.5 text-sm flex-shrink-0">✓</span>
+                      <span className="text-gold-400 mt-0.5 text-sm flex-shrink-0">✓</span>
                       <span className="text-white/80 text-sm leading-snug">{item}</span>
                     </div>
                   ))}
@@ -136,16 +137,16 @@ export default async function SolicitarServicioPage({
 
                 <div className="border-t border-white/10 pt-5 space-y-3">
                   <div className="flex items-center gap-2">
-                    <span className="text-[#c9a84c]">⚖️</span>
+                    <Scale className="w-4 h-4 text-gold-400 shrink-0" />
                     <span className="text-xs text-white/70">Redactado por gestoría inmobiliaria experta</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[#c9a84c]">🔒</span>
+                    <Shield className="w-4 h-4 text-gold-400 shrink-0" />
                     <span className="text-xs text-white/70">Pago 100% seguro con Stripe</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[#c9a84c]">⚡</span>
-                    <span className="text-xs text-white/70">Entrega en 48h tras el pago</span>
+                    <Zap className="w-4 h-4 text-gold-400 shrink-0" />
+                    <span className="text-xs text-white/70">Entrega en 48 h tras el pago</span>
                   </div>
                 </div>
               </div>

@@ -70,7 +70,7 @@ export default function GestoriaMadridPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  Gestoría Inmobiliaria <span className="text-[#c9a84c]">Madrid</span> para Particulares
+                  Gestoría Inmobiliaria <span className="text-gold-500">Madrid</span> para Particulares
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
                   <strong>Gestoría inmobiliaria para particulares</strong> en Madrid. Asesor experto asignado, sin comisiones de agencia (3-5%) y contratos redactados por abogados especializados en el mercado madrileño.
@@ -78,7 +78,7 @@ export default function GestoriaMadridPage() {
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href="#servicios"
-                    className="bg-[#c9a84c] text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition"
+                    className="bg-gold-500 text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-gold-600 transition"
                   >
                     Ver servicios
                   </Link>
@@ -112,8 +112,8 @@ export default function GestoriaMadridPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-gray-50 p-6 rounded-xl">
-                <div className="w-12 h-12 bg-[#c9a84c]/10 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-[#c9a84c]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -124,8 +124,8 @@ export default function GestoriaMadridPage() {
               </div>
 
               <div className="bg-gray-50 p-6 rounded-xl">
-                <div className="w-12 h-12 bg-[#c9a84c]/10 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-[#c9a84c]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                   </svg>
                 </div>
@@ -136,8 +136,8 @@ export default function GestoriaMadridPage() {
               </div>
 
               <div className="bg-gray-50 p-6 rounded-xl">
-                <div className="w-12 h-12 bg-[#c9a84c]/10 rounded-lg flex items-center justify-center mb-4">
-                  <svg className="w-6 h-6 text-[#c9a84c]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-12 h-12 bg-gold-500/10 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
@@ -171,7 +171,7 @@ export default function GestoriaMadridPage() {
                     className="object-cover"
                   />
                   <div className="absolute top-4 right-4">
-                    <span className="bg-[#c9a84c] text-white text-xs font-bold px-3 py-1 rounded-full">
+                    <span className="bg-gold-500 text-white text-xs font-bold px-3 py-1 rounded-full">
                       Premium
                     </span>
                   </div>
@@ -188,31 +188,31 @@ export default function GestoriaMadridPage() {
                     <p className="text-sm font-semibold text-gray-500 mb-3">Incluye:</p>
                     <ul className="space-y-2 text-sm text-gray-600">
                       <li className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span>Revisión contrato de reserva</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span>Análisis nota registral completo</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span>Verificación IEE, ITE, cédula de habitabilidad</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span>Redacción contrato de arras personalizado</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span>Asesoramiento continuo durante el proceso</span>
@@ -227,7 +227,7 @@ export default function GestoriaMadridPage() {
                     </div>
                     <Link
                       href="/gestoria/solicitar/acompanamiento-reserva-arras"
-                      className="bg-[#c9a84c] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition"
+                      className="bg-gold-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gold-600 transition"
                     >
                       Contratar
                     </Link>
@@ -236,7 +236,7 @@ export default function GestoriaMadridPage() {
               </div>
 
               {/* Servicio 2 */}
-              <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition border-2 border-[#c9a84c]">
+              <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition border-2 border-gold-500">
                 <div className="relative h-64">
                   <Image
                     src="/gestoria4.jpg"
@@ -262,37 +262,37 @@ export default function GestoriaMadridPage() {
                     <p className="text-sm font-semibold text-gray-500 mb-3">Incluye:</p>
                     <ul className="space-y-2 text-sm text-gray-600">
                       <li className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span>Gestor personalizado asignado</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span>Estudio completo de la operación</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span>Redacción de contratos reserva y arras</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span>Ayuda para recabar documentación</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span>Asesoramiento continuo hasta escritura</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-5 h-5 text-[#c9a84c] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 text-gold-500 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
                         <span>Coordinación con notaría</span>
@@ -307,7 +307,7 @@ export default function GestoriaMadridPage() {
                     </div>
                     <Link
                       href="/gestoria/solicitar/compra-completa-reserva-escritura"
-                      className="bg-[#c9a84c] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition"
+                      className="bg-gold-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gold-600 transition"
                     >
                       Contratar
                     </Link>
@@ -368,7 +368,7 @@ export default function GestoriaMadridPage() {
             </p>
             <Link
               href="/gestoria"
-              className="inline-block bg-[#c9a84c] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition"
+              className="inline-block bg-gold-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-gold-600 transition"
             >
               Ver todos nuestros servicios
             </Link>
@@ -380,19 +380,19 @@ export default function GestoriaMadridPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <h3 className="text-xl font-bold text-gray-900 mb-6">También ofrecemos gestoría inmobiliaria en:</h3>
             <div className="grid sm:grid-cols-3 gap-4">
-              <Link href="/gestoria/barcelona" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+              <Link href="/gestoria/barcelona" className="text-gold-500 hover:text-[#a87a20] font-semibold">
                 Gestoría Barcelona →
               </Link>
-              <Link href="/gestoria/valencia" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+              <Link href="/gestoria/valencia" className="text-gold-500 hover:text-[#a87a20] font-semibold">
                 Gestoría Valencia →
               </Link>
-              <Link href="/zaragoza/contrato-alquiler" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+              <Link href="/zaragoza/contrato-alquiler" className="text-gold-500 hover:text-[#a87a20] font-semibold">
                 Contrato de alquiler en Zaragoza →
               </Link>
-              <Link href="/gestoria/sevilla" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+              <Link href="/gestoria/sevilla" className="text-gold-500 hover:text-[#a87a20] font-semibold">
                 Gestoría inmobiliaria en Sevilla →
               </Link>
-              <Link href="/granada/contrato-alquiler" className="text-[#c9a84c] hover:text-[#a87a20] font-semibold">
+              <Link href="/granada/contrato-alquiler" className="text-gold-500 hover:text-[#a87a20] font-semibold">
                 Contrato de alquiler en Granada →
               </Link>
             </div>
