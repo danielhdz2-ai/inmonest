@@ -53,3 +53,4 @@ scripts/run-seed.bat
 *.sql.gz
 
 .vercel
+build.log
