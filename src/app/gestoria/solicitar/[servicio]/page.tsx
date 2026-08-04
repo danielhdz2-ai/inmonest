@@ -98,17 +98,6 @@ export default async function SolicitarServicioPage({
       <Navbar />
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-8">
-            <a href="/" className="hover:text-gray-600">Inicio</a>
-            <span>/</span>
-            <a href="/gestoria" className="hover:text-gray-600">Gestoría</a>
-            <span>/</span>
-            <a href={`/gestoria/${servicio}`} className="hover:text-gray-600">{data.nombre}</a>
-            <span>/</span>
-            <span className="text-gray-700 font-medium">Solicitar</span>
-          </nav>
-
           <PageHeroImage
             src="/gestoria1.jpg"
             alt={`Solicitar ${data.nombre}`}
@@ -118,7 +107,7 @@ export default async function SolicitarServicioPage({
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
             {/* ── Panel izquierdo: resumen del servicio ── */}
             <div className="lg:col-span-2">
-              <div className="bg-gradient-to-br from-forest-800 to-forest-900 rounded-2xl p-7 text-white sticky top-24">
+              <div className="bg-black rounded-2xl p-7 text-white sticky top-24">
                 <span className="inline-block bg-gold-500/20 text-gold-300 text-xs font-bold px-3 py-1 rounded-full mb-4">
                   {data.categoria}
                 </span>

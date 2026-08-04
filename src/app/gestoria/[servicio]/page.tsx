@@ -785,9 +785,18 @@ export async function generateMetadata({
   const { servicio } = await params
   const data = SERVICIOS[servicio]
   if (!data) return {}
+  const seoTitle =
+    servicio === 'contrato-alquiler'
+      ? `Contrato de Alquiler LAU 【${data.precio}€】 Ley Vivienda 2026 · Entrega 48h`
+      : `${data.nombre} — Gestoría inmobiliaria`
+  const seoDescription =
+    servicio === 'contrato-alquiler'
+      ? `Contrato de alquiler de vivienda habitual adaptado a LAU y Ley de Vivienda 2026. Redactado por gestoría experta. ${data.precio}€ IVA incl. PDF firmable en 48h.`
+      : `${data.tagline}. Redactado por abogados especializados. Desde ${data.precio} €. Entrega en 48h.`
+
   return {
-    title: `${data.nombre} — Gestoría inmobiliaria`,
-    description: `${data.tagline}. Redactado por abogados especializados. Desde ${data.precio} €. Entrega en 48h.`,
+    title: seoTitle,
+    description: seoDescription,
     alternates: { canonical: `${BASE_URL}/gestoria/${servicio}` },
     openGraph: {
       title: `${data.nombre}`,
@@ -998,7 +1007,7 @@ export default async function ServicioGestoriaPage({
             className="object-cover object-center"
             sizes="(max-width: 1280px) 100vw, 1024px"
           />
-          <div className="absolute inset-0 bg-[#3d2a05]/70 flex flex-col items-center justify-center text-center px-6">
+          <div className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-center px-6">
             <p className="text-white text-xl font-bold mb-2">Redactado por abogados especializados</p>
             <p className="text-white/70 text-sm">Sin plantillas genéricas. Cada contrato se adapta a tu operación real.</p>
           </div>
@@ -1043,7 +1052,7 @@ export default async function ServicioGestoriaPage({
         </section>
 
         {/* ── CTA FINAL ────────────────────────────────────────────────── */}
-        <section className="bg-forest-900 rounded-2xl p-8 text-center">
+        <section className="bg-black rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">¿Listo para solicitar tu {data.nombre.toLowerCase()}?</h2>
           <p className="text-white/60 mb-6 max-w-lg mx-auto">
             En menos de 48h tienes el documento listo para firmar. Redactado por abogados, sin plantillas genéricas.
