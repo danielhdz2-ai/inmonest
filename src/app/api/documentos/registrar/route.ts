@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { isAllowedDocKey } from '@/lib/gestoria-upload'
 import { notifyClientDocReceived } from '@/lib/gestoria-client-emails'
+import { logGestoriaActivity } from '@/lib/gestoria-activity'
 import { ADMIN_EMAIL, sendEmail } from '@/lib/email'
 import { getDocMeta } from '@/lib/gestoria-service-docs'
 
@@ -95,9 +96,18 @@ export async function POST(req: NextRequest) {
   const docLabel = getDocMeta(doc_key)?.label ?? doc_key
   void notifyClientDocReceived({
     to: user.email,
+    userId: user.id,
     clientName: paidRequest.client_name,
     docKey: doc_key,
     serviceName: paidRequest.service_name,
+  })
+
+  void logGestoriaActivity({
+    requestId: gestoria_request_id,
+    activityType: 'doc_uploaded',
+    description: `Documento subido: ${docLabel}`,
+    metadata: { doc_key, file_name },
+    createdBy: user.email,
   })
 
   void sendEmail({

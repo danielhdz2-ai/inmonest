@@ -1,5 +1,6 @@
 import { sendEmail, baseLayout, esc } from '@/lib/email'
 import { getDocMeta } from '@/lib/gestoria-service-docs'
+import { shouldNotifyGestoria, type NotificationEvent } from '@/lib/notification-preferences'
 
 const PANEL_URL = 'https://inmonest.com/mi-cuenta/contratos'
 
@@ -10,16 +11,92 @@ function ctaPanel(label = 'Ver mi panel →') {
   </a>`
 }
 
+type NotifyOpts = {
+  to: string
+  userId?: string | null
+  event: NotificationEvent
+}
+
+async function sendIfAllowed(
+  opts: NotifyOpts & { subject: string; html: string },
+): Promise<boolean> {
+  const allowed = await shouldNotifyGestoria(opts.event, {
+    userId: opts.userId,
+    email: opts.to,
+  })
+  if (!allowed) return false
+  return sendEmail({ to: opts.to, subject: opts.subject, html: opts.html })
+}
+
+export async function notifyClientPaymentConfirmed(opts: {
+  to: string
+  userId?: string | null
+  clientName?: string | null
+  serviceName: string
+  amountEur: number | string
+}): Promise<boolean> {
+  const nombre = opts.clientName?.trim() || 'cliente'
+  return sendIfAllowed({
+    to: opts.to,
+    userId: opts.userId,
+    event: 'gestoria_pago',
+    subject: 'Pago confirmado — tu expediente está abierto · Inmonest',
+    html: baseLayout(`
+      <h1 style="margin:0 0 8px;font-size:22px;color:#111827">¡Pago confirmado! ✅</h1>
+      <p style="color:#6b7280;font-size:15px;line-height:1.6;margin:0 0 20px">
+        Hola <strong>${esc(nombre)}</strong>, hemos recibido tu pago de
+        <strong style="color:#c9962a">${esc(String(opts.amountEur))} €</strong> por
+        <strong>${esc(opts.serviceName)}</strong>.
+      </p>
+      <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:16px 20px;margin-bottom:24px">
+        <p style="margin:0;font-size:14px;color:#92400e">
+          Tu expediente ya está abierto. Puedes subir documentación desde tu panel o enviarla a
+          <a href="mailto:info@inmonest.com" style="color:#c9962a">info@inmonest.com</a>.
+        </p>
+      </div>
+      ${ctaPanel('Entrar a mi panel →')}
+    `),
+  })
+}
+
+export async function notifyClientStepChange(opts: {
+  to: string
+  userId?: string | null
+  clientName?: string | null
+  serviceName: string
+  step: number
+  stepLabel: string
+}): Promise<boolean> {
+  const nombre = opts.clientName?.trim() || 'cliente'
+  return sendIfAllowed({
+    to: opts.to,
+    userId: opts.userId,
+    event: 'gestoria_expediente',
+    subject: `Actualización de tu expediente — ${opts.stepLabel} · Inmonest`,
+    html: baseLayout(`
+      <h1 style="margin:0 0 8px;font-size:22px;color:#111827">Tu expediente avanza 📋</h1>
+      <p style="color:#6b7280;font-size:15px;line-height:1.6;margin:0 0 20px">
+        Hola <strong>${esc(nombre)}</strong>, tu servicio <strong>${esc(opts.serviceName)}</strong>
+        está ahora en el paso <strong>${opts.step}/4 — ${esc(opts.stepLabel)}</strong>.
+      </p>
+      ${ctaPanel('Ver estado del expediente →')}
+    `),
+  })
+}
+
 export async function notifyClientDocReceived(opts: {
   to: string
+  userId?: string | null
   clientName?: string | null
   docKey: string
   serviceName?: string | null
 }): Promise<boolean> {
   const docLabel = getDocMeta(opts.docKey)?.label ?? opts.docKey
   const nombre = opts.clientName?.trim() || 'cliente'
-  return sendEmail({
+  return sendIfAllowed({
     to: opts.to,
+    userId: opts.userId,
+    event: 'gestoria_documentos',
     subject: `Documento recibido: ${docLabel} — Inmonest`,
     html: baseLayout(`
       <h1 style="margin:0 0 8px;font-size:22px;color:#111827">Documento recibido ✅</h1>
@@ -39,13 +116,16 @@ export async function notifyClientDocReceived(opts: {
 
 export async function notifyClientDocValidated(opts: {
   to: string
+  userId?: string | null
   clientName?: string | null
   docKey: string
 }): Promise<boolean> {
   const docLabel = getDocMeta(opts.docKey)?.label ?? opts.docKey
   const nombre = opts.clientName?.trim() || 'cliente'
-  return sendEmail({
+  return sendIfAllowed({
     to: opts.to,
+    userId: opts.userId,
+    event: 'gestoria_documentos',
     subject: `Documento validado: ${docLabel} — Inmonest`,
     html: baseLayout(`
       <h1 style="margin:0 0 8px;font-size:22px;color:#111827">Documento validado ✅</h1>
@@ -62,6 +142,7 @@ export async function notifyClientDocValidated(opts: {
 
 export async function notifyClientDocRejected(opts: {
   to: string
+  userId?: string | null
   clientName?: string | null
   docKey: string
   reason?: string | null
@@ -78,8 +159,10 @@ export async function notifyClientDocRejected(opts: {
          Por favor, vuelve a subirlo desde tu panel (foto nítida o PDF legible).
        </p>`
 
-  return sendEmail({
+  return sendIfAllowed({
     to: opts.to,
+    userId: opts.userId,
+    event: 'gestoria_documentos',
     subject: `Documento a corregir: ${docLabel} — Inmonest`,
     html: baseLayout(`
       <h1 style="margin:0 0 8px;font-size:22px;color:#111827">Necesitamos que revises un documento</h1>
@@ -94,12 +177,15 @@ export async function notifyClientDocRejected(opts: {
 
 export async function notifyClientContractReady(opts: {
   to: string
+  userId?: string | null
   clientName?: string | null
   serviceName: string
 }): Promise<boolean> {
   const nombre = opts.clientName?.trim() || 'cliente'
-  return sendEmail({
+  return sendIfAllowed({
     to: opts.to,
+    userId: opts.userId,
+    event: 'gestoria_contrato',
     subject: 'Tu contrato está listo — Inmonest',
     html: baseLayout(`
       <h1 style="margin:0 0 8px;font-size:22px;color:#111827">¡Tu contrato está listo! 🎉</h1>

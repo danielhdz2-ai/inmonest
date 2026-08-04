@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import crypto from 'crypto'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { notifyClientPaymentConfirmed } from '@/lib/gestoria-client-emails'
+import { logGestoriaActivity } from '@/lib/gestoria-activity'
 import { decodeEnvKey } from '@/lib/stripe-key'
 
 export const dynamic = 'force-dynamic'
@@ -251,36 +253,32 @@ export async function POST(req: NextRequest) {
 
     // ── 4. Email al CLIENTE ──────────────────────────────────────────────
     if (clientEmail) {
-      await sendEmail({
-        from:     FROM_EMAIL,
-        to:       [clientEmail],
-        reply_to: NOTIFY_EMAIL,
-        subject:  `✅ Confirmación de tu pedido — Inmonest`,
-        html: `
-          <div style="font-family:sans-serif;max-width:600px;margin:auto">
-            <div style="background:linear-gradient(135deg,#7a5c1e,#c9962a);padding:32px 24px;border-radius:8px 8px 0 0;text-align:center">
-              <h1 style="color:#fff;margin:0;font-size:24px">¡Gracias por confiar en Inmonest!</h1>
-            </div>
-            <div style="background:#fff;padding:32px 24px;border:1px solid #e5e7eb;border-top:0;border-radius:0 0 8px 8px">
-              <p style="color:#374151;font-size:15px">Hola <strong>${clientName}</strong>,</p>
-              <p style="color:#374151;font-size:15px">Hemos recibido tu pago correctamente. Tu pedido está siendo procesado por nuestro equipo de gestoría.</p>
-              <div style="background:#fef9e8;border:1px solid #f4c94a;border-radius:8px;padding:16px;margin:24px 0">
-                <p style="margin:0;font-size:14px;color:#7a5c1e;font-weight:700">Detalles del pedido</p>
-                <p style="margin:8px 0 0;font-size:14px;color:#374151">Servicio: <strong>${serviceKey.replace(/-/g, ' ')}</strong></p>
-                <p style="margin:4px 0 0;font-size:14px;color:#374151">Importe: <strong style="color:#c9962a">${amount} €</strong></p>
-              </div>
-              <p style="color:#374151;font-size:14px">Nuestro equipo te contactará en las próximas <strong>24 horas</strong> para coordinar la entrega de documentos.</p>
-              <div style="text-align:center;margin:28px 0">
-                <a href="${BASE_URL}/mi-cuenta/contratos?pago=1" style="background:#c9962a;color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;display:inline-block">
-                  Ver mi panel de gestoría →
-                </a>
-              </div>
-              <p style="color:#9ca3af;font-size:12px;text-align:center">¿Tienes dudas? Escríbenos a <a href="mailto:${NOTIFY_EMAIL}" style="color:#c9962a">${NOTIFY_EMAIL}</a></p>
-            </div>
-            <p style="text-align:center;font-size:11px;color:#d1d5db;margin-top:16px">© 2026 Inmonest · Tu portal inmobiliario de confianza</p>
-          </div>
-        `,
+      const displayService = serviceName || serviceKey.replace(/-/g, ' ')
+      void notifyClientPaymentConfirmed({
+        to: clientEmail,
+        userId: meta.user_id || null,
+        clientName,
+        serviceName: displayService,
+        amountEur: amount,
       })
+
+      // Actividad en timeline (best-effort tras upsert)
+      if (!grErr) {
+        const { data: savedOrder } = await supabase
+          .from('gestoria_requests')
+          .select('id')
+          .eq('session_id', sessionId)
+          .maybeSingle()
+        if (savedOrder?.id) {
+          void logGestoriaActivity({
+            requestId: savedOrder.id,
+            activityType: 'payment',
+            description: `Pago confirmado: ${amount} €`,
+            metadata: { session_id: sessionId, service_key: serviceKey },
+            createdBy: 'stripe',
+          })
+        }
+      }
     } else {
       console.log('[webhooks/stripe] Sin email de cliente — omitido')
     }

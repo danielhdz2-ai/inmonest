@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react'
 import Image from 'next/image'
+import NotificacionesConfigPanel from '@/components/account/NotificacionesConfigPanel'
 import PrivacidadDatosPanel from '@/components/account/PrivacidadDatosPanel'
 
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
   initialAvatar: string | null
 }
 
-type Tab = 'datos' | 'seguridad' | 'privacidad'
+type Tab = 'datos' | 'seguridad' | 'notificaciones' | 'privacidad'
 
 export default function PerfilClient({ userId, email, initialName, initialPhone, initialAvatar }: Props) {
   const [tab, setTab] = useState<Tab>('datos')
@@ -156,6 +157,7 @@ export default function PerfilClient({ userId, email, initialName, initialPhone,
         {([
           { id: 'datos', label: 'Datos personales' },
           { id: 'seguridad', label: 'Seguridad' },
+          { id: 'notificaciones', label: 'Notificaciones' },
           { id: 'privacidad', label: 'Privacidad y datos' },
         ] as const).map(t => (
           <button
@@ -319,6 +321,8 @@ export default function PerfilClient({ userId, email, initialName, initialPhone,
       )}
 
       {/* ── TAB BAJA ─────────────────────────────────────────────────── */}
+      {tab === 'notificaciones' && <NotificacionesConfigPanel />}
+
       {tab === 'privacidad' && (
         <PrivacidadDatosPanel
           email={email}

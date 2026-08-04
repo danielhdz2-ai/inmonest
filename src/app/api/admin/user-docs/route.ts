@@ -132,12 +132,14 @@ export async function PATCH(req: NextRequest) {
       if (status === 'validated') {
         void notifyClientDocValidated({
           to: clientEmail,
+          userId: before.user_id,
           clientName,
           docKey: before.doc_key,
         })
       } else if (status === 'rejected') {
         void notifyClientDocRejected({
           to: clientEmail,
+          userId: before.user_id,
           clientName,
           docKey: before.doc_key,
           reason: notes,

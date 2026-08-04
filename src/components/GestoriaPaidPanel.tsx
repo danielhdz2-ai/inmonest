@@ -7,6 +7,7 @@ import GestoriaDniUpload from '@/components/GestoriaDniUpload'
 import GestoriaExtraUpload from '@/components/GestoriaExtraUpload'
 import GestoriaPartesForm, { type PartesFormData } from '@/components/GestoriaPartesForm'
 import { MAX_UPLOAD_BYTES, formatFileSize, validateUploadFile } from '@/lib/gestoria-upload'
+import GestoriaExpedienteTimeline from '@/components/gestoria-portal/GestoriaExpedienteTimeline'
 import { resolveGestorForRequest } from '@/lib/gestoria-gestor'
 import {
   WORKFLOW_STEPS,
@@ -211,6 +212,10 @@ export default function GestoriaPaidPanel({
           })}
         </div>
         <p className="text-xs text-gray-500 mt-2 text-center px-2">{progress.stepDesc}</p>
+      </div>
+
+      <div className="px-4 sm:px-8 pb-4">
+        <GestoriaExpedienteTimeline requestId={contrato.id} compact />
       </div>
 
       <div className="p-4 sm:p-8 space-y-5 sm:space-y-6 pb-8">

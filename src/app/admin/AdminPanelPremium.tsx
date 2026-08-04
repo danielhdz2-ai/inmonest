@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
+import AdminExpedienteModal from './AdminExpedienteModal'
 import AdminShell, { type AdminTab } from './AdminShell'
 import SalesCalendar from './SalesCalendar'
 import {
@@ -34,6 +35,7 @@ interface GestoriaRequest {
   client_email: string | null
   client_phone: string | null
   amount_eur: number | null
+  price_eur?: number | null
   status: string
   step: number | null
   paid_at: string | null
@@ -43,6 +45,7 @@ interface GestoriaRequest {
   internal_notes: string | null
   payment_method?: string | null
   source?: string | null
+  contract_path?: string | null
 }
 
 type VentasPeriod = 'todo' | 'semana' | 'mes'
@@ -68,6 +71,10 @@ const PAYMENT_METHOD_LABELS: Record<string, string> = {
   bizum: 'Bizum',
   efectivo: 'Efectivo',
   otro: 'Otro',
+}
+
+function orderRevenue(r: GestoriaRequest): number {
+  return Number(r.amount_eur) || Number(r.price_eur) || 0
 }
 
 interface Client {
@@ -633,7 +640,7 @@ export default function AdminPanelPremium({
 
   const periodTotal = filteredRequests
     .filter(r => r.status === 'paid')
-    .reduce((sum, r) => sum + (r.amount_eur || 0), 0)
+    .reduce((sum, r) => sum + orderRevenue(r), 0)
 
   // Calendario: se calcula directamente de "requests" (todo el histórico, sin
   // límite de 30 días) usando la fecha real de pago (paid_at, con fallback a
@@ -654,7 +661,7 @@ export default function AdminPanelPremium({
       const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
 
       const entry = map.get(dateStr) || { revenue: 0, paid: 0, orders: 0, items: [] }
-      entry.revenue += Number(r.amount_eur) || 0
+      entry.revenue += orderRevenue(r)
       entry.paid += 1
       entry.orders += 1
       entry.items.push({
@@ -662,7 +669,7 @@ export default function AdminPanelPremium({
         name: r.client_name || r.client_email || 'Cliente',
         email: r.client_email,
         service: SERVICE_LABELS[r.service_key] || r.service_key,
-        amount: Number(r.amount_eur) || 0,
+        amount: orderRevenue(r),
         time: d.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }),
       })
       map.set(dateStr, entry)
@@ -2125,223 +2132,20 @@ export default function AdminPanelPremium({
           MODAL: EXPEDIENTE DEL CLIENTE (PANTALLA COMPLETA)
       ═══════════════════════════════════════════════════════════════ */}
       {selectedClient && (
-        <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-hidden">
-          <div className="bg-[#0a1410] p-6 text-white flex items-center justify-between shadow-lg flex-shrink-0">
-            <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-2xl font-bold text-[#f4d98a]">
-                {selectedClient.name.charAt(0).toUpperCase()}
-              </div>
-              <div>
-                <p className="text-[11px] uppercase tracking-widest text-[#c9962a]">Expediente de cliente</p>
-                <h2 className="text-xl font-bold">{selectedClient.name}</h2>
-                <p className="text-sm text-white/60">{selectedClient.email}</p>
-              </div>
-            </div>
-            <button
-              onClick={() => setSelectedClient(null)}
-              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition flex items-center justify-center"
-            >
-              <IconClose className="w-5 h-5" />
-            </button>
-          </div>
-
-          <div className="flex-1 overflow-y-auto bg-gray-50 p-5 sm:p-8">
-            <div className="max-w-6xl mx-auto space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <StatCard label="Total ingresos" value={`${selectedClient.total_revenue.toFixed(2)} €`} icon={IconWallet} tone="accent" />
-                <StatCard label="Pedidos pagados" value={selectedClient.total_paid} icon={IconCheck} />
-                <StatCard
-                  label="Ticket promedio"
-                  value={`${selectedClient.total_paid > 0 ? (selectedClient.total_revenue / selectedClient.total_paid).toFixed(0) : '0'} €`}
-                  icon={IconTarget}
-                />
-              </div>
-
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
-                <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide mb-4">Información de contacto</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Email</p>
-                    <p className="text-sm font-semibold text-gray-900">{selectedClient.email}</p>
-                  </div>
-                  <div>
-                    <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Teléfono</p>
-                    <p className="text-sm font-semibold text-gray-900">{selectedClient.phone || '—'}</p>
-                  </div>
-                  <div>
-                    <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Primera compra</p>
-                    <p className="text-sm font-semibold text-gray-900">
-                      {formatDate(selectedClient.first_purchase, { day: '2-digit', month: 'long', year: 'numeric' })}
-                    </p>
-                  </div>
-                  <div>
-                    <p className="text-[11px] text-gray-500 mb-1 font-semibold uppercase">Última compra</p>
-                    <p className="text-sm font-semibold text-gray-900">
-                      {formatDate(selectedClient.last_purchase, { day: '2-digit', month: 'long', year: 'numeric' })}
-                    </p>
-                  </div>
-                </div>
-                {selectedClient.orders.length > 0 && (
-                  <div className="mt-5 pt-5 border-t border-gray-100 flex flex-wrap gap-2">
-                    {[...new Set(selectedClient.orders.map(o => o.service_key))].map(key => (
-                      <span key={key} className="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-gray-100 text-gray-600">
-                        {SERVICE_LABELS[key] || key}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
-                <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide mb-4">
-                  Documentos aportados ({clientDocuments.length})
-                </h3>
-                {clientDocuments.length === 0 ? (
-                  <p className="text-sm text-gray-500 bg-gray-50 rounded-xl border border-dashed border-gray-200 px-4 py-6 text-center">
-                    Aún no hay documentos registrados para este cliente.
-                    Si el cliente acaba de subirlos, pulsa actualizar o revisa la pestaña Documentos.
-                  </p>
-                ) : (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {clientDocuments.map((doc) => (
-                      <div key={doc.id} className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                        <div className="flex items-start gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
-                            <IconFolder className="w-5 h-5 text-gray-500" />
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-bold text-gray-900 truncate">{doc.file_name}</p>
-                            <p className="text-xs text-gray-500 mt-1">
-                              <span className="px-2 py-0.5 bg-gray-200 text-gray-600 rounded font-semibold mr-2">
-                                {doc.doc_key}
-                              </span>
-                              {formatDate(doc.uploaded_at)}
-                            </p>
-                            <div className="flex items-center gap-3 mt-2.5">
-                              <button
-                                type="button"
-                                onClick={() => handleViewDoc(doc)}
-                                className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-gray-900 font-semibold"
-                              >
-                                <IconEye className="w-3.5 h-3.5" />
-                                Ver
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() => handleDownloadDoc(doc)}
-                                className="inline-flex items-center gap-1 text-xs text-[#8a6a1e] hover:text-[#6b5117] font-semibold"
-                              >
-                                <IconDownload className="w-3.5 h-3.5" />
-                                Descargar
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                <button
-                  type="button"
-                  onClick={() => selectedClient && loadClientDocuments(selectedClient.email)}
-                  className="mt-4 text-xs font-semibold text-gray-500 hover:text-gray-800"
-                >
-                  Actualizar documentos
-                </button>
-              </div>
-
-              <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
-                <h3 className="text-xs font-bold text-gray-900 uppercase tracking-wide mb-4">
-                  Historial de pedidos ({selectedClient.total_orders})
-                </h3>
-                <div className="space-y-4">
-                  {selectedClient.orders.map((order) => (
-                    <div key={order.id} className="bg-gray-50 rounded-xl p-5 border border-gray-200">
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-3">
-                            <h4 className="text-sm font-bold text-gray-900">
-                              {SERVICE_LABELS[order.service_key] || order.service_key}
-                            </h4>
-                            <StatusBadge status={order.status} />
-                          </div>
-                          <div className="flex items-center gap-5 text-xs text-gray-500 mb-3">
-                            <span className="flex items-center gap-1">
-                              <IconClock className="w-3.5 h-3.5" />
-                              {formatDate(order.created_at, { day: '2-digit', month: 'long', year: 'numeric' })}
-                            </span>
-                            {order.paid_at && (
-                              <span className="text-emerald-600">Pagado: {formatDate(order.paid_at)}</span>
-                            )}
-                          </div>
-
-                          {order.internal_notes && (
-                            <div className="mt-3 bg-amber-50 border border-amber-200 rounded-lg p-3">
-                              <p className="text-xs font-semibold text-amber-800 mb-1">Notas internas</p>
-                              <p className="text-xs text-amber-700">{order.internal_notes}</p>
-                            </div>
-                          )}
-
-                          <div className="mt-4 flex items-center gap-3">
-                            <span className="text-xs text-gray-600 font-semibold">Progreso:</span>
-                            <div className="flex gap-1.5">
-                              {[1, 2, 3, 4].map(step => (
-                                <div
-                                  key={step}
-                                  className={`w-3 h-3 rounded-full ${
-                                    step <= (order.step || 1) ? 'bg-[#c9962a]' : 'bg-gray-300'
-                                  }`}
-                                  title={`Paso ${step}/4`}
-                                />
-                              ))}
-                            </div>
-                            <span className="text-xs text-gray-500">Paso {order.step || 1}/4</span>
-                          </div>
-                        </div>
-
-                        <div className="text-right flex-shrink-0">
-                          <p className="text-xl font-bold text-gray-900 mb-2">{order.amount_eur || 0} €</p>
-                          {order.session_id && (
-                            <a
-                              href={`https://dashboard.stripe.com/payments/${order.session_id}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-xs text-indigo-600 hover:underline inline-flex items-center gap-1"
-                            >
-                              Ver en Stripe
-                              <IconExternalLink className="w-3 h-3" />
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-200 bg-white p-5 sm:p-6 flex justify-between items-center shadow-lg flex-shrink-0">
-            <button
-              onClick={() => setSelectedClient(null)}
-              className="px-5 py-2.5 bg-gray-100 text-gray-700 rounded-xl font-semibold hover:bg-gray-200 transition text-sm"
-            >
-              Volver a expedientes
-            </button>
-            <a
-              href={`mailto:${selectedClient.email}`}
-              className="px-5 py-2.5 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-700 transition inline-flex items-center gap-2 text-sm"
-            >
-              <IconMail className="w-4 h-4" />
-              Enviar email
-            </a>
-          </div>
-        </div>
+        <AdminExpedienteModal
+          client={selectedClient}
+          documents={clientDocuments}
+          serviceLabels={SERVICE_LABELS}
+          onClose={() => setSelectedClient(null)}
+          onRefreshDocuments={() => loadClientDocuments(selectedClient.email)}
+          onRefreshOrders={refreshPedidos}
+          onViewDoc={(doc) => void handleViewDoc(doc as ClientDocument)}
+          onDownloadDoc={(doc) => void handleDownloadDoc(doc as ClientDocument)}
+          formatDate={formatDate}
+        />
       )}
 
-      {/* ═══════════════════════════════════════════════════════════════
-          MODAL: DETALLE DEL PROPIETARIO (PANTALLA COMPLETA)
-      ═══════════════════════════════════════════════════════════════ */}
+      {/* MODAL PROPIETARIO — placeholder removed expediente inline modal */}
       {selectedPropietario && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col overflow-hidden">
           <div className="bg-[#0a1410] p-6 text-white flex items-center justify-between shadow-lg flex-shrink-0">

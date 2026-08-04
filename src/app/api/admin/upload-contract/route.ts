@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { notifyClientContractReady } from '@/lib/gestoria-client-emails'
+import { logGestoriaActivity } from '@/lib/gestoria-activity'
 
 export const dynamic = 'force-dynamic'
 
@@ -58,7 +59,7 @@ export async function POST(req: NextRequest) {
 
   const { data: fullRecord } = await supabase
     .from('gestoria_requests')
-    .select('client_email, client_name, service_name, service_key')
+    .select('client_email, client_name, service_name, service_key, user_id')
     .eq('id', requestId)
     .single()
 
@@ -68,10 +69,20 @@ export async function POST(req: NextRequest) {
       fullRecord.service_key.replace(/-/g, ' ')
     void notifyClientContractReady({
       to: fullRecord.client_email,
+      userId: fullRecord.user_id,
       clientName: fullRecord.client_name,
       serviceName,
     })
   }
+
+  const { data: { user: adminUser } } = await supabase.auth.getUser()
+  void logGestoriaActivity({
+    requestId,
+    activityType: 'contract_delivered',
+    description: `Contrato entregado: ${fullRecord?.service_name ?? 'servicio'}`,
+    metadata: { path },
+    createdBy: adminUser?.email ?? 'admin',
+  })
 
   return NextResponse.json({ ok: true, path })
 }

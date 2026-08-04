@@ -1,9 +1,10 @@
 'use client'
 
 import { useState } from 'react'
+import NotificacionesConfigPanel from '@/components/account/NotificacionesConfigPanel'
 import PrivacidadDatosPanel from '@/components/account/PrivacidadDatosPanel'
 
-type Tab = 'datos' | 'seguridad' | 'privacidad'
+type Tab = 'datos' | 'seguridad' | 'notificaciones' | 'privacidad'
 
 type Props = {
   email: string
@@ -164,6 +165,7 @@ export default function GestoriaPortalConfiguracion({ email, initialName, initia
         {([
           { id: 'datos', label: 'Datos personales' },
           { id: 'seguridad', label: 'Seguridad' },
+          { id: 'notificaciones', label: 'Notificaciones' },
           { id: 'privacidad', label: 'Privacidad y datos' },
         ] as const).map((t) => (
           <button
@@ -318,6 +320,8 @@ export default function GestoriaPortalConfiguracion({ email, initialName, initia
           </div>
         </div>
       )}
+
+      {tab === 'notificaciones' && <NotificacionesConfigPanel />}
 
       {tab === 'privacidad' && (
         <PrivacidadDatosPanel
