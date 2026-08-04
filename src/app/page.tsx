@@ -5,8 +5,14 @@ import Navbar from '@/components/NavbarServer'
 import SearchForm from '@/components/SearchForm'
 import BentoVentajas from '@/components/BentoVentajas'
 import CarruselServicios from '@/components/CarruselServicios'
-import TestimoniosCarousel from '@/components/TestimoniosCarousel'
 import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
+import HomeTrustStrip from '@/components/home/HomeTrustStrip'
+import HomeTestimonials from '@/components/home/HomeTestimonials'
+import HomeDiscoverGrid from '@/components/home/HomeDiscoverGrid'
+import { Badge } from '@/components/ui/Badge'
+import { Button } from '@/components/ui/Button'
+import { Section } from '@/components/ui/Section'
+import { CtaBand } from '@/components/ui/CtaBand'
 
 const CIUDADES_POPULARES = [
   { nombre: 'Madrid', slug: 'madrid' },
@@ -19,74 +25,55 @@ const CIUDADES_POPULARES = [
   { nombre: 'Alicante', slug: 'alicante' },
 ]
 
+const FAQ = [
+  {
+    q: '¿Inmonest es gratis?',
+    a: 'Publicar pisos entre particulares es 100% gratis, sin comisiones. Los servicios de gestoría inmobiliaria (contratos de arras, alquiler LAU, revisión legal) tienen precios desde 61€ según el tipo de contrato.',
+  },
+  {
+    q: '¿Qué servicios ofrece Inmonest?',
+    a: 'Inmonest es un portal de pisos entre particulares sin comisiones + gestoría inmobiliaria online. Ofrecemos publicación gratuita de anuncios, contratos redactados por expertos, revisión legal y asesoramiento en compra y alquiler.',
+  },
+  {
+    q: '¿Puedo publicar mi piso sin registrarme?',
+    a: 'Sí. Registrarte te permite gestionar anuncios, solicitar contratos con datos precargados y acceder a tu historial desde un solo panel.',
+  },
+  {
+    q: '¿Los contratos tienen validez legal en toda España?',
+    a: 'Sí. Redactados siguiendo LAU, Código Civil y Ley de Vivienda 2026, adaptados a cada comunidad autónoma cuando es necesario.',
+  },
+  {
+    q: '¿Cuánto tardan en entregar un contrato?',
+    a: 'Solicitas el servicio, te contactamos en 24 h y entregamos el PDF personalizado en 48 h. Incluye una ronda de revisiones gratuita en 7 días.',
+  },
+  {
+    q: '¿Inmonest es una agencia inmobiliaria?',
+    a: 'No. Somos portal entre particulares + gestoría digital. No cobramos comisiones por compra o alquiler; solo por servicios jurídicos específicos.',
+  },
+] as const
+
 export default function Home() {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: '¿Inmonest es gratis?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Publicar pisos entre particulares es 100% gratis, sin comisiones. Los servicios de gestoría inmobiliaria (contratos de arras, alquiler LAU, revisión legal) tienen precios desde 61€ según el tipo de contrato.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: '¿Qué servicios ofrece Inmonest?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Inmonest es un portal de pisos entre particulares sin comisiones + gestoría inmobiliaria online. Ofrecemos: (1) Publicación gratuita de anuncios de pisos, (2) Contratos de arras, alquiler, compraventa redactados por expertos, (3) Revisión legal de contratos, (4) Asesoramiento en compra y alquiler.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: '¿Puedo publicar mi piso sin registrarme?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Sí, puedes publicar sin crear cuenta. Sin embargo, registrarte te permite gestionar todos tus anuncios, solicitar contratos con tus datos precargados, hacer seguimiento de servicios y acceder a tu historial desde un solo panel.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: '¿Los contratos tienen validez legal en toda España?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Sí. Todos nuestros contratos son redactados por nuestra gestoría experta siguiendo la legislación vigente: Ley de Arrendamientos Urbanos (LAU), Código Civil, Ley de Vivienda 2026. Se adaptan a las particularidades de cada comunidad autónoma cuando es necesario.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: '¿Cuánto tardan en entregar un contrato?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'El proceso es: (1) Solicitas el servicio sin pago previo, (2) Te contactamos en 24h para confirmar detalles, (3) Entregamos el contrato personalizado en PDF en 48h. Incluye una ronda de revisiones gratuita dentro de los 7 días.',
-        },
-      },
-      {
-        '@type': 'Question',
-        name: '¿Inmonest es una agencia inmobiliaria?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'No. Inmonest es un portal de pisos entre particulares (sin comisiones) + gestoría inmobiliaria digital. No cobramos comisiones por la compra o alquiler de pisos. Solo cobramos por servicios jurídicos específicos como redacción de contratos o revisión legal.',
-        },
-      },
-    ],
+    mainEntity: FAQ.map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
   }
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      {/* Schema.org FAQPage Markup */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      
+
       <Navbar />
 
-      {/* ── HERO con imagen de cabecera ─────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[520px] sm:min-h-[620px] flex items-center">
+      {/* Hero */}
+      <section className="relative overflow-hidden min-h-[520px] sm:min-h-[600px] flex items-center">
         <Image
           src="/imagencabezera.jpg"
           alt="Encuentra tu hogar ideal"
@@ -95,25 +82,32 @@ export default function Home() {
           priority
           sizes="100vw"
         />
-        {/* Overlay cálido oscuro */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1a0d00]/85 via-[#2e1900]/65 to-[#1a0d00]/35" />
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-950/90 via-forest-950/70 to-forest-950/40" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-28 w-full">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
           <div className="max-w-2xl mb-10">
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#c9962a]/30 text-[#f4c94a] border border-[#c9962a]/40 mb-5 backdrop-blur-sm">
-              📄 Gestoría Inmobiliaria Digital
-            </span>
-            <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight leading-tight text-white drop-shadow-md">
-              <span className="text-[#f4c94a]">Contratos inmobiliarios</span><br />
-              <span className="text-white">desde 61€ en 48h</span>
+            <Badge variant="dark" className="mb-5 normal-case tracking-wide">
+              Gestoría inmobiliaria digital
+            </Badge>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
+              <span className="text-gold-300">Contratos inmobiliarios</span>
+              <br />
+              <span className="text-white">desde 61 € en 48 h</span>
             </h1>
-            <p className="mt-5 text-lg text-white/80 max-w-xl leading-relaxed">
-              Gestoría online especializada: Contratos de arras, alquiler LAU, compraventa. Redactados por expertos. También pisos entre particulares sin comisiones.
+            <p className="mt-5 text-lg text-white/75 max-w-xl leading-relaxed">
+              Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones.
             </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button href="/gestoria" variant="primary" className="rounded-full">
+                Ver contratos
+              </Button>
+              <Button href="/pisos?solo_particulares=true" variant="ghost" className="rounded-full">
+                Buscar pisos
+              </Button>
+            </div>
           </div>
 
-          {/* Tarjeta de búsqueda flotante */}
-          <div className="bg-white/96 backdrop-blur-md rounded-2xl shadow-2xl shadow-black/30 border border-[#e8b52a]/20 p-4 sm:p-5 max-w-3xl">
+          <div className="bg-white/97 backdrop-blur-md rounded-2xl shadow-2xl shadow-black/20 border border-gold-400/20 p-4 sm:p-5 max-w-3xl">
             <Suspense fallback={<div className="h-24 animate-pulse bg-gray-100 rounded-xl" />}>
               <SearchForm />
             </Suspense>
@@ -121,41 +115,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Strip de confianza ──────────────────────────────────── */}
-      <section className="bg-[#fef9e8] border-y border-[#f4c94a]/30">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap justify-center items-center gap-6 sm:gap-10 text-sm text-gray-600">
-          {[
-            '⚖️ Redactados por expertos',
-            '⚡ Entrega en 48h',
-            '💰 Desde 61€',
-            '🔒 Pago seguro Stripe',
-          ].map((text) => (
-            <span key={text} className="flex items-center gap-1.5">
-              <svg className="w-4 h-4 text-[#c9962a] shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-              </svg>
-              {text}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Servicios de Gestoría Destacados (Carrusel Animado) ──────────────────────── */}
+      <HomeTrustStrip />
       <CarruselServicios />
-
       <EnlacesInternosSeo variant="home" />
 
-      {/* ── Ciudades populares (pisos) ──────────────────────────────────── */}
-      <section className="bg-gray-50 py-12">
+      {/* Ciudades */}
+      <section className="bg-gray-50 py-14">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-2">¿Buscas piso?</h2>
-          <p className="text-gray-600 text-sm mb-6">Miles de pisos entre particulares sin comisiones</p>
+          <h2 className="text-xl font-bold text-gray-900 mb-1">Buscar piso por ciudad</h2>
+          <p className="text-gray-500 text-sm mb-6">Anuncios entre particulares, sin comisiones de agencia</p>
           <div className="flex flex-wrap gap-2">
             {CIUDADES_POPULARES.map((ciudad) => (
               <Link
                 key={ciudad.slug}
                 href={`/pisos?ciudad=${ciudad.slug}&solo_particulares=true`}
-                className="px-4 py-2 rounded-full border border-[#e8b52a]/50 bg-white text-sm font-medium text-gray-700 hover:border-[#c9962a] hover:text-[#a87a20] hover:bg-[#fef9e8] transition-colors shadow-sm"
+                className="px-4 py-2 rounded-full border border-gold-400/40 bg-white text-sm font-medium text-gray-700 hover:border-gold-500 hover:text-gold-700 hover:bg-cream-100 transition-colors"
               >
                 {ciudad.nombre}
               </Link>
@@ -164,481 +138,66 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── ¿Por qué Inmonest? — Bento Grid ───────────────────── */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-          <div className="text-center mb-10">
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#c9962a]/15 text-[#a87a20] border border-[#c9962a]/25 mb-4">
-              ✦ Nuestra propuesta de valor
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-              ¿Por qué Inmonest?
-            </h2>
-            <p className="mt-3 text-gray-500 text-base max-w-xl mx-auto">
-              Todo lo que necesitas para alquilar o comprar sin agencias, sin comisiones y con total seguridad.
-            </p>
-          </div>
-          <BentoVentajas />
-        </div>
-      </section>
+      {/* Bento */}
+      <Section
+        className="py-16 sm:py-20 bg-white"
+        eyebrow="Propuesta de valor"
+        title="¿Por qué Inmonest?"
+        description="Alquiler y compraventa entre particulares, con respaldo jurídico cuando lo necesitas."
+      >
+        <BentoVentajas />
+      </Section>
 
-      {/* ── TESTIMONIOS REALES DE GOOGLE ─────────────────────── */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Reseñas verificadas</span>
-            <h2 className="text-3xl font-extrabold text-gray-900 mt-2 mb-3">
-              Lo que dicen nuestros clientes
-            </h2>
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <div className="flex gap-1">
-                {[1, 2, 3, 4, 5].map(i => (
-                  <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
-                ))}
-              </div>
-              <span className="text-lg font-bold text-gray-900">5.0</span>
-              <span className="text-sm text-gray-500">· 4 reseñas en Google</span>
-            </div>
-            <a 
-              href="https://www.google.com/search?q=inmonest" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-sm text-[#c9962a] hover:underline font-medium"
+      <HomeTestimonials />
+
+      {/* FAQ */}
+      <Section
+        className="py-16 bg-white"
+        containerClassName="max-w-3xl"
+        eyebrow="Preguntas frecuentes"
+        title="¿Tienes dudas?"
+        description="Respuestas claras sobre el portal y la gestoría online."
+      >
+        <div className="space-y-3">
+          {FAQ.map(({ q, a }) => (
+            <details
+              key={q}
+              className="bg-gray-50 rounded-xl border border-gray-100 group hover:border-gold-400/30 transition-colors"
             >
-              Ver todas las reseñas en Google →
-            </a>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all shadow-sm">
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="font-bold text-gray-900 text-base">zonetechonline</div>
-                  <div className="text-xs text-gray-500">Hace 16 horas</div>
-                </div>
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-sm italic">
-                "Tramite el contrato de arras, me ayudaron en todo el proceso de documentación, lo recomiendo bastante, muy ágiles, muy rápidos y muy profesionales"
-              </p>
-              <div className="mt-3 text-xs text-gray-500">
-                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Contrato de Arras</span>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all shadow-sm">
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="font-bold text-gray-900 text-base">Alicia Fernández</div>
-                  <div className="text-xs text-gray-500">Hace 23 horas</div>
-                </div>
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-sm italic">
-                "Contraté servicio de acompañamiento de compra, y estoy super contenta, por el trato de Daniel y toda la ayuda con la documentación, super recomendable muchas gracias"
-              </p>
-              <div className="mt-3 text-xs text-gray-500">
-                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Acompañamiento de Compra</span>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all shadow-sm">
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="font-bold text-gray-900 text-base">Daniel Mercat</div>
-                  <div className="text-xs text-gray-500">Hace 1 semana</div>
-                </div>
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-sm italic">
-                "Tramite un contrato de arras con inmonest, ya que no me fiaba de el que me daba la agencia, y me ayudaron en varios puntos importantes, a si que merece la pena"
-              </p>
-              <div className="mt-3 text-xs text-gray-500">
-                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Contrato de Arras</span>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all shadow-sm">
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="font-bold text-gray-900 text-base">Wendy Bermudez</div>
-                  <div className="text-xs text-gray-500">Hace 3 semanas · Local Guide</div>
-                </div>
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-sm italic">
-                "Necesitaba hacer un contrato de arras para el piso de mi madre, y el equipo jurídico de inmonest nos ayudo con la gestión, muchas gracias"
-              </p>
-              <div className="mt-3 text-xs text-gray-500">
-                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Contrato de Arras</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Widget de Google Reviews */}
-          <div className="text-center">
-            <a 
-              href="https://www.google.com/search?q=inmonest" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-gray-200 rounded-xl font-semibold text-gray-700 hover:border-[#c9962a] hover:text-[#c9962a] transition-all shadow-sm"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
-              </svg>
-              Deja tu reseña en Google
-            </a>
-          </div>
+              <summary className="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer font-semibold text-gray-900 text-sm list-none">
+                {q}
+                <svg
+                  className="w-4 h-4 text-gray-400 shrink-0 group-open:rotate-180 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </summary>
+              <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{a}</p>
+            </details>
+          ))}
         </div>
-      </section>
+      </Section>
 
-      {/* ── Testimonios ──────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-gray-50 to-white py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Casos de éxito</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 mt-2">
-              Familias que confiaron en Inmonest
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Desde ventas sin comisiones hasta contratos de arras y alquiler. 
-              Descubre cómo ayudamos a nuestros clientes.
-            </p>
-          </div>
-          <TestimoniosCarousel landing="home" />
-          <div className="text-center mt-10">
-            <p className="text-sm text-gray-500 mb-4">
-              ¿Quieres ahorrar miles de euros en comisiones y tener todo el apoyo legal?
-            </p>
-            <Link
-              href="/gestoria"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#c9962a] text-white font-semibold rounded-lg hover:bg-[#a87a20] transition-colors shadow-lg"
-            >
-              Ver todos los servicios de gestoría →
-            </Link>
-          </div>
-        </div>
-      </section>
+      <HomeDiscoverGrid />
 
-      {/* ── FAQ — Preguntas Frecuentes ──────────────────────── */}
-      <section className="bg-white py-16 px-4">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Preguntas frecuentes</span>
-            <h2 className="text-3xl font-extrabold text-gray-900 mt-2 mb-3">
-              ¿Tienes dudas sobre Inmonest?
-            </h2>
-            <p className="text-gray-500 text-sm max-w-xl mx-auto">
-              Las respuestas a las preguntas más comunes sobre nuestros servicios de pisos y gestoría.
-            </p>
-          </div>
-          <div className="space-y-4">
-            {[
-              {
-                q: '¿Inmonest es gratis?',
-                a: 'Publicar pisos entre particulares es 100% gratis, sin comisiones. Los servicios de gestoría inmobiliaria (contratos de arras, alquiler LAU, revisión legal) tienen precios desde 61€ según el tipo de contrato.',
-              },
-              {
-                q: '¿Qué servicios ofrece Inmonest?',
-                a: 'Inmonest es un portal de pisos entre particulares sin comisiones + gestoría inmobiliaria online. Ofrecemos: (1) Publicación gratuita de anuncios de pisos, (2) Contratos de arras, alquiler, compraventa redactados por expertos, (3) Revisión legal de contratos, (4) Asesoramiento en compra y alquiler.',
-              },
-              {
-                q: '¿Puedo publicar mi piso sin registrarme?',
-                a: 'Sí, puedes publicar sin crear cuenta. Sin embargo, registrarte te permite gestionar todos tus anuncios, solicitar contratos con tus datos precargados, hacer seguimiento de servicios y acceder a tu historial desde un solo panel.',
-              },
-              {
-                q: '¿Los contratos tienen validez legal en toda España?',
-                a: 'Sí. Todos nuestros contratos son redactados por nuestra gestoría experta siguiendo la legislación vigente: Ley de Arrendamientos Urbanos (LAU), Código Civil, Ley de Vivienda 2026. Se adaptan a las particularidades de cada comunidad autónoma cuando es necesario.',
-              },
-              {
-                q: '¿Cuánto tardan en entregar un contrato?',
-                a: 'El proceso es: (1) Solicitas el servicio sin pago previo, (2) Te contactamos en 24h para confirmar detalles, (3) Entregamos el contrato personalizado en PDF en 48h. Incluye una ronda de revisiones gratuita dentro de los 7 días.',
-              },
-              {
-                q: '¿Inmonest es una agencia inmobiliaria?',
-                a: 'No. Inmonest es un portal de pisos entre particulares (sin comisiones) + gestoría inmobiliaria digital. No cobramos comisiones por la compra o alquiler de pisos. Solo cobramos por servicios jurídicos específicos como redacción de contratos o revisión legal.',
-              },
-            ].map(({ q, a }) => (
-              <details key={q} className="bg-gray-50 rounded-xl border border-gray-100 group hover:border-[#f4c94a]/40 transition-all">
-                <summary className="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer font-semibold text-gray-900 text-sm list-none">
-                  {q}
-                  <svg className="w-4 h-4 text-gray-400 shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </summary>
-                <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA publicar ───────────────────────────────────────── */}
+      {/* CTA principal — publicar */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="relative overflow-hidden rounded-3xl shadow-xl bg-[#1a0d00] min-h-[300px] flex">
-          {/* Columna izquierda — texto */}
-          <div className="relative z-10 flex flex-col justify-center px-8 sm:px-12 py-12 flex-1">
-            <span className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-[#c9962a]/25 text-[#f4c94a] text-xs font-semibold border border-[#c9962a]/40 mb-5">
-              🏠 Para propietarios
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
-              ¿Tienes un piso para<br />alquilar o vender?
-            </h2>
-            <p className="mt-3 text-white/65 text-sm sm:text-base leading-relaxed max-w-sm">
-              Crea tu anuncio en menos de 5 minutos. Nuestra IA genera el título y la descripción por ti.
-            </p>
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/publicar-anuncio"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg shadow-[#c9962a]/40"
-              >
-                Publicar mi anuncio gratis →
-              </Link>
-              <Link
-                href="/vender-casa"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white/80 font-medium hover:bg-white/10 transition-colors text-sm"
-              >
-                Buscar agencia inmobiliaria
-              </Link>
-            </div>
-          </div>
-
-          {/* Columna derecha — imagen */}
-          <div className="hidden lg:block relative w-[420px] shrink-0">
-            <Image
-              src="/keys.jpg"
-              alt="Llaves de casa"
-              fill
-              className="object-cover"
-              sizes="420px"
-            />
-            {/* Fade hacia la izquierda para fusionar con el fondo */}
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1a0d00] via-[#1a0d00]/20 to-transparent" />
-          </div>
-        </div>
+        <CtaBand
+          eyebrow="Para propietarios"
+          title={<>¿Tienes un piso para alquilar o vender?</>}
+          description="Crea tu anuncio en minutos. Publicación gratuita entre particulares, sin comisiones."
+          primaryHref="/publicar-anuncio"
+          primaryLabel="Publicar anuncio gratis"
+          secondaryHref="/vender-casa"
+          secondaryLabel="Vender con asesoramiento"
+          imageSrc="/keys.jpg"
+          imageAlt="Llaves de vivienda"
+          tone="warm"
+        />
       </section>
-
-      {/* ── Buscador de Chollos ────────────────────────────────── */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="relative overflow-hidden rounded-3xl shadow-xl bg-[#0d1a0f] min-h-[300px] flex">
-          {/* Columna izquierda — imagen */}
-          <div className="hidden lg:block relative w-[420px] shrink-0 order-first">
-            <Image
-              src="/familia2.jpg"
-              alt="Personas buscando chollos inmobiliarios"
-              fill
-              className="object-cover object-center"
-              sizes="420px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-l from-[#0d1a0f] via-[#0d1a0f]/20 to-transparent" />
-          </div>
-
-          {/* Columna derecha — texto */}
-          <div className="relative z-10 flex flex-col justify-center px-8 sm:px-12 py-12 flex-1">
-            <span className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-[#c9962a]/25 text-[#f4c94a] text-xs font-semibold border border-[#c9962a]/40 mb-5">
-              🔍 Oportunidades exclusivas
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
-              Buscador de<br /><span className="text-[#f4c94a]">Chollos</span>
-            </h2>
-            <p className="mt-3 text-white/65 text-sm sm:text-base leading-relaxed max-w-sm">
-              Busca los chollos más interesantes de tu ciudad. Pisos de fondos bancarios, embargos y oportunidades únicas a precio de mercado o por debajo.
-            </p>
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/pisos?origen=fondos-bancarios"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg shadow-[#c9962a]/40"
-              >
-                Ver chollos disponibles →
-              </Link>
-              <Link
-                href="/pisos"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white/80 font-medium hover:bg-white/10 transition-colors text-sm"
-              >
-                Explorar todos los pisos
-              </Link>
-            </div>
-          </div>
-
-          {/* Destellos decorativos */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#c9962a]/8 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-1/3 w-40 h-40 bg-[#f4c94a]/5 rounded-full blur-2xl pointer-events-none" />
-        </div>
-      </section>
-
-      {/* ── ¿Buscas hipoteca? ─────────────────────────────────── */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="relative overflow-hidden rounded-3xl shadow-xl bg-[#1a0d00] min-h-[300px] flex">
-          {/* Columna izquierda — texto */}
-          <div className="relative z-10 flex flex-col justify-center px-8 sm:px-12 py-12 flex-1">
-            <span className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-[#c9962a]/25 text-[#f4c94a] text-xs font-semibold border border-[#c9962a]/40 mb-5">
-              🏦 Financiación
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
-              ¿Estás buscando<br /><span className="text-[#f4c94a]">hipoteca?</span>
-            </h2>
-            <p className="mt-3 text-white/65 text-sm sm:text-base leading-relaxed max-w-sm">
-              Te ayudamos a conseguir la mejor financiación a tu medida. Comparamos las mejores ofertas hipotecarias para que pagues menos cada mes.
-            </p>
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/gestoria?servicio=hipoteca"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg shadow-[#c9962a]/40"
-              >
-                Quiero mi hipoteca →
-              </Link>
-              <Link
-                href="/gestoria"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white/80 font-medium hover:bg-white/10 transition-colors text-sm"
-              >
-                Ver todos los servicios
-              </Link>
-            </div>
-          </div>
-
-          {/* Columna derecha — imagen */}
-          <div className="hidden lg:block relative w-[420px] shrink-0">
-            <Image
-              src="/familia3.jpg"
-              alt="Familia buscando hipoteca"
-              fill
-              className="object-cover object-center"
-              sizes="420px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1a0d00] via-[#1a0d00]/20 to-transparent" />
-          </div>
-        </div>
-      </section>
-
-      {/* ── Analizador de Mercado ─────────────────────────────── */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
-        <div className="relative overflow-hidden rounded-3xl shadow-xl min-h-[260px] flex">
-          {/* Imagen de fondo */}
-          <div className="absolute inset-0">
-            <Image
-              src="/interior2.jpg"
-              alt="Analizador de mercado inmobiliario"
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a0f]/90 via-[#0d1a0f]/70 to-[#0d1a0f]/30" />
-          </div>
-          {/* Contenido */}
-          <div className="relative z-10 flex flex-col justify-center px-8 sm:px-12 py-12 flex-1">
-            <span className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-[#c9962a]/25 text-[#f4c94a] text-xs font-semibold border border-[#c9962a]/40 mb-5">
-              📊 Herramienta gratuita
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
-              Analizador de<br /><span className="text-[#f4c94a]">Mercado Inmobiliario</span>
-            </h2>
-            <p className="mt-3 text-white/65 text-sm sm:text-base leading-relaxed max-w-sm">
-              Precio medio del m², temperatura del mercado y comparativa de precios en 10 ciudades de España. Datos de abril 2026.
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <Link
-                href="/analizador-mercado"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg shadow-[#c9962a]/40"
-              >
-                Ver análisis →
-              </Link>
-              <Link
-                href="/analizador-mercado?tab=alquiler"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white/80 font-medium hover:bg-white/10 transition-colors text-sm"
-              >
-                Precios de alquiler
-              </Link>
-            </div>
-          </div>
-          {/* Mini stats flotantes */}
-          <div className="hidden lg:flex flex-col justify-center gap-3 pr-10 shrink-0">
-            {[
-              { ciudad: 'Madrid', precio: '5.458 €/m²', trend: '▲ 12%' },
-              { ciudad: 'Barcelona', precio: '4.820 €/m²', trend: '▲ 10%' },
-              { ciudad: 'Málaga', precio: '4.644 €/m²', trend: '▲ 18%' },
-            ].map(s => (
-              <div key={s.ciudad} className="bg-white/10 backdrop-blur border border-white/20 rounded-xl px-4 py-3 text-white">
-                <p className="text-xs text-white/60">{s.ciudad}</p>
-                <p className="font-bold text-sm">{s.precio}</p>
-                <p className="text-[10px] text-red-400 font-semibold">{s.trend} anual</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Blog inmobiliario ─────────────────────────────────── */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="relative overflow-hidden rounded-3xl shadow-xl bg-[#0d1a0f] min-h-[300px] flex">
-          {/* Columna izquierda — imagen */}
-          <div className="hidden lg:block relative w-[420px] shrink-0">
-            <Image
-              src="/familia20.jpg"
-              alt="Familia feliz en su nuevo hogar"
-              fill
-              className="object-cover object-center"
-              sizes="420px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#0d1a0f]/20 to-[#0d1a0f]" />
-          </div>
-
-          {/* Columna derecha — texto */}
-          <div className="relative z-10 flex flex-col justify-center px-8 sm:px-12 py-12 flex-1">
-            <span className="inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-[#c9962a]/25 text-[#f4c94a] text-xs font-semibold border border-[#c9962a]/40 mb-5">
-              📰 Blog Inmobiliario
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white leading-snug">
-              Guías y consejos<br /><span className="text-[#f4c94a]">para propietarios</span>
-            </h2>
-            <p className="mt-3 text-white/65 text-sm sm:text-base leading-relaxed max-w-sm">
-              Contratos, arras, alquiler sin agencia, fondos bancarios, préstamos privados... Todo lo que necesitas saber para tomar decisiones inteligentes.
-            </p>
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/blog"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg shadow-[#c9962a]/40"
-              >
-                Leer guías →
-              </Link>
-              <Link
-                href="/gestoria"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/25 text-white/80 font-medium hover:bg-white/10 transition-colors text-sm"
-              >
-                Ver contratos
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
     </div>
   )
 }
-

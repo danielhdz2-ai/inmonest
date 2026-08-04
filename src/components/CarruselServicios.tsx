@@ -70,8 +70,8 @@ export default function CarruselServicios() {
   return (
     <section className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-4 sm:py-16">
       <div className="text-center mb-3 sm:mb-10">
-        <span className="inline-block px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[9px] sm:text-xs font-semibold bg-[#c9962a]/15 text-[#a87a20] border border-[#c9962a]/25 mb-1.5 sm:mb-4">
-          Gestoría Inmobiliaria Digital
+        <span className="inline-block px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[9px] sm:text-xs font-semibold bg-gold-500/15 text-gold-700 border border-gold-500/25 mb-1.5 sm:mb-4">
+          Gestoría inmobiliaria digital
         </span>
         <h2 className="text-lg sm:text-3xl lg:text-4xl font-extrabold text-gray-900 tracking-tight mb-1 sm:mb-3 px-2">
           Contratos redactados por expertos en 48h
@@ -103,7 +103,7 @@ export default function CarruselServicios() {
             <Link
               key={`${servicio.slug}-${index}`}
               href={`/gestoria/solicitar/${servicio.slug}`}
-              className="group flex-shrink-0 w-[220px] sm:w-[320px] lg:w-[340px] bg-white border border-gray-200 sm:border-2 rounded-lg sm:rounded-2xl overflow-hidden hover:border-[#c9962a] hover:shadow-xl transition-all duration-300"
+              className="group flex-shrink-0 w-[220px] sm:w-[320px] lg:w-[340px] bg-white border border-gray-200 sm:border-2 rounded-lg sm:rounded-2xl overflow-hidden hover:border-gold-500 hover:shadow-xl transition-all duration-300"
             >
               {/* Imagen del servicio */}
               <div className="relative h-20 sm:h-40 lg:h-48 w-full bg-gray-100">
@@ -116,14 +116,14 @@ export default function CarruselServicios() {
                 />
                 {/* Overlay con categoría */}
                 <div className="absolute top-1 sm:top-3 left-1 sm:left-3">
-                  <span className="inline-block px-1 sm:px-3 py-0.5 sm:py-1 rounded text-[8px] sm:text-xs font-semibold bg-white/90 backdrop-blur-sm text-[#a87a20] border border-[#c9962a]/20">
+                  <span className="inline-block px-1 sm:px-3 py-0.5 sm:py-1 rounded text-[8px] sm:text-xs font-semibold bg-white/90 backdrop-blur-sm text-gold-700 border border-gold-500/20">
                     {servicio.categoria}
                   </span>
                 </div>
                 {servicio.categoria === 'Premium' && (
                   <div className="absolute top-1 sm:top-3 right-1 sm:right-3">
-                    <span className="inline-block px-1 sm:px-3 py-0.5 sm:py-1 rounded text-[8px] sm:text-xs font-bold bg-yellow-500 text-white">
-                      ⭐ POPULAR
+                    <span className="inline-block px-1 sm:px-3 py-0.5 sm:py-1 rounded text-[8px] sm:text-xs font-bold bg-gold-500 text-white uppercase tracking-wider">
+                      Popular
                     </span>
                   </div>
                 )}
@@ -132,7 +132,7 @@ export default function CarruselServicios() {
               {/* Contenido */}
               <div className="p-2 sm:p-5 lg:p-6">
                 {/* Título */}
-                <h3 className="text-xs sm:text-lg lg:text-xl font-bold text-gray-900 mb-1 sm:mb-3 group-hover:text-[#c9962a] transition line-clamp-2">
+                <h3 className="text-xs sm:text-lg lg:text-xl font-bold text-gray-900 mb-1 sm:mb-3 group-hover:text-gold-600 transition line-clamp-2">
                   {servicio.nombre}
                 </h3>
 
@@ -144,17 +144,17 @@ export default function CarruselServicios() {
                 {/* Precio y tiempo */}
                 <div className="flex items-center justify-between pt-1.5 sm:pt-4 sm:border-t sm:border-gray-200">
                   <div>
-                    <div className="text-base sm:text-2xl font-bold text-[#c9962a]">{servicio.precio}€</div>
+                    <div className="text-base sm:text-2xl font-bold text-gold-500">{servicio.precio}€</div>
                     <div className="text-[8px] sm:text-xs text-gray-500">IVA inc.</div>
                   </div>
                   <div className="text-right">
                     <div className="text-[9px] sm:text-sm font-semibold text-gray-900">Entrega</div>
-                    <div className="text-[10px] sm:text-sm text-[#c9962a] font-bold">{servicio.tiempo}</div>
+                    <div className="text-[10px] sm:text-sm text-gold-600 font-bold">{servicio.tiempo}</div>
                   </div>
                 </div>
 
                 {/* Indicador hover - solo desktop */}
-                <div className="hidden sm:flex mt-4 items-center justify-center text-sm font-semibold text-[#c9962a] opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="hidden sm:flex mt-4 items-center justify-center text-sm font-semibold text-gold-600 opacity-0 group-hover:opacity-100 transition-opacity">
                   Solicitar ahora
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -187,7 +187,7 @@ export default function CarruselServicios() {
       <div className="text-center px-2">
         <Link
           href="/gestoria"
-          className="inline-flex items-center gap-1.5 sm:gap-2 px-5 sm:px-8 py-2.5 sm:py-4 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors shadow-lg text-xs sm:text-base"
+          className="inline-flex items-center gap-1.5 sm:gap-2 px-5 sm:px-8 py-2.5 sm:py-4 rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors shadow-lg text-xs sm:text-base"
         >
           Ver todos los servicios
           <svg className="w-3.5 h-3.5 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -105,25 +105,25 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
             <span className="text-white/80">{config.breadcrumbFinal}</span>
           </nav>
 
-          <span className="inline-block bg-[#c9a84c] text-[#3d2a05] text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit">{config.badgeLine}</span>
+          <span className="inline-block bg-gold-500 text-[#3d2a05] text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit">{config.badgeLine}</span>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 max-w-2xl leading-tight">
             Contrato de alquiler en {config.nombre} desde {precio}€
           </h1>
           <p className="text-white/90 text-lg sm:text-xl max-w-xl mb-5 font-medium">
             LAU + Ley de Vivienda 2026, personalizado, entrega en{' '}
-            <strong className="text-[#c9a84c]">48 h</strong>. Precio cerrado{' '}
-            <strong className="text-[#c9a84c]">{precio} €</strong> IVA incluido.
+            <strong className="text-gold-500">48 h</strong>. Precio cerrado{' '}
+            <strong className="text-gold-500">{precio} €</strong> IVA incluido.
           </p>
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <div>
-              <span className="text-3xl font-bold text-[#c9a84c]">{precio} €</span>
+              <span className="text-3xl font-bold text-gold-500">{precio} €</span>
               <span className="text-white/50 text-xs ml-2">IVA incluido · 48h</span>
             </div>
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
               href={solicitarHref}
-              className="inline-flex items-center justify-center bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-5 rounded-xl transition-colors text-sm"
+              className="inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-5 rounded-xl transition-colors text-sm"
             >
               Pedir contrato — {precio}€
             </Link>
@@ -160,7 +160,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
-            <div className="bg-orange-50 border-l-4 border-[#c9a84c] p-5 rounded-r-lg mb-6 shadow-sm">
+            <div className="bg-orange-50 border-l-4 border-gold-500 p-5 rounded-r-lg mb-6 shadow-sm">
               <p className="text-gray-900 font-bold text-xl leading-snug">{config.alertaTitulo}</p>
               <p className="text-gray-700 text-sm sm:text-base mt-2 leading-relaxed">
                 Un contrato mal redactado te puede costar{' '}
@@ -177,7 +177,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
               <ul className="space-y-2">
                 {config.paraQuien.map((line) => (
                   <li key={line} className="flex items-start gap-2 text-gray-600 text-sm">
-                    <span className="text-[#c9a84c] mt-0.5">✓</span>
+                    <span className="text-gold-500 mt-0.5">✓</span>
                     {line}
                   </li>
                 ))}
@@ -190,20 +190,20 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
               <p className="text-sm text-[#7a5c1e] font-medium uppercase tracking-wide">{config.ctaStickyLabel}</p>
               <h3 className="text-xl font-bold text-gray-900">Tu contrato LAU, sin vueltas</h3>
               <div>
-                <p className="text-4xl font-bold text-[#c9a84c]">{precio} €</p>
+                <p className="text-4xl font-bold text-gold-500">{precio} €</p>
                 <p className="text-xs text-gray-500 mt-1">IVA incluido</p>
               </div>
               <ul className="space-y-2">
                 {CONTRATO_ALQUILER_PREMIUM_INCLUDES.map((inc) => (
                   <li key={inc} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-[#c9a84c] mt-0.5 shrink-0">✓</span>
+                    <span className="text-gold-500 mt-0.5 shrink-0">✓</span>
                     {inc}
                   </li>
                 ))}
               </ul>
               <Link
                 href={solicitarHref}
-                className="block w-full text-center bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-4 rounded-xl transition-colors"
+                className="block w-full text-center bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-4 rounded-xl transition-colors"
               >
                 Pedir contrato ahora — {precio} €
               </Link>
@@ -221,7 +221,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
                 event="click_phone"
                 city={config.slug}
                 href="tel:+34745022862"
-                className="block w-full text-center border border-[#c9a84c] text-[#c9a84c] hover:bg-[#fdf8ee] font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
+                className="block w-full text-center border border-gold-500 text-gold-500 hover:bg-[#fdf8ee] font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
                 Llamar: 745 022 862
               </TrackedContactLink>
@@ -265,7 +265,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
                   <ul className="mt-3 space-y-2">
                     {sec.bullets.map((b) => (
                       <li key={b} className="flex items-start gap-2 text-gray-600 text-sm">
-                        <span className="text-[#c9a84c] mt-0.5 shrink-0">•</span>
+                        <span className="text-gold-500 mt-0.5 shrink-0">•</span>
                         {b}
                       </li>
                     ))}
@@ -287,7 +287,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
             </p>
             <Link
               href={gestoriaHubHref}
-              className="inline-flex items-center gap-2 text-[#7a5c1e] font-semibold hover:text-[#c9a84c] transition-colors"
+              className="inline-flex items-center gap-2 text-[#7a5c1e] font-semibold hover:text-gold-500 transition-colors"
             >
               Ver gestoría inmobiliaria en {config.nombre} →
             </Link>
@@ -299,7 +299,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {CONTRATO_ALQUILER_PREMIUM_INCLUDES.map((inc) => (
               <div key={inc} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
-                <span className="text-[#c9a84c] text-lg mt-0.5 shrink-0">✓</span>
+                <span className="text-gold-500 text-lg mt-0.5 shrink-0">✓</span>
                 <span className="text-gray-700 text-sm">{inc}</span>
               </div>
             ))}
@@ -312,7 +312,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
             {CONTRATO_ALQUILER_PREMIUM_PASOS.map((paso) => (
               <div key={paso.num} className="flex gap-6">
                 <div className="shrink-0">
-                  <div className="w-14 h-14 rounded-full bg-[#c9a84c] flex items-center justify-center text-white font-bold text-lg">{paso.num}</div>
+                  <div className="w-14 h-14 rounded-full bg-gold-500 flex items-center justify-center text-white font-bold text-lg">{paso.num}</div>
                 </div>
                 <div>
                   <h3 className="font-bold text-gray-900 text-lg mb-1">{paso.titulo}</h3>
@@ -386,7 +386,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
             <Link
               key={item.href}
               href={item.href}
-              className="block rounded-xl border border-gray-200 bg-white px-4 py-3 hover:border-[#c9a84c]/50 hover:shadow-sm transition-all"
+              className="block rounded-xl border border-gray-200 bg-white px-4 py-3 hover:border-gold-500/50 hover:shadow-sm transition-all"
             >
               <span className="block text-sm font-semibold text-gray-900">{item.label}</span>
               <span className="block text-xs text-gray-500 mt-0.5">{item.desc}</span>
@@ -405,7 +405,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href={solicitarHref}
-              className="bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-8 rounded-xl transition-colors"
+              className="bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-8 rounded-xl transition-colors"
             >
               Lo quiero ya — {precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>
             </Link>

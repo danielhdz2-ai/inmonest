@@ -57,23 +57,23 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-[#c9a84c]/20 text-[#c9a84c] border border-[#c9a84c]/30 mb-4">
+                <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-gold-500/20 text-gold-300 border border-gold-500/30 mb-4">
                   {config.heroBadge}
                 </span>
                 <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  Gestoría Inmobiliaria <span className="text-[#c9a84c]">{nombre}</span> para Particulares
+                  Gestoría Inmobiliaria <span className="text-gold-400">{nombre}</span> para Particulares
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">{config.heroSubtitulo}</p>
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href={solicitarLauHref}
-                    className="bg-[#c9a84c] text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-[#b8973d] transition shadow-lg"
+                    className="bg-gold-500 text-forest-900 px-8 py-3 rounded-lg font-semibold hover:bg-gold-600 transition shadow-lg"
                   >
                     Contrato alquiler desde {precioLau}€ →
                   </Link>
                   <Link
                     href="/gestoria/solicitar/arras-penitenciales"
-                    className="bg-white/10 border border-[#c9a84c]/50 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/15 transition"
+                    className="bg-white/10 border border-gold-500/50 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/15 transition"
                   >
                     Arras desde 145€
                   </Link>
