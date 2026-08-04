@@ -13,3 +13,11 @@ export const mobileDockSpacerClass =
 /** Solo nav inferior (sin sticky dock) */
 export const mobileNavSpacerClass =
   'lg:hidden h-[calc(4.25rem+env(safe-area-inset-bottom,0px))] shrink-0'
+
+/** FABs flotantes encima del nav móvil (WhatsApp encima de “Buscar con IA”) */
+export const mobileChatFabBottom =
+  'calc(4.75rem + env(safe-area-inset-bottom, 0px))'
+export const mobileWhatsAppFabBottom =
+  'calc(9.5rem + env(safe-area-inset-bottom, 0px))'
+export const mobileChatPanelBottom =
+  'calc(5.5rem + env(safe-area-inset-bottom, 0px))'

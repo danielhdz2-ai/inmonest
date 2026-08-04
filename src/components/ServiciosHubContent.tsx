@@ -56,17 +56,6 @@ export default function ServiciosHubContent() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* BREADCRUMB */}
-      <nav className="max-w-6xl mx-auto px-6 pt-6 pb-2">
-        <div className="flex items-center gap-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-gold-600 transition">
-            Inicio
-          </Link>
-          <span>→</span>
-          <span className="text-gray-900 font-medium">Servicios</span>
-        </div>
-      </nav>
-
       {/* HERO */}
       <section className="relative min-h-0 py-12 sm:min-h-[420px] sm:py-0 sm:h-[520px] overflow-hidden">
         <Image
