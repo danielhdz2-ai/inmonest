@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import ChatWidget from "@/components/ChatWidget";
 import ConditionalFooter from "@/components/ConditionalFooter";
+import ConditionalMobileBottomNav from "@/components/ConditionalMobileBottomNav";
 import GTMProvider from "@/components/GTMProvider";
 import OrganizationSchema from "@/components/OrganizationSchema";
 
@@ -19,13 +20,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// Viewport config: deshabilitar zoom en móvil para evitar que se rompa el layout
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: true,
-  themeColor: '#c9962a',
+  viewportFit: 'cover',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#1a0d00' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a0d00' },
+  ],
 }
 
 export const metadata: Metadata = {
@@ -147,6 +149,7 @@ export default function RootLayout({
 
         {children}
         <ConditionalFooter />
+        <ConditionalMobileBottomNav />
         <ChatWidget />
       </body>
     </html>

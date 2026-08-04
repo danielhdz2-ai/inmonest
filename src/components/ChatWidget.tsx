@@ -135,7 +135,7 @@ export default function ChatWidget() {
       {/* Botón flotante */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className={`fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-gold-500 text-white shadow-lg hover:bg-gold-600 transition-all active:scale-95 ${
+        className={`fixed z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-gold-500 text-white shadow-lg hover:bg-gold-600 transition-all active:scale-95 max-md:bottom-[calc(4.75rem+env(safe-area-inset-bottom))] max-md:right-4 bottom-6 right-6 ${
           hideOnMobileSticky ? 'hidden md:flex' : ''
         }`}
         aria-label="Abrir asistente de búsqueda"
@@ -156,11 +156,13 @@ export default function ChatWidget() {
 
       {/* Panel del chat */}
       {open && (
-        <div className="fixed bottom-20 right-6 z-50 w-[min(360px,calc(100vw-24px))] rounded-2xl shadow-2xl border border-gray-200 bg-white flex flex-col overflow-hidden"
+        <div className="fixed z-50 w-[min(360px,calc(100vw-24px))] rounded-2xl shadow-2xl border border-gray-200 bg-white flex flex-col overflow-hidden max-md:bottom-[calc(5.5rem+env(safe-area-inset-bottom))] max-md:right-4 max-md:left-4 max-md:w-auto bottom-20 right-6"
           style={{ maxHeight: 'min(520px, calc(100vh - 120px))' }}>
           {/* Cabecera */}
           <div className="bg-gold-500 px-4 py-3 flex items-center gap-2">
-            <span className="text-xl">🏠</span>
+            <svg className="w-5 h-5 text-white shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 10.5L12 4l8 6.5V20a1 1 0 01-1 1h-5v-6H10v6H5a1 1 0 01-1-1v-9.5z" />
+            </svg>
             <div className="flex-1">
               <p className="text-white font-semibold text-sm">Asistente de búsqueda</p>
               <p className="text-white/80 text-xs">Cuéntame qué buscas</p>
@@ -225,7 +227,7 @@ export default function ChatWidget() {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Escribe qué buscas..."
               disabled={loading}
-              className="flex-1 px-3 py-2 text-sm rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-[#c9962a] disabled:opacity-50"
+              className="flex-1 px-3 py-2 text-base md:text-sm rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-gold-500 disabled:opacity-50"
             />
             <button
               type="submit"

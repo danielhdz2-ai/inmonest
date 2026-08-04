@@ -65,16 +65,19 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
   }, [serviciosOpen])
 
   const close = () => setSideOpen(false)
+  const accountHref = isLoggedIn ? '/mi-cuenta' : '/login'
+  const accountLabelMobile = isLoggedIn ? 'Cuenta' : 'Acceder'
+  const accountLabelDesktop = isLoggedIn ? 'Mi cuenta' : 'Entrar'
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-        <div className="flex items-center h-14 sm:h-16 px-2 sm:px-5 gap-1.5 sm:gap-3 min-w-0">
+      <header className="sticky top-0 z-50 border-b shadow-sm bg-forest-950 border-white/10 md:bg-white md:border-gray-100 md:shadow-sm">
+        <div className="relative flex items-center h-14 md:h-16 px-3 md:px-5 gap-2 md:gap-3 min-w-0">
 
-          {/* Hamburger — siempre visible */}
+          {/* Hamburger */}
           <button
             onClick={() => setSideOpen(true)}
-            className="flex-shrink-0 p-2 rounded-lg text-gray-500 hover:bg-cream-100 hover:text-gold-500 transition-colors"
+            className="relative z-10 flex-shrink-0 p-2 rounded-lg text-white/80 hover:bg-white/10 hover:text-gold-300 transition-colors md:text-gray-500 md:hover:bg-cream-100 md:hover:text-gold-500"
             aria-label="Abrir menú"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -82,26 +85,28 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             </svg>
           </button>
 
-          {/* Logo */}
-          <Link href="/" className="flex items-center flex-shrink min-w-0">
-            <span className="text-2xl sm:text-3xl font-extrabold tracking-tight leading-none truncate">
-              <span className="text-[#1a0d00]">Inmo</span><span className="text-gold-500">nest</span>
+          {/* Logo — centrado en móvil, izquierda en desktop */}
+          <Link
+            href="/"
+            className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 flex items-center flex-shrink-0"
+          >
+            <span className="text-xl md:text-3xl font-extrabold tracking-tight leading-none whitespace-nowrap">
+              <span className="text-white md:text-forest-950">Inmo</span>
+              <span className="text-gold-400 md:text-gold-500">nest</span>
             </span>
           </Link>
 
-          {/* Spacer */}
-          <div className="flex-1 min-w-0" />
+          <div className="flex-1 min-w-0 hidden md:block" />
 
-          {/* CTAs — compactos en móvil */}
-          <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+          {/* CTAs desktop — Gestoría + Servicios + Publicar */}
+          <div className="hidden md:flex items-center gap-2 flex-shrink-0">
             <Link
               href="/gestoria"
-              className="inline-flex items-center rounded-full bg-gold-500 text-white font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm touch-manipulation"
+              className="inline-flex items-center rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors whitespace-nowrap px-4 py-2 text-sm touch-manipulation"
             >
               Gestoría
             </Link>
 
-            {/* Servicios → /servicios (landing hub) + atajos al hover */}
             <div
               ref={serviciosRef}
               className="relative"
@@ -111,7 +116,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
               <div className="inline-flex items-stretch rounded-full border-2 border-gold-500 overflow-hidden">
                 <Link
                   href="/servicios"
-                  className="inline-flex items-center text-gold-500 font-semibold hover:bg-cream-100 transition-colors whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm touch-manipulation"
+                  className="inline-flex items-center text-gold-500 font-semibold hover:bg-cream-100 transition-colors whitespace-nowrap px-4 py-2 text-sm touch-manipulation"
                 >
                   Servicios
                 </Link>
@@ -153,7 +158,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
                         onClick={() => setServiciosOpen(false)}
                         className={`block px-4 py-2.5 text-sm transition-colors ${
                           item.highlight
-                            ? 'font-bold text-gold-500 bg-cream-100 hover:bg-[#fdf3d4] mt-1 border-t border-gray-50'
+                            ? 'font-bold text-gold-500 bg-cream-100 hover:bg-cream-200 mt-1 border-t border-gray-50'
                             : 'text-gray-800 hover:bg-gray-50 hover:text-gold-500'
                         }`}
                       >
@@ -167,38 +172,31 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
 
             <Link
               href="/publicar-anuncio"
-              className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
+              className="inline-flex items-center px-4 py-2 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-gold-600 transition-colors whitespace-nowrap"
             >
               Publicar anuncio
             </Link>
-            {isLoggedIn ? (
-              <Link
-                href="/mi-cuenta"
-                className="inline-flex items-center justify-center gap-1.5 rounded-full border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap min-h-[36px] sm:min-h-[40px] px-2.5 sm:px-4 py-1.5 text-xs sm:text-sm touch-manipulation"
-                aria-label="Mi cuenta"
-              >
-                <svg className="w-4 h-4 sm:hidden flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span className="hidden sm:inline">Mi cuenta</span>
-                <span className="sm:hidden">Cuenta</span>
-              </Link>
-            ) : (
-              <Link
-                href="/login"
-                className="inline-flex items-center justify-center rounded-full border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap min-h-[36px] sm:min-h-[40px] px-2.5 sm:px-4 py-1.5 text-xs sm:text-sm touch-manipulation"
-              >
-                <span className="sm:hidden">Acceder</span>
-                <span className="hidden sm:inline">Entrar</span>
-              </Link>
-            )}
+
+            <Link
+              href={accountHref}
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors whitespace-nowrap min-h-[40px] px-4 py-2 text-sm touch-manipulation"
+            >
+              {accountLabelDesktop}
+            </Link>
           </div>
+
+          {/* Acceder — solo móvil (derecha) */}
+          <Link
+            href={accountHref}
+            className="relative z-10 ml-auto md:hidden inline-flex items-center justify-center rounded-full border border-gold-500/50 text-gold-300 font-semibold hover:bg-gold-500/10 transition-colors whitespace-nowrap min-h-[36px] px-3.5 py-1.5 text-xs touch-manipulation"
+          >
+            {accountLabelMobile}
+          </Link>
         </div>
       </header>
 
-      {/* ── Panel lateral tipo Fotocasa ── */}
+      {/* ── Panel lateral ── */}
 
-      {/* Overlay */}
       {sideOpen && (
         <div
           className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-[2px]"
@@ -207,18 +205,16 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
         />
       )}
 
-      {/* Panel */}
       <div
         className={`fixed top-0 left-0 z-[70] h-full w-72 bg-white shadow-2xl flex flex-col transition-transform duration-300 ease-in-out ${
           sideOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        {/* Cabecera del panel */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
           <Link href="/" onClick={close} className="flex items-center gap-2">
             <Image src="/logo.png" alt="Inmonest" width={32} height={32} className="h-8 w-8 object-contain" />
             <span className="text-xl font-extrabold tracking-tight leading-none">
-              <span className="text-[#1a0d00]">Inmo</span><span className="text-gold-500">nest</span>
+              <span className="text-forest-950">Inmo</span><span className="text-gold-500">nest</span>
             </span>
           </Link>
           <button
@@ -232,7 +228,6 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           </button>
         </div>
 
-        {/* Links de navegación */}
         <nav className="flex-1 overflow-y-auto py-3">
           {NAV_ITEMS.map(item => (
             <Link
@@ -246,32 +241,21 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           ))}
         </nav>
 
-        {/* Footer del panel */}
         <div className="p-5 border-t border-gray-100 space-y-2">
           <Link
             href="/publicar-anuncio"
             onClick={close}
-            className="block text-center py-2.5 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors"
+            className="block text-center py-2.5 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-gold-600 transition-colors"
           >
             Publicar anuncio gratis
           </Link>
-          {isLoggedIn ? (
-            <Link
-              href="/mi-cuenta"
-              onClick={close}
-              className="block text-center py-2.5 rounded-full border border-gold-500/40 text-gold-500 text-sm font-medium hover:bg-cream-100 transition-colors"
-            >
-              Mi cuenta
-            </Link>
-          ) : (
-            <Link
-              href="/login"
-              onClick={close}
-              className="block text-center py-2.5 rounded-full border border-gold-500/40 text-gold-500 text-sm font-medium hover:bg-cream-100 transition-colors"
-            >
-              Iniciar sesión
-            </Link>
-          )}
+          <Link
+            href={accountHref}
+            onClick={close}
+            className="block text-center py-2.5 rounded-full border border-gold-500/40 text-gold-500 text-sm font-medium hover:bg-cream-100 transition-colors"
+          >
+            {isLoggedIn ? 'Mi cuenta' : 'Iniciar sesión'}
+          </Link>
         </div>
       </div>
     </>

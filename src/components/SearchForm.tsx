@@ -114,7 +114,7 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
               placeholder="Ciudad, barrio o código postal..."
               value={ciudad}
               onChange={(e) => setCiudad(e.target.value)}
-              className="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-gray-800 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent"
+              className="w-full px-3 py-1.5 rounded-lg border border-gray-200 text-gray-800 text-base md:text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent"
             />
           </div>
 
@@ -182,7 +182,7 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
             placeholder="Ciudad, barrio o código postal..."
             value={ciudad}
             onChange={(e) => setCiudad(e.target.value)}
-            className="w-full h-full px-4 py-2.5 rounded-lg border border-gray-200 text-gray-800 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent"
+            className="w-full h-full px-4 py-2.5 rounded-lg border border-gray-200 text-gray-800 text-base md:text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent"
           />
         </div>
 

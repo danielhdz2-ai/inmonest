@@ -16,5 +16,9 @@ export default function ConditionalFooter() {
     (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
   )
   if (isPlatform) return null
-  return <Footer />
+  return (
+    <div className="max-md:hidden">
+      <Footer />
+    </div>
+  )
 }
