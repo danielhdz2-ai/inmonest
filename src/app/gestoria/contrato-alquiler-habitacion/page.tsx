@@ -10,6 +10,8 @@ import {
   ALQUILER_HABITACION_CIUDADES_LIST,
   ALQUILER_HABITACION_PRECIO,
 } from '@/lib/alquiler-habitacion-ciudad-data'
+import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
+import { GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 import { precioLabel } from '@/lib/gestoria-precios-ui'
 
@@ -545,21 +547,20 @@ export default function ContratoAlquilerHabitacionPage() {
 
       <TestimoniosSection landing="alquiler-habitacion" layout="stack" hideRating className="bg-white" />
 
-      {/* CTA final */}
-      <section className="py-16 px-4 bg-gradient-to-br from-black to-black text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Alquila tu habitación con respaldo jurídico</h2>
-          <p className="text-lg text-white/85 mb-8">
-            Contrato profesional por {PRECIO}€ IVA incluido. Asesor asignado y entrega en 48 horas.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={SOLICITAR_URL} className="px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors">
-              Contratar ahora — {PRECIO}€
-            </Link>
-            <a href={`tel:${PHONE}`} className="px-8 py-4 rounded-lg border border-white/30 font-semibold hover:bg-white/10 transition-colors">
-              745 022 862
-            </a>
-          </div>
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <GestoriaCtaBanner
+            eyebrow="Contrato habitación"
+            title="Alquila tu habitación con respaldo jurídico"
+            description={`Contrato profesional por ${PRECIO}€ IVA incluido. Asesor asignado y entrega en 48 horas.`}
+            primaryHref={SOLICITAR_URL}
+            primaryLabel={`Contratar ahora — ${PRECIO}€`}
+            secondaryHref={`tel:${PHONE}`}
+            secondaryLabel="745 022 862"
+            imageSrc={GESTORIA_CTA_BANNERS.habitacion.src}
+            imageAlt={GESTORIA_CTA_BANNERS.habitacion.alt}
+            imagePosition="right"
+          />
         </div>
       </section>
     </>

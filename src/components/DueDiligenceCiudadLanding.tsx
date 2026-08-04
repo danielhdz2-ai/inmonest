@@ -20,6 +20,8 @@ import {
 } from '@/lib/due-diligence-ciudad-data'
 import { getDueDiligenceFaq } from '@/lib/due-diligence-ciudad-faq'
 import { buildFaqSchema } from '@/lib/gestoria-ciudad-schema'
+import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
+import { getCiudadCtaImage } from '@/lib/gestoria-images'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
@@ -462,26 +464,20 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         className="bg-slate-50"
       />
 
-      {/* CTA final */}
-      <section className="py-16 px-4 bg-gradient-to-br from-black to-black text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Compra en {nombre} con total seguridad jurídica</h2>
-          <p className="text-lg text-white/85 mb-8">
-            Revisión documental completa por {DUE_DILIGENCE_PRECIO}€. Gestor asignado hasta el día de la escritura.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={SOLICITAR_URL} className="px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors">
-              Contratar ahora — {DUE_DILIGENCE_PRECIO}€
-            </Link>
-            <TrackedContactLink
-              event="click_phone"
-              city={slug}
-              href={`tel:${PHONE}`}
-              className="px-8 py-4 rounded-lg border border-white/30 font-semibold hover:bg-white/10 transition-colors"
-            >
-              745 022 862
-            </TrackedContactLink>
-          </div>
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <GestoriaCtaBanner
+            eyebrow={`Due diligence · ${nombre}`}
+            title={`Compra en ${nombre} con total seguridad jurídica`}
+            description={`Revisión documental completa por ${DUE_DILIGENCE_PRECIO}€. Gestor asignado hasta el día de la escritura.`}
+            primaryHref={SOLICITAR_URL}
+            primaryLabel={`Contratar ahora — ${DUE_DILIGENCE_PRECIO}€`}
+            secondaryHref={`tel:${PHONE}`}
+            secondaryLabel="745 022 862"
+            imageSrc={getCiudadCtaImage(slug).src}
+            imageAlt={`Due diligence pre-compra en ${nombre}`}
+            imagePosition="right"
+          />
         </div>
       </section>
 

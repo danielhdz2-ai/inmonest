@@ -1,11 +1,10 @@
-import Link from 'next/link'
 import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import { BadgeCheck } from '@/components/ui/Icons'
-import TrackedContactLink from '@/components/TrackedContactLink'
-import { Button } from '@/components/ui/Button'
+import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
+import { GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
 import {
   getContratoAlquilerPrecio,
   getContratoAlquilerSolicitarHref,
@@ -73,41 +72,23 @@ export default function GestoriaHubConversionFooter({
         </div>
       </section>
 
-      <section className="py-16 bg-gradient-to-br from-black to-black text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            {ctaTitulo ?? `Gestoría inmobiliaria en ${ciudad}: empieza por lo que necesitas`}
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            {ctaTexto ??
-              `Contrato de alquiler o arras desde ${precioLau}€, o habla con un gestor ahora. Sin compromiso.`}
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button href={solicitarLauHref} variant="primary">
-              Contrato alquiler desde {precioLau}€
-            </Button>
-            <Button href="/gestoria/solicitar/arras-penitenciales" variant="ghost">
-              Arras desde 145€
-            </Button>
-            <TrackedContactLink
-              event="click_phone"
-              city={ciudadSlug}
-              href="tel:+34745022862"
-              className="border border-white/30 px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
-            >
-              Llamar: 745 022 862
-            </TrackedContactLink>
-            <TrackedContactLink
-              event="click_whatsapp"
-              city={ciudadSlug}
-              href={`https://wa.me/34745022862?text=${encodeURIComponent(waMsg)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-white/30 px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
-            >
-              WhatsApp
-            </TrackedContactLink>
-          </div>
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <GestoriaCtaBanner
+            eyebrow={`Gestoría · ${ciudad}`}
+            title={ctaTitulo ?? `Gestoría inmobiliaria en ${ciudad}: empieza por lo que necesitas`}
+            description={
+              ctaTexto ??
+              `Contrato de alquiler o arras desde ${precioLau}€, o habla con un gestor ahora. Sin compromiso.`
+            }
+            primaryHref={solicitarLauHref}
+            primaryLabel={`Contrato alquiler desde ${precioLau}€`}
+            secondaryHref={`https://wa.me/34745022862?text=${encodeURIComponent(waMsg)}`}
+            secondaryLabel="WhatsApp"
+            imageSrc={GESTORIA_CTA_BANNERS.hubCiudad.src}
+            imageAlt={GESTORIA_CTA_BANNERS.hubCiudad.alt}
+            imagePosition="right"
+          />
         </div>
       </section>
 

@@ -22,6 +22,8 @@ import {
   buildServiceOfferSchema,
 } from '@/lib/gestoria-ciudad-schema'
 import { getDueDiligenceHref } from '@/lib/gestoria-compra-cross-sell'
+import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
+import { getCiudadCtaImage } from '@/lib/gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/compra-completa-reserva-escritura'
@@ -338,31 +340,20 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
 
       <TestimoniosSection landing={config.testimoniosLanding} layout="stack" hideRating />
 
-      <section className="py-16 px-4 bg-gradient-to-br from-black to-black text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Compra en {nombre} con total seguridad</h2>
-          <p className="text-white/80 mb-8">
-            687€ fijos · Gestor asignado · Sin comisión de agencia · Respuesta en 24h
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href={SOLICITAR_URL}
-              className="px-8 py-3 rounded-lg bg-gold-500 text-[#1a2f1c] font-semibold hover:bg-[#f4c94a] transition-colors"
-            >
-              Solicitar online
-            </Link>
-            <a href={`tel:${PHONE}`} className="px-8 py-3 rounded-lg border border-white/30 font-semibold hover:bg-white/10">
-              745 022 862
-            </a>
-            <a
-              href={`https://wa.me/34745022862?text=${waText}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 rounded-lg border border-white/30 font-semibold hover:bg-white/10"
-            >
-              WhatsApp
-            </a>
-          </div>
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <GestoriaCtaBanner
+            eyebrow={`Asesoría compra · ${nombre}`}
+            title={`Compra en ${nombre} con total seguridad`}
+            description="687€ fijos · Gestor asignado · Sin comisión de agencia · Respuesta en 24h"
+            primaryHref={SOLICITAR_URL}
+            primaryLabel="Solicitar online"
+            secondaryHref={`https://wa.me/34745022862?text=${encodeURIComponent(waText)}`}
+            secondaryLabel="WhatsApp"
+            imageSrc={getCiudadCtaImage(config.slug).src}
+            imageAlt={`Asesoría compra piso en ${nombre}`}
+            imagePosition="right"
+          />
         </div>
       </section>
     </>

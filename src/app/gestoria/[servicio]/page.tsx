@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
+import { getServicioImages } from '@/lib/gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -818,6 +819,9 @@ export default async function ServicioGestoriaPage({
   const data = SERVICIOS[servicio]
   if (!data) notFound()
 
+  const visuals = getServicioImages(servicio)
+  const waHref = `https://wa.me/34745022862?text=${encodeURIComponent(`Hola, tengo dudas sobre ${data.nombre}`)}`
+
   const schemaJson = JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -862,46 +866,46 @@ export default async function ServicioGestoriaPage({
       <Navbar />
       <WhatsAppButton />
 
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative h-[400px] sm:h-[480px] overflow-hidden">
-        <Image
-          src={data.image}
-          alt={data.imageAlt}
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent" />
-
-        <div className="relative h-full max-w-5xl mx-auto px-4 sm:px-6 flex flex-col justify-end pb-12">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-1.5 text-xs text-white/50 mb-4">
-            <Link href="/" className="hover:text-white/80 transition-colors">Inicio</Link>
-            <span>/</span>
-            <Link href="/gestoria" className="hover:text-white/80 transition-colors">Gestoría</Link>
-            <span>/</span>
-            <span className="text-white/80">{data.nombre}</span>
-          </nav>
-
-          <span className="inline-block bg-gold-500 text-[#3d2a05] text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-12">
+        <GestoriaImageBanner
+          imageSrc={visuals.hero.src}
+          imageAlt={visuals.hero.alt}
+          imagePosition={visuals.imagePosition}
+          size="lg"
+          className="mb-12"
+        >
+          <span className="inline-block bg-gold-500/20 text-gold-300 text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit border border-gold-500/30">
             {data.categoria}
           </span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3 max-w-2xl">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-3 leading-snug max-w-2xl">
             {data.nombre}
           </h1>
-          <p className="text-white/80 text-lg max-w-xl mb-5">{data.tagline}</p>
-          <div className="flex flex-wrap items-center gap-4">
-            <div>
-              <span className="text-3xl font-bold text-gold-500">{data.precio} €</span>
-              <span className="text-white/50 text-xs ml-2">IVA incluido</span>
-            </div>
-            <span className="text-white/60 text-sm">· Entrega en 48h · PDF firmable</span>
+          <p className="text-white/75 text-base sm:text-lg max-w-xl mb-5 leading-relaxed">{data.tagline}</p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
+            <span className="text-3xl font-bold text-gold-400">{data.precio} €</span>
+            <span className="text-white/50 text-xs">IVA incluido</span>
+            <span className="text-white/55 text-sm hidden sm:inline">· Entrega en 48h · PDF firmable</span>
           </div>
-        </div>
-      </section>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+            <Link
+              href={`/gestoria/solicitar/${servicio}`}
+              className="inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-white hover:bg-gold-600 transition-colors"
+            >
+              Solicitar ahora — {data.precio} €
+            </Link>
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+            >
+              WhatsApp
+            </a>
+          </div>
+        </GestoriaImageBanner>
+      </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-12 space-y-16">
 
         {/* ── DESCRIPCIÓN + CTA ─────────────────────────────────────────── */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -998,20 +1002,17 @@ export default async function ServicioGestoriaPage({
           </div>
         </section>
 
-        {/* ── IMAGEN INTERMEDIA ────────────────────────────────────────── */}
-        <section className="relative h-52 rounded-2xl overflow-hidden">
-          <Image
-            src="/gestoria1.jpg"
-            alt="Equipo de abogados inmobiliarios Inmonest"
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 1280px) 100vw, 1024px"
-          />
-          <div className="absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-center px-6">
-            <p className="text-white text-xl font-bold mb-2">Redactado por abogados especializados</p>
-            <p className="text-white/70 text-sm">Sin plantillas genéricas. Cada contrato se adapta a tu operación real.</p>
-          </div>
-        </section>
+        <GestoriaImageBanner
+          imageSrc={visuals.mid.src}
+          imageAlt={visuals.mid.alt}
+          imagePosition={visuals.imagePosition === 'right' ? 'left' : 'right'}
+          size="sm"
+        >
+          <p className="text-lg sm:text-xl font-bold text-white mb-2">Redactado por gestoría especializada</p>
+          <p className="text-white/65 text-sm leading-relaxed max-w-md">
+            Sin plantillas genéricas. Cada contrato se adapta a tu operación real y cumple la normativa vigente.
+          </p>
+        </GestoriaImageBanner>
 
         {/* ── FAQ ──────────────────────────────────────────────────────── */}
         <section>
@@ -1051,35 +1052,18 @@ export default async function ServicioGestoriaPage({
           </div>
         </section>
 
-        {/* ── CTA FINAL ────────────────────────────────────────────────── */}
-        <section className="bg-black rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-bold text-white mb-3">¿Listo para solicitar tu {data.nombre.toLowerCase()}?</h2>
-          <p className="text-white/60 mb-6 max-w-lg mx-auto">
-            En menos de 48h tienes el documento listo para firmar. Redactado por abogados, sin plantillas genéricas.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href={`/gestoria/solicitar/${servicio}`}
-              className="bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-8 rounded-xl transition-colors"
-            >
-              Solicitar {data.nombre} — {data.precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>
-            </Link>
-            <a
-              href="https://wa.me/34745022862?text=Hola,%20tengo%20dudas%20sobre%20{data.nombre}"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gold-600 hover:bg-gold-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors"
-            >
-              WhatsApp: 745 022 862
-            </a>
-            <a
-              href="tel:+34745022862"
-              className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors"
-            >
-              Llamar ahora
-            </a>
-          </div>
-        </section>
+        <GestoriaCtaBanner
+          eyebrow="Contratar online"
+          title={<>¿Listo para solicitar tu {data.nombre.toLowerCase()}?</>}
+          description="En menos de 48h tienes el documento listo para firmar. Redactado por expertos, sin plantillas genéricas."
+          primaryHref={`/gestoria/solicitar/${servicio}`}
+          primaryLabel={`Solicitar — ${data.precio} € (IVA incl.)`}
+          secondaryHref={waHref}
+          secondaryLabel="WhatsApp: 745 022 862"
+          imageSrc={visuals.cta.src}
+          imageAlt={visuals.cta.alt}
+          imagePosition={visuals.imagePosition}
+        />
       </div>
     </>
   )

@@ -35,10 +35,15 @@ export function CtaBand({
   return (
     <div
       className={cn(
-        'relative overflow-hidden rounded-3xl shadow-xl min-h-[280px] flex bg-black',
+        'relative overflow-hidden rounded-3xl shadow-xl min-h-[280px] flex flex-col lg:flex-row bg-black',
         className
       )}
     >
+      <div className="relative h-44 w-full shrink-0 lg:hidden overflow-hidden order-first">
+        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="100vw" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
+      </div>
+
       {imagePosition === 'left' && (
         <div className="hidden lg:block relative w-[400px] shrink-0 order-first">
           <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="400px" />
@@ -46,7 +51,7 @@ export function CtaBand({
         </div>
       )}
 
-      <div className="relative z-10 flex flex-col justify-center px-8 sm:px-12 py-12 flex-1">
+      <div className="relative z-10 flex flex-col justify-center px-8 sm:px-12 py-8 sm:py-12 flex-1">
         <Badge variant="dark" className="mb-5 w-fit normal-case tracking-wide">
           {eyebrow}
         </Badge>

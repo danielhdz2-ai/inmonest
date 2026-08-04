@@ -1,0 +1,144 @@
+/**
+ * Imágenes de gestoría — asignación única por servicio para evitar repetición.
+ * hero: cabecera landing · mid: franja intermedia · cta: banner final
+ */
+export type ServicioImageSet = {
+  hero: { src: string; alt: string }
+  mid: { src: string; alt: string }
+  cta: { src: string; alt: string }
+  imagePosition: 'left' | 'right'
+}
+
+const DEFAULT: ServicioImageSet = {
+  hero: { src: '/gestoria1.jpg', alt: 'Gestoría inmobiliaria Inmonest' },
+  mid: { src: '/gestora6.jpg', alt: 'Equipo de gestoría revisando contratos' },
+  cta: { src: '/keys.jpg', alt: 'Entrega de llaves tras contrato' },
+  imagePosition: 'right',
+}
+
+export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
+  'arras-penitenciales': {
+    hero: { src: '/contratodearras.jpg', alt: 'Firma de contrato de arras penitenciales' },
+    mid: { src: '/gestoria15.jpg', alt: 'Revisión jurídica de contrato de arras' },
+    cta: { src: '/publicar-keys.jpg', alt: 'Llaves tras formalizar arras' },
+    imagePosition: 'right',
+  },
+  'arras-confirmatorias': {
+    hero: { src: '/contrato1.jpg', alt: 'Contrato de arras confirmatorias' },
+    mid: { src: '/gestoria14.jpg', alt: 'Gestoría especializada en compraventa' },
+    cta: { src: '/gestoria12.jpg', alt: 'Cierre de operación inmobiliaria' },
+    imagePosition: 'left',
+  },
+  'contrato-alquiler': {
+    hero: { src: '/contratodealquiler.jpg', alt: 'Contrato de alquiler LAU' },
+    mid: { src: '/familia1.jpg', alt: 'Familia en su nuevo hogar de alquiler' },
+    cta: { src: '/gestoria7.jpg', alt: 'Entrega de contrato de alquiler' },
+    imagePosition: 'right',
+  },
+  'rescision-alquiler': {
+    hero: { src: '/gestoria6.jpg', alt: 'Rescisión de contrato de alquiler' },
+    mid: { src: '/interior3.jpg', alt: 'Estado del inmueble en la entrega' },
+    cta: { src: '/sofainmonest.png', alt: 'Devolución de fianza y llaves' },
+    imagePosition: 'left',
+  },
+  'alquiler-habitaciones': {
+    hero: { src: '/familia5.jpg', alt: 'Alquiler de habitación en piso compartido' },
+    mid: { src: '/gestoria16.jpg', alt: 'Contrato de habitación personalizado' },
+    cta: { src: '/contrato6.jpg', alt: 'Normas de convivencia en contrato' },
+    imagePosition: 'right',
+  },
+  'alquiler-local-comercial': {
+    hero: { src: '/comercial1.jpg', alt: 'Contrato de alquiler de local comercial' },
+    mid: { src: '/comercial5.jpg', alt: 'Local comercial listo para actividad' },
+    cta: { src: '/gestora7.jpg', alt: 'Asesoramiento en arrendamiento comercial' },
+    imagePosition: 'left',
+  },
+  'alquiler-opcion-compra': {
+    hero: { src: '/contrato4.jpg', alt: 'Alquiler con opción a compra' },
+    mid: { src: '/familia3.jpg', alt: 'Familia evaluando compra de vivienda' },
+    cta: { src: '/promo3.png', alt: 'Formalización de opción de compra' },
+    imagePosition: 'right',
+  },
+  'prestamo-particulares': {
+    hero: { src: '/amigos1.jpg', alt: 'Préstamo entre particulares documentado' },
+    mid: { src: '/gestoria3.jpg', alt: 'Contrato de préstamo privado' },
+    cta: { src: '/gestora5.jpg', alt: 'Asesor fiscal para préstamo entre particulares' },
+    imagePosition: 'left',
+  },
+  'alquiler-garaje-trastero': {
+    hero: { src: '/gestoria9.jpg', alt: 'Alquiler de plaza de garaje o trastero' },
+    mid: { src: '/contrato5.jpg', alt: 'Contrato de arrendamiento de parking' },
+    cta: { src: '/comercial2.jpg', alt: 'Garaje y trastero en comunidad' },
+    imagePosition: 'right',
+  },
+  'acompanamiento-reserva-arras': {
+    hero: { src: '/gestoria10.jpg', alt: 'Reserva y arras de compraventa' },
+    mid: { src: '/contrato2.jpg', alt: 'Pack reserva más arras' },
+    cta: { src: '/gestoria17.jpg', alt: 'Acompañamiento hasta escritura' },
+    imagePosition: 'left',
+  },
+  'compra-completa-reserva-escritura': {
+    hero: { src: '/promo.png', alt: 'Compra de vivienda con acompañamiento' },
+    mid: { src: '/gestoria11.jpg', alt: 'Gestoría en compraventa completa' },
+    cta: { src: '/familia10.jpg', alt: 'Compradores en su nueva vivienda' },
+    imagePosition: 'right',
+  },
+  'compra-completa-parking-trastero': {
+    hero: { src: '/comercial4.jpg', alt: 'Compra de parking o trastero' },
+    mid: { src: '/gestoria18.jpg', alt: 'Due diligence de plaza de garaje' },
+    cta: { src: '/gestoria8.jpg', alt: 'Escritura de parking o trastero' },
+    imagePosition: 'left',
+  },
+  'pack-revision-reserva-alquiler': {
+    hero: { src: '/contrato2.jpg', alt: 'Pack revisión reserva y alquiler' },
+    mid: { src: '/contrato3.jpg', alt: 'Revisión de contratos inmobiliarios' },
+    cta: { src: '/gestoria4.jpg', alt: 'Contratos revisados por expertos' },
+    imagePosition: 'right',
+  },
+  'arras-parking-garage': {
+    hero: { src: '/contrato5.jpg', alt: 'Arras para compraventa de parking' },
+    mid: { src: '/gestoria13.jpg', alt: 'Plaza de garaje en operación de compra' },
+    cta: { src: '/publicar-keys.jpg', alt: 'Señal de arras en parking' },
+    imagePosition: 'left',
+  },
+}
+
+/** Imágenes para banners CTA en landings premium (no genéricas) */
+export const GESTORIA_CTA_BANNERS = {
+  prestamo: { src: '/amigos5.jpg', alt: 'Formalizar préstamo entre particulares' },
+  dueDiligence: { src: '/interior1.jpg', alt: 'Due diligence pre-compra' },
+  ventaCompleta: { src: '/familia2.jpg', alt: 'Venta de piso entre particulares' },
+  habitacion: { src: '/familia6.jpg', alt: 'Alquiler de habitación' },
+  parking: { src: '/comercial2.jpg', alt: 'Compra de parking o trastero' },
+  hubCiudad: { src: '/promo.png', alt: 'Gestoría inmobiliaria por ciudad' },
+  asesoriaCompra: { src: '/interior4.jpg', alt: 'Asesoría en compra de vivienda' },
+} as const
+
+/** Pool de imágenes únicas para CTAs finales por ciudad */
+const CIUDAD_CTA_POOL: { src: string; alt: string }[] = [
+  { src: '/gestoria2.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/gestoria5.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/gestoria8.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/gestoria12.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/gestoria13.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/gestoria17.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/familia2.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/familia4.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/familia7.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/familia8.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/familia9.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/interior2.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/interior3.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/amigos2.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/amigos3.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/amigos4.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+]
+
+export function getCiudadCtaImage(slug: string): { src: string; alt: string } {
+  const idx = [...slug].reduce((acc, c) => acc + c.charCodeAt(0), 0) % CIUDAD_CTA_POOL.length
+  return CIUDAD_CTA_POOL[idx]!
+}
+
+export function getServicioImages(slug: string): ServicioImageSet {
+  return SERVICIO_IMAGES[slug] ?? DEFAULT
+}

@@ -16,6 +16,8 @@ import {
   GESTORIA_PHONE_TEL,
   GESTORIA_PHONE_WA,
 } from '@/lib/gestoria-contact'
+import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
+import { GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
@@ -519,20 +521,20 @@ export default function PrestamoParticularesPage() {
 
       <TestimoniosSection landing="prestamo-particulares" layout="stack" hideRating className="bg-white" />
 
-      <section className="py-16 px-4 bg-gradient-to-br from-black to-black text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Formaliza tu préstamo privado hoy</h2>
-          <p className="text-lg text-white/85 mb-8">
-            Contrato profesional por {PRECIO}€ IVA incluido. Asesor asignado, nota fiscal y entrega en 48 horas.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={SOLICITAR_URL} className="px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors">
-              Contratar ahora — {PRECIO}€
-            </Link>
-            <a href={GESTORIA_PHONE_TEL} className="px-8 py-4 rounded-lg border border-white/30 font-semibold hover:bg-white/10 transition-colors">
-              {GESTORIA_PHONE_DISPLAY}
-            </a>
-          </div>
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <GestoriaCtaBanner
+            eyebrow="Contrato profesional"
+            title="Formaliza tu préstamo privado hoy"
+            description={`Contrato profesional por ${PRECIO}€ IVA incluido. Asesor asignado, nota fiscal y entrega en 48 horas.`}
+            primaryHref={SOLICITAR_URL}
+            primaryLabel={`Contratar ahora — ${PRECIO}€`}
+            secondaryHref={GESTORIA_PHONE_TEL}
+            secondaryLabel={GESTORIA_PHONE_DISPLAY}
+            imageSrc={GESTORIA_CTA_BANNERS.prestamo.src}
+            imageAlt={GESTORIA_CTA_BANNERS.prestamo.alt}
+            imagePosition="left"
+          />
         </div>
       </section>
     </>
