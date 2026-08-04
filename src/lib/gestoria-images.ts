@@ -114,6 +114,13 @@ export const GESTORIA_CTA_BANNERS = {
   asesoriaCompra: { src: '/interior4.jpg', alt: 'Asesoría en compra de vivienda' },
 } as const
 
+/** Imágenes landing premium Due Diligence */
+export const DUE_DILIGENCE_LANDING = {
+  hero: { src: '/gestoria15.jpg', alt: 'Due diligence pre-compra inmobiliaria' },
+  mid: { src: '/interior1.jpg', alt: 'Verificación documental antes de escriturar' },
+  imagePosition: 'right' as const,
+}
+
 /** Pool de imágenes únicas para CTAs finales por ciudad */
 const CIUDAD_CTA_POOL: { src: string; alt: string }[] = [
   { src: '/gestoria2.jpg', alt: 'Gestoría inmobiliaria por ciudad' },

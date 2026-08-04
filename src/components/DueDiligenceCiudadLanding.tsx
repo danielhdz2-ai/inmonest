@@ -20,8 +20,8 @@ import {
 } from '@/lib/due-diligence-ciudad-data'
 import { getDueDiligenceFaq } from '@/lib/due-diligence-ciudad-faq'
 import { buildFaqSchema } from '@/lib/gestoria-ciudad-schema'
-import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
-import { getCiudadCtaImage } from '@/lib/gestoria-images'
+import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
+import { DUE_DILIGENCE_LANDING, getCiudadCtaImage } from '@/lib/gestoria-images'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
@@ -140,66 +140,54 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
       <Navbar />
       <WhatsAppButton />
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-16 px-4 border-b border-gray-200">
-        <div className="max-w-6xl mx-auto">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-            <Link href="/" className="hover:text-gold-500">Inicio</Link>
-            <span>/</span>
-            <Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link>
-            <span>/</span>
-            <Link href="/gestoria/due-diligence-precompra" className="hover:text-gold-500">Due Diligence</Link>
-            <span>/</span>
-            <span className="text-gray-900 font-medium">{nombre}</span>
-          </nav>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-gold-700 bg-cream-100 border border-gold-300 px-3 py-1 rounded-full mb-4">
-                {config.hero?.badge ?? `Compra entre particulares · ${region}`}
-              </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                {config.hero?.h1 ?? (
-                  <>
-                    ¿Compras piso de particular en <span className="text-gold-500">{nombre}</span>?
-                  </>
-                )}
-              </h1>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                {config.hero?.lead ?? (
-                  <>
-                    Un <strong>gestor inmobiliario asignado</strong> revisa toda la documentación de la vivienda
-                    antes de la escritura: cargas registrales, deudas de comunidad, hipotecas, cédula de habitabilidad
-                    e informes técnicos. <strong className="text-gray-900">Evita riesgos que pueden costarte miles de euros.</strong>
-                  </>
-                )}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link
-                  href={SOLICITAR_URL}
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors"
-                >
-                  Contratar servicio — {DUE_DILIGENCE_PRECIO}€
-                </Link>
-                <a
-                  href={`tel:${PHONE}`}
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-gold-500 hover:text-gold-700 transition-colors"
-                >
-                  745 022 862
-                </a>
-              </div>
-              <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
-                <li className="flex items-center gap-2"><CheckIcon /> Gestor asignado</li>
-                <li className="flex items-center gap-2"><CheckIcon /> Hasta escritura</li>
-                <li className="flex items-center gap-2"><CheckIcon /> Informe completo</li>
-              </ul>
-            </div>
-            <div className="relative h-72 md:h-96 rounded-xl overflow-hidden shadow-lg">
-              <Image src={config.heroImage} alt={`Due Diligence compra vivienda ${nombre}`} fill className="object-cover" priority sizes="(max-width: 768px) 100vw, 50vw" />
-            </div>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-12">
+        <GestoriaImageBanner
+          imageSrc={config.heroImage}
+          imageAlt={`Due Diligence compra vivienda ${nombre}`}
+          imagePosition="right"
+          size="lg"
+        >
+          <span className="inline-block bg-gold-500/20 text-gold-300 text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit border border-gold-500/30 uppercase tracking-widest">
+            {config.hero?.badge ?? `Compra entre particulares · ${region}`}
+          </span>
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-3 leading-snug max-w-2xl">
+            {config.hero?.h1 ?? (
+              <>¿Compras piso de particular en {nombre}?</>
+            )}
+          </h1>
+          <p className="text-white/75 text-base sm:text-lg max-w-xl mb-5 leading-relaxed">
+            {config.hero?.lead ?? (
+              <>
+                Un gestor inmobiliario asignado revisa toda la documentación antes de la escritura:
+                cargas registrales, deudas de comunidad, hipotecas e informes técnicos.
+              </>
+            )}
+          </p>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
+            <span className="text-3xl font-bold text-gold-400">{DUE_DILIGENCE_PRECIO}€</span>
+            <span className="text-white/50 text-xs">IVA incluido</span>
           </div>
-        </div>
-      </section>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-5">
+            <Link
+              href={SOLICITAR_URL}
+              className="inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-white hover:bg-gold-600 transition-colors"
+            >
+              Contratar servicio — {DUE_DILIGENCE_PRECIO}€
+            </Link>
+            <a
+              href={`tel:${PHONE}`}
+              className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+            >
+              745 022 862
+            </a>
+          </div>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/60">
+            <li className="flex items-center gap-2"><CheckIcon /> Gestor asignado</li>
+            <li className="flex items-center gap-2"><CheckIcon /> Hasta escritura</li>
+            <li className="flex items-center gap-2"><CheckIcon /> Informe completo</li>
+          </ul>
+        </GestoriaImageBanner>
+      </div>
 
       {/* Qué es Inmonest + Gestor */}
       <section className="py-16 px-4 bg-white">
