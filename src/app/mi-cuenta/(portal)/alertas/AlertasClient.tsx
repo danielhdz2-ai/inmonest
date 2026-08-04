@@ -67,7 +67,7 @@ export default function AlertasClient({ initialAlerts }: { initialAlerts: Search
         </p>
         <Link
           href="/pisos"
-          className="inline-flex items-center gap-2 bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors"
+          className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -150,7 +150,7 @@ export default function AlertasClient({ initialAlerts }: { initialAlerts: Search
                   disabled={loading === alert.id + '-toggle'}
                   title={alert.active ? 'Pausar alerta' : 'Activar alerta'}
                   className={`w-10 h-6 rounded-full transition-colors relative flex-shrink-0 ${
-                    alert.active ? 'bg-[#c9962a]' : 'bg-gray-200'
+                    alert.active ? 'bg-gold-500' : 'bg-gray-200'
                   } disabled:opacity-60`}
                 >
                   <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${
@@ -181,7 +181,7 @@ export default function AlertasClient({ initialAlerts }: { initialAlerts: Search
                   disabled={loading === alert.id + '-freq'}
                   className={`text-xs px-3 py-1.5 rounded-lg border transition-colors disabled:opacity-60 ${
                     alert.frequency === f
-                      ? 'bg-[#c9962a] text-white border-[#c9962a]'
+                      ? 'bg-gold-500 text-white border-gold-500'
                       : 'bg-white text-gray-500 border-gray-200 hover:border-gray-300'
                   }`}
                 >

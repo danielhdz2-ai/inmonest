@@ -103,18 +103,18 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
       <section className="bg-gradient-to-br from-purple-50 via-white to-amber-50 py-16 px-4 border-b border-gray-200">
         <div className="max-w-6xl mx-auto">
           <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6 flex-wrap">
-            <Link href="/" className="hover:text-[#c9962a]">Inicio</Link>
+            <Link href="/" className="hover:text-gold-500">Inicio</Link>
             <span>/</span>
-            <Link href="/gestoria" className="hover:text-[#c9962a]">Gestoría</Link>
+            <Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link>
             <span>/</span>
-            <Link href="/gestoria/asesoria-compra-piso" className="hover:text-[#c9962a]">Asesoría Compra</Link>
+            <Link href="/gestoria/asesoria-compra-piso" className="hover:text-gold-500">Asesoría Compra</Link>
             <span>/</span>
             <span className="text-gray-900 font-medium">{nombre}</span>
           </nav>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#a87a20] bg-[#fdf8ee] border border-[#e8d48a] px-3 py-1 rounded-full mb-4">
+              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-gold-700 bg-cream-100 border border-gold-300 px-3 py-1 rounded-full mb-4">
                 Compra entre particulares · {region}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
@@ -124,20 +124,20 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
                   href={SOLICITAR_URL}
-                  className="inline-flex justify-center px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors"
+                  className="inline-flex justify-center px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors"
                 >
                   Contratar — {ASESORIA_COMPRA_PRECIO}€
                 </Link>
                 <a
                   href={`tel:${PHONE}`}
-                  className="inline-flex justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-[#c9962a] transition-colors"
+                  className="inline-flex justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-gold-500 transition-colors"
                 >
                   745 022 862
                 </a>
               </div>
               <p className="text-sm text-gray-500">
                 También disponible:{' '}
-                <Link href={getDueDiligenceHref(slug)} className="text-[#c9962a] hover:underline font-medium">
+                <Link href={getDueDiligenceHref(slug)} className="text-gold-500 hover:underline font-medium">
                   Due Diligence documental (350€)
                 </Link>
               </p>
@@ -187,7 +187,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
           <ul className="grid sm:grid-cols-2 gap-3">
             {ASESORIA_COMPRA_TRAMITES.map((t) => (
               <li key={t} className="flex items-start gap-2 text-sm text-gray-700 bg-slate-50 rounded-lg p-3">
-                <span className="text-[#c9962a] shrink-0 mt-0.5">✓</span>
+                <span className="text-gold-500 shrink-0 mt-0.5">✓</span>
                 {t}
               </li>
             ))}
@@ -203,7 +203,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {PASOS.map((paso, i) => (
               <div key={paso.titulo} className="bg-slate-50 border border-gray-200 rounded-xl p-5">
-                <span className="text-3xl font-black text-[#c9962a]/30 block mb-2">0{i + 1}</span>
+                <span className="text-3xl font-black text-gold-500/30 block mb-2">0{i + 1}</span>
                 <h3 className="font-bold text-gray-900 mb-2">{paso.titulo}</h3>
                 <p className="text-sm text-gray-600">{paso.desc}</p>
               </div>
@@ -222,7 +222,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
               <thead>
                 <tr className="bg-gray-50 border-b">
                   <th className="p-4 text-left font-semibold">Servicio</th>
-                  <th className="p-4 text-center font-semibold text-[#a87a20]">Inmonest</th>
+                  <th className="p-4 text-center font-semibold text-gold-700">Inmonest</th>
                   <th className="p-4 text-center font-semibold text-gray-500">Agencia tradicional</th>
                 </tr>
               </thead>
@@ -236,7 +236,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
                 </tr>
                 <tr>
                   <td className="p-4 font-medium">Tu ahorro estimado</td>
-                  <td className="p-4 text-center font-bold text-[#a87a20]" colSpan={2}>
+                  <td className="p-4 text-center font-bold text-gold-700" colSpan={2}>
                     Hasta {ahorroMin.toLocaleString('es-ES')}€ en un piso de {precioEjemploPiso.toLocaleString('es-ES')}€
                   </td>
                 </tr>
@@ -257,7 +257,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
           <div className="grid md:grid-cols-2 gap-6">
             {config.casosReales.map((caso) => (
               <article key={caso.titulo} className="border border-gray-200 rounded-xl p-6 bg-slate-50">
-                <p className="text-xs font-semibold uppercase tracking-wide text-[#a87a20] mb-2">{caso.perfil}</p>
+                <p className="text-xs font-semibold uppercase tracking-wide text-gold-700 mb-2">{caso.perfil}</p>
                 <h3 className="text-lg font-bold text-gray-900 mb-3">{caso.titulo}</h3>
                 <p className="text-sm text-gray-600 mb-3">
                   <strong className="text-gray-800">Situación:</strong> {caso.situacion}
@@ -281,10 +281,10 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
             alt={gestor.nombre}
             width={120}
             height={120}
-            className="rounded-full object-cover border-4 border-[#e8d48a] shrink-0"
+            className="rounded-full object-cover border-4 border-gold-300 shrink-0"
           />
           <div>
-            <p className="text-sm text-[#a87a20] font-semibold mb-1">Tu gestor en {nombre}</p>
+            <p className="text-sm text-gold-700 font-semibold mb-1">Tu gestor en {nombre}</p>
             <h2 className="text-2xl font-bold text-gray-900 mb-1">{gestor.nombre}</h2>
             <p className="text-gray-500 text-sm mb-3">{gestor.rol}</p>
             <p className="text-gray-700">{gestor.bio}</p>
@@ -320,7 +320,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
               <Link
                 key={c.slug}
                 href={`/gestoria/asesoria-compra-piso/${c.slug}`}
-                className="text-sm font-semibold text-[#c9962a] hover:underline"
+                className="text-sm font-semibold text-gold-500 hover:underline"
               >
                 {c.nombre} →
               </Link>
@@ -338,7 +338,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
 
       <TestimoniosSection landing={config.testimoniosLanding} layout="stack" hideRating />
 
-      <section className="py-16 px-4 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">
+      <section className="py-16 px-4 bg-gradient-to-br from-forest-800 to-forest-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Compra en {nombre} con total seguridad</h2>
           <p className="text-white/80 mb-8">
@@ -347,7 +347,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href={SOLICITAR_URL}
-              className="px-8 py-3 rounded-lg bg-[#c9962a] text-[#1a2f1c] font-semibold hover:bg-[#f4c94a] transition-colors"
+              className="px-8 py-3 rounded-lg bg-gold-500 text-[#1a2f1c] font-semibold hover:bg-[#f4c94a] transition-colors"
             >
               Solicitar online
             </Link>

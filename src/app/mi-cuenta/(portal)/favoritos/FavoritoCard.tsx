@@ -75,14 +75,14 @@ export default function FavoritoCard({ favId, listing }: Props) {
           </svg>
         </button>
         {listing.operation && (
-          <span className="absolute bottom-2 left-2 bg-[#c9962a] text-white text-xs font-semibold px-2 py-0.5 rounded-full">
+          <span className="absolute bottom-2 left-2 bg-gold-500 text-white text-xs font-semibold px-2 py-0.5 rounded-full">
             {listing.operation === 'rent' ? 'Alquiler' : 'Venta'}
           </span>
         )}
       </div>
       <div className="p-4">
         <Link href={`/pisos/${listing.id}`} className="block">
-          <p className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2 hover:text-[#c9962a] transition-colors">
+          <p className="font-semibold text-gray-900 text-sm leading-snug line-clamp-2 hover:text-gold-500 transition-colors">
             {listing.title}
           </p>
           {location && <p className="text-xs text-gray-400 mt-1">{location}</p>}
@@ -92,7 +92,7 @@ export default function FavoritoCard({ favId, listing }: Props) {
             {listing.area_m2 != null && <span>{listing.area_m2} m²</span>}
           </div>
           {price && (
-            <p className="text-base font-bold text-[#c9962a] mt-2">
+            <p className="text-base font-bold text-gold-500 mt-2">
               {price}{listing.operation === 'rent' ? '/mes' : ''}
             </p>
           )}

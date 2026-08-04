@@ -418,7 +418,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Valladolid',
     region: 'Castilla y León',
     testimoniosLanding: 'asesoria-compra-valladolid',
-    heroImage: '/keys.jpg',
+    heroImage: '/promo1.png',
     precioEjemploPiso: 190_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
@@ -734,7 +734,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Pamplona',
     region: 'Navarra',
     testimoniosLanding: 'asesoria-compra-pamplona',
-    heroImage: '/keys.jpg',
+    heroImage: '/promo1.png',
     precioEjemploPiso: 240_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,

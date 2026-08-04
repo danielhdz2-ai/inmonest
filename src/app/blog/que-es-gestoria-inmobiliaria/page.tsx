@@ -34,11 +34,11 @@ export default function QueEsGestoriaInmobiliariaPage() {
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
-          <Link href="/" className="hover:text-[#c9962a]">Inicio</Link>
+          <Link href="/" className="hover:text-gold-500">Inicio</Link>
           <span>/</span>
-          <Link href="/blog" className="hover:text-[#c9962a]">Blog</Link>
+          <Link href="/blog" className="hover:text-gold-500">Blog</Link>
           <span>/</span>
-          <span className="text-[#c9962a] font-semibold">¿Qué es una gestoría inmobiliaria?</span>
+          <span className="text-gold-500 font-semibold">¿Qué es una gestoría inmobiliaria?</span>
         </nav>
 
         {/* Header */}
@@ -248,7 +248,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
           </div>
 
           {/* CTA */}
-          <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] p-8 rounded-2xl text-white mb-8">
+          <div className="bg-gradient-to-r from-forest-950 to-forest-950 p-8 rounded-2xl text-white mb-8">
             <h3 className="text-2xl font-bold mb-4">¿Necesitas servicios de gestoría inmobiliaria?</h3>
             <p className="text-white/90 mb-6">
               En <strong>Inmonest</strong> somos una gestoría inmobiliaria online con abogados especializados. Contratos redactados a medida, revisión legal profesional y asesoría completa. <strong>Desde 29€</strong>.
@@ -256,7 +256,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/gestoria"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#c9962a] text-white text-lg font-bold hover:bg-[#a87a20] transition-colors shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gold-500 text-white text-lg font-bold hover:bg-gold-600 transition-colors shadow-lg"
               >
                 Ver todos los servicios →
               </Link>
@@ -264,7 +264,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
                 href="tel:+34745022862"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-white text-white font-semibold hover:bg-white/10 transition-colors"
               >
-                📞 Llamar: 745 022 862
+                Llamar: 745 022 862
               </a>
             </div>
           </div>

@@ -90,7 +90,7 @@ export default function SolicitarFormClient({ servicioSlug, servicioNombre, serv
 
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
-      <div className="bg-gradient-to-r from-[#7a5c1e] to-[#c9962a] px-6 py-5 text-white">
+      <div className="bg-gradient-to-r from-gold-700 to-gold-500 px-6 py-5 text-white">
         <p className="text-xs font-medium uppercase tracking-wider opacity-80 mb-0.5">Pago seguro Stripe</p>
         <h2 className="text-lg font-bold">Contratar {servicioNombre}</h2>
         <p className="text-white/70 text-sm mt-1">
@@ -162,7 +162,7 @@ export default function SolicitarFormClient({ servicioSlug, servicioNombre, serv
           </div>
         )}
 
-        <div className="bg-[#fdf8ee] border border-[#e8d48a] rounded-xl px-4 py-3 flex items-center justify-between">
+        <div className="bg-cream-100 border border-gold-300 rounded-xl px-4 py-3 flex items-center justify-between">
           <span className="text-sm text-gray-700 font-medium">{servicioNombre}</span>
           <div className="text-right">
             <div className="text-xl font-bold text-gold-500">{servicioPrecio} €</div>

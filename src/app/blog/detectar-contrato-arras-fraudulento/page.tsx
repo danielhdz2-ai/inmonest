@@ -44,7 +44,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
         </header>
 
         <Image
-          src="/keys.jpg"
+          src="/promo1.png"
           alt="Persona examinando contrato con lupa detectando fraude"
           width={800}
           height={400}

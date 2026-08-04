@@ -41,6 +41,11 @@ export default function CarruselServicios() {
     const scrollContainer = scrollRef.current
     if (!scrollContainer || isPaused) return
 
+    const prefersReduced =
+      typeof window !== 'undefined' &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReduced) return
+
     let scrollAmount = 0
     const scrollSpeed = 0.5 // píxeles por frame
 

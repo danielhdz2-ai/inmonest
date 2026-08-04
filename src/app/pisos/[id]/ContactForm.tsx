@@ -44,14 +44,14 @@ export default function ContactForm({ listingId, initialName, initialEmail }: Co
 
   if (status === 'sent') {
     return (
-      <div className="rounded-2xl bg-gradient-to-br from-[#fef9e8] to-[#fffbf0] border border-[#f4c94a]/40 p-5 text-center space-y-2">
-        <div className="w-10 h-10 rounded-full bg-[#c9962a] flex items-center justify-center mx-auto">
+      <div className="rounded-2xl bg-gradient-to-br from-[#fef9e8] to-[#fffbf0] border border-gold-300/40 p-5 text-center space-y-2">
+        <div className="w-10 h-10 rounded-full bg-gold-500 flex items-center justify-center mx-auto">
           <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
         <p className="text-[#42300a] font-semibold text-sm">Mensaje enviado</p>
-        <p className="text-[#a87a20] text-xs leading-relaxed">
+        <p className="text-gold-700 text-xs leading-relaxed">
           El anunciante recibirá tu solicitud y te responderá por email en breve.
         </p>
       </div>
@@ -95,7 +95,7 @@ export default function ContactForm({ listingId, initialName, initialEmail }: Co
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full py-2.5 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#a87a20] transition-colors disabled:opacity-60"
+        className="w-full py-2.5 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-gold-600 transition-colors disabled:opacity-60"
       >
         {status === 'sending' ? 'Enviando…' : 'Enviar mensaje'}
       </button>

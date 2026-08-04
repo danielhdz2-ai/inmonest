@@ -13,7 +13,7 @@ export default function SeguridadPage() {
       <Navbar />
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-gray-700">
         <PageHeroImage
-          src="/familia10.jpg"
+          src="/promo3.png"
           alt="Seguridad"
           className="mb-10"
         />
@@ -54,7 +54,7 @@ export default function SeguridadPage() {
         <section className="mb-10">
           <h2 className="text-xl font-bold text-gray-900 mb-3">3. Phishing y fraude</h2>
           <p className="leading-relaxed">
-            Inmonest <strong>nunca</strong> te pedirá tu contraseña por correo electrónico, teléfono o chat. Todos los correos oficiales provienen del dominio <strong>@inmonest.com</strong>. Si detectas algún intento de suplantación, repórtalo inmediatamente a <a href="mailto:info@inmonest.com" className="text-[#c9962a] hover:underline">info@inmonest.com</a>.
+            Inmonest <strong>nunca</strong> te pedirá tu contraseña por correo electrónico, teléfono o chat. Todos los correos oficiales provienen del dominio <strong>@inmonest.com</strong>. Si detectas algún intento de suplantación, repórtalo inmediatamente a <a href="mailto:info@inmonest.com" className="text-gold-500 hover:underline">info@inmonest.com</a>.
           </p>
         </section>
 
@@ -64,7 +64,7 @@ export default function SeguridadPage() {
             Si has descubierto una vulnerabilidad de seguridad en Inmonest, te pedimos que nos lo comuniques de forma responsable antes de hacer pública la información, dándonos tiempo razonable para corregirla. Puedes reportar vulnerabilidades en:
           </p>
           <p className="mt-3">
-            <a href="mailto:info@inmonest.com" className="text-[#c9962a] hover:underline font-semibold">info@inmonest.com</a>
+            <a href="mailto:info@inmonest.com" className="text-gold-500 hover:underline font-semibold">info@inmonest.com</a>
           </p>
           <p className="mt-2 text-sm text-gray-500">
             Por favor, incluye en tu reporte: descripción del problema, pasos para reproducirlo, posible impacto y, si es posible, una sugerencia de corrección. Nos comprometemos a responder en un plazo máximo de 72 horas.

@@ -75,7 +75,7 @@ export default function ArrasDiferenciasPage() {
           </p>
         </header>
         <PageHeroImage
-          src="/keys.jpg"
+          src="/promo1.png"
           alt="Arras penitenciales vs confirmatorias: ¿cuál te conviene en tu compraventa?"
           className="mb-12"
         />

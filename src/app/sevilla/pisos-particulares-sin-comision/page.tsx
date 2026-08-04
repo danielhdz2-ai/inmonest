@@ -54,17 +54,17 @@ export default function PisosSevillaPage() {
       <section className="relative pt-24 pb-20 px-4 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/ciudades/sevilla1.jpg" alt="Sevilla" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1a0d00]/85 via-[#2e1900]/65 to-[#1a0d00]/35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-forest-950/85 via-[#2e1900]/65 to-forest-950/35" />
         </div>
         
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center text-white mb-12">
-            <div className="inline-block bg-[#c9962a]/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold border border-[#c9962a]/40 mb-6 text-[#f4c94a]">
+            <div className="inline-block bg-gold-500/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold border border-gold-500/40 mb-6 text-gold-300">
               🏠 Sevilla • Particulares • Sin Comisión
             </div>
             <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
               Pisos de particulares<br />
-              <span className="text-[#f4c94a]">sin comisión</span> en Sevilla
+              <span className="text-gold-300">sin comisión</span> en Sevilla
             </h1>
             <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
               Contacta directamente con el propietario.<br />
@@ -73,15 +73,15 @@ export default function PisosSevillaPage() {
 
             <div className="flex flex-wrap justify-center gap-8 mb-10">
               <div className="text-center">
-                <div className="text-4xl font-black text-[#f4c94a]">253</div>
+                <div className="text-4xl font-black text-gold-300">253</div>
                 <div className="text-sm text-white/70">Pisos disponibles</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-black text-[#f4c94a]">0€</div>
+                <div className="text-4xl font-black text-gold-300">0€</div>
                 <div className="text-sm text-white/70">Comisión</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-black text-[#f4c94a]">24h</div>
+                <div className="text-4xl font-black text-gold-300">24h</div>
                 <div className="text-sm text-white/70">Respuesta</div>
               </div>
             </div>
@@ -109,7 +109,7 @@ export default function PisosSevillaPage() {
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center">¿Por qué buscar pisos de particulares?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {VENTAJAS.map((v, i) => (
-              <div key={i} className="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-[#c9962a] hover:shadow-lg transition-all">
+              <div key={i} className="bg-white border-2 border-gray-100 rounded-2xl p-6 hover:border-gold-500 hover:shadow-lg transition-all">
                 <div className="text-4xl mb-4">{v.icon}</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{v.titulo}</h3>
                 <p className="text-gray-600">{v.desc}</p>
@@ -130,13 +130,13 @@ export default function PisosSevillaPage() {
                     <Image src={b.imagen} alt={b.nombre} fill className="object-cover group-hover:scale-105 transition-transform duration-300" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                     <div className="absolute bottom-3 left-3 right-3">
-                      <span className="bg-[#c9962a] text-white text-xs font-bold px-2.5 py-1 rounded-full">{b.precio}</span>
+                      <span className="bg-gold-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">{b.precio}</span>
                     </div>
                   </div>
                   <div className="p-5">
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#c9962a] mb-2 transition-colors">{b.nombre}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-gold-500 mb-2 transition-colors">{b.nombre}</h3>
                     <p className="text-sm text-gray-600 mb-3">{b.desc}</p>
-                    <span className="text-[#c9962a] font-semibold text-sm group-hover:underline">Ver pisos →</span>
+                    <span className="text-gold-500 font-semibold text-sm group-hover:underline">Ver pisos →</span>
                   </div>
                 </div>
               </Link>
@@ -150,9 +150,9 @@ export default function PisosSevillaPage() {
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center">Lo que dicen nuestros usuarios</h2>
           <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {TESTIMONIOS.map((t, i) => (
-              <div key={i} className="bg-white border border-gray-200 rounded-2xl p-6 hover:border-[#c9962a]/50 transition-all">
+              <div key={i} className="bg-white border border-gray-200 rounded-2xl p-6 hover:border-gold-500/50 transition-all">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#c9962a] to-[#a87a20] rounded-full flex items-center justify-center text-white font-bold">{t.nombre.charAt(0)}</div>
+                  <div className="w-12 h-12 bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center text-white font-bold">{t.nombre.charAt(0)}</div>
                   <div>
                     <div className="font-bold">{t.nombre}</div>
                     <div className="text-sm text-gray-500">{t.barrio}</div>
@@ -168,11 +168,11 @@ export default function PisosSevillaPage() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-gradient-to-r from-[#c9962a] to-[#a87a20]">
+      <section className="py-20 px-4 bg-gradient-to-r from-gold-500 to-gold-700">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl md:text-5xl font-black mb-6">¿Quieres recibir pisos nuevos antes que nadie?</h2>
-          <p className="text-xl text-[#f4c94a]/90 mb-8">Crea una alerta personalizada gratis.</p>
-          <Link href="/publicar-anuncio" className="inline-block bg-white hover:bg-gray-50 text-[#c9962a] font-bold px-8 py-4 rounded-full text-lg shadow-xl">
+          <p className="text-xl text-gold-300/90 mb-8">Crea una alerta personalizada gratis.</p>
+          <Link href="/publicar-anuncio" className="inline-block bg-white hover:bg-gray-50 text-gold-500 font-bold px-8 py-4 rounded-full text-lg shadow-xl">
             Crear alerta gratis →
           </Link>
         </div>
@@ -183,10 +183,10 @@ export default function PisosSevillaPage() {
           <h2 className="text-3xl font-black text-gray-900 mb-8 text-center">Preguntas frecuentes</h2>
           <div className="space-y-4">
             {FAQS.map((faq, i) => (
-              <details key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-6 group hover:border-[#c9962a]/50 transition-all">
+              <details key={i} className="bg-gray-50 border border-gray-200 rounded-xl p-6 group hover:border-gold-500/50 transition-all">
                 <summary className="font-bold text-gray-900 cursor-pointer list-none flex justify-between">
                   {faq.q}
-                  <span className="text-[#c9962a] group-open:rotate-180 transition-transform">▼</span>
+                  <span className="text-gold-500 group-open:rotate-180 transition-transform">▼</span>
                 </summary>
                 <p className="text-gray-700 mt-4">{faq.a}</p>
               </details>

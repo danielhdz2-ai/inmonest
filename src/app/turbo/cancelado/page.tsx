@@ -31,7 +31,7 @@ export default async function TurboCanceladoPage({ searchParams }: Props) {
             {listing_id && (
               <Link
                 href={`/pisos/${listing_id}`}
-                className="px-6 py-3 bg-[#c9962a] text-white rounded-full font-semibold text-sm hover:bg-[#a87a20] transition-colors"
+                className="px-6 py-3 bg-gold-500 text-white rounded-full font-semibold text-sm hover:bg-gold-600 transition-colors"
               >
                 Volver al anuncio
               </Link>
@@ -87,7 +87,7 @@ export default async function TurboCanceladoPage({ searchParams }: Props) {
             <div className="bg-gray-100 rounded-xl p-4">
               <p className="text-sm text-gray-700">
                 <strong>¿Tienes alguna duda?</strong> Escríbenos desde el formulario de{' '}
-                <Link href="/contacto" className="text-[#c9962a] hover:underline">contacto</Link>{' '}
+                <Link href="/contacto" className="text-gold-500 hover:underline">contacto</Link>{' '}
                 y te respondemos en menos de 24 horas.
               </p>
             </div>

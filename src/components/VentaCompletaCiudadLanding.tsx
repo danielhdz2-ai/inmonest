@@ -60,18 +60,18 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
       <section className="bg-gradient-to-br from-amber-50 via-white to-orange-50 py-16 px-4 border-b border-gray-200">
         <div className="max-w-6xl mx-auto">
           <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6 flex-wrap">
-            <Link href="/" className="hover:text-[#c9962a]">Inicio</Link>
+            <Link href="/" className="hover:text-gold-500">Inicio</Link>
             <span>/</span>
-            <Link href="/gestoria" className="hover:text-[#c9962a]">Gestoría</Link>
+            <Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link>
             <span>/</span>
-            <Link href="/gestoria/venta-completa-reserva-escritura" className="hover:text-[#c9962a]">Venta Completa</Link>
+            <Link href="/gestoria/venta-completa-reserva-escritura" className="hover:text-gold-500">Venta Completa</Link>
             <span>/</span>
             <span className="text-gray-900 font-medium">{nombre}</span>
           </nav>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#a87a20] bg-[#fdf8ee] border border-[#e8d48a] px-3 py-1 rounded-full mb-4">
+              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-gold-700 bg-cream-100 border border-gold-300 px-3 py-1 rounded-full mb-4">
                 Vendedor particular · {region}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
@@ -79,8 +79,8 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
               </h1>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">{config.hero.lead}</p>
 
-              <div className="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-6 rounded-r-lg">
-                <p className="text-sm text-emerald-900">
+              <div className="bg-cream-100 border-l-4 border-cream-1000 p-4 mb-6 rounded-r-lg">
+                <p className="text-sm text-forest-900">
                   <strong>✓ Ya tienes comprador particular:</strong> perfecto, no buscamos comprador ni cobramos comisión.
                   Nos encargamos de contratos, documentación y notaría hasta que firmes la escritura.
                 </p>
@@ -89,15 +89,15 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
               <div className="flex flex-col sm:flex-row gap-4 mb-4">
                 <Link
                   href={SOLICITAR_URL}
-                  className="inline-flex justify-center px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold text-lg hover:bg-[#a87a20] transition-colors shadow-lg"
+                  className="inline-flex justify-center px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold text-lg hover:bg-gold-600 transition-colors shadow-lg"
                 >
                   Contratar — {VENTA_COMPLETA_PRECIO}€
                 </Link>
                 <a
                   href={`tel:${PHONE}`}
-                  className="inline-flex justify-center items-center gap-2 px-8 py-4 rounded-lg bg-green-600 text-white font-black text-xl hover:bg-green-700 transition-colors shadow-lg"
+                  className="inline-flex justify-center items-center gap-2 px-8 py-4 rounded-lg bg-gold-600 text-white font-black text-xl hover:bg-gold-700 transition-colors shadow-lg"
                 >
-                  📞 745 022 862
+                  745 022 862
                 </a>
               </div>
               <p className="text-sm text-gray-500">
@@ -114,7 +114,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
                 sizes="(max-width: 768px) 100vw, 50vw"
                 priority
               />
-              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur px-5 py-3 rounded-xl shadow-lg border border-[#e8d48a]">
+              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur px-5 py-3 rounded-xl shadow-lg border border-gold-300">
                 <div className="font-black text-2xl text-gray-900">{ventasAcompanadas}</div>
                 <div className="text-sm text-gray-600">ventas acompañadas en {nombre}</div>
               </div>
@@ -164,9 +164,9 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             {VENTA_COMPLETA_BLOQUES_SERVICIO.map((bloque) => (
-              <div key={bloque.numero} className="bg-white rounded-xl p-6 shadow-sm border-t-4 border-[#c9962a]">
+              <div key={bloque.numero} className="bg-white rounded-xl p-6 shadow-sm border-t-4 border-gold-500">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="bg-[#c9962a]/20 text-[#a87a20] w-10 h-10 rounded-full flex items-center justify-center font-black">
+                  <span className="bg-gold-500/20 text-gold-700 w-10 h-10 rounded-full flex items-center justify-center font-black">
                     {bloque.numero}
                   </span>
                   <h3 className="font-bold text-gray-900 text-lg">{bloque.titulo}</h3>
@@ -174,7 +174,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
                 <ul className="space-y-2">
                   {bloque.items.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                      <span className="text-[#c9962a] mt-0.5 shrink-0">✓</span>
+                      <span className="text-gold-500 mt-0.5 shrink-0">✓</span>
                       {item}
                     </li>
                   ))}
@@ -206,7 +206,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
           <div className="grid sm:grid-cols-2 gap-3">
             {VENTA_COMPLETA_DOCUMENTOS_CHECKLIST.map((doc) => (
               <div key={doc} className="flex items-start gap-3 bg-slate-50 border border-gray-200 rounded-lg p-4">
-                <span className="text-[#c9962a] font-bold shrink-0">✓</span>
+                <span className="text-gold-500 font-bold shrink-0">✓</span>
                 <span className="text-sm text-gray-800">{doc}</span>
               </div>
             ))}
@@ -223,7 +223,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
           <div className="space-y-6">
             {VENTA_COMPLETA_PASOS_PROCESO.map((item) => (
               <div key={item.paso} className="flex gap-4 items-start">
-                <div className="bg-[#c9962a] text-white w-12 h-12 rounded-full flex items-center justify-center font-black text-lg shrink-0">
+                <div className="bg-gold-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-black text-lg shrink-0">
                   {item.paso}
                 </div>
                 <div>
@@ -247,7 +247,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
               <thead>
                 <tr className="bg-gray-50 border-b">
                   <th className="p-4 text-left font-semibold">Opción</th>
-                  <th className="p-4 text-center font-semibold text-[#a87a20]">Inmonest</th>
+                  <th className="p-4 text-center font-semibold text-gold-700">Inmonest</th>
                   <th className="p-4 text-center font-semibold text-gray-500">Agencia tradicional</th>
                 </tr>
               </thead>
@@ -261,7 +261,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
                 </tr>
                 <tr>
                   <td className="p-4 font-medium">Tu ahorro estimado</td>
-                  <td className="p-4 text-center font-bold text-[#a87a20]" colSpan={2}>
+                  <td className="p-4 text-center font-bold text-gold-700" colSpan={2}>
                     Hasta {ahorroMin.toLocaleString('es-ES')}€ en un piso de {precioEjemploPiso.toLocaleString('es-ES')}€
                   </td>
                 </tr>
@@ -280,7 +280,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
               <thead>
                 <tr className="bg-gray-50 border-b">
                   <th className="p-4 text-left">Aspecto</th>
-                  <th className="p-4 text-center text-[#a87a20]">Con Inmonest</th>
+                  <th className="p-4 text-center text-gold-700">Con Inmonest</th>
                   <th className="p-4 text-center text-gray-500">Por tu cuenta</th>
                 </tr>
               </thead>
@@ -308,18 +308,18 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
             alt={gestor.nombre}
             width={120}
             height={120}
-            className="rounded-full object-cover border-4 border-[#e8d48a] shrink-0"
+            className="rounded-full object-cover border-4 border-gold-300 shrink-0"
           />
           <div className="flex-1 text-center md:text-left">
-            <p className="text-sm text-[#a87a20] font-semibold mb-1">Tu gestor en {nombre}</p>
+            <p className="text-sm text-gold-700 font-semibold mb-1">Tu gestor en {nombre}</p>
             <h2 className="text-2xl font-bold text-gray-900 mb-1">{gestor.nombre}</h2>
             <p className="text-gray-500 text-sm mb-3">{gestor.rol}</p>
             <p className="text-gray-700 mb-4">{gestor.bio}</p>
             <a
               href={`tel:${PHONE}`}
-              className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-bold text-lg hover:bg-green-700 transition"
+              className="inline-flex items-center gap-2 bg-gold-600 text-white px-6 py-3 rounded-lg font-bold text-lg hover:bg-gold-700 transition"
             >
-              📞 Llamar a {gestor.nombre.split(' ')[0]} — 745 022 862
+              Llamar a {gestor.nombre.split(' ')[0]} — 745 022 862
             </a>
           </div>
         </div>
@@ -353,7 +353,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
               <Link
                 key={c.slug}
                 href={`/gestoria/venta-completa-reserva-escritura/${c.slug}`}
-                className="text-sm font-semibold text-[#c9962a] hover:underline"
+                className="text-sm font-semibold text-gold-500 hover:underline"
               >
                 {c.nombre} →
               </Link>
@@ -371,7 +371,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
 
       <TestimoniosSection landing={config.testimoniosLanding} layout="stack" hideRating />
 
-      <section className="py-16 px-4 bg-gradient-to-br from-green-600 to-emerald-600 text-white">
+      <section className="py-16 px-4 bg-gradient-to-br from-gold-600 to-gold-600 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Vende en {nombre} con total seguridad</h2>
           <p className="text-white/90 mb-8">
@@ -380,7 +380,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href={SOLICITAR_URL}
-              className="px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold text-lg hover:bg-[#f4c94a] transition-colors"
+              className="px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold text-lg hover:bg-[#f4c94a] transition-colors"
             >
               Contratar online — {VENTA_COMPLETA_PRECIO}€
             </Link>
@@ -388,7 +388,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
               href={`tel:${PHONE}`}
               className="px-8 py-4 rounded-lg bg-green-700 text-white font-black text-xl hover:bg-green-800 transition-colors shadow-lg"
             >
-              📞 745 022 862
+              745 022 862
             </a>
             <a
               href={`https://wa.me/34745022862?text=${waText}`}

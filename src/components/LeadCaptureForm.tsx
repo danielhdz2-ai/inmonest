@@ -143,7 +143,7 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
 
   const inp = [
     'w-full border border-gray-200 rounded-lg px-3.5 py-2.5 text-sm',
-    'focus:outline-none focus:ring-2 focus:ring-[#c9962a]/40 focus:border-[#c9962a]',
+    'focus:outline-none focus:ring-2 focus:ring-[#c9962a]/40 focus:border-gold-500',
     'placeholder:text-gray-400 bg-white transition',
   ].join(' ')
 
@@ -156,20 +156,20 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
       <div className="flex flex-col md:flex-row">
 
         {/* ── Columna izquierda: confianza ──────────────────────────── */}
-        <div className="md:w-[42%] bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] p-8 flex flex-col text-white">
+        <div className="md:w-[42%] bg-gradient-to-br from-forest-800 to-forest-900 p-8 flex flex-col text-white">
 
           {/* Logo */}
           <div className="flex items-center mb-7 gap-0">
             <span className="text-xl font-extrabold tracking-tight">
-              <span className="text-white">Inmo</span><span className="text-[#f4c94a]">nest</span>
+              <span className="text-white">Inmo</span><span className="text-gold-300">nest</span>
             </span>
           </div>
 
           {/* Servicio + precio */}
           <div className="bg-white/10 rounded-xl p-4 mb-7 border border-white/20">
-            <p className="text-[10px] text-[#f4c94a] font-bold uppercase tracking-widest mb-1">Servicio seleccionado</p>
+            <p className="text-[10px] text-gold-300 font-bold uppercase tracking-widest mb-1">Servicio seleccionado</p>
             <p className="text-sm font-semibold leading-snug text-white/90">{label}</p>
-            <p className="text-4xl font-extrabold text-[#f4c94a] mt-2">{price} €</p>
+            <p className="text-4xl font-extrabold text-gold-300 mt-2">{price} €</p>
             <p className="text-xs text-white/50 mt-0.5">Pago único · Sin suscripción</p>
           </div>
 
@@ -278,7 +278,7 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
               <button
                 type="submit"
                 disabled={isSending}
-                className="w-full flex items-center justify-center gap-2 bg-[#c9962a] hover:bg-[#b8841f] active:scale-[0.98] disabled:opacity-60 text-white font-bold px-6 py-3.5 rounded-xl text-base transition-all shadow-md mt-2"
+                className="w-full flex items-center justify-center gap-2 bg-gold-500 hover:bg-[#b8841f] active:scale-[0.98] disabled:opacity-60 text-white font-bold px-6 py-3.5 rounded-xl text-base transition-all shadow-md mt-2"
               >
                 {isSending
                   ? <>{SPINNER} Procesando…</>
@@ -288,7 +288,7 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
 
               <p className="text-[11px] text-center text-gray-400 leading-relaxed">
                 Al continuar aceptas los{' '}
-                <a href="/aviso-legal" className="underline hover:text-[#c9962a]">términos de servicio</a>.
+                <a href="/aviso-legal" className="underline hover:text-gold-500">términos de servicio</a>.
                 {' '}Tus datos bancarios nunca pasan por nuestros servidores.
               </p>
             </form>

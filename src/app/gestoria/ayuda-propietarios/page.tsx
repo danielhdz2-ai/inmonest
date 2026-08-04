@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/familia1.jpg`, width: 1200, height: 630, alt: 'Contratos alquiler propietarios' }],
+    images: [{ url: `${BASE_URL}/promo3.png`, width: 1200, height: 630, alt: 'Contratos alquiler propietarios' }],
   },
 }
 
@@ -71,7 +71,7 @@ export default function AyudaPropietariosPage() {
                 ✅ Ley de Vivienda 2026 cumplida
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                ¿Alquilas tu piso? <br/><span className="text-[#c9962a]">Protégelo con un contrato legal</span>
+                ¿Alquilas tu piso? <br/><span className="text-gold-500">Protégelo con un contrato legal</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 Contratos de alquiler LAU personalizados y adaptados a la <strong>Ley de Vivienda 2026</strong>. 
@@ -80,7 +80,7 @@ export default function AyudaPropietariosPage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
                   href="/gestoria/solicitar/ayuda-propietarios"
-                  className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
+                  className="bg-gold-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
                   Solicitar contrato ({LABEL_AYUDA})
                 </Link>
@@ -88,26 +88,26 @@ export default function AyudaPropietariosPage() {
                   href="https://wa.me/34745022862?text=Hola,%20necesito%20un%20contrato%20de%20alquiler%20para%20mi%20piso"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
+                  className="bg-gold-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
-                  💬 WhatsApp directo
+                  WhatsApp directo
                 </a>
               </div>
               <div className="flex items-center gap-6 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Entrega en 24h</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Personalizado</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>IVA incluido</span>
@@ -116,7 +116,7 @@ export default function AyudaPropietariosPage() {
             </div>
             <div className="relative">
               <Image
-                src="/familia1.jpg"
+                src="/promo3.png"
                 alt="Propietario firmando contrato de alquiler"
                 width={600}
                 height={400}
@@ -144,7 +144,7 @@ export default function AyudaPropietariosPage() {
             ¿Por qué necesitas un contrato profesional?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
+            <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-gold-500">
               <div className="text-4xl mb-4">🛡️</div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Evita inquilinos morosos</h3>
               <p className="text-gray-700">
@@ -152,7 +152,7 @@ export default function AyudaPropietariosPage() {
                 Facilita el desahucio si el inquilino no paga.
               </p>
             </div>
-            <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
+            <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-gold-500">
               <div className="text-4xl mb-4">⚖️</div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Cumple la Ley de Vivienda 2026</h3>
               <p className="text-gray-700">
@@ -160,7 +160,7 @@ export default function AyudaPropietariosPage() {
                 mascotas, suministros, etc. Sin riesgo de nulidad.
               </p>
             </div>
-            <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
+            <div className="bg-orange-50 p-6 rounded-lg border-l-4 border-gold-500">
               <div className="text-4xl mb-4">💰</div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Maximiza tus rentas</h3>
               <p className="text-gray-700">
@@ -242,41 +242,41 @@ export default function AyudaPropietariosPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler LAU (vivienda habitual)</h3>
-              <div className="text-3xl font-bold text-[#c9962a] mb-3">{LABEL_AYUDA}</div>
+              <div className="text-3xl font-bold text-gold-500 mb-3">{LABEL_AYUDA}</div>
               <p className="text-gray-600 mb-4">
                 Para alquilar como vivienda principal del inquilino. Protección LAU completa, 
                 5 años + 3 prórroga tácita.
               </p>
               <Link
                 href="/gestoria/solicitar/ayuda-propietarios"
-                className="block text-center bg-[#c9962a] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
+                className="block text-center bg-gold-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar →
               </Link>
             </div>
             <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler temporal</h3>
-              <div className="text-3xl font-bold text-[#c9962a] mb-3">{LABEL_TEMPORADA}</div>
+              <div className="text-3xl font-bold text-gold-500 mb-3">{LABEL_TEMPORADA}</div>
               <p className="text-gray-600 mb-4">
                 Para estancias cortas (estudios, trabajo temporal). Menos de 1 año. 
                 Condiciones específicas para temporales.
               </p>
               <Link
                 href="/gestoria/solicitar/alquiler-temporada"
-                className="block text-center bg-[#c9962a] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
+                className="block text-center bg-gold-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar →
               </Link>
             </div>
             <div className="border-2 border-orange-200 rounded-lg p-6 hover:border-orange-500 transition">
               <h3 className="text-xl font-bold mb-3 text-gray-900">Alquiler de habitación</h3>
-              <div className="text-3xl font-bold text-[#c9962a] mb-3">{LABEL_HABITACION}</div>
+              <div className="text-3xl font-bold text-gold-500 mb-3">{LABEL_HABITACION}</div>
               <p className="text-gray-600 mb-4">
                 Para alquilar una habitación en piso compartido. Espacios comunes, normas de convivencia, etc.
               </p>
               <Link
                 href="/gestoria/solicitar/alquiler-habitaciones"
-                className="block text-center bg-[#c9962a] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
+                className="block text-center bg-gold-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#b8872a] transition"
               >
                 Solicitar →
               </Link>
@@ -336,15 +336,15 @@ export default function AyudaPropietariosPage() {
             <h3 className="text-2xl font-bold mb-4 text-gray-900">Packs para Agencias</h3>
             <div className="grid md:grid-cols-3 gap-6 mb-6">
               <div>
-                <div className="text-3xl font-bold text-[#c9962a]">10 contratos</div>
+                <div className="text-3xl font-bold text-gold-500">10 contratos</div>
                 <div className="text-gray-600">{LABEL_AYUDA}/ud — consultar descuento</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#c9962a]">25 contratos</div>
+                <div className="text-3xl font-bold text-gold-500">25 contratos</div>
                 <div className="text-gray-600">{LABEL_AYUDA}/ud — consultar descuento</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#c9962a]">50+ contratos</div>
+                <div className="text-3xl font-bold text-gold-500">50+ contratos</div>
                 <div className="text-gray-600">Consultar precio</div>
               </div>
             </div>
@@ -352,9 +352,9 @@ export default function AyudaPropietariosPage() {
               href="https://wa.me/34745022862?text=Hola,%20soy%20agencia%20inmobiliaria%20y%20necesito%20contratos%20de%20alquiler%20en%20volumen"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block bg-[#c9962a] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
+              className="inline-block bg-gold-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition"
             >
-              💬 Contactar para pack agencias
+              Contactar para pack agencias
             </a>
           </div>
         </div>
@@ -403,7 +403,7 @@ export default function AyudaPropietariosPage() {
       <TestimoniosSection landing="ayuda-propietarios" />
 
       {/* CTA Final */}
-      <section className="py-16 px-4 bg-[#c9962a] text-white">
+      <section className="py-16 px-4 bg-gold-500 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Protege tu inversión inmobiliaria
@@ -414,7 +414,7 @@ export default function AyudaPropietariosPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/ayuda-propietarios"
-              className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
+              className="bg-white text-gold-500 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
               Solicitar contrato ({LABEL_AYUDA})
             </Link>
@@ -422,9 +422,9 @@ export default function AyudaPropietariosPage() {
               href="https://wa.me/34745022862?text=Hola,%20necesito%20asesoramiento%20para%20alquilar%20mi%20piso"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition shadow-lg border-2 border-white"
+              className="bg-gold-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition shadow-lg border-2 border-white"
             >
-              💬 Asesoramiento gratuito (WhatsApp)
+              Asesoramiento gratuito (WhatsApp)
             </a>
           </div>
         </div>
@@ -436,18 +436,18 @@ export default function AyudaPropietariosPage() {
           <h2 className="text-2xl font-bold mb-8 text-gray-900">Servicios relacionados</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <Link href="/gestoria/solicitar/rescision-alquiler" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Rescisión de contrato</h3>
+              <h3 className="font-bold text-lg mb-2 text-gold-500">Rescisión de contrato</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Si necesitas rescindir un contrato de alquiler por incumplimiento del inquilino.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde {LABEL_AYUDA} →</span>
+              <span className="text-gold-500 font-semibold">Desde {LABEL_AYUDA} →</span>
             </Link>
             <Link href="/gestoria" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Más servicios de gestoría</h3>
+              <h3 className="font-bold text-lg mb-2 text-gold-500">Más servicios de gestoría</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Revisión de contratos, arras, compraventa y más servicios legales inmobiliarios.
               </p>
-              <span className="text-[#c9962a] font-semibold">Ver todos →</span>
+              <span className="text-gold-500 font-semibold">Ver todos →</span>
             </Link>
           </div>
         </div>

@@ -32,73 +32,73 @@ const SELLOS_CONFIANZA = [
 
 export default function Footer() {
   return (
-    <footer className="overflow-hidden bg-[#0d1a0f] text-white">
+    <footer className="overflow-hidden bg-forest-900 text-white">
 
       {/* ── Separador dorado ───────────────────────────────────── */}
-      <div className="h-[3px] bg-gradient-to-r from-transparent via-[#c9962a] to-transparent" />
+      <div className="h-[3px] bg-gradient-to-r from-transparent via-gold-500 to-transparent" />
 
       {/* ── SERVICIOS DE GESTORÍA ───────────────────────────────── */}
       <div className="border-b border-white/10 px-6 sm:px-10 lg:px-16 py-10">
         <div className="flex items-center justify-between mb-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-[#c9962a]">
+          <p className="text-xs font-bold uppercase tracking-widest text-gold-500">
             Servicios de Gestoría
           </p>
           <Link 
             href="/gestoria/ciudades" 
-            className="text-xs text-[#c9962a] hover:text-[#f4c94a] transition-colors flex items-center gap-1"
+            className="text-xs text-gold-500 hover:text-gold-300 transition-colors flex items-center gap-1"
           >
             Ver todos los servicios →
           </Link>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-x-8 gap-y-4">
-          <Link href="/gestoria" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Gestoría Inmobiliaria
           </Link>
-          <Link href="/gestoria/contrato-arras" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/contrato-arras" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Contrato de Arras
           </Link>
-          <Link href="/gestoria/contrato-alquiler" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/contrato-alquiler" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Contrato de Alquiler
           </Link>
-          <Link href="/gestoria/cuanto-cuesta-contrato-alquiler" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/cuanto-cuesta-contrato-alquiler" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Precio contrato alquiler
           </Link>
-          <Link href="/gestoria/prestamo-particulares" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/prestamo-particulares" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Préstamo entre particulares
           </Link>
-          <Link href="/gestoria/contrato-alquiler-habitacion" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/contrato-alquiler-habitacion" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Alquiler habitación
           </Link>
-          <Link href="/gestoria/venta-completa-reserva-escritura" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/venta-completa-reserva-escritura" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Venta completa + escritura
           </Link>
-          <Link href="/gestoria/revision-contrato-alquiler" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/revision-contrato-alquiler" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Revisión contrato alquiler
           </Link>
-          <Link href="/gestoria/contrato-compraventa" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/contrato-compraventa" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Contrato de compraventa
           </Link>
-          <Link href="/gestoria/asesoria-compra-piso" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/asesoria-compra-piso" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Asesoría compra de piso
           </Link>
-          <Link href="/gestoria/due-diligence-precompra" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/due-diligence-precompra" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Due diligence (350€)
           </Link>
-          <Link href="/vender-piso-sin-agencia" className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors">
+          <Link href="/vender-piso-sin-agencia" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Vender sin agencia
           </Link>
         </div>
         <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2">
-          <Link href="/gestoria/bilbao" className="text-xs text-white/45 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/bilbao" className="text-xs text-white/45 hover:text-gold-300 transition-colors">
             Gestoría Bilbao
           </Link>
-          <Link href="/gestoria/alicante" className="text-xs text-white/45 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/alicante" className="text-xs text-white/45 hover:text-gold-300 transition-colors">
             Gestoría Alicante
           </Link>
-          <Link href="/gestoria/palma" className="text-xs text-white/45 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/palma" className="text-xs text-white/45 hover:text-gold-300 transition-colors">
             Gestoría Palma
           </Link>
-          <Link href="/gestoria/ciudades" className="text-xs text-white/45 hover:text-[#f4c94a] transition-colors">
+          <Link href="/gestoria/ciudades" className="text-xs text-white/45 hover:text-gold-300 transition-colors">
             Todas las ciudades →
           </Link>
         </div>
@@ -129,7 +129,7 @@ export default function Footer() {
 
       {/* ── HUB SEO: Contratos e información por ciudad ─────────── */}
       <div className="border-b border-white/10 px-6 sm:px-10 lg:px-16 py-10">
-        <p className="text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-6">
+        <p className="text-xs font-bold uppercase tracking-widest text-gold-500 mb-6">
           Información por ciudad
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-8">
@@ -143,7 +143,7 @@ export default function Footer() {
                   <li key={slug}>
                     <Link
                       href={`/${slug}/${ruta}`}
-                      className="text-sm text-white/60 hover:text-[#f4c94a] transition-colors leading-snug"
+                      className="text-sm text-white/60 hover:text-gold-300 transition-colors leading-snug"
                     >
                       {nombre}
                     </Link>
@@ -161,14 +161,14 @@ export default function Footer() {
         {/* Mitad izquierda — imagen familia */}
         <div className="relative lg:w-2/5 min-h-[260px] lg:min-h-0 shrink-0">
           <Image
-            src="/familia1.jpg"
+            src="/promo3.png"
             alt="Familia en su hogar"
             fill
             className="object-cover object-center"
             sizes="(max-width: 1024px) 100vw, 40vw"
             priority={false}
           />
-          <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-transparent to-[#0d1a0f]" />
+          <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-transparent to-forest-900" />
         </div>
 
         {/* Mitad derecha — logo + columnas */}
@@ -178,7 +178,7 @@ export default function Footer() {
           <div className="flex flex-col items-start mb-10">
             <Link href="/" className="mb-3">
               <span className="text-2xl font-extrabold tracking-tight leading-none">
-                <span className="text-white">Inmo</span><span className="text-[#c9962a]">nest</span>
+                <span className="text-white">Inmo</span><span className="text-gold-500">nest</span>
               </span>
             </Link>
             <p className="text-sm text-white/50 max-w-xs leading-relaxed">
@@ -191,39 +191,39 @@ export default function Footer() {
 
             {/* Columna 1 — Legal */}
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-4">Legal</h3>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-gold-500 mb-4">Legal</h3>
               <ul className="space-y-2.5 text-sm text-white/60">
-                <li><Link href="/aviso-legal" className="hover:text-[#f4c94a] transition-colors">Aviso Legal</Link></li>
-                <li><Link href="/privacidad" className="hover:text-[#f4c94a] transition-colors">Política de Privacidad</Link></li>
-                <li><Link href="/cookies" className="hover:text-[#f4c94a] transition-colors">Política de Cookies</Link></li>
-                <li><Link href="/seguridad" className="hover:text-[#f4c94a] transition-colors">Seguridad</Link></li>
+                <li><Link href="/aviso-legal" className="hover:text-gold-300 transition-colors">Aviso Legal</Link></li>
+                <li><Link href="/privacidad" className="hover:text-gold-300 transition-colors">Política de Privacidad</Link></li>
+                <li><Link href="/cookies" className="hover:text-gold-300 transition-colors">Política de Cookies</Link></li>
+                <li><Link href="/seguridad" className="hover:text-gold-300 transition-colors">Seguridad</Link></li>
               </ul>
             </div>
 
             {/* Columna 2 — Servicios */}
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-4">Servicios</h3>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-gold-500 mb-4">Servicios</h3>
               <ul className="space-y-2.5 text-sm text-white/60">
-                <li><Link href="/pisos" className="hover:text-[#f4c94a] transition-colors">Portal inmobiliario</Link></li>
-                <li><Link href="/pisos?operacion=rent" className="hover:text-[#f4c94a] transition-colors">Alquiler</Link></li>
-                <li><Link href="/pisos?operacion=rent&solo_particulares=true" className="hover:text-[#f4c94a] transition-colors">Pisos de Particulares</Link></li>
-                <li><Link href="/pisos?operacion=sale" className="hover:text-[#f4c94a] transition-colors">Compra</Link></li>
-                <li><Link href="/publicar-anuncio" className="hover:text-[#f4c94a] transition-colors">Publicar anuncio</Link></li>
-                <li><Link href="/servicios" className="hover:text-[#f4c94a] transition-colors">Servicios</Link></li>
-                <li><Link href="/gestoria" className="hover:text-[#f4c94a] transition-colors">Gestoría online</Link></li>
-                <li><Link href="/vender-casa" className="hover:text-[#f4c94a] transition-colors">Vender sin comisión</Link></li>
+                <li><Link href="/pisos" className="hover:text-gold-300 transition-colors">Portal inmobiliario</Link></li>
+                <li><Link href="/pisos?operacion=rent" className="hover:text-gold-300 transition-colors">Alquiler</Link></li>
+                <li><Link href="/pisos?operacion=rent&solo_particulares=true" className="hover:text-gold-300 transition-colors">Pisos de Particulares</Link></li>
+                <li><Link href="/pisos?operacion=sale" className="hover:text-gold-300 transition-colors">Compra</Link></li>
+                <li><Link href="/publicar-anuncio" className="hover:text-gold-300 transition-colors">Publicar anuncio</Link></li>
+                <li><Link href="/servicios" className="hover:text-gold-300 transition-colors">Servicios</Link></li>
+                <li><Link href="/gestoria" className="hover:text-gold-300 transition-colors">Gestoría online</Link></li>
+                <li><Link href="/vender-casa" className="hover:text-gold-300 transition-colors">Vender sin comisión</Link></li>
               </ul>
             </div>
 
             {/* Columna 3 — Sobre nosotros + contacto */}
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-4">Sobre Inmonest</h3>
+              <h3 className="text-xs font-bold uppercase tracking-widest text-gold-500 mb-4">Sobre Inmonest</h3>
               <ul className="space-y-2.5 text-sm text-white/60 mb-6">
-                <li><Link href="/sobre-nosotros" className="hover:text-[#f4c94a] transition-colors">Quiénes somos</Link></li>
-                <li><Link href="/blog" className="hover:text-[#f4c94a] transition-colors">Blog inmobiliario</Link></li>
+                <li><Link href="/sobre-nosotros" className="hover:text-gold-300 transition-colors">Quiénes somos</Link></li>
+                <li><Link href="/blog" className="hover:text-gold-300 transition-colors">Blog inmobiliario</Link></li>
                 <li><FooterGestoriaContact /></li>
                 <li>
-                  <a href="mailto:info@inmonest.com" className="hover:text-[#f4c94a] transition-colors">
+                  <a href="mailto:info@inmonest.com" className="hover:text-gold-300 transition-colors">
                     info@inmonest.com
                   </a>
                 </li>
@@ -231,7 +231,7 @@ export default function Footer() {
 
               {/* Redes sociales */}
               <div className="flex items-center gap-3">
-                <a href="https://www.instagram.com/inmo.nest" target="_blank" rel="noopener noreferrer" aria-label="Inmonest en Instagram" className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-[#c9962a]/80 transition-colors">
+                <a href="https://www.instagram.com/inmo.nest" target="_blank" rel="noopener noreferrer" aria-label="Inmonest en Instagram" className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-gold-500/80 transition-colors">
                   <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                   </svg>
@@ -254,7 +254,7 @@ export default function Footer() {
           {/* ── Copyright ─────────────────────────────────────────── */}
           <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
             <span>© 2026 Inmonest — Tu portal inmobiliario de confianza</span>
-            <span className="hidden sm:block">Hecho con ❤ en España</span>
+            <span className="hidden sm:block">Hecho en España</span>
           </div>
 
         </div>{/* /mitad derecha */}

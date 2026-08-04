@@ -54,7 +54,7 @@ export default function ContratoCompraventaPage() {
       
       <div className="min-h-screen bg-white">
         {/* Hero */}
-        <section className="relative bg-gradient-to-r from-[#1a0d00] to-[#2e1900] text-white py-16 sm:py-24">
+        <section className="relative bg-gradient-to-r from-forest-950 to-forest-950 text-white py-16 sm:py-24">
           <div className="absolute inset-0 opacity-10">
             <Image
               src="/gestoria1.jpg"
@@ -77,7 +77,7 @@ export default function ContratoCompraventaPage() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/gestoria/solicitar/contrato-compraventa"
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#c9962a] text-white font-bold hover:bg-[#a87a20] transition-colors text-lg shadow-xl"
+                  className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gold-500 text-white font-bold hover:bg-gold-600 transition-colors text-lg shadow-xl"
                 >
                   Solicitar contrato desde 80€ →
                 </Link>
@@ -168,7 +168,7 @@ export default function ContratoCompraventaPage() {
                     <p className="text-sm text-gray-600">Menos frecuentes. No se puede desistir; si incumples, pagas las arras + daños y perjuicios.</p>
                   </div>
                 </div>
-                <p className="text-sm text-[#c9962a] font-semibold mt-4">Precio: 145€</p>
+                <p className="text-sm text-gold-500 font-semibold mt-4">Precio: 145€</p>
               </div>
 
               <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
@@ -183,7 +183,7 @@ export default function ContratoCompraventaPage() {
                   <li>✓ Garantías del vendedor (sin cargas, certificado energético, IBI al día)</li>
                   <li>✓ Estado del inmueble y vicios ocultos</li>
                 </ul>
-                <p className="text-sm text-[#c9962a] font-semibold mt-4">Precio: {precioLabel('contrato-compraventa')}</p>
+                <p className="text-sm text-gold-500 font-semibold mt-4">Precio: {precioLabel('contrato-compraventa')}</p>
               </div>
 
               <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
@@ -191,7 +191,7 @@ export default function ContratoCompraventaPage() {
                 <p className="text-gray-700 mb-3">
                   Para compras al contado o con ahorros propios. Más sencillo pero igualmente vinculante.
                 </p>
-                <p className="text-sm text-[#c9962a] font-semibold mt-4">Precio: {precioLabel('contrato-compraventa')}</p>
+                <p className="text-sm text-gold-500 font-semibold mt-4">Precio: {precioLabel('contrato-compraventa')}</p>
               </div>
 
               <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
@@ -199,7 +199,7 @@ export default function ContratoCompraventaPage() {
                 <p className="text-gray-700 mb-3">
                   Cuando aún no has decidido del todo pero quieres "bloquear" el piso. Anticipo más pequeño (500-2,000€) mientras revisas documentación.
                 </p>
-                <p className="text-sm text-[#c9962a] font-semibold mt-4">Precio: 25€</p>
+                <p className="text-sm text-gold-500 font-semibold mt-4">Precio: 25€</p>
               </div>
             </div>
           </section>
@@ -257,7 +257,7 @@ export default function ContratoCompraventaPage() {
             <h2 className="text-3xl font-bold text-gray-900 mb-6">¿Cómo funciona el servicio?</h2>
             <div className="space-y-6">
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#c9962a] text-white flex items-center justify-center font-bold">1</div>
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold-500 text-white flex items-center justify-center font-bold">1</div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-2">Solicitas el contrato</h3>
                   <p className="text-gray-700">Completas un formulario con los datos del inmueble, comprador, vendedor, precio y condiciones especiales.</p>
@@ -265,7 +265,7 @@ export default function ContratoCompraventaPage() {
               </div>
               
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#c9962a] text-white flex items-center justify-center font-bold">2</div>
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold-500 text-white flex items-center justify-center font-bold">2</div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-2">Equipo de gestoría revisa y redacta</h3>
                   <p className="text-gray-700">Nuestro equipo de gestoría redacta el contrato con todas las cláusulas necesarias según tu caso.</p>
@@ -273,7 +273,7 @@ export default function ContratoCompraventaPage() {
               </div>
               
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#c9962a] text-white flex items-center justify-center font-bold">3</div>
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold-500 text-white flex items-center justify-center font-bold">3</div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-2">Recibes el contrato (24-48h)</h3>
                   <p className="text-gray-700">Te enviamos el contrato en PDF + DOCX por email. Puedes pedir modificaciones sin coste extra.</p>
@@ -281,7 +281,7 @@ export default function ContratoCompraventaPage() {
               </div>
               
               <div className="flex gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#c9962a] text-white flex items-center justify-center font-bold">4</div>
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-gold-500 text-white flex items-center justify-center font-bold">4</div>
                 <div>
                   <h3 className="font-bold text-gray-900 mb-2">Firmáis el contrato</h3>
                   <p className="text-gray-700">Ambas partes firmáis (presencial o digital con certificado). El vendedor recibe las arras.</p>
@@ -342,14 +342,14 @@ export default function ContratoCompraventaPage() {
           <TestimoniosSection landing="contrato-compraventa" />
 
           {/* CTA final */}
-          <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-8 text-white text-center">
+          <div className="bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-8 text-white text-center">
             <h3 className="text-2xl font-bold mb-4">¿Listo para proteger tu compraventa?</h3>
             <p className="text-white/80 mb-6">
               Contrato redactado por nuestra gestoría en 24-48h. Con todas las cláusulas legales necesarias.
             </p>
             <Link
               href="/gestoria/solicitar/contrato-compraventa"
-              className="inline-block px-8 py-4 rounded-full bg-[#c9962a] text-white font-bold hover:bg-[#a87a20] transition-colors"
+              className="inline-block px-8 py-4 rounded-full bg-gold-500 text-white font-bold hover:bg-gold-600 transition-colors"
             >
               Solicitar contrato desde 80€ →
             </Link>
@@ -362,20 +362,20 @@ export default function ContratoCompraventaPage() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-8">Servicios relacionados</h2>
             <div className="grid sm:grid-cols-3 gap-6">
-              <Link href="/gestoria/solicitar/arras-penitenciales" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-[#c9962a] transition-colors">
-                <h3 className="font-bold text-gray-900 group-hover:text-[#c9962a] mb-2">
+              <Link href="/gestoria/solicitar/arras-penitenciales" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-gold-500 transition-colors">
+                <h3 className="font-bold text-gray-900 group-hover:text-gold-500 mb-2">
                   Contrato de Arras →
                 </h3>
                 <p className="text-sm text-gray-600">Desde 145€</p>
               </Link>
-              <Link href="/gestoria/solicitar/revision-arras" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-[#c9962a] transition-colors">
-                <h3 className="font-bold text-gray-900 group-hover:text-[#c9962a] mb-2">
+              <Link href="/gestoria/solicitar/revision-arras" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-gold-500 transition-colors">
+                <h3 className="font-bold text-gray-900 group-hover:text-gold-500 mb-2">
                   Revisión de Arras →
                 </h3>
                 <p className="text-sm text-gray-600">Desde 60€</p>
               </Link>
-              <Link href="/gestoria" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-[#c9962a] transition-colors">
-                <h3 className="font-bold text-gray-900 group-hover:text-[#c9962a] mb-2">
+              <Link href="/gestoria" className="group p-6 bg-white rounded-xl border border-gray-200 hover:border-gold-500 transition-colors">
+                <h3 className="font-bold text-gray-900 group-hover:text-gold-500 mb-2">
                   Más Servicios →
                 </h3>
                 <p className="text-sm text-gray-600">Ver todos</p>

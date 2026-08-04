@@ -20,7 +20,7 @@ export default function CiudadHubMercado({
   return (
     <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
       <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
-        El mercado de alquiler y compraventa en <span className="text-[#c9962a]">{ciudad}</span> (2026)
+        El mercado de alquiler y compraventa en <span className="text-gold-500">{ciudad}</span> (2026)
       </h2>
       <div className="prose prose-lg max-w-none text-gray-700 space-y-6">
         <div>

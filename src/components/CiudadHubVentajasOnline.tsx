@@ -39,12 +39,12 @@ export default function CiudadHubVentajasOnline({ ciudad }: CiudadHubVentajasOnl
   return (
     <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
       <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
-        ¿Por qué elegir una gestoría <span className="text-[#c9962a]">online</span> en {ciudad}?
+        ¿Por qué elegir una gestoría <span className="text-gold-500">online</span> en {ciudad}?
       </h2>
       <div className="grid md:grid-cols-3 gap-8">
         {VENTAJAS.map((v) => (
           <div key={v.id} className="text-center">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-[#c9962a]/10 text-[#a87a20] flex items-center justify-center border border-[#c9962a]/20">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gold-500/10 text-gold-700 flex items-center justify-center border border-gold-500/20">
               {v.icon}
             </div>
             <h3 className="text-xl font-bold text-gray-900 mb-3">{v.titulo}</h3>

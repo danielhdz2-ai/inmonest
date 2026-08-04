@@ -40,7 +40,7 @@ export default function LocalRegulationsBlock({
               <ul className="space-y-2">
                 {bloque.items.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-[#c9962a] mt-0.5 shrink-0">✓</span>
+                    <span className="text-gold-500 mt-0.5 shrink-0">✓</span>
                     {item}
                   </li>
                 ))}

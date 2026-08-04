@@ -120,10 +120,10 @@ export default function CalculadoraAhorroComisiones() {
   }
 
   return (
-    <div className="bg-gradient-to-br from-[#fef9e8] to-white rounded-2xl shadow-xl border border-[#c9962a]/20 overflow-hidden relative">
+    <div className="bg-gradient-to-br from-[#fef9e8] to-white rounded-2xl shadow-xl border border-gold-500/20 overflow-hidden relative">
       <HoneypotField value={honeypot} onChange={setHoneypot} />
 
-      <div className="bg-gradient-to-r from-[#c9962a] to-[#a87a20] px-6 py-8 text-center">
+      <div className="bg-gradient-to-r from-gold-500 to-gold-700 px-6 py-8 text-center">
         <div className="text-4xl mb-3">💰</div>
         <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
           Calculadora de Ahorro
@@ -144,7 +144,7 @@ export default function CalculadoraAhorroComisiones() {
               value={precio}
               onChange={handlePrecioChange}
               placeholder="Ej: 250.000"
-              className="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-lg focus:border-[#c9962a] focus:outline-none transition-colors"
+              className="w-full px-4 py-3 text-lg border-2 border-gray-200 rounded-lg focus:border-gold-500 focus:outline-none transition-colors"
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 font-semibold">
               €
@@ -162,7 +162,7 @@ export default function CalculadoraAhorroComisiones() {
           <button
             onClick={calcularAhorro}
             disabled={!precio}
-            className="w-full bg-[#c9962a] text-white font-bold py-4 rounded-lg hover:bg-[#a87a20] transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed shadow-lg"
+            className="w-full bg-gold-500 text-white font-bold py-4 rounded-lg hover:bg-gold-600 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed shadow-lg"
           >
             Calcular mi ahorro
           </button>
@@ -170,7 +170,7 @@ export default function CalculadoraAhorroComisiones() {
 
         {resultado && !emailEnviado && (
           <div className="space-y-4">
-            <div className="bg-white rounded-xl border-2 border-[#c9962a]/30 p-5 space-y-3">
+            <div className="bg-white rounded-xl border-2 border-gold-500/30 p-5 space-y-3">
               <div className="flex justify-between items-center pb-3 border-b border-gray-100">
                 <span className="text-gray-600 text-sm">Precio de venta</span>
                 <span className="font-bold text-gray-900">{formatCurrency(resultado.precioVenta)}</span>
@@ -185,13 +185,13 @@ export default function CalculadoraAhorroComisiones() {
               </div>
               <div className="flex justify-between items-center pt-2">
                 <span className="font-bold text-gray-900">Tu ahorro total</span>
-                <span className="font-bold text-2xl text-[#c9962a]">
+                <span className="font-bold text-2xl text-gold-500">
                   {formatCurrency(resultado.ahorroTotal)}
                 </span>
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6 text-center border border-green-200">
+            <div className="bg-gradient-to-br from-cream-50 to-cream-100 rounded-xl p-6 text-center border border-green-200">
               <div className="text-green-600 text-5xl font-black mb-2">
                 {resultado.porcentajeAhorro.toFixed(0)}%
               </div>
@@ -252,7 +252,7 @@ export default function CalculadoraAhorroComisiones() {
               </p>
               <a
                 href="/gestoria/venta-completa-reserva-escritura"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-[#c9962a] text-white font-semibold rounded-lg hover:bg-[#a87a20] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gold-500 text-white font-semibold rounded-lg hover:bg-gold-600 transition-colors"
               >
                 Ver servicio de venta completa →
               </a>
@@ -273,13 +273,13 @@ export default function CalculadoraAhorroComisiones() {
             <div className="space-y-3">
               <a
                 href="/gestoria/venta-completa-reserva-escritura"
-                className="block px-6 py-3 bg-[#c9962a] text-white font-semibold rounded-lg hover:bg-[#a87a20] transition-colors"
+                className="block px-6 py-3 bg-gold-500 text-white font-semibold rounded-lg hover:bg-gold-600 transition-colors"
               >
                 Contratar acompañamiento legal (687€)
               </a>
               <a
                 href="/publicar-anuncio"
-                className="block px-6 py-3 border-2 border-[#c9962a] text-[#c9962a] font-semibold rounded-lg hover:bg-[#c9962a] hover:text-white transition-colors"
+                className="block px-6 py-3 border-2 border-gold-500 text-gold-500 font-semibold rounded-lg hover:bg-gold-500 hover:text-white transition-colors"
               >
                 Publicar mi piso gratis
               </a>

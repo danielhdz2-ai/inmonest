@@ -11,7 +11,7 @@ type Props = {
 }
 
 const STATUS_LABEL: Record<string, { label: string; className: string }> = {
-  validated: { label: 'Validado', className: 'bg-emerald-100 text-emerald-700' },
+  validated: { label: 'Validado', className: 'bg-cream-100 text-gold-700' },
   rejected: { label: 'Rechazado', className: 'bg-red-100 text-red-700' },
   uploaded: { label: 'En revisión', className: 'bg-amber-100 text-amber-700' },
 }
@@ -167,7 +167,7 @@ export default function GestoriaPortalDocumentos({ contratos, userDocs, onDelete
                       type="button"
                       disabled={busy}
                       onClick={() => void handleOpen(doc, true)}
-                      className="min-h-[44px] rounded-xl bg-[#0d1a0f] text-white text-xs font-bold disabled:opacity-60 touch-manipulation"
+                      className="min-h-[44px] rounded-xl bg-forest-900 text-white text-xs font-bold disabled:opacity-60 touch-manipulation"
                     >
                       {busy ? '…' : '⬇️ Descargar'}
                     </button>

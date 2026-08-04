@@ -96,7 +96,7 @@ const OTROS = [
 
 function CheckIcon() {
   return (
-    <svg className="w-5 h-5 text-[#c9962a] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+    <svg className="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
     </svg>
   )
@@ -143,19 +143,19 @@ export default function CompraParkingTrasteroPage() {
       <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-16 px-4 border-b border-gray-200">
         <div className="max-w-6xl mx-auto">
           <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6">
-            <Link href="/" className="hover:text-[#c9962a]">Inicio</Link>
+            <Link href="/" className="hover:text-gold-500">Inicio</Link>
             <span>/</span>
-            <Link href="/gestoria" className="hover:text-[#c9962a]">Gestoría</Link>
+            <Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link>
             <span>/</span>
             <span className="text-gray-900 font-medium">Compra Parking o Trastero</span>
           </nav>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#a87a20] bg-[#fdf8ee] border border-[#e8d48a] px-3 py-1 rounded-full mb-4">
+              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-gold-700 bg-cream-100 border border-gold-300 px-3 py-1 rounded-full mb-4">
                 Compra entre particulares · Parking y trastero
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Compra de <span className="text-[#c9962a]">parking o trastero</span> con gestor asignado
+                Compra de <span className="text-gold-500">parking o trastero</span> con gestor asignado
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Te acompañamos en todo el proceso: <strong>reserva, arras, negociación, tramitación, notaría,
@@ -163,10 +163,10 @@ export default function CompraParkingTrasteroPage() {
                 en cada paso. <strong className="text-gray-900">{PRECIO}€ IVA incluido.</strong>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <Link href={SOLICITAR_URL} className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors">
+                <Link href={SOLICITAR_URL} className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors">
                   Contratar — {PRECIO}€ IVA incluido
                 </Link>
-                <a href={`tel:${PHONE}`} className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-[#c9962a] transition-colors">
+                <a href={`tel:${PHONE}`} className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-gold-500 transition-colors">
                   745 022 862
                 </a>
               </div>
@@ -178,7 +178,7 @@ export default function CompraParkingTrasteroPage() {
             </div>
             <div className="relative h-72 md:h-96 rounded-xl overflow-hidden shadow-lg">
               <Image src="/gestoria9.jpg" alt="Compra parking o trastero con gestoría" fill className="object-cover" priority sizes="(max-width: 768px) 100vw, 50vw" />
-              <div className="absolute top-4 right-4 bg-white rounded-full w-24 h-24 flex flex-col items-center justify-center shadow-lg border-2 border-[#c9962a]/30">
+              <div className="absolute top-4 right-4 bg-white rounded-full w-24 h-24 flex flex-col items-center justify-center shadow-lg border-2 border-gold-500/30">
                 <span className="text-2xl font-bold text-[#1e3a5f]">{PRECIO}€</span>
                 <span className="text-[10px] text-gray-500">IVA incluido</span>
               </div>
@@ -204,12 +204,12 @@ export default function CompraParkingTrasteroPage() {
           <div className="bg-slate-50 border border-gray-200 rounded-2xl p-8">
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">Tu gestor asignado</p>
             <div className="flex gap-5 items-start">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-[#c9962a]/30">
+              <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-gold-500/30">
                 <Image src={GESTOR_DANIEL_HERNANDEZ.foto} alt={GESTOR_DANIEL_HERNANDEZ.nombre} fill className="object-cover" sizes="80px" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900">{GESTOR_DANIEL_HERNANDEZ.nombre}</h3>
-                <p className="text-sm text-[#a87a20] font-medium mb-3">Gestor inmobiliario · Compras de anejos</p>
+                <p className="text-sm text-gold-700 font-medium mb-3">Gestor inmobiliario · Compras de anejos</p>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   Especialista en compraventas de parking, garaje y trastero entre particulares. Conoce la verificación
                   registral de anejos, la liquidación del ITP y la coordinación con notarías.
@@ -240,7 +240,7 @@ export default function CompraParkingTrasteroPage() {
           <div className="grid md:grid-cols-5 gap-6">
             {PASOS.map((paso, i) => (
               <div key={paso.titulo} className="text-center">
-                <div className="w-12 h-12 bg-[#1a2f1c] text-[#c9a84c] rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">{i + 1}</div>
+                <div className="w-12 h-12 bg-forest-800 text-gold-500 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">{i + 1}</div>
                 <h3 className="font-bold text-gray-900 mb-2 text-sm">{paso.titulo}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{paso.desc}</p>
               </div>
@@ -257,7 +257,7 @@ export default function CompraParkingTrasteroPage() {
               <thead>
                 <tr className="bg-gray-100">
                   <th className="p-4 text-left font-semibold text-gray-900 w-1/3" />
-                  <th className="p-4 text-center font-bold text-[#a87a20] bg-[#fdf8ee] border-b-2 border-[#c9962a]">Inmonest — {PRECIO}€</th>
+                  <th className="p-4 text-center font-bold text-gold-700 bg-cream-100 border-b-2 border-gold-500">Inmonest — {PRECIO}€</th>
                   <th className="p-4 text-center font-semibold text-gray-600 border-b-2 border-gray-300">Sin gestoría</th>
                 </tr>
               </thead>
@@ -287,10 +287,10 @@ export default function CompraParkingTrasteroPage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Servicios relacionados</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {OTROS.map((s) => (
-              <Link key={s.titulo} href={s.href} className="block p-6 bg-slate-50 border border-gray-200 rounded-xl hover:border-[#c9962a]/50 transition-all">
+              <Link key={s.titulo} href={s.href} className="block p-6 bg-slate-50 border border-gray-200 rounded-xl hover:border-gold-500/50 transition-all">
                 <h3 className="font-bold text-gray-900 mb-2 text-sm">{s.titulo}</h3>
                 <p className="text-xs text-gray-600 mb-3">{s.desc}</p>
-                <span className="text-sm font-semibold text-[#a87a20]">Desde {s.precio}</span>
+                <span className="text-sm font-semibold text-gold-700">Desde {s.precio}</span>
               </Link>
             ))}
           </div>
@@ -313,12 +313,12 @@ export default function CompraParkingTrasteroPage() {
 
       <TestimoniosSection landing="compra-parking-trastero" layout="stack" hideRating className="bg-white" />
 
-      <section className="py-16 px-4 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">
+      <section className="py-16 px-4 bg-gradient-to-br from-forest-800 to-forest-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Compra tu parking o trastero con seguridad</h2>
           <p className="text-lg text-white/85 mb-8">Servicio completo por {PRECIO}€. Gestor asignado hasta registro e ITP.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={SOLICITAR_URL} className="px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors">
+            <Link href={SOLICITAR_URL} className="px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors">
               Contratar ahora — {PRECIO}€
             </Link>
             <a href={`https://wa.me/${WA}?text=${waText}`} target="_blank" rel="noopener noreferrer" className="px-8 py-4 rounded-lg border border-white/30 font-semibold hover:bg-white/10 transition-colors">

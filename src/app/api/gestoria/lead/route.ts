@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
   const fecha = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
   sendEmail({
     to: NOTIFY_EMAIL,
-    subject: `📞 Nuevo lead gestoría — ${serviceName}${ciudad ? ` · ${ciudad}` : ''}`,
+    subject: `Nuevo lead gestoría — ${serviceName}${ciudad ? ` · ${ciudad}` : ''}`,
     html: baseLayout(`
       <h2 style="margin:0 0 12px;color:#c9962a">Nuevo lead de gestoría</h2>
       <p style="color:#666;font-size:13px">Fuente: ${body.source ?? 'pide_info'} · ${fecha}</p>

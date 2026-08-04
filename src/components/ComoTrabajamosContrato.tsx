@@ -55,7 +55,7 @@ export default function ComoTrabajamosContrato({ ciudad, ciudadSlug, servicio }:
       </div>
 
       <div>
-        <p className="text-xs font-bold uppercase tracking-widest text-[#c9a84c] mb-2">Cómo trabajamos</p>
+        <p className="text-xs font-bold uppercase tracking-widest text-gold-500 mb-2">Cómo trabajamos</p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
           Primero hablas con un gestor. Después decides.
         </h2>
@@ -68,7 +68,7 @@ export default function ComoTrabajamosContrato({ ciudad, ciudadSlug, servicio }:
         <ol className="space-y-4 mb-6">
           {PASOS.map((p) => (
             <li key={p.num} className="flex gap-4">
-              <span className="shrink-0 w-10 h-10 rounded-full bg-[#c9a84c] text-white font-bold text-sm flex items-center justify-center">
+              <span className="shrink-0 w-10 h-10 rounded-full bg-gold-500 text-white font-bold text-sm flex items-center justify-center">
                 {p.num}
               </span>
               <div>
@@ -84,7 +84,7 @@ export default function ComoTrabajamosContrato({ ciudad, ciudadSlug, servicio }:
             event="click_phone"
             city={ciudadSlug}
             href="tel:+34745022862"
-            className="inline-flex items-center gap-2 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold px-5 py-3 text-sm"
+            className="inline-flex items-center gap-2 rounded-xl bg-gold-600 hover:bg-gold-700 text-white font-bold px-5 py-3 text-sm"
           >
             Llama a tu gestor — 745 022 862
           </TrackedContactLink>

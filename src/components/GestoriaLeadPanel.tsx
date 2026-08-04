@@ -26,9 +26,9 @@ export default function GestoriaLeadPanel({ lead, paying, onPay }: Props) {
   const docs = getDocsPreviewForService(lead.service_key)
 
   return (
-    <div className="bg-white rounded-2xl border-2 border-[#e8d48a] overflow-hidden shadow-sm -mx-1 sm:mx-0">
-      <div className="bg-gradient-to-r from-[#fdf8ee] to-white px-4 sm:px-6 py-4 sm:py-5 border-b border-[#e8d48a]/60">
-        <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-[#7a5c1e] bg-[#fef9e8] border border-[#e8d48a] px-2.5 py-1 rounded-full mb-2">
+    <div className="bg-white rounded-2xl border-2 border-gold-300 overflow-hidden shadow-sm -mx-1 sm:mx-0">
+      <div className="bg-gradient-to-r from-[#fdf8ee] to-white px-4 sm:px-6 py-4 sm:py-5 border-b border-gold-300/60">
+        <span className="inline-block text-[10px] font-bold uppercase tracking-widest text-gold-700 bg-cream-100 border border-gold-300 px-2.5 py-1 rounded-full mb-2">
           Pendiente de contratar
         </span>
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
@@ -39,7 +39,7 @@ export default function GestoriaLeadPanel({ lead, paying, onPay }: Props) {
             )}
           </div>
           <div className="sm:text-right flex-shrink-0">
-            <p className="text-2xl sm:text-3xl font-extrabold text-[#c9962a]">{price} €</p>
+            <p className="text-2xl sm:text-3xl font-extrabold text-gold-500">{price} €</p>
             <p className="text-xs text-gray-400">IVA incluido</p>
           </div>
         </div>
@@ -74,7 +74,7 @@ export default function GestoriaLeadPanel({ lead, paying, onPay }: Props) {
             type="button"
             onClick={onPay}
             disabled={paying}
-            className="w-full sm:flex-1 inline-flex items-center justify-center gap-2 bg-[#c9962a] active:bg-[#b8841e] disabled:opacity-60 text-white font-bold min-h-[52px] px-6 rounded-xl transition-colors shadow-md touch-manipulation"
+            className="w-full sm:flex-1 inline-flex items-center justify-center gap-2 bg-gold-500 active:bg-[#b8841e] disabled:opacity-60 text-white font-bold min-h-[52px] px-6 rounded-xl transition-colors shadow-md touch-manipulation"
           >
             {paying ? (
               <>
@@ -97,7 +97,7 @@ export default function GestoriaLeadPanel({ lead, paying, onPay }: Props) {
 
         <a
           href="tel:+34745022862"
-          className="block w-full text-center text-sm text-[#c9962a] font-semibold min-h-[44px] leading-[44px] touch-manipulation"
+          className="block w-full text-center text-sm text-gold-500 font-semibold min-h-[44px] leading-[44px] touch-manipulation"
         >
           O llama al 745 022 862
         </a>

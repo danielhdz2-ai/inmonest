@@ -12,7 +12,7 @@ const PHONE_HREF = 'tel:+34745022862'
 const WA_NUMBER = '34745022862'
 
 const PHONE_BTN =
-  'inline-flex items-center justify-center gap-2 bg-green-600 text-white hover:bg-green-700 transition shadow-lg'
+  'inline-flex items-center justify-center gap-2 bg-gold-600 text-white hover:bg-gold-700 transition shadow-lg'
 
 function PhoneIcon({ className }: { className?: string }) {
   return (
@@ -39,7 +39,7 @@ export default function LlamaGestorBanner({
 
   if (variant === 'strip') {
     return (
-      <section className="py-6 px-4 bg-gradient-to-r from-[#c9962a] to-[#a87a20] shadow-md">
+      <section className="py-6 px-4 bg-gradient-to-r from-gold-500 to-gold-700 shadow-md">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4 text-white">
             <span className="flex h-14 w-14 items-center justify-center rounded-full bg-white/25 backdrop-blur animate-pulse shrink-0">
@@ -64,7 +64,7 @@ export default function LlamaGestorBanner({
 
   if (variant === 'dark') {
     return (
-      <section className="py-14 px-4 bg-gradient-to-br from-green-600 via-green-500 to-emerald-600">
+      <section className="py-14 px-4 bg-gradient-to-br from-gold-600 via-gold-500 to-gold-600">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/20 text-white px-4 py-2 rounded-full text-sm font-bold mb-6 border border-white/30">
             <span className="relative flex h-3 w-3">
@@ -99,11 +99,13 @@ export default function LlamaGestorBanner({
   }
 
   return (
-    <section className="py-12 px-4 bg-gradient-to-r from-[#c9962a] to-[#a87a20]">
+    <section className="py-12 px-4 bg-gradient-to-r from-gold-500 to-gold-700">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl p-8 md:p-10 shadow-2xl border-4 border-[#f4c94a]/50">
+        <div className="bg-white rounded-2xl p-8 md:p-10 shadow-2xl border-4 border-gold-300/50">
           <div className="text-center mb-6">
-            <span className="inline-block text-5xl mb-3">📞</span>
+            <span className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-gold-100 mb-3">
+              <PhoneIcon className="w-8 h-8 text-gold-600" />
+            </span>
             <h2 className="text-2xl md:text-3xl font-black text-gray-900 mb-2">
               {title ?? defaultTitle}
             </h2>
@@ -121,7 +123,7 @@ export default function LlamaGestorBanner({
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 bg-green-500 text-white px-8 py-5 rounded-xl font-bold text-xl hover:bg-green-600 transition shadow-xl flex-1 sm:flex-none"
+              className="inline-flex items-center justify-center gap-3 bg-gold-500 text-white px-8 py-5 rounded-xl font-bold text-xl hover:bg-gold-600 transition shadow-xl flex-1 sm:flex-none"
             >
               WhatsApp
             </a>

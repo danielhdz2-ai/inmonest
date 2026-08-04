@@ -40,7 +40,7 @@ function buildContactHtml(opts: {
   return `
     <div style="font-family:sans-serif;max-width:600px;margin:auto;color:#222;padding:24px">
       <div style="background:linear-gradient(to right,#7a5c1e,#c9962a);border-radius:12px;padding:20px 24px;margin-bottom:24px">
-        <h2 style="color:#fff;margin:0">💬 Nuevo mensaje en tu anuncio</h2>
+        <h2 style="color:#fff;margin:0">Nuevo mensaje en tu anuncio</h2>
         <p style="color:#ffedd5;margin:4px 0 0">${opts.safeTitle}${opts.safeCity ? ` — ${opts.safeCity}` : ''}</p>
       </div>
       <table style="width:100%;border-collapse:collapse;font-size:14px">
@@ -165,7 +165,7 @@ export async function POST(req: NextRequest, { params }: Params) {
         from:     FROM_EMAIL(),
         to:       [ownerEmail],
         reply_to: from_email.trim(),
-        subject:  `💬 Nuevo mensaje en tu anuncio — ${listing.title ?? listingId}`,
+        subject:  `Nuevo mensaje en tu anuncio — ${listing.title ?? listingId}`,
         html,
       })
     } else if (ownerEmail === ADMIN_EMAIL || !ownerEmail) {
@@ -174,7 +174,7 @@ export async function POST(req: NextRequest, { params }: Params) {
         from:     FROM_EMAIL(),
         to:       [ADMIN_EMAIL],
         reply_to: from_email.trim(),
-        subject:  `💬 Nuevo contacto en anuncio — ${safeTitle}`,
+        subject:  `Nuevo contacto en anuncio — ${safeTitle}`,
         html,
       })
     }
@@ -185,7 +185,7 @@ export async function POST(req: NextRequest, { params }: Params) {
         from:    FROM_EMAIL(),
         to:      [ADMIN_EMAIL],
         reply_to: from_email.trim(),
-        subject: `[copia] 💬 Contacto en anuncio — ${safeTitle}`,
+        subject: `[copia] Contacto en anuncio — ${safeTitle}`,
         html,
       })
     }

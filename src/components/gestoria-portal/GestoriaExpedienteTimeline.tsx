@@ -86,7 +86,7 @@ export default function GestoriaExpedienteTimeline({ requestId, compact = false 
 
   return (
     <div className={`rounded-2xl border border-gray-200 bg-white ${compact ? 'p-4' : 'p-5 sm:p-6'} shadow-sm`}>
-      <p className="text-[10px] font-bold uppercase tracking-widest text-[#c9962a] mb-4">
+      <p className="text-[10px] font-bold uppercase tracking-widest text-gold-500 mb-4">
         Historial del expediente
       </p>
       <ol className="space-y-0">
@@ -95,7 +95,7 @@ export default function GestoriaExpedienteTimeline({ requestId, compact = false 
             {idx < items.length - 1 && (
               <span className="absolute left-[15px] top-8 bottom-0 w-px bg-gray-200" aria-hidden />
             )}
-            <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#fef9e8] border border-[#f0dfa0] text-sm">
+            <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-cream-100 border border-[#f0dfa0] text-sm">
               {item.icon}
             </span>
             <div className="min-w-0 flex-1 pt-0.5">

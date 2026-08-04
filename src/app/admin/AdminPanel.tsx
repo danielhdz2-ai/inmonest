@@ -197,7 +197,7 @@ export default function AdminPanel({ initialRequests }: Props) {
           { label: 'Total pedidos', value: stats.total,   color: 'text-gray-900' },
           { label: 'Pagados',       value: stats.paid,    color: 'text-green-600' },
           { label: 'Pendientes',    value: stats.pending, color: 'text-amber-600' },
-          { label: 'Ingresos',      value: `${stats.revenue.toFixed(2)} EUR`, color: 'text-[#c9962a]' },
+          { label: 'Ingresos',      value: `${stats.revenue.toFixed(2)} EUR`, color: 'text-gold-500' },
         ].map(s => (
           <div key={s.label} className="bg-white rounded-2xl border border-gray-200 p-5">
             <p className="text-xs text-gray-400 mb-1">{s.label}</p>
@@ -217,7 +217,7 @@ export default function AdminPanel({ initialRequests }: Props) {
             key={t.id}
             onClick={() => setTab(t.id)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              tab === t.id ? 'bg-white text-[#c9962a] shadow-sm' : 'text-gray-600 hover:text-gray-900'
+              tab === t.id ? 'bg-white text-gold-500 shadow-sm' : 'text-gray-600 hover:text-gray-900'
             }`}
           >
             {t.label}
@@ -262,7 +262,7 @@ export default function AdminPanel({ initialRequests }: Props) {
                   <div
                     key={req.id}
                     className={`w-full text-left p-4 hover:bg-gray-50 transition-colors cursor-pointer ${
-                      selected?.id === req.id ? 'bg-amber-50 border-l-2 border-[#c9962a]' : ''
+                      selected?.id === req.id ? 'bg-amber-50 border-l-2 border-gold-500' : ''
                     }`}
                     onClick={() => loadDocs(req)}
                   >
@@ -271,7 +271,7 @@ export default function AdminPanel({ initialRequests }: Props) {
                         <p className="text-sm font-medium text-gray-900 truncate">
                           {SERVICE_LABELS[req.service_key] ?? req.service_key}
                         </p>
-                        <p className="text-xs text-[#c9962a] font-medium truncate mt-0.5">{req.client_email}</p>
+                        <p className="text-xs text-gold-500 font-medium truncate mt-0.5">{req.client_email}</p>
                         <p className="text-xs text-gray-400 mt-0.5">
                           {req.paid_at ? new Date(req.paid_at).toLocaleDateString('es-ES') : 'Sin fecha'}
                           {req.amount_eur ? ` · ${req.amount_eur} €` : ''}
@@ -331,8 +331,8 @@ export default function AdminPanel({ initialRequests }: Props) {
                         disabled={stepSaving}
                         className={`py-2 px-3 rounded-lg text-xs font-semibold border transition-colors ${
                           (selected.step ?? 1) === n
-                            ? 'bg-[#c9962a] text-white border-[#c9962a]'
-                            : 'bg-white text-gray-600 border-gray-200 hover:border-[#c9962a]'
+                            ? 'bg-gold-500 text-white border-gold-500'
+                            : 'bg-white text-gray-600 border-gray-200 hover:border-gold-500'
                         }`}
                       >
                         Paso {n}: {STEP_LABELS[n]}
@@ -377,7 +377,7 @@ export default function AdminPanel({ initialRequests }: Props) {
                   />
                   <button
                     onClick={() => contractInputRef.current?.click()}
-                    className="w-full border-2 border-dashed border-gray-300 hover:border-[#c9962a] rounded-xl p-3 text-sm text-gray-500 hover:text-[#c9962a] transition-colors"
+                    className="w-full border-2 border-dashed border-gray-300 hover:border-gold-500 rounded-xl p-3 text-sm text-gray-500 hover:text-gold-500 transition-colors"
                   >
                     {uploadProgress ?? 'Seleccionar PDF del contrato'}
                   </button>
@@ -388,7 +388,7 @@ export default function AdminPanel({ initialRequests }: Props) {
                   <p className="text-sm font-medium text-gray-700 mb-2">Documentacion del cliente</p>
                   {docsLoading ? (
                     <div className="flex justify-center py-4">
-                      <span className="animate-spin w-5 h-5 border-2 border-[#c9962a] border-t-transparent rounded-full" />
+                      <span className="animate-spin w-5 h-5 border-2 border-gold-500 border-t-transparent rounded-full" />
                     </div>
                   ) : docs.length === 0 ? (
                     <p className="text-xs text-gray-400">El cliente no ha subido documentos aun.</p>
@@ -402,7 +402,7 @@ export default function AdminPanel({ initialRequests }: Props) {
                           </div>
                           <button
                             onClick={() => handleDownloadDoc(doc)}
-                            className="flex-shrink-0 ml-2 text-xs bg-[#c9962a] text-white px-2 py-1 rounded-lg hover:bg-[#b8841e] transition-colors"
+                            className="flex-shrink-0 ml-2 text-xs bg-gold-500 text-white px-2 py-1 rounded-lg hover:bg-[#b8841e] transition-colors"
                           >
                             Descargar
                           </button>
@@ -514,7 +514,7 @@ function BoveadaRow({ req, serviceLabel }: { req: GestoriaRequest; serviceLabel:
         <div className="border-t border-gray-100 p-4 bg-gray-50">
           {loading ? (
             <div className="flex justify-center py-3">
-              <span className="animate-spin w-5 h-5 border-2 border-[#c9962a] border-t-transparent rounded-full" />
+              <span className="animate-spin w-5 h-5 border-2 border-gold-500 border-t-transparent rounded-full" />
             </div>
           ) : docs?.length === 0 ? (
             <p className="text-sm text-gray-400 text-center">Sin documentos subidos</p>
@@ -528,7 +528,7 @@ function BoveadaRow({ req, serviceLabel }: { req: GestoriaRequest; serviceLabel:
                   </div>
                   <button
                     onClick={() => download(doc)}
-                    className="text-sm bg-[#c9962a] text-white px-3 py-1.5 rounded-lg hover:bg-[#b8841e] transition-colors font-medium"
+                    className="text-sm bg-gold-500 text-white px-3 py-1.5 rounded-lg hover:bg-[#b8841e] transition-colors font-medium"
                   >
                     Descargar
                   </button>
@@ -592,7 +592,7 @@ function UserDocsTab({ docs, loading, onLoad, onStatusChange }: UserDocsTabProps
   if (loading || !docs) {
     return (
       <div className="flex justify-center py-20">
-        <span className="animate-spin w-8 h-8 border-2 border-[#c9962a] border-t-transparent rounded-full" />
+        <span className="animate-spin w-8 h-8 border-2 border-gold-500 border-t-transparent rounded-full" />
       </div>
     )
   }
@@ -630,7 +630,7 @@ function UserDocsTab({ docs, loading, onLoad, onStatusChange }: UserDocsTabProps
             <div key={userId} className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
               {/* Header del usuario */}
               <div className="flex items-center gap-3 px-5 py-4 bg-gray-50 border-b border-gray-100">
-                <div className="w-8 h-8 rounded-full bg-[#c9962a]/20 flex items-center justify-center text-sm font-bold text-[#c9962a]">
+                <div className="w-8 h-8 rounded-full bg-gold-500/20 flex items-center justify-center text-sm font-bold text-gold-500">
                   {user.email[0]?.toUpperCase()}
                 </div>
                 <div>
@@ -670,7 +670,7 @@ function UserDocsTab({ docs, loading, onLoad, onStatusChange }: UserDocsTabProps
                         <div className="flex items-center gap-2 flex-shrink-0">
                           <button
                             onClick={() => handleDownload(doc)}
-                            className="flex items-center gap-1.5 text-xs bg-[#c9962a] hover:bg-[#b8841e] text-white px-3 py-1.5 rounded-lg transition-colors font-medium"
+                            className="flex items-center gap-1.5 text-xs bg-gold-500 hover:bg-[#b8841e] text-white px-3 py-1.5 rounded-lg transition-colors font-medium"
                           >
                             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />

@@ -20,7 +20,7 @@ export default function GestoriaPortalPublicar() {
             <div className="absolute inset-0 bg-gradient-to-r from-[#0d1a0f]/80 to-transparent md:hidden" />
           </div>
           <div className="p-6 sm:p-8 flex flex-col justify-center">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-[#c9962a]">Portal inmobiliario</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gold-500">Portal inmobiliario</p>
             <h3 className="text-xl font-bold text-gray-900 mt-2">2 anuncios gratis · Sin comisiones</h3>
             <p className="text-sm text-gray-500 mt-2 leading-relaxed">
               Tu cuenta de gestoría también te permite publicar pisos entre particulares. Es independiente de tu
@@ -30,7 +30,7 @@ export default function GestoriaPortalPublicar() {
               {['Publicación en minutos', 'Visibilidad en buscador Inmonest', 'Contacto directo sin agencias'].map(
                 (item) => (
                   <li key={item} className="flex gap-2">
-                    <span className="text-emerald-500">✓</span>
+                    <span className="text-cream-1000">✓</span>
                     {item}
                   </li>
                 ),
@@ -38,13 +38,13 @@ export default function GestoriaPortalPublicar() {
             </ul>
             <Link
               href="/publicar-anuncio"
-              className="mt-6 inline-flex items-center justify-center rounded-xl bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-bold px-6 py-3.5 min-h-[48px] touch-manipulation transition-colors"
+              className="mt-6 inline-flex items-center justify-center rounded-xl bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-bold px-6 py-3.5 min-h-[48px] touch-manipulation transition-colors"
             >
               Publicar anuncio gratis →
             </Link>
             <Link
               href="/mi-cuenta/anuncios"
-              className="mt-2 text-center text-xs text-gray-400 hover:text-[#c9962a] py-2"
+              className="mt-2 text-center text-xs text-gray-400 hover:text-gold-500 py-2"
             >
               Ver mis anuncios publicados
             </Link>

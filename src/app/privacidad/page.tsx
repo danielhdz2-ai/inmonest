@@ -13,7 +13,7 @@ export default function PrivacidadPage() {
       <Navbar />
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-gray-700">
         <PageHeroImage
-          src="/keys.jpg"
+          src="/promo1.png"
           alt="Política de Privacidad"
           className="mb-10"
         />
@@ -24,7 +24,7 @@ export default function PrivacidadPage() {
           <h2 className="text-xl font-bold text-gray-900 mb-3">1. Responsable del tratamiento</h2>
           <ul className="space-y-1 text-sm">
             <li><strong>Denominación:</strong> Inmonest</li>
-            <li><strong>Correo electrónico:</strong> <a href="mailto:info@inmonest.com" className="text-[#c9962a] hover:underline">info@inmonest.com</a></li>
+            <li><strong>Correo electrónico:</strong> <a href="mailto:info@inmonest.com" className="text-gold-500 hover:underline">info@inmonest.com</a></li>
           </ul>
         </section>
 
@@ -96,7 +96,7 @@ export default function PrivacidadPage() {
             <li><strong>Limitación:</strong> solicitar la restricción del tratamiento en determinadas circunstancias.</li>
           </ul>
           <p className="mt-3 text-sm">
-            Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:info@inmonest.com" className="text-[#c9962a] hover:underline">info@inmonest.com</a>. También tienes derecho a presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer" className="text-[#c9962a] hover:underline">Agencia Española de Protección de Datos (AEPD)</a>.
+            Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:info@inmonest.com" className="text-gold-500 hover:underline">info@inmonest.com</a>. También tienes derecho a presentar una reclamación ante la <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:underline">Agencia Española de Protección de Datos (AEPD)</a>.
           </p>
         </section>
 

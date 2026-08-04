@@ -127,7 +127,7 @@ export default function GestoriaPideInfoForm({
         placeholder="Tu nombre"
         value={form.nombre}
         onChange={(e) => set('nombre', e.target.value)}
-        className="w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border-[#c9a84c] focus:outline-none focus:ring-1 focus:ring-[#c9a84c]"
+        className="w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-[#c9a84c]"
       />
       <input
         type="tel"
@@ -136,7 +136,7 @@ export default function GestoriaPideInfoForm({
         placeholder="Teléfono"
         value={form.telefono}
         onChange={(e) => set('telefono', e.target.value)}
-        className="w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border-[#c9a84c] focus:outline-none focus:ring-1 focus:ring-[#c9a84c]"
+        className="w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-[#c9a84c]"
       />
       <input
         type="email"
@@ -146,7 +146,7 @@ export default function GestoriaPideInfoForm({
         placeholder="Email (para tu panel de gestoría)"
         value={form.email}
         onChange={(e) => set('email', e.target.value)}
-        className="w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border-[#c9a84c] focus:outline-none focus:ring-1 focus:ring-[#c9a84c]"
+        className="w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-[#c9a84c]"
       />
       {errMsg && <p className="text-xs text-red-600">{errMsg}</p>}
       {turnstileEnabled && (
@@ -159,7 +159,7 @@ export default function GestoriaPideInfoForm({
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full rounded-xl bg-[#0d1a0f] hover:bg-[#1a2e1c] text-white font-semibold py-3.5 min-h-[52px] text-base transition-colors disabled:opacity-60 touch-manipulation"
+        className="w-full rounded-xl bg-forest-900 hover:bg-[#1a2e1c] text-white font-semibold py-3.5 min-h-[52px] text-base transition-colors disabled:opacity-60 touch-manipulation"
       >
         {status === 'sending' ? 'Accediendo a tu panel…' : 'Ver mi área de gestoría'}
       </button>

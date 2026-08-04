@@ -67,8 +67,8 @@ export default function CiudadHubServiciosGrid({
               key={servicio.slug}
               className={`bg-white rounded-xl shadow-lg border-2 transition-all hover:shadow-2xl overflow-hidden flex flex-col ${
                 servicio.popular
-                  ? 'border-[#c9962a] transform hover:scale-[1.02]'
-                  : 'border-gray-200 hover:border-[#c9962a]'
+                  ? 'border-gold-500 transform hover:scale-[1.02]'
+                  : 'border-gray-200 hover:border-gold-500'
               }`}
             >
               <div className="relative h-40 w-full bg-gray-100">
@@ -80,11 +80,11 @@ export default function CiudadHubServiciosGrid({
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <span className="absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[#a87a20] border border-[#c9962a]/20">
+                <span className="absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-gold-700 border border-gold-500/20">
                   {servicio.categoria}
                 </span>
                 {servicio.popular && (
-                  <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-[#c9962a] text-white text-[10px] font-bold uppercase tracking-wide">
+                  <span className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-gold-500 text-white text-[10px] font-bold uppercase tracking-wide">
                     Popular
                   </span>
                 )}
@@ -93,18 +93,18 @@ export default function CiudadHubServiciosGrid({
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-xl font-bold text-gray-900 mb-2">{servicio.nombre}</h3>
                 <p className="text-gray-600 text-sm mb-4 flex-1">{servicio.descripcion}</p>
-                <div className="text-2xl font-bold text-[#c9962a] mb-1">{precio}€</div>
+                <div className="text-2xl font-bold text-gold-500 mb-1">{precio}€</div>
                 <p className="text-xs text-gray-500 mb-3">IVA incluido</p>
                 <Link
                   href={`/gestoria/solicitar/${solicitarSlug}`}
-                  className="block text-center py-2 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white text-sm font-semibold transition"
+                  className="block text-center py-2 rounded-full bg-gold-500 hover:bg-gold-600 text-white text-sm font-semibold transition"
                 >
                   Solicitar
                 </Link>
                 {enlaceLanding && (
                   <Link
                     href={enlaceLanding.href}
-                    className="block text-center mt-2 text-sm text-[#c9962a] hover:underline font-medium"
+                    className="block text-center mt-2 text-sm text-gold-500 hover:underline font-medium"
                   >
                     {enlaceLanding.label}
                   </Link>
@@ -117,7 +117,7 @@ export default function CiudadHubServiciosGrid({
         <div className="text-center mt-10">
           <Link
             href="/gestoria"
-            className="inline-block px-8 py-3 rounded-lg border-2 border-[#c9962a] text-[#c9962a] font-semibold hover:bg-[#c9962a] hover:text-white transition"
+            className="inline-block px-8 py-3 rounded-lg border-2 border-gold-500 text-gold-500 font-semibold hover:bg-gold-500 hover:text-white transition"
           >
             Ver todos los servicios y precios →
           </Link>

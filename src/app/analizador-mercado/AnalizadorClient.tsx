@@ -320,7 +320,7 @@ function fmt(n: number) {
 function Variacion({ v }: { v: number }) {
   const up = v >= 0
   return (
-    <span className={`inline-flex items-center gap-0.5 text-xs font-semibold ${up ? 'text-red-600' : 'text-emerald-600'}`}>
+    <span className={`inline-flex items-center gap-0.5 text-xs font-semibold ${up ? 'text-red-600' : 'text-gold-600'}`}>
       {up ? '▲' : '▼'} {Math.abs(v).toFixed(1)}%
     </span>
   )
@@ -338,7 +338,7 @@ export default function AnalizadorClient() {
     <main className="min-h-screen bg-gray-50">
 
       {/* ── HERO ── */}
-      <section className="relative overflow-hidden bg-[#0d1a0f] min-h-[380px] flex items-end">
+      <section className="relative overflow-hidden bg-forest-900 min-h-[380px] flex items-end">
         <div className="absolute inset-0">
           <Image
             src="/interior2-mercado.jpg"
@@ -348,14 +348,14 @@ export default function AnalizadorClient() {
             priority
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0d1a0f]/60 via-transparent to-[#0d1a0f]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0d1a0f]/60 via-transparent to-forest-900" />
         </div>
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 pt-20 w-full">
-          <span className="inline-flex items-center gap-2 bg-[#c9962a]/20 border border-[#c9962a]/40 text-[#f4c94a] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-5">
+          <span className="inline-flex items-center gap-2 bg-gold-500/20 border border-gold-500/40 text-gold-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-5">
             📊 Herramienta gratuita
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-4">
-            Analizador de<br /><span className="text-[#c9962a]">Mercado Inmobiliario</span>
+            Analizador de<br /><span className="text-gold-500">Mercado Inmobiliario</span>
           </h1>
           <p className="text-white/65 text-lg max-w-xl leading-relaxed">
             Precio medio del m², temperatura del mercado y evolución de precios en las principales ciudades de España. Datos de abril 2026.
@@ -371,7 +371,7 @@ export default function AnalizadorClient() {
                 className="appearance-none bg-white/10 backdrop-blur border border-white/20 text-white font-semibold pl-4 pr-10 py-2.5 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/60 cursor-pointer"
               >
                 {CIUDADES.map(c => (
-                  <option key={c.id} value={c.id} className="bg-[#0d1a0f] text-white">
+                  <option key={c.id} value={c.id} className="bg-forest-900 text-white">
                     {c.emoji} {c.nombre}
                   </option>
                 ))}
@@ -387,7 +387,7 @@ export default function AnalizadorClient() {
                   onClick={() => setTab(t)}
                   className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all ${
                     tab === t
-                      ? 'bg-[#c9962a] text-white shadow'
+                      ? 'bg-gold-500 text-white shadow'
                       : 'text-white/60 hover:text-white'
                   }`}
                 >
@@ -443,7 +443,7 @@ export default function AnalizadorClient() {
           ].map(k => (
             <div key={k.label} className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
               <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">{k.label}</p>
-              <p className={`text-2xl font-extrabold ${k.isTrend ? (k.up ? 'text-red-600' : 'text-emerald-600') : 'text-gray-900'}`}>
+              <p className={`text-2xl font-extrabold ${k.isTrend ? (k.up ? 'text-red-600' : 'text-gold-600') : 'text-gray-900'}`}>
                 {k.value}
               </p>
               {k.variacion !== undefined && (
@@ -519,11 +519,11 @@ export default function AnalizadorClient() {
                       <tr
                         key={c.id}
                         onClick={() => setCiudadId(c.id)}
-                        className={`cursor-pointer transition-colors hover:bg-[#fef9e8] ${isSelected ? 'bg-[#fef0c7]' : ''}`}
+                        className={`cursor-pointer transition-colors hover:bg-cream-100 ${isSelected ? 'bg-[#fef0c7]' : ''}`}
                       >
                         <td className="px-6 py-4 font-medium text-gray-900 flex items-center gap-2">
                           <span>{c.emoji}</span> {c.nombre}
-                          {isSelected && <span className="text-[10px] bg-[#c9962a] text-white px-2 py-0.5 rounded-full font-bold ml-1">Seleccionada</span>}
+                          {isSelected && <span className="text-[10px] bg-gold-500 text-white px-2 py-0.5 rounded-full font-bold ml-1">Seleccionada</span>}
                         </td>
                         <td className="px-4 py-4 text-right font-bold text-gray-900">
                           {fmt(d.precio_m2)} €{tab === 'alquiler' ? '/m²' : ''}
@@ -565,15 +565,15 @@ export default function AnalizadorClient() {
 
         {/* ── CTAs ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="relative overflow-hidden rounded-2xl bg-[#0d1a0f] p-6">
+          <div className="relative overflow-hidden rounded-2xl bg-forest-900 p-6">
             <div className="absolute inset-0 opacity-20">
               <Image src="/mercado1.jpg" alt="Hipoteca" fill className="object-cover" sizes="500px" />
             </div>
             <div className="relative z-10">
-              <p className="text-[#f4c94a] text-xs font-bold uppercase tracking-widest mb-2">Financiación</p>
+              <p className="text-gold-300 text-xs font-bold uppercase tracking-widest mb-2">Financiación</p>
               <h3 className="text-white font-bold text-lg mb-2">¿Vas a comprar en {ciudad.nombre}?</h3>
               <p className="text-white/60 text-sm mb-4">Calcula tu cuota mensual y compara las mejores hipotecas del mercado.</p>
-              <Link href="/hipoteca" className="inline-flex items-center gap-2 bg-[#c9962a] hover:bg-[#b8841e] text-white font-bold px-5 py-2.5 rounded-full text-sm transition-colors">
+              <Link href="/hipoteca" className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841e] text-white font-bold px-5 py-2.5 rounded-full text-sm transition-colors">
                 Calcular hipoteca →
               </Link>
             </div>
@@ -584,10 +584,10 @@ export default function AnalizadorClient() {
               <Image src="/mercado2.jpg" alt="Contrato" fill className="object-cover" sizes="500px" />
             </div>
             <div className="relative z-10">
-              <p className="text-[#c9962a] text-xs font-bold uppercase tracking-widest mb-2">Gestoría</p>
+              <p className="text-gold-500 text-xs font-bold uppercase tracking-widest mb-2">Gestoría</p>
               <h3 className="text-gray-900 font-bold text-lg mb-2">Cierra el trato con seguridad jurídica</h3>
               <p className="text-gray-500 text-sm mb-4">Contratos de arras, compraventa y alquiler redactados por abogados especializados.</p>
-              <Link href="/gestoria" className="inline-flex items-center gap-2 bg-[#c9962a] hover:bg-[#b8841e] text-white font-bold px-5 py-2.5 rounded-full text-sm transition-colors">
+              <Link href="/gestoria" className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841e] text-white font-bold px-5 py-2.5 rounded-full text-sm transition-colors">
                 Ver contratos →
               </Link>
             </div>

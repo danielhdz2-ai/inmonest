@@ -143,16 +143,16 @@ export default async function VenderPisoPage({ params }: { params: Promise<{ ciu
 
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2">
-          <Link href="/" className="hover:text-[#c9962a] transition-colors">Inicio</Link>
+          <Link href="/" className="hover:text-gold-500 transition-colors">Inicio</Link>
           <span>/</span>
-          <Link href="/vender-casa" className="hover:text-[#c9962a] transition-colors">Vender casa</Link>
+          <Link href="/vender-casa" className="hover:text-gold-500 transition-colors">Vender casa</Link>
           <span>/</span>
           <span className="text-gray-800 font-medium">Sin comisión en {nombre}</span>
         </nav>
 
         <h1 className="text-3xl sm:text-4xl font-black text-gray-900 leading-tight mb-4">
           Vender piso sin comisión en {nombre}:<br />
-          <span className="text-[#c9962a]">Quédate con el 100 % de tu venta</span>
+          <span className="text-gold-500">Quédate con el 100 % de tu venta</span>
         </h1>
         <p className="text-lg text-gray-600 mb-6 leading-relaxed">
           Las agencias en {nombre} cobran entre un 3 % y un 6 % del precio de venta.
@@ -173,7 +173,7 @@ export default async function VenderPisoPage({ params }: { params: Promise<{ ciu
             </div>
             <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-center">
               <p className="text-xs text-amber-700 font-semibold uppercase tracking-wide mb-1">Tendencia</p>
-              <p className="text-sm font-bold text-[#c9962a]">{mercado.tendencia}</p>
+              <p className="text-sm font-bold text-gold-500">{mercado.tendencia}</p>
             </div>
           </div>
         )}
@@ -186,7 +186,7 @@ export default async function VenderPisoPage({ params }: { params: Promise<{ ciu
           </p>
           <Link
             href="/publicar-anuncio"
-            className="inline-flex items-center gap-2 bg-[#c9962a] hover:bg-[#b8841f] text-white font-bold px-7 py-3.5 rounded-xl text-base transition-colors shadow-md"
+            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841f] text-white font-bold px-7 py-3.5 rounded-xl text-base transition-colors shadow-md"
           >
             Publicar anuncio gratis →
           </Link>
@@ -287,7 +287,7 @@ export default async function VenderPisoPage({ params }: { params: Promise<{ ciu
         </article>
 
         {/* CTA final */}
-        <div className="mt-14 bg-[#0d1a0f] rounded-2xl p-8 text-white">
+        <div className="mt-14 bg-forest-900 rounded-2xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-3">¿Listo para vender sin comisiones en {nombre}?</h2>
           <p className="text-gray-300 mb-6 leading-relaxed">
             Publica tu anuncio gratis en Inmonest y llega a miles de compradores directos en {nombre}.
@@ -295,7 +295,7 @@ export default async function VenderPisoPage({ params }: { params: Promise<{ ciu
           </p>
           <Link
             href="/publicar-anuncio"
-            className="inline-flex items-center gap-2 bg-[#c9962a] hover:bg-[#b8841f] text-white font-bold px-7 py-3.5 rounded-xl text-base transition-colors shadow-md"
+            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841f] text-white font-bold px-7 py-3.5 rounded-xl text-base transition-colors shadow-md"
           >
             Publicar anuncio gratis →
           </Link>
@@ -305,13 +305,13 @@ export default async function VenderPisoPage({ params }: { params: Promise<{ ciu
         <div className="mt-10 pt-8 border-t border-gray-200">
           <p className="text-sm font-semibold text-gray-700 mb-4">También te puede interesar:</p>
           <div className="flex flex-wrap gap-3">
-            <Link href={`/${ciudad}/contrato-arras`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-[#c9962a] transition-colors">
+            <Link href={`/${ciudad}/contrato-arras`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-gold-500 transition-colors">
               Contrato de arras en {nombre} →
             </Link>
-            <Link href={`/${ciudad}/alquiler-sin-agencia`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-[#c9962a] transition-colors">
+            <Link href={`/${ciudad}/alquiler-sin-agencia`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-gold-500 transition-colors">
               Alquiler sin agencia en {nombre} →
             </Link>
-            <Link href="/gestoria" className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-[#c9962a] transition-colors">
+            <Link href="/gestoria" className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-gold-500 transition-colors">
               Gestoría online →
             </Link>
           </div>

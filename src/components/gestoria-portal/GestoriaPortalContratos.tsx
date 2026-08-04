@@ -15,7 +15,7 @@ type Props = {
 
 function statusBadge(contrato: GestoriaContrato) {
   if (contrato.contract_path) {
-    return { label: 'Entregado', className: 'bg-emerald-100 text-emerald-800' }
+    return { label: 'Entregado', className: 'bg-cream-100 text-gold-800' }
   }
   if (isPaidStatus(contrato.status, contrato.paid_at)) {
     const step = contrato.step ?? 1
@@ -67,7 +67,7 @@ export default function GestoriaPortalContratos({
             <article
               key={c.id}
               className={`rounded-2xl border bg-white overflow-hidden transition-all ${
-                isActive ? 'border-[#c9962a] shadow-lg shadow-amber-100/50' : 'border-gray-200 shadow-sm'
+                isActive ? 'border-gold-500 shadow-lg shadow-amber-100/50' : 'border-gray-200 shadow-sm'
               }`}
             >
               <div className="p-4 sm:p-5">
@@ -78,7 +78,7 @@ export default function GestoriaPortalContratos({
                         {badge.label}
                       </span>
                       {isActive && (
-                        <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-[#0d1a0f] text-[#f4d98a]">
+                        <span className="text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-forest-900 text-[#f4d98a]">
                           Activo
                         </span>
                       )}
@@ -96,7 +96,7 @@ export default function GestoriaPortalContratos({
                     </p>
                   </div>
                   {c.amount_eur != null && (
-                    <p className="text-xl font-extrabold text-[#c9962a]">{c.amount_eur} €</p>
+                    <p className="text-xl font-extrabold text-gold-500">{c.amount_eur} €</p>
                   )}
                 </div>
 
@@ -104,7 +104,7 @@ export default function GestoriaPortalContratos({
                   <div className="mt-4 flex items-center gap-2">
                     <div className="flex-1 h-1.5 rounded-full bg-gray-100 overflow-hidden">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-[#c9962a] to-[#f4d98a] transition-all"
+                        className="h-full rounded-full bg-gradient-to-r from-gold-500 to-[#f4d98a] transition-all"
                         style={{ width: `${(step / 4) * 100}%` }}
                       />
                     </div>
@@ -122,7 +122,7 @@ export default function GestoriaPortalContratos({
                         onSelect(c.id)
                         onNavigateExpediente(c.id)
                       }}
-                      className="inline-flex items-center rounded-xl bg-[#0d1a0f] text-[#f4d98a] text-xs font-bold px-4 py-2.5 min-h-[44px] touch-manipulation"
+                      className="inline-flex items-center rounded-xl bg-forest-900 text-[#f4d98a] text-xs font-bold px-4 py-2.5 min-h-[44px] touch-manipulation"
                     >
                       Ver expediente
                     </button>
@@ -141,7 +141,7 @@ export default function GestoriaPortalContratos({
                       type="button"
                       onClick={() => onDownload(c)}
                       disabled={downloading === c.id}
-                      className="inline-flex items-center rounded-xl border-2 border-[#c9962a] text-[#7a5c1e] text-xs font-bold px-4 py-2.5 min-h-[44px] touch-manipulation disabled:opacity-60"
+                      className="inline-flex items-center rounded-xl border-2 border-gold-500 text-gold-700 text-xs font-bold px-4 py-2.5 min-h-[44px] touch-manipulation disabled:opacity-60"
                     >
                       {downloading === c.id ? 'Descargando…' : 'Descargar PDF'}
                     </button>

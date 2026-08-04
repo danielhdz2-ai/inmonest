@@ -10,7 +10,7 @@ export default function CiudadHubRazones({ ciudad, razones }: CiudadHubRazonesPr
     <section className="py-12 sm:py-16 bg-white border-t border-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
-          ¿Por qué necesitas asesoramiento en <span className="text-[#c9962a]">{ciudad}</span>?
+          ¿Por qué necesitas asesoramiento en <span className="text-gold-500">{ciudad}</span>?
         </h2>
         <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
           Cada mercado tiene normativa y riesgos propios. Estas son las razones reales para no firmar a ciegas.

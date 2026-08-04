@@ -9,7 +9,7 @@ export default function FooterGestoriaContact() {
 
   if (!shouldShowGestoriaPhone(pathname)) {
     return (
-      <Link href="/gestoria" className="hover:text-[#f4c94a] transition-colors">
+      <Link href="/gestoria" className="hover:text-gold-300 transition-colors">
         Gestoría online
       </Link>
     )

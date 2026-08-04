@@ -30,9 +30,9 @@ export default function MortgageCalculator({ precioVivienda }: Props) {
   const fmt = (n: number, dec = 0) => n.toLocaleString('es-ES', { maximumFractionDigits: dec })
 
   return (
-    <div className="bg-[#fef9e8] rounded-2xl border border-[#f4c94a]/30 p-5">
+    <div className="bg-cream-100 rounded-2xl border border-gold-300/30 p-5">
       <div className="flex items-center gap-2 mb-4">
-        <span className="text-[#c9962a] text-lg">🏦</span>
+        <span className="text-gold-500 text-lg">🏦</span>
         <h3 className="font-bold text-gray-900 text-sm">Calculadora hipotecaria</h3>
       </div>
 
@@ -107,10 +107,10 @@ export default function MortgageCalculator({ precioVivienda }: Props) {
       </div>
 
       {/* Resultados */}
-      <div className="mt-4 bg-white rounded-xl border border-[#f4c94a]/30 p-4">
+      <div className="mt-4 bg-white rounded-xl border border-gold-300/30 p-4">
         <div className="flex items-center justify-between mb-3">
           <span className="text-xs text-gray-500">Cuota mensual estimada</span>
-          <span className="text-2xl font-black text-[#c9962a]">{fmt(cuota)} €</span>
+          <span className="text-2xl font-black text-gold-500">{fmt(cuota)} €</span>
         </div>
         <div className="grid grid-cols-3 gap-1 pt-3 border-t border-gray-100 text-center">
           <div>
@@ -119,7 +119,7 @@ export default function MortgageCalculator({ precioVivienda }: Props) {
           </div>
           <div>
             <p className="text-[9px] text-gray-400 uppercase tracking-wide">Intereses</p>
-            <p className="text-xs font-bold text-[#c9962a] mt-0.5">{fmt(totalIntereses)} €</p>
+            <p className="text-xs font-bold text-gold-500 mt-0.5">{fmt(totalIntereses)} €</p>
           </div>
           <div>
             <p className="text-[9px] text-gray-400 uppercase tracking-wide">Total</p>
@@ -138,14 +138,14 @@ export default function MortgageCalculator({ precioVivienda }: Props) {
       <div className="mt-4 space-y-2">
         <Link
           href="/hipoteca"
-          className="flex items-center justify-between bg-[#c9962a] hover:bg-[#b8841e] text-white font-bold px-4 py-3 rounded-xl text-xs transition-colors"
+          className="flex items-center justify-between bg-gold-500 hover:bg-[#b8841e] text-white font-bold px-4 py-3 rounded-xl text-xs transition-colors"
         >
           <span>¿Necesitas financiación? Inmonest tramita tu hipoteca</span>
           <span className="ml-2 shrink-0">→</span>
         </Link>
         <Link
           href="/gestoria"
-          className="flex items-center justify-between border border-[#c9962a] text-[#c9962a] hover:bg-[#fef0c7] font-semibold px-4 py-2.5 rounded-xl text-xs transition-colors"
+          className="flex items-center justify-between border border-gold-500 text-gold-500 hover:bg-[#fef0c7] font-semibold px-4 py-2.5 rounded-xl text-xs transition-colors"
         >
           <span>¿Cerrando el trato? Genera tu contrato con nuestra gestoría</span>
           <span className="ml-2 shrink-0">→</span>

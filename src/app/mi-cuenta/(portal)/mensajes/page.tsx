@@ -63,17 +63,17 @@ export default async function MensajesPage() {
               <div key={lead.id} className="bg-white rounded-2xl border border-gray-200 p-5 hover:shadow-sm transition-shadow">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c9962a] to-[#7a5c1e] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold-500 to-[#7a5c1e] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
                       {(lead.from_name ?? '?').charAt(0).toUpperCase()}
                     </div>
                     <div>
                       <p className="font-semibold text-gray-900 text-sm">{lead.from_name}</p>
                       <div className="flex items-center gap-2 mt-0.5">
-                        <a href={`mailto:${lead.from_email}`} className="text-xs text-[#c9962a] hover:underline">{lead.from_email}</a>
+                        <a href={`mailto:${lead.from_email}`} className="text-xs text-gold-500 hover:underline">{lead.from_email}</a>
                         {lead.from_phone && (
                           <>
                             <span className="text-gray-300">·</span>
-                            <a href={`tel:${lead.from_phone}`} className="text-xs text-[#c9962a] hover:underline">{lead.from_phone}</a>
+                            <a href={`tel:${lead.from_phone}`} className="text-xs text-gold-500 hover:underline">{lead.from_phone}</a>
                           </>
                         )}
                       </div>

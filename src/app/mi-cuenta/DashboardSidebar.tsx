@@ -149,7 +149,7 @@ export default function DashboardSidebar({
         <Link href="/" className="flex items-center gap-0">
           <Image src="/logo.png" alt="Inmonest" width={36} height={36} className="object-contain" />
           <span className="text-lg font-extrabold tracking-tight leading-none">
-            <span className="text-gray-900">Inmo</span><span className="text-[#c9962a]">nest</span>
+            <span className="text-gray-900">Inmo</span><span className="text-gold-500">nest</span>
           </span>
         </Link>
       </div>
@@ -159,7 +159,7 @@ export default function DashboardSidebar({
           {avatarUrl ? (
             <Image src={avatarUrl} alt={displayName} width={40} height={40} className="rounded-full object-cover flex-shrink-0" />
           ) : (
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c9962a] to-[#7a5c1e] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gold-500 to-[#7a5c1e] flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
               {initials}
             </div>
           )}
@@ -181,17 +181,17 @@ export default function DashboardSidebar({
               onClick={() => setMobileOpen(false)}
               className={`flex items-center gap-3 px-3 py-3 sm:py-2.5 rounded-xl text-sm font-medium transition-all group min-h-[48px] touch-manipulation ${
                 active
-                  ? 'bg-[#c9962a] text-white shadow-sm shadow-amber-200'
+                  ? 'bg-gold-500 text-white shadow-sm shadow-amber-200'
                   : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
               }`}
             >
-              <span className={active ? 'text-white' : 'text-gray-400 group-hover:text-[#c9962a] transition-colors'}>
+              <span className={active ? 'text-white' : 'text-gray-400 group-hover:text-gold-500 transition-colors'}>
                 {item.icon}
               </span>
               <span className="flex-1">{item.label}</span>
               {badge !== null && (
                 <span className={`text-xs font-bold px-1.5 py-0.5 rounded-full ${
-                  active ? 'bg-white/20 text-white' : 'bg-[#fef0c0] text-[#a87a20]'
+                  active ? 'bg-white/20 text-white' : 'bg-[#fef0c0] text-gold-700'
                 }`}>
                   {badge}
                 </span>
@@ -204,7 +204,7 @@ export default function DashboardSidebar({
       <div className="px-4 py-4 border-t border-gray-100 pb-[max(1rem,env(safe-area-inset-bottom))]">
         <Link
           href="/publicar"
-          className="flex items-center justify-center gap-2 w-full bg-[#c9962a] hover:bg-[#b8841e] active:bg-[#a87818] text-white text-sm font-semibold py-3 sm:py-2.5 rounded-xl transition-colors min-h-[48px] touch-manipulation"
+          className="flex items-center justify-center gap-2 w-full bg-gold-500 hover:bg-[#b8841e] active:bg-[#a87818] text-white text-sm font-semibold py-3 sm:py-2.5 rounded-xl transition-colors min-h-[48px] touch-manipulation"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -238,7 +238,7 @@ export default function DashboardSidebar({
           </svg>
         </button>
         <div className="min-w-0 flex-1 text-center">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-[#c9962a] leading-none">Mi cuenta</p>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-gold-500 leading-none">Mi cuenta</p>
           <p className="text-sm font-bold text-gray-900 truncate">{pageTitle}</p>
         </div>
         <Link
@@ -249,7 +249,7 @@ export default function DashboardSidebar({
           {avatarUrl ? (
             <Image src={avatarUrl} alt={displayName} width={36} height={36} className="rounded-full object-cover ring-2 ring-[#e8d48a]" />
           ) : (
-            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#c9962a] to-[#7a5c1e] flex items-center justify-center text-white font-bold text-xs">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-gold-500 to-[#7a5c1e] flex items-center justify-center text-white font-bold text-xs">
               {initials}
             </div>
           )}
@@ -288,18 +288,18 @@ export default function DashboardSidebar({
                 key={item.href}
                 href={item.href}
                 className={`flex flex-col items-center justify-center gap-0.5 py-1.5 px-1 rounded-xl min-h-[52px] touch-manipulation ${
-                  active ? 'text-[#c9962a]' : 'text-gray-500'
+                  active ? 'text-gold-500' : 'text-gray-500'
                 }`}
               >
                 <span className="relative">
-                  <span className={active ? 'text-[#c9962a]' : 'text-gray-400'}>{item.icon}</span>
+                  <span className={active ? 'text-gold-500' : 'text-gray-400'}>{item.icon}</span>
                   {badge !== null && (
                     <span className="absolute -top-1.5 -right-2 min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-white text-[9px] font-bold flex items-center justify-center">
                       {badge > 9 ? '9+' : badge}
                     </span>
                   )}
                 </span>
-                <span className={`text-[10px] font-semibold leading-tight text-center ${active ? 'text-[#7a5c1e]' : ''}`}>
+                <span className={`text-[10px] font-semibold leading-tight text-center ${active ? 'text-gold-700' : ''}`}>
                   {item.shortLabel}
                 </span>
               </Link>

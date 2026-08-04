@@ -76,7 +76,7 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3d2a05]/90 via-[#7a5c1e]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-950/90 via-gold-700/70 to-transparent" />
 
         <div className="relative h-full max-w-5xl mx-auto px-4 sm:px-6 flex flex-col justify-end pb-12">
           <nav className="flex items-center gap-1.5 text-xs text-white/50 mb-4">
@@ -120,7 +120,7 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
               href={`https://wa.me/${WA}?text=${waText}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
+              className="inline-flex items-center justify-center bg-gold-600 hover:bg-gold-700 text-white font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
             >
               WhatsApp
             </TrackedContactLink>
@@ -173,8 +173,8 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
           </div>
 
           <div className="lg:col-span-1">
-            <div className="sticky top-24 bg-[#fdf8ee] border border-[#e8d48a] rounded-2xl p-6 space-y-4">
-              <p className="text-sm text-[#7a5c1e] font-medium uppercase tracking-wide">{config.ctaStickyLabel}</p>
+            <div className="sticky top-24 bg-cream-100 border border-gold-300 rounded-2xl p-6 space-y-4">
+              <p className="text-sm text-gold-700 font-medium uppercase tracking-wide">{config.ctaStickyLabel}</p>
               <h3 className="text-xl font-bold text-gray-900">Tu contrato de arras, sin vueltas</h3>
               <div>
                 <p className="text-4xl font-bold text-gold-500">{precio} €</p>
@@ -200,7 +200,7 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
                 href={`https://wa.me/${WA}?text=${waText}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm"
+                className="block w-full text-center bg-gold-600 hover:bg-gold-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm"
               >
                 WhatsApp: 745 022 862
               </TrackedContactLink>
@@ -208,11 +208,11 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
                 event="click_phone"
                 city={config.slug}
                 href="tel:+34745022862"
-                className="block w-full text-center border border-gold-500 text-gold-500 hover:bg-[#fdf8ee] font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
+                className="block w-full text-center border border-gold-500 text-gold-500 hover:bg-cream-100 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
                 Llamar: 745 022 862
               </TrackedContactLink>
-              <div className="border-t border-[#e8d48a] pt-4">
+              <div className="border-t border-gold-300 pt-4">
                 <GestoriaPideInfoForm
                   ciudad={config.nombre}
                   servicio="contrato de arras penitenciales"
@@ -311,7 +311,7 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-        <section className="bg-[#0d1a0f] rounded-2xl p-8 text-center">
+        <section className="bg-forest-900 rounded-2xl p-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
             ¿Sigues retrasando las arras? Eso te expone a comprador y vendedor
           </h2>
@@ -332,7 +332,7 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
               href={`https://wa.me/${WA}?text=${waText}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors"
+              className="bg-gold-600 hover:bg-gold-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors"
             >
               WhatsApp: 745 022 862
             </TrackedContactLink>

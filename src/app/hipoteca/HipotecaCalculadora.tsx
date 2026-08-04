@@ -22,12 +22,12 @@ export default function HipotecaCalculadora() {
   const totalPagar = cuota * plazo * 12
   const totalIntereses = totalPagar - capital
 
-  const inputCls = 'w-full rounded-xl border border-[#f4c94a]/40 bg-[#0d1a0f]/60 text-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/50 focus:border-[#c9962a] placeholder-white/30'
-  const labelCls = 'block text-xs font-semibold text-[#f4c94a] uppercase tracking-wider mb-1.5'
+  const inputCls = 'w-full rounded-xl border border-gold-300/40 bg-forest-900/60 text-white px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/50 focus:border-gold-500 placeholder-white/30'
+  const labelCls = 'block text-xs font-semibold text-gold-300 uppercase tracking-wider mb-1.5'
 
   return (
-    <div className="bg-[#0d1a0f]/80 backdrop-blur-sm border border-[#c9962a]/30 rounded-3xl p-6 shadow-2xl">
-      <p className="text-[#f4c94a] text-xs font-bold uppercase tracking-widest mb-5">🧮 Calculadora hipotecaria</p>
+    <div className="bg-forest-900/80 backdrop-blur-sm border border-gold-500/30 rounded-3xl p-6 shadow-2xl">
+      <p className="text-gold-300 text-xs font-bold uppercase tracking-widest mb-5">🧮 Calculadora hipotecaria</p>
 
       <div className="space-y-4">
         {/* Precio del inmueble */}
@@ -110,10 +110,10 @@ export default function HipotecaCalculadora() {
       </div>
 
       {/* Resultado */}
-      <div className="mt-5 bg-[#c9962a]/10 border border-[#c9962a]/30 rounded-2xl p-4">
+      <div className="mt-5 bg-gold-500/10 border border-gold-500/30 rounded-2xl p-4">
         <div className="flex items-center justify-between mb-3">
           <p className="text-xs text-white/50 font-medium">Cuota mensual estimada</p>
-          <p className="text-3xl font-black text-[#f4c94a]">
+          <p className="text-3xl font-black text-gold-300">
             {cuota > 0 ? cuota.toLocaleString('es-ES', { maximumFractionDigits: 0 }) : '—'} €
           </p>
         </div>
@@ -124,7 +124,7 @@ export default function HipotecaCalculadora() {
           </div>
           <div>
             <p className="text-[10px] text-white/40 mb-0.5">Total intereses</p>
-            <p className="text-xs font-bold text-[#f4c94a]">{totalIntereses > 0 ? totalIntereses.toLocaleString('es-ES', { maximumFractionDigits: 0 }) : '—'} €</p>
+            <p className="text-xs font-bold text-gold-300">{totalIntereses > 0 ? totalIntereses.toLocaleString('es-ES', { maximumFractionDigits: 0 }) : '—'} €</p>
           </div>
           <div>
             <p className="text-[10px] text-white/40 mb-0.5">Total a pagar</p>
@@ -141,7 +141,7 @@ export default function HipotecaCalculadora() {
 
       <a
         href="#contacto"
-        className="mt-4 block text-center bg-[#c9962a] hover:bg-[#b8841e] text-white font-bold py-3 rounded-xl text-sm transition-colors"
+        className="mt-4 block text-center bg-gold-500 hover:bg-[#b8841e] text-white font-bold py-3 rounded-xl text-sm transition-colors"
       >
         Consultar mi viabilidad →
       </a>

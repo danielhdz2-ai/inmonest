@@ -90,17 +90,17 @@ export default function CookiesPage() {
           </p>
           <p className="text-sm leading-relaxed">Instrucciones para los principales navegadores:</p>
           <ul className="mt-2 list-disc list-inside space-y-1 text-sm">
-            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" className="text-[#c9962a] hover:underline">Google Chrome</a></li>
-            <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer" className="text-[#c9962a] hover:underline">Mozilla Firefox</a></li>
-            <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" className="text-[#c9962a] hover:underline">Safari</a></li>
-            <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer" className="text-[#c9962a] hover:underline">Microsoft Edge</a></li>
+            <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:underline">Google Chrome</a></li>
+            <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:underline">Mozilla Firefox</a></li>
+            <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:underline">Safari</a></li>
+            <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:underline">Microsoft Edge</a></li>
           </ul>
         </section>
 
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">5. Más información</h2>
           <p className="leading-relaxed">
-            Si tienes alguna pregunta sobre nuestra Política de Cookies, escríbenos a <a href="mailto:info@inmonest.com" className="text-[#c9962a] hover:underline">info@inmonest.com</a>.
+            Si tienes alguna pregunta sobre nuestra Política de Cookies, escríbenos a <a href="mailto:info@inmonest.com" className="text-gold-500 hover:underline">info@inmonest.com</a>.
           </p>
         </section>
       </main>

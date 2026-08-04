@@ -24,7 +24,7 @@ export default function PublicarLandingClient({ isLoggedIn }: Props) {
     <>
       <button
         onClick={handleCTA}
-        className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#c9962a] text-white font-bold text-base hover:bg-[#a87a20] transition-all shadow-xl shadow-[#c9962a]/40 hover:scale-105 active:scale-95"
+        className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gold-500 text-white font-bold text-base hover:bg-gold-600 transition-all shadow-xl shadow-[#c9962a]/40 hover:scale-105 active:scale-95"
       >
         Pon tu anuncio gratis
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

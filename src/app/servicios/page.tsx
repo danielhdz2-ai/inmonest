@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/sofainmonest.png` }],
+    images: [{ url: `${BASE_URL}/promo1.png`, width: 1200, height: 630, alt: 'Servicios de contratos inmobiliarios Inmonest' }],
   },
 }
 

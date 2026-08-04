@@ -219,7 +219,7 @@ export default function BlogPage() {
           </p>
         </header>
         <PageHeroImage
-          src="/keys.jpg"
+          src="/promo1.png"
           alt="Blog para propietarios"
           className="mb-12"
         />

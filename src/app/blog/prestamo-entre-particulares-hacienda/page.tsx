@@ -73,7 +73,7 @@ export default function PrestamoParticulaesHaciendaPage() {
           </p>
         </header>
         <PageHeroImage
-          src="/familia10.jpg"
+          src="/promo3.png"
           alt="Préstamo entre familiares: cómo formalizarlo y declararlo ante Hacienda"
           className="mb-12"
         />

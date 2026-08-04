@@ -103,7 +103,7 @@ export default async function DashboardHomePage() {
           <div className="flex flex-wrap gap-3 mt-5">
             <Link
               href="/publicar"
-              className="inline-flex items-center gap-2 bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
+              className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -125,7 +125,7 @@ export default async function DashboardHomePage() {
         {([
           { label: 'Anuncios activos', value: anunciosCount ?? 0,          icon: '🏠', href: '/mi-cuenta/anuncios',   bg: 'from-blue-50 to-blue-100/40',   ib: 'bg-blue-100 text-blue-600' },
           { label: 'Favoritos',        value: favCount ?? 0,               icon: '❤️',  href: '/mi-cuenta/favoritos',  bg: 'from-rose-50 to-rose-100/40',   ib: 'bg-rose-100 text-rose-600' },
-          { label: 'Mensajes',         value: msgCount ?? 0,               icon: '💬',  href: '/mi-cuenta/mensajes',   bg: 'from-green-50 to-green-100/40', ib: 'bg-green-100 text-green-600' },
+          { label: 'Mensajes',         value: msgCount ?? 0,               icon: '💬',  href: '/mi-cuenta/mensajes',   bg: 'from-cream-50 to-green-100/40', ib: 'bg-green-100 text-green-600' },
           { label: 'Contratos',        value: (contratos ?? []).length,    icon: '📄',  href: '/mi-cuenta/contratos',  bg: 'from-amber-50 to-amber-100/40', ib: 'bg-amber-100 text-amber-600' },
         ] as const).map(s => (
           <Link
@@ -152,13 +152,13 @@ export default async function DashboardHomePage() {
         <div className="lg:col-span-3 bg-white rounded-2xl border border-gray-200 overflow-hidden">
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
             <h2 className="font-semibold text-gray-900">Ultimos contratos</h2>
-            <Link href="/mi-cuenta/contratos" className="text-xs text-[#c9962a] hover:underline font-medium">Ver todos →</Link>
+            <Link href="/mi-cuenta/contratos" className="text-xs text-gold-500 hover:underline font-medium">Ver todos →</Link>
           </div>
           {!contratos || contratos.length === 0 ? (
             <div className="p-10 text-center">
               <div className="text-4xl mb-3">📄</div>
               <p className="text-sm text-gray-500">No has contratado ningun servicio aun.</p>
-              <Link href="/mi-cuenta/contratos" className="inline-block mt-4 text-sm text-[#c9962a] font-semibold hover:underline">
+              <Link href="/mi-cuenta/contratos" className="inline-block mt-4 text-sm text-gold-500 font-semibold hover:underline">
                 Contratar gestoría →
               </Link>
             </div>
@@ -180,7 +180,7 @@ export default async function DashboardHomePage() {
                     </p>
                   </div>
                   <div className="flex flex-col items-end gap-1">
-                    <span className="text-sm font-bold text-[#c9962a]">
+                    <span className="text-sm font-bold text-gold-500">
                       {c.amount_eur ? `${c.amount_eur} EUR` : ''}
                     </span>
                     <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
@@ -215,7 +215,7 @@ export default async function DashboardHomePage() {
                 >
                   <span className="text-lg">{a.icon}</span>
                   <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900">{a.label}</span>
-                  <svg className="w-4 h-4 text-gray-300 group-hover:text-[#c9962a] ml-auto transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 text-gray-300 group-hover:text-gold-500 ml-auto transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 </Link>
@@ -227,7 +227,7 @@ export default async function DashboardHomePage() {
           <div className="relative overflow-hidden rounded-2xl p-5 text-white min-h-[160px]">
             <div className="absolute inset-0">
               <Image src="/gestoria1.jpg" alt="" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-br from-[#7a5c1e]/95 to-[#c9962a]/80" />
+              <div className="absolute inset-0 bg-gradient-to-br from-gold-700/95 to-gold-500/80" />
             </div>
             <div className="relative z-10">
               <p className="text-xs font-semibold text-amber-200 mb-1 uppercase tracking-wide">Gestoria</p>
@@ -237,7 +237,7 @@ export default async function DashboardHomePage() {
               </p>
               <Link
                 href="/mi-cuenta/contratos"
-                className="inline-block bg-white text-[#7a5c1e] text-sm font-bold px-4 py-2 rounded-xl hover:bg-amber-50 transition-colors"
+                className="inline-block bg-white text-gold-700 text-sm font-bold px-4 py-2 rounded-xl hover:bg-amber-50 transition-colors"
               >
                 Contratar contrato →
               </Link>

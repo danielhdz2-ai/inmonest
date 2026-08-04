@@ -863,7 +863,7 @@ export default async function ServicioGestoriaPage({
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3d2a05]/90 via-[#7a5c1e]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-950/90 via-gold-700/70 to-transparent" />
 
         <div className="relative h-full max-w-5xl mx-auto px-4 sm:px-6 flex flex-col justify-end pb-12">
           {/* Breadcrumb */}
@@ -875,7 +875,7 @@ export default async function ServicioGestoriaPage({
             <span className="text-white/80">{data.nombre}</span>
           </nav>
 
-          <span className="inline-block bg-[#c9a84c] text-[#3d2a05] text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit">
+          <span className="inline-block bg-gold-500 text-[#3d2a05] text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit">
             {data.categoria}
           </span>
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3 max-w-2xl">
@@ -884,7 +884,7 @@ export default async function ServicioGestoriaPage({
           <p className="text-white/80 text-lg max-w-xl mb-5">{data.tagline}</p>
           <div className="flex flex-wrap items-center gap-4">
             <div>
-              <span className="text-3xl font-bold text-[#c9a84c]">{data.precio} €</span>
+              <span className="text-3xl font-bold text-gold-500">{data.precio} €</span>
               <span className="text-white/50 text-xs ml-2">IVA incluido</span>
             </div>
             <span className="text-white/60 text-sm">· Entrega en 48h · PDF firmable</span>
@@ -905,7 +905,7 @@ export default async function ServicioGestoriaPage({
               <ul className="space-y-2">
                 {data.paraQuien.map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-gray-600 text-sm">
-                    <span className="text-[#c9a84c] mt-0.5">✓</span>
+                    <span className="text-gold-500 mt-0.5">✓</span>
                     {item}
                   </li>
                 ))}
@@ -915,24 +915,24 @@ export default async function ServicioGestoriaPage({
 
           {/* Tarjeta CTA */}
           <div className="lg:col-span-1">
-            <div className="sticky top-24 bg-[#fdf8ee] border border-[#e8d48a] rounded-2xl p-6 space-y-4">
-              <p className="text-sm text-[#7a5c1e] font-medium uppercase tracking-wide">{data.categoria}</p>
+            <div className="sticky top-24 bg-cream-100 border border-gold-300 rounded-2xl p-6 space-y-4">
+              <p className="text-sm text-gold-700 font-medium uppercase tracking-wide">{data.categoria}</p>
               <h3 className="text-xl font-bold text-gray-900">{data.nombre}</h3>
               <div>
-                <p className="text-4xl font-bold text-[#c9a84c]">{data.precio} €</p>
+                <p className="text-4xl font-bold text-gold-500">{data.precio} €</p>
                 <p className="text-xs text-gray-500 mt-1">IVA incluido</p>
               </div>
               <ul className="space-y-2">
                 {data.incluye.slice(0, 4).map((inc, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-[#c9a84c] mt-0.5 shrink-0">✓</span>
+                    <span className="text-gold-500 mt-0.5 shrink-0">✓</span>
                     {inc}
                   </li>
                 ))}
               </ul>
               <Link
                 href={`/gestoria/solicitar/${servicio}`}
-                className="block w-full text-center bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-4 rounded-xl transition-colors"
+                className="block w-full text-center bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-4 rounded-xl transition-colors"
               >
                 Solicitar ahora
               </Link>
@@ -940,15 +940,15 @@ export default async function ServicioGestoriaPage({
                 href="https://wa.me/34745022862?text=Hola,%20tengo%20dudas%20sobre%20el%20servicio%20de%20{data.nombre}"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full text-center bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm"
+                className="block w-full text-center bg-gold-600 hover:bg-gold-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm"
               >
-                💬 WhatsApp: 745 022 862
+                WhatsApp: 745 022 862
               </a>
               <a
                 href="tel:+34745022862"
-                className="block w-full text-center border border-[#c9a84c] text-[#c9a84c] hover:bg-[#fdf8ee] font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
+                className="block w-full text-center border border-gold-500 text-gold-500 hover:bg-cream-100 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
-                📞 Llamar: 745 022 862
+                Llamar: 745 022 862
               </a>
               <Link
                 href="/gestoria"
@@ -966,7 +966,7 @@ export default async function ServicioGestoriaPage({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {data.incluye.map((inc, i) => (
               <div key={i} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
-                <span className="text-[#c9a84c] text-lg mt-0.5 shrink-0">✓</span>
+                <span className="text-gold-500 text-lg mt-0.5 shrink-0">✓</span>
                 <span className="text-gray-700 text-sm">{inc}</span>
               </div>
             ))}
@@ -979,7 +979,7 @@ export default async function ServicioGestoriaPage({
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {data.pasos.map((paso) => (
               <div key={paso.num} className="relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-                <span className="text-5xl font-black text-[#c9a84c]/20 absolute top-4 right-5 leading-none">
+                <span className="text-5xl font-black text-gold-500/20 absolute top-4 right-5 leading-none">
                   {paso.num}
                 </span>
                 <h3 className="text-base font-bold text-gray-900 mb-2">{paso.titulo}</h3>
@@ -1012,7 +1012,7 @@ export default async function ServicioGestoriaPage({
               <details key={i} className="group border border-gray-200 rounded-xl overflow-hidden">
                 <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer font-medium text-gray-800 hover:bg-gray-50 transition-colors">
                   {item.q}
-                  <span className="text-[#c9a84c] shrink-0 text-xl group-open:rotate-45 transition-transform">+</span>
+                  <span className="text-gold-500 shrink-0 text-xl group-open:rotate-45 transition-transform">+</span>
                 </summary>
                 <div className="px-5 pb-5 text-gray-600 text-sm leading-relaxed">
                   {item.a}
@@ -1030,20 +1030,20 @@ export default async function ServicioGestoriaPage({
               <Link
                 key={rel.slug}
                 href={`/gestoria/${rel.slug}`}
-                className="border border-gray-200 rounded-xl p-5 hover:border-[#c9a84c] hover:shadow-sm transition-all group"
+                className="border border-gray-200 rounded-xl p-5 hover:border-gold-500 hover:shadow-sm transition-all group"
               >
                 <p className="text-sm text-gray-500 mb-1">Contrato</p>
-                <h3 className="font-semibold text-gray-800 group-hover:text-[#c9a84c] transition-colors mb-2">
+                <h3 className="font-semibold text-gray-800 group-hover:text-gold-500 transition-colors mb-2">
                   {rel.nombre}
                 </h3>
-                <p className="text-[#c9a84c] font-bold">{rel.precio} €</p>
+                <p className="text-gold-500 font-bold">{rel.precio} €</p>
               </Link>
             ))}
           </div>
         </section>
 
         {/* ── CTA FINAL ────────────────────────────────────────────────── */}
-        <section className="bg-[#0d1a0f] rounded-2xl p-8 text-center">
+        <section className="bg-forest-900 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-white mb-3">¿Listo para solicitar tu {data.nombre.toLowerCase()}?</h2>
           <p className="text-white/60 mb-6 max-w-lg mx-auto">
             En menos de 48h tienes el documento listo para firmar. Redactado por abogados, sin plantillas genéricas.
@@ -1051,7 +1051,7 @@ export default async function ServicioGestoriaPage({
           <div className="flex flex-wrap gap-4 justify-center">
             <Link
               href={`/gestoria/solicitar/${servicio}`}
-              className="bg-[#c9a84c] hover:bg-[#b8943a] text-white font-bold py-3 px-8 rounded-xl transition-colors"
+              className="bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-8 rounded-xl transition-colors"
             >
               Solicitar {data.nombre} — {data.precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>
             </Link>
@@ -1059,15 +1059,15 @@ export default async function ServicioGestoriaPage({
               href="https://wa.me/34745022862?text=Hola,%20tengo%20dudas%20sobre%20{data.nombre}"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors"
+              className="bg-gold-600 hover:bg-gold-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors"
             >
-              💬 WhatsApp: 745 022 862
+              WhatsApp: 745 022 862
             </a>
             <a
               href="tel:+34745022862"
               className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors"
             >
-              📞 Llamar ahora
+              Llamar ahora
             </a>
           </div>
         </section>

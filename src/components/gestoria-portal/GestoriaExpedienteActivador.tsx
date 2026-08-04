@@ -105,8 +105,8 @@ export default function GestoriaExpedienteActivador({ onLoaded, userEmail }: Pro
   }, [userEmail])
 
   return (
-    <div className="bg-white rounded-2xl border border-[#e8d48a]/60 p-8 text-center space-y-4 shadow-lg">
-      <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fef9e8] text-3xl animate-pulse">
+    <div className="bg-white rounded-2xl border border-gold-300/60 p-8 text-center space-y-4 shadow-lg">
+      <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-cream-100 text-3xl animate-pulse">
         ⚡
       </div>
       <h2 className="text-lg font-bold text-gray-900">Abriendo tu panel…</h2>
@@ -117,7 +117,7 @@ export default function GestoriaExpedienteActivador({ onLoaded, userEmail }: Pro
       </p>
       <div className="h-1.5 max-w-xs mx-auto rounded-full bg-gray-100 overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-[#c9962a] to-[#f4d98a] transition-all duration-300"
+          className="h-full bg-gradient-to-r from-gold-500 to-[#f4d98a] transition-all duration-300"
           style={{ width: `${Math.min(100, ((attempt + 1) / MAX_ATTEMPTS) * 100)}%` }}
         />
       </div>
@@ -127,7 +127,7 @@ export default function GestoriaExpedienteActivador({ onLoaded, userEmail }: Pro
       <button
         type="button"
         onClick={goToPanelClean}
-        className="block w-full max-w-xs mx-auto bg-[#c9962a] text-white text-sm font-bold px-6 py-3 rounded-xl min-h-[48px]"
+        className="block w-full max-w-xs mx-auto bg-gold-500 text-white text-sm font-bold px-6 py-3 rounded-xl min-h-[48px]"
       >
         Ir al panel ahora
       </button>

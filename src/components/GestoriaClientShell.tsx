@@ -13,7 +13,7 @@ type Props = {
 export default function GestoriaClientShell({ displayName, children }: Props) {
   return (
     <div className="min-h-screen bg-[#f0f1f3] flex flex-col">
-      <header className="sticky top-0 z-50 bg-[#0d1a0f] text-white shadow-lg">
+      <header className="sticky top-0 z-50 bg-forest-900 text-white shadow-lg">
         <div className="max-w-lg mx-auto px-4 py-3 flex items-center justify-between gap-3">
           <Link href="/" className="flex items-center gap-2 flex-shrink-0">
             <Image src="/logo.png" alt="Inmonest" width={28} height={28} className="rounded-md" />
@@ -45,8 +45,8 @@ export default function GestoriaClientShell({ displayName, children }: Props) {
 
       <footer className="border-t border-gray-200 bg-white px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]">
         <div className="max-w-lg mx-auto flex flex-wrap items-center justify-between gap-2 text-xs text-gray-500">
-          <a href={`tel:${GESTORIA_PHONE_TEL}`} className="font-semibold text-[#7a5c1e] touch-manipulation">
-            📞 745 022 862
+          <a href={`tel:${GESTORIA_PHONE_TEL}`} className="font-semibold text-gold-700 touch-manipulation">
+            745 022 862
           </a>
           <form action="/auth/signout" method="POST" className="inline">
             <button type="submit" className="text-gray-400 hover:text-red-500 touch-manipulation min-h-[44px] px-2">

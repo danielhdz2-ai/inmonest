@@ -113,14 +113,14 @@ function EnlaceCard({ enlace }: { enlace: EnlaceSeo }) {
   return (
     <Link
       href={enlace.href}
-      className="group flex flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm hover:border-[#c9962a]/50 hover:shadow-md transition-all"
+      className="group flex flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm hover:border-gold-500/50 hover:shadow-md transition-all"
     >
       {enlace.badge && (
-        <span className="mb-2 w-fit rounded-full bg-[#fef9e8] px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-[#a87a20] border border-[#f4c94a]/40">
+        <span className="mb-2 w-fit rounded-full bg-cream-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gold-700 border border-gold-300/40">
           {enlace.badge}
         </span>
       )}
-      <span className="font-semibold text-gray-900 group-hover:text-[#a87a20] transition-colors text-sm">
+      <span className="font-semibold text-gray-900 group-hover:text-gold-700 transition-colors text-sm">
         {enlace.title}
       </span>
       <span className="mt-1 text-xs text-gray-500 leading-relaxed">{enlace.description}</span>

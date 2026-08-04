@@ -175,7 +175,7 @@ export default async function PisosPage({ searchParams }: PisosPageProps) {
                     </span>
                   )}
                   {soloParticulares && (
-                    <span className="px-2 py-0.5 text-xs font-semibold bg-[#fef0c0] text-[#a87a20] rounded-full">
+                    <span className="px-2 py-0.5 text-xs font-semibold bg-[#fef0c0] text-gold-700 rounded-full">
                       👤 Solo particulares
                     </span>
                   )}
@@ -250,7 +250,7 @@ export default async function PisosPage({ searchParams }: PisosPageProps) {
                 </span>
               )}
               {soloParticulares && (
-                <span className="ml-2 px-2 py-0.5 text-xs font-semibold bg-[#fef0c0] text-[#a87a20] rounded-full align-middle">
+                <span className="ml-2 px-2 py-0.5 text-xs font-semibold bg-[#fef0c0] text-gold-700 rounded-full align-middle">
                   👤 Solo particulares
                 </span>
               )}

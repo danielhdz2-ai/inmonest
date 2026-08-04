@@ -36,7 +36,7 @@ export default function AdminShell({ activeTab, onTabChange, title, subtitle, ac
               <p className="text-sm font-extrabold tracking-tight">
                 Inmo<span className="text-[#f4d98a]">nest</span>
               </p>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c9962a]/90">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-500/90">
                 Administración
               </p>
             </div>
@@ -54,7 +54,7 @@ export default function AdminShell({ activeTab, onTabChange, title, subtitle, ac
                 onClick={() => onTabChange(item.id)}
                 className={`w-full flex items-center gap-3 rounded-xl px-3 py-3 text-left transition-all ${
                   active
-                    ? 'bg-[#c9962a]/20 border border-[#c9962a]/40 text-[#f4d98a]'
+                    ? 'bg-gold-500/20 border border-gold-500/40 text-[#f4d98a]'
                     : 'text-white/70 hover:bg-white/5 hover:text-white border border-transparent'
                 }`}
               >
@@ -116,7 +116,7 @@ export default function AdminShell({ activeTab, onTabChange, title, subtitle, ac
                   type="button"
                   onClick={() => onTabChange(item.id)}
                   className={`flex items-center gap-1.5 whitespace-nowrap rounded-lg px-3 py-2 text-xs font-semibold transition-colors ${
-                    active ? 'bg-[#c9962a]/20 text-[#f4d98a]' : 'text-white/60'
+                    active ? 'bg-gold-500/20 text-[#f4d98a]' : 'text-white/60'
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />

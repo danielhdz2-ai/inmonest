@@ -28,7 +28,7 @@ export default async function PublicarPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#fef9e8] py-10 px-4">
+      <main className="min-h-screen bg-cream-100 py-10 px-4">
         <PageHeroImage
           src="/gestoria1.jpg"
           alt="Publicar anuncio gratis en Inmonest"
@@ -36,7 +36,7 @@ export default async function PublicarPage() {
         />
         {limitReached ? (
           <div className="max-w-lg mx-auto text-center pt-10">
-            <div className="bg-white rounded-2xl shadow-lg p-8 border border-[#f4c94a]/30">
+            <div className="bg-white rounded-2xl shadow-lg p-8 border border-gold-300/30">
               <div className="w-16 h-16 bg-[#fef0c0] rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
                 🚀
               </div>
@@ -48,12 +48,12 @@ export default async function PublicarPage() {
               </p>
               <Link
                 href="/agencias"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#c9962a] text-white font-bold text-sm hover:bg-[#a87a20] transition-colors shadow-md shadow-[#c9962a]/30"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gold-500 text-white font-bold text-sm hover:bg-gold-600 transition-colors shadow-md shadow-[#c9962a]/30"
               >
                 Ver Plan Profesional →
               </Link>
               <div className="mt-4">
-                <Link href="/mi-cuenta" className="text-sm text-gray-400 hover:text-[#c9962a]">
+                <Link href="/mi-cuenta" className="text-sm text-gray-400 hover:text-gold-500">
                   Gestionar mis anuncios actuales
                 </Link>
               </div>

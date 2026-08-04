@@ -202,8 +202,8 @@ export default function CuantoCuestaContratoAlquilerPage() {
               </div>
 
               {/* Opción 2: Gestoría Online (RECOMENDADO) */}
-              <div className="bg-gradient-to-br from-[#c9962a] to-[#a87a20] text-white rounded-xl p-6 shadow-xl relative">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold bg-green-500">
+              <div className="bg-gradient-to-br from-gold-500 to-gold-700 text-white rounded-xl p-6 shadow-xl relative">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold bg-gold-500">
                   ⭐ RECOMENDADO
                 </div>
                 <div className="text-center mb-4 mt-2">
@@ -239,7 +239,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                 </ul>
                 <Link
                   href="/gestoria/solicitar/contrato-alquiler"
-                  className="block w-full text-center px-4 py-3 rounded-lg bg-white text-[#c9962a] font-bold hover:bg-gray-100 transition"
+                  className="block w-full text-center px-4 py-3 rounded-lg bg-white text-gold-500 font-bold hover:bg-gray-100 transition"
                 >
                   Contratar Ahora
                 </Link>
@@ -381,7 +381,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
           </section>
 
           {/* CTA Intermedio */}
-          <div className="bg-gradient-to-br from-[#c9962a] to-[#a87a20] text-white rounded-2xl p-8 mb-12 text-center">
+          <div className="bg-gradient-to-br from-gold-500 to-gold-700 text-white rounded-2xl p-8 mb-12 text-center">
             <h3 className="text-2xl font-bold mb-3">
               Contrato de Alquiler LAU Profesional por 145€
             </h3>
@@ -391,7 +391,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
             </p>
             <Link
               href="/gestoria/solicitar/contrato-alquiler"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-[#c9962a] font-bold hover:bg-gray-100 transition text-lg"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-gold-500 font-bold hover:bg-gray-100 transition text-lg"
             >
               Contratar Ahora - 145€
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -525,7 +525,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
               Preguntas Frecuentes sobre Precios
             </h2>
             <div className="space-y-4">
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Cuánto cuesta hacer un contrato de alquiler en una gestoría?
                 </summary>
@@ -534,7 +534,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                   Notario: 300–500€. La opción online cubre LAU + Ley de Vivienda 2026 con inventario y cláusulas a medida.
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Cuánto vale hacer un contrato de alquiler?
                 </summary>
@@ -543,7 +543,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                   Para vivienda habitual, un contrato privado LAU bien hecho es suficiente y más barato que el notario.
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Por qué una gestoría online es más barata que un notario?
                 </summary>
@@ -553,7 +553,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                   la fe pública es innecesaria, por eso el precio es menor.
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Qué pasa si uso una plantilla gratis y hay problemas?
                 </summary>
@@ -564,7 +564,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                   en contratos DIY.
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Puedo modificar el contrato después de recibirlo?
                 </summary>
@@ -574,7 +574,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                   Incluimos 1 revisión gratuita si necesitas ajustar algo importante.
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Incluye el contrato la gestión de fianzas en la CCAA?
                 </summary>
@@ -599,7 +599,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
             <div className="flex flex-wrap gap-4 justify-center mb-6">
               <Link
                 href="/gestoria/solicitar/contrato-alquiler"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-[#c9962a] text-white font-bold hover:bg-[#a87a20] transition text-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gold-500 text-white font-bold hover:bg-gold-600 transition text-lg"
               >
                 Contratar Ahora - 145€
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -615,15 +615,15 @@ export default function CuantoCuestaContratoAlquilerPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-300">
               <div>
-                <div className="text-2xl font-bold text-[#c9962a] mb-1">48h</div>
+                <div className="text-2xl font-bold text-gold-500 mb-1">48h</div>
                 <div>Entrega garantizada</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-[#c9962a] mb-1">+3.500</div>
+                <div className="text-2xl font-bold text-gold-500 mb-1">+3.500</div>
                 <div>Contratos redactados</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-[#c9962a] mb-1">100%</div>
+                <div className="text-2xl font-bold text-gold-500 mb-1">100%</div>
                 <div>Adaptado Ley 2026</div>
               </div>
             </div>
@@ -633,16 +633,16 @@ export default function CuantoCuestaContratoAlquilerPage() {
           <section className="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-200">
             <h2 className="text-lg font-bold text-gray-900 mb-4">También te puede interesar</h2>
             <div className="grid sm:grid-cols-2 gap-3 text-sm">
-              <Link href="/calculadora-gastos-alquiler" className="text-[#c9962a] hover:underline font-medium">
+              <Link href="/calculadora-gastos-alquiler" className="text-gold-500 hover:underline font-medium">
                 → Calculadora de gastos de alquiler (gratis)
               </Link>
-              <Link href="/bilbao/contrato-alquiler" className="text-[#c9962a] hover:underline font-medium">
+              <Link href="/bilbao/contrato-alquiler" className="text-gold-500 hover:underline font-medium">
                 → Contrato de alquiler en Bilbao (145€)
               </Link>
-              <Link href="/malaga/contrato-alquiler" className="text-[#c9962a] hover:underline font-medium">
+              <Link href="/malaga/contrato-alquiler" className="text-gold-500 hover:underline font-medium">
                 → Contrato de alquiler en Málaga (145€)
               </Link>
-              <Link href="/blog/que-es-gestoria-inmobiliaria" className="text-[#c9962a] hover:underline font-medium">
+              <Link href="/blog/que-es-gestoria-inmobiliaria" className="text-gold-500 hover:underline font-medium">
                 → ¿Qué es una gestoría inmobiliaria?
               </Link>
             </div>
@@ -651,9 +651,9 @@ export default function CuantoCuestaContratoAlquilerPage() {
           {/* Breadcrumbs */}
           <nav className="mt-12 text-sm text-gray-500" aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-2">
-              <li><Link href="/" className="hover:text-[#c9962a]">Inicio</Link></li>
+              <li><Link href="/" className="hover:text-gold-500">Inicio</Link></li>
               <li>›</li>
-              <li><Link href="/gestoria" className="hover:text-[#c9962a]">Gestoría</Link></li>
+              <li><Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link></li>
               <li>›</li>
               <li className="text-gray-900 font-medium">Precio Contrato Alquiler</li>
             </ol>

@@ -237,7 +237,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
           </ul>
         </div>
 
-        <div className="mt-12 p-6 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg border-2 border-green-200">
+        <div className="mt-12 p-6 bg-gradient-to-r from-cream-50 to-blue-50 rounded-lg border-2 border-green-200">
           <h3 className="text-2xl font-bold mb-4 text-gray-900">¿Necesitas ayuda con tu contrato de alquiler?</h3>
           <p className="text-gray-700 mb-6">
             Un abogado especializado lo revisa en 24 horas. Detectamos cláusulas abusivas, errores y te protegemos legalmente.
@@ -245,7 +245,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/gestoria/revision-contrato-alquiler"
-              className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition text-center"
+              className="bg-gold-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gold-700 transition text-center"
             >
               Revisar mi contrato (60€)
             </Link>
@@ -255,7 +255,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
               rel="noopener noreferrer"
               className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition text-center"
             >
-              💬 Consulta gratuita (WhatsApp)
+              Consulta gratuita (WhatsApp)
             </a>
           </div>
         </div>

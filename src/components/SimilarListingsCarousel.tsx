@@ -81,7 +81,7 @@ export default function SimilarListingsCarousel({
                   )}
                   {/* Badge particular */}
                   {listing.is_particular && (
-                    <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-700 text-white">
+                    <span className="absolute top-2 left-2 px-2 py-0.5 rounded-full text-xs font-semibold bg-gold-700 text-white">
                       💎 Propietario
                     </span>
                   )}

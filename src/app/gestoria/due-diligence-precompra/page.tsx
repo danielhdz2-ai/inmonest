@@ -86,9 +86,9 @@ export default function DueDiligencePrecompraPage() {
                   href="https://wa.me/34745022862?text=Hola,%20firm%C3%A9%20arras%20y%20necesito%20due%20diligence%20antes%20de%20escriturar"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition text-center shadow-lg"
+                  className="bg-gold-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold-700 transition text-center shadow-lg"
                 >
-                  💬 Consulta WhatsApp
+                  Consulta WhatsApp
                 </a>
               </div>
               <div className="flex flex-wrap gap-4 text-sm text-gray-600">
@@ -524,8 +524,8 @@ export default function DueDiligencePrecompraPage() {
         whatsappMessage="Hola, firmé arras y necesito due diligence pre-compra"
       />
 
-      <section className="py-12 px-4 bg-[#fdf8ee] border-y border-[#e8d48a]">
-        <div className="max-w-lg mx-auto bg-white rounded-2xl border border-[#e8d48a] p-5 sm:p-6 shadow-sm">
+      <section className="py-12 px-4 bg-cream-100 border-y border-gold-300">
+        <div className="max-w-lg mx-auto bg-white rounded-2xl border border-gold-300 p-5 sm:p-6 shadow-sm">
           <GestoriaPideInfoForm
             ciudad="España"
             servicio="due diligence pre-compra"
@@ -564,7 +564,7 @@ export default function DueDiligencePrecompraPage() {
               href="https://wa.me/34745022862?text=Hola,%20firm%C3%A9%20arras%20y%20necesito%20due%20diligence"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-500 text-white px-10 py-4 rounded-lg font-bold text-lg hover:bg-green-600 transition shadow-lg"
+              className="bg-gold-500 text-white px-10 py-4 rounded-lg font-bold text-lg hover:bg-gold-600 transition shadow-lg"
             >
               WhatsApp
             </TrackedContactLink>

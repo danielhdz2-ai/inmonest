@@ -128,7 +128,7 @@ export default function VenderPisoSinComisionesPage() {
           </time>
         </header>
         <PageHeroImage
-          src="/keys.jpg"
+          src="/promo1.png"
           alt="Vender tu piso sin comisiones: guía completa para propietarios 2026"
           className="mb-12"
         />

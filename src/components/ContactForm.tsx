@@ -113,7 +113,7 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
             value={form.nombre}
             onChange={handleChange}
             placeholder="Tu nombre"
-            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-[#c9962a] focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20 transition"
+            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20 transition"
           />
         </div>
         <div>
@@ -129,7 +129,7 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
             value={form.email}
             onChange={handleChange}
             placeholder="tu@email.com"
-            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-[#c9962a] focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20 transition"
+            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20 transition"
           />
         </div>
       </div>
@@ -148,7 +148,7 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
             value={form.telefono}
             onChange={handleChange}
             placeholder="+34 600 000 000"
-            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-[#c9962a] focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20 transition"
+            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20 transition"
           />
         </div>
         <div>
@@ -160,7 +160,7 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
             name="asunto"
             value={form.asunto}
             onChange={handleChange}
-            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 focus:border-[#c9962a] focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20 transition"
+            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20 transition"
           >
             <option value="">Consulta general</option>
             <option value="Quiero publicar un inmueble">Quiero publicar un inmueble</option>
@@ -186,7 +186,7 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
           value={form.mensaje}
           onChange={handleChange}
           placeholder="Cuéntanos en qué podemos ayudarte..."
-          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-[#c9962a] focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20 transition resize-none"
+          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20 transition resize-none"
         />
         <p className="text-right text-xs text-gray-400 mt-1">{form.mensaje.length}/2000</p>
       </div>
@@ -209,14 +209,14 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
       <button
         type="submit"
         disabled={sending}
-        className="w-full rounded-xl bg-[#c9962a] px-6 py-3 text-sm font-bold text-white hover:bg-[#a87a20] disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+        className="w-full rounded-xl bg-gold-500 px-6 py-3 text-sm font-bold text-white hover:bg-gold-600 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
       >
         {sending ? 'Enviando…' : 'Enviar mensaje'}
       </button>
 
       <p className="text-center text-xs text-gray-400">
         Respondemos en menos de 24 h ·{' '}
-        <a href="mailto:info@inmonest.com" className="text-[#c9962a] hover:underline">
+        <a href="mailto:info@inmonest.com" className="text-gold-500 hover:underline">
           info@inmonest.com
         </a>
       </p>

@@ -30,11 +30,11 @@ export default function DueDiligenceBlogPage() {
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-2 text-sm text-gray-600 mb-8">
-          <Link href="/" className="hover:text-[#c9962a]">Inicio</Link>
+          <Link href="/" className="hover:text-gold-500">Inicio</Link>
           <span>/</span>
-          <Link href="/blog" className="hover:text-[#c9962a]">Blog</Link>
+          <Link href="/blog" className="hover:text-gold-500">Blog</Link>
           <span>/</span>
-          <span className="text-[#c9962a] font-semibold">Due Diligence compra vivienda</span>
+          <span className="text-gold-500 font-semibold">Due Diligence compra vivienda</span>
         </nav>
 
         {/* Header */}
@@ -281,7 +281,7 @@ export default function DueDiligenceBlogPage() {
             <li>Te ahorra 20-30 horas de trabajo</li>
           </ul>
 
-          <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] p-8 rounded-2xl text-white mb-8">
+          <div className="bg-gradient-to-r from-forest-950 to-forest-950 p-8 rounded-2xl text-white mb-8">
             <h3 className="text-2xl font-bold mb-4">Pack Due Diligence Pre-Compra — 350€</h3>
             <p className="text-white/90 mb-6">
               Gestor inmobiliario experto revisa toda la documentación de tu futura vivienda. Detectamos problemas ANTES de firmar. Evita sorpresas de 10.000€+.
@@ -289,7 +289,7 @@ export default function DueDiligenceBlogPage() {
             <div className="flex flex-col sm:flex-row flex-wrap gap-4">
               <Link
                 href="/gestoria/solicitar/pack-due-diligence-precompra"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#c9962a] text-white text-lg font-bold hover:bg-[#a87a20] transition-colors shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gold-500 text-white text-lg font-bold hover:bg-gold-600 transition-colors shadow-lg"
               >
                 Contratar servicio (350€) →
               </Link>
@@ -351,13 +351,13 @@ export default function DueDiligenceBlogPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/pack-due-diligence-precompra"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#c9962a] text-white text-lg font-bold hover:bg-[#a87a20] transition-colors shadow-lg"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gold-500 text-white text-lg font-bold hover:bg-gold-600 transition-colors shadow-lg"
             >
               Contratar Due Diligence (350€)
             </Link>
             <Link
               href="/gestoria"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-[#c9962a] text-[#c9962a] font-semibold hover:bg-[#c9962a] hover:text-white transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full border-2 border-gold-500 text-gold-500 font-semibold hover:bg-gold-500 hover:text-white transition-colors"
             >
               Ver todos los servicios
             </Link>

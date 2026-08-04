@@ -8,6 +8,7 @@ import ListingCard from './ListingCard'
 import ListingCardList from './ListingCardList'
 import type { Listing, VistaOption } from '@/types/listings'
 import Link from 'next/link'
+import { HomeIcon, FileText } from '@/components/ui/Icons'
 
 const MapSearchView = dynamic(() => import('./MapSearchView'), { ssr: false })
 
@@ -134,9 +135,12 @@ export default function SearchResults({
                   
                   {/* Banner gestoría después del piso #6 (solo en página 1) */}
                   {index === 5 && pagina === 1 && (
-                    <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-6 sm:p-8 my-4 shadow-lg">
+                    <div className="bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-6 sm:p-8 my-4 shadow-lg">
                       <div className="max-w-4xl mx-auto text-center">
-                        <div className="text-5xl mb-4">🏠📄</div>
+                        <div className="flex items-center justify-center gap-3 mb-4">
+                          <HomeIcon className="w-10 h-10 text-gold-300" />
+                          <FileText className="w-10 h-10 text-gold-300" />
+                        </div>
                         <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-white">
                           ¿Vas a comprar o vender un piso?
                         </h2>
@@ -146,7 +150,7 @@ export default function SearchResults({
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                           <Link
                             href="/gestoria"
-                            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#c9962a] text-white text-lg font-semibold hover:bg-[#a87a20] transition-colors shadow-xl"
+                            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gold-500 text-white text-lg font-semibold hover:bg-gold-600 transition-colors shadow-xl"
                           >
                             Ver servicios de gestoría →
                           </Link>
@@ -171,9 +175,12 @@ export default function SearchResults({
                   
                   {/* Banner gestoría después del piso #6 (solo en página 1) */}
                   {index === 5 && pagina === 1 && (
-                    <div className="col-span-full bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-6 sm:p-8 my-4 shadow-lg">
+                    <div className="col-span-full bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-6 sm:p-8 my-4 shadow-lg">
                       <div className="max-w-4xl mx-auto text-center">
-                        <div className="text-5xl mb-4">🏠📄</div>
+                        <div className="flex items-center justify-center gap-3 mb-4">
+                          <HomeIcon className="w-10 h-10 text-gold-300" />
+                          <FileText className="w-10 h-10 text-gold-300" />
+                        </div>
                         <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-white">
                           ¿Vas a comprar o vender un piso?
                         </h2>
@@ -183,7 +190,7 @@ export default function SearchResults({
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                           <Link
                             href="/gestoria"
-                            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#c9962a] text-white text-lg font-semibold hover:bg-[#a87a20] transition-colors shadow-xl"
+                            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gold-500 text-white text-lg font-semibold hover:bg-gold-600 transition-colors shadow-xl"
                           >
                             Ver servicios de gestoría →
                           </Link>
@@ -203,7 +210,7 @@ export default function SearchResults({
           )
         ) : (
           <div className="text-center py-20 bg-white rounded-xl border border-gray-100">
-            <div className="text-5xl mb-4">🏠</div>
+            <HomeIcon className="w-12 h-12 text-gray-300 mx-auto mb-4" />
             <h2 className="text-lg font-semibold text-gray-700">No encontramos anuncios</h2>
             <p className="text-gray-500 mt-1 text-sm">Prueba con otra ciudad o amplía los filtros</p>
             <Link

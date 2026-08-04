@@ -84,7 +84,7 @@ export default function NotificacionesConfigPanel() {
 
   return (
     <div className="space-y-5">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1008] to-[#0d1a0f] p-5 sm:p-6 text-white">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1008] to-forest-900 p-5 sm:p-6 text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(201,150,42,0.2),transparent)]" />
         <div className="relative">
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#f4d98a]">Inmonest</p>
@@ -100,7 +100,7 @@ export default function NotificacionesConfigPanel() {
         {PREFS_META.map((item) => (
           <label
             key={item.key}
-            className="flex items-start gap-4 p-4 sm:p-5 cursor-pointer hover:bg-[#fef9e8]/30 transition-colors min-h-[72px] touch-manipulation"
+            className="flex items-start gap-4 p-4 sm:p-5 cursor-pointer hover:bg-cream-100/30 transition-colors min-h-[72px] touch-manipulation"
           >
             <input
               type="checkbox"
@@ -108,7 +108,7 @@ export default function NotificacionesConfigPanel() {
               onChange={(e) =>
                 setPrefs((p) => (p ? { ...p, [item.key]: e.target.checked } : p))
               }
-              className="mt-1 h-5 w-5 rounded border-gray-300 text-[#c9962a] focus:ring-[#c9962a]"
+              className="mt-1 h-5 w-5 rounded border-gray-300 text-gold-500 focus:ring-[#c9962a]"
             />
             <div className="flex-1 min-w-0">
               <p className="text-sm font-semibold text-gray-900">{item.title}</p>
@@ -122,7 +122,7 @@ export default function NotificacionesConfigPanel() {
         <div
           className={`rounded-xl px-4 py-3 text-sm ${
             msg.ok
-              ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+              ? 'bg-cream-100 text-gold-700 border border-gold-200'
               : 'bg-red-50 text-red-700 border border-red-200'
           }`}
         >
@@ -134,7 +134,7 @@ export default function NotificacionesConfigPanel() {
         type="button"
         onClick={handleSave}
         disabled={saving}
-        className="w-full bg-[#c9962a] hover:bg-[#b8841e] text-white font-semibold py-3 rounded-xl transition-colors disabled:opacity-60 min-h-[48px] touch-manipulation"
+        className="w-full bg-gold-500 hover:bg-[#b8841e] text-white font-semibold py-3 rounded-xl transition-colors disabled:opacity-60 min-h-[48px] touch-manipulation"
       >
         {saving ? 'Guardando…' : 'Guardar preferencias'}
       </button>

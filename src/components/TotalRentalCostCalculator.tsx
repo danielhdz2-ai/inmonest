@@ -43,9 +43,9 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
   const fmt = (n: number) => n.toLocaleString('es-ES')
 
   return (
-    <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl border border-emerald-200/50 p-5 shadow-sm">
+    <div className="bg-gradient-to-br from-cream-100 to-teal-50 rounded-2xl border border-gold-200/50 p-5 shadow-sm">
       <div className="flex items-center gap-2 mb-4">
-        <span className="text-emerald-600 text-lg">💰</span>
+        <span className="text-gold-600 text-lg">💰</span>
         <h3 className="font-bold text-gray-900 text-sm">Gastos mensuales totales</h3>
       </div>
 
@@ -62,7 +62,7 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
           step={50}
           value={alquiler}
           onChange={e => setAlquiler(Number(e.target.value))}
-          className="w-full accent-emerald-600 h-2 rounded-lg"
+          className="w-full accent-gold-600 h-2 rounded-lg"
         />
       </div>
 
@@ -72,7 +72,7 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
         <div>
           <div className="flex justify-between mb-1">
             <label className="text-xs text-gray-600 font-medium">Suministros (luz, agua, gas)</label>
-            <span className="text-xs font-bold text-emerald-700">{fmt(suministros)} €</span>
+            <span className="text-xs font-bold text-gold-700">{fmt(suministros)} €</span>
           </div>
           <input
             type="range"
@@ -81,7 +81,7 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
             step={10}
             value={suministros}
             onChange={e => setSuministros(Number(e.target.value))}
-            className="w-full accent-emerald-600 h-1.5"
+            className="w-full accent-gold-600 h-1.5"
           />
         </div>
 
@@ -89,7 +89,7 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
         <div>
           <div className="flex justify-between mb-1">
             <label className="text-xs text-gray-600 font-medium">Internet/Fibra</label>
-            <span className="text-xs font-bold text-emerald-700">{fmt(internet)} €</span>
+            <span className="text-xs font-bold text-gold-700">{fmt(internet)} €</span>
           </div>
           <input
             type="range"
@@ -98,7 +98,7 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
             step={5}
             value={internet}
             onChange={e => setInternet(Number(e.target.value))}
-            className="w-full accent-emerald-600 h-1.5"
+            className="w-full accent-gold-600 h-1.5"
           />
         </div>
 
@@ -106,7 +106,7 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
         <div>
           <div className="flex justify-between mb-1">
             <label className="text-xs text-gray-600 font-medium">Comunidad (si aplica)</label>
-            <span className="text-xs font-bold text-emerald-700">{fmt(comunidad)} €</span>
+            <span className="text-xs font-bold text-gold-700">{fmt(comunidad)} €</span>
           </div>
           <input
             type="range"
@@ -115,7 +115,7 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
             step={10}
             value={comunidad}
             onChange={e => setComunidad(Number(e.target.value))}
-            className="w-full accent-emerald-600 h-1.5"
+            className="w-full accent-gold-600 h-1.5"
           />
         </div>
 
@@ -123,7 +123,7 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
         <div>
           <div className="flex justify-between mb-1">
             <label className="text-xs text-gray-600 font-medium">Seguro hogar</label>
-            <span className="text-xs font-bold text-emerald-700">{fmt(seguro)} €</span>
+            <span className="text-xs font-bold text-gold-700">{fmt(seguro)} €</span>
           </div>
           <input
             type="range"
@@ -132,7 +132,7 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
             step={5}
             value={seguro}
             onChange={e => setSeguro(Number(e.target.value))}
-            className="w-full accent-emerald-600 h-1.5"
+            className="w-full accent-gold-600 h-1.5"
           />
         </div>
 
@@ -140,7 +140,7 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
         <div>
           <div className="flex justify-between mb-1">
             <label className="text-xs text-gray-600 font-medium">Otros gastos</label>
-            <span className="text-xs font-bold text-emerald-700">{fmt(otros)} €</span>
+            <span className="text-xs font-bold text-gold-700">{fmt(otros)} €</span>
           </div>
           <input
             type="range"
@@ -149,7 +149,7 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
             step={10}
             value={otros}
             onChange={e => setOtros(Number(e.target.value))}
-            className="w-full accent-emerald-600 h-1.5"
+            className="w-full accent-gold-600 h-1.5"
           />
         </div>
       </div>
@@ -160,37 +160,37 @@ export default function TotalRentalCostCalculator({ alquilerMensual, areaM2, bed
           <span className="text-xs">Alquiler</span>
           <span className="font-semibold">{fmt(alquiler)} €</span>
         </div>
-        <div className="border-t border-emerald-100 pt-2 space-y-1">
+        <div className="border-t border-cream-100 pt-2 space-y-1">
           <div className="flex justify-between text-gray-600">
             <span className="text-xs">Suministros</span>
-            <span className="font-medium text-emerald-700">+{fmt(suministros)} €</span>
+            <span className="font-medium text-gold-700">+{fmt(suministros)} €</span>
           </div>
           <div className="flex justify-between text-gray-600">
             <span className="text-xs">Internet</span>
-            <span className="font-medium text-emerald-700">+{fmt(internet)} €</span>
+            <span className="font-medium text-gold-700">+{fmt(internet)} €</span>
           </div>
           <div className="flex justify-between text-gray-600">
             <span className="text-xs">Comunidad</span>
-            <span className="font-medium text-emerald-700">+{fmt(comunidad)} €</span>
+            <span className="font-medium text-gold-700">+{fmt(comunidad)} €</span>
           </div>
           <div className="flex justify-between text-gray-600">
             <span className="text-xs">Seguro</span>
-            <span className="font-medium text-emerald-700">+{fmt(seguro)} €</span>
+            <span className="font-medium text-gold-700">+{fmt(seguro)} €</span>
           </div>
           {otros > 0 && (
             <div className="flex justify-between text-gray-600">
               <span className="text-xs">Otros</span>
-              <span className="font-medium text-emerald-700">+{fmt(otros)} €</span>
+              <span className="font-medium text-gold-700">+{fmt(otros)} €</span>
             </div>
           )}
         </div>
       </div>
 
       {/* Total mensual */}
-      <div className="bg-white rounded-xl p-4 border-2 border-emerald-600 mb-3">
+      <div className="bg-white rounded-xl p-4 border-2 border-gold-600 mb-3">
         <div className="flex justify-between items-center mb-1">
           <span className="text-xs font-semibold text-gray-600 uppercase">Total mensual</span>
-          <span className="text-xl font-extrabold text-emerald-700">{fmt(totalMensual)} €</span>
+          <span className="text-xl font-extrabold text-gold-700">{fmt(totalMensual)} €</span>
         </div>
         <p className="text-xs text-gray-500 text-right">
           Coste anual: {fmt(totalAnual)} €

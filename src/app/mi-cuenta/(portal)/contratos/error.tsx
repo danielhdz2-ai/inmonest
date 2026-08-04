@@ -24,7 +24,7 @@ export default function ContratosError({
           <button
             type="button"
             onClick={reset}
-            className="w-full bg-[#c9962a] text-white font-bold py-3 rounded-xl min-h-[48px]"
+            className="w-full bg-gold-500 text-white font-bold py-3 rounded-xl min-h-[48px]"
           >
             Reintentar
           </button>
@@ -34,7 +34,7 @@ export default function ContratosError({
           >
             Recargar página
           </Link>
-          <Link href="/mi-cuenta" className="text-sm text-[#c9962a] underline">
+          <Link href="/mi-cuenta" className="text-sm text-gold-500 underline">
             Volver a mi cuenta
           </Link>
         </div>

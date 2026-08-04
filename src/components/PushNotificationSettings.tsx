@@ -81,7 +81,7 @@ export default function PushNotificationSettings() {
             disabled={isLoading}
             className={`
               relative inline-flex h-6 w-11 items-center rounded-full transition-colors
-              ${isSubscribed ? 'bg-[#c9962a]' : 'bg-gray-200'}
+              ${isSubscribed ? 'bg-gold-500' : 'bg-gray-200'}
               ${isLoading ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
             `}
           >

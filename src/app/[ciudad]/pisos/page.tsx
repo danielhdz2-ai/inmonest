@@ -213,23 +213,23 @@ export default async function PisosCiudadPage({ params }: { params: Promise<{ ci
 
       <main className="max-w-4xl mx-auto px-4 py-12 sm:py-16">
         <PageHeroImage
-          src="/keys.jpg"
+          src="/promo1.png"
           alt={`Pisos en ${nombre}: compra y alquiler entre particulares`}
           className="mb-10"
         />
 
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2 flex-wrap">
-          <Link href="/" className="hover:text-[#c9962a] transition-colors">Inicio</Link>
+          <Link href="/" className="hover:text-gold-500 transition-colors">Inicio</Link>
           <span>/</span>
-          <Link href="/pisos" className="hover:text-[#c9962a] transition-colors">Pisos</Link>
+          <Link href="/pisos" className="hover:text-gold-500 transition-colors">Pisos</Link>
           <span>/</span>
           <span className="text-gray-800 font-medium">Pisos en {nombre}</span>
         </nav>
 
         <h1 className="text-3xl sm:text-4xl font-black text-gray-900 leading-tight mb-4">
           Pisos en {nombre}:<br />
-          <span className="text-[#c9962a]">Compra y alquiler directo de particulares</span>
+          <span className="text-gold-500">Compra y alquiler directo de particulares</span>
         </h1>
         <p className="text-lg text-gray-600 mb-8 leading-relaxed">
           {mercado?.descripcion} En Inmonest encontrarás pisos directamente de sus propietarios,
@@ -253,7 +253,7 @@ export default async function PisosCiudadPage({ params }: { params: Promise<{ ci
             </div>
             <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-center">
               <p className="text-xs text-amber-700 font-semibold uppercase tracking-wide mb-1">Tendencia venta</p>
-              <p className="text-sm font-bold text-[#c9962a]">{mercado.tendencia_venta}</p>
+              <p className="text-sm font-bold text-gold-500">{mercado.tendencia_venta}</p>
             </div>
           </div>
         )}
@@ -262,13 +262,13 @@ export default async function PisosCiudadPage({ params }: { params: Promise<{ ci
         <div className="grid sm:grid-cols-2 gap-4 mb-12">
           <Link
             href={`/pisos?operacion=sale&ciudad=${ciudad}`}
-            className="flex items-center justify-center gap-2 bg-[#0d1a0f] hover:bg-[#1a2e1c] text-white font-bold px-6 py-4 rounded-xl text-base transition-colors shadow-md"
+            className="flex items-center justify-center gap-2 bg-forest-900 hover:bg-[#1a2e1c] text-white font-bold px-6 py-4 rounded-xl text-base transition-colors shadow-md"
           >
-            🏠 Ver pisos en venta en {nombre} →
+            Ver pisos en venta en {nombre} →
           </Link>
           <Link
             href={`/pisos?operacion=rent&ciudad=${ciudad}`}
-            className="flex items-center justify-center gap-2 bg-[#c9962a] hover:bg-[#b8841f] text-white font-bold px-6 py-4 rounded-xl text-base transition-colors shadow-md"
+            className="flex items-center justify-center gap-2 bg-gold-500 hover:bg-[#b8841f] text-white font-bold px-6 py-4 rounded-xl text-base transition-colors shadow-md"
           >
             🔑 Ver pisos en alquiler en {nombre} →
           </Link>
@@ -325,7 +325,7 @@ export default async function PisosCiudadPage({ params }: { params: Promise<{ ci
           </p>
           <Link
             href="/publicar-anuncio"
-            className="inline-flex items-center gap-2 bg-[#c9962a] hover:bg-[#b8841f] text-white font-bold px-7 py-3.5 rounded-xl text-base transition-colors shadow-md"
+            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841f] text-white font-bold px-7 py-3.5 rounded-xl text-base transition-colors shadow-md"
           >
             Publicar anuncio gratis →
           </Link>
@@ -335,16 +335,16 @@ export default async function PisosCiudadPage({ params }: { params: Promise<{ ci
         <div className="mt-10 pt-8 border-t border-gray-200">
           <p className="text-sm font-semibold text-gray-700 mb-4">Servicios inmobiliarios en {nombre}:</p>
           <div className="flex flex-wrap gap-3">
-            <Link href={`/${ciudad}/contrato-arras`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-[#c9962a] transition-colors">
+            <Link href={`/${ciudad}/contrato-arras`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-gold-500 transition-colors">
               Contrato de arras en {nombre} →
             </Link>
-            <Link href={`/${ciudad}/contrato-alquiler`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-[#c9962a] transition-colors">
+            <Link href={`/${ciudad}/contrato-alquiler`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-gold-500 transition-colors">
               Contrato de alquiler en {nombre} →
             </Link>
-            <Link href={`/${ciudad}/alquiler-sin-agencia`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-[#c9962a] transition-colors">
+            <Link href={`/${ciudad}/alquiler-sin-agencia`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-gold-500 transition-colors">
               Alquiler sin agencia en {nombre} →
             </Link>
-            <Link href={`/${ciudad}/vender-piso`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-[#c9962a] transition-colors">
+            <Link href={`/${ciudad}/vender-piso`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-gold-500 transition-colors">
               Vender piso sin comisión en {nombre} →
             </Link>
           </div>

@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { BRAND_IMAGES } from '@/lib/brand-images'
 
 type PageHeroImageProps = {
   src?: string
@@ -8,7 +9,7 @@ type PageHeroImageProps = {
 }
 
 export default function PageHeroImage({
-  src = '/keys.jpg',
+  src = BRAND_IMAGES.gestoria.src,
   alt,
   className = 'mb-10',
   priority = false,

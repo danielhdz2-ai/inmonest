@@ -40,7 +40,7 @@ export default async function FavoritosPage() {
           <p className="text-sm text-gray-400 mb-6">
             Guarda las propiedades que te interesen pulsando el corazon en cualquier anuncio.
           </p>
-          <Link href="/pisos" className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
+          <Link href="/pisos" className="inline-block bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
             Explorar propiedades
           </Link>
         </div>

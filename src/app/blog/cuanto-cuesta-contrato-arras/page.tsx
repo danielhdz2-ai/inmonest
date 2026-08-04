@@ -137,7 +137,7 @@ export default function CuantoCuestaArrasPage() {
           </p>
         </header>
         <PageHeroImage
-          src="/familia10.jpg"
+          src="/promo3.png"
           alt="Cuánto cuesta un contrato de arras en 2026 — Precios reales de gestorías"
           className="mb-12"
         />
@@ -332,7 +332,7 @@ export default function CuantoCuestaArrasPage() {
             <div className="flex flex-wrap gap-3">
               <Link 
                 href="/gestoria/solicitar/arras-penitenciales"
-                className="inline-block bg-[#c9962a] hover:bg-[#b8872a] text-white font-semibold px-5 py-2.5 rounded-lg transition"
+                className="inline-block bg-gold-500 hover:bg-[#b8872a] text-white font-semibold px-5 py-2.5 rounded-lg transition"
               >
                 Contratar contrato de arras (145€)
               </Link>
@@ -469,7 +469,7 @@ export default function CuantoCuestaArrasPage() {
             </p>
             <Link 
               href="/gestoria"
-              className="inline-block bg-[#c9962a] hover:bg-[#b8872a] text-white font-semibold px-6 py-3 rounded-lg transition"
+              className="inline-block bg-gold-500 hover:bg-[#b8872a] text-white font-semibold px-6 py-3 rounded-lg transition"
             >
               Ver servicios de gestoría →
             </Link>

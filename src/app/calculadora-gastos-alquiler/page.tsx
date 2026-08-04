@@ -90,7 +90,7 @@ const FAQS = [
 
 export default function CalculadoraGastosAlquilerPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-cream-100 to-white">
       <Navbar />
       <WhatsAppButton />
 
@@ -98,11 +98,11 @@ export default function CalculadoraGastosAlquilerPage() {
       <section className="pt-32 pb-16 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
-            <div className="inline-block bg-emerald-100 text-emerald-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
+            <div className="inline-block bg-cream-100 text-gold-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-4">
               🧮 Calculadora gratuita
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-4 leading-tight">
-              ¿Cuánto cuesta <span className="text-emerald-600">realmente</span><br />alquilar un piso?
+              ¿Cuánto cuesta <span className="text-gold-600">realmente</span><br />alquilar un piso?
             </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Calcula todos los gastos mensuales: renta + luz + agua + gas + internet + comunidad.<br />
@@ -122,13 +122,13 @@ export default function CalculadoraGastosAlquilerPage() {
             <div className="lg:sticky lg:top-24">
               <TotalRentalCostCalculator alquilerMensual={1000} />
               
-              <div className="mt-6 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
-                <p className="text-sm text-emerald-900 mb-3">
+              <div className="mt-6 bg-cream-100 border border-gold-200 rounded-xl p-5">
+                <p className="text-sm text-forest-900 mb-3">
                   💡 <strong>¿Ya sabes tu presupuesto?</strong> Encuentra pisos de particulares sin comisión de agencia.
                 </p>
                 <Link 
                   href="/pisos?operacion=rent" 
-                  className="block w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg text-center transition-colors"
+                  className="block w-full bg-gold-600 hover:bg-gold-700 text-white font-bold py-3 rounded-lg text-center transition-colors"
                 >
                   Ver pisos en alquiler sin comisión
                 </Link>
@@ -147,10 +147,10 @@ export default function CalculadoraGastosAlquilerPage() {
 
                 <div className="space-y-4">
                   {GASTOS.map((gasto, i) => (
-                    <div key={i} className="bg-white border border-gray-200 rounded-lg p-5 hover:border-emerald-300 transition-colors">
+                    <div key={i} className="bg-white border border-gray-200 rounded-lg p-5 hover:border-gold-300 transition-colors">
                       <div className="flex justify-between items-start mb-2">
                         <h3 className="font-bold text-gray-900">{gasto.nombre}</h3>
-                        <span className="bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap">
+                        <span className="bg-cream-100 text-gold-700 text-xs font-bold px-2.5 py-1 rounded-full whitespace-nowrap">
                           {gasto.promedio}
                         </span>
                       </div>
@@ -211,7 +211,7 @@ export default function CalculadoraGastosAlquilerPage() {
                     <details key={i} className="bg-white border border-gray-200 rounded-lg p-5 group">
                       <summary className="font-bold text-gray-900 cursor-pointer list-none flex justify-between items-center">
                         {faq.q}
-                        <span className="text-emerald-600 group-open:rotate-180 transition-transform">▼</span>
+                        <span className="text-gold-600 group-open:rotate-180 transition-transform">▼</span>
                       </summary>
                       <p className="text-sm text-gray-700 mt-3 leading-relaxed">{faq.a}</p>
                     </details>
@@ -220,16 +220,16 @@ export default function CalculadoraGastosAlquilerPage() {
               </div>
 
               {/* CTA Final */}
-              <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-xl p-8 text-center text-white">
+              <div className="bg-gradient-to-r from-gold-600 to-teal-600 rounded-xl p-8 text-center text-white">
                 <h3 className="text-2xl font-bold mb-3">¿Listo para alquilar sin sorpresas?</h3>
-                <p className="text-emerald-100 mb-5">
+                <p className="text-cream-100 mb-5">
                   Encuentra pisos de particulares sin comisión de agencia<br />
                   o contrata un contrato LAU profesional desde 145€.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
                   <Link
                     href="/pisos?operacion=rent"
-                    className="inline-block bg-white text-emerald-600 hover:bg-emerald-50 font-bold px-8 py-3.5 rounded-full transition-colors"
+                    className="inline-block bg-white text-gold-600 hover:bg-cream-100 font-bold px-8 py-3.5 rounded-full transition-colors"
                   >
                     Explorar pisos en alquiler →
                   </Link>

@@ -41,8 +41,8 @@ export default function CalculadoraAhorroContrato({ mode, ciudad, ciudadSlug, pr
       : 'Comisión típica de agencia (≈ 4 % del precio)'
 
   return (
-    <section className="rounded-2xl border border-[#e8d48a] bg-[#fdf8ee] p-6 sm:p-8">
-      <p className="text-xs font-bold uppercase tracking-widest text-[#7a5c1e] mb-2">Calculadora de ahorro</p>
+    <section className="rounded-2xl border border-gold-300 bg-cream-100 p-6 sm:p-8">
+      <p className="text-xs font-bold uppercase tracking-widest text-gold-700 mb-2">Calculadora de ahorro</p>
       <h2 className="text-2xl font-bold text-gray-900 mb-2">
         {mode === 'alquiler'
           ? `¿Cuánto ahorras en ${ciudad} frente a una agencia?`
@@ -60,7 +60,7 @@ export default function CalculadoraAhorroContrato({ mode, ciudad, ciudadSlug, pr
         inputMode="numeric"
         value={valor}
         onChange={(e) => setValor(e.target.value.replace(/[^\d.,]/g, ''))}
-        className="w-full sm:w-64 rounded-xl border border-gray-300 px-4 py-3 text-lg font-semibold focus:border-[#c9a84c] focus:outline-none focus:ring-1 focus:ring-[#c9a84c]"
+        className="w-full sm:w-64 rounded-xl border border-gray-300 px-4 py-3 text-lg font-semibold focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-[#c9a84c]"
       />
 
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -72,11 +72,11 @@ export default function CalculadoraAhorroContrato({ mode, ciudad, ciudadSlug, pr
           <p className="text-xs text-gray-500 mb-1">
             {mode === 'alquiler' ? 'Contrato LAU Inmonest' : 'Contrato de arras Inmonest'}
           </p>
-          <p className="text-2xl font-bold text-[#c9a84c]">{formatEur(gestoria)}</p>
+          <p className="text-2xl font-bold text-gold-500">{formatEur(gestoria)}</p>
         </div>
-        <div className="rounded-xl bg-[#0d1a0f] p-4">
+        <div className="rounded-xl bg-forest-900 p-4">
           <p className="text-xs text-white/60 mb-1">Ahorro orientativo</p>
-          <p className="text-2xl font-bold text-[#f4c94a]">{formatEur(ahorro)}</p>
+          <p className="text-2xl font-bold text-gold-300">{formatEur(ahorro)}</p>
           <p className="text-xs text-white/50 mt-1">≈ {pct}% menos que la vía agencia</p>
         </div>
       </div>
@@ -92,7 +92,7 @@ export default function CalculadoraAhorroContrato({ mode, ciudad, ciudadSlug, pr
           event="click_phone"
           city={ciudadSlug}
           href="tel:+34745022862"
-          className="inline-flex items-center justify-center rounded-xl bg-[#0d1a0f] hover:bg-[#1a2e1c] text-white font-semibold px-5 py-3 text-sm"
+          className="inline-flex items-center justify-center rounded-xl bg-forest-900 hover:bg-[#1a2e1c] text-white font-semibold px-5 py-3 text-sm"
         >
           Llamar al gestor — 745 022 862
         </TrackedContactLink>
@@ -106,7 +106,7 @@ export default function CalculadoraAhorroContrato({ mode, ciudad, ciudadSlug, pr
           )}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center rounded-xl bg-green-600 hover:bg-green-700 text-white font-semibold px-5 py-3 text-sm"
+          className="inline-flex items-center justify-center rounded-xl bg-gold-600 hover:bg-gold-700 text-white font-semibold px-5 py-3 text-sm"
         >
           WhatsApp
         </TrackedContactLink>

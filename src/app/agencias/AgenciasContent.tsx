@@ -127,19 +127,19 @@ export default function AgenciasContent() {
         <div className="absolute inset-0 bg-gradient-to-br from-black/75 via-black/60 to-black/45" />
 
         <div className="relative z-10 max-w-5xl mx-auto text-center w-full">
-          <span className="inline-block bg-[#c9962a] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+          <span className="inline-block bg-gold-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
             Para inmobiliarias
           </span>
           <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
             Tu inmobiliaria,<br />
-            <span className="text-[#f4c94a]">sin intermediarios de portal</span>
+            <span className="text-gold-300">sin intermediarios de portal</span>
           </h1>
           <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto mb-10">
             Publica tus inmuebles ante compradores y arrendatarios cualificados.
             Sin coste por clic. Sin pujas de visibilidad. Sin ruido de portales masificados.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#planes" className="px-8 py-4 bg-[#c9962a] text-white font-bold rounded-full text-base hover:bg-[#a87a20] transition-colors">
+            <a href="#planes" className="px-8 py-4 bg-gold-500 text-white font-bold rounded-full text-base hover:bg-gold-600 transition-colors">
               Ver planes y precios
             </a>
             <a href="#contactar" className="px-8 py-4 border border-white/30 text-white font-semibold rounded-full text-base hover:bg-white/10 transition-colors">
@@ -154,7 +154,7 @@ export default function AgenciasContent() {
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 divide-x divide-gray-100">
           {STATS.map((s, i) => (
             <div key={i} className="py-8 px-6 text-center">
-              <div className="text-3xl font-bold text-[#c9962a]">{s.value}</div>
+              <div className="text-3xl font-bold text-gold-500">{s.value}</div>
               <div className="text-sm text-gray-500 mt-1">{s.label}</div>
             </div>
           ))}
@@ -198,7 +198,7 @@ export default function AgenciasContent() {
                 }`}
               >
                 {plan.highlight && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#c9962a] text-white text-xs font-bold px-4 py-1 rounded-full">
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold-500 text-white text-xs font-bold px-4 py-1 rounded-full">
                     Más popular
                   </span>
                 )}
@@ -206,7 +206,7 @@ export default function AgenciasContent() {
                   {plan.name}
                 </h3>
                 <div className="flex items-end gap-1 mb-6">
-                  <span className={`text-4xl font-black ${plan.highlight ? 'text-[#f4c94a]' : 'text-[#c9962a]'}`}>
+                  <span className={`text-4xl font-black ${plan.highlight ? 'text-gold-300' : 'text-gold-500'}`}>
                     {plan.price === '0' ? 'Gratis' : plan.price === 'A medida' ? plan.price : `${plan.price}€`}
                   </span>
                   <span className={`text-sm pb-1 ${plan.highlight ? 'text-gray-400' : 'text-gray-400'}`}>
@@ -216,7 +216,7 @@ export default function AgenciasContent() {
                 <ul className="space-y-2 mb-8 flex-1">
                   {plan.features.map((f, j) => (
                     <li key={j} className={`flex items-start gap-2 text-sm ${plan.highlight ? 'text-gray-300' : 'text-gray-600'}`}>
-                      <span className="text-[#c9962a] mt-0.5 flex-shrink-0">✓</span>
+                      <span className="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
                       {f}
                     </li>
                   ))}
@@ -225,7 +225,7 @@ export default function AgenciasContent() {
                   href={plan.ctaHref}
                   className={`block text-center py-3 rounded-full font-semibold text-sm transition-colors ${
                     plan.highlight
-                      ? 'bg-[#c9962a] text-white hover:bg-[#a87a20]'
+                      ? 'bg-gold-500 text-white hover:bg-gold-600'
                       : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
                   }`}
                 >
@@ -241,7 +241,7 @@ export default function AgenciasContent() {
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1">
-            <span className="text-[#c9962a] text-xs font-bold uppercase tracking-widest">Integración técnica</span>
+            <span className="text-gold-500 text-xs font-bold uppercase tracking-widest">Integración técnica</span>
             <h2 className="text-3xl font-bold text-gray-900 mt-2 mb-4">
               Tu CRM ya tiene el feed.<br />Nosotros lo importamos.
             </h2>
@@ -292,7 +292,7 @@ export default function AgenciasContent() {
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 >
                   <span className="font-semibold text-sm text-gray-900">{faq.q}</span>
-                  <span className="text-[#c9962a] text-xl flex-shrink-0">{openFaq === i ? '−' : '+'}</span>
+                  <span className="text-gold-500 text-xl flex-shrink-0">{openFaq === i ? '−' : '+'}</span>
                 </button>
                 {openFaq === i && (
                   <div className="px-6 pb-4 text-sm text-gray-500 leading-relaxed border-t border-gray-100 pt-3">
@@ -390,7 +390,7 @@ export default function AgenciasContent() {
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full py-3.5 bg-[#c9962a] text-white font-bold rounded-full text-sm hover:bg-[#a87a20] transition-colors disabled:opacity-60"
+                className="w-full py-3.5 bg-gold-500 text-white font-bold rounded-full text-sm hover:bg-gold-600 transition-colors disabled:opacity-60"
               >
                 {sending ? 'Enviando...' : 'Solicitar alta como agencia →'}
               </button>
@@ -402,7 +402,7 @@ export default function AgenciasContent() {
       {/* ── Footer CTA ───────────────────────────────────────── */}
       <section className="bg-gray-900 text-white py-14 px-4 text-center">
         <p className="text-gray-400 text-sm mb-2">¿Prefieres hablar directamente?</p>
-        <a href="mailto:info@inmonest.com" className="text-[#f4c94a] font-semibold hover:underline">
+        <a href="mailto:info@inmonest.com" className="text-gold-300 font-semibold hover:underline">
           info@inmonest.com
         </a>
       </section>

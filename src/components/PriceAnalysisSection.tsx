@@ -37,7 +37,7 @@ export default function PriceAnalysisSection({ analysis, city, district, operati
       {/* Badge principal */}
       <div className="mb-6">
         {analysis.trend === 'below' && (
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-800 rounded-full">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-cream-100 text-gold-800 rounded-full">
             <span className="text-xl">🎯</span>
             <span className="font-semibold">Oportunidad de precio</span>
           </div>
@@ -94,7 +94,7 @@ export default function PriceAnalysisSection({ analysis, city, district, operati
             {primaryPercentage !== null && (
               <p className={`text-sm font-semibold mt-1 ${
                 primaryPercentage < -5 
-                  ? 'text-emerald-700' 
+                  ? 'text-gold-700' 
                   : primaryPercentage > 5 
                     ? 'text-amber-700' 
                     : 'text-gray-600'
@@ -143,7 +143,7 @@ export default function PriceAnalysisSection({ analysis, city, district, operati
         {primaryPercentage !== null && (
           <div className={`border-t border-gray-100 pt-4 ${
             analysis.trend === 'below' 
-              ? 'bg-emerald-50/30' 
+              ? 'bg-cream-100/30' 
               : analysis.trend === 'above' 
                 ? 'bg-amber-50/30' 
                 : ''

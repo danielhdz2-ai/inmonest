@@ -48,7 +48,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm text-center">
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
           <div className="w-14 h-14 bg-[#fef0c0] rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-7 h-7 text-[#c9962a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-7 h-7 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
@@ -56,7 +56,7 @@ export default function LoginPage() {
           <p className="text-gray-500 text-sm mb-1">Hemos enviado un enlace mágico a</p>
           <p className="font-semibold text-gray-800 mb-6">{email}</p>
           <p className="text-xs text-gray-400">Haz clic en el enlace del email para entrar. Válido 10 minutos.</p>
-          <button onClick={() => { setSent(false); setEmail('') }} className="mt-6 text-sm text-[#c9962a] hover:underline">
+          <button onClick={() => { setSent(false); setEmail('') }} className="mt-6 text-sm text-gold-500 hover:underline">
             Usar otro email
           </button>
         </div>
@@ -74,7 +74,7 @@ export default function LoginPage() {
             Inicia sesión o regístrate
           </h1>
           <p className="text-sm text-gray-500">
-            para publicar en <span className="font-bold text-[#c9962a]">Inmonest</span>
+            para publicar en <span className="font-bold text-gold-500">Inmonest</span>
           </p>
         </div>
 
@@ -85,7 +85,7 @@ export default function LoginPage() {
             { icon: '🚀', text: 'Visibilidad Turbo' },
             { icon: '🔓', text: 'Sin intermediarios' },
           ].map((b) => (
-            <span key={b.text} className="flex items-center gap-1 bg-[#fef9e8] border border-[#f0dfa0] text-[#7a5c10] text-xs font-semibold px-2.5 py-1 rounded-full">
+            <span key={b.text} className="flex items-center gap-1 bg-cream-100 border border-[#f0dfa0] text-[#7a5c10] text-xs font-semibold px-2.5 py-1 rounded-full">
               {b.icon} {b.text}
             </span>
           ))}
@@ -136,7 +136,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-gold-500 text-white rounded-xl text-sm font-bold hover:bg-gold-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? 'Enviando...' : 'Continuar →'}
           </button>
@@ -153,7 +153,7 @@ export default function LoginPage() {
         <div className="mt-4 pt-4 border-t border-gray-100 text-center">
           <p className="text-xs text-gray-400">
             ¿Primera vez?{' '}
-            <Link href="/registro" className="text-[#c9962a] font-semibold hover:underline">
+            <Link href="/registro" className="text-gold-500 font-semibold hover:underline">
               Crea tu cuenta gratis
             </Link>
           </p>

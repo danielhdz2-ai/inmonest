@@ -41,7 +41,7 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
       />
       <Navbar />
       <main className="min-h-screen bg-gray-50">
-        <section className="relative bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white py-20">
+        <section className="relative bg-gradient-to-br from-forest-800 to-forest-900 text-white py-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-8">
               <Link href="/" className="hover:text-gray-300">
@@ -128,19 +128,19 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <h3 className="text-xl font-bold text-gray-900 mb-6">También ofrecemos gestoría inmobiliaria en:</h3>
             <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <Link href="/gestoria/madrid" className="text-[#c9a84c] hover:underline font-semibold">
+              <Link href="/gestoria/madrid" className="text-gold-500 hover:underline font-semibold">
                 Madrid
               </Link>
-              <Link href="/gestoria/barcelona" className="text-[#c9a84c] hover:underline font-semibold">
+              <Link href="/gestoria/barcelona" className="text-gold-500 hover:underline font-semibold">
                 Barcelona
               </Link>
-              <Link href="/gestoria/valencia" className="text-[#c9a84c] hover:underline font-semibold">
+              <Link href="/gestoria/valencia" className="text-gold-500 hover:underline font-semibold">
                 Valencia
               </Link>
-              <Link href="/gestoria/sevilla" className="text-[#c9a84c] hover:underline font-semibold">
+              <Link href="/gestoria/sevilla" className="text-gold-500 hover:underline font-semibold">
                 Sevilla
               </Link>
-              <Link href="/gestoria" className="text-[#c9a84c] hover:underline font-semibold">
+              <Link href="/gestoria" className="text-gold-500 hover:underline font-semibold">
                 Ver todas las ciudades →
               </Link>
             </div>

@@ -38,7 +38,7 @@ const SERVICIOS = [
   // ALQUILER
   {
     categoria: 'Alquiler',
-    color: 'from-green-500 to-green-600',
+    color: 'from-cream-500 to-gold-600',
     items: [
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145, badge: 'Ley 2026' },
       { slug: 'alquiler-temporada', nombre: 'Alquiler por Temporada', precio: 165 },
@@ -109,7 +109,7 @@ export default function SolicitarIndexPage() {
         <section className="bg-gradient-to-r from-[#2b4c7e] to-[#1e3a5f] text-white py-16 px-6">
           <div className="max-w-6xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Servicios de <span className="text-[#c9a84c]">Gestoría Inmobiliaria</span>
+              Servicios de <span className="text-gold-500">Gestoría Inmobiliaria</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-6">
               Contratos redactados por abogados expertos, revisión legal profesional y asesoría completa. <strong>Desde 61€</strong>. Entrega en 24-48h.
@@ -125,7 +125,7 @@ export default function SolicitarIndexPage() {
 
         <div className="max-w-6xl mx-auto px-6 py-10">
           <PageHeroImage
-            src="/familia10.jpg"
+            src="/promo3.png"
             alt="Servicios de gestoría inmobiliaria Inmonest"
             className="mb-0"
           />
@@ -150,18 +150,18 @@ export default function SolicitarIndexPage() {
                     <Link
                       key={servicio.slug}
                       href={`/gestoria/solicitar/${servicio.slug}`}
-                      className="group relative p-6 border-2 border-gray-200 rounded-xl hover:border-[#c9a84c] hover:shadow-lg transition-all duration-300"
+                      className="group relative p-6 border-2 border-gray-200 rounded-xl hover:border-gold-500 hover:shadow-lg transition-all duration-300"
                     >
                       {/* Badge */}
                       {servicio.badge && (
-                        <div className="absolute top-3 right-3 bg-[#c9a84c] text-white px-3 py-1 rounded-full text-xs font-bold">
+                        <div className="absolute top-3 right-3 bg-gold-500 text-white px-3 py-1 rounded-full text-xs font-bold">
                           {servicio.badge}
                         </div>
                       )}
 
                       {/* Contenido */}
                       <div className="mb-4">
-                        <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#c9a84c] transition-colors">
+                        <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-gold-500 transition-colors">
                           {servicio.nombre}
                         </h3>
                         <div className="text-3xl font-bold text-[#2b4c7e]">
@@ -170,7 +170,7 @@ export default function SolicitarIndexPage() {
                       </div>
 
                       {/* CTA */}
-                      <div className="flex items-center gap-2 text-[#c9a84c] font-semibold text-sm group-hover:gap-3 transition-all">
+                      <div className="flex items-center gap-2 text-gold-500 font-semibold text-sm group-hover:gap-3 transition-all">
                         Ver detalles
                         <span className="text-xl">→</span>
                       </div>
@@ -197,7 +197,7 @@ export default function SolicitarIndexPage() {
                 href="tel:+34745022862"
                 className="px-8 py-4 bg-white text-[#2b4c7e] rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors shadow-lg"
               >
-                📞 Llamar: 745 022 862
+                Llamar: 745 022 862
               </a>
               <a
                 href="https://wa.me/34745022862?text=Hola,%20necesito%20información%20sobre%20servicios%20de%20gestoría"
@@ -205,7 +205,7 @@ export default function SolicitarIndexPage() {
                 rel="noopener noreferrer"
                 className="px-8 py-4 bg-[#25d366] text-white rounded-lg font-bold text-lg hover:bg-[#20ba5a] transition-colors shadow-lg"
               >
-                💬 WhatsApp
+                WhatsApp
               </a>
             </div>
           </div>

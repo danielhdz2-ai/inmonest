@@ -277,7 +277,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                   <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-700">⚡ Turbo activo</span>
                 )}
                 {listing.is_particular && (
-                  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-700 text-white">💎 Propietario Directo</span>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-gold-700 text-white">💎 Propietario Directo</span>
                 )}
                 {listing.origin === 'direct' && (
                   <span className="px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700">Publicado aquí</span>
@@ -339,15 +339,15 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
 
             {/* Descripción IA */}
             {listing.ai_description && (
-              <div className="bg-[#fef9e8] rounded-2xl p-5 border border-[#f4c94a]/30">
-                <p className="text-xs font-bold text-[#a87a20] uppercase tracking-wider mb-3">✨ Análisis del anuncio</p>
+              <div className="bg-cream-100 rounded-2xl p-5 border border-gold-300/30">
+                <p className="text-xs font-bold text-gold-700 uppercase tracking-wider mb-3">✨ Análisis del anuncio</p>
                 <DescriptionExpand text={listing.ai_description} />
               </div>
             )}
 
             {/* ── CTA GESTORÍA (Alquiler / Venta) ── */}
             {listing.operation === 'rent' ? (
-              <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+              <div className="bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
                 <div className="flex items-start gap-4">
                   <span className="text-4xl">📄</span>
                   <div className="flex-1">
@@ -360,7 +360,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Link
                         href="/gestoria/contrato-alquiler"
-                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg"
+                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors text-sm shadow-lg"
                       >
                         Crear contrato LAU desde 7€ →
                       </Link>
@@ -377,7 +377,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
             ) : (
               <>
               <ComprarPisoDueDiligenceBanner city={listing.city} />
-              <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-6 sm:p-8 text-white shadow-lg">
+              <div className="bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
                 <div className="flex items-start gap-4">
                   <span className="text-4xl">🏠</span>
                   <div className="flex-1">
@@ -390,7 +390,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Link
                         href="/gestoria/contrato-arras"
-                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg"
+                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors text-sm shadow-lg"
                       >
                         Crear contrato de arras desde 145€ →
                       </Link>
@@ -409,7 +409,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
 
             {/* ── BANNER VENDEDORES (Solo en ventas) ── */}
             {listing.operation === 'sale' && listing.is_particular && (
-              <div className="bg-gradient-to-br from-amber-50 via-yellow-50 to-amber-100 rounded-2xl p-6 sm:p-8 border-2 border-[#c9962a]/30 shadow-md">
+              <div className="bg-gradient-to-br from-amber-50 via-yellow-50 to-amber-100 rounded-2xl p-6 sm:p-8 border-2 border-gold-500/30 shadow-md">
                 <div className="flex items-start gap-4">
                   <span className="text-4xl">💰</span>
                   <div className="flex-1">
@@ -417,18 +417,18 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                       ¿Eres el vendedor de este piso?
                     </h3>
                     <p className="text-gray-700 text-sm sm:text-base mb-4">
-                      Si vendes de <strong>particular a particular con comprador ya encontrado</strong>, te ayudamos con todo: contratos, documentación y acompañamiento hasta escritura. <strong className="text-[#a87a20]">Ahorra 10.000€+ en comisiones de agencia. Solo 687€.</strong>
+                      Si vendes de <strong>particular a particular con comprador ya encontrado</strong>, te ayudamos con todo: contratos, documentación y acompañamiento hasta escritura. <strong className="text-gold-700">Ahorra 10.000€+ en comisiones de agencia. Solo 687€.</strong>
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3">
                       <Link
                         href="/gestoria/venta-completa-reserva-escritura"
-                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg"
+                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors text-sm shadow-lg"
                       >
                         Ver servicio completo (687€) →
                       </Link>
                       <Link
                         href="/gestoria/solicitar"
-                        className="inline-flex items-center justify-center px-5 py-3 rounded-full border-2 border-[#c9962a] text-[#a87a20] font-semibold hover:bg-[#c9962a] hover:text-white transition-colors text-sm"
+                        className="inline-flex items-center justify-center px-5 py-3 rounded-full border-2 border-gold-500 text-gold-700 font-semibold hover:bg-gold-500 hover:text-white transition-colors text-sm"
                       >
                         Solicitar información →
                       </Link>
@@ -515,7 +515,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                 {listing.area_m2 && listing.price_eur && (
                   <div>
                     <dt className="text-xs text-gray-400 uppercase tracking-wider mb-1">Precio/m²</dt>
-                    <dd className="font-semibold text-[#c9962a] text-base">
+                    <dd className="font-semibold text-gold-500 text-base">
                       {Math.round(listing.price_eur / listing.area_m2).toLocaleString('es-ES')} €/m²
                     </dd>
                   </div>
@@ -642,8 +642,8 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
 
             {/* Análisis de precio */}
             {listing.price_eur && listing.area_m2 && (
-              <div className="bg-[#fef9e8] rounded-2xl p-5 border border-[#f4c94a]/30">
-                <p className="text-xs font-bold text-[#a87a20] uppercase tracking-wider mb-3">📊 Análisis del precio</p>
+              <div className="bg-cream-100 rounded-2xl p-5 border border-gold-300/30">
+                <p className="text-xs font-bold text-gold-700 uppercase tracking-wider mb-3">📊 Análisis del precio</p>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Precio total</span>
@@ -653,7 +653,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Precio por m²</span>
-                    <span className="font-semibold text-[#c9962a]">
+                    <span className="font-semibold text-gold-500">
                       {Math.round(listing.price_eur / listing.area_m2).toLocaleString('es-ES')} €/m²
                     </span>
                   </div>
@@ -667,7 +667,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                   )}
                 </div>
                 {listing.is_particular && (
-                  <p className="mt-3 text-xs text-emerald-800 bg-emerald-50 rounded-lg px-3 py-2 font-medium">
+                  <p className="mt-3 text-xs text-gold-800 bg-cream-100 rounded-lg px-3 py-2 font-medium">
                     💎 Sin comisión de agencia
                   </p>
                 )}
@@ -690,12 +690,12 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
             )}
 
             {/* CTA contratos */}
-            <div className="bg-[#fef9e8] rounded-2xl p-5 border border-[#f4c94a]/30">
+            <div className="bg-cream-100 rounded-2xl p-5 border border-gold-300/30">
               <p className="text-sm font-semibold text-[#42300a] mb-1">¿Vas a cerrar el trato?</p>
-              <p className="text-xs text-[#a87a20] mb-3">Genera tu contrato de alquiler o arras en minutos desde 7 €.</p>
+              <p className="text-xs text-gold-700 mb-3">Genera tu contrato de alquiler o arras en minutos desde 7 €.</p>
               <Link
                 href="/gestoria"
-                className="block text-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#a87a20] transition-colors"
+                className="block text-center px-4 py-2 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-gold-600 transition-colors"
               >
                 Ver contratos →
               </Link>

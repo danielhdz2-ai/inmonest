@@ -154,25 +154,25 @@ export default function GestoriaSevillaPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#1a0d00] via-[#2e1900] to-[#5a3200] text-white py-16 sm:py-24">
+      <section className="relative bg-gradient-to-br from-forest-950 via-[#2e1900] to-[#5a3200] text-white py-16 sm:py-24">
         <div className="absolute inset-0 opacity-10">
           <Image src="/gestoria5.jpg" alt="Gestoría Sevilla" fill className="object-cover" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-block px-4 py-2 rounded-full bg-[#c9962a]/20 border border-[#c9962a]/40 mb-6">
-            <span className="text-[#f4c94a] font-semibold text-sm">💼 Gestoría 100% Online | Especialistas en Andalucía</span>
+          <div className="inline-block px-4 py-2 rounded-full bg-gold-500/20 border border-gold-500/40 mb-6">
+            <span className="text-gold-300 font-semibold text-sm">💼 Gestoría 100% Online | Especialistas en Andalucía</span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-            Gestoría Inmobiliaria Online en <span className="text-[#f4c94a]">Sevilla</span>
+            Gestoría Inmobiliaria Online en <span className="text-gold-300">Sevilla</span>
           </h1>
           <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            <strong>Gestoría inmobiliaria para particulares</strong> en Sevilla. Contratos de alquiler, arras y compraventa redactados por <strong className="text-[#f4c94a]">abogados expertos</strong> en normativa andaluza.  
+            <strong>Gestoría inmobiliaria para particulares</strong> en Sevilla. Contratos de alquiler, arras y compraventa redactados por <strong className="text-gold-300">abogados expertos</strong> en normativa andaluza.  
             Sin comisiones de agencia. <strong>Contrato LAU desde {GESTORIA_PRECIOS.contratoAlquiler}€.</strong> Entrega en 48 horas.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/gestoria/solicitar/contrato-alquiler"
-              className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-all transform hover:scale-105"
+              className="inline-block px-8 py-4 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-bold text-lg shadow-xl transition-all transform hover:scale-105"
             >
               Contrato Alquiler LAU - {GESTORIA_PRECIOS.contratoAlquiler}€
             </Link>
@@ -335,22 +335,22 @@ export default function GestoriaSevillaPage() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 border-t border-gray-200">
         <h3 className="text-xl font-bold text-gray-900 mb-6">Servicios relacionados en otras ciudades</h3>
         <div className="grid sm:grid-cols-3 gap-4">
-          <Link href="/gestoria/barcelona" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/barcelona" className="text-gold-500 hover:text-gold-700 font-semibold">
             Gestoría Barcelona →
           </Link>
-          <Link href="/gestoria/madrid" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/madrid" className="text-gold-500 hover:text-gold-700 font-semibold">
             Gestoría Madrid →
           </Link>
-          <Link href="/gestoria/valencia" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/valencia" className="text-gold-500 hover:text-gold-700 font-semibold">
             Gestoría Valencia →
           </Link>
-          <Link href="/zaragoza/contrato-alquiler" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/zaragoza/contrato-alquiler" className="text-gold-500 hover:text-gold-700 font-semibold">
             Contrato Alquiler Zaragoza →
           </Link>
-          <Link href="/granada/contrato-alquiler" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/granada/contrato-alquiler" className="text-gold-500 hover:text-gold-700 font-semibold">
             Contrato Alquiler Granada →
           </Link>
-          <Link href="/gestoria/guia-arras-penitenciales" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/guia-arras-penitenciales" className="text-gold-500 hover:text-gold-700 font-semibold">
             Guía Arras Penitenciales →
           </Link>
         </div>

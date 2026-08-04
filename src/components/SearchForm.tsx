@@ -76,7 +76,7 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
       value: 'particulares',
       label: 'Solo particulares',
       icon: '',
-      activeClass: 'bg-[#c9962a] text-white border-[#c9962a]',
+      activeClass: 'bg-gold-500 text-white border-gold-500',
     },
     {
       value: 'agencias',

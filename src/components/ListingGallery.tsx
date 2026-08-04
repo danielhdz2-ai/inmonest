@@ -154,7 +154,7 @@ export default function ListingGallery({ images, title, lat, lng, priceLabel }: 
         {images.length > 1 && (
           <div className="flex items-center justify-between px-4 py-2.5 bg-white border-b border-gray-100">
             <span className="text-sm text-gray-500">{images.length} fotos</span>
-            <button onClick={() => openAt(0)} className="flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-[#c9962a] transition-colors">
+            <button onClick={() => openAt(0)} className="flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-gold-500 transition-colors">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
               </svg>

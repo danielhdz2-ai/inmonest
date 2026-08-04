@@ -133,25 +133,25 @@ export default function GestoriaZaragozaPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#1a0d00] via-[#2e1900] to-[#4a2e00] text-white py-16 sm:py-24">
+      <section className="relative bg-gradient-to-br from-forest-950 via-[#2e1900] to-[#4a2e00] text-white py-16 sm:py-24">
         <div className="absolute inset-0 opacity-10">
           <Image src="/gestoria3.jpg" alt="Gestoría Zaragoza" fill className="object-cover" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-block px-4 py-2 rounded-full bg-[#c9962a]/20 border border-[#c9962a]/40 mb-6">
-            <span className="text-[#f4c94a] font-semibold text-sm">🏛️ Especialistas en Derecho Inmobiliario Aragonés</span>
+          <div className="inline-block px-4 py-2 rounded-full bg-gold-500/20 border border-gold-500/40 mb-6">
+            <span className="text-gold-300 font-semibold text-sm">🏛️ Especialistas en Derecho Inmobiliario Aragonés</span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-            Gestoría Inmobiliaria en <span className="text-[#f4c94a]">Zaragoza</span>
+            Gestoría Inmobiliaria en <span className="text-gold-300">Zaragoza</span>
           </h1>
           <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
             Redactamos y revisamos contratos de alquiler, arras y compraventa adaptados a la legislación aragonesa. 
-            <strong className="text-[#f4c94a]"> LAU 145€. Entrega en 48 horas.</strong>
+            <strong className="text-gold-300"> LAU 145€. Entrega en 48 horas.</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/gestoria/solicitar/contrato-alquiler"
-              className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-all transform hover:scale-105"
+              className="inline-block px-8 py-4 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-bold text-lg shadow-xl transition-all transform hover:scale-105"
             >
               Solicitar Contrato de Alquiler - 145€
             </Link>
@@ -168,7 +168,7 @@ export default function GestoriaZaragozaPage() {
       {/* Intro: Por qué necesitas un abogado en Zaragoza */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-          ¿Por qué necesitas una gestoría especializada en <span className="text-[#c9962a]">Zaragoza</span>?
+          ¿Por qué necesitas una gestoría especializada en <span className="text-gold-500">Zaragoza</span>?
         </h2>
         <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4">
           <p>
@@ -196,14 +196,14 @@ export default function GestoriaZaragozaPage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Servicio 1 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-[#c9962a] transition-all hover:shadow-2xl">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-gold-500 transition-all hover:shadow-2xl">
               <div className="text-5xl mb-4">📝</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Contrato de Alquiler LAU</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Contrato de arrendamiento de vivienda habitual adaptado a Zaragoza. Incluye cláusulas de fianza, 
                 duración, gastos de comunidad y normativa aragonesa específica.
               </p>
-              <div className="text-3xl font-bold text-[#c9962a] mb-4">145€</div>
+              <div className="text-3xl font-bold text-gold-500 mb-4">145€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
                 <li>✅ Redacción personalizada</li>
                 <li>✅ Conforme LAU 2026</li>
@@ -212,14 +212,14 @@ export default function GestoriaZaragozaPage() {
               </ul>
               <Link
                 href="/gestoria/solicitar/contrato-alquiler"
-                className="block text-center py-3 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-semibold transition"
+                className="block text-center py-3 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-semibold transition"
               >
                 Solicitar ahora
               </Link>
             </div>
 
             {/* Servicio 2 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-[#c9962a] hover:shadow-2xl transform hover:scale-105 transition-all">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gold-500 hover:shadow-2xl transform hover:scale-105 transition-all">
               <div className="inline-block px-3 py-1 rounded-full bg-yellow-500 text-white text-xs font-bold mb-4">
                 ⭐ MÁS VENDIDO
               </div>
@@ -229,7 +229,7 @@ export default function GestoriaZaragozaPage() {
                 Protege tu señal de compra en Zaragoza. Permite desistir de la operación con penalización justa. 
                 Redactado por abogados expertos en compraventa inmobiliaria.
               </p>
-              <div className="text-3xl font-bold text-[#c9962a] mb-4">145€</div>
+              <div className="text-3xl font-bold text-gold-500 mb-4">145€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
                 <li>✅ Arras confirmatorias o penitenciales</li>
                 <li>✅ Cláusulas de desistimiento</li>
@@ -238,21 +238,21 @@ export default function GestoriaZaragozaPage() {
               </ul>
               <Link
                 href="/gestoria/solicitar/arras-penitenciales"
-                className="block text-center py-3 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-semibold transition"
+                className="block text-center py-3 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-semibold transition"
               >
                 Solicitar ahora
               </Link>
             </div>
 
             {/* Servicio 3 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-[#c9962a] transition-all hover:shadow-2xl">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-gold-500 transition-all hover:shadow-2xl">
               <div className="text-5xl mb-4">🔍</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Revisión de Contratos</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 ¿Te han dado un contrato para firmar en Zaragoza? Nuestros abogados lo revisan línea por línea, 
                 detectan cláusulas abusivas y te asesoran antes de firmar.
               </p>
-              <div className="text-3xl font-bold text-[#c9962a] mb-4">60€</div>
+              <div className="text-3xl font-bold text-gold-500 mb-4">60€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
                 <li>✅ Revisión completa por abogado</li>
                 <li>✅ Detección cláusulas abusivas</li>
@@ -261,7 +261,7 @@ export default function GestoriaZaragozaPage() {
               </ul>
               <Link
                 href="/gestoria/solicitar/revision-alquiler"
-                className="block text-center py-3 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-semibold transition"
+                className="block text-center py-3 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-semibold transition"
               >
                 Solicitar revisión
               </Link>
@@ -394,7 +394,7 @@ export default function GestoriaZaragozaPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria"
-              className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-transform transform hover:scale-105"
+              className="inline-block px-8 py-4 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-bold text-lg shadow-xl transition-transform transform hover:scale-105"
             >
               Ver todos los servicios
             </Link>
@@ -412,25 +412,25 @@ export default function GestoriaZaragozaPage() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 border-t border-gray-200">
         <h3 className="text-xl font-bold text-gray-900 mb-6">Servicios relacionados en otras ciudades</h3>
         <div className="grid sm:grid-cols-3 gap-4">
-          <Link href="/gestoria/barcelona" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/barcelona" className="text-gold-500 hover:text-gold-700 font-semibold">
             Gestoría Barcelona →
           </Link>
-          <Link href="/gestoria/madrid" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/madrid" className="text-gold-500 hover:text-gold-700 font-semibold">
             Gestoría Madrid →
           </Link>
-          <Link href="/gestoria/valencia" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/valencia" className="text-gold-500 hover:text-gold-700 font-semibold">
             Gestoría Valencia →
           </Link>
-          <Link href="/gestoria/revision-contrato-alquiler" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/revision-contrato-alquiler" className="text-gold-500 hover:text-gold-700 font-semibold">
             Revisión Contrato Alquiler →
           </Link>
-          <Link href="/gestoria/guia-arras-penitenciales" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/guia-arras-penitenciales" className="text-gold-500 hover:text-gold-700 font-semibold">
             Guía Arras Penitenciales →
           </Link>
-          <Link href="/gestoria/sevilla" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/sevilla" className="text-gold-500 hover:text-gold-700 font-semibold">
             Gestoría Sevilla →
           </Link>
-          <Link href="/granada/contrato-alquiler" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/granada/contrato-alquiler" className="text-gold-500 hover:text-gold-700 font-semibold">
             Contrato Alquiler Granada →
           </Link>
         </div>

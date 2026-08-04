@@ -106,7 +106,7 @@ const FAQ_BASE = [
 
 function CheckIcon() {
   return (
-    <svg className="w-5 h-5 text-[#c9962a] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
+    <svg className="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
       <path
         fillRule="evenodd"
         d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
@@ -218,22 +218,22 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
       <section className="bg-gradient-to-br from-slate-50 via-white to-slate-100 py-16 px-4 border-b border-gray-200">
         <div className="max-w-6xl mx-auto">
           <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6 flex-wrap">
-            <Link href="/" className="hover:text-[#c9962a]">Inicio</Link>
+            <Link href="/" className="hover:text-gold-500">Inicio</Link>
             <span>/</span>
-            <Link href="/gestoria" className="hover:text-[#c9962a]">Gestoría</Link>
+            <Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link>
             <span>/</span>
-            <Link href="/gestoria/contrato-alquiler-habitacion" className="hover:text-[#c9962a]">Alquiler Habitación</Link>
+            <Link href="/gestoria/contrato-alquiler-habitacion" className="hover:text-gold-500">Alquiler Habitación</Link>
             <span>/</span>
             <span className="text-gray-900 font-medium">{nombre}</span>
           </nav>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#a87a20] bg-[#fdf8ee] border border-[#e8d48a] px-3 py-1 rounded-full mb-4">
+              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-gold-700 bg-cream-100 border border-gold-300 px-3 py-1 rounded-full mb-4">
                 Particulares · {region}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                Contrato de alquiler de habitación en <span className="text-[#c9962a]">{nombre}</span>
+                Contrato de alquiler de habitación en <span className="text-gold-500">{nombre}</span>
               </h1>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 ¿Alquilas una habitación en {nombre}? Un <strong>asesor experto en derecho inmobiliario</strong> redacta
@@ -243,13 +243,13 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Link
                   href={SOLICITAR_URL}
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors"
+                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors"
                 >
                   Contratar — {ALQUILER_HABITACION_PRECIO}€ IVA incluido
                 </Link>
                 <a
                   href={`tel:${PHONE}`}
-                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-[#c9962a] hover:text-[#a87a20] transition-colors"
+                  className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-gold-500 hover:text-gold-700 transition-colors"
                 >
                   745 022 862
                 </a>
@@ -289,12 +289,12 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
           <div className="bg-slate-50 border border-gray-200 rounded-2xl p-8">
             <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">Tu asesor en {nombre}</p>
             <div className="flex gap-5 items-start">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-[#c9962a]/30">
+              <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-gold-500/30">
                 <Image src={gestor.foto} alt={gestor.nombre} fill className="object-cover" sizes="80px" />
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900">{gestor.nombre}</h3>
-                <p className="text-sm text-[#a87a20] font-medium mb-3">{gestor.rol}</p>
+                <p className="text-sm text-gold-700 font-medium mb-3">{gestor.rol}</p>
                 <p className="text-sm text-gray-600 leading-relaxed mb-4">{gestor.bio}</p>
                 <ul className="space-y-1">
                   {gestor.especialidades.map((e) => (
@@ -347,7 +347,7 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
           <div className="grid md:grid-cols-5 gap-6">
             {PASOS.map((paso, i) => (
               <div key={paso.titulo} className="text-center">
-                <div className="w-12 h-12 bg-[#1a2f1c] text-[#c9a84c] rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">
+                <div className="w-12 h-12 bg-forest-800 text-gold-500 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">
                   {i + 1}
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2 text-sm leading-snug">{paso.titulo}</h3>
@@ -371,7 +371,7 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
               <thead>
                 <tr className="bg-gray-100">
                   <th className="p-4 text-left font-semibold text-gray-900 w-1/4">Aspecto</th>
-                  <th className="p-4 text-center font-bold text-[#a87a20] bg-[#fdf8ee] border-b-2 border-[#c9962a]">
+                  <th className="p-4 text-center font-bold text-gold-700 bg-cream-100 border-b-2 border-gold-500">
                     Inmonest — {ALQUILER_HABITACION_PRECIO}€
                   </th>
                   <th className="p-4 text-center font-semibold text-gray-600 border-b-2 border-gray-300">
@@ -437,11 +437,11 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
               <Link
                 key={s.titulo}
                 href={s.href}
-                className="block p-6 bg-white border border-gray-200 rounded-xl hover:border-[#c9962a]/50 hover:shadow-sm transition-all"
+                className="block p-6 bg-white border border-gray-200 rounded-xl hover:border-gold-500/50 hover:shadow-sm transition-all"
               >
                 <h3 className="font-bold text-gray-900 mb-2">{s.titulo}</h3>
                 <p className="text-sm text-gray-600 mb-4 leading-relaxed">{s.desc}</p>
-                <span className="text-sm font-semibold text-[#a87a20]">Desde {s.precio}</span>
+                <span className="text-sm font-semibold text-gold-700">Desde {s.precio}</span>
               </Link>
             ))}
           </div>
@@ -452,14 +452,14 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm text-gray-500 mb-4">Contrato de alquiler de habitación también disponible en:</p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/gestoria/contrato-alquiler-habitacion" className="text-sm font-semibold text-[#c9962a] hover:underline">
+            <Link href="/gestoria/contrato-alquiler-habitacion" className="text-sm font-semibold text-gold-500 hover:underline">
               España (general)
             </Link>
             {ALQUILER_HABITACION_CIUDADES_LIST.filter((c) => c.slug !== slug).map((c) => (
               <Link
                 key={c.slug}
                 href={`/gestoria/contrato-alquiler-habitacion/${c.slug}`}
-                className="text-sm font-semibold text-[#c9962a] hover:underline"
+                className="text-sm font-semibold text-gold-500 hover:underline"
               >
                 {c.nombre}
               </Link>
@@ -482,7 +482,7 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
         </div>
       </section>
 
-      <section className="py-14 px-4 bg-[#1a2f1c] text-white">
+      <section className="py-14 px-4 bg-forest-800 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl font-bold mb-3">Consulta con un asesor en {nombre}</h2>
           <p className="text-white/80 mb-8">Primera consulta sin compromiso. Te explicamos el proceso y resolvemos tus dudas.</p>
@@ -504,14 +504,14 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
 
       <TestimoniosSection landing={config.testimoniosLanding} layout="stack" hideRating className="bg-white" />
 
-      <section className="py-16 px-4 bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white">
+      <section className="py-16 px-4 bg-gradient-to-br from-forest-800 to-forest-900 text-white">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">Alquila tu habitación en {nombre} con respaldo jurídico</h2>
           <p className="text-lg text-white/85 mb-8">
             Contrato profesional por {ALQUILER_HABITACION_PRECIO}€ IVA incluido. Asesor asignado y entrega en 48 horas.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={SOLICITAR_URL} className="px-8 py-4 rounded-lg bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors">
+            <Link href={SOLICITAR_URL} className="px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors">
               Contratar ahora — {ALQUILER_HABITACION_PRECIO}€
             </Link>
             <a href={`tel:${PHONE}`} className="px-8 py-4 rounded-lg border border-white/30 font-semibold hover:bg-white/10 transition-colors">

@@ -96,7 +96,7 @@ export default function AuthModal({
       <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl overflow-hidden">
 
         {/* Banda dorada superior */}
-        <div className="h-1.5 w-full bg-gradient-to-r from-[#c9962a] via-[#f4c94a] to-[#c9962a]" />
+        <div className="h-1.5 w-full bg-gradient-to-r from-gold-500 via-[#f4c94a] to-gold-500" />
 
         {/* Botón cerrar */}
         <button
@@ -126,7 +126,7 @@ export default function AuthModal({
             {['🆓 2 anuncios gratis', '🚀 Visibilidad Turbo', '🔒 Sin intermediarios'].map((badge) => (
               <span
                 key={badge}
-                className="flex-1 text-center text-xs bg-[#fef9e8] text-[#8a6520] border border-[#f4c94a]/40 rounded-full px-2 py-1 font-medium"
+                className="flex-1 text-center text-xs bg-cream-100 text-[#8a6520] border border-gold-300/40 rounded-full px-2 py-1 font-medium"
               >
                 {badge}
               </span>
@@ -185,13 +185,13 @@ export default function AuthModal({
           <div className="flex gap-3">
             <a
               href="/login"
-              className="flex-1 py-2.5 text-center bg-white border-2 border-[#c9962a] text-[#c9962a] rounded-xl text-sm font-bold hover:bg-[#fef9e8] transition-colors"
+              className="flex-1 py-2.5 text-center bg-white border-2 border-gold-500 text-gold-500 rounded-xl text-sm font-bold hover:bg-cream-100 transition-colors"
             >
               Iniciar sesión
             </a>
             <a
               href="/registro"
-              className="flex-1 py-2.5 text-center bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors shadow-md shadow-[#c9962a]/30"
+              className="flex-1 py-2.5 text-center bg-gold-500 text-white rounded-xl text-sm font-bold hover:bg-gold-600 transition-colors shadow-md shadow-[#c9962a]/30"
             >
               Crear cuenta
             </a>
@@ -203,9 +203,9 @@ export default function AuthModal({
 
           <p className="mt-4 text-center text-xs text-gray-400">
             Al continuar aceptas nuestros{' '}
-            <a href="/legal/terminos" className="text-[#c9962a] hover:underline">términos de uso</a>{' '}
+            <a href="/legal/terminos" className="text-gold-500 hover:underline">términos de uso</a>{' '}
             y{' '}
-            <a href="/legal/privacidad" className="text-[#c9962a] hover:underline">privacidad</a>.
+            <a href="/legal/privacidad" className="text-gold-500 hover:underline">privacidad</a>.
           </p>
         </div>
       </div>

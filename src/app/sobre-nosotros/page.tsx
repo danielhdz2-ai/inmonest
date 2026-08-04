@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/familia10.jpg`, width: 1200, height: 630, alt: 'Equipo Inmonest' }],
+    images: [{ url: `${BASE_URL}/promo3.png`, width: 1200, height: 630, alt: 'Equipo Inmonest' }],
   },
 }
 
@@ -60,7 +60,7 @@ export default function SobreNosotrosPage() {
                 Quiénes somos
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                El portal inmobiliario <span className="text-[#c9962a]">hecho para ti</span>
+                El portal inmobiliario <span className="text-gold-500">hecho para ti</span>
               </h1>
               <p className="text-xl text-gray-600 mb-6">
                 Inmonest nace de una visión clara: <strong>democratizar el acceso a la vivienda</strong> eliminando 
@@ -70,26 +70,26 @@ export default function SobreNosotrosPage() {
                 Somos más que un portal inmobiliario. Somos tu aliado en cada paso del proceso: 
                 desde encontrar el piso perfecto hasta firmar el contrato con total seguridad jurídica.
               </p>
-              <p className="text-lg text-gray-700 mb-8 bg-amber-50 border-l-4 border-[#c9962a] p-4 rounded-r-lg">
+              <p className="text-lg text-gray-700 mb-8 bg-amber-50 border-l-4 border-gold-500 p-4 rounded-r-lg">
                 Y cuando tengas dudas — sobre un contrato, una arras o cualquier trámite — 
                 tienes a tu disposición un <strong>asesor experto en derecho inmobiliario</strong> que te escucha, 
                 te explica todo con claridad y te acompaña hasta que te sientas seguro.
               </p>
               <div className="flex items-center gap-6 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Fundada en 2024</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>100% digital</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Equipo legal propio</span>
@@ -98,7 +98,7 @@ export default function SobreNosotrosPage() {
             </div>
             <div className="relative">
               <Image
-                src="/familia10.jpg"
+                src="/promo3.png"
                 alt="Familia feliz en su nuevo hogar con Inmonest"
                 width={600}
                 height={400}
@@ -122,7 +122,7 @@ export default function SobreNosotrosPage() {
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-orange-50 p-8 rounded-lg border-l-4 border-[#c9962a]">
+            <div className="bg-orange-50 p-8 rounded-lg border-l-4 border-gold-500">
               <div className="text-4xl mb-4">🎯</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Nuestra Misión</h3>
               <p className="text-gray-700 leading-relaxed">
@@ -131,7 +131,7 @@ export default function SobreNosotrosPage() {
                 y cerrar operaciones inmobiliarias con las mismas herramientas que usan las grandes agencias.
               </p>
             </div>
-            <div className="bg-orange-50 p-8 rounded-lg border-l-4 border-[#c9962a]">
+            <div className="bg-orange-50 p-8 rounded-lg border-l-4 border-gold-500">
               <div className="text-4xl mb-4">🚀</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Nuestra Visión</h3>
               <p className="text-gray-700 leading-relaxed">
@@ -230,25 +230,25 @@ export default function SobreNosotrosPage() {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Gestor asignado que te acompaña por teléfono, email y WhatsApp</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Contratos de arras y alquiler redactados por expertos</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Acompañamiento completo desde arras hasta escritura (687€)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Respuesta en menos de 24 horas — hablamos contigo, no con un robot</span>
@@ -257,7 +257,7 @@ export default function SobreNosotrosPage() {
               <div className="flex flex-col sm:flex-row gap-3 mt-6">
                 <Link
                   href="/gestoria"
-                  className="inline-block bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition text-center"
+                  className="inline-block bg-gold-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#b8872a] transition text-center"
                 >
                   Ver servicios de gestoría →
                 </Link>
@@ -265,7 +265,7 @@ export default function SobreNosotrosPage() {
                   href="https://wa.me/34745022862?text=Hola,%20tengo%20una%20duda%20sobre%20gestoría%20inmobiliaria"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-white border-2 border-[#c9962a] text-[#a87a20] px-6 py-3 rounded-lg font-semibold hover:bg-amber-50 transition text-center"
+                  className="inline-block bg-white border-2 border-gold-500 text-gold-700 px-6 py-3 rounded-lg font-semibold hover:bg-amber-50 transition text-center"
                 >
                   Consultar con un asesor
                 </a>
@@ -284,19 +284,19 @@ export default function SobreNosotrosPage() {
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Análisis automático de descripciones</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Detección de imágenes robadas o editadas</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span className="text-gray-700">Alertas personalizadas por zona y precio</span>
@@ -305,7 +305,7 @@ export default function SobreNosotrosPage() {
             </div>
             <div className="order-1 md:order-2">
               <Image
-                src="/keys.jpg"
+                src="/promo1.png"
                 alt="Tecnología y seguridad en Inmonest"
                 width={600}
                 height={400}
@@ -351,7 +351,7 @@ export default function SobreNosotrosPage() {
                 Desarrolladores full-stack especializados en Next.js, IA y arquitecturas escalables.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-gold-500">
               <div className="text-5xl mb-4">⚖️</div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">Equipo Legal y Gestoría</h3>
               <p className="text-gray-600">
@@ -384,7 +384,7 @@ export default function SobreNosotrosPage() {
               { number: '24h', label: 'Tiempo promedio de respuesta' },
             ].map((stat, i) => (
               <div key={i}>
-                <div className="text-4xl md:text-5xl font-bold text-[#c9962a] mb-2">{stat.number}</div>
+                <div className="text-4xl md:text-5xl font-bold text-gold-500 mb-2">{stat.number}</div>
                 <div className="text-gray-600">{stat.label}</div>
               </div>
             ))}
@@ -393,7 +393,7 @@ export default function SobreNosotrosPage() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-16 px-4 bg-[#c9962a] text-white">
+      <section className="py-16 px-4 bg-gold-500 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             ¿Listo para encontrar tu hogar ideal?
@@ -404,7 +404,7 @@ export default function SobreNosotrosPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/pisos"
-              className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
+              className="bg-white text-gold-500 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
               Buscar pisos
             </Link>
@@ -434,7 +434,7 @@ export default function SobreNosotrosPage() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <a
               href="mailto:info@inmonest.com"
-              className="flex items-center justify-center gap-2 text-[#c9962a] hover:text-[#b8872a] font-semibold"
+              className="flex items-center justify-center gap-2 text-gold-500 hover:text-[#b8872a] font-semibold"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -444,7 +444,7 @@ export default function SobreNosotrosPage() {
             </a>
             <a
               href="tel:+34745022862"
-              className="flex items-center justify-center gap-2 text-[#c9962a] hover:text-[#b8872a] font-semibold"
+              className="flex items-center justify-center gap-2 text-gold-500 hover:text-[#b8872a] font-semibold"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
@@ -455,7 +455,7 @@ export default function SobreNosotrosPage() {
               href="https://wa.me/34745022862?text=Hola,%20tengo%20una%20consulta%20sobre%20gestoría%20inmobiliaria"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 text-[#c9962a] hover:text-[#b8872a] font-semibold"
+              className="flex items-center justify-center gap-2 text-gold-500 hover:text-[#b8872a] font-semibold"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>

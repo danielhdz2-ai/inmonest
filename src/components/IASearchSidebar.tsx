@@ -112,7 +112,7 @@ export default function IASearchSidebar({ currentParams: _currentParams }: Props
   return (
     <div className="flex flex-col h-full bg-white border-r border-gray-200">
       {/* Cabecera */}
-      <div className="bg-[#c9962a] px-4 py-3 flex items-center gap-2.5 shrink-0">
+      <div className="bg-gold-500 px-4 py-3 flex items-center gap-2.5 shrink-0">
         <span className="text-xl leading-none">🏠</span>
         <div>
           <p className="text-white font-bold text-sm leading-tight">Buscador IA</p>
@@ -127,7 +127,7 @@ export default function IASearchSidebar({ currentParams: _currentParams }: Props
             <div
               className={`max-w-[88%] px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-line ${
                 msg.role === 'user'
-                  ? 'bg-[#c9962a] text-white rounded-br-sm'
+                  ? 'bg-gold-500 text-white rounded-br-sm'
                   : 'bg-white border border-gray-100 text-gray-800 rounded-bl-sm shadow-sm'
               }`}
             >
@@ -143,7 +143,7 @@ export default function IASearchSidebar({ currentParams: _currentParams }: Props
                 {[0, 150, 300].map((d) => (
                   <span
                     key={d}
-                    className="w-1.5 h-1.5 bg-[#c9962a] rounded-full animate-bounce"
+                    className="w-1.5 h-1.5 bg-gold-500 rounded-full animate-bounce"
                     style={{ animationDelay: `${d}ms` }}
                   />
                 ))}
@@ -162,7 +162,7 @@ export default function IASearchSidebar({ currentParams: _currentParams }: Props
             <button
               key={s}
               onClick={() => { setInput(s); inputRef.current?.focus() }}
-              className="text-xs text-left px-3 py-1.5 rounded-lg bg-white border border-[#c9962a]/30 text-[#a87a20] hover:bg-[#fef9e8] hover:border-[#c9962a]/60 transition-colors"
+              className="text-xs text-left px-3 py-1.5 rounded-lg bg-white border border-gold-500/30 text-gold-700 hover:bg-cream-100 hover:border-gold-500/60 transition-colors"
             >
               {s}
             </button>
@@ -182,12 +182,12 @@ export default function IASearchSidebar({ currentParams: _currentParams }: Props
           onChange={(e) => setInput(e.target.value)}
           placeholder="Escribe qué buscas..."
           disabled={loading}
-          className="flex-1 text-sm bg-gray-50 rounded-full px-4 py-2 border border-gray-200 focus:outline-none focus:border-[#c9962a] focus:ring-1 focus:ring-[#c9962a]/30 disabled:opacity-50 min-w-0"
+          className="flex-1 text-sm bg-gray-50 rounded-full px-4 py-2 border border-gray-200 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-[#c9962a]/30 disabled:opacity-50 min-w-0"
         />
         <button
           type="submit"
           disabled={!input.trim() || loading}
-          className="w-9 h-9 rounded-full bg-[#c9962a] text-white flex items-center justify-center hover:bg-[#a87a20] disabled:opacity-40 transition-colors shrink-0"
+          className="w-9 h-9 rounded-full bg-gold-500 text-white flex items-center justify-center hover:bg-gold-600 disabled:opacity-40 transition-colors shrink-0"
           aria-label="Enviar"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

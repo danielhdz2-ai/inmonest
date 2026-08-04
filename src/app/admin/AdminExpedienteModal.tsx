@@ -81,7 +81,7 @@ function orderAmount(o: ExpedienteOrder): number {
 function StatusBadge({ status }: { status: string }) {
   const paid = status === 'paid'
   return (
-    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${paid ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>
+    <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${paid ? 'bg-cream-100 text-gold-700' : 'bg-amber-100 text-amber-700'}`}>
       {paid ? 'Pagado' : status}
     </span>
   )
@@ -202,7 +202,7 @@ export default function AdminExpedienteModal({
             {client.name.charAt(0).toUpperCase()}
           </div>
           <div>
-            <p className="text-[11px] uppercase tracking-widest text-[#c9962a]">Expediente unificado · Inmonest</p>
+            <p className="text-[11px] uppercase tracking-widest text-gold-500">Expediente unificado · Inmonest</p>
             <h2 className="text-xl font-bold">{client.name}</h2>
             <p className="text-sm text-white/60">{client.email}</p>
           </div>
@@ -297,9 +297,9 @@ export default function AdminExpedienteModal({
                           onClick={() => handleStepChange(s.n)}
                           className={`rounded-xl p-2 text-center border transition-all min-h-[64px] touch-manipulation ${
                             active
-                              ? 'border-[#c9962a] bg-[#fef9e8] shadow-sm'
+                              ? 'border-gold-500 bg-cream-100 shadow-sm'
                               : done
-                                ? 'border-emerald-200 bg-emerald-50'
+                                ? 'border-gold-200 bg-cream-100'
                                 : 'border-gray-100 bg-gray-50 opacity-70 hover:opacity-100'
                           }`}
                           title={`Marcar paso ${s.n}`}
@@ -329,12 +329,12 @@ export default function AdminExpedienteModal({
                       type="button"
                       disabled={uploading}
                       onClick={() => fileRef.current?.click()}
-                      className="w-full sm:w-auto px-5 py-3 bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-bold rounded-xl disabled:opacity-60 min-h-[48px]"
+                      className="w-full sm:w-auto px-5 py-3 bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-bold rounded-xl disabled:opacity-60 min-h-[48px]"
                     >
                       {uploading ? 'Subiendo…' : activeOrder.contract_path ? 'Reemplazar contrato PDF' : 'Subir contrato PDF → email al cliente'}
                     </button>
                     {activeOrder.contract_path && (
-                      <p className="text-xs text-emerald-600 mt-2">✓ Contrato entregado en el panel del cliente</p>
+                      <p className="text-xs text-gold-600 mt-2">✓ Contrato entregado en el panel del cliente</p>
                     )}
                   </div>
 
@@ -419,7 +419,7 @@ export default function AdminExpedienteModal({
                     <ol className="space-y-3 max-h-[420px] overflow-y-auto pr-1">
                       {activity.map((a) => (
                         <li key={a.id} className="flex gap-3">
-                          <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-[#fef9e8] border border-[#f0dfa0] text-sm">
+                          <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-cream-100 border border-[#f0dfa0] text-sm">
                             {activityIcon(a.activity_type)}
                           </span>
                           <div className="min-w-0">
@@ -445,7 +445,7 @@ export default function AdminExpedienteModal({
                           onClick={() => setActiveOrderId(o.id)}
                           className={`w-full text-left rounded-xl px-3 py-2.5 border text-sm transition-colors ${
                             o.id === activeOrderId
-                              ? 'border-[#c9962a] bg-[#fef9e8]'
+                              ? 'border-gold-500 bg-cream-100'
                               : 'border-gray-100 hover:bg-gray-50'
                           }`}
                         >

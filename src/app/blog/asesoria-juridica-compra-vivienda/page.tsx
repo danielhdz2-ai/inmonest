@@ -66,7 +66,7 @@ export default function AsesoriaJuridicaCompraPost() {
             </p>
           </header>
         <PageHeroImage
-          src="/familia10.jpg"
+          src="/promo3.png"
           alt="Asesoría jurídica en la compra de vivienda: ¿por qué necesitas un gestor inmobiliario?"
           className="mb-12"
         />

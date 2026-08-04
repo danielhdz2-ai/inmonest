@@ -105,7 +105,7 @@ function RegistroForm() {
       <div className="w-full max-w-md text-center">
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
           <div className="w-14 h-14 bg-[#fef0c0] rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-7 h-7 text-[#c9962a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-7 h-7 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
@@ -123,7 +123,7 @@ function RegistroForm() {
           <div className="space-y-3 pt-4 border-t border-gray-100">
             <Link
               href={postAuthDest}
-              className="block w-full py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors"
+              className="block w-full py-3 bg-gold-500 text-white rounded-xl text-sm font-bold hover:bg-gold-600 transition-colors"
             >
               Ir a mi panel de gestoría
             </Link>
@@ -211,7 +211,7 @@ function RegistroForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-gold-500 text-white rounded-xl text-sm font-bold hover:bg-gold-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? 'Creando cuenta...' : 'Crear cuenta y continuar'}
           </button>
@@ -227,7 +227,7 @@ function RegistroForm() {
         <div className="mt-5 pt-4 border-t border-gray-100 text-center">
           <p className="text-xs text-gray-500">
             ¿Ya tienes cuenta?{' '}
-            <Link href={loginHref} className="text-[#c9962a] font-semibold hover:underline">
+            <Link href={loginHref} className="text-gold-500 font-semibold hover:underline">
               Inicia sesión
             </Link>
           </p>

@@ -92,18 +92,18 @@ function StepBar({ step }: { step: number }) {
           <div key={label} className="flex items-center">
             <div className="flex flex-col items-center">
               <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold border-2 transition-all duration-300
-                ${done ? 'bg-[#c9962a] border-[#c9962a] text-white' :
-                  active ? 'bg-white border-[#c9962a] text-[#c9962a] shadow-md' :
+                ${done ? 'bg-gold-500 border-gold-500 text-white' :
+                  active ? 'bg-white border-gold-500 text-gold-500 shadow-md' :
                   'bg-gray-100 border-gray-200 text-gray-400'}`}
               >
                 {done ? '✓' : idx}
               </div>
-              <span className={`text-xs mt-1 font-medium ${active ? 'text-[#c9962a]' : done ? 'text-[#c9962a]/70' : 'text-gray-400'}`}>
+              <span className={`text-xs mt-1 font-medium ${active ? 'text-gold-500' : done ? 'text-gold-500/70' : 'text-gray-400'}`}>
                 {label}
               </span>
             </div>
             {i < steps.length - 1 && (
-              <div className={`w-16 sm:w-24 h-0.5 mb-5 mx-1 transition-all duration-300 ${done ? 'bg-[#c9962a]' : 'bg-gray-200'}`} />
+              <div className={`w-16 sm:w-24 h-0.5 mb-5 mx-1 transition-all duration-300 ${done ? 'bg-gold-500' : 'bg-gray-200'}`} />
             )}
           </div>
         )
@@ -170,14 +170,14 @@ export default function VenderForm() {
   if (submitted) {
     return (
       <div className="text-center py-12">
-        <div className="w-20 h-20 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-6">
+        <div className="w-20 h-20 rounded-full bg-cream-100 flex items-center justify-center mx-auto mb-6">
           <span className="text-4xl">✅</span>
         </div>
         <h3 className="text-2xl font-extrabold text-gray-900 mb-2">¡Recibido!</h3>
         <p className="text-gray-500 max-w-sm mx-auto">
           Hemos registrado tus datos. En menos de <strong>24 horas</strong> te contactaremos con las mejores agencias para tu zona.
         </p>
-        <div className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#fef9e8] border border-[#c9962a]/30 text-[#a87a20] text-sm font-semibold">
+        <div className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-cream-100 border border-gold-500/30 text-gold-700 text-sm font-semibold">
           📬 Revisa tu email en {form.email}
         </div>
       </div>
@@ -207,7 +207,7 @@ export default function VenderForm() {
                 value={form.address}
                 onChange={e => { set('address', e.target.value); search(e.target.value) }}
                 placeholder="Ej: Calle Gran Vía 15, Madrid"
-                className="w-full pl-9 pr-4 py-3 rounded-xl border border-gray-200 focus:border-[#c9962a] focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-gray-900 placeholder-gray-400 text-sm"
+                className="w-full pl-9 pr-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-gray-900 placeholder-gray-400 text-sm"
               />
               {addrLoading && (
                 <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-400 animate-pulse">buscando…</span>
@@ -220,9 +220,9 @@ export default function VenderForm() {
                   <li
                     key={i}
                     onClick={() => selectAddress(s)}
-                    className="px-4 py-3 text-sm text-gray-700 hover:bg-[#fef9e8] cursor-pointer border-b border-gray-50 last:border-0"
+                    className="px-4 py-3 text-sm text-gray-700 hover:bg-cream-100 cursor-pointer border-b border-gray-50 last:border-0"
                   >
-                    <span className="text-[#c9962a] mr-2">📍</span>
+                    <span className="text-gold-500 mr-2">📍</span>
                     {s.display_name}
                   </li>
                 ))}
@@ -235,12 +235,12 @@ export default function VenderForm() {
               <div>
                 <label className="block text-xs font-semibold text-gray-500 mb-1">Ciudad</label>
                 <input type="text" value={form.city} onChange={e => set('city', e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl border border-gray-200 focus:border-[#c9962a] focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900" />
+                  className="w-full px-3 py-2.5 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900" />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-gray-500 mb-1">Código postal</label>
                 <input type="text" value={form.postal_code} onChange={e => set('postal_code', e.target.value)}
-                  className="w-full px-3 py-2.5 rounded-xl border border-gray-200 focus:border-[#c9962a] focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900" />
+                  className="w-full px-3 py-2.5 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900" />
               </div>
             </div>
           )}
@@ -248,7 +248,7 @@ export default function VenderForm() {
           <button
             onClick={() => setStep(2)}
             disabled={!form.address}
-            className="w-full py-3.5 rounded-2xl bg-[#c9962a] text-white font-bold text-base hover:bg-[#a87a20] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md shadow-[#c9962a]/30"
+            className="w-full py-3.5 rounded-2xl bg-gold-500 text-white font-bold text-base hover:bg-gold-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md shadow-[#c9962a]/30"
           >
             Continuar →
           </button>
@@ -274,7 +274,7 @@ export default function VenderForm() {
                   onClick={() => set('operation', opt.v)}
                   className={`py-3 rounded-xl border-2 text-sm font-semibold transition-all flex items-center justify-center gap-2
                     ${form.operation === opt.v
-                      ? 'border-[#c9962a] bg-[#fef9e8] text-[#a87a20]'
+                      ? 'border-gold-500 bg-cream-100 text-gold-700'
                       : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}
                 >
                   {opt.icon} {opt.label}
@@ -301,7 +301,7 @@ export default function VenderForm() {
                   onClick={() => set('property_type', opt.v)}
                   className={`py-2.5 rounded-xl border-2 text-xs font-semibold transition-all flex flex-col items-center gap-1
                     ${form.property_type === opt.v
-                      ? 'border-[#c9962a] bg-[#fef9e8] text-[#a87a20]'
+                      ? 'border-gold-500 bg-cream-100 text-gold-700'
                       : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}
                 >
                   <span className="text-lg">{opt.icon}</span>
@@ -320,7 +320,7 @@ export default function VenderForm() {
                 value={form.area_m2}
                 onChange={e => set('area_m2', e.target.value)}
                 placeholder="Ej: 90"
-                className="w-full px-3 py-3 rounded-xl border border-gray-200 focus:border-[#c9962a] focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900"
+                className="w-full px-3 py-3 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900"
               />
             </div>
             <div>
@@ -328,7 +328,7 @@ export default function VenderForm() {
               <select
                 value={form.bedrooms}
                 onChange={e => set('bedrooms', e.target.value)}
-                className="w-full px-3 py-3 rounded-xl border border-gray-200 focus:border-[#c9962a] focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900 bg-white"
+                className="w-full px-3 py-3 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900 bg-white"
               >
                 <option value="">Seleccionar</option>
                 <option value="0">Estudio</option>
@@ -352,7 +352,7 @@ export default function VenderForm() {
                   onClick={() => set('condition', opt.v)}
                   className={`py-2.5 px-2 rounded-xl border-2 text-xs font-semibold transition-all text-center
                     ${form.condition === opt.v
-                      ? 'border-[#c9962a] bg-[#fef9e8] text-[#a87a20]'
+                      ? 'border-gold-500 bg-cream-100 text-gold-700'
                       : 'border-gray-200 text-gray-600 hover:border-gray-300'}`}
                 >
                   {opt.label}
@@ -372,7 +372,7 @@ export default function VenderForm() {
                 value={form.estimated_price}
                 onChange={e => set('estimated_price', e.target.value)}
                 placeholder="Ej: 250000"
-                className="w-full pl-4 pr-10 py-3 rounded-xl border border-gray-200 focus:border-[#c9962a] focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900"
+                className="w-full pl-4 pr-10 py-3 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900"
               />
               <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm font-bold">€</span>
             </div>
@@ -387,7 +387,7 @@ export default function VenderForm() {
             </button>
             <button
               onClick={() => setStep(3)}
-              className="flex-[2] py-3 rounded-2xl bg-[#c9962a] text-white font-bold text-base hover:bg-[#a87a20] transition-all shadow-md shadow-[#c9962a]/30"
+              className="flex-[2] py-3 rounded-2xl bg-gold-500 text-white font-bold text-base hover:bg-gold-600 transition-all shadow-md shadow-[#c9962a]/30"
             >
               Continuar →
             </button>
@@ -410,7 +410,7 @@ export default function VenderForm() {
               value={form.name}
               onChange={e => set('name', e.target.value)}
               placeholder="Ej: María García"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#c9962a] focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900"
+              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900"
             />
           </div>
 
@@ -423,7 +423,7 @@ export default function VenderForm() {
                 value={form.phone}
                 onChange={e => set('phone', e.target.value)}
                 placeholder="Ej: 612 345 678"
-                className="w-full pl-9 pr-4 py-3 rounded-xl border border-gray-200 focus:border-[#c9962a] focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900"
+                className="w-full pl-9 pr-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900"
               />
             </div>
           </div>
@@ -437,13 +437,13 @@ export default function VenderForm() {
                 value={form.email}
                 onChange={e => set('email', e.target.value)}
                 placeholder="Ej: maria@email.com"
-                className="w-full pl-9 pr-4 py-3 rounded-xl border border-gray-200 focus:border-[#c9962a] focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900"
+                className="w-full pl-9 pr-4 py-3 rounded-xl border border-gray-200 focus:border-gold-500 focus:ring-2 focus:ring-[#c9962a]/20 outline-none text-sm text-gray-900"
               />
             </div>
           </div>
 
           {/* Resumen */}
-          <div className="bg-[#fef9e8] rounded-xl p-4 border border-[#c9962a]/20 text-sm text-[#a87a20] space-y-1">
+          <div className="bg-cream-100 rounded-xl p-4 border border-gold-500/20 text-sm text-gold-700 space-y-1">
             <p className="font-semibold text-[#614510] mb-2">📋 Resumen de tu solicitud</p>
             <p>📍 {form.city || form.address}</p>
             {form.area_m2 && <p>📐 {form.area_m2} m²{form.bedrooms ? ` · ${form.bedrooms} hab.` : ''}</p>}
@@ -464,9 +464,9 @@ export default function VenderForm() {
             <button
               onClick={handleSubmit}
               disabled={!form.name || !form.phone || !form.email || submitting}
-              className="flex-[2] py-3 rounded-2xl bg-[#c9962a] text-white font-bold text-base hover:bg-[#a87a20] disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md shadow-[#c9962a]/30"
+              className="flex-[2] py-3 rounded-2xl bg-gold-500 text-white font-bold text-base hover:bg-gold-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md shadow-[#c9962a]/30"
             >
-              {submitting ? 'Enviando…' : '🏠 Buscar agencias →'}
+              {submitting ? 'Enviando…' : 'Buscar agencias →'}
             </button>
           </div>
 

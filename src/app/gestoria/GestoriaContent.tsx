@@ -6,8 +6,9 @@ import Link from 'next/link'
 import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
 import SolicitarModal from './SolicitarModal'
 import { gtmPush } from '@/components/GTMProvider'
-import TestimoniosCarousel from '@/components/TestimoniosCarousel'
-import { Scale, Zap, Shield, FileText, Building2, BadgeCheck, Star, Users } from '@/components/ui/Icons'
+import HomeTestimonials from '@/components/home/HomeTestimonials'
+import { BRAND_IMAGES } from '@/lib/brand-images'
+import { Scale, Zap, Shield, FileText, Building2, BadgeCheck, Star, Users, Phone, CheckCircle } from '@/components/ui/Icons'
 
 interface Service {
   key: string
@@ -433,7 +434,7 @@ export default function GestoriaPage() {
       {/* BREADCRUMB */}
       <nav className="max-w-6xl mx-auto px-6 pt-6 pb-2">
         <div className="flex items-center gap-2 text-sm text-gray-500">
-          <Link href="/" className="hover:text-[#c9962a] transition">
+          <Link href="/" className="hover:text-gold-500 transition">
             Inicio
           </Link>
           <span>→</span>
@@ -443,18 +444,22 @@ export default function GestoriaPage() {
 
       {/* HERO */}
       <section className="relative h-[480px] sm:h-[560px] overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/gestoria1.jpg')" }}
+        <Image
+          src={BRAND_IMAGES.gestoria.src}
+          alt={BRAND_IMAGES.gestoria.alt}
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3d2a05]/90 via-[#7a5c1e]/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-950/92 via-forest-950/70 to-transparent" />
         <div className="relative h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 max-w-4xl">
-          <span className="inline-block bg-[#c9962a] text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 w-fit">
+          <span className="inline-block bg-gold-500 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 w-fit">
             Gestoría especializada · Alquiler LAU
           </span>
           <h1 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-4">
             Contratos inmobiliarios<br />
-            <span className="text-[#f4c94a]">redactados por expertos</span>
+            <span className="text-gold-300">redactados por expertos</span>
           </h1>
           <p className="text-white/85 text-base sm:text-lg max-w-xl leading-relaxed">
             <strong className="text-white">Gestoría especializada que tramita contratos de alquiler</strong> (LAU, Ley de Vivienda 2026), arras y rescisión: cada documento a medida, sin plantillas genéricas y con la seguridad jurídica que mereces.
@@ -487,25 +492,25 @@ export default function GestoriaPage() {
               Una <strong>gestoría inmobiliaria</strong> es un servicio profesional que se encarga de todos los <strong>trámites legales, administrativos y documentales</strong> relacionados con operaciones inmobiliarias de particulares: <strong>compraventa de viviendas, contratos de alquiler, contratos de arras y escrituras</strong>.
             </p>
             <p>
-              En <strong>Inmonest</strong> somos una <strong>gestoría inmobiliaria digital especializada en Barcelona, Madrid y Valencia</strong>, con abogados expertos que redactan contratos personalizados para particulares vendedores y compradores. A diferencia de las agencias inmobiliarias tradicionales, <strong className="text-[#c9962a]">no cobramos comisiones del 3-5%</strong>, sino honorarios fijos transparentes desde 61€.
+              En <strong>Inmonest</strong> somos una <strong>gestoría inmobiliaria digital especializada en Barcelona, Madrid y Valencia</strong>, con abogados expertos que redactan contratos personalizados para particulares vendedores y compradores. A diferencia de las agencias inmobiliarias tradicionales, <strong className="text-gold-500">no cobramos comisiones del 3-5%</strong>, sino honorarios fijos transparentes desde 61€.
             </p>
-            <div className="bg-[#fef9e8] border-l-4 border-[#c9962a] p-6 rounded-r-lg mt-6">
+            <div className="bg-cream-100 border-l-4 border-gold-500 p-6 rounded-r-lg mt-6">
               <h3 className="font-bold text-gray-900 mb-3 text-xl">¿Cuándo contratar una gestoría inmobiliaria?</h3>
               <ul className="space-y-2 text-base">
                 <li className="flex items-start gap-3">
-                  <span className="text-[#c9962a] font-bold mt-0.5">✓</span>
+                  <span className="text-gold-500 font-bold mt-0.5">✓</span>
                   <span><strong>Compras o vendes piso entre particulares</strong> y necesitas contratos de arras, reserva o asesoramiento legal</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-[#c9962a] font-bold mt-0.5">✓</span>
+                  <span className="text-gold-500 font-bold mt-0.5">✓</span>
                   <span><strong>Alquilas tu vivienda</strong> y quieres un contrato LAU adaptado a la Ley de Vivienda 2026 con todas las garantías</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-[#c9962a] font-bold mt-0.5">✓</span>
+                  <span className="text-gold-500 font-bold mt-0.5">✓</span>
                   <span><strong>Necesitas verificar documentación</strong> antes de escriturar (nota registral, actas comunidad, ITE)</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="text-[#c9962a] font-bold mt-0.5">✓</span>
+                  <span className="text-gold-500 font-bold mt-0.5">✓</span>
                   <span><strong>Quieres acompañamiento completo</strong> desde la reserva hasta la firma ante notario</span>
                 </li>
               </ul>
@@ -532,7 +537,7 @@ export default function GestoriaPage() {
       </section>
 
       {/* CÓMO FUNCIONA */}
-      <section className="bg-[#fef9e8] py-16 px-4">
+      <section className="bg-cream-100 py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-extrabold text-gray-900 text-center mb-12">¿Cómo funciona?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
@@ -541,26 +546,26 @@ export default function GestoriaPage() {
                 step: '01',
                 title: 'Solicitas el servicio',
                 desc: 'Rellenas el formulario con tus datos y el contrato que necesitas. Sin necesidad de cuenta ni pago previo.',
-                icon: '📝',
+                Icon: FileText,
               },
               {
                 step: '02',
                 title: 'Te contactamos en 24h',
                 desc: 'Un gestor del equipo se pone en contacto contigo por email o teléfono para entender tu situación y confirmar los detalles.',
-                icon: '📞',
+                Icon: Phone,
               },
               {
                 step: '03',
                 title: 'Recibes tu contrato',
                 desc: 'En 48h recibes el contrato en PDF, personalizado con los datos reales de las partes y listo para firmar.',
-                icon: '✅',
+                Icon: CheckCircle,
               },
             ].map((item) => (
               <div key={item.step} className="text-center">
-                <div className="w-16 h-16 bg-[#c9962a] rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
-                  <span className="text-2xl">{item.icon}</span>
+                <div className="w-16 h-16 bg-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-md">
+                  <item.Icon className="w-7 h-7 text-white" />
                 </div>
-                <div className="text-xs font-bold text-[#c9962a] uppercase tracking-widest mb-2">Paso {item.step}</div>
+                <div className="text-xs font-bold text-gold-500 uppercase tracking-widest mb-2">Paso {item.step}</div>
                 <h3 className="font-bold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">{item.desc}</p>
               </div>
@@ -587,7 +592,7 @@ export default function GestoriaPage() {
                 onClick={() => setActiveCategory(cat.key)}
                 className={`flex-shrink-0 snap-start px-4 py-2.5 rounded-full text-sm font-semibold transition-all min-h-[44px] touch-manipulation whitespace-nowrap ${
                   activeCategory === cat.key
-                    ? 'bg-[#c9962a] text-white shadow-sm'
+                    ? 'bg-gold-500 text-white shadow-sm'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -617,14 +622,14 @@ export default function GestoriaPage() {
                 </span>
                 {/* Badge especial */}
                 {service.badge && (
-                  <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full bg-[#c9962a] text-white">
+                  <span className="absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full bg-gold-500 text-white">
                     {service.badge}
                   </span>
                 )}
                 {/* Precio en imagen */}
                 <div className="absolute bottom-3 right-3 bg-white/95 rounded-lg px-3 py-1.5">
                   <div className="text-right">
-                    <div className="text-xl font-extrabold text-[#c9962a]">{service.price} €</div>
+                    <div className="text-xl font-extrabold text-gold-500">{service.price} €</div>
                     <div className="text-[10px] text-gray-500 font-medium -mt-0.5">IVA incluido</div>
                   </div>
                 </div>
@@ -643,7 +648,7 @@ export default function GestoriaPage() {
                 <ul className="space-y-1.5 mb-5">
                   {service.includes.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-xs text-gray-600">
-                      <span className="text-[#c9962a] mt-0.5 shrink-0">✓</span>
+                      <span className="text-gold-500 mt-0.5 shrink-0">✓</span>
                       {item}
                     </li>
                   ))}
@@ -667,7 +672,7 @@ export default function GestoriaPage() {
                     })
                     setSelectedService(service)
                   }}
-                  className="w-full py-2.5 bg-[#c9962a] text-white rounded-xl font-bold text-sm hover:bg-[#a87a20] transition-colors"
+                  className="w-full py-2.5 bg-gold-500 text-white rounded-xl font-bold text-sm hover:bg-gold-600 transition-colors"
                 >
                   Solicitar por {service.price} € <span className="font-normal text-xs opacity-90">(IVA incl.)</span>
                 </button>
@@ -682,7 +687,7 @@ export default function GestoriaPage() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Nuestro equipo</span>
+              <span className="text-xs font-bold text-gold-500 uppercase tracking-widest">Nuestro equipo</span>
               <h2 className="text-2xl font-extrabold text-gray-900 mt-2 mb-4">
                 Gestoría inmobiliaria experta en<br />contratos inmobiliarios españoles
               </h2>
@@ -697,7 +702,7 @@ export default function GestoriaPage() {
                   'Disponibles para consultas post-entrega incluidas',
                 ].map(item => (
                   <li key={item} className="flex items-start gap-3 text-sm text-gray-700">
-                    <span className="w-5 h-5 bg-[#fef0c0] rounded-full flex items-center justify-center shrink-0 mt-0.5 text-[#c9962a] font-bold text-xs">✓</span>
+                    <span className="w-5 h-5 bg-[#fef0c0] rounded-full flex items-center justify-center shrink-0 mt-0.5 text-gold-500 font-bold text-xs">✓</span>
                     {item}
                   </li>
                 ))}
@@ -723,22 +728,7 @@ export default function GestoriaPage() {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Testimonios reales</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 mt-2">
-              Lo que dicen nuestros clientes
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Más de 500 contratos redactados y clientes satisfechos en toda España. 
-              Lee sus experiencias reales.
-            </p>
-          </div>
-          <TestimoniosCarousel landing="gestoria" />
-        </div>
-      </section>
+      <HomeTestimonials />
 
       {/* FAQ */}
       <section className="bg-gray-50 py-16 px-4">
@@ -785,7 +775,7 @@ export default function GestoriaPage() {
       <section className="py-16 px-4 bg-white border-t border-gray-100">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-10">
-            <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Marco jurídico</span>
+            <span className="text-xs font-bold text-gold-500 uppercase tracking-widest">Marco jurídico</span>
             <h2 className="text-2xl font-extrabold text-gray-900 mt-2">Bases legales que respaldamos</h2>
             <p className="text-gray-500 mt-2 text-sm max-w-xl mx-auto">
               Cada contrato que redactamos se sustenta en la legislación vigente. Conocer el marco legal es el primer paso para proteger tu operación.
@@ -812,11 +802,11 @@ export default function GestoriaPage() {
       </section>
 
       {/* QUIÉNES SOMOS — detallado */}
-      <section className="bg-[#fef9e8] py-16 px-4">
+      <section className="bg-cream-100 py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
-              <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Quiénes somos</span>
+              <span className="text-xs font-bold text-gold-500 uppercase tracking-widest">Quiénes somos</span>
               <h2 className="text-2xl font-extrabold text-gray-900 mt-2 mb-4">
                 El servicio de gestoría<br />de Inmonest
               </h2>
@@ -842,7 +832,7 @@ export default function GestoriaPage() {
               </div>
             </div>
             <div className="space-y-4">
-              <div className="bg-white rounded-2xl p-6 border border-[#f4c94a]/30 shadow-sm">
+              <div className="bg-white rounded-2xl p-6 border border-gold-300/30 shadow-sm">
                 <h3 className="font-bold text-gray-900 mb-3 text-base">¿Por qué no usar una plantilla gratuita?</h3>
                 <div className="space-y-2">
                   {[
@@ -863,7 +853,7 @@ export default function GestoriaPage() {
                   ))}
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-6 border border-[#f4c94a]/30 shadow-sm">
+              <div className="bg-white rounded-2xl p-6 border border-gold-300/30 shadow-sm">
                 <h3 className="font-bold text-gray-900 mb-3 text-base">Proceso garantizado</h3>
                 <ol className="space-y-2">
                   {[
@@ -874,7 +864,7 @@ export default function GestoriaPage() {
                     'Una ronda de revisiones gratuita si necesitas ajustes',
                   ].map((step, i) => (
                     <li key={step} className="flex items-start gap-3 text-sm text-gray-700">
-                      <span className="w-5 h-5 bg-[#c9962a] text-white rounded-full flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">{i + 1}</span>
+                      <span className="w-5 h-5 bg-gold-500 text-white rounded-full flex items-center justify-center shrink-0 text-xs font-bold mt-0.5">{i + 1}</span>
                       {step}
                     </li>
                   ))}
@@ -885,149 +875,13 @@ export default function GestoriaPage() {
         </div>
       </section>
 
-      {/* TESTIMONIOS REALES DE GOOGLE */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">Reseñas verificadas</span>
-            <h2 className="text-3xl font-extrabold text-gray-900 mt-2 mb-3">
-              Lo que dicen nuestros clientes
-            </h2>
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <div className="flex gap-1">
-                {[1, 2, 3, 4, 5].map(i => (
-                  <svg key={i} className="w-6 h-6 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                    <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                  </svg>
-                ))}
-              </div>
-              <span className="text-lg font-bold text-gray-900">5.0</span>
-              <span className="text-sm text-gray-500">· 4 reseñas en Google</span>
-            </div>
-            <a 
-              href="https://www.google.com/search?q=inmonest" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-sm text-[#c9962a] hover:underline font-medium"
-            >
-              Ver todas las reseñas en Google →
-            </a>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all">
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="font-bold text-gray-900 text-base">zonetechonline</div>
-                  <div className="text-xs text-gray-500">Hace 16 horas</div>
-                </div>
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-sm italic">
-                "Tramite el contrato de arras, me ayudaron en todo el proceso de documentación, lo recomiendo bastante, muy ágiles, muy rápidos y muy profesionales"
-              </p>
-              <div className="mt-3 text-xs text-gray-500">
-                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Contrato de Arras</span>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all">
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="font-bold text-gray-900 text-base">Alicia Fernández</div>
-                  <div className="text-xs text-gray-500">Hace 23 horas</div>
-                </div>
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-sm italic">
-                "Contraté servicio de acompañamiento de compra, y estoy super contenta, por el trato de Daniel y toda la ayuda con la documentación, super recomendable muchas gracias"
-              </p>
-              <div className="mt-3 text-xs text-gray-500">
-                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Acompañamiento de Compra</span>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all">
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="font-bold text-gray-900 text-base">Daniel Mercat</div>
-                  <div className="text-xs text-gray-500">Hace 1 semana</div>
-                </div>
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-sm italic">
-                "Tramite un contrato de arras con inmonest, ya que no me fiaba de el que me daba la agencia, y me ayudaron en varios puntos importantes, a si que merece la pena"
-              </p>
-              <div className="mt-3 text-xs text-gray-500">
-                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Contrato de Arras</span>
-              </div>
-            </div>
-
-            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 hover:border-[#f4c94a]/40 transition-all">
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="font-bold text-gray-900 text-base">Wendy Bermudez</div>
-                  <div className="text-xs text-gray-500">Hace 3 semanas · Local Guide</div>
-                </div>
-                <div className="flex gap-0.5">
-                  {[1, 2, 3, 4, 5].map(i => (
-                    <svg key={i} className="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20">
-                      <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                    </svg>
-                  ))}
-                </div>
-              </div>
-              <p className="text-gray-700 leading-relaxed text-sm italic">
-                "Necesitaba hacer un contrato de arras para el piso de mi madre, y el equipo jurídico de inmonest nos ayudo con la gestión, muchas gracias"
-              </p>
-              <div className="mt-3 text-xs text-gray-500">
-                <span className="bg-blue-50 text-blue-700 px-2 py-1 rounded">Contrato de Arras</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Widget de Google Reviews */}
-          <div className="text-center">
-            <a 
-              href="https://www.google.com/search?q=inmonest" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-gray-200 rounded-xl font-semibold text-gray-700 hover:border-[#c9962a] hover:text-[#c9962a] transition-all"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>
-              </svg>
-              Deja tu reseña en Google
-            </a>
-          </div>
-        </div>
-      </section>
-
       {/* REGÍSTRATE — CTA */}
       <section className="py-16 px-4 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-[#3d2a05] to-[#7a5c1e] rounded-3xl p-8 sm:p-12 text-white overflow-hidden relative">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#c9962a]/20 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
+          <div className="bg-gradient-to-br from-forest-950 to-gold-700 rounded-3xl p-8 sm:p-12 text-white overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/20 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none" />
             <div className="relative">
-              <span className="inline-block bg-[#c9962a] text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5">
+              <span className="inline-block bg-gold-500 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5">
                 Clientes Inmonest
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold mb-3 max-w-lg">
@@ -1039,7 +893,7 @@ export default function GestoriaPage() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/login"
-                  className="px-6 py-3 bg-[#c9962a] text-white rounded-xl font-bold text-sm hover:bg-[#a87a20] transition-colors shadow-md"
+                  className="px-6 py-3 bg-gold-500 text-white rounded-xl font-bold text-sm hover:bg-gold-600 transition-colors shadow-md"
                 >
                   Crear cuenta gratis →
                 </Link>
@@ -1064,7 +918,7 @@ export default function GestoriaPage() {
       <EnlacesInternosSeo variant="gestoria" />
 
       {/* CTA FINAL */}
-      <section className="bg-gradient-to-r from-[#7a5c1e] to-[#c9962a] py-14 px-4">
+      <section className="bg-gradient-to-r from-gold-700 to-gold-500 py-14 px-4">
         <div className="max-w-2xl mx-auto text-center text-white">
           <h2 className="text-2xl sm:text-3xl font-extrabold mb-3">¿Listo para proteger tu operación?</h2>
           <p className="text-white/80 mb-6 text-base">
@@ -1072,7 +926,7 @@ export default function GestoriaPage() {
           </p>
           <button
             onClick={() => setSelectedService(SERVICES[0])}
-            className="inline-block px-8 py-3.5 bg-white text-[#c9962a] rounded-full font-bold text-sm hover:bg-[#fef9e8] transition-colors shadow-lg"
+            className="inline-block px-8 py-3.5 bg-white text-gold-500 rounded-full font-bold text-sm hover:bg-cream-100 transition-colors shadow-lg"
           >
             Ver todos los contratos
           </button>

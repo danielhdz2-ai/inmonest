@@ -125,11 +125,11 @@ export default function AsesoramientoArrasVentaPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block bg-[#c9962a]/20 text-[#a87a20] px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-[#c9962a]/30">
+              <div className="inline-block bg-gold-500/20 text-gold-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gold-500/30">
                 📝 Para vendedores particulares
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                <span className="text-[#c9962a]">Ya firmaste arras?</span> Te acompañamos hasta escritura
+                <span className="text-gold-500">Ya firmaste arras?</span> Te acompañamos hasta escritura
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 Un <strong>gestor experto de Inmonest</strong> te ayuda a recabar toda la documentación, 
@@ -139,7 +139,7 @@ export default function AsesoramientoArrasVentaPage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
                   href="/gestoria/solicitar/asesoramiento-arras-venta"
-                  className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#a87a20] transition text-center shadow-lg"
+                  className="bg-gold-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold-600 transition text-center shadow-lg"
                 >
                   Contratar servicio (166€)
                 </Link>
@@ -147,26 +147,26 @@ export default function AsesoramientoArrasVentaPage() {
                   href="https://wa.me/34745022862?text=Hola,%20ya%20firmé%20arras%20y%20necesito%20ayuda%20para%20vender%20mi%20piso"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white border-2 border-[#c9962a] text-[#a87a20] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#fef9e8] transition text-center shadow"
+                  className="bg-white border-2 border-gold-500 text-gold-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-cream-100 transition text-center shadow"
                 >
-                  💬 WhatsApp directo
+                  WhatsApp directo
                 </a>
               </div>
               <div className="flex flex-wrap gap-4 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Gestor experto asignado</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Documentación completa</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>IVA incluido · 166€</span>
@@ -175,14 +175,14 @@ export default function AsesoramientoArrasVentaPage() {
             </div>
             <div className="relative">
               <Image
-                src="/keys.jpg"
+                src="/promo1.png"
                 alt="Asesoramiento venta piso particular desde arras hasta escritura"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-2xl"
                 priority
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border-2 border-[#c9962a]/30">
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border-2 border-gold-500/30">
                 <div className="flex items-center gap-3">
                   <div className="text-3xl">✅</div>
                   <div>
@@ -236,7 +236,7 @@ export default function AsesoramientoArrasVentaPage() {
                 <p className="text-gray-700">
                   Este servicio es para vendedores que <strong>ya tienen firmado</strong> su contrato de arras y necesitan 
                   acompañamiento desde ese punto hasta escriturar. Si aún no tienes arras firmado, puedes contratar 
-                  nuestro <Link href="/gestoria/arras-penitenciales" className="text-[#c9962a] font-semibold underline">Contrato de Arras Penitenciales</Link> o <Link href="/gestoria/arras-confirmatorias" className="text-[#c9962a] font-semibold underline">Confirmatorias</Link> por separado.
+                  nuestro <Link href="/gestoria/arras-penitenciales" className="text-gold-500 font-semibold underline">Contrato de Arras Penitenciales</Link> o <Link href="/gestoria/arras-confirmatorias" className="text-gold-500 font-semibold underline">Confirmatorias</Link> por separado.
                 </p>
               </div>
             </div>
@@ -245,11 +245,11 @@ export default function AsesoramientoArrasVentaPage() {
       </section>
 
       {/* Llama ahora - Banner destacado */}
-      <section className="py-12 px-4 bg-gradient-to-r from-[#c9962a] to-[#a87a20]">
+      <section className="py-12 px-4 bg-gradient-to-r from-gold-500 to-gold-700">
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border-2 border-white/30">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              📞 Habla con un asesor experto ahora
+              Habla con un asesor experto ahora
             </h2>
             <p className="text-xl text-white/90 mb-6">
               Te explicamos todo el proceso, resolvemos tus dudas y te informamos sin compromiso
@@ -257,7 +257,7 @@ export default function AsesoramientoArrasVentaPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="tel:+34745022862"
-                className="inline-flex items-center justify-center gap-3 bg-white text-[#a87a20] px-8 py-5 rounded-xl font-bold text-2xl hover:bg-gray-100 transition shadow-2xl"
+                className="inline-flex items-center justify-center gap-3 bg-white text-gold-700 px-8 py-5 rounded-xl font-bold text-2xl hover:bg-gray-100 transition shadow-2xl"
               >
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
@@ -268,7 +268,7 @@ export default function AsesoramientoArrasVentaPage() {
                 href="https://wa.me/34745022862?text=Hola,%20necesito%20ayuda%20para%20vender%20mi%20piso,%20ya%20firmé%20arras"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 bg-green-500 text-white px-8 py-5 rounded-xl font-bold text-xl hover:bg-green-600 transition shadow-2xl"
+                className="inline-flex items-center justify-center gap-3 bg-gold-500 text-white px-8 py-5 rounded-xl font-bold text-xl hover:bg-gold-600 transition shadow-2xl"
               >
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
@@ -290,109 +290,109 @@ export default function AsesoramientoArrasVentaPage() {
             ¿Cómo funciona nuestro servicio?
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-gold-500">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-gold-500/20 text-gold-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   1
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Asignación de gestor experto</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Te asignamos un gestor experto de Inmonest especializado en ventas inmobiliarias</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Primera llamada para revisar tu contrato de arras y la situación actual</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Análisis completo de la operación: plazos, condiciones, requisitos específicos</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Plan de acción personalizado con todas las gestiones necesarias</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-gold-500">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-gold-500/20 text-gold-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   2
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Recogida de documentación</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Listado completo de documentos necesarios para tu caso específico</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Ayuda paso a paso para obtener cada documento: dónde, cómo, cuándo</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Revisión de toda la documentación para asegurar que está completa y correcta</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Soporte continuo para resolver cualquier problema documental</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-gold-500">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-gold-500/20 text-gold-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   3
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Gestión de trámites</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Gestión de certificados de deuda cero (comunidad, IBI, suministros)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Ayuda con liquidación de plusvalía municipal y otros impuestos</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Coordinación con entidades bancarias (si hay hipoteca pendiente)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Seguimiento de todos los trámites hasta su finalización</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-gold-500">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-gold-500/20 text-gold-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   4
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Coordinación hasta escritura</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Contacto directo con la notaría para coordinar fecha y hora de escritura</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Preparación de toda la documentación para entregar en notaría</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Asesoramiento previo a la firma: qué esperar, qué revisar, cómo proceder</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Soporte hasta el día de firma para resolver cualquier duda o imprevisto</span>
                 </li>
               </ul>
@@ -413,7 +413,7 @@ export default function AsesoramientoArrasVentaPage() {
               <thead>
                 <tr className="bg-gray-100">
                   <th className="p-4 text-left border-b-2 border-gray-300 font-bold text-gray-900"></th>
-                  <th className="p-4 text-center border-b-2 border-[#c9962a] font-bold text-[#a87a20] bg-amber-50">
+                  <th className="p-4 text-center border-b-2 border-gold-500 font-bold text-gold-700 bg-amber-50">
                     <div className="text-xl mb-1">🏆 Inmonest Gestoría</div>
                     <div className="text-sm font-normal">Servicio profesional</div>
                   </th>
@@ -490,10 +490,10 @@ export default function AsesoramientoArrasVentaPage() {
                     <div className="text-sm text-gray-600 mt-1">Depende del precio venta</div>
                   </td>
                 </tr>
-                <tr className="bg-amber-50 border-2 border-[#c9962a]">
+                <tr className="bg-amber-50 border-2 border-gold-500">
                   <td className="p-4 font-bold text-gray-900">💰 Ahorro total</td>
                   <td className="p-4 text-center" colSpan={2}>
-                    <div className="text-3xl font-bold text-[#a87a20]">Ahorras entre 2.834€ y 4.834€</div>
+                    <div className="text-3xl font-bold text-gold-700">Ahorras entre 2.834€ y 4.834€</div>
                     <div className="text-sm text-gray-600 mt-1">En una venta de 100.000€ comparado con inmobiliaria</div>
                   </td>
                 </tr>
@@ -501,7 +501,7 @@ export default function AsesoramientoArrasVentaPage() {
             </table>
           </div>
 
-          <div className="mt-8 p-6 bg-amber-50 border-l-4 border-[#c9962a] rounded-lg">
+          <div className="mt-8 p-6 bg-amber-50 border-l-4 border-gold-500 rounded-lg">
             <h3 className="font-bold text-xl text-gray-900 mb-3">🎯 Ventaja principal de Inmonest</h3>
             <p className="text-gray-700 text-lg">
               Nuestro servicio está diseñado <strong>específicamente para particulares</strong> que venden entre ellos. 
@@ -531,7 +531,7 @@ export default function AsesoramientoArrasVentaPage() {
               { icon: '💰', title: 'Certificado deuda cero', desc: 'De comunidad, IBI, y otros impuestos municipales' },
               { icon: '📝', title: 'Documentación específica', desc: 'Cualquier documento adicional según tu operación particular' },
             ].map((doc, index) => (
-              <div key={index} className="bg-white p-5 rounded-lg shadow-sm border border-gray-200 hover:border-[#c9962a] transition">
+              <div key={index} className="bg-white p-5 rounded-lg shadow-sm border border-gray-200 hover:border-gold-500 transition">
                 <div className="text-4xl mb-3">{doc.icon}</div>
                 <h3 className="font-bold text-gray-900 mb-2">{doc.title}</h3>
                 <p className="text-sm text-gray-600">{doc.desc}</p>
@@ -548,7 +548,7 @@ export default function AsesoramientoArrasVentaPage() {
       </section>
 
       {/* CTA Destacado */}
-      <section className="py-16 px-4 bg-gradient-to-br from-[#c9962a] to-[#a87a20]">
+      <section className="py-16 px-4 bg-gradient-to-br from-gold-500 to-gold-700">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Vende tu piso con tranquilidad
@@ -559,7 +559,7 @@ export default function AsesoramientoArrasVentaPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/asesoramiento-arras-venta"
-              className="bg-white text-[#a87a20] px-10 py-5 rounded-xl font-bold text-xl hover:bg-gray-100 transition shadow-2xl"
+              className="bg-white text-gold-700 px-10 py-5 rounded-xl font-bold text-xl hover:bg-gray-100 transition shadow-2xl"
             >
               Contratar servicio ahora
             </Link>
@@ -567,9 +567,9 @@ export default function AsesoramientoArrasVentaPage() {
               href="https://wa.me/34745022862?text=Hola,%20quiero%20información%20sobre%20asesoramiento%20venta%20piso"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-green-500 text-white px-10 py-5 rounded-xl font-bold text-xl hover:bg-green-600 transition shadow-2xl"
+              className="bg-gold-500 text-white px-10 py-5 rounded-xl font-bold text-xl hover:bg-gold-600 transition shadow-2xl"
             >
-              💬 WhatsApp directo
+              WhatsApp directo
             </a>
           </div>
         </div>
@@ -629,7 +629,7 @@ export default function AsesoramientoArrasVentaPage() {
               <details key={index} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 group">
                 <summary className="font-bold text-gray-900 cursor-pointer list-none flex items-center justify-between">
                   <span className="text-lg">{faq.q}</span>
-                  <svg className="w-5 h-5 text-[#c9962a] transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-gold-500 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
@@ -651,7 +651,7 @@ export default function AsesoramientoArrasVentaPage() {
           </p>
           <Link
             href="/gestoria/solicitar/asesoramiento-arras-venta"
-            className="inline-block bg-[#c9962a] text-white px-12 py-5 rounded-xl font-bold text-xl hover:bg-[#a87a20] transition shadow-2xl"
+            className="inline-block bg-gold-500 text-white px-12 py-5 rounded-xl font-bold text-xl hover:bg-gold-600 transition shadow-2xl"
           >
             Contratar por 166€ (IVA incluido)
           </Link>

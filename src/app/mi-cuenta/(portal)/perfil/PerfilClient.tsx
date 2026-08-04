@@ -164,7 +164,7 @@ export default function PerfilClient({ userId, email, initialName, initialPhone,
             key={t.id}
             onClick={() => setTab(t.id)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              tab === t.id ? 'bg-white text-[#c9962a] shadow-sm' : 'text-gray-600 hover:text-gray-900'
+              tab === t.id ? 'bg-white text-gold-500 shadow-sm' : 'text-gray-600 hover:text-gray-900'
             }`}
           >
             {t.label}
@@ -183,13 +183,13 @@ export default function PerfilClient({ userId, email, initialName, initialPhone,
               {avatarSrc ? (
                 <Image src={avatarSrc} alt="Avatar" width={72} height={72} className="rounded-full object-cover w-[72px] h-[72px]" />
               ) : (
-                <div className="w-18 h-18 w-[72px] h-[72px] rounded-full bg-gradient-to-br from-[#c9962a] to-[#7a5c1e] flex items-center justify-center text-white font-bold text-xl">
+                <div className="w-18 h-18 w-[72px] h-[72px] rounded-full bg-gradient-to-br from-gold-500 to-[#7a5c1e] flex items-center justify-center text-white font-bold text-xl">
                   {initials}
                 </div>
               )}
               <button
                 onClick={() => avatarRef.current?.click()}
-                className="absolute -bottom-1 -right-1 w-6 h-6 bg-[#c9962a] rounded-full flex items-center justify-center text-white hover:bg-[#b8841e] transition-colors"
+                className="absolute -bottom-1 -right-1 w-6 h-6 bg-gold-500 rounded-full flex items-center justify-center text-white hover:bg-[#b8841e] transition-colors"
               >
                 <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -200,7 +200,7 @@ export default function PerfilClient({ userId, email, initialName, initialPhone,
               <p className="font-medium text-gray-900">{name || email}</p>
               <p className="text-sm text-gray-400">{email}</p>
               <input ref={avatarRef} type="file" accept="image/*" className="hidden" onChange={handleAvatarChange} />
-              <button onClick={() => avatarRef.current?.click()} className="text-xs text-[#c9962a] hover:underline mt-1">Cambiar foto</button>
+              <button onClick={() => avatarRef.current?.click()} className="text-xs text-gold-500 hover:underline mt-1">Cambiar foto</button>
             </div>
           </div>
 
@@ -211,7 +211,7 @@ export default function PerfilClient({ userId, email, initialName, initialPhone,
                 type="text"
                 value={name}
                 onChange={e => setName(e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-[#c9962a] transition-colors"
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-gold-500 transition-colors"
                 placeholder="Tu nombre completo"
               />
             </div>
@@ -221,7 +221,7 @@ export default function PerfilClient({ userId, email, initialName, initialPhone,
                 type="tel"
                 value={phone}
                 onChange={e => setPhone(e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-[#c9962a] transition-colors"
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-gold-500 transition-colors"
                 placeholder="+34 6XX XXX XXX"
               />
             </div>
@@ -244,7 +244,7 @@ export default function PerfilClient({ userId, email, initialName, initialPhone,
             <button
               type="submit"
               disabled={datosSaving}
-              className="w-full bg-[#c9962a] hover:bg-[#b8841e] text-white font-semibold py-3 rounded-xl transition-colors disabled:opacity-60"
+              className="w-full bg-gold-500 hover:bg-[#b8841e] text-white font-semibold py-3 rounded-xl transition-colors disabled:opacity-60"
             >
               {datosSaving ? 'Guardando...' : 'Guardar cambios'}
             </button>
@@ -271,7 +271,7 @@ export default function PerfilClient({ userId, email, initialName, initialPhone,
                     type={showPw ? 'text' : 'password'}
                     value={f.val}
                     onChange={e => f.set(e.target.value)}
-                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-[#c9962a] transition-colors pr-10"
+                    className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-gold-500 transition-colors pr-10"
                     required
                     minLength={1}
                   />

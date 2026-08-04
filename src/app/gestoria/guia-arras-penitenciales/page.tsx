@@ -71,7 +71,7 @@ export default function GuiaArrasPenitencialesPage() {
 
       <article className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
         {/* Hero */}
-        <div className="bg-gradient-to-br from-[#c9962a] to-[#a87a20] text-white py-16">
+        <div className="bg-gradient-to-br from-gold-500 to-gold-700 text-white py-16">
           <div className="max-w-4xl mx-auto px-4">
             <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm mb-4">
               Guía Completa 2026
@@ -86,7 +86,7 @@ export default function GuiaArrasPenitencialesPage() {
             <div className="flex flex-wrap gap-4">
               <Link
                 href="/gestoria/solicitar/arras-penitenciales"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-[#c9962a] font-semibold hover:bg-gray-100 transition"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-gold-500 font-semibold hover:bg-gray-100 transition"
               >
                 Contratar Arras Penitenciales (145€)
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -292,7 +292,7 @@ export default function GuiaArrasPenitencialesPage() {
           </section>
 
           {/* CTA Intermedio */}
-          <div className="bg-gradient-to-br from-[#c9962a] to-[#a87a20] text-white rounded-2xl p-8 mb-12 text-center">
+          <div className="bg-gradient-to-br from-gold-500 to-gold-700 text-white rounded-2xl p-8 mb-12 text-center">
             <h3 className="text-2xl font-bold mb-3">
               ¿Necesitas un Contrato de Arras Penitenciales Profesional?
             </h3>
@@ -303,7 +303,7 @@ export default function GuiaArrasPenitencialesPage() {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/gestoria/solicitar/arras-penitenciales"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-[#c9962a] font-bold hover:bg-gray-100 transition text-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-gold-500 font-bold hover:bg-gray-100 transition text-lg"
               >
                 Contratar Ahora - 145€
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -326,42 +326,42 @@ export default function GuiaArrasPenitencialesPage() {
               Cláusulas Imprescindibles en un Contrato de Arras Penitenciales
             </h2>
             <div className="space-y-4">
-              <div className="bg-white border-l-4 border-[#c9962a] p-6 rounded-r-lg shadow-sm">
+              <div className="bg-white border-l-4 border-gold-500 p-6 rounded-r-lg shadow-sm">
                 <h3 className="font-bold text-gray-900 mb-2">1. Identificación completa del inmueble</h3>
                 <p className="text-gray-700 text-sm">
                   Dirección exacta, referencia catastral, metros cuadrados, número de registro. 
                   Evita problemas de identificación que puedan anular el contrato.
                 </p>
               </div>
-              <div className="bg-white border-l-4 border-[#c9962a] p-6 rounded-r-lg shadow-sm">
+              <div className="bg-white border-l-4 border-gold-500 p-6 rounded-r-lg shadow-sm">
                 <h3 className="font-bold text-gray-900 mb-2">2. Precio total y forma de pago</h3>
                 <p className="text-gray-700 text-sm">
                   Precio final, cantidad de arras, si es con o sin hipoteca, fecha límite de escritura. 
                   Todo debe quedar por escrito para evitar malentendidos.
                 </p>
               </div>
-              <div className="bg-white border-l-4 border-[#c9962a] p-6 rounded-r-lg shadow-sm">
+              <div className="bg-white border-l-4 border-gold-500 p-6 rounded-r-lg shadow-sm">
                 <h3 className="font-bold text-gray-900 mb-2">3. Condiciones suspensivas (MUY IMPORTANTE)</h3>
                 <p className="text-gray-700 text-sm">
                   "Si el banco deniega la hipoteca, se devuelven las arras sin penalización". Esta cláusula 
                   te protege si la financiación no sale. <strong>Sin ella, perderías las arras aunque el banco diga que no.</strong>
                 </p>
               </div>
-              <div className="bg-white border-l-4 border-[#c9962a] p-6 rounded-r-lg shadow-sm">
+              <div className="bg-white border-l-4 border-gold-500 p-6 rounded-r-lg shadow-sm">
                 <h3 className="font-bold text-gray-900 mb-2">4. Cargas y gravámenes</h3>
                 <p className="text-gray-700 text-sm">
                   El vendedor debe declarar si hay hipotecas, embargos o deudas pendientes. 
                   Si aparece algo no declarado, puedes recuperar las arras.
                 </p>
               </div>
-              <div className="bg-white border-l-4 border-[#c9962a] p-6 rounded-r-lg shadow-sm">
+              <div className="bg-white border-l-4 border-gold-500 p-6 rounded-r-lg shadow-sm">
                 <h3 className="font-bold text-gray-900 mb-2">5. Estado de conservación y licencias</h3>
                 <p className="text-gray-700 text-sm">
                   Cédula de habitabilidad, ITE, licencias de reformas. Si falta algo, debe constar 
                   quién lo arregla y en qué plazo.
                 </p>
               </div>
-              <div className="bg-white border-l-4 border-[#c9962a] p-6 rounded-r-lg shadow-sm">
+              <div className="bg-white border-l-4 border-gold-500 p-6 rounded-r-lg shadow-sm">
                 <h3 className="font-bold text-gray-900 mb-2">6. Penalizaciones claras</h3>
                 <p className="text-gray-700 text-sm">
                   Debe especificar: "Si el comprador desiste, pierde X€. Si el vendedor incumple, devuelve 2X€". 
@@ -435,7 +435,7 @@ export default function GuiaArrasPenitencialesPage() {
               Preguntas Frecuentes
             </h2>
             <div className="space-y-4">
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Puedo recuperar las arras penitenciales si me arrepiento?
                 </summary>
@@ -445,7 +445,7 @@ export default function GuiaArrasPenitencialesPage() {
                   o si el vendedor incumple (entonces te devuelve el doble).
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Cuánto dinero se entrega normalmente de arras?
                 </summary>
@@ -454,7 +454,7 @@ export default function GuiaArrasPenitencialesPage() {
                   piso de 200.000€ → arras de 12.000€ a 16.000€. Cuanto más entregas, más compromiso demuestras.
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Es obligatorio hacer las arras ante notario?
                 </summary>
@@ -464,7 +464,7 @@ export default function GuiaArrasPenitencialesPage() {
                   y mucho más económico (145€ vs 300-500€ del notario).
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Qué pasa si el vendedor no tiene escrituras del piso?
                 </summary>
@@ -473,7 +473,7 @@ export default function GuiaArrasPenitencialesPage() {
                   ocupación ilegal o estafa directa. Exige siempre ver las escrituras originales antes de entregar dinero.
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Cuánto tarda en redactarse un contrato profesional?
                 </summary>
@@ -498,7 +498,7 @@ export default function GuiaArrasPenitencialesPage() {
             <div className="flex flex-wrap gap-4 justify-center mb-6">
               <Link
                 href="/gestoria/solicitar/arras-penitenciales"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-[#c9962a] text-white font-bold hover:bg-[#a87a20] transition text-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gold-500 text-white font-bold hover:bg-gold-600 transition text-lg"
               >
                 Contratar Ahora - 145€
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -514,15 +514,15 @@ export default function GuiaArrasPenitencialesPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-300">
               <div>
-                <div className="text-2xl font-bold text-[#c9962a] mb-1">48h</div>
+                <div className="text-2xl font-bold text-gold-500 mb-1">48h</div>
                 <div>Entrega garantizada</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-[#c9962a] mb-1">+2.000</div>
+                <div className="text-2xl font-bold text-gold-500 mb-1">+2.000</div>
                 <div>Contratos redactados</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-[#c9962a] mb-1">100%</div>
+                <div className="text-2xl font-bold text-gold-500 mb-1">100%</div>
                 <div>Garantía legal</div>
               </div>
             </div>
@@ -531,9 +531,9 @@ export default function GuiaArrasPenitencialesPage() {
           {/* Breadcrumbs */}
           <nav className="mt-12 text-sm text-gray-500" aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-2">
-              <li><Link href="/" className="hover:text-[#c9962a]">Inicio</Link></li>
+              <li><Link href="/" className="hover:text-gold-500">Inicio</Link></li>
               <li>›</li>
-              <li><Link href="/gestoria" className="hover:text-[#c9962a]">Gestoría</Link></li>
+              <li><Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link></li>
               <li>›</li>
               <li className="text-gray-900 font-medium">Guía Arras Penitenciales</li>
             </ol>

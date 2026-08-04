@@ -55,7 +55,7 @@ export default function TestimoniosCarousel({ ciudad, landing, hideRating = fals
           {/* Foto del cliente */}
           <div className="flex-shrink-0">
             <div 
-              className="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-[#c9962a]/30 bg-cover bg-center bg-gray-200"
+              className="w-20 h-20 md:w-24 md:h-24 rounded-full border-2 border-gold-500/30 bg-cover bg-center bg-gray-200"
               style={{ backgroundImage: `url('${testimonio.foto}')` }}
             />
           </div>
@@ -68,7 +68,7 @@ export default function TestimoniosCarousel({ ciudad, landing, hideRating = fals
                   <svg
                     key={i}
                     className={`w-5 h-5 ${
-                      i < testimonio.rating ? 'text-[#c9962a]' : 'text-gray-300'
+                      i < testimonio.rating ? 'text-gold-500' : 'text-gray-300'
                     }`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -104,7 +104,7 @@ export default function TestimoniosCarousel({ ciudad, landing, hideRating = fals
             </div>
 
             {/* Servicio contratado */}
-            <div className="mt-3 inline-block bg-[#c9962a]/10 text-[#c9962a] px-3 py-1 rounded-full text-xs font-medium">
+            <div className="mt-3 inline-block bg-gold-500/10 text-gold-500 px-3 py-1 rounded-full text-xs font-medium">
               {testimonio.servicio}
             </div>
           </div>
@@ -116,7 +116,7 @@ export default function TestimoniosCarousel({ ciudad, landing, hideRating = fals
         {/* Botón anterior */}
         <button
           onClick={prev}
-          className="p-2 rounded-full border border-gray-200 hover:border-[#c9962a] hover:bg-[#c9962a]/5 transition-colors"
+          className="p-2 rounded-full border border-gray-200 hover:border-gold-500 hover:bg-gold-500/5 transition-colors"
           aria-label="Anterior testimonio"
         >
           <svg className="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -132,7 +132,7 @@ export default function TestimoniosCarousel({ ciudad, landing, hideRating = fals
               onClick={() => goToSlide(index)}
               className={`transition-all ${
                 index === current
-                  ? 'w-8 h-2 bg-[#c9962a] rounded-full'
+                  ? 'w-8 h-2 bg-gold-500 rounded-full'
                   : 'w-2 h-2 bg-gray-300 rounded-full hover:bg-gray-400'
               }`}
               aria-label={`Ir a testimonio ${index + 1}`}
@@ -143,7 +143,7 @@ export default function TestimoniosCarousel({ ciudad, landing, hideRating = fals
         {/* Botón siguiente */}
         <button
           onClick={next}
-          className="p-2 rounded-full border border-gray-200 hover:border-[#c9962a] hover:bg-[#c9962a]/5 transition-colors"
+          className="p-2 rounded-full border border-gray-200 hover:border-gold-500 hover:bg-gold-500/5 transition-colors"
           aria-label="Siguiente testimonio"
         >
           <svg className="w-5 h-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

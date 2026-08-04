@@ -57,7 +57,7 @@ export default function GestoriaMadridPage() {
       <Navbar />
       <main className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] text-white py-20">
+        <section className="relative bg-gradient-to-br from-forest-800 to-forest-900 text-white py-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-8">
               <Link href="/" className="hover:text-gray-300">Inicio</Link>
@@ -245,7 +245,7 @@ export default function GestoriaMadridPage() {
                     className="object-cover"
                   />
                   <div className="absolute top-4 right-4">
-                    <span className="bg-gradient-to-r from-[#c9a84c] to-[#d4a73e] text-white text-xs font-bold px-3 py-1 rounded-full">
+                    <span className="bg-gradient-to-r from-gold-500 to-[#d4a73e] text-white text-xs font-bold px-3 py-1 rounded-full">
                       Todo incluido
                     </span>
                   </div>
@@ -380,19 +380,19 @@ export default function GestoriaMadridPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6">
             <h3 className="text-xl font-bold text-gray-900 mb-6">También ofrecemos gestoría inmobiliaria en:</h3>
             <div className="grid sm:grid-cols-3 gap-4">
-              <Link href="/gestoria/barcelona" className="text-gold-500 hover:text-[#a87a20] font-semibold">
+              <Link href="/gestoria/barcelona" className="text-gold-500 hover:text-gold-700 font-semibold">
                 Gestoría Barcelona →
               </Link>
-              <Link href="/gestoria/valencia" className="text-gold-500 hover:text-[#a87a20] font-semibold">
+              <Link href="/gestoria/valencia" className="text-gold-500 hover:text-gold-700 font-semibold">
                 Gestoría Valencia →
               </Link>
-              <Link href="/zaragoza/contrato-alquiler" className="text-gold-500 hover:text-[#a87a20] font-semibold">
+              <Link href="/zaragoza/contrato-alquiler" className="text-gold-500 hover:text-gold-700 font-semibold">
                 Contrato de alquiler en Zaragoza →
               </Link>
-              <Link href="/gestoria/sevilla" className="text-gold-500 hover:text-[#a87a20] font-semibold">
+              <Link href="/gestoria/sevilla" className="text-gold-500 hover:text-gold-700 font-semibold">
                 Gestoría inmobiliaria en Sevilla →
               </Link>
-              <Link href="/granada/contrato-alquiler" className="text-gold-500 hover:text-[#a87a20] font-semibold">
+              <Link href="/granada/contrato-alquiler" className="text-gold-500 hover:text-gold-700 font-semibold">
                 Contrato de alquiler en Granada →
               </Link>
             </div>

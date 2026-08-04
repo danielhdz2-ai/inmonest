@@ -231,7 +231,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     nombre: 'Salamanca',
     region: 'Castilla y León',
     testimoniosLanding: 'venta-completa-salamanca',
-    heroImage: '/keys.jpg',
+    heroImage: '/promo1.png',
     precioEjemploPiso: 180_000,
     ventasAcompanadas: 11,
     gestor: {
@@ -262,7 +262,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     nombre: 'Valladolid',
     region: 'Castilla y León',
     testimoniosLanding: 'venta-completa-valladolid',
-    heroImage: '/keys.jpg',
+    heroImage: '/promo1.png',
     precioEjemploPiso: 190_000,
     ventasAcompanadas: 9,
     gestor: {

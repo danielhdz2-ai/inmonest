@@ -25,13 +25,13 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           {/* Logo */}
           <Link href="/" className="w-fit mb-auto">
             <span className="text-3xl font-black tracking-tight leading-none">
-              <span className="text-white">Inmo</span><span className="text-[#c9962a]">nest</span>
+              <span className="text-white">Inmo</span><span className="text-gold-500">nest</span>
             </span>
           </Link>
 
           {/* Texto central */}
           <div className="py-12">
-            <p className="text-[#c9962a] text-sm font-semibold uppercase tracking-widest mb-3">Portal inmobiliario de particulares</p>
+            <p className="text-gold-500 text-sm font-semibold uppercase tracking-widest mb-3">Portal inmobiliario de particulares</p>
             <h1 className="text-white text-4xl xl:text-5xl font-black leading-tight mb-6">
               Tu nido, directo<br />y sin comisiones
             </h1>
@@ -73,7 +73,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         <header className="flex lg:hidden p-5">
           <Link href="/" className="flex items-center w-fit">
             <span className="text-2xl font-black tracking-tight">
-              <span className="text-[#1a0d00]">Inmo</span><span className="text-[#c9962a]">nest</span>
+              <span className="text-[#1a0d00]">Inmo</span><span className="text-gold-500">nest</span>
             </span>
           </Link>
         </header>

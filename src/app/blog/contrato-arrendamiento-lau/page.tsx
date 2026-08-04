@@ -29,7 +29,7 @@ export default function ContratoArrendamientoLAUPage() {
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header className="mb-10">
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-            <Link href="/blog" className="hover:text-[#c9962a]">Blog</Link>
+            <Link href="/blog" className="hover:text-gold-500">Blog</Link>
             <span>→</span>
             <span>Contratos</span>
           </div>
@@ -54,13 +54,13 @@ export default function ContratoArrendamientoLAUPage() {
         <nav className="bg-gray-50 rounded-xl p-6 mb-10 border border-gray-200">
           <h2 className="text-lg font-bold text-gray-900 mb-3">📋 Índice de contenidos</h2>
           <ol className="space-y-2 text-gray-700">
-            <li><a href="#que-es" className="hover:text-[#c9962a]">1. ¿Qué es un contrato de arrendamiento LAU?</a></li>
-            <li><a href="#clausulas" className="hover:text-[#c9962a]">2. Cláusulas obligatorias del contrato LAU</a></li>
-            <li><a href="#duracion" className="hover:text-[#c9962a]">3. Duración del contrato de arrendamiento</a></li>
-            <li><a href="#fianza" className="hover:text-[#c9962a]">4. Fianza y depósitos</a></li>
-            <li><a href="#subida-renta" className="hover:text-[#c9962a]">5. Subida de renta anual</a></li>
-            <li><a href="#rescision" className="hover:text-[#c9962a]">6. Cómo rescindir el contrato</a></li>
-            <li><a href="#plantilla" className="hover:text-[#c9962a]">7. Plantilla gratis de contrato LAU</a></li>
+            <li><a href="#que-es" className="hover:text-gold-500">1. ¿Qué es un contrato de arrendamiento LAU?</a></li>
+            <li><a href="#clausulas" className="hover:text-gold-500">2. Cláusulas obligatorias del contrato LAU</a></li>
+            <li><a href="#duracion" className="hover:text-gold-500">3. Duración del contrato de arrendamiento</a></li>
+            <li><a href="#fianza" className="hover:text-gold-500">4. Fianza y depósitos</a></li>
+            <li><a href="#subida-renta" className="hover:text-gold-500">5. Subida de renta anual</a></li>
+            <li><a href="#rescision" className="hover:text-gold-500">6. Cómo rescindir el contrato</a></li>
+            <li><a href="#plantilla" className="hover:text-gold-500">7. Plantilla gratis de contrato LAU</a></li>
           </ol>
         </nav>
 
@@ -133,9 +133,9 @@ export default function ContratoArrendamientoLAUPage() {
             </p>
             
             <div className="grid md:grid-cols-2 gap-6 my-6">
-              <div className="bg-gradient-to-br from-[#c9962a]/10 to-[#f4c94a]/10 border border-[#c9962a]/30 rounded-xl p-6">
+              <div className="bg-gradient-to-br from-gold-500/10 to-[#f4c94a]/10 border border-gold-500/30 rounded-xl p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">👤 Propietario persona física</h3>
-                <p className="text-3xl font-extrabold text-[#c9962a] mb-2">5 años</p>
+                <p className="text-3xl font-extrabold text-gold-500 mb-2">5 años</p>
                 <p className="text-gray-700 text-sm">Duración mínima obligatoria. Prorrogable hasta 3 años más.</p>
               </div>
               
@@ -163,11 +163,11 @@ export default function ContratoArrendamientoLAUPage() {
             
             <ul className="space-y-3 mb-6">
               <li className="flex items-start gap-3">
-                <span className="text-[#c9962a] text-xl">•</span>
+                <span className="text-gold-500 text-xl">•</span>
                 <span className="text-gray-700"><strong>1 mes de renta</strong> para viviendas habituales</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-[#c9962a] text-xl">•</span>
+                <span className="text-gold-500 text-xl">•</span>
                 <span className="text-gray-700"><strong>2 meses de renta</strong> para locales comerciales</span>
               </li>
             </ul>
@@ -246,7 +246,7 @@ export default function ContratoArrendamientoLAUPage() {
               Puedes descargar una <strong>plantilla básica</strong> de contrato de arrendamiento LAU, pero recuerda que cada situación es única y es recomendable una <strong>revisión legal</strong> para evitar problemas futuros.
             </p>
 
-            <div className="bg-gradient-to-r from-[#1a0d00] to-[#2e1900] rounded-2xl p-8 text-white mb-6">
+            <div className="bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-8 text-white mb-6">
               <h3 className="text-2xl font-bold mb-3">¿Necesitas un contrato profesional?</h3>
               <p className="text-white/80 mb-6">
                 Nuestros abogados especializados redactan tu contrato de arrendamiento LAU personalizado con cláusulas adaptadas a tu situación. <strong>Desde 7€.</strong>
@@ -254,7 +254,7 @@ export default function ContratoArrendamientoLAUPage() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/gestoria/solicitar/contrato-alquiler"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors"
                 >
                   Ver servicio de gestoría →
                 </Link>
@@ -310,7 +310,7 @@ export default function ContratoArrendamientoLAUPage() {
               El <strong>contrato de arrendamiento LAU</strong> es el pilar fundamental del alquiler de viviendas en España. Conocer tus derechos y obligaciones te protege de problemas legales y económicos.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Si tienes dudas o quieres un contrato personalizado, <Link href="/gestoria" className="text-[#c9962a] font-semibold hover:underline">nuestros abogados te ayudan desde 7€</Link>.
+              Si tienes dudas o quieres un contrato personalizado, <Link href="/gestoria" className="text-gold-500 font-semibold hover:underline">nuestros abogados te ayudan desde 7€</Link>.
             </p>
           </section>
 
@@ -320,14 +320,14 @@ export default function ContratoArrendamientoLAUPage() {
         <aside className="border-t border-gray-200 pt-8 mt-12">
           <h3 className="text-xl font-bold text-gray-900 mb-4">Artículos relacionados</h3>
           <div className="grid sm:grid-cols-2 gap-4">
-            <Link href="/blog/vender-piso-sin-comisiones" className="group p-4 border border-gray-200 rounded-lg hover:border-[#c9962a] transition-colors">
-              <h4 className="font-semibold text-gray-900 group-hover:text-[#c9962a] mb-2">
+            <Link href="/blog/vender-piso-sin-comisiones" className="group p-4 border border-gray-200 rounded-lg hover:border-gold-500 transition-colors">
+              <h4 className="font-semibold text-gray-900 group-hover:text-gold-500 mb-2">
                 Vender Piso Sin Comisiones →
               </h4>
               <p className="text-sm text-gray-600">Guía completa para vender sin agencia</p>
             </Link>
-            <Link href="/gestoria/contrato-arras" className="group p-4 border border-gray-200 rounded-lg hover:border-[#c9962a] transition-colors">
-              <h4 className="font-semibold text-gray-900 group-hover:text-[#c9962a] mb-2">
+            <Link href="/gestoria/contrato-arras" className="group p-4 border border-gray-200 rounded-lg hover:border-gold-500 transition-colors">
+              <h4 className="font-semibold text-gray-900 group-hover:text-gold-500 mb-2">
                 Contrato de Arras →
               </h4>
               <p className="text-sm text-gray-600">Protege tu señal de compra</p>

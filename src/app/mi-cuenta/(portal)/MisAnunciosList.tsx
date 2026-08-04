@@ -62,7 +62,7 @@ export default function MisAnunciosList({ anuncios }: { anuncios: Anuncio[] }) {
         <p className="text-gray-500 text-sm mb-4">Aún no tienes ningún anuncio publicado.</p>
         <Link
           href="/publicar"
-          className="inline-block px-5 py-2.5 bg-[#c9962a] text-white rounded-full text-sm font-semibold hover:bg-[#a87a20] transition-colors"
+          className="inline-block px-5 py-2.5 bg-gold-500 text-white rounded-full text-sm font-semibold hover:bg-gold-600 transition-colors"
         >
           Publicar mi primer anuncio
         </Link>
@@ -93,7 +93,7 @@ export default function MisAnunciosList({ anuncios }: { anuncios: Anuncio[] }) {
             <div className="flex items-center gap-2 shrink-0 flex-wrap">
               {/* Badge estado */}
               <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
-                a.status === 'published' ? 'bg-[#fef0c0] text-[#a87a20]' :
+                a.status === 'published' ? 'bg-[#fef0c0] text-gold-700' :
                 a.status === 'paused' ? 'bg-amber-100 text-amber-700' :
                 'bg-gray-100 text-gray-500'
               }`}>
@@ -113,7 +113,7 @@ export default function MisAnunciosList({ anuncios }: { anuncios: Anuncio[] }) {
 
               <Link
                 href={`/mi-cuenta/anuncios/${a.id}/editar`}
-                className="text-xs px-2.5 py-1 rounded-lg border border-gray-200 text-gray-600 hover:border-[#c9962a] hover:text-[#c9962a] hover:bg-[#fef9e8] transition-colors"
+                className="text-xs px-2.5 py-1 rounded-lg border border-gray-200 text-gray-600 hover:border-gold-500 hover:text-gold-500 hover:bg-cream-100 transition-colors"
               >
                 Editar
               </Link>
@@ -147,7 +147,7 @@ export default function MisAnunciosList({ anuncios }: { anuncios: Anuncio[] }) {
                 <button
                   onClick={() => changeStatus(a.id, 'published')}
                   disabled={isLoading}
-                  className="text-xs px-2.5 py-1 rounded-lg border border-[#f4c94a] text-[#a87a20] hover:bg-[#fef9e8] transition-colors"
+                  className="text-xs px-2.5 py-1 rounded-lg border border-gold-300 text-gold-700 hover:bg-cream-100 transition-colors"
                 >
                   Activar
                 </button>

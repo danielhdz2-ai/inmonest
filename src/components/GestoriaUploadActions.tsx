@@ -20,7 +20,7 @@ function ProgressBar({ percent }: { percent: number }) {
       </div>
       <div className="h-1.5 rounded-full bg-gray-200 overflow-hidden">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-[#c9962a] to-[#f4d98a] transition-all duration-200"
+          className="h-full rounded-full bg-gradient-to-r from-gold-500 to-[#f4d98a] transition-all duration-200"
           style={{ width: `${percent}%` }}
         />
       </div>
@@ -46,7 +46,7 @@ export default function GestoriaUploadActions({
   }
 
   const primaryClass =
-    'inline-flex items-center justify-center gap-2 rounded-xl bg-[#0d1a0f] active:bg-[#1a2e1c] text-white text-sm font-bold min-h-[48px] px-4 transition-colors disabled:opacity-60 touch-manipulation'
+    'inline-flex items-center justify-center gap-2 rounded-xl bg-forest-900 active:bg-[#1a2e1c] text-white text-sm font-bold min-h-[48px] px-4 transition-colors disabled:opacity-60 touch-manipulation'
   const secondaryClass =
     'inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#0d1a0f] bg-white active:bg-gray-50 text-[#0d1a0f] text-sm font-bold min-h-[48px] px-4 transition-colors disabled:opacity-60 touch-manipulation'
 
@@ -65,7 +65,7 @@ export default function GestoriaUploadActions({
           type="button"
           disabled={uploading}
           onClick={() => fileRef.current?.click()}
-          className="text-sm text-[#c9962a] font-semibold min-h-[44px] px-2 touch-manipulation"
+          className="text-sm text-gold-500 font-semibold min-h-[44px] px-2 touch-manipulation"
         >
           {uploading ? 'Subiendo…' : 'Reemplazar'}
         </button>

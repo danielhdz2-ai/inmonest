@@ -137,7 +137,7 @@ export default function GestoriaPortalConfiguracion({ email, initialName, initia
         {bajaMsg && (
           <div
             className={`rounded-xl px-4 py-3 text-sm ${
-              bajaMsg.ok ? 'bg-emerald-50 text-emerald-700' : 'bg-red-50 text-red-700 border border-red-200'
+              bajaMsg.ok ? 'bg-cream-100 text-gold-700' : 'bg-red-50 text-red-700 border border-red-200'
             }`}
           >
             {bajaMsg.text}
@@ -173,7 +173,7 @@ export default function GestoriaPortalConfiguracion({ email, initialName, initia
             type="button"
             onClick={() => setTab(t.id)}
             className={`px-4 py-2.5 rounded-lg text-sm font-medium whitespace-nowrap transition-colors min-h-[44px] touch-manipulation ${
-              tab === t.id ? 'bg-[#c9962a] text-white shadow-sm' : 'text-gray-600 hover:text-gray-900'
+              tab === t.id ? 'bg-gold-500 text-white shadow-sm' : 'text-gray-600 hover:text-gray-900'
             }`}
           >
             {t.label}
@@ -192,7 +192,7 @@ export default function GestoriaPortalConfiguracion({ email, initialName, initia
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-[#c9962a] transition-colors min-h-[48px]"
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-gold-500 transition-colors min-h-[48px]"
                 placeholder="Tu nombre completo"
               />
             </div>
@@ -202,7 +202,7 @@ export default function GestoriaPortalConfiguracion({ email, initialName, initia
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-[#c9962a] transition-colors min-h-[48px]"
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-gold-500 transition-colors min-h-[48px]"
                 placeholder="+34 6XX XXX XXX"
               />
             </div>
@@ -220,7 +220,7 @@ export default function GestoriaPortalConfiguracion({ email, initialName, initia
               <div
                 className={`rounded-xl px-4 py-3 text-sm ${
                   datosMsg.ok
-                    ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                    ? 'bg-cream-100 text-gold-700 border border-gold-200'
                     : 'bg-red-50 text-red-700 border border-red-200'
                 }`}
               >
@@ -231,7 +231,7 @@ export default function GestoriaPortalConfiguracion({ email, initialName, initia
             <button
               type="submit"
               disabled={datosSaving}
-              className="w-full bg-[#c9962a] hover:bg-[#b8841e] text-white font-semibold py-3 rounded-xl transition-colors disabled:opacity-60 min-h-[48px] touch-manipulation"
+              className="w-full bg-gold-500 hover:bg-[#b8841e] text-white font-semibold py-3 rounded-xl transition-colors disabled:opacity-60 min-h-[48px] touch-manipulation"
             >
               {datosSaving ? 'Guardando...' : 'Guardar cambios'}
             </button>
@@ -243,7 +243,7 @@ export default function GestoriaPortalConfiguracion({ email, initialName, initia
         <div className="space-y-5">
           <div className="bg-white rounded-2xl border border-gray-200 p-6">
             <div className="flex items-start gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-lg flex-shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-cream-100 border border-cream-100 flex items-center justify-center text-lg flex-shrink-0">
                 🔐
               </div>
               <div>
@@ -270,7 +270,7 @@ export default function GestoriaPortalConfiguracion({ email, initialName, initia
                       type={showPw ? 'text' : 'password'}
                       value={f.val}
                       onChange={(e) => f.set(e.target.value)}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-[#c9962a] transition-colors pr-16 min-h-[48px]"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-gold-500 transition-colors pr-16 min-h-[48px]"
                       required={f.required}
                       minLength={f.required ? 8 : undefined}
                     />
@@ -292,7 +292,7 @@ export default function GestoriaPortalConfiguracion({ email, initialName, initia
                 <div
                   className={`rounded-xl px-4 py-3 text-sm ${
                     pwMsg.ok
-                      ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                      ? 'bg-cream-100 text-gold-700 border border-gold-200'
                       : 'bg-red-50 text-red-700 border border-red-200'
                   }`}
                 >

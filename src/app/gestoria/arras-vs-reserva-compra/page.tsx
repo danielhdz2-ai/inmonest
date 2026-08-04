@@ -97,7 +97,7 @@ export default function ArrasVsReservaPage() {
 
         <div className="max-w-4xl mx-auto px-4 py-10">
           <PageHeroImage
-            src="/keys.jpg"
+            src="/promo1.png"
             alt="Comparativa entre arras y reserva de compra"
             className="mb-0"
           />
@@ -324,7 +324,7 @@ export default function ArrasVsReservaPage() {
           </section>
 
           {/* CTA Intermedio */}
-          <div className="bg-gradient-to-br from-[#c9962a] to-[#a87a20] text-white rounded-2xl p-8 mb-12 text-center">
+          <div className="bg-gradient-to-br from-gold-500 to-gold-700 text-white rounded-2xl p-8 mb-12 text-center">
             <h3 className="text-2xl font-bold mb-3">
               ¿Necesitas Ayuda para Decidir Cuál Contratar?
             </h3>
@@ -335,7 +335,7 @@ export default function ArrasVsReservaPage() {
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/gestoria/solicitar/reserva-compra"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-[#c9962a] font-bold hover:bg-gray-100 transition text-lg"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-gold-500 font-bold hover:bg-gray-100 transition text-lg"
               >
                 Reserva - 61€
               </Link>
@@ -403,7 +403,7 @@ export default function ArrasVsReservaPage() {
               Preguntas Frecuentes
             </h2>
             <div className="space-y-4">
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Puedo firmar arras sin haber firmado reserva antes?
                 </summary>
@@ -414,7 +414,7 @@ export default function ArrasVsReservaPage() {
                   verificación → arras.
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Cuánto dinero se entrega en cada documento?
                 </summary>
@@ -424,7 +424,7 @@ export default function ArrasVsReservaPage() {
                   La reserva se suma a las arras si todo va bien, así que solo pagas una vez.
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Qué pasa si firmo reserva y me arrepiento sin causa justificada?
                 </summary>
@@ -435,7 +435,7 @@ export default function ArrasVsReservaPage() {
                   cláusulas de protección.
                 </p>
               </details>
-              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-[#c9962a] transition">
+              <details className="bg-white border-2 border-gray-200 rounded-lg p-6 cursor-pointer hover:border-gold-500 transition">
                 <summary className="font-bold text-gray-900">
                   ¿Es obligatorio hacer estos contratos ante notario?
                 </summary>
@@ -480,15 +480,15 @@ export default function ArrasVsReservaPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-300">
               <div>
-                <div className="text-2xl font-bold text-[#c9962a] mb-1">48h</div>
+                <div className="text-2xl font-bold text-gold-500 mb-1">48h</div>
                 <div>Entrega garantizada</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-[#c9962a] mb-1">+2.000</div>
+                <div className="text-2xl font-bold text-gold-500 mb-1">+2.000</div>
                 <div>Contratos redactados</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-[#c9962a] mb-1">100%</div>
+                <div className="text-2xl font-bold text-gold-500 mb-1">100%</div>
                 <div>Garantía legal</div>
               </div>
             </div>
@@ -497,9 +497,9 @@ export default function ArrasVsReservaPage() {
           {/* Breadcrumbs */}
           <nav className="mt-12 text-sm text-gray-500" aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-2">
-              <li><Link href="/" className="hover:text-[#c9962a]">Inicio</Link></li>
+              <li><Link href="/" className="hover:text-gold-500">Inicio</Link></li>
               <li>›</li>
-              <li><Link href="/gestoria" className="hover:text-[#c9962a]">Gestoría</Link></li>
+              <li><Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link></li>
               <li>›</li>
               <li className="text-gray-900 font-medium">Arras vs Reserva</li>
             </ol>

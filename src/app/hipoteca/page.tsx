@@ -60,7 +60,7 @@ const HIPOTECAS = [
   {
     entidad: 'Hipoteca Fija',
     tag: '⭐ Más elegida',
-    tagColor: 'bg-[#fef0c0] text-[#a87a20]',
+    tagColor: 'bg-[#fef0c0] text-gold-700',
     tin: '2,95% TIN',
     tae: 'TAE: 3,28%',
     plazo: 'Hasta 30 años',
@@ -117,7 +117,7 @@ export default function HipotecaPage() {
       <Navbar />
 
       {/* ── HERO ── */}
-      <section className="relative min-h-[600px] flex items-center overflow-hidden bg-[#0d1a0f]">
+      <section className="relative min-h-[600px] flex items-center overflow-hidden bg-forest-900">
         {/* Imagen de fondo */}
         <div className="absolute inset-0">
           <Image
@@ -134,12 +134,12 @@ export default function HipotecaPage() {
         <div className="relative max-w-6xl mx-auto px-6 sm:px-10 py-20 flex flex-col lg:flex-row gap-12 items-center w-full">
           {/* Texto izquierda */}
           <div className="flex-1 text-white">
-            <span className="inline-flex items-center gap-2 bg-[#c9962a]/20 border border-[#c9962a]/40 text-[#f4c94a] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
-              🏠 Financiación
+            <span className="inline-flex items-center gap-2 bg-gold-500/20 border border-gold-500/40 text-gold-300 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6">
+              Financiación
             </span>
             <h1 className="text-4xl sm:text-5xl font-extrabold leading-tight mb-5">
               ¿Estás buscando<br />
-              <span className="text-[#c9962a]">hipoteca?</span>
+              <span className="text-gold-500">hipoteca?</span>
             </h1>
             <p className="text-white/70 text-lg mb-8 max-w-md leading-relaxed">
               Te ayudamos a conseguir la mejor financiación a tu medida. Comparamos las mejores ofertas hipotecarias para que pagues menos cada mes.
@@ -147,7 +147,7 @@ export default function HipotecaPage() {
             <div className="flex flex-wrap gap-4">
               <a
                 href="#contacto"
-                className="inline-flex items-center gap-2 bg-[#c9962a] hover:bg-[#b8841e] text-white font-bold px-7 py-3.5 rounded-full transition-colors text-sm"
+                className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841e] text-white font-bold px-7 py-3.5 rounded-full transition-colors text-sm"
               >
                 Quiero mi hipoteca →
               </a>
@@ -162,15 +162,15 @@ export default function HipotecaPage() {
             {/* Mini stats */}
             <div className="flex flex-wrap gap-8 mt-10 pt-8 border-t border-white/10">
               <div>
-                <p className="text-2xl font-extrabold text-[#f4c94a]">15+</p>
+                <p className="text-2xl font-extrabold text-gold-300">15+</p>
                 <p className="text-xs text-white/50 mt-0.5">Entidades bancarias</p>
               </div>
               <div>
-                <p className="text-2xl font-extrabold text-[#f4c94a]">48h</p>
+                <p className="text-2xl font-extrabold text-gold-300">48h</p>
                 <p className="text-xs text-white/50 mt-0.5">Respuesta garantizada</p>
               </div>
               <div>
-                <p className="text-2xl font-extrabold text-[#f4c94a]">0 €</p>
+                <p className="text-2xl font-extrabold text-gold-300">0 €</p>
                 <p className="text-xs text-white/50 mt-0.5">Coste para ti</p>
               </div>
             </div>
@@ -187,12 +187,12 @@ export default function HipotecaPage() {
       <section className="bg-white py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <span className="inline-block text-xs font-bold text-[#c9962a] uppercase tracking-widest mb-3">Por qué elegirnos</span>
+            <span className="inline-block text-xs font-bold text-gold-500 uppercase tracking-widest mb-3">Por qué elegirnos</span>
             <h2 className="text-3xl font-bold text-gray-900">Tu hipoteca, sin complicaciones</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {VENTAJAS.map(v => (
-              <div key={v.titulo} className="bg-[#fef9e8] rounded-2xl p-6 border border-[#f4c94a]/20">
+              <div key={v.titulo} className="bg-cream-100 rounded-2xl p-6 border border-gold-300/20">
                 <div className="text-3xl mb-4">{v.icon}</div>
                 <h3 className="font-bold text-gray-900 mb-2 text-sm">{v.titulo}</h3>
                 <p className="text-xs text-gray-500 leading-relaxed">{v.desc}</p>
@@ -206,7 +206,7 @@ export default function HipotecaPage() {
       <section className="bg-gray-50 py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <span className="inline-block text-xs font-bold text-[#c9962a] uppercase tracking-widest mb-3">Comparativa</span>
+            <span className="inline-block text-xs font-bold text-gold-500 uppercase tracking-widest mb-3">Comparativa</span>
             <h2 className="text-3xl font-bold text-gray-900">Las mejores hipotecas del mercado</h2>
             <p className="text-gray-500 text-sm mt-3 max-w-lg mx-auto">Condiciones orientativas. Las condiciones finales dependen de tu perfil y la entidad. Nuestro equipo negocia en tu nombre para mejorarlas.</p>
           </div>
@@ -216,7 +216,7 @@ export default function HipotecaPage() {
                 key={h.entidad}
                 className={`relative rounded-2xl p-6 border flex flex-col ${
                   h.destacado
-                    ? 'bg-[#0d1a0f] border-[#c9962a] text-white shadow-xl shadow-[#c9962a]/20'
+                    ? 'bg-forest-900 border-gold-500 text-white shadow-xl shadow-[#c9962a]/20'
                     : 'bg-white border-gray-100 text-gray-900'
                 }`}
               >
@@ -228,7 +228,7 @@ export default function HipotecaPage() {
                 <h3 className={`text-xl font-extrabold mb-1 ${h.destacado ? 'text-white' : 'text-gray-900'}`}>
                   {h.entidad}
                 </h3>
-                <p className={`text-2xl font-black mb-0.5 ${h.destacado ? 'text-[#f4c94a]' : 'text-[#c9962a]'}`}>
+                <p className={`text-2xl font-black mb-0.5 ${h.destacado ? 'text-gold-300' : 'text-gold-500'}`}>
                   {h.tin}
                 </p>
                 <p className={`text-xs mb-6 ${h.destacado ? 'text-white/50' : 'text-gray-400'}`}>{h.tae}</p>
@@ -247,7 +247,7 @@ export default function HipotecaPage() {
                 <ul className="space-y-1.5 mb-8 flex-1">
                   {h.pros.map(p => (
                     <li key={p} className={`flex items-start gap-2 text-xs ${h.destacado ? 'text-white/70' : 'text-gray-600'}`}>
-                      <span className="text-[#c9962a] mt-0.5 font-bold shrink-0">✓</span>
+                      <span className="text-gold-500 mt-0.5 font-bold shrink-0">✓</span>
                       {p}
                     </li>
                   ))}
@@ -257,8 +257,8 @@ export default function HipotecaPage() {
                   href="#contacto"
                   className={`block text-center py-3 rounded-xl text-sm font-bold transition-colors ${
                     h.destacado
-                      ? 'bg-[#c9962a] hover:bg-[#b8841e] text-white'
-                      : 'border border-[#c9962a] text-[#c9962a] hover:bg-[#fef9e8]'
+                      ? 'bg-gold-500 hover:bg-[#b8841e] text-white'
+                      : 'border border-gold-500 text-gold-500 hover:bg-cream-100'
                   }`}
                 >
                   Solicitar esta hipoteca
@@ -278,7 +278,7 @@ export default function HipotecaPage() {
           {/* Imagen */}
           <div className="relative w-full lg:w-1/2 h-[400px] rounded-3xl overflow-hidden shrink-0">
             <Image
-              src="/familia20.jpg"
+              src="/promo3.png"
               alt="Familia en su nuevo hogar"
               fill
               className="object-cover object-center"
@@ -293,13 +293,13 @@ export default function HipotecaPage() {
 
           {/* Pasos */}
           <div className="flex-1">
-            <span className="inline-block text-xs font-bold text-[#c9962a] uppercase tracking-widest mb-4">Cómo funciona</span>
+            <span className="inline-block text-xs font-bold text-gold-500 uppercase tracking-widest mb-4">Cómo funciona</span>
             <h2 className="text-3xl font-bold text-gray-900 mb-8">Tu hipoteca en 4 pasos</h2>
             <div className="space-y-6">
               {PASOS.map(p => (
                 <div key={p.n} className="flex gap-4">
-                  <div className="shrink-0 w-10 h-10 rounded-xl bg-[#fef9e8] border border-[#f4c94a]/30 flex items-center justify-center">
-                    <span className="text-xs font-black text-[#c9962a]">{p.n}</span>
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-cream-100 border border-gold-300/30 flex items-center justify-center">
+                    <span className="text-xs font-black text-gold-500">{p.n}</span>
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 text-sm mb-1">{p.titulo}</h3>
@@ -310,7 +310,7 @@ export default function HipotecaPage() {
             </div>
             <a
               href="#contacto"
-              className="inline-flex items-center gap-2 mt-8 bg-[#c9962a] hover:bg-[#b8841e] text-white font-bold px-7 py-3.5 rounded-full transition-colors text-sm"
+              className="inline-flex items-center gap-2 mt-8 bg-gold-500 hover:bg-[#b8841e] text-white font-bold px-7 py-3.5 rounded-full transition-colors text-sm"
             >
               Consultar viabilidad financiera →
             </a>
@@ -321,17 +321,17 @@ export default function HipotecaPage() {
       {/* ── SEGUNDA IMAGEN ── */}
       <section className="relative h-64 overflow-hidden">
         <Image
-          src="/familia2.jpg"
+          src="/promo1.png"
           alt="Familia feliz en su nuevo hogar"
           fill
           className="object-cover object-center"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[#0d1a0f]/60 flex items-center justify-center">
+        <div className="absolute inset-0 bg-forest-900/60 flex items-center justify-center">
           <div className="text-center text-white px-4">
             <p className="text-2xl sm:text-3xl font-extrabold mb-2">¿Cuánto puedes pedir de hipoteca?</p>
             <p className="text-white/70 text-sm max-w-lg mx-auto">Usa nuestra calculadora y descúbrelo en segundos. Sin registrarte.</p>
-            <a href="#calculadora" className="inline-block mt-4 bg-[#c9962a] hover:bg-[#b8841e] text-white font-bold px-6 py-2.5 rounded-full text-sm transition-colors">
+            <a href="#calculadora" className="inline-block mt-4 bg-gold-500 hover:bg-[#b8841e] text-white font-bold px-6 py-2.5 rounded-full text-sm transition-colors">
               Ir a la calculadora ↓
             </a>
           </div>
@@ -344,7 +344,7 @@ export default function HipotecaPage() {
 
           {/* Texto izquierda */}
           <div className="lg:w-1/2">
-            <span className="inline-block text-xs font-bold text-[#c9962a] uppercase tracking-widest mb-4">Consulta gratuita</span>
+            <span className="inline-block text-xs font-bold text-gold-500 uppercase tracking-widest mb-4">Consulta gratuita</span>
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Analiza tu viabilidad financiera</h2>
             <p className="text-gray-500 text-sm leading-relaxed mb-8">
               Cuéntanos tu situación y nuestro equipo de expertos hipotecarios te dirá en 24-48 horas si un banco te concedería la hipoteca y en qué condiciones. Sin compromiso, sin costes.
@@ -353,7 +353,7 @@ export default function HipotecaPage() {
             {/* Imagen */}
             <div className="relative h-56 rounded-2xl overflow-hidden">
               <Image
-                src="/familia3.jpg"
+                src="/promo3.png"
                 alt="Pareja con su nuevo bebé en su hogar"
                 fill
                 className="object-cover object-center"
@@ -388,17 +388,17 @@ export default function HipotecaPage() {
       <section className="bg-white py-20 px-6">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
-            <span className="inline-block text-xs font-bold text-[#c9962a] uppercase tracking-widest mb-3">Preguntas frecuentes</span>
+            <span className="inline-block text-xs font-bold text-gold-500 uppercase tracking-widest mb-3">Preguntas frecuentes</span>
             <h2 className="text-3xl font-bold text-gray-900">Todo lo que necesitas saber</h2>
           </div>
           <div className="space-y-4">
             {FAQS.map(f => (
-              <details key={f.q} className="group bg-[#fef9e8] rounded-2xl border border-[#f4c94a]/20 overflow-hidden">
+              <details key={f.q} className="group bg-cream-100 rounded-2xl border border-gold-300/20 overflow-hidden">
                 <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer select-none">
                   <span className="font-semibold text-gray-900 text-sm">{f.q}</span>
-                  <span className="text-[#c9962a] font-bold text-lg group-open:rotate-45 transition-transform shrink-0">+</span>
+                  <span className="text-gold-500 font-bold text-lg group-open:rotate-45 transition-transform shrink-0">+</span>
                 </summary>
-                <div className="px-5 pb-5 text-sm text-gray-600 leading-relaxed border-t border-[#f4c94a]/20 pt-4">
+                <div className="px-5 pb-5 text-sm text-gray-600 leading-relaxed border-t border-gold-300/20 pt-4">
                   {f.a}
                 </div>
               </details>
@@ -408,7 +408,7 @@ export default function HipotecaPage() {
       </section>
 
       {/* ── CTA FINAL ── */}
-      <section className="bg-[#0d1a0f] py-16 px-6">
+      <section className="bg-forest-900 py-16 px-6">
         <div className="max-w-4xl mx-auto text-center text-white">
           <h2 className="text-3xl font-extrabold mb-4">¿Listo para encontrar tu hipoteca ideal?</h2>
           <p className="text-white/60 text-sm mb-8 max-w-lg mx-auto">
@@ -417,7 +417,7 @@ export default function HipotecaPage() {
           <div className="flex flex-wrap gap-4 justify-center">
             <a
               href="#contacto"
-              className="bg-[#c9962a] hover:bg-[#b8841e] text-white font-bold px-8 py-3.5 rounded-full transition-colors"
+              className="bg-gold-500 hover:bg-[#b8841e] text-white font-bold px-8 py-3.5 rounded-full transition-colors"
             >
               Consultar gratis →
             </a>

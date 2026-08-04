@@ -55,7 +55,7 @@ export default function GestoriaPortalServicios({
 
   return (
     <div className="space-y-5">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1008] to-[#0d1a0f] p-6 text-white">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#1a1008] to-forest-900 p-6 text-white">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(201,150,42,0.3),transparent)]" />
         <div className="relative">
           <p className="text-[#f4d98a] text-xs font-bold uppercase tracking-widest">Ampliar tu expediente</p>
@@ -81,13 +81,13 @@ export default function GestoriaPortalServicios({
             key={svc.key}
             className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-shadow flex flex-col"
           >
-            <span className="text-[10px] font-bold uppercase tracking-wider text-[#c9962a]">{svc.categoria}</span>
+            <span className="text-[10px] font-bold uppercase tracking-wider text-gold-500">{svc.categoria}</span>
             <h3 className="text-base font-bold text-gray-900 mt-1 leading-snug">{svc.nombre}</h3>
-            <p className="text-2xl font-extrabold text-[#c9962a] mt-2">{svc.precio} €</p>
+            <p className="text-2xl font-extrabold text-gold-500 mt-2">{svc.precio} €</p>
             <ul className="mt-3 space-y-1 flex-1">
               {svc.incluye.map((item) => (
                 <li key={item} className="text-xs text-gray-500 flex gap-2">
-                  <span className="text-emerald-500 flex-shrink-0">✓</span>
+                  <span className="text-cream-1000 flex-shrink-0">✓</span>
                   {item}
                 </li>
               ))}
@@ -96,7 +96,7 @@ export default function GestoriaPortalServicios({
               type="button"
               onClick={() => handleCheckout(svc.key)}
               disabled={paying === svc.key}
-              className="mt-4 w-full rounded-xl bg-[#0d1a0f] text-[#f4d98a] text-sm font-bold py-3 min-h-[48px] touch-manipulation disabled:opacity-60"
+              className="mt-4 w-full rounded-xl bg-forest-900 text-[#f4d98a] text-sm font-bold py-3 min-h-[48px] touch-manipulation disabled:opacity-60"
             >
               {paying === svc.key ? 'Abriendo Stripe…' : `Pagar ${svc.precio} €`}
             </button>
@@ -116,7 +116,7 @@ export default function GestoriaPortalServicios({
 
       <p className="text-center text-xs text-gray-400">
         También puedes explorar todos los servicios en{' '}
-        <Link href="/gestoria" className="text-[#c9962a] underline font-medium">
+        <Link href="/gestoria" className="text-gold-500 underline font-medium">
           inmonest.com/gestoria
         </Link>
       </p>

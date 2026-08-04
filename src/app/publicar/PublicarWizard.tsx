@@ -260,17 +260,17 @@ export default function PublicarWizard({ userId }: { userId: string }) {
   const pill = (active: boolean) =>
     `w-12 h-10 rounded-lg text-sm font-medium border transition-all ${
       active
-        ? 'bg-[#c9962a] text-white border-[#c9962a]'
-        : 'border-[#f4c94a]/60 text-[#7a5c1e] hover:border-[#c9962a]'
+        ? 'bg-gold-500 text-white border-gold-500'
+        : 'border-gold-300/60 text-gold-700 hover:border-gold-500'
     }`
 
-  const inputCls = 'w-full border border-[#f4c94a]/60 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#c9962a] focus:ring-1 focus:ring-[#c9962a]'
+  const inputCls = 'w-full border border-gold-300/60 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-[#c9962a]'
 
   return (
     <div className="max-w-2xl mx-auto">
       {/* Título */}
       <div className="mb-8 text-center">
-        <h1 className="text-3xl font-bold text-[#7a5c1e] mb-2">Publica tu anuncio</h1>
+        <h1 className="text-3xl font-bold text-gold-700 mb-2">Publica tu anuncio</h1>
         <p className="text-[#9c7a3c]">Gratis · Sin comisiones · Trato directo</p>
       </div>
 
@@ -284,18 +284,18 @@ export default function PublicarWizard({ userId }: { userId: string }) {
             <div key={n} className="flex flex-1 items-center">
               <div className="flex flex-col items-center gap-1 flex-shrink-0">
                 <div className={`w-9 h-9 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                  done   ? 'bg-[#c9962a] text-white' :
-                  active ? 'bg-[#c9962a] text-white ring-4 ring-[#f4c94a]/40' :
+                  done   ? 'bg-gold-500 text-white' :
+                  active ? 'bg-gold-500 text-white ring-4 ring-[#f4c94a]/40' :
                   'bg-[#f4c94a]/30 text-[#9c7a3c]'
                 }`}>
                   {done ? '✓' : n}
                 </div>
-                <span className={`text-xs hidden sm:block ${active ? 'text-[#c9962a] font-semibold' : 'text-[#9c7a3c]'}`}>
+                <span className={`text-xs hidden sm:block ${active ? 'text-gold-500 font-semibold' : 'text-[#9c7a3c]'}`}>
                   {label}
                 </span>
               </div>
               {i < STEPS.length - 1 && (
-                <div className={`h-0.5 flex-1 mx-2 ${done ? 'bg-[#c9962a]' : 'bg-[#f4c94a]/30'}`} />
+                <div className={`h-0.5 flex-1 mx-2 ${done ? 'bg-gold-500' : 'bg-[#f4c94a]/30'}`} />
               )}
             </div>
           )
@@ -303,12 +303,12 @@ export default function PublicarWizard({ userId }: { userId: string }) {
       </div>
 
       {/* Tarjeta */}
-      <div className="bg-white rounded-2xl shadow-sm border border-[#f4c94a]/30 p-8">
+      <div className="bg-white rounded-2xl shadow-sm border border-gold-300/30 p-8">
 
         {/* Paso 1: Operación */}
         {step === 1 && (
           <div>
-            <h2 className="text-xl font-bold text-[#7a5c1e] mb-6">¿Qué quieres hacer?</h2>
+            <h2 className="text-xl font-bold text-gold-700 mb-6">¿Qué quieres hacer?</h2>
             <div className="grid grid-cols-2 gap-4">
               {[
                 { value: 'rent', label: 'Alquilar', desc: 'Pongo mi piso en alquiler', emoji: '🏠' },
@@ -319,12 +319,12 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                   onClick={() => set('operation', opt.value)}
                   className={`p-6 rounded-xl border-2 text-left transition-all ${
                     form.operation === opt.value
-                      ? 'border-[#c9962a] bg-[#fef9e8]'
-                      : 'border-[#f4c94a]/40 hover:border-[#c9962a]/50 hover:bg-[#fef9e8]/50'
+                      ? 'border-gold-500 bg-cream-100'
+                      : 'border-gold-300/40 hover:border-gold-500/50 hover:bg-cream-100/50'
                   }`}
                 >
                   <div className="text-3xl mb-2">{opt.emoji}</div>
-                  <div className="font-bold text-[#7a5c1e] text-lg">{opt.label}</div>
+                  <div className="font-bold text-gold-700 text-lg">{opt.label}</div>
                   <div className="text-sm text-[#9c7a3c] mt-1">{opt.desc}</div>
                 </button>
               ))}
@@ -335,11 +335,11 @@ export default function PublicarWizard({ userId }: { userId: string }) {
         {/* Paso 2: Ubicación y precio */}
         {step === 2 && (
           <div>
-            <h2 className="text-xl font-bold text-[#7a5c1e] mb-6">Ubicación y precio</h2>
+            <h2 className="text-xl font-bold text-gold-700 mb-6">Ubicación y precio</h2>
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Ciudad *</label>
+                  <label className="block text-sm font-medium text-gold-700 mb-1">Ciudad *</label>
                   <input
                     list="ciudades-list"
                     value={form.city}
@@ -352,7 +352,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                   </datalist>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Barrio / Zona</label>
+                  <label className="block text-sm font-medium text-gold-700 mb-1">Barrio / Zona</label>
                   <input
                     value={form.district}
                     onChange={e => set('district', e.target.value)}
@@ -363,7 +363,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Código postal</label>
+                  <label className="block text-sm font-medium text-gold-700 mb-1">Código postal</label>
                   <input
                     value={form.postal_code}
                     onChange={e => set('postal_code', e.target.value)}
@@ -373,7 +373,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-[#7a5c1e] mb-1">
+                  <label className="block text-sm font-medium text-gold-700 mb-1">
                     Precio {form.operation === 'rent' ? '(€/mes) *' : '(€) *'}
                   </label>
                   <input
@@ -396,10 +396,10 @@ export default function PublicarWizard({ userId }: { userId: string }) {
         {/* Paso 3: Características */}
         {step === 3 && (
           <div>
-            <h2 className="text-xl font-bold text-[#7a5c1e] mb-6">Características</h2>
+            <h2 className="text-xl font-bold text-gold-700 mb-6">Características</h2>
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-[#7a5c1e] mb-2">Habitaciones</label>
+                <label className="block text-sm font-medium text-gold-700 mb-2">Habitaciones</label>
                 <div className="flex gap-2">
                   {['0','1','2','3','4','5'].map(n => (
                     <button key={n} onClick={() => set('bedrooms', n)} className={pill(form.bedrooms === n)}>
@@ -409,7 +409,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#7a5c1e] mb-2">Baños</label>
+                <label className="block text-sm font-medium text-gold-700 mb-2">Baños</label>
                 <div className="flex gap-2">
                   {['1','2','3','4'].map(n => (
                     <button key={n} onClick={() => set('bathrooms', n)} className={pill(form.bathrooms === n)}>
@@ -419,14 +419,14 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Superficie (m²)</label>
+                <label className="block text-sm font-medium text-gold-700 mb-1">Superficie (m²)</label>
                 <input
                   type="number"
                   value={form.area}
                   onChange={e => set('area', e.target.value)}
                   placeholder="75"
                   min={0}
-                  className="w-32 border border-[#f4c94a]/60 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#c9962a] focus:ring-1 focus:ring-[#c9962a]"
+                  className="w-32 border border-gold-300/60 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-[#c9962a]"
                 />
               </div>
             </div>
@@ -436,12 +436,12 @@ export default function PublicarWizard({ userId }: { userId: string }) {
         {/* Paso 4: Extras, descripción y fotos */}
         {step === 4 && (
           <div>
-            <h2 className="text-xl font-bold text-[#7a5c1e] mb-6">Extras, descripción y fotos</h2>
+            <h2 className="text-xl font-bold text-gold-700 mb-6">Extras, descripción y fotos</h2>
             <div className="space-y-6">
 
               {/* Amenities */}
               <div>
-                <label className="block text-sm font-medium text-[#7a5c1e] mb-3">
+                <label className="block text-sm font-medium text-gold-700 mb-3">
                   Extras de la propiedad
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -454,13 +454,13 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                         onClick={() => toggleFeature(key)}
                         className={`flex items-center gap-2 px-3 py-2 rounded-lg border text-sm font-medium transition-all text-left ${
                           active
-                            ? 'border-[#c9962a] bg-[#fef9e8] text-[#7a5c1e]'
-                            : 'border-[#f4c94a]/40 text-[#9c7a3c] hover:border-[#c9962a]/50'
+                            ? 'border-gold-500 bg-cream-100 text-gold-700'
+                            : 'border-gold-300/40 text-[#9c7a3c] hover:border-gold-500/50'
                         }`}
                       >
                         <span>{emoji}</span>
                         <span>{label}</span>
-                        {active && <span className="ml-auto text-[#c9962a] text-xs">✓</span>}
+                        {active && <span className="ml-auto text-gold-500 text-xs">✓</span>}
                       </button>
                     )
                   })}
@@ -469,7 +469,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
 
               {/* Título */}
               <div>
-                <label className="block text-sm font-medium text-[#7a5c1e] mb-1">Título del anuncio</label>
+                <label className="block text-sm font-medium text-gold-700 mb-1">Título del anuncio</label>
                 <input
                   value={form.title}
                   onChange={e => set('title', e.target.value)}
@@ -483,12 +483,12 @@ export default function PublicarWizard({ userId }: { userId: string }) {
               {/* Descripción + IA */}
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="block text-sm font-medium text-[#7a5c1e]">Descripción</label>
+                  <label className="block text-sm font-medium text-gold-700">Descripción</label>
                   <button
                     type="button"
                     onClick={handleGenerateAI}
                     disabled={aiLoading || !form.city}
-                    className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-[#fef9e8] text-[#c9962a] border border-[#f4c94a] hover:bg-[#fef0c0] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cream-100 text-gold-500 border border-gold-300 hover:bg-[#fef0c0] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {aiLoading ? (
                       <>
@@ -507,7 +507,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                   placeholder="Describe tu propiedad: estado, reformas, orientación, transporte cercano..."
                   rows={4}
                   maxLength={2000}
-                  className="w-full border border-[#f4c94a]/60 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#c9962a] focus:ring-1 focus:ring-[#c9962a] resize-none"
+                  className="w-full border border-gold-300/60 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-[#c9962a] resize-none"
                 />
                 {aiError && (
                   <p className="text-amber-700 text-xs mt-1 bg-amber-50 px-2 py-1 rounded">
@@ -521,7 +521,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
               {/* Fotos */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="block text-sm font-medium text-[#7a5c1e]">
+                  <label className="block text-sm font-medium text-gold-700">
                     Fotos ({images.length}/10)
                   </label>
                   {compressing && (
@@ -548,18 +548,18 @@ export default function PublicarWizard({ userId }: { userId: string }) {
 
                 {/* Drop zone */}
                 <div
-                  onDragOver={e => { e.preventDefault(); e.currentTarget.classList.add('border-[#c9962a]') }}
-                  onDragLeave={e => e.currentTarget.classList.remove('border-[#c9962a]')}
-                  onDrop={e => { e.preventDefault(); e.currentTarget.classList.remove('border-[#c9962a]'); handleImages(e.dataTransfer.files) }}
-                  className="border-2 border-dashed border-[#f4c94a]/60 rounded-xl p-4 transition-all mb-3"
+                  onDragOver={e => { e.preventDefault(); e.currentTarget.classList.add('border-gold-500') }}
+                  onDragLeave={e => e.currentTarget.classList.remove('border-gold-500')}
+                  onDrop={e => { e.preventDefault(); e.currentTarget.classList.remove('border-gold-500'); handleImages(e.dataTransfer.files) }}
+                  className="border-2 border-dashed border-gold-300/60 rounded-xl p-4 transition-all mb-3"
                 >
                   {previews.length === 0 ? (
                     <div
-                      className="text-center py-6 cursor-pointer hover:bg-[#fef9e8]/50 rounded-lg"
+                      className="text-center py-6 cursor-pointer hover:bg-cream-100/50 rounded-lg"
                       onClick={() => fileInputRef.current?.click()}
                     >
                       <div className="text-4xl mb-2">?</div>
-                      <p className="text-sm font-medium text-[#7a5c1e]">Arrastra las fotos aqu�</p>
+                      <p className="text-sm font-medium text-gold-700">Arrastra las fotos aqu�</p>
                       <p className="text-xs text-[#9c7a3c] mt-1">o haz clic para seleccionar</p>
                     </div>
                   ) : (
@@ -567,7 +567,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                       <p className="text-xs text-[#9c7a3c] mb-2">{images.length} foto{images.length !== 1 ? 's' : ''} a�adida{images.length !== 1 ? 's' : ''}</p>
                       <div className="grid grid-cols-3 gap-2">
                         {previews.map((src, i) => (
-                          <div key={i} className="relative rounded-lg overflow-hidden bg-[#fef9e8] group" style={{ aspectRatio: '4/3' }}>
+                          <div key={i} className="relative rounded-lg overflow-hidden bg-cream-100 group" style={{ aspectRatio: '4/3' }}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img src={src} alt={`Foto ${i + 1}`} className="w-full h-full object-cover" />
                             <button
@@ -577,7 +577,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                               aria-label="Eliminar foto"
                             >�</button>
                             {i === 0 && (
-                              <span className="absolute bottom-1 left-1 text-[10px] bg-[#c9962a] text-white px-1.5 py-0.5 rounded font-medium">
+                              <span className="absolute bottom-1 left-1 text-[10px] bg-gold-500 text-white px-1.5 py-0.5 rounded font-medium">
                                 Principal
                               </span>
                             )}
@@ -587,7 +587,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
                           <button
                             type="button"
                             onClick={() => fileInputRef.current?.click()}
-                            className="rounded-lg border-2 border-dashed border-[#f4c94a] flex flex-col items-center justify-center gap-1 text-[#9c7a3c] text-xs hover:border-[#c9962a] hover:bg-[#fef9e8] transition-all"
+                            className="rounded-lg border-2 border-dashed border-gold-300 flex flex-col items-center justify-center gap-1 text-[#9c7a3c] text-xs hover:border-gold-500 hover:bg-cream-100 transition-all"
                             style={{ aspectRatio: '4/3' }}
                           >
                             <span className="text-2xl leading-none">+</span>
@@ -608,10 +608,10 @@ export default function PublicarWizard({ userId }: { userId: string }) {
         )}
 
         {/* Botones de navegación */}
-        <div className="flex justify-between mt-8 pt-6 border-t border-[#f4c94a]/20">
+        <div className="flex justify-between mt-8 pt-6 border-t border-gold-300/20">
           <button
             onClick={() => setStep(s => Math.max(1, s - 1))}
-            className={`px-5 py-2.5 rounded-lg text-sm font-medium border border-[#f4c94a]/60 text-[#7a5c1e] hover:bg-[#fef9e8] transition-all ${step === 1 ? 'invisible' : ''}`}
+            className={`px-5 py-2.5 rounded-lg text-sm font-medium border border-gold-300/60 text-gold-700 hover:bg-cream-100 transition-all ${step === 1 ? 'invisible' : ''}`}
           >
             ← Anterior
           </button>
@@ -620,7 +620,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
             <button
               onClick={() => canNext() && setStep(s => s + 1)}
               disabled={!canNext()}
-              className="px-6 py-2.5 rounded-lg text-sm font-bold bg-[#c9962a] text-white hover:bg-[#a87a20] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+              className="px-6 py-2.5 rounded-lg text-sm font-bold bg-gold-500 text-white hover:bg-gold-600 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             >
               Siguiente →
             </button>
@@ -628,7 +628,7 @@ export default function PublicarWizard({ userId }: { userId: string }) {
             <button
               onClick={handlePublish}
               disabled={loading || compressing}
-              className="px-8 py-2.5 rounded-lg text-sm font-bold bg-[#c9962a] text-white hover:bg-[#a87a20] transition-all disabled:opacity-60 flex items-center gap-2"
+              className="px-8 py-2.5 rounded-lg text-sm font-bold bg-gold-500 text-white hover:bg-gold-600 transition-all disabled:opacity-60 flex items-center gap-2"
             >
               {loading ? (
                 <>

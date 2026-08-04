@@ -180,8 +180,8 @@ export default function SalesCalendar({ dailyMetrics, compact = false }: SalesCa
                 aspect-square flex flex-col items-center justify-center rounded-lg
                 border relative group transition-all
                 ${hasSale ? 'cursor-pointer' : 'cursor-default'}
-                ${today ? 'border-[#c9962a] ring-1 ring-[#c9962a]/30' : 'border-gray-200'}
-                ${hasSale ? 'bg-[#c9962a]/10 border-[#c9962a]/50' : 'bg-white hover:bg-gray-50'}
+                ${today ? 'border-gold-500 ring-1 ring-[#c9962a]/30' : 'border-gray-200'}
+                ${hasSale ? 'bg-gold-500/10 border-gold-500/50' : 'bg-white hover:bg-gray-50'}
                 ${isSelected ? 'ring-2 ring-[#8a6a1e] border-[#8a6a1e]' : ''}
               `}
             >
@@ -252,11 +252,11 @@ export default function SalesCalendar({ dailyMetrics, compact = false }: SalesCa
       {/* Leyenda */}
       <div className="flex items-center justify-center gap-5 mt-5 pt-4 border-t border-gray-100">
         <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded border border-[#c9962a] ring-1 ring-[#c9962a]/30" />
+          <div className="w-3 h-3 rounded border border-gold-500 ring-1 ring-[#c9962a]/30" />
           <span className="text-[11px] text-gray-500">Hoy</span>
         </div>
         <div className="flex items-center gap-1.5">
-          <div className="w-3 h-3 rounded bg-[#c9962a]/10 border border-[#c9962a]/50" />
+          <div className="w-3 h-3 rounded bg-gold-500/10 border border-gold-500/50" />
           <span className="text-[11px] text-gray-500">Con ventas · click para ver detalle</span>
         </div>
       </div>

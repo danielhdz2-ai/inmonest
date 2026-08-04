@@ -82,7 +82,7 @@ export default function SaveAlertButton() {
     return (
       <a
         href="/auth/login?next=/pisos"
-        className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-[#c9962a] border border-gray-200 hover:border-[#c9962a] px-3 py-2 rounded-xl transition-colors"
+        className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gold-500 border border-gray-200 hover:border-gold-500 px-3 py-2 rounded-xl transition-colors"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
@@ -107,10 +107,10 @@ export default function SaveAlertButton() {
     <button
       onClick={saveAlert}
       disabled={state === 'saving'}
-      className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-[#c9962a] border border-gray-200 hover:border-[#c9962a] px-3 py-2 rounded-xl transition-colors disabled:opacity-60"
+      className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-gold-500 border border-gray-200 hover:border-gold-500 px-3 py-2 rounded-xl transition-colors disabled:opacity-60"
     >
       {state === 'saving' ? (
-        <span className="animate-spin w-4 h-4 border-2 border-[#c9962a] border-t-transparent rounded-full" />
+        <span className="animate-spin w-4 h-4 border-2 border-gold-500 border-t-transparent rounded-full" />
       ) : state === 'error' ? (
         <svg className="w-4 h-4 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />

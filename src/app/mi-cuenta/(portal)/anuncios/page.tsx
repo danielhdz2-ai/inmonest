@@ -22,7 +22,7 @@ export default async function MisAnunciosPage() {
         </div>
         <Link
           href="/publicar"
-          className="inline-flex items-center gap-2 bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors"
+          className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />

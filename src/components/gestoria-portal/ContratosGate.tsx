@@ -25,7 +25,7 @@ function ContratosLoadingState({ label }: { label: string }) {
   return (
     <div className="min-h-[50vh] flex items-center justify-center p-4">
       <div className="text-center space-y-3">
-        <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-[#c9962a] border-t-transparent" />
+        <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-gold-500 border-t-transparent" />
         <p className="text-sm text-gray-500">{label}</p>
       </div>
     </div>
@@ -102,7 +102,7 @@ function ContratosGateInner() {
           <button
             type="button"
             onClick={() => window.location.reload()}
-            className="w-full bg-[#c9962a] text-white font-bold py-3 rounded-xl min-h-[48px]"
+            className="w-full bg-gold-500 text-white font-bold py-3 rounded-xl min-h-[48px]"
           >
             Reintentar
           </button>

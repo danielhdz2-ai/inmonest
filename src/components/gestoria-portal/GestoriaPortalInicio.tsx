@@ -37,19 +37,19 @@ export default function GestoriaPortalInicio({
   return (
     <div className="space-y-5">
       {showPagoBanner && (
-        <div className="relative overflow-hidden rounded-2xl border border-emerald-300/50 bg-gradient-to-r from-emerald-600 to-emerald-700 p-5 text-white shadow-lg">
+        <div className="relative overflow-hidden rounded-2xl border border-gold-300/50 bg-gradient-to-r from-gold-600 to-gold-700 p-5 text-white shadow-lg">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.15),transparent)]" />
           <div className="relative flex items-start gap-4">
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/20 text-2xl">✓</span>
             <div>
               <p className="text-lg font-bold">Pago confirmado</p>
-              <p className="text-sm text-emerald-100 mt-1">
+              <p className="text-sm text-cream-100 mt-1">
                 Tu expediente está activo. Si quieres, sube tu documentación aquí o envíala a info@inmonest.com.
               </p>
               <button
                 type="button"
                 onClick={() => onNavigate('expediente')}
-                className="mt-3 inline-flex items-center rounded-xl bg-white text-emerald-800 text-sm font-bold px-4 py-2.5 min-h-[44px] touch-manipulation"
+                className="mt-3 inline-flex items-center rounded-xl bg-white text-gold-800 text-sm font-bold px-4 py-2.5 min-h-[44px] touch-manipulation"
               >
                 Ir al expediente →
               </button>
@@ -59,9 +59,9 @@ export default function GestoriaPortalInicio({
       )}
 
       {/* Hero */}
-      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#0a1410] via-[#152318] to-[#0d1a0f] p-6 sm:p-8 text-white shadow-2xl">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#0a1410] via-[#152318] to-forest-900 p-6 sm:p-8 text-white shadow-2xl">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(201,150,42,0.25),transparent_50%)]" />
-        <div className="absolute top-0 right-0 w-64 h-64 bg-[#c9962a]/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl" />
         <div className="relative">
           <p className="text-[#f4d98a] text-xs font-bold uppercase tracking-[0.25em] mb-2">
             Portal cliente · Gestoría inmobiliaria
@@ -100,7 +100,7 @@ export default function GestoriaPortalInicio({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Gestor */}
         <div className="lg:col-span-1 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-[#c9962a] mb-3">Tu gestor asignado</p>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-gold-500 mb-3">Tu gestor asignado</p>
           <div className="flex items-center gap-4">
             <div className="relative h-16 w-16 rounded-2xl overflow-hidden ring-2 ring-[#e8d48a] flex-shrink-0">
               <Image src={gestor.foto} alt={gestor.nombre} fill className="object-cover" sizes="64px" />
@@ -113,9 +113,9 @@ export default function GestoriaPortalInicio({
           <div className="grid grid-cols-2 gap-2 mt-4">
             <a
               href={`tel:${gestor.telefonoTel}`}
-              className="text-center rounded-xl border border-[#c9962a] text-[#7a5c1e] text-xs font-bold py-2.5 min-h-[44px] flex items-center justify-center touch-manipulation"
+              className="text-center rounded-xl border border-gold-500 text-gold-700 text-xs font-bold py-2.5 min-h-[44px] flex items-center justify-center touch-manipulation"
             >
-              📞 Llamar
+              Llamar
             </a>
             <a
               href={`https://wa.me/${gestor.whatsapp}?text=${encodeURIComponent('Hola, consulta sobre mi expediente')}`}
@@ -141,14 +141,14 @@ export default function GestoriaPortalInicio({
                   key={step.n}
                   className={`rounded-xl p-3 text-center border transition-all ${
                     active
-                      ? 'border-[#c9962a] bg-[#fef9e8] shadow-md'
+                      ? 'border-gold-500 bg-cream-100 shadow-md'
                       : done
-                        ? 'border-emerald-200 bg-emerald-50'
+                        ? 'border-gold-200 bg-cream-100'
                         : 'border-gray-100 bg-gray-50 opacity-60'
                   }`}
                 >
                   <div className="text-xl mb-1">{done ? '✓' : step.icon}</div>
-                  <p className={`text-[11px] font-bold leading-tight ${active ? 'text-[#7a5c1e]' : done ? 'text-emerald-800' : 'text-gray-500'}`}>
+                  <p className={`text-[11px] font-bold leading-tight ${active ? 'text-gold-700' : done ? 'text-gold-800' : 'text-gray-500'}`}>
                     {step.label}
                   </p>
                 </div>
@@ -180,7 +180,7 @@ export default function GestoriaPortalInicio({
           { id: 'expediente' as const, label: 'Subir documentos', icon: '📤', color: 'from-amber-50 to-amber-100/50 border-amber-200' },
           { id: 'documentos' as const, label: 'Mis documentos', icon: '🗂️', color: 'from-rose-50 to-rose-100/50 border-rose-200' },
           { id: 'inmueble' as const, label: 'Datos inmueble', icon: '🏠', color: 'from-blue-50 to-blue-100/50 border-blue-200' },
-          { id: 'contratos' as const, label: 'Mis contratos', icon: '📄', color: 'from-emerald-50 to-emerald-100/50 border-emerald-200' },
+          { id: 'contratos' as const, label: 'Mis contratos', icon: '📄', color: 'from-cream-100 to-cream-100/50 border-gold-200' },
           { id: 'servicios' as const, label: 'Contratar más', icon: '✦', color: 'from-violet-50 to-violet-100/50 border-violet-200' },
         ].map((action) => (
           <button

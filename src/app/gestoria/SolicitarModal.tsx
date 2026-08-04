@@ -137,7 +137,7 @@ export default function SolicitarModal({
     }
   }
 
-  const inp = 'w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#c9962a] focus:border-[#c9962a]'
+  const inp = 'w-full border border-gray-200 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#c9962a] focus:border-gold-500'
 
   return (
     <div
@@ -147,19 +147,19 @@ export default function SolicitarModal({
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl flex overflow-hidden max-h-[90vh]">
 
         {/* ── Columna izquierda: confianza ─────────────────────────────── */}
-        <div className="hidden md:flex flex-col w-[42%] bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] p-8 text-white flex-shrink-0">
+        <div className="hidden md:flex flex-col w-[42%] bg-gradient-to-br from-forest-800 to-forest-900 p-8 text-white flex-shrink-0">
           {/* Logo */}
           <div className="flex items-center mb-8">
             <span className="text-2xl font-extrabold tracking-tight">
-              <span className="text-white">Inmo</span><span className="text-[#f4c94a]">nest</span>
+              <span className="text-white">Inmo</span><span className="text-gold-300">nest</span>
             </span>
           </div>
 
           {/* Servicio seleccionado */}
           <div className="bg-white/10 rounded-xl p-4 mb-8 border border-white/20">
-            <p className="text-xs text-[#f4c94a] font-semibold uppercase tracking-wider mb-1">Servicio seleccionado</p>
+            <p className="text-xs text-gold-300 font-semibold uppercase tracking-wider mb-1">Servicio seleccionado</p>
             <p className="text-sm font-semibold leading-snug">{service.name}</p>
-            <p className="text-3xl font-extrabold text-[#f4c94a] mt-2">{service.price} €</p>
+            <p className="text-3xl font-extrabold text-gold-300 mt-2">{service.price} €</p>
             <p className="text-xs text-white/60 mt-1">Pago único · Sin suscripción</p>
           </div>
 
@@ -169,7 +169,7 @@ export default function SolicitarModal({
               <div key={b.title} className="flex gap-3">
                 <span className="text-xl flex-shrink-0 mt-0.5">{b.icon}</span>
                 <div>
-                  <p className="text-sm font-semibold text-[#f4c94a]">{b.title}</p>
+                  <p className="text-sm font-semibold text-gold-300">{b.title}</p>
                   <p className="text-xs text-white/70 leading-relaxed mt-0.5">{b.desc}</p>
                 </div>
               </div>
@@ -179,13 +179,13 @@ export default function SolicitarModal({
           {/* Badges de confianza */}
           <div className="mt-8 pt-6 border-t border-white/20 space-y-2">
             <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-[#f4c94a] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 text-gold-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <p className="text-xs text-white/70">Gestoría inmobiliaria profesional</p>
             </div>
             <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-[#f4c94a] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="w-4 h-4 text-gold-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <p className="text-xs text-white/70">+500 contratos tramitados</p>
@@ -196,7 +196,7 @@ export default function SolicitarModal({
         {/* ── Columna derecha: formulario ──────────────────────────────── */}
         <div className="flex-1 flex flex-col overflow-y-auto">
           {/* Header */}
-          <div className="bg-gradient-to-r from-[#7a5c1e] to-[#c9962a] px-6 py-5 text-white flex items-start justify-between gap-3 md:rounded-tr-2xl">
+          <div className="bg-gradient-to-r from-gold-700 to-gold-500 px-6 py-5 text-white flex items-start justify-between gap-3 md:rounded-tr-2xl">
             <div>
               <p className="text-xs font-medium uppercase tracking-wider opacity-80 mb-0.5">Completar pedido</p>
               <h3 className="text-base font-bold leading-tight">{service.name}</h3>
@@ -248,7 +248,7 @@ export default function SolicitarModal({
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="w-full py-3 bg-[#c9962a] text-white rounded-xl font-bold text-sm hover:bg-[#a87a20] transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
+                  className="w-full py-3 bg-gold-500 text-white rounded-xl font-bold text-sm hover:bg-gold-600 transition-colors disabled:opacity-60 flex items-center justify-center gap-2"
                 >
                   {status === 'sending' ? (
                     <>

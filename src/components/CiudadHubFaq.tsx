@@ -25,7 +25,7 @@ export default function CiudadHubFaq({ ciudad, items, subtitulo, titulo }: Ciuda
             >
               <summary className="text-lg font-bold text-gray-900 cursor-pointer list-none flex justify-between items-start gap-4">
                 {item.q}
-                <span className="text-[#c9a84c] flex-shrink-0 group-open:rotate-45 transition-transform text-xl leading-none">
+                <span className="text-gold-500 flex-shrink-0 group-open:rotate-45 transition-transform text-xl leading-none">
                   +
                 </span>
               </summary>

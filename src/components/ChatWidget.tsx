@@ -135,7 +135,7 @@ export default function ChatWidget() {
       {/* Botón flotante */}
       <button
         onClick={() => setOpen((v) => !v)}
-        className={`fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-[#c9962a] text-white shadow-lg hover:bg-[#a87a20] transition-all active:scale-95 ${
+        className={`fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-full bg-gold-500 text-white shadow-lg hover:bg-gold-600 transition-all active:scale-95 ${
           hideOnMobileSticky ? 'hidden md:flex' : ''
         }`}
         aria-label="Abrir asistente de búsqueda"
@@ -159,7 +159,7 @@ export default function ChatWidget() {
         <div className="fixed bottom-20 right-6 z-50 w-[min(360px,calc(100vw-24px))] rounded-2xl shadow-2xl border border-gray-200 bg-white flex flex-col overflow-hidden"
           style={{ maxHeight: 'min(520px, calc(100vh - 120px))' }}>
           {/* Cabecera */}
-          <div className="bg-[#c9962a] px-4 py-3 flex items-center gap-2">
+          <div className="bg-gold-500 px-4 py-3 flex items-center gap-2">
             <span className="text-xl">🏠</span>
             <div className="flex-1">
               <p className="text-white font-semibold text-sm">Asistente de búsqueda</p>
@@ -178,7 +178,7 @@ export default function ChatWidget() {
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[85%] px-3 py-2 rounded-2xl text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'bg-[#c9962a] text-white rounded-br-sm'
+                    ? 'bg-gold-500 text-white rounded-br-sm'
                     : 'bg-white border border-gray-100 text-gray-800 rounded-bl-sm shadow-sm'
                 }`}>
                   {msg.content}
@@ -189,9 +189,9 @@ export default function ChatWidget() {
               <div className="flex justify-start">
                 <div className="bg-white border border-gray-100 rounded-2xl rounded-bl-sm px-4 py-2 shadow-sm">
                   <span className="flex gap-1">
-                    <span className="w-1.5 h-1.5 bg-[#c9962a] rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-1.5 h-1.5 bg-[#c9962a] rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-1.5 h-1.5 bg-[#c9962a] rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                    <span className="w-1.5 h-1.5 bg-gold-500 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1.5 h-1.5 bg-gold-500 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1.5 h-1.5 bg-gold-500 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </span>
                 </div>
               </div>
@@ -206,7 +206,7 @@ export default function ChatWidget() {
                 <button
                   key={s}
                   onClick={() => sendMessage(s)}
-                  className="text-xs px-2.5 py-1 rounded-full bg-white border border-[#c9962a]/40 text-[#a87a20] hover:bg-[#fef9e8] transition-colors"
+                  className="text-xs px-2.5 py-1 rounded-full bg-white border border-gold-500/40 text-gold-700 hover:bg-cream-100 transition-colors"
                 >
                   {s}
                 </button>
@@ -230,7 +230,7 @@ export default function ChatWidget() {
             <button
               type="submit"
               disabled={!input.trim() || loading}
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#c9962a] text-white hover:bg-[#a87a20] disabled:opacity-40 transition-colors shrink-0"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-gold-500 text-white hover:bg-gold-600 disabled:opacity-40 transition-colors shrink-0"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M12 5l7 7-7 7" />

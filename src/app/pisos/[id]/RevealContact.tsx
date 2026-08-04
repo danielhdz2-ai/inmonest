@@ -59,9 +59,9 @@ export default function RevealContact({ listingId, isParticular, isLoggedIn }: P
         {contact.phone ? (
           <a
             href={`tel:${contact.phone}`}
-            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-700 transition-colors"
+            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gold-600 text-white text-sm font-semibold hover:bg-gold-700 transition-colors"
           >
-            📞 {contact.phone}
+            {contact.phone}
           </a>
         ) : (
           <p className="text-xs text-center text-gray-400 italic">Sin teléfono disponible</p>
@@ -100,7 +100,7 @@ export default function RevealContact({ listingId, isParticular, isLoggedIn }: P
     <button
       onClick={handleReveal}
       disabled={state === 'loading'}
-      className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-emerald-300 bg-emerald-50 text-emerald-700 text-sm font-semibold hover:bg-emerald-100 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+      className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-gold-300 bg-cream-100 text-gold-700 text-sm font-semibold hover:bg-cream-100 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
     >
       {state === 'loading' ? (
         <>

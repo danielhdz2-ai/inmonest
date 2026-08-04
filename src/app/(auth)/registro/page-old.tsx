@@ -37,7 +37,7 @@ export default function RegistroPage() {
       <div className="w-full max-w-md text-center">
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
           <div className="w-14 h-14 bg-[#fef0c0] rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-7 h-7 text-[#c9962a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-7 h-7 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
           </div>
@@ -101,7 +101,7 @@ export default function RegistroPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-[#c9962a] text-white rounded-lg text-sm font-semibold hover:bg-[#a87a20] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full py-2.5 bg-gold-500 text-white rounded-lg text-sm font-semibold hover:bg-gold-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? 'Creando cuenta...' : 'Crear cuenta gratis'}
           </button>
@@ -117,7 +117,7 @@ export default function RegistroPage() {
         <div className="mt-5 pt-4 border-t border-gray-100 text-center">
           <p className="text-xs text-gray-400">
             ¿Ya tienes cuenta?{' '}
-            <Link href="/login" className="text-[#c9962a] font-medium hover:underline">
+            <Link href="/login" className="text-gold-500 font-medium hover:underline">
               Inicia sesión
             </Link>
           </p>

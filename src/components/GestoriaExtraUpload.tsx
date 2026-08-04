@@ -50,7 +50,7 @@ export default function GestoriaExtraUpload({
               key={item.key}
               className={`rounded-2xl border px-3 sm:px-4 py-3.5 space-y-3 ${
                 state === 'done'
-                  ? 'border-emerald-200 bg-emerald-50/50'
+                  ? 'border-gold-200 bg-cream-100/50'
                   : state === 'rejected'
                     ? 'border-red-200 bg-red-50/50'
                     : state === 'reviewing'
@@ -73,7 +73,7 @@ export default function GestoriaExtraUpload({
                   )}
                 </div>
                 {state === 'done' && (
-                  <span className="text-[10px] font-bold text-emerald-700 uppercase flex-shrink-0">OK</span>
+                  <span className="text-[10px] font-bold text-gold-700 uppercase flex-shrink-0">OK</span>
                 )}
               </div>
 

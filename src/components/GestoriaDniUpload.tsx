@@ -21,7 +21,7 @@ function MiniProgress({ percent }: { percent: number }) {
       </div>
       <div className="h-1.5 rounded-full bg-gray-200 overflow-hidden">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-[#c9962a] to-[#f4d98a] transition-all duration-200"
+          className="h-full rounded-full bg-gradient-to-r from-gold-500 to-[#f4d98a] transition-all duration-200"
           style={{ width: `${percent}%` }}
         />
       </div>
@@ -51,10 +51,10 @@ export default function GestoriaDniUpload({ front, back, uploadingKey, uploadPro
   }
 
   const primaryClass =
-    'inline-flex items-center justify-center gap-2 rounded-xl bg-[#0d1a0f] active:bg-[#1a2e1c] text-white text-sm font-bold min-h-[48px] px-4 transition-colors disabled:opacity-60 touch-manipulation'
+    'inline-flex items-center justify-center gap-2 rounded-xl bg-forest-900 active:bg-[#1a2e1c] text-white text-sm font-bold min-h-[48px] px-4 transition-colors disabled:opacity-60 touch-manipulation'
   const secondaryClass =
     'inline-flex items-center justify-center gap-2 rounded-xl border-2 border-[#0d1a0f] bg-white active:bg-gray-50 text-[#0d1a0f] text-sm font-bold min-h-[48px] px-4 transition-colors disabled:opacity-60 touch-manipulation'
-  const replaceClass = 'text-sm text-[#c9962a] font-semibold min-h-[44px] px-2 touch-manipulation'
+  const replaceClass = 'text-sm text-gold-500 font-semibold min-h-[44px] px-2 touch-manipulation'
 
   return (
     <div className="w-full space-y-3">
@@ -115,7 +115,7 @@ export default function GestoriaDniUpload({ front, back, uploadingKey, uploadPro
       {needsBack && (
         <div
           className={`rounded-xl border-2 p-3.5 flex items-center gap-3 ${
-            back ? 'border-emerald-200 bg-emerald-50/50' : 'border-gray-200 bg-gray-50/60'
+            back ? 'border-gold-200 bg-cream-100/50' : 'border-gray-200 bg-gray-50/60'
           }`}
         >
           <input
@@ -147,7 +147,7 @@ export default function GestoriaDniUpload({ front, back, uploadingKey, uploadPro
             <button
               type="button"
               onClick={() => backCameraRef.current?.click()}
-              className="flex-shrink-0 px-3 py-2 text-xs font-semibold text-[#c9962a] border border-[#c9962a]/40 rounded-lg bg-white hover:bg-amber-50 transition-colors min-h-[40px]"
+              className="flex-shrink-0 px-3 py-2 text-xs font-semibold text-gold-500 border border-gold-500/40 rounded-lg bg-white hover:bg-amber-50 transition-colors min-h-[40px]"
             >
               {back ? 'Cambiar' : 'Añadir'}
             </button>

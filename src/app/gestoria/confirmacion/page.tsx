@@ -74,9 +74,9 @@ function ConfirmacionContent() {
 
   if (status === 'loading') {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f]">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-forest-800 to-forest-900">
         <div className="text-center">
-          <div className="inline-block w-16 h-16 border-4 border-[#f4c94a] border-t-transparent rounded-full animate-spin mb-4" />
+          <div className="inline-block w-16 h-16 border-4 border-gold-300 border-t-transparent rounded-full animate-spin mb-4" />
           <p className="text-white text-lg">Verificando tu pago...</p>
         </div>
       </div>
@@ -96,7 +96,7 @@ function ConfirmacionContent() {
           <p className="text-gray-600 mb-6">{error}</p>
           <Link 
             href="/gestoria" 
-            className="inline-block bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#a87a20] transition-colors"
+            className="inline-block bg-gold-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gold-600 transition-colors"
           >
             Volver a gestoría
           </Link>
@@ -106,10 +106,10 @@ function ConfirmacionContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-forest-800 to-forest-900 flex items-center justify-center px-4 py-12">
       <div className="max-w-2xl w-full bg-white rounded-2xl shadow-2xl overflow-hidden">
         {/* Header de éxito */}
-        <div className="bg-gradient-to-r from-green-500 to-emerald-600 px-8 py-10 text-center">
+        <div className="bg-gradient-to-r from-cream-500 to-gold-600 px-8 py-10 text-center">
           <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
             <svg className="w-10 h-10 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -137,21 +137,21 @@ function ConfirmacionContent() {
             <h3 className="text-lg font-bold text-gray-900">📋 Próximos pasos</h3>
             <div className="space-y-3">
               <div className="flex gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-[#c9962a] text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                <div className="flex-shrink-0 w-8 h-8 bg-gold-500 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
                 <div>
                   <p className="font-semibold text-gray-900">Revisa tu email</p>
                   <p className="text-sm text-gray-600">Recibirás un email con las instrucciones para subir la documentación necesaria.</p>
                 </div>
               </div>
               <div className="flex gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-[#c9962a] text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                <div className="flex-shrink-0 w-8 h-8 bg-gold-500 text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
                 <div>
                   <p className="font-semibold text-gray-900">Sube tu documentación</p>
                   <p className="text-sm text-gray-600">Adjunta los documentos que necesitamos para redactar tu contrato.</p>
                 </div>
               </div>
               <div className="flex gap-3">
-                <div className="flex-shrink-0 w-8 h-8 bg-[#c9962a] text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                <div className="flex-shrink-0 w-8 h-8 bg-gold-500 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
                 <div>
                   <p className="font-semibold text-gray-900">Recibe tu contrato</p>
                   <p className="text-sm text-gray-600">En menos de 48h recibirás tu contrato redactado por nuestros abogados.</p>
@@ -170,7 +170,7 @@ function ConfirmacionContent() {
             </Link>
             <Link 
               href="/gestoria" 
-              className="flex-1 text-center bg-[#c9962a] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#a87a20] transition-colors"
+              className="flex-1 text-center bg-gold-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gold-600 transition-colors"
             >
               Ver más servicios
             </Link>
@@ -181,7 +181,7 @@ function ConfirmacionContent() {
             <p className="text-sm text-gray-600 mb-2">¿Necesitas ayuda?</p>
             <a 
               href="mailto:soporte@inmonest.com" 
-              className="text-[#c9962a] font-semibold hover:underline"
+              className="text-gold-500 font-semibold hover:underline"
             >
               soporte@inmonest.com
             </a>
@@ -196,9 +196,9 @@ function ConfirmacionContent() {
 export default function ConfirmacionPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f]">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-forest-800 to-forest-900">
         <div className="text-center">
-          <div className="inline-block w-16 h-16 border-4 border-[#f4c94a] border-t-transparent rounded-full animate-spin mb-4" />
+          <div className="inline-block w-16 h-16 border-4 border-gold-300 border-t-transparent rounded-full animate-spin mb-4" />
           <p className="text-white text-lg">Cargando...</p>
         </div>
       </div>

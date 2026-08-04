@@ -84,12 +84,12 @@ export default function LoginForm() {
             Inicia sesión
           </h1>
           <p className="text-sm text-gray-500">
-            Bienvenido a <span className="font-bold text-[#c9962a]">Inmonest</span>
+            Bienvenido a <span className="font-bold text-gold-500">Inmonest</span>
           </p>
         </div>
 
         {signedOut && (
-          <p className="text-sm text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 mb-4">
+          <p className="text-sm text-gold-700 bg-cream-100 border border-gold-200 rounded-lg px-3 py-2 mb-4">
             Sesión cerrada correctamente. Puedes iniciar sesión con otra cuenta.
           </p>
         )}
@@ -100,7 +100,7 @@ export default function LoginForm() {
             { icon: '🚀', text: 'Visibilidad Turbo' },
             { icon: '🔓', text: 'Sin intermediarios' },
           ].map((b) => (
-            <span key={b.text} className="flex items-center gap-1 bg-[#fef9e8] border border-[#f0dfa0] text-[#7a5c10] text-xs font-semibold px-2.5 py-1 rounded-full">
+            <span key={b.text} className="flex items-center gap-1 bg-cream-100 border border-[#f0dfa0] text-[#7a5c10] text-xs font-semibold px-2.5 py-1 rounded-full">
               {b.icon} {b.text}
             </span>
           ))}
@@ -149,7 +149,7 @@ export default function LoginForm() {
               className="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#c9962a] focus:border-transparent"
             />
             <div className="mt-1 text-right">
-              <Link href="/recuperar-contrasena" className="text-xs text-[#c9962a] hover:underline">
+              <Link href="/recuperar-contrasena" className="text-xs text-gold-500 hover:underline">
                 ¿Olvidaste tu contraseña?
               </Link>
             </div>
@@ -162,7 +162,7 @@ export default function LoginForm() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-gold-500 text-white rounded-xl text-sm font-bold hover:bg-gold-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
           </button>
@@ -178,7 +178,7 @@ export default function LoginForm() {
         <div className="mt-4 pt-4 border-t border-gray-100 text-center">
           <p className="text-xs text-gray-500">
             ¿Primera vez?{' '}
-            <Link href={registroHref} className="text-[#c9962a] font-semibold hover:underline">
+            <Link href={registroHref} className="text-gold-500 font-semibold hover:underline">
               Crea tu cuenta gratis
             </Link>
           </p>

@@ -50,7 +50,7 @@ type Props = {
 function CheckIcon({ done }: { done: boolean }) {
   if (done) {
     return (
-      <span className="flex h-7 w-7 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-emerald-500 text-white text-xs font-bold shadow-sm flex-shrink-0">
+      <span className="flex h-7 w-7 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-cream-1000 text-white text-xs font-bold shadow-sm flex-shrink-0">
         ✓
       </span>
     )
@@ -121,14 +121,14 @@ export default function GestoriaPaidPanel({
   }
 
   return (
-    <div className="overflow-hidden rounded-2xl sm:rounded-3xl border border-[#e8d48a]/40 bg-white shadow-xl shadow-[#c9962a]/5 -mx-1 sm:mx-0">
+    <div className="overflow-hidden rounded-2xl sm:rounded-3xl border border-gold-300/40 bg-white shadow-xl shadow-[#c9962a]/5 -mx-1 sm:mx-0">
       {/* Hero */}
-      <div className="relative bg-gradient-to-br from-[#0d1a0f] via-[#1a2f1c] to-[#0d1a0f] px-4 sm:px-8 py-5 sm:py-7 text-white">
+      <div className="relative bg-gradient-to-br from-[#0d1a0f] via-[#1a2f1c] to-forest-900 px-4 sm:px-8 py-5 sm:py-7 text-white">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(201,150,42,0.18)_0%,_transparent_55%)]" />
         <div className="relative space-y-4">
           <div className="flex items-start justify-between gap-3">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[#c9962a]/40 bg-[#c9962a]/10 px-2.5 py-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#f4d98a]">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-gold-500/40 bg-gold-500/10 px-2.5 py-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#f4d98a]">
+              <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
               Activo
             </span>
             {contrato.amount_eur != null && (
@@ -156,7 +156,7 @@ export default function GestoriaPaidPanel({
             </div>
             <div className="mt-1.5 h-2 rounded-full bg-white/10 overflow-hidden">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-[#c9962a] to-[#f4d98a] transition-all duration-700"
+                className="h-full rounded-full bg-gradient-to-r from-gold-500 to-[#f4d98a] transition-all duration-700"
                 style={{ width: `${progress.progressPercent}%` }}
               />
             </div>
@@ -167,7 +167,7 @@ export default function GestoriaPaidPanel({
               type="button"
               onClick={onDownload}
               disabled={downloading}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-[#c9962a] min-h-[48px] px-5 text-sm font-bold text-white active:bg-[#b8841e] transition-colors disabled:opacity-60 touch-manipulation"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gold-500 min-h-[48px] px-5 text-sm font-bold text-white active:bg-[#b8841e] transition-colors disabled:opacity-60 touch-manipulation"
             >
               {downloading ? (
                 <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
@@ -194,14 +194,14 @@ export default function GestoriaPaidPanel({
                 key={step.n}
                 className={`min-w-[118px] sm:min-w-0 snap-center flex-shrink-0 rounded-xl px-3 py-2.5 text-center transition-all ${
                   active
-                    ? 'bg-white border-2 border-[#c9962a] shadow-md shadow-amber-100'
+                    ? 'bg-white border-2 border-gold-500 shadow-md shadow-amber-100'
                     : done
-                      ? 'bg-emerald-50 border border-emerald-200'
+                      ? 'bg-cream-100 border border-gold-200'
                       : 'bg-white border border-gray-100 opacity-60'
                 }`}
               >
                 <div className="text-base mb-0.5">{done ? '✓' : step.icon}</div>
-                <p className={`text-[10px] sm:text-[11px] font-bold leading-tight ${active ? 'text-[#7a5c1e]' : done ? 'text-emerald-800' : 'text-gray-500'}`}>
+                <p className={`text-[10px] sm:text-[11px] font-bold leading-tight ${active ? 'text-gold-700' : done ? 'text-gold-800' : 'text-gray-500'}`}>
                   {step.label}
                 </p>
                 {stepDate && (
@@ -225,15 +225,15 @@ export default function GestoriaPaidPanel({
             <Image src={gestor.foto} alt={gestor.nombre} fill className="object-cover" sizes="56px" />
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-[#c9962a]">Tu gestor</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gold-500">Tu gestor</p>
             <p className="text-base font-bold text-gray-900">{gestor.nombre}</p>
             <p className="text-xs text-gray-500 mt-0.5">{gestor.rol}</p>
             <div className="flex flex-wrap gap-2 mt-3">
               <a
                 href={`tel:${gestor.telefonoTel}`}
-                className="inline-flex items-center justify-center rounded-lg border border-[#c9962a] text-[#7a5c1e] text-xs font-bold min-h-[40px] px-3 touch-manipulation"
+                className="inline-flex items-center justify-center rounded-lg border border-gold-500 text-gold-700 text-xs font-bold min-h-[40px] px-3 touch-manipulation"
               >
-                📞 {gestor.telefono}
+                {gestor.telefono}
               </a>
               <a
                 href={`https://wa.me/${gestor.whatsapp}?text=${encodeURIComponent('Hola, necesito ayuda con mi servicio de gestoría')}`}
@@ -256,18 +256,18 @@ export default function GestoriaPaidPanel({
           </div>
           <p className="text-xs text-gray-500 mb-4 leading-relaxed">
             Sube aquí lo que tengas a mano, o envíalo directamente a{' '}
-            <a href="mailto:info@inmonest.com" className="text-[#c9962a] font-medium underline">info@inmonest.com</a>
+            <a href="mailto:info@inmonest.com" className="text-gold-500 font-medium underline">info@inmonest.com</a>
             {' '}para que tu gestor empiece a trabajar.
           </p>
 
           <ul className="space-y-3">
-            <li className="flex items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50/80 px-3 sm:px-4 py-3.5">
+            <li className="flex items-center gap-3 rounded-2xl border border-gold-200 bg-cream-100/80 px-3 sm:px-4 py-3.5">
               <CheckIcon done />
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-semibold text-emerald-900">Pago recibido</p>
-                <p className="text-xs text-emerald-700/80">Confirmado</p>
+                <p className="text-sm font-semibold text-forest-900">Pago recibido</p>
+                <p className="text-xs text-gold-700/80">Confirmado</p>
               </div>
-              <span className="text-[10px] font-bold text-emerald-700 uppercase">OK</span>
+              <span className="text-[10px] font-bold text-gold-700 uppercase">OK</span>
             </li>
 
             {docChecklist.map((item) => (
@@ -275,7 +275,7 @@ export default function GestoriaPaidPanel({
                 key={item.key}
                 className={`rounded-2xl border px-3 sm:px-4 py-3.5 space-y-3 ${
                   item.state === 'done'
-                    ? 'border-emerald-200 bg-emerald-50/50'
+                    ? 'border-gold-200 bg-cream-100/50'
                     : item.state === 'rejected'
                       ? 'border-red-200 bg-red-50/50'
                       : item.state === 'reviewing'
@@ -298,7 +298,7 @@ export default function GestoriaPaidPanel({
                     )}
                   </div>
                   {item.state === 'done' && (
-                    <span className="text-[10px] font-bold text-emerald-700 uppercase flex-shrink-0 pt-1">OK</span>
+                    <span className="text-[10px] font-bold text-gold-700 uppercase flex-shrink-0 pt-1">OK</span>
                   )}
                 </div>
 
@@ -349,16 +349,16 @@ export default function GestoriaPaidPanel({
         <div className="rounded-2xl border border-gray-100 bg-gradient-to-r from-[#fdf8ee] to-white p-4 space-y-3">
           <p className="text-sm font-bold text-gray-900">¿Prefieres enviar por email?</p>
           <p className="text-xs text-gray-500 leading-relaxed">
-            <a href="mailto:info@inmonest.com" className="text-[#c9962a] font-medium underline">
+            <a href="mailto:info@inmonest.com" className="text-gold-500 font-medium underline">
               info@inmonest.com
             </a>
           </p>
           <div className="grid grid-cols-2 gap-2 sm:flex sm:gap-2">
             <a
               href="tel:+34745022862"
-              className="inline-flex items-center justify-center rounded-xl border-2 border-[#c9962a] text-[#7a5c1e] text-sm font-bold min-h-[48px] px-4 active:bg-[#fef9e8] touch-manipulation"
+              className="inline-flex items-center justify-center rounded-xl border-2 border-gold-500 text-gold-700 text-sm font-bold min-h-[48px] px-4 active:bg-cream-100 touch-manipulation"
             >
-              📞 Llamar
+              Llamar
             </a>
             <a
               href="https://wa.me/34745022862?text=Hola,%20necesito%20ayuda%20con%20mi%20documentación%20de%20gestoría"

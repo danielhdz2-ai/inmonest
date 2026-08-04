@@ -254,10 +254,10 @@ export default async function AlquilerParticularesPage({
       <Navbar />
 
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-[#0d1a0f]">
+      <section className="relative overflow-hidden bg-forest-900">
         {/* Imagen de cabecera */}
         <Image
-          src="/imagencabezera.jpg"
+          src="/promo.png"
           alt={`Piso de alquiler de particulares en ${nombre}`}
           fill
           priority
@@ -265,7 +265,7 @@ export default async function AlquilerParticularesPage({
           sizes="100vw"
         />
         {/* Overlay oscuro para legibilidad del texto */}
-        <div className="absolute inset-0 bg-[#0d1a0f]/75" />
+        <div className="absolute inset-0 bg-forest-900/75" />
         {/* Gradiente dorado sutil en la parte inferior */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0d1a0f] to-transparent" />
 
@@ -282,16 +282,16 @@ export default async function AlquilerParticularesPage({
 
           <div className="max-w-2xl">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-[#c9962a]/15 border border-[#c9962a]/30 rounded-full px-3.5 py-1 mb-5">
+            <div className="inline-flex items-center gap-2 bg-gold-500/15 border border-gold-500/30 rounded-full px-3.5 py-1 mb-5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#f4c94a] animate-pulse" />
-              <span className="text-xs font-semibold text-[#f4c94a] tracking-wide uppercase">
+              <span className="text-xs font-semibold text-gold-300 tracking-wide uppercase">
                 Solo particulares verificados
               </span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight tracking-tight">
               Pisos de alquiler<br />
-              <span className="text-[#f4c94a]">de particulares</span> en {nombre}
+              <span className="text-gold-300">de particulares</span> en {nombre}
             </h1>
 
             <p className="mt-4 text-base sm:text-lg text-white/65 leading-relaxed max-w-xl">
@@ -321,7 +321,7 @@ export default async function AlquilerParticularesPage({
           <div className="mt-10 flex flex-wrap gap-2">
             {[
               {
-                label: '🏠 Todos los pisos',
+                label: 'Todos los pisos',
                 href: `/pisos?operacion=rent&ciudad=${ciudad}&solo_particulares=true`,
                 active: true,
               },
@@ -346,7 +346,7 @@ export default async function AlquilerParticularesPage({
                 href={href}
                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
                   active
-                    ? 'bg-[#c9962a] text-white shadow-lg shadow-[#c9962a]/30 hover:bg-[#f4c94a] hover:text-[#0d1a0f]'
+                    ? 'bg-gold-500 text-white shadow-lg shadow-[#c9962a]/30 hover:bg-[#f4c94a] hover:text-[#0d1a0f]'
                     : 'bg-white/8 border border-white/15 text-white/75 hover:bg-white/15 hover:text-white'
                 }`}
               >
@@ -373,7 +373,7 @@ export default async function AlquilerParticularesPage({
             </h2>
             <Link
               href={`/pisos?operacion=rent&ciudad=${ciudad}&solo_particulares=true`}
-              className="text-sm font-medium text-[#c9962a] hover:text-[#a87a20] transition-colors"
+              className="text-sm font-medium text-gold-500 hover:text-gold-700 transition-colors"
             >
               Ver todos →
             </Link>
@@ -391,7 +391,7 @@ export default async function AlquilerParticularesPage({
                 <div className="mt-10 text-center">
                   <Link
                     href={`/pisos?operacion=rent&ciudad=${ciudad}&solo_particulares=true`}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#0d1a0f] text-white font-semibold text-sm hover:bg-[#1a3320] transition-colors shadow-lg"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-forest-900 text-white font-semibold text-sm hover:bg-[#1a3320] transition-colors shadow-lg"
                   >
                     Ver todos los anuncios en {nombre}
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -414,7 +414,7 @@ export default async function AlquilerParticularesPage({
               </p>
               <Link
                 href={`/pisos?operacion=rent&ciudad=${ciudad}`}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#c9962a] text-white font-semibold text-sm hover:bg-[#a87a20] transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gold-500 text-white font-semibold text-sm hover:bg-gold-600 transition-colors"
               >
                 Ver anuncios en {nombre}
               </Link>
@@ -434,13 +434,13 @@ export default async function AlquilerParticularesPage({
               <Link
                 key={barrio}
                 href={`/pisos?operacion=rent&ciudad=${ciudad}&solo_particulares=true`}
-                className="group flex items-center gap-2 bg-gray-50 hover:bg-[#fef9e8] border border-gray-200 hover:border-[#f4c94a]/50 rounded-xl px-4 py-2.5 transition-all"
+                className="group flex items-center gap-2 bg-gray-50 hover:bg-cream-100 border border-gray-200 hover:border-gold-300/50 rounded-xl px-4 py-2.5 transition-all"
               >
-                <span className="text-sm font-medium text-gray-700 group-hover:text-[#a87a20]">
+                <span className="text-sm font-medium text-gray-700 group-hover:text-gold-700">
                   {barrio}
                 </span>
                 <svg
-                  className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#c9962a] transition-colors"
+                  className="w-3.5 h-3.5 text-gray-400 group-hover:text-gold-500 transition-colors"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -474,7 +474,7 @@ export default async function AlquilerParticularesPage({
                 `Contratos legales: Inmonest ofrece contratos LAU homologados desde 90 €, sin necesidad de agencia.`,
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5 shrink-0">✓</span>
+                  <span className="text-gold-500 mt-0.5 shrink-0">✓</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -491,7 +491,7 @@ export default async function AlquilerParticularesPage({
                 'Formaliza el contrato con nuestro servicio de contratos de alquiler por solo 90 €.',
               ].map((step, i) => (
                 <li key={i} className="flex items-start gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#c9962a] text-white text-xs font-bold flex items-center justify-center mt-0.5">
+                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gold-500 text-white text-xs font-bold flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
                   <span>{step}</span>
@@ -535,10 +535,10 @@ export default async function AlquilerParticularesPage({
       </section>
 
       {/* ── LEAD CAPTURE ─────────────────────────────────────────────────────── */}
-      <section className="bg-[#0d1a0f] py-16">
+      <section className="bg-forest-900 py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <span className="inline-block text-xs font-bold uppercase tracking-widest text-[#c9962a] mb-3">
+            <span className="inline-block text-xs font-bold uppercase tracking-widest text-gold-500 mb-3">
               ¿Ya encontraste tu piso?
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-3">
@@ -574,7 +574,7 @@ export default async function AlquilerParticularesPage({
               <Link
                 key={href}
                 href={href}
-                className="block bg-white rounded-xl border border-gray-200 hover:border-[#c9962a]/40 hover:shadow-md px-4 py-3 text-sm font-medium text-gray-700 hover:text-[#a87a20] transition-all"
+                className="block bg-white rounded-xl border border-gray-200 hover:border-gold-500/40 hover:shadow-md px-4 py-3 text-sm font-medium text-gray-700 hover:text-gold-700 transition-all"
               >
                 {label} →
               </Link>

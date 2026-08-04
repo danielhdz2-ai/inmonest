@@ -12,7 +12,7 @@ export default function BarriosCiudadContrato({ ciudad, ciudadSlug, servicio }: 
 
   return (
     <section>
-      <p className="text-xs font-bold uppercase tracking-widest text-[#c9a84c] mb-2">Zonas de {ciudad}</p>
+      <p className="text-xs font-bold uppercase tracking-widest text-gold-500 mb-2">Zonas de {ciudad}</p>
       <h2 className="text-2xl font-bold text-gray-900 mb-3">
         Barrios y áreas donde redactamos contratos de {verbo}
       </h2>
@@ -23,7 +23,7 @@ export default function BarriosCiudadContrato({ ciudad, ciudadSlug, servicio }: 
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {barrios.map((b) => (
-          <div key={b.nombre} className="rounded-xl border border-gray-200 bg-white p-5 hover:border-[#c9a84c]/60 transition-colors">
+          <div key={b.nombre} className="rounded-xl border border-gray-200 bg-white p-5 hover:border-gold-500/60 transition-colors">
             <h3 className="font-bold text-gray-900 mb-1">{b.nombre}</h3>
             <p className="text-sm text-gray-600 leading-relaxed">{b.nota}</p>
           </div>

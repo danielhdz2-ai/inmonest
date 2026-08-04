@@ -15,7 +15,7 @@ export default function ComprarPisoDueDiligenceBanner({ city }: ComprarPisoDueDi
   const ciudadLabel = city?.trim() || 'tu ciudad'
 
   return (
-    <div className="bg-gradient-to-r from-slate-900 to-[#1a2f1c] rounded-2xl p-6 sm:p-8 text-white shadow-lg border border-[#c9962a]/20">
+    <div className="bg-gradient-to-r from-slate-900 to-[#1a2f1c] rounded-2xl p-6 sm:p-8 text-white shadow-lg border border-gold-500/20">
       <div className="flex items-start gap-4">
         <span className="text-4xl" aria-hidden>
           🔍
@@ -25,12 +25,12 @@ export default function ComprarPisoDueDiligenceBanner({ city }: ComprarPisoDueDi
           <p className="text-white/80 text-sm sm:text-base mb-4">
             Revisamos toda la documentación antes de escriturar: nota simple, cargas, deudas de
             comunidad y certificados obligatorios en {ciudadLabel}.{' '}
-            <strong className="text-[#f4c94a]">Desde 350€.</strong>
+            <strong className="text-gold-300">Desde 350€.</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href={href}
-              className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#a87a20] transition-colors text-sm shadow-lg"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors text-sm shadow-lg"
             >
               Revisar documentación — 350€ →
             </Link>

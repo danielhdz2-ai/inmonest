@@ -58,7 +58,7 @@ function DoneRedirect({ panelHref, email }: { panelHref: string; email: string }
         </p>
         <a
           href={panelHref}
-          className="inline-block w-full px-6 py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors mb-3"
+          className="inline-block w-full px-6 py-3 bg-gold-500 text-white rounded-xl text-sm font-bold hover:bg-gold-600 transition-colors mb-3"
         >
           Ir ahora a mi panel
         </a>
@@ -287,7 +287,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
     return (
       <main className="min-h-screen bg-[#faf8f4] flex items-center justify-center">
         <div className="text-center">
-          <svg className="animate-spin w-10 h-10 text-[#c9962a] mx-auto mb-4" fill="none" viewBox="0 0 24 24">
+          <svg className="animate-spin w-10 h-10 text-gold-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z" />
           </svg>
@@ -304,9 +304,9 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
           <h2 className="text-xl font-bold text-gray-900 mb-2">Pago no completado</h2>
           <p className="text-sm text-gray-500 mb-6">
             No hemos podido verificar tu pago. Escríbenos a{' '}
-            <a href="mailto:info@inmonest.com" className="text-[#c9962a] font-medium">info@inmonest.com</a>.
+            <a href="mailto:info@inmonest.com" className="text-gold-500 font-medium">info@inmonest.com</a>.
           </p>
-          <a href="/gestoria" className="inline-block px-6 py-2.5 bg-[#c9962a] text-white rounded-full text-sm font-semibold">
+          <a href="/gestoria" className="inline-block px-6 py-2.5 bg-gold-500 text-white rounded-full text-sm font-semibold">
             Volver a gestoría
           </a>
         </div>
@@ -358,12 +358,12 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
             {isDone ? (
               <span className="text-green-600 font-bold">✓</span>
             ) : isUploading ? (
-              <svg className="animate-spin w-5 h-5 text-[#c9962a]" fill="none" viewBox="0 0 24 24">
+              <svg className="animate-spin w-5 h-5 text-gold-500" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z" />
               </svg>
             ) : (
-              <span className="text-[#c9962a] text-lg">🪪</span>
+              <span className="text-gold-500 text-lg">🪪</span>
             )}
           </div>
 
@@ -386,7 +386,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
             <button
               type="button"
               onClick={() => dniFrontRef.current?.click()}
-              className="flex-shrink-0 px-3 py-2 text-xs font-semibold text-[#c9962a] border border-[#c9962a]/40 rounded-lg hover:bg-amber-50 transition-colors min-h-[40px]"
+              className="flex-shrink-0 px-3 py-2 text-xs font-semibold text-gold-500 border border-gold-500/40 rounded-lg hover:bg-amber-50 transition-colors min-h-[40px]"
             >
               {dniFront.file ? 'Cambiar' : 'Seleccionar'}
             </button>
@@ -397,7 +397,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
           <div className="px-5 pb-5 -mt-1">
             <div className={`rounded-xl border-2 p-4 flex items-center gap-3 ${
               dniBack.file
-                ? dniBack.state === 'error' ? 'border-red-300 bg-red-50/40' : 'border-emerald-300 bg-emerald-50/40'
+                ? dniBack.state === 'error' ? 'border-red-300 bg-red-50/40' : 'border-gold-300 bg-cream-100/40'
                 : 'border-amber-300 bg-amber-50/60'
             }`}>
               <span className="text-lg flex-shrink-0">
@@ -418,7 +418,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
                 <button
                   type="button"
                   onClick={() => dniBackRef.current?.click()}
-                  className="flex-shrink-0 px-3 py-2 text-xs font-semibold text-[#c9962a] border border-[#c9962a]/40 rounded-lg bg-white hover:bg-amber-50 transition-colors min-h-[40px]"
+                  className="flex-shrink-0 px-3 py-2 text-xs font-semibold text-gold-500 border border-gold-500/40 rounded-lg bg-white hover:bg-amber-50 transition-colors min-h-[40px]"
                 >
                   {dniBack.file ? 'Cambiar' : 'Añadir reverso'}
                 </button>
@@ -467,7 +467,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
                 className={`relative bg-white rounded-2xl border-2 transition-all duration-200 ${
                   isDone ? 'border-green-400 bg-green-50/30' :
                   isError ? 'border-red-400 bg-red-50/30' :
-                  state.file ? 'border-[#c9962a]/60' : 'border-dashed border-gray-200 hover:border-[#c9962a]/50'
+                  state.file ? 'border-gold-500/60' : 'border-dashed border-gray-200 hover:border-gold-500/50'
                 }`}
               >
                 <input
@@ -485,12 +485,12 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
                     {isDone ? (
                       <span className="text-green-600 font-bold">✓</span>
                     ) : isUploading ? (
-                      <svg className="animate-spin w-5 h-5 text-[#c9962a]" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin w-5 h-5 text-gold-500" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.4 0 0 5.4 0 12h4z" />
                       </svg>
                     ) : (
-                      <span className="text-[#c9962a] text-lg">📄</span>
+                      <span className="text-gold-500 text-lg">📄</span>
                     )}
                   </div>
 
@@ -510,7 +510,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
                     <button
                       type="button"
                       onClick={() => inputRefs.current[doc.key]?.click()}
-                      className="flex-shrink-0 px-3 py-2 text-xs font-semibold text-[#c9962a] border border-[#c9962a]/40 rounded-lg hover:bg-amber-50 transition-colors min-h-[40px]"
+                      className="flex-shrink-0 px-3 py-2 text-xs font-semibold text-gold-500 border border-gold-500/40 rounded-lg hover:bg-amber-50 transition-colors min-h-[40px]"
                     >
                       {state.file ? 'Cambiar' : 'Seleccionar'}
                     </button>
@@ -531,7 +531,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
           type="button"
           onClick={handleUpload}
           disabled={globalState === 'uploading'}
-          className="w-full py-4 bg-gradient-to-r from-[#7a5c1e] to-[#c9962a] text-white rounded-2xl font-bold text-base hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2 shadow-lg shadow-amber-200 min-h-[56px]"
+          className="w-full py-4 bg-gradient-to-r from-gold-700 to-gold-500 text-white rounded-2xl font-bold text-base hover:opacity-90 transition-opacity disabled:opacity-60 flex items-center justify-center gap-2 shadow-lg shadow-amber-200 min-h-[56px]"
         >
           {globalState === 'uploading' ? (
             <>Subiendo documentos…</>
@@ -548,7 +548,7 @@ export default function CargaDocumentosContent({ sessionId }: { sessionId: strin
         </p>
         <p className="text-center text-xs text-gray-400 mt-2">
           ¿Prefieres enviarlos por email?{' '}
-          <a href="mailto:info@inmonest.com" className="text-[#c9962a] font-semibold">info@inmonest.com</a>
+          <a href="mailto:info@inmonest.com" className="text-gold-500 font-semibold">info@inmonest.com</a>
         </p>
       </div>
     </main>

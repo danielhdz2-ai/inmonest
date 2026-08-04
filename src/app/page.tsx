@@ -12,6 +12,7 @@ import HomeDiscoverGrid from '@/components/home/HomeDiscoverGrid'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Section } from '@/components/ui/Section'
+import { BRAND_IMAGES } from '@/lib/brand-images'
 import { CtaBand } from '@/components/ui/CtaBand'
 
 const CIUDADES_POPULARES = [
@@ -75,8 +76,8 @@ export default function Home() {
       {/* Hero */}
       <section className="relative overflow-hidden min-h-[520px] sm:min-h-[600px] flex items-center">
         <Image
-          src="/imagencabezera.jpg"
-          alt="Encuentra tu hogar ideal"
+          src={BRAND_IMAGES.portal.src}
+          alt={BRAND_IMAGES.portal.alt}
           fill
           className="object-cover"
           priority
@@ -193,8 +194,8 @@ export default function Home() {
           primaryLabel="Publicar anuncio gratis"
           secondaryHref="/vender-casa"
           secondaryLabel="Vender con asesoramiento"
-          imageSrc="/keys.jpg"
-          imageAlt="Llaves de vivienda"
+          imageSrc={BRAND_IMAGES.familia.src}
+          imageAlt={BRAND_IMAGES.familia.alt}
           tone="warm"
         />
       </section>

@@ -152,7 +152,7 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
         <p className="text-sm text-gray-400 mb-6">
           Cuando contactes con un anunciante o recibas un mensaje, aparecerá aquí.
         </p>
-        <Link href="/pisos" className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
+        <Link href="/pisos" className="inline-block bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
           Buscar pisos
         </Link>
       </div>
@@ -200,7 +200,7 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
                         </span>
                       )}
                       {unread > 0 && (
-                        <span className="w-5 h-5 bg-[#c9962a] text-white text-xs font-bold rounded-full flex items-center justify-center">
+                        <span className="w-5 h-5 bg-gold-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                           {unread}
                         </span>
                       )}
@@ -241,7 +241,7 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
                   <p className="text-xs text-gray-400">
                     {selected.listings?.city ?? ''}
                     {' · '}
-                    <Link href={`/pisos/${selected.listing_id}`} className="text-[#c9962a] hover:underline" target="_blank">
+                    <Link href={`/pisos/${selected.listing_id}`} className="text-gold-500 hover:underline" target="_blank">
                       Ver anuncio →
                     </Link>
                   </p>
@@ -252,7 +252,7 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
               <div className="flex-1 overflow-y-auto p-4 space-y-3">
                 {loadingMsgs ? (
                   <div className="flex items-center justify-center h-full">
-                    <span className="animate-spin w-6 h-6 border-2 border-[#c9962a] border-t-transparent rounded-full" />
+                    <span className="animate-spin w-6 h-6 border-2 border-gold-500 border-t-transparent rounded-full" />
                   </div>
                 ) : messages.length === 0 ? (
                 <div className="flex items-center justify-center h-full text-center">
@@ -269,7 +269,7 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
                       <div key={msg.id} className={`flex ${isOwn ? 'justify-end' : 'justify-start'}`}>
                         <div className={`max-w-xs lg:max-w-md px-4 py-2.5 rounded-2xl text-sm ${
                           isOwn
-                            ? 'bg-[#c9962a] text-white rounded-tr-sm'
+                            ? 'bg-gold-500 text-white rounded-tr-sm'
                             : 'bg-gray-100 text-gray-800 rounded-tl-sm'
                         }`}>
                           <p className="leading-relaxed">{msg.body}</p>
@@ -309,13 +309,13 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
                   placeholder="Escribe un mensaje..."
                   rows={1}
                   maxLength={2000}
-                  className="flex-1 resize-none border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-[#c9962a]"
+                  className="flex-1 resize-none border border-gray-200 rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30 focus:border-gold-500"
                   style={{ maxHeight: '120px' }}
                 />
                 <button
                   onClick={sendMessage}
                   disabled={!newMsg.trim() || sending}
-                  className="flex-shrink-0 w-10 h-10 bg-[#c9962a] hover:bg-[#b8841e] disabled:opacity-50 text-white rounded-xl flex items-center justify-center transition-colors"
+                  className="flex-shrink-0 w-10 h-10 bg-gold-500 hover:bg-[#b8841e] disabled:opacity-50 text-white rounded-xl flex items-center justify-center transition-colors"
                 >
                   {sending ? (
                     <span className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full" />

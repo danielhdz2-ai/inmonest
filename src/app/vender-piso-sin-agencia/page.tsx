@@ -90,7 +90,7 @@ export default function VenderPisoSinAgenciaPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchema }} />
 
         {/* HERO */}
-        <section className="relative bg-gradient-to-br from-[#1a0d00] via-[#2d1a00] to-[#1a0d00] pt-24 pb-20 px-4 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-forest-950 via-[#2d1a00] to-forest-950 pt-24 pb-20 px-4 overflow-hidden">
           {/* Background pattern */}
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0" style={{
@@ -103,14 +103,14 @@ export default function VenderPisoSinAgenciaPage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left column - Text */}
               <div>
-                <div className="inline-flex items-center gap-2 bg-[#c9a84c]/20 border border-[#c9a84c]/40 text-[#f4c94a] px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                <div className="inline-flex items-center gap-2 bg-gold-500/20 border border-gold-500/40 text-gold-300 px-4 py-2 rounded-full text-sm font-semibold mb-6">
                   <span>💰</span>
                   Ahorra más de 15,000€ en comisiones
                 </div>
                 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
                   Vende tu piso<br />
-                  <span className="text-[#c9a84c]">sin pagar comisiones</span><br />
+                  <span className="text-gold-500">sin pagar comisiones</span><br />
                   a la agencia
                 </h1>
 
@@ -129,7 +129,7 @@ export default function VenderPisoSinAgenciaPage() {
                     { icon: '✓', text: 'Hasta firma escritura' }
                   ].map((item, i) => (
                     <div key={i} className="flex items-center gap-2 text-white">
-                      <span className="w-6 h-6 bg-[#c9a84c] rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0">
+                      <span className="w-6 h-6 bg-gold-500 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0">
                         {item.icon}
                       </span>
                       <span className="text-sm font-medium">{item.text}</span>
@@ -141,7 +141,7 @@ export default function VenderPisoSinAgenciaPage() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a
                     href={`tel:+34${PHONE}`}
-                    className="inline-flex items-center justify-center gap-2 bg-[#c9a84c] text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#a87a20] transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5"
+                    className="inline-flex items-center justify-center gap-2 bg-gold-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-gold-600 transition-all shadow-xl hover:shadow-2xl transform hover:-translate-y-0.5"
                   >
                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -162,12 +162,12 @@ export default function VenderPisoSinAgenciaPage() {
 
               {/* Right column - Visual card */}
               <div className="relative">
-                <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl p-8 border-4 border-[#c9a84c]/30">
-                  <div className="absolute -top-4 -right-4 bg-[#c9a84c] text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg">
+                <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-2xl p-8 border-4 border-gold-500/30">
+                  <div className="absolute -top-4 -right-4 bg-gold-500 text-white px-6 py-2 rounded-full font-bold text-sm shadow-lg">
                     Todo incluido
                   </div>
-                  <div className="absolute -top-4 -left-4 bg-green-500 text-white px-4 py-2 rounded-full font-bold text-xs shadow-lg animate-pulse">
-                    📞 Consulta gratis
+                  <div className="absolute -top-4 -left-4 bg-gold-500 text-white px-4 py-2 rounded-full font-bold text-xs shadow-lg animate-pulse">
+                    Consulta gratis
                   </div>
                   
                   <div className="mb-6">
@@ -205,7 +205,7 @@ export default function VenderPisoSinAgenciaPage() {
                       'Coordinación con notaría'
                     ].map((item, i) => (
                       <li key={i} className="flex items-start gap-3 text-sm text-gray-700">
-                        <svg className="w-5 h-5 text-[#c9a84c] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                         </svg>
                         {item}
@@ -213,7 +213,7 @@ export default function VenderPisoSinAgenciaPage() {
                     ))}
                   </ul>
 
-                  <div className="bg-gradient-to-r from-[#c9a84c] to-[#a87a20] rounded-2xl p-6 text-center">
+                  <div className="bg-gradient-to-r from-gold-500 to-gold-700 rounded-2xl p-6 text-center">
                     <div className="text-white/80 text-sm font-semibold mb-1">Precio total</div>
                     <div className="text-5xl font-black text-white mb-1">687 €</div>
                     <div className="text-white/90 text-sm mb-3">IVA incluido · Pago único</div>
@@ -240,7 +240,7 @@ export default function VenderPisoSinAgenciaPage() {
               </div>
               <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
                 ¿Cuánto pagarías con una agencia<br />
-                vs. con <span className="text-[#c9a84c]">Inmonest</span>?
+                vs. con <span className="text-gold-500">Inmonest</span>?
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Ejemplo real: Venta de un piso de <strong>300,000€</strong> en tu ciudad
@@ -275,7 +275,7 @@ export default function VenderPisoSinAgenciaPage() {
                         <div className="text-xs text-gray-500 mt-2">15,000€ base + 3,150€ IVA</div>
                       </td>
                       <td className="px-6 py-6 text-center">
-                        <div className="text-3xl font-black text-[#c9a84c] mb-1">687€</div>
+                        <div className="text-3xl font-black text-gold-500 mb-1">687€</div>
                         <div className="text-sm text-gray-600 font-semibold">(IVA ya incluido)</div>
                         <div className="text-xs text-gray-500 mt-2">Tarifa fija completa</div>
                       </td>
@@ -323,7 +323,7 @@ export default function VenderPisoSinAgenciaPage() {
                         <div className="text-xs text-gray-500 mt-1">Hasta firma notaría</div>
                       </td>
                     </tr>
-                    <tr className="bg-gradient-to-r from-green-600 to-emerald-600">
+                    <tr className="bg-gradient-to-r from-gold-600 to-gold-600">
                       <td className="px-6 py-6 text-white font-bold text-xl">
                         💰 TU AHORRO TOTAL
                       </td>
@@ -343,14 +343,14 @@ export default function VenderPisoSinAgenciaPage() {
             </div>
 
             {/* Highlight ahorro */}
-            <div className="mt-12 bg-gradient-to-r from-[#c9a84c] to-[#a87a20] rounded-2xl p-8 text-center shadow-2xl">
+            <div className="mt-12 bg-gradient-to-r from-gold-500 to-gold-700 rounded-2xl p-8 text-center shadow-2xl">
               <div className="text-white/90 text-lg mb-2 font-semibold">Con Inmonest te quedas en el bolsillo</div>
               <div className="text-6xl md:text-7xl font-black text-white mb-3">17,484€</div>
               <div className="text-white/90 text-xl mb-6">que las agencias tradicionales te quitarían en comisiones</div>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href={`tel:+34${PHONE}`}
-                  className="inline-flex items-center gap-2 bg-white text-[#a87a20] px-10 py-5 rounded-xl font-bold text-xl hover:bg-gray-100 transition-all shadow-xl"
+                  className="inline-flex items-center gap-2 bg-white text-gold-700 px-10 py-5 rounded-xl font-bold text-xl hover:bg-gray-100 transition-all shadow-xl"
                 >
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -407,7 +407,7 @@ export default function VenderPisoSinAgenciaPage() {
                 <div className="text-white/70 text-sm font-semibold mb-3 uppercase tracking-wider">
                   Llamar ahora
                 </div>
-                <div className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 group-hover:text-[#c9a84c] transition-colors tracking-tight">
+                <div className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-4 group-hover:text-gold-500 transition-colors tracking-tight">
                   {PHONE_DISPLAY}
                 </div>
                 <div className="text-white/80 text-sm font-medium">
@@ -493,11 +493,11 @@ export default function VenderPisoSinAgenciaPage() {
               ].map((step, i) => (
                 <div key={i} className="relative">
                   {i < 5 && (
-                    <div className="hidden md:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-[#c9a84c] to-transparent -z-10" />
+                    <div className="hidden md:block absolute top-12 left-full w-full h-0.5 bg-gradient-to-r from-gold-500 to-transparent -z-10" />
                   )}
-                  <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border-2 border-gray-100 hover:border-[#c9a84c]/50 transition-all h-full">
+                  <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-6 border-2 border-gray-100 hover:border-gold-500/50 transition-all h-full">
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="w-14 h-14 bg-gradient-to-br from-[#c9a84c] to-[#a87a20] rounded-full flex items-center justify-center text-white font-black text-2xl shrink-0 shadow-lg">
+                      <div className="w-14 h-14 bg-gradient-to-br from-gold-500 to-gold-700 rounded-full flex items-center justify-center text-white font-black text-2xl shrink-0 shadow-lg">
                         {step.num}
                       </div>
                       <div className="text-4xl">{step.icon}</div>
@@ -565,7 +565,7 @@ export default function VenderPisoSinAgenciaPage() {
                   a: 'No, este servicio es para propietarios que YA tienen comprador (familiar, amigo, particular contactado directamente). Si necesitas encontrar comprador, puedes publicar tu anuncio gratis en Inmonest o contactar con agencias de tu zona.'
                 }
               ].map(({ q, a }) => (
-                <details key={q} className="bg-gray-50 rounded-xl border border-gray-200 group hover:border-[#c9a84c]/40 transition-all">
+                <details key={q} className="bg-gray-50 rounded-xl border border-gray-200 group hover:border-gold-500/40 transition-all">
                   <summary className="flex items-center justify-between gap-3 px-6 py-5 cursor-pointer font-semibold text-gray-900 list-none">
                     {q}
                     <svg className="w-5 h-5 text-gray-400 shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -580,7 +580,7 @@ export default function VenderPisoSinAgenciaPage() {
         </section>
 
       {/* CTA Final */}
-        <section className="py-20 px-4 bg-gradient-to-br from-[#c9a84c] to-[#a87a20]">
+        <section className="py-20 px-4 bg-gradient-to-br from-gold-500 to-gold-700">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6">
               Ahorra más de 17,000€ en comisiones
@@ -591,7 +591,7 @@ export default function VenderPisoSinAgenciaPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href={`tel:+34${PHONE}`}
-                className="inline-flex items-center gap-3 bg-white text-[#a87a20] px-12 py-6 rounded-xl font-black text-2xl hover:bg-gray-100 transition-all shadow-2xl transform hover:scale-105"
+                className="inline-flex items-center gap-3 bg-white text-gold-700 px-12 py-6 rounded-xl font-black text-2xl hover:bg-gray-100 transition-all shadow-2xl transform hover:scale-105"
               >
                 <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

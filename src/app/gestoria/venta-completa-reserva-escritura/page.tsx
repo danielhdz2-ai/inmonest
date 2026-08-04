@@ -118,11 +118,11 @@ export default function VentaCompletaPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block bg-[#c9962a]/20 text-[#a87a20] px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-[#c9962a]/30">
-                🏠 Para propietarios particulares
+              <div className="inline-block bg-gold-500/20 text-gold-700 px-4 py-2 rounded-full text-sm font-semibold mb-4 border border-gold-500/30">
+                Para propietarios particulares
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                <span className="text-[#c9962a]">Vende tu piso a particular</span> con acompañamiento completo
+                <span className="text-gold-500">Vende tu piso a particular</span> con acompañamiento completo
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 Un <strong>gestor personalizado</strong> te acompaña desde la reserva hasta la escritura. 
@@ -132,7 +132,7 @@ export default function VentaCompletaPage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
                   href="/gestoria/solicitar/venta-completa-reserva-escritura"
-                  className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#a87a20] transition text-center shadow-lg"
+                  className="bg-gold-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold-600 transition text-center shadow-lg"
                 >
                   Contratar servicio (687€)
                 </Link>
@@ -140,26 +140,26 @@ export default function VentaCompletaPage() {
                   href="https://wa.me/34745022862?text=Hola,%20quiero%20vender%20mi%20piso%20a%20particular%20y%20necesito%20acompañamiento"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white border-2 border-[#c9962a] text-[#a87a20] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#fef9e8] transition text-center shadow"
+                  className="bg-white border-2 border-gold-500 text-gold-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-cream-100 transition text-center shadow"
                 >
-                  💬 WhatsApp directo
+                  WhatsApp directo
                 </a>
               </div>
               <div className="flex flex-wrap gap-4 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Gestor personalizado</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Contratos incluidos</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>IVA incluido</span>
@@ -168,14 +168,14 @@ export default function VentaCompletaPage() {
             </div>
             <div className="relative">
               <Image
-                src="/keys.jpg"
+                src="/promo1.png"
                 alt="Venta piso particular con gestor"
                 width={600}
                 height={400}
                 className="rounded-lg shadow-2xl"
                 priority
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border-2 border-[#c9962a]/30">
+              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-xl border-2 border-gold-500/30">
                 <div className="flex items-center gap-3">
                   <div className="text-3xl">🏡</div>
                   <div>
@@ -196,7 +196,7 @@ export default function VentaCompletaPage() {
             ¿Por qué necesitas acompañamiento profesional?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
+            <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-gold-500">
               <div className="text-4xl mb-4">⚖️</div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Evita errores legales costosos</h3>
               <p className="text-gray-700">
@@ -204,7 +204,7 @@ export default function VentaCompletaPage() {
                 pueden bloquear la venta o generar problemas legales futuros.
               </p>
             </div>
-            <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
+            <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-gold-500">
               <div className="text-4xl mb-4">📋</div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Documentación completa garantizada</h3>
               <p className="text-gray-700">
@@ -212,7 +212,7 @@ export default function VentaCompletaPage() {
                 recabar todo lo necesario: IBI, comunidad, cédula de habitabilidad, etc.
               </p>
             </div>
-            <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-[#c9962a]">
+            <div className="bg-amber-50 p-6 rounded-lg border-l-4 border-gold-500">
               <div className="text-4xl mb-4">🛡️</div>
               <h3 className="text-xl font-bold mb-3 text-gray-900">Protección durante todo el proceso</h3>
               <p className="text-gray-700">
@@ -233,167 +233,167 @@ export default function VentaCompletaPage() {
             ¿Qué incluye el servicio completo?
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-gold-500">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-gold-500/20 text-gold-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   1
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Análisis inicial de la operación</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Asignación de gestor personalizado a tu caso</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Estudio completo de la venta: precio, condiciones, plazos</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Verificación de que toda tu documentación está en orden</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Plan de acción personalizado para tu venta</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-gold-500">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-gold-500/20 text-gold-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   2
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Redacción de contrato de reserva</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Contrato de reserva personalizado con los datos reales</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Cláusulas de protección: plazos, condiciones, devolución señal</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Asesoramiento sobre cantidad de señal adecuada</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Explicación detallada de cada cláusula</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-gold-500">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-gold-500/20 text-gold-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   3
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Redacción de contrato de arras</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Contrato de arras completo (penitenciales o confirmatorias)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Descripción exacta del inmueble según datos registrales</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Condiciones de pago: señal, resto, fecha límite escritura</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Cláusulas de garantía y cumplimiento</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-gold-500">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-gold-500/20 text-gold-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   4
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Recogida de documentación</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Nota simple registral actualizada (gestión incluida)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Certificado de eficiencia energética (te indicamos cómo)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>IBI, recibos comunidad, cédula de habitabilidad</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Verificación de que todo está completo para notaría</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-gold-500">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-gold-500/20 text-gold-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   5
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Asesoramiento continuo con gestor inmobiliario</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Gestor inmobiliario dedicado disponible por email, teléfono y WhatsApp</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Resolución de todas tus dudas en cada fase del proceso de venta</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Asesoramiento profesional completo durante toda la operación</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Coordinación con comprador, notaría y banco</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Seguimiento personalizado hasta firma de escrituras</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-[#c9962a]">
+            <div className="bg-white p-6 rounded-lg shadow-sm border-t-4 border-gold-500">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-[#c9962a]/20 text-[#a87a20] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-gold-500/20 text-gold-700 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   6
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Coordinación con notaría</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Envío de documentación a la notaría elegida</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Verificación de que todo está listo para escriturar</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Asesoramiento sobre impuestos (plusvalía, IRPF)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Apoyo hasta la firma definitiva</span>
                 </li>
               </ul>
@@ -442,7 +442,7 @@ export default function VentaCompletaPage() {
               },
             ].map(item => (
               <div key={item.paso} className="flex gap-4 items-start">
-                <div className="bg-[#c9962a] text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shrink-0">
+                <div className="bg-gold-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl shrink-0">
                   {item.paso}
                 </div>
                 <div>
@@ -466,7 +466,7 @@ export default function VentaCompletaPage() {
               <thead className="bg-gray-100">
                 <tr>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Aspecto</th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold text-[#c9962a]">Con Inmonest</th>
+                  <th className="px-6 py-4 text-center text-sm font-semibold text-gold-500">Con Inmonest</th>
                   <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700">Por tu cuenta</th>
                 </tr>
               </thead>
@@ -544,7 +544,7 @@ export default function VentaCompletaPage() {
                 <tr className="bg-gray-50">
                   <td className="px-6 py-4 text-sm text-gray-900 font-semibold">Coste total</td>
                   <td className="px-6 py-4 text-center">
-                    <span className="text-[#c9962a] font-bold text-lg">687€</span>
+                    <span className="text-gold-500 font-bold text-lg">687€</span>
                   </td>
                   <td className="px-6 py-4 text-center">
                     <span className="text-gray-600 font-semibold">0€<br /><span className="text-xs">(pero más riesgo)</span></span>
@@ -568,20 +568,20 @@ export default function VentaCompletaPage() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-amber-50 p-6 rounded-lg">
               <h3 className="font-bold text-lg mb-4 text-gray-900 flex items-center gap-2">
-                <span className="text-[#c9962a]">📄</span>
+                <span className="text-gold-500">📄</span>
                 Documentos del propietario
               </h3>
               <ul className="space-y-2 text-gray-700 text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>DNI o NIE en vigor</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Escrituras de propiedad del inmueble</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Certificado de matrimonio (si procede)</span>
                 </li>
               </ul>
@@ -589,24 +589,24 @@ export default function VentaCompletaPage() {
 
             <div className="bg-amber-50 p-6 rounded-lg">
               <h3 className="font-bold text-lg mb-4 text-gray-900 flex items-center gap-2">
-                <span className="text-[#c9962a]">🏠</span>
+                <span className="text-gold-500">🏠</span>
                 Documentos del inmueble
               </h3>
               <ul className="space-y-2 text-gray-700 text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Nota simple registral (la gestionamos nosotros)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Último recibo del IBI (Impuesto Bienes Inmuebles)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Certificado de eficiencia energética vigente</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Cédula de habitabilidad (según comunidad autónoma)</span>
                 </li>
               </ul>
@@ -614,20 +614,20 @@ export default function VentaCompletaPage() {
 
             <div className="bg-amber-50 p-6 rounded-lg">
               <h3 className="font-bold text-lg mb-4 text-gray-900 flex items-center gap-2">
-                <span className="text-[#c9962a]">🏢</span>
+                <span className="text-gold-500">🏢</span>
                 Si hay comunidad de propietarios
               </h3>
               <ul className="space-y-2 text-gray-700 text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Últimos recibos de comunidad pagados</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Certificado de estar al corriente de pagos</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Estatutos de la comunidad (opcional)</span>
                 </li>
               </ul>
@@ -635,20 +635,20 @@ export default function VentaCompletaPage() {
 
             <div className="bg-amber-50 p-6 rounded-lg">
               <h3 className="font-bold text-lg mb-4 text-gray-900 flex items-center gap-2">
-                <span className="text-[#c9962a]">💰</span>
+                <span className="text-gold-500">💰</span>
                 Si hay hipoteca pendiente
               </h3>
               <ul className="space-y-2 text-gray-700 text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Certificado de deuda pendiente del banco</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Últimos recibos de la hipoteca</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-0.5">•</span>
+                  <span className="text-gold-500 mt-0.5">•</span>
                   <span>Contacto del banco para cancelación</span>
                 </li>
               </ul>
@@ -719,7 +719,7 @@ export default function VentaCompletaPage() {
       </section>
 
       {/* CTA final */}
-      <section className="py-16 px-4 bg-gradient-to-br from-[#c9962a] to-[#a87a20]">
+      <section className="py-16 px-4 bg-gradient-to-br from-gold-500 to-gold-700">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Vende tu piso con todas las garantías
@@ -731,7 +731,7 @@ export default function VentaCompletaPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/venta-completa-reserva-escritura"
-              className="bg-white text-[#a87a20] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
+              className="bg-white text-gold-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
               Contratar ahora (687€)
             </Link>
@@ -741,7 +741,7 @@ export default function VentaCompletaPage() {
               rel="noopener noreferrer"
               className="bg-white/10 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition"
             >
-              💬 Preguntar por WhatsApp
+              Preguntar por WhatsApp
             </a>
           </div>
           <p className="mt-6 text-white/80 text-sm">
@@ -772,12 +772,12 @@ export default function VentaCompletaPage() {
               <Link
                 key={ciudad.slug}
                 href={`/gestoria/venta-completa-reserva-escritura/${ciudad.slug}`}
-                className="flex items-center gap-3 bg-white p-4 rounded-lg border border-gray-100 hover:border-[#c9962a] hover:shadow-md transition"
+                className="flex items-center gap-3 bg-white p-4 rounded-lg border border-gray-100 hover:border-gold-500 hover:shadow-md transition"
               >
                 <span className="text-2xl">{ciudad.emoji}</span>
                 <div>
                   <div className="font-bold text-gray-900">{ciudad.nombre}</div>
-                  <div className="text-xs text-[#c9962a]">Ver servicio →</div>
+                  <div className="text-xs text-gold-500">Ver servicio →</div>
                 </div>
               </Link>
             ))}
@@ -794,35 +794,35 @@ export default function VentaCompletaPage() {
           <div className="grid md:grid-cols-3 gap-6">
             <Link
               href="/gestoria/solicitar/arras-penitenciales"
-              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-[#c9962a] hover:shadow-md transition"
+              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-gold-500 hover:shadow-md transition"
             >
               <h3 className="font-bold text-lg mb-2 text-gray-900">Contrato de Arras</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Solo el contrato de arras penitenciales redactado y personalizado.
               </p>
-              <div className="text-[#c9962a] font-bold">Desde 145€</div>
+              <div className="text-gold-500 font-bold">Desde 145€</div>
             </Link>
 
             <Link
               href="/gestoria/solicitar/reserva-compra"
-              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-[#c9962a] hover:shadow-md transition"
+              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-gold-500 hover:shadow-md transition"
             >
               <h3 className="font-bold text-lg mb-2 text-gray-900">Contrato de Reserva</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Redacción del contrato de reserva para asegurar la operación.
               </p>
-              <div className="text-[#c9962a] font-bold">Desde 61€</div>
+              <div className="text-gold-500 font-bold">Desde 61€</div>
             </Link>
 
             <Link
               href="/gestoria/revision-contrato-arras"
-              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-[#c9962a] hover:shadow-md transition"
+              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-gold-500 hover:shadow-md transition"
             >
               <h3 className="font-bold text-lg mb-2 text-gray-900">Revisión de Contratos</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Ya tienes contrato? Lo revisamos y te decimos si está bien.
               </p>
-              <div className="text-[#c9962a] font-bold">Desde 60€</div>
+              <div className="text-gold-500 font-bold">Desde 60€</div>
             </Link>
           </div>
         </div>

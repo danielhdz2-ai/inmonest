@@ -73,7 +73,7 @@ export default function AlquilerOpcionCompraPage() {
           </p>
         </header>
         <PageHeroImage
-          src="/keys.jpg"
+          src="/promo1.png"
           alt="Alquiler con opción a compra: ventajas, riesgos y cómo funciona en España"
           className="mb-12"
         />

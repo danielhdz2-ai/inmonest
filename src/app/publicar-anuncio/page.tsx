@@ -107,7 +107,7 @@ export default async function PublicarAnuncioPage() {
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden min-h-[540px] flex items-center">
         <Image
-          src="/publicar-hero.jpg"
+          src="/promo.png"
           alt="Publica tu anuncio inmobiliario"
           fill
           className="object-cover"
@@ -118,7 +118,7 @@ export default async function PublicarAnuncioPage() {
         <div className="absolute inset-0 bg-gradient-to-r from-forest-950/92 via-forest-950/80 to-forest-950/50" />
 
         {/* Destellos decorativos */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#c9962a]/10 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-1/3 w-64 h-64 bg-[#f4c94a]/8 rounded-full blur-2xl" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
@@ -147,7 +147,7 @@ export default async function PublicarAnuncioPage() {
                 'Red de compradores verificados',
               ].map((item) => (
                 <li key={item} className="flex items-center gap-2 text-sm text-white/80">
-                  <svg className="w-4 h-4 text-[#f4c94a] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-4 h-4 text-gold-300 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
                   {item}
@@ -160,7 +160,7 @@ export default async function PublicarAnuncioPage() {
               <PublicarLandingClient isLoggedIn={isLoggedIn} />
               <span className="text-xs text-white/40">
                 ¿Eres profesional?{' '}
-                <a href="/agencias" className="text-[#f4c94a]/80 hover:text-[#f4c94a] underline-offset-2 hover:underline">
+                <a href="/agencias" className="text-gold-300/80 hover:text-gold-300 underline-offset-2 hover:underline">
                   Conoce nuestras soluciones para agencias
                 </a>
               </span>
@@ -228,7 +228,7 @@ export default async function PublicarAnuncioPage() {
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1a0d00]/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-950/50 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-white/95 backdrop-blur rounded-2xl px-5 py-4 shadow-lg">
                   <p className="text-sm font-bold text-gray-900">Miles de tratos cerrados</p>
@@ -297,7 +297,7 @@ export default async function PublicarAnuncioPage() {
               <ul className="space-y-2.5 text-sm text-white/80 mb-6">
                 {['Anuncios ilimitados', 'Inmonest Turbo incluido', 'CRM de contactos', 'Estadísticas avanzadas', 'Contratos legales'].map((f) => (
                   <li key={f} className="flex items-center gap-2">
-                    <svg className="w-4 h-4 text-[#f4c94a]" fill="currentColor" viewBox="0 0 20 20">
+                    <svg className="w-4 h-4 text-gold-300" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                     </svg>
                     {f}
@@ -306,7 +306,7 @@ export default async function PublicarAnuncioPage() {
               </ul>
               <a
                 href="/agencias"
-                className="inline-flex w-full justify-center items-center gap-2 px-6 py-3 rounded-full bg-[#c9962a] text-white font-bold text-sm hover:bg-[#a87a20] transition-colors"
+                className="inline-flex w-full justify-center items-center gap-2 px-6 py-3 rounded-full bg-gold-500 text-white font-bold text-sm hover:bg-gold-600 transition-colors"
               >
                 Contratar ahora →
               </a>
@@ -329,7 +329,7 @@ export default async function PublicarAnuncioPage() {
               >
                 <summary className="flex items-center justify-between px-6 py-4 cursor-pointer list-none font-semibold text-gray-900 text-sm hover:bg-gray-100 transition-colors">
                   {faq.q}
-                  <svg className="w-4 h-4 text-[#c9962a] transition-transform group-open:rotate-180 flex-shrink-0 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-4 h-4 text-gold-500 transition-transform group-open:rotate-180 flex-shrink-0 ml-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>

@@ -16,7 +16,7 @@ export default function DescriptionExpand({ text }: { text: string }) {
       {isLong && (
         <button
           onClick={() => setExpanded(!expanded)}
-          className="mt-2 text-sm font-medium text-[#c9962a] hover:text-[#a87a20] transition-colors"
+          className="mt-2 text-sm font-medium text-gold-500 hover:text-gold-700 transition-colors"
         >
           {expanded ? 'Leer menos ↑' : 'Leer más →'}
         </button>

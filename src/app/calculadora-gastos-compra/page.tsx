@@ -98,7 +98,7 @@ export default function CalculadoraGastosCompraPage() {
           </div>
 
           <PageHeroImage
-            src="/familia10.jpg"
+            src="/promo3.png"
             alt="Calculadora de gastos de compra de vivienda"
             className="mb-8 max-w-3xl mx-auto"
           />

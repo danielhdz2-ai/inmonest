@@ -107,7 +107,7 @@ export default async function CiudadPage({
       <Navbar />
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="bg-[#0d1a0f] py-16 px-4">
+      <section className="bg-forest-900 py-16 px-4">
         <div className="max-w-5xl mx-auto">
           <nav className="flex items-center gap-1.5 text-xs text-white/40 mb-6">
             <Link href="/" className="hover:text-white/70 transition-colors">Inicio</Link>
@@ -115,7 +115,7 @@ export default async function CiudadPage({
             <span className="text-white/70">{nombre}</span>
           </nav>
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-            Pisos en <span className="text-[#c9a84c]">{nombre}</span>
+            Pisos en <span className="text-gold-500">{nombre}</span>
           </h1>
           <p className="text-white/70 text-lg max-w-2xl mb-6">{descripcion}</p>
           <div className="flex flex-wrap gap-3">
@@ -145,10 +145,10 @@ export default async function CiudadPage({
             <Link
               key={s.href}
               href={s.href}
-              className="border border-gray-200 rounded-xl p-5 hover:border-[#c9a84c] hover:shadow-sm transition-all group"
+              className="border border-gray-200 rounded-xl p-5 hover:border-gold-500 hover:shadow-sm transition-all group"
             >
-              <span className="text-xs font-medium text-[#c9a84c] uppercase tracking-wide">{s.tag}</span>
-              <h3 className="text-base font-semibold text-gray-800 mt-1 group-hover:text-[#c9a84c] transition-colors">
+              <span className="text-xs font-medium text-gold-500 uppercase tracking-wide">{s.tag}</span>
+              <h3 className="text-base font-semibold text-gray-800 mt-1 group-hover:text-gold-500 transition-colors">
                 {s.titulo}
               </h3>
               <p className="text-sm text-gray-500 mt-1">{s.desc}</p>
@@ -164,7 +164,7 @@ export default async function CiudadPage({
             <h2 className="text-xl font-semibold text-gray-800">Anuncios recientes en {nombre}</h2>
             <Link
               href={`/${ciudad}/pisos`}
-              className="text-sm text-[#c9a84c] hover:underline"
+              className="text-sm text-gold-500 hover:underline"
             >
               Ver todos →
             </Link>

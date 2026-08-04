@@ -36,7 +36,7 @@ export default function CiudadesPage() {
         <section className="bg-gradient-to-r from-[#2b4c7e] to-[#1e3a5f] text-white py-16 px-6">
           <div className="max-w-6xl mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-              Gestoría Inmobiliaria en <span className="text-[#c9a84c]">Toda España</span>
+              Gestoría Inmobiliaria en <span className="text-gold-500">Toda España</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-6">
               Servicios profesionales de gestoría inmobiliaria online en las principales ciudades de España.
@@ -87,7 +87,7 @@ export default function CiudadesPage() {
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                    <span className="absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-[#a87a20] border border-[#c9a84c]/20">
+                    <span className="absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-gold-700 border border-gold-500/20">
                       {servicio.categoria}
                     </span>
                   </div>
@@ -115,7 +115,7 @@ export default function CiudadesPage() {
 
                     <Link
                       href={`/gestoria/${servicio.slug}`}
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-[#c9a84c] hover:bg-[#a68939] text-white rounded-lg font-semibold transition-colors shadow-md"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gold-500 hover:bg-[#a68939] text-white rounded-lg font-semibold transition-colors shadow-md"
                     >
                       Ver servicio completo
                       <span>→</span>
@@ -131,7 +131,7 @@ export default function CiudadesPage() {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
               <div>
-                <p className="text-xs font-bold text-[#c9a84c] uppercase tracking-widest mb-2">
+                <p className="text-xs font-bold text-gold-500 uppercase tracking-widest mb-2">
                   Inventario SEO
                 </p>
                 <h2 className="text-3xl font-bold text-gray-900">Landing Pages por Ciudad</h2>
@@ -141,7 +141,7 @@ export default function CiudadesPage() {
                 </p>
               </div>
               <div className="flex gap-3">
-                <span className="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-50 text-emerald-800 text-sm font-semibold border border-emerald-200">
+                <span className="inline-flex items-center px-4 py-2 rounded-lg bg-cream-100 text-gold-800 text-sm font-semibold border border-gold-200">
                   {totalPorCiudad} páginas activas
                 </span>
                 <span className="inline-flex items-center px-4 py-2 rounded-lg bg-blue-50 text-blue-800 text-sm font-semibold border border-blue-200">
@@ -159,7 +159,7 @@ export default function CiudadesPage() {
                   <div className="flex flex-wrap items-center gap-3 mb-5">
                     <h3 className="text-lg font-bold text-gray-900">{servicio.nombre}</h3>
                     {getLandingPrecioDisplay(servicio) && (
-                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#c9a84c]/15 text-[#8a6420] border border-[#c9a84c]/25">
+                      <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-gold-500/15 text-[#8a6420] border border-gold-500/25">
                         {getLandingPrecioDisplay(servicio)}
                       </span>
                     )}
@@ -173,11 +173,11 @@ export default function CiudadesPage() {
                       <Link
                         key={slug}
                         href={servicio.href(slug)}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-emerald-200 text-sm font-medium text-emerald-800 hover:bg-emerald-50 hover:border-emerald-300 transition-colors shadow-sm"
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-white border border-gold-200 text-sm font-medium text-gold-800 hover:bg-cream-100 hover:border-gold-300 transition-colors shadow-sm"
                       >
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-cream-1000 shrink-0" />
                         {getNombreCiudad(slug)}
-                        <span className="text-emerald-600 text-xs">→</span>
+                        <span className="text-gold-600 text-xs">→</span>
                       </Link>
                     ))}
                   </div>
@@ -197,7 +197,7 @@ export default function CiudadesPage() {
                   <Link
                     key={page.slug}
                     href={`/gestoria/${page.slug}`}
-                    className="flex items-center justify-between gap-3 px-4 py-3 rounded-lg border border-gray-200 hover:border-[#c9a84c] hover:bg-[#fef9e8] transition-colors group"
+                    className="flex items-center justify-between gap-3 px-4 py-3 rounded-lg border border-gray-200 hover:border-gold-500 hover:bg-cream-100 transition-colors group"
                   >
                     <div className="min-w-0">
                       <p className="font-medium text-gray-900 text-sm truncate group-hover:text-[#8a6420]">
@@ -205,7 +205,7 @@ export default function CiudadesPage() {
                       </p>
                       <p className="text-xs text-gray-500">/{page.slug}</p>
                     </div>
-                    <span className="text-xs font-bold text-[#c9a84c] shrink-0">{getLandingPrecioDisplay(page)}</span>
+                    <span className="text-xs font-bold text-gold-500 shrink-0">{getLandingPrecioDisplay(page)}</span>
                   </Link>
                 ))}
               </div>
@@ -265,7 +265,7 @@ export default function CiudadesPage() {
                 ['Disponible en toda España', 'No importa dónde estés'],
               ].map(([titulo, desc]) => (
                 <li key={titulo} className="flex items-start gap-3">
-                  <span className="mt-1 w-5 h-5 rounded-full bg-[#c9a84c]/20 text-[#c9a84c] flex items-center justify-center text-xs font-bold shrink-0">
+                  <span className="mt-1 w-5 h-5 rounded-full bg-gold-500/20 text-gold-500 flex items-center justify-center text-xs font-bold shrink-0">
                     ✓
                   </span>
                   <span>

@@ -341,7 +341,7 @@ export default function GestoriaPortalClient({
     return (
       <div className="min-h-screen bg-[#eef0f2] flex items-center justify-center p-4">
         <div className="text-center space-y-3">
-          <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-[#c9962a] border-t-transparent" />
+          <div className="inline-block h-10 w-10 animate-spin rounded-full border-4 border-gold-500 border-t-transparent" />
           <p className="text-sm text-gray-600 font-medium">Abriendo tu expediente…</p>
         </div>
       </div>
@@ -356,13 +356,13 @@ export default function GestoriaPortalClient({
           <h2 className="text-lg font-bold text-gray-900">Pago recibido</h2>
           <p className="text-sm text-gray-500">
             Tu expediente se está activando. Si en unos segundos no ves tu servicio, recarga o escribe a{' '}
-            <a href="mailto:info@inmonest.com" className="text-[#c9962a] font-semibold">info@inmonest.com</a>
+            <a href="mailto:info@inmonest.com" className="text-gold-500 font-semibold">info@inmonest.com</a>
             {' '}con el email del pago.
           </p>
           <button
             type="button"
             onClick={() => window.location.reload()}
-            className="inline-block bg-[#c9962a] text-white text-sm font-bold px-6 py-3 rounded-xl min-h-[48px]"
+            className="inline-block bg-gold-500 text-white text-sm font-bold px-6 py-3 rounded-xl min-h-[48px]"
           >
             Recargar panel
           </button>
@@ -376,7 +376,7 @@ export default function GestoriaPortalClient({
       className={`rounded-xl px-4 py-3 text-sm ${
         uploadFeedback.type === 'error'
           ? 'bg-red-50 border border-red-200 text-red-800'
-          : 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+          : 'bg-cream-100 border border-gold-200 text-gold-800'
       }`}
       role="alert"
     >
@@ -415,7 +415,7 @@ export default function GestoriaPortalClient({
                   onClick={() => setActivePaidId(c.id)}
                   className={`text-xs font-semibold px-3 py-2 rounded-full border min-h-[40px] touch-manipulation ${
                     c.id === activePaid.id
-                      ? 'bg-[#0d1a0f] text-white border-[#0d1a0f]'
+                      ? 'bg-forest-900 text-white border-[#0d1a0f]'
                       : 'bg-white text-gray-600 border-gray-200'
                   }`}
                 >

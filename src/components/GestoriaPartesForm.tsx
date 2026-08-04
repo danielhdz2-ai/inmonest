@@ -59,7 +59,7 @@ function field(
         value={value}
         placeholder={opts?.placeholder}
         onChange={(e) => onChange(id, e.target.value)}
-        className="mt-1 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-base text-gray-900 focus:border-[#c9962a] focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20"
+        className="mt-1 w-full rounded-xl border border-gray-200 px-3 py-2.5 text-base text-gray-900 focus:border-gold-500 focus:outline-none focus:ring-2 focus:ring-[#c9962a]/20"
       />
     </label>
   )
@@ -108,14 +108,14 @@ export default function GestoriaPartesForm({
   }
 
   return (
-    <div className="rounded-xl border border-[#e8d48a]/60 bg-[#fdfbf5] p-3 sm:p-4 space-y-4">
+    <div className="rounded-xl border border-gold-300/60 bg-[#fdfbf5] p-3 sm:p-4 space-y-4">
       <p className="text-xs text-gray-600 leading-relaxed">
         Completa los datos de las partes. También puedes adjuntar un PDF con la misma información.
       </p>
 
       <form onSubmit={(e) => void handleSubmit(e)} className="space-y-4">
         <div className="grid sm:grid-cols-2 gap-3">
-          <p className="sm:col-span-2 text-xs font-bold uppercase tracking-wide text-[#7a5c1e]">Parte 1</p>
+          <p className="sm:col-span-2 text-xs font-bold uppercase tracking-wide text-gold-700">Parte 1</p>
           {field('parte1_nombre', 'Nombre completo *', form.parte1_nombre, update, { required: true })}
           {field('parte1_dni', 'DNI / NIE', form.parte1_dni, update)}
           {field('parte1_email', 'Email', form.parte1_email, update, { type: 'email' })}
@@ -125,7 +125,7 @@ export default function GestoriaPartesForm({
         {showParte2 ? (
           <div className="grid sm:grid-cols-2 gap-3">
             <div className="sm:col-span-2 flex items-center justify-between">
-              <p className="text-xs font-bold uppercase tracking-wide text-[#7a5c1e]">Parte 2</p>
+              <p className="text-xs font-bold uppercase tracking-wide text-gold-700">Parte 2</p>
               <button
                 type="button"
                 onClick={removeParte2}
@@ -143,7 +143,7 @@ export default function GestoriaPartesForm({
           <button
             type="button"
             onClick={() => setShowParte2(true)}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl border-2 border-dashed border-[#c9962a]/50 text-[#7a5c1e] text-sm font-semibold min-h-[44px] px-4 hover:bg-[#fef9e8] touch-manipulation"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-xl border-2 border-dashed border-gold-500/50 text-gold-700 text-sm font-semibold min-h-[44px] px-4 hover:bg-cream-100 touch-manipulation"
           >
             + Añadir Parte 2 (si aplica)
           </button>
@@ -164,13 +164,13 @@ export default function GestoriaPartesForm({
         <button
           type="submit"
           disabled={saving || uploading}
-          className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-[#0d1a0f] text-white text-sm font-bold min-h-[48px] px-5 disabled:opacity-60 touch-manipulation"
+          className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl bg-forest-900 text-white text-sm font-bold min-h-[48px] px-5 disabled:opacity-60 touch-manipulation"
         >
           {saving ? 'Guardando…' : 'Guardar datos de las partes'}
         </button>
       </form>
 
-      <div className="border-t border-[#e8d48a]/40 pt-3">
+      <div className="border-t border-gold-300/40 pt-3">
         <p className="text-xs font-semibold text-gray-600 mb-2">Opcional: subir PDF con los datos</p>
         <GestoriaUploadActions
           docKey={`partes-pdf-${requestId}`}

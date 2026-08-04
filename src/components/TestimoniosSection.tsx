@@ -27,7 +27,7 @@ export default function TestimoniosSection({
         <div className="text-center mb-12">
           {showGoogleReviews ? (
             <>
-              <span className="text-xs font-bold text-[#c9962a] uppercase tracking-widest">
+              <span className="text-xs font-bold text-gold-500 uppercase tracking-widest">
                 Reseñas verificadas
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-3">
@@ -48,7 +48,7 @@ export default function TestimoniosSection({
                 href="https://www.google.com/search?q=inmonest"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-[#c9962a] hover:underline font-medium"
+                className="text-sm text-gold-500 hover:underline font-medium"
               >
                 Ver reseñas verificadas en Google →
               </a>

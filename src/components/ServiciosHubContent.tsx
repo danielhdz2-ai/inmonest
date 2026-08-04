@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import {
   SERVICIOS_CATEGORIA_LABELS,
@@ -9,6 +10,7 @@ import {
   type ServicioLandingCard,
 } from '@/lib/gestoria-servicios-landings'
 import { GESTORIA_SERVICIOS, GESTORIA_PRECIO_MIN } from '@/lib/gestoria-catalogo'
+import { BRAND_IMAGES } from '@/lib/brand-images'
 import { gtmPush } from '@/components/GTMProvider'
 
 const CATEGORIES: Array<{ key: ServicioCategoria | 'todos'; label: string }> = [
@@ -65,13 +67,17 @@ export default function ServiciosHubContent() {
         </div>
       </nav>
 
-      {/* HERO — sofainmonest.png */}
+      {/* HERO */}
       <section className="relative h-[420px] sm:h-[520px] overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/sofainmonest.png')" }}
+        <Image
+          src={BRAND_IMAGES.gestoria.src}
+          alt={BRAND_IMAGES.gestoria.alt}
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3d2a05]/90 via-[#7a5c1e]/65 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-forest-950/92 via-forest-950/65 to-transparent" />
         <div className="relative h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 max-w-4xl">
           <span className="inline-block bg-gold-500 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 w-fit">
             Contratos · Arras · Alquiler LAU
@@ -285,7 +291,7 @@ export default function ServiciosHubContent() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-[#1a2f1c] text-white py-14 px-6">
+      <section className="bg-forest-800 text-white py-14 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-extrabold mb-3">¿No sabes qué contrato necesitas?</h2>
           <p className="text-white/80 mb-6">

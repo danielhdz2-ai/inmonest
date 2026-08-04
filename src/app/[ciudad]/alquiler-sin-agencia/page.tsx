@@ -121,16 +121,16 @@ export default async function AlquilerSinAgenciaPage({ params }: { params: Promi
 
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500 mb-6 flex items-center gap-2">
-          <Link href="/" className="hover:text-[#c9962a] transition-colors">Inicio</Link>
+          <Link href="/" className="hover:text-gold-500 transition-colors">Inicio</Link>
           <span>/</span>
-          <Link href="/pisos?operacion=rent" className="hover:text-[#c9962a] transition-colors">Alquiler</Link>
+          <Link href="/pisos?operacion=rent" className="hover:text-gold-500 transition-colors">Alquiler</Link>
           <span>/</span>
           <span className="text-gray-800 font-medium">Sin agencia en {nombre}</span>
         </nav>
 
         <h1 className="text-3xl sm:text-4xl font-black text-gray-900 leading-tight mb-4">
           Alquiler sin agencia en {nombre}:<br />
-          <span className="text-[#c9962a]">Ahorra hasta 2 meses de renta</span>
+          <span className="text-gold-500">Ahorra hasta 2 meses de renta</span>
         </h1>
         <p className="text-lg text-gray-600 mb-10 leading-relaxed">
           En {nombre}, alquilar a través de una agencia puede costarte entre una y dos mensualidades en
@@ -146,7 +146,7 @@ export default async function AlquilerSinAgenciaPage({ params }: { params: Promi
           </p>
           <Link
             href={`/pisos?operacion=rent&ciudad=${ciudad}`}
-            className="inline-flex items-center gap-2 bg-[#c9962a] hover:bg-[#b8841f] text-white font-bold px-7 py-3.5 rounded-xl text-base transition-colors shadow-md"
+            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841f] text-white font-bold px-7 py-3.5 rounded-xl text-base transition-colors shadow-md"
           >
             Ver pisos en alquiler en {nombre} →
           </Link>
@@ -241,7 +241,7 @@ export default async function AlquilerSinAgenciaPage({ params }: { params: Promi
         </article>
 
         {/* CTA final */}
-        <div className="mt-14 bg-[#0d1a0f] rounded-2xl p-8 text-white">
+        <div className="mt-14 bg-forest-900 rounded-2xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-3">¿Necesitas revisar tu contrato de alquiler?</h2>
           <p className="text-gray-300 mb-6 leading-relaxed">
             Un abogado especialista revisa tu contrato antes de firmar. Detecta cláusulas nulas,
@@ -249,7 +249,7 @@ export default async function AlquilerSinAgenciaPage({ params }: { params: Promi
           </p>
           <Link
             href={`/${ciudad}/contrato-alquiler`}
-            className="inline-flex items-center gap-2 bg-[#c9962a] hover:bg-[#b8841f] text-white font-bold px-7 py-3.5 rounded-xl text-base transition-colors shadow-md"
+            className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841f] text-white font-bold px-7 py-3.5 rounded-xl text-base transition-colors shadow-md"
           >
             Ver revisión legal de contrato →
           </Link>
@@ -259,13 +259,13 @@ export default async function AlquilerSinAgenciaPage({ params }: { params: Promi
         <div className="mt-10 pt-8 border-t border-gray-200">
           <p className="text-sm font-semibold text-gray-700 mb-4">También te puede interesar:</p>
           <div className="flex flex-wrap gap-3">
-            <Link href={`/${ciudad}/contrato-alquiler`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-[#c9962a] transition-colors">
+            <Link href={`/${ciudad}/contrato-alquiler`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-gold-500 transition-colors">
               Guía legal del contrato de alquiler en {nombre} →
             </Link>
-            <Link href={`/${ciudad}/contrato-arras`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-[#c9962a] transition-colors">
+            <Link href={`/${ciudad}/contrato-arras`} className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-gold-500 transition-colors">
               Contrato de arras en {nombre} →
             </Link>
-            <Link href="/gestoria" className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-[#c9962a] transition-colors">
+            <Link href="/gestoria" className="text-sm bg-gray-100 hover:bg-amber-50 px-4 py-2 rounded-full text-gray-700 hover:text-gold-500 transition-colors">
               Gestoría online →
             </Link>
           </div>

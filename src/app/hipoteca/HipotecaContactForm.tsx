@@ -56,7 +56,7 @@ export default function HipotecaContactForm() {
     }
   }
 
-  const inputCls = 'w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/40 focus:border-[#c9962a] transition-colors bg-white'
+  const inputCls = 'w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/40 focus:border-gold-500 transition-colors bg-white'
   const labelCls = 'block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5'
 
   if (sent) {
@@ -145,7 +145,7 @@ export default function HipotecaContactForm() {
       <button
         type="submit"
         disabled={sending}
-        className="w-full bg-[#c9962a] hover:bg-[#b8841e] disabled:opacity-50 text-white font-bold py-3.5 rounded-xl text-sm transition-colors"
+        className="w-full bg-gold-500 hover:bg-[#b8841e] disabled:opacity-50 text-white font-bold py-3.5 rounded-xl text-sm transition-colors"
       >
         {sending ? 'Enviando...' : 'Consultar viabilidad financiera →'}
       </button>

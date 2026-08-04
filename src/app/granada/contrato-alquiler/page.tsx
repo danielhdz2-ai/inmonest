@@ -133,25 +133,25 @@ export default function GestoriaGranadaPage() {
       />
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#1a0d00] via-[#3d2100] to-[#5a2d00] text-white py-16 sm:py-24">
+      <section className="relative bg-gradient-to-br from-forest-950 via-[#3d2100] to-[#5a2d00] text-white py-16 sm:py-24">
         <div className="absolute inset-0 opacity-10">
           <Image src="/gestoria2.jpg" alt="Gestoría Granada" fill className="object-cover" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-block px-4 py-2 rounded-full bg-[#c9962a]/20 border border-[#c9962a]/40 mb-6">
-            <span className="text-[#f4c94a] font-semibold text-sm">🎓 Especialistas en Zona Universitaria | Andalucía</span>
+          <div className="inline-block px-4 py-2 rounded-full bg-gold-500/20 border border-gold-500/40 mb-6">
+            <span className="text-gold-300 font-semibold text-sm">🎓 Especialistas en Zona Universitaria | Andalucía</span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
-            Contratos de Alquiler y Compraventa en <span className="text-[#f4c94a]">Granada</span>
+            Contratos de Alquiler y Compraventa en <span className="text-gold-300">Granada</span>
           </h1>
           <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Redactamos contratos para <strong className="text-[#f4c94a]">estudiantes, familias e inversores</strong> en Granada.  
+            Redactamos contratos para <strong className="text-gold-300">estudiantes, familias e inversores</strong> en Granada.  
             Alquiler LAU, temporal, arras y compraventa. <strong>LAU 145€ · Temporada 165€. Entrega en 48 horas.</strong>
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/gestoria/solicitar/contrato-alquiler-temporal"
-              className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-all transform hover:scale-105"
+              className="inline-block px-8 py-4 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-bold text-lg shadow-xl transition-all transform hover:scale-105"
             >
               Contrato Estudiantes - 165€
             </Link>
@@ -168,7 +168,7 @@ export default function GestoriaGranadaPage() {
       {/* Por qué Granada es especial */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-          El mercado inmobiliario de <span className="text-[#c9962a]">Granada</span> es único
+          El mercado inmobiliario de <span className="text-gold-500">Granada</span> es único
         </h2>
         <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-4">
           <p>
@@ -203,7 +203,7 @@ export default function GestoriaGranadaPage() {
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Servicio 1 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-[#c9962a] hover:shadow-2xl transform hover:scale-105 transition-all">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gold-500 hover:shadow-2xl transform hover:scale-105 transition-all">
               <div className="inline-block px-3 py-1 rounded-full bg-yellow-500 text-white text-xs font-bold mb-4">
                 🎓 ESTUDIANTES
               </div>
@@ -213,7 +213,7 @@ export default function GestoriaGranadaPage() {
                 Específico para estudiantes en Granada. Duración curso académico (9-10 meses). 
                 Incluye cláusulas de gastos compartidos, normas de convivencia y fianza.
               </p>
-              <div className="text-3xl font-bold text-[#c9962a] mb-4">165€</div>
+              <div className="text-3xl font-bold text-gold-500 mb-4">165€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
                 <li>✅ Adaptado a normativa estudiantil</li>
                 <li>✅ Duración flexible (3-11 meses)</li>
@@ -222,21 +222,21 @@ export default function GestoriaGranadaPage() {
               </ul>
               <Link
                 href="/gestoria/solicitar/contrato-alquiler-temporal"
-                className="block text-center py-3 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-semibold transition"
+                className="block text-center py-3 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-semibold transition"
               >
                 Solicitar ahora
               </Link>
             </div>
 
             {/* Servicio 2 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-[#c9962a] transition-all hover:shadow-2xl">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-gold-500 transition-all hover:shadow-2xl">
               <div className="text-5xl mb-4">🏠</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Contrato Alquiler LAU</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Arrendamiento de vivienda habitual en Granada. Para familias o profesionales. 
                 Duración mínima 3 años. Conforme LAU 2026 y normativa andaluza.
               </p>
-              <div className="text-3xl font-bold text-[#c9962a] mb-4">145€</div>
+              <div className="text-3xl font-bold text-gold-500 mb-4">145€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
                 <li>✅ Conforme LAU actualizada</li>
                 <li>✅ Protección propietarios e inquilinos</li>
@@ -245,21 +245,21 @@ export default function GestoriaGranadaPage() {
               </ul>
               <Link
                 href="/gestoria/solicitar/contrato-alquiler"
-                className="block text-center py-3 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-semibold transition"
+                className="block text-center py-3 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-semibold transition"
               >
                 Solicitar ahora
               </Link>
             </div>
 
             {/* Servicio 3 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-[#c9962a] transition-all hover:shadow-2xl">
+            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-200 hover:border-gold-500 transition-all hover:shadow-2xl">
               <div className="text-5xl mb-4">🤝</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Contrato de Arras</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Protege tu compra en Granada. Arras penitenciales para asegurar la señal (10-15% del precio). 
                 Permite desistir con penalización justa. Redactado por abogados.
               </p>
-              <div className="text-3xl font-bold text-[#c9962a] mb-4">145€</div>
+              <div className="text-3xl font-bold text-gold-500 mb-4">145€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
                 <li>✅ Protección compradores y vendedores</li>
                 <li>✅ Cláusulas de desistimiento</li>
@@ -268,7 +268,7 @@ export default function GestoriaGranadaPage() {
               </ul>
               <Link
                 href="/gestoria/solicitar/arras-penitenciales"
-                className="block text-center py-3 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-semibold transition"
+                className="block text-center py-3 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-semibold transition"
               >
                 Solicitar ahora
               </Link>
@@ -433,7 +433,7 @@ export default function GestoriaGranadaPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/contrato-alquiler-temporal"
-              className="inline-block px-8 py-4 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold text-lg shadow-xl transition-transform transform hover:scale-105"
+              className="inline-block px-8 py-4 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-bold text-lg shadow-xl transition-transform transform hover:scale-105"
             >
               Contrato Estudiantes - 165€
             </Link>
@@ -451,22 +451,22 @@ export default function GestoriaGranadaPage() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 border-t border-gray-200">
         <h3 className="text-xl font-bold text-gray-900 mb-6">Servicios relacionados en otras ciudades</h3>
         <div className="grid sm:grid-cols-3 gap-4">
-          <Link href="/gestoria/barcelona" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/barcelona" className="text-gold-500 hover:text-gold-700 font-semibold">
             Gestoría Barcelona →
           </Link>
-          <Link href="/gestoria/madrid" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/madrid" className="text-gold-500 hover:text-gold-700 font-semibold">
             Gestoría Madrid →
           </Link>
-          <Link href="/gestoria/valencia" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/valencia" className="text-gold-500 hover:text-gold-700 font-semibold">
             Gestoría Valencia →
           </Link>
-          <Link href="/zaragoza/contrato-alquiler" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/zaragoza/contrato-alquiler" className="text-gold-500 hover:text-gold-700 font-semibold">
             Contrato Alquiler Zaragoza →
           </Link>
-          <Link href="/gestoria/sevilla" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/sevilla" className="text-gold-500 hover:text-gold-700 font-semibold">
             Gestoría Sevilla →
           </Link>
-          <Link href="/gestoria/guia-arras-penitenciales" className="text-[#c9962a] hover:text-[#a87a20] font-semibold">
+          <Link href="/gestoria/guia-arras-penitenciales" className="text-gold-500 hover:text-gold-700 font-semibold">
             Guía Arras Penitenciales →
           </Link>
         </div>

@@ -253,7 +253,7 @@ function StatCard({
     <div className="bg-white rounded-2xl border border-gray-200 p-5 flex items-start gap-4">
       <div
         className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${
-          tone === 'accent' ? 'bg-[#c9962a]/15 text-[#8a6a1e]' : 'bg-gray-100 text-gray-500'
+          tone === 'accent' ? 'bg-gold-500/15 text-[#8a6a1e]' : 'bg-gray-100 text-gray-500'
         }`}
       >
         <Icon className="w-5 h-5" />
@@ -293,7 +293,7 @@ function StatusBadge({ status }: { status: string }) {
   return (
     <span
       className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold ${
-        isPaid ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200'
+        isPaid ? 'bg-cream-100 text-gold-700 border border-gold-200' : 'bg-amber-50 text-amber-700 border border-amber-200'
       }`}
     >
       {isPaid && <IconCheck className="w-3 h-3" />}
@@ -848,7 +848,7 @@ export default function AdminPanelPremium({
         Exportar CSV
       </button>
       <div className="hidden xl:flex items-center gap-1.5 pl-1">
-        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+        <span className="w-1.5 h-1.5 rounded-full bg-cream-1000 animate-pulse" />
         <span className="text-[11px] text-gray-400">Auto-refresh 30s</span>
       </div>
     </>
@@ -910,7 +910,7 @@ export default function AdminPanelPremium({
                   const percentage = (service.revenue / maxRevenue) * 100
                   return (
                     <div key={service.service} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-[#c9962a] text-white flex items-center justify-center font-bold text-[11px] flex-shrink-0">
+                      <div className="w-6 h-6 rounded-full bg-gold-500 text-white flex items-center justify-center font-bold text-[11px] flex-shrink-0">
                         {idx + 1}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -923,7 +923,7 @@ export default function AdminPanelPremium({
                         <div className="flex items-center gap-2">
                           <div className="flex-1 bg-gray-100 rounded-full h-1.5">
                             <div
-                              className="bg-[#c9962a] h-1.5 rounded-full transition-all duration-500"
+                              className="bg-gold-500 h-1.5 rounded-full transition-all duration-500"
                               style={{ width: `${percentage}%` }}
                             />
                           </div>
@@ -1054,7 +1054,7 @@ export default function AdminPanelPremium({
               <button
                 type="button"
                 onClick={() => setManualSaleOpen(true)}
-                className="px-3.5 py-2.5 bg-[#c9962a] text-white rounded-lg text-xs font-semibold hover:bg-[#b8841e] transition flex items-center justify-center gap-1.5 flex-shrink-0"
+                className="px-3.5 py-2.5 bg-gold-500 text-white rounded-lg text-xs font-semibold hover:bg-[#b8841e] transition flex items-center justify-center gap-1.5 flex-shrink-0"
               >
                 + Venta manual
               </button>
@@ -1143,7 +1143,7 @@ export default function AdminPanelPremium({
                         <td className="px-5 py-3.5">
                           <p className="text-xs text-gray-500">{new Date(req.created_at).toLocaleString('es-ES')}</p>
                           {req.paid_at && (
-                            <p className="text-[11px] text-emerald-600">Pagado: {new Date(req.paid_at).toLocaleDateString('es-ES')}</p>
+                            <p className="text-[11px] text-gold-600">Pagado: {new Date(req.paid_at).toLocaleDateString('es-ES')}</p>
                           )}
                         </td>
                         <td className="px-5 py-3.5 text-center">
@@ -1456,7 +1456,7 @@ export default function AdminPanelPremium({
                           </td>
                           <td className="px-6 py-3.5 text-center">
                             {cliente.emailConfirmed ? (
-                              <IconCheck className="w-4 h-4 text-emerald-600 mx-auto" />
+                              <IconCheck className="w-4 h-4 text-gold-600 mx-auto" />
                             ) : (
                               <span className="text-gray-300">—</span>
                             )}
@@ -1526,7 +1526,7 @@ export default function AdminPanelPremium({
                           </td>
                           <td className="px-6 py-3.5 text-center">
                             <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold ${
-                              propietario.contacts.length > 0 ? 'bg-emerald-50 text-emerald-700' : 'bg-gray-100 text-gray-400'
+                              propietario.contacts.length > 0 ? 'bg-cream-100 text-gold-700' : 'bg-gray-100 text-gray-400'
                             }`}>
                               {propietario.contacts.length}
                             </span>
@@ -1566,7 +1566,7 @@ export default function AdminPanelPremium({
                       type="checkbox"
                       checked={allFilteredSelected}
                       onChange={toggleSelectAllFilteredLeads}
-                      className="w-4 h-4 rounded border-gray-300 text-[#c9962a] focus:ring-[#c9962a]"
+                      className="w-4 h-4 rounded border-gray-300 text-gold-500 focus:ring-[#c9962a]"
                     />
                     Seleccionar todos ({filteredLeads.length})
                   </label>
@@ -1607,13 +1607,13 @@ export default function AdminPanelPremium({
                               type="checkbox"
                               checked={selectedLeadEmails.has(lead.email)}
                               onChange={() => toggleLeadEmail(lead.email)}
-                              className="w-4 h-4 rounded border-gray-300 text-[#c9962a] focus:ring-[#c9962a]"
+                              className="w-4 h-4 rounded border-gray-300 text-gold-500 focus:ring-[#c9962a]"
                             />
                           </td>
                           <td className="px-6 py-3.5">
                             <div className="flex items-center gap-3">
                               <div className={`w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-xs ${
-                                lead.isRegistered ? 'bg-emerald-600' : 'bg-gray-400'
+                                lead.isRegistered ? 'bg-gold-600' : 'bg-gray-400'
                               }`}>
                                 {lead.name.charAt(0).toUpperCase()}
                               </div>
@@ -1633,7 +1633,7 @@ export default function AdminPanelPremium({
                           </td>
                           <td className="px-6 py-3.5 text-center">
                             {lead.isRegistered ? (
-                              <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                              <span className="px-2.5 py-1 rounded-full text-[11px] font-bold bg-cream-100 text-gold-700 border border-gold-200">
                                 Registrado
                               </span>
                             ) : (
@@ -1824,7 +1824,7 @@ export default function AdminPanelPremium({
                 <button
                   type="submit"
                   disabled={manualSaleSaving}
-                  className="px-5 py-2 bg-[#c9962a] text-white text-sm font-semibold rounded-lg hover:bg-[#b8841e] transition disabled:opacity-50"
+                  className="px-5 py-2 bg-gold-500 text-white text-sm font-semibold rounded-lg hover:bg-[#b8841e] transition disabled:opacity-50"
                 >
                   {manualSaleSaving ? 'Guardando…' : 'Registrar venta'}
                 </button>
@@ -2007,7 +2007,7 @@ export default function AdminPanelPremium({
                   <button
                     type="submit"
                     disabled={editSaleSaving}
-                    className="px-5 py-2 bg-[#c9962a] text-white text-sm font-semibold rounded-lg hover:bg-[#b8841e] transition disabled:opacity-50"
+                    className="px-5 py-2 bg-gold-500 text-white text-sm font-semibold rounded-lg hover:bg-[#b8841e] transition disabled:opacity-50"
                   >
                     {editSaleSaving ? 'Guardando…' : 'Guardar cambios'}
                   </button>
@@ -2085,7 +2085,7 @@ export default function AdminPanelPremium({
               )}
 
               {bulkResult && (
-                <div className="rounded-lg bg-emerald-50 border border-emerald-200 px-4 py-3 text-sm text-emerald-800 space-y-1">
+                <div className="rounded-lg bg-cream-100 border border-gold-200 px-4 py-3 text-sm text-gold-800 space-y-1">
                   <p className="font-semibold">Envío completado</p>
                   <p>Enviados: {bulkResult.sent.length}</p>
                   <p>Fallidos: {bulkResult.failed.length}</p>
@@ -2154,7 +2154,7 @@ export default function AdminPanelPremium({
                 {selectedPropietario.name.charAt(0).toUpperCase()}
               </div>
               <div>
-                <p className="text-[11px] uppercase tracking-widest text-[#c9962a]">Propietario particular</p>
+                <p className="text-[11px] uppercase tracking-widest text-gold-500">Propietario particular</p>
                 <h2 className="text-xl font-bold">{selectedPropietario.name}</h2>
                 <p className="text-sm text-white/60">{selectedPropietario.email}</p>
               </div>
@@ -2255,7 +2255,7 @@ export default function AdminPanelPremium({
                           <div className="flex items-center gap-2 mb-2">
                             <h4 className="text-sm font-bold text-gray-900">{listing.title}</h4>
                             <span className={`px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
-                              listing.status === 'published' ? 'bg-emerald-50 text-emerald-700' : 'bg-gray-100 text-gray-500'
+                              listing.status === 'published' ? 'bg-cream-100 text-gold-700' : 'bg-gray-100 text-gray-500'
                             }`}>
                               {listing.status === 'published' ? 'Activo' : 'Inactivo'}
                             </span>

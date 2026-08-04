@@ -13,7 +13,7 @@ export default function AvisoLegalPage() {
       <Navbar />
       <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-gray-700">
         <PageHeroImage
-          src="/keys.jpg"
+          src="/promo1.png"
           alt="Aviso Legal"
           className="mb-10"
         />
@@ -28,8 +28,8 @@ export default function AvisoLegalPage() {
           <ul className="mt-4 space-y-1 text-sm">
             <li><strong>Denominación social:</strong> Inmonest</li>
             <li><strong>Nombre comercial:</strong> Inmonest</li>
-            <li><strong>Correo electrónico:</strong> <a href="mailto:info@inmonest.com" className="text-[#c9962a] hover:underline">info@inmonest.com</a></li>
-            <li><strong>Sitio web:</strong> <a href="https://inmonest.com" className="text-[#c9962a] hover:underline">https://inmonest.com</a></li>
+            <li><strong>Correo electrónico:</strong> <a href="mailto:info@inmonest.com" className="text-gold-500 hover:underline">info@inmonest.com</a></li>
+            <li><strong>Sitio web:</strong> <a href="https://inmonest.com" className="text-gold-500 hover:underline">https://inmonest.com</a></li>
           </ul>
         </section>
 
@@ -71,7 +71,7 @@ export default function AvisoLegalPage() {
         <section>
           <h2 className="text-xl font-bold text-gray-900 mb-3">7. Contacto</h2>
           <p className="leading-relaxed">
-            Para cualquier consulta relativa a este Aviso Legal, puede ponerse en contacto con nosotros en: <a href="mailto:info@inmonest.com" className="text-[#c9962a] hover:underline">info@inmonest.com</a>.
+            Para cualquier consulta relativa a este Aviso Legal, puede ponerse en contacto con nosotros en: <a href="mailto:info@inmonest.com" className="text-gold-500 hover:underline">info@inmonest.com</a>.
           </p>
         </section>
       </main>

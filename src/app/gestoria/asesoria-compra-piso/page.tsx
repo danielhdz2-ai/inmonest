@@ -62,10 +62,10 @@ export default function AsesoriaCompraPisoPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
-                🏠 Gestoría inmobiliaria para particulares
+                Gestoría inmobiliaria para particulares
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                ¿Compras piso y <span className="text-[#c9962a]">no quieres pagar comisiones abusivas</span>?
+                ¿Compras piso y <span className="text-gold-500">no quieres pagar comisiones abusivas</span>?
               </h1>
               <p className="text-xl text-gray-600 mb-8">
                 <strong>Inmonest</strong> te acompaña desde la reserva hasta la escritura. Revisamos documentación, 
@@ -74,7 +74,7 @@ export default function AsesoriaCompraPisoPage() {
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <Link
                   href="/gestoria/solicitar/compra-completa-reserva-escritura"
-                  className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
+                  className="bg-gold-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition text-center shadow-lg"
                 >
                   Contratar servicio completo (687€)
                 </Link>
@@ -82,26 +82,26 @@ export default function AsesoriaCompraPisoPage() {
                   href="https://wa.me/34745022862?text=Hola,%20estoy%20comprando%20piso%20y%20necesito%20ayuda%20con%20la%20gesti%C3%B3n"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white text-[#c9962a] border-2 border-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-50 transition text-center shadow-lg"
+                  className="bg-white text-gold-500 border-2 border-gold-500 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-50 transition text-center shadow-lg"
                 >
-                  💬 WhatsApp directo
+                  WhatsApp directo
                 </a>
               </div>
               <div className="flex items-center gap-6 text-sm text-gray-600">
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Gestoría a tu lado</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>Sin comisiones de agencia</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5 text-[#c9962a]" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
                   <span>IVA incluido</span>
@@ -110,7 +110,7 @@ export default function AsesoriaCompraPisoPage() {
             </div>
             <div className="relative">
               <Image
-                src="/familia3.jpg"
+                src="/promo3.png"
                 alt="Gestoría inmobiliaria compra piso"
                 width={600}
                 height={400}
@@ -177,26 +177,26 @@ export default function AsesoriaCompraPisoPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-orange-100 text-[#c9962a] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-orange-100 text-gold-500 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   1
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Verificación documental completa</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Solicitud y análisis de nota simple registral</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Verificación de propietario, cargas, hipotecas, embargos</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Comprobación de metros cuadrados reales vs anuncio</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Informe de riesgos detectados en PDF</span>
                 </li>
               </ul>
@@ -204,26 +204,26 @@ export default function AsesoriaCompraPisoPage() {
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-orange-100 text-[#c9962a] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-orange-100 text-gold-500 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   2
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Revisión y negociación de contratos</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Revisión completa contrato de arras/reserva</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Detección de cláusulas abusivas o perjudiciales</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Negociación de condiciones con vendedor</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Redacción de enmiendas y modificaciones</span>
                 </li>
               </ul>
@@ -231,26 +231,26 @@ export default function AsesoriaCompraPisoPage() {
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-orange-100 text-[#c9962a] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-orange-100 text-gold-500 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   3
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Gestión completa de hipoteca</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Revisión oferta vinculante del banco</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Análisis de comisiones, seguros, vinculaciones</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Detección de cláusulas abusivas (suelo, IRPH)</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Coordinación con notaría y registro</span>
                 </li>
               </ul>
@@ -258,26 +258,26 @@ export default function AsesoriaCompraPisoPage() {
 
             <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center gap-3 mb-4">
-                <div className="bg-orange-100 text-[#c9962a] w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
+                <div className="bg-orange-100 text-gold-500 w-12 h-12 rounded-full flex items-center justify-center font-bold text-xl">
                   4
                 </div>
                 <h3 className="text-xl font-bold text-gray-900">Acompañamiento hasta escritura</h3>
               </div>
               <ul className="space-y-2 text-gray-700">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Soporte continuo vía email/WhatsApp</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Revisión de escritura de compraventa</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Coordinación de fechas y documentación</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#c9962a] mt-1">✓</span>
+                  <span className="text-gold-500 mt-1">✓</span>
                   <span>Atención prioritaria durante todo el proceso</span>
                 </li>
               </ul>
@@ -335,37 +335,37 @@ export default function AsesoriaCompraPisoPage() {
           <p className="text-xl text-gray-600 mb-12">
             Mucho más barato que comisiones de agencia de 9.000€-15.000€
           </p>
-          <div className="border-2 border-[#c9962a] rounded-lg p-8 shadow-lg">
+          <div className="border-2 border-gold-500 rounded-lg p-8 shadow-lg">
             <h3 className="text-2xl font-bold mb-4 text-gray-900">Servicio Completo de Compra</h3>
-            <div className="text-5xl font-bold text-[#c9962a] mb-2">687€</div>
+            <div className="text-5xl font-bold text-gold-500 mb-2">687€</div>
             <div className="text-sm text-gray-500 mb-8">IVA incluido · Pago único</div>
             <ul className="text-left space-y-3 mb-8 max-w-md mx-auto">
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-700">Gestión completa reserva, arras y escritura</span>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-700">Revisión completa de documentación registral</span>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-700">Revisión de contratos con agencias e inmobiliarias</span>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-700">Apoyo legal en todo el proceso de compra</span>
               </li>
               <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-[#c9962a] mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <svg className="w-5 h-5 text-gold-500 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
                 <span className="text-gray-700">Coordinación con notaría y atención prioritaria</span>
@@ -373,7 +373,7 @@ export default function AsesoriaCompraPisoPage() {
             </ul>
             <Link
               href="/gestoria/solicitar/compra-completa-reserva-escritura"
-              className="inline-block bg-[#c9962a] text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#b8872a] transition shadow-lg"
+              className="inline-block bg-gold-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-[#b8872a] transition shadow-lg"
             >
               Contratar servicio completo (687€)
             </Link>
@@ -420,7 +420,7 @@ export default function AsesoriaCompraPisoPage() {
       </section>
 
       {/* CTA Final */}
-      <section className="py-16 px-4 bg-[#c9962a] text-white">
+      <section className="py-16 px-4 bg-gold-500 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             No pagues comisiones abusivas. Compra con Inmonest.
@@ -431,7 +431,7 @@ export default function AsesoriaCompraPisoPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/gestoria/solicitar/compra-completa-reserva-escritura"
-              className="bg-white text-[#c9962a] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
+              className="bg-white text-gold-500 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
             >
               Contratar servicio completo (687€)
             </Link>
@@ -439,9 +439,9 @@ export default function AsesoriaCompraPisoPage() {
               href="https://wa.me/34745022862?text=Hola,%20necesito%20ayuda%20para%20comprar%20un%20piso%20sin%20comisiones"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#c9962a] text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition shadow-lg border-2 border-white"
+              className="bg-gold-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-[#b8872a] transition shadow-lg border-2 border-white"
             >
-              💬 Consulta gratuita (WhatsApp)
+              Consulta gratuita (WhatsApp)
             </a>
           </div>
         </div>
@@ -461,10 +461,10 @@ export default function AsesoriaCompraPisoPage() {
               <Link
                 key={ciudad.slug}
                 href={`/gestoria/asesoria-compra-piso/${ciudad.slug}`}
-                className="block bg-white p-4 rounded-lg border border-gray-100 hover:border-[#c9962a] hover:shadow-md transition"
+                className="block bg-white p-4 rounded-lg border border-gray-100 hover:border-gold-500 hover:shadow-md transition"
               >
                 <div className="font-bold text-gray-900">{ciudad.nombre}</div>
-                <div className="text-xs text-[#c9962a] mt-1">Ver servicio →</div>
+                <div className="text-xs text-gold-500 mt-1">Ver servicio →</div>
               </Link>
             ))}
           </div>
@@ -477,25 +477,25 @@ export default function AsesoriaCompraPisoPage() {
           <h2 className="text-2xl font-bold mb-8 text-gray-900">Servicios relacionados</h2>
           <div className="grid md:grid-cols-3 gap-6">
             <Link href="/gestoria/revision-contrato-arras" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Revisión contrato de arras</h3>
+              <h3 className="font-bold text-lg mb-2 text-gold-500">Revisión contrato de arras</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Si solo necesitas revisar el contrato de arras que te han dado.
               </p>
-              <span className="text-[#c9962a] font-semibold">Desde 60€ →</span>
+              <span className="text-gold-500 font-semibold">Desde 60€ →</span>
             </Link>
             <Link href="/gestoria/solicitar/arras-penitenciales" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Contrato de arras penitenciales</h3>
+              <h3 className="font-bold text-lg mb-2 text-gold-500">Contrato de arras penitenciales</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Contrato de arras personalizado redactado por gestoría en 48h.
               </p>
-              <span className="text-[#c9962a] font-semibold">145€ →</span>
+              <span className="text-gold-500 font-semibold">145€ →</span>
             </Link>
             <Link href="/gestoria" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-[#c9962a]">Más servicios de gestoría</h3>
+              <h3 className="font-bold text-lg mb-2 text-gold-500">Más servicios de gestoría</h3>
               <p className="text-gray-600 text-sm mb-3">
                 Contratos de alquiler, venta, rescisión y más servicios inmobiliarios.
               </p>
-              <span className="text-[#c9962a] font-semibold">Ver todos →</span>
+              <span className="text-gold-500 font-semibold">Ver todos →</span>
             </Link>
           </div>
         </div>

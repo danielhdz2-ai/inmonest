@@ -31,7 +31,7 @@ export default function CiudadHubComoTrabajamos({ ciudad }: CiudadHubComoTrabaja
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {PASOS.map((paso, i) => (
             <div key={paso.title} className="text-center">
-              <div className="w-16 h-16 bg-[#c9a84c] text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+              <div className="w-16 h-16 bg-gold-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
                 {i + 1}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{paso.title}</h3>

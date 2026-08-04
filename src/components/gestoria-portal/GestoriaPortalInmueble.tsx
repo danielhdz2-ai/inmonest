@@ -67,7 +67,7 @@ export default function GestoriaPortalInmueble({
       {hasData && (
         <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden shadow-sm">
           <div className="px-5 py-3 bg-[#fafafa] border-b border-gray-100">
-            <p className="text-[10px] font-bold uppercase tracking-widest text-[#c9962a]">Ficha del inmueble</p>
+            <p className="text-[10px] font-bold uppercase tracking-widest text-gold-500">Ficha del inmueble</p>
           </div>
           <dl className="divide-y divide-gray-100">
             {fields.map(({ key, label }) => {
@@ -84,7 +84,7 @@ export default function GestoriaPortalInmueble({
         </div>
       )}
 
-      <div className="rounded-2xl border border-[#e8d48a]/60 bg-gradient-to-br from-[#fdf8ee] to-white p-5 sm:p-6 shadow-sm">
+      <div className="rounded-2xl border border-gold-300/60 bg-gradient-to-br from-[#fdf8ee] to-white p-5 sm:p-6 shadow-sm">
         <h3 className="text-base font-bold text-gray-900 mb-1">
           {hasData ? 'Actualizar datos' : 'Completar ficha del inmueble'}
         </h3>

@@ -35,7 +35,7 @@ export default function RecuperarContrasenaPage() {
       <div className="w-full max-w-md text-center">
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
           <div className="w-14 h-14 bg-[#fef0c0] rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-7 h-7 text-[#c9962a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-7 h-7 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
@@ -50,7 +50,7 @@ export default function RecuperarContrasenaPage() {
           </p>
           <button
             onClick={() => { setSent(false); setEmail('') }}
-            className="text-sm text-[#c9962a] hover:underline font-medium"
+            className="text-sm text-gold-500 hover:underline font-medium"
           >
             Usar otro email
           </button>
@@ -64,7 +64,7 @@ export default function RecuperarContrasenaPage() {
       <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
         <div className="text-center mb-6">
           <div className="w-12 h-12 bg-[#fef0c0] rounded-full flex items-center justify-center mx-auto mb-3">
-            <svg className="w-6 h-6 text-[#c9962a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-6 h-6 text-gold-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
             </svg>
           </div>
@@ -100,7 +100,7 @@ export default function RecuperarContrasenaPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-[#c9962a] text-white rounded-xl text-sm font-bold hover:bg-[#a87a20] transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full py-3 bg-gold-500 text-white rounded-xl text-sm font-bold hover:bg-gold-600 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {loading ? 'Enviando...' : 'Enviar enlace de recuperación'}
           </button>
@@ -109,7 +109,7 @@ export default function RecuperarContrasenaPage() {
         <div className="mt-6 pt-5 border-t border-gray-100 text-center">
           <p className="text-xs text-gray-500">
             ¿Recordaste tu contraseña?{' '}
-            <Link href="/login" className="text-[#c9962a] font-semibold hover:underline">
+            <Link href="/login" className="text-gold-500 font-semibold hover:underline">
               Iniciar sesión
             </Link>
           </p>

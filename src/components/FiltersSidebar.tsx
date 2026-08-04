@@ -409,7 +409,7 @@ export default function FiltersSidebar({ isOpen, onClose }: FiltersSidebarProps)
         <button
           onClick={applyAll}
           disabled={countLoading}
-          className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-[#c9962a] hover:bg-[#a87a20] text-white text-sm font-semibold transition-colors disabled:opacity-70"
+          className="w-full flex items-center justify-center gap-2 py-3 rounded-full bg-gold-500 hover:bg-gold-600 text-white text-sm font-semibold transition-colors disabled:opacity-70"
         >
           {countLoading && (
             <span className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />

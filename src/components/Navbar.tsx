@@ -74,7 +74,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           {/* Hamburger — siempre visible */}
           <button
             onClick={() => setSideOpen(true)}
-            className="flex-shrink-0 p-2 rounded-lg text-gray-500 hover:bg-[#fef9e8] hover:text-[#c9962a] transition-colors"
+            className="flex-shrink-0 p-2 rounded-lg text-gray-500 hover:bg-cream-100 hover:text-gold-500 transition-colors"
             aria-label="Abrir menú"
           >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -85,7 +85,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink min-w-0">
             <span className="text-2xl sm:text-3xl font-extrabold tracking-tight leading-none truncate">
-              <span className="text-[#1a0d00]">Inmo</span><span className="text-[#c9962a]">nest</span>
+              <span className="text-[#1a0d00]">Inmo</span><span className="text-gold-500">nest</span>
             </span>
           </Link>
 
@@ -96,7 +96,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
             <Link
               href="/gestoria"
-              className="inline-flex items-center rounded-full bg-[#c9962a] text-white font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm touch-manipulation"
+              className="inline-flex items-center rounded-full bg-gold-500 text-white font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm touch-manipulation"
             >
               Gestoría
             </Link>
@@ -108,10 +108,10 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
               onMouseEnter={() => setServiciosOpen(true)}
               onMouseLeave={() => setServiciosOpen(false)}
             >
-              <div className="inline-flex items-stretch rounded-full border-2 border-[#c9962a] overflow-hidden">
+              <div className="inline-flex items-stretch rounded-full border-2 border-gold-500 overflow-hidden">
                 <Link
                   href="/servicios"
-                  className="inline-flex items-center text-[#c9962a] font-semibold hover:bg-[#fef9e8] transition-colors whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm touch-manipulation"
+                  className="inline-flex items-center text-gold-500 font-semibold hover:bg-cream-100 transition-colors whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm touch-manipulation"
                 >
                   Servicios
                 </Link>
@@ -121,7 +121,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
                   aria-expanded={serviciosOpen}
                   aria-haspopup="menu"
                   aria-label="Abrir accesos rápidos de servicios"
-                  className="inline-flex items-center border-l border-[#c9962a]/40 text-[#c9962a] hover:bg-[#fef9e8] px-2 touch-manipulation"
+                  className="inline-flex items-center border-l border-gold-500/40 text-gold-500 hover:bg-cream-100 px-2 touch-manipulation"
                 >
                   <svg
                     className={`w-3.5 h-3.5 transition-transform ${serviciosOpen ? 'rotate-180' : ''}`}
@@ -153,8 +153,8 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
                         onClick={() => setServiciosOpen(false)}
                         className={`block px-4 py-2.5 text-sm transition-colors ${
                           item.highlight
-                            ? 'font-bold text-[#c9962a] bg-[#fef9e8] hover:bg-[#fdf3d4] mt-1 border-t border-gray-50'
-                            : 'text-gray-800 hover:bg-gray-50 hover:text-[#c9962a]'
+                            ? 'font-bold text-gold-500 bg-cream-100 hover:bg-[#fdf3d4] mt-1 border-t border-gray-50'
+                            : 'text-gray-800 hover:bg-gray-50 hover:text-gold-500'
                         }`}
                       >
                         {item.label}
@@ -167,7 +167,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
 
             <Link
               href="/publicar-anuncio"
-              className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
+              className="hidden md:inline-flex items-center px-4 py-2 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors whitespace-nowrap"
             >
               Publicar anuncio
             </Link>
@@ -218,7 +218,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           <Link href="/" onClick={close} className="flex items-center gap-2">
             <Image src="/logo.png" alt="Inmonest" width={32} height={32} className="h-8 w-8 object-contain" />
             <span className="text-xl font-extrabold tracking-tight leading-none">
-              <span className="text-[#1a0d00]">Inmo</span><span className="text-[#c9962a]">nest</span>
+              <span className="text-[#1a0d00]">Inmo</span><span className="text-gold-500">nest</span>
             </span>
           </Link>
           <button
@@ -239,7 +239,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
               key={item.href}
               href={item.href}
               onClick={close}
-              className="flex items-center gap-3 px-6 py-3.5 text-sm font-medium text-gray-800 hover:bg-[#fef9e8] hover:text-[#c9962a] transition-colors border-b border-gray-50 last:border-0"
+              className="flex items-center gap-3 px-6 py-3.5 text-sm font-medium text-gray-800 hover:bg-cream-100 hover:text-gold-500 transition-colors border-b border-gray-50 last:border-0"
             >
               {item.label}
             </Link>
@@ -251,7 +251,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
           <Link
             href="/publicar-anuncio"
             onClick={close}
-            className="block text-center py-2.5 rounded-full bg-[#c9962a] text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors"
+            className="block text-center py-2.5 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-[#b8841e] transition-colors"
           >
             Publicar anuncio gratis
           </Link>
@@ -259,7 +259,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             <Link
               href="/mi-cuenta"
               onClick={close}
-              className="block text-center py-2.5 rounded-full border border-[#c9962a]/40 text-[#c9962a] text-sm font-medium hover:bg-[#fef9e8] transition-colors"
+              className="block text-center py-2.5 rounded-full border border-gold-500/40 text-gold-500 text-sm font-medium hover:bg-cream-100 transition-colors"
             >
               Mi cuenta
             </Link>
@@ -267,7 +267,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             <Link
               href="/login"
               onClick={close}
-              className="block text-center py-2.5 rounded-full border border-[#c9962a]/40 text-[#c9962a] text-sm font-medium hover:bg-[#fef9e8] transition-colors"
+              className="block text-center py-2.5 rounded-full border border-gold-500/40 text-gold-500 text-sm font-medium hover:bg-cream-100 transition-colors"
             >
               Iniciar sesión
             </Link>

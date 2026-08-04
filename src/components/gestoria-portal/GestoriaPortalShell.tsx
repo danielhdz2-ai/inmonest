@@ -34,7 +34,7 @@ export default function GestoriaPortalShell({
               <p className="text-sm font-extrabold tracking-tight">
                 Inmo<span className="text-[#f4d98a]">nest</span>
               </p>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#c9962a]/90">
+              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold-500/90">
                 Gestoría Digital
               </p>
             </div>
@@ -52,7 +52,7 @@ export default function GestoriaPortalShell({
                 onClick={() => onSectionChange(item.id)}
                 className={`w-full flex items-center gap-3 rounded-xl px-3 py-3 text-left transition-all ${
                   active
-                    ? 'bg-[#c9962a]/20 border border-[#c9962a]/40 text-[#f4d98a]'
+                    ? 'bg-gold-500/20 border border-gold-500/40 text-[#f4d98a]'
                     : 'text-white/70 hover:bg-white/5 hover:text-white border border-transparent'
                 }`}
               >
@@ -62,7 +62,7 @@ export default function GestoriaPortalShell({
                   <p className="text-[10px] text-white/40 truncate">{item.desc}</p>
                 </div>
                 {badge != null && (
-                  <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-[#c9962a] px-1.5 text-[10px] font-bold text-white">
+                  <span className="flex h-5 min-w-[20px] items-center justify-center rounded-full bg-gold-500 px-1.5 text-[10px] font-bold text-white">
                     {badge}
                   </span>
                 )}
@@ -103,7 +103,7 @@ export default function GestoriaPortalShell({
                 <p className="text-xs font-extrabold">
                   Inmo<span className="text-[#f4d98a]">nest</span>
                 </p>
-                <p className="text-[9px] font-bold uppercase tracking-widest text-[#c9962a]">Gestoría</p>
+                <p className="text-[9px] font-bold uppercase tracking-widest text-gold-500">Gestoría</p>
               </div>
             </Link>
             <div className="min-w-0 flex-1 text-center">
@@ -146,7 +146,7 @@ export default function GestoriaPortalShell({
                   <span className="text-base leading-none">{item.icon}</span>
                   <span className="text-[9px] font-semibold">{item.shortLabel}</span>
                   {badge && (
-                    <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-[#c9962a]" />
+                    <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-gold-500" />
                   )}
                 </button>
               )
@@ -156,8 +156,8 @@ export default function GestoriaPortalShell({
 
         {/* Footer desktop */}
         <footer className="hidden lg:flex border-t border-gray-200 bg-white px-6 py-3 text-xs text-gray-500 justify-between">
-          <a href={`tel:${GESTORIA_PHONE_TEL}`} className="font-semibold text-[#7a5c1e]">
-            📞 745 022 862 · info@inmonest.com
+          <a href={`tel:${GESTORIA_PHONE_TEL}`} className="font-semibold text-gold-700">
+            745 022 862 · info@inmonest.com
           </a>
           <p>Gestoría inmobiliaria digital · Documentación protegida</p>
         </footer>

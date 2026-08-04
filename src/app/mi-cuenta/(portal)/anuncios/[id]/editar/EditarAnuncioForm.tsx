@@ -225,7 +225,7 @@ export default function EditarAnuncioForm({ listing }: { listing: ListingData })
     }
   }
 
-  const inputCls = 'w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/40 focus:border-[#c9962a] transition-colors'
+  const inputCls = 'w-full rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#c9962a]/40 focus:border-gold-500 transition-colors'
   const labelCls = 'block text-xs font-medium text-gray-500 uppercase tracking-wider mb-1.5'
 
   return (
@@ -357,7 +357,7 @@ export default function EditarAnuncioForm({ listing }: { listing: ListingData })
         <p className="text-sm text-red-600 bg-red-50 px-4 py-2.5 rounded-xl">{error}</p>
       )}
       {success && (
-        <p className="text-sm text-emerald-700 bg-emerald-50 px-4 py-2.5 rounded-xl">
+        <p className="text-sm text-gold-700 bg-cream-100 px-4 py-2.5 rounded-xl">
           ✓ Cambios guardados correctamente
         </p>
       )}
@@ -381,7 +381,7 @@ export default function EditarAnuncioForm({ listing }: { listing: ListingData })
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={imgUrl || ''} alt={`Foto ${idx + 1}`} className="w-full h-full object-cover" />
                   {idx === 0 && (
-                    <div className="absolute top-2 left-2 bg-[#c9962a] text-white text-xs px-2 py-0.5 rounded-full font-medium">
+                    <div className="absolute top-2 left-2 bg-gold-500 text-white text-xs px-2 py-0.5 rounded-full font-medium">
                       Portada
                     </div>
                   )}
@@ -430,7 +430,7 @@ export default function EditarAnuncioForm({ listing }: { listing: ListingData })
                 alt={`Nueva ${idx + 1}`}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full font-medium">
+              <div className="absolute top-2 left-2 bg-gold-500 text-white text-xs px-2 py-0.5 rounded-full font-medium">
                 Nueva
               </div>
               <button
@@ -447,7 +447,7 @@ export default function EditarAnuncioForm({ listing }: { listing: ListingData })
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="aspect-square rounded-xl border-2 border-dashed border-gray-300 hover:border-[#c9962a] hover:bg-[#fef9e8] transition-colors flex flex-col items-center justify-center gap-2 text-gray-400 hover:text-[#c9962a]"
+            className="aspect-square rounded-xl border-2 border-dashed border-gray-300 hover:border-gold-500 hover:bg-cream-100 transition-colors flex flex-col items-center justify-center gap-2 text-gray-400 hover:text-gold-500"
           >
             <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -478,7 +478,7 @@ export default function EditarAnuncioForm({ listing }: { listing: ListingData })
           <button
             type="submit"
             disabled={saving || uploadingImages}
-            className="flex-1 bg-[#c9962a] hover:bg-[#b8841e] disabled:opacity-50 text-white font-semibold py-2.5 rounded-xl text-sm transition-colors"
+            className="flex-1 bg-gold-500 hover:bg-[#b8841e] disabled:opacity-50 text-white font-semibold py-2.5 rounded-xl text-sm transition-colors"
           >
             {uploadingImages ? 'Subiendo fotos...' : saving ? 'Guardando...' : 'Guardar cambios'}
           </button>

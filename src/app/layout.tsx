@@ -24,7 +24,7 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
-  userScalable: false,
+  userScalable: true,
   themeColor: '#c9962a',
 }
 
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/imagencabezera.jpg',
+        url: '/promo.png',
         width: 1200,
         height: 630,
         alt: 'Inmonest — Pisos sin comisiones entre particulares',

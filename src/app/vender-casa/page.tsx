@@ -94,12 +94,12 @@ export default function VenderCasaPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             {/* Copy */}
             <div>
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-[#c9962a]/20 text-[#f4c94a] border border-[#c9962a]/30 mb-6">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-gold-500/20 text-gold-300 border border-gold-500/30 mb-6">
                 🏷️ Para propietarios
               </span>
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
                 Las mejores agencias<br />
-                <span className="text-[#f4c94a]">para vender tu casa</span><br />
+                <span className="text-gold-300">para vender tu casa</span><br />
                 rápido
               </h1>
               <p className="mt-5 text-white/70 text-lg leading-relaxed max-w-lg">
@@ -143,13 +143,13 @@ export default function VenderCasaPage() {
               <div key={p.n} className="relative flex flex-col items-center text-center">
                 {/* Línea conectora */}
                 {i < PASOS.length - 1 && (
-                  <div className="hidden md:block absolute top-10 left-[calc(50%+2.5rem)] w-[calc(100%-5rem)] h-0.5 bg-[#c9962a]/20" />
+                  <div className="hidden md:block absolute top-10 left-[calc(50%+2.5rem)] w-[calc(100%-5rem)] h-0.5 bg-gold-500/20" />
                 )}
                 {/* Número */}
-                <div className="w-20 h-20 rounded-2xl bg-[#fef9e8] border-2 border-[#c9962a]/20 flex items-center justify-center mb-5 relative z-10">
+                <div className="w-20 h-20 rounded-2xl bg-cream-100 border-2 border-gold-500/20 flex items-center justify-center mb-5 relative z-10">
                   <span className="text-3xl">{p.icon}</span>
                 </div>
-                <div className="absolute -top-2 -right-2 md:static md:hidden w-6 h-6 rounded-full bg-[#c9962a] text-white text-xs font-extrabold flex items-center justify-center">
+                <div className="absolute -top-2 -right-2 md:static md:hidden w-6 h-6 rounded-full bg-gold-500 text-white text-xs font-extrabold flex items-center justify-center">
                   {p.n}
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">{p.titulo}</h3>
@@ -171,12 +171,12 @@ export default function VenderCasaPage() {
               <div key={t.name} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                 <div className="flex gap-0.5 mb-3">
                   {Array.from({ length: t.stars }).map((_, i) => (
-                    <span key={i} className="text-[#c9962a] text-sm">★</span>
+                    <span key={i} className="text-gold-500 text-sm">★</span>
                   ))}
                 </div>
                 <p className="text-gray-700 text-sm leading-relaxed mb-4">"{t.text}"</p>
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-[#fef9e8] border border-[#c9962a]/20 flex items-center justify-center text-sm font-bold text-[#c9962a]">
+                  <div className="w-8 h-8 rounded-full bg-cream-100 border border-gold-500/20 flex items-center justify-center text-sm font-bold text-gold-500">
                     {t.name[0]}
                   </div>
                   <div>
@@ -216,7 +216,7 @@ export default function VenderCasaPage() {
               <details key={item.q} className="group border border-gray-100 rounded-2xl overflow-hidden">
                 <summary className="flex justify-between items-center cursor-pointer px-5 py-4 font-semibold text-gray-900 hover:bg-[#fffdf5] select-none list-none">
                   {item.q}
-                  <span className="text-[#c9962a] group-open:rotate-180 transition-transform duration-200 text-xl font-light">⌄</span>
+                  <span className="text-gold-500 group-open:rotate-180 transition-transform duration-200 text-xl font-light">⌄</span>
                 </summary>
                 <div className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{item.a}</div>
               </details>
@@ -231,11 +231,11 @@ export default function VenderCasaPage() {
       {/* ── FOOTER CTA ───────────────────────────────────────────────────── */}
       <section className="py-14 bg-gradient-to-r from-[#2e1900] to-[#42300a]">
         <div className="max-w-2xl mx-auto px-4 text-center">
-          <p className="text-[#f4c94a] font-bold text-lg mb-2">¿Listado para agencias?</p>
+          <p className="text-gold-300 font-bold text-lg mb-2">¿Listado para agencias?</p>
           <p className="text-white/70 text-sm mb-6">Si eres una agencia inmobiliaria, accede a los leads de tu zona.</p>
           <Link
             href="/agencias"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#c9962a] text-white font-semibold text-sm hover:bg-[#a87a20] transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gold-500 text-white font-semibold text-sm hover:bg-gold-600 transition-colors"
           >
             Ver plan para agencias →
           </Link>

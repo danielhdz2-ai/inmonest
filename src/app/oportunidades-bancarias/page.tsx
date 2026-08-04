@@ -311,7 +311,7 @@ export default function OportunidadesBancariasPage() {
                 <div key={p.n} className="text-center">
                   <div className="relative h-40 rounded-xl overflow-hidden mb-4">
                     <Image
-                      src={i === 0 ? '/keys.jpg' : i === 1 ? '/interior3.jpg' : '/gestoria1.jpg'}
+                      src={i === 0 ? '/promo1.png' : i === 1 ? '/interior3.jpg' : '/gestoria1.jpg'}
                       alt={p.titulo}
                       fill
                       className="object-cover"
@@ -333,7 +333,7 @@ export default function OportunidadesBancariasPage() {
         {/* ── CTA REGISTRO ──────────────────────────────────────────────────── */}
         <section className="relative overflow-hidden bg-gray-900 text-white py-16">
           <Image
-            src="/familia3.jpg"
+            src="/promo3.png"
             alt="Familia en su nuevo hogar"
             fill
             className="object-cover opacity-20"

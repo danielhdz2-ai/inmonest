@@ -157,7 +157,7 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
             key={t.id}
             onClick={() => setTab(t.id)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-              tab === t.id ? 'bg-white text-[#c9962a] shadow-sm' : 'text-gray-600 hover:text-gray-900'
+              tab === t.id ? 'bg-white text-gold-500 shadow-sm' : 'text-gray-600 hover:text-gray-900'
             }`}
           >
             {t.label}
@@ -173,7 +173,7 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
               <div className="text-5xl mb-4">🛒</div>
               <h2 className="text-xl font-semibold text-gray-700 mb-2">Aún no tienes pedidos</h2>
               <p className="text-gray-500 text-sm mb-6">Cuando contrates un servicio de gestoría, aparecerá aquí.</p>
-              <Link href="/gestoria" className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors">
+              <Link href="/gestoria" className="inline-block bg-gold-500 hover:bg-[#b8841e] text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors">
                 Ver servicios disponibles →
               </Link>
             </div>
@@ -182,7 +182,7 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
               {requests.map((req, i) => (
                 <div key={req.id} className="bg-white rounded-2xl border border-gray-200 p-5 flex flex-col sm:flex-row sm:items-center gap-4">
                   {/* Número de pedido */}
-                  <div className="w-10 h-10 rounded-full bg-[#f4e9d0] text-[#7a5c1e] font-bold text-sm flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#f4e9d0] text-gold-700 font-bold text-sm flex items-center justify-center flex-shrink-0">
                     #{requests.length - i}
                   </div>
                   {/* Info */}
@@ -208,7 +208,7 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
                     }`}>
                       {req.status === 'paid' ? '✓ Pagado' : 'Pendiente'}
                     </span>
-                    <span className="text-[#c9962a] font-bold text-lg">
+                    <span className="text-gold-500 font-bold text-lg">
                       {req.amount_eur != null ? `${Number(req.amount_eur).toFixed(2)} €` : '—'}
                     </span>
                   </div>
@@ -218,7 +218,7 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
                       <div className="flex gap-0.5">
                         {STEPS.map(s => (
                           <div key={s.n} className={`w-2 h-2 rounded-full ${
-                            (req.step ?? 1) >= s.n ? 'bg-[#c9962a]' : 'bg-gray-200'
+                            (req.step ?? 1) >= s.n ? 'bg-gold-500' : 'bg-gray-200'
                           }`} />
                         ))}
                       </div>
@@ -240,7 +240,7 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
               <div className="text-5xl mb-4">📄</div>
               <h2 className="text-xl font-semibold text-gray-700 mb-2">Aún no tienes contratos</h2>
               <p className="text-gray-500 text-sm mb-6">Cuando adquieras un contrato en nuestra gestoría, aparecerá aquí.</p>
-              <Link href="/gestoria" className="inline-block bg-[#c9962a] hover:bg-[#b8841e] text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors">
+              <Link href="/gestoria" className="inline-block bg-gold-500 hover:bg-[#b8841e] text-white font-semibold px-6 py-3 rounded-lg text-sm transition-colors">
                 Ver contratos disponibles →
               </Link>
             </div>
@@ -268,14 +268,14 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
                       {req.client_name && <p className="text-gray-400 text-sm mt-0.5">{req.client_name}</p>}
                     </div>
                     <div className="flex items-center gap-3 flex-shrink-0">
-                      <span className="text-[#c9962a] font-bold text-xl">
+                      <span className="text-gold-500 font-bold text-xl">
                         {req.amount_eur != null ? `${Number(req.amount_eur).toFixed(2)} €` : '—'}
                       </span>
                       {req.contract_path ? (
                         <button
                           onClick={() => handleDownload(req)}
                           disabled={downloadLoading === req.id}
-                          className="flex items-center gap-1.5 bg-[#c9962a] hover:bg-[#b8841e] text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors disabled:opacity-60"
+                          className="flex items-center gap-1.5 bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors disabled:opacity-60"
                         >
                           {downloadLoading === req.id ? (
                             <span className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full inline-block" />
@@ -295,10 +295,10 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
                       {STEPS.map((s, i) => (
                         <div key={s.n} className="flex items-center gap-1 flex-1">
                           <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 ${
-                            (req.step ?? 1) >= s.n ? 'bg-[#c9962a] text-white' : 'bg-gray-200 text-gray-400'
+                            (req.step ?? 1) >= s.n ? 'bg-gold-500 text-white' : 'bg-gray-200 text-gray-400'
                           }`}>{s.n}</div>
-                          <span className={`text-xs hidden sm:inline ${(req.step ?? 1) >= s.n ? 'text-[#c9962a]' : 'text-gray-400'}`}>{s.label}</span>
-                          {i < STEPS.length - 1 && <div className={`h-0.5 flex-1 mx-1 ${(req.step ?? 1) > s.n ? 'bg-[#c9962a]' : 'bg-gray-200'}`} />}
+                          <span className={`text-xs hidden sm:inline ${(req.step ?? 1) >= s.n ? 'text-gold-500' : 'text-gray-400'}`}>{s.label}</span>
+                          {i < STEPS.length - 1 && <div className={`h-0.5 flex-1 mx-1 ${(req.step ?? 1) > s.n ? 'bg-gold-500' : 'bg-gray-200'}`} />}
                         </div>
                       ))}
                     </div>
@@ -359,9 +359,9 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
                           {entry.status === 'done' ? (
                             <span className="text-green-600 text-sm font-medium">✓ Subido</span>
                           ) : entry.status === 'uploading' ? (
-                            <span className="animate-spin w-5 h-5 border-2 border-[#c9962a] border-t-transparent rounded-full inline-block" />
+                            <span className="animate-spin w-5 h-5 border-2 border-gold-500 border-t-transparent rounded-full inline-block" />
                           ) : (
-                            <label className="cursor-pointer text-sm text-[#c9962a] font-medium hover:underline">
+                            <label className="cursor-pointer text-sm text-gold-500 font-medium hover:underline">
                               {entry.file ? entry.file.name.slice(0, 20) + '…' : 'Seleccionar archivo'}
                               <input
                                 type="file"
@@ -383,7 +383,7 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
               </div>
               <button
                 onClick={handleUpload}
-                className="mt-5 w-full bg-[#c9962a] hover:bg-[#b8841e] text-white font-semibold py-3 rounded-xl transition-colors"
+                className="mt-5 w-full bg-gold-500 hover:bg-[#b8841e] text-white font-semibold py-3 rounded-xl transition-colors"
               >
                 Enviar documentación →
               </button>
@@ -406,7 +406,7 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
                   <h3 className="font-semibold text-gray-900">{SERVICE_LABELS[req.service_key] ?? req.service_key}</h3>
                   <p className="text-gray-400 text-sm">{req.paid_at ? new Date(req.paid_at).toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }) : ''}</p>
                 </div>
-                <span className="text-[#c9962a] font-bold">{req.amount_eur != null ? `${Number(req.amount_eur).toFixed(2)} €` : ''}</span>
+                <span className="text-gold-500 font-bold">{req.amount_eur != null ? `${Number(req.amount_eur).toFixed(2)} €` : ''}</span>
               </div>
               {/* Steps visuales */}
               <div className="space-y-3">
@@ -419,15 +419,15 @@ export default function MisDocumentosClient({ requests, justPaid, userEmail }: P
                       done    ? 'bg-green-50'  : 'bg-gray-50'
                     }`}>
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg flex-shrink-0 ${
-                        current ? 'bg-[#c9962a] text-white shadow-md' :
-                        done    ? 'bg-green-500 text-white' : 'bg-gray-200'
+                        current ? 'bg-gold-500 text-white shadow-md' :
+                        done    ? 'bg-gold-500 text-white' : 'bg-gray-200'
                       }`}>
                         {done ? '✓' : s.icon}
                       </div>
                       <div className="flex-1">
-                        <p className={`text-sm font-semibold ${current ? 'text-[#7a5c1e]' : done ? 'text-green-700' : 'text-gray-400'}`}>
+                        <p className={`text-sm font-semibold ${current ? 'text-gold-700' : done ? 'text-green-700' : 'text-gray-400'}`}>
                           Paso {s.n}: {s.label}
-                          {current && <span className="ml-2 inline-block w-2 h-2 bg-[#c9962a] rounded-full animate-pulse" />}
+                          {current && <span className="ml-2 inline-block w-2 h-2 bg-gold-500 rounded-full animate-pulse" />}
                         </p>
                       </div>
                     </div>

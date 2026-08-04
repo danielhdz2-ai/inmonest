@@ -30,7 +30,7 @@ export default function ContactoPage() {
 
         {/* Cabecera */}
         <div className="text-center mb-10">
-          <span className="inline-block bg-[#c9962a]/10 text-[#c9962a] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">
+          <span className="inline-block bg-gold-500/10 text-gold-500 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">
             Contacto
           </span>
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -51,7 +51,7 @@ export default function ContactoPage() {
           <div className="bg-white rounded-xl border border-gray-100 p-5">
             <div className="text-2xl mb-2">✉️</div>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Email</p>
-            <a href="mailto:info@inmonest.com" className="text-sm text-[#c9962a] font-medium hover:underline">
+            <a href="mailto:info@inmonest.com" className="text-sm text-gold-500 font-medium hover:underline">
               info@inmonest.com
             </a>
           </div>
@@ -63,7 +63,7 @@ export default function ContactoPage() {
           <div className="bg-white rounded-xl border border-gray-100 p-5 sm:col-span-2">
             <div className="text-2xl mb-2">⚖️</div>
             <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">Gestoría inmobiliaria</p>
-            <Link href="/gestoria" className="text-sm text-[#c9962a] font-medium hover:underline">
+            <Link href="/gestoria" className="text-sm text-gold-500 font-medium hover:underline">
               Ver servicios de gestoría y contratos
             </Link>
           </div>

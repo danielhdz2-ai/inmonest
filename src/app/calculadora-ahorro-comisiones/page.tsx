@@ -132,7 +132,7 @@ export default function CalculadoraAhorroPage() {
               ].map(ejemplo => {
                 const comision = ejemplo.precio * 0.04
                 return (
-                  <div key={ejemplo.precio} className="bg-gradient-to-br from-[#fef9e8] to-white rounded-xl p-6 border-2 border-[#c9962a]/20">
+                  <div key={ejemplo.precio} className="bg-gradient-to-br from-[#fef9e8] to-white rounded-xl p-6 border-2 border-gold-500/20">
                     <div className="text-center mb-4">
                       <div className="text-2xl font-bold text-gray-900 mb-1">
                         {new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(ejemplo.precio)}
@@ -153,7 +153,7 @@ export default function CalculadoraAhorroPage() {
                     </div>
                     <div className="pt-4 border-t border-gray-200 text-center">
                       <div className="text-sm text-gray-600 mb-1">Tu ahorro</div>
-                      <div className="text-3xl font-black text-[#c9962a]">
+                      <div className="text-3xl font-black text-gold-500">
                         {new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', minimumFractionDigits: 0 }).format(ejemplo.ahorro)}
                       </div>
                     </div>
@@ -176,14 +176,14 @@ export default function CalculadoraAhorroPage() {
                   <tr>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Concepto</th>
                     <th className="px-6 py-4 text-center text-sm font-semibold text-red-600">Agencia tradicional</th>
-                    <th className="px-6 py-4 text-center text-sm font-semibold text-[#c9962a]">Inmonest</th>
+                    <th className="px-6 py-4 text-center text-sm font-semibold text-gold-500">Inmonest</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   <tr>
                     <td className="px-6 py-4 text-sm text-gray-900">Comisión / Coste</td>
                     <td className="px-6 py-4 text-center text-red-600 font-bold">3-5% (6,000€ - 10,000€)</td>
-                    <td className="px-6 py-4 text-center text-[#c9962a] font-bold">687€ fijo</td>
+                    <td className="px-6 py-4 text-center text-gold-500 font-bold">687€ fijo</td>
                   </tr>
                   <tr className="bg-gray-50">
                     <td className="px-6 py-4 text-sm text-gray-900">Contratos legales</td>
@@ -236,7 +236,7 @@ export default function CalculadoraAhorroPage() {
                   a: 'Sí, es completamente seguro si cuentas con el asesoramiento legal adecuado. Con Inmonest tienes un gestor experto que redacta contratos, revisa documentación y te acompaña hasta la escritura, garantizando la misma seguridad jurídica que con una agencia pero ahorrando miles de euros.'
                 }
               ].map(({ q, a }) => (
-                <details key={q} className="bg-gray-50 rounded-xl border border-gray-100 group hover:border-[#c9962a]/40 transition-all">
+                <details key={q} className="bg-gray-50 rounded-xl border border-gray-100 group hover:border-gold-500/40 transition-all">
                   <summary className="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer font-semibold text-gray-900 text-sm list-none">
                     {q}
                     <svg className="w-4 h-4 text-gray-400 shrink-0 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -251,7 +251,7 @@ export default function CalculadoraAhorroPage() {
         </section>
 
         {/* CTA Final */}
-        <section className="py-16 px-4 bg-gradient-to-br from-[#c9962a] to-[#a87a20]">
+        <section className="py-16 px-4 bg-gradient-to-br from-gold-500 to-gold-700">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               ¿Listo para vender sin pagar comisiones?
@@ -262,13 +262,13 @@ export default function CalculadoraAhorroPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/publicar-anuncio"
-                className="bg-white text-[#a87a20] px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
+                className="bg-white text-gold-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
               >
                 Publicar anuncio gratis
               </Link>
               <Link
                 href="/gestoria/venta-completa-reserva-escritura"
-                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-[#a87a20] transition"
+                className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-gold-700 transition"
               >
                 Ver servicio de venta (687€)
               </Link>

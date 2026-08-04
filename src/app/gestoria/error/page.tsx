@@ -35,22 +35,22 @@ export default async function GestoriaErrorPage({
         <div className="w-full max-w-3xl bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
 
           {/* ── Columna izquierda: confianza ─────────────────────────── */}
-          <div className="hidden md:flex flex-col justify-between w-[42%] bg-gradient-to-br from-[#1a2f1c] to-[#0d1a0f] p-8 text-white flex-shrink-0">
+          <div className="hidden md:flex flex-col justify-between w-[42%] bg-gradient-to-br from-forest-800 to-forest-900 p-8 text-white flex-shrink-0">
             <div>
               <div className="mb-8">
                 <span className="text-2xl font-extrabold tracking-tight">
-                  <span className="text-white">Inmo</span><span className="text-[#f4c94a]">nest</span>
+                  <span className="text-white">Inmo</span><span className="text-gold-300">nest</span>
                 </span>
               </div>
 
               {/* Escudo de seguridad */}
               <div className="flex flex-col items-center text-center mb-8 mt-4">
-                <div className="w-20 h-20 rounded-full bg-[#f4c94a]/10 border-2 border-[#f4c94a]/40 flex items-center justify-center mb-4">
-                  <svg className="w-10 h-10 text-[#f4c94a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-20 h-20 rounded-full bg-[#f4c94a]/10 border-2 border-gold-300/40 flex items-center justify-center mb-4">
+                  <svg className="w-10 h-10 text-gold-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                   </svg>
                 </div>
-                <p className="text-base font-bold text-[#f4c94a] mb-2">Tu dinero está seguro</p>
+                <p className="text-base font-bold text-gold-300 mb-2">Tu dinero está seguro</p>
                 <p className="text-sm text-white/70 leading-relaxed">
                   No se ha realizado ningún cargo. El pago se canceló antes de completarse.
                 </p>
@@ -108,7 +108,7 @@ export default async function GestoriaErrorPage({
                 <p className="text-xs text-gray-400 uppercase tracking-wider font-semibold mb-2">Servicio que querías contratar</p>
                 <div className="flex items-center justify-between">
                   <p className="text-sm font-semibold text-gray-800">{serviceName}</p>
-                  <span className="text-[#c9962a] font-bold text-lg">{price} €</span>
+                  <span className="text-gold-500 font-bold text-lg">{price} €</span>
                 </div>
                 <p className="text-xs text-gray-400 mt-1">Pago único · Sin suscripción · Entrega en 24–48h</p>
               </div>
@@ -118,7 +118,7 @@ export default async function GestoriaErrorPage({
             <div className="space-y-3 mt-auto">
               <Link
                 href={retryUrl}
-                className="flex items-center justify-center gap-2 w-full py-3 bg-[#c9962a] hover:bg-[#a87a20] text-white font-bold rounded-xl text-sm transition-colors"
+                className="flex items-center justify-center gap-2 w-full py-3 bg-gold-500 hover:bg-gold-600 text-white font-bold rounded-xl text-sm transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
