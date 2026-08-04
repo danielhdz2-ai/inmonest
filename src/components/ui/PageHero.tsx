@@ -23,7 +23,7 @@ export function PageHero({
   description,
   children,
   tone = 'forest',
-  minHeight = 'min-h-[480px] sm:min-h-[560px]',
+  minHeight = 'min-h-0 py-14 sm:min-h-[480px] sm:py-20 lg:min-h-[560px]',
   className,
   priority = false,
 }: PageHeroProps) {
@@ -42,13 +42,13 @@ export function PageHero({
             {eyebrow}
           </Badge>
         )}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-white max-w-3xl">
+        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.15] text-white max-w-3xl">
           {title}
         </h1>
         {description && (
-          <p className="mt-5 text-lg text-white/75 max-w-2xl leading-relaxed">{description}</p>
+          <p className="mt-4 sm:mt-5 text-sm sm:text-lg text-white/75 max-w-2xl leading-relaxed">{description}</p>
         )}
-        {children && <div className="mt-8">{children}</div>}
+        {children && <div className="mt-6 sm:mt-8">{children}</div>}
       </div>
     </section>
   )

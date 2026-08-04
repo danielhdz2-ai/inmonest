@@ -9,6 +9,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
+import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import TrackedContactLink from '@/components/TrackedContactLink'
 import type { DueDiligenceCiudadConfig } from '@/lib/due-diligence-ciudad-data'
 import {
@@ -484,7 +485,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         </div>
       </section>
 
-      <div className="h-20 md:hidden" aria-hidden />
+      <MobileDockSpacer />
       <StickyMobileContratoCta ciudad={nombre} ciudadSlug={slug} servicio="due-diligence" />
     </>
   )

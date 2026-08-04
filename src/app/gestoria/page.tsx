@@ -4,6 +4,7 @@ import Navbar from '@/components/NavbarServer'
 import GestoriaContent from './GestoriaContent'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
+import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import {
   buildGestoriaAggregateRatingSchema,
   buildGestoriaReviewSchema,
@@ -260,7 +261,7 @@ export default function GestoriaPage() {
       />
       <Navbar />
       <GestoriaContent />
-      <div className="h-20 md:hidden" aria-hidden />
+      <MobileDockSpacer />
       <StickyMobileContratoCta
         ciudad="España"
         ciudadSlug="gestoria"

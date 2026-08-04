@@ -7,6 +7,7 @@ import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
+import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import TrackedContactLink from '@/components/TrackedContactLink'
 import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 
@@ -583,7 +584,7 @@ export default function DueDiligencePrecompraPage() {
         </div>
       </section>
 
-      <div className="h-20 md:hidden" aria-hidden />
+      <MobileDockSpacer />
       <StickyMobileContratoCta
         ciudad="España"
         ciudadSlug="due-diligence"

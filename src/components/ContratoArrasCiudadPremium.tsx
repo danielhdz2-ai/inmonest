@@ -12,6 +12,7 @@ import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
+import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import type { ContratoArrasPremiumConfig } from '@/lib/contrato-arras-premium-config'
 import {
   CONTRATO_ARRAS_PREMIUM_INCLUDES,
@@ -354,7 +355,7 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
         subtitle="Te llamamos, resolvemos dudas y te explicamos el proceso sin compromiso"
       />
 
-      <div className="h-20 md:hidden" aria-hidden />
+      <MobileDockSpacer />
       <StickyMobileContratoCta
         ciudad={config.nombre}
         ciudadSlug={config.slug}

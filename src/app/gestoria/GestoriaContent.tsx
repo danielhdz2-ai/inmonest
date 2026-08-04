@@ -9,6 +9,7 @@ import { gtmPush } from '@/components/GTMProvider'
 import HomeTestimonials from '@/components/home/HomeTestimonials'
 import { BRAND_IMAGES } from '@/lib/brand-images'
 import { Scale, Zap, Shield, FileText, Building2, BadgeCheck, Star, Users, Phone, CheckCircle } from '@/components/ui/Icons'
+import { MobileGestoriaContactRow } from '@/components/ui/MobileGestoriaContactRow'
 
 interface Service {
   key: string
@@ -432,18 +433,18 @@ export default function GestoriaPage() {
     <div className="min-h-screen bg-white">
 
       {/* BREADCRUMB */}
-      <nav className="max-w-6xl mx-auto px-6 pt-6 pb-2">
-        <div className="flex items-center gap-2 text-sm text-gray-500">
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 pt-3 sm:pt-6 pb-1">
+        <div className="flex items-center gap-1.5 text-xs sm:text-sm text-gray-500">
           <Link href="/" className="hover:text-gold-500 transition">
             Inicio
           </Link>
-          <span>→</span>
-          <span className="text-gray-900 font-medium">Gestoría Inmobiliaria</span>
+          <span className="text-gray-300">→</span>
+          <span className="text-gray-900 font-medium truncate">Gestoría</span>
         </div>
       </nav>
 
       {/* HERO */}
-      <section className="relative h-[480px] sm:h-[560px] overflow-hidden">
+      <section className="relative min-h-0 py-12 sm:min-h-[480px] sm:py-0 sm:h-[520px] lg:h-[560px] overflow-hidden">
         <Image
           src={BRAND_IMAGES.gestoria.src}
           alt={BRAND_IMAGES.gestoria.alt}
@@ -452,19 +453,23 @@ export default function GestoriaPage() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-950/92 via-forest-950/70 to-transparent" />
-        <div className="relative h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 max-w-4xl">
-          <span className="inline-block bg-gold-500 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 w-fit">
-            Gestoría especializada · Alquiler LAU
+        <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-forest-950/95 via-forest-950/80 to-forest-950/50 sm:to-transparent" />
+        <div className="relative sm:absolute sm:inset-0 flex flex-col justify-center px-4 sm:px-12 lg:px-20 max-w-4xl mx-auto sm:mx-0 py-2 sm:py-0">
+          <span className="inline-block bg-gold-500 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-3 sm:mb-4 w-fit">
+            Gestoría · Alquiler LAU
           </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-4">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.15] mb-3 sm:mb-4">
             Contratos inmobiliarios<br />
             <span className="text-gold-300">redactados por expertos</span>
           </h1>
-          <p className="text-white/85 text-base sm:text-lg max-w-xl leading-relaxed">
-            <strong className="text-white">Gestoría especializada que tramita contratos de alquiler</strong> (LAU, Ley de Vivienda 2026), arras y rescisión: cada documento a medida, sin plantillas genéricas y con la seguridad jurídica que mereces.
+          <p className="text-white/85 text-sm sm:text-lg max-w-xl leading-relaxed line-clamp-4 sm:line-clamp-none">
+            Arras, alquiler LAU y compraventa a medida. Sin plantillas genéricas — entrega en 48 h desde 61 €.
           </p>
-          <div className="flex flex-wrap gap-3 mt-6">
+          <MobileGestoriaContactRow
+            whatsappMessage="Hola, necesito información sobre gestoría inmobiliaria en Inmonest"
+            className="mt-4 sm:mt-5"
+          />
+          <div className="hidden sm:flex flex-wrap gap-3 mt-6">
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 text-white text-sm">
               <Scale className="w-4 h-4 text-gold-300 shrink-0" />
               Gestoría inmobiliaria experta

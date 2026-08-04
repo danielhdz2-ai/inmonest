@@ -2,6 +2,8 @@ import Link from 'next/link'
 import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
+import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
+import { BadgeCheck } from '@/components/ui/Icons'
 import TrackedContactLink from '@/components/TrackedContactLink'
 import { Button } from '@/components/ui/Button'
 import {
@@ -46,16 +48,16 @@ export default function GestoriaHubConversionFooter({
               arras o compraventa en {ciudad}, y tú decides si contratas.
             </p>
             <ul className="space-y-2 text-sm text-gray-700">
-              <li className="flex gap-2">
-                <span className="text-gold-500">✓</span>
+              <li className="flex gap-2 items-start">
+                <BadgeCheck className="w-4 h-4 text-gold-500 shrink-0 mt-0.5" />
                 Contrato alquiler desde {precioLau}€ · Arras 145€
               </li>
-              <li className="flex gap-2">
-                <span className="text-gold-500">✓</span>
+              <li className="flex gap-2 items-start">
+                <BadgeCheck className="w-4 h-4 text-gold-500 shrink-0 mt-0.5" />
                 Respuesta en horario laboral
               </li>
-              <li className="flex gap-2">
-                <span className="text-gold-500">✓</span>
+              <li className="flex gap-2 items-start">
+                <BadgeCheck className="w-4 h-4 text-gold-500 shrink-0 mt-0.5" />
                 Sin comisión de agencia
               </li>
             </ul>
@@ -109,7 +111,7 @@ export default function GestoriaHubConversionFooter({
         </div>
       </section>
 
-      <div className="h-20 md:hidden" aria-hidden />
+      <MobileDockSpacer />
       <StickyMobileContratoCta ciudad={ciudad} ciudadSlug={ciudadSlug} servicio="gestoria" />
     </>
   )

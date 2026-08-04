@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
+import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -472,7 +473,7 @@ export default function GestoriaGranadaPage() {
         </div>
       </section>
 
-      <div className="h-20 md:hidden" aria-hidden />
+      <MobileDockSpacer />
       <StickyMobileContratoCta
         ciudad="Granada"
         ciudadSlug="granada"

@@ -73,6 +73,10 @@ html {
     display: block;
   }
 
+  .gestoria-mobile-shell {
+    overflow-x: hidden;
+  }
+
   /* iOS hace zoom automático si font-size < 16px en inputs */
   input,
   select,

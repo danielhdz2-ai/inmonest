@@ -374,7 +374,7 @@ export default function GestoriaPaidPanel({
 
       {/* Barra fija móvil — ayuda rápida si faltan docs */}
       {pendingCount > 0 && (
-        <div className="sm:hidden fixed bottom-[4.75rem] left-0 right-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur-md px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] max-w-lg mx-auto">
+        <div className="sm:hidden fixed bottom-[calc(8.25rem+env(safe-area-inset-bottom,0px))] left-0 right-0 z-40 border-t border-gray-200 bg-white/95 backdrop-blur-md px-4 py-3 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] max-w-lg mx-auto">
           <div className="flex items-center gap-3 max-w-lg mx-auto">
             <p className="text-xs text-gray-600 flex-1 leading-snug">
               <span className="font-bold text-gray-900">{pendingCount}</span> doc{pendingCount > 1 ? 's' : ''} por subir (opcional)

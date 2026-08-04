@@ -68,7 +68,7 @@ export default function ServiciosHubContent() {
       </nav>
 
       {/* HERO */}
-      <section className="relative h-[420px] sm:h-[520px] overflow-hidden">
+      <section className="relative min-h-0 py-12 sm:min-h-[420px] sm:py-0 sm:h-[520px] overflow-hidden">
         <Image
           src={BRAND_IMAGES.gestoria.src}
           alt={BRAND_IMAGES.gestoria.alt}
@@ -77,12 +77,12 @@ export default function ServiciosHubContent() {
           priority
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-forest-950/92 via-forest-950/65 to-transparent" />
-        <div className="relative h-full flex flex-col justify-center px-6 sm:px-12 lg:px-20 max-w-4xl">
-          <span className="inline-block bg-gold-500 text-white text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4 w-fit">
+        <div className="absolute inset-0 bg-gradient-to-b sm:bg-gradient-to-r from-forest-950/95 via-forest-950/70 to-forest-950/50 sm:to-transparent" />
+        <div className="relative sm:absolute sm:inset-0 flex flex-col justify-center px-4 sm:px-12 lg:px-20 max-w-4xl mx-auto sm:mx-0">
+          <span className="inline-block bg-gold-500 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-3 sm:mb-4 w-fit">
             Contratos · Arras · Alquiler LAU
           </span>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-4">
+          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.15] mb-3 sm:mb-4">
             Servicios de contratos
             <br />
             <span className="text-gold-300">inmobiliarios con precio cerrado</span>
