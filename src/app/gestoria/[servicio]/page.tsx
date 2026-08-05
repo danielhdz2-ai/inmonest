@@ -6,6 +6,15 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getServicioImages } from '@/lib/gestoria-images'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
+import GestorDanielSection from '@/components/GestorDanielSection'
+import LlamaGestorBanner from '@/components/LlamaGestorBanner'
+import GestoriaServicioCiudades from '@/components/GestoriaServicioCiudades'
+import { ServicioRelacionadoCard } from '@/components/ServicioRelacionadoCard'
+import TestimoniosSection from '@/components/TestimoniosSection'
+import {
+  getGestorCopy,
+  getTestimonioLandingForServicio,
+} from '@/lib/gestoria-servicio-template'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -822,6 +831,8 @@ export default async function ServicioGestoriaPage({
 
   const visuals = getServicioImages(servicio)
   const waHref = `https://wa.me/34745022862?text=${encodeURIComponent(`Hola, tengo dudas sobre ${data.nombre}`)}`
+  const gestorCopy = getGestorCopy(servicio, data.nombre)
+  const testimonioLanding = getTestimonioLandingForServicio(servicio)
 
   const schemaJson = JSON.stringify({
     '@context': 'https://schema.org',
@@ -1003,6 +1014,19 @@ export default async function ServicioGestoriaPage({
           </div>
         </section>
 
+        <GestorDanielSection
+          copy={gestorCopy}
+          whatsappMessage={`Hola Daniel, tengo dudas sobre ${data.nombre}`}
+        />
+
+        <LlamaGestorBanner
+          title="Llama a tu gestor y cuéntanos tu caso"
+          subtitle="Te explicamos el proceso, resolvemos dudas y te informamos sin compromiso. Tú decides si contratas."
+          whatsappMessage={`Hola, quiero contaros mi caso sobre ${data.nombre.toLowerCase()}`}
+          eyebrow="Atención personalizada"
+          imagePosition="right"
+        />
+
         <GestoriaPanelShowcase servicioLabel={data.nombre.toLowerCase()} />
 
         <GestoriaImageBanner
@@ -1035,25 +1059,40 @@ export default async function ServicioGestoriaPage({
           </div>
         </section>
 
+        <GestoriaServicioCiudades servicio={servicio} />
+
         {/* ── CONTRATOS RELACIONADOS ───────────────────────────────────── */}
         <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Otros contratos que pueden interesarte</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-2 text-center">
+            Otros servicios relacionados
+          </h2>
+          <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto text-sm">
+            Contratos redactados por gestoría especializada · Entrega en 48h
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {data.relacionados.map((rel) => (
-              <Link
-                key={rel.slug}
-                href={`/gestoria/${rel.slug}`}
-                className="border border-gray-200 rounded-xl p-5 hover:border-gold-500 hover:shadow-sm transition-all group"
-              >
-                <p className="text-sm text-gray-500 mb-1">Contrato</p>
-                <h3 className="font-semibold text-gray-800 group-hover:text-gold-500 transition-colors mb-2">
-                  {rel.nombre}
-                </h3>
-                <p className="text-gold-500 font-bold">{rel.precio} €</p>
-              </Link>
-            ))}
+            {data.relacionados.map((rel) => {
+              const relVisuals = getServicioImages(rel.slug)
+              return (
+                <ServicioRelacionadoCard
+                  key={rel.slug}
+                  href={`/gestoria/${rel.slug}`}
+                  nombre={rel.nombre}
+                  precio={rel.precio}
+                  imageSrc={relVisuals.hero.src}
+                  imageAlt={relVisuals.hero.alt}
+                />
+              )
+            })}
           </div>
         </section>
+
+        <TestimoniosSection
+          landing={testimonioLanding}
+          layout="stack"
+          hideRating
+          showGoogleReviews
+          className="bg-gray-50 -mx-4 sm:-mx-6 px-4 sm:px-6 rounded-2xl"
+        />
 
         <GestoriaCtaBanner
           eyebrow="Contratar online"

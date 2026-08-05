@@ -1,5 +1,6 @@
 import TestimoniosCarousel from '@/components/TestimoniosCarousel'
 import TestimoniosStack from '@/components/TestimoniosStack'
+import { GESTORIA_GOOGLE_REVIEWS } from '@/lib/gestoria-reviews-schema'
 
 type TestimoniosSectionProps = {
   className?: string
@@ -42,7 +43,9 @@ export default function TestimoniosSection({
                   ))}
                 </div>
                 <span className="text-lg font-bold text-gray-900">5.0</span>
-                <span className="text-sm text-gray-500">· 4 reseñas en Google</span>
+                <span className="text-sm text-gray-500">
+                  · {GESTORIA_GOOGLE_REVIEWS.length} reseñas en Google
+                </span>
               </div>
               <a
                 href="https://www.google.com/search?q=inmonest"

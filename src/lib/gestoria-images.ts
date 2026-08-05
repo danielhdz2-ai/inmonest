@@ -127,6 +127,12 @@ export const GESTORIA_LLAMADA_BANNER = {
   alt: 'Familia asesorada por gestoría inmobiliaria Inmonest',
 } as const
 
+/** Banner «cuéntanos tu caso» — cercanía, amigos o familia */
+export const GESTORIA_CUENTANOS_BANNER = {
+  src: '/amigos5.jpg',
+  alt: 'Cuéntanos tu caso — gestoría inmobiliaria Inmonest',
+} as const
+
 /** Imágenes por ciudad — tarjetas venta completa (sin emojis) */
 export const VENTA_CIUDAD_IMAGES: Record<string, { src: string; alt: string }> = {
   madrid: { src: '/madrid2.jpg', alt: 'Venta piso Madrid' },

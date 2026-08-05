@@ -1,5 +1,5 @@
 import { GestoriaImageBanner } from '@/components/ui/GestoriaImageBanner'
-import { GESTORIA_LLAMADA_BANNER } from '@/lib/gestoria-images'
+import { GESTORIA_CUENTANOS_BANNER } from '@/lib/gestoria-images'
 import { GESTORIA_PHONE_DISPLAY, GESTORIA_PHONE_TEL } from '@/lib/gestoria-contact'
 
 type LlamaGestorBannerProps = {
@@ -11,6 +11,9 @@ type LlamaGestorBannerProps = {
   title?: string
   subtitle?: string
   imagePosition?: 'left' | 'right'
+  imageSrc?: string
+  imageAlt?: string
+  eyebrow?: string
 }
 
 const WA_NUMBER = '34745022862'
@@ -22,6 +25,9 @@ export default function LlamaGestorBanner({
   title,
   subtitle,
   imagePosition = 'right',
+  imageSrc = GESTORIA_CUENTANOS_BANNER.src,
+  imageAlt = GESTORIA_CUENTANOS_BANNER.alt,
+  eyebrow,
 }: LlamaGestorBannerProps) {
   const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`
   const defaultTitle = gestorNombre
@@ -34,13 +40,13 @@ export default function LlamaGestorBanner({
     <section className="py-8 sm:py-12 px-4">
       <div className="max-w-5xl mx-auto">
         <GestoriaImageBanner
-          imageSrc={GESTORIA_LLAMADA_BANNER.src}
-          imageAlt={GESTORIA_LLAMADA_BANNER.alt}
+          imageSrc={imageSrc}
+          imageAlt={imageAlt}
           imagePosition={imagePosition}
           size="md"
         >
           <p className="text-[10px] sm:text-xs font-bold uppercase tracking-widest text-gold-400 mb-3">
-            {ciudad ? `Gestoría · ${ciudad}` : 'Gestoría Inmonest'}
+            {eyebrow ?? (ciudad ? `Gestoría · ${ciudad}` : 'Gestoría Inmonest')}
           </p>
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white leading-snug">
             {title ?? defaultTitle}
