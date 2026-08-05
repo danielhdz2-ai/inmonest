@@ -39,7 +39,7 @@ type VentaCompletaCiudadLandingProps = {
 }
 
 export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiudadLandingProps) {
-  const { nombre, slug, region, gestor, precioEjemploPiso, ventasAcompanadas } = config
+  const { nombre, slug, region, precioEjemploPiso, ventasAcompanadas } = config
   const agenciaMin = comisionAgenciaMin(precioEjemploPiso)
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - VENTA_COMPLETA_PRECIO
@@ -289,32 +289,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         </div>
       </section>
 
-      {/* Gestor */}
-      <section className="py-14 px-4 bg-white border-t border-gray-100">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-center">
-          <Image
-            src={gestor.foto}
-            alt={gestor.nombre}
-            width={120}
-            height={120}
-            className="rounded-full object-cover border-4 border-gold-300 shrink-0"
-          />
-          <div className="flex-1 text-center md:text-left">
-            <p className="text-sm text-gold-700 font-semibold mb-1">Tu gestor en {nombre}</p>
-            <h2 className="text-2xl font-bold text-gray-900 mb-1">{gestor.nombre}</h2>
-            <p className="text-gray-500 text-sm mb-3">{gestor.rol}</p>
-            <p className="text-gray-700 mb-4">{gestor.bio}</p>
-            <a
-              href={`tel:${PHONE}`}
-              className="inline-flex items-center gap-2 bg-gold-600 text-white px-6 py-3 rounded-lg font-bold text-lg hover:bg-gold-700 transition"
-            >
-              Llamar a {gestor.nombre.split(' ')[0]} — 745 022 862
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-10 px-4 bg-slate-50">
+      <section className="py-10 px-4 bg-slate-50 border-t border-gray-100">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm text-gray-500 mb-4">Zonas con cobertura en {nombre}</p>
           <div className="flex flex-wrap justify-center gap-2">
@@ -351,6 +326,18 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         </div>
       </section>
 
+      <GestoriaLandingExtras
+        servicio="venta-completa-reserva-escritura"
+        servicioNombre={`Venta completa en ${nombre}`}
+        ciudad={nombre}
+        whatsappMessage={`Hola Daniel, quiero vender mi piso en ${nombre} a particular`}
+        skipCiudades
+        skipRelacionados
+        skipTestimonios
+        phase="contact"
+        className="max-w-5xl mx-auto px-4 sm:px-6"
+      />
+
       <CiudadHubFaq
         ciudad={nombre}
         items={faq}
@@ -363,12 +350,11 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         servicioNombre={`Venta completa en ${nombre}`}
         ciudad={nombre}
         testimonioLanding={config.testimoniosLanding}
-        whatsappMessage={`Hola Daniel, quiero vender mi piso en ${nombre} a particular`}
         relacionados={RELACIONADOS_VENTA}
         skipCiudades
-        skipDaniel={false}
-        skipLlamaGestor={false}
-        phase="all"
+        skipDaniel
+        skipLlamaGestor
+        phase="footer"
         className="max-w-5xl mx-auto px-4 sm:px-6"
       />
 
@@ -380,8 +366,6 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
             description={`${VENTA_COMPLETA_PRECIO}€ fijos · Gestor asignado · Sin comisión de agencia · Respuesta en 24h`}
             primaryHref={SOLICITAR_URL}
             primaryLabel={`Contratar online — ${VENTA_COMPLETA_PRECIO}€`}
-            secondaryHref={`https://wa.me/34745022862?text=${encodeURIComponent(waText)}`}
-            secondaryLabel="WhatsApp"
             imageSrc={GESTORIA_CTA_BANNERS.ventaCompleta.src}
             imageAlt={GESTORIA_CTA_BANNERS.ventaCompleta.alt}
             imagePosition="right"

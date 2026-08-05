@@ -24,16 +24,10 @@ const NAV_ITEMS = [
   { label: 'Ciudades',             href: '/gestoria/ciudades' },
 ]
 
-/** Accesos rápidos del menú desplegable Servicios */
+import { GESTORIA_NAV_SERVICIOS } from '@/lib/gestoria-servicios-landings'
+
 const SERVICIOS_QUICK: Array<{ label: string; href: string; highlight?: boolean }> = [
-  { label: 'Arras penitenciales', href: '/gestoria/arras-penitenciales' },
-  { label: 'Contrato de alquiler', href: '/gestoria/contrato-alquiler' },
-  { label: 'Alquiler habitación', href: '/gestoria/contrato-alquiler-habitacion' },
-  { label: 'Asesoría compra', href: '/gestoria/asesoria-compra-piso' },
-  { label: 'Due diligence', href: '/gestoria/due-diligence-precompra' },
-  { label: 'Venta completa', href: '/gestoria/venta-completa-reserva-escritura' },
-  { label: 'Préstamo particulares', href: '/gestoria/prestamo-particulares' },
-  { label: 'Revisión contratos', href: '/gestoria/revision-contrato-arras' },
+  ...GESTORIA_NAV_SERVICIOS,
   { label: 'Ver todos los servicios', href: '/servicios', highlight: true },
 ]
 

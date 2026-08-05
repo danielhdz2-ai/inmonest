@@ -269,10 +269,11 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
         servicio="arras-penitenciales"
         servicioNombre={`Contrato de arras en ${config.nombre}`}
         ciudad={config.nombre}
-        testimonioLanding="contrato-arras"
         whatsappMessage={`Hola Daniel, tengo dudas sobre el contrato de arras en ${config.nombre}`}
         skipCiudades
         skipRelacionados
+        skipTestimonios
+        phase="contact"
         className="max-w-5xl mx-auto px-4 sm:px-6"
       />
 
@@ -289,6 +290,19 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
           </div>
         </section>
       </div>
+
+      <GestoriaLandingExtras
+        servicio="arras-penitenciales"
+        servicioNombre={`Contrato de arras en ${config.nombre}`}
+        ciudad={config.nombre}
+        testimonioLanding="contrato-arras"
+        skipCiudades
+        skipRelacionados
+        skipDaniel
+        skipLlamaGestor
+        phase="footer"
+        className="max-w-5xl mx-auto px-4 sm:px-6"
+      />
 
       <CiudadHubServiciosGrid
         ciudad={config.nombre}

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
+import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
@@ -101,9 +101,9 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     testimoniosLanding: 'alquiler-habitacion-barcelona',
     heroImage: getCiudadImage('barcelona').src,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Alquiler de habitaciones en Barcelona',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Acompaña a propietarios que alquilan habitaciones en Barcelona y área metropolitana. Domina el régimen del Código Civil aplicable al alquiler por habitación, la convivencia en pisos compartidos y la normativa autonómica cuando afecta al inmueble.',
       especialidades: ['Coliving y pisos compartidos', 'Contratos por habitación', 'Asesoramiento pre y post firma'],
     },
@@ -148,9 +148,9 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     testimoniosLanding: 'alquiler-habitacion-sevilla',
     heroImage: getCiudadImage('sevilla').src,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Alquiler de habitaciones en Sevilla',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Asesora a propietarios particulares que alquilan habitaciones en Sevilla capital y área metropolitana. Conoce el mercado de pisos compartidos en Triana, Nervión y zona universitaria, y redacta contratos conforme al Código Civil con normas de convivencia adaptadas al alquiler por habitación en Andalucía.',
       especialidades: ['Pisos compartidos en Sevilla', 'Contratos por habitación', 'Coliving y estudiantes'],
     },
@@ -202,9 +202,9 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     testimoniosLanding: 'alquiler-habitacion-malaga',
     heroImage: getCiudadImage('malaga').src,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Alquiler de habitaciones en Málaga',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Acompaña a propietarios que alquilan habitaciones en Málaga capital, Teatinos y Costa del Sol. Especialista en contratos de habitación para estudiantes, profesionales y perfiles internacionales, con cláusulas de convivencia válidas conforme al Código Civil.',
       especialidades: ['Habitaciones en Teatinos-UMA', 'Coliving Costa del Sol', 'Contratos entre particulares'],
     },
@@ -310,9 +310,9 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     testimoniosLanding: 'alquiler-habitacion-valencia',
     heroImage: getCiudadImage('valencia').src,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Alquiler de habitaciones en Valencia',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Asesora a propietarios que alquilan habitaciones en Valencia capital y l\'Horta. Conoce el mercado de pisos compartidos en Ruzafa, Benimaclet y zona universitaria, y redacta contratos conforme al Código Civil con normas de convivencia válidas para el alquiler por habitación.',
       especialidades: ['Pisos compartidos en Valencia', 'Coliving y estudiantes', 'Contratos entre particulares'],
     },

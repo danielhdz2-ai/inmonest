@@ -420,6 +420,14 @@ export default function GestoriaValenciaPage() {
           items={GESTORIA_VALENCIA_FAQ}
           subtitulo="Respuestas específicas para el mercado valenciano: cédula de habitabilidad, VUT y compraventa entre particulares."
         />
+
+        <CiudadHubExtras
+          ciudad="Valencia"
+          hubSlug="valencia"
+          section="testimonios"
+          testimoniosLayout="stack"
+          showGoogleReviews
+        />
       </main>
 
       <GestoriaHubConversionFooter

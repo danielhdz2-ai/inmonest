@@ -156,6 +156,13 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
         />
 
         <CiudadHubFaq ciudad={nombre} items={config.faq} subtitulo={config.faqSubtitulo} />
+
+        <CiudadHubExtras
+          ciudad={nombre}
+          hubSlug={slug}
+          section="testimonios"
+          testimoniosLayout="stack"
+        />
       </main>
 
       <GestoriaHubConversionFooter

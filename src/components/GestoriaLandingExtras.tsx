@@ -62,6 +62,8 @@ export default function GestoriaLandingExtras({
 }: GestoriaLandingExtrasProps) {
   const showContact = phase === 'all' || phase === 'contact'
   const showFooter = phase === 'all' || phase === 'footer'
+  const showDanielBlock = !skipDaniel && showContact
+  const showLlamaBlock = !skipLlamaGestor && showContact
   const waDefault = whatsappMessage ?? `Hola Daniel, tengo dudas sobre ${servicioNombre}`
   const gestorCopy = getGestorCopy(servicio, servicioNombre)
   const landingKey =
@@ -74,27 +76,32 @@ export default function GestoriaLandingExtras({
 
   return (
     <div className={cn('space-y-16', className)}>
-      {!skipDaniel && showContact && (
-        <GestorDanielSection copy={gestorCopy} whatsappMessage={waDefault} />
-      )}
+      {(showDanielBlock || showLlamaBlock) && (
+        <div className={cn(showDanielBlock && showLlamaBlock && 'space-y-6')}>
+          {showDanielBlock && (
+            <GestorDanielSection copy={gestorCopy} whatsappMessage={waDefault} />
+          )}
 
-      {!skipLlamaGestor && showContact && (
-        <LlamaGestorBanner
-          title={
-            llamaGestor?.title ??
-            (ciudad
-              ? `Llama a tu gestor en ${ciudad} y cuéntanos tu caso`
-              : 'Llama a tu gestor y cuéntanos tu caso')
-          }
-          subtitle={
-            llamaGestor?.subtitle ??
-            'Te explicamos el proceso, resolvemos dudas y te informamos sin compromiso. Tú decides si contratas.'
-          }
-          whatsappMessage={cuentanosWa}
-          eyebrow={llamaGestor?.eyebrow ?? 'Atención personalizada'}
-          imagePosition={llamaGestor?.imagePosition ?? 'right'}
-          ciudad={ciudad}
-        />
+          {showLlamaBlock && (
+            <LlamaGestorBanner
+              title={
+                llamaGestor?.title ??
+                (ciudad
+                  ? `Llama a tu gestor en ${ciudad} y cuéntanos tu caso`
+                  : 'Llama a tu gestor y cuéntanos tu caso')
+              }
+              subtitle={
+                llamaGestor?.subtitle ??
+                'Te explicamos el proceso, resolvemos dudas y te informamos sin compromiso. Tú decides si contratas.'
+              }
+              whatsappMessage={cuentanosWa}
+              eyebrow={llamaGestor?.eyebrow ?? 'Atención personalizada'}
+              imagePosition={llamaGestor?.imagePosition ?? 'right'}
+              ciudad={ciudad}
+              hideActions={showDanielBlock}
+            />
+          )}
+        </div>
       )}
 
       {!skipCiudades && showFooter && <GestoriaServicioCiudades servicio={servicio} />}

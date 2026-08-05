@@ -414,6 +414,14 @@ export default function GestoriaMadridPage() {
           items={GESTORIA_MADRID_FAQ}
           subtitulo="Respuestas específicas para el mercado madrileño: plusvalía, ITE y compraventa entre particulares."
         />
+
+        <CiudadHubExtras
+          ciudad="Madrid"
+          hubSlug="madrid"
+          section="testimonios"
+          testimoniosLayout="stack"
+          showGoogleReviews
+        />
       </main>
 
       <GestoriaHubConversionFooter

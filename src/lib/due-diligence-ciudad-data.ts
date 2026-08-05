@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import type { DueDiligenceFaqItem } from './due-diligence-ciudad-faq'
-import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
+import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
@@ -159,9 +159,9 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     heroImage: getCiudadImage('valencia').src,
     precioEjemploPiso: 260_000,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Compras en Valencia',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Acompaña a compradores que adquieren vivienda de particular en Valencia y provincia. Revisa cédula de habitabilidad, cargas registrales, deudas de comunidad y documentación de la Generalitat.',
       especialidades: ['Compras post-arras', 'Normativa valenciana', 'Acompañamiento hasta notaría'],
     },
@@ -198,9 +198,9 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     heroImage: getCiudadImage('sevilla').src,
     precioEjemploPiso: 220_000,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Compras en Andalucía',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Especializada en compras entre particulares en Sevilla y provincia. Revisa nota simple, IEE andaluz, deudas de comunidad y toda la documentación antes de que firmes las escrituras.',
       especialidades: ['Due diligence andaluza', 'Compras sin agencia', 'Revisión pre-escritura'],
     },
@@ -237,9 +237,9 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     heroImage: getCiudadImage('malaga').src,
     precioEjemploPiso: 300_000,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Compras en Málaga y Costa del Sol',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Acompaña a compradores que adquieren vivienda de particular en Málaga capital y área metropolitana. Revisa IEE andaluz, cargas registrales, deudas de comunidad y toda la documentación exigida por la Junta antes de escriturar.',
       especialidades: ['Compras sin agencia', 'Normativa Junta de Andalucía', 'Acompañamiento hasta notaría'],
     },
@@ -370,9 +370,9 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     heroImage: getCiudadImage('coruna').src,
     precioEjemploPiso: 210_000,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Compras en Galicia',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Especializada en compras entre particulares en A Coruña, área metropolitana y costa gallega. Revisa cargas registrales, deudas de comunidad, documentación técnica y normativa autonómica antes de la escritura.',
       especialidades: ['Compras sin agencia', 'Normativa gallega', 'Acompañamiento hasta notaría'],
     },

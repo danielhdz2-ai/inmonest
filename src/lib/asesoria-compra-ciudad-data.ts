@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import type { DueDiligenceFaqItem } from './due-diligence-ciudad-faq'
-import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
+import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
@@ -207,9 +207,9 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     heroImage: getCiudadImage('valencia').src,
     precioEjemploPiso: 260_000,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Compras en Valencia',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Acompaña compradores de particular en Valencia y provincia. Revisa documentación valenciana, cargas y deudas de comunidad hasta la escritura.',
     },
     zonasIntro: 'Valencia capital y l\'Horta.',
@@ -259,9 +259,9 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     heroImage: getCiudadImage('sevilla').src,
     precioEjemploPiso: 220_000,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Compras en Andalucía',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Especializada en compras entre particulares en Sevilla. Revisa normativa andaluza, IEE y documentación antes de la firma en notaría.',
     },
     zonasIntro: 'Sevilla capital y área metropolitana.',
@@ -310,9 +310,9 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     heroImage: getCiudadImage('malaga').src,
     precioEjemploPiso: 300_000,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Compras en Málaga y Costa del Sol',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Acompaña compradores en Málaga capital y costa. Revisa documentación, cargas y normativa andaluza en operaciones entre particulares.',
     },
     zonasIntro: 'Málaga capital y Costa del Sol.',
@@ -482,9 +482,9 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     heroImage: getCiudadImage('mallorca').src,
     precioEjemploPiso: 320_000,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Compras en Baleares',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Experta en compras entre particulares en Mallorca. Conoce normativa balear, IBAVI, zonas tensionadas y operaciones con compradores nacionales e internacionales.',
     },
     zonasIntro: 'Palma, cala y municipios de la isla.',
@@ -610,9 +610,9 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     heroImage: getCiudadImage('coruna').src,
     precioEjemploPiso: 210_000,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Compras en Galicia',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Especializada en compras entre particulares en A Coruña, área metropolitana y costa gallega. Revisa cargas, deudas de comunidad y documentación de la Xunta hasta la escritura.',
     },
     zonasIntro: 'A Coruña capital, Oleiros, Arteixo y área metropolitana.',

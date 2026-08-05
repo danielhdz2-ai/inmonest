@@ -265,6 +265,8 @@ export default function GestoriaSevillaPage() {
         </div>
       </section>
 
+      <CiudadHubExtras ciudad="Sevilla" hubSlug="sevilla" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Sevilla" />
+
       {/* FAQ */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
@@ -324,7 +326,7 @@ export default function GestoriaSevillaPage() {
         </div>
       </section>
 
-      <CiudadHubExtras ciudad="Sevilla" hubSlug="sevilla" whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Sevilla" />
+      <CiudadHubExtras ciudad="Sevilla" hubSlug="sevilla" section="testimonios" />
 
       <GestoriaHubConversionFooter
         ciudad="Sevilla"

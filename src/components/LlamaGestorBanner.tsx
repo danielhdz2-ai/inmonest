@@ -14,6 +14,8 @@ type LlamaGestorBannerProps = {
   imageSrc?: string
   imageAlt?: string
   eyebrow?: string
+  /** Sin botones cuando ya hay GestorDanielSection arriba (evita CTAs duplicados) */
+  hideActions?: boolean
 }
 
 const WA_NUMBER = '34745022862'
@@ -28,6 +30,7 @@ export default function LlamaGestorBanner({
   imageSrc = GESTORIA_CUENTANOS_BANNER.src,
   imageAlt = GESTORIA_CUENTANOS_BANNER.alt,
   eyebrow,
+  hideActions = false,
 }: LlamaGestorBannerProps) {
   const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`
   const defaultTitle = gestorNombre
@@ -54,22 +57,24 @@ export default function LlamaGestorBanner({
           <p className="mt-3 text-sm sm:text-base text-white/70 leading-relaxed max-w-lg">
             {subtitle ?? defaultSubtitle}
           </p>
-          <div className="mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
-            <a
-              href={GESTORIA_PHONE_TEL}
-              className="inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-white hover:bg-gold-600 transition-colors"
-            >
-              Llamar a la gestoría — {GESTORIA_PHONE_DISPLAY}
-            </a>
-            <a
-              href={waHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
-            >
-              WhatsApp
-            </a>
-          </div>
+          {!hideActions && (
+            <div className="mt-6 flex flex-col sm:flex-row flex-wrap gap-3">
+              <a
+                href={GESTORIA_PHONE_TEL}
+                className="inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-white hover:bg-gold-600 transition-colors"
+              >
+                Llamar a la gestoría — {GESTORIA_PHONE_DISPLAY}
+              </a>
+              <a
+                href={waHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+              >
+                WhatsApp
+              </a>
+            </div>
+          )}
         </GestoriaImageBanner>
       </div>
     </section>

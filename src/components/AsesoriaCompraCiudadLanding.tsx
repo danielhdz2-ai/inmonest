@@ -81,7 +81,7 @@ type AsesoriaCompraCiudadLandingProps = {
 }
 
 export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCiudadLandingProps) {
-  const { nombre, slug, region, gestor, precioEjemploPiso } = config
+  const { nombre, slug, region, precioEjemploPiso } = config
   const agenciaMin = comisionAgenciaMin(precioEjemploPiso)
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - ASESORIA_COMPRA_PRECIO
@@ -277,25 +277,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
         </div>
       </section>
 
-      <section className="py-14 px-4 bg-white border-t border-gray-100">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-center">
-          <Image
-            src={gestor.foto}
-            alt={gestor.nombre}
-            width={120}
-            height={120}
-            className="rounded-full object-cover border-4 border-gold-300 shrink-0"
-          />
-          <div>
-            <p className="text-sm text-gold-700 font-semibold mb-1">Tu gestor en {nombre}</p>
-            <h2 className="text-2xl font-bold text-gray-900 mb-1">{gestor.nombre}</h2>
-            <p className="text-gray-500 text-sm mb-3">{gestor.rol}</p>
-            <p className="text-gray-700">{gestor.bio}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 px-4 bg-slate-50">
+      <section className="py-10 px-4 bg-slate-50 border-t border-gray-100">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-sm text-gray-500 mb-4">Zonas con cobertura en {nombre}</p>
           <div className="flex flex-wrap justify-center gap-2">
@@ -332,6 +314,18 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
         </div>
       </section>
 
+      <GestoriaLandingExtras
+        servicio="asesoria-compra-piso"
+        servicioNombre={`Asesoría compra de piso en ${nombre}`}
+        ciudad={nombre}
+        whatsappMessage={`Hola Daniel, quiero comprar un piso en ${nombre} entre particulares`}
+        skipCiudades
+        skipRelacionados
+        skipTestimonios
+        phase="contact"
+        className="max-w-5xl mx-auto px-4 sm:px-6"
+      />
+
       <CiudadHubFaq
         ciudad={nombre}
         items={faq}
@@ -344,10 +338,11 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
         servicioNombre={`Asesoría compra de piso en ${nombre}`}
         ciudad={nombre}
         testimonioLanding={config.testimoniosLanding}
-        whatsappMessage={`Hola Daniel, quiero comprar un piso en ${nombre} entre particulares`}
         relacionados={RELACIONADOS_ASESORIA_COMPRA}
         skipCiudades
-        phase="all"
+        skipDaniel
+        skipLlamaGestor
+        phase="footer"
         className="max-w-5xl mx-auto px-4 sm:px-6"
       />
 
@@ -359,8 +354,6 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
             description="687€ fijos · Gestor asignado · Sin comisión de agencia · Respuesta en 24h"
             primaryHref={SOLICITAR_URL}
             primaryLabel="Solicitar online"
-            secondaryHref={`https://wa.me/34745022862?text=${encodeURIComponent(waText)}`}
-            secondaryLabel="WhatsApp"
             imageSrc={getCiudadCtaImage(config.slug).src}
             imageAlt={`Asesoría compra piso en ${nombre}`}
             imagePosition="right"

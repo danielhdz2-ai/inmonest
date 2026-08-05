@@ -16,6 +16,19 @@ export type ServicioLandingCard = {
   incluye?: string[]
 }
 
+/** Menú Servicios del navbar: solo landings genéricas /gestoria/{slug} */
+export const GESTORIA_NAV_SERVICIOS: Array<{ label: string; href: string }> = [
+  { label: 'Arras penitenciales', href: '/gestoria/arras-penitenciales' },
+  { label: 'Contrato de alquiler LAU', href: '/gestoria/contrato-alquiler' },
+  { label: 'Alquiler habitación', href: '/gestoria/alquiler-habitaciones' },
+  { label: 'Préstamo particulares', href: '/gestoria/prestamo-particulares' },
+  { label: 'Compra completa', href: '/gestoria/compra-completa-reserva-escritura' },
+  { label: 'Venta completa', href: '/gestoria/venta-completa-reserva-escritura' },
+  { label: 'Due diligence', href: '/gestoria/pack-due-diligence-precompra' },
+  { label: 'Revisión arras', href: '/gestoria/revision-arras' },
+  { label: 'Revisión alquiler', href: '/gestoria/revision-alquiler' },
+]
+
 /**
  * Catálogo público en /servicios (solo servicios con página propia).
  */
@@ -93,7 +106,7 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     categoria: 'alquiler',
     precio: getPrecioServicio('alquiler-habitaciones') ?? 145,
     image: '/contrato2.jpg',
-    landingHref: '/gestoria/contrato-alquiler-habitacion',
+    landingHref: '/gestoria/alquiler-habitaciones',
   },
   {
     slug: 'alquiler-local-comercial',
@@ -136,6 +149,36 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     landingHref: '/gestoria/rescision-alquiler',
   },
   {
+    slug: 'reserva-alquiler',
+    nombre: 'Contrato de Reserva de Alquiler',
+    shortName: 'Reserva alquiler',
+    descripcion: 'Señal y plazo para firmar el contrato LAU definitivo sin perder el piso.',
+    categoria: 'alquiler',
+    precio: getPrecioServicio('reserva-alquiler') ?? 61,
+    image: '/contrato5.jpg',
+    landingHref: '/gestoria/reserva-alquiler',
+  },
+  {
+    slug: 'alquiler-temporada',
+    nombre: 'Contrato de Alquiler por Temporada',
+    shortName: 'Alquiler temporada',
+    descripcion: 'Estancias temporales con causa justificada, fuera del régimen LAU habitual.',
+    categoria: 'alquiler',
+    precio: getPrecioServicio('alquiler-temporada') ?? 165,
+    image: '/contrato6.jpg',
+    landingHref: '/gestoria/alquiler-temporada',
+  },
+  {
+    slug: 'liquidacion-fianza',
+    nombre: 'Liquidación de Fianza',
+    shortName: 'Liquidación fianza',
+    descripcion: 'Desglose claro de la devolución de fianza entre propietario e inquilino.',
+    categoria: 'alquiler',
+    precio: getPrecioServicio('liquidacion-fianza') ?? 36,
+    image: '/gestoria6.jpg',
+    landingHref: '/gestoria/liquidacion-fianza',
+  },
+  {
     slug: 'ayuda-propietarios',
     nombre: 'Redacción LAU para Propietarios',
     shortName: 'Ayuda propietarios',
@@ -155,7 +198,7 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     categoria: 'revision',
     precio: getPrecioServicio('revision-arras') ?? 60,
     image: '/contrato4.jpg',
-    landingHref: '/gestoria/revision-contrato-arras',
+    landingHref: '/gestoria/revision-arras',
   },
   {
     slug: 'revision-alquiler',
@@ -165,7 +208,27 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     categoria: 'revision',
     precio: getPrecioServicio('revision-alquiler') ?? 60,
     image: '/contrato5.jpg',
-    landingHref: '/gestoria/revision-contrato-alquiler',
+    landingHref: '/gestoria/revision-alquiler',
+  },
+  {
+    slug: 'revision-correccion',
+    nombre: 'Revisión + Corrección de Contrato',
+    shortName: 'Revisión + corrección',
+    descripcion: 'Informe de riesgos y versión corregida del borrador para negociar.',
+    categoria: 'revision',
+    precio: getPrecioServicio('revision-correccion') ?? 120,
+    image: '/gestoria14.jpg',
+    landingHref: '/gestoria/revision-correccion',
+  },
+  {
+    slug: 'revision-correccion-arras',
+    nombre: 'Revisión + Corrección de Arras',
+    shortName: 'Corrección arras',
+    descripcion: 'Revisión especializada de arras con contrato corregido antes de la señal.',
+    categoria: 'revision',
+    precio: getPrecioServicio('revision-correccion-arras') ?? 120,
+    image: '/contratodearras.jpg',
+    landingHref: '/gestoria/revision-correccion-arras',
   },
   {
     slug: 'contrato-ilegal',
@@ -188,7 +251,7 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     categoria: 'packs',
     precio: getPrecioServicio('pack-due-diligence-precompra') ?? 350,
     image: '/contrato3.jpg',
-    landingHref: '/gestoria/due-diligence-precompra',
+    landingHref: '/gestoria/pack-due-diligence-precompra',
     badge: 'Pre-compra',
   },
   {
@@ -240,7 +303,18 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     categoria: 'packs',
     precio: getPrecioServicio('compra-completa-parking-trastero') ?? 295,
     image: '/contrato2.jpg',
-    landingHref: '/gestoria/compra-parking-trastero',
+    landingHref: '/gestoria/compra-completa-parking-trastero',
+  },
+  {
+    slug: 'asesoria-compra',
+    nombre: 'Asesoría Completa Compra de Vivienda',
+    shortName: 'Asesoría compra',
+    descripcion: 'Gestor asignado con revisión de arras y documentación hasta escritura. Desde 95€.',
+    categoria: 'packs',
+    precio: getPrecioServicio('asesoria-compra') ?? 95,
+    image: '/interior4.jpg',
+    landingHref: '/gestoria/asesoria-compra',
+    badge: 'Compradores',
   },
   {
     slug: 'asesoria-compra-piso',
@@ -250,7 +324,7 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     categoria: 'packs',
     precio: getPrecioServicio('compra-completa-reserva-escritura') ?? 687,
     image: '/interior4.jpg',
-    landingHref: '/gestoria/asesoria-compra-piso',
+    landingHref: '/gestoria/compra-completa-reserva-escritura',
     badge: 'Compradores',
   },
   {
@@ -287,14 +361,7 @@ export const SERVICIOS_CATEGORIA_LABELS: Record<ServicioCategoria | 'todos', str
 }
 
 /** Servicios pendientes de página propia (referencia interna). */
-export const SERVICIOS_SIN_PAGINA = [
-  'alquiler-temporada',
-  'reserva-alquiler',
-  'liquidacion-fianza',
-  'revision-correccion',
-  'revision-correccion-arras',
-  'asesoria-compra',
-] as const
+export const SERVICIOS_SIN_PAGINA = [] as const
 
 /** Comprueba que el slug existe en el catálogo Stripe/precios. */
 export function assertServicioEnCatalogo(slug: string): boolean {

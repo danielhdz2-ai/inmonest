@@ -392,6 +392,14 @@ export default function GestoriaBarcelonaPage() {
           items={GESTORIA_BARCELONA_FAQ}
           subtitulo="Respuestas específicas para el mercado barcelonés: normativa catalana, zona tensionada y compraventa entre particulares."
         />
+
+        <CiudadHubExtras
+          ciudad="Barcelona"
+          hubSlug="barcelona"
+          section="testimonios"
+          testimoniosLayout="stack"
+          showGoogleReviews
+        />
       </main>
 
       <GestoriaHubConversionFooter

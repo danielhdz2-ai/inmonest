@@ -13,7 +13,7 @@ export const SEO_REDIRECTS: Redirect[] = [
   },
   {
     source: '/gestoria/contrato-alquiler-temporal',
-    destination: '/gestoria/solicitar/alquiler-temporada',
+    destination: '/gestoria/alquiler-temporada',
     permanent: true,
   },
   {
@@ -56,38 +56,53 @@ export const SEO_REDIRECTS: Redirect[] = [
     permanent: true,
   },
   {
-    source: '/gestoria/alquiler-temporada',
-    destination: '/gestoria/solicitar/alquiler-temporada',
+    source: '/gestoria/due-diligence',
+    destination: '/gestoria/pack-due-diligence-precompra',
     permanent: true,
   },
   {
-    source: '/gestoria/revision-alquiler',
-    destination: '/gestoria/revision-contrato-alquiler',
+    source: '/gestoria/compra-parking-trastero',
+    destination: '/gestoria/compra-completa-parking-trastero',
     permanent: true,
   },
   {
-    source: '/gestoria/revision-alquiler/:ciudad',
-    destination: '/gestoria/revision-contrato-alquiler',
+    source: '/gestoria/asesoria-compra-piso',
+    destination: '/gestoria/compra-completa-reserva-escritura',
     permanent: true,
   },
   {
-    source: '/gestoria/revision-arras',
-    destination: '/gestoria/revision-contrato-arras',
+    source: '/gestoria/revision-contrato-arras',
+    destination: '/gestoria/revision-arras',
     permanent: true,
   },
   {
-    source: '/gestoria/revision-arras/:ciudad',
-    destination: '/gestoria/revision-contrato-arras',
+    source: '/gestoria/revision-contrato-arras/:path*',
+    destination: '/gestoria/revision-arras',
     permanent: true,
   },
   {
-    source: '/gestoria/contrato-compraventa/:ciudad',
-    destination: '/gestoria/contrato-compraventa',
+    source: '/gestoria/revision-contrato-alquiler',
+    destination: '/gestoria/revision-alquiler',
     permanent: true,
   },
   {
-    source: '/gestoria/revision-contrato-alquiler/:ciudad',
-    destination: '/gestoria/revision-contrato-alquiler',
+    source: '/gestoria/revision-contrato-alquiler/:path*',
+    destination: '/gestoria/revision-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/contrato-alquiler-habitacion',
+    destination: '/gestoria/alquiler-habitaciones',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/due-diligence-precompra',
+    destination: '/gestoria/pack-due-diligence-precompra',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/alquiler-habitacion',
+    destination: '/gestoria/alquiler-habitaciones',
     permanent: true,
   },
   {
@@ -98,26 +113,6 @@ export const SEO_REDIRECTS: Redirect[] = [
   {
     source: '/gestoria/gestoria',
     destination: '/gestoria',
-    permanent: true,
-  },
-  {
-    source: '/gestoria/reserva-compra',
-    destination: '/gestoria/arras-vs-reserva-compra',
-    permanent: true,
-  },
-  {
-    source: '/gestoria/due-diligence',
-    destination: '/gestoria/due-diligence-precompra',
-    permanent: true,
-  },
-  {
-    source: '/gestoria/pack-due-diligence-precompra',
-    destination: '/gestoria/due-diligence-precompra',
-    permanent: true,
-  },
-  {
-    source: '/gestoria/alquiler-habitacion',
-    destination: '/gestoria/contrato-alquiler-habitacion',
     permanent: true,
   },
   {

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { GESTOR_CARMEN_VIDAL } from '@/lib/gestores-inmonest'
+import { GESTOR_DANIEL_HERNANDEZ } from '@/lib/gestores-inmonest'
 
 type GestoriaPanelShowcaseProps = {
   /** Ej: "contrato de alquiler", "due diligence pre-compra" */
@@ -154,16 +154,16 @@ export default function GestoriaPanelShowcase({
                 <div className="flex items-center gap-3">
                   <div className="relative h-14 w-14 rounded-xl overflow-hidden ring-2 ring-gold-300/50 shrink-0">
                     <Image
-                      src={GESTOR_CARMEN_VIDAL.foto}
-                      alt={GESTOR_CARMEN_VIDAL.nombre}
+                      src={GESTOR_DANIEL_HERNANDEZ.foto}
+                      alt={GESTOR_DANIEL_HERNANDEZ.nombre}
                       fill
                       className="object-cover"
                       sizes="56px"
                     />
                   </div>
                   <div className="min-w-0">
-                    <p className="font-bold text-gray-900 text-sm">{GESTOR_CARMEN_VIDAL.nombre}</p>
-                    <p className="text-xs text-gray-500">{GESTOR_CARMEN_VIDAL.rol}</p>
+                    <p className="font-bold text-gray-900 text-sm">{GESTOR_DANIEL_HERNANDEZ.nombre}</p>
+                    <p className="text-xs text-gray-500">{GESTOR_DANIEL_HERNANDEZ.rol}</p>
                     <p className="text-xs text-gold-700 mt-1">
                       Asesora en cláusulas de {MOCK_CLIENT.ciudad}
                     </p>

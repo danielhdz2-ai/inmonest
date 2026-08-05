@@ -321,10 +321,11 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
         servicio="contrato-alquiler"
         servicioNombre={`Contrato de alquiler en ${config.nombre}`}
         ciudad={config.nombre}
-        testimonioLanding="contrato-alquiler"
         whatsappMessage={`Hola Daniel, tengo dudas sobre el contrato de alquiler en ${config.nombre}`}
         skipCiudades
         skipRelacionados
+        skipTestimonios
+        phase="contact"
         className="max-w-5xl mx-auto px-4 sm:px-6"
       />
 
@@ -342,6 +343,19 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
         </section>
 
       </div>
+
+      <GestoriaLandingExtras
+        servicio="contrato-alquiler"
+        servicioNombre={`Contrato de alquiler en ${config.nombre}`}
+        ciudad={config.nombre}
+        testimonioLanding="contrato-alquiler"
+        skipCiudades
+        skipRelacionados
+        skipDaniel
+        skipLlamaGestor
+        phase="footer"
+        className="max-w-5xl mx-auto px-4 sm:px-6"
+      />
 
       <CiudadHubServiciosGrid
         ciudad={config.nombre}

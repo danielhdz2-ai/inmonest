@@ -7,6 +7,7 @@ import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/Gestoria
 import { getServicioImages } from '@/lib/gestoria-images'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { GESTORIA_SERVICIOS_ADICIONALES } from '@/lib/gestoria-servicios-adicionales'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -774,6 +775,112 @@ const SERVICIOS: Record<string, ServiceData> = {
       { slug: 'alquiler-garaje-trastero', nombre: 'Alquiler Garaje/Trastero', precio: 130 },
     ],
   },
+
+  'revision-arras': {
+    nombre: 'Revisión de Contrato de Arras',
+    precio: 60,
+    categoria: 'Revisiones',
+    tagline: 'No firmes la señal sin revisión legal profesional',
+    descripcion:
+      '¿Te han entregado un borrador de contrato de arras y no sabes si protege tus intereses? Nuestro equipo lo analiza cláusula a cláusula en 24 horas: detectamos condiciones abusivas, errores registrales, penalizaciones desproporcionadas y cargas ocultas. Informe en PDF con recomendaciones concretas antes de entregar la señal.',
+    image: '/gestoria1.jpg',
+    imageAlt: 'Revisión de contrato de arras por gestoría inmobiliaria',
+    paraQuien: [
+      'Compradores que recibieron un contrato de arras del vendedor o agencia',
+      'Quien va a entregar señal y quiere verificar plazos, penitenciales y condiciones resolutorias',
+      'Personas que detectan cláusulas confusas o desequilibradas a favor del vendedor',
+      'Compradores que quieren argumentos legales para negociar cambios antes de firmar',
+    ],
+    incluye: [
+      'Revisión completa de cláusulas del contrato de arras',
+      'Verificación de datos del inmueble y legitimación del vendedor',
+      'Detección de penalizaciones abusivas y condiciones resolutorias',
+      'Informe en PDF con riesgos y recomendaciones',
+      'Entrega en 24 horas laborables',
+    ],
+    pasos: [
+      { num: '01', titulo: 'Envías el contrato', desc: 'Sube el PDF del borrador de arras (y la nota simple si la tienes).' },
+      { num: '02', titulo: 'Revisión jurídica', desc: 'Tu gestor analiza cada cláusula, plazos, penitenciales y protección del comprador.' },
+      { num: '03', titulo: 'Informe y recomendaciones', desc: 'Recibes informe detallado con errores detectados y propuestas de mejora antes de firmar.' },
+    ],
+    faq: [
+      {
+        q: '¿Cuánto tarda la revisión?',
+        a: 'Entre 12 y 24 horas laborables desde que subes el contrato. Si es urgente, consúltanos por WhatsApp.',
+      },
+      {
+        q: '¿Qué pasa si encuentran errores graves?',
+        a: 'Te enviamos un informe con el riesgo de cada cláusula y recomendaciones para negociar o desistir con base legal.',
+      },
+      {
+        q: '¿Puedo usar el informe para cancelar la compra?',
+        a: 'Sí. Si detectamos irregularidades graves, el informe puede servir para justificar la no firma y recuperar la señal según el tipo de arras.',
+      },
+      {
+        q: '¿Revisáis la nota simple del inmueble?',
+        a: 'Sí, si la aportas. Verificamos que los datos del contrato coincidan con el Registro de la Propiedad.',
+      },
+    ],
+    relacionados: [
+      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
+      { slug: 'pack-due-diligence-precompra', nombre: 'Due Diligence Pre-Compra', precio: 350 },
+      { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa', precio: 687 },
+    ],
+  },
+
+  'revision-alquiler': {
+    nombre: 'Revisión de Contrato de Alquiler',
+    precio: 60,
+    categoria: 'Revisiones',
+    tagline: 'Protege tus derechos antes de firmar el alquiler',
+    descripcion:
+      '¿Tu casero o la agencia te ha entregado un contrato de alquiler? Lo revisamos en 24 horas para detectar cláusulas abusivas, fianzas ilegales, subidas de renta contrarias a la LAU o condiciones que perjudican al inquilino. Informe claro con lo que debes negociar o eliminar antes de firmar.',
+    image: '/familia2.jpg',
+    imageAlt: 'Revisión de contrato de alquiler LAU',
+    paraQuien: [
+      'Inquilinos que van a firmar un contrato LAU propuesto por el propietario',
+      'Personas que alquilan por primera vez y no saben qué cláusulas son legales',
+      'Inquilinos con contrato en zona tensionada o con garantías adicionales',
+      'Quien detecta condiciones confusas sobre fianza, obras o rescisión',
+    ],
+    incluye: [
+      'Revisión de cláusulas conforme a LAU y Ley de Vivienda 2026',
+      'Detección de fianzas o garantías ilegales',
+      'Análisis de subidas de renta y gastos repercutidos',
+      'Informe en PDF con cláusulas a negociar',
+      'Entrega en 24 horas laborables',
+    ],
+    pasos: [
+      { num: '01', titulo: 'Envías el contrato', desc: 'Sube el PDF del borrador de alquiler que te han entregado.' },
+      { num: '02', titulo: 'Revisión LAU', desc: 'Tu gestor verifica fianza, duración, subidas de renta y cláusulas abusivas.' },
+      { num: '03', titulo: 'Informe para negociar', desc: 'Recibes recomendaciones concretas antes de firmar y entregar la fianza.' },
+    ],
+    faq: [
+      {
+        q: '¿Las cláusulas abusivas son nulas aunque las firme?',
+        a: 'Sí. Las cláusulas contrarias a la LAU o Ley de Vivienda son nulas de pleno derecho, pero es mejor eliminarlas antes para evitar conflictos.',
+      },
+      {
+        q: '¿Y si el propietario se niega a cambiar el contrato?',
+        a: 'Puedes firmar sabiendo qué cláusulas son nulas, o buscar otro piso. Un casero que impone condiciones ilegales es señal de alerta.',
+      },
+      {
+        q: '¿Puedo usar el informe si voy a juicio?',
+        a: 'Sí. El informe es un dictamen jurídico válido como prueba en reclamaciones por cláusulas abusivas.',
+      },
+      {
+        q: '¿Revisáis contratos de habitación?',
+        a: 'Este servicio cubre alquiler LAU de vivienda. Para habitación en piso compartido, consulta nuestro contrato de alquiler de habitación.',
+      },
+    ],
+    relacionados: [
+      { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
+      { slug: 'pack-revision-reserva-alquiler', nombre: 'Pack Reserva + Alquiler', precio: 169 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+    ],
+  },
+
+  ...GESTORIA_SERVICIOS_ADICIONALES,
 }
 
 export function generateStaticParams() {

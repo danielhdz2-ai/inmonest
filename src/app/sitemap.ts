@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { createClient } from '@supabase/supabase-js'
 import { CONTRATO_ALQUILER_PREMIUM } from '@/lib/contrato-alquiler-premium-config'
 import { CONTRATO_ARRAS_PREMIUM } from '@/lib/contrato-arras-premium-config'
-
+import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
 // ✅ OPTIMIZACIÓN: Regenerar sitemap cada 24 horas (reducido de 1h por alto consumo CPU)
 // Con 0.5 visitas/día, regenerar cada hora es innecesario y costoso
 export const revalidate = 86400  // 24 horas (antes: 1h - consumía CPU excesivo)
@@ -42,11 +42,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/cookies`,              lastModified: today, changeFrequency: 'yearly',  priority: 0.2 },
   { url: `${BASE_URL}/seguridad`,            lastModified: today, changeFrequency: 'yearly',  priority: 0.2 },
 
-  // Gestoría — páginas de aterrizaje SEO
-  { url: `${BASE_URL}/gestoria/contrato-compraventa`,              lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
-  { url: `${BASE_URL}/gestoria/revision-contrato-arras`,           lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
-  { url: `${BASE_URL}/gestoria/revision-contrato-alquiler`,        lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
-  { url: `${BASE_URL}/gestoria/asesoria-compra-piso`,              lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  // Gestoría — landings por ciudad (las genéricas van en GESTORIA_GENERIC_LANDING_PAGES)
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/madrid`,       lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/barcelona`,    lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/valencia`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
@@ -59,8 +55,6 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/coruna`,       lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/murcia`,       lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/pamplona`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
-  { url: `${BASE_URL}/gestoria/ayuda-propietarios`,                lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
-  { url: `${BASE_URL}/gestoria/contrato-alquiler-habitacion`,      lastModified: today, changeFrequency: 'monthly', priority: 0.90 },
   { url: `${BASE_URL}/gestoria/contrato-alquiler-habitacion/madrid`,    lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/contrato-alquiler-habitacion/barcelona`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/contrato-alquiler-habitacion/sevilla`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
@@ -69,19 +63,14 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/contrato-alquiler-habitacion/valencia`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/contrato-alquiler-habitacion/zaragoza`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/contrato-alquiler-habitacion/asturias`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
-  { url: `${BASE_URL}/gestoria/prestamo-particulares`,              lastModified: today, changeFrequency: 'monthly', priority: 0.90 },
   { url: `${BASE_URL}/gestoria/prestamo-particulares/madrid`,     lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/prestamo-particulares/barcelona`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/prestamo-particulares/valencia`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/prestamo-particulares/sevilla`,    lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/prestamo-particulares/malaga`,     lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/prestamo-particulares/bilbao`,     lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
-  { url: `${BASE_URL}/gestoria/compra-parking-trastero`,               lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
-  { url: `${BASE_URL}/gestoria/contrato-ilegal`,                   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/contrato-arras`,                    lastModified: today, changeFrequency: 'monthly', priority: 0.92 },
-  { url: `${BASE_URL}/gestoria/due-diligence-precompra`,           lastModified: today, changeFrequency: 'monthly', priority: 0.92 },
   { url: `${BASE_URL}/gestoria/cuanto-cuesta-contrato-alquiler`,   lastModified: today, changeFrequency: 'monthly', priority: 0.92 },
-  { url: `${BASE_URL}/gestoria/asesoramiento-arras-venta`,         lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/guia-arras-penitenciales`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/arras-vs-reserva-compra`,           lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/ciudades`,                          lastModified: today, changeFrequency: 'weekly',  priority: 0.88 },
@@ -103,7 +92,6 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/zaragoza`,                          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/alicante`,                          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/palma`,                             lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
-  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/madrid`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/barcelona`,  lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/valencia`,   lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
@@ -120,6 +108,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   // Gestoría — formularios de solicitud (21 servicios)
   { url: `${BASE_URL}/gestoria/solicitar/arras-penitenciales`,           lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/solicitar/arras-confirmatorias`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
+  { url: `${BASE_URL}/gestoria/solicitar/reserva-compra`,                lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
   { url: `${BASE_URL}/gestoria/solicitar/contrato-alquiler`,             lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/solicitar/contrato-alquiler-barcelona`,  lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/solicitar/rescision-alquiler`,            lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
@@ -178,6 +167,16 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/sevilla/pisos-particulares-sin-comision`,    lastModified: today, changeFrequency: 'daily', priority: 0.95 },
   { url: `${BASE_URL}/malaga/pisos-particulares-sin-comision`,     lastModified: today, changeFrequency: 'daily', priority: 0.95 },
 ]
+
+// Landings genéricas de gestoría — /gestoria/{slug} (29 servicios públicos)
+const GESTORIA_GENERIC_LANDING_PAGES: MetadataRoute.Sitemap = Object.entries(GESTORIA_SERVICIOS)
+  .filter(([slug, svc]) => !svc.interno && slug !== 'contrato-alquiler-barcelona')
+  .map(([slug, svc]) => ({
+    url: `${BASE_URL}/gestoria/${slug}`,
+    lastModified: today,
+    changeFrequency: 'monthly' as const,
+    priority: svc.categoria === 'Servicios Premium' ? 0.9 : 0.88,
+  }))
 
 // Hub de ciudad — página principal por ciudad
 const CIUDAD_HUB_PAGES: MetadataRoute.Sitemap = CIUDADES.map((ciudad) => ({
@@ -272,6 +271,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...STATIC_PAGES,
+    ...GESTORIA_GENERIC_LANDING_PAGES,
     ...CIUDAD_HUB_PAGES,
     ...ARRAS_PAGES,
     ...ALQUILER_PAGES,

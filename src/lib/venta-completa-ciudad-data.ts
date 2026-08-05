@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import type { DueDiligenceFaqItem } from './due-diligence-ciudad-faq'
-import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
+import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
@@ -137,9 +137,9 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     precioEjemploPiso: 260_000,
     ventasAcompanadas: 19,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Ventas en Valencia',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Acompaña vendedores particulares en Valencia y provincia. Gestiona documentación valenciana, deudas de comunidad y coordinación con notaría hasta escritura.',
     },
     zonas: ['Ruzafa', 'Benimaclet', 'Campanar', 'Ciutat Vella', 'Mislata', 'Paterna'],
@@ -205,9 +205,9 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     precioEjemploPiso: 280_000,
     ventasAcompanadas: 16,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Ventas en Málaga',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Acompaña vendedores particulares en Málaga y Costa del Sol. Gestiona documentación, contratos y coordinación notarial en operaciones entre particulares.',
     },
     zonas: ['Centro', 'Teatinos', 'El Palo', 'Huelin', 'Torremolinos', 'Rincón de la Victoria'],

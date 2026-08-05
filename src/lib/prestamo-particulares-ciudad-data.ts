@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
+import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
@@ -243,9 +243,9 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
     testimoniosLanding: 'prestamo-particulares-sevilla',
     heroImage: getCiudadImage('sevilla').src,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Préstamos entre particulares en Sevilla',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Acompaña a prestamistas y prestatarios en Sevilla y área metropolitana. Domina la redacción de contratos de préstamo privado, préstamos familiares para compra de vivienda, declaración ante la Junta de Andalucía y protección ante reclamaciones de la AEAT.',
       especialidades: ['Préstamos entre familiares', 'Modelo 600 Andalucía', 'Reclamación por impago'],
     },
@@ -306,9 +306,9 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
     testimoniosLanding: 'prestamo-particulares-malaga',
     heroImage: getCiudadImage('malaga').src,
     gestor: {
-      nombre: GESTOR_CARMEN_VIDAL.nombre,
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestora inmobiliaria · Préstamos entre particulares en Málaga',
-      foto: GESTOR_CARMEN_VIDAL.foto,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
       bio: 'Acompaña a prestamistas y prestatarios en Málaga capital y Costa del Sol. Especialista en contratos de préstamo privado, financiación familiar para entrada de vivienda, declaración ante la Junta de Andalucía y protección ante reclamaciones de la AEAT.',
       especialidades: ['Préstamos entre familiares', 'Modelo 600 Andalucía', 'Reclamación por impago'],
     },

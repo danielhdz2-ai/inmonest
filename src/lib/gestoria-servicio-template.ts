@@ -13,7 +13,7 @@ export const SERVICIO_CIUDAD_LANDING: Record<string, string> = {
   'alquiler-habitaciones': 'contrato-alquiler-habitacion',
   'prestamo-particulares': 'prestamo-particulares',
   'compra-completa-reserva-escritura': 'asesoria-compra',
-  'asesoria-compra-piso': 'asesoria-compra',
+  'asesoria-compra': 'asesoria-compra',
   'compra-completa-parking-trastero': 'gestoria-hub',
   'alquiler-local-comercial': 'gestoria-hub',
   'alquiler-garaje-trastero': 'gestoria-hub',
@@ -23,6 +23,12 @@ export const SERVICIO_CIUDAD_LANDING: Record<string, string> = {
   'asesoramiento-arras-venta': 'contrato-arras',
   'revision-contrato-arras': 'contrato-arras',
   'revision-contrato-alquiler': 'contrato-alquiler',
+  'revision-correccion': 'gestoria-hub',
+  'revision-correccion-arras': 'contrato-arras',
+  'reserva-compra': 'contrato-arras',
+  'reserva-alquiler': 'contrato-alquiler',
+  'alquiler-temporada': 'contrato-alquiler',
+  'liquidacion-fianza': 'contrato-alquiler',
   'contrato-compraventa': 'gestoria-hub',
   'contrato-ilegal': 'gestoria-hub',
   'ayuda-propietarios': 'gestoria-hub',
@@ -43,7 +49,7 @@ export const SERVICIO_TESTIMONIO_LANDING: Record<string, string> = {
   'prestamo-particulares': 'prestamo-particulares',
   'alquiler-garaje-trastero': 'compra-parking-trastero',
   'compra-completa-reserva-escritura': 'asesoria-compra',
-  'asesoria-compra-piso': 'asesoria-compra',
+  'asesoria-compra': 'asesoria-compra',
   'compra-completa-parking-trastero': 'compra-parking-trastero',
   'venta-completa-reserva-escritura': 'venta-completa',
   'pack-due-diligence-precompra': 'due-diligence',
@@ -53,6 +59,12 @@ export const SERVICIO_TESTIMONIO_LANDING: Record<string, string> = {
   'contrato-compraventa': 'contrato-compraventa',
   'contrato-ilegal': 'contrato-ilegal',
   'ayuda-propietarios': 'ayuda-propietarios',
+  'revision-correccion': 'revision-arras',
+  'revision-correccion-arras': 'revision-arras',
+  'reserva-compra': 'contrato-arras',
+  'reserva-alquiler': 'contrato-alquiler',
+  'alquiler-temporada': 'contrato-alquiler',
+  'liquidacion-fianza': 'contrato-alquiler',
 }
 
 export function getTestimonioLandingForServicio(servicio: string): string {
@@ -138,6 +150,39 @@ export function getGestorCopy(servicio: string, servicioNombre: string): GestorS
       ],
       bio: 'Acompaña a particulares que formalizan préstamos privados entre familiares, amigos o inversores. Conoce la tributación del Modelo 600 y la reclamación judicial por impago.',
       bullets: ['Préstamos familiares e inversores', 'Orientación fiscal Modelo 600', 'Asesoramiento pre y post firma'],
+    }
+  }
+
+  if (servicio.includes('revision')) {
+    const esAlquiler = servicio.includes('alquiler')
+    return {
+      rol: esAlquiler
+        ? 'Gestor inmobiliario · Revisión de alquiler LAU'
+        : 'Gestor inmobiliario · Revisión de arras',
+      intro: [
+        DEFAULT_GESTOR.intro[0]!,
+        esAlquiler
+          ? `En la <strong>${servicioNombre.toLowerCase()}</strong>, Daniel revisa el borrador que te han entregado: fianzas, subidas de renta, cláusulas abusivas y condiciones contrarias a la LAU antes de que firmes.`
+          : `En la <strong>${servicioNombre.toLowerCase()}</strong>, Daniel analiza el borrador de arras: plazos, penitenciales, cargas ocultas y cláusulas que te perjudican antes de entregar la señal.`,
+      ],
+      bio: esAlquiler
+        ? 'Revisa contratos LAU propuestos a inquilinos. Detecta cláusulas nulas, fianzas ilegales y condiciones abusivas con informe claro para negociar.'
+        : 'Revisa contratos de arras antes de firmar. Verifica datos registrales, penalizaciones y protección del comprador con informe en 24h.',
+      bullets: esAlquiler
+        ? ['Cláusulas conforme LAU 2026', 'Detección de fianzas ilegales', 'Informe para negociar antes de firmar']
+        : ['Revisión de penitenciales y plazos', 'Detección de cargas ocultas', 'Informe antes de entregar la señal'],
+    }
+  }
+
+  if (servicio === 'alquiler-habitaciones') {
+    return {
+      rol: 'Gestor inmobiliario · Alquiler de habitaciones',
+      intro: [
+        DEFAULT_GESTOR.intro[0]!,
+        `Cuando contratas el <strong>${servicioNombre.toLowerCase()}</strong>, Daniel te explica el régimen del Código Civil, qué cláusulas necesitas según tu situación y cómo cubrirte ante impagos, daños o convivencia conflictiva.`,
+      ],
+      bio: 'Acompaña a propietarios que alquilan habitaciones en pisos compartidos. Conoce normas de convivencia válidas, fianzas y resolución de conflictos en coliving.',
+      bullets: ['Contratos por habitación', 'Normas de convivencia válidas', 'Asesoramiento pre y post firma'],
     }
   }
 

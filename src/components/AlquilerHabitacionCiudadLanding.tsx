@@ -124,7 +124,7 @@ type Props = {
 }
 
 export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
-  const { nombre, slug, region, gestor } = config
+  const { nombre, slug, region } = config
   const waText = encodeURIComponent(`Hola, necesito un contrato de alquiler de habitación en ${nombre}`)
   const paraQuien = [...PARA_QUIEN_BASE, ...config.paraQuienExtra]
   const faq = [...FAQ_BASE, ...config.faqExtra]
@@ -278,38 +278,14 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
       </section>
 
       <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Mercado de habitaciones en {nombre}</h2>
-            <p className="text-gray-600 mb-4 leading-relaxed">{config.mercadoIntro}</p>
-            <p className="text-gray-600 leading-relaxed">
-              Inmonest es una <strong className="text-gray-900">gestoría inmobiliaria digital</strong> para
-              particulares. Cuando contratas, se te asigna un gestor que te explica las bases legales, qué cláusulas
-              necesitas y cómo cubrirte ante impagos, daños o convivencia conflictiva.
-            </p>
-          </div>
-
-          <div className="bg-slate-50 border border-gray-200 rounded-2xl p-8">
-            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">Tu asesor en {nombre}</p>
-            <div className="flex gap-5 items-start">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-gold-500/30">
-                <Image src={gestor.foto} alt={gestor.nombre} fill className="object-cover" sizes="80px" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900">{gestor.nombre}</h3>
-                <p className="text-sm text-gold-700 font-medium mb-3">{gestor.rol}</p>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">{gestor.bio}</p>
-                <ul className="space-y-1">
-                  {gestor.especialidades.map((e) => (
-                    <li key={e} className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckIcon />
-                      {e}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Mercado de habitaciones en {nombre}</h2>
+          <p className="text-gray-600 mb-4 leading-relaxed">{config.mercadoIntro}</p>
+          <p className="text-gray-600 leading-relaxed">
+            Inmonest es una <strong className="text-gray-900">gestoría inmobiliaria digital</strong> para
+            particulares. Cuando contratas, Daniel Hernández — tu gestor asignado — te explica las bases legales,
+            qué cláusulas necesitas y cómo cubrirte ante impagos, daños o convivencia conflictiva.
+          </p>
         </div>
       </section>
 
@@ -471,6 +447,18 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
         </div>
       </section>
 
+      <GestoriaLandingExtras
+        servicio="alquiler-habitaciones"
+        servicioNombre={`Alquiler de habitación en ${nombre}`}
+        ciudad={nombre}
+        whatsappMessage={`Hola Daniel, necesito un contrato de alquiler de habitación en ${nombre}`}
+        skipCiudades
+        skipRelacionados
+        skipTestimonios
+        phase="contact"
+        className="max-w-5xl mx-auto px-4 sm:px-6"
+      />
+
       <section className="py-16 px-4 bg-slate-50">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Preguntas frecuentes en {nombre}</h2>
@@ -490,10 +478,11 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
         servicioNombre={`Alquiler de habitación en ${nombre}`}
         ciudad={nombre}
         testimonioLanding={config.testimoniosLanding}
-        whatsappMessage={`Hola Daniel, necesito un contrato de alquiler de habitación en ${nombre}`}
         relacionados={RELACIONADOS_HABITACION}
         skipCiudades
-        phase="all"
+        skipDaniel
+        skipLlamaGestor
+        phase="footer"
         className="max-w-5xl mx-auto px-4 sm:px-6"
       />
 
@@ -505,8 +494,6 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
             description={`Contrato profesional por ${ALQUILER_HABITACION_PRECIO}€ IVA incluido. Asesor asignado y entrega en 48 horas.`}
             primaryHref={SOLICITAR_URL}
             primaryLabel={`Contratar ahora — ${ALQUILER_HABITACION_PRECIO}€`}
-            secondaryHref={`tel:${PHONE}`}
-            secondaryLabel="745 022 862"
             imageSrc={getCiudadCtaImage(config.slug).src}
             imageAlt={`Contrato alquiler habitación en ${nombre}`}
             imagePosition="left"

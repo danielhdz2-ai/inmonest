@@ -1,4 +1,3 @@
-import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
@@ -25,18 +24,9 @@ export default function GestoriaHubConversionFooter({
 }: Props) {
   const precioLau = getContratoAlquilerPrecio(ciudadSlug)
   const solicitarLauHref = getContratoAlquilerSolicitarHref(ciudadSlug)
-  const waMsg = `Hola, necesito gestoría inmobiliaria en ${ciudad}`
 
   return (
     <>
-      <LlamaGestorBanner
-        variant="strip"
-        ciudad={ciudad}
-        title={`¿Dudas sobre gestoría en ${ciudad}?`}
-        subtitle="Llama a tu gestor Inmonest: te atendemos sin compromiso y luego decides"
-        whatsappMessage={waMsg}
-      />
-
       <section className="py-12 px-4 bg-cream-100 border-y border-gold-300/40">
         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div>
@@ -83,8 +73,6 @@ export default function GestoriaHubConversionFooter({
             }
             primaryHref={solicitarLauHref}
             primaryLabel={`Contrato alquiler desde ${precioLau}€`}
-            secondaryHref={`https://wa.me/34745022862?text=${encodeURIComponent(waMsg)}`}
-            secondaryLabel="WhatsApp"
             imageSrc={GESTORIA_CTA_BANNERS.hubCiudad.src}
             imageAlt={GESTORIA_CTA_BANNERS.hubCiudad.alt}
             imagePosition="right"

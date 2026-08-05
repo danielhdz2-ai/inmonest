@@ -70,7 +70,7 @@ type DueDiligenceCiudadLandingProps = {
 }
 
 export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudadLandingProps) {
-  const { nombre, slug, region, gestor, precioEjemploPiso } = config
+  const { nombre, slug, region, precioEjemploPiso } = config
   const agenciaMin = comisionAgenciaMin(precioEjemploPiso)
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - DUE_DILIGENCE_PRECIO
@@ -190,48 +190,24 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         </GestoriaImageBanner>
       </div>
 
-      {/* Qué es Inmonest + Gestor */}
+      {/* Qué es Inmonest */}
       <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Qué es Inmonest</h2>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              Inmonest es una <strong className="text-gray-900">gestoría inmobiliaria digital</strong> especializada
-              en ayudar a particulares a comprar y vender vivienda con todas las garantías jurídicas. No somos una
-              agencia inmobiliaria: no cobramos comisiones sobre el precio del piso.
-            </p>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              Nuestro equipo de gestores con experiencia en <strong className="text-gray-900">derecho inmobiliario</strong> te
-              acompaña en operaciones de particular a particular: revisamos documentación, detectamos riesgos y te
-              asesoramos hasta que firmas en notaría con seguridad.
-            </p>
-            <p className="text-gray-600 leading-relaxed">
-              El Pack Due Diligence Pre-Compra está pensado para compradores que ya han encontrado piso y vendedor
-              por su cuenta y necesitan un profesional que verifique que la operación es segura.
-            </p>
-          </div>
-
-          <div className="bg-slate-50 border border-gray-200 rounded-2xl p-8">
-            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">Tu gestor en {nombre}</p>
-            <div className="flex gap-5 items-start">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-gold-500/30">
-                <Image src={gestor.foto} alt={gestor.nombre} fill className="object-cover" sizes="80px" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900">{gestor.nombre}</h3>
-                <p className="text-sm text-gold-700 font-medium mb-3">{gestor.rol}</p>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">{gestor.bio}</p>
-                <ul className="space-y-1">
-                  {gestor.especialidades.map((e) => (
-                    <li key={e} className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckIcon />
-                      {e}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">Qué es Inmonest</h2>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Inmonest es una <strong className="text-gray-900">gestoría inmobiliaria digital</strong> especializada
+            en ayudar a particulares a comprar y vender vivienda con todas las garantías jurídicas. No somos una
+            agencia inmobiliaria: no cobramos comisiones sobre el precio del piso.
+          </p>
+          <p className="text-gray-600 mb-4 leading-relaxed">
+            Nuestro equipo de gestores con experiencia en <strong className="text-gray-900">derecho inmobiliario</strong> te
+            acompaña en operaciones de particular a particular: revisamos documentación, detectamos riesgos y te
+            asesoramos hasta que firmas en notaría con seguridad.
+          </p>
+          <p className="text-gray-600 leading-relaxed">
+            El Pack Due Diligence Pre-Compra está pensado para compradores que ya han encontrado piso y vendedor
+            por su cuenta y necesitan un profesional que verifique que la operación es segura.
+          </p>
         </div>
       </section>
 
@@ -394,6 +370,18 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
 
       <GestoriaPanelShowcase servicioLabel={`due diligence pre-compra en ${nombre}`} />
 
+      <GestoriaLandingExtras
+        servicio="pack-due-diligence-precompra"
+        servicioNombre={`Due diligence pre-compra en ${nombre}`}
+        ciudad={nombre}
+        whatsappMessage={`Hola Daniel, firmé arras y necesito due diligence pre-compra en ${nombre}`}
+        skipCiudades
+        skipRelacionados
+        skipTestimonios
+        phase="contact"
+        className="max-w-5xl mx-auto px-4 sm:px-6"
+      />
+
       <section className="py-12 px-4 bg-cream-100 border-y border-gold-300">
         <div className="max-w-lg mx-auto bg-white rounded-2xl border border-gold-300 p-5 sm:p-6 shadow-sm">
           <GestoriaPideInfoForm
@@ -417,9 +405,11 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         servicioNombre={`Due diligence pre-compra en ${nombre}`}
         ciudad={nombre}
         testimonioLanding={config.testimoniosLanding}
-        whatsappMessage={`Hola Daniel, firmé arras y necesito due diligence pre-compra en ${nombre}`}
         relacionados={RELACIONADOS_DUE_DILIGENCE}
         skipCiudades
+        skipDaniel
+        skipLlamaGestor
+        phase="footer"
         className="max-w-5xl mx-auto px-4 sm:px-6"
       />
 
@@ -431,8 +421,6 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
             description={`Revisión documental completa por ${DUE_DILIGENCE_PRECIO}€. Gestor asignado hasta el día de la escritura.`}
             primaryHref={SOLICITAR_URL}
             primaryLabel={`Contratar ahora — ${DUE_DILIGENCE_PRECIO}€`}
-            secondaryHref={`tel:${PHONE}`}
-            secondaryLabel="745 022 862"
             imageSrc={getCiudadCtaImage(slug).src}
             imageAlt={`Due diligence pre-compra en ${nombre}`}
             imagePosition="right"
