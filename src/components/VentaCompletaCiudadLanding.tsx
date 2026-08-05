@@ -46,8 +46,6 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - VENTA_COMPLETA_PRECIO
   const faq = getVentaCompletaFaq(nombre, region, precioEjemploPiso, config.faqPrioritarias)
-  const waText = encodeURIComponent(`Hola Daniel, quiero vender mi piso en ${nombre} a un particular y necesito gestor`)
-  const waHref = `https://wa.me/34745022862?text=${waText}`
 
   return (
     <>
@@ -76,7 +74,6 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         imageSrc={config.heroImage}
         imageAlt={`Venta piso particular ${nombre}`}
         solicitarHref={SOLICITAR_URL}
-        whatsappHref={waHref}
         footnote={`${ventasAcompanadas} ventas acompañadas en ${nombre} · Gestor en 24h · Sin comisión sobre el precio`}
       />
 

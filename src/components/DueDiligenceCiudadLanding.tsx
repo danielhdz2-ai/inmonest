@@ -7,10 +7,8 @@ import JsonLd from '@/components/JsonLd'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import { RELACIONADOS_DUE_DILIGENCE } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
-import TrackedContactLink from '@/components/TrackedContactLink'
 import type { DueDiligenceCiudadConfig } from '@/lib/due-diligence-ciudad-data'
 import {
   DUE_DILIGENCE_CIUDADES_LIST,
@@ -27,8 +25,6 @@ import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/pack-due-diligence-precompra'
-const PHONE = '+34745022862'
-const WA = '34745022862'
 
 const PASOS = [
   {
@@ -176,10 +172,10 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
               Contratar servicio — {DUE_DILIGENCE_PRECIO}€
             </Link>
             <a
-              href={`tel:${PHONE}`}
+              href="#gestor-daniel"
               className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
             >
-              745 022 862
+              Hablar con Daniel
             </a>
           </div>
           <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-white/60">
@@ -382,16 +378,6 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         className="max-w-5xl mx-auto px-4 sm:px-6"
       />
 
-      <section className="py-12 px-4 bg-cream-100 border-y border-gold-300">
-        <div className="max-w-lg mx-auto bg-white rounded-2xl border border-gold-300 p-5 sm:p-6 shadow-sm">
-          <GestoriaPideInfoForm
-            ciudad={nombre}
-            servicio="due diligence pre-compra"
-            precioLabel={`${DUE_DILIGENCE_PRECIO}€`}
-            serviceKey="pack-due-diligence-precompra"
-          />
-        </div>
-      </section>
 
       <CiudadHubFaq
         ciudad={nombre}

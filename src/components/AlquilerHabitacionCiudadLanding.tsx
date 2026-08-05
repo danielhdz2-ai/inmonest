@@ -19,8 +19,6 @@ import { precioLabel } from '@/lib/gestoria-precios-ui'
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
 const DUE_DILIGENCE_CIUDADES = new Set(['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao'])
-const PHONE = '+34745022862'
-const WA = '34745022862'
 
 const PASOS = [
   {
@@ -251,10 +249,10 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
                   Contratar — {ALQUILER_HABITACION_PRECIO}€ IVA incluido
                 </Link>
                 <a
-                  href={`tel:${PHONE}`}
+                  href="#gestor-daniel"
                   className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-gold-500 hover:text-gold-700 transition-colors"
                 >
-                  745 022 862
+                  Hablar con Daniel
                 </a>
               </div>
               <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">

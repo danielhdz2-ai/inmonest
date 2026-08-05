@@ -10,11 +10,6 @@ import {
   PRESTAMO_PARTICULARES_CIUDADES_LIST,
   PRESTAMO_PARTICULARES_PRECIO,
 } from '@/lib/prestamo-particulares-ciudad-data'
-import {
-  GESTORIA_PHONE_DISPLAY,
-  GESTORIA_PHONE_TEL,
-  GESTORIA_PHONE_WA,
-} from '@/lib/gestoria-contact'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getCiudadCtaImage } from '@/lib/gestoria-images'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
@@ -251,10 +246,10 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
                   Contratar — {PRESTAMO_PARTICULARES_PRECIO}€ IVA incluido
                 </Link>
                 <a
-                  href={GESTORIA_PHONE_TEL}
+                  href="#gestor-daniel"
                   className="inline-flex items-center justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-gold-500 hover:text-gold-700 transition-colors"
                 >
-                  {GESTORIA_PHONE_DISPLAY}
+                  Hablar con Daniel
                 </a>
               </div>
               <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">

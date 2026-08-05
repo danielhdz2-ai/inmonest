@@ -2,10 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
-import WhatsAppButton from '@/components/WhatsAppButton'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
-import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
-import TrackedContactLink from '@/components/TrackedContactLink'
 import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
 import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
@@ -21,7 +18,6 @@ import {
 } from '@/lib/contrato-alquiler-premium-config'
 
 const BASE_URL = 'https://inmonest.com'
-const WA = '34745022862'
 
 const GESTORIA_HUB_POR_CIUDAD: Record<string, string> = {
   malaga: '/gestoria/malaga',
@@ -38,7 +34,6 @@ const GESTORIA_HUB_POR_CIUDAD: Record<string, string> = {
 export default function ContratoAlquilerCiudadPremium({ config }: { config: ContratoAlquilerPremiumConfig }) {
   const precio = getContratoAlquilerPremiumPrecio(config.slug)
   const solicitarHref = getContratoAlquilerPremiumSolicitarHref(config.slug)
-  const waText = encodeURIComponent(`Hola, necesito un contrato de alquiler en ${config.nombre}`)
   const gestoriaHubHref = GESTORIA_HUB_POR_CIUDAD[config.slug]
 
   const schemaJson = {
@@ -79,7 +74,6 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Navbar />
-      <WhatsAppButton />
 
       <section className="relative h-[400px] sm:h-[480px] overflow-hidden">
         <Image
@@ -127,24 +121,12 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
             >
               Pedir contrato — {precio}€
             </Link>
-            <TrackedContactLink
-              event="click_whatsapp"
-              city={config.slug}
-              href={`https://wa.me/${WA}?text=${waText}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-gold-600 hover:bg-gold-700 text-white font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
-            >
-              WhatsApp
-            </TrackedContactLink>
-            <TrackedContactLink
-              event="click_phone"
-              city={config.slug}
-              href="tel:+34745022862"
+            <a
+              href="#gestor-daniel"
               className="inline-flex items-center justify-center border border-white/40 text-white hover:bg-white/10 font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
             >
-              Llamar 745 022 862
-            </TrackedContactLink>
+              Hablar con Daniel
+            </a>
           </div>
         </div>
       </section>
@@ -199,32 +181,12 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
               >
                 Pedir contrato ahora — {precio} €
               </Link>
-              <TrackedContactLink
-                event="click_whatsapp"
-                city={config.slug}
-                href={`https://wa.me/${WA}?text=${waText}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center bg-gold-600 hover:bg-gold-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm"
+              <a
+                href="#gestor-daniel"
+                className="block w-full text-center border border-gold-500/60 text-gold-600 hover:bg-cream-100 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
-                WhatsApp: 745 022 862
-              </TrackedContactLink>
-              <TrackedContactLink
-                event="click_phone"
-                city={config.slug}
-                href="tel:+34745022862"
-                className="block w-full text-center border border-gold-500 text-gold-500 hover:bg-cream-100 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
-              >
-                Llamar: 745 022 862
-              </TrackedContactLink>
-              <div className="border-t border-gold-300 pt-4">
-                <GestoriaPideInfoForm
-                  ciudad={config.nombre}
-                  servicio="contrato de alquiler LAU"
-                  precioLabel={`${precio}€`}
-                  serviceKey={config.slug === 'barcelona' ? 'contrato-alquiler-barcelona' : 'contrato-alquiler'}
-                />
-              </div>
+                Hablar con Daniel
+              </a>
               <Link
                 href="/gestoria"
                 className="block w-full text-center border border-gray-300 text-gray-600 hover:bg-gray-50 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
@@ -410,24 +372,12 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
             >
               Lo quiero ya — {precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>
             </Link>
-            <TrackedContactLink
-              event="click_whatsapp"
-              city={config.slug}
-              href={`https://wa.me/${WA}?text=${waText}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gold-600 hover:bg-gold-700 text-white font-semibold py-3 px-8 rounded-xl transition-colors"
-            >
-              WhatsApp: 745 022 862
-            </TrackedContactLink>
-            <TrackedContactLink
-              event="click_phone"
-              city={config.slug}
-              href="tel:+34745022862"
+            <a
+              href="#gestor-daniel"
               className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors"
             >
-              Llamar ahora
-            </TrackedContactLink>
+              Hablar con Daniel
+            </a>
           </div>
         </section>
       </div>

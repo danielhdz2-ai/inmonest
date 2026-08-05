@@ -119,7 +119,6 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
         imageSrc={config.heroImage}
         imageAlt={`Asesoría compra piso ${nombre}`}
         solicitarHref={SOLICITAR_URL}
-        whatsappHref={waHref}
         footnote={
           <>
             También disponible:{' '}
