@@ -5,6 +5,7 @@ import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getServicioImages } from '@/lib/gestoria-images'
+import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -1001,6 +1002,8 @@ export default async function ServicioGestoriaPage({
             ))}
           </div>
         </section>
+
+        <GestoriaPanelShowcase servicioLabel={data.nombre.toLowerCase()} />
 
         <GestoriaImageBanner
           imageSrc={visuals.mid.src}

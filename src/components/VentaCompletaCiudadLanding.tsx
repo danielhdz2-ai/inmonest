@@ -4,7 +4,10 @@ import Navbar from '@/components/NavbarServer'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import JsonLd from '@/components/JsonLd'
+import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 import LlamaGestorBanner from '@/components/LlamaGestorBanner'
+import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
+import { GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
 import LocalRegulationsBlock from '@/components/LocalRegulationsBlock'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
@@ -123,12 +126,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         </div>
       </section>
 
-      <LlamaGestorBanner
-        variant="strip"
-        ciudad={nombre}
-        whatsappMessage={`Hola, quiero vender mi piso en ${nombre} a particular`}
-        title={`Llama a tu gestor en ${nombre} — respuesta hoy`}
-      />
+      <GestoriaPanelShowcase servicioLabel={`venta completa en ${nombre}`} />
 
       {/* Para quién es */}
       <section className="py-14 px-4 bg-white">
@@ -138,13 +136,15 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { icon: '🤝', titulo: 'Ya tienes comprador', desc: 'Has llegado a un acuerdo de precio con un particular, sin agencia.' },
-              { icon: '📋', titulo: 'Necesitas contratos', desc: 'Quieres reserva y arras redactados por profesionales, no plantillas de internet.' },
-              { icon: '📁', titulo: 'Te falta documentación', desc: 'No sabes qué papeles necesita la notaría ni cómo conseguirlos.' },
-              { icon: '🏛️', titulo: 'Quieres cerrar sin sustos', desc: 'Buscas coordinación con notaría y alguien que responda el teléfono.' },
+              { num: '01', titulo: 'Ya tienes comprador', desc: 'Has llegado a un acuerdo de precio con un particular, sin agencia.' },
+              { num: '02', titulo: 'Necesitas contratos', desc: 'Quieres reserva y arras redactados por profesionales, no plantillas de internet.' },
+              { num: '03', titulo: 'Te falta documentación', desc: 'No sabes qué papeles necesita la notaría ni cómo conseguirlos.' },
+              { num: '04', titulo: 'Quieres cerrar sin sustos', desc: 'Buscas coordinación con notaría y alguien que responda el teléfono.' },
             ].map((item) => (
-              <div key={item.titulo} className="bg-amber-50 border border-amber-100 rounded-xl p-5 text-center">
-                <div className="text-3xl mb-3">{item.icon}</div>
+              <div key={item.titulo} className="bg-cream-50 border border-gold-300/40 rounded-xl p-5 text-center">
+                <div className="w-10 h-10 mx-auto rounded-full bg-gold-500/15 text-gold-600 flex items-center justify-center font-bold text-sm mb-3">
+                  {item.num}
+                </div>
                 <h3 className="font-bold text-gray-900 mb-2">{item.titulo}</h3>
                 <p className="text-sm text-gray-600">{item.desc}</p>
               </div>
@@ -184,15 +184,6 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
           </div>
         </div>
       </section>
-
-      <LlamaGestorBanner
-        variant="full"
-        ciudad={nombre}
-        gestorNombre={gestor.nombre}
-        whatsappMessage={`Hola, quiero vender mi piso en ${nombre} y hablar con un gestor`}
-        title={`¿Prefieres hablar antes de contratar? Llama ahora`}
-        subtitle={`Te explicamos qué documentación necesitas en ${nombre} y cuánto tardará tu venta.`}
-      />
 
       {/* Checklist documentos */}
       <section className="py-14 px-4 bg-white border-t border-gray-100">
@@ -298,8 +289,6 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         </div>
       </section>
 
-      <LlamaGestorBanner variant="dark" ciudad={nombre} gestorNombre={gestor.nombre} />
-
       {/* Gestor */}
       <section className="py-14 px-4 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row gap-8 items-center">
@@ -362,6 +351,15 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         </div>
       </section>
 
+      <LlamaGestorBanner
+        ciudad={nombre}
+        gestorNombre={gestor.nombre}
+        whatsappMessage={`Hola, quiero vender mi piso en ${nombre} a particular`}
+        title={`¿Prefieres hablar con la gestoría en ${nombre}?`}
+        subtitle="Te explicamos el acompañamiento completo sin compromiso."
+        imagePosition="left"
+      />
+
       <CiudadHubFaq
         ciudad={nombre}
         items={faq}
@@ -371,34 +369,20 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
 
       <TestimoniosSection landing={config.testimoniosLanding} layout="stack" hideRating />
 
-      <section className="py-16 px-4 bg-gradient-to-br from-gold-600 to-gold-600 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Vende en {nombre} con total seguridad</h2>
-          <p className="text-white/90 mb-8">
-            {VENTA_COMPLETA_PRECIO}€ fijos · Gestor asignado · Sin comisión de agencia · Respuesta en 24h
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href={SOLICITAR_URL}
-              className="px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold text-lg hover:bg-[#f4c94a] transition-colors"
-            >
-              Contratar online — {VENTA_COMPLETA_PRECIO}€
-            </Link>
-            <a
-              href={`tel:${PHONE}`}
-              className="px-8 py-4 rounded-lg bg-green-700 text-white font-black text-xl hover:bg-green-800 transition-colors shadow-lg"
-            >
-              745 022 862
-            </a>
-            <a
-              href={`https://wa.me/34745022862?text=${waText}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 rounded-lg border border-white/30 font-semibold hover:bg-white/10"
-            >
-              WhatsApp
-            </a>
-          </div>
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <GestoriaCtaBanner
+            eyebrow={`Venta completa · ${nombre}`}
+            title={`Vende en ${nombre} con total seguridad`}
+            description={`${VENTA_COMPLETA_PRECIO}€ fijos · Gestor asignado · Sin comisión de agencia · Respuesta en 24h`}
+            primaryHref={SOLICITAR_URL}
+            primaryLabel={`Contratar online — ${VENTA_COMPLETA_PRECIO}€`}
+            secondaryHref={`https://wa.me/34745022862?text=${encodeURIComponent(waText)}`}
+            secondaryLabel="WhatsApp"
+            imageSrc={GESTORIA_CTA_BANNERS.ventaCompleta.src}
+            imageAlt={GESTORIA_CTA_BANNERS.ventaCompleta.alt}
+            imagePosition="right"
+          />
         </div>
       </section>
     </>

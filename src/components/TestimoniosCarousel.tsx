@@ -97,7 +97,7 @@ export default function TestimoniosCarousel({ ciudad, landing, hideRating = fals
                 <>
                   <span className="text-gray-400">•</span>
                   <span className="inline-flex items-center gap-1 bg-green-50 text-green-700 px-2.5 py-1 rounded-full text-xs font-semibold">
-                    💰 Ahorró {testimonio.ahorro}
+                    Ahorró {testimonio.ahorro}
                   </span>
                 </>
               )}

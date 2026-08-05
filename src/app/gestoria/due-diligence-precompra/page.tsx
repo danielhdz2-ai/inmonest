@@ -7,9 +7,9 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
-import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { DUE_DILIGENCE_LANDING, GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
+import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -454,6 +454,8 @@ export default function DueDiligencePrecompraPage() {
         </div>
       </section>
 
+      <GestoriaPanelShowcase servicioLabel="due diligence pre-compra" />
+
       {/* FAQ */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
@@ -519,16 +521,8 @@ export default function DueDiligencePrecompraPage() {
         </div>
       </section>
 
-
-      <LlamaGestorBanner
-        variant="strip"
-        title="¿Firmaste arras? Habla con un gestor antes de escriturar"
-        subtitle="Te explicamos la due diligence sin compromiso. Luego decides si contratas."
-        whatsappMessage="Hola, firmé arras y necesito due diligence pre-compra"
-      />
-
-      <section className="py-12 px-4 bg-cream-100 border-y border-gold-300">
-        <div className="max-w-lg mx-auto bg-white rounded-2xl border border-gold-300 p-5 sm:p-6 shadow-sm">
+      <section className="py-12 px-4 bg-cream-100 border-y border-gold-300/40">
+        <div className="max-w-lg mx-auto bg-white rounded-2xl border border-gold-300/40 p-5 sm:p-6 shadow-sm">
           <GestoriaPideInfoForm
             ciudad="España"
             servicio="due diligence pre-compra"
@@ -540,8 +534,9 @@ export default function DueDiligencePrecompraPage() {
 
       <GestorContactBanner
         whatsappMessage="Hola, firmé arras y necesito due diligence pre-compra"
-        title="¿Listo para verificar antes de escriturar?"
-        subtitle="Te llamamos, resolvemos dudas y te explicamos el pack de 350€ sin compromiso"
+        title="¿Firmaste arras? Habla con un gestor antes de escriturar"
+        subtitle="Te explicamos la due diligence sin compromiso. Luego decides si contratas."
+        imagePosition="right"
       />
       <TestimoniosSection landing="due-diligence" />
 

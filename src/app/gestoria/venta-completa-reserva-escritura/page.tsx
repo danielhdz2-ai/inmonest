@@ -5,6 +5,10 @@ import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import TestimoniosCarousel from '@/components/TestimoniosCarousel'
 import GestorContactBanner from '@/components/GestorContactBanner'
+import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
+import { CiudadServicioCard } from '@/components/ui/CiudadServicioCard'
+import { GESTORIA_CTA_BANNERS, VENTA_CIUDAD_IMAGES } from '@/lib/gestoria-images'
+import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -224,7 +228,12 @@ export default function VentaCompletaPage() {
         </div>
       </section>
 
-      <GestorContactBanner whatsappMessage="Hola, quiero vender mi piso a particular y necesito acompañamiento" />
+      <GestorContactBanner
+        whatsappMessage="Hola, quiero vender mi piso a particular y necesito acompañamiento"
+        title="¿Vendes tu piso entre particulares? Habla con la gestoría"
+        subtitle="Te explicamos el acompañamiento completo, resolvemos dudas y te informamos sin compromiso."
+        imagePosition="left"
+      />
 
       {/* Qué hacemos */}
       <section className="py-16 px-4 bg-gray-50">
@@ -673,6 +682,8 @@ export default function VentaCompletaPage() {
         </div>
       </section>
 
+      <GestoriaPanelShowcase servicioLabel="venta completa hasta escritura" />
+
       {/* FAQ */}
       <section className="bg-gray-50 py-16 px-4">
         <div className="max-w-3xl mx-auto">
@@ -719,34 +730,20 @@ export default function VentaCompletaPage() {
       </section>
 
       {/* CTA final */}
-      <section className="py-16 px-4 bg-gradient-to-br from-gold-500 to-gold-700">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Vende tu piso con todas las garantías
-          </h2>
-          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Gestor personalizado, contratos incluidos, documentación completa y asesoramiento 
-            hasta escriturar. Todo por 687€ IVA incluido.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/gestoria/solicitar/venta-completa-reserva-escritura"
-              className="bg-white text-gold-700 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition shadow-lg"
-            >
-              Contratar ahora (687€)
-            </Link>
-            <a
-              href="https://wa.me/34745022862?text=Hola,%20quiero%20información%20sobre%20el%20servicio%20de%20acompañamiento%20de%20venta"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white/10 border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/20 transition"
-            >
-              Preguntar por WhatsApp
-            </a>
-          </div>
-          <p className="mt-6 text-white/80 text-sm">
-            Sin pagos ocultos • Gestor asignado en 24h • IVA incluido
-          </p>
+      <section className="py-16 px-4">
+        <div className="max-w-5xl mx-auto">
+          <GestoriaCtaBanner
+            eyebrow="Venta completa"
+            title="Vende tu piso con todas las garantías"
+            description="Gestor personalizado, contratos incluidos, documentación completa y asesoramiento hasta escriturar. Todo por 687€ IVA incluido."
+            primaryHref="/gestoria/solicitar/venta-completa-reserva-escritura"
+            primaryLabel="Contratar ahora — 687€"
+            secondaryHref="https://wa.me/34745022862?text=Hola,%20quiero%20información%20sobre%20el%20servicio%20de%20acompañamiento%20de%20venta"
+            secondaryLabel="WhatsApp"
+            imageSrc={GESTORIA_CTA_BANNERS.ventaCompleta.src}
+            imageAlt={GESTORIA_CTA_BANNERS.ventaCompleta.alt}
+            imagePosition="right"
+          />
         </div>
       </section>
 
@@ -761,26 +758,25 @@ export default function VentaCompletaPage() {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              { slug: 'madrid', nombre: 'Madrid', emoji: '🏛️' },
-              { slug: 'barcelona', nombre: 'Barcelona', emoji: '🏖️' },
-              { slug: 'valencia', nombre: 'Valencia', emoji: '🌊' },
-              { slug: 'sevilla', nombre: 'Sevilla', emoji: '☀️' },
-              { slug: 'malaga', nombre: 'Málaga', emoji: '🌴' },
-              { slug: 'salamanca', nombre: 'Salamanca', emoji: '🎓' },
-              { slug: 'valladolid', nombre: 'Valladolid', emoji: '🚄' },
-            ].map((ciudad) => (
-              <Link
-                key={ciudad.slug}
-                href={`/gestoria/venta-completa-reserva-escritura/${ciudad.slug}`}
-                className="flex items-center gap-3 bg-white p-4 rounded-lg border border-gray-100 hover:border-gold-500 hover:shadow-md transition"
-              >
-                <span className="text-2xl">{ciudad.emoji}</span>
-                <div>
-                  <div className="font-bold text-gray-900">{ciudad.nombre}</div>
-                  <div className="text-xs text-gold-500">Ver servicio →</div>
-                </div>
-              </Link>
-            ))}
+              { slug: 'madrid', nombre: 'Madrid' },
+              { slug: 'barcelona', nombre: 'Barcelona' },
+              { slug: 'valencia', nombre: 'Valencia' },
+              { slug: 'sevilla', nombre: 'Sevilla' },
+              { slug: 'malaga', nombre: 'Málaga' },
+              { slug: 'salamanca', nombre: 'Salamanca' },
+              { slug: 'valladolid', nombre: 'Valladolid' },
+            ].map((ciudad) => {
+              const img = VENTA_CIUDAD_IMAGES[ciudad.slug] ?? { src: '/promo.png', alt: `Venta piso ${ciudad.nombre}` }
+              return (
+                <CiudadServicioCard
+                  key={ciudad.slug}
+                  href={`/gestoria/venta-completa-reserva-escritura/${ciudad.slug}`}
+                  nombre={ciudad.nombre}
+                  imageSrc={img.src}
+                  imageAlt={img.alt}
+                />
+              )
+            })}
           </div>
         </div>
       </section>

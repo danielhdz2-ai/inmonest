@@ -22,6 +22,7 @@ import { getDueDiligenceFaq } from '@/lib/due-diligence-ciudad-faq'
 import { buildFaqSchema } from '@/lib/gestoria-ciudad-schema'
 import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { DUE_DILIGENCE_LANDING, getCiudadCtaImage } from '@/lib/gestoria-images'
+import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
@@ -391,7 +392,8 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         </div>
       </section>
 
-      {/* Contacto */}
+      <GestoriaPanelShowcase servicioLabel={`due diligence pre-compra en ${nombre}`} />
+
       <LlamaGestorBanner
         variant="strip"
         ciudad={nombre}

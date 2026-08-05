@@ -121,6 +121,23 @@ export const DUE_DILIGENCE_LANDING = {
   imagePosition: 'right' as const,
 }
 
+/** Banner llamada a gestoría — foto familia */
+export const GESTORIA_LLAMADA_BANNER = {
+  src: '/familia1.jpg',
+  alt: 'Familia asesorada por gestoría inmobiliaria Inmonest',
+} as const
+
+/** Imágenes por ciudad — tarjetas venta completa (sin emojis) */
+export const VENTA_CIUDAD_IMAGES: Record<string, { src: string; alt: string }> = {
+  madrid: { src: '/madrid2.jpg', alt: 'Venta piso Madrid' },
+  barcelona: { src: '/barcelona2.jpg', alt: 'Venta piso Barcelona' },
+  valencia: { src: '/valencia3.jpg', alt: 'Venta piso Valencia' },
+  sevilla: { src: '/sevilla2.jpg', alt: 'Venta piso Sevilla' },
+  malaga: { src: '/gestoria5.jpg', alt: 'Venta piso Málaga' },
+  salamanca: { src: '/gestoria2.jpg', alt: 'Venta piso Salamanca' },
+  valladolid: { src: '/gestoria4.jpg', alt: 'Venta piso Valladolid' },
+}
+
 /** Pool de imágenes únicas para CTAs finales por ciudad */
 const CIUDAD_CTA_POOL: { src: string; alt: string }[] = [
   { src: '/gestoria2.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
