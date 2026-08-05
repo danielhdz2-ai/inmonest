@@ -3,13 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import JsonLd from '@/components/JsonLd'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_HABITACION } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import { GESTOR_CARMEN_VIDAL } from '@/lib/gestores-inmonest'
-import {
-  ALQUILER_HABITACION_CIUDADES_LIST,
-  ALQUILER_HABITACION_PRECIO,
-} from '@/lib/alquiler-habitacion-ciudad-data'
+import { ALQUILER_HABITACION_PRECIO } from '@/lib/alquiler-habitacion-ciudad-data'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
@@ -466,49 +464,6 @@ export default function ContratoAlquilerHabitacionPage() {
         </div>
       </section>
 
-      {/* Otros servicios */}
-      <section className="py-16 px-4 bg-white border-t border-gray-200">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Otros servicios de gestoría Inmonest</h2>
-          <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-            Además del contrato de habitación, ofrecemos asesoramiento legal inmobiliario para comprar, vender y alquilar entre particulares.
-          </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {OTROS_SERVICIOS.map((s) => (
-              <Link
-                key={s.titulo}
-                href={s.href}
-                className="block p-6 bg-slate-50 border border-gray-200 rounded-xl hover:border-gold-500/50 hover:shadow-sm transition-all"
-              >
-                <h3 className="font-bold text-gray-900 mb-2">{s.titulo}</h3>
-                <p className="text-sm text-gray-600 mb-4 leading-relaxed">{s.desc}</p>
-                <span className="text-sm font-semibold text-gold-700">Desde {s.precio}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ciudades */}
-      <section className="py-12 px-4 bg-white border-t border-gray-100">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm text-gray-500 mb-4">Contrato de alquiler de habitación también disponible en:</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {ALQUILER_HABITACION_CIUDADES_LIST.map((c, i) => (
-              <span key={c.slug} className="inline-flex items-center gap-3">
-                {i > 0 && <span className="text-gray-300">·</span>}
-                <Link
-                  href={`/gestoria/contrato-alquiler-habitacion/${c.slug}`}
-                  className="text-sm font-semibold text-gold-500 hover:underline"
-                >
-                  {c.nombre}
-                </Link>
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
       <section className="py-16 px-4 bg-slate-50 border-t border-gray-200">
         <div className="max-w-3xl mx-auto">
@@ -524,28 +479,13 @@ export default function ContratoAlquilerHabitacionPage() {
         </div>
       </section>
 
-      {/* Contacto */}
-      <section className="py-14 px-4 bg-forest-800 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-3">Consulta con un asesor especializado</h2>
-          <p className="text-white/80 mb-8">Primera consulta sin compromiso. Te explicamos el proceso y resolvemos tus dudas.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={`tel:${PHONE}`} className="px-8 py-3 rounded-lg bg-white text-[#1a2f1c] font-semibold hover:bg-gray-100 transition-colors">
-              745 022 862
-            </a>
-            <a
-              href={`https://wa.me/${WA}?text=${waText}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 rounded-lg border border-white/40 font-semibold hover:bg-white/10 transition-colors"
-            >
-              WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <TestimoniosSection landing="alquiler-habitacion" layout="stack" hideRating className="bg-white" />
+      <GestoriaLandingExtras
+        servicio="alquiler-habitaciones"
+        servicioNombre="Contrato de alquiler de habitación"
+        testimonioLanding="alquiler-habitacion"
+        whatsappMessage="Hola Daniel, tengo dudas sobre un contrato de alquiler de habitación"
+        relacionados={RELACIONADOS_HABITACION}
+      />
 
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">

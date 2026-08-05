@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
-import GestorContactBanner from '@/components/GestorContactBanner'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_DUE_DILIGENCE } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
@@ -532,13 +532,17 @@ export default function DueDiligencePrecompraPage() {
         </div>
       </section>
 
-      <GestorContactBanner
-        whatsappMessage="Hola, firmé arras y necesito due diligence pre-compra"
-        title="¿Firmaste arras? Habla con un gestor antes de escriturar"
-        subtitle="Te explicamos la due diligence sin compromiso. Luego decides si contratas."
-        imagePosition="right"
+      <GestoriaLandingExtras
+        servicio="pack-due-diligence-precompra"
+        servicioNombre="Due Diligence Pre-Compra"
+        testimonioLanding="due-diligence"
+        whatsappMessage="Hola Daniel, firmé arras y necesito due diligence pre-compra"
+        llamaGestor={{
+          title: 'Llama a tu gestor y cuéntanos tu caso',
+          subtitle: 'Te explicamos la due diligence sin compromiso. Luego decides si contratas.',
+        }}
+        relacionados={RELACIONADOS_DUE_DILIGENCE}
       />
-      <TestimoniosSection landing="due-diligence" />
 
       {/* CTA Final */}
       <section className="py-16 px-4">

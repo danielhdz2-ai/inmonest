@@ -5,11 +5,11 @@ import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import JsonLd from '@/components/JsonLd'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
-import LlamaGestorBanner from '@/components/LlamaGestorBanner'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_VENTA } from '@/lib/gestoria-relacionados'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
 import LocalRegulationsBlock from '@/components/LocalRegulationsBlock'
-import TestimoniosSection from '@/components/TestimoniosSection'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import type { VentaCompletaCiudadConfig } from '@/lib/venta-completa-ciudad-data'
 import {
@@ -351,15 +351,6 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         </div>
       </section>
 
-      <LlamaGestorBanner
-        ciudad={nombre}
-        gestorNombre={gestor.nombre}
-        whatsappMessage={`Hola, quiero vender mi piso en ${nombre} a particular`}
-        title={`¿Prefieres hablar con la gestoría en ${nombre}?`}
-        subtitle="Te explicamos el acompañamiento completo sin compromiso."
-        imagePosition="left"
-      />
-
       <CiudadHubFaq
         ciudad={nombre}
         items={faq}
@@ -367,7 +358,19 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         subtitulo="Resolvemos las dudas más habituales de vendedores particulares."
       />
 
-      <TestimoniosSection landing={config.testimoniosLanding} layout="stack" hideRating />
+      <GestoriaLandingExtras
+        servicio="venta-completa-reserva-escritura"
+        servicioNombre={`Venta completa en ${nombre}`}
+        ciudad={nombre}
+        testimonioLanding={config.testimoniosLanding}
+        whatsappMessage={`Hola Daniel, quiero vender mi piso en ${nombre} a particular`}
+        relacionados={RELACIONADOS_VENTA}
+        skipCiudades
+        skipDaniel={false}
+        skipLlamaGestor={false}
+        phase="all"
+        className="max-w-5xl mx-auto px-4 sm:px-6"
+      />
 
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">

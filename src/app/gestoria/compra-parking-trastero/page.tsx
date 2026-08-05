@@ -3,9 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import JsonLd from '@/components/JsonLd'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_PARKING } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import { GESTOR_DANIEL_HERNANDEZ } from '@/lib/gestores-inmonest'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
@@ -189,39 +189,6 @@ export default function CompraParkingTrasteroPage() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Tu gestor en todo el proceso de compra</h2>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              Comprar una plaza de parking o un trastero parece sencillo, pero los problemas aparecen cuando no se
-              verifica la nota simple, las servidumbres de acceso, la deuda de comunidad o el ITP. Un error puede
-              retrasar la escritura semanas o costarte miles de euros.
-            </p>
-            <p className="text-gray-600 leading-relaxed">
-              Con Inmonest tienes un <strong className="text-gray-900">gestor especializado en derecho inmobiliario</strong> que
-              lleva la operación desde el primer contacto hasta que el parking o trastero queda inscrito a tu nombre en el Registro.
-            </p>
-          </div>
-          <div className="bg-slate-50 border border-gray-200 rounded-2xl p-8">
-            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">Tu gestor asignado</p>
-            <div className="flex gap-5 items-start">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-gold-500/30">
-                <Image src={GESTOR_DANIEL_HERNANDEZ.foto} alt={GESTOR_DANIEL_HERNANDEZ.nombre} fill className="object-cover" sizes="80px" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900">{GESTOR_DANIEL_HERNANDEZ.nombre}</h3>
-                <p className="text-sm text-gold-700 font-medium mb-3">Gestor inmobiliario · Compras de anejos</p>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  Especialista en compraventas de parking, garaje y trastero entre particulares. Conoce la verificación
-                  registral de anejos, la liquidación del ITP y la coordinación con notarías.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 px-4 bg-slate-50 border-y border-gray-200">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Qué incluye el servicio ({PRECIO}€)</h2>
@@ -284,21 +251,6 @@ export default function CompraParkingTrasteroPage() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-white border-t border-gray-200">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Servicios relacionados</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {OTROS.map((s) => (
-              <Link key={s.titulo} href={s.href} className="block p-6 bg-slate-50 border border-gray-200 rounded-xl hover:border-gold-500/50 transition-all">
-                <h3 className="font-bold text-gray-900 mb-2 text-sm">{s.titulo}</h3>
-                <p className="text-xs text-gray-600 mb-3">{s.desc}</p>
-                <span className="text-sm font-semibold text-gold-700">Desde {s.precio}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 px-4 bg-slate-50">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Preguntas frecuentes</h2>
@@ -313,7 +265,13 @@ export default function CompraParkingTrasteroPage() {
         </div>
       </section>
 
-      <TestimoniosSection landing="compra-parking-trastero" layout="stack" hideRating className="bg-white" />
+      <GestoriaLandingExtras
+        servicio="compra-completa-parking-trastero"
+        servicioNombre="Compra de parking o trastero"
+        testimonioLanding="compra-parking-trastero"
+        whatsappMessage="Hola Daniel, quiero comprar un parking o trastero entre particulares"
+        relacionados={RELACIONADOS_PARKING}
+      />
 
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">

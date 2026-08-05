@@ -3,12 +3,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import TestimoniosCarousel from '@/components/TestimoniosCarousel'
-import GestorContactBanner from '@/components/GestorContactBanner'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_VENTA } from '@/lib/gestoria-relacionados'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
-import { CiudadServicioCard } from '@/components/ui/CiudadServicioCard'
-import { GESTORIA_CTA_BANNERS, VENTA_CIUDAD_IMAGES } from '@/lib/gestoria-images'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
+import { GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -228,11 +227,15 @@ export default function VentaCompletaPage() {
         </div>
       </section>
 
-      <GestorContactBanner
-        whatsappMessage="Hola, quiero vender mi piso a particular y necesito acompañamiento"
-        title="¿Vendes tu piso entre particulares? Habla con la gestoría"
-        subtitle="Te explicamos el acompañamiento completo, resolvemos dudas y te informamos sin compromiso."
-        imagePosition="left"
+      <GestoriaLandingExtras
+        servicio="venta-completa-reserva-escritura"
+        servicioNombre="Venta completa hasta escritura"
+        whatsappMessage="Hola Daniel, quiero vender mi piso a particular y necesito acompañamiento"
+        phase="contact"
+        llamaGestor={{
+          title: 'Llama a tu gestor y cuéntanos tu caso',
+          subtitle: 'Te explicamos el acompañamiento completo, resolvemos dudas y te informamos sin compromiso.',
+        }}
       />
 
       {/* Qué hacemos */}
@@ -666,22 +669,6 @@ export default function VentaCompletaPage() {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Lo que dicen nuestros clientes
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Más de 150 familias han confiado en nosotros para vender o comprar su vivienda. 
-              Lee sus experiencias reales.
-            </p>
-          </div>
-          <TestimoniosCarousel landing="venta-completa" hideRating />
-        </div>
-      </section>
-
       <GestoriaPanelShowcase servicioLabel="venta completa hasta escritura" />
 
       {/* FAQ */}
@@ -729,6 +716,16 @@ export default function VentaCompletaPage() {
         </div>
       </section>
 
+      <GestoriaLandingExtras
+        servicio="venta-completa-reserva-escritura"
+        servicioNombre="Venta completa hasta escritura"
+        testimonioLanding="venta-completa"
+        phase="footer"
+        relacionados={RELACIONADOS_VENTA}
+        skipDaniel
+        skipLlamaGestor
+      />
+
       {/* CTA final */}
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">
@@ -744,83 +741,6 @@ export default function VentaCompletaPage() {
             imageAlt={GESTORIA_CTA_BANNERS.ventaCompleta.alt}
             imagePosition="right"
           />
-        </div>
-      </section>
-
-      {/* Por ciudad */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-4 text-gray-900">
-            Vende tu piso sin agencia en tu ciudad
-          </h2>
-          <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-            Información y acompañamiento adaptados a cada mercado local
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              { slug: 'madrid', nombre: 'Madrid' },
-              { slug: 'barcelona', nombre: 'Barcelona' },
-              { slug: 'valencia', nombre: 'Valencia' },
-              { slug: 'sevilla', nombre: 'Sevilla' },
-              { slug: 'malaga', nombre: 'Málaga' },
-              { slug: 'salamanca', nombre: 'Salamanca' },
-              { slug: 'valladolid', nombre: 'Valladolid' },
-            ].map((ciudad) => {
-              const img = VENTA_CIUDAD_IMAGES[ciudad.slug] ?? { src: '/promo.png', alt: `Venta piso ${ciudad.nombre}` }
-              return (
-                <CiudadServicioCard
-                  key={ciudad.slug}
-                  href={`/gestoria/venta-completa-reserva-escritura/${ciudad.slug}`}
-                  nombre={ciudad.nombre}
-                  imageSrc={img.src}
-                  imageAlt={img.alt}
-                />
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Otros servicios */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-8 text-gray-900">
-            Otros servicios relacionados
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Link
-              href="/gestoria/solicitar/arras-penitenciales"
-              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-gold-500 hover:shadow-md transition"
-            >
-              <h3 className="font-bold text-lg mb-2 text-gray-900">Contrato de Arras</h3>
-              <p className="text-gray-600 text-sm mb-3">
-                Solo el contrato de arras penitenciales redactado y personalizado.
-              </p>
-              <div className="text-gold-500 font-bold">Desde 145€</div>
-            </Link>
-
-            <Link
-              href="/gestoria/solicitar/reserva-compra"
-              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-gold-500 hover:shadow-md transition"
-            >
-              <h3 className="font-bold text-lg mb-2 text-gray-900">Contrato de Reserva</h3>
-              <p className="text-gray-600 text-sm mb-3">
-                Redacción del contrato de reserva para asegurar la operación.
-              </p>
-              <div className="text-gold-500 font-bold">Desde 61€</div>
-            </Link>
-
-            <Link
-              href="/gestoria/revision-contrato-arras"
-              className="bg-gray-50 p-6 rounded-lg border border-gray-100 hover:border-gold-500 hover:shadow-md transition"
-            >
-              <h3 className="font-bold text-lg mb-2 text-gray-900">Revisión de Contratos</h3>
-              <p className="text-gray-600 text-sm mb-3">
-                Ya tienes contrato? Lo revisamos y te decimos si está bien.
-              </p>
-              <div className="text-gold-500 font-bold">Desde 60€</div>
-            </Link>
-          </div>
         </div>
       </section>
     </>

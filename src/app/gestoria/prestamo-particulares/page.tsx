@@ -3,13 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import JsonLd from '@/components/JsonLd'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_PRESTAMO } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import { GESTOR_DANIEL_HERNANDEZ } from '@/lib/gestores-inmonest'
-import {
-  PRESTAMO_PARTICULARES_CIUDADES_LIST,
-  PRESTAMO_PARTICULARES_PRECIO,
-} from '@/lib/prestamo-particulares-ciudad-data'
+import { PRESTAMO_PARTICULARES_PRECIO } from '@/lib/prestamo-particulares-ciudad-data'
 import { precioLabel } from '@/lib/gestoria-precios-ui'
 import {
   GESTORIA_PHONE_DISPLAY,
@@ -289,52 +286,6 @@ export default function PrestamoParticularesPage() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Un asesor experto en todo el proceso</h2>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              Inmonest es una <strong className="text-gray-900">gestoría inmobiliaria digital</strong> para
-              particulares. No somos un banco ni una agencia: te ayudamos a formalizar préstamos privados con validez jurídica y fiscal.
-            </p>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              Cuando contratas, se te asigna un <strong className="text-gray-900">gestor especializado en financiación
-              entre particulares</strong>. Te explica el Modelo 600, cómo evitar que Hacienda califique la operación como donación
-              y qué hacer si el prestatario deja de pagar.
-            </p>
-            <p className="text-gray-600 leading-relaxed">
-              Miles de préstamos entre familiares se hacen por transferencia bancaria sin contrato. Eso deja a ambas partes expuestas
-              a liquidaciones de Hacienda, imposibilidad de reclamar judicialmente y conflictos familiares difíciles de resolver.
-            </p>
-          </div>
-
-          <div className="bg-slate-50 border border-gray-200 rounded-2xl p-8">
-            <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">Tu asesor asignado</p>
-            <div className="flex gap-5 items-start">
-              <div className="relative w-20 h-20 rounded-full overflow-hidden shrink-0 border-2 border-gold-500/30">
-                <Image src={GESTOR_DANIEL_HERNANDEZ.foto} alt={GESTOR_DANIEL_HERNANDEZ.nombre} fill className="object-cover" sizes="80px" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900">{GESTOR_DANIEL_HERNANDEZ.nombre}</h3>
-                <p className="text-sm text-gold-700 font-medium mb-3">Gestor inmobiliario · Préstamos entre particulares</p>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                  Acompaña a particulares que formalizan préstamos privados entre familiares, amigos o inversores.
-                  Conoce la tributación del Modelo 600, los préstamos sin interés y la reclamación judicial por impago.
-                </p>
-                <ul className="space-y-1">
-                  {['Préstamos familiares e inversores', 'Orientación fiscal Modelo 600', 'Asesoramiento pre y post firma'].map((e) => (
-                    <li key={e} className="flex items-center gap-2 text-sm text-gray-700">
-                      <CheckIcon />
-                      {e}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 px-4 bg-slate-50 border-y border-gray-200">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Bases legales y fiscales del préstamo privado</h2>
@@ -447,44 +398,6 @@ export default function PrestamoParticularesPage() {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-white border-t border-gray-200">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Otros servicios de gestoría Inmonest</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {OTROS_SERVICIOS.map((s) => (
-              <Link
-                key={s.titulo}
-                href={s.href}
-                className="block p-6 bg-slate-50 border border-gray-200 rounded-xl hover:border-gold-500/50 hover:shadow-sm transition-all"
-              >
-                <h3 className="font-bold text-gray-900 mb-2">{s.titulo}</h3>
-                <p className="text-sm text-gray-600 mb-4 leading-relaxed">{s.desc}</p>
-                <span className="text-sm font-semibold text-gold-700">Desde {s.precio}</span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 px-4 bg-white border-t border-gray-100">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm text-gray-500 mb-4">Contrato de préstamo entre particulares también disponible en:</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {PRESTAMO_PARTICULARES_CIUDADES_LIST.map((c, i) => (
-              <span key={c.slug} className="inline-flex items-center gap-3">
-                {i > 0 && <span className="text-gray-300">·</span>}
-                <Link
-                  href={`/gestoria/prestamo-particulares/${c.slug}`}
-                  className="text-sm font-semibold text-gold-500 hover:underline"
-                >
-                  {c.nombre}
-                </Link>
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="py-16 px-4 bg-slate-50 border-t border-gray-200">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">Preguntas frecuentes</h2>
@@ -499,27 +412,13 @@ export default function PrestamoParticularesPage() {
         </div>
       </section>
 
-      <section className="py-14 px-4 bg-forest-800 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-3">Consulta con un asesor especializado</h2>
-          <p className="text-white/80 mb-8">Primera consulta sin compromiso. Te explicamos el proceso fiscal y resolvemos tus dudas.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={GESTORIA_PHONE_TEL} className="px-8 py-3 rounded-lg bg-white text-[#1a2f1c] font-semibold hover:bg-gray-100 transition-colors">
-              {GESTORIA_PHONE_DISPLAY}
-            </a>
-            <a
-              href={`https://wa.me/${GESTORIA_PHONE_WA}?text=${waText}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 rounded-lg border border-white/40 font-semibold hover:bg-white/10 transition-colors"
-            >
-              WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <TestimoniosSection landing="prestamo-particulares" layout="stack" hideRating className="bg-white" />
+      <GestoriaLandingExtras
+        servicio="prestamo-particulares"
+        servicioNombre="Préstamo entre particulares"
+        testimonioLanding="prestamo-particulares"
+        whatsappMessage="Hola Daniel, tengo dudas sobre un préstamo entre particulares"
+        relacionados={RELACIONADOS_PRESTAMO}
+      />
 
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">

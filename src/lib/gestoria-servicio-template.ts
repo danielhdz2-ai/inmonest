@@ -17,6 +17,14 @@ export const SERVICIO_CIUDAD_LANDING: Record<string, string> = {
   'alquiler-local-comercial': 'gestoria-hub',
   'alquiler-garaje-trastero': 'gestoria-hub',
   'alquiler-opcion-compra': 'gestoria-hub',
+  'venta-completa-reserva-escritura': 'venta-completa',
+  'pack-due-diligence-precompra': 'due-diligence',
+  'asesoramiento-arras-venta': 'contrato-arras',
+  'revision-contrato-arras': 'contrato-arras',
+  'revision-contrato-alquiler': 'contrato-alquiler',
+  'contrato-compraventa': 'gestoria-hub',
+  'contrato-ilegal': 'gestoria-hub',
+  'ayuda-propietarios': 'gestoria-hub',
 }
 
 /** Clave de testimonios en TESTIMONIOS_POR_LANDING */
@@ -35,6 +43,14 @@ export const SERVICIO_TESTIMONIO_LANDING: Record<string, string> = {
   'alquiler-garaje-trastero': 'compra-parking-trastero',
   'compra-completa-reserva-escritura': 'asesoria-compra',
   'compra-completa-parking-trastero': 'compra-parking-trastero',
+  'venta-completa-reserva-escritura': 'venta-completa',
+  'pack-due-diligence-precompra': 'due-diligence',
+  'asesoramiento-arras-venta': 'asesoramiento-arras',
+  'revision-contrato-arras': 'revision-arras',
+  'revision-contrato-alquiler': 'revision-alquiler',
+  'contrato-compraventa': 'contrato-compraventa',
+  'contrato-ilegal': 'contrato-ilegal',
+  'ayuda-propietarios': 'ayuda-propietarios',
 }
 
 export function getTestimonioLandingForServicio(servicio: string): string {
@@ -85,6 +101,8 @@ export function getCiudadSectionMeta(servicio: string): { title: string; subtitl
     'contrato-alquiler-habitacion': 'Alquiler de habitación en tu ciudad',
     'prestamo-particulares': 'Préstamo entre particulares en tu ciudad',
     'asesoria-compra': 'Asesoría de compra en tu ciudad',
+    'venta-completa': 'Vende tu piso sin agencia en tu ciudad',
+    'due-diligence': 'Due diligence pre-compra en tu ciudad',
     'gestoria-hub': 'Gestoría inmobiliaria en tu ciudad',
   }
 
@@ -124,7 +142,46 @@ export function getGestorCopy(servicio: string, servicioNombre: string): GestorS
     }
   }
 
-  if (servicio.includes('arras') || servicio.includes('reserva')) {
+  if (servicio.includes('due-diligence') || servicio.includes('diligence')) {
+    return {
+      ...DEFAULT_GESTOR,
+      rol: 'Gestor inmobiliario · Due diligence pre-compra',
+      intro: [
+        DEFAULT_GESTOR.intro[0]!,
+        `En <strong>${servicioNombre.toLowerCase()}</strong>, tu gestor revisa nota simple, cargas, licencias y documentación antes de que firmes arras o escritura.`,
+      ],
+      bio: 'Experto en verificación documental pre-compra: Registro, ITE, cargas hipotecarias y deudas con comunidad.',
+      bullets: ['Informe documental completo', 'Detección de cargas ocultas', 'Asesoramiento antes de arras'],
+    }
+  }
+
+  if (servicio.includes('venta-completa')) {
+    return {
+      ...DEFAULT_GESTOR,
+      rol: 'Gestor inmobiliario · Venta entre particulares',
+      intro: [
+        DEFAULT_GESTOR.intro[0]!,
+        `Con <strong>${servicioNombre.toLowerCase()}</strong>, tu gestor te acompaña desde la reserva hasta escritura: contratos, documentación y coordinación con notaría.`,
+      ],
+      bio: 'Experto en ventas entre particulares sin agencia. Gestiona arras, documentación autonómica y seguimiento hasta firma.',
+      bullets: ['Gestor asignado por WhatsApp', 'Contratos de reserva y arras', 'Acompañamiento hasta escritura'],
+    }
+  }
+
+  if (servicio.includes('compra')) {
+    return {
+      ...DEFAULT_GESTOR,
+      rol: 'Gestor inmobiliario · Compras entre particulares',
+      intro: [
+        DEFAULT_GESTOR.intro[0]!,
+        `Con <strong>${servicioNombre.toLowerCase()}</strong>, tu gestor revisa arras, documentación del vendedor y te acompaña hasta la firma en notaría.`,
+      ],
+      bio: `Te guía en ${servicioNombre.toLowerCase()}: verificación documental, arras y coordinación con notaría.`,
+      bullets: ['Revisión de arras y reserva', 'Documentación del vendedor', 'Seguimiento hasta notaría'],
+    }
+  }
+
+  if (servicio.includes('arras') || servicio.includes('reserva') || servicio === 'asesoramiento-arras-venta') {
     return {
       ...DEFAULT_GESTOR,
       rol: 'Gestor inmobiliario · Arras y compraventa',
@@ -147,19 +204,6 @@ export function getGestorCopy(servicio: string, servicioNombre: string): GestorS
       ],
       bio: `Especialista en ${servicioNombre.toLowerCase()}. Resuelve dudas sobre fianzas, duración del contrato y obligaciones de propietario e inquilino.`,
       bullets: ['Contratos conforme LAU', 'Cláusulas de fianza y renta', 'Resolución de dudas por WhatsApp'],
-    }
-  }
-
-  if (servicio.includes('compra')) {
-    return {
-      ...DEFAULT_GESTOR,
-      rol: 'Gestor inmobiliario · Compras entre particulares',
-      intro: [
-        DEFAULT_GESTOR.intro[0]!,
-        `Con <strong>${servicioNombre.toLowerCase()}</strong>, tu gestor revisa arras, documentación del vendedor y te acompaña hasta la firma en notaría.`,
-      ],
-      bio: `Te guía en ${servicioNombre.toLowerCase()}: verificación documental, arras y coordinación con notaría.`,
-      bullets: ['Revisión de arras y reserva', 'Documentación del vendedor', 'Seguimiento hasta notaría'],
     }
   }
 

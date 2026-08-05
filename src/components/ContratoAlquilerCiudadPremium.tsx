@@ -3,14 +3,12 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import GestorContactBanner from '@/components/GestorContactBanner'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import TrackedContactLink from '@/components/TrackedContactLink'
-import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
 import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
-import TestimoniosSection from '@/components/TestimoniosSection'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import type { ContratoAlquilerPremiumConfig } from '@/lib/contrato-alquiler-premium-config'
@@ -149,14 +147,6 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
           </div>
         </div>
       </section>
-
-      <LlamaGestorBanner
-        variant="strip"
-        ciudad={config.nombre}
-        title={`¿Dudas sobre el contrato de alquiler en ${config.nombre}?`}
-        subtitle="Llama a tu gestor Inmonest: te atendemos, resolvemos dudas y luego decides si contratas"
-        whatsappMessage={`Hola, necesito información sobre el contrato de alquiler en ${config.nombre}`}
-      />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -326,20 +316,15 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
 
       </div>
 
-      <LlamaGestorBanner
-        variant="full"
+      <GestoriaLandingExtras
+        servicio="contrato-alquiler"
+        servicioNombre={`Contrato de alquiler en ${config.nombre}`}
         ciudad={config.nombre}
-        title={`Llama a tu gestor en ${config.nombre}`}
-        subtitle="Te explicamos el contrato LAU, la fianza y el precio. Sin compromiso: decides tú si contratas."
-        whatsappMessage={`Hola, quiero hablar con un gestor sobre el contrato de alquiler en ${config.nombre}`}
-      />
-
-      <TestimoniosSection
-        landing="contrato-alquiler"
-        ciudad={config.nombre}
-        layout="stack"
-        hideRating
-        className="bg-gray-50"
+        testimonioLanding="contrato-alquiler"
+        whatsappMessage={`Hola Daniel, tengo dudas sobre el contrato de alquiler en ${config.nombre}`}
+        skipCiudades
+        skipRelacionados
+        className="max-w-5xl mx-auto px-4 sm:px-6"
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
@@ -431,12 +416,6 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
           </div>
         </section>
       </div>
-
-      <GestorContactBanner
-        whatsappMessage={`Hola, necesito información sobre el contrato de alquiler en ${config.nombre}`}
-        title={`¿Listo para el contrato en ${config.nombre}?`}
-        subtitle="Te llamamos, resolvemos dudas y te explicamos el proceso sin compromiso"
-      />
 
       <MobileDockSpacer />
       <StickyMobileContratoCta

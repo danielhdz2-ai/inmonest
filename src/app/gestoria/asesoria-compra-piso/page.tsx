@@ -3,8 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import GestorContactBanner from '@/components/GestorContactBanner'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_ASESORIA_COMPRA } from '@/lib/gestoria-relacionados'
 import { ASESORIA_COMPRA_CIUDADES_LIST } from '@/lib/asesoria-compra-ciudad-data'
 
 const BASE_URL = 'https://inmonest.com'
@@ -131,7 +131,13 @@ export default function AsesoriaCompraPisoPage() {
         </div>
       </section>
 
-      <GestorContactBanner whatsappMessage="Hola, estoy comprando piso y necesito ayuda con la gestión" />
+      <GestoriaLandingExtras
+        servicio="compra-completa-reserva-escritura"
+        servicioNombre="Asesoría compra de piso"
+        testimonioLanding="asesoria-compra"
+        whatsappMessage="Hola Daniel, estoy comprando piso y necesito ayuda con la gestión"
+        phase="contact"
+      />
 
       {/* Por qué Inmonest */}
       <section className="py-16 px-4 bg-white">
@@ -324,8 +330,6 @@ export default function AsesoriaCompraPisoPage() {
         </div>
       </section>
 
-      <TestimoniosSection className="bg-orange-50" landing="asesoria-compra" />
-
       {/* Precio */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-2xl mx-auto text-center">
@@ -447,59 +451,15 @@ export default function AsesoriaCompraPisoPage() {
         </div>
       </section>
 
-      {/* Por ciudad */}
-      <section className="py-16 px-4 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-4 text-gray-900">
-            Compra tu piso sin agencia en tu ciudad
-          </h2>
-          <p className="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-            Asesoría adaptada al mercado local: normativa, plazos y documentación de cada ciudad
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {ASESORIA_COMPRA_CIUDADES_LIST.map((ciudad) => (
-              <Link
-                key={ciudad.slug}
-                href={`/gestoria/asesoria-compra-piso/${ciudad.slug}`}
-                className="block bg-white p-4 rounded-lg border border-gray-100 hover:border-gold-500 hover:shadow-md transition"
-              >
-                <div className="font-bold text-gray-900">{ciudad.nombre}</div>
-                <div className="text-xs text-gold-500 mt-1">Ver servicio →</div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Relacionados */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl font-bold mb-8 text-gray-900">Servicios relacionados</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <Link href="/gestoria/revision-contrato-arras" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-gold-500">Revisión contrato de arras</h3>
-              <p className="text-gray-600 text-sm mb-3">
-                Si solo necesitas revisar el contrato de arras que te han dado.
-              </p>
-              <span className="text-gold-500 font-semibold">Desde 60€ →</span>
-            </Link>
-            <Link href="/gestoria/solicitar/arras-penitenciales" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-gold-500">Contrato de arras penitenciales</h3>
-              <p className="text-gray-600 text-sm mb-3">
-                Contrato de arras personalizado redactado por gestoría en 48h.
-              </p>
-              <span className="text-gold-500 font-semibold">145€ →</span>
-            </Link>
-            <Link href="/gestoria" className="border rounded-lg p-6 hover:shadow-lg transition">
-              <h3 className="font-bold text-lg mb-2 text-gold-500">Más servicios de gestoría</h3>
-              <p className="text-gray-600 text-sm mb-3">
-                Contratos de alquiler, venta, rescisión y más servicios inmobiliarios.
-              </p>
-              <span className="text-gold-500 font-semibold">Ver todos →</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <GestoriaLandingExtras
+        servicio="compra-completa-reserva-escritura"
+        servicioNombre="Asesoría compra de piso"
+        testimonioLanding="asesoria-compra"
+        phase="footer"
+        relacionados={RELACIONADOS_ASESORIA_COMPRA}
+        skipDaniel
+        skipLlamaGestor
+      />
     </>
   )
 }

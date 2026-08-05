@@ -4,9 +4,9 @@ import Navbar from '@/components/NavbarServer'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import JsonLd from '@/components/JsonLd'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_DUE_DILIGENCE } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
@@ -394,14 +394,6 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
 
       <GestoriaPanelShowcase servicioLabel={`due diligence pre-compra en ${nombre}`} />
 
-      <LlamaGestorBanner
-        variant="strip"
-        ciudad={nombre}
-        title={`¿Firmaste arras en ${nombre}? Habla con un gestor`}
-        subtitle="Te explicamos la due diligence sin compromiso. Luego decides si contratas."
-        whatsappMessage={`Hola, firmé arras y necesito due diligence pre-compra en ${nombre}`}
-      />
-
       <section className="py-12 px-4 bg-cream-100 border-y border-gold-300">
         <div className="max-w-lg mx-auto bg-white rounded-2xl border border-gold-300 p-5 sm:p-6 shadow-sm">
           <GestoriaPideInfoForm
@@ -413,33 +405,6 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         </div>
       </section>
 
-      <section className="py-14 px-4 bg-forest-800 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-3">Habla con un gestor especializado</h2>
-          <p className="text-white/80 mb-8">Primera consulta sin compromiso. Te explicamos el proceso y resolvemos tus dudas.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <TrackedContactLink
-              event="click_phone"
-              city={slug}
-              href={`tel:${PHONE}`}
-              className="px-8 py-3 rounded-lg bg-white text-[#1a2f1c] font-semibold hover:bg-gray-100 transition-colors"
-            >
-              745 022 862
-            </TrackedContactLink>
-            <TrackedContactLink
-              event="click_whatsapp"
-              city={slug}
-              href={`https://wa.me/${WA}?text=${waText}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 rounded-lg border border-white/40 font-semibold hover:bg-white/10 transition-colors"
-            >
-              WhatsApp
-            </TrackedContactLink>
-          </div>
-        </div>
-      </section>
-
       <CiudadHubFaq
         ciudad={nombre}
         items={faq}
@@ -447,11 +412,15 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         subtitulo="Resolvemos las dudas más habituales antes de contratar la revisión documental de tu compra."
       />
 
-      <TestimoniosSection
-        landing={config.testimoniosLanding}
-        layout="stack"
-        hideRating
-        className="bg-slate-50"
+      <GestoriaLandingExtras
+        servicio="pack-due-diligence-precompra"
+        servicioNombre={`Due diligence pre-compra en ${nombre}`}
+        ciudad={nombre}
+        testimonioLanding={config.testimoniosLanding}
+        whatsappMessage={`Hola Daniel, firmé arras y necesito due diligence pre-compra en ${nombre}`}
+        relacionados={RELACIONADOS_DUE_DILIGENCE}
+        skipCiudades
+        className="max-w-5xl mx-auto px-4 sm:px-6"
       />
 
       <section className="py-16 px-4">

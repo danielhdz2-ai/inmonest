@@ -3,14 +3,12 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import GestorContactBanner from '@/components/GestorContactBanner'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaPideInfoForm from '@/components/GestoriaPideInfoForm'
 import TrackedContactLink from '@/components/TrackedContactLink'
-import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
 import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
-import TestimoniosSection from '@/components/TestimoniosSection'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import type { ContratoArrasPremiumConfig } from '@/lib/contrato-arras-premium-config'
@@ -136,14 +134,6 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
           </div>
         </div>
       </section>
-
-      <LlamaGestorBanner
-        variant="strip"
-        ciudad={config.nombre}
-        title={`¿Dudas sobre las arras en ${config.nombre}?`}
-        subtitle="Llama a tu gestor Inmonest: te atendemos, resolvemos dudas y luego decides si contratas"
-        whatsappMessage={`Hola, necesito información sobre el contrato de arras en ${config.nombre}`}
-      />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -274,20 +264,15 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
         </section>
       </div>
 
-      <LlamaGestorBanner
-        variant="full"
+      <GestoriaLandingExtras
+        servicio="arras-penitenciales"
+        servicioNombre={`Contrato de arras en ${config.nombre}`}
         ciudad={config.nombre}
-        title={`Llama a tu gestor en ${config.nombre}`}
-        subtitle="Te explicamos las arras, la señal y el plazo de escritura. Sin compromiso: decides tú si contratas."
-        whatsappMessage={`Hola, quiero hablar con un gestor sobre el contrato de arras en ${config.nombre}`}
-      />
-
-      <TestimoniosSection
-        landing="contrato-arras"
-        ciudad={config.nombre}
-        layout="stack"
-        hideRating
-        className="bg-gray-50"
+        testimonioLanding="contrato-arras"
+        whatsappMessage={`Hola Daniel, tengo dudas sobre el contrato de arras en ${config.nombre}`}
+        skipCiudades
+        skipRelacionados
+        className="max-w-5xl mx-auto px-4 sm:px-6"
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
@@ -348,12 +333,6 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
           </div>
         </section>
       </div>
-
-      <GestorContactBanner
-        whatsappMessage={`Hola, necesito información sobre el contrato de arras en ${config.nombre}`}
-        title={`¿Listo para las arras en ${config.nombre}?`}
-        subtitle="Te llamamos, resolvemos dudas y te explicamos el proceso sin compromiso"
-      />
 
       <MobileDockSpacer />
       <StickyMobileContratoCta
