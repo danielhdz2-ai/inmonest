@@ -2,7 +2,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import JsonLd from '@/components/JsonLd'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_PRESTAMO } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import type { PrestamoParticularesCiudadConfig } from '@/lib/prestamo-particulares-ciudad-data'
 import {
@@ -492,27 +493,17 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
         </div>
       </section>
 
-      <section className="py-14 px-4 bg-forest-800 text-white">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-3">Consulta con un asesor en {nombre}</h2>
-          <p className="text-white/80 mb-8">Primera consulta sin compromiso. Te explicamos el proceso fiscal y resolvemos tus dudas.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={GESTORIA_PHONE_TEL} className="px-8 py-3 rounded-lg bg-white text-[#1a2f1c] font-semibold hover:bg-gray-100 transition-colors">
-              {GESTORIA_PHONE_DISPLAY}
-            </a>
-            <a
-              href={`https://wa.me/${GESTORIA_PHONE_WA}?text=${waText}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-3 rounded-lg border border-white/40 font-semibold hover:bg-white/10 transition-colors"
-            >
-              WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <TestimoniosSection landing={config.testimoniosLanding} layout="stack" hideRating className="bg-white" />
+      <GestoriaLandingExtras
+        servicio="prestamo-particulares"
+        servicioNombre={`Préstamo entre particulares en ${nombre}`}
+        ciudad={nombre}
+        testimonioLanding={config.testimoniosLanding}
+        whatsappMessage={`Hola Daniel, quiero formalizar un préstamo entre particulares en ${nombre}`}
+        relacionados={RELACIONADOS_PRESTAMO}
+        skipCiudades
+        phase="all"
+        className="max-w-5xl mx-auto px-4 sm:px-6"
+      />
 
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">

@@ -11,12 +11,13 @@ import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
-import type { ContratoAlquilerPremiumConfig } from '@/lib/contrato-alquiler-premium-config'
+import { getCiudadImage } from '@/lib/gestoria-images'
 import {
   CONTRATO_ALQUILER_PREMIUM_INCLUDES,
   CONTRATO_ALQUILER_PREMIUM_PASOS,
   getContratoAlquilerPremiumPrecio,
   getContratoAlquilerPremiumSolicitarHref,
+  type ContratoAlquilerPremiumConfig,
 } from '@/lib/contrato-alquiler-premium-config'
 
 const BASE_URL = 'https://inmonest.com'
@@ -82,7 +83,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
 
       <section className="relative h-[400px] sm:h-[480px] overflow-hidden">
         <Image
-          src="/gestoria7.jpg"
+          src={getCiudadImage(config.slug).src}
           alt={config.heroImageAlt}
           fill
           priority

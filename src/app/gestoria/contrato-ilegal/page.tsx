@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
-import GestorContactBanner from '@/components/GestorContactBanner'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_CONTRATO_ILEGAL } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 const BASE_URL = 'https://inmonest.com'
@@ -438,6 +438,15 @@ export default function ContratoIlegalPage() {
         </div>
       </section>
 
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <GestoriaLandingExtras
+          servicio="contrato-ilegal"
+          servicioNombre="Análisis de Fraude Inmobiliario"
+          whatsappMessage="Hola Daniel, sospecho de un fraude inmobiliario y necesito ayuda"
+          phase="contact"
+        />
+      </div>
+
       {/* FAQ */}
       <section className="py-16 px-4 bg-gray-50">
         <div className="max-w-3xl mx-auto">
@@ -476,9 +485,17 @@ export default function ContratoIlegalPage() {
         </div>
       </section>
 
-
-      <GestorContactBanner />
-      <TestimoniosSection landing="contrato-ilegal" />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <GestoriaLandingExtras
+          servicio="contrato-ilegal"
+          servicioNombre="Análisis de Fraude Inmobiliario"
+          testimonioLanding="contrato-ilegal"
+          relacionados={RELACIONADOS_CONTRATO_ILEGAL}
+          phase="footer"
+          skipDaniel
+          skipLlamaGestor
+        />
+      </div>
 
       {/* CTA Final */}
       <section className="py-16 px-4 bg-red-600 text-white">

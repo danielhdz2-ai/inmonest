@@ -16,8 +16,10 @@ import {
   buildLegalServiceSchema,
   buildServiceOfferSchema,
 } from '@/lib/gestoria-ciudad-schema'
+import { getCiudadImage } from '@/lib/gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
+const ciudadImage = getCiudadImage('valencia')
 
 const META_DESCRIPTION =
   'Gestoría inmobiliaria en Valencia para particulares. Contratos LAU desde 145€, arras 145€. Sin comisiones de agencia. Abogados expertos, entrega 48h.'
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria4.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria en Valencia' }],
+    images: [{ url: `${BASE_URL}${ciudadImage.src}`, width: 1200, height: 630, alt: ciudadImage.alt }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -93,8 +95,8 @@ export default function GestoriaValenciaPage() {
 
               <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/gestoria3.jpg"
-                  alt="Gestoría inmobiliaria en Valencia"
+                  src={ciudadImage.src}
+                  alt={ciudadImage.alt}
                   fill
                   className="object-cover"
                   priority

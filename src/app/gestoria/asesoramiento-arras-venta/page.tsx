@@ -3,7 +3,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import TestimoniosCarousel from '@/components/TestimoniosCarousel'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_ASESORAMIENTO_VENTA } from '@/lib/gestoria-relacionados'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -575,15 +576,14 @@ export default function AsesoramientoArrasVentaPage() {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-            Lo que dicen nuestros clientes
-          </h2>
-          <TestimoniosCarousel landing="asesoramiento-arras" />
-        </div>
-      </section>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <GestoriaLandingExtras
+          servicio="asesoramiento-arras-venta"
+          servicioNombre="Asesoramiento Arras hasta Escritura"
+          whatsappMessage="Hola Daniel, ya firmé arras y necesito ayuda para vender hasta escritura"
+          phase="contact"
+        />
+      </div>
 
       {/* FAQ */}
       <section className="py-16 px-4 bg-gray-50">
@@ -639,6 +639,18 @@ export default function AsesoramientoArrasVentaPage() {
           </div>
         </div>
       </section>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <GestoriaLandingExtras
+          servicio="asesoramiento-arras-venta"
+          servicioNombre="Asesoramiento Arras hasta Escritura"
+          testimonioLanding="asesoramiento-arras"
+          relacionados={RELACIONADOS_ASESORAMIENTO_VENTA}
+          phase="footer"
+          skipDaniel
+          skipLlamaGestor
+        />
+      </div>
 
       {/* Final CTA */}
       <section className="py-16 px-4 bg-white">

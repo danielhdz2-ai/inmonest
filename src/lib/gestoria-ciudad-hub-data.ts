@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { getCiudadImage } from './gestoria-images'
 import { GESTORIA_ALICANTE_FAQ } from './gestoria-alicante-faq'
 import { GESTORIA_BILBAO_FAQ } from './gestoria-bilbao-faq'
 import { GESTORIA_MALAGA_FAQ } from './gestoria-malaga-faq'
@@ -338,6 +339,7 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
 
 export function buildCiudadHubMetadata(config: CiudadHubConfig): Metadata {
   const title = `Gestoría Inmobiliaria ${config.nombre} para Particulares | Contratos desde 145€`
+  const ciudadImage = getCiudadImage(config.slug)
   return {
     title,
     description: config.metaDescription,
@@ -352,10 +354,10 @@ export function buildCiudadHubMetadata(config: CiudadHubConfig): Metadata {
       locale: 'es_ES',
       images: [
         {
-          url: `${BASE_URL}${config.ogImage}`,
+          url: `${BASE_URL}${ciudadImage.src}`,
           width: 1200,
           height: 630,
-          alt: `Gestoría inmobiliaria en ${config.nombre}`,
+          alt: ciudadImage.alt,
         },
       ],
     },

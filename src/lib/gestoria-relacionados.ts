@@ -191,7 +191,7 @@ export const RELACIONADOS_ALQUILER: RelacionadoServicio[] = [
   },
   {
     slug: 'alquiler-habitaciones',
-    href: '/gestoria/alquiler-habitaciones',
+    href: '/gestoria/contrato-alquiler-habitacion',
     nombre: 'Alquiler Habitación',
     precio: precio('alquiler-habitaciones'),
     descripcion: 'Contrato de habitación en piso compartido.',
@@ -202,5 +202,149 @@ export const RELACIONADOS_ALQUILER: RelacionadoServicio[] = [
     nombre: 'Ayuda Propietarios',
     precio: precio('ayuda-propietarios'),
     descripcion: 'Consultas LAU para arrendadores.',
+  },
+]
+
+export const RELACIONADOS_REVISION_ARRAS: RelacionadoServicio[] = [
+  {
+    slug: 'arras-penitenciales',
+    href: '/gestoria/arras-penitenciales',
+    nombre: 'Contrato de Arras',
+    precio: precio('arras-penitenciales'),
+    descripcion: '¿Aún no tienes contrato? Lo redactamos por ti.',
+  },
+  {
+    slug: 'pack-due-diligence-precompra',
+    href: '/gestoria/due-diligence-precompra',
+    nombre: 'Due Diligence Pre-Compra',
+    precio: precio('pack-due-diligence-precompra'),
+    descripcion: 'Verificación documental completa antes de escriturar.',
+  },
+  {
+    slug: 'compra-completa-reserva-escritura',
+    href: '/gestoria/asesoria-compra-piso',
+    nombre: 'Asesoría Compra de Piso',
+    precio: precio('compra-completa-reserva-escritura'),
+    descripcion: 'Acompañamiento integral del comprador hasta notaría.',
+  },
+]
+
+export const RELACIONADOS_REVISION_ALQUILER: RelacionadoServicio[] = [
+  {
+    slug: 'contrato-alquiler',
+    href: '/gestoria/contrato-alquiler',
+    nombre: 'Contrato de Alquiler LAU',
+    precio: precio('contrato-alquiler'),
+    descripcion: '¿Eres propietario? Redactamos el contrato adaptado a LAU 2026.',
+  },
+  {
+    slug: 'alquiler-habitaciones',
+    href: '/gestoria/contrato-alquiler-habitacion',
+    nombre: 'Alquiler Habitación',
+    precio: precio('alquiler-habitaciones'),
+    descripcion: 'Contrato de habitación con normas de convivencia.',
+  },
+  {
+    slug: 'ayuda-propietarios',
+    href: '/gestoria/ayuda-propietarios',
+    nombre: 'Ayuda Propietarios LAU',
+    precio: precio('ayuda-propietarios'),
+    descripcion: 'Orientación legal para arrendadores.',
+  },
+]
+
+export const RELACIONADOS_ASESORAMIENTO_VENTA: RelacionadoServicio[] = [
+  {
+    slug: 'venta-completa-reserva-escritura',
+    href: '/gestoria/venta-completa-reserva-escritura',
+    nombre: 'Venta Completa',
+    precio: precio('venta-completa-reserva-escritura'),
+    descripcion: 'Gestor asignado desde reserva hasta escritura.',
+  },
+  {
+    slug: 'arras-penitenciales',
+    href: '/gestoria/arras-penitenciales',
+    nombre: 'Contrato de Arras',
+    precio: precio('arras-penitenciales'),
+    descripcion: 'Si aún no firmaste arras, lo redactamos por ti.',
+  },
+  {
+    slug: 'revision-arras',
+    href: '/gestoria/revision-contrato-arras',
+    nombre: 'Revisión de Arras',
+    precio: precio('revision-arras'),
+    descripcion: 'Revisamos el borrador antes de firmar.',
+  },
+]
+
+export const RELACIONADOS_AYUDA_PROPIETARIOS: RelacionadoServicio[] = [
+  {
+    slug: 'contrato-alquiler',
+    href: '/gestoria/contrato-alquiler',
+    nombre: 'Contrato de Alquiler LAU',
+    precio: precio('contrato-alquiler'),
+    descripcion: 'Contrato completo adaptado a la Ley de Vivienda 2026.',
+  },
+  {
+    slug: 'revision-alquiler',
+    href: '/gestoria/revision-contrato-alquiler',
+    nombre: 'Revisión Contrato Alquiler',
+    precio: precio('revision-alquiler'),
+    descripcion: '¿Te han enviado un borrador? Lo revisamos por ti.',
+  },
+  {
+    slug: 'alquiler-habitaciones',
+    href: '/gestoria/contrato-alquiler-habitacion',
+    nombre: 'Alquiler Habitación',
+    precio: precio('alquiler-habitaciones'),
+    descripcion: 'Si alquilas por habitaciones en piso compartido.',
+  },
+]
+
+export const RELACIONADOS_COMPRAVENTA: RelacionadoServicio[] = [
+  {
+    slug: 'arras-penitenciales',
+    href: '/gestoria/arras-penitenciales',
+    nombre: 'Contrato de Arras',
+    precio: precio('arras-penitenciales'),
+    descripcion: 'Señal con arras penitenciales antes de la compraventa.',
+  },
+  {
+    slug: 'revision-arras',
+    href: '/gestoria/revision-contrato-arras',
+    nombre: 'Revisión de Arras',
+    precio: precio('revision-arras'),
+    descripcion: 'Revisamos el contrato de arras antes de firmar.',
+  },
+  {
+    slug: 'compra-completa-reserva-escritura',
+    href: '/gestoria/asesoria-compra-piso',
+    nombre: 'Asesoría Compra de Piso',
+    precio: precio('compra-completa-reserva-escritura'),
+    descripcion: 'Acompañamiento integral hasta escritura.',
+  },
+]
+
+export const RELACIONADOS_CONTRATO_ILEGAL: RelacionadoServicio[] = [
+  {
+    slug: 'revision-arras',
+    href: '/gestoria/revision-contrato-arras',
+    nombre: 'Revisión de Arras',
+    precio: precio('revision-arras'),
+    descripcion: 'Detectamos cláusulas abusivas en contratos de arras.',
+  },
+  {
+    slug: 'revision-alquiler',
+    href: '/gestoria/revision-contrato-alquiler',
+    nombre: 'Revisión de Alquiler',
+    precio: precio('revision-alquiler'),
+    descripcion: 'Revisión legal de contratos de alquiler.',
+  },
+  {
+    slug: 'pack-due-diligence-precompra',
+    href: '/gestoria/due-diligence-precompra',
+    nombre: 'Due Diligence',
+    precio: precio('pack-due-diligence-precompra'),
+    descripcion: 'Verificación documental antes de comprar.',
   },
 ]

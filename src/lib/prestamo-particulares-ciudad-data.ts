@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
+import { getCiudadImage } from './gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 export const PRESTAMO_PARTICULARES_PRECIO = 130
@@ -51,7 +52,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
     nombre: 'Madrid',
     region: 'Comunidad de Madrid',
     testimoniosLanding: 'prestamo-particulares-madrid',
-    heroImage: '/madrid2.jpg',
+    heroImage: getCiudadImage('madrid').src,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestor inmobiliario · Préstamos entre particulares en Madrid',
@@ -114,7 +115,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
     nombre: 'Barcelona',
     region: 'Cataluña',
     testimoniosLanding: 'prestamo-particulares-barcelona',
-    heroImage: '/barcelona2.jpg',
+    heroImage: getCiudadImage('barcelona').src,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestor inmobiliario · Préstamos entre particulares en Barcelona',
@@ -177,7 +178,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
     nombre: 'Valencia',
     region: 'Comunitat Valenciana',
     testimoniosLanding: 'prestamo-particulares-valencia',
-    heroImage: '/valencia3.jpg',
+    heroImage: getCiudadImage('valencia').src,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestor inmobiliario · Préstamos entre particulares en Valencia',
@@ -240,7 +241,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
     nombre: 'Sevilla',
     region: 'Andalucía',
     testimoniosLanding: 'prestamo-particulares-sevilla',
-    heroImage: '/sevilla2.jpg',
+    heroImage: getCiudadImage('sevilla').src,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
       rol: 'Gestora inmobiliaria · Préstamos entre particulares en Sevilla',
@@ -303,7 +304,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
     nombre: 'Málaga',
     region: 'Andalucía · Costa del Sol',
     testimoniosLanding: 'prestamo-particulares-malaga',
-    heroImage: '/gestoria5.jpg',
+    heroImage: getCiudadImage('malaga').src,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
       rol: 'Gestora inmobiliaria · Préstamos entre particulares en Málaga',
@@ -366,7 +367,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
     nombre: 'Bilbao',
     region: 'País Vasco · Bizkaia',
     testimoniosLanding: 'prestamo-particulares-bilbao',
-    heroImage: '/gestoria7.jpg',
+    heroImage: getCiudadImage('bilbao').src,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestor inmobiliario · Préstamos entre particulares en Bilbao',

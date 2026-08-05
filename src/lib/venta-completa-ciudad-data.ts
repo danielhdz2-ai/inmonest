@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { DueDiligenceFaqItem } from './due-diligence-ciudad-faq'
 import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
+import { getCiudadImage } from './gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 export const VENTA_COMPLETA_PRECIO = 687
@@ -58,7 +59,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     nombre: 'Madrid',
     region: 'Comunidad de Madrid',
     testimoniosLanding: 'venta-completa-madrid',
-    heroImage: '/madrid2.jpg',
+    heroImage: getCiudadImage('madrid').src,
     precioEjemploPiso: 320_000,
     ventasAcompanadas: 34,
     gestor: {
@@ -95,7 +96,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     nombre: 'Barcelona',
     region: 'Cataluña · Generalitat',
     testimoniosLanding: 'venta-completa-barcelona',
-    heroImage: '/barcelona2.jpg',
+    heroImage: getCiudadImage('barcelona').src,
     precioEjemploPiso: 350_000,
     ventasAcompanadas: 22,
     gestor: {
@@ -132,7 +133,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     nombre: 'Valencia',
     region: 'Comunitat Valenciana',
     testimoniosLanding: 'venta-completa-valencia',
-    heroImage: '/valencia3.jpg',
+    heroImage: getCiudadImage('valencia').src,
     precioEjemploPiso: 260_000,
     ventasAcompanadas: 19,
     gestor: {
@@ -163,7 +164,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     nombre: 'Sevilla',
     region: 'Andalucía',
     testimoniosLanding: 'venta-completa-sevilla',
-    heroImage: '/sevilla2.jpg',
+    heroImage: getCiudadImage('sevilla').src,
     precioEjemploPiso: 220_000,
     ventasAcompanadas: 28,
     gestor: {
@@ -200,7 +201,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     nombre: 'Málaga',
     region: 'Andalucía',
     testimoniosLanding: 'venta-completa-malaga',
-    heroImage: '/gestoria5.jpg',
+    heroImage: getCiudadImage('malaga').src,
     precioEjemploPiso: 280_000,
     ventasAcompanadas: 16,
     gestor: {
@@ -231,7 +232,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     nombre: 'Salamanca',
     region: 'Castilla y León',
     testimoniosLanding: 'venta-completa-salamanca',
-    heroImage: '/promo1.png',
+    heroImage: getCiudadImage('salamanca').src,
     precioEjemploPiso: 180_000,
     ventasAcompanadas: 11,
     gestor: {
@@ -262,7 +263,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     nombre: 'Valladolid',
     region: 'Castilla y León',
     testimoniosLanding: 'venta-completa-valladolid',
-    heroImage: '/promo1.png',
+    heroImage: getCiudadImage('valladolid').src,
     precioEjemploPiso: 190_000,
     ventasAcompanadas: 9,
     gestor: {

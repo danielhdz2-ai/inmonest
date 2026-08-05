@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { DueDiligenceFaqItem } from './due-diligence-ciudad-faq'
 import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
+import { getCiudadImage } from './gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 export const DUE_DILIGENCE_PRECIO = 350
@@ -57,7 +58,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     nombre: 'Madrid',
     region: 'Comunidad de Madrid',
     testimoniosLanding: 'due-diligence-madrid',
-    heroImage: '/madrid2.jpg',
+    heroImage: getCiudadImage('madrid').src,
     precioEjemploPiso: 320_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
@@ -96,7 +97,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     nombre: 'Barcelona',
     region: 'Cataluña · Generalitat',
     testimoniosLanding: 'due-diligence-barcelona',
-    heroImage: '/barcelona2.jpg',
+    heroImage: getCiudadImage('barcelona').src,
     precioEjemploPiso: 350_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
@@ -155,7 +156,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     nombre: 'Valencia',
     region: 'Comunitat Valenciana',
     testimoniosLanding: 'due-diligence-valencia',
-    heroImage: '/valencia3.jpg',
+    heroImage: getCiudadImage('valencia').src,
     precioEjemploPiso: 260_000,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
@@ -194,7 +195,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     nombre: 'Sevilla',
     region: 'Andalucía',
     testimoniosLanding: 'due-diligence-sevilla',
-    heroImage: '/sevilla2.jpg',
+    heroImage: getCiudadImage('sevilla').src,
     precioEjemploPiso: 220_000,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
@@ -233,7 +234,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     nombre: 'Málaga',
     region: 'Andalucía',
     testimoniosLanding: 'due-diligence-malaga',
-    heroImage: '/gestoria5.jpg',
+    heroImage: getCiudadImage('malaga').src,
     precioEjemploPiso: 300_000,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
@@ -272,7 +273,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     nombre: 'Bilbao',
     region: 'País Vasco · Bizkaia',
     testimoniosLanding: 'due-diligence-bilbao',
-    heroImage: '/gestoria7.jpg',
+    heroImage: getCiudadImage('bilbao').src,
     precioEjemploPiso: 280_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
@@ -311,7 +312,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     nombre: 'Zaragoza',
     region: 'Aragón',
     testimoniosLanding: 'due-diligence-zaragoza',
-    heroImage: '/gestoria4.jpg',
+    heroImage: getCiudadImage('zaragoza').src,
     precioEjemploPiso: 185_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
@@ -366,7 +367,7 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
     nombre: 'A Coruña',
     region: 'Galicia',
     testimoniosLanding: 'due-diligence-coruna',
-    heroImage: '/gestoria2.jpg',
+    heroImage: getCiudadImage('coruna').src,
     precioEjemploPiso: 210_000,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,

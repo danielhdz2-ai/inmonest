@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
+import { getCiudadImage } from './gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 export const ALQUILER_HABITACION_PRECIO = 145
@@ -51,7 +52,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     nombre: 'Madrid',
     region: 'Comunidad de Madrid',
     testimoniosLanding: 'alquiler-habitacion-madrid',
-    heroImage: '/madrid2.jpg',
+    heroImage: getCiudadImage('madrid').src,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestor inmobiliario · Alquiler de habitaciones en Madrid',
@@ -98,7 +99,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     nombre: 'Barcelona',
     region: 'Cataluña',
     testimoniosLanding: 'alquiler-habitacion-barcelona',
-    heroImage: '/barcelona2.jpg',
+    heroImage: getCiudadImage('barcelona').src,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
       rol: 'Gestora inmobiliaria · Alquiler de habitaciones en Barcelona',
@@ -145,7 +146,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     nombre: 'Sevilla',
     region: 'Andalucía',
     testimoniosLanding: 'alquiler-habitacion-sevilla',
-    heroImage: '/sevilla2.jpg',
+    heroImage: getCiudadImage('sevilla').src,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
       rol: 'Gestora inmobiliaria · Alquiler de habitaciones en Sevilla',
@@ -199,7 +200,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     nombre: 'Málaga',
     region: 'Andalucía · Costa del Sol',
     testimoniosLanding: 'alquiler-habitacion-malaga',
-    heroImage: '/gestoria5.jpg',
+    heroImage: getCiudadImage('malaga').src,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
       rol: 'Gestora inmobiliaria · Alquiler de habitaciones en Málaga',
@@ -253,7 +254,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     nombre: 'Bilbao',
     region: 'País Vasco · Bizkaia',
     testimoniosLanding: 'alquiler-habitacion-bilbao',
-    heroImage: '/gestoria7.jpg',
+    heroImage: getCiudadImage('bilbao').src,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestor inmobiliario · Alquiler de habitaciones en Bilbao',
@@ -307,7 +308,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     nombre: 'Valencia',
     region: 'Comunitat Valenciana',
     testimoniosLanding: 'alquiler-habitacion-valencia',
-    heroImage: '/valencia3.jpg',
+    heroImage: getCiudadImage('valencia').src,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
       rol: 'Gestora inmobiliaria · Alquiler de habitaciones en Valencia',
@@ -361,7 +362,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     nombre: 'Zaragoza',
     region: 'Aragón',
     testimoniosLanding: 'alquiler-habitacion-zaragoza',
-    heroImage: '/gestoria3.jpg',
+    heroImage: getCiudadImage('zaragoza').src,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestor inmobiliario · Alquiler de habitaciones en Zaragoza',
@@ -415,7 +416,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     nombre: 'Asturias',
     region: 'Principado de Asturias',
     testimoniosLanding: 'alquiler-habitacion-asturias',
-    heroImage: '/gestoria4.jpg',
+    heroImage: getCiudadImage('asturias').src,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
       rol: 'Gestor inmobiliario · Alquiler de habitaciones en Asturias',

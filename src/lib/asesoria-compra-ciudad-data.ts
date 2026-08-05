@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import type { DueDiligenceFaqItem } from './due-diligence-ciudad-faq'
 import { GESTOR_CARMEN_VIDAL, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
+import { getCiudadImage } from './gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 export const ASESORIA_COMPRA_PRECIO = 687
@@ -75,7 +76,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Madrid',
     region: 'Comunidad de Madrid',
     testimoniosLanding: 'asesoria-compra-madrid',
-    heroImage: '/madrid2.jpg',
+    heroImage: getCiudadImage('madrid').src,
     precioEjemploPiso: 320_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
@@ -139,7 +140,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Barcelona',
     region: 'Cataluña · Generalitat',
     testimoniosLanding: 'asesoria-compra-barcelona',
-    heroImage: '/barcelona2.jpg',
+    heroImage: getCiudadImage('barcelona').src,
     precioEjemploPiso: 350_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
@@ -203,7 +204,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Valencia',
     region: 'Comunitat Valenciana',
     testimoniosLanding: 'asesoria-compra-valencia',
-    heroImage: '/valencia3.jpg',
+    heroImage: getCiudadImage('valencia').src,
     precioEjemploPiso: 260_000,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
@@ -255,7 +256,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Sevilla',
     region: 'Andalucía',
     testimoniosLanding: 'asesoria-compra-sevilla',
-    heroImage: '/sevilla2.jpg',
+    heroImage: getCiudadImage('sevilla').src,
     precioEjemploPiso: 220_000,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
@@ -306,7 +307,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Málaga',
     region: 'Andalucía',
     testimoniosLanding: 'asesoria-compra-malaga',
-    heroImage: '/gestoria5.jpg',
+    heroImage: getCiudadImage('malaga').src,
     precioEjemploPiso: 300_000,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
@@ -354,7 +355,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Zaragoza',
     region: 'Aragón',
     testimoniosLanding: 'asesoria-compra-zaragoza',
-    heroImage: '/gestoria2.jpg',
+    heroImage: getCiudadImage('zaragoza').src,
     precioEjemploPiso: 185_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
@@ -418,7 +419,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Valladolid',
     region: 'Castilla y León',
     testimoniosLanding: 'asesoria-compra-valladolid',
-    heroImage: '/promo1.png',
+    heroImage: getCiudadImage('valladolid').src,
     precioEjemploPiso: 190_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
@@ -478,7 +479,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Mallorca',
     region: 'Illes Balears · Normativa balear',
     testimoniosLanding: 'asesoria-compra-mallorca',
-    heroImage: '/gestoria5.jpg',
+    heroImage: getCiudadImage('mallorca').src,
     precioEjemploPiso: 320_000,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
@@ -542,7 +543,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Bilbao',
     region: 'País Vasco · Bizkaia',
     testimoniosLanding: 'asesoria-compra-bilbao',
-    heroImage: '/gestoria7.jpg',
+    heroImage: getCiudadImage('bilbao').src,
     precioEjemploPiso: 280_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
@@ -606,7 +607,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'A Coruña',
     region: 'Galicia',
     testimoniosLanding: 'asesoria-compra-coruna',
-    heroImage: '/gestoria2.jpg',
+    heroImage: getCiudadImage('coruna').src,
     precioEjemploPiso: 210_000,
     gestor: {
       nombre: GESTOR_CARMEN_VIDAL.nombre,
@@ -670,7 +671,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Murcia',
     region: 'Región de Murcia',
     testimoniosLanding: 'asesoria-compra-murcia',
-    heroImage: '/gestoria3.jpg',
+    heroImage: getCiudadImage('murcia').src,
     precioEjemploPiso: 175_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
@@ -734,7 +735,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     nombre: 'Pamplona',
     region: 'Navarra',
     testimoniosLanding: 'asesoria-compra-pamplona',
-    heroImage: '/promo1.png',
+    heroImage: getCiudadImage('pamplona').src,
     precioEjemploPiso: 240_000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,

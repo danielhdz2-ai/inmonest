@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
-import GestorContactBanner from '@/components/GestorContactBanner'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_AYUDA_PROPIETARIOS } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 import { precio, precioLabel } from '@/lib/gestoria-precios-ui'
@@ -285,43 +285,14 @@ export default function AyudaPropietariosPage() {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="py-16 px-4 bg-orange-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-            Propietarios que han protegido su inversión
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="text-yellow-500 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-              <p className="text-gray-700 mb-4 italic">
-                "Usaba plantillas de internet. Un inquilino se negó a irse alegando cláusulas nulas. 
-                Ahora uso contratos profesionales y duermo tranquilo."
-              </p>
-              <div className="text-sm font-semibold text-gray-900">Javier L., Madrid</div>
-              <div className="text-xs text-gray-500">Propietario de 3 pisos</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="text-yellow-500 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-              <p className="text-gray-700 mb-4 italic">
-                "El contrato incluía todo: IPC, devolución de fianza, reparaciones... 
-                Cuando el inquilino dejó el piso, no hubo ningún problema."
-              </p>
-              <div className="text-sm font-semibold text-gray-900">Carmen R., Barcelona</div>
-              <div className="text-xs text-gray-500">Propietaria inversora</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="text-yellow-500 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-              <p className="text-gray-700 mb-4 italic">
-                "Me ayudaron con contratos para mis 5 pisos. Ahora todos tienen el mismo estándar legal. 
-                Servicio impecable y rápido."
-              </p>
-              <div className="text-sm font-semibold text-gray-900">Antonio M., Valencia</div>
-              <div className="text-xs text-gray-500">Propietario profesional</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <GestoriaLandingExtras
+          servicio="ayuda-propietarios"
+          servicioNombre="Ayuda Propietarios LAU"
+          whatsappMessage="Hola Daniel, soy propietario y necesito ayuda con mi contrato de alquiler"
+          phase="contact"
+        />
+      </div>
 
       {/* Para agencias */}
       <section className="py-16 px-4 bg-white">
@@ -399,8 +370,17 @@ export default function AyudaPropietariosPage() {
       </section>
 
 
-      <GestorContactBanner />
-      <TestimoniosSection landing="ayuda-propietarios" />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <GestoriaLandingExtras
+          servicio="ayuda-propietarios"
+          servicioNombre="Ayuda Propietarios LAU"
+          testimonioLanding="ayuda-propietarios"
+          relacionados={RELACIONADOS_AYUDA_PROPIETARIOS}
+          phase="footer"
+          skipDaniel
+          skipLlamaGestor
+        />
+      </div>
 
       {/* CTA Final */}
       <section className="py-16 px-4 bg-gold-500 text-white">

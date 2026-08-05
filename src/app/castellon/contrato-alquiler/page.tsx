@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import ContratoAlquilerCiudadPremium from '@/components/ContratoAlquilerCiudadPremium'
 import { CONTRATO_ALQUILER_PREMIUM } from '@/lib/contrato-alquiler-premium-config'
+import { getCiudadImage } from '@/lib/gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 const cfg = CONTRATO_ALQUILER_PREMIUM.castellon
+const ciudadImage = getCiudadImage('castellon')
 
 export const metadata: Metadata = {
   title: cfg.meta.title,
@@ -19,7 +21,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria7.jpg`, width: 1200, height: 630, alt: cfg.meta.ogImageAlt }],
+    images: [{ url: `${BASE_URL}${ciudadImage.src}`, width: 1200, height: 630, alt: cfg.meta.ogImageAlt }],
   },
 }
 

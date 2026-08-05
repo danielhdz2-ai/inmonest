@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
-import GestorContactBanner from '@/components/GestorContactBanner'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_REVISION_ALQUILER } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import { precio, precioLabel } from '@/lib/gestoria-precios-ui'
 
@@ -310,44 +310,6 @@ export default function RevisionContratoAlquilerPage() {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="py-16 px-4 bg-orange-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
-            Inquilinos que han evitado abusos
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="text-yellow-500 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-              <p className="text-gray-700 mb-4 italic">
-                "Me querían cobrar 3 meses de fianza + 1 de gestoría (2.800€ en total). 
-                Gracias a la revisión, solo pagué los 2 meses legales. Me ahorraron 1.400€."
-              </p>
-              <div className="text-sm font-semibold text-gray-900">Miguel S., Madrid</div>
-              <div className="text-xs text-gray-500">Abril 2026</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="text-yellow-500 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-              <p className="text-gray-700 mb-4 italic">
-                "El contrato decía que si me iba antes de 3 años perdía la fianza completa. 
-                Era ilegal. Negocié con el propietario y lo eliminamos."
-              </p>
-              <div className="text-sm font-semibold text-gray-900">Sara T., Barcelona</div>
-              <div className="text-xs text-gray-500">Marzo 2026</div>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-sm">
-              <div className="text-yellow-500 text-2xl mb-3">⭐⭐⭐⭐⭐</div>
-              <p className="text-gray-700 mb-4 italic">
-                "Me prohibían tener perro. Nuestra gestoría me explicó que era abusivo salvo que los estatutos 
-                lo prohibieran (y no lo hacían). Ahora vivo con mi golden retriever."
-              </p>
-              <div className="text-sm font-semibold text-gray-900">Laura G., Valencia</div>
-              <div className="text-xs text-gray-500">Mayo 2026</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Proceso */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
@@ -397,6 +359,15 @@ export default function RevisionContratoAlquilerPage() {
           </div>
         </div>
       </section>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <GestoriaLandingExtras
+          servicio="revision-contrato-alquiler"
+          servicioNombre="Revisión de Contrato de Alquiler"
+          whatsappMessage="Hola Daniel, necesito revisar un contrato de alquiler"
+          phase="contact"
+        />
+      </div>
 
       {/* Precios */}
       <section className="py-16 px-4 bg-gray-50">
@@ -528,8 +499,17 @@ export default function RevisionContratoAlquilerPage() {
       </section>
 
 
-      <GestorContactBanner />
-      <TestimoniosSection landing="revision-alquiler" />
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        <GestoriaLandingExtras
+          servicio="revision-contrato-alquiler"
+          servicioNombre="Revisión de Contrato de Alquiler"
+          testimonioLanding="revision-alquiler"
+          relacionados={RELACIONADOS_REVISION_ALQUILER}
+          phase="footer"
+          skipDaniel
+          skipLlamaGestor
+        />
+      </div>
 
       {/* CTA Final */}
       <section className="py-16 px-4 bg-gold-500 text-white">

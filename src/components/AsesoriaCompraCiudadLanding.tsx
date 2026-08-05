@@ -5,7 +5,8 @@ import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import JsonLd from '@/components/JsonLd'
 import LocalRegulationsBlock from '@/components/LocalRegulationsBlock'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_ASESORIA_COMPRA } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import type { AsesoriaCompraCiudadConfig } from '@/lib/asesoria-compra-ciudad-data'
 import {
@@ -338,7 +339,17 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
         subtitulo="Resolvemos las dudas más habituales antes de contratar."
       />
 
-      <TestimoniosSection landing={config.testimoniosLanding} layout="stack" hideRating />
+      <GestoriaLandingExtras
+        servicio="asesoria-compra-piso"
+        servicioNombre={`Asesoría compra de piso en ${nombre}`}
+        ciudad={nombre}
+        testimonioLanding={config.testimoniosLanding}
+        whatsappMessage={`Hola Daniel, quiero comprar un piso en ${nombre} entre particulares`}
+        relacionados={RELACIONADOS_ASESORIA_COMPRA}
+        skipCiudades
+        phase="all"
+        className="max-w-5xl mx-auto px-4 sm:px-6"
+      />
 
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto">

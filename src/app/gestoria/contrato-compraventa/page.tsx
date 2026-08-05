@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/NavbarServer'
-import GestorContactBanner from '@/components/GestorContactBanner'
-import TestimoniosSection from '@/components/TestimoniosSection'
+import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { RELACIONADOS_COMPRAVENTA } from '@/lib/gestoria-relacionados'
 import Link from 'next/link'
 import Image from 'next/image'
 import Script from 'next/script'
@@ -290,6 +290,14 @@ export default function ContratoCompraventaPage() {
             </div>
           </section>
 
+          <GestoriaLandingExtras
+            servicio="contrato-compraventa"
+            servicioNombre="Contrato de Compraventa de Vivienda"
+            whatsappMessage="Hola Daniel, necesito un contrato de compraventa de vivienda"
+            phase="contact"
+            className="mb-12"
+          />
+
           {/* FAQ */}
           <section className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Preguntas frecuentes</h2>
@@ -338,8 +346,16 @@ export default function ContratoCompraventaPage() {
             </div>
           </section>
 
-          <GestorContactBanner whatsappMessage="Hola, necesito un contrato de compraventa de vivienda" />
-          <TestimoniosSection landing="contrato-compraventa" />
+          <GestoriaLandingExtras
+            servicio="contrato-compraventa"
+            servicioNombre="Contrato de Compraventa de Vivienda"
+            testimonioLanding="contrato-compraventa"
+            relacionados={RELACIONADOS_COMPRAVENTA}
+            phase="footer"
+            skipDaniel
+            skipLlamaGestor
+            className="mb-12"
+          />
 
           {/* CTA final */}
           <div className="bg-gradient-to-r from-black to-black rounded-2xl p-8 text-white text-center">

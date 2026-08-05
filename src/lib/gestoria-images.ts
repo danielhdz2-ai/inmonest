@@ -133,18 +133,37 @@ export const GESTORIA_CUENTANOS_BANNER = {
   alt: 'Cuéntanos tu caso — gestoría inmobiliaria Inmonest',
 } as const
 
-/** Imágenes por ciudad — tarjetas venta completa (sin emojis) */
-export const VENTA_CIUDAD_IMAGES: Record<string, { src: string; alt: string }> = {
-  madrid: { src: '/madrid2.jpg', alt: 'Venta piso Madrid' },
-  barcelona: { src: '/barcelona2.jpg', alt: 'Venta piso Barcelona' },
-  valencia: { src: '/valencia3.jpg', alt: 'Venta piso Valencia' },
-  sevilla: { src: '/sevilla2.jpg', alt: 'Venta piso Sevilla' },
-  malaga: { src: '/gestoria5.jpg', alt: 'Venta piso Málaga' },
-  salamanca: { src: '/gestoria2.jpg', alt: 'Venta piso Salamanca' },
-  valladolid: { src: '/gestoria4.jpg', alt: 'Venta piso Valladolid' },
+/** Imágenes reales por ciudad — tarjetas, heroes y landings locales */
+export const CIUDAD_IMAGES: Record<string, { src: string; alt: string }> = {
+  madrid: { src: '/madrid1.jpg', alt: 'Gestoría inmobiliaria Madrid' },
+  barcelona: { src: '/barcelona1.jpg', alt: 'Gestoría inmobiliaria Barcelona' },
+  valencia: { src: '/valencia.jpg', alt: 'Gestoría inmobiliaria Valencia' },
+  sevilla: { src: '/sevilla1.jpg', alt: 'Gestoría inmobiliaria Sevilla' },
+  malaga: { src: '/malaga1.jpg', alt: 'Gestoría inmobiliaria Málaga' },
+  salamanca: { src: '/gestoria2.jpg', alt: 'Gestoría inmobiliaria Salamanca' },
+  valladolid: { src: '/valladolid.jpg', alt: 'Gestoría inmobiliaria Valladolid' },
+  zaragoza: { src: '/zaragoza.jpg', alt: 'Gestoría inmobiliaria Zaragoza' },
+  gijon: { src: '/gijon.jpg', alt: 'Gestoría inmobiliaria Gijón' },
+  vigo: { src: '/vigo.jpg', alt: 'Gestoría inmobiliaria Vigo' },
+  mallorca: { src: '/mallorca.jpg', alt: 'Gestoría inmobiliaria Mallorca' },
+  palma: { src: '/mallorca.jpg', alt: 'Gestoría inmobiliaria Palma de Mallorca' },
+  asturias: { src: '/gijon.jpg', alt: 'Gestoría inmobiliaria Asturias' },
+  coruna: { src: '/vigo.jpg', alt: 'Gestoría inmobiliaria A Coruña' },
+  bilbao: { src: '/gestoria7.jpg', alt: 'Gestoría inmobiliaria Bilbao' },
+  alicante: { src: '/gestoria8.jpg', alt: 'Gestoría inmobiliaria Alicante' },
+  granada: { src: '/gestoria5.jpg', alt: 'Gestoría inmobiliaria Granada' },
+  murcia: { src: '/gestoria4.jpg', alt: 'Gestoría inmobiliaria Murcia' },
+  pamplona: { src: '/gestoria3.jpg', alt: 'Gestoría inmobiliaria Pamplona' },
+  santander: { src: '/gestoria6.jpg', alt: 'Gestoría inmobiliaria Santander' },
+  vitoria: { src: '/gestoria9.jpg', alt: 'Gestoría inmobiliaria Vitoria' },
+  castellon: { src: '/valencia.jpg', alt: 'Gestoría inmobiliaria Castellón' },
+  'san-sebastian': { src: '/gestoria10.jpg', alt: 'Gestoría inmobiliaria San Sebastián' },
 }
 
-/** Pool de imágenes únicas para CTAs finales por ciudad */
+/** @deprecated Usar CIUDAD_IMAGES */
+export const VENTA_CIUDAD_IMAGES = CIUDAD_IMAGES
+
+/** Pool de respaldo para ciudades sin foto dedicada */
 const CIUDAD_CTA_POOL: { src: string; alt: string }[] = [
   { src: '/gestoria2.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
   { src: '/gestoria5.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
@@ -164,7 +183,15 @@ const CIUDAD_CTA_POOL: { src: string; alt: string }[] = [
   { src: '/amigos4.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
 ]
 
+export function getCiudadImage(slug: string): { src: string; alt: string } {
+  const known = CIUDAD_IMAGES[slug]
+  if (known) return known
+  return getCiudadCtaImage(slug)
+}
+
 export function getCiudadCtaImage(slug: string): { src: string; alt: string } {
+  const known = CIUDAD_IMAGES[slug]
+  if (known) return known
   const idx = [...slug].reduce((acc, c) => acc + c.charCodeAt(0), 0) % CIUDAD_CTA_POOL.length
   return CIUDAD_CTA_POOL[idx]!
 }

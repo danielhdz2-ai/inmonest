@@ -11,6 +11,7 @@ import ComprarConSeguridad from '@/components/ComprarConSeguridad'
 import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
 import JsonLd from '@/components/JsonLd'
 import type { CiudadHubConfig } from '@/lib/gestoria-ciudad-hub-data'
+import { getCiudadImage } from '@/lib/gestoria-images'
 import {
   getContratoAlquilerPrecio,
   getContratoAlquilerSolicitarHref,
@@ -87,7 +88,7 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
               </div>
               <div className="relative h-64 lg:h-80 rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src={config.ogImage}
+                  src={getCiudadImage(slug).src}
                   alt={`Gestoría inmobiliaria en ${nombre}`}
                   fill
                   className="object-cover"

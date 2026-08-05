@@ -11,6 +11,7 @@ import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
+import { getCiudadImage } from '@/lib/gestoria-images'
 import type { ContratoArrasPremiumConfig } from '@/lib/contrato-arras-premium-config'
 import {
   CONTRATO_ARRAS_PREMIUM_INCLUDES,
@@ -68,7 +69,7 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
 
       <section className="relative h-[400px] sm:h-[480px] overflow-hidden">
         <Image
-          src="/gestoria7.jpg"
+          src={getCiudadImage(config.slug).src}
           alt={config.heroImageAlt}
           fill
           priority

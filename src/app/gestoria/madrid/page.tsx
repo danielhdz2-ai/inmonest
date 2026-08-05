@@ -16,8 +16,10 @@ import {
   buildLegalServiceSchema,
   buildServiceOfferSchema,
 } from '@/lib/gestoria-ciudad-schema'
+import { getCiudadImage } from '@/lib/gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
+const ciudadImage = getCiudadImage('madrid')
 
 const META_DESCRIPTION =
   'Gestoría inmobiliaria en Madrid para particulares. Contratos LAU desde 145€, arras 145€. Sin comisiones de agencia. Abogados expertos, entrega 48h.'
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria3.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria en Madrid' }],
+    images: [{ url: `${BASE_URL}${ciudadImage.src}`, width: 1200, height: 630, alt: ciudadImage.alt }],
   },
   twitter: {
     card: 'summary_large_image',
@@ -93,8 +95,8 @@ export default function GestoriaMadridPage() {
 
               <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/gestoria7.jpg"
-                  alt="Gestoría inmobiliaria en Madrid"
+                  src={ciudadImage.src}
+                  alt={ciudadImage.alt}
                   fill
                   className="object-cover"
                   priority

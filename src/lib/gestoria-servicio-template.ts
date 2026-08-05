@@ -1,5 +1,5 @@
 import { LANDINGS_POR_CIUDAD, getNombreCiudad } from './gestoria-ciudades-inventario'
-import { VENTA_CIUDAD_IMAGES, getCiudadCtaImage } from './gestoria-images'
+import { getCiudadImage } from './gestoria-images'
 
 /** Landing por ciudad asociada a cada slug de /gestoria/[servicio] */
 export const SERVICIO_CIUDAD_LANDING: Record<string, string> = {
@@ -13,6 +13,7 @@ export const SERVICIO_CIUDAD_LANDING: Record<string, string> = {
   'alquiler-habitaciones': 'contrato-alquiler-habitacion',
   'prestamo-particulares': 'prestamo-particulares',
   'compra-completa-reserva-escritura': 'asesoria-compra',
+  'asesoria-compra-piso': 'asesoria-compra',
   'compra-completa-parking-trastero': 'gestoria-hub',
   'alquiler-local-comercial': 'gestoria-hub',
   'alquiler-garaje-trastero': 'gestoria-hub',
@@ -42,6 +43,7 @@ export const SERVICIO_TESTIMONIO_LANDING: Record<string, string> = {
   'prestamo-particulares': 'prestamo-particulares',
   'alquiler-garaje-trastero': 'compra-parking-trastero',
   'compra-completa-reserva-escritura': 'asesoria-compra',
+  'asesoria-compra-piso': 'asesoria-compra',
   'compra-completa-parking-trastero': 'compra-parking-trastero',
   'venta-completa-reserva-escritura': 'venta-completa',
   'pack-due-diligence-precompra': 'due-diligence',
@@ -65,12 +67,9 @@ export type CiudadServicioLink = {
   imageAlt: string
 }
 
-function getCiudadImage(slug: string, nombre: string, landingId: string): { src: string; alt: string } {
-  if (VENTA_CIUDAD_IMAGES[slug]) {
-    return VENTA_CIUDAD_IMAGES[slug]
-  }
-  const img = getCiudadCtaImage(slug)
-  return { src: img.src, alt: `${nombre} — ${landingId.replace(/-/g, ' ')} Inmonest` }
+function getCiudadCardImage(slug: string, nombre: string, landingId: string): { src: string; alt: string } {
+  const img = getCiudadImage(slug)
+  return { src: img.src, alt: img.alt || `${nombre} — ${landingId.replace(/-/g, ' ')} Inmonest` }
 }
 
 export function getCiudadesParaServicio(servicio: string): CiudadServicioLink[] {
@@ -80,7 +79,7 @@ export function getCiudadesParaServicio(servicio: string): CiudadServicioLink[] 
 
   return landing.ciudades.map((slug) => {
     const nombre = getNombreCiudad(slug)
-    const img = getCiudadImage(slug, nombre, landingId)
+    const img = getCiudadCardImage(slug, nombre, landingId)
     return {
       slug,
       nombre,

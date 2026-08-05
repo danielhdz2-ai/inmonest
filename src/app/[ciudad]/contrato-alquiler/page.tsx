@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import ContratoAlquilerCiudadPremium from '@/components/ContratoAlquilerCiudadPremium'
 import { CONTRATO_ALQUILER_PREMIUM, getContratoAlquilerPremiumConfig } from '@/lib/contrato-alquiler-premium-config'
+import { getCiudadImage } from '@/lib/gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -33,7 +34,7 @@ export async function generateMetadata({
       type: 'website',
       siteName: 'Inmonest',
       locale: 'es_ES',
-      images: [{ url: `${BASE_URL}/gestoria7.jpg`, width: 1200, height: 630, alt: cfg.meta.ogImageAlt }],
+      images: [{ url: `${BASE_URL}${getCiudadImage(ciudad).src}`, width: 1200, height: 630, alt: cfg.meta.ogImageAlt }],
     },
     twitter: cfg.meta.twitterTitle
       ? {
