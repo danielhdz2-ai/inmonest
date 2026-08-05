@@ -164,7 +164,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
               <div className="bg-white border-2 border-red-300 rounded-xl p-6">
                 <div className="text-center mb-4">
                   <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700 mb-3">
-                    ⚠️ Alto Riesgo
+                    Alto Riesgo
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Plantilla Gratis</h3>
                   <div className="text-4xl font-bold text-gray-900 mb-1">0€</div>
@@ -197,14 +197,14 @@ export default function CuantoCuestaContratoAlquilerPage() {
                   </li>
                 </ul>
                 <div className="text-center">
-                  <div className="text-xs text-red-700 font-semibold">⚠️ NO RECOMENDADO</div>
+                  <div className="text-xs text-red-700 font-semibold">NO RECOMENDADO</div>
                 </div>
               </div>
 
               {/* Opción 2: Gestoría Online (RECOMENDADO) */}
               <div className="bg-gradient-to-br from-gold-500 to-gold-700 text-white rounded-xl p-6 shadow-xl relative">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold bg-gold-500">
-                  ⭐ RECOMENDADO
+                  RECOMENDADO
                 </div>
                 <div className="text-center mb-4 mt-2">
                   <h3 className="text-xl font-bold mb-2">Gestoría Online</h3>
@@ -398,7 +398,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>
-            <p className="text-sm text-white/70 mt-4">✓ +3.500 contratos redactados • ✓ Garantía legal total • ✓ Soporte post-firma</p>
+            <p className="text-sm text-white/70 mt-4">+3.500 contratos redactados • Garantía legal total • Soporte post-firma</p>
           </div>
 
           {/* Qué incluye nuestro contrato */}
@@ -409,65 +409,61 @@ export default function CuantoCuestaContratoAlquilerPage() {
             
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="text-2xl">📋</span>
+                <h3 className="font-bold text-gray-900 mb-4">
                   Cláusulas Legales Obligatorias
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>✓ Adaptación completa a Ley Vivienda 12/2023</li>
-                  <li>✓ Duración: 5 años (arrendador persona física) o 7 años (empresa)</li>
-                  <li>✓ Prórroga automática anual</li>
-                  <li>✓ Actualización renta según IPC limitado</li>
-                  <li>✓ Depósito fianza legal (1-2 mensualidades)</li>
-                  <li>✓ Causas de resolución anticipada</li>
-                  <li>✓ Derecho de tanteo y retracto</li>
+                  <li>Adaptación completa a Ley Vivienda 12/2023</li>
+                  <li>Duración: 5 años (arrendador persona física) o 7 años (empresa)</li>
+                  <li>Prórroga automática anual</li>
+                  <li>Actualización renta según IPC limitado</li>
+                  <li>Depósito fianza legal (1-2 mensualidades)</li>
+                  <li>Causas de resolución anticipada</li>
+                  <li>Derecho de tanteo y retracto</li>
                 </ul>
               </div>
 
               <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="text-2xl">⚙️</span>
+                <h3 className="font-bold text-gray-900 mb-4">
                   Cláusulas Personalizadas
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>✓ Mascotas: permitidas o prohibidas (tú decides)</li>
-                  <li>✓ Subarrendamiento: condiciones o prohibición</li>
-                  <li>✓ Obras menores: quién paga, límites</li>
-                  <li>✓ Comunidad de vecinos: reparto de gastos</li>
-                  <li>✓ Suministros: titularidad y pago</li>
-                  <li>✓ Inventario de mobiliario y electrodomésticos</li>
-                  <li>✓ Estado de conservación inicial</li>
+                  <li>Mascotas: permitidas o prohibidas (tú decides)</li>
+                  <li>Subarrendamiento: condiciones o prohibición</li>
+                  <li>Obras menores: quién paga, límites</li>
+                  <li>Comunidad de vecinos: reparto de gastos</li>
+                  <li>Suministros: titularidad y pago</li>
+                  <li>Inventario de mobiliario y electrodomésticos</li>
+                  <li>Estado de conservación inicial</li>
                 </ul>
               </div>
 
               <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="text-2xl">🛡️</span>
+                <h3 className="font-bold text-gray-900 mb-4">
                   Protecciones Legales
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>✓ Cláusulas anti-desahucio express</li>
-                  <li>✓ Garantías de habitabilidad (ITE, cédula)</li>
-                  <li>✓ Responsabilidad reparaciones mayores/menores</li>
-                  <li>✓ Procedimiento impago de rentas</li>
-                  <li>✓ Notificaciones y comunicaciones oficiales</li>
-                  <li>✓ Devolución fianza: plazos y deducciones</li>
+                  <li>Cláusulas anti-desahucio express</li>
+                  <li>Garantías de habitabilidad (ITE, cédula)</li>
+                  <li>Responsabilidad reparaciones mayores/menores</li>
+                  <li>Procedimiento impago de rentas</li>
+                  <li>Notificaciones y comunicaciones oficiales</li>
+                  <li>Devolución fianza: plazos y deducciones</li>
                 </ul>
               </div>
 
               <div className="bg-white border-2 border-gray-200 rounded-xl p-6">
-                <h3 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="text-2xl">📞</span>
+                <h3 className="font-bold text-gray-900 mb-4">
                   Servicios Incluidos
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>✓ Redacción por abogados especializados</li>
-                  <li>✓ Entrega en 48h laborables</li>
-                  <li>✓ Formato PDF editable</li>
-                  <li>✓ Revisiones ilimitadas antes de firmar</li>
-                  <li>✓ Soporte legal post-firma (30 días)</li>
-                  <li>✓ Modelo de inventario de mobiliario</li>
-                  <li>✓ Guía de gestión de fianzas por CCAA</li>
+                  <li>Redacción por abogados especializados</li>
+                  <li>Entrega en 48h laborables</li>
+                  <li>Formato PDF editable</li>
+                  <li>Revisiones ilimitadas antes de firmar</li>
+                  <li>Soporte legal post-firma (30 días)</li>
+                  <li>Modelo de inventario de mobiliario</li>
+                  <li>Guía de gestión de fianzas por CCAA</li>
                 </ul>
               </div>
             </div>
@@ -481,7 +477,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
             
             <div className="space-y-4">
               <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
-                <h3 className="font-bold text-green-900 mb-2">✅ Elige Gestoría Online (145€) si:</h3>
+                <h3 className="font-bold text-green-900 mb-2">Elige Gestoría Online (145€) si:</h3>
                 <ul className="text-sm text-green-800 space-y-1 ml-4">
                   <li>• Alquilas piso de vivienda habitual (uso residencial)</li>
                   <li>• Duración del contrato: 1-10 años</li>
@@ -503,7 +499,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
               </div>
 
               <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
-                <h3 className="font-bold text-red-900 mb-2">⚠️ NUNCA uses Plantilla Gratis si:</h3>
+                <h3 className="font-bold text-red-900 mb-2">Importante:NUNCA uses Plantilla Gratis si:</h3>
                 <ul className="text-sm text-red-800 space-y-1 ml-4">
                   <li>• El inmueble vale más de 100.000€</li>
                   <li>• La renta mensual es superior a 600€</li>

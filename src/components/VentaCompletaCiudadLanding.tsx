@@ -6,6 +6,8 @@ import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import JsonLd from '@/components/JsonLd'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import GestoriaCiudadHero from '@/components/GestoriaCiudadHero'
+import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
 import { RELACIONADOS_VENTA } from '@/lib/gestoria-relacionados'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
@@ -32,7 +34,7 @@ import {
 } from '@/lib/venta-completa-ciudad-schema'
 
 const SOLICITAR_URL = '/gestoria/solicitar/venta-completa-reserva-escritura'
-const PHONE = '+34745022862'
+const SERVICIO_SLUG = 'venta-completa-reserva-escritura'
 
 type VentaCompletaCiudadLandingProps = {
   config: VentaCompletaCiudadConfig
@@ -44,7 +46,8 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - VENTA_COMPLETA_PRECIO
   const faq = getVentaCompletaFaq(nombre, region, precioEjemploPiso, config.faqPrioritarias)
-  const waText = encodeURIComponent(`Hola, quiero vender mi piso en ${nombre} a un particular y necesito gestor`)
+  const waText = encodeURIComponent(`Hola Daniel, quiero vender mi piso en ${nombre} a un particular y necesito gestor`)
+  const waHref = `https://wa.me/34745022862?text=${waText}`
 
   return (
     <>
@@ -59,72 +62,23 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
       <Navbar />
       <WhatsAppButton />
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-amber-50 via-white to-orange-50 py-16 px-4 border-b border-gray-200">
-        <div className="max-w-6xl mx-auto">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6 flex-wrap">
-            <Link href="/" className="hover:text-gold-500">Inicio</Link>
-            <span>/</span>
-            <Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link>
-            <span>/</span>
-            <Link href="/gestoria/venta-completa-reserva-escritura" className="hover:text-gold-500">Venta Completa</Link>
-            <span>/</span>
-            <span className="text-gray-900 font-medium">{nombre}</span>
-          </nav>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-gold-700 bg-cream-100 border border-gold-300 px-3 py-1 rounded-full mb-4">
-                Vendedor particular · {region}
-              </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                {config.hero.h1}
-              </h1>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">{config.hero.lead}</p>
-
-              <div className="bg-cream-100 border-l-4 border-cream-1000 p-4 mb-6 rounded-r-lg">
-                <p className="text-sm text-forest-900">
-                  <strong>✓ Ya tienes comprador particular:</strong> perfecto, no buscamos comprador ni cobramos comisión.
-                  Nos encargamos de contratos, documentación y notaría hasta que firmes la escritura.
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 mb-4">
-                <Link
-                  href={SOLICITAR_URL}
-                  className="inline-flex justify-center px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold text-lg hover:bg-gold-600 transition-colors shadow-lg"
-                >
-                  Contratar — {VENTA_COMPLETA_PRECIO}€
-                </Link>
-                <a
-                  href={`tel:${PHONE}`}
-                  className="inline-flex justify-center items-center gap-2 px-8 py-4 rounded-lg bg-gold-600 text-white font-black text-xl hover:bg-gold-700 transition-colors shadow-lg"
-                >
-                  745 022 862
-                </a>
-              </div>
-              <p className="text-sm text-gray-500">
-                Gestor asignado en 24h · IVA incluido · Sin comisión sobre el precio de venta
-              </p>
-            </div>
-
-            <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src={config.heroImage}
-                alt={`Venta piso particular ${nombre}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
-              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur px-5 py-3 rounded-xl shadow-lg border border-gold-300">
-                <div className="font-black text-2xl text-gray-900">{ventasAcompanadas}</div>
-                <div className="text-sm text-gray-600">ventas acompañadas en {nombre}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <GestoriaCiudadHero
+        breadcrumbs={[
+          { label: 'Inicio', href: '/' },
+          { label: 'Gestoría', href: '/gestoria' },
+          { label: 'Venta completa', href: '/gestoria/venta-completa-reserva-escritura' },
+          { label: nombre },
+        ]}
+        badge={`Vendedor particular · ${region}`}
+        title={config.hero.h1}
+        lead={config.hero.lead}
+        precio={VENTA_COMPLETA_PRECIO}
+        imageSrc={config.heroImage}
+        imageAlt={`Venta piso particular ${nombre}`}
+        solicitarHref={SOLICITAR_URL}
+        whatsappHref={waHref}
+        footnote={`${ventasAcompanadas} ventas acompañadas en ${nombre} · Gestor en 24h · Sin comisión sobre el precio`}
+      />
 
       <GestoriaPanelShowcase servicioLabel={`venta completa en ${nombre}`} />
 
@@ -174,7 +128,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
                 <ul className="space-y-2">
                   {bloque.items.map((item) => (
                     <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
-                      <span className="text-gold-500 mt-0.5 shrink-0">✓</span>
+                      <GestoriaCheckIcon className="mt-0.5" />
                       {item}
                     </li>
                   ))}

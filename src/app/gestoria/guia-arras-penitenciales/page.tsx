@@ -116,16 +116,16 @@ export default function GuiaArrasPenitencialesPage() {
           
           {/* Tabla de contenidos */}
           <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mb-12">
-            <h2 className="text-lg font-bold text-gray-900 mb-3">📋 Contenido de esta guía</h2>
+            <h2 className="text-lg font-bold text-gray-900 mb-3">Contenido de esta guía</h2>
             <ul className="space-y-2 text-sm text-gray-700">
-              <li>✓ Qué son las arras penitenciales y cómo funcionan</li>
-              <li>✓ Diferencias con arras confirmatorias (comparativa completa)</li>
-              <li>✓ Qué pasa si el comprador se arrepiente</li>
-              <li>✓ Qué pasa si el vendedor incumple</li>
-              <li>✓ Ejemplos reales con cifras</li>
-              <li>✓ Cláusulas imprescindibles en el contrato</li>
-              <li>✓ Errores comunes que pueden costarte miles de euros</li>
-              <li>✓ Cuánto cuesta un contrato profesional</li>
+              <li>Qué son las arras penitenciales y cómo funcionan</li>
+              <li>Diferencias con arras confirmatorias (comparativa completa)</li>
+              <li>Qué pasa si el comprador se arrepiente</li>
+              <li>Qué pasa si el vendedor incumple</li>
+              <li>Ejemplos reales con cifras</li>
+              <li>Cláusulas imprescindibles en el contrato</li>
+              <li>Errores comunes que pueden costarte miles de euros</li>
+              <li>Cuánto cuesta un contrato profesional</li>
             </ul>
           </div>
 
@@ -206,7 +206,7 @@ export default function GuiaArrasPenitencialesPage() {
             </div>
             <div className="mt-6 bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg">
               <p className="text-gray-800">
-                <strong>⚠️ Recomendación:</strong> Si vas a pedir hipoteca o no estás 100% seguro, 
+                <strong>Importante:Recomendación:</strong> Si vas a pedir hipoteca o no estás 100% seguro, 
                 elige <strong>arras penitenciales</strong>. Te dan flexibilidad y evitan juicios. 
                 Solo usa confirmatorias si tienes todo el dinero en efectivo y certeza absoluta.
               </p>
@@ -237,8 +237,8 @@ export default function GuiaArrasPenitencialesPage() {
                   <p className="text-sm font-semibold text-red-900 mb-2">Consecuencias:</p>
                   <ul className="text-sm text-red-800 space-y-1 ml-4">
                     <li>✗ El comprador <strong>pierde los 15.000€</strong></li>
-                    <li>✓ El vendedor se queda con los 15.000€ y puede revender</li>
-                    <li>✓ No hay juicio ni reclamaciones adicionales</li>
+                    <li>El vendedor se queda con los 15.000€ y puede revender</li>
+                    <li>No hay juicio ni reclamaciones adicionales</li>
                   </ul>
                 </div>
               </div>
@@ -259,9 +259,9 @@ export default function GuiaArrasPenitencialesPage() {
                 <div className="bg-green-50 p-4 rounded-lg">
                   <p className="text-sm font-semibold text-green-900 mb-2">Consecuencias:</p>
                   <ul className="text-sm text-green-800 space-y-1 ml-4">
-                    <li>✓ El vendedor debe devolver <strong>40.000€</strong> (el doble)</li>
-                    <li>✓ El comprador gana 20.000€ netos</li>
-                    <li>✓ No hay juicio (la penalización es automática)</li>
+                    <li>El vendedor debe devolver <strong>40.000€</strong> (el doble)</li>
+                    <li>El comprador gana 20.000€ netos</li>
+                    <li>No hay juicio (la penalización es automática)</li>
                   </ul>
                 </div>
               </div>
@@ -282,9 +282,9 @@ export default function GuiaArrasPenitencialesPage() {
                 <div className="bg-blue-50 p-4 rounded-lg">
                   <p className="text-sm font-semibold text-blue-900 mb-2">Consecuencias:</p>
                   <ul className="text-sm text-blue-800 space-y-1 ml-4">
-                    <li>✓ Los 10.000€ se descuentan del precio final</li>
-                    <li>✓ En escritura se pagan: 180.000€ - 10.000€ = <strong>170.000€</strong></li>
-                    <li>✓ Ambas partes cumplen y la operación se cierra</li>
+                    <li>Los 10.000€ se descuentan del precio final</li>
+                    <li>En escritura se pagan: 180.000€ - 10.000€ = <strong>170.000€</strong></li>
+                    <li>Ambas partes cumplen y la operación se cierra</li>
                   </ul>
                 </div>
               </div>
@@ -317,7 +317,7 @@ export default function GuiaArrasPenitencialesPage() {
                 Revisar Contrato Existente - 60€
               </Link>
             </div>
-            <p className="text-sm text-white/70 mt-4">✓ Entrega en 48h • ✓ Garantía legal • ✓ +2.000 contratos redactados</p>
+            <p className="text-sm text-white/70 mt-4">Entrega en 48h • Garantía legal • +2.000 contratos redactados</p>
           </div>
 
           {/* Sección 4: Cláusulas imprescindibles */}
@@ -469,7 +469,7 @@ export default function GuiaArrasPenitencialesPage() {
                   ¿Qué pasa si el vendedor no tiene escrituras del piso?
                 </summary>
                 <p className="text-gray-700 mt-3 text-sm">
-                  🚨 NO FIRMES. Sin escrituras no hay compraventa legal. Puede ser herencia no tramitada, 
+                  Alerta: NO FIRMES. Sin escrituras no hay compraventa legal. Puede ser herencia no tramitada, 
                   ocupación ilegal o estafa directa. Exige siempre ver las escrituras originales antes de entregar dinero.
                 </p>
               </details>

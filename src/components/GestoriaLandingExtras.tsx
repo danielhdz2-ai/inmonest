@@ -63,7 +63,7 @@ export default function GestoriaLandingExtras({
   const showContact = phase === 'all' || phase === 'contact'
   const showFooter = phase === 'all' || phase === 'footer'
   const showDanielBlock = !skipDaniel && showContact
-  const showLlamaBlock = !skipLlamaGestor && showContact
+  const showLlamaBlock = !skipLlamaGestor && showContact && !showDanielBlock
   const waDefault = whatsappMessage ?? `Hola Daniel, tengo dudas sobre ${servicioNombre}`
   const gestorCopy = getGestorCopy(servicio, servicioNombre)
   const landingKey =
@@ -98,7 +98,6 @@ export default function GestoriaLandingExtras({
               eyebrow={llamaGestor?.eyebrow ?? 'Atención personalizada'}
               imagePosition={llamaGestor?.imagePosition ?? 'right'}
               ciudad={ciudad}
-              hideActions={showDanielBlock}
             />
           )}
         </div>

@@ -6,6 +6,8 @@ import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import JsonLd from '@/components/JsonLd'
 import LocalRegulationsBlock from '@/components/LocalRegulationsBlock'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import GestoriaCiudadHero from '@/components/GestoriaCiudadHero'
+import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
 import { RELACIONADOS_ASESORIA_COMPRA } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import type { AsesoriaCompraCiudadConfig } from '@/lib/asesoria-compra-ciudad-data'
@@ -28,7 +30,7 @@ import { getCiudadCtaImage } from '@/lib/gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/compra-completa-reserva-escritura'
-const PHONE = '+34745022862'
+const SERVICIO_SLUG = 'compra-completa-reserva-escritura'
 
 const BENEFICIOS = [
   {
@@ -86,7 +88,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - ASESORIA_COMPRA_PRECIO
   const faq = getAsesoriaCompraFaq(nombre, region, precioEjemploPiso, config.faqPrioritarias)
-  const waText = encodeURIComponent(`Hola, necesito asesoría para comprar piso en ${nombre}`)
+  const waHref = `https://wa.me/34745022862?text=${encodeURIComponent(`Hola Daniel, necesito asesoría para comprar piso en ${nombre}`)}`
 
   return (
     <>
@@ -103,61 +105,30 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
       <Navbar />
       <WhatsAppButton />
 
-      <section className="bg-gradient-to-br from-purple-50 via-white to-amber-50 py-16 px-4 border-b border-gray-200">
-        <div className="max-w-6xl mx-auto">
-          <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6 flex-wrap">
-            <Link href="/" className="hover:text-gold-500">Inicio</Link>
-            <span>/</span>
-            <Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link>
-            <span>/</span>
-            <Link href="/gestoria/asesoria-compra-piso" className="hover:text-gold-500">Asesoría Compra</Link>
-            <span>/</span>
-            <span className="text-gray-900 font-medium">{nombre}</span>
-          </nav>
-
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-gold-700 bg-cream-100 border border-gold-300 px-3 py-1 rounded-full mb-4">
-                Compra entre particulares · {region}
-              </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                {config.hero.h1}
-              </h1>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">{config.hero.lead}</p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <Link
-                  href={SOLICITAR_URL}
-                  className="inline-flex justify-center px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors"
-                >
-                  Contratar — {ASESORIA_COMPRA_PRECIO}€
-                </Link>
-                <a
-                  href={`tel:${PHONE}`}
-                  className="inline-flex justify-center px-8 py-4 rounded-lg border-2 border-gray-300 text-gray-800 font-semibold hover:border-gold-500 transition-colors"
-                >
-                  745 022 862
-                </a>
-              </div>
-              <p className="text-sm text-gray-500">
-                También disponible:{' '}
-                <Link href={getDueDiligenceHref(slug)} className="text-gold-500 hover:underline font-medium">
-                  Due Diligence documental (350€)
-                </Link>
-              </p>
-            </div>
-            <div className="relative h-72 md:h-96 rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src={config.heroImage}
-                alt={`Asesoría compra piso ${nombre}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <GestoriaCiudadHero
+        breadcrumbs={[
+          { label: 'Inicio', href: '/' },
+          { label: 'Gestoría', href: '/gestoria' },
+          { label: 'Compra completa', href: '/gestoria/compra-completa-reserva-escritura' },
+          { label: nombre },
+        ]}
+        badge={`Compra entre particulares · ${region}`}
+        title={config.hero.h1}
+        lead={config.hero.lead}
+        precio={ASESORIA_COMPRA_PRECIO}
+        imageSrc={config.heroImage}
+        imageAlt={`Asesoría compra piso ${nombre}`}
+        solicitarHref={SOLICITAR_URL}
+        whatsappHref={waHref}
+        footnote={
+          <>
+            También disponible:{' '}
+            <Link href={getDueDiligenceHref(slug)} className="text-gold-300 hover:text-gold-200 underline">
+              Due diligence documental (350€)
+            </Link>
+          </>
+        }
+      />
 
       <section className="py-14 px-4 bg-slate-50 border-t border-gray-100">
         <div className="max-w-6xl mx-auto">
@@ -190,7 +161,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
           <ul className="grid sm:grid-cols-2 gap-3">
             {ASESORIA_COMPRA_TRAMITES.map((t) => (
               <li key={t} className="flex items-start gap-2 text-sm text-gray-700 bg-slate-50 rounded-lg p-3">
-                <span className="text-gold-500 shrink-0 mt-0.5">✓</span>
+                <GestoriaCheckIcon className="mt-0.5" />
                 {t}
               </li>
             ))}
@@ -315,8 +286,8 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
       </section>
 
       <GestoriaLandingExtras
-        servicio="asesoria-compra-piso"
-        servicioNombre={`Asesoría compra de piso en ${nombre}`}
+        servicio={SERVICIO_SLUG}
+        servicioNombre={`Compra completa de piso en ${nombre}`}
         ciudad={nombre}
         whatsappMessage={`Hola Daniel, quiero comprar un piso en ${nombre} entre particulares`}
         skipCiudades
@@ -334,8 +305,8 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
       />
 
       <GestoriaLandingExtras
-        servicio="asesoria-compra-piso"
-        servicioNombre={`Asesoría compra de piso en ${nombre}`}
+        servicio={SERVICIO_SLUG}
+        servicioNombre={`Compra completa de piso en ${nombre}`}
         ciudad={nombre}
         testimonioLanding={config.testimoniosLanding}
         relacionados={RELACIONADOS_ASESORIA_COMPRA}

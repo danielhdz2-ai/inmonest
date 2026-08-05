@@ -6,29 +6,18 @@ import {
   GESTORIA_PHONE_WA,
 } from '@/lib/gestoria-contact'
 import type { GestorServicioCopy } from '@/lib/gestoria-servicio-template'
+import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
 
 type GestorDanielSectionProps = {
   copy: GestorServicioCopy
   whatsappMessage: string
 }
 
-function CheckIcon() {
-  return (
-    <svg className="w-4 h-4 text-gold-500 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
-      <path
-        fillRule="evenodd"
-        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-        clipRule="evenodd"
-      />
-    </svg>
-  )
-}
-
 export default function GestorDanielSection({ copy, whatsappMessage }: GestorDanielSectionProps) {
   const waHref = `https://wa.me/${GESTORIA_PHONE_WA}?text=${encodeURIComponent(whatsappMessage)}`
 
   return (
-    <section className="py-4">
+    <section id="gestor-daniel" className="py-4 scroll-mt-24">
       <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 items-start">
         <div>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
@@ -66,7 +55,7 @@ export default function GestorDanielSection({ copy, whatsappMessage }: GestorDan
           <ul className="space-y-2 mb-6">
             {copy.bullets.map((item) => (
               <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
-                <CheckIcon />
+                <GestoriaCheckIcon />
                 {item}
               </li>
             ))}

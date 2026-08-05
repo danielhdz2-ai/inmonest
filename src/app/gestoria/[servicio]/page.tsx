@@ -7,6 +7,7 @@ import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/Gestoria
 import { getServicioImages } from '@/lib/gestoria-images'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
 import { GESTORIA_SERVICIOS_ADICIONALES } from '@/lib/gestoria-servicios-adicionales'
 
 const BASE_URL = 'https://inmonest.com'
@@ -975,7 +976,19 @@ export default async function ServicioGestoriaPage({
       <Navbar />
       <WhatsAppButton />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-12">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-6">
+        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4 flex-wrap" aria-label="Breadcrumb">
+          <Link href="/" className="hover:text-gold-600 transition-colors">Inicio</Link>
+          <span aria-hidden>/</span>
+          <Link href="/gestoria" className="hover:text-gold-600 transition-colors">Gestoría</Link>
+          <span aria-hidden>/</span>
+          <Link href="/servicios" className="hover:text-gold-600 transition-colors">Servicios</Link>
+          <span aria-hidden>/</span>
+          <span className="text-gray-900 font-medium truncate max-w-[12rem] sm:max-w-none">{data.nombre}</span>
+        </nav>
+      </div>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-2 pb-12">
         <GestoriaImageBanner
           imageSrc={visuals.hero.src}
           imageAlt={visuals.hero.alt}
@@ -1027,7 +1040,7 @@ export default async function ServicioGestoriaPage({
               <ul className="space-y-2">
                 {data.paraQuien.map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-gray-600 text-sm">
-                    <span className="text-gold-500 mt-0.5">✓</span>
+                    <GestoriaCheckIcon className="mt-0.5" />
                     {item}
                   </li>
                 ))}
@@ -1047,7 +1060,7 @@ export default async function ServicioGestoriaPage({
               <ul className="space-y-2">
                 {data.incluye.slice(0, 4).map((inc, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                    <span className="text-gold-500 mt-0.5 shrink-0">✓</span>
+                    <GestoriaCheckIcon className="mt-0.5" />
                     {inc}
                   </li>
                 ))}
@@ -1056,27 +1069,19 @@ export default async function ServicioGestoriaPage({
                 href={`/gestoria/solicitar/${servicio}`}
                 className="block w-full text-center bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-4 rounded-xl transition-colors"
               >
-                Solicitar ahora
+                Solicitar ahora — {data.precio} €
               </Link>
-              <a
-                href="https://wa.me/34745022862?text=Hola,%20tengo%20dudas%20sobre%20el%20servicio%20de%20{data.nombre}"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full text-center bg-gold-600 hover:bg-gold-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors text-sm"
+              <Link
+                href="#gestor-daniel"
+                className="block w-full text-center border border-gold-500 text-gold-600 hover:bg-cream-100 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
-                WhatsApp: 745 022 862
-              </a>
-              <a
-                href="tel:+34745022862"
-                className="block w-full text-center border border-gold-500 text-gold-500 hover:bg-cream-100 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
-              >
-                Llamar: 745 022 862
-              </a>
+                Hablar con Daniel
+              </Link>
               <Link
                 href="/gestoria"
                 className="block w-full text-center border border-gray-300 text-gray-600 hover:bg-gray-50 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
-                Ver todos los contratos
+                Ver todos los servicios
               </Link>
             </div>
           </div>
@@ -1088,7 +1093,7 @@ export default async function ServicioGestoriaPage({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {data.incluye.map((inc, i) => (
               <div key={i} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
-                <span className="text-gold-500 text-lg mt-0.5 shrink-0">✓</span>
+                <GestoriaCheckIcon size="md" className="mt-0.5" />
                 <span className="text-gray-700 text-sm">{inc}</span>
               </div>
             ))}
@@ -1168,8 +1173,6 @@ export default async function ServicioGestoriaPage({
           description="En menos de 48h tienes el documento listo para firmar. Redactado por expertos, sin plantillas genéricas."
           primaryHref={`/gestoria/solicitar/${servicio}`}
           primaryLabel={`Solicitar — ${data.precio} € (IVA incl.)`}
-          secondaryHref={waHref}
-          secondaryLabel="WhatsApp: 745 022 862"
           imageSrc={visuals.cta.src}
           imageAlt={visuals.cta.alt}
           imagePosition={visuals.imagePosition}

@@ -167,7 +167,7 @@ export default function ArrasVsReservaPage() {
             </div>
 
             <div className="mt-6 bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
-              <h3 className="font-bold text-green-900 mb-2">✅ Orden correcto de firma:</h3>
+              <h3 className="font-bold text-green-900 mb-2">Orden correcto de firma:</h3>
               <ol className="text-green-800 space-y-2 text-sm">
                 <li><strong>1. Reserva (61€)</strong> → Bloqueas el piso 48-72h para verificar documentos</li>
                 <li><strong>2. Verificación</strong> → Compruebas nota simple, cédula habitabilidad, ITE, licencias</li>
@@ -191,11 +191,11 @@ export default function ArrasVsReservaPage() {
               <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg my-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">🎯 Para qué sirve:</h3>
                 <ul className="space-y-2 text-gray-700 text-sm">
-                  <li>✓ Bloquear el piso para que el vendedor no lo enseñe a otros</li>
-                  <li>✓ Tener tiempo (48-72h) para pedir la nota simple del Registro</li>
-                  <li>✓ Verificar que no hay cargas, hipotecas o embargos ocultos</li>
-                  <li>✓ Comprobar cédula de habitabilidad, ITE y licencias</li>
-                  <li>✓ Evitar sorpresas de última hora que te hagan perder las arras</li>
+                  <li>Bloquear el piso para que el vendedor no lo enseñe a otros</li>
+                  <li>Tener tiempo (48-72h) para pedir la nota simple del Registro</li>
+                  <li>Verificar que no hay cargas, hipotecas o embargos ocultos</li>
+                  <li>Comprobar cédula de habitabilidad, ITE y licencias</li>
+                  <li>Evitar sorpresas de última hora que te hagan perder las arras</li>
                 </ul>
               </div>
               <p className="text-gray-700 leading-relaxed mb-4">
@@ -227,7 +227,7 @@ export default function ArrasVsReservaPage() {
                   </ul>
                 </div>
                 <div className="bg-green-50 p-4 rounded-lg">
-                  <p className="text-sm text-green-900 font-semibold mb-2">✅ Si firmas RESERVA primero:</p>
+                  <p className="text-sm text-green-900 font-semibold mb-2">Si firmas RESERVA primero:</p>
                   <ul className="text-sm text-green-800 space-y-1 ml-4">
                     <li>• Entregas 2.000€ de reserva (bloqueo 72h)</li>
                     <li>• Pides nota simple → aparece la hipoteca oculta</li>
@@ -264,11 +264,11 @@ export default function ArrasVsReservaPage() {
               <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-r-lg my-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">🎯 Para qué sirven:</h3>
                 <ul className="space-y-2 text-gray-700 text-sm">
-                  <li>✓ Formalizar el compromiso de compra/venta</li>
-                  <li>✓ Dar tiempo al comprador para obtener la hipoteca (1-3 meses)</li>
-                  <li>✓ Garantizar al vendedor que el comprador va en serio</li>
-                  <li>✓ Establecer penalizaciones claras si alguien incumple</li>
-                  <li>✓ Bloquear el precio acordado (evita subidas de última hora)</li>
+                  <li>Formalizar el compromiso de compra/venta</li>
+                  <li>Dar tiempo al comprador para obtener la hipoteca (1-3 meses)</li>
+                  <li>Garantizar al vendedor que el comprador va en serio</li>
+                  <li>Establecer penalizaciones claras si alguien incumple</li>
+                  <li>Bloquear el precio acordado (evita subidas de última hora)</li>
                 </ul>
               </div>
               <p className="text-gray-700 leading-relaxed mb-4">
@@ -276,7 +276,7 @@ export default function ArrasVsReservaPage() {
                 150.000€ - 300.000€). Se descuentan del precio final en la escritura.
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-                <strong>⚠️ Importante:</strong> Solo firmes arras cuando:
+                <strong>Importante:Importante:</strong> Solo firmes arras cuando:
               </p>
               <ul className="list-disc ml-8 text-gray-700 space-y-1 mb-4">
                 <li>Ya hayas verificado la nota simple (sin cargas ocultas)</li>
@@ -300,7 +300,7 @@ export default function ArrasVsReservaPage() {
                   </p>
                 </div>
                 <div className="bg-green-50 p-4 rounded-lg">
-                  <h4 className="font-bold text-green-900 mb-2">✅ Vendedor incumple:</h4>
+                  <h4 className="font-bold text-green-900 mb-2">Vendedor incumple:</h4>
                   <p className="text-sm text-green-800 mb-2">
                     Debe devolver el <strong>doble (200%)</strong> de la señal.
                   </p>
@@ -346,7 +346,7 @@ export default function ArrasVsReservaPage() {
                 Arras - 145€
               </Link>
             </div>
-            <p className="text-sm text-white/70 mt-4">✓ Redacción 48h • ✓ Cláusulas personalizadas • ✓ Asesoría incluida</p>
+            <p className="text-sm text-white/70 mt-4">Redacción 48h • Cláusulas personalizadas • Asesoría incluida</p>
           </div>
 
           {/* Errores comunes */}
