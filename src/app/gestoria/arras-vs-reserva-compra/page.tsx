@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Navbar from '@/components/NavbarServer'
-import PageHeroImage from '@/components/PageHeroImage'
-import WhatsAppButton from '@/components/WhatsAppButton'
+import GestoriaGuiaPageLayout from '@/components/GestoriaGuiaPageLayout'
+import { RELACIONADOS_ARRAS } from '@/lib/gestoria-relacionados'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -53,59 +52,29 @@ const faqSchema = {
 
 export default function ArrasVsReservaPage() {
   return (
-    <>
-      <Navbar />
-      
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-
-      <article className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        {/* Hero */}
-        <div className="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-16">
-          <div className="max-w-4xl mx-auto px-4">
-            <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm mb-4">
-              Guía Comparativa 2026
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Arras vs Reserva de Compra: ¿Cuál Necesitas Firmar Primero?
-            </h1>
-            <p className="text-xl text-white/90 mb-6">
-              La confusión más común en compraventa: ¿cuándo firmar reserva? ¿cuándo arras? 
-              Te explicamos las diferencias, cuándo usar cada una y cómo evitar perder tu dinero.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/gestoria/solicitar/reserva-compra"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-purple-700 font-semibold hover:bg-gray-100 transition"
-              >
-                Contratar Reserva (61€)
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <Link
-                href="/gestoria/solicitar/arras-penitenciales"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-white text-white font-semibold hover:bg-white/10 transition"
-              >
-                Contratar Arras (145€)
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 py-10">
-          <PageHeroImage
-            src="/promo1.png"
-            alt="Comparativa entre arras y reserva de compra"
-            className="mb-0"
-          />
-        </div>
-
-        {/* Contenido principal */}
-        <div className="max-w-4xl mx-auto px-4 py-12">
-          
+    <GestoriaGuiaPageLayout
+      jsonLd={faqSchema}
+      badge="Guía Comparativa 2026"
+      title="Arras vs Reserva de Compra: ¿Cuál Necesitas Firmar Primero?"
+      lead="La confusión más común en compraventa: cuándo firmar reserva, cuándo arras. Te explicamos las diferencias, cuándo usar cada una y cómo evitar perder tu dinero."
+      imageSrc="/promo1.png"
+      imageAlt="Comparativa entre arras y reserva de compra"
+      breadcrumbLabel="Arras vs Reserva"
+      heroActions={[
+        { href: '/gestoria/solicitar/reserva-compra', label: 'Contratar reserva — 61€' },
+        { href: '/gestoria/solicitar/arras-penitenciales', label: 'Contratar arras — 145€', variant: 'secondary' },
+      ]}
+      servicio="arras-penitenciales"
+      servicioNombre="Arras y reserva de compra"
+      whatsappMessage="Hola Daniel, no sé si necesito reserva o arras penitenciales"
+      ctaTitle="Contratos profesionales adaptados a tu situación"
+      ctaDescription="Redactados por gestoría especializada. Cláusulas de protección, condiciones suspensivas y entrega en 48h."
+      ctaPrimaryHref="/gestoria/solicitar/arras-penitenciales"
+      ctaPrimaryLabel="Solicitar arras — 145€"
+      ctaImageSrc="/promo1.png"
+      ctaImageAlt="Contrato de arras o reserva de compra"
+      relacionados={RELACIONADOS_ARRAS}
+    >
           {/* Comparativa visual */}
           <section className="mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
@@ -117,8 +86,8 @@ export default function ArrasVsReservaPage() {
                 <thead>
                   <tr className="bg-gray-100">
                     <th className="px-6 py-4 text-left font-semibold text-gray-900">Característica</th>
-                    <th className="px-6 py-4 text-left font-semibold text-blue-700">Reserva</th>
-                    <th className="px-6 py-4 text-left font-semibold text-purple-700">Arras</th>
+                    <th className="px-6 py-4 text-left font-semibold text-gold-700">Reserva</th>
+                    <th className="px-6 py-4 text-left font-semibold text-gold-800">Arras</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
@@ -188,7 +157,7 @@ export default function ArrasVsReservaPage() {
                 durante 24-72 horas</strong> para que puedas comprobar que todo está en orden antes de firmar 
                 las arras definitivas.
               </p>
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg my-6">
+              <div className="bg-cream-100 border-l-4 border-gold-500 p-6 rounded-r-lg my-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">🎯 Para qué sirve:</h3>
                 <ul className="space-y-2 text-gray-700 text-sm">
                   <li>Bloquear el piso para que el vendedor no lo enseñe a otros</li>
@@ -207,7 +176,7 @@ export default function ArrasVsReservaPage() {
             </div>
 
             {/* Ejemplo visual */}
-            <div className="mt-8 bg-white border-2 border-blue-300 rounded-xl p-6">
+            <div className="mt-8 bg-white border-2 border-gold-300 rounded-xl p-6">
               <h3 className="text-xl font-bold text-gray-900 mb-4">📌 Ejemplo Práctico: Reserva Salva la Compra</h3>
               <div className="space-y-4">
                 <div className="bg-gray-50 p-4 rounded-lg">
@@ -239,7 +208,7 @@ export default function ArrasVsReservaPage() {
               <div className="mt-4 text-center">
                 <Link
                   href="/gestoria/solicitar/reserva-compra"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold hover:bg-blue-700 transition"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition"
                 >
                   Contratar Reserva de Compra - 61€
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -261,7 +230,7 @@ export default function ArrasVsReservaPage() {
                 DESPUÉS de verificar que todo está correcto. Comprometen a ambas partes a cerrar la compraventa 
                 con penalización económica si alguien incumple.
               </p>
-              <div className="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-r-lg my-6">
+              <div className="bg-cream-100 border-l-4 border-gold-600 p-6 rounded-r-lg my-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-2">🎯 Para qué sirven:</h3>
                 <ul className="space-y-2 text-gray-700 text-sm">
                   <li>Formalizar el compromiso de compra/venta</li>
@@ -287,7 +256,7 @@ export default function ArrasVsReservaPage() {
               </ul>
             </div>
 
-            <div className="mt-8 bg-white border-2 border-purple-300 rounded-xl p-6">
+            <div className="mt-8 bg-white border-2 border-gold-400 rounded-xl p-6">
               <h3 className="text-xl font-bold text-gray-900 mb-4">📌 Qué pasa si incumples las Arras</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="bg-red-50 p-4 rounded-lg">
@@ -312,7 +281,7 @@ export default function ArrasVsReservaPage() {
               <div className="mt-4 text-center">
                 <Link
                   href="/gestoria/solicitar/arras-penitenciales"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-700 transition"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gold-600 text-white font-semibold hover:bg-gold-700 transition"
                 >
                   Contratar Arras Penitenciales - 145€
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -448,66 +417,6 @@ export default function ArrasVsReservaPage() {
               </details>
             </div>
           </section>
-
-          {/* CTA Final */}
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-2xl p-10 text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Contratos Profesionales Adaptados a tu Situación
-            </h2>
-            <p className="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
-              Redactados por abogados especializados en derecho inmobiliario. 
-              Cláusulas de protección, condiciones suspensivas y garantía legal total.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center mb-6">
-              <Link
-                href="/gestoria/solicitar/reserva-compra"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-blue-600 text-white font-bold hover:bg-blue-700 transition text-lg"
-              >
-                Reserva - 61€
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <Link
-                href="/gestoria/solicitar/arras-penitenciales"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-purple-600 text-white font-bold hover:bg-purple-700 transition text-lg"
-              >
-                Arras - 145€
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-300">
-              <div>
-                <div className="text-2xl font-bold text-gold-500 mb-1">48h</div>
-                <div>Entrega garantizada</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-gold-500 mb-1">+2.000</div>
-                <div>Contratos redactados</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-gold-500 mb-1">100%</div>
-                <div>Garantía legal</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Breadcrumbs */}
-          <nav className="mt-12 text-sm text-gray-500" aria-label="Breadcrumb">
-            <ol className="flex flex-wrap items-center gap-2">
-              <li><Link href="/" className="hover:text-gold-500">Inicio</Link></li>
-              <li>›</li>
-              <li><Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link></li>
-              <li>›</li>
-              <li className="text-gray-900 font-medium">Arras vs Reserva</li>
-            </ol>
-          </nav>
-        </div>
-      </article>
-
-      <WhatsAppButton />
-    </>
+    </GestoriaGuiaPageLayout>
   )
 }

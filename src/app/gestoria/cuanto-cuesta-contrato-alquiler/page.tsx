@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Navbar from '@/components/NavbarServer'
-import PageHeroImage from '@/components/PageHeroImage'
-import WhatsAppButton from '@/components/WhatsAppButton'
+import GestoriaGuiaPageLayout from '@/components/GestoriaGuiaPageLayout'
+import { RELACIONADOS_ALQUILER } from '@/lib/gestoria-relacionados'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -72,89 +71,52 @@ const faqSchema = {
 
 export default function CuantoCuestaContratoAlquilerPage() {
   return (
-    <>
-      <Navbar />
-      
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-
-      <article className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-        {/* Hero */}
-        <div className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
-          <div className="max-w-4xl mx-auto px-4">
-            <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm mb-4">
-              Guía de Precios 2026
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Contrato de alquiler desde 145€ — Precio 2026
-            </h1>
-            <p className="text-xl text-white/90 mb-6">
-              Precio real 2026: gestoría online desde 145€ en 48h, notario 300–500€
-              o plantilla gratis (con riesgos). Elige según presupuesto y protección legal.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                href="/gestoria/solicitar/contrato-alquiler"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white text-blue-700 font-semibold hover:bg-gray-100 transition"
-              >
-                Contratar Contrato LAU (145€)
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <Link
-                href="/valencia/contrato-alquiler"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-white text-white font-semibold hover:bg-white/10 transition"
-              >
-                Ejemplo Valencia desde 145€
-              </Link>
-              <Link
-                href="/gestoria/solicitar/revision-alquiler"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-white text-white font-semibold hover:bg-white/10 transition"
-              >
-                Revisar Contrato Existente (60€)
-              </Link>
-            </div>
-          </div>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 -mt-8 relative z-10">
-          <div className="bg-white rounded-xl border border-blue-100 shadow-sm p-5 sm:p-6">
-            <p className="text-sm font-semibold text-blue-800 mb-2">Respuesta rápida (gestoría)</p>
+    <GestoriaGuiaPageLayout
+      jsonLd={faqSchema}
+      badge="Guía de Precios 2026"
+      title="Contrato de alquiler desde 145€ — Precio 2026"
+      lead="Precio real 2026: gestoría online desde 145€ en 48h, notario 300–500€ o plantilla gratis (con riesgos). Elige según presupuesto y protección legal."
+      imageSrc="/interior3.jpg"
+      imageAlt="Precios de contratos de alquiler LAU en 2026"
+      breadcrumbLabel="Precio Contrato Alquiler"
+      heroActions={[
+        { href: '/gestoria/solicitar/contrato-alquiler', label: 'Contratar LAU — 145€' },
+        { href: '/valencia/contrato-alquiler', label: 'Ejemplo Valencia', variant: 'secondary' },
+        { href: '/gestoria/solicitar/revision-alquiler', label: 'Revisar contrato — 60€', variant: 'secondary' },
+      ]}
+      servicio="contrato-alquiler"
+      servicioNombre="Contrato de Alquiler LAU"
+      whatsappMessage="Hola Daniel, tengo dudas sobre el precio del contrato de alquiler"
+      ctaTitle="Contrato de alquiler LAU por 145€"
+      ctaDescription="Redactado por gestoría especializada. Adaptado a Ley de Vivienda 2026. Cláusulas personalizadas y entrega en 48h."
+      ctaPrimaryHref="/gestoria/solicitar/contrato-alquiler"
+      ctaPrimaryLabel="Solicitar contrato — 145€"
+      ctaImageSrc="/interior3.jpg"
+      ctaImageAlt="Contrato de alquiler LAU profesional"
+      relacionados={RELACIONADOS_ALQUILER}
+    >
+          <div className="bg-white rounded-xl border border-gold-200 shadow-sm p-5 sm:p-6 -mt-4">
+            <p className="text-sm font-semibold text-gold-800 mb-2">Respuesta rápida (gestoría)</p>
             <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
               <strong>¿Cuánto cuesta hacer un contrato de alquiler en una gestoría?</strong>{' '}
               Online desde <strong>145€</strong> (48h). Presencial suele ir de 200 a 400€. Notario: 300–500€.
               Abajo tienes la comparativa completa y qué incluye cada opción.
             </p>
             <div className="mt-3 flex flex-wrap gap-3 text-sm">
-              <Link href="/calculadora-gastos-alquiler" className="text-blue-700 font-medium underline">
+              <Link href="/calculadora-gastos-alquiler" className="text-gold-700 font-medium underline">
                 Calculadora gastos alquiler
               </Link>
-              <Link href="/bilbao/alquiler-particulares" className="text-blue-700 font-medium underline">
+              <Link href="/bilbao/alquiler-particulares" className="text-gold-700 font-medium underline">
                 Alquiler particulares Bilbao
               </Link>
-              <Link href="/malaga/alquiler-particulares" className="text-blue-700 font-medium underline">
+              <Link href="/malaga/alquiler-particulares" className="text-gold-700 font-medium underline">
                 Particulares Málaga
               </Link>
             </div>
           </div>
-        </div>
 
-        <div className="max-w-4xl mx-auto px-4 py-10">
-          <PageHeroImage
-            src="/interior3.jpg"
-            alt="Precios de contratos de alquiler LAU en 2026"
-            className="mb-0"
-          />
-        </div>
-
-        {/* Contenido principal */}
-        <div className="max-w-4xl mx-auto px-4 py-12">
-          
           {/* Comparativa de precios */}
-          <section className="mb-12">
+          <section>
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
               Comparativa de Precios: ¿Qué Opción Elegir?
             </h2>
@@ -248,7 +210,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
               {/* Opción 3: Notario */}
               <div className="bg-white border-2 border-gray-300 rounded-xl p-6">
                 <div className="text-center mb-4">
-                  <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-blue-100 text-blue-700 mb-3">
+                  <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-gold-100 text-gold-700 mb-3">
                     Opción Premium
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Notario</h3>
@@ -287,9 +249,9 @@ export default function CuantoCuestaContratoAlquilerPage() {
               </div>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
-              <h3 className="font-bold text-blue-900 mb-2">💡 Nuestra Recomendación</h3>
-              <p className="text-blue-800 text-sm">
+            <div className="bg-cream-100 border-l-4 border-gold-500 p-6 rounded-r-lg">
+              <h3 className="font-bold text-gold-900 mb-2">Nuestra recomendación</h3>
+              <p className="text-gold-800 text-sm">
                 Para el <strong>95% de alquileres</strong> (vivienda habitual, 5-7 años), un 
                 <strong> contrato privado profesional (145€)</strong> es más que suficiente. 
                 Solo usa notario si: el alquiler es {'>'}10 años, el inmueble es comercial de alto valor, 
@@ -311,7 +273,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                     <th className="px-6 py-4 text-left font-semibold text-gray-900">Característica</th>
                     <th className="px-6 py-4 text-center font-semibold text-red-700">Plantilla</th>
                     <th className="px-6 py-4 text-center font-semibold text-green-700">Gestoría 145€</th>
-                    <th className="px-6 py-4 text-center font-semibold text-blue-700">Notario 300€+</th>
+                    <th className="px-6 py-4 text-center font-semibold text-gold-700">Notario 300€+</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
@@ -373,7 +335,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                     <td className="px-6 py-4 font-medium text-gray-900">Precio total</td>
                     <td className="px-6 py-4 text-center text-gray-700 font-bold">0€</td>
                     <td className="px-6 py-4 text-center text-green-700 font-bold">145€</td>
-                    <td className="px-6 py-4 text-center text-blue-700 font-bold">300-500€</td>
+                    <td className="px-6 py-4 text-center text-gold-700 font-bold">300-500€</td>
                   </tr>
                 </tbody>
               </table>
@@ -487,9 +449,9 @@ export default function CuantoCuestaContratoAlquilerPage() {
                 </ul>
               </div>
 
-              <div className="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
-                <h3 className="font-bold text-blue-900 mb-2">💎 Elige Notario (300-500€) si:</h3>
-                <ul className="text-sm text-blue-800 space-y-1 ml-4">
+              <div className="bg-cream-100 border-l-4 border-gold-500 p-6 rounded-r-lg">
+                <h3 className="font-bold text-gold-900 mb-2">Elige notario (300-500€) si:</h3>
+                <ul className="text-sm text-gold-800 space-y-1 ml-4">
                   <li>• El alquiler es superior a 10 años</li>
                   <li>• Alquilas local comercial de alto valor (+5.000€/mes)</li>
                   <li>• Necesitas registrarlo para hipotecar el inmueble</li>
@@ -508,7 +470,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                   <li>• No tienes conocimientos legales para personalizarla</li>
                 </ul>
                 <p className="mt-3 text-sm text-red-900 font-semibold">
-                  💡 Un contrato mal redactado puede costarte miles de euros en juicios o desahucios fallidos. 
+                  Un contrato mal redactado puede costarte miles de euros en juicios o desahucios fallidos. 
                   No arriesgues tu patrimonio por ahorrar 145€.
                 </p>
               </div>
@@ -583,81 +545,24 @@ export default function CuantoCuestaContratoAlquilerPage() {
             </div>
           </section>
 
-          {/* CTA Final */}
-          <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white rounded-2xl p-10 text-center">
-            <h2 className="text-3xl font-bold mb-4">
-              Contrato de Alquiler LAU por Solo 145€
-            </h2>
-            <p className="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
-              Redactado por abogados especializados. Adaptado a Ley Vivienda 2026. 
-              Cláusulas personalizadas. Entrega en 48h. Soporte legal incluido.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center mb-6">
-              <Link
-                href="/gestoria/solicitar/contrato-alquiler"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-gold-500 text-white font-bold hover:bg-gold-600 transition text-lg"
-              >
-                Contratar Ahora - 145€
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </Link>
-              <Link
-                href="/gestoria/solicitar/revision-alquiler"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white text-white font-bold hover:bg-white/10 transition text-lg"
-              >
-                Revisar Contrato Existente - 60€
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-300">
-              <div>
-                <div className="text-2xl font-bold text-gold-500 mb-1">48h</div>
-                <div>Entrega garantizada</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-gold-500 mb-1">+3.500</div>
-                <div>Contratos redactados</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-gold-500 mb-1">100%</div>
-                <div>Adaptado Ley 2026</div>
-              </div>
-            </div>
-          </div>
-
           {/* Enlaces relacionados */}
-          <section className="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-200">
+          <section className="p-6 bg-gray-50 rounded-xl border border-gray-200">
             <h2 className="text-lg font-bold text-gray-900 mb-4">También te puede interesar</h2>
             <div className="grid sm:grid-cols-2 gap-3 text-sm">
-              <Link href="/calculadora-gastos-alquiler" className="text-gold-500 hover:underline font-medium">
+              <Link href="/calculadora-gastos-alquiler" className="text-gold-600 hover:underline font-medium">
                 → Calculadora de gastos de alquiler (gratis)
               </Link>
-              <Link href="/bilbao/contrato-alquiler" className="text-gold-500 hover:underline font-medium">
+              <Link href="/bilbao/contrato-alquiler" className="text-gold-600 hover:underline font-medium">
                 → Contrato de alquiler en Bilbao (145€)
               </Link>
-              <Link href="/malaga/contrato-alquiler" className="text-gold-500 hover:underline font-medium">
+              <Link href="/malaga/contrato-alquiler" className="text-gold-600 hover:underline font-medium">
                 → Contrato de alquiler en Málaga (145€)
               </Link>
-              <Link href="/blog/que-es-gestoria-inmobiliaria" className="text-gold-500 hover:underline font-medium">
+              <Link href="/blog/que-es-gestoria-inmobiliaria" className="text-gold-600 hover:underline font-medium">
                 → ¿Qué es una gestoría inmobiliaria?
               </Link>
             </div>
           </section>
-
-          {/* Breadcrumbs */}
-          <nav className="mt-12 text-sm text-gray-500" aria-label="Breadcrumb">
-            <ol className="flex flex-wrap items-center gap-2">
-              <li><Link href="/" className="hover:text-gold-500">Inicio</Link></li>
-              <li>›</li>
-              <li><Link href="/gestoria" className="hover:text-gold-500">Gestoría</Link></li>
-              <li>›</li>
-              <li className="text-gray-900 font-medium">Precio Contrato Alquiler</li>
-            </ol>
-          </nav>
-        </div>
-      </article>
-
-      <WhatsAppButton />
-    </>
+    </GestoriaGuiaPageLayout>
   )
 }
