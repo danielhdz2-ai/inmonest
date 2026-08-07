@@ -346,6 +346,7 @@ export default function AdminPanelPremium({
   const [editSaleSaving, setEditSaleSaving] = useState(false)
   const [editSaleError, setEditSaleError] = useState<string | null>(null)
   const [deletingSaleId, setDeletingSaleId] = useState<string | null>(null)
+  const [deletingUserId, setDeletingUserId] = useState<string | null>(null)
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
   const [clientDocuments, setClientDocuments] = useState<ClientDocument[]>([])
   const [allDocuments, setAllDocuments] = useState<ClientDocument[]>([])
@@ -798,6 +799,32 @@ export default function AdminPanelPremium({
       setEditSaleError('Error de red al actualizar la venta')
     } finally {
       setEditSaleSaving(false)
+    }
+  }
+
+  async function handleDeleteParticular(cliente: ClienteParticular) {
+    const label = cliente.name || cliente.email
+    if (
+      !window.confirm(
+        `¿Dar de baja a "${label}" (${cliente.email})?\n\nSe eliminará la cuenta, favoritos y perfil. Esta acción no se puede deshacer.`
+      )
+    ) {
+      return
+    }
+    setDeletingUserId(cliente.userId)
+    try {
+      const res = await fetch(`/api/admin/usuarios/${cliente.userId}`, { method: 'DELETE' })
+      const data = await res.json()
+      if (!res.ok) {
+        alert(data.error || 'No se pudo dar de baja al usuario')
+        return
+      }
+      setClientesParticulares((prev) => prev.filter((c) => c.userId !== cliente.userId))
+      await loadParticulares()
+    } catch {
+      alert('Error de red al dar de baja al usuario')
+    } finally {
+      setDeletingUserId(null)
     }
   }
 
@@ -1425,6 +1452,7 @@ export default function AdminPanelPremium({
                       <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Email verificado</th>
                       <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Registrado</th>
                       <th className="px-6 py-3.5 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Último acceso</th>
+                      <th className="px-6 py-3.5 text-center text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Acciones</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
@@ -1466,6 +1494,16 @@ export default function AdminPanelPremium({
                           </td>
                           <td className="px-6 py-3.5">
                             <p className="text-sm text-gray-600">{formatDate(cliente.lastSignIn)}</p>
+                          </td>
+                          <td className="px-6 py-3.5 text-center">
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteParticular(cliente)}
+                              disabled={deletingUserId === cliente.userId}
+                              className="px-3.5 py-1.5 bg-white border border-red-200 text-red-700 text-xs font-semibold rounded-lg hover:bg-red-50 transition disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                              {deletingUserId === cliente.userId ? 'Eliminando…' : 'Dar de baja'}
+                            </button>
                           </td>
                         </tr>
                       ))}
