@@ -2,9 +2,28 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { GESTOR_DANIEL_HERNANDEZ } from '@/lib/gestores-inmonest'
 
+type ClausulaMock = {
+  titulo: string
+  estado: string
+  nota: string
+}
+
+type TimelineStep = {
+  label: string
+  fecha: string
+  done: boolean
+  active?: boolean
+}
+
 type GestoriaPanelShowcaseProps = {
   /** Ej: "contrato de alquiler", "due diligence pre-compra" */
   servicioLabel?: string
+  /** Ciudad mostrada en el mock del panel (ej. Zaragoza) */
+  ciudadNombre?: string
+  /** Título del servicio en el mock del portal */
+  panelServicio?: string
+  clausulas?: readonly ClausulaMock[]
+  timeline?: readonly TimelineStep[]
   className?: string
 }
 
@@ -36,16 +55,36 @@ const MOCK_CLAUSULAS = [
   },
 ] as const
 
-const MOCK_TIMELINE: Array<{
-  label: string
-  fecha: string
-  done: boolean
-  active?: boolean
-}> = [
+const MOCK_TIMELINE: TimelineStep[] = [
   { label: 'Pago confirmado', fecha: '12 mar 2026', done: true },
   { label: 'Documentación recibida', fecha: '13 mar 2026', done: true },
   { label: 'Redacción del contrato', fecha: 'En curso', done: false, active: true },
   { label: 'Entrega PDF firmable', fecha: 'Estimado 15 mar', done: false },
+]
+
+export const PRESTAMO_PANEL_CLAUSULAS: ClausulaMock[] = [
+  {
+    titulo: 'Importe y calendario de devolución',
+    estado: 'Revisada',
+    nota: 'Capital, cuotas y forma de entrega documentados conforme al Código Civil.',
+  },
+  {
+    titulo: 'Intereses y Modelo 600',
+    estado: 'Asesorada',
+    nota: 'Tipo 0 % o remuneratorio pactado. Orientación fiscal para evitar donación encubierta.',
+  },
+  {
+    titulo: 'Impago y vencimiento anticipado',
+    estado: 'Ajustada',
+    nota: 'Cláusulas de demora y reclamación judicial explicadas al cliente.',
+  },
+]
+
+export const PRESTAMO_PANEL_TIMELINE: TimelineStep[] = [
+  { label: 'Pago confirmado', fecha: '12 mar 2026', done: true },
+  { label: 'Datos prestamista y prestatario', fecha: '13 mar 2026', done: true },
+  { label: 'Redacción del contrato', fecha: 'En curso', done: false, active: true },
+  { label: 'Entrega PDF + nota fiscal', fecha: 'Estimado 15 mar', done: false },
 ]
 
 function CheckMark({ className }: { className?: string }) {
@@ -78,6 +117,10 @@ function MockPortalFrame({ children }: { children: React.ReactNode }) {
 
 export default function GestoriaPanelShowcase({
   servicioLabel = 'tu operación inmobiliaria',
+  ciudadNombre = 'Madrid',
+  panelServicio = 'Contrato de alquiler LAU',
+  clausulas = MOCK_CLAUSULAS,
+  timeline = MOCK_TIMELINE,
   className = '',
 }: GestoriaPanelShowcaseProps) {
   return (
@@ -126,7 +169,7 @@ export default function GestoriaPanelShowcase({
                     Portal cliente · Gestoría
                   </p>
                   <p className="text-lg font-bold">Hola, {MOCK_CLIENT.nombre.split(' ')[0]}</p>
-                  <p className="text-white/55 text-xs mt-1">{MOCK_CLIENT.servicio}</p>
+                  <p className="text-white/55 text-xs mt-1">{panelServicio}</p>
                   <p className="text-white/40 text-[10px] mt-0.5 font-mono">{MOCK_CLIENT.referencia}</p>
                   <div className="mt-4 grid grid-cols-3 gap-2">
                     <div className="rounded-lg bg-white/10 border border-white/10 p-2.5">
@@ -165,7 +208,7 @@ export default function GestoriaPanelShowcase({
                     <p className="font-bold text-gray-900 text-sm">{GESTOR_DANIEL_HERNANDEZ.nombre}</p>
                     <p className="text-xs text-gray-500">{GESTOR_DANIEL_HERNANDEZ.rol}</p>
                     <p className="text-xs text-gold-700 mt-1">
-                      Asesora en cláusulas de {MOCK_CLIENT.ciudad}
+                      Asesora en cláusulas de {ciudadNombre}
                     </p>
                   </div>
                 </div>
@@ -176,7 +219,7 @@ export default function GestoriaPanelShowcase({
                   Expediente
                 </p>
                 <div className="space-y-2">
-                  {MOCK_TIMELINE.map((step) => (
+                  {timeline.map((step) => (
                     <div
                       key={step.label}
                       className={`flex items-center gap-3 rounded-lg px-3 py-2 text-xs ${
@@ -216,7 +259,7 @@ export default function GestoriaPanelShowcase({
                   Cláusulas revisadas por tu gestor
                 </p>
                 <div className="space-y-2">
-                  {MOCK_CLAUSULAS.map((c) => (
+                  {clausulas.map((c) => (
                     <div
                       key={c.titulo}
                       className="rounded-lg border border-gray-100 bg-gray-50/80 p-3"

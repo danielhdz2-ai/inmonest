@@ -155,7 +155,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Préstamo entre Particulares',
     precioSlug: 'prestamo-particulares',
     href: (c) => `/gestoria/prestamo-particulares/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'mallorca', 'valladolid'],
   },
   {
     id: 'alquiler-particulares',

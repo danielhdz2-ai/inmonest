@@ -44,6 +44,9 @@ export const PRESTAMO_PARTICULARES_CIUDADES_LIST = [
   { slug: 'sevilla', nombre: 'Sevilla' },
   { slug: 'malaga', nombre: 'Málaga' },
   { slug: 'bilbao', nombre: 'Bilbao' },
+  { slug: 'zaragoza', nombre: 'Zaragoza' },
+  { slug: 'mallorca', nombre: 'Mallorca' },
+  { slug: 'valladolid', nombre: 'Valladolid' },
 ] as const
 
 export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticularesCiudadConfig> = {
@@ -422,6 +425,192 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
       ogTitle: 'Préstamo particulares Bilbao y Bizkaia desde 130€',
       ogDescription:
         'Formaliza préstamos privados en Bilbao y Bizkaia con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  zaragoza: {
+    slug: 'zaragoza',
+    nombre: 'Zaragoza',
+    region: 'Aragón',
+    testimoniosLanding: 'prestamo-particulares-zaragoza',
+    heroImage: getCiudadImage('zaragoza').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en Zaragoza',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en Zaragoza y Aragón. Especialista en préstamos familiares para entrada de vivienda, financiación entre socios, Modelo 600 ante la Diputación General de Aragón y protección ante reclamaciones de Hacienda.',
+      especialidades: ['Préstamos familiares vivienda', 'Modelo 600 Aragón', 'Préstamos sin interés (0 %)'],
+    },
+    mercadoIntro:
+      'En Zaragoza es muy habitual que familiares presten la entrada de un piso, que emprendedores reciban financiación privada o que particulares se presten dinero para reformas. Sin contrato escrito, Hacienda puede interpretar la transferencia como donación encubierta. Un préstamo mal documentado también dificulta reclamar judicialmente si el prestatario deja de devolver el capital.',
+    fiscalIntro:
+      'En Aragón el préstamo entre particulares debe declararse mediante el Modelo 600 (ITP). Si el préstamo es sin intereses, la cuota suele ser cero, pero la declaración es obligatoria para acreditar que no es una donación. Tu asesor te orienta sobre plazos, documentación y obligaciones de IRPF si devenga intereses.',
+    situacionesIntro: 'Casos frecuentes de préstamos entre particulares que formalizamos en Zaragoza y área metropolitana:',
+    situaciones: [
+      'Préstamo de padres a hijos para entrada de piso en Zaragoza',
+      'Préstamo entre socios para abrir negocio',
+      'Préstamo familiar para reforma de vivienda',
+      'Préstamo entre amigos con devolución a plazos',
+      'Préstamo sin interés (tipo 0 %) entre familiares',
+      'Préstamo con aval personal de un tercero',
+    ],
+    zonasIntro: 'Servicio en Zaragoza capital, área metropolitana y principales municipios de Aragón. Cobertura 100 % online.',
+    zonas: [
+      'Centro', 'Delicias', 'Actur', 'Las Fuentes', 'San José',
+      'Valdespartera', 'Utebo', 'Cuarte de Huerva', 'La Almozara', 'Montecanal',
+    ],
+    paraQuienExtra: [
+      'Familias en Zaragoza que prestan dinero para la compra de vivienda sin pasar por banco',
+      'Particulares que recibieron una transferencia y quieren evitar una inspección de Hacienda',
+      'Prestamistas que necesitan título ejecutivo para reclamar impago judicialmente',
+    ],
+    faqExtra: [
+      {
+        q: '¿Dónde se presenta el Modelo 600 en Zaragoza?',
+        a: 'En Aragón, el Modelo 600 de transmisiones patrimoniales onerosas se presenta ante la administración tributaria autonómica. Tu asesor te indica plazos y documentación necesaria junto con el contrato.',
+      },
+      {
+        q: '¿Un préstamo entre padres e hijos en Zaragoza tributa como donación?',
+        a: 'No, si existe contrato escrito y declaración correcta. Sin documentación, Hacienda puede presumir donación encubierta. Nuestro contrato de 130€ IVA incluido deja constancia del préstamo y la obligación de devolución.',
+      },
+      {
+        q: '¿Puedo reclamar judicialmente en Zaragoza si no me devuelven el préstamo?',
+        a: 'Sí. Con contrato firmado puedes iniciar un procedimiento monitorio ante los juzgados de Zaragoza. Es mucho más ágil que intentar probar un préstamo verbal solo con extractos bancarios.',
+      },
+    ],
+    meta: {
+      title: 'Préstamo particulares Zaragoza desde 130€',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Zaragoza? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares zaragoza, prestamo entre familiares zaragoza, prestamo privado zaragoza hacienda, modelo 600 prestamo aragon, prestamo padres hijos entrada piso zaragoza, prestamo sin intereses zaragoza, contrato prestamo privado zaragoza, formalizar prestamo familiar zaragoza',
+      ogTitle: 'Contrato Préstamo entre Particulares Zaragoza — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Zaragoza con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  mallorca: {
+    slug: 'mallorca',
+    nombre: 'Mallorca',
+    region: 'Illes Balears',
+    testimoniosLanding: 'prestamo-particulares-mallorca',
+    heroImage: getCiudadImage('mallorca').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en Mallorca',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en Mallorca y Baleares. Especialista en préstamos familiares para compra de vivienda, financiación entre particulares con compradores nacionales e internacionales, Modelo 600 ante la Agencia Tributaria de Baleares y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos familiares vivienda', 'Modelo 600 Baleares', 'Préstamos sin interés (0 %)'],
+    },
+    mercadoIntro:
+      'En Mallorca es habitual que familiares presten capital para la entrada de un piso, que autónomos reciban financiación privada o que residentes y no residentes se presten dinero para reformas o negocios. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta, con consecuencias fiscales graves para ambas partes.',
+    fiscalIntro:
+      'En las Illes Balears el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en Mallorca y Baleares:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en Palma o Mallorca',
+      'Préstamo entre socios de negocio turístico o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en Palma, calas y municipios de Mallorca. Servicio 100 % online.',
+    zonas: [
+      'Palma', 'Calvià', 'Inca', 'Manacor', 'Llucmajor',
+      'Pollença', 'Sóller', 'Alcúdia', 'Andratx', 'Marratxí',
+    ],
+    paraQuienExtra: [
+      'Familias en Mallorca que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Compradores peninsulares o internacionales que reciben financiación familiar',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en Mallorca y Baleares?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en Palma, Calvià, Manacor y resto de Baleares. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en Mallorca?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Qué pasa si el prestatario deja de pagar en Mallorca?',
+        a: 'El contrato incluye cláusulas de vencimiento anticipado e intereses de demora. Puedes reclamar mediante juicio monitorio en los juzgados de Palma con mayor solvencia que con un acuerdo verbal.',
+      },
+    ],
+    meta: {
+      title: 'Préstamo particulares Mallorca desde 130€',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Mallorca? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares mallorca, prestamo entre familiares palma, prestamo privado mallorca hacienda, modelo 600 prestamo baleares, prestamo padres hijos entrada piso mallorca, prestamo sin intereses mallorca, contrato prestamo privado palma, formalizar prestamo familiar baleares',
+      ogTitle: 'Contrato Préstamo entre Particulares Mallorca — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Mallorca con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  valladolid: {
+    slug: 'valladolid',
+    nombre: 'Valladolid',
+    region: 'Castilla y León',
+    testimoniosLanding: 'prestamo-particulares-valladolid',
+    heroImage: getCiudadImage('valladolid').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en Valladolid',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en Valladolid y provincia. Especialista en préstamos familiares para entrada de vivienda, financiación entre particulares con compradores desde Madrid u otras provincias, Modelo 600 ante la Junta de Castilla y León y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos familiares vivienda', 'Modelo 600 Castilla y León', 'Préstamos sin interés (0 %)'],
+    },
+    mercadoIntro:
+      'En Valladolid es habitual que familiares presten capital para la entrada de un piso, que emprendedores reciban financiación privada o que particulares se presten dinero para reformas. Muchos compradores llegan desde Madrid u otras ciudades. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta.',
+    fiscalIntro:
+      'En Castilla y León el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en Valladolid y provincia:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en Valladolid',
+      'Préstamo entre socios de negocio o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en Valladolid capital, área metropolitana y provincia. Servicio 100 % online.',
+    zonas: [
+      'Centro', 'Parquesol', 'Delicias', 'Rondilla', 'La Victoria',
+      'Pilarica', 'Laguna de Duero', 'Medina del Campo', 'Tudela de Duero', 'Arroyo de la Encomienda',
+    ],
+    paraQuienExtra: [
+      'Familias en Valladolid que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Compradores que se mudan desde Madrid y reciben financiación familiar',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en Valladolid y Castilla y León?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en Valladolid, Laguna de Duero y resto de la provincia. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en Valladolid?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Puedo formalizar el préstamo si vivo en Madrid y el prestatario está en Valladolid?',
+        a: 'Sí. Trabajamos 100 % online: recopilamos datos por videollamada, redactamos el contrato y te orientamos sobre la declaración fiscal en la comunidad autónoma correspondiente.',
+      },
+    ],
+    meta: {
+      title: 'Préstamo particulares Valladolid desde 130€',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Valladolid? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares valladolid, prestamo entre familiares valladolid, prestamo privado valladolid hacienda, modelo 600 prestamo castilla y leon, prestamo padres hijos entrada piso valladolid, prestamo sin intereses valladolid, contrato prestamo privado valladolid, formalizar prestamo familiar valladolid',
+      ogTitle: 'Contrato Préstamo entre Particulares Valladolid — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Valladolid con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
     },
   },
 }

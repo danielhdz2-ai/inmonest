@@ -3,6 +3,10 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import JsonLd from '@/components/JsonLd'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import GestoriaPanelShowcase, {
+  PRESTAMO_PANEL_CLAUSULAS,
+  PRESTAMO_PANEL_TIMELINE,
+} from '@/components/GestoriaPanelShowcase'
 import { RELACIONADOS_PRESTAMO } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import type { PrestamoParticularesCiudadConfig } from '@/lib/prestamo-particulares-ciudad-data'
@@ -11,9 +15,18 @@ import {
   PRESTAMO_PARTICULARES_PRECIO,
 } from '@/lib/prestamo-particulares-ciudad-data'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
-import { getCiudadCtaImage } from '@/lib/gestoria-images'
+import { DUE_DILIGENCE_LANDING, getCiudadCtaImage, getServicioImages, GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 import { precioLabel, precioLauLabel } from '@/lib/gestoria-precios-ui'
+
+const DUE_DILIGENCE_CIUDADES = new Set([
+  'madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza',
+])
+
+const ASESORIA_COMPRA_CIUDADES = new Set([
+  'madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao',
+  'zaragoza', 'valladolid', 'mallorca', 'coruna', 'murcia', 'pamplona',
+])
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/prestamo-particulares'
@@ -131,38 +144,52 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
       desc: 'Si el préstamo financia la compra de vivienda, las arras formalizan el compromiso de compraventa.',
       href: `/gestoria/contrato-arras`,
       precio: precioLabel('arras-penitenciales'),
+      imageSrc: getServicioImages('arras-penitenciales').hero.src,
+      imageAlt: 'Contrato de arras penitenciales',
     },
     {
       titulo: `Due Diligence Pre-Compra ${nombre}`,
       desc: 'Revisión documental completa antes de escriturar una compra entre particulares.',
-      href: slug === 'madrid' || slug === 'barcelona'
+      href: DUE_DILIGENCE_CIUDADES.has(slug)
         ? `/gestoria/due-diligence-precompra/${slug}`
         : '/gestoria/due-diligence-precompra',
       precio: precioLabel('pack-due-diligence-precompra'),
+      imageSrc: DUE_DILIGENCE_LANDING.hero.src,
+      imageAlt: `Due diligence pre-compra en ${nombre}`,
     },
     {
       titulo: 'Asesoría Compra de Piso',
       desc: 'Acompañamiento integral si el préstamo va destinado a comprar vivienda.',
-      href: '/gestoria/asesoria-compra-piso',
+      href: ASESORIA_COMPRA_CIUDADES.has(slug)
+        ? `/gestoria/asesoria-compra-piso/${slug}`
+        : '/gestoria/asesoria-compra-piso',
       precio: precioLabel('compra-completa-reserva-escritura'),
+      imageSrc: GESTORIA_CTA_BANNERS.asesoriaCompra.src,
+      imageAlt: `Asesoría compra de piso en ${nombre}`,
     },
     {
       titulo: `Contrato de Alquiler LAU en ${nombre}`,
       desc: 'Para alquilar el piso íntegro con protección de la Ley de Arrendamientos Urbanos.',
       href: `/${slug}/contrato-alquiler`,
       precio: precioLauLabel(slug),
+      imageSrc: getServicioImages('contrato-alquiler').hero.src,
+      imageAlt: `Contrato de alquiler LAU en ${nombre}`,
     },
     {
       titulo: 'Alquiler con Opción a Compra',
       desc: 'Arrendamiento con opción de compra integrada en un solo contrato.',
       href: '/gestoria/solicitar/alquiler-opcion-compra',
       precio: precioLabel('alquiler-opcion-compra'),
+      imageSrc: getServicioImages('alquiler-opcion-compra').hero.src,
+      imageAlt: 'Alquiler con opción a compra',
     },
     {
       titulo: 'Revisión Contrato Arras',
       desc: 'Si ya tienes borrador del vendedor, lo revisamos antes de firmar.',
       href: '/gestoria/revision-contrato-arras',
       precio: precioLabel('revision-arras'),
+      imageSrc: getServicioImages('arras-penitenciales').mid.src,
+      imageAlt: 'Revisión de contrato de arras',
     },
   ]
 
@@ -411,6 +438,14 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
         </div>
       </section>
 
+      <GestoriaPanelShowcase
+        servicioLabel={`el préstamo entre particulares en ${nombre}`}
+        ciudadNombre={nombre}
+        panelServicio="Contrato de préstamo entre particulares"
+        clausulas={PRESTAMO_PANEL_CLAUSULAS}
+        timeline={PRESTAMO_PANEL_TIMELINE}
+      />
+
       <section className="py-16 px-4 bg-slate-50 border-t border-gray-200">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Otros servicios en {nombre}</h2>
@@ -419,11 +454,24 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
               <Link
                 key={s.titulo}
                 href={s.href}
-                className="block p-6 bg-white border border-gray-200 rounded-xl hover:border-gold-500/50 hover:shadow-sm transition-all"
+                className="group relative overflow-hidden rounded-2xl bg-black shadow-md hover:shadow-xl transition-shadow min-h-[240px] flex flex-col justify-end"
               >
-                <h3 className="font-bold text-gray-900 mb-2">{s.titulo}</h3>
-                <p className="text-sm text-gray-600 mb-4 leading-relaxed">{s.desc}</p>
-                <span className="text-sm font-semibold text-gold-700">Desde {s.precio}</span>
+                <Image
+                  src={s.imageSrc}
+                  alt={s.imageAlt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 320px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/20" />
+                <div className="relative z-10 p-5">
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-gold-400 mb-1">Servicio</p>
+                  <h3 className="font-bold text-white text-lg leading-snug mb-1 group-hover:text-gold-300 transition-colors">
+                    {s.titulo}
+                  </h3>
+                  <p className="text-white/70 text-xs leading-relaxed mb-2 line-clamp-2">{s.desc}</p>
+                  <p className="text-gold-400 font-bold text-sm">Desde {s.precio}</p>
+                </div>
               </Link>
             ))}
           </div>
