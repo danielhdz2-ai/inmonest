@@ -97,8 +97,7 @@ export default function CalculadoraAhorroPage() {
         {/* Hero */}
         <section className="pt-24 pb-12 px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-              <span>💰</span>
+            <div className="inline-flex items-center gap-2 bg-black text-gold-400 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
               Herramienta gratuita
             </div>
             <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 leading-tight">
@@ -113,7 +112,7 @@ export default function CalculadoraAhorroPage() {
 
         {/* Calculadora */}
         <section className="pb-16 px-4">
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <CalculadoraAhorroComisiones />
           </div>
         </section>
