@@ -187,7 +187,7 @@ const SERVICES: Service[] = [
       'Renuncia mutua a reclamaciones futuras',
       'Entrega en 48h · PDF firmable digitalmente',
     ],
-    price: 73,
+    price: 120,
     image: '/gestoria11.jpg',
   },
   {
@@ -202,7 +202,7 @@ const SERVICES: Service[] = [
       'Importes a devolver y plazos',
       'Entrega en 24h · PDF firmable digitalmente',
     ],
-    price: 36,
+    price: 120,
     image: '/gestoria2.jpg',
   },
 
@@ -360,7 +360,7 @@ const SERVICES: Service[] = [
       'Verificación de cargas y servidumbres',
       'Entrega en 48h · PDF firmable digitalmente',
     ],
-    price: 73,
+    price: 145,
     image: '/gestoria5.jpg',
   },
   {

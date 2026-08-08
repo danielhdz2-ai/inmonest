@@ -60,8 +60,8 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
     imagePosition: 'right',
   },
   'prestamo-particulares': {
-    hero: { src: '/amigos1.jpg', alt: 'Préstamo entre particulares documentado' },
-    mid: { src: '/gestoria3.jpg', alt: 'Contrato de préstamo privado' },
+    hero: { src: '/gestoria3.jpg', alt: 'Contrato de préstamo entre particulares formalizado' },
+    mid: { src: '/gestoria15.jpg', alt: 'Revisión jurídica de préstamo privado' },
     cta: { src: '/gestora5.jpg', alt: 'Asesor fiscal para préstamo entre particulares' },
     imagePosition: 'left',
   },
@@ -105,7 +105,7 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
 
 /** Imágenes para banners CTA en landings premium (no genéricas) */
 export const GESTORIA_CTA_BANNERS = {
-  prestamo: { src: '/amigos5.jpg', alt: 'Formalizar préstamo entre particulares' },
+  prestamo: { src: '/gestoria3.jpg', alt: 'Formalizar préstamo entre particulares' },
   dueDiligence: { src: '/interior1.jpg', alt: 'Due diligence pre-compra' },
   ventaCompleta: { src: '/familia2.jpg', alt: 'Venta de piso entre particulares' },
   habitacion: { src: '/familia6.jpg', alt: 'Alquiler de habitación' },

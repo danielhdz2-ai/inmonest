@@ -177,7 +177,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
 
   'liquidacion-fianza': {
     nombre: 'Liquidación de Fianza',
-    precio: p('liquidacion-fianza', 36),
+    precio: p('liquidacion-fianza', 120),
     categoria: 'Rescisión y fianzas',
     tagline: 'Documento claro para devolver la fianza sin conflictos entre propietario e inquilino',
     descripcion:
@@ -221,7 +221,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
       },
     ],
     relacionados: [
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 120 },
       { slug: 'contrato-alquiler', nombre: 'Contrato Alquiler LAU', precio: 145 },
       { slug: 'revision-alquiler', nombre: 'Revisión Alquiler', precio: 60 },
     ],
@@ -537,7 +537,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     relacionados: [
       { slug: 'contrato-alquiler', nombre: 'Contrato Alquiler LAU', precio: 145 },
       { slug: 'alquiler-habitaciones', nombre: 'Alquiler Habitación', precio: 145 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión Alquiler', precio: 73 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión Alquiler', precio: 120 },
     ],
   },
 

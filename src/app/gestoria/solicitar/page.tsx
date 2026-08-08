@@ -31,7 +31,7 @@ const SERVICIOS = [
       { slug: 'arras-confirmatorias', nombre: 'Contrato de Arras Confirmatorias', precio: 145 },
       { slug: 'reserva-compra', nombre: 'Contrato de Reserva de Compra', precio: 61 },
       { slug: 'contrato-compraventa', nombre: 'Contrato de Compraventa', precio: 80 },
-      { slug: 'arras-parking-garage', nombre: 'Arras Parking/Garaje', precio: 73 },
+      { slug: 'arras-parking-garage', nombre: 'Arras Parking/Garaje', precio: 145 },
       { slug: 'alquiler-opcion-compra', nombre: 'Alquiler con Opción a Compra', precio: 182 },
     ],
   },
@@ -53,7 +53,7 @@ const SERVICIOS = [
     categoria: 'Rescisión y Fianzas',
     color: 'from-orange-500 to-orange-600',
     items: [
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 120 },
     ],
   },
   // REVISIÓN LEGAL

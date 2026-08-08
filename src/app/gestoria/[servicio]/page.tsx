@@ -77,7 +77,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     relacionados: [
       { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 120 },
     ],
   },
 
@@ -130,7 +130,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     relacionados: [
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 120 },
     ],
   },
 
@@ -182,14 +182,14 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     relacionados: [
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 120 },
       { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
     ],
   },
 
   'rescision-alquiler': {
     nombre: 'Contrato de Rescisión de Alquiler',
-    precio: 73,
+    precio: 120,
     categoria: 'Rescisión y fianzas',
     tagline: 'Cierra el alquiler sin conflictos: llaves, estado y fianza en un solo documento',
     descripcion:
@@ -289,7 +289,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     relacionados: [
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
       { slug: 'alquiler-local-comercial', nombre: 'Alquiler Local Comercial', precio: 145 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 120 },
     ],
   },
 
@@ -342,7 +342,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     relacionados: [
       { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
       { slug: 'alquiler-garaje-trastero', nombre: 'Garaje o Trastero', precio: 130 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 120 },
     ],
   },
 
@@ -501,7 +501,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     relacionados: [
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
       { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 120 },
     ],
   },
 
@@ -667,7 +667,7 @@ const SERVICIOS: Record<string, ServiceData> = {
       },
     ],
     relacionados: [
-      { slug: 'arras-parking-garage', nombre: 'Arras Parking/Garaje', precio: 73 },
+      { slug: 'arras-parking-garage', nombre: 'Arras Parking/Garaje', precio: 145 },
       { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa Vivienda', precio: 687 },
       { slug: 'revision-arras', nombre: 'Revisión Contrato Arras', precio: 60 },
     ],
@@ -720,14 +720,14 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     relacionados: [
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 120 },
       { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
     ],
   },
 
   'arras-parking-garage': {
     nombre: 'Contrato de Arras para Compraventa de Parking o Garaje',
-    precio: 73,
+    precio: 145,
     categoria: 'Compraventa',
     tagline: 'Asegura la compra de tu plaza de parking o garaje con garantías',
     descripcion: 'Contrato de arras específicamente adaptado para la compraventa de plazas de parking o garajes. Incluye cláusulas especiales sobre acceso, uso, cargas, servidumbres y verificación registral. Protege tanto a comprador como vendedor en este tipo particular de inmuebles.',
@@ -877,7 +877,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     relacionados: [
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
       { slug: 'pack-revision-reserva-alquiler', nombre: 'Pack Reserva + Alquiler', precio: 169 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 73 },
+      { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 120 },
     ],
   },
 

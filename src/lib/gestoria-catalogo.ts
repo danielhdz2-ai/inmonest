@@ -78,7 +78,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'rescision-alquiler': {
     nombre: 'Contrato de Rescisión de Alquiler',
-    precio: 73,
+    precio: 120,
     categoria: 'Rescisión y fianzas',
     incluye: [
       'Acta de estado del inmueble',
@@ -100,7 +100,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'liquidacion-fianza': {
     nombre: 'Liquidación de Fianza',
-    precio: 36,
+    precio: 120,
     categoria: 'Rescisión y fianzas',
     incluye: [
       'Desglose de conceptos descontados',
@@ -178,7 +178,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'arras-parking-garage': {
     nombre: 'Contrato de Arras para Compraventa de Parking o Garaje',
-    precio: 73,
+    precio: 145,
     categoria: 'Compraventa',
     incluye: [
       'Redacción personalizada para parking/garaje',
