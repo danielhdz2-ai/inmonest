@@ -81,13 +81,33 @@ export const SEO_REDIRECTS: Redirect[] = [
     permanent: true,
   },
   {
+    source: '/gestoria/revision-arras',
+    destination: '/gestoria/revision-correccion-arras',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/solicitar/revision-arras',
+    destination: '/gestoria/solicitar/revision-correccion-arras',
+    permanent: true,
+  },
+  {
     source: '/gestoria/revision-contrato-arras',
-    destination: '/gestoria/revision-arras',
+    destination: '/gestoria/revision-correccion-arras',
     permanent: true,
   },
   {
     source: '/gestoria/revision-contrato-arras/:path*',
-    destination: '/gestoria/revision-arras',
+    destination: '/gestoria/revision-correccion-arras',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/ayuda-propietarios',
+    destination: '/gestoria/contrato-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/solicitar/ayuda-propietarios',
+    destination: '/gestoria/solicitar/contrato-alquiler',
     permanent: true,
   },
   {

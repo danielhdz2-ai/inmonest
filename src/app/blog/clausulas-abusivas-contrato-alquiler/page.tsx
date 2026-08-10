@@ -7,7 +7,7 @@ import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
 const PRECIO_REVISION = precioLabel('revision-alquiler')
-const PRECIO_AYUDA = precioLabel('ayuda-propietarios')
+const PRECIO_CONTRATO = precioLabel('contrato-alquiler')
 
 export const metadata: Metadata = {
   title: '10 Cláusulas Abusivas en Contratos de Alquiler que Debes Evitar【2026】',
@@ -233,7 +233,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
           <ul className="list-disc pl-6">
             <li><Link href="/gestoria/revision-contrato-alquiler" className="text-blue-600 underline">Revisión de contrato de alquiler (60€)</Link> - Detectamos cláusulas ilegales en 24h</li>
             <li><Link href="/gestoria/contrato-ilegal" className="text-blue-600 underline">¿Tu contrato es completamente ilegal? (145€)</Link> - Análisis forense completo</li>
-            <li><Link href="/gestoria/ayuda-propietarios" className="text-blue-600 underline">Contratos legales para propietarios ({PRECIO_AYUDA})</Link> - Si eres casero y quieres hacerlo bien</li>
+            <li><Link href="/gestoria/contrato-alquiler" className="text-blue-600 underline">Contrato de alquiler LAU ({PRECIO_CONTRATO})</Link> - Si eres casero y quieres hacerlo bien</li>
           </ul>
         </div>
 

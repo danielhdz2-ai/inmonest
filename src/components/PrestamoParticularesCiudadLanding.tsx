@@ -187,7 +187,7 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
       titulo: 'Revisión Contrato Arras',
       desc: 'Si ya tienes borrador del vendedor, lo revisamos antes de firmar.',
       href: '/gestoria/revision-contrato-arras',
-      precio: precioLabel('revision-arras'),
+      precio: precioLabel('revision-correccion-arras'),
       imageSrc: getServicioImages('arras-penitenciales').mid.src,
       imageAlt: 'Revisión de contrato de arras',
     },

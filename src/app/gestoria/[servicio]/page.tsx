@@ -7,6 +7,8 @@ import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/Gestoria
 import { getServicioImages } from '@/lib/gestoria-images'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
+import GestoriaBlindajeOperacion from '@/components/GestoriaBlindajeOperacion'
+import ComoTrabajamosGestoria from '@/components/ComoTrabajamosGestoria'
 import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
 import { GESTORIA_SERVICIOS_ADICIONALES } from '@/lib/gestoria-servicios-adicionales'
 
@@ -669,7 +671,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     relacionados: [
       { slug: 'arras-parking-garage', nombre: 'Arras Parking/Garaje', precio: 145 },
       { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa Vivienda', precio: 687 },
-      { slug: 'revision-arras', nombre: 'Revisión Contrato Arras', precio: 60 },
+      { slug: 'revision-correccion-arras', nombre: 'Revisión + Corrección Arras', precio: 120 },
     ],
   },
 
@@ -774,58 +776,6 @@ const SERVICIOS: Record<string, ServiceData> = {
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'arras-confirmatorias', nombre: 'Arras Confirmatorias', precio: 145 },
       { slug: 'alquiler-garaje-trastero', nombre: 'Alquiler Garaje/Trastero', precio: 130 },
-    ],
-  },
-
-  'revision-arras': {
-    nombre: 'Revisión de Contrato de Arras',
-    precio: 60,
-    categoria: 'Revisiones',
-    tagline: 'No firmes la señal sin revisión legal profesional',
-    descripcion:
-      '¿Te han entregado un borrador de contrato de arras y no sabes si protege tus intereses? Nuestro equipo lo analiza cláusula a cláusula en 24 horas: detectamos condiciones abusivas, errores registrales, penalizaciones desproporcionadas y cargas ocultas. Informe en PDF con recomendaciones concretas antes de entregar la señal.',
-    image: '/gestoria1.jpg',
-    imageAlt: 'Revisión de contrato de arras por gestoría inmobiliaria',
-    paraQuien: [
-      'Compradores que recibieron un contrato de arras del vendedor o agencia',
-      'Quien va a entregar señal y quiere verificar plazos, penitenciales y condiciones resolutorias',
-      'Personas que detectan cláusulas confusas o desequilibradas a favor del vendedor',
-      'Compradores que quieren argumentos legales para negociar cambios antes de firmar',
-    ],
-    incluye: [
-      'Revisión completa de cláusulas del contrato de arras',
-      'Verificación de datos del inmueble y legitimación del vendedor',
-      'Detección de penalizaciones abusivas y condiciones resolutorias',
-      'Informe en PDF con riesgos y recomendaciones',
-      'Entrega en 24 horas laborables',
-    ],
-    pasos: [
-      { num: '01', titulo: 'Envías el contrato', desc: 'Sube el PDF del borrador de arras (y la nota simple si la tienes).' },
-      { num: '02', titulo: 'Revisión jurídica', desc: 'Tu gestor analiza cada cláusula, plazos, penitenciales y protección del comprador.' },
-      { num: '03', titulo: 'Informe y recomendaciones', desc: 'Recibes informe detallado con errores detectados y propuestas de mejora antes de firmar.' },
-    ],
-    faq: [
-      {
-        q: '¿Cuánto tarda la revisión?',
-        a: 'Entre 12 y 24 horas laborables desde que subes el contrato. Si es urgente, consúltanos por WhatsApp.',
-      },
-      {
-        q: '¿Qué pasa si encuentran errores graves?',
-        a: 'Te enviamos un informe con el riesgo de cada cláusula y recomendaciones para negociar o desistir con base legal.',
-      },
-      {
-        q: '¿Puedo usar el informe para cancelar la compra?',
-        a: 'Sí. Si detectamos irregularidades graves, el informe puede servir para justificar la no firma y recuperar la señal según el tipo de arras.',
-      },
-      {
-        q: '¿Revisáis la nota simple del inmueble?',
-        a: 'Sí, si la aportas. Verificamos que los datos del contrato coincidan con el Registro de la Propiedad.',
-      },
-    ],
-    relacionados: [
-      { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
-      { slug: 'pack-due-diligence-precompra', nombre: 'Due Diligence Pre-Compra', precio: 350 },
-      { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa', precio: 687 },
     ],
   },
 
@@ -1100,6 +1050,8 @@ export default async function ServicioGestoriaPage({
           </div>
         </section>
 
+        <GestoriaBlindajeOperacion servicioSlug={servicio} />
+
         {/* ── CÓMO FUNCIONA ────────────────────────────────────────────── */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Cómo funciona</h2>
@@ -1115,6 +1067,8 @@ export default async function ServicioGestoriaPage({
             ))}
           </div>
         </section>
+
+        <ComoTrabajamosGestoria servicioSlug={servicio} servicioNombre={data.nombre} />
 
         <GestoriaLandingExtras
           servicio={servicio}

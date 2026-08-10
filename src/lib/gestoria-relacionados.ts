@@ -29,10 +29,10 @@ export const RELACIONADOS_VENTA: RelacionadoServicio[] = [
     descripcion: 'Redacción del contrato de reserva para asegurar la operación.',
   },
   {
-    slug: 'revision-arras',
-    href: '/gestoria/revision-contrato-arras',
-    nombre: 'Revisión de Contratos',
-    precio: precio('revision-arras'),
+    slug: 'revision-correccion-arras',
+    href: '/gestoria/revision-correccion-arras',
+    nombre: 'Revisión de Arras',
+    precio: precio('revision-correccion-arras'),
     descripcion: '¿Ya tienes contrato? Lo revisamos y te decimos si está bien.',
   },
 ]
@@ -125,10 +125,10 @@ export const RELACIONADOS_HABITACION: RelacionadoServicio[] = [
     descripcion: '¿Ya tienes borrador? Lo revisamos antes de firmar.',
   },
   {
-    slug: 'ayuda-propietarios',
-    href: '/gestoria/ayuda-propietarios',
-    nombre: 'Ayuda Propietarios LAU',
-    precio: precio('ayuda-propietarios'),
+    slug: 'contrato-alquiler',
+    href: '/gestoria/contrato-alquiler',
+    nombre: 'Contrato Alquiler LAU',
+    precio: precio('contrato-alquiler'),
     descripcion: 'Consultas sobre obligaciones y derechos como arrendador.',
   },
 ]
@@ -166,10 +166,10 @@ export const RELACIONADOS_ARRAS: RelacionadoServicio[] = [
     descripcion: 'Gestor asignado, arras y documentación hasta escritura.',
   },
   {
-    slug: 'revision-arras',
-    href: '/gestoria/revision-contrato-arras',
+    slug: 'revision-correccion-arras',
+    href: '/gestoria/revision-correccion-arras',
     nombre: 'Revisión de Arras',
-    precio: precio('revision-arras'),
+    precio: precio('revision-correccion-arras'),
     descripcion: '¿Ya tienes borrador de arras? Lo revisamos por ti.',
   },
   {
@@ -197,11 +197,11 @@ export const RELACIONADOS_ALQUILER: RelacionadoServicio[] = [
     descripcion: 'Contrato de habitación en piso compartido.',
   },
   {
-    slug: 'ayuda-propietarios',
-    href: '/gestoria/ayuda-propietarios',
-    nombre: 'Ayuda Propietarios',
-    precio: precio('ayuda-propietarios'),
-    descripcion: 'Consultas LAU para arrendadores.',
+    slug: 'contrato-alquiler',
+    href: '/gestoria/contrato-alquiler',
+    nombre: 'Contrato Alquiler LAU',
+    precio: precio('contrato-alquiler'),
+    descripcion: 'Redactamos el contrato adaptado a LAU 2026.',
   },
 ]
 
@@ -245,10 +245,10 @@ export const RELACIONADOS_REVISION_ALQUILER: RelacionadoServicio[] = [
     descripcion: 'Contrato de habitación con normas de convivencia.',
   },
   {
-    slug: 'ayuda-propietarios',
-    href: '/gestoria/ayuda-propietarios',
-    nombre: 'Ayuda Propietarios LAU',
-    precio: precio('ayuda-propietarios'),
+    slug: 'contrato-alquiler',
+    href: '/gestoria/contrato-alquiler',
+    nombre: 'Contrato Alquiler LAU',
+    precio: precio('contrato-alquiler'),
     descripcion: 'Orientación legal para arrendadores.',
   },
 ]
@@ -269,10 +269,10 @@ export const RELACIONADOS_ASESORAMIENTO_VENTA: RelacionadoServicio[] = [
     descripcion: 'Si aún no firmaste arras, lo redactamos por ti.',
   },
   {
-    slug: 'revision-arras',
-    href: '/gestoria/revision-contrato-arras',
+    slug: 'revision-correccion-arras',
+    href: '/gestoria/revision-correccion-arras',
     nombre: 'Revisión de Arras',
-    precio: precio('revision-arras'),
+    precio: precio('revision-correccion-arras'),
     descripcion: 'Revisamos el borrador antes de firmar.',
   },
 ]
@@ -310,10 +310,10 @@ export const RELACIONADOS_COMPRAVENTA: RelacionadoServicio[] = [
     descripcion: 'Señal con arras penitenciales antes de la compraventa.',
   },
   {
-    slug: 'revision-arras',
-    href: '/gestoria/revision-contrato-arras',
+    slug: 'revision-correccion-arras',
+    href: '/gestoria/revision-correccion-arras',
     nombre: 'Revisión de Arras',
-    precio: precio('revision-arras'),
+    precio: precio('revision-correccion-arras'),
     descripcion: 'Revisamos el contrato de arras antes de firmar.',
   },
   {
@@ -327,10 +327,10 @@ export const RELACIONADOS_COMPRAVENTA: RelacionadoServicio[] = [
 
 export const RELACIONADOS_CONTRATO_ILEGAL: RelacionadoServicio[] = [
   {
-    slug: 'revision-arras',
-    href: '/gestoria/revision-contrato-arras',
+    slug: 'revision-correccion-arras',
+    href: '/gestoria/revision-correccion-arras',
     nombre: 'Revisión de Arras',
-    precio: precio('revision-arras'),
+    precio: precio('revision-correccion-arras'),
     descripcion: 'Detectamos cláusulas abusivas en contratos de arras.',
   },
   {

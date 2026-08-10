@@ -42,7 +42,6 @@ const SERVICIOS = [
     items: [
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145, badge: 'Ley 2026' },
       { slug: 'alquiler-temporada', nombre: 'Alquiler por Temporada', precio: 165 },
-      { slug: 'ayuda-propietarios', nombre: 'LAU para Propietarios', precio: 73 },
       { slug: 'alquiler-habitaciones', nombre: 'Alquiler de Habitación', precio: 145 },
       { slug: 'alquiler-local-comercial', nombre: 'Alquiler Local Comercial', precio: 145 },
       { slug: 'alquiler-garaje-trastero', nombre: 'Alquiler Garaje/Trastero', precio: 130 },
@@ -61,7 +60,6 @@ const SERVICIOS = [
     categoria: 'Revisión Legal',
     color: 'from-purple-500 to-purple-600',
     items: [
-      { slug: 'revision-arras', nombre: 'Revisión Contrato Arras', precio: 60 },
       { slug: 'revision-alquiler', nombre: 'Revisión Contrato Alquiler', precio: 120 },
       { slug: 'revision-correccion', nombre: 'Revisión + Corrección', precio: 120 },
       { slug: 'revision-correccion-arras', nombre: 'Revisión + Corrección Arras', precio: 120 },

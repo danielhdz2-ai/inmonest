@@ -94,7 +94,7 @@ const schemaData = {
           },
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Revisión Contrato Arras Sevilla', price: String(GESTORIA_PRECIOS.revisionArras), priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Revisión Contrato Arras Sevilla', price: String(GESTORIA_PRECIOS.revisionCorreccionArras), priceCurrency: 'EUR' },
           },
           {
             '@type': 'Offer',

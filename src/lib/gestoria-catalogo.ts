@@ -238,18 +238,6 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
       'Coordinación con notaría',
     ],
   },
-  'revision-arras': {
-    nombre: 'Revisión de Contrato de Arras',
-    precio: 60,
-    categoria: 'Revisión Legal',
-    incluye: [
-      'Análisis completo de cláusulas',
-      'Detección de errores registrales',
-      'Informe de riesgos legales',
-      'Recomendaciones de negociación',
-      'Entrega en 24h',
-    ],
-  },
   'revision-alquiler': {
     nombre: 'Revisión de Contrato de Alquiler',
     precio: 120,
@@ -285,18 +273,6 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
       'Argumentos legales para negociar',
       'Asesoramiento vía email',
       'Entrega en 48h',
-    ],
-  },
-  'ayuda-propietarios': {
-    nombre: 'Redacción de Contrato LAU para Propietarios',
-    precio: 73,
-    categoria: 'Alquiler',
-    incluye: [
-      'Contrato LAU conforme 2026',
-      'Cláusulas de protección propietario',
-      'Inventario de bienes incluido',
-      'Actualización de renta IPC',
-      'PDF firmable en 48h',
     ],
   },
   'contrato-ilegal': {

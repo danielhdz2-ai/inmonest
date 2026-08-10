@@ -67,7 +67,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     relacionados: [
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'acompanamiento-reserva-arras', nombre: 'Acompañamiento Reserva-Arras', precio: 424 },
-      { slug: 'revision-arras', nombre: 'Revisión de Arras', precio: 60 },
+      { slug: 'revision-correccion-arras', nombre: 'Revisión Arras', precio: 120 },
     ],
   },
 
@@ -326,7 +326,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
       },
     ],
     relacionados: [
-      { slug: 'revision-arras', nombre: 'Revisión Arras', precio: 60 },
+      { slug: 'revision-correccion-arras', nombre: 'Revisión Arras', precio: 120 },
       { slug: 'revision-alquiler', nombre: 'Revisión Alquiler', precio: 120 },
       { slug: 'revision-correccion-arras', nombre: 'Corrección Arras', precio: 120 },
     ],
@@ -378,7 +378,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
       },
     ],
     relacionados: [
-      { slug: 'revision-arras', nombre: 'Revisión Arras', precio: 60 },
+      { slug: 'revision-correccion-arras', nombre: 'Revisión Arras', precio: 120 },
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'pack-due-diligence-precompra', nombre: 'Due Diligence', precio: 350 },
     ],
@@ -431,7 +431,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
       },
     ],
     relacionados: [
-      { slug: 'revision-arras', nombre: 'Revisión Arras', precio: 60 },
+      { slug: 'revision-correccion-arras', nombre: 'Revisión Arras', precio: 120 },
       { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa', precio: 687 },
       { slug: 'acompanamiento-reserva-arras', nombre: 'Reserva → Arras', precio: 424 },
     ],
@@ -485,59 +485,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     relacionados: [
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'reserva-compra', nombre: 'Reserva de Compra', precio: 61 },
-      { slug: 'revision-arras', nombre: 'Revisión Arras', precio: 60 },
-    ],
-  },
-
-  'ayuda-propietarios': {
-    nombre: 'Redacción LAU para Propietarios',
-    precio: p('ayuda-propietarios', 73),
-    categoria: 'Alquiler',
-    tagline: 'Contrato LAU orientado a propietarios que alquilan por primera vez',
-    descripcion:
-      'Alquilar tu piso por primera vez implica riesgos: contratos desactualizados, fianzas mal calculadas, cláusulas nulas y conflictos con inquilinos. Este servicio redacta un contrato LAU adaptado a la Ley de Vivienda 2026 con cláusulas que protegen al propietario dentro de la legalidad: actualización de renta, inventario, garantías y resolución del contrato.',
-    image: '/promo3.png',
-    imageAlt: 'Contrato LAU para propietarios',
-    paraQuien: [
-      'Propietarios primerizos que van a alquilar su vivienda habitual',
-      'Quien hereda un piso y quiere alquilarlo con seguridad jurídica',
-      'Propietarios que usaron contratos genéricos de internet y quieren uno válido',
-      'Arrendadores en zonas tensionadas que necesitan cumplir normativa autonómica',
-    ],
-    incluye: [
-      'Contrato LAU conforme Ley de Vivienda 2026',
-      'Cláusulas de protección del propietario dentro de la legalidad',
-      'Inventario de bienes muebles si aplica',
-      'Fianza, garantías adicionales y actualización IPC',
-      'PDF firmable en 48 horas laborables',
-    ],
-    pasos: [
-      { num: '01', titulo: 'Cuéntanos tu piso', desc: 'Dirección, renta, mobiliario, zona tensionada sí/no y perfil del inquilino previsto.' },
-      { num: '02', titulo: 'Redacción LAU', desc: 'Contrato personalizado con cláusulas válidas y orientación para el propietario.' },
-      { num: '03', titulo: 'Entrega y guía', desc: 'PDF en 48h con instrucciones de firma, fianza y depósito en organismo autonómico.' },
-    ],
-    faq: [
-      {
-        q: '¿Protege contra impagos?',
-        a: 'Un contrato LAU bien redactado facilita reclamaciones legales, pero no sustituye seguros de impago o aval. Te orientamos sobre garantías adicionales permitidas.',
-      },
-      {
-        q: '¿Diferencia con contrato alquiler LAU estándar?',
-        a: 'El contenido base es similar; este servicio incluye explicaciones orientadas al propietario y cláusulas pensadas para quien alquila por primera vez.',
-      },
-      {
-        q: '¿Incluye revisión del inquilino?',
-        a: 'No. Nos centramos en el contrato. La solvencia del inquilino es responsabilidad del propietario.',
-      },
-      {
-        q: '¿Válido en toda España?',
-        a: 'Sí, adaptado a LAU estatal y Ley de Vivienda. Algunas CCAA tienen requisitos extra de depósito de fianza que te indicamos.',
-      },
-    ],
-    relacionados: [
-      { slug: 'contrato-alquiler', nombre: 'Contrato Alquiler LAU', precio: 145 },
-      { slug: 'alquiler-habitaciones', nombre: 'Alquiler Habitación', precio: 145 },
-      { slug: 'rescision-alquiler', nombre: 'Rescisión Alquiler', precio: 120 },
+      { slug: 'revision-correccion-arras', nombre: 'Revisión Arras', precio: 120 },
     ],
   },
 
@@ -587,7 +535,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
       },
     ],
     relacionados: [
-      { slug: 'revision-arras', nombre: 'Revisión Arras', precio: 60 },
+      { slug: 'revision-correccion-arras', nombre: 'Revisión Arras', precio: 120 },
       { slug: 'revision-alquiler', nombre: 'Revisión Alquiler', precio: 120 },
       { slug: 'pack-due-diligence-precompra', nombre: 'Due Diligence', precio: 350 },
     ],

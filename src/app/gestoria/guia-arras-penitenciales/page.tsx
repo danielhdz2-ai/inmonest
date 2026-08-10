@@ -70,7 +70,7 @@ export default function GuiaArrasPenitencialesPage() {
       breadcrumbLabel="Guía Arras Penitenciales"
       heroActions={[
         { href: '/gestoria/solicitar/arras-penitenciales', label: 'Contratar arras — 145€' },
-        { href: '/gestoria/solicitar/revision-arras', label: 'Revisar contrato — 60€', variant: 'secondary' },
+        { href: '/gestoria/solicitar/revision-correccion-arras', label: 'Revisar contrato — 120€', variant: 'secondary' },
       ]}
       servicio="arras-penitenciales"
       servicioNombre="Contrato de Arras Penitenciales"
@@ -278,7 +278,7 @@ export default function GuiaArrasPenitencialesPage() {
                 </svg>
               </Link>
               <Link
-                href="/gestoria/solicitar/revision-arras"
+                href="/gestoria/solicitar/revision-correccion-arras"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border-2 border-white text-white font-bold hover:bg-white/10 transition text-lg"
               >
                 Revisar Contrato Existente - 60€

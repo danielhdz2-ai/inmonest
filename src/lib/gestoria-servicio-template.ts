@@ -31,7 +31,6 @@ export const SERVICIO_CIUDAD_LANDING: Record<string, string> = {
   'liquidacion-fianza': 'contrato-alquiler',
   'contrato-compraventa': 'gestoria-hub',
   'contrato-ilegal': 'gestoria-hub',
-  'ayuda-propietarios': 'gestoria-hub',
 }
 
 /** Clave de testimonios en TESTIMONIOS_POR_LANDING */
@@ -54,13 +53,12 @@ export const SERVICIO_TESTIMONIO_LANDING: Record<string, string> = {
   'venta-completa-reserva-escritura': 'venta-completa',
   'pack-due-diligence-precompra': 'due-diligence',
   'asesoramiento-arras-venta': 'asesoramiento-arras',
-  'revision-contrato-arras': 'revision-arras',
+  'revision-contrato-arras': 'revision-correccion-arras',
   'revision-contrato-alquiler': 'revision-alquiler',
   'contrato-compraventa': 'contrato-compraventa',
   'contrato-ilegal': 'contrato-ilegal',
-  'ayuda-propietarios': 'ayuda-propietarios',
-  'revision-correccion': 'revision-arras',
-  'revision-correccion-arras': 'revision-arras',
+  'revision-correccion': 'revision-correccion-arras',
+  'revision-correccion-arras': 'revision-correccion-arras',
   'reserva-compra': 'contrato-arras',
   'reserva-alquiler': 'contrato-alquiler',
   'alquiler-temporada': 'contrato-alquiler',

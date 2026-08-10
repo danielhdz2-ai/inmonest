@@ -16,7 +16,7 @@ type ServicioEnlaceMeta = {
 const SERVICIO_ENLACE_META: Record<string, ServicioEnlaceMeta> = {
   'contrato-alquiler': {
     landingId: 'contrato-alquiler',
-    generalHref: '/gestoria/ayuda-propietarios',
+    generalHref: '/gestoria/contrato-alquiler',
     labelConCiudad: (ciudad) => `Ver contrato alquiler ${ciudad} →`,
     labelGeneral: 'Ver contrato alquiler →',
   },
@@ -26,8 +26,8 @@ const SERVICIO_ENLACE_META: Record<string, ServicioEnlaceMeta> = {
     labelConCiudad: (ciudad) => `Ver contrato arras ${ciudad} →`,
     labelGeneral: 'Ver contrato arras →',
   },
-  'revision-arras': {
-    generalHref: '/gestoria/revision-contrato-arras',
+  'revision-correccion-arras': {
+    generalHref: '/gestoria/revision-correccion-arras',
     labelConCiudad: (ciudad) => `Ver revisión arras ${ciudad} →`,
     labelGeneral: 'Ver revisión contrato arras →',
   },

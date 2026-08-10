@@ -25,7 +25,7 @@ export const GESTORIA_NAV_SERVICIOS: Array<{ label: string; href: string }> = [
   { label: 'Compra completa', href: '/gestoria/compra-completa-reserva-escritura' },
   { label: 'Venta completa', href: '/gestoria/venta-completa-reserva-escritura' },
   { label: 'Due diligence', href: '/gestoria/pack-due-diligence-precompra' },
-  { label: 'Revisión arras', href: '/gestoria/revision-arras' },
+  { label: 'Revisión arras', href: '/gestoria/revision-correccion-arras' },
   { label: 'Revisión alquiler', href: '/gestoria/revision-alquiler' },
 ]
 
@@ -178,28 +178,7 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     image: '/gestoria6.jpg',
     landingHref: '/gestoria/liquidacion-fianza',
   },
-  {
-    slug: 'ayuda-propietarios',
-    nombre: 'Redacción LAU para Propietarios',
-    shortName: 'Ayuda propietarios',
-    descripcion: 'Contrato LAU orientado a propietarios que alquilan por primera vez.',
-    categoria: 'alquiler',
-    precio: getPrecioServicio('ayuda-propietarios') ?? 73,
-    image: '/contrato3.jpg',
-    landingHref: '/gestoria/ayuda-propietarios',
-  },
-
   // Revisiones
-  {
-    slug: 'revision-arras',
-    nombre: 'Revisión de Contrato de Arras',
-    shortName: 'Revisión arras',
-    descripcion: 'Detectamos cláusulas abusivas antes de firmar la señal.',
-    categoria: 'revision',
-    precio: getPrecioServicio('revision-arras') ?? 60,
-    image: '/contrato4.jpg',
-    landingHref: '/gestoria/revision-arras',
-  },
   {
     slug: 'revision-alquiler',
     nombre: 'Revisión de Contrato de Alquiler',

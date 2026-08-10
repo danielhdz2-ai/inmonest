@@ -7,7 +7,7 @@ const FEATURED_KEYS = [
   'arras-penitenciales',
   'contrato-alquiler',
   'reserva-compra',
-  'revision-arras',
+  'revision-correccion-arras',
   'alquiler-vivienda-lau',
   'pack-due-diligence-precompra',
 ] as const
