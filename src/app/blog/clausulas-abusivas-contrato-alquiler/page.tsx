@@ -99,7 +99,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
           </p>
           <p className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
             ✅ <strong>Qué hacer:</strong> Niégate a pagar comisiones de gestoría. Es jurisprudencia firme. 
-            Si la agencia insiste, <Link href="/gestoria/contrato-ilegal" className="text-green-700 underline">consulta si el contrato es ilegal (29€)</Link>.
+            Si la agencia insiste, <Link href="/gestoria/contrato-ilegal" className="text-green-700 underline">consulta si el contrato es ilegal (145€)</Link>.
           </p>
 
           <h2>4. Subidas de renta arbitrarias 📈</h2>
@@ -232,7 +232,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
           </p>
           <ul className="list-disc pl-6">
             <li><Link href="/gestoria/revision-contrato-alquiler" className="text-blue-600 underline">Revisión de contrato de alquiler (60€)</Link> - Detectamos cláusulas ilegales en 24h</li>
-            <li><Link href="/gestoria/contrato-ilegal" className="text-blue-600 underline">¿Tu contrato es completamente ilegal? (29€)</Link> - Análisis forense completo</li>
+            <li><Link href="/gestoria/contrato-ilegal" className="text-blue-600 underline">¿Tu contrato es completamente ilegal? (145€)</Link> - Análisis forense completo</li>
             <li><Link href="/gestoria/ayuda-propietarios" className="text-blue-600 underline">Contratos legales para propietarios ({PRECIO_AYUDA})</Link> - Si eres casero y quieres hacerlo bien</li>
           </ul>
         </div>

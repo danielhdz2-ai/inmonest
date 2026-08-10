@@ -116,7 +116,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
           </p>
           <p className="bg-green-50 p-4 rounded-lg">
             ✅ <strong>Qué hacer:</strong> Exige ver la nota simple ANTES de firmar arras. Pídela tú mismo al Registro 
-            o <Link href="/gestoria/solicitar/asesoria-compra" className="text-green-700 underline">contrátanos para verificar la propiedad</Link>.
+            o <Link href="/gestoria/solicitar/compra-completa-reserva-escritura" className="text-green-700 underline">contrátanos para verificar la propiedad</Link>.
           </p>
 
           <h3>4. Precio muy por debajo del mercado</h3>
@@ -130,7 +130,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
           </p>
           <p className="bg-green-50 p-4 rounded-lg">
             ✅ <strong>Qué hacer:</strong> Compara con precios de portales (Idealista, Fotocasa). Si está 30-40% por debajo, 
-            <Link href="/gestoria/contrato-ilegal" className="text-green-700 underline">haz analizar el caso (29€)</Link>.
+            <Link href="/gestoria/contrato-ilegal" className="text-green-700 underline">haz analizar el caso (145€)</Link>.
           </p>
 
           <h3>5. Documentos con errores evidentes</h3>
@@ -221,7 +221,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
           <ol className="list-decimal pl-6 space-y-4">
             <li>
               <strong>Pide nota simple oficial (15€, 24h):</strong> No te fíes de PDFs que te envíe el vendedor. 
-              <Link href="/gestoria/solicitar/asesoria-compra" className="text-blue-600 underline ml-1">Consúltanos para verificar</Link>.
+              <Link href="/gestoria/solicitar/compra-completa-reserva-escritura" className="text-blue-600 underline ml-1">Consúltanos para verificar</Link>.
             </li>
             <li>
               <strong>Verifica identidad del vendedor:</strong> Compara DNI físico con nota simple. Deben coincidir nombre y apellidos exactos.
@@ -243,7 +243,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
             <li>
               <strong>Si tienes 2+ señales de alerta:</strong> 
               <Link href="/gestoria/contrato-ilegal" className="text-blue-600 underline ml-1">
-                Haz analizar el caso por un abogado (29€)
+                Haz analizar el caso por un abogado (145€)
               </Link>. Vale la pena.
             </li>
           </ol>
@@ -267,7 +267,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
               <li>
                 <strong>Consulta con abogado especializado:</strong> 
                 <Link href="/gestoria/contrato-ilegal" className="text-red-700 underline ml-1">
-                  Analizamos tu caso y te guiamos en la recuperación (29€)
+                  Analizamos tu caso y te guiamos en la recuperación (145€)
                 </Link>.
               </li>
             </ol>
@@ -294,7 +294,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
               href="/gestoria/contrato-ilegal"
               className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition text-center"
             >
-              Analizar mi caso (29€)
+              Analizar mi caso (145€)
             </Link>
             <Link
               href="/gestoria/revision-contrato-arras"

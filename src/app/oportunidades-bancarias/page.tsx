@@ -397,7 +397,7 @@ export default function OportunidadesBancariasPage() {
                   titulo: 'Asesoría de Compra',
                   precio: '95 €',
                   desc: 'Verificación completa de la propiedad y acompañamiento legal en todo el proceso de compra.',
-                  href: '/gestoria/solicitar/asesoria-compra',
+                  href: '/gestoria/solicitar/compra-completa-reserva-escritura',
                   urgente: true,
                 },
                 {
@@ -474,7 +474,7 @@ export default function OportunidadesBancariasPage() {
               {[
                 { label: 'Blog: Guía fondos bancarios', href: '/blog/pisos-fondo-bancario-baratos' },
                 { label: 'Contratos de Arras', href: '/gestoria' },
-                { label: 'Asesoría de Compra', href: '/gestoria/solicitar/asesoria-compra' },
+                { label: 'Asesoría de Compra', href: '/gestoria/solicitar/compra-completa-reserva-escritura' },
                 { label: 'Calculadora gastos compra', href: '/calculadora-gastos-compra' },
                 { label: 'Pisos en Madrid', href: '/madrid/pisos' },
                 { label: 'Pisos en Barcelona', href: '/barcelona/pisos' },

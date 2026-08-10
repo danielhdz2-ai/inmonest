@@ -30,7 +30,7 @@ const SERVICIOS = [
       { slug: 'arras-penitenciales', nombre: 'Contrato de Arras Penitenciales', precio: 145, badge: 'Más vendido' },
       { slug: 'arras-confirmatorias', nombre: 'Contrato de Arras Confirmatorias', precio: 145 },
       { slug: 'reserva-compra', nombre: 'Contrato de Reserva de Compra', precio: 61 },
-      { slug: 'contrato-compraventa', nombre: 'Contrato de Compraventa', precio: 80 },
+      { slug: 'contrato-compraventa', nombre: 'Contrato de Compraventa', precio: 145 },
       { slug: 'arras-parking-garage', nombre: 'Arras Parking/Garaje', precio: 145 },
       { slug: 'alquiler-opcion-compra', nombre: 'Alquiler con Opción a Compra', precio: 182 },
     ],
@@ -62,10 +62,10 @@ const SERVICIOS = [
     color: 'from-purple-500 to-purple-600',
     items: [
       { slug: 'revision-arras', nombre: 'Revisión Contrato Arras', precio: 60 },
-      { slug: 'revision-alquiler', nombre: 'Revisión Contrato Alquiler', precio: 60 },
+      { slug: 'revision-alquiler', nombre: 'Revisión Contrato Alquiler', precio: 120 },
       { slug: 'revision-correccion', nombre: 'Revisión + Corrección', precio: 120 },
       { slug: 'revision-correccion-arras', nombre: 'Revisión + Corrección Arras', precio: 120 },
-      { slug: 'contrato-ilegal', nombre: 'Análisis de Fraude', precio: 29, badge: '12h' },
+      { slug: 'contrato-ilegal', nombre: 'Análisis de Fraude', precio: 145, badge: '12h' },
     ],
   },
   // SERVICIOS PREMIUM
@@ -79,7 +79,6 @@ const SERVICIOS = [
       { slug: 'compra-completa-parking-trastero', nombre: 'Compra Parking/Trastero Completa', precio: 295, badge: 'Nuevo' },
       { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento Arras→Escritura', precio: 166 },
       { slug: 'acompanamiento-reserva-arras', nombre: 'Acompañamiento Reserva→Arras', precio: 424 },
-      { slug: 'asesoria-compra', nombre: 'Asesoría Compra Vivienda', precio: 95 },
     ],
   },
   // PACKS COMBINADOS

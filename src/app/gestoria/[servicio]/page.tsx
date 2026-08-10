@@ -831,7 +831,7 @@ const SERVICIOS: Record<string, ServiceData> = {
 
   'revision-alquiler': {
     nombre: 'Revisión de Contrato de Alquiler',
-    precio: 60,
+    precio: 120,
     categoria: 'Revisiones',
     tagline: 'Protege tus derechos antes de firmar el alquiler',
     descripcion:

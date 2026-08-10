@@ -252,7 +252,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'revision-alquiler': {
     nombre: 'Revisión de Contrato de Alquiler',
-    precio: 60,
+    precio: 120,
     categoria: 'Revisión Legal',
     incluye: [
       'Verificación Ley Vivienda 2026',
@@ -301,7 +301,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'contrato-ilegal': {
     nombre: 'Análisis de Fraude Inmobiliario',
-    precio: 29,
+    precio: 145,
     categoria: 'Revisión Legal',
     incluye: [
       'Verificación documentación',
@@ -323,18 +323,6 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
       'Solo para verificación interna',
     ],
   },
-  'asesoria-compra': {
-    nombre: 'Asesoría Completa Compra de Vivienda',
-    precio: 95,
-    categoria: 'Servicios Premium',
-    incluye: [
-      'Análisis inicial gratuito',
-      'Revisión nota simple + arras',
-      'Asesoramiento hipoteca',
-      'Revisión documentación vendedor',
-      'Acompañamiento hasta escritura',
-    ],
-  },
   'pack-due-diligence-precompra': {
     nombre: 'Pack Due Diligence Pre-Compra',
     precio: 350,
@@ -350,7 +338,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'contrato-compraventa': {
     nombre: 'Contrato de Compraventa de Vivienda',
-    precio: 80,
+    precio: 145,
     categoria: 'Compraventa',
     incluye: [
       'Redacción completa personalizada',

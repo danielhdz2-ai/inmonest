@@ -66,6 +66,16 @@ export const SEO_REDIRECTS: Redirect[] = [
     permanent: true,
   },
   {
+    source: '/gestoria/asesoria-compra',
+    destination: '/gestoria/compra-completa-reserva-escritura',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/solicitar/asesoria-compra',
+    destination: '/gestoria/solicitar/compra-completa-reserva-escritura',
+    permanent: true,
+  },
+  {
     source: '/gestoria/asesoria-compra-piso',
     destination: '/gestoria/compra-completa-reserva-escritura',
     permanent: true,

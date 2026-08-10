@@ -82,7 +82,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
       heroActions={[
         { href: '/gestoria/solicitar/contrato-alquiler', label: 'Contratar LAU — 145€' },
         { href: '/valencia/contrato-alquiler', label: 'Ejemplo Valencia', variant: 'secondary' },
-        { href: '/gestoria/solicitar/revision-alquiler', label: 'Revisar contrato — 60€', variant: 'secondary' },
+        { href: '/gestoria/solicitar/revision-alquiler', label: 'Revisar contrato — 120€', variant: 'secondary' },
       ]}
       servicio="contrato-alquiler"
       servicioNombre="Contrato de Alquiler LAU"

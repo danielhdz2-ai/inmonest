@@ -127,7 +127,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
             <li><strong>Revisión de contrato de arras</strong> — 60€</li>
             <li><strong>Revisión de contrato de alquiler</strong> — 60€</li>
             <li><strong>Revisión + corrección (versión corregida incluida)</strong> — 120€</li>
-            <li><strong>Análisis de fraude inmobiliario</strong> — 29€ (urgente en 12h)</li>
+            <li><strong>Análisis de fraude inmobiliario</strong> — 145€ (urgente en 12h)</li>
           </ul>
 
           <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">

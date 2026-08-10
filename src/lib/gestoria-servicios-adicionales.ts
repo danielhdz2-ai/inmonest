@@ -171,7 +171,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     relacionados: [
       { slug: 'contrato-alquiler', nombre: 'Contrato Alquiler LAU', precio: 145 },
       { slug: 'pack-revision-reserva-alquiler', nombre: 'Pack Reserva + Alquiler', precio: 169 },
-      { slug: 'revision-alquiler', nombre: 'Revisión Alquiler', precio: 60 },
+      { slug: 'revision-alquiler', nombre: 'Revisión Alquiler', precio: 120 },
     ],
   },
 
@@ -223,7 +223,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     relacionados: [
       { slug: 'rescision-alquiler', nombre: 'Rescisión de Alquiler', precio: 120 },
       { slug: 'contrato-alquiler', nombre: 'Contrato Alquiler LAU', precio: 145 },
-      { slug: 'revision-alquiler', nombre: 'Revisión Alquiler', precio: 60 },
+      { slug: 'revision-alquiler', nombre: 'Revisión Alquiler', precio: 120 },
     ],
   },
 
@@ -327,7 +327,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     ],
     relacionados: [
       { slug: 'revision-arras', nombre: 'Revisión Arras', precio: 60 },
-      { slug: 'revision-alquiler', nombre: 'Revisión Alquiler', precio: 60 },
+      { slug: 'revision-alquiler', nombre: 'Revisión Alquiler', precio: 120 },
       { slug: 'revision-correccion-arras', nombre: 'Corrección Arras', precio: 120 },
     ],
   },
@@ -439,7 +439,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
 
   'contrato-compraventa': {
     nombre: 'Contrato de Compraventa de Vivienda',
-    precio: p('contrato-compraventa', 80),
+    precio: p('contrato-compraventa', 145),
     categoria: 'Compraventa',
     tagline: 'Documento privado de compraventa personalizado, listo para firmar',
     descripcion:
@@ -543,7 +543,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
 
   'contrato-ilegal': {
     nombre: 'Análisis de Fraude Inmobiliario',
-    precio: p('contrato-ilegal', 29),
+    precio: p('contrato-ilegal', 145),
     categoria: 'Revisiones',
     tagline: 'Detecta estafas y contratos irregulares antes de transferir dinero',
     descripcion:
@@ -588,7 +588,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     ],
     relacionados: [
       { slug: 'revision-arras', nombre: 'Revisión Arras', precio: 60 },
-      { slug: 'revision-alquiler', nombre: 'Revisión Alquiler', precio: 60 },
+      { slug: 'revision-alquiler', nombre: 'Revisión Alquiler', precio: 120 },
       { slug: 'pack-due-diligence-precompra', nombre: 'Due Diligence', precio: 350 },
     ],
   },
@@ -643,58 +643,6 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
       { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa', precio: 687 },
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'reserva-compra', nombre: 'Reserva de Compra', precio: 61 },
-    ],
-  },
-
-  'asesoria-compra': {
-    nombre: 'Asesoría Completa Compra de Vivienda',
-    precio: p('asesoria-compra', 95),
-    categoria: 'Servicios Premium',
-    tagline: 'Gestor asignado para comprar entre particulares con revisión de arras y documentación',
-    descripcion:
-      'Comprar piso entre particulares sin pagar comisión de agencia requiere saber qué revisar y en qué orden. La asesoría completa de compra incluye análisis inicial, revisión de nota simple y arras, orientación sobre hipoteca y documentación del vendedor, con acompañamiento hasta escritura. Es el punto intermedio entre una revisión puntual y el servicio compra completa premium.',
-    image: '/interior4.jpg',
-    imageAlt: 'Asesoría de compra de vivienda entre particulares',
-    paraQuien: [
-      'Compradores entre particulares que quieren gestor sin pagar pack premium',
-      'Quien va a firmar arras y necesita revisión experta incluida',
-      'Primera compra de vivienda con dudas sobre documentación',
-      'Operaciones donde el vendedor no aporta agencia ni asesor',
-    ],
-    incluye: [
-      'Análisis inicial de la operación sin coste extra',
-      'Revisión de nota simple y contrato de arras',
-      'Orientación sobre hipoteca y condiciones suspensivas',
-      'Revisión de documentación aportada por el vendedor',
-      'Acompañamiento por email, teléfono y WhatsApp hasta escritura',
-    ],
-    pasos: [
-      { num: '01', titulo: 'Consulta inicial', desc: 'Cuéntanos el piso, precio, estado de negociación y documentación disponible.' },
-      { num: '02', titulo: 'Revisión de arras y docs', desc: 'Análisis de riesgos en arras, registral y documentación del vendedor.' },
-      { num: '03', titulo: 'Seguimiento hasta firma', desc: 'Resolución de dudas en cada fase hasta la escritura en notaría.' },
-    ],
-    faq: [
-      {
-        q: '¿Diferencia con compra completa (687€)?',
-        a: 'La compra completa incluye gestión integral, revisión de contratos con agencias, coordinación notarial exhaustiva y prioridad máxima. La asesoría compra es más económica y cubre el núcleo esencial para compras entre particulares.',
-      },
-      {
-        q: '¿Incluye due diligence?',
-        a: 'Incluye revisión de documentación básica del vendedor. Para auditoría profunda de comunidad, ITE y urbanismo, añade pack due diligence.',
-      },
-      {
-        q: '¿Puedo contratar solo si ya tengo arras?',
-        a: 'Sí, adaptamos el servicio a la fase en la que estés.',
-      },
-      {
-        q: '¿Redactáis las arras?',
-        a: 'La asesoría incluye revisión de arras. Si necesitas redacción desde cero, contrata arras penitenciales o confirmatorias.',
-      },
-    ],
-    relacionados: [
-      { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa', precio: 687 },
-      { slug: 'revision-arras', nombre: 'Revisión Arras', precio: 60 },
-      { slug: 'pack-due-diligence-precompra', nombre: 'Due Diligence', precio: 350 },
     ],
   },
 }
