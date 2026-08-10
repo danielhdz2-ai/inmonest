@@ -175,7 +175,7 @@ export default function SobreNosotrosPage() {
               {
                 icon: '💰',
                 title: 'Precios justos',
-                desc: 'Publicar anuncios es gratis. Los servicios legales son accesibles (desde 7€) porque creemos que la justicia no debe ser un lujo.',
+                desc: 'Publicar anuncios es gratis. Los servicios legales son accesibles (desde 145€) porque creemos que la justicia no debe ser un lujo.',
               },
               {
                 icon: '🌱',

@@ -4,8 +4,8 @@ export const GESTOR_DANIEL_HERNANDEZ = {
   rol: 'Gestor inmobiliario · Compras entre particulares',
 } as const
 
-export const GESTOR_CARMEN_VIDAL = {
-  nombre: 'Carmen Vidal',
+export const GESTOR_CARMEN_GUTIERREZ = {
+  nombre: 'Carmen Gutierrez',
   foto: '/gestor/gestora.jpg',
-  rol: 'Gestora inmobiliaria · Compras entre particulares',
+  rol: 'Gestora Inmonest (Andalucia)',
 } as const

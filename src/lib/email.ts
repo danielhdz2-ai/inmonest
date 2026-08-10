@@ -99,7 +99,7 @@ export function emailBienvenida(nombre: string, email: string) {
     <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px">
       ${itemLista('🏠', 'Publica hasta 2 anuncios gratis', 'Sin cuotas de publicación ni comisiones')}
       ${itemLista('🔍', 'Busca pisos de particulares', 'Miles de inmuebles en toda España sin intermediarios')}
-      ${itemLista('📋', 'Contratos redactados por abogados', 'Desde 7 €. Arras, alquiler LAU, compraventa y más')}
+      ${itemLista('📋', 'Contratos redactados por abogados', 'Alquiler LAU, arras, compraventa y más — precios cerrados IVA incl.')}
       ${itemLista('🏦', 'Oportunidades bancarias', 'Pisos de Solvia, Aliseda y Servihabitat desde 40.000 €')}
     </table>
     <a href="https://inmonest.com/mi-cuenta"

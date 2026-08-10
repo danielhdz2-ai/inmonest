@@ -8,7 +8,7 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   title: 'Contrato de Arrendamiento LAU 2026 【Guía Completa + Plantilla Gratis】',
-  description: '¿Qué es un contrato de arrendamiento LAU? Guía completa 2026: cláusulas obligatorias, duración, fianza, subida de renta. Plantilla gratis + Revisión legal desde 7€. ✓',
+  description: '¿Qué es un contrato de arrendamiento LAU? Guía completa 2026: cláusulas obligatorias, duración, fianza, subida de renta. Plantilla gratis + contrato profesional desde 145€.',
   alternates: {
     canonical: `${BASE_URL}/blog/contrato-arrendamiento-lau`,
   },
@@ -249,7 +249,7 @@ export default function ContratoArrendamientoLAUPage() {
             <div className="bg-gradient-to-r from-black to-black rounded-2xl p-8 text-white mb-6">
               <h3 className="text-2xl font-bold mb-3">¿Necesitas un contrato profesional?</h3>
               <p className="text-white/80 mb-6">
-                Nuestros abogados especializados redactan tu contrato de arrendamiento LAU personalizado con cláusulas adaptadas a tu situación. <strong>Desde 7€.</strong>
+                Nuestros abogados especializados redactan tu contrato de arrendamiento LAU personalizado con cláusulas adaptadas a tu situación.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
@@ -310,7 +310,7 @@ export default function ContratoArrendamientoLAUPage() {
               El <strong>contrato de arrendamiento LAU</strong> es el pilar fundamental del alquiler de viviendas en España. Conocer tus derechos y obligaciones te protege de problemas legales y económicos.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Si tienes dudas o quieres un contrato personalizado, <Link href="/gestoria" className="text-gold-500 font-semibold hover:underline">nuestros abogados te ayudan desde 7€</Link>.
+              Si tienes dudas o quieres un contrato personalizado, <Link href="/gestoria/contrato-alquiler" className="text-gold-500 font-semibold hover:underline">nuestros abogados te ayudan con un LAU a medida</Link>.
             </p>
           </section>
 

@@ -33,7 +33,7 @@ const PASOS = [
 export default function ComoTrabajamosGestoria({ servicioSlug, servicioNombre }: Props) {
   const intro = getComoTrabajamosIntro(servicioSlug, servicioNombre)
   const wa = encodeURIComponent(
-    `Hola Daniel, tengo dudas sobre ${servicioNombre} antes de contratar`,
+    `Hola Carmen, tengo dudas sobre ${servicioNombre} antes de contratar`,
   )
 
   return (
@@ -41,15 +41,15 @@ export default function ComoTrabajamosGestoria({ servicioSlug, servicioNombre }:
       <div className="relative h-64 sm:h-80 lg:h-full min-h-[280px] rounded-2xl overflow-hidden">
         <Image
           src="/gestor/gestora.jpg"
-          alt="Gestor inmobiliario Inmonest atendiendo consultas"
+          alt="Carmen Gutierrez, gestora Inmonest en Andalucia"
           fill
           className="object-cover object-center"
           sizes="(max-width: 1024px) 100vw, 50vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
         <div className="absolute bottom-4 left-4 right-4 text-white">
-          <p className="text-sm font-semibold">Daniel Hernández · Inmonest</p>
-          <p className="text-xs text-white/80">Gestoría inmobiliaria boutique · Resuelve dudas antes de contratar</p>
+          <p className="text-sm font-semibold">Carmen Gutierrez — Gestora Inmonest (Andalucia)</p>
+          <p className="text-xs text-white/80">Gestoría inmobiliaria — cuéntanos tu caso</p>
         </div>
       </div>
 

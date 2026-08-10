@@ -45,7 +45,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
               {[
                 { icon: '🏡', title: 'Vende o alquila tu piso gratis', desc: 'Publica tu anuncio en minutos y llega a miles de compradores directos.' },
                 { icon: '🔍', title: 'Encuentra pisos sin agencia', desc: 'Miles de inmuebles de particulares en venta y alquiler, sin comisión.' },
-                { icon: '📄', title: 'Contratos y gestoría online', desc: 'Genera contratos de arras y alquiler en minutos desde 7 €.' },
+                { icon: '📄', title: 'Contratos y gestoría online', desc: 'Contratos de arras y alquiler LAU redactados por gestoría especializada.' },
                 { icon: '🤖', title: 'Buscador con IA', desc: 'Describe lo que buscas en lenguaje natural y la IA lo encuentra por ti.' },
               ].map((s) => (
                 <div key={s.title} className="flex gap-3 items-start">

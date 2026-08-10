@@ -17,6 +17,11 @@ import NeighborhoodSection from '@/components/NeighborhoodSection'
 import ListingSchema from '@/components/ListingSchema'
 import BreadcrumbSchema from '@/components/BreadcrumbSchema'
 import ComprarPisoDueDiligenceBanner from '@/components/ComprarPisoDueDiligenceBanner'
+import {
+  PisoAlquilerLauBanner,
+  PisoArrasCompraBanner,
+  PisoVendedorBanner,
+} from '@/components/PisoGestoriaPromoBanner'
 import { getGoneListingRedirect, getListingById, getSimilarListings } from '@/lib/listings'
 import { getPriceAnalysis } from '@/lib/price-analysis'
 import { generateNeighborhoodInfo, getNeighborhoodFallback } from '@/lib/neighborhood-info'
@@ -347,95 +352,16 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
 
             {/* ── CTA GESTORÍA (Alquiler / Venta) ── */}
             {listing.operation === 'rent' ? (
-              <div className="bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
-                <div className="flex items-start gap-4">
-                  <span className="text-4xl">📄</span>
-                  <div className="flex-1">
-                    <h3 className="text-xl sm:text-2xl font-bold mb-2">
-                      ¿Vas a alquilar este piso?
-                    </h3>
-                    <p className="text-white/80 text-sm sm:text-base mb-4">
-                      Necesitas un <strong>contrato de alquiler LAU</strong> (obligatorio por ley). Nuestros abogados lo redactan personalizado con todas las cláusulas legales. <strong>Desde 7€.</strong>
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <Link
-                        href="/gestoria/contrato-alquiler"
-                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors text-sm shadow-lg"
-                      >
-                        Crear contrato LAU desde 7€ →
-                      </Link>
-                      <Link
-                        href="/blog/contrato-arrendamiento-lau"
-                        className="inline-flex items-center justify-center px-5 py-3 rounded-full border border-white/30 text-white font-medium hover:bg-white/10 transition-colors text-sm"
-                      >
-                        Leer guía completa
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <PisoAlquilerLauBanner />
             ) : (
               <>
-              <ComprarPisoDueDiligenceBanner city={listing.city} />
-              <div className="bg-gradient-to-r from-forest-950 to-forest-950 rounded-2xl p-6 sm:p-8 text-white shadow-lg">
-                <div className="flex items-start gap-4">
-                  <span className="text-4xl">🏠</span>
-                  <div className="flex-1">
-                    <h3 className="text-xl sm:text-2xl font-bold mb-2">
-                      ¿Listo para comprar?
-                    </h3>
-                    <p className="text-white/80 text-sm sm:text-base mb-4">
-                      Protege tu señal con un <strong>contrato de arras</strong> redactado por abogados. Evita problemas legales y asegura tu compra. <strong>Desde 145€.</strong>
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <Link
-                        href="/gestoria/contrato-arras"
-                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors text-sm shadow-lg"
-                      >
-                        Crear contrato de arras desde 145€ →
-                      </Link>
-                      <Link
-                        href="/gestoria"
-                        className="inline-flex items-center justify-center px-5 py-3 rounded-full border border-white/30 text-white font-medium hover:bg-white/10 transition-colors text-sm"
-                      >
-                        Ver todos los servicios
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                <ComprarPisoDueDiligenceBanner city={listing.city} />
+                <PisoArrasCompraBanner />
               </>
             )}
 
-            {/* ── BANNER VENDEDORES (Solo en ventas) ── */}
             {listing.operation === 'sale' && listing.is_particular && (
-              <div className="bg-gradient-to-br from-amber-50 via-yellow-50 to-amber-100 rounded-2xl p-6 sm:p-8 border-2 border-gold-500/30 shadow-md">
-                <div className="flex items-start gap-4">
-                  <span className="text-4xl">💰</span>
-                  <div className="flex-1">
-                    <h3 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900">
-                      ¿Eres el vendedor de este piso?
-                    </h3>
-                    <p className="text-gray-700 text-sm sm:text-base mb-4">
-                      Si vendes de <strong>particular a particular con comprador ya encontrado</strong>, te ayudamos con todo: contratos, documentación y acompañamiento hasta escritura. <strong className="text-gold-700">Ahorra 10.000€+ en comisiones de agencia. Solo 687€.</strong>
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      <Link
-                        href="/gestoria/venta-completa-reserva-escritura"
-                        className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors text-sm shadow-lg"
-                      >
-                        Ver servicio completo (687€) →
-                      </Link>
-                      <Link
-                        href="/gestoria/solicitar"
-                        className="inline-flex items-center justify-center px-5 py-3 rounded-full border-2 border-gold-500 text-gold-700 font-semibold hover:bg-gold-500 hover:text-white transition-colors text-sm"
-                      >
-                        Solicitar información →
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <PisoVendedorBanner />
             )}
 
             {/* ── ANÁLISIS DE PRECIOS COMPETITIVO ── */}
@@ -692,7 +618,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
             {/* CTA contratos */}
             <div className="bg-cream-100 rounded-2xl p-5 border border-gold-300/30">
               <p className="text-sm font-semibold text-[#42300a] mb-1">¿Vas a cerrar el trato?</p>
-              <p className="text-xs text-gold-700 mb-3">Genera tu contrato de alquiler o arras en minutos desde 7 €.</p>
+              <p className="text-xs text-gold-700 mb-3">Contratos de alquiler LAU y arras redactados por gestoría especializada.</p>
               <Link
                 href="/gestoria"
                 className="block text-center px-4 py-2 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-gold-600 transition-colors"
