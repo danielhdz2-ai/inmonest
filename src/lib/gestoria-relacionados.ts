@@ -181,6 +181,37 @@ export const RELACIONADOS_ARRAS: RelacionadoServicio[] = [
   },
 ]
 
+export const RELACIONADOS_LOCAL_COMERCIAL: RelacionadoServicio[] = [
+  {
+    slug: 'contrato-alquiler',
+    href: '/gestoria/contrato-alquiler',
+    nombre: 'Contrato Alquiler LAU',
+    precio: precio('contrato-alquiler'),
+    descripcion: 'Para alquilar vivienda íntegra con protección LAU 2026.',
+  },
+  {
+    slug: 'revision-alquiler',
+    href: '/gestoria/revision-contrato-alquiler',
+    nombre: 'Revisión Contrato Alquiler',
+    precio: precio('revision-alquiler'),
+    descripcion: 'Revisamos el borrador antes de firmar.',
+  },
+  {
+    slug: 'alquiler-habitaciones',
+    href: '/gestoria/contrato-alquiler-habitacion',
+    nombre: 'Alquiler Habitación',
+    precio: precio('alquiler-habitaciones'),
+    descripcion: 'Contrato de habitación en piso compartido.',
+  },
+  {
+    slug: 'alquiler-garaje-trastero',
+    href: '/gestoria/alquiler-garaje-trastero',
+    nombre: 'Alquiler Garaje o Trastero',
+    precio: precio('alquiler-garaje-trastero'),
+    descripcion: 'Contrato para plazas de garaje o trasteros.',
+  },
+]
+
 export const RELACIONADOS_ALQUILER: RelacionadoServicio[] = [
   {
     slug: 'revision-alquiler',

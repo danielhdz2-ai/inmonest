@@ -108,6 +108,11 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/zaragoza/contrato-alquiler`,           lastModified: today, changeFrequency: 'weekly', priority: 0.8 },
   { url: `${BASE_URL}/granada/contrato-alquiler`,            lastModified: today, changeFrequency: 'weekly', priority: 0.8 },
 
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/madrid`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/valencia`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/bilbao`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/sevilla`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+
   // Gestoría — formularios de solicitud (21 servicios)
   { url: `${BASE_URL}/gestoria/solicitar/arras-penitenciales`,           lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/solicitar/arras-confirmatorias`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },

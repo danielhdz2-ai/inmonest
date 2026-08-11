@@ -165,6 +165,13 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     ciudades: ['madrid', 'barcelona', 'sevilla', 'malaga', 'bilbao', 'valencia', 'zaragoza', 'asturias'],
   },
   {
+    id: 'alquiler-local-comercial',
+    nombre: 'Alquiler Local Comercial',
+    precioSlug: 'alquiler-local-comercial',
+    href: (c) => `/gestoria/alquiler-local-comercial/${c}`,
+    ciudades: ['madrid', 'valencia', 'bilbao', 'sevilla'],
+  },
+  {
     id: 'prestamo-particulares',
     nombre: 'Préstamo entre Particulares',
     precioSlug: 'prestamo-particulares',

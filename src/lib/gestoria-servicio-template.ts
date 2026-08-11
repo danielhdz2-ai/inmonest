@@ -15,7 +15,7 @@ export const SERVICIO_CIUDAD_LANDING: Record<string, string> = {
   'compra-completa-reserva-escritura': 'asesoria-compra',
   'asesoria-compra': 'asesoria-compra',
   'compra-completa-parking-trastero': 'gestoria-hub',
-  'alquiler-local-comercial': 'gestoria-hub',
+  'alquiler-local-comercial': 'alquiler-local-comercial',
   'alquiler-garaje-trastero': 'gestoria-hub',
   'alquiler-opcion-compra': 'gestoria-hub',
   'venta-completa-reserva-escritura': 'venta-completa',
@@ -43,7 +43,7 @@ export const SERVICIO_TESTIMONIO_LANDING: Record<string, string> = {
   'rescision-alquiler': 'revision-alquiler',
   'pack-revision-reserva-alquiler': 'revision-alquiler',
   'alquiler-habitaciones': 'alquiler-habitacion',
-  'alquiler-local-comercial': 'contrato-alquiler',
+  'alquiler-local-comercial': 'alquiler-local-comercial',
   'alquiler-opcion-compra': 'asesoria-compra',
   'prestamo-particulares': 'prestamo-particulares',
   'alquiler-garaje-trastero': 'compra-parking-trastero',
@@ -114,6 +114,7 @@ export function getCiudadSectionMeta(servicio: string): { title: string; subtitl
     'asesoria-compra': 'Asesoría de compra en tu ciudad',
     'venta-completa': 'Vende tu piso sin agencia en tu ciudad',
     'due-diligence': 'Due diligence pre-compra en tu ciudad',
+    'alquiler-local-comercial': 'Alquiler de local comercial en tu ciudad',
     'gestoria-hub': 'Gestoría inmobiliaria en tu ciudad',
   }
 
@@ -171,6 +172,18 @@ export function getGestorCopy(servicio: string, servicioNombre: string): GestorS
       bullets: esAlquiler
         ? ['Cláusulas conforme LAU 2026', 'Detección de fianzas ilegales', 'Informe para negociar antes de firmar']
         : ['Revisión de penitenciales y plazos', 'Detección de cargas ocultas', 'Informe antes de entregar la señal'],
+    }
+  }
+
+  if (servicio === 'alquiler-local-comercial') {
+    return {
+      rol: 'Gestor inmobiliario · Locales comerciales LAU',
+      intro: [
+        DEFAULT_GESTOR.intro[0]!,
+        `Cuando contratas el <strong>${servicioNombre.toLowerCase()}</strong>, tu gestor te explica el Título III LAU, qué cláusulas necesitas (tanteo, obras, traspaso) y cómo protegerte ante impagos o traspasos no autorizados.`,
+      ],
+      bio: 'Acompaña a propietarios y autónomos en alquileres de local comercial. Conoce licencias de actividad, derecho de tanteo y cláusulas habituales en operaciones entre particulares.',
+      bullets: ['Contrato LAU empresarial', 'Tanteo, obras y traspaso', 'Asesoramiento pre y post firma'],
     }
   }
 

@@ -159,6 +159,38 @@ const SLUG_OVERRIDES: Partial<Record<string, BlindajeContent>> = {
       'Soporte del gestor antes y después de entregar el contrato',
     ],
   },
+  'alquiler-local-comercial': {
+    eyebrow: 'Blindaje de la operación',
+    titulo: 'Local comercial con contrato LAU empresarial — no plantilla de vivienda',
+    intro:
+      'Los locales comerciales no tienen las prórrogas obligatorias del alquiler de vivienda. Sin un contrato del Título III LAU bien redactado, pierdes el derecho de tanteo, las obras quedan sin amortizar y el arrendatario puede traspasar el negocio sin tu consentimiento. Blindamos la operación para propietarios y empresarios particulares.',
+    partes: [
+      {
+        rol: 'Propietario',
+        titulo: 'Tu local protegido ante venta, obras y traspaso',
+        bullets: [
+          'Derecho de tanteo y retracto regulado con plazos y notificación.',
+          'Obras iniciales y mejoras: quién paga, quién las conserva al terminar.',
+          'Traspaso de negocio condicionado o prohibido según lo pactado.',
+        ],
+      },
+      {
+        rol: 'Arrendatario',
+        titulo: 'Actividad, licencia y renta con reglas claras',
+        bullets: [
+          'Actividad permitida y compatibilidad con licencia municipal.',
+          'Duración, actualización de renta (IPC o libre) y fianza detalladas.',
+          'Condiciones de resolución e impago sin cláusulas abusivas.',
+        ],
+      },
+    ],
+    garantias: [
+      'Contrato Título III LAU — uso distinto de vivienda',
+      'Redacción personalizada, no plantilla genérica',
+      'Gestor asignado en 24h · WhatsApp y teléfono',
+      'PDF firmable en 48h · Orientación sobre registro si aplica',
+    ],
+  },
   'contrato-compraventa': {
     eyebrow: 'Blindaje de la operación',
     titulo: 'Compraventa privada con cláusulas que aguantan ante notaría y registro',
@@ -434,11 +466,23 @@ export function getBlindajeContent(slug: string): BlindajeContent {
   return SLUG_OVERRIDES[slug] ?? FAMILIA_BLINDAJE[familiaPorSlug(slug)]
 }
 
+const SLUG_BENEFICIOS_OVERRIDES: Partial<Record<string, BeneficioItem[]>> = {
+  'alquiler-local-comercial': [
+    { titulo: 'LAU empresarial, no vivienda', desc: 'Contrato del Título III adaptado a locales, bajos comerciales y naves ligeras.' },
+    { titulo: 'Tanteo, obras y traspaso', desc: 'Cláusulas críticas redactadas con precisión — no omitidas como en plantillas genéricas.' },
+    { titulo: 'Sin comisión de agencia', desc: '145€ tarifa plana. No somos inmobiliaria: no cobramos porcentaje sobre la renta.' },
+    { titulo: 'Gestor antes de firmar', desc: 'Resolvemos dudas por teléfono o WhatsApp antes de entregar las llaves o la fianza.' },
+  ],
+}
+
 export function getBeneficiosServicio(slug: string): BeneficioItem[] {
-  return FAMILIA_BENEFICIOS[familiaPorSlug(slug)]
+  return SLUG_BENEFICIOS_OVERRIDES[slug] ?? FAMILIA_BENEFICIOS[familiaPorSlug(slug)]
 }
 
 export function getComoTrabajamosIntro(slug: string, nombre: string): string {
+  if (slug === 'alquiler-local-comercial') {
+    return `No enviamos plantillas por email y desaparecemos. Primero entendemos si eres propietario o arrendatario, revisamos actividad permitida, licencia, renta y obras del local — y solo después redactamos tu ${nombre.toLowerCase()}.`
+  }
   const familia = familiaPorSlug(slug)
   switch (familia) {
     case 'alquiler':
