@@ -19,9 +19,16 @@
       ]
     },
     {
+      "source": "/",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=60, stale-while-revalidate=300" },
+        { "key": "X-Robots-Tag", "value": "noai, noimageai" }
+      ]
+    },
+    {
       "source": "/(gestoria|vender-casa|agencias|publicar-anuncio|contacto|seguridad|blog|pisos)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=7200" },
+        { "key": "Cache-Control", "value": "public, s-maxage=60, stale-while-revalidate=300" },
         { "key": "X-Robots-Tag", "value": "noai, noimageai" }
       ]
     },
