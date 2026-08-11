@@ -17,10 +17,10 @@ export const metadata: Metadata = {
     'contrato lau zaragoza',
     'gestoria inmobiliaria zaragoza',
     'contrato arras zaragoza',
-    'abogado inmobiliario zaragoza',
+    'gestor inmobiliario zaragoza',
     'contrato compraventa zaragoza',
     'alquiler vivienda zaragoza',
-    'abogado alquiler zaragoza',
+    'gestoría alquiler zaragoza',
   ],
   alternates: {
     canonical: `${BASE_URL}/zaragoza/contrato-alquiler`,
@@ -102,10 +102,10 @@ const schemaData = {
         },
         {
           '@type': 'Question',
-          name: '¿Necesito un abogado para firmar un contrato de alquiler en Zaragoza?',
+          name: '¿Necesito un gestor experto para firmar un contrato de alquiler en Zaragoza?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'No es obligatorio, pero muy recomendable. Un abogado especializado revisa cláusulas abusivas, garantiza cumplimiento de la LAU y evita problemas futuros. En Inmonest ofrecemos revisión desde 60€.',
+            text: 'No es obligatorio, pero muy recomendable. Un gestor experto especializado revisa cláusulas abusivas, garantiza cumplimiento de la LAU y evita problemas futuros. En Inmonest ofrecemos revisión desde 60€.',
           },
         },
         {
@@ -166,7 +166,7 @@ export default function GestoriaZaragozaPage() {
         </div>
       </section>
 
-      {/* Intro: Por qué necesitas un abogado en Zaragoza */}
+      {/* Intro: Por qué necesitas un gestor experto en Zaragoza */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
           ¿Por qué necesitas una gestoría especializada en <span className="text-gold-500">Zaragoza</span>?
@@ -228,7 +228,7 @@ export default function GestoriaZaragozaPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Contrato de Arras Penitenciales</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Protege tu señal de compra en Zaragoza. Permite desistir de la operación con penalización justa. 
-                Redactado por abogados expertos en compraventa inmobiliaria.
+                Redactado por gestores expertos en compraventa inmobiliaria.
               </p>
               <div className="text-3xl font-bold text-gold-500 mb-4">145€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
@@ -250,12 +250,12 @@ export default function GestoriaZaragozaPage() {
               <div className="text-5xl mb-4">🔍</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Revisión de Contratos</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                ¿Te han dado un contrato para firmar en Zaragoza? Nuestros abogados lo revisan línea por línea, 
+                ¿Te han dado un contrato para firmar en Zaragoza? Nuestros gestores lo revisan línea por línea, 
                 detectan cláusulas abusivas y te asesoran antes de firmar.
               </p>
               <div className="text-3xl font-bold text-gold-500 mb-4">60€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
-                <li>✅ Revisión completa por abogado</li>
+                <li>✅ Revisión completa por gestor experto</li>
                 <li>✅ Detección cláusulas abusivas</li>
                 <li>✅ Informe detallado</li>
                 <li>✅ Asesoramiento personalizado</li>
@@ -351,10 +351,10 @@ export default function GestoriaZaragozaPage() {
 
             <details className="bg-white rounded-xl p-6 shadow-md">
               <summary className="text-xl font-bold text-gray-900 cursor-pointer">
-                ¿Necesito un abogado para firmar un contrato de alquiler en Zaragoza?
+                ¿Necesito un gestor experto para firmar un contrato de alquiler en Zaragoza?
               </summary>
               <p className="mt-4 text-gray-700 leading-relaxed">
-                No es obligatorio, pero <strong>muy recomendable</strong>. Un abogado especializado revisa cláusulas abusivas (ej: prohibición de mascotas sin justificación, 
+                No es obligatorio, pero <strong>muy recomendable</strong>. Un gestor experto especializado revisa cláusulas abusivas (ej: prohibición de mascotas sin justificación, 
                 penalizaciones excesivas), garantiza cumplimiento de la LAU y evita problemas futuros. En Inmonest ofrecemos revisión desde <strong>60€</strong>.
               </p>
             </details>
@@ -374,7 +374,7 @@ export default function GestoriaZaragozaPage() {
                 ¿Los contratos son válidos legalmente en Zaragoza?
               </summary>
               <p className="mt-4 text-gray-700 leading-relaxed">
-                Sí, 100%. Todos nuestros contratos están redactados por <strong>abogados colegiados</strong> especializados en derecho inmobiliario. 
+                Sí, 100%. Todos nuestros contratos están redactados por <strong>gestores inmobiliarios expertos</strong> especializados en derecho inmobiliario. 
                 Cumplen con la LAU, normativa aragonesa y jurisprudencia actualizada. Son totalmente ejecutables ante tribunales de Zaragoza.
               </p>
             </details>

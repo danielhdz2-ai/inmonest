@@ -30,7 +30,7 @@ function emailRevisionContratoAlquiler(nombre: string) {
       <p style="margin:0 0 8px;font-size:13px;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:0.5px">Revisión de contrato de alquiler</p>
       <p style="margin:0 0 4px;font-size:16px;font-weight:700;color:#111827">Desde 60 €</p>
       <p style="margin:0;font-size:14px;color:#6b7280;line-height:1.5">
-        Abogados revisan tu contrato en 24h: cláusulas ilegales, fianza, garantías e informe de conformidad.
+        Gestores revisan tu contrato en 24h: cláusulas ilegales, fianza, garantías e informe de conformidad.
       </p>
     </div>
     <p style="color:#6b7280;font-size:14px;line-height:1.6;margin:0 0 24px">
@@ -57,7 +57,7 @@ function emailRedaccionContratoAlquiler(nombre: string) {
     <h1 style="margin:0 0 8px;font-size:22px;color:#111827">Contrato de alquiler LAU adaptado a 2026</h1>
     <p style="color:#6b7280;font-size:15px;line-height:1.6;margin:0 0 20px">
       Hola <strong>${esc(displayName)}</strong>, si vas a alquilar una vivienda, un contrato genérico de internet
-      puede dejarte desprotegido. En Inmonest redactamos <strong>contratos de alquiler LAU</strong> por abogados,
+      puede dejarte desprotegido. En Inmonest redactamos <strong>contratos de alquiler LAU</strong> por gestores expertos,
       alineados con la Ley de Vivienda 2026.
     </p>
     <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:16px 20px;margin-bottom:24px">

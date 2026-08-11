@@ -161,7 +161,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     pasos: [
       { num: '01', titulo: 'Solicita el contrato', desc: 'Facilita los datos del propietario, inquilino, piso y condiciones económicas. El formulario es guiado y claro.' },
-      { num: '02', titulo: 'Redacción personalizada', desc: 'Nuestros abogados redactan un contrato a medida, verificando que todas las cláusulas cumplen la legislación vigente.' },
+      { num: '02', titulo: 'Redacción personalizada', desc: 'Nuestros gestores redactan un contrato a medida, verificando que todas las cláusulas cumplen la legislación vigente.' },
       { num: '03', titulo: 'Listo para firmar', desc: 'Recibes el contrato PDF en 48h, firmable digitalmente. El inventario de mobiliario se incluye como anexo.' },
     ],
     faq: [
@@ -320,7 +320,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     pasos: [
       { num: '01', titulo: 'Solicita el contrato', desc: 'Facilita los datos del propietario, arrendatario, local y condiciones económicas. Incluye la actividad que vas a desarrollar.' },
-      { num: '02', titulo: 'Revisión por abogado', desc: 'Nuestros abogados verifican la compatibilidad del uso con la licencia, redactan el contrato y lo adaptan a las condiciones pactadas.' },
+      { num: '02', titulo: 'Revisión por gestor experto', desc: 'Nuestros gestores verifican la compatibilidad del uso con la licencia, redactan el contrato y lo adaptan a las condiciones pactadas.' },
       { num: '03', titulo: 'Entrega en 48h', desc: 'Recibes el PDF firmable con todas las cláusulas específicas para actividades comerciales. Sin letra pequeña.' },
     ],
     faq: [
@@ -373,7 +373,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     pasos: [
       { num: '01', titulo: 'Solicita el contrato', desc: 'Facilita datos de comprador, vendedor, inmueble, renta mensual, precio de compra y plazo de la opción.' },
-      { num: '02', titulo: 'Revisión jurídica completa', desc: 'Nuestros abogados verifican la nota simple, redactan el doble contrato y calculan el descuento de rentas sobre el precio final.' },
+      { num: '02', titulo: 'Revisión jurídica completa', desc: 'Nuestros gestores verifican la nota simple, redactan el doble contrato y calculan el descuento de rentas sobre el precio final.' },
       { num: '03', titulo: 'Entrega en 48h', desc: 'Recibes el PDF con los dos contratos integrados (arrendamiento + opción), listo para firma digital de ambas partes.' },
     ],
     faq: [
@@ -426,7 +426,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     pasos: [
       { num: '01', titulo: 'Solicita el contrato', desc: 'Facilita los datos del prestamista, prestatario, importe, plazo e interés pactado. El formulario es guiado y confidencial.' },
-      { num: '02', titulo: 'Redacción y revisión fiscal', desc: 'Nuestros abogados redactan el contrato y verifican que el tratamiento fiscal sea correcto para ambas partes ante Hacienda.' },
+      { num: '02', titulo: 'Redacción y revisión fiscal', desc: 'Nuestros gestores redactan el contrato y verifican que el tratamiento fiscal sea correcto para ambas partes ante Hacienda.' },
       { num: '03', titulo: 'Entrega en 48h', desc: 'Recibes el PDF con el contrato de préstamo, instrucciones de firma y nota fiscal con las obligaciones tributarias.' },
     ],
     faq: [
@@ -566,7 +566,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     categoria: 'Servicios Premium',
     tagline: 'El servicio más completo de gestoría inmobiliaria: te acompañamos desde la reserva hasta la escritura',
     descripcion:
-      'Comprar una vivienda implica meses de trámites, documentación compleja y riesgos legales en cada etapa. La mayoría de compradores firman contratos sin entender las cláusulas, aceptan honorarios abusivos de agencias, o descubren problemas registrales cuando ya es tarde. Nuestro servicio integral te protege en todo el proceso: revisamos contratos con agencias, analizamos documentación registral y urbanística, coordinamos con la notaría y te asesoramos hasta que firmes la escritura. Es como tener un abogado inmobiliario de confianza a tu lado en cada paso.',
+      'Comprar una vivienda implica meses de trámites, documentación compleja y riesgos legales en cada etapa. La mayoría de compradores firman contratos sin entender las cláusulas, aceptan honorarios abusivos de agencias, o descubren problemas registrales cuando ya es tarde. Nuestro servicio integral te protege en todo el proceso: revisamos contratos con agencias, analizamos documentación registral y urbanística, coordinamos con la notaría y te asesoramos hasta que firmes la escritura. Es como tener un gestor experto inmobiliario de confianza a tu lado en cada paso.',
     image: '/gestoria4.jpg',
     imageAlt: 'Servicio completo de gestoría para compraventa de vivienda',
     paraQuien: [
@@ -687,7 +687,7 @@ const SERVICIOS: Record<string, ServiceData> = {
       'Inquilinos que van a reservar un piso y firmar contrato de alquiler',
       'Personas que quieren revisar la reserva antes de entregar dinero',
       'Casos donde la inmobiliaria o propietario ofrece su propio contrato',
-      'Alquileres donde se prefiere tener todo revisado por un abogado',
+      'Alquileres donde se prefiere tener todo revisado por un gestor experto',
     ],
     incluye: [
       'Revisión completa del contrato de reserva que te ofrezcan',
@@ -853,7 +853,7 @@ export async function generateMetadata({
   const seoDescription =
     servicio === 'contrato-alquiler'
       ? `Contrato de alquiler de vivienda habitual adaptado a LAU y Ley de Vivienda 2026. Redactado por gestoría experta. ${data.precio}€ IVA incl. PDF firmable en 48h.`
-      : `${data.tagline}. Redactado por abogados especializados. Desde ${data.precio} €. Entrega en 48h.`
+      : `${data.tagline}. Redactado por gestores especializados. Desde ${data.precio} €. Entrega en 48h.`
 
   return {
     title: seoTitle,

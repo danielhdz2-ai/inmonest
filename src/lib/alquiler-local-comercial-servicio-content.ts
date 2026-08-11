@@ -2,17 +2,17 @@ import { getPrecioServicio } from './gestoria-catalogo'
 
 export const ALQUILER_LOCAL_COMERCIAL_PRECIO = getPrecioServicio('alquiler-local-comercial') ?? 145
 
-/** Rango orientativo abogado mercantilista / inmobiliario por contrato */
-export function abogadoLocalComercialMin() {
+/** Rango orientativo gestoría tradicional presencial por contrato */
+export function mercadoTradicionalMin() {
   return 350
 }
 
-export function abogadoLocalComercialMax() {
+export function mercadoTradicionalMax() {
   return 650
 }
 
-export function ahorroVsAbogado(precio: number = ALQUILER_LOCAL_COMERCIAL_PRECIO) {
-  return abogadoLocalComercialMin() - precio
+export function ahorroVsMercadoTradicional(precio: number = ALQUILER_LOCAL_COMERCIAL_PRECIO) {
+  return mercadoTradicionalMin() - precio
 }
 
 export const LOCAL_COMERCIAL_COMPARATIVA = [

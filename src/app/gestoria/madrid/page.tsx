@@ -22,7 +22,7 @@ const BASE_URL = 'https://inmonest.com'
 const ciudadImage = getCiudadImage('madrid')
 
 const META_DESCRIPTION =
-  'Gestoría inmobiliaria en Madrid para particulares. Contratos LAU desde 145€, arras 145€. Sin comisiones de agencia. Abogados expertos, entrega 48h.'
+  'Gestoría inmobiliaria en Madrid para particulares. Contratos LAU desde 145€, arras 145€. Sin comisiones de agencia. Gestores expertos, entrega 48h.'
 
 export const metadata: Metadata = {
   title: 'Gestoría inmobiliaria Madrid desde 61€',
@@ -75,7 +75,7 @@ export default function GestoriaMadridPage() {
                   Gestoría Inmobiliaria <span className="text-gold-500">Madrid</span> para Particulares
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
-                  <strong>Gestoría inmobiliaria para particulares</strong> en Madrid. Asesor experto asignado, sin comisiones de agencia (3-5%) y contratos redactados por abogados especializados en el mercado madrileño.
+                  <strong>Gestoría inmobiliaria para particulares</strong> en Madrid. Asesor experto asignado, sin comisiones de agencia (3-5%) y contratos redactados por gestores especializados en el mercado madrileño.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link

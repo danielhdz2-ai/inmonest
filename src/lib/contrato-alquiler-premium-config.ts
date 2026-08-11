@@ -96,7 +96,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     meta: {
       title: 'Contrato de alquiler Bilbao desde 145€',
       description:
-        'Contrato de alquiler LAU en Bilbao por 145€. Entrega 48h, Ley Vivienda 2026. Válido en Bizkaia, Getxo, Barakaldo y País Vasco. Redactado por abogados, no plantilla.',
+        'Contrato de alquiler LAU en Bilbao por 145€. Entrega 48h, Ley Vivienda 2026. Válido en Bizkaia, Getxo, Barakaldo y País Vasco. Redactado por gestores expertos, no plantilla.',
       keywords: [
         'contratar contrato alquiler Bilbao',
         'comprar contrato alquiler Bilbao',

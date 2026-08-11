@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     'contrato lau granada',
     'gestoria inmobiliaria granada',
     'contrato arras granada',
-    'abogado inmobiliario granada',
+    'gestor inmobiliario granada',
     'alquiler centro granada',
     'contrato temporal granada',
   ],
@@ -52,7 +52,7 @@ const schemaData = {
     {
       '@type': 'LegalService',
       name: 'Contratos de Alquiler Granada - Inmonest',
-      description: 'Servicio especializado en contratos de alquiler en Granada. Estudiantes, LAU, arras penitenciales y compraventa. Abogados expertos en normativa andaluza.',
+      description: 'Servicio especializado en contratos de alquiler en Granada. Estudiantes, LAU, arras penitenciales y compraventa. Gestores expertos en normativa andaluza.',
       url: `${BASE_URL}/granada/contrato-alquiler`,
       image: `${BASE_URL}/gestoria2.jpg`,
       areaServed: {
@@ -102,10 +102,10 @@ const schemaData = {
         },
         {
           '@type': 'Question',
-          name: '¿Necesito abogado para comprar un piso en Granada?',
+          name: '¿Necesito gestoría para comprar un piso en Granada?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'No es obligatorio, pero muy recomendable. Un abogado redacta el contrato de arras para proteger tu señal (10-15% del precio), revisa la documentación legal del inmueble y garantiza que la compraventa se hace correctamente.',
+            text: 'No es obligatorio, pero muy recomendable. Un gestor experto redacta el contrato de arras para proteger tu señal (10-15% del precio), revisa la documentación legal del inmueble y garantiza que la compraventa se hace correctamente.',
           },
         },
         {
@@ -200,7 +200,7 @@ export default function GestoriaGranadaPage() {
             Servicios de Gestoría en Granada
           </h2>
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Contratos redactados por abogados especializados en el mercado inmobiliario granadino
+            Contratos redactados por gestores especializados en el mercado inmobiliario granadino
           </p>
           <div className="grid md:grid-cols-3 gap-8">
             {/* Servicio 1 */}
@@ -258,7 +258,7 @@ export default function GestoriaGranadaPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-3">Contrato de Arras</h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 Protege tu compra en Granada. Arras penitenciales para asegurar la señal (10-15% del precio). 
-                Permite desistir con penalización justa. Redactado por abogados.
+                Permite desistir con penalización justa. Redactado por gestores expertos.
               </p>
               <div className="text-3xl font-bold text-gold-500 mb-4">145€</div>
               <ul className="text-sm text-gray-600 space-y-2 mb-6">
@@ -388,10 +388,10 @@ export default function GestoriaGranadaPage() {
 
             <details className="bg-white rounded-xl p-6 shadow-md">
               <summary className="text-xl font-bold text-gray-900 cursor-pointer">
-                ¿Necesito abogado para comprar un piso en Granada?
+                ¿Necesito gestoría para comprar un piso en Granada?
               </summary>
               <p className="mt-4 text-gray-700 leading-relaxed">
-                No es obligatorio, pero <strong>muy recomendable</strong>. Un abogado redacta el contrato de arras para proteger tu señal (10-15% del precio, 
+                No es obligatorio, pero <strong>muy recomendable</strong>. Un gestor experto redacta el contrato de arras para proteger tu señal (10-15% del precio, 
                 unos 15,000-22,500€ en Granada), revisa la documentación legal del inmueble (nota simple, certificado energético, IBI) 
                 y garantiza que la compraventa se hace correctamente. En Inmonest ofrecemos este servicio desde <strong>145€</strong>.
               </p>
@@ -402,7 +402,7 @@ export default function GestoriaGranadaPage() {
                 ¿Cuánto cuesta un contrato de arras en Granada?
               </summary>
               <p className="mt-4 text-gray-700 leading-relaxed">
-                Redactamos contratos de arras penitenciales en Granada desde <strong>145€</strong>. Incluye asesoramiento completo por abogado, 
+                Redactamos contratos de arras penitenciales en Granada desde <strong>145€</strong>. Incluye asesoramiento completo por gestor experto, 
                 cláusulas de desistimiento claras (si el comprador se retracta pierde la señal, si el vendedor desiste debe devolver el doble), 
                 y protección legal para ambas partes. Válido ante notario.
               </p>
@@ -413,7 +413,7 @@ export default function GestoriaGranadaPage() {
                 ¿Los contratos son válidos en Granada?
               </summary>
               <p className="mt-4 text-gray-700 leading-relaxed">
-                Sí, 100%. Todos nuestros contratos están redactados por <strong>abogados colegiados</strong> especializados en derecho inmobiliario andaluz. 
+                Sí, 100%. Todos nuestros contratos están redactados por <strong>gestores inmobiliarios expertos</strong> especializados en derecho inmobiliario andaluz. 
                 Cumplen con la LAU, normativa de la Junta de Andalucía y jurisprudencia actualizada. Son ejecutables legalmente ante tribunales de Granada.
               </p>
             </details>
@@ -428,7 +428,7 @@ export default function GestoriaGranadaPage() {
             ¿Necesitas un contrato inmobiliario en Granada?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Más de 90 clientes en Granada confían en nuestros abogados. Especializados en zona universitaria, 
+            Más de 90 clientes en Granada confían en nuestros gestores. Especializados en zona universitaria, 
             alquileres para estudiantes y compraventa de vivienda. Servicio 100% online.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -165,7 +165,7 @@ export default function PisosFondoBancarioPage() {
         <div className="mt-8 bg-amber-50 border border-amber-200 rounded-2xl p-7">
           <h2 className="text-lg font-bold text-gray-900 mb-2">¿Encontraste un chollo bancario? Asegura la operación con arras</h2>
           <p className="text-gray-600 text-sm mb-5">
-            Antes de cerrar cualquier compraventa, protégete con un contrato de arras redactado por abogados especializados. Entrega en 48h.
+            Antes de cerrar cualquier compraventa, protégete con un contrato de arras redactado por gestores especializados. Entrega en 48h.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/pisos?origen=fondos-bancarios" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">

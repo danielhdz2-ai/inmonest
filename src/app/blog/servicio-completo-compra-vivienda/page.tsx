@@ -185,7 +185,7 @@ export default function ServicioCompletoCompraPost() {
               <li><strong>WhatsApp</strong>: comunicación ágil durante todo el proceso.</li>
             </ul>
             <p>
-              No estás solo en ningún momento. Desde la reserva hasta la firma ante notario, tienes un equipo de abogados
+              No estás solo en ningún momento. Desde la reserva hasta la firma ante notario, tienes un equipo de gestores expertos
               especializados a tu disposición.
             </p>
 
@@ -289,7 +289,7 @@ export default function ServicioCompletoCompraPost() {
             <h2>Conclusión</h2>
             <p>
               Comprar una vivienda sin asesoramiento jurídico es asumir riesgos innecesarios. Por 550 € tienes un equipo
-              de abogados especializados que revisan cada paso, te protegen de errores costosos y te acompañan hasta que
+              de gestores especializados que revisan cada paso, te protegen de errores costosos y te acompañan hasta que
               firmes la escritura.
             </p>
             <p>

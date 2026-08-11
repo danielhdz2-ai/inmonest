@@ -75,7 +75,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
           </p>
           <ol className="list-decimal list-inside text-gray-700 space-y-4 mb-6">
             <li>
-              <strong>Redacción de contratos inmobiliarios</strong> — Contratos de arras, alquiler LAU, compraventa, rescisión, opción de compra, etc. Redactados por <strong>abogados expertos</strong>, no plantillas genéricas de internet.
+              <strong>Redacción de contratos inmobiliarios</strong> — Contratos de arras, alquiler LAU, compraventa, rescisión, opción de compra, etc. Redactados por <strong>gestores expertos</strong>, no plantillas genéricas de internet.
             </li>
             <li>
               <strong>Revisión legal de documentación</strong> — Analizan contratos ya firmados para detectar cláusulas ilegales, errores, riesgos o trampas que puedan costarte dinero.
@@ -160,9 +160,9 @@ export default function QueEsGestoriaInmobiliariaPage() {
             </div>
 
             <div className="bg-blue-50 p-6 rounded-lg border border-blue-100">
-              <p className="font-bold text-blue-900 mb-2">✓ Te dan un contrato para firmar y quieres que un abogado lo revise</p>
+              <p className="font-bold text-blue-900 mb-2">✓ Te dan un contrato para firmar y quieres que un gestor experto lo revise</p>
               <p className="text-blue-800">
-                Por <strong>60€</strong> un abogado especializado detecta cláusulas abusivas, errores o trampas que podrían costarte miles de euros.
+                Por <strong>60€</strong> un gestor experto especializado detecta cláusulas abusivas, errores o trampas que podrían costarte miles de euros.
               </p>
             </div>
 
@@ -251,7 +251,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
           <div className="bg-gradient-to-r from-black to-black p-8 rounded-2xl text-white mb-8">
             <h3 className="text-2xl font-bold mb-4">¿Necesitas servicios de gestoría inmobiliaria?</h3>
             <p className="text-white/90 mb-6">
-              En <strong>Inmonest</strong> somos una gestoría inmobiliaria online con abogados especializados. Contratos redactados a medida, revisión legal profesional y asesoría completa. <strong>Desde 29€</strong>.
+              En <strong>Inmonest</strong> somos una gestoría inmobiliaria online con gestores especializados. Contratos redactados a medida, revisión legal profesional y asesoría completa. <strong>Desde 29€</strong>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -277,7 +277,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
             Una <strong>gestoría inmobiliaria</strong> es tu mejor aliado en operaciones de compra, venta o alquiler cuando quieres <strong>seguridad jurídica</strong> sin pagar las comisiones abusivas de una agencia (3-5% del precio).
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
-            Por menos de <strong>200€</strong> puedes tener contratos redactados por abogados expertos, revisión legal profesional y asesoría durante todo el proceso. Es una <strong>inversión mínima</strong> comparada con los riesgos de usar plantillas genéricas de internet o firmar contratos sin revisar.
+            Por menos de <strong>200€</strong> puedes tener contratos redactados por gestores expertos, revisión legal profesional y asesoría durante todo el proceso. Es una <strong>inversión mínima</strong> comparada con los riesgos de usar plantillas genéricas de internet o firmar contratos sin revisar.
           </p>
 
         </div>

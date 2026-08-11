@@ -8,7 +8,7 @@ const FECHA = '2026-05-27'
 export const metadata: Metadata = {
   title: 'Cuánto cuesta un contrato de arras 2026',
   description:
-    'Descubre cuánto cobran las gestorías por hacer un contrato de arras en España: desde 145€ online hasta 600€ presencial. Comparativa completa de precios, qué incluye cada servicio y cuándo necesitas un abogado.',
+    'Descubre cuánto cobran las gestorías por hacer un contrato de arras en España: desde 145€ online hasta 600€ presencial. Comparativa completa de precios, qué incluye cada servicio y cuándo necesitas un gestor experto.',
   keywords: 'cuánto cuesta contrato arras, precio contrato arras, coste gestoría arras, cuánto cobran por arras, contrato arras precio, gestoría inmobiliaria precio',
   alternates: { canonical: '/blog/cuanto-cuesta-contrato-arras' },
   openGraph: {
@@ -82,10 +82,10 @@ export default function CuantoCuestaArrasPage() {
       },
       {
         '@type': 'Question',
-        name: '¿Cuándo necesito un abogado en vez de una gestoría?',
+        name: '¿Cuándo necesito un gestor experto en vez de una gestoría?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Necesitas un abogado si: el vendedor no es el único propietario, hay deudas o cargas sobre la vivienda que no están claras, la compraventa es entre familiares con herencias de por medio, el inmueble tiene embargo, precinto o litigio judicial, o el vendedor pide condiciones especiales fuera de lo habitual. En casos complejos, un abogado especializado cobra entre 600€ y 1.200€.',
+          text: 'Necesitas un gestor experto si: el vendedor no es el único propietario, hay deudas o cargas sobre la vivienda que no están claras, la compraventa es entre familiares con herencias de por medio, el inmueble tiene embargo, precinto o litigio judicial, o el vendedor pide condiciones especiales fuera de lo habitual. En casos complejos, un gestor experto especializado cobra entre 600€ y 1.200€.',
         },
       },
       {
@@ -93,7 +93,7 @@ export default function CuantoCuestaArrasPage() {
         name: '¿La señal de las arras es diferente del precio del contrato?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Sí, son conceptos diferentes. La señal (normalmente 5-10% del precio de venta) es el dinero que entregas al vendedor. El precio del contrato (145€-600€) es lo que cobra la gestoría o abogado por redactar el documento. Ejemplo: compras un piso de 300.000€, das 15.000€ de señal al vendedor, y pagas 145€ a Inmonest por redactar el contrato de arras.',
+          text: 'Sí, son conceptos diferentes. La señal (normalmente 5-10% del precio de venta) es el dinero que entregas al vendedor. El precio del contrato (145€-600€) es lo que cobra la gestoría por redactar el documento. Ejemplo: compras un piso de 300.000€, das 15.000€ de señal al vendedor, y pagas 145€ a Inmonest por redactar el contrato de arras.',
         },
       },
       {
@@ -149,7 +149,7 @@ export default function CuantoCuestaArrasPage() {
             <ul className="text-sm space-y-2 mb-0">
               <li><strong>Gestoría online:</strong> 145€-180€ (entrega 48-72h por email)</li>
               <li><strong>Despacho tradicional:</strong> 300€-600€ (cita presencial, más lento)</li>
-              <li><strong>Abogado especializado:</strong> 600€-1.200€ (solo si hay problemas complejos)</li>
+              <li><strong>Gestoría tradicional presencial:</strong> 600€-1.200€ (solo si hay problemas complejos)</li>
               <li><strong>Plantilla gratuita:</strong> 0€ (pero riesgo alto de errores que cuestan miles)</li>
             </ul>
           </div>
@@ -190,7 +190,7 @@ export default function CuantoCuestaArrasPage() {
                   <td className="border border-gray-300 px-4 py-2">Redacción + cita presencial, impresión en papel</td>
                 </tr>
                 <tr>
-                  <td className="border border-gray-300 px-4 py-2"><strong>Abogado especializado</strong></td>
+                  <td className="border border-gray-300 px-4 py-2"><strong>Gestoría tradicional presencial</strong></td>
                   <td className="border border-gray-300 px-4 py-2">600€-1.200€</td>
                   <td className="border border-gray-300 px-4 py-2">7-15 días</td>
                   <td className="border border-gray-300 px-4 py-2">Redacción + análisis jurídico completo + negociación con vendedor</td>
@@ -244,12 +244,12 @@ export default function CuantoCuestaArrasPage() {
             </li>
           </ol>
 
-          <h2>¿Cuándo necesitas un abogado en vez de una gestoría?</h2>
+          <h2>¿Cuándo necesitas un gestor experto en vez de una gestoría?</h2>
           <p>
             Un contrato de arras estándar (comprador particular compra a vendedor particular, vivienda sin cargas ni problemas) lo puede redactar perfectamente una gestoría por 145€-180€.
           </p>
           <p>
-            <strong>Necesitas un abogado especializado (600€-1.200€) si:</strong>
+            <strong>Necesitas un gestor experto especializado (600€-1.200€) si:</strong>
           </p>
           <ul>
             <li>El vendedor no es el único propietario (herencia sin liquidar, divorcio en trámite, cotitularidad conflictiva).</li>
@@ -260,7 +260,7 @@ export default function CuantoCuestaArrasPage() {
             <li>Compras un <strong>local comercial</strong> o inmueble singular (nave industrial, terreno rústico) que requiere análisis urbanístico.</li>
           </ul>
           <p>
-            En esos casos, un abogado no solo redacta el contrato, sino que investiga a fondo el Registro de la Propiedad, negocia directamente con el vendedor y su representante legal, y te asesora sobre si debes seguir adelante o no con la operación.
+            En esos casos, un gestor experto no solo redacta el contrato, sino que investiga a fondo el Registro de la Propiedad, negocia directamente con el vendedor y su representante legal, y te asesora sobre si debes seguir adelante o no con la operación.
           </p>
 
           <h2>¿La señal de las arras cuenta como parte del precio del contrato?</h2>
@@ -269,7 +269,7 @@ export default function CuantoCuestaArrasPage() {
           </p>
           <ul>
             <li><strong>La señal (arras):</strong> el dinero que tú entregas al vendedor (por ejemplo, 15.000€ si el piso cuesta 300.000€ y acordáis el 5%). Ese dinero va al vendedor, no a la gestoría.</li>
-            <li><strong>El precio del contrato:</strong> lo que cobra la gestoría o abogado por redactar el documento legal (145€-600€). Ese dinero va al profesional que redacta, no al vendedor.</li>
+            <li><strong>El precio del contrato:</strong> lo que cobra la gestoría por redactar el documento legal (145€-600€). Ese dinero va al profesional que redacta, no al vendedor.</li>
           </ul>
           <p>
             <strong>Ejemplo real:</strong>
@@ -284,10 +284,10 @@ export default function CuantoCuestaArrasPage() {
 
           <h2>¿Merece la pena contratar revisión del contrato si lo hace el vendedor?</h2>
           <p>
-            Imagina esta situación: el vendedor te dice "ya tengo el contrato de arras hecho por mi abogado, solo tienes que firmarlo". ¿Lo firmas directamente?
+            Imagina esta situación: el vendedor te dice "ya tengo el contrato de arras hecho por su gestoría, solo tienes que firmarlo". ¿Lo firmas directamente?
           </p>
           <p>
-            <strong>Rotundamente NO.</strong> Ese contrato lo ha redactado el abogado del vendedor, que trabaja para proteger los intereses del vendedor, no los tuyos.
+            <strong>Rotundamente NO.</strong> Ese contrato lo ha redactado la gestoría del vendedor, que trabaja para proteger los intereses del vendedor, no los tuyos.
           </p>
           <p>
             Casos reales que hemos visto en <Link href="/gestoria/revision-contrato-arras" className="text-blue-600 hover:underline">revisiones de contratos de arras</Link> (servicio de 60€):
@@ -365,7 +365,7 @@ export default function CuantoCuestaArrasPage() {
             <li>Qué pasa si el vendedor incumple</li>
           </ul>
           <p>
-            Resultado: pleito judicial de 2-3 años, abogado que cobra 3.000€-5.000€, y <strong>probablemente pierdas el caso</strong> por falta de pruebas documentales.
+            Resultado: pleito judicial de 2-3 años, gestoría externa que cobra 3.000€-5.000€, y <strong>probablemente pierdas el caso</strong> por falta de pruebas documentales.
           </p>
           <p>
             <strong>Por 145€ evitas todo esto.</strong> El contrato de arras es la prueba documental firmada por ambas partes que un juez reconoce de inmediato.
@@ -404,9 +404,9 @@ export default function CuantoCuestaArrasPage() {
             El coste de un error (perder 20.000€ de señal, por ejemplo) es 100 veces superior al coste de un contrato profesional.
           </p>
 
-          <h3>¿Cuándo necesito un abogado en vez de una gestoría?</h3>
+          <h3>¿Cuándo necesito un gestor experto en vez de una gestoría?</h3>
           <p>
-            Necesitas un abogado (600€-1.200€) si:
+            Necesitas un gestor experto (600€-1.200€) si:
           </p>
           <ul>
             <li>El vendedor no es el único propietario (herencia, divorcio, cotitularidad)</li>
@@ -425,7 +425,7 @@ export default function CuantoCuestaArrasPage() {
           </p>
           <ul>
             <li><strong>La señal</strong> (normalmente 5-10% del precio de venta) es el dinero que entregas al vendedor</li>
-            <li><strong>El precio del contrato</strong> (145€-600€) es lo que cobra la gestoría o abogado por redactar el documento</li>
+            <li><strong>El precio del contrato</strong> (145€-600€) es lo que cobra la gestoría por redactar el documento</li>
           </ul>
           <p>
             <strong>Ejemplo:</strong> Compras un piso de 300.000€, das 15.000€ de señal al vendedor, y pagas 145€ a Inmonest por redactar el contrato de arras. Total: 15.145€ ese día.
@@ -453,7 +453,7 @@ export default function CuantoCuestaArrasPage() {
             <strong>Si prefieres tratar presencialmente:</strong> 300€-450€ en un despacho tradicional. Mismo contrato, pero pagas la oficina física y las citas.
           </p>
           <p>
-            <strong>Si tu caso es complejo (herencias, embargos, litigios):</strong> 600€-1.200€ en un abogado especializado que investigue a fondo y negocie por ti.
+            <strong>Si tu caso es complejo (herencias, embargos, litigios):</strong> 600€-1.200€ en un gestor experto especializado que investigue a fondo y negocie por ti.
           </p>
           <p>
             <strong>Si usas plantilla gratuita:</strong> 0€ hoy, pero riesgo de perder 10.000€-30.000€ mañana si hay un error o conflicto.

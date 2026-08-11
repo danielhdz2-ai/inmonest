@@ -21,10 +21,10 @@ export const metadata: Metadata = {
   keywords: [
     'gestoria inmobiliaria sevilla',
     'contrato alquiler sevilla',
-    'abogado inmobiliario sevilla',
+    'gestor inmobiliario sevilla',
     'contrato arras sevilla',
     'gestoria contratos sevilla',
-    'abogado compraventa sevilla',
+    'gestoría compraventa sevilla',
     'contrato lau sevilla',
     'revision contrato sevilla',
   ],
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Gestoría inmobiliaria Sevilla desde 145€',
-    description: 'Gestoría inmobiliaria en Sevilla 100% online. Contratos de alquiler LAU, arras penitenciales y compraventa. Abogados especializados en normativa andaluza.',
+    description: 'Gestoría inmobiliaria en Sevilla 100% online. Contratos de alquiler LAU, arras penitenciales y compraventa. Gestores especializados en normativa andaluza.',
     url: `${BASE_URL}/gestoria/sevilla`,
     type: 'website',
     siteName: 'Inmonest',
@@ -68,7 +68,7 @@ const schemaData = {
     {
       '@type': 'LegalService',
       name: 'Gestoría Inmobiliaria Sevilla - Inmonest',
-      description: 'Gestoría 100% online especializada en contratos inmobiliarios en Sevilla. Redacción y revisión de alquiler LAU, arras, compraventa y rescisión por abogados colegiados.',
+      description: 'Gestoría 100% online especializada en contratos inmobiliarios en Sevilla. Redacción y revisión de alquiler LAU, arras, compraventa y rescisión por gestores inmobiliarios expertos.',
       url: `${BASE_URL}/gestoria/sevilla`,
       image: `${BASE_URL}${ciudadImage.src}`,
       areaServed: {
@@ -119,7 +119,7 @@ const schemaData = {
           name: '¿Puedo hacer un contrato de alquiler online en Sevilla sin ir a ningún sitio?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Sí, nuestro servicio es 100% online. Rellenas un formulario, un abogado redacta tu contrato adaptado a Sevilla y lo recibes en 48h por email. Sin desplazamientos.',
+            text: 'Sí, nuestro servicio es 100% online. Rellenas un formulario, un gestor experto redacta tu contrato adaptado a Sevilla y lo recibes en 48h por email. Sin desplazamientos.',
           },
         },
         {
@@ -127,7 +127,7 @@ const schemaData = {
           name: '¿Los contratos son válidos en Sevilla?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Totalmente. Todos nuestros contratos están redactados por abogados colegiados especializados en derecho inmobiliario andaluz. Cumplen con la LAU y normativa específica de Andalucía.',
+            text: 'Totalmente. Todos nuestros contratos están redactados por gestores inmobiliarios expertos especializados en derecho inmobiliario andaluz. Cumplen con la LAU y normativa específica de Andalucía.',
           },
         },
         {
@@ -135,7 +135,7 @@ const schemaData = {
           name: '¿Qué incluye el servicio de gestoría inmobiliaria en Sevilla?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'Redacción personalizada del contrato, revisión de cláusulas por abogado, asesoramiento legal completo, revisiones ilimitadas hasta que quedes satisfecho y entrega en 48h.',
+            text: 'Redacción personalizada del contrato, revisión de cláusulas por gestor experto, asesoramiento legal completo, revisiones ilimitadas hasta que quedes satisfecho y entrega en 48h.',
           },
         },
       ],
@@ -168,7 +168,7 @@ export default function GestoriaSevillaPage() {
             Gestoría Inmobiliaria Online en <span className="text-gold-300">Sevilla</span>
           </h1>
           <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            <strong>Gestoría inmobiliaria para particulares</strong> en Sevilla. Contratos de alquiler, arras y compraventa redactados por <strong className="text-gold-300">abogados expertos</strong> en normativa andaluza.  
+            <strong>Gestoría inmobiliaria para particulares</strong> en Sevilla. Contratos de alquiler, arras y compraventa redactados por <strong className="text-gold-300">gestores expertos</strong> en normativa andaluza.  
             Sin comisiones de agencia. <strong>Contrato LAU desde {GESTORIA_PRECIOS.contratoAlquiler}€.</strong> Entrega en 48 horas.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -195,7 +195,7 @@ export default function GestoriaSevillaPage() {
       <CiudadHubServiciosGrid
         ciudad="Sevilla"
         ciudadSlug="sevilla"
-        subtitulo="Redactados por abogados colegiados con experiencia en el mercado inmobiliario sevillano. Precios iguales que en nuestra gestoría online."
+        subtitulo="Redactados por gestores inmobiliarios expertos con experiencia en el mercado inmobiliario sevillano. Precios iguales que en nuestra gestoría online."
       />
 
       <CiudadHubComoTrabajamos ciudad="Sevilla" />
@@ -235,7 +235,7 @@ export default function GestoriaSevillaPage() {
 
           <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">¿Por qué contratar una gestoría inmobiliaria en Sevilla?</h3>
           <p>
-            El mercado sevillano tiene particularidades que solo conocen abogados especializados:
+            El mercado sevillano tiene particularidades que solo conocen gestores especializados:
           </p>
           <ul className="list-disc pl-6 space-y-2">
             <li><strong>Normativa andaluza específica:</strong> Fianzas, depósitos y plazos regulados por la Junta de Andalucía.</li>
@@ -245,7 +245,7 @@ export default function GestoriaSevillaPage() {
           </ul>
           <p>
             Un contrato mal redactado puede costarte <strong>miles de euros</strong> en problemas legales, desahucios complicados o pérdida de fianzas. 
-            Nuestros abogados especializados en Sevilla evitan estos riesgos con contratos desde <strong>{GESTORIA_PRECIOS.contratoAlquiler}€</strong>.
+            Nuestros gestores especializados en Sevilla evitan estos riesgos con contratos desde <strong>{GESTORIA_PRECIOS.contratoAlquiler}€</strong>.
           </p>
 
           <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">Contratos de alquiler temporal en Sevilla</h3>
@@ -298,7 +298,7 @@ export default function GestoriaSevillaPage() {
               ¿Los contratos son válidos legalmente en Sevilla?
             </summary>
             <p className="mt-4 text-gray-700 leading-relaxed">
-              Totalmente. Todos nuestros contratos están redactados por <strong>abogados colegiados</strong> especializados en derecho inmobiliario andaluz. 
+              Totalmente. Todos nuestros contratos están redactados por <strong>gestores inmobiliarios expertos</strong> especializados en derecho inmobiliario andaluz. 
               Cumplen con la LAU, normativa de la Junta de Andalucía y jurisprudencia actualizada de tribunales sevillanos.
             </p>
           </details>
@@ -308,7 +308,7 @@ export default function GestoriaSevillaPage() {
               ¿Qué incluye el servicio de gestoría inmobiliaria en Sevilla?
             </summary>
             <p className="mt-4 text-gray-700 leading-relaxed">
-              Incluye: <strong>redacción personalizada</strong> del contrato adaptado a tu situación, <strong>revisión de cláusulas</strong> por abogado especializado, 
+              Incluye: <strong>redacción personalizada</strong> del contrato adaptado a tu situación, <strong>revisión de cláusulas</strong> por gestor experto especializado, 
               <strong>asesoramiento legal completo</strong>, <strong>revisiones ilimitadas</strong> hasta que quedes satisfecho y <strong>entrega en 48h</strong> por email.
             </p>
           </details>

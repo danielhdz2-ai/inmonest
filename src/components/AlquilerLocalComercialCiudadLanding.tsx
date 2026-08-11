@@ -20,9 +20,9 @@ import {
   LOCAL_COMERCIAL_INCLUYE,
   LOCAL_COMERCIAL_PARA_QUIEN_BASE,
   LOCAL_COMERCIAL_PASOS,
-  abogadoLocalComercialMax,
-  abogadoLocalComercialMin,
-  ahorroVsAbogado,
+  mercadoTradicionalMax,
+  mercadoTradicionalMin,
+  ahorroVsMercadoTradicional,
 } from '@/lib/alquiler-local-comercial-servicio-content'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getCiudadCtaImage } from '@/lib/gestoria-images'
@@ -80,9 +80,9 @@ type Props = {
 
 export default function AlquilerLocalComercialCiudadLanding({ config }: Props) {
   const { nombre, slug, region } = config
-  const abogadoMin = abogadoLocalComercialMin()
-  const abogadoMax = abogadoLocalComercialMax()
-  const ahorroMin = ahorroVsAbogado()
+  const tradicionalMin = mercadoTradicionalMin()
+  const tradicionalMax = mercadoTradicionalMax()
+  const ahorroMin = ahorroVsMercadoTradicional()
   const paraQuien = [...LOCAL_COMERCIAL_PARA_QUIEN_BASE, ...config.paraQuienExtra]
   const faq = [...FAQ_BASE, ...config.faqExtra]
   const schemaJson = {
@@ -317,7 +317,7 @@ export default function AlquilerLocalComercialCiudadLanding({ config }: Props) {
                 <tr className="bg-gray-50 border-b">
                   <th className="p-4 text-left font-semibold">Opción</th>
                   <th className="p-4 text-center font-semibold text-gold-700">Inmonest</th>
-                  <th className="p-4 text-center font-semibold text-gray-500">Abogado / plantilla</th>
+                  <th className="p-4 text-center font-semibold text-gray-500">Plantilla / sin gestoría</th>
                 </tr>
               </thead>
               <tbody>
@@ -325,13 +325,13 @@ export default function AlquilerLocalComercialCiudadLanding({ config }: Props) {
                   <td className="p-4">Contrato local comercial ({nombre})</td>
                   <td className="p-4 text-center font-bold text-green-700">{ALQUILER_LOCAL_COMERCIAL_PRECIO}€</td>
                   <td className="p-4 text-center text-red-600 line-through">
-                    {abogadoMin}–{abogadoMax}€
+                    {tradicionalMin}–{tradicionalMax}€
                   </td>
                 </tr>
                 <tr>
                   <td className="p-4 font-medium">Tu ahorro estimado</td>
                   <td className="p-4 text-center font-bold text-gold-700" colSpan={2}>
-                    Hasta {ahorroMin}€ frente a abogado mercantilista · 0€ comisión de agencia
+                    Hasta {ahorroMin}€ frente a gestoría tradicional · 0€ comisión de agencia
                   </td>
                 </tr>
               </tbody>
@@ -339,7 +339,7 @@ export default function AlquilerLocalComercialCiudadLanding({ config }: Props) {
           </div>
           <p className="text-center text-sm text-gray-500 mt-4">
             Renta orientativa en {nombre}: {config.rentaEjemploMensual.toLocaleString('es-ES')}€/mes.
-            Un conflicto por traspaso o impago puede costar 3.000–8.000€ en abogado y meses sin cobrar renta.
+            Un conflicto por traspaso o impago puede costar 3.000–8.000€ en gestoría externa y meses sin cobrar renta.
           </p>
         </div>
       </section>

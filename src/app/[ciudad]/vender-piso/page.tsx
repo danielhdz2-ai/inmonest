@@ -257,7 +257,7 @@ export default async function VenderPisoPage({ params }: { params: Promise<{ ciu
           <p>
             Una vez acordado el precio, el comprador entregará una señal y firmaréis un contrato de
             arras. Este documento reserva la vivienda y compromete a ambas partes. Te recomendamos
-            que un abogado lo revise antes de firmar.
+            que un gestor experto lo revise antes de firmar.
           </p>
 
           <h3>6. Firma la escritura ante notario</h3>

@@ -21,7 +21,7 @@ const CIUDAD = 'barcelona'
 const ciudadImage = getCiudadImage(CIUDAD)
 
 const META_DESCRIPTION =
-  'Gestoría inmobiliaria en Barcelona para particulares. Contratos LAU y arras adaptados a zona tensionada. Desde 61€, entrega 48h. Abogados expertos, sin comisiones de agencia.'
+  'Gestoría inmobiliaria en Barcelona para particulares. Contratos LAU y arras adaptados a zona tensionada. Desde 61€, entrega 48h. Gestores expertos, sin comisiones de agencia.'
 
 export const metadata: Metadata = {
   title: 'Gestoría inmobiliaria Barcelona desde 61€',
@@ -74,7 +74,7 @@ export default function GestoriaBarcelonaPage() {
                   Gestoría Inmobiliaria <span className="text-gold-500">Barcelona</span> para Particulares
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
-                  <strong>Gestoría inmobiliaria para particulares</strong> en Barcelona. Te acompañamos en la compra o venta con un asesor experto asignado, sin comisiones abusivas de agencias (3-5%) y con contratos redactados por abogados.
+                  <strong>Gestoría inmobiliaria para particulares</strong> en Barcelona. Te acompañamos en la compra o venta con un asesor experto asignado, sin comisiones abusivas de agencias (3-5%) y con contratos redactados por gestores expertos.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link

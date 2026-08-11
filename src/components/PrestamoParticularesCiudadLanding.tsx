@@ -387,7 +387,7 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
                   ['Reclamación judicial por impago', 'Título ejecutivo (juicio monitorio)', 'Prueba muy difícil sin contrato'],
                   ['Intereses y plazos', 'Pactados por escrito con validez', 'Disputas verbales sin prueba'],
                   ['Nota fiscal incluida', 'Sí, orientación AEAT', 'No'],
-                  ['Coste estimado si hay conflicto grave', `Inversión preventiva de ${PRESTAMO_PARTICULARES_PRECIO}€`, 'Liquidación ISD, abogado y capital perdido'],
+                  ['Coste estimado si hay conflicto grave', `Inversión preventiva de ${PRESTAMO_PARTICULARES_PRECIO}€`, 'Liquidación ISD, gestoría externa y capital perdido'],
                 ].map(([label, inmo, mal]) => (
                   <tr key={label} className="border-b border-gray-100">
                     <td className="p-4 font-medium text-gray-900">{label}</td>

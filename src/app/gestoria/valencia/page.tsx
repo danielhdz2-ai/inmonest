@@ -22,7 +22,7 @@ const BASE_URL = 'https://inmonest.com'
 const ciudadImage = getCiudadImage('valencia')
 
 const META_DESCRIPTION =
-  'Gestoría inmobiliaria en Valencia para particulares. Contratos LAU desde 145€, arras 145€. Sin comisiones de agencia. Abogados expertos, entrega 48h.'
+  'Gestoría inmobiliaria en Valencia para particulares. Contratos LAU desde 145€, arras 145€. Sin comisiones de agencia. Gestores expertos, entrega 48h.'
 
 export const metadata: Metadata = {
   title: 'Gestoría inmobiliaria Valencia desde 61€',
@@ -75,7 +75,7 @@ export default function GestoriaValenciaPage() {
                   Gestoría Inmobiliaria <span className="text-gold-500">Valencia</span> para Particulares
                 </h1>
                 <p className="text-xl text-gray-300 mb-8">
-                  <strong>Gestoría inmobiliaria para particulares</strong> en Valencia. Asesor experto asignado, sin comisiones de agencia (3-5%) y contratos redactados por abogados con conocimiento del mercado valenciano.
+                  <strong>Gestoría inmobiliaria para particulares</strong> en Valencia. Asesor experto asignado, sin comisiones de agencia (3-5%) y contratos redactados por gestores expertos con conocimiento del mercado valenciano.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link

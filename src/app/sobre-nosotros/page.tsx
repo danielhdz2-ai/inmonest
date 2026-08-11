@@ -160,7 +160,7 @@ export default function SobreNosotrosPage() {
               {
                 icon: '🤝',
                 title: 'Confianza y seguridad',
-                desc: 'Verificamos particulares con IA, ofrecemos contratos legales redactados por abogados y protegemos tus datos con encriptación.',
+                desc: 'Verificamos particulares con IA, ofrecemos contratos legales redactados por gestores expertos y protegemos tus datos con encriptación.',
               },
               {
                 icon: '⚡',
@@ -325,7 +325,7 @@ export default function SobreNosotrosPage() {
                 El equipo detrás de Inmonest
               </h2>
               <p className="text-xl text-gray-600 max-w-xl">
-                Somos un equipo multidisciplinar de <strong>desarrolladores, abogados, diseñadores y expertos inmobiliarios</strong> 
+                Somos un equipo multidisciplinar de <strong>desarrolladores, gestores inmobiliarios, diseñadores y expertos inmobiliarios</strong> 
                 que trabajan para hacer tu vida más fácil.
               </p>
               <p className="text-lg text-gray-700 mt-4 max-w-xl">

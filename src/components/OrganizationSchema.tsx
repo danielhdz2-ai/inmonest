@@ -17,8 +17,8 @@ export default function OrganizationSchema() {
     url: 'https://inmonest.com',
     logo: 'https://inmonest.com/logo.png',
     description:
-      'Gestoría inmobiliaria digital especializada en derecho inmobiliario. Redacción y revisión de contratos de arras, alquiler LAU, compraventa. Abogados especializados. También portal de pisos entre particulares sin comisiones.',
-    slogan: 'Tu gestoría inmobiliaria digital',
+      'Contratos inmobiliarios desde 61 € en 48 h. Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones.',
+    slogan: 'Contratos inmobiliarios desde 61 € en 48 h',
     foundingDate: '2026',
     address: {
       '@type': 'PostalAddress',
@@ -75,7 +75,7 @@ export default function OrganizationSchema() {
           itemOffered: {
             '@type': 'Service',
             name: 'Revisión de Contratos',
-            description: 'Revisión legal de contratos inmobiliarios por abogados especializados',
+            description: 'Revisión legal de contratos inmobiliarios por gestores especializados',
           },
         },
       ],

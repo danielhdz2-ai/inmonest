@@ -65,7 +65,7 @@ const CARDS: CardData[] = [
     features: [
       'Contrato de alquiler LAU en 48 h',
       'Arras y señal para compraventas',
-      'Revisados por abogados inmobiliarios',
+      'Revisados por gestores expertos inmobiliarios',
     ],
     cta: 'Ver contratos disponibles',
     href: '/gestoria',

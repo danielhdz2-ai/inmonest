@@ -14,25 +14,25 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   title: 'Gestoría inmobiliaria online desde 61€',
-  description: 'Gestoría inmobiliaria online para particulares. Contratos de arras, alquiler LAU y compraventa redactados por abogados. Desde 61€, entrega 48h. Madrid, Barcelona, Valencia, Sevilla y toda España.',
-  keywords: 'gestoría inmobiliaria, gestoría inmobiliaria online, gestor inmobiliario, contrato arras penitenciales, contrato alquiler LAU, gestoría compraventa vivienda, abogado inmobiliario, gestoría barcelona, gestoría madrid, gestoría valencia',
+  description: 'Contratos inmobiliarios desde 61 € en 48 h. Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones.',
+  keywords: 'gestoría inmobiliaria, gestoría inmobiliaria online, gestor inmobiliario, contrato arras penitenciales, contrato alquiler LAU, gestoría compraventa vivienda, gestor inmobiliario, gestoría barcelona, gestoría madrid, gestoría valencia',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
   },
   openGraph: {
     title: 'Gestoría inmobiliaria online',
-    description: 'Gestoría especializada en contratos de alquiler y compraventa. Tramitamos LAU, arras, rescisión y más. Abogados especializados, sin plantillas genéricas. Desde 61€.',
+    description: 'Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones. Desde 61 €, entrega 48 h.',
     url: `${BASE_URL}/gestoria`,
     type: 'website',
     siteName: 'Inmonest',
     locale: 'es_ES',
-    images: [{ url: `${BASE_URL}/gestoria1.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria — contratos redactados por abogados' }],
+    images: [{ url: `${BASE_URL}/gestoria1.jpg`, width: 1200, height: 630, alt: 'Gestoría inmobiliaria — contratos redactados por gestores expertos' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Gestoría online: arras, alquiler y compraventa',
     description:
-      'Contratos de arras, alquiler LAU y compraventa redactados por abogados. Desde 61€. Entrega en 48h. Servicio en toda España.',
+      'Contratos de arras, alquiler LAU y compraventa redactados por gestores expertos. Desde 61€. Entrega en 48h. Servicio en toda España.',
     images: [`${BASE_URL}/gestoria1.jpg`],
   },
 }
@@ -41,7 +41,7 @@ const schemaJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'LegalService',
   name: 'Inmonest Gestoría Inmobiliaria Online',
-  description: 'Gestoría inmobiliaria online especializada en contratos de alquiler LAU, arras penitenciales, compraventa, rescisión y revisión legal. Redactados por abogados expertos en derecho inmobiliario. Servicio en toda España. Entrega en 24-48h. Desde 61€.',
+  description: 'Gestoría inmobiliaria online especializada en contratos de alquiler LAU, arras penitenciales, compraventa, rescisión y revisión legal. Redactados por gestores expertos en derecho inmobiliario. Servicio en toda España. Entrega en 24-48h. Desde 61€.',
   url: `${BASE_URL}/gestoria`,
   image: `${BASE_URL}/logo.png`,
   priceRange: '€€',
@@ -87,7 +87,7 @@ const schemaJson = JSON.stringify({
         itemOffered: {
           '@type': 'Service',
           name: 'Contrato de Arras Penitenciales',
-          description: 'Contrato de arras penitenciales redactado por abogados. Protege tu señal de compra con cláusulas de desistimiento.',
+          description: 'Contrato de arras penitenciales redactado por gestores expertos. Protege tu señal de compra con cláusulas de desistimiento.',
           url: `${BASE_URL}/gestoria/solicitar/arras-penitenciales`,
           provider: {
             '@type': 'Organization',

@@ -142,7 +142,7 @@ export default function PrestamoParticulaesHaciendaPage() {
         <div className="mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-7">
           <h2 className="text-lg font-bold text-gray-900 mb-2">Contrato de préstamo entre particulares con nota fiscal incluida</h2>
           <p className="text-gray-600 text-sm mb-5">
-            Redactado por abogados especializados. Incluye orientación sobre la declaración del Modelo 600 y la tributación correcta ante la AEAT. Entrega en 48h.
+            Redactado por gestores especializados. Incluye orientación sobre la declaración del Modelo 600 y la tributación correcta ante la AEAT. Entrega en 48h.
           </p>
           <Link href="/gestoria/prestamo-particulares" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors inline-block">
             Solicitar contrato de préstamo — 130 €

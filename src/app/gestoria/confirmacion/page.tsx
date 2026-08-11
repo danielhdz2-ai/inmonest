@@ -154,7 +154,7 @@ function ConfirmacionContent() {
                 <div className="flex-shrink-0 w-8 h-8 bg-gold-500 text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
                 <div>
                   <p className="font-semibold text-gray-900">Recibe tu contrato</p>
-                  <p className="text-sm text-gray-600">En menos de 48h recibirás tu contrato redactado por nuestros abogados.</p>
+                  <p className="text-sm text-gray-600">En menos de 48h recibirás tu contrato redactado por nuestros gestores.</p>
                 </div>
               </div>
             </div>

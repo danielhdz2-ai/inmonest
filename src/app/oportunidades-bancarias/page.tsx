@@ -90,7 +90,7 @@ const PASOS = [
   {
     n: '3',
     titulo: 'Asegura la operación',
-    texto: `Protégete con un contrato de arras redactado por abogados especializados. Entrega en 48h desde ${PRECIO_ARRAS}.`,
+    texto: `Protégete con un contrato de arras redactado por gestores especializados. Entrega en 48h desde ${PRECIO_ARRAS}.`,
   },
 ]
 
@@ -113,7 +113,7 @@ const VENTAJAS = [
   {
     icon: '⚖️',
     titulo: 'Gestión legal incluida',
-    texto: 'Contrato de arras, nota simple, compraventa notarial. Nuestros abogados te acompañan en cada paso.',
+    texto: 'Contrato de arras, nota simple, compraventa notarial. Nuestros gestores te acompañan en cada paso.',
   },
 ]
 
@@ -283,11 +283,11 @@ export default function OportunidadesBancariasPage() {
               <h2 className="text-2xl font-bold mb-4">Tu portal inmobiliario de confianza</h2>
               <p className="text-gray-500 mb-4">
                 En Inmonest no somos una agencia. Somos el puente directo entre el comprador y
-                los fondos bancarios, con toda la documentación verificada y abogados especializados
+                los fondos bancarios, con toda la documentación verificada y gestores especializados
                 respaldando cada operación.
               </p>
               <ul className="space-y-2 text-sm text-gray-600">
-                {['Verificación documental previa', 'Abogados especializados en compraventa', 'Sin comisión de agencia', 'Gestión 100% online'].map(b => (
+                {['Verificación documental previa', 'Gestores especializados en compraventa', 'Sin comisión de agencia', 'Gestión 100% online'].map(b => (
                   <li key={b} className="flex items-center gap-2">
                     <span className="text-amber-500 font-bold">✓</span> {b}
                   </li>
@@ -404,14 +404,14 @@ export default function OportunidadesBancariasPage() {
                 {
                   titulo: 'Contrato de Arras',
                   precio: PRECIO_ARRAS,
-                  desc: 'Reserva el piso bancario con seguridad legal. Redactado por abogados, entrega en 48h.',
+                  desc: 'Reserva el piso bancario con seguridad legal. Redactado por gestores expertos, entrega en 48h.',
                   href: '/gestoria/solicitar/arras-penitenciales',
                   urgente: false,
                 },
                 {
                   titulo: 'Contrato de Compraventa',
                   precio: PRECIO_COMPRAVENTA,
-                  desc: 'El documento definitivo revisado por nuestros abogados antes de la firma ante notario.',
+                  desc: 'El documento definitivo revisado por nuestros gestores antes de la firma ante notario.',
                   href: '/gestoria/contrato-compraventa',
                   urgente: false,
                 },

@@ -99,7 +99,7 @@ export function emailBienvenida(nombre: string, email: string) {
     <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:24px">
       ${itemLista('🏠', 'Publica hasta 2 anuncios gratis', 'Sin cuotas de publicación ni comisiones')}
       ${itemLista('🔍', 'Busca pisos de particulares', 'Miles de inmuebles en toda España sin intermediarios')}
-      ${itemLista('📋', 'Contratos redactados por abogados', 'Alquiler LAU, arras, compraventa y más — precios cerrados IVA incl.')}
+      ${itemLista('📋', 'Contratos redactados por gestores expertos', 'Alquiler LAU, arras, compraventa y más — precios cerrados IVA incl.')}
       ${itemLista('🏦', 'Oportunidades bancarias', 'Pisos de Solvia, Aliseda y Servihabitat desde 40.000 €')}
     </table>
     <a href="https://inmonest.com/mi-cuenta"
@@ -145,7 +145,7 @@ export function emailGestoriaCliente(nombre: string, servicio: string, precio: n
   return baseLayout(`
     <h1 style="margin:0 0 8px;font-size:22px;color:#111827">Solicitud recibida ✅</h1>
     <p style="color:#6b7280;font-size:15px;line-height:1.6;margin:0 0 20px">
-      Hola <strong>${esc(nombre)}</strong>, hemos recibido tu solicitud de gestoría. Nuestro equipo de abogados la procesará en menos de 24 horas.
+      Hola <strong>${esc(nombre)}</strong>, hemos recibido tu solicitud de gestoría. Nuestro equipo de gestores expertos la procesará en menos de 24 horas.
     </p>
     <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:16px 20px;margin-bottom:24px">
       <p style="margin:0 0 4px;font-size:13px;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:0.5px">Servicio solicitado</p>

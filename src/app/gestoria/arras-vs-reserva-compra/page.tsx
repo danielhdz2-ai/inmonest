@@ -298,7 +298,7 @@ export default function ArrasVsReservaPage() {
               ¿Necesitas Ayuda para Decidir Cuál Contratar?
             </h3>
             <p className="text-lg text-white/90 mb-6">
-              Nuestros abogados redactan ambos contratos adaptados a tu situación. 
+              Nuestros gestores redactan ambos contratos adaptados a tu situación. 
               Te asesoramos sobre cuál usar en cada momento del proceso de compra.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
@@ -411,7 +411,7 @@ export default function ArrasVsReservaPage() {
                 <p className="text-gray-700 mt-3 text-sm">
                   No. Un contrato privado firmado por ambas partes es 100% válido. El notario solo es 
                   obligatorio para la ESCRITURA final (compraventa definitiva), no para reserva ni arras. 
-                  Un contrato privado profesional (redactado por abogados) cuesta mucho menos (120€ - 145€ 
+                  Un contrato privado profesional (redactado por gestores expertos) cuesta mucho menos (120€ - 145€ 
                   vs 300€ del notario) y tiene la misma validez legal.
                 </p>
               </details>

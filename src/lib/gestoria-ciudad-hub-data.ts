@@ -41,7 +41,7 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     nombre: 'Málaga',
     region: 'Andalucía',
     metaDescription:
-      'Gestoría inmobiliaria para particulares en Málaga. Contratos LAU desde 145€, arras 145€, servicio completo 687€. Sin comisiones. Abogados especializados en normativa andaluza.',
+      'Gestoría inmobiliaria para particulares en Málaga. Contratos LAU desde 145€, arras 145€, servicio completo 687€. Sin comisiones. Gestores especializados en normativa andaluza.',
     keywords:
       'gestoría inmobiliaria málaga, gestoría particulares málaga, contrato arras málaga, contrato alquiler málaga, comprar piso málaga sin agencia',
     heroBadge: 'Gestoría 100% Online | Especialistas en Andalucía',
@@ -86,7 +86,7 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     faq: GESTORIA_MALAGA_FAQ,
     faqSubtitulo: 'Respuestas específicas para el mercado malagueño: plusvalía, VFT y compraventa entre particulares.',
     serviciosSubtitulo:
-      'Redactados por abogados colegiados con experiencia en el mercado inmobiliario malagueño. Precios iguales que en nuestra gestoría online.',
+      'Redactados por gestores inmobiliarios expertos con experiencia en el mercado inmobiliario malagueño. Precios iguales que en nuestra gestoría online.',
     ctaFinalTitulo: '¿Vas a comprar o vender en Málaga?',
     ctaFinalTexto:
       'En un mercado en máximos históricos, un error puede costarte miles de euros. Contrata asesoramiento especializado y opera con total seguridad jurídica.',
@@ -146,7 +146,7 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     faq: GESTORIA_BILBAO_FAQ,
     faqSubtitulo: 'Respuestas específicas para el mercado bilbaíno: plusvalía foral y compraventa entre particulares.',
     serviciosSubtitulo:
-      'Redactados por abogados colegiados con experiencia en el mercado inmobiliario de Bizkaia.',
+      'Redactados por gestores inmobiliarios expertos con experiencia en el mercado inmobiliario de Bizkaia.',
     ctaFinalTitulo: '¿Vas a comprar o vender en Bilbao?',
     ctaFinalTexto:
       'En un mercado con precios elevados, un contrato mal redactado puede costarte miles de euros. Opera con asesoramiento jurídico especializado.',
@@ -206,7 +206,7 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     faq: GESTORIA_PALMA_FAQ,
     faqSubtitulo: 'Respuestas específicas para Palma y Baleares: cédula, IBAVI y alquiler turístico.',
     serviciosSubtitulo:
-      'Redactados por abogados colegiados con experiencia en el mercado inmobiliario balear.',
+      'Redactados por gestores inmobiliarios expertos con experiencia en el mercado inmobiliario balear.',
     ctaFinalTitulo: '¿Vas a comprar o vender en Palma?',
     ctaFinalTexto:
       'En uno de los mercados más caros de España, un error jurídico puede costarte decenas de miles de euros. Opera con total seguridad.',
@@ -266,7 +266,7 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     faq: GESTORIA_ZARAGOZA_FAQ,
     faqSubtitulo: 'Respuestas específicas para Zaragoza: fianza INAGA y compraventa entre particulares.',
     serviciosSubtitulo:
-      'Redactados por abogados colegiados con experiencia en el mercado inmobiliario aragonés.',
+      'Redactados por gestores inmobiliarios expertos con experiencia en el mercado inmobiliario aragonés.',
     ctaFinalTitulo: '¿Vas a comprar o vender en Zaragoza?',
     ctaFinalTexto:
       'Aprovecha un mercado en crecimiento con asesoramiento jurídico fijo, sin comisiones abusivas de agencia.',
@@ -326,7 +326,7 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     faq: GESTORIA_ALICANTE_FAQ,
     faqSubtitulo: 'Respuestas específicas para Alicante: cédula, turismo y compradores extranjeros.',
     serviciosSubtitulo:
-      'Redactados por abogados colegiados con experiencia en el mercado alicantino y costa blanca.',
+      'Redactados por gestores inmobiliarios expertos con experiencia en el mercado alicantino y costa blanca.',
     ctaFinalTitulo: '¿Vas a comprar o vender en Alicante?',
     ctaFinalTexto:
       'Con tanta demanda extranjera y normativa valenciana específica, un asesor jurídico evita bloqueos en notaría y pérdidas económicas.',

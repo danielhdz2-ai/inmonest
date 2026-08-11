@@ -148,14 +148,14 @@ export default function ContratoAlquilerGuiaPage() {
             En zonas de mercado residencial tensionado declaradas por la comunidad autónoma (parte de Cataluña, Madrid, País Vasco, etc.), aplican limitaciones adicionales: la renta del nuevo contrato no puede superar en más de un 10 % la del contrato anterior de los últimos 5 años, con excepciones para obras de mejora.
           </p>
           <p>
-            Nuestros abogados conocen la normativa específica de cada CCAA y adaptan cada contrato a la regulación concreta de la ubicación del inmueble.
+            Nuestros gestores conocen la normativa específica de cada CCAA y adaptan cada contrato a la regulación concreta de la ubicación del inmueble.
           </p>
         </article>
 
         <div className="mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-7">
           <h2 className="text-lg font-bold text-gray-900 mb-2">Contrato de alquiler actualizado a la Ley de Vivienda 2026</h2>
           <p className="text-gray-600 text-sm mb-5">
-            Nuestros abogados redactan tu contrato de alquiler personalizado, adaptado a tu comunidad autónoma y a la normativa vigente en 2026. Entrega en 48h.
+            Nuestros gestores redactan tu contrato de alquiler personalizado, adaptado a tu comunidad autónoma y a la normativa vigente en 2026. Entrega en 48h.
           </p>
           <Link href="/gestoria/solicitar/contrato-alquiler" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors inline-block">
             Solicitar contrato de alquiler — 90 €

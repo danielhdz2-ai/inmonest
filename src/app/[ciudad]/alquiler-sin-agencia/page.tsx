@@ -244,7 +244,7 @@ export default async function AlquilerSinAgenciaPage({ params }: { params: Promi
         <div className="mt-14 bg-forest-900 rounded-2xl p-8 text-white">
           <h2 className="text-2xl font-bold mb-3">¿Necesitas revisar tu contrato de alquiler?</h2>
           <p className="text-gray-300 mb-6 leading-relaxed">
-            Un abogado especialista revisa tu contrato antes de firmar. Detecta cláusulas nulas,
+            Un gestor experto especialista revisa tu contrato antes de firmar. Detecta cláusulas nulas,
             riesgos y te da recomendaciones concretas en menos de 48 horas. Desde 90 €.
           </p>
           <Link

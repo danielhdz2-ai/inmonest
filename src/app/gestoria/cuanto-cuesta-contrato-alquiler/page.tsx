@@ -184,7 +184,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-0.5">✓</span>
-                    <span>Redactado por abogados</span>
+                    <span>Redactado por gestores expertos</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="mt-0.5">✓</span>
@@ -290,7 +290,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                     <td className="px-6 py-4 text-center text-green-500">✓</td>
                   </tr>
                   <tr>
-                    <td className="px-6 py-4 font-medium text-gray-900">Redacción por abogados</td>
+                    <td className="px-6 py-4 font-medium text-gray-900">Redacción por gestores expertos</td>
                     <td className="px-6 py-4 text-center text-red-500">✗</td>
                     <td className="px-6 py-4 text-center text-green-500">✓</td>
                     <td className="px-6 py-4 text-center text-green-500">✓</td>
@@ -348,7 +348,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
               Contrato de Alquiler LAU Profesional por 145€
             </h3>
             <p className="text-lg text-white/90 mb-6">
-              Adaptado a Ley de Vivienda 2026. Redactado por abogados especializados. 
+              Adaptado a Ley de Vivienda 2026. Redactado por gestores especializados. 
               Cláusulas personalizadas para tu situación. Entrega en 48h.
             </p>
             <Link
@@ -419,7 +419,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
                   Servicios Incluidos
                 </h3>
                 <ul className="space-y-2 text-sm text-gray-700">
-                  <li>Redacción por abogados especializados</li>
+                  <li>Redacción por gestores especializados</li>
                   <li>Entrega en 48h laborables</li>
                   <li>Formato PDF editable</li>
                   <li>Revisiones ilimitadas antes de firmar</li>

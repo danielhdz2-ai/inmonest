@@ -418,8 +418,8 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
         a: 'Idealmente justo después de firmar arras y antes de escriturar. También sirve si estás a punto de arras y quieres verificar antes de la señal.',
       },
       {
-        q: '¿Sustituye a un abogado?',
-        a: 'Es un servicio de verificación documental especializado en compraventa entre particulares. Casos muy litigiosos pueden requerir abogado adicional.',
+        q: '¿Sustituye a un gestor experto?',
+        a: 'Es un servicio de verificación documental especializado en compraventa entre particulares. Casos muy litigiosos pueden requerir asesoramiento jurídico externo adicional.',
       },
       {
         q: '¿Qué pasa si encontráis problemas graves?',

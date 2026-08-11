@@ -44,7 +44,7 @@ const faqSchema = {
       name: '¿Cuánto cuesta un contrato de arras penitenciales?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Un contrato de arras penitenciales profesional redactado por abogados cuesta desde 145€. Incluye cláusulas personalizadas, plazos, condiciones suspensivas y protección legal para ambas partes.',
+        text: 'Un contrato de arras penitenciales profesional redactado por gestores expertos cuesta desde 145€. Incluye cláusulas personalizadas, plazos, condiciones suspensivas y protección legal para ambas partes.',
       },
     },
     {
@@ -264,7 +264,7 @@ export default function GuiaArrasPenitencialesPage() {
               ¿Necesitas un Contrato de Arras Penitenciales Profesional?
             </h3>
             <p className="text-lg text-white/90 mb-6">
-              Redactado por abogados especializados en derecho inmobiliario. 
+              Redactado por gestores especializados en derecho inmobiliario. 
               Cláusulas personalizadas, condiciones suspensivas y protección total.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
@@ -376,7 +376,7 @@ export default function GuiaArrasPenitencialesPage() {
                 <h3 className="font-bold text-red-900 mb-2">❌ 5. Confundir arras penitenciales con confirmatorias</h3>
                 <p className="text-red-800 text-sm">
                   Si firmas confirmatorias pensando que son penitenciales, no podrás desistir sin juicio. 
-                  Lee bien el contrato o que lo revise un abogado.
+                  Lee bien el contrato o que lo revise un gestor experto.
                 </p>
               </div>
               <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
@@ -427,7 +427,7 @@ export default function GuiaArrasPenitencialesPage() {
                 </summary>
                 <p className="text-gray-700 mt-3 text-sm">
                   No, pero SÍ es obligatorio que sea un contrato escrito firmado por ambas partes. 
-                  Puede ser privado (redactado por abogados) o público (ante notario). El privado es válido 
+                  Puede ser privado (redactado por gestores expertos) o público (ante notario). El privado es válido 
                   y mucho más económico (145€ vs 300-500€ del notario).
                 </p>
               </details>
@@ -445,7 +445,7 @@ export default function GuiaArrasPenitencialesPage() {
                   ¿Cuánto tarda en redactarse un contrato profesional?
                 </summary>
                 <p className="text-gray-700 mt-3 text-sm">
-                  48 horas laborables. Nos envías los datos del piso y de las partes, nuestros abogados 
+                  48 horas laborables. Nos envías los datos del piso y de las partes, nuestros gestores 
                   redactan el contrato personalizado con todas las cláusulas de protección, y lo recibes 
                   en PDF listo para firmar.
                 </p>

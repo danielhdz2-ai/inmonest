@@ -94,7 +94,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
           <h3>2. Presión extrema para firmar YA</h3>
           <p>
             <strong>Señal de alerta:</strong> "Hay 3 personas interesadas. Si no firmas hoy, se lo vendo a otro. 
-            No hay tiempo para nota simple ni abogados."
+            No hay tiempo para nota simple ni gestoría experta."
           </p>
           <p>
             <strong>Por qué es sospechoso:</strong> Los estafadores necesitan que firmes rápido, antes de que descubras el fraude. 
@@ -229,7 +229,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
             <li>
               <strong>Revisa el contrato ANTES de firmar:</strong> 
               <Link href="/gestoria/revision-contrato-arras" className="text-blue-600 underline ml-1">
-                Un abogado lo revisa en 24h por 60€
+                Un gestor experto lo revisa en 24h por 60€
               </Link>. Mucho más barato que perder 10.000€.
             </li>
             <li>
@@ -243,7 +243,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
             <li>
               <strong>Si tienes 2+ señales de alerta:</strong> 
               <Link href="/gestoria/contrato-ilegal" className="text-blue-600 underline ml-1">
-                Haz analizar el caso por un abogado (145€)
+                Solicita análisis con gestor experto (145€)
               </Link>. Vale la pena.
             </li>
           </ol>
@@ -265,7 +265,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
                 alguien está vendiendo su piso. Te lo agradecerá y puede ayudarte en la denuncia.
               </li>
               <li>
-                <strong>Consulta con abogado especializado:</strong> 
+                <strong>Consulta con gestor especializado:</strong> 
                 <Link href="/gestoria/contrato-ilegal" className="text-red-700 underline ml-1">
                   Analizamos tu caso y te guiamos en la recuperación (145€)
                 </Link>.
@@ -287,7 +287,7 @@ export default function DetectarArrasFraudulentoBlogPost() {
         <div className="mt-12 p-6 bg-gradient-to-r from-red-50 to-orange-50 rounded-lg border-2 border-red-200">
           <h3 className="text-2xl font-bold mb-4 text-gray-900">¿Sospechas que tu contrato puede ser fraudulento?</h3>
           <p className="text-gray-700 mb-6">
-            Un abogado especializado lo analiza en 24 horas. Detectamos fraudes, documentos falsos y estafas inmobiliarias.
+            Un gestor experto especializado lo analiza en 24 horas. Detectamos fraudes, documentos falsos y estafas inmobiliarias.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link

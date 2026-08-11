@@ -233,7 +233,7 @@ export default async function DashboardHomePage() {
               <p className="text-xs font-semibold text-amber-200 mb-1 uppercase tracking-wide">Gestoria</p>
               <p className="font-bold text-lg leading-tight mb-2">Contratos con validez legal</p>
               <p className="text-sm text-amber-100/90 mb-4">
-                Redactados por abogados especializados.
+                Redactados por gestores especializados.
               </p>
               <Link
                 href="/mi-cuenta/contratos"

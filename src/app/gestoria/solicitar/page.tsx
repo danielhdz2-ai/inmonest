@@ -109,7 +109,7 @@ export default function SolicitarIndexPage() {
               Servicios de <span className="text-gold-500">Gestoría Inmobiliaria</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-6">
-              Contratos redactados por abogados expertos, revisión legal profesional y asesoría completa. <strong>Desde 61€</strong>. Entrega en 24-48h.
+              Contratos redactados por gestores expertos, revisión legal profesional y asesoría completa. <strong>Desde 61€</strong>. Entrega en 24-48h.
             </p>
             <div className="flex flex-wrap justify-center gap-3 text-sm">
               <span className="px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm">✓ Redacción profesional</span>
@@ -215,7 +215,7 @@ export default function SolicitarIndexPage() {
               Gestoría Inmobiliaria Online — Todos los Servicios
             </h2>
             <p className="text-gray-700 leading-relaxed">
-              <strong>Inmonest</strong> es una gestoría inmobiliaria online especializada en contratos, trámites y asesoría legal para compraventa y alquiler de viviendas. Todos nuestros documentos son <strong>redactados por abogados expertos en derecho inmobiliario</strong>, no usamos plantillas genéricas.
+              <strong>Inmonest</strong> es una gestoría inmobiliaria online especializada en contratos, trámites y asesoría legal para compraventa y alquiler de viviendas. Todos nuestros documentos son <strong>redactados por gestores expertos en derecho inmobiliario</strong>, no usamos plantillas genéricas.
             </p>
             <p className="text-gray-700 leading-relaxed">
               Ofrecemos contratos desde <strong>61€</strong> hasta <strong>687€</strong> (servicio completo reserva a escritura). La mayoría de contratos se entregan en <strong>24-48 horas</strong> en formato <strong>PDF firmable digitalmente</strong>.

@@ -460,10 +460,10 @@ export default function GestoriaPage() {
           </span>
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.15] mb-3 sm:mb-4">
             Contratos inmobiliarios<br />
-            <span className="text-gold-300">redactados por expertos</span>
+            <span className="text-gold-300">desde 61 € en 48 h</span>
           </h1>
           <p className="text-white/85 text-sm sm:text-lg max-w-xl leading-relaxed line-clamp-4 sm:line-clamp-none">
-            Arras, alquiler LAU y compraventa a medida. Sin plantillas genéricas — entrega en 48 h desde 61 €.
+            Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones.
           </p>
           <MobileGestoriaContactRow
             whatsappMessage="Hola, necesito información sobre gestoría inmobiliaria en Inmonest"
@@ -497,7 +497,7 @@ export default function GestoriaPage() {
               Una <strong>gestoría inmobiliaria</strong> es un servicio profesional que se encarga de todos los <strong>trámites legales, administrativos y documentales</strong> relacionados con operaciones inmobiliarias de particulares: <strong>compraventa de viviendas, contratos de alquiler, contratos de arras y escrituras</strong>.
             </p>
             <p>
-              En <strong>Inmonest</strong> somos una <strong>gestoría inmobiliaria digital especializada en Barcelona, Madrid y Valencia</strong>, con abogados expertos que redactan contratos personalizados para particulares vendedores y compradores. A diferencia de las agencias inmobiliarias tradicionales, <strong className="text-gold-500">no cobramos comisiones del 3-5%</strong>, sino honorarios fijos transparentes desde 61€.
+              En <strong>Inmonest</strong> somos una <strong>gestoría inmobiliaria digital especializada en Barcelona, Madrid y Valencia</strong>, con gestores expertos que redactan contratos personalizados para particulares vendedores y compradores. A diferencia de las agencias inmobiliarias tradicionales, <strong className="text-gold-500">no cobramos comisiones del 3-5%</strong>, sino honorarios fijos transparentes desde 61€.
             </p>
             <div className="bg-cream-100 border-l-4 border-gold-500 p-6 rounded-r-lg mt-6">
               <h3 className="font-bold text-gray-900 mb-3 text-xl">¿Cuándo contratar una gestoría inmobiliaria?</h3>

@@ -152,7 +152,7 @@ export default function AlquilerHabitacionColivingPage() {
         </article>
 
         <div className="mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-7">
-          <h2 className="text-lg font-bold text-gray-900 mb-2">Contrato de alquiler de habitación redactado por abogados</h2>
+          <h2 className="text-lg font-bold text-gray-900 mb-2">Contrato de alquiler de habitación redactado por gestores expertos</h2>
           <p className="text-gray-600 text-sm mb-5">
             Personalizado con tus normas de convivencia, fianza y condiciones de salida. Entrega en 48h. PDF firmable digitalmente.
           </p>

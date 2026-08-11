@@ -18,7 +18,7 @@ const BENEFITS = [
   {
     icon: '⚖️',
     title: 'Seguridad jurídica',
-    desc: 'Contratos revisados por abogados especializados en derecho inmobiliario.',
+    desc: 'Contratos revisados por gestores especializados en derecho inmobiliario.',
   },
   {
     icon: '⚡',

@@ -133,7 +133,7 @@ export default function ComoAlquilarSinAgenciaPage() {
             El contrato de alquiler de vivienda habitual está regulado por la <strong>LAU (Ley de Arrendamientos Urbanos)</strong> y la <strong>Ley de Vivienda 2023</strong>. Muchas plantillas gratuitas que circulan por internet incluyen cláusulas que ya son ilegales (por ejemplo, actualización de renta libre, duración inferior a 5 años sin causa justificada, o penalizaciones por salida anticipada superiores a las permitidas).
           </p>
           <p>
-            Un contrato mal redactado puede declararse nulo o permitir al inquilino exigir condiciones que no tenías previstas. Recomendamos usar un contrato redactado por abogados especializados que esté actualizado a la normativa 2026.
+            Un contrato mal redactado puede declararse nulo o permitir al inquilino exigir condiciones que no tenías previstas. Recomendamos usar un contrato redactado por gestores especializados que esté actualizado a la normativa 2026.
           </p>
 
           <h2>Paso 6 — Fianza y garantías adicionales</h2>
@@ -154,7 +154,7 @@ export default function ComoAlquilarSinAgenciaPage() {
         <div className="mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-7">
           <h2 className="text-lg font-bold text-gray-900 mb-2">Publica tu anuncio y redacta el contrato con Inmonest</h2>
           <p className="text-gray-600 text-sm mb-5">
-            Publicación gratuita sin intermediarios y contratos de alquiler redactados por abogados especializados. Todo en un solo lugar.
+            Publicación gratuita sin intermediarios y contratos de alquiler redactados por gestores especializados. Todo en un solo lugar.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/publicar-anuncio" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">

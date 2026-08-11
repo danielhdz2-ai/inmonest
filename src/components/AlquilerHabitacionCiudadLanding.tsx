@@ -341,7 +341,7 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
             Contrato profesional frente a no contratar o usar plantilla
           </h2>
           <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
-            En {nombre}, un conflicto por impago o convivencia sin contrato escrito puede costarte entre 2.000€ y 8.000€ en abogado, tiempo y rentas perdidas.
+            En {nombre}, un conflicto por impago o convivencia sin contrato escrito puede costarte entre 2.000€ y 8.000€ en gestoría externa, tiempo y rentas perdidas.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full border-collapse bg-white shadow-sm rounded-xl overflow-hidden text-sm">
@@ -363,8 +363,8 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
                   ['Normas de convivencia válidas', 'Redactadas y revisadas jurídicamente', 'Verbales o inexistentes'],
                   ['Resolución por impago', 'Cláusulas y procedimiento definidos', 'Procedimiento judicial largo'],
                   ['Recuperación de la habitación', 'Base contractual clara', '3-12 meses y costes legales'],
-                  ['Disputa sobre fianza', 'Condiciones pactadas por escrito', '1.500€ - 4.000€ en abogado y tiempo'],
-                  ['Coste estimado si hay conflicto grave', `Inversión preventiva de ${ALQUILER_HABITACION_PRECIO}€`, '2.000€ - 8.000€ en abogado, procurador y meses sin cobrar renta'],
+                  ['Disputa sobre fianza', 'Condiciones pactadas por escrito', '1.500€ - 4.000€ en gestoría externa y tiempo'],
+                  ['Coste estimado si hay conflicto grave', `Inversión preventiva de ${ALQUILER_HABITACION_PRECIO}€`, '2.000€ - 8.000€ en gestoría externa, trámites y meses sin cobrar renta'],
                 ].map(([label, inmo, mal]) => (
                   <tr key={label} className="border-b border-gray-100">
                     <td className="p-4 font-medium text-gray-900">{label}</td>

@@ -137,7 +137,7 @@ export default function AlquilerOpcionCompraPage() {
         </article>
 
         <div className="mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-7">
-          <h2 className="text-lg font-bold text-gray-900 mb-2">Contrato de alquiler con opción a compra redactado por abogados</h2>
+          <h2 className="text-lg font-bold text-gray-900 mb-2">Contrato de alquiler con opción a compra redactado por gestores expertos</h2>
           <p className="text-gray-600 text-sm mb-5">
             El contrato más complejo del mercado, con arrendamiento y derecho de opción integrados. Personalizado y con todas las cláusulas que te protegen. Entrega en 48h.
           </p>

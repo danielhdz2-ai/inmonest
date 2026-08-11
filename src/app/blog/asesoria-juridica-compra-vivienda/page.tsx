@@ -202,7 +202,7 @@ export default function AsesoriaJuridicaCompraPost() {
               ¿Necesitas asesoramiento en tu compra?
             </h3>
             <p className="text-gray-700 mb-4">
-              Nuestro equipo de abogados especializados en compraventa te acompaña en todo el proceso. Desde la reserva
+              Nuestro equipo de gestores especializados en compraventa te acompaña en todo el proceso. Desde la reserva
               hasta la firma ante notario.
             </p>
             <div className="flex flex-wrap gap-3">

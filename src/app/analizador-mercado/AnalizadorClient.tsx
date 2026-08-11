@@ -586,7 +586,7 @@ export default function AnalizadorClient() {
             <div className="relative z-10">
               <p className="text-gold-500 text-xs font-bold uppercase tracking-widest mb-2">Gestoría</p>
               <h3 className="text-gray-900 font-bold text-lg mb-2">Cierra el trato con seguridad jurídica</h3>
-              <p className="text-gray-500 text-sm mb-4">Contratos de arras, compraventa y alquiler redactados por abogados especializados.</p>
+              <p className="text-gray-500 text-sm mb-4">Contratos de arras, compraventa y alquiler redactados por gestores especializados.</p>
               <Link href="/gestoria" className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841e] text-white font-bold px-5 py-2.5 rounded-full text-sm transition-colors">
                 Ver contratos →
               </Link>

@@ -159,7 +159,7 @@ export default function ArrasDiferenciasPage() {
         <div className="mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-7">
           <h2 className="text-lg font-bold text-gray-900 mb-2">¿Necesitas redactar tu contrato de arras?</h2>
           <p className="text-gray-600 text-sm mb-5">
-            Nuestros abogados especializados en compraventa inmobiliaria redactan el contrato personalizado con tus datos reales. Entrega en 48h.
+            Nuestros gestores especializados en compraventa inmobiliaria redactan el contrato personalizado con tus datos reales. Entrega en 48h.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link href="/gestoria/arras-penitenciales" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">

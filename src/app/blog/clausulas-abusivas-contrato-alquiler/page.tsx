@@ -73,7 +73,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
           </p>
           <p className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
             ✅ <strong>Qué hacer:</strong> Exige eliminar la cláusula. Si el casero insiste, es señal de alerta. 
-            <Link href="/gestoria/revision-contrato-alquiler" className="text-green-700 underline">Haz revisar tu contrato por un abogado (desde {PRECIO_REVISION})</Link>.
+            <Link href="/gestoria/revision-contrato-alquiler" className="text-green-700 underline">Haz revisar tu contrato con gestor experto (desde {PRECIO_REVISION})</Link>.
           </p>
 
           <h2>2. Prohibición total de mascotas 🐕</h2>
@@ -208,12 +208,12 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
               <li>
                 <strong>Antes de firmar:</strong> Negocia con el propietario para eliminar las cláusulas abusivas. 
                 <Link href="/gestoria/revision-contrato-alquiler" className="text-blue-700 underline ml-1">
-                  Haz revisar el contrato por un abogado ({PRECIO_REVISION})
+                  Haz revisar el contrato con gestor experto ({PRECIO_REVISION})
                 </Link> para tener argumentos legales sólidos.
               </li>
               <li>
                 <strong>Ya firmaste pero no has entrado:</strong> Algunas cláusulas nulas te permiten anular el contrato completo. 
-                Consulta con abogado si puedes salir sin penalización.
+                Consulta con gestor experto si puedes salir sin penalización.
               </li>
               <li>
                 <strong>Ya vives en el piso:</strong> Las cláusulas nulas no tienen efecto aunque las hayas firmado. 
@@ -240,7 +240,7 @@ export default function ClausulasAbusivasAlquilerBlogPost() {
         <div className="mt-12 p-6 bg-gradient-to-r from-cream-50 to-blue-50 rounded-lg border-2 border-green-200">
           <h3 className="text-2xl font-bold mb-4 text-gray-900">¿Necesitas ayuda con tu contrato de alquiler?</h3>
           <p className="text-gray-700 mb-6">
-            Un abogado especializado lo revisa en 24 horas. Detectamos cláusulas abusivas, errores y te protegemos legalmente.
+            Un gestor experto especializado lo revisa en 24 horas. Detectamos cláusulas abusivas, errores y te protegemos legalmente.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link

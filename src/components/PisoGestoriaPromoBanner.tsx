@@ -16,7 +16,7 @@ export function PisoAlquilerLauBanner() {
       <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">¿Vas a alquilar este piso?</h3>
       <p className="text-white/80 text-sm sm:text-base mb-5 leading-relaxed">
         Necesitas un <strong className="text-white">contrato de alquiler LAU</strong> (obligatorio por ley).
-        Nuestros abogados lo redactan personalizado con todas las cláusulas legales.
+        Nuestros gestores lo redactan personalizado con todas las cláusulas legales.
       </p>
       <div className="flex flex-col sm:flex-row gap-3">
         <Link
@@ -49,7 +49,7 @@ export function PisoArrasCompraBanner() {
       <p className="text-xs font-bold uppercase tracking-widest text-gold-500 mb-2">Compraventa segura</p>
       <h3 className="text-xl sm:text-2xl font-bold text-white mb-3">¿Listo para comprar?</h3>
       <p className="text-white/80 text-sm sm:text-base mb-5 leading-relaxed">
-        Protege tu señal con un <strong className="text-white">contrato de arras</strong> redactado por abogados.
+        Protege tu señal con un <strong className="text-white">contrato de arras</strong> redactado por gestores expertos.
         Evita problemas legales y asegura tu compra.
       </p>
       <div className="flex flex-col sm:flex-row gap-3">
