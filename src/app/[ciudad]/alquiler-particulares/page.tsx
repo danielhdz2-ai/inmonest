@@ -134,8 +134,8 @@ export async function generateMetadata({
   params: Promise<{ ciudad: string }>
 }): Promise<Metadata> {
   const { ciudad } = await params
+  if (!isCiudadPortal(ciudad)) return {}
   const nombre = CIUDADES[ciudad]
-  if (!nombre) return {}
   const datos = DATOS[ciudad]
   return {
     // Sin "| Inmonest" aquí: layout.tsx ya aplica template "%s | Inmonest"
