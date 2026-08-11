@@ -1,3 +1,4 @@
+import { CIUDADES_PORTAL_SLUGS } from './ciudades-portal'
 import { CONTRATO_ARRAS_PREMIUM } from './contrato-arras-premium-config'
 import { CONTRATO_ALQUILER_PREMIUM } from './contrato-alquiler-premium-config'
 import { formatPrecioDesde, formatPrecioEuro, getPrecioServicio } from './gestoria-catalogo'
@@ -79,7 +80,21 @@ export const CIUDADES_DESTACADAS: CiudadRef[] = [
   'san-sebastian',
 ].map((slug) => ({ slug, nombre: getNombreCiudad(slug) }))
 
-const CIUDADES_PORTAL = ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante']
+const CIUDADES_PORTAL = [...CIUDADES_PORTAL_SLUGS]
+
+/** Evita /gestoria/gestoria cuando el slug del servicio es "gestoria" */
+export function getServicioGuiaHref(slug: string): string {
+  if (slug === 'gestoria') return '/gestoria'
+  return `/gestoria/${slug}`
+}
+
+/** Solo ciudades con landing realmente construida para este tipo de página */
+export function filterCiudadesLandingActiva(landingId: string, ciudades: string[]): string[] {
+  if (landingId === 'alquiler-particulares') {
+    return ciudades.filter((c) => (CIUDADES_PORTAL_SLUGS as readonly string[]).includes(c))
+  }
+  return ciudades
+}
 
 export const LANDINGS_GENERICAS: LandingGenerica[] = [
   { slug: 'asesoria-compra-piso', nombre: 'Asesoría Compra de Piso', precioSlug: 'compra-completa-reserva-escritura' },
@@ -161,7 +176,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Alquiler de Particulares',
     precioInfo: 'Portal',
     href: (c) => `/${c}/alquiler-particulares`,
-    ciudades: CIUDADES_PORTAL,
+    ciudades: [...CIUDADES_PORTAL_SLUGS],
   },
   {
     id: 'alquiler-sin-agencia',

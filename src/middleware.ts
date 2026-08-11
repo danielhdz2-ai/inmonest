@@ -113,6 +113,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301)
   }
 
+  // Teléfono pegado a slug de ciudad (GSC: /bilbao/ 34745022862)
+  const malformedCityPhone = pathname.match(/^\/([a-z0-9-]+)\/\s*(\d{9,12})$/)
+  if (malformedCityPhone) {
+    const url = request.nextUrl.clone()
+    url.pathname = `/${malformedCityPhone[1]}/contrato-alquiler`
+    return NextResponse.redirect(url, 301)
+  }
+
   // ── 1. RATE LIMITING (primero para evitar spam) ───────────────────────────
 
   const ip = getIP(request)

@@ -34,7 +34,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'reserva-compra': {
     nombre: 'Contrato de Reserva de Compra',
-    precio: 61,
+    precio: 120,
     categoria: 'Compraventa',
     incluye: [
       'Bloqueo jurídico del inmueble 48-72h',

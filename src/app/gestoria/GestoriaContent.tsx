@@ -106,7 +106,7 @@ const SERVICES: Service[] = [
       'Condiciones resolutorias incluidas',
       'Entrega en 24h · PDF firmable digitalmente',
     ],
-    price: 61,
+    price: 120,
     image: '/gestoria4.jpg',
   },
 

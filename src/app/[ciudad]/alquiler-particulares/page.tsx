@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Navbar from '@/components/NavbarServer'
 import ListingCard from '@/components/ListingCard'
 import LeadCaptureForm from '@/components/LeadCaptureForm'
+import { CIUDADES_PORTAL_NOMBRES, isCiudadPortal } from '@/lib/ciudades-portal'
 import { searchListings } from '@/lib/listings'
 
 // ✅ OPTIMIZACIÓN: Cachear 2 horas (páginas de ciudad cambian poco)
@@ -12,16 +13,7 @@ export const revalidate = 43200  // 12 horas (antes: 2h - optimizado para reduci
 
 const BASE_URL = 'https://inmonest.com'
 
-const CIUDADES: Record<string, string> = {
-  madrid:    'Madrid',
-  barcelona: 'Barcelona',
-  valencia:  'Valencia',
-  sevilla:   'Sevilla',
-  malaga:    'Málaga',
-  bilbao:    'Bilbao',
-  zaragoza:  'Zaragoza',
-  alicante:  'Alicante',
-}
+const CIUDADES = CIUDADES_PORTAL_NOMBRES
 
 // ─── Datos SEO específicos por ciudad ────────────────────────────────────────
 const DATOS: Record<string, {
@@ -177,8 +169,8 @@ export default async function AlquilerParticularesPage({
   params: Promise<{ ciudad: string }>
 }) {
   const { ciudad } = await params
+  if (!isCiudadPortal(ciudad)) notFound()
   const nombre = CIUDADES[ciudad]
-  if (!nombre) notFound()
 
   const datos = DATOS[ciudad]
 

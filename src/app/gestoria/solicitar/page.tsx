@@ -29,7 +29,7 @@ const SERVICIOS = [
     items: [
       { slug: 'arras-penitenciales', nombre: 'Contrato de Arras Penitenciales', precio: 145, badge: 'Más vendido' },
       { slug: 'arras-confirmatorias', nombre: 'Contrato de Arras Confirmatorias', precio: 145 },
-      { slug: 'reserva-compra', nombre: 'Contrato de Reserva de Compra', precio: 61 },
+      { slug: 'reserva-compra', nombre: 'Contrato de Reserva de Compra', precio: 120 },
       { slug: 'contrato-compraventa', nombre: 'Contrato de Compraventa', precio: 145 },
       { slug: 'arras-parking-garage', nombre: 'Arras Parking/Garaje', precio: 145 },
       { slug: 'alquiler-opcion-compra', nombre: 'Alquiler con Opción a Compra', precio: 182 },

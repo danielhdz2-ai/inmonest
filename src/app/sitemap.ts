@@ -31,8 +31,8 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/publicar-anuncio`,     lastModified: today, changeFrequency: 'monthly', priority: 0.8 },
   { url: `${BASE_URL}/vender-casa`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   
-  // Servicios Premium - Alternativa a Inmobiliarias
-  { url: `${BASE_URL}/servicios/vender-piso-sin-inmobiliaria`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
+  // Servicios Premium - Alternativa a Inmobiliarias (canonical: /vender-piso-sin-agencia)
+  { url: `${BASE_URL}/vender-piso-sin-agencia`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
   
   { url: `${BASE_URL}/agencias`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.8 },
   { url: `${BASE_URL}/sobre-nosotros`,       lastModified: today, changeFrequency: 'monthly', priority: 0.7 },

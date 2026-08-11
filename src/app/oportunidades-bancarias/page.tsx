@@ -8,6 +8,7 @@ import { precioLabel } from '@/lib/gestoria-precios-ui'
 const BASE_URL = 'https://inmonest.com'
 const PRECIO_ARRAS = precioLabel('arras-penitenciales')
 const PRECIO_COMPRAVENTA = precioLabel('contrato-compraventa')
+const PRECIO_COMPRA_COMPLETA = precioLabel('compra-completa-reserva-escritura')
 
 export const metadata: Metadata = {
   title: 'Pisos de banco baratos 2026',
@@ -395,21 +396,21 @@ export default function OportunidadesBancariasPage() {
               {[
                 {
                   titulo: 'Asesoría de Compra',
-                  precio: '95 €',
+                  precio: PRECIO_COMPRA_COMPLETA,
                   desc: 'Verificación completa de la propiedad y acompañamiento legal en todo el proceso de compra.',
                   href: '/gestoria/solicitar/compra-completa-reserva-escritura',
                   urgente: true,
                 },
                 {
                   titulo: 'Contrato de Arras',
-                  precio: '145 €',
+                  precio: PRECIO_ARRAS,
                   desc: 'Reserva el piso bancario con seguridad legal. Redactado por abogados, entrega en 48h.',
                   href: '/gestoria/solicitar/arras-penitenciales',
                   urgente: false,
                 },
                 {
                   titulo: 'Contrato de Compraventa',
-                  precio: '80 €',
+                  precio: PRECIO_COMPRAVENTA,
                   desc: 'El documento definitivo revisado por nuestros abogados antes de la firma ante notario.',
                   href: '/gestoria/contrato-compraventa',
                   urgente: false,

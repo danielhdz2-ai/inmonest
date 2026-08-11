@@ -11,8 +11,10 @@ import {
   LANDINGS_POR_CIUDAD,
   SERVICIOS_GUIA,
   contarLandingsPorCiudad,
+  filterCiudadesLandingActiva,
   getLandingPrecioDisplay,
   getNombreCiudad,
+  getServicioGuiaHref,
 } from '@/lib/gestoria-ciudades-inventario'
 
 export const metadata: Metadata = {
@@ -114,7 +116,7 @@ export default function CiudadesPage() {
                     </div>
 
                     <Link
-                      href={`/gestoria/${servicio.slug}`}
+                      href={getServicioGuiaHref(servicio.slug)}
                       className="inline-flex items-center gap-2 px-6 py-3 bg-gold-500 hover:bg-[#a68939] text-white rounded-lg font-semibold transition-colors shadow-md"
                     >
                       Ver servicio completo
@@ -169,7 +171,7 @@ export default function CiudadesPage() {
                   </div>
 
                   <div className="flex flex-wrap gap-2">
-                    {servicio.ciudades.map((slug) => (
+                    {filterCiudadesLandingActiva(servicio.id, servicio.ciudades).map((slug) => (
                       <Link
                         key={slug}
                         href={servicio.href(slug)}

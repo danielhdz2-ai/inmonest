@@ -61,7 +61,7 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     shortName: 'Reserva de compra',
     descripcion: 'Bloquea el inmueble 48–72h mientras se preparan las arras definitivas.',
     categoria: 'compraventa',
-    precio: getPrecioServicio('reserva-compra') ?? 61,
+    precio: getPrecioServicio('reserva-compra') ?? 120,
     image: '/contrato3.jpg',
     landingHref: '/gestoria/reserva-compra',
   },

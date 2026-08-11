@@ -21,7 +21,7 @@ const p = (slug: string, fallback: number) => getPrecioServicio(slug) ?? fallbac
 export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandingData> = {
   'reserva-compra': {
     nombre: 'Contrato de Reserva de Compra',
-    precio: p('reserva-compra', 61),
+    precio: p('reserva-compra', 120),
     categoria: 'Compraventa',
     tagline: 'Bloquea el inmueble 48–72h mientras preparas las arras definitivas',
     descripcion:
@@ -276,7 +276,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     relacionados: [
       { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento Arras-Venta', precio: 166 },
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
-      { slug: 'reserva-compra', nombre: 'Reserva de Compra', precio: 61 },
+      { slug: 'reserva-compra', nombre: 'Reserva de Compra', precio: 120 },
     ],
   },
 
@@ -484,7 +484,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     ],
     relacionados: [
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
-      { slug: 'reserva-compra', nombre: 'Reserva de Compra', precio: 61 },
+      { slug: 'reserva-compra', nombre: 'Reserva de Compra', precio: 120 },
       { slug: 'revision-correccion-arras', nombre: 'Revisión Arras', precio: 120 },
     ],
   },
@@ -590,7 +590,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     relacionados: [
       { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa', precio: 687 },
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
-      { slug: 'reserva-compra', nombre: 'Reserva de Compra', precio: 61 },
+      { slug: 'reserva-compra', nombre: 'Reserva de Compra', precio: 120 },
     ],
   },
 }

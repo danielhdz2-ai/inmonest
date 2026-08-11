@@ -1,4 +1,4 @@
-import { LANDINGS_POR_CIUDAD, getNombreCiudad } from './gestoria-ciudades-inventario'
+import { LANDINGS_POR_CIUDAD, getNombreCiudad, filterCiudadesLandingActiva } from './gestoria-ciudades-inventario'
 import { getCiudadImage } from './gestoria-images'
 
 /** Landing por ciudad asociada a cada slug de /gestoria/[servicio] */
@@ -87,7 +87,9 @@ export function getCiudadesParaServicio(servicio: string): CiudadServicioLink[] 
   const landing = LANDINGS_POR_CIUDAD.find((l) => l.id === landingId)
   if (!landing) return []
 
-  return landing.ciudades.map((slug) => {
+  return landing.ciudades
+    .filter((slug) => filterCiudadesLandingActiva(landingId, [slug]).length > 0)
+    .map((slug) => {
     const nombre = getNombreCiudad(slug)
     const img = getCiudadCardImage(slug, nombre, landingId)
     return {

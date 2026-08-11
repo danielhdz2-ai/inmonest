@@ -43,13 +43,13 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             {/* Servicios */}
             <div className="grid grid-cols-1 gap-4 max-w-md">
               {[
-                { icon: '🏡', title: 'Vende o alquila tu piso gratis', desc: 'Publica tu anuncio en minutos y llega a miles de compradores directos.' },
-                { icon: '🔍', title: 'Encuentra pisos sin agencia', desc: 'Miles de inmuebles de particulares en venta y alquiler, sin comisión.' },
-                { icon: '📄', title: 'Contratos y gestoría online', desc: 'Contratos de arras y alquiler LAU redactados por gestoría especializada.' },
-                { icon: '🤖', title: 'Buscador con IA', desc: 'Describe lo que buscas en lenguaje natural y la IA lo encuentra por ti.' },
+                { title: 'Vende o alquila tu piso gratis', desc: 'Publica tu anuncio en minutos y llega a miles de compradores directos.' },
+                { title: 'Encuentra pisos sin agencia', desc: 'Miles de inmuebles de particulares en venta y alquiler, sin comisión.' },
+                { title: 'Contratos y gestoría online', desc: 'Contratos de arras y alquiler LAU redactados por gestoría especializada.' },
+                { title: 'Buscador con IA', desc: 'Describe lo que buscas en lenguaje natural y la IA lo encuentra por ti.' },
               ].map((s) => (
                 <div key={s.title} className="flex gap-3 items-start">
-                  <span className="text-2xl mt-0.5">{s.icon}</span>
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" aria-hidden />
                   <div>
                     <p className="text-white font-semibold text-sm">{s.title}</p>
                     <p className="text-gray-400 text-xs leading-relaxed">{s.desc}</p>

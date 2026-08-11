@@ -61,7 +61,7 @@ export default function ArrasVsReservaPage() {
       imageAlt="Comparativa entre arras y reserva de compra"
       breadcrumbLabel="Arras vs Reserva"
       heroActions={[
-        { href: '/gestoria/solicitar/reserva-compra', label: 'Contratar reserva — 61€' },
+        { href: '/gestoria/solicitar/reserva-compra', label: 'Contratar reserva — 120€' },
         { href: '/gestoria/solicitar/arras-penitenciales', label: 'Contratar arras — 145€', variant: 'secondary' },
       ]}
       servicio="arras-penitenciales"
@@ -128,7 +128,7 @@ export default function ArrasVsReservaPage() {
                   </tr>
                   <tr className="bg-gray-50">
                     <td className="px-6 py-4 font-medium text-gray-900">Precio contrato</td>
-                    <td className="px-6 py-4 text-gray-700">61€</td>
+                    <td className="px-6 py-4 text-gray-700">120€</td>
                     <td className="px-6 py-4 text-gray-700">145€</td>
                   </tr>
                 </tbody>
@@ -138,7 +138,7 @@ export default function ArrasVsReservaPage() {
             <div className="mt-6 bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
               <h3 className="font-bold text-green-900 mb-2">Orden correcto de firma:</h3>
               <ol className="text-green-800 space-y-2 text-sm">
-                <li><strong>1. Reserva (61€)</strong> → Bloqueas el piso 48-72h para verificar documentos</li>
+                <li><strong>1. Reserva (120€)</strong> → Bloqueas el piso 48-72h para verificar documentos</li>
                 <li><strong>2. Verificación</strong> → Compruebas nota simple, cédula habitabilidad, ITE, licencias</li>
                 <li><strong>3. Arras (145€)</strong> → Si todo OK, firmas compromiso firme de compra</li>
                 <li><strong>4. Escritura</strong> → Firmas ante notario y pagas el resto del precio</li>
@@ -210,7 +210,7 @@ export default function ArrasVsReservaPage() {
                   href="/gestoria/solicitar/reserva-compra"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition"
                 >
-                  Contratar Reserva de Compra - 61€
+                  Contratar Reserva de Compra - 120€
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -306,7 +306,7 @@ export default function ArrasVsReservaPage() {
                 href="/gestoria/solicitar/reserva-compra"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-white text-gold-500 font-bold hover:bg-gray-100 transition text-lg"
               >
-                Reserva - 61€
+                Reserva - 120€
               </Link>
               <Link
                 href="/gestoria/solicitar/arras-penitenciales"
@@ -360,7 +360,7 @@ export default function ArrasVsReservaPage() {
                 <p className="text-red-800 text-sm">
                   Plantilla gratis sin personalizar → cláusulas genéricas o ilegales → 
                   un juez puede anular el contrato → <strong>pierdes el dinero y el piso</strong>. 
-                  Por ahorrar 61€ arriesgas 10.000€+.
+                  Por ahorrar 120€ arriesgas 10.000€+.
                 </p>
               </div>
             </div>
@@ -411,7 +411,7 @@ export default function ArrasVsReservaPage() {
                 <p className="text-gray-700 mt-3 text-sm">
                   No. Un contrato privado firmado por ambas partes es 100% válido. El notario solo es 
                   obligatorio para la ESCRITURA final (compraventa definitiva), no para reserva ni arras. 
-                  Un contrato privado profesional (redactado por abogados) cuesta mucho menos (61€ - 145€ 
+                  Un contrato privado profesional (redactado por abogados) cuesta mucho menos (120€ - 145€ 
                   vs 300€ del notario) y tiene la misma validez legal.
                 </p>
               </details>

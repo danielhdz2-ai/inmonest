@@ -104,7 +104,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
           <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
             <li><strong>Contrato de arras penitenciales</strong> — 145€ (el más común)</li>
             <li><strong>Contrato de arras confirmatorias</strong> — 145€</li>
-            <li><strong>Contrato de reserva de compra</strong> — 61€ (bloqueo 48-72h)</li>
+            <li><strong>Contrato de reserva de compra</strong> — 120€ (bloqueo 48-72h)</li>
             <li><strong>Contrato de compraventa</strong> — 80€</li>
             <li><strong>Pack Due Diligence pre-compra</strong> — 350€ (revisión completa antes de escriturar)</li>
           </ul>

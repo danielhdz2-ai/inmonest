@@ -95,13 +95,12 @@ export default function LoginForm() {
         )}
 
         <div className="flex gap-2 justify-center flex-wrap mb-6">
-          {[
-            { icon: '📢', text: '2 anuncios gratis' },
-            { icon: '🚀', text: 'Visibilidad Turbo' },
-            { icon: '🔓', text: 'Sin intermediarios' },
-          ].map((b) => (
-            <span key={b.text} className="flex items-center gap-1 bg-cream-100 border border-[#f0dfa0] text-[#7a5c10] text-xs font-semibold px-2.5 py-1 rounded-full">
-              {b.icon} {b.text}
+          {['2 anuncios gratis', 'Visibilidad Turbo', 'Sin intermediarios'].map((text) => (
+            <span
+              key={text}
+              className="bg-cream-100 border border-[#f0dfa0] text-[#7a5c10] text-xs font-semibold px-2.5 py-1 rounded-full"
+            >
+              {text}
             </span>
           ))}
         </div>

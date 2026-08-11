@@ -150,6 +150,16 @@ export const SEO_REDIRECTS: Redirect[] = [
     destination: '/gestoria/solicitar/rescision-alquiler',
     permanent: true,
   },
+  {
+    source: '/gestoria/contrato-alquiler-barcelona',
+    destination: '/barcelona/contrato-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/contrato-compraventa/:ciudad',
+    destination: '/gestoria/contrato-compraventa',
+    permanent: true,
+  },
 
   // ═══ CIUDADES — ATAJOS RAÍZ ═══
   {
@@ -217,6 +227,13 @@ export const SEO_REDIRECTS: Redirect[] = [
     permanent: true,
   },
 
+  // ═══ VENTA — CONSOLIDACIÓN URL ═══
+  {
+    source: '/servicios/vender-piso-sin-inmobiliaria',
+    destination: '/vender-piso-sin-agencia',
+    permanent: true,
+  },
+
   // ═══ ALIASES NUEVAS CIUDADES NORTE ═══
   {
     source: '/donostia/contrato-alquiler',
@@ -236,6 +253,18 @@ export const SEO_REDIRECTS: Redirect[] = [
   {
     source: '/vitoria-gasteiz/contrato-arras',
     destination: '/vitoria/contrato-arras',
+    permanent: true,
+  },
+
+  // ═══ ALQUILER PARTICULARES — CIUDADES SIN LANDING DEDICADA (GSC 404) ═══
+  {
+    source: '/castellon/alquiler-particulares',
+    destination: '/castellon/contrato-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/murcia/alquiler-particulares',
+    destination: '/pisos?ciudad=murcia&solo_particulares=true',
     permanent: true,
   },
 ]
