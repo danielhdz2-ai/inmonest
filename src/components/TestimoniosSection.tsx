@@ -1,6 +1,10 @@
 import TestimoniosCarousel from '@/components/TestimoniosCarousel'
 import TestimoniosStack from '@/components/TestimoniosStack'
 import { GESTORIA_GOOGLE_REVIEWS } from '@/lib/gestoria-reviews-schema'
+import {
+  GOOGLE_REVIEWS_LIST_URL,
+  GOOGLE_REVIEW_SHORT_PATH,
+} from '@/lib/google-business'
 
 type TestimoniosSectionProps = {
   className?: string
@@ -47,14 +51,22 @@ export default function TestimoniosSection({
                   · {GESTORIA_GOOGLE_REVIEWS.length} reseñas en Google
                 </span>
               </div>
-              <a
-                href="https://www.google.com/search?q=inmonest"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-gold-500 hover:underline font-medium"
-              >
-                Ver reseñas verificadas en Google →
-              </a>
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
+                <a
+                  href={GOOGLE_REVIEW_SHORT_PATH}
+                  className="text-sm font-semibold text-gold-600 hover:text-gold-700"
+                >
+                  Dejar tu reseña en Google →
+                </a>
+                <a
+                  href={GOOGLE_REVIEWS_LIST_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-500 hover:text-gold-500 hover:underline font-medium"
+                >
+                  Ver reseñas verificadas
+                </a>
+              </div>
             </>
           ) : (
             <>

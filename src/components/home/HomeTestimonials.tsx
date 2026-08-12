@@ -3,6 +3,10 @@ import { Section } from '@/components/ui/Section'
 import { TestimonialCard } from '@/components/ui/TestimonialCard'
 import { Star } from '@/components/ui/Icons'
 import { GOOGLE_REVIEWS } from '@/lib/google-reviews'
+import {
+  GOOGLE_REVIEWS_LIST_URL,
+  GOOGLE_REVIEW_SHORT_PATH,
+} from '@/lib/google-business'
 
 export default function HomeTestimonials() {
   return (
@@ -30,7 +34,13 @@ export default function HomeTestimonials() {
 
       <div className="text-center mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
         <Link
-          href="https://www.google.com/search?q=inmonest"
+          href={GOOGLE_REVIEW_SHORT_PATH}
+          className="text-sm font-semibold text-white bg-gold-500 hover:bg-gold-600 px-6 py-2.5 rounded-full transition-colors"
+        >
+          Dejar tu reseña en Google
+        </Link>
+        <Link
+          href={GOOGLE_REVIEWS_LIST_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="text-sm text-gold-600 hover:text-gold-700 font-medium transition-colors"
@@ -39,7 +49,7 @@ export default function HomeTestimonials() {
         </Link>
         <Link
           href="/gestoria"
-          className="text-sm font-semibold text-white bg-gold-500 hover:bg-gold-600 px-6 py-2.5 rounded-full transition-colors"
+          className="text-sm text-gray-600 hover:text-gray-900 font-medium transition-colors"
         >
           Ver servicios de gestoría
         </Link>
