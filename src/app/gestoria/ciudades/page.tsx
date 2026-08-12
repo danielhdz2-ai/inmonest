@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import PageHeroImage from '@/components/PageHeroImage'
 import Footer from '@/components/Footer'
+import GestoriaUrlsIndexacion from '@/components/GestoriaUrlsIndexacion'
 import {
   CIUDADES_DESTACADAS,
   CIUDADES_SEO,
@@ -212,6 +213,8 @@ export default function CiudadesPage() {
                 ))}
               </div>
             </div>
+
+            <GestoriaUrlsIndexacion />
           </div>
         </section>
 

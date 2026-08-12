@@ -48,6 +48,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/valencia`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/sevilla`,      lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/malaga`,       lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/asesoria-compra-piso/alicante`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/zaragoza`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/valladolid`,   lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/asesoria-compra-piso/mallorca`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
@@ -108,10 +109,14 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/zaragoza/contrato-alquiler`,           lastModified: today, changeFrequency: 'weekly', priority: 0.8 },
   { url: `${BASE_URL}/granada/contrato-alquiler`,            lastModified: today, changeFrequency: 'weekly', priority: 0.8 },
 
-  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/madrid`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
-  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/valencia`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
-  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/bilbao`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
-  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/sevilla`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/madrid`,    lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/barcelona`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/valencia`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/sevilla`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/malaga`,    lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/bilbao`,    lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/zaragoza`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/alicante`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
 
   // Gestoría — formularios de solicitud (21 servicios)
   { url: `${BASE_URL}/gestoria/solicitar/arras-penitenciales`,           lastModified: today, changeFrequency: 'monthly', priority: 0.85 },

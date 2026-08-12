@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { GESTORIA_ENLACES_INDEXACION } from '@/lib/gestoria-indexar-urls'
 
 export type EnlaceSeo = {
   href: string
@@ -56,58 +57,27 @@ const ENLACES_HOME: EnlaceSeo[] = [
     description: 'Contrato legal con registro en Hacienda.',
     badge: 'Servicio',
   },
+  {
+    href: '/gestoria/alquiler-local-comercial/madrid',
+    title: 'Local comercial Madrid',
+    description: 'Contrato LAU empresarial desde 145€.',
+    badge: 'Nuevo',
+  },
+  {
+    href: '/gestoria/asesoria-compra-piso/valencia',
+    title: 'Compra piso Valencia',
+    description: '687€ fijos. Sin comisión de agencia.',
+    badge: 'Ciudad',
+  },
+  {
+    href: '/gestoria/ciudades',
+    title: 'Gestoría por ciudad',
+    description: 'Todas las landings locales activas.',
+    badge: 'Hub',
+  },
 ]
 
-const ENLACES_GESTORIA: EnlaceSeo[] = [
-  {
-    href: '/calculadora-gastos-alquiler',
-    title: 'Calculadora gastos de alquiler',
-    description: 'Herramienta gratis antes de firmar el contrato.',
-    badge: 'Gratis',
-  },
-  {
-    href: '/gestoria/cuanto-cuesta-contrato-alquiler',
-    title: 'Precio contrato alquiler 2026',
-    description: 'Tabla comparativa y desglose de costes.',
-    badge: 'Guía',
-  },
-  {
-    href: '/valencia/contrato-alquiler',
-    title: 'Contrato alquiler Valencia',
-    description: 'Desde 145€. Normativa Comunitat Valenciana.',
-    badge: 'Ciudad',
-  },
-  {
-    href: '/malaga/contrato-alquiler',
-    title: 'Alquiler en Málaga',
-    description: 'Protección para propietarios e inquilinos.',
-    badge: 'Ciudad',
-  },
-  {
-    href: '/bilbao/contrato-alquiler',
-    title: 'Alquiler en Bilbao',
-    description: 'Contrato LAU con normativa autonómica.',
-    badge: 'Ciudad',
-  },
-  {
-    href: '/malaga/alquiler-particulares',
-    title: 'Particulares en Málaga',
-    description: 'Alquiler sin comisión de agencia.',
-    badge: 'Ciudad',
-  },
-  {
-    href: '/blog/que-es-gestoria-inmobiliaria',
-    title: '¿Qué es una gestoría inmobiliaria?',
-    description: 'Cuándo la necesitas y qué incluye.',
-    badge: 'Blog',
-  },
-  {
-    href: '/gestoria/due-diligence-precompra/valencia',
-    title: 'Due diligence Valencia',
-    description: 'Revisión legal precompra en la Comunidad Valenciana.',
-    badge: 'Ciudad',
-  },
-]
+const ENLACES_GESTORIA: EnlaceSeo[] = [...GESTORIA_ENLACES_INDEXACION]
 
 function EnlaceCard({ enlace }: { enlace: EnlaceSeo }) {
   return (

@@ -50,6 +50,7 @@ export const ASESORIA_COMPRA_CIUDADES_LIST = [
   { slug: 'valencia', nombre: 'Valencia' },
   { slug: 'sevilla', nombre: 'Sevilla' },
   { slug: 'malaga', nombre: 'Málaga' },
+  { slug: 'alicante', nombre: 'Alicante' },
   { slug: 'zaragoza', nombre: 'Zaragoza' },
   { slug: 'valladolid', nombre: 'Valladolid' },
   { slug: 'mallorca', nombre: 'Mallorca' },
@@ -410,6 +411,74 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
           'No conocía plazos ni impuestos en Aragón. Tenía miedo de firmar arras sin entender las cláusulas.',
         resultado:
           'Gestor explicó cada paso, coordinó con notaría zaragozana y verificó que la vivienda no tenía cargas ocultas.',
+      },
+    ],
+  },
+
+  alicante: {
+    slug: 'alicante',
+    nombre: 'Alicante',
+    region: 'Comunitat Valenciana · Costa Blanca',
+    testimoniosLanding: 'asesoria-compra-alicante',
+    heroImage: getCiudadImage('alicante').src,
+    precioEjemploPiso: 280_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Alicante y Costa Blanca',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en compras entre particulares en Alicante, Elche y zona costera. Revisa cédula de habitabilidad, arras, nota simple y acompaña a compradores nacionales e internacionales hasta escritura sin comisión de agencia.',
+    },
+    zonasIntro: 'Alicante capital, Playa de San Juan, Elche, San Vicente y Costa Blanca.',
+    zonas: ['Centro', 'Explanada', 'Playa San Juan', 'Carolinas', 'Benalúa', 'Elche', 'San Vicente', 'Campello'],
+    meta: {
+      title: 'Asesoría compra piso Alicante desde 687€',
+      description:
+        'Compra piso de particular en Alicante con gestor asignado. Cédula, arras, NIE extranjeros y normativa valenciana. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'asesoria compra piso alicante, comprar piso particular alicante, comprar piso sin agencia alicante, gestor compra vivienda costa blanca, gestoria compra piso alicante, comprar piso extranjero alicante',
+      ogTitle: 'Compra piso particular Alicante — 687€ sin comisión',
+      ogDescription: 'Gestor asignado desde reserva hasta escritura en Alicante y Costa Blanca.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Alicante sin pagar comisión de agencia',
+      lead:
+        '¿Has encontrado piso en un portal de particulares en Alicante o la costa? Te acompañamos en reserva, arras, cédula de habitabilidad, documentación registral y firma en notaría. 687€ fijos — frente a 8.400-14.000€ de comisión inmobiliaria.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Es seguro comprar piso de particular en Alicante?',
+        a: 'Sí, si revisas documentación antes de entregar señal. En Alicante hay mucha operativa entre particulares y compradores internacionales. Verificamos nota simple, cédula de habitabilidad, comunidad e impuestos pendientes.',
+      },
+      {
+        q: '¿Qué documentación necesito pedir al vendedor en Alicante?',
+        a: 'Nota simple registral, cédula de habitabilidad vigente (obligatoria en Comunitat Valenciana), certificado energético, certificado de deudas de comunidad e IBI al corriente. En edificios antiguos puede exigirse ITE.',
+      },
+      {
+        q: '¿Puedo comprar en Alicante siendo extranjero?',
+        a: 'Sí. Necesitas NIE o pasaporte, cuenta bancaria española si pides hipoteca y documentación traducida si procede. Tu gestor coordina plazos con notaría alicantina y verifica que la vivienda cumple requisitos valencianos.',
+      },
+      {
+        q: '¿Cuánto ahorro respecto a una inmobiliaria en Alicante?',
+        a: 'En un piso de 280.000€, una agencia cobraría unos 8.400–14.000€ (3-5%). Con Inmonest pagas 687€ por acompañamiento completo hasta escritura.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra en Playa de San Juan de particular',
+        perfil: 'Pareja con comprador británico residente',
+        situacion:
+          'Encontraron piso sin agencia. El vendedor presionó para arras en 48h sin verificar cédula de habitabilidad ni cargas registrales.',
+        resultado:
+          'Revisión documental en 24h, arras con condición suspensiva de hipoteca y verificación de cédula. Compra cerrada en notaría de Alicante sin comisión de intermediario.',
+        ahorro: '11.200€ vs agencia',
+      },
+      {
+        titulo: 'Piso en Elche entre particulares',
+        perfil: 'Familia que se reubica desde Madrid',
+        situacion:
+          'No conocían el depósito de fianza valenciano ni el ITP autonómico. Tenían miedo de firmar reserva sin entender las cláusulas.',
+        resultado:
+          'Gestor explicó cada trámite, revisó nota simple con hipoteca pendiente de cancelar y coordinó con notaría hasta escritura.',
       },
     ],
   },

@@ -45,10 +45,10 @@ const BARRIOS: Record<string, BarrioCiudad[]> = {
     { nombre: 'Utebo / Cuarte', nota: 'Cinturón metropolitano.' },
   ],
   alicante: [
-    { nombre: 'Centro / Carolinas', nota: 'Alquiler urbano; fianza Comunitat Valenciana.' },
-    { nombre: 'Playa de San Juan', nota: 'Costa; distinguir habitual vs temporada.' },
-    { nombre: 'San Vicente / Elche', nota: 'Área metropolitana y comarca.' },
-    { nombre: 'Benidorm / Altea', nota: 'Costa Blanca; arras y uso del inmueble bien definidos.' },
+    { nombre: 'Centro / Explanada', nota: 'Alquiler urbano y hostelería; fianza AVANT obligatoria.' },
+    { nombre: 'Playa de San Juan', nota: 'Costa; distinguir vivienda habitual LAU vs turismo (Registro de Turisme).' },
+    { nombre: 'Carolinas / Benalúa', nota: 'Alquiler estable; buena oferta de particulares.' },
+    { nombre: 'Elche / San Vicente', nota: 'Área metropolitana; cédula habitabilidad Generalitat.' },
   ],
   santander: [
     { nombre: 'Centro / Puertochico', nota: 'Alquiler urbano de alta rotación.' },

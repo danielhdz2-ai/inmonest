@@ -287,41 +287,44 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
     heroBadge: 'Gestoría 100% Online | Costa Blanca',
     heroSubtitulo:
       'Gestoría inmobiliaria para particulares en Alicante. Alta demanda extranjera, mercado turístico y cédula de habitabilidad obligatoria. Contratos desde 145€. Sin comisiones.',
-    ogImage: '/gestoria4.jpg',
+    ogImage: '/alicante1.jpg',
     twitterDescription:
-      'Contratos de alquiler, arras y compraventa en Alicante desde 145€. Sin comisiones. Normativa valenciana.',
+      'Contratos de alquiler, arras y compraventa en Alicante desde 145€. Sin comisiones. Normativa valenciana y Costa Blanca.',
     razones: [
       {
-        titulo: 'Alta demanda extranjera',
+        titulo: 'Capital de la Costa Blanca con compradores internacionales',
         descripcion:
-          'Alicante es la ciudad con mayor porcentaje de compradores extranjeros de España. Necesitan NIE, cuenta bancaria española y contratos que entiendan en un proceso notarial en español.',
+          'Alicante concentra uno de los mayores porcentajes de compradores extranjeros de España (nórdicos, británicos, alemanes). Necesitan NIE, cuenta bancaria española y un gestor que explique cédula, ITP valenciano y firma en notaría en español.',
       },
       {
-        titulo: 'Mercado turístico regulado',
+        titulo: 'LAU habitual vs alquiler turístico: no es lo mismo',
         descripcion:
-          'La Comunitat Valenciana tiene regulación propia de viviendas turísticas. La diferencia entre un contrato LAU y uno de temporada es crítica en una ciudad con tanta demanda vacacional.',
+          'En Explanada, San Juan o Campello muchos propietarios mezclan alquiler residencial con temporada. La Generalitat exige Registro de Turisme para uso vacacional. Un contrato LAU mal aplicado puede invalidar tu operación o generar sanciones.',
       },
       {
-        titulo: 'Cédula de habitabilidad obligatoria',
+        titulo: 'Cédula de habitabilidad y fianza autonómica',
         descripcion:
-          'Como en toda la Comunitat Valenciana, la cédula es obligatoria para vender y alquilar. Muchos compradores extranjeros desconocen este requisito hasta llegar a notaría.',
+          'Sin cédula de habitabilidad vigente no puedes vender ni alquilar con garantías en notaría. La fianza legal debe depositarse ante la Generalitat Valenciana (AVANT). Dos requisitos que muchos particulares en Alicante descubren tarde.',
       },
     ],
     mercadoZonas: [
-      { nombre: 'Centro', rango: '700-1.000€/mes', perfil: 'residentes' },
-      { nombre: 'Playa de San Juan', rango: '800-1.200€/mes', perfil: 'turismo y familias' },
-      { nombre: 'Carolinas', rango: '500-700€/mes', perfil: 'perfil mixto' },
-      { nombre: 'Benalúa', rango: '550-750€/mes', perfil: 'familias' },
+      { nombre: 'Centro / Explanada', rango: '750-1.050€/mes', perfil: 'residentes y profesionales' },
+      { nombre: 'Playa de San Juan', rango: '850-1.250€/mes', perfil: 'familias y perfiles internacionales' },
+      { nombre: 'Carolinas / San Blas', rango: '550-750€/mes', perfil: 'alquiler estable de larga duración' },
+      { nombre: 'Benalúa / Vistahermosa', rango: '600-850€/mes', perfil: 'familias en expansión sur' },
+      { nombre: 'Elche / San Vicente', rango: '500-700€/mes', perfil: 'área metropolitana' },
     ],
     mercadoCompraventa: [
-      'El precio medio en Alicante ronda los **2.000-3.500€/m²** en centro y costa. En periferia el rango habitual es de **1.200-1.800€/m²**.',
-      'Las agencias cobran entre el 3% y el 5%. Inmonest cobra **687€** fijos por acompañamiento completo frente a **6.000-15.000€** de comisión.',
+      'En **Alicante capital** el precio medio ronda **2.200-3.200€/m²** en centro y zona portuaria; en **Playa de San Juan** y urbanizaciones costeras sube a **2.800-4.000€/m²**.',
+      'En **Elche, San Vicente o Mutxamel** los rangos son más accesibles (**1.400-2.100€/m²**), con mucha operativa entre particulares sin agencia.',
+      'Una inmobiliaria cobra **3-5%** sobre el precio. En un piso de 280.000€ son **8.400-14.000€**. Inmonest: **687€** fijos desde reserva hasta escritura.',
     ],
     mercadoParticularidades: [
-      'Cédula de habitabilidad: obligatoria en Comunitat Valenciana',
-      'Registro de Turisme: necesario para alquiler turístico (no es LAU)',
-      'Compradores extranjeros: NIE y documentación bancaria para hipoteca',
-      'Zonas de alta densidad turística con restricciones crecientes',
+      'Cédula de habitabilidad obligatoria — Generalitat Valenciana (10-15 años de vigencia)',
+      'Depósito de fianza LAU en organismo autonómico valenciano (AVANT)',
+      'Registro de Turisme para viviendas de uso vacacional — no sustituye contrato LAU',
+      'Compradores extranjeros: NIE, certificado bancario y traducción jurada si procede',
+      'Plusvalía municipal (IIVTNU) con bonificaciones según Ayuntamiento de Alicante',
     ],
     faq: GESTORIA_ALICANTE_FAQ,
     faqSubtitulo: 'Respuestas específicas para Alicante: cédula, turismo y compradores extranjeros.',

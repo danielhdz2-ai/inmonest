@@ -150,7 +150,7 @@ export const CIUDAD_IMAGES: Record<string, { src: string; alt: string }> = {
   asturias: { src: '/gijon.jpg', alt: 'Gestoría inmobiliaria Asturias' },
   coruna: { src: '/vigo.jpg', alt: 'Gestoría inmobiliaria A Coruña' },
   bilbao: { src: '/gestoria7.jpg', alt: 'Gestoría inmobiliaria Bilbao' },
-  alicante: { src: '/gestoria8.jpg', alt: 'Gestoría inmobiliaria Alicante' },
+  alicante: { src: '/alicante1.jpg', alt: 'Gestoría inmobiliaria Alicante — Costa Blanca' },
   granada: { src: '/gestoria5.jpg', alt: 'Gestoría inmobiliaria Granada' },
   murcia: { src: '/gestoria4.jpg', alt: 'Gestoría inmobiliaria Murcia' },
   pamplona: { src: '/gestoria3.jpg', alt: 'Gestoría inmobiliaria Pamplona' },

@@ -169,7 +169,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Alquiler Local Comercial',
     precioSlug: 'alquiler-local-comercial',
     href: (c) => `/gestoria/alquiler-local-comercial/${c}`,
-    ciudades: ['madrid', 'valencia', 'bilbao', 'sevilla'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante'],
   },
   {
     id: 'prestamo-particulares',
@@ -261,6 +261,13 @@ export const SERVICIOS_GUIA = [
     slug: 'asesoramiento-arras-venta',
     imagen: '/gestoria10.jpg',
     categoria: 'Premium',
+  },
+  {
+    titulo: 'Alquiler Local Comercial',
+    descripcion: 'Contrato LAU para locales y naves. Madrid, Barcelona, Valencia, Sevilla, Málaga y más',
+    slug: 'alquiler-local-comercial',
+    imagen: '/gestoria6.jpg',
+    categoria: 'Alquiler',
   },
   {
     titulo: 'Revisión Contrato Alquiler',

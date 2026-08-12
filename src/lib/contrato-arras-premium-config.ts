@@ -324,32 +324,61 @@ export const CONTRATO_ARRAS_PREMIUM: Record<string, ContratoArrasPremiumConfig> 
   alicante: {
     slug: 'alicante',
     nombre: 'Alicante',
-    meta: baseMeta('Alicante', 'alicante', 'Alicante y Costa Blanca.', ['contrato arras Alicante', 'arras penitenciales Alicante', 'redactar arras Elche Benidorm']),
+    meta: baseMeta(
+      'Alicante',
+      'alicante',
+      'Alicante, Elche y Costa Blanca. Compradores internacionales y normativa valenciana.',
+      [
+        'contrato arras Alicante',
+        'arras penitenciales Alicante',
+        'redactar arras Elche San Juan',
+        'comprar piso particular Alicante arras',
+        'señal compra vivienda Costa Blanca',
+      ],
+    ),
     schema: {
       serviceName: 'Contrato de Arras Penitenciales en Alicante',
-      serviceDescription: 'Contrato de arras para compraventa en Alicante y Comunitat Valenciana.',
+      serviceDescription:
+        'Contrato de arras para compraventa en Alicante, Elche y Comunitat Valenciana. Compradores nacionales e internacionales.',
       areaType: 'City',
       areaName: 'Alicante',
     },
-    heroImageAlt: 'Contrato de arras en Alicante',
+    heroImageAlt: 'Contrato de arras en Alicante — Costa Blanca',
     breadcrumbFinal: 'Contrato de Arras Alicante',
     badgeLine: 'Compraventa · Alicante',
     ctaStickyLabel: 'Compraventa · Alicante',
     introLargo:
-      'En Alicante y la Costa Blanca las compraventas suelen ir ligadas a plazos ajustados y mucha operativa bancaria. Las arras penitenciales te dan marco legal para no perder la señal ni el piso por un mal párrafo. Redacción con revisión registral y condiciones suspensivas cuando proceda.',
+      'En Alicante y la Costa Blanca las compraventas entre particulares van a menudo con plazos ajustados, compradores extranjeros con NIE en trámite y verificación de cédula de habitabilidad antes de notaría. Las arras penitenciales fijan precio, plazo hasta escritura y consecuencias si alguien rompe el acuerdo — pero solo protegen si están bien redactadas: condición suspensiva de hipoteca, revisión registral y coherencia con la documentación valenciana. No firmes una señal con un PDF genérico descargado de internet.',
     alertaTitulo: 'Vas a dejar una señal en Alicante: ¿vas a firmarlo con un PDF "genérico"?',
     paraQuienTitulo: '¿Para quién es este contrato en Alicante?',
     paraQuien: [
-      'Compradores en Alicante, Elche, Torrevieja o Benidorm que necesitan reserva seria',
-      'Vendedores que no quieren depender de un "pagar y ver"',
-      'Operaciones con hipoteca en curso',
-      'Compraventa de vivienda en la provincia de Alicante',
+      'Compradores en Alicante, Elche o San Juan que reservan piso de particular',
+      'Vendedores con comprador extranjero que necesita plazos para NIE e hipoteca',
+      'Operaciones en Playa de San Juan o centro con cédula de habitabilidad pendiente de verificar',
+      'Compraventa en Benidorm, Torrevieja o municipios de la provincia de Alicante',
     ],
-    faqs: faqRegion(
-      'Alicante',
-      '¿El contrato de arras penitenciales es válido en Alicante y la Comunitat Valenciana?',
-      'Sí. Es válido en la provincia de Alicante y el resto del territorio valenciano, según el Código Civil.',
-    ),
+    faqs: [
+      {
+        q: '¿El contrato de arras penitenciales es válido en Alicante y la Comunitat Valenciana?',
+        a: 'Sí. Es válido en Alicante, Elche y resto del territorio valenciano según el Código Civil. Lo importante es que las cláusulas reflejen lo pactado: penitencial, plazos, condición de financiación y saneamiento.',
+      },
+      {
+        q: '¿Puedo firmar arras en Alicante si el comprador es extranjero?',
+        a: 'Sí, pero conviene incluir plazos para obtener NIE y condición suspensiva de hipoteca si aplica. Muchas operaciones en la Costa Blanca tienen compradores nórdicos o británicos residentes. Tu gestor adapta el contrato.',
+      },
+      {
+        q: '¿Debo verificar la cédula de habitabilidad antes de las arras?',
+        a: 'Es muy recomendable. En la Comunitat Valenciana la cédula es obligatoria para la compraventa. Sin ella, la operación puede bloquearse en notaría. Incluimos revisión documental cuando contratas el servicio completo.',
+      },
+      {
+        q: '¿Cuánto cuesta el contrato de arras en Alicante?',
+        a: '145€ IVA incluido por contrato de arras penitenciales redactado por gestor inmobiliario experto. Entrega en 48 horas laborables.',
+      },
+      {
+        q: '¿Qué ocurre si el banco deniega la hipoteca después de firmar arras?',
+        a: 'Sin cláusula suspensiva de financiación puedes perder la señal. El contrato debe regular qué pasa si la hipoteca no se concede en plazo: devolución íntegra o penalización parcial según lo pactado.',
+      },
+    ],
   },
 
   castellon: {

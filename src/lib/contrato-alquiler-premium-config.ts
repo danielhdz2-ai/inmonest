@@ -436,39 +436,92 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     nombre: 'Alicante',
     meta: {
       title: 'Contrato de alquiler Alicante desde 145€',
-      description: 'Contrato LAU en Alicante y Comunitat Valenciana. 145€, 48h.',
-      keywords: ['contrato alquiler Alicante', 'LAU Alicante', 'arrendamiento Alicante', 'torrevieja alquiler contrato'],
+      description:
+        'Contrato LAU en Alicante y Costa Blanca desde 145€ (48h). Fianza Generalitat, cédula habitabilidad, LAU vs turístico. Sin plantillas genéricas.',
+      keywords: [
+        'contrato alquiler Alicante',
+        'LAU Alicante',
+        'cuanto cuesta contrato alquiler Alicante',
+        'fianza Generalitat Valenciana Alicante',
+        'arrendamiento vivienda Playa San Juan',
+        'alquiler piso particular Alicante contrato',
+      ],
       ogTitle: 'Contrato de alquiler Alicante desde 145€',
-      ogDescription: 'Redacción LAU profesional en Alicante.',
-      ogImageAlt: 'Contrato de alquiler Alicante',
+      ogDescription: 'LAU en Alicante y Comunitat Valenciana desde 145€. Entrega 48h, PDF firmable.',
+      ogImageAlt: 'Contrato de alquiler en Alicante — Costa Blanca',
     },
     schema: {
       serviceName: 'Contrato de Alquiler de Vivienda (LAU) en Alicante',
-      serviceDescription: 'Contrato de alquiler en Alicante y Comunitat Valenciana.',
+      serviceDescription:
+        'Contrato de alquiler de vivienda habitual en Alicante, Elche y Comunitat Valenciana conforme a LAU y Ley de Vivienda 2026.',
       areaType: 'City',
       areaName: 'Alicante',
     },
-    heroImageAlt: 'Contrato de alquiler en Alicante',
+    heroImageAlt: 'Contrato de alquiler en Alicante — Costa Blanca',
     breadcrumbFinal: 'Contrato de Alquiler Alicante',
     badgeLine: 'Alquiler · Alicante',
     ctaStickyLabel: 'Alquiler · Alicante',
     introLargo:
-      'Alicante y la provincia concentran mucho alquiler turístico residencial mezclado con vivienda habitual. El contrato LAU debe dejar claro el uso, la renta, la fianza y la actualización conforme a la Ley de Vivienda 2026. Lo redactamos a tu medida.',
+      'Alicante concentra alquiler residencial en el centro, Carolinas y Benalúa, y demanda internacional en Playa de San Juan y Campello. En la misma ciudad conviven contratos LAU de vivienda habitual, alquileres a extranjeros residentes y pisos orientados al turismo — que no se rigen igual. La fianza debe depositarse ante la Generalitat Valenciana y la cédula de habitabilidad es obligatoria. Redactamos tu contrato a medida con las cláusulas que exige el mercado alicantino, no una plantilla genérica. 145€ IVA incluido, entrega en 48h.',
+    particularidadesRegionales: {
+      titulo: 'Alquiler en Alicante: LAU habitual, fianza valenciana y turismo',
+      secciones: [
+        {
+          titulo: 'No confundas alquiler LAU con uso turístico en la Costa Blanca',
+          contenido:
+            'En Explanada, San Juan o urbanizaciones costeras muchos propietarios anuncian pisos para “temporada” o turismo. Eso no es un arrendamiento LAU de vivienda habitual: requiere Registro de Turisme de la Comunitat Valenciana y tiene normativa distinta. Si alquilas vivienda habitual a un inquilino residente, necesitas contrato LAU con fianza en AVANT.',
+          bullets: [
+            'LAU habitual: inquilino residente, duración mínima legal, fianza autonómica',
+            'Uso turístico: Registro de Turisme, no sustituye contrato LAU',
+            'Mezclar ambos regímenes sin documentación correcta expone a sanciones',
+            'Cláusulas de uso del inmueble redactadas con precisión',
+          ],
+        },
+        {
+          titulo: 'Fianza y cédula en la Comunitat Valenciana (Alicante)',
+          contenido:
+            'La fianza legal de una mensualidad debe ingresarse en el organismo autonómico valenciano. Además, la cédula de habitabilidad vigente es requisito para alquilar con garantías. En Alicante es habitual alquilar a extranjeros con NIE: el contrato debe ser claro en idioma y obligaciones.',
+          bullets: [
+            'Depósito fianza en Generalitat Valenciana (AVANT)',
+            'Cédula de habitabilidad obligatoria',
+            'Actualización de renta según Ley de Vivienda 2026',
+            'Inventario y estado del piso — especialmente en segundas residencias',
+          ],
+        },
+      ],
+    },
     alertaTitulo: 'Vas a firmar un alquiler en Alicante: ¿vas a hacerlo con un PDF "genérico"?',
     paraQuienTitulo: '¿Para quién es este contrato en Alicante?',
     paraQuien: [
-      'Propietarios en Alicante ciudad y provincia',
-      'Alquiler de vivienda habitual (no confundir con uso turístico)',
-      'Inquilinos que necesitan claridad legal',
-      'Operaciones LAU de larga duración en la Comunitat Valenciana',
+      'Propietarios en Alicante, Elche o San Vicente que alquilan vivienda habitual',
+      'Arrendadores con piso en Playa de San Juan o Campello (uso residencial, no turístico)',
+      'Inquilinos extranjeros residentes que piden un contrato claro antes de firmar',
+      'Particulares que actualizan un contrato antiguo a la Ley de Vivienda 2026',
     ],
-    faqs: faqPack(
-      'Alicante',
-      '¿Dónde va la fianza en la Comunitat Valenciana?',
-      'La fianza de una mensualidad debe ingresarse en el organismo autonómico valenciano según la normativa aplicable.',
-      '¿Sirve en toda la Comunitat Valenciana?',
-      'Sí, incluida Alicante, Elche, Benidorm y resto de municipios bajo el mismo marco autonómico.',
-    ),
+    faqs: [
+      {
+        q: '¿Cuánto cuesta un contrato de alquiler en Alicante?',
+        a: 'En Inmonest el contrato LAU en Alicante cuesta 145€ IVA incluido, con entrega en 48h. Un notario suele cobrar 300–500€; las plantillas gratis no adaptan fianza valenciana ni distinguen LAU de turismo.',
+      },
+      {
+        q: '¿Puedo alquilar mi piso en San Juan con contrato LAU?',
+        a: 'Sí, si el uso es vivienda habitual del inquilino. Si lo destinas a turismo vacacional necesitas otro régimen (Registro de Turisme). Tu gestor te orienta según el uso real del inmueble.',
+      },
+      {
+        q: '¿Dónde se deposita la fianza en Alicante?',
+        a: 'La fianza legal de una mensualidad debe ingresarse en el organismo autonómico de la Generalitat Valenciana (AVANT). Aplica en Alicante capital y toda la provincia.',
+      },
+      {
+        q: '¿Cuánto puede actualizarse el alquiler cada año en Alicante?',
+        a: rentaAnswer,
+      },
+      duracionFaq,
+      {
+        q: '¿Sirve en Elche, San Vicente y resto de la provincia?',
+        a: 'Sí. El contrato LAU es válido en Alicante, Elche, San Vicente del Raspeig, Campello y resto de la Comunitat Valenciana, con adaptaciones autonómicas.',
+      },
+      zonaFaq,
+    ],
   },
 
   murcia: {

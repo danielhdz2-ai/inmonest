@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
+import { getCiudadImage } from '@/lib/gestoria-images'
 import Navbar from '@/components/NavbarServer'
 import ListingCard from '@/components/ListingCard'
 import LeadCaptureForm from '@/components/LeadCaptureForm'
@@ -113,13 +114,27 @@ const DATOS: Record<string, {
     ],
   },
   alicante: {
-    precio_medio: '700 – 1.100 €/mes',
-    barrios: ['Centro', 'Playa de San Juan', 'Benalúa', 'Carolinas', 'Vistahermosa', 'San Blas'],
-    descripcion_seo: 'Alicante atrae tanto a residentes nacionales como a extranjeros del norte de Europa. Alquilar de particular en Alicante ofrece acceso a pisos con vistas al mar, cerca de la playa y a precios muy competitivos comparados con otras ciudades costeras.',
+    precio_medio: '700 – 1.150 €/mes',
+    barrios: ['Centro / Explanada', 'Playa de San Juan', 'Carolinas', 'Benalúa', 'Vistahermosa', 'San Vicente', 'Elche'],
+    descripcion_seo:
+      'Alicante combina alquiler residencial en el centro y Carolinas con demanda internacional en Playa de San Juan y Campello. Alquilar de particular evita comisión de agencia (1-2 mensualidades) y permite trato directo con propietarios habituados a inquilinos nacionales y extranjeros residentes. En la Costa Blanca conviene distinguir alquiler LAU habitual de pisos turísticos: no se rigen igual.',
     faq: [
-      { q: '¿Cuánto cuesta alquilar de particular en Alicante?', a: 'Los alquileres de particulares en Alicante van desde 650 €/mes en barrios del interior hasta 1.100 € en zonas de costa como Playa de San Juan. El precio medio es de unos 850 €/mes.' },
-      { q: '¿Puedo alquilar en Alicante siendo extranjero?', a: 'Sí, pero necesitas NIE o pasaporte. Los propietarios particulares en Alicante están habituados a alquilar a extranjeros residentes. El contrato puede redactarse en español e inglés.' },
-      { q: '¿Qué tipo de pisos de alquiler hay en Alicante?', a: 'Alicante tiene oferta variada: pisos modernos en el centro, apartamentos cerca de la playa, casas adosadas en urbanizaciones y áticos con terraza. Los particulares suelen ofrecer mejor precio que las agencias inmobiliarias.' },
+      {
+        q: '¿Cuánto cuesta alquilar de particular en Alicante?',
+        a: 'En Carolinas o Benalúa los alquileres van desde 550 €/mes. En centro y Explanada, 700-950 €. En Playa de San Juan y urbanizaciones costeras, 850-1.150 €/mes. El precio medio en anuncios de particulares ronda los 800 €/mes.',
+      },
+      {
+        q: '¿Puedo alquilar en Alicante siendo extranjero?',
+        a: 'Sí. Necesitas NIE o pasaporte y solvencia acreditada (nóminas, contrato o aval). Muchos propietarios alicantinos alquilan a residentes europeos. El contrato LAU puede redactarse en español; tu gestor explica fianza en AVANT y obligaciones.',
+      },
+      {
+        q: '¿Qué barrios de Alicante tienen más pisos de particulares?',
+        a: 'Carolinas, Benalúa y San Blas concentran oferta estable de particulares. Playa de San Juan y Campello tienen más segundas residencias y perfiles internacionales. Elche y San Vicente ofrecen precios más bajos en área metropolitana.',
+      },
+      {
+        q: '¿Necesito contrato LAU si alquilo de particular en Alicante?',
+        a: 'Sí, para vivienda habitual. Protege fianza (depósito en Generalitat Valenciana), duración mínima y actualización de renta. Inmonest redacta contrato desde 145 € con entrega en 48 h.',
+      },
     ],
   },
 }
@@ -173,6 +188,7 @@ export default async function AlquilerParticularesPage({
   const nombre = CIUDADES[ciudad]
 
   const datos = DATOS[ciudad]
+  const heroImage = getCiudadImage(ciudad)
 
   // ── Fetch listings reales ───────────────────────────────────────────────────
   const { listings } = await searchListings({
@@ -249,8 +265,8 @@ export default async function AlquilerParticularesPage({
       <section className="relative overflow-hidden bg-forest-900">
         {/* Imagen de cabecera */}
         <Image
-          src="/promo.png"
-          alt={`Piso de alquiler de particulares en ${nombre}`}
+          src={heroImage.src}
+          alt={heroImage.alt || `Piso de alquiler de particulares en ${nombre}`}
           fill
           priority
           className="object-cover object-center"

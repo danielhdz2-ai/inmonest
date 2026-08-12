@@ -5,6 +5,7 @@ import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
 import ListingCard from '@/components/ListingCard'
 import { searchListings } from '@/lib/listings'
+import { getCiudadImage } from '@/lib/gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -16,7 +17,7 @@ const CIUDADES: Record<string, { nombre: string; precio: string; descripcion: st
   malaga:    { nombre: 'Málaga',    precio: '1.000 – 1.600 €/mes', descripcion: 'Málaga lidera el crecimiento inmobiliario. Ahorra hasta 2.000 € en comisiones alquilando directamente de particulares.' },
   bilbao:    { nombre: 'Bilbao',    precio: '900 – 1.400 €/mes',   descripcion: 'Mercado de alquiler sólido y estable. Encuentra tu piso en Bilbao sin agencias ni intermediarios.' },
   zaragoza:  { nombre: 'Zaragoza',  precio: '600 – 950 €/mes',     descripcion: 'La capital española con mejor relación calidad-precio. Alquila en Zaragoza directamente del propietario.' },
-  alicante:  { nombre: 'Alicante',  precio: '700 – 1.100 €/mes',   descripcion: 'Pisos con vistas al mar y cerca de la playa. Alquila en Alicante sin comisiones de agencia.' },
+  alicante:  { nombre: 'Alicante',  precio: '700 – 1.150 €/mes', descripcion: 'Costa Blanca con demanda internacional en San Juan y alquiler estable en Carolinas. Compra y alquila en Alicante de particular sin comisión de agencia.' },
 }
 
 export function generateStaticParams() {
@@ -58,6 +59,7 @@ export default async function CiudadPage({
   if (!data) notFound()
 
   const { nombre, precio, descripcion } = data
+  const heroImage = getCiudadImage(ciudad)
 
   const { listings } = await searchListings({ ciudad, pagina: 1 })
 
@@ -131,8 +133,8 @@ export default async function CiudadPage({
 
       <div className="max-w-5xl mx-auto px-4 py-8">
         <PageHeroImage
-          src="/inmonestexterior.png"
-          alt={`Pisos en ${nombre} entre particulares`}
+          src={heroImage.src}
+          alt={heroImage.alt || `Pisos en ${nombre} entre particulares`}
           className="mb-0"
         />
       </div>

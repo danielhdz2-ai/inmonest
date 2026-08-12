@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
+import { getCiudadImage } from '@/lib/gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -58,6 +59,7 @@ export default async function VenderPisoPage({ params }: { params: Promise<{ ciu
   if (!nombre) notFound()
 
   const mercado = MERCADO[ciudad]
+  const heroImage = getCiudadImage(ciudad)
 
   const schemaJson = JSON.stringify({
     '@context': 'https://schema.org',
@@ -136,8 +138,8 @@ export default async function VenderPisoPage({ params }: { params: Promise<{ ciu
 
       <main className="max-w-3xl mx-auto px-4 py-12 sm:py-16">
         <PageHeroImage
-          src="/gestoria1.jpg"
-          alt={`Vender piso sin comisión en ${nombre}`}
+          src={heroImage.src}
+          alt={heroImage.alt || `Vender piso sin comisión en ${nombre}`}
           className="mb-10"
         />
 

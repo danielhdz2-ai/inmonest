@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
+import { getCiudadImage } from '@/lib/gestoria-images'
 
 // ✅ OPTIMIZACIÓN: Cachear 2 horas
 export const revalidate = 43200  // 12 horas (antes: 2h - optimizado para reducir CPU)
@@ -99,7 +100,8 @@ const MERCADO: Record<string, {
     tendencia_venta: '+9 % anual',
     tendencia_alquiler: '+11 % anual',
     barrios: ['Centro', 'Playa de San Juan', 'Benalúa', 'Carolinas', 'Vistahermosa', 'El Cabo'],
-    descripcion: 'Alicante atrae compradores nacionales e internacionales por su clima y precios competitivos. La provincia lidera las ventas a extranjeros en España, especialmente del norte de Europa.',
+    descripcion:
+      'Alicante lidera ventas a compradores extranjeros en España. El centro y Explanada concentran alquiler residencial; Playa de San Juan y Campello atraen perfiles internacionales. Elche y San Vicente ofrecen precios más accesibles en área metropolitana.',
   },
 }
 
@@ -135,6 +137,7 @@ export default async function PisosCiudadPage({ params }: { params: Promise<{ ci
   if (!nombre) notFound()
 
   const mercado = MERCADO[ciudad]
+  const heroImage = getCiudadImage(ciudad)
 
   const schemaJson = JSON.stringify({
     '@context': 'https://schema.org',
@@ -213,8 +216,8 @@ export default async function PisosCiudadPage({ params }: { params: Promise<{ ci
 
       <main className="max-w-4xl mx-auto px-4 py-12 sm:py-16">
         <PageHeroImage
-          src="/promo1.png"
-          alt={`Pisos en ${nombre}: compra y alquiler entre particulares`}
+          src={heroImage.src}
+          alt={heroImage.alt || `Pisos en ${nombre}: compra y alquiler entre particulares`}
           className="mb-10"
         />
 

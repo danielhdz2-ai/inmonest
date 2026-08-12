@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
+import { getCiudadImage } from '@/lib/gestoria-images'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -44,6 +45,8 @@ export default async function AlquilerSinAgenciaPage({ params }: { params: Promi
   const { ciudad } = await params
   const nombre = CIUDADES[ciudad]
   if (!nombre) notFound()
+
+  const heroImage = getCiudadImage(ciudad)
 
   const schemaJson = JSON.stringify({
     '@context': 'https://schema.org',
@@ -114,8 +117,8 @@ export default async function AlquilerSinAgenciaPage({ params }: { params: Promi
 
       <main className="max-w-3xl mx-auto px-4 py-12 sm:py-16">
         <PageHeroImage
-          src="/inmonestexterior.png"
-          alt={`Alquiler sin agencia en ${nombre}`}
+          src={heroImage.src}
+          alt={heroImage.alt || `Alquiler sin agencia en ${nombre}`}
           className="mb-10"
         />
 
