@@ -352,11 +352,11 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
 
             {/* ── CTA GESTORÍA (Alquiler / Venta) ── */}
             {listing.operation === 'rent' ? (
-              <PisoAlquilerLauBanner />
+              <PisoAlquilerLauBanner city={listing.city} />
             ) : (
               <>
                 <ComprarPisoDueDiligenceBanner city={listing.city} />
-                <PisoArrasCompraBanner />
+                <PisoArrasCompraBanner city={listing.city} />
               </>
             )}
 

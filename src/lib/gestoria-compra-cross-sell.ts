@@ -1,3 +1,6 @@
+import { getContratoAlquilerPremiumConfig } from './contrato-alquiler-premium-config'
+import { getContratoArrasPremiumConfig } from './contrato-arras-premium-config'
+
 /** Ciudades con landing de asesoría compra (687€) */
 export const ASESORIA_COMPRA_CIUDADES = [
   'madrid',
@@ -69,4 +72,20 @@ export function hasDueDiligenceCiudad(ciudadSlug: string): boolean {
 
 export function hasAsesoriaCompraCiudad(ciudadSlug: string): boolean {
   return (ASESORIA_COMPRA_CIUDADES as readonly string[]).includes(ciudadSlug)
+}
+
+export function getContratoAlquilerHref(ciudadSlug: string | null | undefined): string {
+  const slug = ciudadSlug?.toLowerCase()
+  if (slug && getContratoAlquilerPremiumConfig(slug)) {
+    return `/${slug}/contrato-alquiler`
+  }
+  return '/gestoria/contrato-alquiler'
+}
+
+export function getContratoArrasHref(ciudadSlug: string | null | undefined): string {
+  const slug = ciudadSlug?.toLowerCase()
+  if (slug && getContratoArrasPremiumConfig(slug)) {
+    return `/${slug}/contrato-arras`
+  }
+  return '/gestoria/arras-penitenciales'
 }

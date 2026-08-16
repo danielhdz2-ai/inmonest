@@ -25,9 +25,22 @@ export async function generateMetadata({ searchParams }: PisosPageProps): Promis
   const ciudadLabel = ciudad ? ` ${ciudad.charAt(0).toUpperCase() + ciudad.slice(1)}` : ''
   const particulares = soloParticulares ? ' Particulares' : ''
 
-  // Meta optimizada para CTR en Google
-  const title = `${opLabel}${ciudadLabel}${particulares} 【612 Pisos desde 250€】 0% Comisión | Inmonest`
-  const description = `✓ 612 pisos${operacion === 'rent' ? ' en alquiler' : operacion === 'sale' ? ' en venta' : ''}${ciudadLabel ? ' en ' + ciudad!.charAt(0).toUpperCase() + ciudad!.slice(1) : ''} desde 250€/mes. 0% comisión entre particulares. Contratos LAU desde 145€. ¡Ver ahora!`
+  const { total } = await searchListings({
+    ciudad: ciudad || undefined,
+    operacion: (operacion as OperationType) || undefined,
+    solo_particulares: soloParticulares,
+    pagina: 1,
+    page_size: 1,
+  })
+  const totalLabel = new Intl.NumberFormat('es-ES').format(total)
+
+  // Meta optimizada para CTR en Google (sin "| Inmonest": layout.tsx aplica template)
+  const title = `${opLabel}${ciudadLabel}${particulares} 【${totalLabel} Pisos desde 250€】 0% Comisión`
+  const opText =
+    operacion === 'rent' ? ' en alquiler' : operacion === 'sale' ? ' en venta' : ''
+  const ciudadText = ciudadLabel ? ` en ${ciudadLabel.trim()}` : ''
+  const precioText = operacion === 'sale' ? '' : ' desde 250€/mes'
+  const description = `✓ ${totalLabel} pisos${opText}${ciudadText}${precioText}. 0% comisión entre particulares. Contratos LAU desde 145€. ¡Ver ahora!`
 
   // ✅ SEO: Canonical siempre a URL base (sin filtros)
   const canonicalUrl = `/pisos${ciudad ? `?ciudad=${encodeURIComponent(ciudad)}` : ''}`

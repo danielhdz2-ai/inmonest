@@ -21,7 +21,7 @@ function buildRoomLabel(bedrooms: number | null): string {
   return `Piso ${bedrooms} hab.`
 }
 
-/** Título SEO para fichas de piso: "Piso 2 hab. en Bilbao — 850€/mes | Inmonest" */
+/** Título SEO para fichas de piso (layout añade " | Inmonest") */
 export function buildListingSeoTitle(listing: ListingSeoFields): string {
   const city = listing.city?.trim()
   const roomLabel = buildRoomLabel(listing.bedrooms)
@@ -33,14 +33,14 @@ export function buildListingSeoTitle(listing: ListingSeoFields): string {
 
   const hasStructuredData = Boolean(city || listing.bedrooms || precio)
   if (!hasStructuredData) {
-    return `${decodeHtml(listing.title)} | Inmonest`
+    return decodeHtml(listing.title)
   }
 
   const core = precio
     ? `${roomLabel}${ubicacion} — ${precio}`
     : `${roomLabel}${ubicacion}`
 
-  return `${core} | Inmonest`
+  return core
 }
 
 /** Meta description con datos clave del anuncio */

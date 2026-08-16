@@ -1,9 +1,19 @@
 import Link from 'next/link'
 import { GestoriaImageBanner } from '@/components/ui/GestoriaImageBanner'
+import {
+  getContratoAlquilerHref,
+  getContratoArrasHref,
+  normalizeCiudadSlug,
+} from '@/lib/gestoria-compra-cross-sell'
 import { precioLabel } from '@/lib/gestoria-precios-ui'
 
-export function PisoAlquilerLauBanner() {
+type PisoGestoriaBannerProps = {
+  city?: string | null
+}
+
+export function PisoAlquilerLauBanner({ city }: PisoGestoriaBannerProps) {
   const precio = precioLabel('contrato-alquiler')
+  const href = getContratoAlquilerHref(normalizeCiudadSlug(city))
 
   return (
     <GestoriaImageBanner
@@ -20,7 +30,7 @@ export function PisoAlquilerLauBanner() {
       </p>
       <div className="flex flex-col sm:flex-row gap-3">
         <Link
-          href="/gestoria/contrato-alquiler"
+          href={href}
           className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors text-sm"
         >
           Crear contrato LAU — {precio} →
@@ -36,8 +46,9 @@ export function PisoAlquilerLauBanner() {
   )
 }
 
-export function PisoArrasCompraBanner() {
+export function PisoArrasCompraBanner({ city }: PisoGestoriaBannerProps) {
   const precio = precioLabel('arras-penitenciales')
+  const href = getContratoArrasHref(normalizeCiudadSlug(city))
 
   return (
     <GestoriaImageBanner
@@ -54,7 +65,7 @@ export function PisoArrasCompraBanner() {
       </p>
       <div className="flex flex-col sm:flex-row gap-3">
         <Link
-          href="/gestoria/arras-penitenciales"
+          href={href}
           className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors text-sm"
         >
           Crear contrato de arras — {precio} →
