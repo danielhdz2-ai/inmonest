@@ -9,6 +9,7 @@ import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaBlindajeOperacion from '@/components/GestoriaBlindajeOperacion'
 import ComoTrabajamosGestoria from '@/components/ComoTrabajamosGestoria'
+import { withFirmaCertIncluido } from '@/lib/firmacert'
 import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
 import { GESTORIA_SERVICIOS_ADICIONALES } from '@/lib/gestoria-servicios-adicionales'
 
@@ -917,6 +918,8 @@ export default async function ServicioGestoriaPage({
     ],
   })
 
+  const incluye = withFirmaCertIncluido(data.incluye)
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schemaJson }} />
@@ -1008,7 +1011,7 @@ export default async function ServicioGestoriaPage({
                 <p className="text-xs text-gray-500 mt-1">IVA incluido</p>
               </div>
               <ul className="space-y-2">
-                {data.incluye.slice(0, 4).map((inc, i) => (
+                {incluye.slice(0, 4).map((inc, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
                     <GestoriaCheckIcon className="mt-0.5" />
                     {inc}
@@ -1041,7 +1044,7 @@ export default async function ServicioGestoriaPage({
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">¿Qué incluye el servicio?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {data.incluye.map((inc, i) => (
+            {incluye.map((inc, i) => (
               <div key={i} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
                 <GestoriaCheckIcon size="md" className="mt-0.5" />
                 <span className="text-gray-700 text-sm">{inc}</span>

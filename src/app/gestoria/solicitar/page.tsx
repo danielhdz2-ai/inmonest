@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
+import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
 import Footer from '@/components/Footer'
 
 const BASE_URL = 'https://inmonest.com'
@@ -180,6 +181,8 @@ export default function SolicitarIndexPage() {
           </div>
         </section>
 
+        <FirmaCertIncluidaSection />
+
         {/* CTA Bottom */}
         <section className="py-16 px-6 bg-gradient-to-r from-[#2b4c7e] to-[#1e3a5f]">
           <div className="max-w-4xl mx-auto text-center text-white">
@@ -218,7 +221,7 @@ export default function SolicitarIndexPage() {
               <strong>Inmonest</strong> es una gestoría inmobiliaria online especializada en contratos, trámites y asesoría legal para compraventa y alquiler de viviendas. Todos nuestros documentos son <strong>redactados por gestores expertos en derecho inmobiliario</strong>, no usamos plantillas genéricas.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              Ofrecemos contratos desde <strong>61€</strong> hasta <strong>687€</strong> (servicio completo reserva a escritura). La mayoría de contratos se entregan en <strong>24-48 horas</strong> en formato <strong>PDF firmable digitalmente</strong>.
+              Ofrecemos contratos desde <strong>61€</strong> hasta <strong>687€</strong> (servicio completo reserva a escritura). La mayoría de contratos se entregan en <strong>24-48 horas</strong> con <strong>firma electrónica avanzada FIRMACERT</strong> (eIDAS) incluida en el precio.
             </p>
             
             <h3 className="text-2xl font-bold text-gray-900 mt-8 mb-4">

@@ -111,6 +111,7 @@ export const LOCAL_COMERCIAL_INCLUYE = [
   'Traspaso de negocio y condiciones de subarrendamiento',
   'Causas de resolución e impago de renta',
   'PDF firmable · Entrega en 48 horas laborables',
+  'Firma electrónica avanzada FIRMACERT (eIDAS) incluida',
 ] as const
 
 export const LOCAL_COMERCIAL_PARA_QUIEN_BASE = [

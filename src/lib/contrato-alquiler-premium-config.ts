@@ -47,6 +47,7 @@ const INCLUYE = [
   'Anexo de inventario de mobiliario y estado del inmueble',
   'Régimen de obras, mascotas y subarrendamiento',
   'Entrega en PDF firmable digitalmente en 48h',
+  'Firma electrónica avanzada FIRMACERT (eIDAS) incluida',
 ] as const
 
 const PASOS = [

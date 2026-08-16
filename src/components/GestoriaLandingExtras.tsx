@@ -3,6 +3,7 @@ import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 import GestoriaServicioCiudades from '@/components/GestoriaServicioCiudades'
 import { ServicioRelacionadoCard } from '@/components/ServicioRelacionadoCard'
 import TestimoniosSection from '@/components/TestimoniosSection'
+import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
 import { getServicioImages } from '@/lib/gestoria-images'
 import type { RelacionadoServicio } from '@/lib/gestoria-relacionados'
 import {
@@ -102,6 +103,8 @@ export default function GestoriaLandingExtras({
           )}
         </div>
       )}
+
+      {showFooter && <FirmaCertIncluidaSection compact />}
 
       {!skipCiudades && showFooter && <GestoriaServicioCiudades servicio={servicio} />}
 

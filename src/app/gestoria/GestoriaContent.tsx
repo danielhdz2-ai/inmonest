@@ -10,6 +10,8 @@ import HomeTestimonials from '@/components/home/HomeTestimonials'
 import { BRAND_IMAGES } from '@/lib/brand-images'
 import { Scale, Zap, Shield, FileText, Building2, BadgeCheck, Star, Users, Phone, CheckCircle } from '@/components/ui/Icons'
 import { MobileGestoriaContactRow } from '@/components/ui/MobileGestoriaContactRow'
+import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
+import { withFirmaCertIncluido } from '@/lib/firmacert'
 
 interface Service {
   key: string
@@ -651,7 +653,7 @@ export default function GestoriaPage() {
 
                 {/* Lo que incluye */}
                 <ul className="space-y-1.5 mb-5">
-                  {service.includes.map((item) => (
+                  {withFirmaCertIncluido(service.includes).map((item) => (
                     <li key={item} className="flex items-start gap-2 text-xs text-gray-600">
                       <span className="text-gold-500 mt-0.5 shrink-0">✓</span>
                       {item}
@@ -686,6 +688,8 @@ export default function GestoriaPage() {
           ))}
         </div>
       </section>
+
+      <FirmaCertIncluidaSection />
 
       {/* EQUIPO / GARANTÍAS */}
       <section className="py-16 px-4">
