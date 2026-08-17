@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { getNotifyEmails } from '@/lib/email'
 import { getIP } from '@/lib/rate-limit'
 import { verifyBotSubmission, validateHumanFields } from '@/lib/verify-bot'
 
@@ -64,7 +65,7 @@ export async function POST(req: NextRequest) {
 
   const RESEND_KEY   = process.env.RESEND_API_KEY
   const FROM_EMAIL   = process.env.CONTACT_FROM_EMAIL   ?? 'Inmonest <info@inmonest.com>'
-  const NOTIFY_EMAIL = process.env.CONTACT_NOTIFY_EMAIL ?? 'info@inmonest.com'
+  const notifyEmails = getNotifyEmails()
 
   if (!RESEND_KEY) {
     // Sin clave → solo log (útil en desarrollo)
@@ -77,7 +78,7 @@ export async function POST(req: NextRequest) {
   // ── Email de notificación interno ─────────────────────────────────────
   const notifyPayload = {
     from: FROM_EMAIL,
-    to:   [NOTIFY_EMAIL],
+    to:   notifyEmails,
     ...(safeEmail ? { reply_to: safeEmail } : {}),
     subject: `📩 Nuevo contacto: ${safeAsunto}`,
     html: `

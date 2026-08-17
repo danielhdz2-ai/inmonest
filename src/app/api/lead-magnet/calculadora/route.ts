@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { sendEmail, baseLayout } from '@/lib/email'
+import { sendEmail, baseLayout, getNotifyEmails } from '@/lib/email'
 import { getIP } from '@/lib/rate-limit'
 import { verifyBotSubmission } from '@/lib/verify-bot'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-const NOTIFY_EMAIL = process.env.CONTACT_NOTIFY_EMAIL ?? 'info@inmonest.com'
 
 function formatEur(value: number) {
   return new Intl.NumberFormat('es-ES', {
@@ -114,7 +113,7 @@ export async function POST(req: NextRequest) {
       html: userHtml,
     }),
     sendEmail({
-      to: NOTIFY_EMAIL,
+      to: getNotifyEmails(),
       subject: `💰 Lead calculadora — ${formatEur(ahorroCalculado)} · ${email}`,
       html: adminHtml,
       reply_to: email,

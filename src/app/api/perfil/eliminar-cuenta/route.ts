@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { getNotifyEmails } from '@/lib/email'
 
 export const dynamic = 'force-dynamic'
 
@@ -25,15 +26,15 @@ export async function DELETE() {
 
   // 5. Nota: el borrado real de auth.users requiere service_role.
   //    Para un flujo de baja completo, enviar email al admin para que lo procese manualmente.
-  const adminEmail = process.env.CONTACT_NOTIFY_EMAIL
-  if (adminEmail) {
-    const RESEND_KEY = process.env.RESEND_API_KEY ?? ''
+  const notifyEmails = getNotifyEmails()
+  const RESEND_KEY = process.env.RESEND_API_KEY ?? ''
+  if (RESEND_KEY) {
     await fetch('https://api.resend.com/emails', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${RESEND_KEY}` },
       body: JSON.stringify({
         from:    'Inmonest <noreply@inmonest.com>',
-        to:      adminEmail,
+        to:      notifyEmails,
         subject: '[Inmonest] Solicitud de baja de cuenta',
         html:    `<p>El usuario <strong>${user.email}</strong> (id: ${user.id}) ha solicitado la baja de su cuenta. Por favor, elimina el usuario en el panel de Supabase Authentication.</p>`,
       }),

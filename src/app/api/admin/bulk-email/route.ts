@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { sendEmail } from '@/lib/email'
+import { isAdminEmail } from '@/lib/admin'
 import {
   getBulkEmailTemplate,
   listBulkEmailTemplates,
@@ -19,12 +20,7 @@ async function requireAdmin() {
     data: { user },
   } = await supabase.auth.getUser()
 
-  const adminEmails = [
-    process.env.CONTACT_NOTIFY_EMAIL,
-    'inmonest.admin@gmail.com',
-  ].filter(Boolean)
-
-  if (!user || !adminEmails.includes(user.email || '')) {
+  if (!user || !isAdminEmail(user.email)) {
     return null
   }
   return user

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { sendEmail, emailAcuseRecibo } from '@/lib/email'
+import { sendEmail, emailAcuseRecibo, getNotifyEmails } from '@/lib/email'
 import { getIP } from '@/lib/rate-limit'
 import { verifyBotSubmission, validateHumanFields } from '@/lib/verify-bot'
 
@@ -10,7 +10,7 @@ const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY!
 // si no, solo registra en consola de Vercel)
 async function sendNotification(lead: Record<string, unknown>) {
   const RESEND_KEY = process.env.RESEND_API_KEY
-  const NOTIFY_EMAIL = process.env.OWNER_LEADS_NOTIFY_EMAIL ?? process.env.ADMIN_EMAIL ?? 'info@inmonest.com'
+  const notifyEmails = getNotifyEmails()
 
   if (!RESEND_KEY) {
     // Sin configuración de email → solo log (Vercel Functions logs)
@@ -20,7 +20,7 @@ async function sendNotification(lead: Record<string, unknown>) {
 
   const body = {
     from: 'Inmonest <info@inmonest.com>',
-    to: [NOTIFY_EMAIL],
+    to: notifyEmails,
     subject: `🏠 Nuevo lead de vendedor — ${lead.address ?? ''} (${lead.city ?? ''})`,
     html: `
       <h2 style="color:#c9962a">Nuevo lead de propietario vendedor</h2>

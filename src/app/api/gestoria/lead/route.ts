@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { sendEmail, baseLayout } from '@/lib/email'
+import { sendEmail, baseLayout, getNotifyEmails } from '@/lib/email'
 import { getIP } from '@/lib/rate-limit'
 import { verifyBotSubmission } from '@/lib/verify-bot'
 import {
@@ -12,7 +12,6 @@ import {
 } from '@/lib/gestoria-leads'
 import { resolveServiceKeyFromLabel } from '@/lib/gestoria-service-docs'
 
-const NOTIFY_EMAIL = process.env.CONTACT_NOTIFY_EMAIL ?? 'info@inmonest.com'
 
 export async function POST(req: NextRequest) {
   let body: {
@@ -97,7 +96,7 @@ export async function POST(req: NextRequest) {
 
   const fecha = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
   sendEmail({
-    to: NOTIFY_EMAIL,
+    to: getNotifyEmails(),
     subject: `Nuevo lead gestoría — ${serviceName}${ciudad ? ` · ${ciudad}` : ''}`,
     html: baseLayout(`
       <h2 style="margin:0 0 12px;color:#c9962a">Nuevo lead de gestoría</h2>

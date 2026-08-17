@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { sendEmail, emailAcuseRecibo } from '@/lib/email'
+import { sendEmail, emailAcuseRecibo, getNotifyEmails } from '@/lib/email'
 
 const RESEND_API = 'https://api.resend.com/emails'
 
@@ -50,7 +50,7 @@ export async function POST(req: NextRequest) {
   // ── Notificación por email ─────────────────────────────────────────────
   const RESEND_KEY   = process.env.RESEND_API_KEY
   const FROM_EMAIL   = process.env.CONTACT_FROM_EMAIL   ?? 'Inmonest <info@inmonest.com>'
-  const NOTIFY_EMAIL = process.env.CONTACT_NOTIFY_EMAIL ?? 'info@inmonest.com'
+  const notifyEmails = getNotifyEmails()
 
   if (RESEND_KEY) {
     const fecha = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
@@ -58,7 +58,7 @@ export async function POST(req: NextRequest) {
 
     const notifyPayload = {
       from: FROM_EMAIL,
-      to: [NOTIFY_EMAIL],
+      to: notifyEmails,
       reply_to: safeEmail,
       subject: `🏢 Nueva agencia interesada — ${safeEmpresa} (${planLabel})`,
       html: `

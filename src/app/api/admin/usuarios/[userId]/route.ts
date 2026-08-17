@@ -1,21 +1,16 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { isAdminEmail } from '@/lib/admin'
 
 export const dynamic = 'force-dynamic'
-
-const ADMIN_EMAILS = [
-  process.env.CONTACT_NOTIFY_EMAIL,
-  'inmonest.admin@gmail.com',
-].filter(Boolean) as string[]
 
 async function isAdmin(supabase: Awaited<ReturnType<typeof createClient>>) {
   const {
     data: { user },
   } = await supabase.auth.getUser()
   if (!user?.email) return { ok: false as const, user: null }
-  const email = user.email.trim()
-  if (!ADMIN_EMAILS.includes(email)) return { ok: false as const, user: null }
+  if (!isAdminEmail(user.email)) return { ok: false as const, user: null }
   return { ok: true as const, user }
 }
 
@@ -46,12 +41,11 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ user
     return NextResponse.json({ error: 'Usuario no encontrado' }, { status: 404 })
   }
 
-  const targetEmail = (target.user.email || '').trim().toLowerCase()
-  if (ADMIN_EMAILS.some((e) => e.toLowerCase() === targetEmail)) {
+  if (isAdminEmail(target.user.email)) {
     return NextResponse.json({ error: 'No se puede eliminar una cuenta de administrador' }, { status: 400 })
   }
 
-  const emailNorm = targetEmail
+  const emailNorm = (target.user.email || '').trim().toLowerCase()
   const { data: paidGestoria } = await adminSb
     .from('gestoria_requests')
     .select('id')

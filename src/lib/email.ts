@@ -7,6 +7,13 @@ const RESEND_API  = 'https://api.resend.com/emails'
 const FROM        = () => process.env.CONTACT_FROM_EMAIL ?? 'Inmonest <info@inmonest.com>'
 const ADMIN_EMAIL = 'info@inmonest.com'
 
+/** Destinatarios de notificaciones internas (formularios, leads, pagos, etc.) */
+export const NOTIFY_EMAILS = ['info@inmonest.com', 'inmonest.admin@gmail.com'] as const
+
+export function getNotifyEmails(): string[] {
+  return [...NOTIFY_EMAILS]
+}
+
 export { ADMIN_EMAIL }
 
 // ── Helper de envío ────────────────────────────────────────────────────────

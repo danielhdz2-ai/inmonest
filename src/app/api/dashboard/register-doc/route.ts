@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { getNotifyEmails } from '@/lib/email'
 
 export const dynamic = 'force-dynamic'
 
@@ -59,15 +60,15 @@ export async function POST(req: NextRequest) {
   }
 
   // Notificar al admin
-  const adminEmail = process.env.CONTACT_NOTIFY_EMAIL
-  if (adminEmail) {
-    const RESEND_KEY = process.env.RESEND_API_KEY ?? ''
+  const notifyEmails = getNotifyEmails()
+  const RESEND_KEY = process.env.RESEND_API_KEY ?? ''
+  if (RESEND_KEY) {
     await fetch('https://api.resend.com/emails', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${RESEND_KEY}` },
       body: JSON.stringify({
         from:    'Inmonest <noreply@inmonest.com>',
-        to:      adminEmail,
+        to:      notifyEmails,
         subject: `[Inmonest] Nuevo documento subido: ${doc_key}`,
         html:    `<p><strong>${user.email}</strong> ha subido el documento <strong>${doc_key}</strong> (${file_name}) para la sesión <code>${session_id}</code>.</p>`,
       }),

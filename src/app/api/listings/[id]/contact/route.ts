@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
-
-const RESEND_API  = 'https://api.resend.com/emails'
-const FROM_EMAIL  = () => process.env.CONTACT_FROM_EMAIL ?? 'Inmonest <info@inmonest.com>'
-const ADMIN_EMAIL = 'info@inmonest.com'
+import { ADMIN_EMAIL, getNotifyEmails } from '@/lib/email'
 
 interface Params {
   params: Promise<{ id: string }>
 }
+
+const RESEND_API  = 'https://api.resend.com/emails'
+const FROM_EMAIL  = () => process.env.CONTACT_FROM_EMAIL ?? 'Inmonest <info@inmonest.com>'
 
 async function sendEmail(
   key: string,
@@ -172,7 +172,7 @@ export async function POST(req: NextRequest, { params }: Params) {
       // Propietario es admin o no encontrado → notificar solo a admin
       ownerStatus = await sendEmail(RESEND_KEY, {
         from:     FROM_EMAIL(),
-        to:       [ADMIN_EMAIL],
+        to:       getNotifyEmails(),
         reply_to: from_email.trim(),
         subject:  `Nuevo contacto en anuncio — ${safeTitle}`,
         html,
@@ -183,7 +183,7 @@ export async function POST(req: NextRequest, { params }: Params) {
     if (ownerEmail && ownerEmail !== ADMIN_EMAIL) {
       await sendEmail(RESEND_KEY, {
         from:    FROM_EMAIL(),
-        to:      [ADMIN_EMAIL],
+        to:      getNotifyEmails(),
         reply_to: from_email.trim(),
         subject: `[copia] Contacto en anuncio — ${safeTitle}`,
         html,

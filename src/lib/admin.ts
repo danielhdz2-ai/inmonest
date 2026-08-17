@@ -1,15 +1,12 @@
+import { NOTIFY_EMAILS } from '@/lib/email'
+
 /**
  * Verifica si un email tiene privilegios de administrador
  */
 export function isAdminEmail(email: string | null | undefined): boolean {
   if (!email) return false
-  
-  const adminEmails = [
-    process.env.NEXT_PUBLIC_CONTACT_NOTIFY_EMAIL,
-    'inmonest.admin@gmail.com',
-  ].filter(Boolean)
-  
-  return adminEmails.includes(email)
+  const normalized = email.trim().toLowerCase()
+  return (NOTIFY_EMAILS as readonly string[]).some((e) => e.toLowerCase() === normalized)
 }
 
 /**

@@ -4,6 +4,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { notifyClientPaymentConfirmed } from '@/lib/gestoria-client-emails'
 import { logGestoriaActivity } from '@/lib/gestoria-activity'
 import { decodeEnvKey } from '@/lib/stripe-key'
+import { ADMIN_EMAIL, getNotifyEmails } from '@/lib/email'
 
 export const dynamic = 'force-dynamic'
 
@@ -144,7 +145,7 @@ export async function POST(req: NextRequest) {
     const priceEur = serviceInfo?.price_eur ?? parseFloat(amount)
 
     const FROM_EMAIL   = decodeEnvKey(process.env.CONTACT_FROM_EMAIL   ?? '') || 'Inmonest <info@inmonest.com>'
-    const NOTIFY_EMAIL = decodeEnvKey(process.env.CONTACT_NOTIFY_EMAIL ?? '') || 'info@inmonest.com'
+    const notifyEmails = getNotifyEmails()
 
     console.log('[webhooks/stripe] checkout.session.completed — servicio:', serviceKey, '| cliente:', clientEmail, '| importe:', amount, '€')
 
@@ -227,7 +228,7 @@ export async function POST(req: NextRequest) {
     // ── 3. Email al ADMIN ────────────────────────────────────────────────
     await sendEmail({
       from:    FROM_EMAIL,
-      to:      [NOTIFY_EMAIL],
+      to:      notifyEmails,
       subject: `💰 ¡Nueva venta! ${amount} € — ${serviceKey}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:auto;background:#f9f9f9;padding:24px;border-radius:8px">

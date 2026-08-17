@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { ADMIN_EMAIL, getNotifyEmails } from '@/lib/email'
 
 const RESEND_API   = 'https://api.resend.com/emails'
 const BASE_URL     = 'https://inmonest.com'
@@ -59,7 +60,7 @@ export async function POST(req: NextRequest) {
     const fecha = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
 
     const FROM_EMAIL   = process.env.CONTACT_FROM_EMAIL   ?? 'Inmonest <info@inmonest.com>'
-    const NOTIFY_EMAIL = process.env.CONTACT_NOTIFY_EMAIL ?? 'info@inmonest.com'
+    const notifyEmails = getNotifyEmails()
 
     console.log('[webhook] checkout.session.completed — servicio:', serviceKey, '| cliente:', clientEmail, '| importe:', amount, '€')
 
@@ -95,7 +96,7 @@ export async function POST(req: NextRequest) {
     // ── 3. Email al ADMIN ────────────────────────────────────────────────
     await sendEmail({
       from:    FROM_EMAIL,
-      to:      [NOTIFY_EMAIL],
+      to:      notifyEmails,
       subject: `💰 ¡Nueva venta! ${amount} € — ${serviceKey}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:auto;background:#f9f9f9;padding:24px;border-radius:8px">
@@ -121,7 +122,7 @@ export async function POST(req: NextRequest) {
       await sendEmail({
         from:    FROM_EMAIL,
         to:      [clientEmail],
-        reply_to: NOTIFY_EMAIL,
+        reply_to: ADMIN_EMAIL,
         subject: `✅ Confirmación de tu pedido — Inmonest`,
         html: `
           <div style="font-family:sans-serif;max-width:600px;margin:auto">
@@ -146,7 +147,7 @@ export async function POST(req: NextRequest) {
                 </a>
               </div>
 
-              <p style="color:#9ca3af;font-size:12px;text-align:center">¿Tienes dudas? Escríbenos a <a href="mailto:${NOTIFY_EMAIL}" style="color:#c9962a">${NOTIFY_EMAIL}</a></p>
+              <p style="color:#9ca3af;font-size:12px;text-align:center">¿Tienes dudas? Escríbenos a <a href="mailto:${ADMIN_EMAIL}" style="color:#c9962a">${ADMIN_EMAIL}</a></p>
             </div>
             <p style="text-align:center;font-size:11px;color:#d1d5db;margin-top:16px">© 2026 Inmonest · Tu portal inmobiliario de confianza</p>
           </div>

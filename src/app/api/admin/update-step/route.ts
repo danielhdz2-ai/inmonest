@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { isAdminEmail } from '@/lib/admin'
 import { notifyClientStepChange } from '@/lib/gestoria-client-emails'
 import { logGestoriaActivity } from '@/lib/gestoria-activity'
 import { WORKFLOW_STEPS } from '@/lib/gestoria-client-progress'
@@ -9,8 +10,7 @@ export const dynamic = 'force-dynamic'
 async function isAdmin(supabase: Awaited<ReturnType<typeof createClient>>) {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user?.email) return false
-  const adminEmails = [process.env.CONTACT_NOTIFY_EMAIL, 'inmonest.admin@gmail.com'].filter(Boolean)
-  return adminEmails.includes(user.email)
+  return isAdminEmail(user.email)
 }
 
 export async function PATCH(req: NextRequest) {

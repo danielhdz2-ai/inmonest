@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { getStripeKey, decodeEnvKey } from '@/lib/stripe-key'
+import { ADMIN_EMAIL, getNotifyEmails } from '@/lib/email'
 
 export const dynamic = 'force-dynamic'
 
@@ -112,7 +113,7 @@ export async function GET(req: NextRequest) {
   const fecha = new Date().toLocaleString('es-ES', { timeZone: 'Europe/Madrid' })
 
   const FROM_EMAIL   = decodeEnvKey(process.env.CONTACT_FROM_EMAIL   ?? '') || 'Inmonest <info@inmonest.com>'
-  const NOTIFY_EMAIL = decodeEnvKey(process.env.CONTACT_NOTIFY_EMAIL ?? '') || 'info@inmonest.com'
+  const notifyEmails = getNotifyEmails()
 
   push(`Servicio: ${serviceKey} | Cliente: ${clientEmail} | Importe: ${amount}€`)
 
@@ -136,10 +137,10 @@ export async function GET(req: NextRequest) {
   else       push('gestoria_requests guardado OK ✅')
 
   // ── 3. Email al ADMIN ────────────────────────────────────────────────
-  push(`Enviando email ADMIN a ${NOTIFY_EMAIL}...`)
+  push(`Enviando email ADMIN a ${notifyEmails.join(', ')}...`)
   const adminResult = await sendEmail({
     from:    FROM_EMAIL,
-    to:      [NOTIFY_EMAIL],
+    to:      notifyEmails,
     subject: `💰 [FORCE] Nueva venta ${amount}€ — ${serviceKey}`,
     html: `
       <div style="font-family:sans-serif;max-width:600px;margin:auto;background:#f9f9f9;padding:24px;border-radius:8px">
@@ -165,7 +166,7 @@ export async function GET(req: NextRequest) {
     clientResult = await sendEmail({
       from:     FROM_EMAIL,
       to:       [clientEmail],
-      reply_to: NOTIFY_EMAIL,
+      reply_to: ADMIN_EMAIL,
       subject:  `✅ Confirmación de tu pedido — Inmonest`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:auto">
@@ -186,7 +187,7 @@ export async function GET(req: NextRequest) {
                 Ver mi zona de documentos →
               </a>
             </div>
-            <p style="color:#9ca3af;font-size:12px;text-align:center">¿Dudas? <a href="mailto:${NOTIFY_EMAIL}" style="color:#c9962a">${NOTIFY_EMAIL}</a></p>
+            <p style="color:#9ca3af;font-size:12px;text-align:center">¿Dudas? <a href="mailto:${ADMIN_EMAIL}" style="color:#c9962a">${ADMIN_EMAIL}</a></p>
           </div>
         </div>
       `,
