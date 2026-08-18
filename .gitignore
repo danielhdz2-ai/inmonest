@@ -47,6 +47,12 @@ logs/
 .env.*.vercel
 scripts/run-seed.bat
 
+# Google Search Console OAuth (no subir credenciales ni tokens)
+scripts/seo/gsc-oauth-client.json
+scripts/seo/.gsc-token.json
+scripts/seo/output/
+public/client_secret*.json
+
 # backups
 /backups/
 *.sql

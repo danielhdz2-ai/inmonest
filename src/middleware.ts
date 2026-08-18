@@ -121,7 +121,8 @@ export async function middleware(request: NextRequest) {
   }
 
   // Teléfono pegado a slug de ciudad (GSC: /bilbao/ 34745022862)
-  const malformedCityPhone = pathname.match(/^\/([a-z0-9-]+)\/\s*(\d{9,12})$/)
+  const decodedPath = decodeURIComponent(pathname)
+  const malformedCityPhone = decodedPath.match(/^\/([a-z0-9-]+)\/\s*(\d{9,12})\/?$/)
   if (malformedCityPhone) {
     const url = request.nextUrl.clone()
     url.pathname = `/${malformedCityPhone[1]}/contrato-alquiler`

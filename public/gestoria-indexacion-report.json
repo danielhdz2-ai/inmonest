@@ -1,0 +1,86 @@
+{
+  "generadoEn": "2026-08-18T09:03:39.678Z",
+  "fuenteGsc": "scripts\\gsc-coverage-urls.csv",
+  "totalInventario": 100,
+  "sinIndexar": [
+    {
+      "url": "https://inmonest.com/gestoria/prestamo-particulares/zaragoza",
+      "path": "/gestoria/prestamo-particulares/zaragoza",
+      "issue": "Rastreada: actualmente sin indexar"
+    }
+  ],
+  "pendientesVerificar": [
+    {
+      "url": "https://inmonest.com/gestoria/alquiler-local-comercial",
+      "path": "/gestoria/alquiler-local-comercial",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/alquiler-local-comercial/alicante",
+      "path": "/gestoria/alquiler-local-comercial/alicante",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/alquiler-local-comercial/barcelona",
+      "path": "/gestoria/alquiler-local-comercial/barcelona",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/alquiler-local-comercial/bilbao",
+      "path": "/gestoria/alquiler-local-comercial/bilbao",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/alquiler-local-comercial/madrid",
+      "path": "/gestoria/alquiler-local-comercial/madrid",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/alquiler-local-comercial/malaga",
+      "path": "/gestoria/alquiler-local-comercial/malaga",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/alquiler-local-comercial/sevilla",
+      "path": "/gestoria/alquiler-local-comercial/sevilla",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/alquiler-local-comercial/valencia",
+      "path": "/gestoria/alquiler-local-comercial/valencia",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/alquiler-local-comercial/zaragoza",
+      "path": "/gestoria/alquiler-local-comercial/zaragoza",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    }
+  ],
+  "problemasGsc": [
+    {
+      "url": "https://inmonest.com/gestoria/alquiler-temporada",
+      "path": "/gestoria/alquiler-temporada",
+      "estado": "error_404",
+      "issue": "No se ha encontrado (404)"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/asesoria-compra-piso/valencia",
+      "path": "/gestoria/asesoria-compra-piso/valencia",
+      "estado": "error_404",
+      "issue": "No se ha encontrado (404)"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/malaga",
+      "path": "/gestoria/malaga",
+      "estado": "redirect",
+      "issue": "Página con redirección"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/reserva-compra",
+      "path": "/gestoria/reserva-compra",
+      "estado": "error_404",
+      "issue": "No se ha encontrado (404)"
+    }
+  ],
+  "probablementeIndexadas": 86
+}

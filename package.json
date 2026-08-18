@@ -8,7 +8,13 @@
     "start": "next start",
     "lint": "eslint",
     "generate-descriptions": "npx tsx scripts/generate-listing-descriptions.ts",
-    "generate-priority-urls": "npx tsx scripts/generate-priority-urls.ts"
+    "generate-priority-urls": "npx tsx scripts/generate-priority-urls.ts",
+    "gsc:auth": "npx tsx scripts/seo/gsc-auth.ts",
+    "gsc:token": "npx tsx scripts/seo/gsc-exchange-code.ts",
+    "gsc:fetch": "npx tsx scripts/seo/fetch-gsc-performance.ts",
+    "gsc:fetch:queries": "npx tsx scripts/seo/fetch-gsc-performance.ts -- --dimension query",
+    "gsc:indexacion": "npx tsx scripts/seo/comprobar-indexacion-gestoria.ts",
+    "gsc:audit": "npx tsx scripts/seo/audit-gsc-coverage-live.ts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
@@ -36,6 +42,7 @@
     "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
+    "googleapis": "^175.0.0",
     "playwright": "^1.59.1",
     "playwright-extra": "^4.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
