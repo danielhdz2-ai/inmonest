@@ -12,13 +12,13 @@ type GestoriaImageBannerProps = {
 }
 
 const SIZE = {
-  lg: 'min-h-[300px] sm:min-h-[360px] lg:min-h-[400px]',
+  lg: 'min-h-[320px] sm:min-h-[380px] lg:min-h-[420px]',
   md: 'min-h-[280px] sm:min-h-[320px]',
   sm: 'min-h-[220px] sm:min-h-[260px]',
 } as const
 
 const IMAGE_WIDTH = {
-  lg: 'lg:w-[42%] xl:w-[440px]',
+  lg: 'lg:w-[44%] xl:w-[480px]',
   md: 'lg:w-[38%] xl:w-[400px]',
   sm: 'lg:w-[36%] xl:w-[360px]',
 } as const
@@ -43,7 +43,7 @@ export function GestoriaImageBanner({
       className={cn(
         'relative shrink-0 overflow-hidden',
         IMAGE_WIDTH[size],
-        size === 'lg' ? 'h-48 sm:h-56 lg:h-auto lg:min-h-full' : 'h-40 sm:h-48 lg:h-auto lg:min-h-full',
+        size === 'lg' ? 'h-52 sm:h-64 lg:h-auto lg:min-h-full' : 'h-40 sm:h-48 lg:h-auto lg:min-h-full',
         imagePosition === 'left' ? 'order-first lg:order-first' : 'order-first lg:order-last',
       )}
     >
@@ -62,7 +62,7 @@ export function GestoriaImageBanner({
       )}
     >
       {imageBlock}
-      <div className="relative z-10 flex flex-1 flex-col justify-center px-6 sm:px-10 lg:px-12 py-8 sm:py-10">
+      <div className="relative z-10 flex flex-1 flex-col justify-center px-7 sm:px-10 lg:px-14 py-9 sm:py-11 lg:py-12">
         {children}
       </div>
     </div>

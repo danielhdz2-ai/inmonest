@@ -8,6 +8,7 @@ import ViewTracker from './ViewTracker'
 import ListingGallery from '@/components/ListingGallery'
 import DescriptionExpand from './DescriptionExpand'
 import RevealContact from './RevealContact'
+import ListingInmonestInfo from './ListingInmonestInfo'
 import SimilarListingsCarousel from '@/components/SimilarListingsCarousel'
 import MortgageCalculator from '@/components/MortgageCalculator'
 import TotalPurchaseCostCalculator from '@/components/TotalPurchaseCostCalculator'
@@ -342,6 +343,8 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
               </div>
             )}
 
+            <ListingInmonestInfo isLoggedIn={!!user} listingId={listing.id} />
+
             {/* Descripción IA */}
             {listing.ai_description && (
               <div className="bg-cream-100 rounded-2xl p-5 border border-gold-300/30">
@@ -560,7 +563,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                     rel="noopener noreferrer"
                     className="block text-center text-xs text-gray-400 hover:text-gray-600 underline"
                   >
-                    Ver anuncio original ↗
+                    Ver anuncio del propietario ↗
                   </a>
                 )}
               </div>
@@ -655,6 +658,16 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                 isParticular={listing.is_particular}
                 isLoggedIn={!!user}
               />
+              {user && (listing.external_link || listing.source_url) && (
+                <a
+                  href={(listing.external_link ?? listing.source_url)!}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-center text-xs text-gray-400 hover:text-gray-600 underline"
+                >
+                  Ver anuncio del propietario ↗
+                </a>
+              )}
             </div>
           </div>
 

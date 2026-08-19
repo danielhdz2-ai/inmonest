@@ -73,7 +73,7 @@ export default function RevealContact({ listingId, isParticular, isLoggedIn }: P
             rel="noopener noreferrer"
             className="block text-center text-xs text-gray-400 hover:text-gray-600 underline"
           >
-            Ver anuncio original ↗
+            Ver anuncio del propietario ↗
           </a>
         )}
       </div>
@@ -112,7 +112,7 @@ export default function RevealContact({ listingId, isParticular, isLoggedIn }: P
         </>
       ) : (
         <>
-          🔒 {isLoggedIn ? 'Ver teléfono de contacto' : 'Regístrate para ver el teléfono'}
+          🔒 {isLoggedIn ? 'Ver teléfono del propietario' : 'Regístrate para ver el teléfono del propietario'}
         </>
       )}
     </button>
