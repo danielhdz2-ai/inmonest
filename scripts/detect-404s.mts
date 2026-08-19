@@ -7,7 +7,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!,
 )
 
-const MAX = parseInt(process.env.MAX_LISTINGS || '400', 10)
+const MAX = Math.max(parseInt(process.env.MAX_LISTINGS || '400', 10), 400)
 const STALE_DAYS = parseInt(process.env.STALE_DAYS || '30', 10)
 const OPERATION = (process.env.OPERATION || 'rent').toLowerCase() as 'rent' | 'sale' | 'all'
 const DRY_RUN = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true'
