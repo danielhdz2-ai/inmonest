@@ -7,7 +7,7 @@ import MapWrapper from './MapWrapper'
 import ViewTracker from './ViewTracker'
 import ListingGallery from '@/components/ListingGallery'
 import DescriptionExpand from './DescriptionExpand'
-import RevealContact from './RevealContact'
+import RevealContact, { ownerActionBtnClass } from './RevealContact'
 import ListingInmonestInfo from './ListingInmonestInfo'
 import SimilarListingsCarousel from '@/components/SimilarListingsCarousel'
 import MortgageCalculator from '@/components/MortgageCalculator'
@@ -561,7 +561,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                     href={(listing.external_link ?? listing.source_url)!}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-center text-xs text-gray-400 hover:text-gray-600 underline"
+                    className={ownerActionBtnClass}
                   >
                     Ver anuncio del propietario ↗
                   </a>
@@ -663,7 +663,7 @@ export default async function ListingDetailPage({ params, searchParams }: Props)
                   href={(listing.external_link ?? listing.source_url)!}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center text-xs text-gray-400 hover:text-gray-600 underline"
+                  className={ownerActionBtnClass}
                 >
                   Ver anuncio del propietario ↗
                 </a>

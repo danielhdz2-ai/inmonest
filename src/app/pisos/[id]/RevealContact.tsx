@@ -2,6 +2,9 @@
 
 import { useState } from 'react'
 
+export const ownerActionBtnClass =
+  'w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-gold-300 bg-cream-100 text-gold-700 text-sm font-semibold hover:bg-gold-50 transition-colors'
+
 interface Props {
   listingId: string
   isParticular: boolean | null
@@ -59,7 +62,7 @@ export default function RevealContact({ listingId, isParticular, isLoggedIn }: P
         {contact.phone ? (
           <a
             href={`tel:${contact.phone}`}
-            className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gold-600 text-white text-sm font-semibold hover:bg-gold-700 transition-colors"
+            className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gold-600 text-white text-sm font-semibold hover:bg-gold-700 transition-colors"
           >
             {contact.phone}
           </a>
@@ -71,7 +74,7 @@ export default function RevealContact({ listingId, isParticular, isLoggedIn }: P
             href={contact.external_link}
             target="_blank"
             rel="noopener noreferrer"
-            className="block text-center text-xs text-gray-400 hover:text-gray-600 underline"
+            className={ownerActionBtnClass}
           >
             Ver anuncio del propietario ↗
           </a>
@@ -100,7 +103,7 @@ export default function RevealContact({ listingId, isParticular, isLoggedIn }: P
     <button
       onClick={handleReveal}
       disabled={state === 'loading'}
-      className="mt-4 w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-gold-300 bg-cream-100 text-gold-700 text-sm font-semibold hover:bg-cream-100 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+      className={`mt-4 ${ownerActionBtnClass} disabled:opacity-60 disabled:cursor-not-allowed`}
     >
       {state === 'loading' ? (
         <>
