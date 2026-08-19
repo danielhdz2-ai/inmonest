@@ -3,9 +3,9 @@ import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
 const UPSELL_BY_SERVICE: Record<string, string[]> = {
   'contrato-alquiler': ['revision-alquiler', 'pack-revision-reserva-alquiler', 'liquidacion-fianza', 'rescision-alquiler'],
   'contrato-alquiler-barcelona': ['revision-alquiler', 'liquidacion-fianza'],
-  'arras-penitenciales': ['pack-due-diligence-precompra', 'compra-completa-reserva-escritura', 'revision-correccion-arras'],
-  'arras-confirmatorias': ['pack-due-diligence-precompra', 'compra-completa-reserva-escritura'],
-  'reserva-compra': ['arras-penitenciales', 'compra-completa-reserva-escritura', 'pack-due-diligence-precompra'],
+  'arras-penitenciales': ['pack-arras-revision-documental', 'pack-due-diligence-precompra', 'compra-completa-reserva-escritura', 'revision-correccion-arras'],
+  'arras-confirmatorias': ['pack-arras-revision-documental', 'pack-due-diligence-precompra', 'compra-completa-reserva-escritura'],
+  'reserva-compra': ['arras-penitenciales', 'pack-arras-revision-documental', 'compra-completa-reserva-escritura', 'pack-due-diligence-precompra'],
   'alquiler-temporada': ['contrato-alquiler', 'revision-alquiler'],
   'revision-alquiler': ['contrato-alquiler', 'pack-revision-reserva-alquiler'],
   'revision-correccion-arras': ['arras-penitenciales', 'pack-due-diligence-precompra'],
@@ -17,6 +17,7 @@ const DEFAULT_UPSELL = [
   'reserva-compra',
   'compra-completa-reserva-escritura',
   'pack-due-diligence-precompra',
+  'pack-arras-revision-documental',
 ]
 
 export type UpsellService = {

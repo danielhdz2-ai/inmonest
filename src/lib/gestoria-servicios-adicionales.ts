@@ -432,8 +432,61 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     ],
     relacionados: [
       { slug: 'revision-correccion-arras', nombre: 'Revisión Arras', precio: 120 },
+      { slug: 'pack-arras-revision-documental', nombre: 'Pack Arras Plus', precio: 450 },
       { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa', precio: 687 },
-      { slug: 'acompanamiento-reserva-arras', nombre: 'Reserva → Arras', precio: 424 },
+    ],
+  },
+
+  'pack-arras-revision-documental': {
+    nombre: 'Pack Arras Plus — Revisión Documental Completa',
+    precio: p('pack-arras-revision-documental', 450),
+    categoria: 'Servicios Premium',
+    tagline: 'Arras penitenciales + revisión documental integral para compradores entre particulares',
+    descripcion:
+      'Comprar de particular sin agencia implica firmar arras y revisar decenas de documentos por tu cuenta. El Pack Arras Plus une lo esencial en un solo servicio: redactamos tu contrato de arras penitenciales con cláusulas de protección real y, en paralelo, auditamos toda la documentación del inmueble — comunidad, derramas, ITE, nota registral, certificados y coherencia urbanística. Ideal si quieres arras seguras y un informe completo antes de comprometer la señal definitiva, sin llamarlo «due diligence» ni pagar dos servicios por separado.',
+    image: '/gestoria10.jpg',
+    imageAlt: 'Pack arras y revisión documental para compradores particulares',
+    paraQuien: [
+      'Compradores entre particulares que van a firmar arras y quieren documentación verificada',
+      'Quien busca arras + informe documental completo en un solo pack (450 €)',
+      'Operaciones sin agencia donde nadie revisa comunidad, ITE o cargas por ti',
+      'Compradores que prefieren este pack frente a contratar arras y revisión por separado',
+    ],
+    incluye: [
+      'Redacción de contrato de arras penitenciales personalizado (PDF en 48h)',
+      'Revisión de actas de comunidad (últimos 2 años)',
+      'Análisis de derramas pendientes, deudas de IBI y suministros',
+      'Verificación del ITE y certificados obligatorios si aplican',
+      'Nota registral actualizada y coherencia con la operación',
+      'Información urbanística, licencias y informe documental PDF en 3-5 días',
+    ],
+    pasos: [
+      { num: '01', titulo: 'Contrata y cuéntanos la operación', desc: 'Datos de comprador, vendedor, inmueble, precio y documentación disponible.' },
+      { num: '02', titulo: 'Arras + auditoría documental', desc: 'Redactamos las arras mientras tu gestor solicita y analiza la documentación completa.' },
+      { num: '03', titulo: 'Firma con informe en mano', desc: 'Recibes arras listas para firmar e informe con riesgos, hallazgos y recomendaciones.' },
+    ],
+    faq: [
+      {
+        q: '¿En qué se diferencia del Pack Due Diligence Pre-Compra?',
+        a: 'El Due Diligence (350 €) es solo la auditoría documental, normalmente tras firmar arras. Este pack (450 €) incluye además la redacción de arras penitenciales y la revisión documental completa en un único servicio para particulares.',
+      },
+      {
+        q: '¿Incluye arras confirmatorias?',
+        a: 'El pack incluye arras penitenciales, el estándar más equilibrado entre comprador y vendedor. Si necesitas confirmatorias, indícalo al contratar y tu gestor lo valora.',
+      },
+      {
+        q: '¿Cuándo debo contratarlo?',
+        a: 'Lo ideal es antes de firmar arras o justo cuando negocias la señal. Así firmas con cláusulas correctas y conoces los riesgos documentales del inmueble.',
+      },
+      {
+        q: '¿Sustituye al servicio de compra completa (687 €)?',
+        a: 'No. Este pack cubre arras + revisión documental. La compra completa te acompaña desde reserva hasta escritura con gestor dedicado en todo el proceso.',
+      },
+    ],
+    relacionados: [
+      { slug: 'arras-penitenciales', nombre: 'Solo Arras', precio: 145 },
+      { slug: 'pack-due-diligence-precompra', nombre: 'Due Diligence', precio: 350 },
+      { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa', precio: 687 },
     ],
   },
 

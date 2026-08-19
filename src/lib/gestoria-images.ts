@@ -95,6 +95,18 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
     cta: { src: '/gestoria4.jpg', alt: 'Contratos revisados por expertos' },
     imagePosition: 'right',
   },
+  'pack-arras-revision-documental': {
+    hero: { src: '/gestoria10.jpg', alt: 'Pack arras y revisión documental completa' },
+    mid: { src: '/gestoria15.jpg', alt: 'Verificación documental para compradores particulares' },
+    cta: { src: '/contratodearras.jpg', alt: 'Arras seguras con informe documental' },
+    imagePosition: 'left',
+  },
+  'pack-due-diligence-precompra': {
+    hero: { src: '/gestoria9.jpg', alt: 'Due diligence pre-compra inmobiliaria' },
+    mid: { src: '/interior1.jpg', alt: 'Auditoría documental antes de escriturar' },
+    cta: { src: '/gestoria15.jpg', alt: 'Informe ejecutivo de compraventa' },
+    imagePosition: 'right',
+  },
   'arras-parking-garage': {
     hero: { src: '/contrato5.jpg', alt: 'Arras para compraventa de parking' },
     mid: { src: '/gestoria13.jpg', alt: 'Plaza de garaje en operación de compra' },

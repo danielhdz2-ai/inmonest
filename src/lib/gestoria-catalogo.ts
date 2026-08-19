@@ -312,6 +312,19 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
       'Informe ejecutivo PDF en 3-5 días',
     ],
   },
+  'pack-arras-revision-documental': {
+    nombre: 'Pack Arras Plus — Revisión Documental Completa',
+    precio: 450,
+    categoria: 'Servicios Premium',
+    incluye: [
+      'Redacción contrato de arras penitenciales personalizado',
+      'Revisión actas de comunidad (2 años)',
+      'Análisis de derramas pendientes y deudas',
+      'Verificación ITE y certificados obligatorios',
+      'Nota registral y coherencia urbanística',
+      'Informe documental completo PDF en 3-5 días',
+    ],
+  },
   'contrato-compraventa': {
     nombre: 'Contrato de Compraventa de Vivienda',
     precio: 145,

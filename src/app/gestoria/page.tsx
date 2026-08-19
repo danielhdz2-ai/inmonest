@@ -207,6 +207,27 @@ const schemaJson = JSON.stringify({
             validFrom: '2026-01-01'
           }
         }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Pack Arras Plus — Revisión Documental Completa',
+          description: 'Arras penitenciales redactadas por gestoría más revisión documental integral del inmueble para compradores entre particulares: comunidad, derramas, ITE, nota registral y certificados.',
+          url: `${BASE_URL}/gestoria/solicitar/pack-arras-revision-documental`,
+          provider: {
+            '@type': 'Organization',
+            name: 'Inmonest'
+          },
+          offers: {
+            '@type': 'Offer',
+            price: '450',
+            priceCurrency: 'EUR',
+            availability: 'https://schema.org/InStock',
+            priceValidUntil: '2026-12-31',
+            validFrom: '2026-01-01'
+          }
+        }
       }
     ]
   },

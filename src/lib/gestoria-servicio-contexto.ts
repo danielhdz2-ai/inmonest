@@ -45,6 +45,7 @@ const COMPRAVENTA_SLUGS = new Set([
   'arras-parking-garage',
   'reserva-compra',
   'acompanamiento-reserva-arras',
+  'pack-arras-revision-documental',
   'alquiler-opcion-compra',
   'contrato-compraventa',
   'asesoramiento-arras-venta',
@@ -253,6 +254,38 @@ const SLUG_OVERRIDES: Partial<Record<string, BlindajeContent>> = {
       'Gestor especializado en compraventa entre particulares',
       'Confidencialidad total de la documentación aportada',
       'Recomendaciones accionables, no informes genéricos',
+    ],
+  },
+  'pack-arras-revision-documental': {
+    eyebrow: 'Pack para particulares',
+    titulo: 'Arras bien redactadas y documentación revisada antes de la señal',
+    intro:
+      'Si compras de particular, nadie revisa el piso por ti. El Pack Arras Plus combina la redacción de arras penitenciales con una revisión documental completa del inmueble: comunidad, derramas, ITE, registros y certificados. Un solo servicio para firmar con garantías y saber qué estás comprando.',
+    partes: [
+      {
+        rol: 'Comprador',
+        titulo: 'Arras + informe en un solo pack',
+        bullets: [
+          'Contrato de arras penitenciales con cláusulas suspensivas y plazos claros.',
+          'Auditoría de actas, derramas, ITE y nota registral del inmueble.',
+          'Informe documental con riesgos y recomendaciones antes de comprometerte.',
+        ],
+      },
+      {
+        rol: 'Sin agencia',
+        titulo: 'La revisión que haría un gestor, no un portal',
+        bullets: [
+          'Verificación de deudas de comunidad y cargas no declaradas.',
+          'Coherencia entre catastro, registro y documentación técnica.',
+          'Orientación para renegociar o desistir si detectamos problemas graves.',
+        ],
+      },
+    ],
+    garantias: [
+      'Arras en PDF en 48h + informe documental en 3–5 días',
+      'Gestor especializado en compraventa entre particulares',
+      'Tarifa plana 450 € — sin comisión sobre el precio del piso',
+      'Firma electrónica FIRMACERT incluida en el servicio',
     ],
   },
 }

@@ -90,6 +90,12 @@ const BY_SERVICE: Record<string, ServiceDocRequirement[]> = {
     { key: 'contrato-alquiler', label: 'Contrato de arras firmado', icon: '📋', desc: 'Copia del contrato de arras', required: false },
     { key: 'otro', label: 'Actas de comunidad', icon: '📄', desc: 'Si las tienes disponibles', required: false },
   ],
+  'pack-arras-revision-documental': [
+    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Comprador y vendedor', required: false },
+    { key: 'nota-simple', label: 'Nota simple del inmueble', icon: '🏛️', desc: 'Registro de la Propiedad', required: false },
+    { key: 'partes', label: 'Datos de la operación', icon: '📋', desc: 'Precio, señal y condiciones acordadas', required: false },
+    { key: 'otro', label: 'Documentación disponible', icon: '📄', desc: 'Actas comunidad, ITE, certificados…', required: false },
+  ],
   'venta-completa-reserva-escritura': [
     { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Vendedor y comprador', required: false },
     { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del inmueble en venta', required: false },

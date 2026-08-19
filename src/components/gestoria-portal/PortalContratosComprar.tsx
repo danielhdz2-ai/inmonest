@@ -10,6 +10,7 @@ const FEATURED_KEYS = [
   'revision-correccion-arras',
   'alquiler-vivienda-lau',
   'pack-due-diligence-precompra',
+  'pack-arras-revision-documental',
 ] as const
 
 type Props = {

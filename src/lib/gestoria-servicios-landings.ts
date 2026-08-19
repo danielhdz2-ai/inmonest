@@ -234,6 +234,17 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     badge: 'Pre-compra',
   },
   {
+    slug: 'pack-arras-revision-documental',
+    nombre: 'Pack Arras Plus — Revisión Documental Completa',
+    shortName: 'Pack Arras Plus',
+    descripcion: 'Arras penitenciales + revisión documental integral para compradores entre particulares.',
+    categoria: 'packs',
+    precio: getPrecioServicio('pack-arras-revision-documental') ?? 450,
+    image: '/gestoria10.jpg',
+    landingHref: '/gestoria/pack-arras-revision-documental',
+    badge: '450€',
+  },
+  {
     slug: 'compra-completa-reserva-escritura',
     nombre: 'Compra Completa: Reserva a Escritura',
     shortName: 'Compra completa',

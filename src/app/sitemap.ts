@@ -140,6 +140,8 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/solicitar/revision-correccion-arras`,     lastModified: today, changeFrequency: 'monthly', priority: 0.84 },
   { url: `${BASE_URL}/gestoria/solicitar/contrato-ilegal`,               lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
   { url: `${BASE_URL}/gestoria/solicitar/pack-due-diligence-precompra`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
+  { url: `${BASE_URL}/gestoria/pack-arras-revision-documental`,           lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/solicitar/pack-arras-revision-documental`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/solicitar/contrato-compraventa`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/solicitar/alquiler-temporada`,            lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
   { url: `${BASE_URL}/gestoria/solicitar/reserva-alquiler`,              lastModified: today, changeFrequency: 'monthly', priority: 0.80 },

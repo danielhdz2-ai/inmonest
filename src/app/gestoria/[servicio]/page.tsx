@@ -850,11 +850,15 @@ export async function generateMetadata({
   const seoTitle =
     servicio === 'contrato-alquiler'
       ? `Contrato de Alquiler LAU 【${data.precio}€】 Ley Vivienda 2026 · Entrega 48h`
-      : `${data.nombre} — Gestoría inmobiliaria`
+      : servicio === 'pack-arras-revision-documental'
+        ? `Pack Arras Plus 【${data.precio}€】 Arras + Revisión Documental Completa`
+        : `${data.nombre} — Gestoría inmobiliaria`
   const seoDescription =
     servicio === 'contrato-alquiler'
       ? `Contrato de alquiler de vivienda habitual adaptado a LAU y Ley de Vivienda 2026. Redactado por gestoría experta. ${data.precio}€ IVA incl. PDF firmable en 48h.`
-      : `${data.tagline}. Redactado por gestores especializados. Desde ${data.precio} €. Entrega en 48h.`
+      : servicio === 'pack-arras-revision-documental'
+        ? `Arras penitenciales + revisión documental completa para compradores entre particulares. ${data.precio}€ IVA incl. Informe en 3-5 días.`
+        : `${data.tagline}. Redactado por gestores especializados. Desde ${data.precio} €. Entrega en 48h.`
 
   return {
     title: seoTitle,

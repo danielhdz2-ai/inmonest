@@ -26,6 +26,7 @@ export const GESTORIA_INDEXAR_PRIORIDAD_ALTA = [
   '/gestoria/compra-completa-reserva-escritura',
   '/gestoria/venta-completa-reserva-escritura',
   '/gestoria/pack-due-diligence-precompra',
+  '/gestoria/pack-arras-revision-documental',
   '/gestoria/alquiler-habitaciones',
   '/gestoria/alquiler-local-comercial',
   '/gestoria/revision-alquiler',
@@ -138,6 +139,12 @@ export const GESTORIA_ENLACES_INDEXACION = [
     href: '/gestoria/pack-due-diligence-precompra',
     title: 'Due diligence precompra',
     description: 'Revisión legal antes de firmar arras.',
+    badge: 'Premium',
+  },
+  {
+    href: '/gestoria/pack-arras-revision-documental',
+    title: 'Pack Arras Plus + documentación',
+    description: 'Arras penitenciales y revisión documental completa para particulares.',
     badge: 'Premium',
   },
   {

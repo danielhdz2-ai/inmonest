@@ -121,6 +121,7 @@ export async function POST(req: NextRequest) {
     'contrato-ilegal':                     { name: 'Análisis de Fraude Inmobiliario',                  price_eur: 145 },
     'prueba-pago-stripe':                  { name: 'Prueba de pago Stripe',                            price_eur: 5  },
     'pack-due-diligence-precompra':        { name: 'Pack Due Diligence Pre-Compra',                    price_eur: 350 },
+    'pack-arras-revision-documental':      { name: 'Pack Arras Plus — Revisión Documental Completa',   price_eur: 450 },
     'contrato-compraventa':                { name: 'Contrato de Compraventa de Vivienda',              price_eur: 145 },
     'asesoramiento-arras-venta':           { name: 'Asesoramiento Arras hasta Escritura (Vendedores)', price_eur: 166 },
   }

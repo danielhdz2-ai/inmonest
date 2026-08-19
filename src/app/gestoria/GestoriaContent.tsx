@@ -78,6 +78,23 @@ const SERVICES: Service[] = [
     badge: 'Pre-compra',
   },
   {
+    key: 'pack-arras-revision-documental',
+    name: 'Pack Arras Plus — Revisión Documental Completa',
+    shortName: 'Pack Arras Plus',
+    category: 'compraventa',
+    description: 'Arras penitenciales redactadas por gestoría + revisión documental integral del inmueble para compradores entre particulares. Comunidad, derramas, ITE, nota registral y certificados en un solo pack a 450 €.',
+    includes: [
+      'Contrato de arras penitenciales personalizado (48h)',
+      'Revisión actas de comunidad (2 años)',
+      'Análisis derramas, deudas e ITE del edificio',
+      'Nota registral y coherencia urbanística',
+      'Informe documental completo PDF (3-5 días)',
+    ],
+    price: 450,
+    image: '/gestoria10.jpg',
+    badge: 'Particulares',
+  },
+  {
     key: 'asesoramiento-arras-venta',
     name: 'Asesoramiento Arras hasta Escritura (Vendedores)',
     shortName: 'Asesoramiento Venta',
