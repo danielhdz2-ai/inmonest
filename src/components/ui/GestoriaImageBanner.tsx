@@ -7,6 +7,8 @@ type GestoriaImageBannerProps = {
   imagePosition?: 'left' | 'right'
   /** lg = hero · md = CTA · sm = franja intermedia */
   size?: 'lg' | 'md' | 'sm'
+  /** Columna estrecha (ficha piso): imagen arriba, texto abajo — evita recorte lateral */
+  stacked?: boolean
   className?: string
   children: React.ReactNode
 }
@@ -18,9 +20,9 @@ const SIZE = {
 } as const
 
 const IMAGE_WIDTH = {
-  lg: 'lg:w-[44%] xl:w-[480px]',
-  md: 'lg:w-[38%] xl:w-[400px]',
-  sm: 'lg:w-[36%] xl:w-[360px]',
+  lg: 'lg:w-[42%] lg:max-w-[400px]',
+  md: 'lg:w-[38%] lg:max-w-[340px]',
+  sm: 'lg:w-[36%] lg:max-w-[300px]',
 } as const
 
 export function GestoriaImageBanner({
@@ -28,6 +30,7 @@ export function GestoriaImageBanner({
   imageAlt,
   imagePosition = 'right',
   size = 'md',
+  stacked = false,
   className,
   children,
 }: GestoriaImageBannerProps) {
@@ -42,9 +45,13 @@ export function GestoriaImageBanner({
     <div
       className={cn(
         'relative shrink-0 overflow-hidden',
-        IMAGE_WIDTH[size],
-        size === 'lg' ? 'h-52 sm:h-64 lg:h-auto lg:min-h-full' : 'h-40 sm:h-48 lg:h-auto lg:min-h-full',
-        imagePosition === 'left' ? 'order-first lg:order-first' : 'order-first lg:order-last',
+        stacked ? 'h-48 sm:h-56 w-full' : IMAGE_WIDTH[size],
+        !stacked &&
+          (size === 'lg'
+            ? 'h-52 sm:h-64 lg:h-auto lg:min-h-full'
+            : 'h-40 sm:h-48 lg:h-auto lg:min-h-full'),
+        !stacked &&
+          (imagePosition === 'left' ? 'order-first lg:order-first' : 'order-first lg:order-last'),
       )}
     >
       <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 440px" />
@@ -56,13 +63,14 @@ export function GestoriaImageBanner({
   return (
     <div
       className={cn(
-        'relative flex flex-col lg:flex-row overflow-hidden rounded-3xl bg-black shadow-xl',
-        SIZE[size],
+        'relative flex overflow-hidden rounded-3xl bg-black shadow-xl',
+        stacked ? 'flex-col' : 'flex-col lg:flex-row',
+        stacked ? undefined : SIZE[size],
         className,
       )}
     >
       {imageBlock}
-      <div className="relative z-10 flex flex-1 flex-col justify-center px-7 sm:px-10 lg:px-14 py-9 sm:py-11 lg:py-12">
+      <div className="relative z-10 flex min-w-0 flex-1 flex-col justify-center bg-black px-7 sm:px-10 lg:px-12 py-8 sm:py-10">
         {children}
       </div>
     </div>

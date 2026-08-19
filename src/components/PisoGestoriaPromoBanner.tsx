@@ -32,6 +32,7 @@ export function PisoAlquilerLauBanner({ city }: PisoGestoriaBannerProps) {
       imageAlt="Contrato de alquiler LAU redactado por gestoría inmobiliaria"
       imagePosition="right"
       size="lg"
+      stacked
       className={LISTING_BANNER_CLASS}
     >
       <p className={EYEBROW_CLASS}>Gestoría inmobiliaria</p>
@@ -40,7 +41,7 @@ export function PisoAlquilerLauBanner({ city }: PisoGestoriaBannerProps) {
         Necesitas un <strong className="text-white">contrato de alquiler LAU</strong> (obligatorio por ley).
         Nuestros gestores lo redactan personalizado con todas las cláusulas legales.
       </p>
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <div className="flex flex-col gap-3">
         <Link href={href} className={BTN_PRIMARY}>
           Crear contrato LAU — {precio} →
         </Link>
@@ -60,8 +61,9 @@ export function PisoArrasCompraBanner({ city }: PisoGestoriaBannerProps) {
     <GestoriaImageBanner
       imageSrc="/contratodearras.jpg"
       imageAlt="Contrato de arras penitenciales redactado por gestoría"
-      imagePosition="left"
+      imagePosition="right"
       size="lg"
+      stacked
       className={LISTING_BANNER_CLASS}
     >
       <p className={EYEBROW_CLASS}>Compraventa segura</p>
@@ -70,7 +72,7 @@ export function PisoArrasCompraBanner({ city }: PisoGestoriaBannerProps) {
         Protege tu señal con un <strong className="text-white">contrato de arras</strong> redactado por gestores expertos.
         Evita problemas legales y asegura tu compra.
       </p>
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <div className="flex flex-col gap-3">
         <Link href={href} className={BTN_PRIMARY}>
           Crear contrato de arras — {precio} →
         </Link>
@@ -91,6 +93,7 @@ export function PisoVendedorBanner() {
       imageAlt="Acompañamiento de venta entre particulares hasta escritura"
       imagePosition="right"
       size="lg"
+      stacked
       className={LISTING_BANNER_CLASS}
     >
       <p className={EYEBROW_CLASS}>Venta entre particulares</p>
@@ -99,7 +102,7 @@ export function PisoVendedorBanner() {
         Si vendes de <strong className="text-white">particular a particular con comprador ya encontrado</strong>,
         te ayudamos con contratos, documentación y acompañamiento hasta escritura. Sin comisión del 3–5% de agencia.
       </p>
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <div className="flex flex-col gap-3">
         <Link href="/gestoria/venta-completa-reserva-escritura" className={BTN_PRIMARY}>
           Ver servicio completo — {precio} →
         </Link>

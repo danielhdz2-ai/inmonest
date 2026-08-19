@@ -24,6 +24,7 @@ export default function ComprarPisoDueDiligenceBanner({ city }: ComprarPisoDueDi
       imageAlt="Due diligence pre-compra — revisión documental del inmueble"
       imagePosition="right"
       size="lg"
+      stacked
       className="ring-1 ring-gold-500/35 shadow-2xl shadow-black/25"
     >
       <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-gold-400 mb-3">
@@ -36,7 +37,7 @@ export default function ComprarPisoDueDiligenceBanner({ city }: ComprarPisoDueDi
         Revisamos toda la documentación antes de escriturar: nota simple, cargas, deudas de comunidad y
         certificados obligatorios en {ciudadLabel}.
       </p>
-      <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+      <div className="flex flex-col gap-3">
         <Link
           href={href}
           className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-gold-500 text-white font-bold hover:bg-gold-400 transition-colors text-base shadow-lg shadow-gold-900/30"
