@@ -14,7 +14,8 @@
     "gsc:fetch": "npx tsx scripts/seo/fetch-gsc-performance.ts",
     "gsc:fetch:queries": "npx tsx scripts/seo/fetch-gsc-performance.ts -- --dimension query",
     "gsc:indexacion": "npx tsx scripts/seo/comprobar-indexacion-gestoria.ts",
-    "gsc:audit": "npx tsx scripts/seo/audit-gsc-coverage-live.ts"
+    "gsc:audit": "npx tsx scripts/seo/audit-gsc-coverage-live.ts",
+    "detect-404s": "npx tsx scripts/detect-404s.mts"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

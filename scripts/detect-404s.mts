@@ -7,8 +7,22 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!,
 )
 
-const MAX = parseInt(process.env.MAX_LISTINGS || '300', 10)
+const MAX = parseInt(process.env.MAX_LISTINGS || '400', 10)
+const STALE_DAYS = parseInt(process.env.STALE_DAYS || '30', 10)
+const OPERATION = (process.env.OPERATION || 'rent').toLowerCase() as 'rent' | 'sale' | 'all'
 const DRY_RUN = process.env.DRY_RUN === '1' || process.env.DRY_RUN === 'true'
+const BATCH_SIZE = 6
+const BATCH_DELAY_MS = 800
+
+type ListingRow = {
+  id: string
+  title: string
+  source_url: string
+  source_portal: string | null
+  updated_at: string
+  city: string | null
+  operation: 'rent' | 'sale'
+}
 
 const DEAD_PATTERNS = [
   /anuncio\s+no\s+disponible/i,
@@ -37,6 +51,40 @@ function looksLikePisosComSearchPage(pageTitle: string): boolean {
   return /^(Alquiler de (pisos|áticos|casas|chalets|estudios|duplex|dúplex|locales)|Pisos en |Casas en |Áticos en |Chalets en )/i.test(
     pageTitle.trim(),
   )
+}
+
+function staleCutoffIso(): string {
+  const d = new Date()
+  d.setDate(d.getDate() - STALE_DAYS)
+  return d.toISOString()
+}
+
+async function fetchByOperation(operation: 'rent' | 'sale', limit: number): Promise<ListingRow[]> {
+  if (limit <= 0) return []
+
+  const { data, error } = await supabase
+    .from('listings')
+    .select('id, title, source_url, source_portal, updated_at, city, operation')
+    .eq('status', 'published')
+    .eq('operation', operation)
+    .not('source_url', 'is', null)
+    .lt('updated_at', staleCutoffIso())
+    .order('updated_at', { ascending: true })
+    .limit(limit)
+
+  if (error) throw error
+  return (data ?? []) as ListingRow[]
+}
+
+async function fetchListings(): Promise<ListingRow[]> {
+  if (OPERATION === 'rent' || OPERATION === 'sale') {
+    return fetchByOperation(OPERATION, MAX)
+  }
+
+  const rentQuota = Math.ceil(MAX * 0.75)
+  const rent = await fetchByOperation('rent', rentQuota)
+  const sale = await fetchByOperation('sale', MAX - rent.length)
+  return [...rent, ...sale]
 }
 
 async function isSourceDead(
@@ -84,11 +132,8 @@ async function isSourceDead(
     }
 
     if (portal === 'gilmar.es' || url.includes('gilmar.es')) {
-      if (/no\s+encontr|no\s+disponible|404/i.test(pageTitle) || !/referencia|inmueble/i.test(html.slice(0, 5000))) {
-        // solo si title sugiere error
-        if (/404|no encontrado|error/i.test(pageTitle)) {
-          return { dead: true, reason: `gilmar:title` }
-        }
+      if (/404|no encontrado|error/i.test(pageTitle)) {
+        return { dead: true, reason: `gilmar:title` }
       }
     }
 
@@ -99,47 +144,47 @@ async function isSourceDead(
 }
 
 async function checkAvailability() {
+  const opLabel =
+    OPERATION === 'rent' ? 'alquiler' : OPERATION === 'sale' ? 'venta' : 'alquiler (75%) + venta (25%)'
+
   console.log(`🔍 Detector orígenes muertos (pisos.com id + soft-404)`)
-  console.log(`📊 Límite: ${MAX} | DRY_RUN: ${DRY_RUN}\n`)
+  console.log(
+    `📊 Límite: ${MAX} | Operación: ${opLabel} | Stale: >${STALE_DAYS}d | DRY_RUN: ${DRY_RUN}\n`,
+  )
 
-  const { data: listings, error } = await supabase
-    .from('listings')
-    .select('id, title, source_url, source_portal, updated_at, city')
-    .eq('status', 'published')
-    .not('source_url', 'is', null)
-    .order('updated_at', { ascending: true })
-    .limit(MAX)
-
-  if (error) {
-    console.error('❌ Error:', error)
+  let listings: ListingRow[]
+  try {
+    listings = await fetchListings()
+  } catch (err) {
+    console.error('❌ Error al cargar listings:', err)
     process.exit(1)
   }
 
-  if (!listings?.length) {
-    console.log('✅ No hay pisos para verificar')
+  if (!listings.length) {
+    console.log(`✅ No hay anuncios ${opLabel} stale (>${STALE_DAYS}d) para verificar`)
     return
   }
 
-  console.log(`📋 Verificando ${listings.length} pisos...\n`)
+  const rentCount = listings.filter((l) => l.operation === 'rent').length
+  const saleCount = listings.filter((l) => l.operation === 'sale').length
+  console.log(`📋 Verificando ${listings.length} anuncios (${rentCount} alquiler, ${saleCount} venta)...\n`)
 
   let removed = 0
   let available = 0
   let skipped = 0
-  const dead: { id: string; title: string; reason: string; portal: string | null }[] = []
+  let touched = 0
+  const reasonCounts: Record<string, number> = {}
 
-  for (let i = 0; i < listings.length; i += 8) {
-    const batch = listings.slice(i, i + 8)
+  for (let i = 0; i < listings.length; i += BATCH_SIZE) {
+    const batch = listings.slice(i, i + BATCH_SIZE)
     await Promise.all(
       batch.map(async (listing) => {
         const result = await isSourceDead(listing.source_url!, listing.source_portal)
         if (result.dead) {
-          console.log(`❌ [${result.reason}] ${listing.title.slice(0, 50)} — ${listing.source_portal}`)
-          dead.push({
-            id: listing.id,
-            title: listing.title,
-            reason: result.reason,
-            portal: listing.source_portal,
-          })
+          reasonCounts[result.reason] = (reasonCounts[result.reason] || 0) + 1
+          console.log(
+            `❌ [${result.reason}] ${listing.operation === 'rent' ? '🏠' : '🏷️'} ${listing.title.slice(0, 48)} — ${listing.source_portal}`,
+          )
           if (!DRY_RUN) {
             await supabase.from('listings').update({ status: 'archived' }).eq('id', listing.id)
           }
@@ -148,19 +193,29 @@ async function checkAvailability() {
           skipped++
         } else {
           available++
+          if (!DRY_RUN) {
+            await supabase
+              .from('listings')
+              .update({ updated_at: new Date().toISOString() })
+              .eq('id', listing.id)
+            touched++
+          }
         }
       }),
     )
-    await new Promise((r) => setTimeout(r, 1000))
-    if ((i + 8) % 40 === 0 || i + 8 >= listings.length) {
-      console.log(`… ${Math.min(i + 8, listings.length)}/${listings.length} (bajas: ${removed})`)
+    await new Promise((r) => setTimeout(r, BATCH_DELAY_MS))
+    if ((i + BATCH_SIZE) % 30 === 0 || i + BATCH_SIZE >= listings.length) {
+      console.log(`… ${Math.min(i + BATCH_SIZE, listings.length)}/${listings.length} (archivados: ${removed})`)
     }
   }
 
   console.log(`\n📊 RESUMEN:`)
-  console.log(`✅ Disponibles: ${available}`)
+  console.log(`✅ Disponibles en origen: ${available}${touched ? ` (${touched} fecha actualizada)` : ''}`)
   console.log(`❌ Archivados: ${removed}${DRY_RUN ? ' (dry-run)' : ''}`)
   console.log(`⚠️  Skip/error: ${skipped}`)
+  if (Object.keys(reasonCounts).length > 0) {
+    console.log(`📌 Motivos de baja:`, reasonCounts)
+  }
 }
 
 checkAvailability().catch((err) => {
