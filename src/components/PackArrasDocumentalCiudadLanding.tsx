@@ -27,33 +27,6 @@ import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/pack-arras-revision-documental'
 
-const PASOS = [
-  {
-    titulo: 'Cuéntanos la operación',
-    desc: 'En menos de 24 h tu gestor analiza precio, vendedor, plazos y documentación disponible. Sin compromiso hasta contratar.',
-  },
-  {
-    titulo: 'Contratas el Pack Arras Plus (450€)',
-    desc: 'Pago único IVA incluido. Incluye redacción de arras penitenciales y auditoría documental completa.',
-  },
-  {
-    titulo: 'Redacción de arras penitenciales',
-    desc: 'Personalizamos cláusulas, señal, plazos, penitenciales y condiciones suspensivas (hipoteca, cargas). PDF en 48 h.',
-  },
-  {
-    titulo: 'Recopilación documental',
-    desc: 'Solicitamos nota simple, actas de comunidad, certificados técnicos y documentación exigida en tu comunidad autónoma.',
-  },
-  {
-    titulo: 'Informe documental completo',
-    desc: 'Análisis de cargas, derramas, ITE/IEE, deudas e incoherencias. Recomendaciones claras antes o justo después de firmar arras.',
-  },
-  {
-    titulo: 'Seguimiento pre-escritura',
-    desc: 'Tu gestor resuelve dudas, apoya en renegociación si hay hallazgos graves y verifica que todo esté en regla.',
-  },
-] as const
-
 function CheckIcon() {
   return (
     <svg className="w-5 h-5 text-gold-500 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden>
@@ -76,6 +49,7 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - PACK_ARRAS_DOCUMENTAL_PRECIO
   const faq = getPackArrasDocumentalFaq(nombre, region, config.faqPrioritarias)
+  const pasos = config.pasosLocales
 
   const schemaJson = {
     '@context': 'https://schema.org',
@@ -292,6 +266,105 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
         </div>
       </section>
 
+      {/* Guía editorial local — contenido único por ciudad */}
+      <section className="py-16 px-4 bg-cream-50 border-y border-gold-200/40">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-6">{config.guiaComprador.titulo}</h2>
+          {config.guiaComprador.parrafos.map((p) => (
+            <p key={p.slice(0, 48)} className="text-gray-700 mb-5 leading-relaxed text-base">
+              {p}
+            </p>
+          ))}
+        </div>
+      </section>
+
+      {/* Precios por barrio — tabla SEO local */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3 text-center">
+            Precios orientativos por barrio en {nombre}
+          </h2>
+          <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+            Referencias €/m² en operaciones entre particulares (2026). Cada barrio tiene riesgos documentales distintos
+            que el pack revisa antes de la señal.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse bg-white shadow-sm rounded-xl overflow-hidden text-sm">
+              <thead>
+                <tr className="bg-forest-900 text-white">
+                  <th className="p-4 text-left font-semibold">Barrio / zona</th>
+                  <th className="p-4 text-left font-semibold">Precio €/m²</th>
+                  <th className="p-4 text-left font-semibold">Perfil y riesgo documental</th>
+                </tr>
+              </thead>
+              <tbody>
+                {config.barriosPrecio.map((b, i) => (
+                  <tr key={b.barrio} className={i % 2 === 0 ? 'bg-slate-50' : 'bg-white'}>
+                    <td className="p-4 font-semibold text-gray-900">{b.barrio}</td>
+                    <td className="p-4 font-bold text-gold-700 whitespace-nowrap">{b.precioM2}</td>
+                    <td className="p-4 text-gray-600 leading-relaxed">{b.perfil}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-gray-400 mt-4 text-center">
+            Precios orientativos según mercado de particulares en {nombre}. Operación de ejemplo del pack:{' '}
+            {precioEjemploPiso.toLocaleString('es-ES')} €.
+          </p>
+        </div>
+      </section>
+
+      {/* Fiscalidad local */}
+      <section className="py-16 px-4 bg-slate-50">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Impuestos al comprar de particular en {nombre}
+          </h2>
+          <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            <div className="bg-white border border-gray-200 rounded-xl p-5">
+              <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">ITP (Impuesto Transmisiones)</p>
+              <p className="font-bold text-gray-900 text-lg">{config.fiscalidadLocal.itp}</p>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-xl p-5">
+              <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Plusvalía municipal</p>
+              <p className="font-bold text-gray-900 text-lg">{config.fiscalidadLocal.plusvalia}</p>
+            </div>
+          </div>
+          <ul className="space-y-3">
+            {config.fiscalidadLocal.notas.map((nota) => (
+              <li key={nota.slice(0, 40)} className="flex items-start gap-3 text-gray-700 text-sm leading-relaxed">
+                <CheckIcon />
+                {nota}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Checklist pre-arras local */}
+      <section className="py-16 px-4 bg-white border-t border-gray-100">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold text-gray-900 mb-3">
+            Checklist documental antes de firmar arras en {nombre}
+          </h2>
+          <p className="text-gray-600 mb-8">
+            Documentos que verificamos en el Pack Arras Plus, adaptados a la normativa de {region}:
+          </p>
+          <ul className="grid sm:grid-cols-2 gap-3">
+            {config.checklistPreArras.map((item) => (
+              <li
+                key={item.slice(0, 50)}
+                className="flex items-start gap-2 bg-slate-50 border border-gray-200 rounded-lg p-4 text-sm text-gray-700 leading-relaxed"
+              >
+                <CheckIcon />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       {/* Riesgos locales */}
       <section className="py-16 px-4 bg-slate-50">
         <div className="max-w-6xl mx-auto">
@@ -374,7 +447,7 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
             Proceso claro: primero arras seguras, en paralelo la auditoría documental. Mismo gestor de principio a fin.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PASOS.map((paso, i) => (
+            {pasos.map((paso, i) => (
               <div key={paso.titulo} className="border border-gray-200 rounded-xl p-6 bg-slate-50">
                 <span className="inline-flex w-10 h-10 items-center justify-center rounded-full bg-forest-800 text-gold-400 font-bold text-sm mb-4">
                   {i + 1}
