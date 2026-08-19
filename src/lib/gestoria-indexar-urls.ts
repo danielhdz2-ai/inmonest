@@ -148,6 +148,24 @@ export const GESTORIA_ENLACES_INDEXACION = [
     badge: 'Premium',
   },
   {
+    href: '/gestoria/pack-arras-revision-documental/madrid',
+    title: 'Pack Arras Plus Madrid',
+    description: 'Arras + documentación para compradores particulares en Madrid.',
+    badge: 'Ciudad',
+  },
+  {
+    href: '/gestoria/pack-arras-revision-documental/barcelona',
+    title: 'Pack Arras Plus Barcelona',
+    description: 'Arras y revisión documental en compraventa entre particulares.',
+    badge: 'Ciudad',
+  },
+  {
+    href: '/gestoria/pack-arras-revision-documental/valencia',
+    title: 'Pack Arras Plus Valencia',
+    description: 'Pack arras + auditoría documental en la Comunitat Valenciana.',
+    badge: 'Ciudad',
+  },
+  {
     href: '/gestoria/due-diligence-precompra/valencia',
     title: 'Due diligence Valencia',
     description: 'Compraventa en la Comunitat Valenciana.',

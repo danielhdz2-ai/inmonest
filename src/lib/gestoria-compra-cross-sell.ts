@@ -29,6 +29,9 @@ export const DUE_DILIGENCE_CIUDADES = [
   'coruna',
 ] as const
 
+/** Ciudades con landing Pack Arras Plus (450€) */
+export const PACK_ARRAS_DOCUMENTAL_CIUDADES = ['madrid', 'barcelona', 'valencia'] as const
+
 const CITY_SLUG_ALIASES: Record<string, string> = {
   'a coruña': 'coruna',
   'la coruña': 'coruna',
@@ -56,6 +59,18 @@ export function getDueDiligenceHref(ciudadSlug: string | null | undefined): stri
     return `/gestoria/due-diligence-precompra/${slug}`
   }
   return '/gestoria/due-diligence-precompra'
+}
+
+export function getPackArrasDocumentalHref(ciudadSlug: string | null | undefined): string {
+  const slug = ciudadSlug?.toLowerCase()
+  if (slug && (PACK_ARRAS_DOCUMENTAL_CIUDADES as readonly string[]).includes(slug)) {
+    return `/gestoria/pack-arras-revision-documental/${slug}`
+  }
+  return '/gestoria/pack-arras-revision-documental'
+}
+
+export function hasPackArrasDocumentalCiudad(ciudadSlug: string): boolean {
+  return (PACK_ARRAS_DOCUMENTAL_CIUDADES as readonly string[]).includes(ciudadSlug)
 }
 
 export function getAsesoriaCompraHref(ciudadSlug: string | null | undefined): string {

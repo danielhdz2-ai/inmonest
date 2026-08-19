@@ -61,6 +61,30 @@ export const RELACIONADOS_DUE_DILIGENCE: RelacionadoServicio[] = [
   },
 ]
 
+export const RELACIONADOS_PACK_ARRAS_DOCUMENTAL: RelacionadoServicio[] = [
+  {
+    slug: 'pack-due-diligence-precompra',
+    href: '/gestoria/pack-due-diligence-precompra',
+    nombre: 'Due Diligence Pre-Compra',
+    precio: precio('pack-due-diligence-precompra'),
+    descripcion: 'Solo auditoría documental si ya firmaste arras (350€).',
+  },
+  {
+    slug: 'compra-completa-reserva-escritura',
+    href: '/gestoria/asesoria-compra-piso',
+    nombre: 'Compra Completa',
+    precio: precio('compra-completa-reserva-escritura'),
+    descripcion: 'Gestor dedicado desde reserva hasta escritura.',
+  },
+  {
+    slug: 'arras-penitenciales',
+    href: '/gestoria/arras-penitenciales',
+    nombre: 'Solo Arras',
+    precio: precio('arras-penitenciales'),
+    descripcion: 'Contrato de arras penitenciales sin revisión documental.',
+  },
+]
+
 export const RELACIONADOS_ASESORIA_COMPRA: RelacionadoServicio[] = [
   {
     slug: 'pack-due-diligence-precompra',
