@@ -1,25 +1,10 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
+import PortalContratosComprar from '@/components/gestoria-portal/PortalContratosComprar'
+import GestoriaPortalClientSuspense from '@/components/gestoria-portal/GestoriaPortalClientSuspense'
 import type { GestoriaContrato, GestoriaUserDoc } from '@/lib/gestoria-portal-types'
-
-const PortalContratosComprar = dynamic(
-  () => import('@/components/gestoria-portal/PortalContratosComprar'),
-  {
-    loading: () => <ContratosLoadingState label="Cargando catálogo…" />,
-    ssr: false,
-  },
-)
-
-const GestoriaPortalClientSuspense = dynamic(
-  () => import('@/components/gestoria-portal/GestoriaPortalClientSuspense'),
-  {
-    loading: () => <ContratosLoadingState label="Cargando tu panel de gestoría…" />,
-    ssr: false,
-  },
-)
 
 function ContratosLoadingState({ label }: { label: string }) {
   return (

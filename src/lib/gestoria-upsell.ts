@@ -62,12 +62,12 @@ export function getRecommendedServices(
 
 export function getAllCatalogServices(): UpsellService[] {
   return Object.entries(GESTORIA_SERVICIOS)
-    .filter(([, svc]) => !svc.interno)
+    .filter(([, svc]) => svc && typeof svc === 'object' && !svc.interno)
     .map(([key, svc]) => ({
       key,
       nombre: svc.nombre,
       precio: svc.precio,
       categoria: svc.categoria,
-      incluye: svc.incluye.slice(0, 3),
+      incluye: (svc.incluye ?? []).slice(0, 3),
     }))
 }

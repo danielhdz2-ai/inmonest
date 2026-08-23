@@ -3,7 +3,11 @@ import { createClient } from '@/lib/supabase/server'
 import { loadPortalSidebarProps } from '@/lib/portal-sidebar-data'
 import DashboardSidebar from '../DashboardSidebar'
 
-export default async function PortalLayout({
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
+/** Layout propio: carga el sidebar de forma segura sin depender del layout (portal) */
+export default async function ContratosLayout({
   children,
 }: {
   children: React.ReactNode
@@ -12,7 +16,7 @@ export default async function PortalLayout({
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) {
-      redirect('/login?next=/mi-cuenta')
+      redirect('/login?next=/mi-cuenta/contratos')
     }
 
     const sidebar = await loadPortalSidebarProps(supabase, user)
@@ -23,7 +27,7 @@ export default async function PortalLayout({
       </DashboardSidebar>
     )
   } catch (err) {
-    console.error('[portal/layout]', err)
-    redirect('/login?next=/mi-cuenta')
+    console.error('[mi-cuenta/contratos/layout]', err)
+    redirect('/login?next=/mi-cuenta/contratos')
   }
 }

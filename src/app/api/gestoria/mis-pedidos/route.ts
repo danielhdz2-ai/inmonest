@@ -75,14 +75,10 @@ export async function GET(req: NextRequest) {
   } catch (err) {
     console.error('[gestoria/mis-pedidos] admin fallback:', err)
     try {
-      const admin = createAdminClient()
-      contratos = await fetchGestoriaOrdersForUserSafe(supabase, user.id, emailNorm, admin, sessionId)
-    } catch {
-      try {
-        contratos = await fetchGestoriaOrdersForUserSafe(supabase, user.id, emailNorm)
-      } catch {
-        contratos = []
-      }
+      contratos = await fetchGestoriaOrdersForUserSafe(supabase, user.id, emailNorm, undefined, sessionId)
+    } catch (fallbackErr) {
+      console.error('[gestoria/mis-pedidos] user fallback:', fallbackErr)
+      contratos = []
     }
   }
 

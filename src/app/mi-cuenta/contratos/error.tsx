@@ -29,10 +29,10 @@ export default function ContratosError({
             Reintentar
           </button>
           <Link
-            href="/mi-cuenta/contratos"
+            href="/gestoria"
             className="w-full border border-gray-200 text-gray-700 font-semibold py-3 rounded-xl min-h-[48px] leading-[48px]"
           >
-            Recargar página
+            Ver servicios de gestoría
           </Link>
           <Link href="/mi-cuenta" className="text-sm text-gold-500 underline">
             Volver a mi cuenta
