@@ -109,6 +109,7 @@ interface UnifiedDocument {
   service_key: string | null
   session_id: string | null
   request_id: string | null
+  partes_data?: Record<string, unknown> | null
 }
 
 export async function GET(request: Request) {
@@ -195,7 +196,7 @@ export async function GET(request: Request) {
     // ── Documentos personales (user_documents) ────────────────────────────
     const { data: userDocs, error: userError } = await supabase
       .from('user_documents')
-      .select('id, user_id, doc_key, file_name, storage_path, uploaded_at')
+      .select('id, user_id, doc_key, file_name, storage_path, uploaded_at, partes_data, gestoria_request_id')
       .order('uploaded_at', { ascending: false })
 
     if (userError) {
@@ -236,7 +237,8 @@ export async function GET(request: Request) {
       client_email: emailMap[doc.user_id] ?? null,
       service_key: null,
       session_id: null,
-      request_id: null,
+      request_id: doc.gestoria_request_id ?? null,
+      partes_data: doc.partes_data ?? null,
     }))
 
     if (clientEmail) {
