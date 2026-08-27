@@ -1302,7 +1302,9 @@ export default function AdminPanelPremium({
                             </div>
                             <div className="min-w-0">
                               <p className="text-sm font-semibold text-gray-900 truncate max-w-[220px]">{doc.file_name}</p>
-                              <p className="text-[11px] text-gray-400 truncate max-w-[220px]">{doc.storage_path}</p>
+                              <p className="text-[11px] text-gray-400 truncate max-w-[220px]">
+                                {doc.doc_key === 'partes' ? 'Datos del formulario de partes' : doc.storage_path}
+                              </p>
                             </div>
                           </div>
                         </td>
