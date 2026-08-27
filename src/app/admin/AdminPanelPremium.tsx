@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import AdminExpedienteModal from './AdminExpedienteModal'
+import AdminPartesViewerModal from './AdminPartesViewerModal'
 import AdminShell, { type AdminTab } from './AdminShell'
 import SalesCalendar from './SalesCalendar'
 import {
@@ -101,6 +102,7 @@ interface ClientDocument {
   client_name: string | null
   client_email: string | null
   service_key: string | null
+  partes_data?: Record<string, unknown> | null
 }
 
 interface Metrics {
@@ -351,6 +353,7 @@ export default function AdminPanelPremium({
   const [selectedClient, setSelectedClient] = useState<Client | null>(null)
   const [clientDocuments, setClientDocuments] = useState<ClientDocument[]>([])
   const [allDocuments, setAllDocuments] = useState<ClientDocument[]>([])
+  const [viewingPartesDoc, setViewingPartesDoc] = useState<ClientDocument | null>(null)
 
   const [clientesGestoria, setClientesGestoria] = useState<ClienteGestoria[]>([])
   const [clientesParticulares, setClientesParticulares] = useState<ClienteParticular[]>([])
@@ -509,17 +512,41 @@ export default function AdminPanelPremium({
     return data.url as string | undefined
   }
 
+  function hasPartesData(doc: ClientDocument): doc is ClientDocument & { partes_data: Record<string, unknown> } {
+    return Boolean(doc.partes_data && Object.keys(doc.partes_data).length > 0)
+  }
+
   async function handleViewDoc(doc: ClientDocument) {
+    if (doc.doc_key === 'partes' && hasPartesData(doc)) {
+      setViewingPartesDoc(doc)
+      return
+    }
+
     try {
       const url = await getDocUrl(doc, 'view')
       if (url) window.open(url, '_blank')
-      else alert('No se pudo generar el enlace del documento.')
+      else if (doc.doc_key === 'partes') {
+        alert('Este documento son datos de partes del formulario, pero aún no hay información guardada.')
+      } else {
+        alert('No se pudo generar el enlace del documento.')
+      }
     } catch {
       alert('Error al abrir el documento.')
     }
   }
 
   async function handleDownloadDoc(doc: ClientDocument) {
+    if (doc.doc_key === 'partes' && hasPartesData(doc)) {
+      const blob = new Blob([JSON.stringify(doc.partes_data, null, 2)], { type: 'application/json' })
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = doc.file_name || 'datos-partes.json'
+      a.click()
+      URL.revokeObjectURL(url)
+      return
+    }
+
     try {
       const url = await getDocUrl(doc, 'download')
       if (url) window.open(url, '_blank')
@@ -1275,7 +1302,9 @@ export default function AdminPanelPremium({
                             </div>
                             <div className="min-w-0">
                               <p className="text-sm font-semibold text-gray-900 truncate max-w-[220px]">{doc.file_name}</p>
-                              <p className="text-[11px] text-gray-400 truncate max-w-[220px]">{doc.storage_path}</p>
+                              <p className="text-[11px] text-gray-400 truncate max-w-[220px]">
+                                {doc.doc_key === 'partes' ? 'Datos del formulario de partes' : doc.storage_path}
+                              </p>
                             </div>
                           </div>
                         </td>
@@ -2181,6 +2210,18 @@ export default function AdminPanelPremium({
           onViewDoc={(doc) => void handleViewDoc(doc as ClientDocument)}
           onDownloadDoc={(doc) => void handleDownloadDoc(doc as ClientDocument)}
           formatDate={formatDate}
+        />
+      )}
+
+      {viewingPartesDoc && hasPartesData(viewingPartesDoc) && (
+        <AdminPartesViewerModal
+          fileName={viewingPartesDoc.file_name}
+          clientName={viewingPartesDoc.client_name}
+          clientEmail={viewingPartesDoc.client_email}
+          uploadedAt={viewingPartesDoc.uploaded_at}
+          partesData={viewingPartesDoc.partes_data}
+          formatDate={formatDate}
+          onClose={() => setViewingPartesDoc(null)}
         />
       )}
 
