@@ -4,6 +4,7 @@ import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
 import Footer from '@/components/Footer'
+import SellosConfianza from '@/components/SellosConfianza'
 import { AGENCIA_GESTORIA_PACKS, AGENCIA_SLA_LABEL } from '@/lib/agencias-gestoria-packs'
 
 const BASE_URL = 'https://inmonest.com'
@@ -296,6 +297,7 @@ export default function SolicitarIndexPage() {
         </section>
 
       </main>
+      <SellosConfianza />
       <Footer />
     </>
   )

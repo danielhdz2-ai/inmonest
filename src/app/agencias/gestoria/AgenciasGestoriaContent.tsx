@@ -6,6 +6,7 @@ import Link from 'next/link'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
 import AgenciaPackActionModal from './AgenciaPackActionModal'
 import AgenciaContratosIndependientesModal from './AgenciaContratosIndependientesModal'
+import AgenciaGestoriaPanelDemo from './AgenciaGestoriaPanelDemo'
 import {
   AGENCIA_CONTRATOS_INCLUIDOS,
   AGENCIA_CONTRATO_PRECIO_REF,
@@ -309,6 +310,8 @@ export default function AgenciasGestoriaContent() {
         </div>
       </section>
 
+      <AgenciaGestoriaPanelDemo />
+
       <FirmaCertIncluidaSection />
 
       {/* FAQ */}
@@ -442,14 +445,14 @@ export default function AgenciasGestoriaContent() {
         />
       )}
 
-      <section className="bg-gray-900 text-white py-10 px-4 text-center">
-        <p className="text-gray-400 text-sm">
+      <section className="bg-white border-t border-gray-100 py-10 px-4 text-center">
+        <p className="text-gray-600 text-sm">
           ¿Ya publicas en Inmonest?{' '}
-          <Link href="/agencias" className="text-gold-300 font-semibold hover:underline">
+          <Link href="/agencias" className="text-gold-600 font-semibold hover:underline">
             Ver planes de portal
           </Link>
           {' · '}
-          <Link href="/gestoria/solicitar" className="text-gold-300 font-semibold hover:underline">
+          <Link href="/gestoria/solicitar" className="text-gold-600 font-semibold hover:underline">
             Contratar contrato suelto
           </Link>
         </p>
