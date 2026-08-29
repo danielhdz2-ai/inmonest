@@ -442,14 +442,14 @@ export default function AgenciasGestoriaContent() {
         />
       )}
 
-      <section className="bg-gray-900 text-white py-10 px-4 text-center">
-        <p className="text-gray-400 text-sm">
+      <section className="bg-white border-t border-gray-100 py-10 px-4 text-center">
+        <p className="text-gray-600 text-sm">
           ¿Ya publicas en Inmonest?{' '}
-          <Link href="/agencias" className="text-gold-300 font-semibold hover:underline">
+          <Link href="/agencias" className="text-gold-600 font-semibold hover:underline">
             Ver planes de portal
           </Link>
           {' · '}
-          <Link href="/gestoria/solicitar" className="text-gold-300 font-semibold hover:underline">
+          <Link href="/gestoria/solicitar" className="text-gold-600 font-semibold hover:underline">
             Contratar contrato suelto
           </Link>
         </p>

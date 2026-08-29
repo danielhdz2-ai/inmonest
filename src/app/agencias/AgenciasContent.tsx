@@ -433,9 +433,9 @@ export default function AgenciasContent() {
       </section>
 
       {/* ── Footer CTA ───────────────────────────────────────── */}
-      <section className="bg-gray-900 text-white py-14 px-4 text-center">
-        <p className="text-gray-400 text-sm mb-2">¿Prefieres hablar directamente?</p>
-        <a href="mailto:info@inmonest.com" className="text-gold-300 font-semibold hover:underline">
+      <section className="bg-white border-t border-gray-100 py-14 px-4 text-center">
+        <p className="text-gray-600 text-sm mb-2">¿Prefieres hablar directamente?</p>
+        <a href="mailto:info@inmonest.com" className="text-gold-600 font-semibold hover:underline">
           info@inmonest.com
         </a>
       </section>
