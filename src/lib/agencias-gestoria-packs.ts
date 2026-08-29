@@ -148,3 +148,11 @@ export const AGENCIA_GESTORIA_FAQ = [
 export function agenciaDescuentoPct(precioUnitario: number): number {
   return Math.round((1 - precioUnitario / AGENCIA_CONTRATO_PRECIO_REF) * 100)
 }
+
+export function getAgenciaPackById(packId: string): AgenciaGestoriaPack | undefined {
+  return AGENCIA_GESTORIA_PACKS.find((p) => p.id === packId)
+}
+
+export function packGestoriaServiceKey(packId: string): string {
+  return `pack-gestoria-${packId}`
+}

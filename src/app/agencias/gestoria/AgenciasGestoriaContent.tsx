@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
+import AgenciaPackActionModal from './AgenciaPackActionModal'
 import {
   AGENCIA_CONTRATOS_INCLUIDOS,
   AGENCIA_CONTRATO_PRECIO_REF,
@@ -12,10 +13,12 @@ import {
   AGENCIA_GESTORIA_WORKFLOW,
   AGENCIA_SLA_HORAS,
   agenciaDescuentoPct,
+  type AgenciaGestoriaPack,
 } from '@/lib/agencias-gestoria-packs'
 
 export default function AgenciasGestoriaContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [selectedPack, setSelectedPack] = useState<AgenciaGestoriaPack | null>(null)
   const [form, setForm] = useState({
     nombre: '',
     empresa: '',
@@ -181,17 +184,17 @@ export default function AgenciasGestoriaContent() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="#contactar"
-                  onClick={() => setForm((prev) => ({ ...prev, plan: pack.id }))}
-                  className={`block text-center py-3 rounded-full font-semibold text-sm transition-colors ${
+                <button
+                  type="button"
+                  onClick={() => setSelectedPack(pack)}
+                  className={`block w-full text-center py-3 rounded-full font-semibold text-sm transition-colors ${
                     pack.highlight
                       ? 'bg-gold-500 text-white hover:bg-gold-600'
                       : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
                   }`}
                 >
                   Solicitar {pack.nombre}
-                </a>
+                </button>
               </div>
             ))}
           </div>
@@ -375,6 +378,10 @@ export default function AgenciasGestoriaContent() {
           )}
         </div>
       </section>
+
+      {selectedPack && (
+        <AgenciaPackActionModal pack={selectedPack} onClose={() => setSelectedPack(null)} />
+      )}
 
       <section className="bg-gray-900 text-white py-10 px-4 text-center">
         <p className="text-gray-400 text-sm">
