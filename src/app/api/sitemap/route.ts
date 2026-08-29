@@ -84,6 +84,9 @@ export async function GET() {
     xmlEntry({ loc: u('/gestoria/valencia'),                    changefreq: 'monthly', priority: 0.8 }),
     xmlEntry({ loc: u('/agencias'),                             changefreq: 'monthly', priority: 0.6 }),
     xmlEntry({ loc: u('/agencias/gestoria'),                    changefreq: 'monthly', priority: 0.75 }),
+    ...(['madrid', 'barcelona', 'valencia'] as const).map((ciudad) =>
+      xmlEntry({ loc: u(`/agencias/gestoria/${ciudad}`), changefreq: 'monthly', priority: 0.72 }),
+    ),
     xmlEntry({ loc: u('/contacto'),                             changefreq: 'monthly', priority: 0.5 }),
     xmlEntry({ loc: u('/blog'),                                 changefreq: 'weekly',  priority: 0.7 }),
   ]

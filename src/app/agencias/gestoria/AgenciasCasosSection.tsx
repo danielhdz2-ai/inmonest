@@ -1,6 +1,17 @@
+import type { AgenciaCasoExito } from '@/lib/agencias-gestoria-trust'
 import { AGENCIAS_CASOS_EXITO } from '@/lib/agencias-gestoria-trust'
 
-export default function AgenciasCasosSection() {
+type Props = {
+  casos?: AgenciaCasoExito[]
+  titulo?: string
+  subtitulo?: string
+}
+
+export default function AgenciasCasosSection({
+  casos = AGENCIAS_CASOS_EXITO,
+  titulo = 'Agencias que ya operan con nosotros',
+  subtitulo = 'No solo sellos legales: inmobiliarias, APIs y autónomos que contratan contratos cada mes y ahorran horas de gestión.',
+}: Props) {
   return (
     <section className="py-20 px-4 bg-gray-50">
       <div className="max-w-5xl mx-auto">
@@ -8,17 +19,12 @@ export default function AgenciasCasosSection() {
           <p className="text-xs font-bold uppercase tracking-widest text-gold-600 mb-2">
             Casos reales
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
-            Agencias que ya operan con nosotros
-          </h2>
-          <p className="text-gray-500 text-sm max-w-xl mx-auto leading-relaxed">
-            No solo sellos legales: inmobiliarias, APIs y autónomos que contratan contratos cada mes
-            y ahorran horas de gestión.
-          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">{titulo}</h2>
+          <p className="text-gray-500 text-sm max-w-xl mx-auto leading-relaxed">{subtitulo}</p>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-6">
-          {AGENCIAS_CASOS_EXITO.map((caso) => (
+          {casos.map((caso) => (
             <article
               key={caso.id}
               className="bg-white rounded-2xl border border-gray-200 p-6 flex flex-col shadow-sm hover:shadow-md transition-shadow"
