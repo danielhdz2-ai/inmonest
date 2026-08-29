@@ -7,6 +7,9 @@ import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
 import AgenciaPackActionModal from './AgenciaPackActionModal'
 import AgenciaContratosIndependientesModal from './AgenciaContratosIndependientesModal'
 import AgenciaGestoriaPanelDemo from './AgenciaGestoriaPanelDemo'
+import AgenciasConfianSection from './AgenciasConfianSection'
+import AgenciasCasosSection from './AgenciasCasosSection'
+import AgenciasAudienciasSection from './AgenciasAudienciasSection'
 import {
   AGENCIA_CONTRATOS_INCLUIDOS,
   AGENCIA_CONTRATO_PRECIO_REF,
@@ -17,10 +20,10 @@ import {
   agenciaDescuentoPct,
   type AgenciaGestoriaPack,
 } from '@/lib/agencias-gestoria-packs'
+import { AGENCIA_CONTRATO_PRECIO_B2B } from '@/lib/agencias-gestoria-contratos'
 
 export default function AgenciasGestoriaContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
-  const [pricingTab, setPricingTab] = useState<'packs' | 'contratos'>('packs')
   const [selectedPack, setSelectedPack] = useState<AgenciaGestoriaPack | null>(null)
   const [showContratosModal, setShowContratosModal] = useState(false)
   const [form, setForm] = useState({
@@ -82,13 +85,14 @@ export default function AgenciasGestoriaContent() {
             Gestoría B2B
           </span>
           <h1 className="text-3xl sm:text-5xl font-bold leading-tight mb-5 max-w-3xl">
-            Contratos profesionales para tu agencia desde{' '}
-            <span className="text-gold-300">110 €</span>
+            Gestoría inmobiliaria B2B para APIs, autónomos y agencias desde{' '}
+            <span className="text-gold-300">{AGENCIA_CONTRATO_PRECIO_B2B} €</span>
           </h1>
           <p className="text-gray-200 text-lg max-w-2xl mb-8 leading-relaxed">
-            Packs anuales para agencias y agentes independientes. Redacción por gestor, entrega en{' '}
-            <strong className="text-white">{AGENCIA_SLA_HORAS}</strong> y firma electrónica certificada
-            FIRMACERT incluida. Mismo panel, mismo flujo — precio de profesional.
+            Contratos de arras, alquiler LAU y compraventa redactados por gestor. Packs anuales o
+            contrato suelto sin compromiso. Entrega en{' '}
+            <strong className="text-white">{AGENCIA_SLA_HORAS}</strong> y firma electrónica FIRMACERT
+            incluida. Usado por Tecnocasa, Inmo Sants, Interhouse y más.
           </p>
           <div className="flex flex-wrap gap-3 mb-8">
             {[
@@ -110,63 +114,39 @@ export default function AgenciasGestoriaContent() {
               href="#packs"
               className="px-8 py-4 bg-gold-500 text-white font-bold rounded-full text-center hover:bg-gold-600 transition-colors"
             >
-              Ver packs
+              Ver tarifas
             </a>
-            <a
-              href="#contactar"
+            <button
+              type="button"
+              onClick={() => setShowContratosModal(true)}
               className="px-8 py-4 border border-white/30 text-white font-semibold rounded-full text-center hover:bg-white/10 transition-colors"
             >
-              Solicitar información
-            </a>
+              Contrato suelto · {AGENCIA_CONTRATO_PRECIO_B2B} €
+            </button>
           </div>
         </div>
       </section>
 
+      <AgenciasConfianSection />
+
+      <AgenciasAudienciasSection />
+
       {/* Packs */}
       <section id="packs" className="py-20 px-4 bg-gray-50">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900">Tarifas para agencias</h2>
-            <p className="text-gray-500 mt-3 max-w-xl mx-auto">
-              Packs anuales con créditos o contratos sueltos a tarifa B2B. Todos incluyen redacción por gestor,
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-gray-900">Elige tu tarifa B2B</h2>
+            <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
+              Tres packs anuales con créditos o contrato suelto sin pack. Todos incluyen redacción por gestor,
               entrega en {AGENCIA_SLA_HORAS} y firma electrónica certificada.
             </p>
           </div>
 
-          <div className="flex justify-center gap-2 mb-10">
-            <button
-              type="button"
-              onClick={() => setPricingTab('packs')}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
-                pricingTab === 'packs'
-                  ? 'bg-gold-500 text-white shadow-sm'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
-              }`}
-            >
-              Packs anuales
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setPricingTab('contratos')
-                setShowContratosModal(true)
-              }}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
-                pricingTab === 'contratos'
-                  ? 'bg-gold-500 text-white shadow-sm'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
-              }`}
-            >
-              Contratos independientes
-            </button>
-          </div>
-
-          {pricingTab === 'packs' && (
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
             {AGENCIA_GESTORIA_PACKS.map((pack) => (
               <div
                 key={pack.id}
-                className={`rounded-2xl p-8 flex flex-col ${
+                className={`rounded-2xl p-6 sm:p-7 flex flex-col ${
                   pack.highlight
                     ? 'bg-gray-900 text-white ring-2 ring-[#c9962a] shadow-xl relative'
                     : 'bg-white border border-gray-200'
@@ -184,14 +164,14 @@ export default function AgenciasGestoriaContent() {
                 >
                   {pack.subtitulo}
                 </p>
-                <h3 className={`text-xl font-bold mb-1 ${pack.highlight ? 'text-white' : 'text-gray-900'}`}>
+                <h3 className={`text-lg font-bold mb-1 ${pack.highlight ? 'text-white' : 'text-gray-900'}`}>
                   {pack.nombre}
                 </h3>
-                <p className={`text-sm mb-5 ${pack.highlight ? 'text-gray-400' : 'text-gray-500'}`}>
+                <p className={`text-sm mb-4 ${pack.highlight ? 'text-gray-400' : 'text-gray-500'}`}>
                   {pack.idealPara}
                 </p>
                 <div className="mb-1">
-                  <span className={`text-4xl font-black ${pack.highlight ? 'text-gold-300' : 'text-gold-500'}`}>
+                  <span className={`text-3xl font-black ${pack.highlight ? 'text-gold-300' : 'text-gold-500'}`}>
                     {pack.precioUnitario} €
                   </span>
                   <span className={`text-sm ml-1 ${pack.highlight ? 'text-gray-400' : 'text-gray-400'}`}>
@@ -202,14 +182,14 @@ export default function AgenciasGestoriaContent() {
                   {pack.contratosAnuales} contratos/año ·{' '}
                   <strong>{pack.precioTotal.toLocaleString('es-ES')} €</strong> total
                 </p>
-                <p className={`text-xs mb-6 ${pack.highlight ? 'text-gold-400' : 'text-green-600'}`}>
-                  Ahorras {agenciaDescuentoPct(pack.precioUnitario)} % vs precio público ({AGENCIA_CONTRATO_PRECIO_REF} €)
+                <p className={`text-xs mb-5 ${pack.highlight ? 'text-gold-400' : 'text-green-600'}`}>
+                  Ahorras {agenciaDescuentoPct(pack.precioUnitario)} % vs retail ({AGENCIA_CONTRATO_PRECIO_REF} €)
                 </p>
-                <ul className="space-y-2 mb-8 flex-1">
-                  {pack.features.map((f) => (
+                <ul className="space-y-1.5 mb-6 flex-1">
+                  {pack.features.slice(0, 4).map((f) => (
                     <li
                       key={f}
-                      className={`flex items-start gap-2 text-sm ${
+                      className={`flex items-start gap-2 text-xs ${
                         pack.highlight ? 'text-gray-300' : 'text-gray-600'
                       }`}
                     >
@@ -231,26 +211,55 @@ export default function AgenciasGestoriaContent() {
                 </button>
               </div>
             ))}
-          </div>
-          )}
 
-          {pricingTab === 'contratos' && (
-            <div className="text-center py-8">
-              <p className="text-gray-600 text-sm mb-4 max-w-md mx-auto">
-                Contrata contratos sueltos a 110 €/ud con entrega en 4–5 h. Arras, alquiler LAU, temporada,
-                habitación y compraventa entre particulares.
+            {/* Cuarta tarjeta: contrato suelto sin pack */}
+            <div className="rounded-2xl p-6 sm:p-7 flex flex-col bg-white border-2 border-dashed border-gold-300 relative">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white text-gold-700 text-xs font-bold px-4 py-1 rounded-full border border-gold-300">
+                Sin compromiso
+              </span>
+              <p className="text-xs font-bold uppercase tracking-widest mb-1 text-gold-600">
+                Autónomos y prueba
               </p>
+              <h3 className="text-lg font-bold mb-1 text-gray-900">Contrato suelto</h3>
+              <p className="text-sm mb-4 text-gray-500">
+                Sin pack anual. Compra solo cuando lo necesites: arras, alquiler LAU, temporada…
+              </p>
+              <div className="mb-1">
+                <span className="text-3xl font-black text-gold-500">{AGENCIA_CONTRATO_PRECIO_B2B} €</span>
+                <span className="text-sm ml-1 text-gray-400">/contrato</span>
+              </div>
+              <p className="text-sm mb-1 text-gray-600">
+                Pago único · sin suscripción
+              </p>
+              <p className="text-xs mb-5 text-green-600">
+                Ahorras {Math.round((1 - AGENCIA_CONTRATO_PRECIO_B2B / AGENCIA_CONTRATO_PRECIO_REF) * 100)} % vs precio público ({AGENCIA_CONTRATO_PRECIO_REF} €)
+              </p>
+              <ul className="space-y-1.5 mb-6 flex-1">
+                {[
+                  AGENCIA_SLA_HORAS + ' de entrega',
+                  'FirmaCert eIDAS incluida',
+                  '6 tipos de contrato disponibles',
+                  'Ideal para probar antes del pack',
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-xs text-gray-600">
+                    <span className="text-gold-500 mt-0.5 flex-shrink-0">✓</span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
               <button
                 type="button"
                 onClick={() => setShowContratosModal(true)}
-                className="px-8 py-3.5 bg-gold-500 text-white font-bold rounded-full text-sm hover:bg-gold-600 transition-colors"
+                className="block w-full text-center py-3 rounded-full font-semibold text-sm bg-gold-500 text-white hover:bg-gold-600 transition-colors"
               >
-                Ver catálogo y comprar →
+                Comprar contrato suelto →
               </button>
             </div>
-          )}
+          </div>
         </div>
       </section>
+
+      <AgenciasCasosSection />
 
       {/* Contratos incluidos */}
       <section className="py-16 px-4">
@@ -437,12 +446,7 @@ export default function AgenciasGestoriaContent() {
       )}
 
       {showContratosModal && (
-        <AgenciaContratosIndependientesModal
-          onClose={() => {
-            setShowContratosModal(false)
-            setPricingTab('packs')
-          }}
-        />
+        <AgenciaContratosIndependientesModal onClose={() => setShowContratosModal(false)} />
       )}
 
       <section className="bg-white border-t border-gray-100 py-10 px-4 text-center">
@@ -450,10 +454,6 @@ export default function AgenciasGestoriaContent() {
           ¿Ya publicas en Inmonest?{' '}
           <Link href="/agencias" className="text-gold-600 font-semibold hover:underline">
             Ver planes de portal
-          </Link>
-          {' · '}
-          <Link href="/gestoria/solicitar" className="text-gold-600 font-semibold hover:underline">
-            Contratar contrato suelto
           </Link>
         </p>
       </section>
