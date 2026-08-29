@@ -65,7 +65,10 @@ export async function GET(req: NextRequest) {
   }
 
   const service_key    = session.metadata?.service_key ?? ''
-  const service_name   = SERVICE_NAMES[service_key] ?? service_key.replace(/-/g, ' ')
+  const service_name   =
+    session.metadata?.service_name ??
+    SERVICE_NAMES[service_key] ??
+    service_key.replace(/-/g, ' ')
   const customer_email = session.customer_details?.email ?? session.customer_email ?? ''
 
   console.log('[confirm-payment] Pago OK — servicio:', service_key, '| cliente:', customer_email)
