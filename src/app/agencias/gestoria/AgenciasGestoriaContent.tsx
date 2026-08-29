@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
 import AgenciaPackActionModal from './AgenciaPackActionModal'
+import AgenciaGestoriaPanelDemo from './AgenciaGestoriaPanelDemo'
 import {
   AGENCIA_CONTRATOS_INCLUIDOS,
   AGENCIA_CONTRATO_PRECIO_REF,
@@ -258,6 +259,8 @@ export default function AgenciasGestoriaContent() {
           </div>
         </div>
       </section>
+
+      <AgenciaGestoriaPanelDemo />
 
       <FirmaCertIncluidaSection />
 
