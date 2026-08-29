@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { AGENCIAS_GESTORIA_CIUDAD_SLUGS } from '@/lib/agencias-gestoria-ciudades'
 
 // ✅ OPTIMIZACIÓN: Cachear API sitemap 24 horas (reducido de 6h por alto consumo CPU)
 export const revalidate = 86400  // 24 horas (antes: 6h - consumía CPU excesivo)
@@ -84,7 +85,7 @@ export async function GET() {
     xmlEntry({ loc: u('/gestoria/valencia'),                    changefreq: 'monthly', priority: 0.8 }),
     xmlEntry({ loc: u('/agencias'),                             changefreq: 'monthly', priority: 0.6 }),
     xmlEntry({ loc: u('/agencias/gestoria'),                    changefreq: 'monthly', priority: 0.75 }),
-    ...(['madrid', 'barcelona', 'valencia'] as const).map((ciudad) =>
+    ...AGENCIAS_GESTORIA_CIUDAD_SLUGS.map((ciudad) =>
       xmlEntry({ loc: u(`/gestoria/${ciudad}/agencias`), changefreq: 'monthly', priority: 0.78 }),
     ),
     xmlEntry({ loc: u('/contacto'),                             changefreq: 'monthly', priority: 0.5 }),

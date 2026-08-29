@@ -133,7 +133,13 @@ export default function AgenciasGestoriaContent({ ciudad, urlTree = 'agencias' }
           </span>
           <h1 className="text-3xl sm:text-5xl font-bold leading-tight mb-5 max-w-3xl">
             {ciudad ? (
-              urlTree === 'gestoria' ? (
+              urlTree === 'gestoria' && ciudad.heroH1 ? (
+                <>
+                  {ciudad.heroH1.prefix}{' '}
+                  <span className="text-gold-300">{ciudad.heroH1.highlight}</span>
+                  {ciudad.heroH1.suffix ? ` ${ciudad.heroH1.suffix}` : ''}
+                </>
+              ) : urlTree === 'gestoria' ? (
                 <>
                   Contratos para agencias inmobiliarias en{' '}
                   <span className="text-gold-300">{ciudad.nombre}</span>
@@ -162,12 +168,12 @@ export default function AgenciasGestoriaContent({ ciudad, urlTree = 'agencias' }
             )}
           </p>
           <div className="flex flex-wrap gap-3 mb-8">
-            {[
+            {(ciudad?.heroTags ?? [
               `${AGENCIA_SLA_HORAS} de entrega`,
               'FirmaCert eIDAS incluida',
               'Desde 110 €/contrato',
               `vs ${AGENCIA_CONTRATO_PRECIO_REF} € retail`,
-            ].map((tag) => (
+            ]).map((tag) => (
               <span
                 key={tag}
                 className="px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-sm text-white/90"
@@ -211,10 +217,16 @@ export default function AgenciasGestoriaContent({ ciudad, urlTree = 'agencias' }
       <section id="packs" className="py-20 px-4 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-gray-900">Elige tu tarifa B2B</h2>
+            <h2 className="text-3xl font-bold text-gray-900">
+              {ciudad?.packsTitulo ?? 'Elige tu tarifa B2B'}
+            </h2>
             <p className="text-gray-500 mt-3 max-w-2xl mx-auto">
-              Tres packs anuales con créditos o contrato suelto sin pack. Todos incluyen redacción por gestor,
-              entrega en {AGENCIA_SLA_HORAS} y firma electrónica certificada.
+              {ciudad?.packsSubtitulo ?? (
+                <>
+                  Tres packs anuales con créditos o contrato suelto sin pack. Todos incluyen redacción por gestor,
+                  entrega en {AGENCIA_SLA_HORAS} y firma electrónica certificada.
+                </>
+              )}
             </p>
           </div>
 
@@ -337,15 +349,12 @@ export default function AgenciasGestoriaContent({ ciudad, urlTree = 'agencias' }
 
       <AgenciasCasosSection
         casos={ciudad?.casos}
-        titulo={
-          ciudad
-            ? `Agencias en ${ciudad.nombre} que ya operan con nosotros`
-            : undefined
-        }
+        titulo={ciudad?.casosTitulo ?? (ciudad ? `Agencias en ${ciudad.nombre} que ya operan con nosotros` : undefined)}
         subtitulo={
-          ciudad
+          ciudad?.casosSubtitulo ??
+          (ciudad
             ? `Casos reales de inmobiliarias, APIs y autónomos en ${ciudad.nombre} y ${ciudad.region}.`
-            : undefined
+            : undefined)
         }
       />
 
@@ -353,10 +362,16 @@ export default function AgenciasGestoriaContent({ ciudad, urlTree = 'agencias' }
       <section className="py-16 px-4">
         <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10 items-start">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">1 crédito = 1 contrato profesional</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              {ciudad?.contratosSectionTitulo ?? '1 crédito = 1 contrato profesional'}
+            </h2>
             <p className="text-gray-600 text-sm leading-relaxed mb-6">
-              Cada crédito del pack cubre la redacción completa de uno de estos documentos, con PDF firmable
-              y FirmaCert incluida. El gestor adapta cláusulas a la operación concreta.
+              {ciudad?.contratosSectionDesc ?? (
+                <>
+                  Cada crédito del pack cubre la redacción completa de uno de estos documentos, con PDF firmable
+                  y FirmaCert incluida. El gestor adapta cláusulas a la operación concreta.
+                </>
+              )}
             </p>
             <ul className="grid sm:grid-cols-2 gap-2">
               {AGENCIA_CONTRATOS_INCLUIDOS.map((c) => (
@@ -512,7 +527,10 @@ export default function AgenciasGestoriaContent({ ciudad, urlTree = 'agencias' }
                   rows={3}
                   value={form.mensaje}
                   onChange={(e) => setForm((f) => ({ ...f, mensaje: e.target.value }))}
-                  placeholder="Ej: 4 alquileres y 2 arras al mes en Valencia..."
+                  placeholder={
+                    ciudad?.contactoPlaceholder ??
+                    'Ej: 4 alquileres y 2 arras al mes en Valencia...'
+                  }
                   className="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-[#c9962a]/30"
                 />
               </div>

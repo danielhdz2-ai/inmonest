@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js'
 import { CONTRATO_ALQUILER_PREMIUM } from '@/lib/contrato-alquiler-premium-config'
 import { CONTRATO_ARRAS_PREMIUM } from '@/lib/contrato-arras-premium-config'
 import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
+import { AGENCIAS_GESTORIA_CIUDAD_SLUGS } from '@/lib/agencias-gestoria-ciudades'
 // ✅ OPTIMIZACIÓN: Regenerar sitemap cada 24 horas (reducido de 1h por alto consumo CPU)
 // Con 0.5 visitas/día, regenerar cada hora es innecesario y costoso
 export const revalidate = 86400  // 24 horas (antes: 1h - consumía CPU excesivo)
@@ -36,7 +37,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   
   { url: `${BASE_URL}/agencias`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.8 },
   { url: `${BASE_URL}/agencias/gestoria`,    lastModified: today, changeFrequency: 'weekly',  priority: 0.85 },
-  ...(['madrid', 'barcelona', 'valencia'] as const).map((ciudad) => ({
+  ...AGENCIAS_GESTORIA_CIUDAD_SLUGS.map((ciudad) => ({
     url: `${BASE_URL}/gestoria/${ciudad}/agencias`,
     lastModified: today,
     changeFrequency: 'weekly' as const,
