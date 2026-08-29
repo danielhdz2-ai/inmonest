@@ -54,7 +54,7 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
   const schemaJson = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: `Pack Arras Plus — Revisión Documental Completa en ${nombre}`,
+    name: `Pack Arras Plus Comprador en ${nombre}`,
     description: `Arras penitenciales redactadas y revisión documental integral para compradores entre particulares en ${nombre}.`,
     areaServed: {
       '@type': 'City',
@@ -80,7 +80,7 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
       {
         '@type': 'ListItem',
         position: 3,
-        name: 'Pack Arras Plus',
+        name: 'Pack Arras Plus Comprador',
         item: `${BASE_URL}/gestoria/pack-arras-revision-documental`,
       },
       {

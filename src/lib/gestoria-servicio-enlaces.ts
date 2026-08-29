@@ -68,8 +68,14 @@ const SERVICIO_ENLACE_META: Record<string, ServicioEnlaceMeta> = {
   'pack-arras-revision-documental': {
     landingId: 'contrato-arras',
     generalHref: '/gestoria/pack-arras-revision-documental',
-    labelConCiudad: (ciudad) => `Ver pack arras ${ciudad} →`,
-    labelGeneral: 'Ver pack arras + documentación →',
+    labelConCiudad: (ciudad) => `Pack Arras Comprador ${ciudad} →`,
+    labelGeneral: 'Ver pack arras comprador →',
+  },
+  'pack-arras-plus-vendedor': {
+    landingId: 'contrato-arras',
+    generalHref: '/gestoria/pack-arras-plus-vendedor',
+    labelConCiudad: (ciudad) => `Pack Arras Vendedor ${ciudad} →`,
+    labelGeneral: 'Ver pack arras vendedor →',
   },
   'alquiler-habitaciones': {
     landingId: 'contrato-alquiler-habitacion',

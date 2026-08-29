@@ -96,10 +96,16 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
     imagePosition: 'right',
   },
   'pack-arras-revision-documental': {
-    hero: { src: '/gestoria10.jpg', alt: 'Pack arras y revisión documental completa' },
+    hero: { src: '/gestoria10.jpg', alt: 'Pack Arras Plus Comprador — arras y revisión documental' },
     mid: { src: '/gestoria15.jpg', alt: 'Verificación documental para compradores particulares' },
     cta: { src: '/contratodearras.jpg', alt: 'Arras seguras con informe documental' },
     imagePosition: 'left',
+  },
+  'pack-arras-plus-vendedor': {
+    hero: { src: '/contratodearras.jpg', alt: 'Pack Arras Plus Vendedor — arras y documentación' },
+    mid: { src: '/gestoria14.jpg', alt: 'Documentación para escriturar como vendedor' },
+    cta: { src: '/gestoria12.jpg', alt: 'Venta entre particulares con gestoría' },
+    imagePosition: 'right',
   },
   'pack-due-diligence-precompra': {
     hero: { src: '/gestoria9.jpg', alt: 'Due diligence pre-compra inmobiliaria' },

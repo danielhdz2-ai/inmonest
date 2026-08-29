@@ -46,6 +46,7 @@ const COMPRAVENTA_SLUGS = new Set([
   'reserva-compra',
   'acompanamiento-reserva-arras',
   'pack-arras-revision-documental',
+  'pack-arras-plus-vendedor',
   'alquiler-opcion-compra',
   'contrato-compraventa',
   'asesoramiento-arras-venta',
@@ -257,10 +258,10 @@ const SLUG_OVERRIDES: Partial<Record<string, BlindajeContent>> = {
     ],
   },
   'pack-arras-revision-documental': {
-    eyebrow: 'Pack para particulares',
+    eyebrow: 'Pack para compradores',
     titulo: 'Arras bien redactadas y documentación revisada antes de la señal',
     intro:
-      'Si compras de particular, nadie revisa el piso por ti. El Pack Arras Plus combina la redacción de arras penitenciales con una revisión documental completa del inmueble: comunidad, derramas, ITE, registros y certificados. Un solo servicio para firmar con garantías y saber qué estás comprando.',
+      'Si compras de particular, nadie revisa el piso por ti. El Pack Arras Plus Comprador combina la redacción de arras penitenciales con una revisión documental completa del inmueble: comunidad, derramas, ITE, registros y certificados. Un solo servicio para firmar con garantías y saber qué estás comprando.',
     partes: [
       {
         rol: 'Comprador',
@@ -284,6 +285,38 @@ const SLUG_OVERRIDES: Partial<Record<string, BlindajeContent>> = {
     garantias: [
       'Arras en PDF en 48h + informe documental en 3–5 días',
       'Gestor especializado en compraventa entre particulares',
+      'Tarifa plana 450 € — sin comisión sobre el precio del piso',
+      'Firma electrónica FIRMACERT incluida en el servicio',
+    ],
+  },
+  'pack-arras-plus-vendedor': {
+    eyebrow: 'Pack para vendedores',
+    titulo: 'Arras que te protegen y documentación lista para escriturar',
+    intro:
+      'Si vendes entre particulares, nadie te prepara las arras ni la documentación para notaría. El Pack Arras Plus Vendedor redacta tus arras penitenciales con cláusulas equilibradas a tu favor y te ayuda a recabar, ordenar y analizar toda la documentación del inmueble para llegar a escritura sin bloqueos.',
+    partes: [
+      {
+        rol: 'Vendedor',
+        titulo: 'Arras + checklist documental en un solo pack',
+        bullets: [
+          'Contrato de arras penitenciales con plazos, señal y penalizaciones claras.',
+          'Ayuda para recabar escrituras, nota simple, certificado energético e ITE.',
+          'Informe con lo que falta para escriturar y riesgos detectados en la documentación.',
+        ],
+      },
+      {
+        rol: 'Sin agencia',
+        titulo: 'La preparación que haría un gestor, no un portal',
+        bullets: [
+          'Revisión de actas de comunidad, derramas y deudas pendientes.',
+          'Coherencia entre registro, catastro y documentación técnica del inmueble.',
+          'Orientación sobre qué pedir al comprador y qué aportar tú antes de notaría.',
+        ],
+      },
+    ],
+    garantias: [
+      'Arras en PDF en 48h + informe documental en 3–5 días',
+      'Gestor especializado en venta entre particulares',
       'Tarifa plana 450 € — sin comisión sobre el precio del piso',
       'Firma electrónica FIRMACERT incluida en el servicio',
     ],
