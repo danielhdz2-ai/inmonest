@@ -1,6 +1,7 @@
 import { GESTORIA_SERVICIOS, getPrecioServicio } from '@/lib/gestoria-catalogo'
+import { AGENCIA_GESTORIA_PACKS, AGENCIA_SLA_LABEL } from '@/lib/agencias-gestoria-packs'
 
-export type ServicioCategoria = 'compraventa' | 'alquiler' | 'revision' | 'packs' | 'otros'
+export type ServicioCategoria = 'compraventa' | 'alquiler' | 'revision' | 'packs' | 'agencias' | 'otros'
 
 export type ServicioLandingCard = {
   slug: string
@@ -27,6 +28,7 @@ export const GESTORIA_NAV_SERVICIOS: Array<{ label: string; href: string }> = [
   { label: 'Due diligence', href: '/gestoria/pack-due-diligence-precompra' },
   { label: 'Revisión arras', href: '/gestoria/revision-correccion-arras' },
   { label: 'Revisión alquiler', href: '/gestoria/revision-alquiler' },
+  { label: 'Packs para agencias', href: '/agencias/gestoria' },
 ]
 
 /**
@@ -317,6 +319,20 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     landingHref: '/gestoria/pack-revision-reserva-alquiler',
   },
 
+  // Packs B2B — agencias y agentes independientes
+  ...AGENCIA_GESTORIA_PACKS.map((pack) => ({
+    slug: `pack-agencia-${pack.id}`,
+    nombre: `${pack.nombre} — Gestoría B2B`,
+    shortName: pack.nombre,
+    descripcion: `${pack.idealPara}. ${pack.contratosAnuales} contratos/año · ${AGENCIA_SLA_LABEL} · FirmaCert incluida.`,
+    categoria: 'agencias' as const,
+    precio: pack.precioUnitario,
+    image: '/inmobiliaria8.jpg',
+    landingHref: '/agencias/gestoria',
+    badge: pack.highlight ? 'Recomendado' : pack.id === 'agente' ? 'Autónomos' : undefined,
+    incluye: pack.features.slice(0, 5),
+  })),
+
   // Otros
   {
     slug: 'prestamo-particulares',
@@ -336,6 +352,7 @@ export const SERVICIOS_CATEGORIA_LABELS: Record<ServicioCategoria | 'todos', str
   alquiler: 'Alquiler',
   revision: 'Revisiones',
   packs: 'Packs y acompañamiento',
+  agencias: 'Para agencias',
   otros: 'Otros',
 }
 

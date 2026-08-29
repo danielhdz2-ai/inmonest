@@ -4,6 +4,7 @@ import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
 import Footer from '@/components/Footer'
+import { AGENCIA_GESTORIA_PACKS, AGENCIA_SLA_LABEL } from '@/lib/agencias-gestoria-packs'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -130,6 +131,62 @@ export default function SolicitarIndexPage() {
             className="mb-0"
           />
         </div>
+
+        {/* Packs para agencias */}
+        <section className="py-12 px-6 bg-indigo-50 border-y border-indigo-100">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-8">
+              <span className="inline-block text-xs font-bold uppercase tracking-widest text-indigo-700 mb-2">
+                Para agencias y agentes
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+                Packs anuales de contratos profesionales
+              </h2>
+              <p className="text-gray-600 mt-2 max-w-2xl mx-auto text-sm sm:text-base">
+                Mismo flujo de contratación y panel. Precio por volumen ({AGENCIA_SLA_LABEL}), firma
+                electrónica certificada FIRMACERT incluida.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              {AGENCIA_GESTORIA_PACKS.map((pack) => (
+                <Link
+                  key={pack.id}
+                  href="/agencias/gestoria"
+                  className={`rounded-xl border p-5 bg-white hover:shadow-md transition-shadow ${
+                    pack.highlight ? 'border-indigo-400 ring-2 ring-indigo-200' : 'border-indigo-100'
+                  }`}
+                >
+                  {pack.highlight && (
+                    <span className="text-[10px] font-bold uppercase tracking-wide text-indigo-600">
+                      Recomendado
+                    </span>
+                  )}
+                  <h3 className="font-bold text-gray-900 mt-1">{pack.nombre}</h3>
+                  <p className="text-2xl font-black text-indigo-700 mt-2">
+                    {pack.precioUnitario} €
+                    <span className="text-sm font-normal text-gray-500">/contrato</span>
+                  </p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    {pack.contratosAnuales} contratos/año · {pack.precioTotal.toLocaleString('es-ES')} € total
+                  </p>
+                  <p className="text-sm text-gray-600 mt-3 leading-relaxed">{pack.idealPara}</p>
+                </Link>
+              ))}
+            </div>
+            <p className="text-center">
+              <Link
+                href="/agencias/gestoria"
+                className="inline-flex items-center gap-2 text-indigo-700 font-semibold text-sm hover:underline"
+              >
+                Ver detalle de packs para agencias →
+              </Link>
+              {' · '}
+              <Link href="/servicios" className="text-indigo-600 text-sm hover:underline">
+                Catálogo completo en Servicios
+              </Link>
+            </p>
+          </div>
+        </section>
 
         {/* Servicios por Categoría */}
         <section className="py-16 px-6">
