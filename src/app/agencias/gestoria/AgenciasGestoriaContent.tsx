@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
 import AgenciaPackActionModal from './AgenciaPackActionModal'
+import AgenciaContratosIndependientesModal from './AgenciaContratosIndependientesModal'
 import {
   AGENCIA_CONTRATOS_INCLUIDOS,
   AGENCIA_CONTRATO_PRECIO_REF,
@@ -18,7 +19,9 @@ import {
 
 export default function AgenciasGestoriaContent() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const [pricingTab, setPricingTab] = useState<'packs' | 'contratos'>('packs')
   const [selectedPack, setSelectedPack] = useState<AgenciaGestoriaPack | null>(null)
+  const [showContratosModal, setShowContratosModal] = useState(false)
   const [form, setForm] = useState({
     nombre: '',
     empresa: '',
@@ -121,13 +124,43 @@ export default function AgenciasGestoriaContent() {
       {/* Packs */}
       <section id="packs" className="py-20 px-4 bg-gray-50">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Packs anuales de contratos</h2>
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-900">Tarifas para agencias</h2>
             <p className="text-gray-500 mt-3 max-w-xl mx-auto">
-              Elige el volumen que encaje con tu operativa. Todos incluyen redacción por gestor, entrega en{' '}
-              {AGENCIA_SLA_HORAS} y firma electrónica certificada.
+              Packs anuales con créditos o contratos sueltos a tarifa B2B. Todos incluyen redacción por gestor,
+              entrega en {AGENCIA_SLA_HORAS} y firma electrónica certificada.
             </p>
           </div>
+
+          <div className="flex justify-center gap-2 mb-10">
+            <button
+              type="button"
+              onClick={() => setPricingTab('packs')}
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
+                pricingTab === 'packs'
+                  ? 'bg-gold-500 text-white shadow-sm'
+                  : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
+              }`}
+            >
+              Packs anuales
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setPricingTab('contratos')
+                setShowContratosModal(true)
+              }}
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
+                pricingTab === 'contratos'
+                  ? 'bg-gold-500 text-white shadow-sm'
+                  : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'
+              }`}
+            >
+              Contratos independientes
+            </button>
+          </div>
+
+          {pricingTab === 'packs' && (
           <div className="grid md:grid-cols-3 gap-6">
             {AGENCIA_GESTORIA_PACKS.map((pack) => (
               <div
@@ -198,6 +231,23 @@ export default function AgenciasGestoriaContent() {
               </div>
             ))}
           </div>
+          )}
+
+          {pricingTab === 'contratos' && (
+            <div className="text-center py-8">
+              <p className="text-gray-600 text-sm mb-4 max-w-md mx-auto">
+                Contrata contratos sueltos a 110 €/ud con entrega en 4–5 h. Arras, alquiler LAU, temporada,
+                habitación y compraventa entre particulares.
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowContratosModal(true)}
+                className="px-8 py-3.5 bg-gold-500 text-white font-bold rounded-full text-sm hover:bg-gold-600 transition-colors"
+              >
+                Ver catálogo y comprar →
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -381,6 +431,15 @@ export default function AgenciasGestoriaContent() {
 
       {selectedPack && (
         <AgenciaPackActionModal pack={selectedPack} onClose={() => setSelectedPack(null)} />
+      )}
+
+      {showContratosModal && (
+        <AgenciaContratosIndependientesModal
+          onClose={() => {
+            setShowContratosModal(false)
+            setPricingTab('packs')
+          }}
+        />
       )}
 
       <section className="bg-gray-900 text-white py-10 px-4 text-center">
