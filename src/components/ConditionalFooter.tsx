@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import Footer from './Footer'
+import SellosConfianza from './SellosConfianza'
 
 /**
  * Rutas de "plataforma" (app tipo dashboard, pantalla completa, con su propia
@@ -18,6 +19,7 @@ export default function ConditionalFooter() {
   if (isPlatform) return null
   return (
     <div className="max-lg:hidden">
+      <SellosConfianza />
       <Footer />
     </div>
   )
