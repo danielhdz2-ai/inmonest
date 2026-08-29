@@ -10,6 +10,7 @@ import CiudadHubMercado from '@/components/CiudadHubMercado'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import JsonLd from '@/components/JsonLd'
 import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
+import GestoriaCiudadAgenciasBanner from '@/components/GestoriaCiudadAgenciasBanner'
 import { GESTORIA_MADRID_FAQ } from '@/lib/gestoria-madrid-faq'
 import {
   buildFaqSchema,
@@ -105,6 +106,8 @@ export default function GestoriaMadridPage() {
             </div>
           </div>
         </section>
+
+        <GestoriaCiudadAgenciasBanner ciudadSlug="madrid" ciudadNombre="Madrid" />
 
         {/* Por qué Madrid necesita gestoría especializada */}
         <section className="py-16 bg-white">
