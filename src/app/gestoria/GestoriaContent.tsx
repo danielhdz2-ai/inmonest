@@ -109,7 +109,7 @@ const SERVICES: Service[] = [
       'NO incluye redacción contrato arras (a parte)',
       'Ideal para propietarios vendedores',
     ],
-    price: 166,
+    price: 350,
     image: '/gestoria10.jpg',
     badge: 'Vendedores',
   },

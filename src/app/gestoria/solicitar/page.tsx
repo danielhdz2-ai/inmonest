@@ -79,7 +79,7 @@ const SERVICIOS = [
       { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa Reserva→Escritura', precio: 687 },
       { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa Reserva→Escritura', precio: 687 },
       { slug: 'compra-completa-parking-trastero', nombre: 'Compra Parking/Trastero Completa', precio: 295, badge: 'Nuevo' },
-      { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento Arras→Escritura', precio: 166 },
+      { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento Arras→Escritura', precio: 350 },
       { slug: 'acompanamiento-reserva-arras', nombre: 'Acompañamiento Reserva→Arras', precio: 424 },
     ],
   },
