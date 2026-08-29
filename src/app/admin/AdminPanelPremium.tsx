@@ -131,7 +131,8 @@ interface Metrics {
 
 const SERVICE_LABELS: Record<string, string> = {
   'pack-due-diligence-precompra': 'Due Diligence Pre-Compra',
-  'pack-arras-revision-documental': 'Pack Arras Plus — Revisión Documental',
+  'pack-arras-revision-documental': 'Pack Arras Plus Comprador',
+  'pack-arras-plus-vendedor': 'Pack Arras Plus Vendedor',
   'arras-confirmatorias': 'Arras Confirmatorias',
   'arras-penitenciales': 'Arras Penitenciales',
   'alquiler-vivienda-lau': 'Alquiler Residencial (LAU)',

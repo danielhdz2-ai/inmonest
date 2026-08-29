@@ -438,12 +438,12 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
   },
 
   'pack-arras-revision-documental': {
-    nombre: 'Pack Arras Plus — Revisión Documental Completa',
+    nombre: 'Pack Arras Plus Comprador',
     precio: p('pack-arras-revision-documental', 450),
     categoria: 'Servicios Premium',
     tagline: 'Arras penitenciales + revisión documental integral para compradores entre particulares',
     descripcion:
-      'Comprar de particular sin agencia implica firmar arras y revisar decenas de documentos por tu cuenta. El Pack Arras Plus une lo esencial en un solo servicio: redactamos tu contrato de arras penitenciales con cláusulas de protección real y, en paralelo, auditamos toda la documentación del inmueble — comunidad, derramas, ITE, nota registral, certificados y coherencia urbanística. Ideal si quieres arras seguras y un informe completo antes de comprometer la señal definitiva, sin llamarlo «due diligence» ni pagar dos servicios por separado.',
+      'Comprar de particular sin agencia implica firmar arras y revisar decenas de documentos por tu cuenta. El Pack Arras Plus Comprador une lo esencial en un solo servicio: redactamos tu contrato de arras penitenciales con cláusulas de protección real y, en paralelo, auditamos toda la documentación del inmueble — comunidad, derramas, ITE, nota registral, certificados y coherencia urbanística. Ideal si quieres arras seguras y un informe completo antes de comprometer la señal definitiva.',
     image: '/gestoria10.jpg',
     imageAlt: 'Pack arras y revisión documental para compradores particulares',
     paraQuien: [
@@ -484,9 +484,64 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
       },
     ],
     relacionados: [
+      { slug: 'pack-arras-plus-vendedor', nombre: 'Pack Arras Plus Vendedor', precio: 450 },
       { slug: 'arras-penitenciales', nombre: 'Solo Arras', precio: 145 },
       { slug: 'pack-due-diligence-precompra', nombre: 'Due Diligence', precio: 350 },
       { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa', precio: 687 },
+    ],
+  },
+
+  'pack-arras-plus-vendedor': {
+    nombre: 'Pack Arras Plus Vendedor',
+    precio: p('pack-arras-plus-vendedor', 450),
+    categoria: 'Servicios Premium',
+    tagline: 'Arras penitenciales + recopilación y análisis documental para vendedores particulares',
+    descripcion:
+      'Vender tu piso entre particulares sin agencia significa redactar arras y preparar toda la documentación para la notaría por tu cuenta. El Pack Arras Plus Vendedor lo resuelve en un solo servicio: redactamos tu contrato de arras penitenciales con cláusulas que te protegen como vendedor y te ayudamos a recabar, ordenar y analizar la documentación del inmueble — escrituras, nota simple, certificado energético, ITE, actas de comunidad, cargas y coherencia registral — para llegar a escritura sin sorpresas ni bloqueos en notaría.',
+    image: '/contratodearras.jpg',
+    imageAlt: 'Pack arras y documentación para vendedores particulares',
+    paraQuien: [
+      'Propietarios que venden entre particulares y necesitan arras bien redactadas',
+      'Vendedores que quieren saber qué documentación falta antes de ir a notaría',
+      'Quien busca arras + checklist documental en un solo pack (450 €)',
+      'Operaciones sin agencia donde nadie te guía en comunidad, ITE o cargas del piso',
+    ],
+    incluye: [
+      'Redacción de contrato de arras penitenciales a favor del vendedor (PDF en 48h)',
+      'Ayuda para recabar escrituras, nota simple y certificado energético',
+      'Revisión de actas de comunidad (últimos 2 años) y derramas pendientes',
+      'Verificación del ITE, cargas registrales y deudas de IBI o suministros',
+      'Checklist documental para escriturar ante notario sin retrasos',
+      'Informe con riesgos, tareas pendientes y recomendaciones en 3-5 días',
+    ],
+    pasos: [
+      { num: '01', titulo: 'Contrata y cuéntanos la venta', desc: 'Datos de vendedor, comprador, inmueble, precio y documentación que ya tengas.' },
+      { num: '02', titulo: 'Arras + recopilación documental', desc: 'Redactamos las arras mientras tu gestor te indica qué documentos pedir y analiza los que subas.' },
+      { num: '03', titulo: 'Firma arras con informe en mano', desc: 'Recibes arras listas para firmar e informe con lo que falta para escriturar con tranquilidad.' },
+    ],
+    faq: [
+      {
+        q: '¿En qué se diferencia del Asesoramiento Arras hasta Escritura (350 €)?',
+        a: 'El asesoramiento (350 €) es para vendedores que ya firmaron arras y no incluye redacción del contrato. Este pack (450 €) incluye arras redactadas + recopilación y análisis documental antes o durante la señal.',
+      },
+      {
+        q: '¿Y del Pack Arras Plus Comprador?',
+        a: 'El pack comprador audita el inmueble para proteger al comprador antes de la señal. El pack vendedor redacta arras que te protegen a ti y prepara la documentación que necesitarás para escriturar como vendedor.',
+      },
+      {
+        q: '¿Incluye la escritura notarial?',
+        a: 'No. El pack cubre arras + documentación para llegar preparado a notaría. Si quieres acompañamiento completo hasta escritura, considera Venta Completa (687 €).',
+      },
+      {
+        q: '¿Cuándo debo contratarlo?',
+        a: 'Lo ideal es cuando tienes comprador y vas a firmar arras, o justo antes de negociar la señal. Así firmas con cláusulas correctas y sabes qué documentación necesitarás para cerrar.',
+      },
+    ],
+    relacionados: [
+      { slug: 'pack-arras-revision-documental', nombre: 'Pack Arras Plus Comprador', precio: 450 },
+      { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa', precio: 687 },
+      { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento post-arras', precio: 350 },
+      { slug: 'arras-penitenciales', nombre: 'Solo Arras', precio: 145 },
     ],
   },
 

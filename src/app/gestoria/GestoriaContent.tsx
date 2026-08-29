@@ -79,8 +79,8 @@ const SERVICES: Service[] = [
   },
   {
     key: 'pack-arras-revision-documental',
-    name: 'Pack Arras Plus — Revisión Documental Completa',
-    shortName: 'Pack Arras Plus',
+    name: 'Pack Arras Plus Comprador',
+    shortName: 'Pack Arras Comprador',
     category: 'compraventa',
     description: 'Arras penitenciales redactadas por gestoría + revisión documental integral del inmueble para compradores entre particulares. Comunidad, derramas, ITE, nota registral y certificados en un solo pack a 450 €.',
     includes: [
@@ -92,7 +92,24 @@ const SERVICES: Service[] = [
     ],
     price: 450,
     image: '/gestoria10.jpg',
-    badge: 'Particulares',
+    badge: 'Compradores',
+  },
+  {
+    key: 'pack-arras-plus-vendedor',
+    name: 'Pack Arras Plus Vendedor',
+    shortName: 'Pack Arras Vendedor',
+    category: 'compraventa',
+    description: 'Arras penitenciales redactadas por gestoría + ayuda para recabar y analizar toda la documentación del inmueble para escriturar. Pensado para vendedores particulares que venden sin agencia.',
+    includes: [
+      'Contrato de arras penitenciales a favor del vendedor (48h)',
+      'Ayuda para recabar escrituras, nota simple y certificados',
+      'Revisión actas comunidad, ITE y cargas pendientes',
+      'Checklist documental para escriturar ante notario',
+      'Informe con riesgos y tareas pendientes (3-5 días)',
+    ],
+    price: 450,
+    image: '/contratodearras.jpg',
+    badge: 'Vendedores',
   },
   {
     key: 'asesoramiento-arras-venta',

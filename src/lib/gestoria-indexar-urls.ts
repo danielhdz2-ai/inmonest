@@ -27,6 +27,7 @@ export const GESTORIA_INDEXAR_PRIORIDAD_ALTA = [
   '/gestoria/venta-completa-reserva-escritura',
   '/gestoria/pack-due-diligence-precompra',
   '/gestoria/pack-arras-revision-documental',
+  '/gestoria/pack-arras-plus-vendedor',
   '/gestoria/alquiler-habitaciones',
   '/gestoria/alquiler-local-comercial',
   '/gestoria/revision-alquiler',

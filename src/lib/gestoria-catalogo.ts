@@ -313,7 +313,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
     ],
   },
   'pack-arras-revision-documental': {
-    nombre: 'Pack Arras Plus — Revisión Documental Completa',
+    nombre: 'Pack Arras Plus Comprador',
     precio: 450,
     categoria: 'Servicios Premium',
     incluye: [
@@ -323,6 +323,19 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
       'Verificación ITE y certificados obligatorios',
       'Nota registral y coherencia urbanística',
       'Informe documental completo PDF en 3-5 días',
+    ],
+  },
+  'pack-arras-plus-vendedor': {
+    nombre: 'Pack Arras Plus Vendedor',
+    precio: 450,
+    categoria: 'Servicios Premium',
+    incluye: [
+      'Redacción contrato de arras penitenciales a favor del vendedor',
+      'Ayuda para recabar documentación del inmueble',
+      'Análisis de escrituras, nota simple y certificados',
+      'Revisión actas comunidad, ITE y cargas pendientes',
+      'Checklist documental para escriturar ante notario',
+      'Informe con riesgos y tareas pendientes en 3-5 días',
     ],
   },
   'contrato-compraventa': {

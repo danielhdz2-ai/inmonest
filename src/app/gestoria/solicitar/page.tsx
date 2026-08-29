@@ -75,7 +75,8 @@ const SERVICIOS = [
     color: 'from-amber-500 to-amber-600',
     items: [
       { slug: 'pack-due-diligence-precompra', nombre: 'Due Diligence Pre-Compra', precio: 350, badge: 'Nuevo' },
-      { slug: 'pack-arras-revision-documental', nombre: 'Pack Arras Plus + Documentación', precio: 450, badge: 'Nuevo' },
+      { slug: 'pack-arras-revision-documental', nombre: 'Pack Arras Plus Comprador', precio: 450, badge: 'Compradores' },
+      { slug: 'pack-arras-plus-vendedor', nombre: 'Pack Arras Plus Vendedor', precio: 450, badge: 'Vendedores' },
       { slug: 'venta-completa-reserva-escritura', nombre: 'Venta Completa Reserva→Escritura', precio: 687 },
       { slug: 'compra-completa-reserva-escritura', nombre: 'Compra Completa Reserva→Escritura', precio: 687 },
       { slug: 'compra-completa-parking-trastero', nombre: 'Compra Parking/Trastero Completa', precio: 295, badge: 'Nuevo' },
@@ -89,7 +90,8 @@ const SERVICIOS = [
     color: 'from-pink-500 to-pink-600',
     items: [
       { slug: 'pack-revision-reserva-alquiler', nombre: 'Pack Revisión + Alquiler LAU', precio: 169 },
-      { slug: 'pack-arras-revision-documental', nombre: 'Pack Arras Plus + Documentación', precio: 450 },
+      { slug: 'pack-arras-revision-documental', nombre: 'Pack Arras Plus Comprador', precio: 450 },
+      { slug: 'pack-arras-plus-vendedor', nombre: 'Pack Arras Plus Vendedor', precio: 450 },
     ],
   },
   // FINANCIACIÓN

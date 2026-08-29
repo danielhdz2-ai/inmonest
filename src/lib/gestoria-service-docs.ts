@@ -96,6 +96,14 @@ const BY_SERVICE: Record<string, ServiceDocRequirement[]> = {
     { key: 'partes', label: 'Datos de la operación', icon: '📋', desc: 'Precio, señal y condiciones acordadas', required: false },
     { key: 'otro', label: 'Documentación disponible', icon: '📄', desc: 'Actas comunidad, ITE, certificados…', required: false },
   ],
+  'pack-arras-plus-vendedor': [
+    { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Vendedor y comprador', required: false },
+    { key: 'escrituras', label: 'Escrituras del inmueble', icon: '📜', desc: 'Título de propiedad del vendedor', required: false },
+    { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Si la tienes disponible', required: false },
+    { key: 'cert-energetico', label: 'Certificado energético', icon: '⚡', desc: 'CE vigente del inmueble', required: false },
+    { key: 'partes', label: 'Datos de la venta', icon: '📋', desc: 'Precio, señal, hipoteca pendiente y plazos', required: false },
+    { key: 'otro', label: 'Documentación disponible', icon: '📄', desc: 'Actas comunidad, ITE, recibos IBI…', required: false },
+  ],
   'venta-completa-reserva-escritura': [
     { key: 'dni', label: 'DNI / NIE de las partes', icon: '🪪', desc: 'Vendedor y comprador', required: false },
     { key: 'nota-simple', label: 'Nota simple registral', icon: '🏛️', desc: 'Del inmueble en venta', required: false },

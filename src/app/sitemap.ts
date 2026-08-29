@@ -149,6 +149,8 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/solicitar/contrato-ilegal`,               lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
   { url: `${BASE_URL}/gestoria/solicitar/pack-due-diligence-precompra`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/pack-arras-revision-documental`,           lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/pack-arras-plus-vendedor`,                 lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/solicitar/pack-arras-plus-vendedor`,       lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/pack-arras-revision-documental/madrid`,    lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/pack-arras-revision-documental/barcelona`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/pack-arras-revision-documental/valencia`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
