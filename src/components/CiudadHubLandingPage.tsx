@@ -9,8 +9,10 @@ import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubRazones from '@/components/CiudadHubRazones'
 import ComprarConSeguridad from '@/components/ComprarConSeguridad'
 import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
+import GestoriaCiudadAgenciasBanner from '@/components/GestoriaCiudadAgenciasBanner'
 import JsonLd from '@/components/JsonLd'
 import type { CiudadHubConfig } from '@/lib/gestoria-ciudad-hub-data'
+import { isAgenciaGestoriaCiudadSlug } from '@/lib/agencias-gestoria-ciudades'
 import { getCiudadImage } from '@/lib/gestoria-images'
 import {
   getContratoAlquilerPrecio,
@@ -163,6 +165,10 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
           section="testimonios"
           testimoniosLayout="stack"
         />
+
+        {isAgenciaGestoriaCiudadSlug(slug) && (
+          <GestoriaCiudadAgenciasBanner ciudadSlug={slug} ciudadNombre={nombre} />
+        )}
       </main>
 
       <GestoriaHubConversionFooter
