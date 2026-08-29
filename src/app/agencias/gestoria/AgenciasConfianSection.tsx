@@ -1,15 +1,27 @@
 import Image from 'next/image'
 import { AGENCIAS_CONFIAN } from '@/lib/agencias-gestoria-trust'
 
-export default function AgenciasConfianSection() {
+type Props = {
+  filterIds?: string[]
+  titulo?: string
+}
+
+export default function AgenciasConfianSection({
+  filterIds,
+  titulo = 'Agencias que confían en Inmonest Gestoría',
+}: Props) {
+  const agencias = filterIds?.length
+    ? AGENCIAS_CONFIAN.filter((a) => filterIds.includes(a.id))
+    : AGENCIAS_CONFIAN
+
   return (
     <section className="py-14 px-4 bg-white border-y border-gray-100">
       <div className="max-w-5xl mx-auto">
         <p className="text-center text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400 mb-8">
-          Agencias que confían en Inmonest Gestoría
+          {titulo}
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-8 sm:gap-x-14">
-          {AGENCIAS_CONFIAN.map((agencia) => (
+          {agencias.map((agencia) => (
             <div
               key={agencia.id}
               className="flex flex-col items-center justify-center min-w-[120px] max-w-[160px] opacity-80 hover:opacity-100 transition-opacity"

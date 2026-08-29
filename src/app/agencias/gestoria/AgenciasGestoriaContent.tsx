@@ -10,6 +10,9 @@ import AgenciaGestoriaPanelDemo from './AgenciaGestoriaPanelDemo'
 import AgenciasConfianSection from './AgenciasConfianSection'
 import AgenciasCasosSection from './AgenciasCasosSection'
 import AgenciasAudienciasSection from './AgenciasAudienciasSection'
+import AgenciasGestoriaCiudadesNav from './AgenciasGestoriaCiudadesNav'
+import AgenciasGestoriaMercadoLocal from './AgenciasGestoriaMercadoLocal'
+import type { AgenciaGestoriaCiudadConfig } from '@/lib/agencias-gestoria-ciudades'
 import {
   AGENCIA_CONTRATOS_INCLUIDOS,
   AGENCIA_CONTRATO_PRECIO_REF,
@@ -22,7 +25,11 @@ import {
 } from '@/lib/agencias-gestoria-packs'
 import { AGENCIA_CONTRATO_PRECIO_B2B } from '@/lib/agencias-gestoria-contratos'
 
-export default function AgenciasGestoriaContent() {
+type Props = {
+  ciudad?: AgenciaGestoriaCiudadConfig
+}
+
+export default function AgenciasGestoriaContent({ ciudad }: Props) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [selectedPack, setSelectedPack] = useState<AgenciaGestoriaPack | null>(null)
   const [showContratosModal, setShowContratosModal] = useState(false)
@@ -61,13 +68,17 @@ export default function AgenciasGestoriaContent() {
     }
   }
 
+  const faqs = ciudad
+    ? [...AGENCIA_GESTORIA_FAQ, ...ciudad.faqExtra]
+    : [...AGENCIA_GESTORIA_FAQ]
+
   return (
     <main className="bg-white min-h-screen">
       {/* Hero */}
       <section className="relative overflow-hidden text-white py-20 sm:py-24 px-4">
         <Image
-          src="/gestoria10.jpg"
-          alt="Gestoría inmobiliaria para agencias"
+          src={ciudad?.heroImage ?? '/gestoria10.jpg'}
+          alt={ciudad?.heroImageAlt ?? 'Gestoría inmobiliaria para agencias'}
           fill
           className="object-cover object-center"
           priority
@@ -75,24 +86,46 @@ export default function AgenciasGestoriaContent() {
         />
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a1410]/90 via-[#0a1410]/75 to-[#0a1410]/60" />
         <div className="relative z-10 max-w-5xl mx-auto">
-          <Link
-            href="/agencias"
-            className="inline-flex items-center gap-1 text-sm text-white/60 hover:text-gold-300 mb-6 transition-colors"
-          >
-            ← Portal para agencias
-          </Link>
+          <nav className="flex flex-wrap items-center gap-1.5 text-xs text-white/50 mb-6">
+            <Link href="/agencias" className="hover:text-gold-300 transition-colors">
+              Portal agencias
+            </Link>
+            <span>/</span>
+            <Link href="/agencias/gestoria" className="hover:text-gold-300 transition-colors">
+              Gestoría B2B
+            </Link>
+            {ciudad && (
+              <>
+                <span>/</span>
+                <span className="text-white/90">{ciudad.nombre}</span>
+              </>
+            )}
+          </nav>
           <span className="inline-block bg-gold-500/90 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">
-            Gestoría B2B
+            Gestoría B2B{ciudad ? ` · ${ciudad.nombre}` : ''}
           </span>
           <h1 className="text-3xl sm:text-5xl font-bold leading-tight mb-5 max-w-3xl">
-            Gestoría inmobiliaria B2B para APIs, autónomos y agencias desde{' '}
-            <span className="text-gold-300">{AGENCIA_CONTRATO_PRECIO_B2B} €</span>
+            {ciudad ? (
+              <>
+                Gestoría inmobiliaria para agencias en{' '}
+                <span className="text-gold-300">{ciudad.nombre}</span>
+              </>
+            ) : (
+              <>
+                Gestoría inmobiliaria B2B para APIs, autónomos y agencias desde{' '}
+                <span className="text-gold-300">{AGENCIA_CONTRATO_PRECIO_B2B} €</span>
+              </>
+            )}
           </h1>
           <p className="text-gray-200 text-lg max-w-2xl mb-8 leading-relaxed">
-            Contratos de arras, alquiler LAU y compraventa redactados por gestor. Packs anuales o
-            contrato suelto sin compromiso. Entrega en{' '}
-            <strong className="text-white">{AGENCIA_SLA_HORAS}</strong> y firma electrónica FIRMACERT
-            incluida. Usado por Tecnocasa, Inmo Sants, Interhouse y más.
+            {ciudad?.heroLead ?? (
+              <>
+                Contratos de arras, alquiler LAU y compraventa redactados por gestor. Packs anuales o
+                contrato suelto sin compromiso. Entrega en{' '}
+                <strong className="text-white">{AGENCIA_SLA_HORAS}</strong> y firma electrónica FIRMACERT
+                incluida. Usado por Tecnocasa, Inmo Sants, Interhouse y más.
+              </>
+            )}
           </p>
           <div className="flex flex-wrap gap-3 mb-8">
             {[
@@ -127,7 +160,16 @@ export default function AgenciasGestoriaContent() {
         </div>
       </section>
 
-      <AgenciasConfianSection />
+      <AgenciasConfianSection
+        filterIds={ciudad?.confianzaIds}
+        titulo={
+          ciudad
+            ? `Agencias en ${ciudad.nombre} que confían en Inmonest`
+            : undefined
+        }
+      />
+
+      {ciudad ? <AgenciasGestoriaMercadoLocal ciudad={ciudad} /> : null}
 
       <AgenciasAudienciasSection />
 
@@ -259,7 +301,19 @@ export default function AgenciasGestoriaContent() {
         </div>
       </section>
 
-      <AgenciasCasosSection />
+      <AgenciasCasosSection
+        casos={ciudad?.casos}
+        titulo={
+          ciudad
+            ? `Agencias en ${ciudad.nombre} que ya operan con nosotros`
+            : undefined
+        }
+        subtitulo={
+          ciudad
+            ? `Casos reales de inmobiliarias, APIs y autónomos en ${ciudad.nombre} y ${ciudad.region}.`
+            : undefined
+        }
+      />
 
       {/* Contratos incluidos */}
       <section className="py-16 px-4">
@@ -328,7 +382,7 @@ export default function AgenciasGestoriaContent() {
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Preguntas frecuentes</h2>
           <div className="space-y-3">
-            {AGENCIA_GESTORIA_FAQ.map((faq, i) => (
+            {faqs.map((faq, i) => (
               <div key={i} className="bg-white rounded-xl border border-gray-200 overflow-hidden">
                 <button
                   type="button"
@@ -448,6 +502,8 @@ export default function AgenciasGestoriaContent() {
       {showContratosModal && (
         <AgenciaContratosIndependientesModal onClose={() => setShowContratosModal(false)} />
       )}
+
+      <AgenciasGestoriaCiudadesNav current={ciudad?.slug} />
 
       <section className="bg-white border-t border-gray-100 py-10 px-4 text-center">
         <p className="text-gray-600 text-sm">
