@@ -35,6 +35,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/vender-piso-sin-agencia`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
   
   { url: `${BASE_URL}/agencias`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.8 },
+  { url: `${BASE_URL}/agencias/gestoria`,    lastModified: today, changeFrequency: 'weekly',  priority: 0.85 },
   { url: `${BASE_URL}/sobre-nosotros`,       lastModified: today, changeFrequency: 'monthly', priority: 0.7 },
   { url: `${BASE_URL}/contacto`,             lastModified: today, changeFrequency: 'monthly', priority: 0.5 },
   { url: `${BASE_URL}/aviso-legal`,          lastModified: today, changeFrequency: 'yearly',  priority: 0.2 },

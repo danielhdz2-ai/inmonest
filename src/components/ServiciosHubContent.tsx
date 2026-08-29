@@ -19,6 +19,7 @@ const CATEGORIES: Array<{ key: ServicioCategoria | 'todos'; label: string }> = [
   { key: 'alquiler', label: 'Alquiler' },
   { key: 'revision', label: 'Revisiones' },
   { key: 'packs', label: 'Packs y acompañamiento' },
+  { key: 'agencias', label: 'Para agencias' },
   { key: 'otros', label: 'Otros' },
 ]
 
@@ -27,6 +28,7 @@ const CATEGORY_PILL: Record<ServicioCategoria, string> = {
   alquiler: 'bg-orange-50 text-orange-600',
   revision: 'bg-amber-100 text-amber-700',
   packs: 'bg-yellow-100 text-yellow-800',
+  agencias: 'bg-indigo-100 text-indigo-800',
   otros: 'bg-gray-100 text-gray-700',
 }
 
@@ -36,6 +38,14 @@ function cardHref(s: ServicioLandingCard) {
 
 function incluye(s: ServicioLandingCard): string[] {
   if (s.incluye?.length) return s.incluye
+  if (s.categoria === 'agencias') {
+    return [
+      'Redacción por gestor inmobiliario',
+      'Entrega en 4–5 horas laborables',
+      'Firma electrónica certificada FIRMACERT',
+      'Pack anual con créditos',
+    ]
+  }
   return GESTORIA_SERVICIOS[s.slug]?.incluye ?? [
     'Redacción personalizada',
     'PDF firmable digitalmente',
@@ -194,6 +204,24 @@ export default function ServiciosHubContent() {
           </div>
         </div>
 
+        {(active === 'todos' || active === 'agencias') && (
+          <div className="mb-8 rounded-2xl border border-indigo-200 bg-indigo-50/80 p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div className="flex-1">
+              <p className="text-xs font-bold uppercase tracking-widest text-indigo-700">Gestoría B2B</p>
+              <p className="text-sm text-indigo-900 mt-1 leading-relaxed">
+                Packs anuales para agencias y agentes independientes: contratos desde{' '}
+                <strong>110 €</strong>, entrega en <strong>4–5 h</strong> y FirmaCert incluida.
+              </p>
+            </div>
+            <Link
+              href="/agencias/gestoria"
+              className="flex-shrink-0 inline-flex justify-center px-5 py-2.5 bg-indigo-700 text-white rounded-full text-sm font-semibold hover:bg-indigo-800 transition-colors"
+            >
+              Ver packs para agencias →
+            </Link>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((service) => {
             const href = cardHref(service)
@@ -269,7 +297,9 @@ export default function ServiciosHubContent() {
                     href={href}
                     className="block w-full text-center py-2.5 bg-gold-500 text-white rounded-xl font-bold text-sm hover:bg-gold-600 transition-colors"
                   >
-                    Ver más información — {service.precio} €{' '}
+                    {service.categoria === 'agencias'
+                      ? `Ver pack — desde ${service.precio} €/contrato`
+                      : `Ver más información — ${service.precio} €`}{' '}
                     <span className="font-normal text-xs opacity-90">(IVA incl.)</span>
                   </Link>
                 </div>

@@ -183,6 +183,39 @@ export default function AgenciasContent() {
         </div>
       </section>
 
+      {/* ── Gestoría B2B ─────────────────────────────────────── */}
+      <section className="py-14 px-4 bg-[#fdfbf5] border-y border-gold-200/60">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 items-center">
+          <div className="flex-1">
+            <span className="text-gold-600 text-xs font-bold uppercase tracking-widest">Nuevo · Gestoría B2B</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-2 mb-3">
+              Contratos profesionales para tu agencia desde 110 €
+            </h2>
+            <p className="text-gray-600 text-sm leading-relaxed mb-4">
+              Packs anuales para agencias y agentes independientes: arras, alquiler LAU, reservas y más.
+              Redactados por gestor, entrega en <strong>4–5 horas</strong> y firma electrónica certificada FIRMACERT incluida.
+            </p>
+            <ul className="text-sm text-gray-600 space-y-1.5 mb-6">
+              <li className="flex items-center gap-2"><span className="text-gold-500">✓</span> Desde 110–113 €/contrato (vs 145 € retail)</li>
+              <li className="flex items-center gap-2"><span className="text-gold-500">✓</span> Mismo panel: compra, sube docs, recibe PDF</li>
+              <li className="flex items-center gap-2"><span className="text-gold-500">✓</span> Pack Agente, Agencia y Agencia Plus</li>
+            </ul>
+            <Link
+              href="/agencias/gestoria"
+              className="inline-flex px-6 py-3 bg-gold-500 text-white font-bold rounded-full text-sm hover:bg-gold-600 transition-colors"
+            >
+              Ver packs de gestoría →
+            </Link>
+          </div>
+          <div className="flex-shrink-0 bg-white rounded-2xl border border-gold-200 p-6 shadow-sm text-center min-w-[220px]">
+            <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold">Pack Agencia</p>
+            <p className="text-4xl font-black text-gold-500 mt-2">110 €</p>
+            <p className="text-sm text-gray-500">/contrato · 36/año</p>
+            <p className="text-xs text-green-600 font-semibold mt-2">Entrega 4–5 h · FirmaCert incluida</p>
+          </div>
+        </div>
+      </section>
+
       {/* ── Planes ───────────────────────────────────────────── */}
       <section id="planes" className="py-20 px-4 bg-gray-50">
         <div className="max-w-5xl mx-auto">
