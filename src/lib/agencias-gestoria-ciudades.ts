@@ -20,6 +20,10 @@ export type AgenciaGestoriaCiudadConfig = {
   confianzaIds?: string[]
   casos: AgenciaCasoExito[]
   faqExtra: { q: string; a: string }[]
+  /** Meta SEO para ruta /gestoria/{slug}/agencias */
+  gestoriaAgenciasTitle: string
+  gestoriaAgenciasDescription: string
+  gestoriaAgenciasKeywords: string[]
 }
 
 const CASO_MADRID_TECNOCASA: AgenciaCasoExito = {
@@ -133,6 +137,16 @@ export const AGENCIAS_GESTORIA_CIUDADES: AgenciaGestoriaCiudadConfig[] = [
         a: 'Sí. Oficinas de franquicia en Madrid y Las Rozas usan nuestros packs de volumen con entrega prioritaria en 4–5 horas y FirmaCert incluida en cada contrato.',
       },
     ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en Madrid — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'Contratos de arras, alquiler LAU y compraventa para agencias, APIs y autónomos inmobiliarios en Madrid. Packs anuales o suelto a 110 €. Entrega 4–5 h. FirmaCert incluida.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias Madrid',
+      'contratos inmobiliarios agencia Madrid',
+      'gestoría agencias inmobiliarias Madrid',
+      'pack contratos arras Madrid agencia',
+      'contrato alquiler LAU agencia Madrid',
+    ],
   },
   {
     slug: 'barcelona',
@@ -170,6 +184,16 @@ export const AGENCIAS_GESTORIA_CIUDADES: AgenciaGestoriaCiudadConfig[] = [
         q: '¿Trabajáis con APIs colegiados en Barcelona?',
         a: 'Sí. Interhouse BCN y otros agentes de la propiedad usan nuestro servicio para contratos LAU con entrega en 4–5 h y firma electrónica certificada FIRMACERT (eIDAS).',
       },
+    ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en Barcelona — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'Contratos para agencias, APIs y autónomos inmobiliarios en Barcelona y área metropolitana. Arras, alquiler LAU y compraventa desde 110 €. Inmo Sants e Interhouse operan con nosotros.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias Barcelona',
+      'contratos inmobiliarios agencia Barcelona',
+      'gestoría agencias inmobiliarias Barcelona',
+      'contrato alquiler LAU agencia Barcelona',
+      'API Barcelona contratos inmobiliarios',
     ],
   },
   {
@@ -209,8 +233,22 @@ export const AGENCIAS_GESTORIA_CIUDADES: AgenciaGestoriaCiudadConfig[] = [
         a: 'Sí. Muchos autónomos valencianos empiezan con contratos sueltos a 110 € (tarifa agencia) y activan el pack cuando confirman su volumen mensual.',
       },
     ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en Valencia — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'Contratos para agencias y autónomos inmobiliarios en Valencia. Arras, alquiler LAU y temporada desde 110 €. Packs anuales o contrato suelto. Entrega 4–5 h.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias Valencia',
+      'contratos inmobiliarios agencia Valencia',
+      'gestoría agencias inmobiliarias Valencia',
+      'contrato alquiler LAU agencia Valencia',
+      'pack contratos agencia Valencia',
+    ],
   },
 ]
+
+export const AGENCIAS_GESTORIA_CIUDAD_SLUGS = AGENCIAS_GESTORIA_CIUDADES.map(
+  (c) => c.slug,
+) as AgenciaGestoriaCiudadSlug[]
 
 export function getAgenciaGestoriaCiudad(slug: string): AgenciaGestoriaCiudadConfig | undefined {
   return AGENCIAS_GESTORIA_CIUDADES.find((c) => c.slug === slug)
@@ -220,4 +258,10 @@ export function isAgenciaGestoriaCiudadSlug(slug: string): slug is AgenciaGestor
   return AGENCIAS_GESTORIA_CIUDADES.some((c) => c.slug === slug)
 }
 
-export const AGENCIAS_GESTORIA_CIUDAD_SLUGS = AGENCIAS_GESTORIA_CIUDADES.map((c) => c.slug)
+export function gestoriaAgenciasCiudadPath(slug: AgenciaGestoriaCiudadSlug): string {
+  return `/gestoria/${slug}/agencias`
+}
+
+export function gestoriaAgenciasCiudadUrl(slug: AgenciaGestoriaCiudadSlug): string {
+  return `https://inmonest.com${gestoriaAgenciasCiudadPath(slug)}`
+}

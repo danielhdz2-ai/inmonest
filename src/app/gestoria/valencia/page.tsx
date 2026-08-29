@@ -10,6 +10,7 @@ import CiudadHubMercado from '@/components/CiudadHubMercado'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import JsonLd from '@/components/JsonLd'
 import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
+import GestoriaCiudadAgenciasBanner from '@/components/GestoriaCiudadAgenciasBanner'
 import { GESTORIA_VALENCIA_FAQ } from '@/lib/gestoria-valencia-faq'
 import {
   buildFaqSchema,
@@ -105,6 +106,8 @@ export default function GestoriaValenciaPage() {
             </div>
           </div>
         </section>
+
+        <GestoriaCiudadAgenciasBanner ciudadSlug="valencia" ciudadNombre="Valencia" />
 
         {/* Por qué Valencia necesita gestoría especializada */}
         <section className="py-16 bg-white">

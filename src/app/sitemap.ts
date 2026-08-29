@@ -37,10 +37,10 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/agencias`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.8 },
   { url: `${BASE_URL}/agencias/gestoria`,    lastModified: today, changeFrequency: 'weekly',  priority: 0.85 },
   ...(['madrid', 'barcelona', 'valencia'] as const).map((ciudad) => ({
-    url: `${BASE_URL}/agencias/gestoria/${ciudad}`,
+    url: `${BASE_URL}/gestoria/${ciudad}/agencias`,
     lastModified: today,
     changeFrequency: 'weekly' as const,
-    priority: 0.82,
+    priority: 0.84,
   })),
   { url: `${BASE_URL}/sobre-nosotros`,       lastModified: today, changeFrequency: 'monthly', priority: 0.7 },
   { url: `${BASE_URL}/contacto`,             lastModified: today, changeFrequency: 'monthly', priority: 0.5 },

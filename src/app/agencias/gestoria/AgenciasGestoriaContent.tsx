@@ -27,9 +27,11 @@ import { AGENCIA_CONTRATO_PRECIO_B2B } from '@/lib/agencias-gestoria-contratos'
 
 type Props = {
   ciudad?: AgenciaGestoriaCiudadConfig
+  /** 'gestoria' = /gestoria/{ciudad}/agencias · 'agencias' = /agencias/gestoria/{ciudad} */
+  urlTree?: 'agencias' | 'gestoria'
 }
 
-export default function AgenciasGestoriaContent({ ciudad }: Props) {
+export default function AgenciasGestoriaContent({ ciudad, urlTree = 'agencias' }: Props) {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const [selectedPack, setSelectedPack] = useState<AgenciaGestoriaPack | null>(null)
   const [showContratosModal, setShowContratosModal] = useState(false)
@@ -87,29 +89,61 @@ export default function AgenciasGestoriaContent({ ciudad }: Props) {
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a1410]/90 via-[#0a1410]/75 to-[#0a1410]/60" />
         <div className="relative z-10 max-w-5xl mx-auto">
           <nav className="flex flex-wrap items-center gap-1.5 text-xs text-white/50 mb-6">
-            <Link href="/agencias" className="hover:text-gold-300 transition-colors">
-              Portal agencias
-            </Link>
-            <span>/</span>
-            <Link href="/agencias/gestoria" className="hover:text-gold-300 transition-colors">
-              Gestoría B2B
-            </Link>
-            {ciudad && (
+            {urlTree === 'gestoria' ? (
               <>
+                <Link href="/gestoria" className="hover:text-gold-300 transition-colors">
+                  Gestoría
+                </Link>
+                {ciudad && (
+                  <>
+                    <span>/</span>
+                    <Link
+                      href={`/gestoria/${ciudad.slug}`}
+                      className="hover:text-gold-300 transition-colors"
+                    >
+                      {ciudad.nombre}
+                    </Link>
+                    <span>/</span>
+                    <span className="text-white/90">Contratos agencias</span>
+                  </>
+                )}
+              </>
+            ) : (
+              <>
+                <Link href="/agencias" className="hover:text-gold-300 transition-colors">
+                  Portal agencias
+                </Link>
                 <span>/</span>
-                <span className="text-white/90">{ciudad.nombre}</span>
+                <Link href="/agencias/gestoria" className="hover:text-gold-300 transition-colors">
+                  Gestoría B2B
+                </Link>
+                {ciudad && (
+                  <>
+                    <span>/</span>
+                    <span className="text-white/90">{ciudad.nombre}</span>
+                  </>
+                )}
               </>
             )}
           </nav>
           <span className="inline-block bg-gold-500/90 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">
-            Gestoría B2B{ciudad ? ` · ${ciudad.nombre}` : ''}
+            {urlTree === 'gestoria' && ciudad
+              ? `Contratos para agencias · ${ciudad.nombre}`
+              : `Gestoría B2B${ciudad ? ` · ${ciudad.nombre}` : ''}`}
           </span>
           <h1 className="text-3xl sm:text-5xl font-bold leading-tight mb-5 max-w-3xl">
             {ciudad ? (
-              <>
-                Gestoría inmobiliaria para agencias en{' '}
-                <span className="text-gold-300">{ciudad.nombre}</span>
-              </>
+              urlTree === 'gestoria' ? (
+                <>
+                  Contratos para agencias inmobiliarias en{' '}
+                  <span className="text-gold-300">{ciudad.nombre}</span>
+                </>
+              ) : (
+                <>
+                  Gestoría inmobiliaria para agencias en{' '}
+                  <span className="text-gold-300">{ciudad.nombre}</span>
+                </>
+              )
             ) : (
               <>
                 Gestoría inmobiliaria B2B para APIs, autónomos y agencias desde{' '}
@@ -503,7 +537,7 @@ export default function AgenciasGestoriaContent({ ciudad }: Props) {
         <AgenciaContratosIndependientesModal onClose={() => setShowContratosModal(false)} />
       )}
 
-      <AgenciasGestoriaCiudadesNav current={ciudad?.slug} />
+      <AgenciasGestoriaCiudadesNav current={ciudad?.slug} urlTree={urlTree} />
 
       <section className="bg-white border-t border-gray-100 py-10 px-4 text-center">
         <p className="text-gray-600 text-sm">

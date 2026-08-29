@@ -9,6 +9,7 @@ import ComprarConSeguridad from '@/components/ComprarConSeguridad'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import JsonLd from '@/components/JsonLd'
 import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
+import GestoriaCiudadAgenciasBanner from '@/components/GestoriaCiudadAgenciasBanner'
 import { GESTORIA_BARCELONA_FAQ, gestoriaBarcelonaFaqSchema } from '@/lib/gestoria-barcelona-faq'
 import {
   buildLegalServiceSchema,
@@ -104,6 +105,8 @@ export default function GestoriaBarcelonaPage() {
             </div>
           </div>
         </section>
+
+        <GestoriaCiudadAgenciasBanner ciudadSlug="barcelona" ciudadNombre="Barcelona" />
 
         {/* Por qué Barcelona necesita gestoría especializada */}
         <section className="py-16 bg-white">

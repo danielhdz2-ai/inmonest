@@ -267,4 +267,21 @@ export const SEO_REDIRECTS: Redirect[] = [
     destination: '/pisos?ciudad=murcia&solo_particulares=true',
     permanent: true,
   },
+
+  // ═══ GESTORÍA B2B AGENCIAS — URL canónica bajo /gestoria/{ciudad}/agencias ═══
+  {
+    source: '/agencias/gestoria/madrid',
+    destination: '/gestoria/madrid/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/barcelona',
+    destination: '/gestoria/barcelona/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/valencia',
+    destination: '/gestoria/valencia/agencias',
+    permanent: true,
+  },
 ]
