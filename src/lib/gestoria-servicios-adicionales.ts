@@ -274,7 +274,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
       },
     ],
     relacionados: [
-      { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento Arras-Venta', precio: 166 },
+      { slug: 'asesoramiento-arras-venta', nombre: 'Asesoramiento Arras-Venta', precio: 350 },
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
       { slug: 'reserva-compra', nombre: 'Reserva de Compra', precio: 120 },
     ],
@@ -596,7 +596,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
 
   'asesoramiento-arras-venta': {
     nombre: 'Asesoramiento Arras hasta Escritura (Vendedores)',
-    precio: p('asesoramiento-arras-venta', 166),
+    precio: p('asesoramiento-arras-venta', 350),
     categoria: 'Servicios Premium',
     tagline: 'Para vendedores que ya firmaron arras: documentación y camino hasta notaría',
     descripcion:

@@ -137,7 +137,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
           <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
             <li><strong>Servicio completo de venta</strong> — 687€ (desde reserva hasta escritura)</li>
             <li><strong>Servicio completo de compra</strong> — 687€ (desde reserva hasta escritura)</li>
-            <li><strong>Asesoramiento arras hasta escritura</strong> — 166€ (solo para vendedores)</li>
+            <li><strong>Asesoramiento arras hasta escritura</strong> — 350€ (solo para vendedores)</li>
           </ul>
 
           {/* Sección 3 */}

@@ -282,7 +282,7 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     shortName: 'Asesoramiento venta',
     descripcion: 'Para vendedores que ya firmaron arras: documentación y coordinación hasta notaría.',
     categoria: 'packs',
-    precio: getPrecioServicio('asesoramiento-arras-venta') ?? 166,
+    precio: getPrecioServicio('asesoramiento-arras-venta') ?? 350,
     image: '/contrato1.jpg',
     landingHref: '/gestoria/asesoramiento-arras-venta',
     badge: 'Vendedores',

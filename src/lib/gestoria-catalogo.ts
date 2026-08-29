@@ -339,7 +339,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'asesoramiento-arras-venta': {
     nombre: 'Asesoramiento Arras hasta Escritura (Vendedores)',
-    precio: 166,
+    precio: 350,
     categoria: 'Servicios Premium',
     incluye: [
       'Asesor experto de Inmonest asignado',
