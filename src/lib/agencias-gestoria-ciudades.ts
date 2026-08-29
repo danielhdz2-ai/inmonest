@@ -246,6 +246,10 @@ export const AGENCIAS_GESTORIA_CIUDADES: AgenciaGestoriaCiudadConfig[] = [
   },
 ]
 
+export const AGENCIAS_GESTORIA_CIUDAD_SLUGS = AGENCIAS_GESTORIA_CIUDADES.map(
+  (c) => c.slug,
+) as AgenciaGestoriaCiudadSlug[]
+
 export function getAgenciaGestoriaCiudad(slug: string): AgenciaGestoriaCiudadConfig | undefined {
   return AGENCIAS_GESTORIA_CIUDADES.find((c) => c.slug === slug)
 }
