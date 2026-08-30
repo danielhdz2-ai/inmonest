@@ -284,4 +284,84 @@ export const SEO_REDIRECTS: Redirect[] = [
     destination: '/gestoria/valencia/agencias',
     permanent: true,
   },
+  {
+    source: '/agencias/gestoria/sevilla',
+    destination: '/gestoria/sevilla/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/malaga',
+    destination: '/gestoria/malaga/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/bilbao',
+    destination: '/gestoria/bilbao/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/zaragoza',
+    destination: '/gestoria/zaragoza/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/alicante',
+    destination: '/gestoria/alicante/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/palma',
+    destination: '/gestoria/palma/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/granada',
+    destination: '/gestoria/granada/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/murcia',
+    destination: '/gestoria/murcia/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/valladolid',
+    destination: '/gestoria/valladolid/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/coruna',
+    destination: '/gestoria/coruna/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/pamplona',
+    destination: '/gestoria/pamplona/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/salamanca',
+    destination: '/gestoria/salamanca/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/santander',
+    destination: '/gestoria/santander/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/san-sebastian',
+    destination: '/gestoria/san-sebastian/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/vitoria',
+    destination: '/gestoria/vitoria/agencias',
+    permanent: true,
+  },
+  {
+    source: '/agencias/gestoria/asturias',
+    destination: '/gestoria/asturias/agencias',
+    permanent: true,
+  },
 ]

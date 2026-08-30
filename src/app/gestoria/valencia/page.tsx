@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import GestoriaHeroFullBleed from '@/components/GestoriaHeroFullBleed'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
@@ -59,53 +60,43 @@ export default function GestoriaValenciaPage() {
       />
       <Navbar />
       <main className="min-h-screen bg-gray-50">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-black to-black text-white py-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-8">
-              <Link href="/" className="hover:text-gray-300">Inicio</Link>
-              <span>/</span>
-              <Link href="/gestoria" className="hover:text-gray-300">Gestoría</Link>
-              <span>/</span>
-              <span className="text-white font-medium">Valencia</span>
-            </nav>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  Gestoría Inmobiliaria <span className="text-gold-500">Valencia</span> para Particulares
-                </h1>
-                <p className="text-xl text-gray-300 mb-8">
-                  <strong>Gestoría inmobiliaria para particulares</strong> en Valencia. Asesor experto asignado, sin comisiones de agencia (3-5%) y contratos redactados por gestores expertos con conocimiento del mercado valenciano.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Link
-                    href="#servicios"
-                    className="bg-gold-500 text-[#1a2f1c] px-8 py-3 rounded-lg font-semibold hover:bg-gold-600 transition"
-                  >
-                    Ver servicios
-                  </Link>
-                  <Link
-                    href="/gestoria"
-                    className="border border-white/30 px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
-                  >
-                    Todos los contratos
-                  </Link>
-                </div>
-              </div>
-
-              <div className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src={ciudadImage.src}
-                  alt={ciudadImage.alt}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
+        <GestoriaHeroFullBleed
+          imageSrc={ciudadImage.src}
+          imageAlt={ciudadImage.alt}
+          breadcrumbs={[
+            { label: 'Inicio', href: '/' },
+            { label: 'Gestoría', href: '/gestoria' },
+            { label: 'Valencia' },
+          ]}
+        >
+          <div className="max-w-3xl">
+            <h1 className="mb-5 text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
+              Gestoría Inmobiliaria <span className="text-gold-300">Valencia</span>
+              <span className="block text-2xl font-bold text-white/90 sm:mt-2 sm:text-3xl">
+                para Particulares
+              </span>
+            </h1>
+            <p className="mb-8 max-w-2xl text-lg leading-relaxed text-white/85 sm:text-xl">
+              <strong>Gestoría inmobiliaria para particulares</strong> en Valencia. Asesor experto asignado, sin
+              comisiones de agencia (3-5%) y contratos redactados por gestores expertos con conocimiento del mercado
+              valenciano.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link
+                href="#servicios"
+                className="inline-flex items-center justify-center rounded-full bg-gold-500 px-8 py-3.5 text-sm font-bold text-forest-900 shadow-lg shadow-black/30 transition hover:bg-gold-400"
+              >
+                Ver servicios
+              </Link>
+              <Link
+                href="/gestoria"
+                className="inline-flex items-center justify-center rounded-full border border-white/35 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15"
+              >
+                Todos los contratos
+              </Link>
             </div>
           </div>
-        </section>
+        </GestoriaHeroFullBleed>
 
         <GestoriaCiudadAgenciasBanner ciudadSlug="valencia" ciudadNombre="Valencia" />
 

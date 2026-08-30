@@ -2,6 +2,9 @@
 
 import type { AgenciaCasoExito } from '@/lib/agencias-gestoria-trust'
 import { getCiudadImage } from '@/lib/gestoria-images'
+import {
+  AGENCIA_CIUDAD_CONTENIDO_LOCAL,
+} from '@/lib/agencias-gestoria-ciudad-local'
 
 export type AgenciaGestoriaCiudadSlug =
   | 'madrid'
@@ -13,6 +16,16 @@ export type AgenciaGestoriaCiudadSlug =
   | 'zaragoza'
   | 'alicante'
   | 'palma'
+  | 'granada'
+  | 'murcia'
+  | 'valladolid'
+  | 'coruna'
+  | 'pamplona'
+  | 'salamanca'
+  | 'santander'
+  | 'san-sebastian'
+  | 'vitoria'
+  | 'asturias'
 
 export type ContratoDestacadoCiudad = {
   nombre: string
@@ -54,6 +67,16 @@ export type AgenciaGestoriaCiudadConfig = {
   gestoriaAgenciasTitle: string
   gestoriaAgenciasDescription: string
   gestoriaAgenciasKeywords: string[]
+  /** Zonas con contexto operativo — evita contenido duplicado entre ciudades */
+  zonasDetalle?: { nombre: string; contexto: string }[]
+  /** A quién ayudamos en esta ciudad: agencia, API, autónomo, freelance */
+  perfilesLocales?: { tipo: string; titulo: string; desc: string }[]
+  /** Bloque de ayuda / operativa local diferenciada */
+  ayudaLocal?: {
+    titulo: string
+    intro: string
+    items: { titulo: string; desc: string }[]
+  }
 }
 
 const CASO_MADRID_TECNOCASA: AgenciaCasoExito = {
@@ -216,6 +239,156 @@ const CASO_PALMA_TEMPORADA: AgenciaCasoExito = {
     'En Palma y Calvià la temporada y el LAU conviven en la misma cartera. Empezamos con contratos sueltos en temporada alta y hoy tenemos pack anual con cola prioritaria.',
   persona: 'Gerente de alquileres',
   rol: 'Palma · Calvià',
+}
+
+const CASO_GRANADA_CENTRO: AgenciaCasoExito = {
+  id: 'granada-centro',
+  agencia: 'Inmobiliaria Realejo · Granada',
+  ciudad: 'Granada',
+  tipo: 'Agencia',
+  volumen: '6–9 contratos/mes',
+  pack: 'Pack Agencia',
+  cifra: '70 %',
+  cifraLabel: 'LAU y habitación en zona universitaria',
+  quote:
+    'En Realejo y Zaidín movemos mucho alquiler de habitación y LAU para estudiantes. Tener el contrato en 4–5 h nos permite reservar el piso el mismo día de la visita.',
+  persona: 'Gerente de alquileres',
+  rol: 'Realejo · Zaidín · PTS',
+}
+
+const CASO_MURCIA_HUERTA: AgenciaCasoExito = {
+  id: 'murcia-huerta',
+  agencia: 'Agencia Huerta · Murcia',
+  ciudad: 'Murcia',
+  tipo: 'Agencia',
+  volumen: '4–7 contratos/mes',
+  pack: 'Pack Agencia',
+  cifra: '110 €',
+  cifraLabel: 'arras y LAU vs 145 € retail',
+  quote:
+    'En Murcia capital y El Palmar alternamos arras en compraventa entre particulares y LAU para familias. Externalizar la redacción nos libera tiempo de captación en la Huerta.',
+  persona: 'Director comercial',
+  rol: 'Centro · El Palmar',
+}
+
+const CASO_VALLADOLID_CENTRO: AgenciaCasoExito = {
+  id: 'valladolid-centro',
+  agencia: 'Inmobiliaria Pucela · Valladolid',
+  ciudad: 'Valladolid',
+  tipo: 'Franquicia',
+  volumen: '5–7 contratos/mes',
+  pack: 'Pack Agencia',
+  cifra: '12 h',
+  cifraLabel: 'ahorradas al mes en redacción',
+  quote:
+    'En Delicias y Campo Grande cerramos arras el mismo día que el comprador dice sí. Antes esperábamos plantillas genéricas; ahora subimos datos al panel y tenemos PDF con FirmaCert en la tarde.',
+  persona: 'Responsable de operaciones',
+  rol: 'Delicias · Centro',
+}
+
+const CASO_CORUNA_MARITIMA: AgenciaCasoExito = {
+  id: 'coruna-maritima',
+  agencia: 'Inmobiliaria Orzán · A Coruña',
+  ciudad: 'A Coruña',
+  tipo: 'Agencia',
+  volumen: '4–6 contratos/mes',
+  pack: 'Pack Agente',
+  cifra: '4–5 h',
+  cifraLabel: 'entrega media LAU y arras',
+  quote:
+    'En A Coruña y la coruñesa movemos LAU para familias y arras en venta entre particulares. El panel B2B evita reescribir cláusulas de fianza en cada operación de Ensanche y Matadero.',
+  persona: 'Gerente de agencia',
+  rol: 'Ensanche · Orzán',
+}
+
+const CASO_PAMPLONA_ROCHAPEA: AgenciaCasoExito = {
+  id: 'pamplona-rochapea',
+  agencia: 'Navarra Inmobiliaria · Pamplona',
+  ciudad: 'Pamplona',
+  tipo: 'API',
+  volumen: '3–5 contratos/mes',
+  pack: 'Pack Agente',
+  cifra: '110 €',
+  cifraLabel: 'LAU corporativo vs 145 € retail',
+  quote:
+    'Como API en Pamplona priorizo LAU impecables para inquilinos corporativos y familias en Rochapea. Contratos sueltos a 110 € hasta confirmar volumen mensual.',
+  persona: 'Agente de la Propiedad Inmobiliaria',
+  rol: 'Rochapea · Iturrama',
+}
+
+const CASO_SALAMANCA_UNI: AgenciaCasoExito = {
+  id: 'salamanca-uni',
+  agencia: 'Inmobiliaria Campus · Salamanca',
+  ciudad: 'Salamanca',
+  tipo: 'Agencia',
+  volumen: '7–10 contratos/mes',
+  pack: 'Pack Agencia Plus',
+  cifra: 'Agosto',
+  cifraLabel: 'pico de habitación y temporada ERASMUS',
+  quote:
+    'En agosto y septiembre triplicamos contratos de habitación y temporada para estudiantes. Pack Plus con cola prioritaria nos evita perder reservas en Calle Toro y San Bernardo.',
+  persona: 'Socia directora',
+  rol: 'Centro · San Bernardo',
+}
+
+const CASO_SANTANDER_BAY: AgenciaCasoExito = {
+  id: 'santander-bay',
+  agencia: 'Cantábrico Inmobiliaria · Santander',
+  ciudad: 'Santander',
+  tipo: 'Agencia',
+  volumen: '4–6 contratos/mes',
+  pack: 'Pack Agencia',
+  cifra: '110 €',
+  cifraLabel: 'LAU y arras vs 145 € retail',
+  quote:
+    'En El Sardinero y centro movemos LAU para familias y arras en venta entre particulares. Externalizar redacción nos permite cerrar operaciones el mismo día de la visita.',
+  persona: 'Gerente de agencia',
+  rol: 'Centro · El Sardinero',
+}
+
+const CASO_SAN_SEBASTIAN_GROS: AgenciaCasoExito = {
+  id: 'donostia-gros',
+  agencia: 'Inmobiliaria Gros · San Sebastián',
+  ciudad: 'San Sebastián',
+  tipo: 'API',
+  volumen: '3–5 contratos/mes',
+  pack: 'Pack Agente',
+  cifra: '4–5 h',
+  cifraLabel: 'entrega media LAU y arras',
+  quote:
+    'Como API en Gros y Amara priorizo LAU impecables y arras rápidas en compraventa local. El panel B2B evita reescribir cláusulas en cada operación del País Vasco.',
+  persona: 'Agente de la Propiedad Inmobiliaria',
+  rol: 'Gros · Amara · Centro',
+}
+
+const CASO_VITORIA_ESKORIAZA: AgenciaCasoExito = {
+  id: 'vitoria-eskoriatza',
+  agencia: 'Álava Inmobiliaria · Vitoria',
+  ciudad: 'Vitoria',
+  tipo: 'Agencia',
+  volumen: '4–6 contratos/mes',
+  pack: 'Pack Agencia',
+  cifra: '12 h',
+  cifraLabel: 'ahorradas al mes en redacción',
+  quote:
+    'En Vitoria-Gasteiz y Lakua alternamos LAU para familias y arras entre particulares. Tener contrato en 4–5 h nos permite no perder compradores que quieren firmar arras el mismo día.',
+  persona: 'Directora comercial',
+  rol: 'Centro · Lakua · Zaramaga',
+}
+
+const CASO_ASTURIAS_GIJON: AgenciaCasoExito = {
+  id: 'asturias-gijon',
+  agencia: 'Inmobiliaria Cantábrica · Gijón',
+  ciudad: 'Asturias',
+  tipo: 'Agencia',
+  volumen: '5–7 contratos/mes',
+  pack: 'Pack Agencia',
+  cifra: '38 %',
+  cifraLabel: 'contratos son habitación en Gijón y Oviedo',
+  quote:
+    'En Gijón y Oviedo movemos habitación, LAU y arras. Distinguimos bien cada figura jurídica — especialmente en pisos compartidos cerca de campus y polígonos.',
+  persona: 'Gerente de alquileres',
+  rol: 'Gijón · Oviedo · Avilés',
 }
 
 export const AGENCIAS_GESTORIA_CIUDADES: AgenciaGestoriaCiudadConfig[] = [
@@ -1023,6 +1196,882 @@ export const AGENCIAS_GESTORIA_CIUDADES: AgenciaGestoriaCiudadConfig[] = [
       'pack contratos agencia Palma',
     ],
   },
+  {
+    slug: 'granada',
+    nombre: 'Granada',
+    region: 'Andalucía',
+    heroImage: getCiudadImage('granada').src,
+    heroImageAlt: 'Contratos para agencias inmobiliarias en Granada',
+    metaTitle: 'Contratos para agencias inmobiliarias en Granada — 110€ · 4–5 h',
+    metaDescription:
+      'LAU, habitación y arras B2B para agencias en Granada, Realejo y Zaidín. Mercado universitario. Desde 110 €. Entrega 4–5 h.',
+    keywords: [
+      'contratos agencias inmobiliarias Granada',
+      'gestoría B2B Granada',
+      'contrato alquiler habitación agencia Granada',
+      'LAU agencia Zaidín',
+      'arras agencia Granada',
+      'pack contratos agencia universitaria',
+    ],
+    heroH1: {
+      prefix: 'LAU y habitación para agencias en',
+      highlight: 'Granada',
+      suffix: ' y zona universitaria',
+    },
+    heroLead:
+      'Contratos B2B para agencias en Granada capital, Realejo, Zaidín y PTS. LAU, alquiler de habitación y arras en compraventa entre particulares — operativa universitaria todo el año.',
+    heroTags: [
+      'Mercado universitario',
+      'LAU + habitación',
+      'Realejo · Zaidín',
+      'Arras entre particulares',
+    ],
+    mercadoLocalTitle: 'Granada: universidad, alquiler por habitación y compraventa local',
+    mercadoLocal:
+      'Granada combina alquiler de habitación en Realejo y Zaidín, LAU para familias en PTS y arras en compraventa entre particulares en capital y área metropolitana. El calendario académico marca picos en agosto–septiembre.',
+    desafioLocal:
+      'Mezclar contrato de habitación con LAU de vivienda completa es un error frecuente en barrios universitarios — genera conflictos de convivencia y reclamaciones en junio.',
+    perfilAgencia:
+      'Agencias en centro con cartera de habitaciones, oficinas en Zaidín orientadas a estudiantes y autónomos que gestionan pisos compartidos cerca del campus.',
+    zonas: ['Centro', 'Realejo', 'Zaidín', 'PTS', 'Albaicín', 'Chana'],
+    operativaTipica: '5–9 operaciones al mes (habitación + LAU + arras)',
+    contratosDestacados: [
+      {
+        nombre: 'Alquiler de habitación',
+        desc: 'Piso compartido en Realejo y Zaidín — normas de convivencia y Código Civil bien delimitados.',
+        pct: '~40 % del volumen B2B',
+      },
+      {
+        nombre: 'Alquiler LAU vivienda',
+        desc: 'Vivienda habitual para familias en PTS y barrios consolidados.',
+        pct: '~35 % del volumen B2B',
+      },
+      {
+        nombre: 'Arras penitenciales',
+        desc: 'Compraventa entre particulares en Granada capital.',
+        pct: '~18 % del volumen B2B',
+      },
+    ],
+    confianzaIds: ['infopisos'],
+    casos: [CASO_GRANADA_CENTRO],
+    casosTitulo: 'Agencias granadinas con operativa universitaria',
+    casosSubtitulo:
+      'Habitación, LAU y arras en un panel — sin confundir figuras jurídicas en barrios de estudiantes.',
+    packsTitulo: 'Packs B2B para agencias en Granada',
+    packsSubtitulo:
+      'Pack Agencia recomendado para oficinas con 5+ contratos/mes; Plus antes del curso en agosto–septiembre.',
+    contratosSectionTitulo: 'Habitación y LAU diferenciados en Granada',
+    contratosSectionDesc:
+      'Redactamos contratos de habitación y LAU adaptados a la operativa granadina — no reutilizamos plantillas de otras capitales universitarias.',
+    contactoPlaceholder: 'Ej: 5 habitaciones, 2 LAU y 1 arras al mes en Realejo y Zaidín…',
+    faqExtra: [
+      {
+        q: '¿Gestionáis contratos de habitación para estudiantes en Granada?',
+        a: 'Sí. Redactamos alquiler de habitación con normas de convivencia, fianza y uso de zonas comunes — operativa habitual en Realejo, Zaidín y barrios del campus.',
+      },
+      {
+        q: '¿Tenéis cola prioritaria antes del inicio del curso universitario?',
+        a: 'Sí. Las agencias con Pack Agencia Plus tienen cola prioritaria B2B en agosto y septiembre, cuando se concentran reservas de habitación y temporada.',
+      },
+    ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en Granada — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'LAU, habitación y arras B2B para agencias en Granada y zona universitaria. Desde 110 €. Entrega 4–5 h. FirmaCert incluida.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias Granada',
+      'contrato habitación agencia Granada',
+      'LAU agencia Zaidín',
+      'gestoría B2B Granada universidad',
+      'pack contratos agencia Granada',
+    ],
+  },
+  {
+    slug: 'murcia',
+    nombre: 'Murcia',
+    region: 'Región de Murcia',
+    heroImage: getCiudadImage('murcia').src,
+    heroImageAlt: 'Contratos para agencias inmobiliarias en Murcia',
+    metaTitle: 'Contratos para agencias inmobiliarias en Murcia — 110€ · 4–5 h',
+    metaDescription:
+      'Arras y LAU B2B para agencias en Murcia capital, El Palmar y área metropolitana. Desde 110 €. Entrega 4–5 h. FirmaCert incluida.',
+    keywords: [
+      'contratos agencias inmobiliarias Murcia',
+      'gestoría B2B Murcia',
+      'arras agencia Murcia',
+      'LAU agencia El Palmar',
+      'contratos agencia Región de Murcia',
+      'pack contratos agencia Murcia',
+    ],
+    heroH1: {
+      prefix: 'Arras y LAU para agencias en',
+      highlight: 'Murcia',
+      suffix: ' y Huerta',
+    },
+    heroLead:
+      'Contratos B2B para agencias en Murcia capital, El Palmar, Espinardo y área metropolitana. Arras en compraventa entre particulares y LAU para familias.',
+    heroTags: [
+      'Compraventa entre particulares',
+      'LAU vivienda habitual',
+      'Murcia · El Palmar',
+      'Entrega 4–5 h',
+    ],
+    mercadoLocalTitle: 'Murcia: venta entre particulares y alquiler familiar',
+    mercadoLocal:
+      'Murcia capital y El Palmar concentran arras en compraventa entre particulares y LAU para familias. La Huerta y municipios cercanos añaden operaciones de segunda residencia y alquiler estable.',
+    desafioLocal:
+      'Sin redacción externa, muchas agencias murcianas pierden cierres porque el comprador quiere arras el mismo día y el despacho tarda una semana.',
+    perfilAgencia:
+      'Agencias en centro con cartera mixta venta-alquiler, oficinas en El Palmar orientadas a familias y autónomos API en área metropolitana.',
+    zonas: ['Centro Murcia', 'El Palmar', 'Espinardo', 'Santiago el Mayor', 'Cartagena', 'Molina de Segura'],
+    operativaTipica: '4–7 operaciones al mes (arras + LAU)',
+    contratosDestacados: [
+      {
+        nombre: 'Arras penitenciales',
+        desc: 'Compraventa entre particulares — operación más habitual en Murcia capital.',
+        pct: '~46 % del volumen B2B',
+      },
+      {
+        nombre: 'Alquiler LAU vivienda',
+        desc: 'Vivienda habitual para familias en El Palmar y Espinardo.',
+        pct: '~42 % del volumen B2B',
+      },
+      {
+        nombre: 'Contrato de reserva de compra',
+        desc: 'Bloqueo del inmueble 48–72 h antes de arras definitivas.',
+        pct: '~8 % del volumen B2B',
+      },
+    ],
+    confianzaIds: ['infopisos'],
+    casos: [CASO_MURCIA_HUERTA],
+    casosTitulo: 'Agencias murcianas que cierran arras el mismo día',
+    casosSubtitulo:
+      'Operativa en capital y Huerta donde la velocidad del contrato decide si la operación sigue.',
+    packsTitulo: 'Packs B2B para agencias en Murcia',
+    packsSubtitulo:
+      'Desde contrato suelto a 110 € hasta Pack Agencia para oficinas con 4+ operaciones mensuales.',
+    contratosSectionTitulo: 'Arras y LAU para el mercado murciano',
+    contratosSectionDesc:
+      'Contratos redactados para la operativa local — arras rápidas entre particulares y LAU adaptado a la Región de Murcia.',
+    contactoPlaceholder: 'Ej: 3 arras y 3 LAU al mes en Murcia capital y El Palmar…',
+    faqExtra: [
+      {
+        q: '¿Trabajáis con agencias en Cartagena y área metropolitana?',
+        a: 'Sí. El panel B2B cubre Murcia capital, El Palmar, Espinardo y municipios del área metropolitana con la misma tarifa agencia a 110 € por contrato suelto.',
+      },
+      {
+        q: '¿Podéis entregar arras penitenciales el mismo día en Murcia?',
+        a: 'Sí. Con documentación completa en el panel, la entrega media es 4–5 horas. Agencias en centro usan este SLA para no perder compradores.',
+      },
+    ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en Murcia — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'Arras y LAU B2B para agencias en Murcia, El Palmar y área metropolitana. Desde 110 €. Entrega 4–5 h.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias Murcia',
+      'arras agencia inmobiliaria Murcia',
+      'LAU agencia El Palmar',
+      'gestoría B2B Región de Murcia',
+      'pack contratos agencia Murcia',
+    ],
+  },
+  {
+    slug: 'valladolid',
+    nombre: 'Valladolid',
+    region: 'Castilla y León',
+    heroImage: getCiudadImage('valladolid').src,
+    heroImageAlt: 'Contratos para agencias inmobiliarias en Valladolid',
+    metaTitle: 'Contratos para agencias inmobiliarias en Valladolid — 110€ · 4–5 h',
+    metaDescription:
+      'Arras y LAU B2B para agencias en Valladolid, Delicias y Campo Grande. Desde 110 €. Entrega 4–5 h. FirmaCert incluida.',
+    keywords: [
+      'contratos agencias inmobiliarias Valladolid',
+      'gestoría B2B Valladolid',
+      'arras agencia Valladolid',
+      'LAU agencia Delicias',
+      'contratos agencia Castilla y León',
+      'pack contratos agencia Valladolid',
+    ],
+    heroH1: {
+      prefix: 'Arras y LAU para agencias en',
+      highlight: 'Valladolid',
+      suffix: ' capital',
+    },
+    heroLead:
+      'Contratos B2B para agencias en Valladolid capital, Delicias, Campo Grande y barrios residenciales. Arras entre particulares y LAU para familias y estudiantes.',
+    heroTags: [
+      'Castilla y León',
+      'Arras + LAU',
+      'Delicias · Campo Grande',
+      'Franquicias y autónomos',
+    ],
+    mercadoLocalTitle: 'Valladolid: compraventa entre particulares y alquiler estable',
+    mercadoLocal:
+      'Valladolid capital combina arras en venta entre particulares — muy habitual en Delicias y barrios consolidados — con LAU para familias y demanda de alquiler vinculada al campus universitario.',
+    desafioLocal:
+      'Las franquicias pucelanas externalizan poco la redacción y pierden horas que podrían dedicar a captación en Campo Grande y Parquesol.',
+    perfilAgencia:
+      'Franquicias en Delicias, agencias de barrio en centro y autónomos API con 2–4 operaciones mensuales en área metropolitana.',
+    zonas: ['Centro', 'Delicias', 'Campo Grande', 'Parquesol', 'La Victoria', 'Rondilla'],
+    operativaTipica: '4–7 operaciones al mes (arras + LAU)',
+    contratosDestacados: [
+      {
+        nombre: 'Arras penitenciales',
+        desc: 'Compraventa entre particulares en Delicias y barrios residenciales.',
+        pct: '~48 % del volumen B2B',
+      },
+      {
+        nombre: 'Alquiler LAU vivienda',
+        desc: 'Vivienda habitual para familias en Campo Grande y Parquesol.',
+        pct: '~40 % del volumen B2B',
+      },
+      {
+        nombre: 'Alquiler de habitación',
+        desc: 'Pisos compartidos cerca del campus — operativa en curso académico.',
+        pct: '~8 % del volumen B2B',
+      },
+    ],
+    confianzaIds: ['infopisos'],
+    casos: [CASO_VALLADOLID_CENTRO],
+    casosTitulo: 'Franquicias pucelanas con arras el mismo día',
+    casosSubtitulo:
+      'Externalizar redacción para dedicar más horas a captación en Delicias y Campo Grande.',
+    packsTitulo: 'Packs para agencias en Valladolid',
+    packsSubtitulo:
+      'Pack Agencia (36 contratos/año) encaja con oficinas de 4–6 operaciones mensuales en capital.',
+    contratosSectionTitulo: 'Arras y LAU para el mercado castellano-leonés',
+    contratosSectionDesc:
+      'Contratos redactados para la operativa vallisoletana — arras rápidas y LAU adaptado a Castilla y León.',
+    contactoPlaceholder: 'Ej: 3 arras y 2 LAU al mes en Delicias y Campo Grande…',
+    faqExtra: [
+      {
+        q: '¿Trabajáis con franquicias inmobiliarias en Valladolid?',
+        a: 'Sí. Oficinas en Delicias y Parquesol usan packs de volumen con entrega prioritaria en 4–5 horas y FirmaCert incluida en cada contrato.',
+      },
+      {
+        q: '¿Puedo probar con un contrato suelto antes del pack anual?',
+        a: 'Sí. Contrato suelto a 110 € (tarifa agencia) sin compromiso. Muchas agencias pucelanas activan pack al confirmar 3–4 operaciones mensuales.',
+      },
+    ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en Valladolid — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'Arras y LAU B2B para agencias en Valladolid, Delicias y Campo Grande. Desde 110 €. Entrega 4–5 h.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias Valladolid',
+      'arras agencia inmobiliaria Valladolid',
+      'LAU agencia Delicias',
+      'gestoría B2B Castilla y León',
+      'pack contratos agencia Valladolid',
+    ],
+  },
+  {
+    slug: 'coruna',
+    nombre: 'A Coruña',
+    region: 'Galicia',
+    heroImage: getCiudadImage('coruna').src,
+    heroImageAlt: 'Contratos para agencias inmobiliarias en A Coruña',
+    metaTitle: 'Contratos para agencias inmobiliarias en A Coruña — 110€ · 4–5 h',
+    metaDescription:
+      'Arras y LAU B2B para agencias en A Coruña, Ensanche y Orzán. Desde 110 €. Entrega 4–5 h. FirmaCert incluida.',
+    keywords: [
+      'contratos agencias inmobiliarias A Coruña',
+      'gestoría B2B Coruña',
+      'arras agencia A Coruña',
+      'LAU agencia Ensanche',
+      'contratos agencia Galicia',
+      'pack contratos agencia Coruña',
+    ],
+    heroH1: {
+      prefix: 'Arras y LAU para agencias en',
+      highlight: 'A Coruña',
+      suffix: ' y área metropolitana',
+    },
+    heroLead:
+      'Contratos B2B para agencias en A Coruña, Ensanche, Orzán y coruñesa. Arras en compraventa entre particulares y LAU para familias.',
+    heroTags: [
+      'Galicia',
+      'Arras + LAU',
+      'Ensanche · Orzán',
+      'API y agencias locales',
+    ],
+    mercadoLocalTitle: 'A Coruña: venta entre particulares y alquiler familiar',
+    mercadoLocal:
+      'A Coruña capital y la coruñesa concentran arras en compraventa entre particulares y LAU para familias en Ensanche, Orzán y barrios residenciales de expansión.',
+    desafioLocal:
+      'Agencias gallegas con poco volumen necesitan tarifa B2B sin pack anual obligatorio — contrato suelto a 110 € hasta confirmar operativa mensual.',
+    perfilAgencia:
+      'Agencias en Ensanche, autónomos API con cartera en Orzán y oficinas orientadas a venta entre particulares en área metropolitana.',
+    zonas: ['Ensanche', 'Orzán', 'Matadero', 'Cuatro Caminos', 'Elviña', 'Oleiros'],
+    operativaTipica: '3–6 operaciones al mes (arras + LAU)',
+    contratosDestacados: [
+      {
+        nombre: 'Alquiler LAU vivienda',
+        desc: 'Vivienda habitual para familias en Ensanche y Cuatro Caminos.',
+        pct: '~44 % del volumen B2B',
+      },
+      {
+        nombre: 'Arras penitenciales',
+        desc: 'Compraventa entre particulares en A Coruña y coruñesa.',
+        pct: '~42 % del volumen B2B',
+      },
+      {
+        nombre: 'Compraventa entre particulares',
+        desc: 'Documento privado cuando la venta se cierra sin arras previas.',
+        pct: '~10 % del volumen B2B',
+      },
+    ],
+    casos: [CASO_CORUNA_MARITIMA],
+    casosTitulo: 'Agencias coruñesas con operativa mixta',
+    casosSubtitulo:
+      'LAU y arras en panel B2B — desde contrato suelto hasta Pack Agente para API locales.',
+    packsTitulo: 'Packs B2B para agencias en A Coruña',
+    packsSubtitulo:
+      'Pack Agente (12 contratos/año) encaja con API y autónomos; Pack Agencia para oficinas con 4+ operaciones/mes.',
+    contratosSectionTitulo: 'Arras y LAU para el mercado gallego',
+    contratosSectionDesc:
+      'Contratos adaptados a la operativa coruñesa — sin plantillas genéricas de otras comunidades.',
+    contactoPlaceholder: 'Ej: 2 arras y 3 LAU al mes en Ensanche y Orzán…',
+    faqExtra: [
+      {
+        q: '¿Trabajáis con agentes de la propiedad inmobiliaria en Galicia?',
+        a: 'Sí. API y autónomos en A Coruña usan contrato suelto a 110 € o Pack Agente según volumen mensual, con entrega en 4–5 horas.',
+      },
+      {
+        q: '¿Cubrís también Oleiros y área metropolitana?',
+        a: 'Sí. El servicio B2B es 100 % online y cubre A Coruña capital, coruñesa y municipios del área metropolitana con la misma tarifa agencia.',
+      },
+    ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en A Coruña — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'Arras y LAU B2B para agencias en A Coruña, Ensanche y Orzán. Desde 110 €. Entrega 4–5 h.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias A Coruña',
+      'arras agencia inmobiliaria Coruña',
+      'LAU agencia Ensanche',
+      'gestoría B2B Galicia',
+      'pack contratos agencia Coruña',
+    ],
+  },
+  {
+    slug: 'pamplona',
+    nombre: 'Pamplona',
+    region: 'Navarra',
+    heroImage: getCiudadImage('pamplona').src,
+    heroImageAlt: 'Contratos para agencias inmobiliarias en Pamplona',
+    metaTitle: 'Contratos para agencias inmobiliarias en Pamplona — 110€ · 4–5 h',
+    metaDescription:
+      'LAU y arras B2B para agencias en Pamplona, Rochapea e Iturrama. Desde 110 €. Entrega 4–5 h. FirmaCert incluida.',
+    keywords: [
+      'contratos agencias inmobiliarias Pamplona',
+      'gestoría B2B Navarra',
+      'LAU agencia Pamplona',
+      'arras agencia Rochapea',
+      'contratos agencia Navarra',
+      'pack contratos agencia Pamplona',
+    ],
+    heroH1: {
+      prefix: 'LAU y arras para agencias en',
+      highlight: 'Pamplona',
+      suffix: ' y Navarra',
+    },
+    heroLead:
+      'Contratos B2B para agencias en Pamplona, Rochapea, Iturrama y barrios residenciales. LAU para familias e inquilinos corporativos y arras en compraventa local.',
+    heroTags: [
+      'Navarra',
+      'LAU + arras',
+      'Rochapea · Iturrama',
+      'API y agencias',
+    ],
+    mercadoLocalTitle: 'Pamplona: alquiler estable y compraventa entre particulares',
+    mercadoLocal:
+      'Pamplona capital combina LAU para familias en Rochapea e Iturrama con arras en venta entre particulares. La presencia de empresas e industria genera demanda de alquiler corporativo bien redactado.',
+    desafioLocal:
+      'API y agencias pequeñas en Navarra necesitan LAU impecables sin dedicar horas a reescribir cláusulas de fianza en cada operación.',
+    perfilAgencia:
+      'API en Rochapea, agencias de barrio en centro y oficinas con cartera mixta alquiler-venta en área metropolitana.',
+    zonas: ['Centro', 'Rochapea', 'Iturrama', 'San Juan', 'Buztintxuri', 'Barañáin'],
+    operativaTipica: '3–5 operaciones al mes (LAU + arras)',
+    contratosDestacados: [
+      {
+        nombre: 'Alquiler LAU vivienda',
+        desc: 'Vivienda habitual y alquiler corporativo en Rochapea e Iturrama.',
+        pct: '~50 % del volumen B2B',
+      },
+      {
+        nombre: 'Arras penitenciales',
+        desc: 'Compraventa entre particulares en Pamplona capital.',
+        pct: '~38 % del volumen B2B',
+      },
+      {
+        nombre: 'Contrato de reserva de compra',
+        desc: 'Bloqueo 48–72 h mientras se preparan arras definitivas.',
+        pct: '~7 % del volumen B2B',
+      },
+    ],
+    casos: [CASO_PAMPLONA_ROCHAPEA],
+    casosTitulo: 'API y agencias en Rochapea con LAU B2B',
+    casosSubtitulo:
+      'Contratos sueltos a 110 € o Pack Agente — operativa en Navarra sin redacción interna.',
+    packsTitulo: 'Packs B2B para agencias en Pamplona',
+    packsSubtitulo:
+      'Pack Agente para API con 3–5 contratos/mes; Pack Agencia para oficinas con cartera mixta.',
+    contratosSectionTitulo: 'LAU y arras adaptados a Navarra',
+    contratosSectionDesc:
+      'Contratos redactados para la operativa pamplonesa — LAU con cláusulas correctas y arras rápidas entre particulares.',
+    contactoPlaceholder: 'Ej: 3 LAU y 2 arras al mes en Rochapea e Iturrama…',
+    faqExtra: [
+      {
+        q: '¿Trabajáis con agentes de la propiedad inmobiliaria en Navarra?',
+        a: 'Sí. API en Pamplona usan contrato suelto a 110 € con entrega en 4–5 h. Muchos activan Pack Agente al superar 3 operaciones mensuales.',
+      },
+      {
+        q: '¿Adaptáis contratos LAU a la normativa navarra?',
+        a: 'Sí. Redactamos LAU con cláusulas adaptadas a la operativa en Navarra, incluyendo fianza, garantías y actualización de renta según normativa vigente.',
+      },
+    ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en Pamplona — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'LAU y arras B2B para agencias en Pamplona, Rochapea e Iturrama. Desde 110 €. Entrega 4–5 h.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias Pamplona',
+      'LAU agencia inmobiliaria Pamplona',
+      'arras agencia Navarra',
+      'gestoría B2B Pamplona',
+      'pack contratos agencia Navarra',
+    ],
+  },
+  {
+    slug: 'salamanca',
+    nombre: 'Salamanca',
+    region: 'Castilla y León',
+    heroImage: getCiudadImage('salamanca').src,
+    heroImageAlt: 'Contratos para agencias inmobiliarias en Salamanca',
+    metaTitle: 'Contratos para agencias inmobiliarias en Salamanca — 110€ · 4–5 h',
+    metaDescription:
+      'Habitación, LAU y arras B2B para agencias en Salamanca y zona universitaria. Desde 110 €. Entrega 4–5 h. Pico ERASMUS agosto–septiembre.',
+    keywords: [
+      'contratos agencias inmobiliarias Salamanca',
+      'gestoría B2B Salamanca',
+      'contrato habitación agencia Salamanca',
+      'LAU agencia universidad',
+      'arras agencia Salamanca',
+      'pack contratos agencia ERASMUS',
+    ],
+    heroH1: {
+      prefix: 'Habitación y LAU para agencias en',
+      highlight: 'Salamanca',
+      suffix: ' y campus',
+    },
+    heroLead:
+      'Contratos B2B para agencias en Salamanca capital, Calle Toro, San Bernardo y zona universitaria. Habitación, LAU, temporada ERASMUS y arras entre particulares.',
+    heroTags: [
+      'Mercado universitario',
+      'Habitación + LAU',
+      'Pico agosto–septiembre',
+      'Calle Toro · San Bernardo',
+    ],
+    mercadoLocalTitle: 'Salamanca: universidad, ERASMUS y compraventa local',
+    mercadoLocal:
+      'Salamanca concentra alquiler de habitación en centro y San Bernardo, LAU para familias en barrios residenciales y arras en venta entre particulares. Agosto y septiembre marcan el pico de reservas ERASMUS.',
+    desafioLocal:
+      'En temporada alta universitaria las agencias salmantinas triplican operaciones. Sin cola prioritaria B2B, se pierden reservas de habitación en las primeras semanas de curso.',
+    perfilAgencia:
+      'Agencias en Calle Toro con cartera de habitaciones, oficinas orientadas a ERASMUS y autónomos que gestionan pisos compartidos en centro histórico.',
+    zonas: ['Centro histórico', 'Calle Toro', 'San Bernardo', 'Garrido', 'Vista Alegre', 'Tejado'],
+    operativaTipica: '6–10 operaciones al mes (habitación + LAU + arras)',
+    contratosDestacados: [
+      {
+        nombre: 'Alquiler de habitación',
+        desc: 'Piso compartido en centro y San Bernardo — operativa ERASMUS y curso completo.',
+        pct: '~42 % del volumen B2B',
+      },
+      {
+        nombre: 'Alquiler LAU vivienda',
+        desc: 'Vivienda habitual para familias en Garrido y Vista Alegre.',
+        pct: '~32 % del volumen B2B',
+      },
+      {
+        nombre: 'Arras penitenciales',
+        desc: 'Compraventa entre particulares en Salamanca capital.',
+        pct: '~20 % del volumen B2B',
+      },
+    ],
+    confianzaIds: ['infopisos'],
+    casos: [CASO_SALAMANCA_UNI],
+    casosTitulo: 'Agencias salmantinas con pico ERASMUS',
+    casosSubtitulo:
+      'De contrato suelto en agosto a Pack Plus con cola prioritaria — operativa en Calle Toro y San Bernardo.',
+    packsTitulo: 'Packs B2B para agencias en Salamanca',
+    packsSubtitulo:
+      'Activa Pack Agencia Plus antes de agosto para cola prioritaria en reservas de habitación y temporada.',
+    contratosSectionTitulo: 'Habitación, LAU y arras en ciudad universitaria',
+    contratosSectionDesc:
+      'Distinguimos habitación, LAU y temporada ERASMUS — cada contrato con la figura jurídica correcta para Salamanca.',
+    contactoPlaceholder: 'Ej: 6 habitaciones, 2 LAU y 1 arras al mes en centro y San Bernardo…',
+    faqExtra: [
+      {
+        q: '¿Gestionáis contratos de habitación para estudiantes ERASMUS?',
+        a: 'Sí. Redactamos alquiler de habitación y temporada adaptados a estancias de curso y ERASMUS — operativa muy habitual en agosto y septiembre en Salamanca.',
+      },
+      {
+        q: '¿Tenéis cola prioritaria antes del inicio del curso?',
+        a: 'Sí. Pack Agencia Plus incluye cola prioritaria B2B con entrega en 4–5 h, recomendado activarlo antes de agosto para cubrir el pico universitario.',
+      },
+    ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en Salamanca — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'Habitación, LAU y arras B2B para agencias en Salamanca y zona universitaria. Desde 110 €. Entrega 4–5 h.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias Salamanca',
+      'contrato habitación agencia Salamanca',
+      'LAU agencia universidad',
+      'gestoría B2B Salamanca ERASMUS',
+      'pack contratos agencia Salamanca',
+    ],
+  },
+  {
+    slug: 'santander',
+    nombre: 'Santander',
+    region: 'Cantabria',
+    heroImage: getCiudadImage('santander').src,
+    heroImageAlt: 'Contratos para agencias inmobiliarias en Santander',
+    metaTitle: 'Contratos para agencias inmobiliarias en Santander — 110€ · 4–5 h',
+    metaDescription:
+      'LAU y arras B2B para agencias en Santander, El Sardinero y Cantabria. Temporada veraniega y venta entre particulares. Desde 110 €.',
+    keywords: [
+      'contratos agencias inmobiliarias Santander',
+      'gestoría B2B Cantabria',
+      'LAU agencia El Sardinero',
+      'arras agencia Santander',
+      'contrato temporada verano Cantabria',
+      'pack contratos agencia Santander',
+    ],
+    heroH1: {
+      prefix: 'LAU y arras para agencias en',
+      highlight: 'Santander',
+      suffix: ' y la costa cántabra',
+    },
+    heroLead:
+      'Contratos B2B para agencias en Santander capital, El Sardinero, Peñacastillo y área metropolitana. LAU anual, temporada costera y arras entre particulares cántabros.',
+    heroTags: [
+      'El Sardinero · centro',
+      'Temporada vs LAU',
+      'Cantabria',
+      'Particulares y agencias',
+    ],
+    mercadoLocalTitle: 'Santander: banca, segunda residencia y costa',
+    mercadoLocal:
+      'Santander mezcla LAU para profesionales del centro financiero, alquiler en El Sardinero en verano y arras en venta entre particulares en Peñacastillo. Cantabria no tiene el volumen de Málaga pero exige distinguir temporada de LAU.',
+    desafioLocal:
+      'En julio–agosto muchas agencias santanderinas confunden alquiler veraniego en Sardinero con LAU anual — genera reclamaciones en septiembre.',
+    perfilAgencia:
+      'Agencias en Pereda y Sardinero, autónomos en Camargo y propietarios particulares con segunda residencia en costa.',
+    zonas: ['Centro · Pereda', 'El Sardinero', 'Peñacastillo', 'Cueto', 'Camargo', 'Torrelavega'],
+    operativaTipica: '3–6 operaciones al mes (LAU + arras + temporada puntual)',
+    contratosDestacados: [
+      {
+        nombre: 'Alquiler LAU vivienda',
+        desc: 'Profesionales y familias en centro y Peñacastillo — arrendamiento anual estable.',
+        pct: '~44 % del volumen B2B',
+      },
+      {
+        nombre: 'Arras penitenciales',
+        desc: 'Venta entre particulares en Santander y extrarradio cántabro.',
+        pct: '~38 % del volumen B2B',
+      },
+      {
+        nombre: 'Alquiler por temporada',
+        desc: 'Estancia veraniega en Sardinero con causa de temporalidad — no LAU mal aplicado.',
+        pct: '~12 % del volumen B2B',
+      },
+    ],
+    casos: [CASO_SANTANDER_BAY],
+    casosTitulo: 'Agencias cántabras: centro y costa',
+    casosSubtitulo: 'LAU estable y operaciones costeras sin mezclar figuras jurídicas.',
+    packsTitulo: 'Packs B2B para agencias en Cantabria',
+    packsSubtitulo: 'Contrato suelto 110 € o Pack Agencia si superas 4 operaciones/mes en Santander.',
+    contratosSectionTitulo: 'Costa y capital con contratos distintos',
+    contratosSectionDesc:
+      'El Sardinero no se redacta igual que un LAU en Pereda: adaptamos causa y duración a cada operación cántabra.',
+    contactoPlaceholder: 'Ej: 2 LAU en centro, 1 arras y 1 temporada Sardinero al mes…',
+    faqExtra: [
+      {
+        q: '¿Redactáis temporada para alquiler veraniego en El Sardinero?',
+        a: 'Sí. Contrato de temporada con causa real para julio–agosto — distinto del LAU anual de vivienda habitual.',
+      },
+      {
+        q: '¿Atendéis autónomos sin escaparate en Cantabria?',
+        a: 'Sí. Contrato suelto a 110 €, panel online y entrega 4–5 h. Sin pack anual obligatorio.',
+      },
+    ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en Santander — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'LAU, arras y temporada B2B para agencias en Santander y Cantabria. El Sardinero y centro. Desde 110 €.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias Santander',
+      'LAU agencia Cantabria',
+      'arras agencia El Sardinero',
+      'gestoría B2B Santander',
+      'pack contratos agencia Cantabria',
+    ],
+  },
+  {
+    slug: 'san-sebastian',
+    nombre: 'San Sebastián',
+    region: 'País Vasco · Gipuzkoa',
+    heroImage: getCiudadImage('san-sebastian').src,
+    heroImageAlt: 'Contratos para agencias inmobiliarias en San Sebastián',
+    metaTitle: 'Contratos para agencias inmobiliarias en San Sebastián — 110€ · 4–5 h',
+    metaDescription:
+      'LAU y arras B2B para agencias en Donostia, Gros y Amara. Mercado de renta alta. Desde 110 €. Entrega 4–5 h.',
+    keywords: [
+      'contratos agencias inmobiliarias San Sebastián',
+      'gestoría B2B Donostia',
+      'LAU agencia Gros',
+      'arras agencia San Sebastián',
+      'API Gipuzkoa contratos',
+      'pack contratos agencia País Vasco',
+    ],
+    heroH1: {
+      prefix: 'LAU premium y arras para agencias en',
+      highlight: 'San Sebastián',
+      suffix: ' · Donostia',
+    },
+    heroLead:
+      'Contratos B2B para agencias boutique y APIs en Gros, Amara, Parte Vieja y Donostialdea. Mercado de renta alta donde un LAU mal redactado cuesta caro.',
+    heroTags: [
+      'Gros · Amara',
+      'Renta alta',
+      'API · agencia boutique',
+      '110 € tarifa agencia',
+    ],
+    mercadoLocalTitle: 'Donostia: uno de los mercados más tensionados del norte',
+    mercadoLocal:
+      'San Sebastián combina LAU en barrios premium (Antiguo, Gros), arras entre particulares con compradores locales e inversores, y operaciones corporativas en Miramon.',
+    desafioLocal:
+      'En Gros y Amara los propietarios exigen avalistas y garantías adicionales mal redactadas invalidan el contrato o generan litigios.',
+    perfilAgencia:
+      'Agencias boutique en centro, APIs con responsabilidad profesional y autónomos colaboradores en Gipuzkoa.',
+    zonas: ['Gros', 'Amara', 'Parte Vieja', 'Antiguo', 'Aiete', 'Miramon'],
+    operativaTipica: '3–5 operaciones al mes (LAU premium + arras)',
+    contratosDestacados: [
+      {
+        nombre: 'Alquiler LAU vivienda',
+        desc: 'Renta alta en Gros y Amara — garantías, avalista y actualización bien clausulados.',
+        pct: '~52 % del volumen B2B',
+      },
+      {
+        nombre: 'Arras penitenciales',
+        desc: 'Compraventa entre particulares en Parte Vieja y Antiguo.',
+        pct: '~35 % del volumen B2B',
+      },
+      {
+        nombre: 'Contrato de reserva',
+        desc: 'Bloqueo 48–72 h en operaciones con múltiples ofertas.',
+        pct: '~8 % del volumen B2B',
+      },
+    ],
+    casos: [CASO_SAN_SEBASTIAN_GROS],
+    casosTitulo: 'APIs y agencias boutique en Gros',
+    casosSubtitulo: 'LAU impecables en mercado de renta alta donostiarra.',
+    packsTitulo: 'Packs para agencias en Donostia',
+    packsSubtitulo: 'Pack Agente para API; contrato suelto para agencias boutique con bajo volumen.',
+    contratosSectionTitulo: 'LAU en mercado tensionado',
+    contratosSectionDesc:
+      'No usamos plantillas de Valladolid o Madrid: cláusulas adaptadas a rentas y garantías habituales en Gros y Amara.',
+    contactoPlaceholder: 'Ej: 3 LAU en Gros y 1 arras en Parte Vieja al mes…',
+    faqExtra: [
+      {
+        q: '¿Trabajáis con agencias boutique de bajo volumen en Donostia?',
+        a: 'Sí. Contrato suelto a 110 € sin pack anual. Ideal para 2–4 LAU/mes en Gros con redacción personalizada.',
+      },
+      {
+        q: '¿Incluís cláusulas de avalista y garantía adicional?',
+        a: 'Sí. En San Sebastián es habitual: las redactamos equilibrando propietario e inquilino según datos de la operación.',
+      },
+    ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en San Sebastián — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'LAU y arras B2B para agencias en San Sebastián, Gros y Amara. Desde 110 €. Entrega 4–5 h.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias San Sebastián',
+      'LAU agencia Donostia',
+      'arras agencia Gros',
+      'gestoría B2B Gipuzkoa',
+      'pack contratos agencia País Vasco',
+    ],
+  },
+  {
+    slug: 'vitoria',
+    nombre: 'Vitoria',
+    region: 'País Vasco · Álava',
+    heroImage: getCiudadImage('vitoria').src,
+    heroImageAlt: 'Contratos para agencias inmobiliarias en Vitoria-Gasteiz',
+    metaTitle: 'Contratos para agencias inmobiliarias en Vitoria — 110€ · 4–5 h',
+    metaDescription:
+      'LAU y arras B2B para agencias en Vitoria-Gasteiz, Lakua y Salburua. Desde 110 €. Entrega 4–5 h. FirmaCert incluida.',
+    keywords: [
+      'contratos agencias inmobiliarias Vitoria',
+      'gestoría B2B Álava',
+      'LAU agencia Lakua',
+      'arras agencia Vitoria-Gasteiz',
+      'autónomo inmobiliario Álava',
+      'pack contratos agencia Vitoria',
+    ],
+    heroH1: {
+      prefix: 'Arras y LAU para agencias en',
+      highlight: 'Vitoria-Gasteiz',
+      suffix: ' y Álava',
+    },
+    heroLead:
+      'Contratos B2B para agencias y autónomos en Vitoria capital, Lakua, Salburua y Armentia. Mercado estable de familias e industria.',
+    heroTags: [
+      'Lakua · Salburua',
+      'Arras mismo día',
+      'Agencias y autónomos',
+      'Álava',
+    ],
+    mercadoLocalTitle: 'Vitoria: estabilidad, familias e industria',
+    mercadoLocal:
+      'Vitoria-Gasteiz tiene mercado predecible: LAU en Lakua y Salburua, arras entre particulares en reventas de promociones recientes y operaciones en casco histórico con checklist urbanístico.',
+    desafioLocal:
+      'El comprador álaves suele querer arras en 24–48 h. Si el contrato tarda, compite con otra agencia de Salburua.',
+    perfilAgencia:
+      'Agencias en capital, autónomos en Llodio y particulares vendedores en Salburua sin intermediario.',
+    zonas: ['Centro · Casco Medieval', 'Lakua', 'Salburua', 'Zaramaga', 'Armentia', 'Llodio'],
+    operativaTipica: '4–6 operaciones al mes (LAU + arras)',
+    contratosDestacados: [
+      {
+        nombre: 'Arras penitenciales',
+        desc: 'Compraventa entre particulares en Salburua y Lakua — cierre rápido.',
+        pct: '~46 % del volumen B2B',
+      },
+      {
+        nombre: 'Alquiler LAU vivienda',
+        desc: 'Familias en expansión en Salburua y Zaramaga.',
+        pct: '~44 % del volumen B2B',
+      },
+      {
+        nombre: 'Compraventa privada',
+        desc: 'Documento completo cuando no hay arras previas.',
+        pct: '~7 % del volumen B2B',
+      },
+    ],
+    casos: [CASO_VITORIA_ESKORIAZA],
+    casosTitulo: 'Agencias en Lakua y Salburua',
+    casosSubtitulo: 'Arras el mismo día y LAU familiar en mercado álaves.',
+    packsTitulo: 'Packs B2B en Vitoria-Gasteiz',
+    packsSubtitulo: 'Pack Agencia para 4+ contratos/mes; suelto a 110 € para autónomos.',
+    contratosSectionTitulo: 'Operativa álavesa sin plantillas genéricas',
+    contratosSectionDesc:
+      'Salburua (vivienda nueva) no se redacta igual que el casco medieval: adaptamos cláusulas al inmueble.',
+    contactoPlaceholder: 'Ej: 2 arras y 3 LAU al mes en Lakua y Salburua…',
+    faqExtra: [
+      {
+        q: '¿Ayudáis a particulares que venden sin agencia en Álava?',
+        a: 'Sí. Redactamos arras penitenciales neutras cuando comprador y vendedor os contratan directamente.',
+      },
+      {
+        q: '¿Entrega en 4–5 h para arras urgentes?',
+        a: 'Sí. Operativa habitual en Vitoria: subes documentación al panel por la mañana y firmas arras por la tarde.',
+      },
+    ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en Vitoria — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'LAU y arras B2B para agencias en Vitoria-Gasteiz, Lakua y Salburua. Desde 110 €. Entrega 4–5 h.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias Vitoria',
+      'LAU agencia Lakua',
+      'arras agencia Álava',
+      'gestoría B2B Vitoria-Gasteiz',
+      'pack contratos agencia Álava',
+    ],
+  },
+  {
+    slug: 'asturias',
+    nombre: 'Asturias',
+    region: 'Principado de Asturias',
+    heroImage: getCiudadImage('asturias').src,
+    heroImageAlt: 'Contratos para agencias inmobiliarias en Gijón y Oviedo',
+    metaTitle: 'Contratos para agencias inmobiliarias en Asturias — 110€ · 4–5 h',
+    metaDescription:
+      'Habitación, LAU y arras B2B para agencias en Gijón, Oviedo y Avilés. Desde 110 €. Entrega 4–5 h.',
+    keywords: [
+      'contratos agencias inmobiliarias Gijón',
+      'gestoría B2B Oviedo',
+      'contrato habitación agencia Gijón',
+      'LAU agencia Avilés',
+      'arras agencia Asturias',
+      'pack contratos agencia Asturias',
+    ],
+    heroH1: {
+      prefix: 'Habitación, LAU y arras para agencias en',
+      highlight: 'Asturias',
+      suffix: ' · Gijón y Oviedo',
+    },
+    heroLead:
+      'Contratos B2B para agencias en Gijón, Oviedo, Avilés y Langreo. Habitación universitaria, LAU industrial y arras entre particulares — operativas distintas en la misma comunidad.',
+    heroTags: [
+      'Gijón · Oviedo · Avilés',
+      'Habitación + LAU',
+      'Industria y campus',
+      'Autónomos asturianos',
+    ],
+    mercadoLocalTitle: 'Asturias: industria, campus y venta entre particulares',
+    mercadoLocal:
+      'Gijón concentra habitación cerca del campus y LAU en Cimadevilla; Oviedo capital administrativa con arras entre particulares; Avilés LAU ligado a empleo industrial.',
+    desafioLocal:
+      'Usar el mismo contrato para habitación en Gijón y LAU en Oviedo es el error más frecuente de autónomos asturianos sin soporte legal.',
+    perfilAgencia:
+      'Agencias gijonesas con cartera mixta, autónomos entre Gijón y Oviedo, particulares con pisos de herencia en Langreo.',
+    zonas: ['Gijón · Centro', 'Oviedo · Uría', 'Avilés', 'Langreo', 'Mieres', 'Castrillón'],
+    operativaTipica: '5–7 operaciones al mes (habitación + LAU + arras)',
+    contratosDestacados: [
+      {
+        nombre: 'Alquiler de habitación',
+        desc: 'Campus de Gijón y Oviedo — Código Civil, no LAU mal aplicado.',
+        pct: '~36 % del volumen B2B',
+      },
+      {
+        nombre: 'Alquiler LAU vivienda',
+        desc: 'Familias en Oviedo Uría y Avilés centro.',
+        pct: '~38 % del volumen B2B',
+      },
+      {
+        nombre: 'Arras penitenciales',
+        desc: 'Venta entre particulares en Gijón y Langreo.',
+        pct: '~22 % del volumen B2B',
+      },
+    ],
+    casos: [CASO_ASTURIAS_GIJON],
+    casosTitulo: 'Agencias asturianas con triple operativa',
+    casosSubtitulo: 'Gijón habitación, Oviedo LAU, Avilés industrial — un panel, figuras distintas.',
+    packsTitulo: 'Packs B2B en Asturias',
+    packsSubtitulo: 'Pack Agencia si superas 5 contratos/mes entre Gijón y Oviedo.',
+    contratosSectionTitulo: 'Gijón no es Oviedo: contratos distintos',
+    contratosSectionDesc:
+      'Misma comunidad autónoma, operativas diferentes: habitación universitaria, LAU familiar y arras en polígono.',
+    contactoPlaceholder: 'Ej: 3 habitaciones Gijón, 2 LAU Oviedo, 1 arras Avilés al mes…',
+    faqExtra: [
+      {
+        q: '¿Redactáis habitación para estudiantes en Gijón?',
+        a: 'Sí. Contrato de habitación con convivencia — figura distinta del LAU de vivienda completa en Oviedo.',
+      },
+      {
+        q: '¿Un autónomo puede operar en Gijón y Oviedo con la misma tarifa?',
+        a: 'Sí. 110 €/contrato suelto o pack anual. Indicas municipio en el panel y adaptamos cláusulas.',
+      },
+    ],
+    gestoriaAgenciasTitle: 'Contratos para agencias inmobiliarias en Asturias — 110€ · 4–5 h',
+    gestoriaAgenciasDescription:
+      'Habitación, LAU y arras B2B para agencias en Gijón, Oviedo y Avilés. Desde 110 €. Entrega 4–5 h.',
+    gestoriaAgenciasKeywords: [
+      'contratos para agencias Gijón',
+      'LAU agencia Oviedo',
+      'habitación agencia Asturias',
+      'gestoría B2B Avilés',
+      'pack contratos agencia Asturias',
+    ],
+  },
 ]
 
 export const AGENCIAS_GESTORIA_CIUDAD_SLUGS = AGENCIAS_GESTORIA_CIUDADES.map(
@@ -1030,7 +2079,22 @@ export const AGENCIAS_GESTORIA_CIUDAD_SLUGS = AGENCIAS_GESTORIA_CIUDADES.map(
 ) as AgenciaGestoriaCiudadSlug[]
 
 export function getAgenciaGestoriaCiudad(slug: string): AgenciaGestoriaCiudadConfig | undefined {
-  return AGENCIAS_GESTORIA_CIUDADES.find((c) => c.slug === slug)
+  const base = AGENCIAS_GESTORIA_CIUDADES.find((c) => c.slug === slug)
+  if (!base) return undefined
+
+  const local = AGENCIA_CIUDAD_CONTENIDO_LOCAL[base.slug]
+  if (!local) return base
+
+  return {
+    ...base,
+    zonasDetalle: local.zonasDetalle,
+    perfilesLocales: local.perfilesLocales,
+    ayudaLocal: local.ayudaLocal,
+    faqExtra: [
+      ...base.faqExtra,
+      ...(local.faqExtraExtra ?? []),
+    ],
+  }
 }
 
 export function isAgenciaGestoriaCiudadSlug(slug: string): slug is AgenciaGestoriaCiudadSlug {

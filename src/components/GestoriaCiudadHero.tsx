@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { GestoriaImageBanner } from '@/components/ui/GestoriaImageBanner'
+import GestoriaHeroFullBleed from '@/components/GestoriaHeroFullBleed'
 
 export type GestoriaBreadcrumb = {
   label: string
@@ -34,50 +34,33 @@ export default function GestoriaCiudadHero({
   footnote,
 }: GestoriaCiudadHeroProps) {
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-12">
-      <nav className="flex items-center gap-2 text-sm text-gray-500 mb-6 flex-wrap" aria-label="Breadcrumb">
-        {breadcrumbs.map((crumb, i) => (
-          <span key={`${crumb.label}-${i}`} className="flex items-center gap-2">
-            {i > 0 && <span aria-hidden>/</span>}
-            {crumb.href ? (
-              <Link href={crumb.href} className="hover:text-gold-600 transition-colors">
-                {crumb.label}
-              </Link>
-            ) : (
-              <span className="text-gray-900 font-medium">{crumb.label}</span>
-            )}
-          </span>
-        ))}
-      </nav>
-
-      <GestoriaImageBanner imageSrc={imageSrc} imageAlt={imageAlt} imagePosition="right" size="lg">
-        <span className="inline-block bg-gold-500/20 text-gold-300 text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit border border-gold-500/30 uppercase tracking-widest">
+    <GestoriaHeroFullBleed imageSrc={imageSrc} imageAlt={imageAlt} breadcrumbs={breadcrumbs}>
+      <div className="max-w-3xl">
+        <span className="mb-5 inline-block rounded-full border border-gold-400/40 bg-gold-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-gold-200">
           {badge}
         </span>
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-3 leading-snug max-w-2xl">
-          {title}
-        </h1>
-        <p className="text-white/75 text-base sm:text-lg max-w-xl mb-5 leading-relaxed">{lead}</p>
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
-          <span className="text-3xl font-bold text-gold-400">{precio}€</span>
-          <span className="text-white/50 text-xs">{precioSuffix}</span>
+        <h1 className="mb-5 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">{title}</h1>
+        <p className="mb-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">{lead}</p>
+        <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <span className="text-3xl font-bold text-gold-400 sm:text-4xl">{precio}€</span>
+          <span className="text-xs text-white/55">{precioSuffix}</span>
         </div>
-        <div className="flex flex-col sm:flex-row flex-wrap gap-3 mb-4">
+        <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <Link
             href={solicitarHref}
-            className="inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-white hover:bg-gold-600 transition-colors"
+            className="inline-flex items-center justify-center rounded-full bg-gold-500 px-8 py-3.5 text-sm font-bold text-forest-900 shadow-lg shadow-black/30 transition hover:bg-gold-400"
           >
             {solicitarLabel ?? `Contratar — ${precio}€`}
           </Link>
           <a
             href="#gestor-daniel"
-            className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+            className="inline-flex items-center justify-center rounded-full border border-white/35 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15"
           >
             Hablar con Daniel
           </a>
         </div>
-        {footnote && <div className="text-sm text-white/60">{footnote}</div>}
-      </GestoriaImageBanner>
-    </div>
+        {footnote && <div className="text-sm text-white/65">{footnote}</div>}
+      </div>
+    </GestoriaHeroFullBleed>
   )
 }

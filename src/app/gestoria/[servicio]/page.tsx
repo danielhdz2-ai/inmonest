@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import GestoriaHeroFullBleed from '@/components/GestoriaHeroFullBleed'
 import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getServicioImages } from '@/lib/gestoria-images'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
@@ -937,42 +938,31 @@ export default async function ServicioGestoriaPage({
       <Navbar />
       <WhatsAppButton />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-6">
-        <nav className="flex items-center gap-2 text-sm text-gray-500 mb-4 flex-wrap" aria-label="Breadcrumb">
-          <Link href="/" className="hover:text-gold-600 transition-colors">Inicio</Link>
-          <span aria-hidden>/</span>
-          <Link href="/gestoria" className="hover:text-gold-600 transition-colors">Gestoría</Link>
-          <span aria-hidden>/</span>
-          <Link href="/servicios" className="hover:text-gold-600 transition-colors">Servicios</Link>
-          <span aria-hidden>/</span>
-          <span className="text-gray-900 font-medium truncate max-w-[12rem] sm:max-w-none">{data.nombre}</span>
-        </nav>
-      </div>
-
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-2 pb-12">
-        <GestoriaImageBanner
-          imageSrc={visuals.hero.src}
-          imageAlt={visuals.hero.alt}
-          imagePosition={visuals.imagePosition}
-          size="lg"
-          className="mb-12"
-        >
-          <span className="inline-block bg-gold-500/20 text-gold-300 text-xs font-bold px-3 py-1 rounded-full mb-3 w-fit border border-gold-500/30">
+      <GestoriaHeroFullBleed
+        imageSrc={visuals.hero.src}
+        imageAlt={visuals.hero.alt}
+        breadcrumbs={[
+          { label: 'Inicio', href: '/' },
+          { label: 'Gestoría', href: '/gestoria' },
+          { label: 'Servicios', href: '/servicios' },
+          { label: data.nombre },
+        ]}
+      >
+        <div className="max-w-3xl">
+          <span className="mb-5 inline-block rounded-full border border-gold-400/40 bg-gold-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-gold-200">
             {data.categoria}
           </span>
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-3 leading-snug max-w-2xl">
-            {data.nombre}
-          </h1>
-          <p className="text-white/75 text-base sm:text-lg max-w-xl mb-5 leading-relaxed">{data.tagline}</p>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
-            <span className="text-3xl font-bold text-gold-400">{data.precio} €</span>
-            <span className="text-white/50 text-xs">IVA incluido</span>
-            <span className="text-white/55 text-sm hidden sm:inline">· Entrega en 48h · PDF firmable</span>
+          <h1 className="mb-5 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">{data.nombre}</h1>
+          <p className="mb-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">{data.tagline}</p>
+          <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span className="text-3xl font-bold text-gold-400 sm:text-4xl">{data.precio} €</span>
+            <span className="text-xs text-white/55">IVA incluido</span>
+            <span className="hidden text-sm text-white/60 sm:inline">· Entrega en 48h · PDF firmable</span>
           </div>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
               href={`/gestoria/solicitar/${servicio}`}
-              className="inline-flex items-center justify-center rounded-full bg-gold-500 px-6 py-3 text-sm font-semibold text-white hover:bg-gold-600 transition-colors"
+              className="inline-flex items-center justify-center rounded-full bg-gold-500 px-8 py-3.5 text-sm font-bold text-forest-900 shadow-lg shadow-black/30 transition hover:bg-gold-400"
             >
               Solicitar ahora — {data.precio} €
             </Link>
@@ -980,13 +970,13 @@ export default async function ServicioGestoriaPage({
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center rounded-full border border-white/35 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15"
             >
               WhatsApp
             </a>
           </div>
-        </GestoriaImageBanner>
-      </div>
+        </div>
+      </GestoriaHeroFullBleed>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-12 space-y-16">
 

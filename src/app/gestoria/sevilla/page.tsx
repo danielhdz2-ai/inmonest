@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
+import GestoriaHeroFullBleed from '@/components/GestoriaHeroFullBleed'
 import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
@@ -156,38 +156,44 @@ export default function GestoriaSevillaPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-black via-black to-black text-white py-16 sm:py-24">
-        <div className="absolute inset-0 opacity-10">
-          <Image src={ciudadImage.src} alt={ciudadImage.alt} fill className="object-cover" />
-        </div>
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <div className="inline-block px-4 py-2 rounded-full bg-gold-500/20 border border-gold-500/40 mb-6">
-            <span className="text-gold-300 font-semibold text-sm">💼 Gestoría 100% Online | Especialistas en Andalucía</span>
-          </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+      <GestoriaHeroFullBleed
+        imageSrc={ciudadImage.src}
+        imageAlt={ciudadImage.alt}
+        breadcrumbs={[
+          { label: 'Inicio', href: '/' },
+          { label: 'Gestoría', href: '/gestoria' },
+          { label: 'Sevilla' },
+        ]}
+      >
+        <div className="mx-auto max-w-4xl text-center sm:text-left">
+          <span className="mb-5 inline-block rounded-full border border-gold-400/40 bg-gold-500/20 px-4 py-1.5 text-sm font-semibold text-gold-200">
+            Gestoría 100% Online | Especialistas en Andalucía
+          </span>
+          <h1 className="mb-5 text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
             Gestoría Inmobiliaria Online en <span className="text-gold-300">Sevilla</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-            <strong>Gestoría inmobiliaria para particulares</strong> en Sevilla. Contratos de alquiler, arras y compraventa redactados por <strong className="text-gold-300">gestores expertos</strong> en normativa andaluza.  
-            Sin comisiones de agencia. <strong>Contrato LAU desde {GESTORIA_PRECIOS.contratoAlquiler}€.</strong> Entrega en 48 horas.
+          <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-white/85 sm:text-xl sm:mx-0">
+            <strong>Gestoría inmobiliaria para particulares</strong> en Sevilla. Contratos de alquiler, arras y
+            compraventa redactados por <strong className="text-gold-300">gestores expertos</strong> en normativa
+            andaluza. Sin comisiones de agencia.{' '}
+            <strong>Contrato LAU desde {GESTORIA_PRECIOS.contratoAlquiler}€.</strong> Entrega en 48 horas.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:items-start">
             <Link
               href="/gestoria/solicitar/contrato-alquiler"
-              className="inline-block px-8 py-4 rounded-full bg-gold-500 hover:bg-gold-600 text-white font-bold text-lg shadow-xl transition-all transform hover:scale-105"
+              className="inline-flex items-center justify-center rounded-full bg-gold-500 px-8 py-3.5 text-sm font-bold text-forest-900 shadow-lg shadow-black/30 transition hover:bg-gold-400"
             >
               Contrato Alquiler LAU - {GESTORIA_PRECIOS.contratoAlquiler}€
             </Link>
             <Link
               href="/gestoria"
-              className="inline-block px-8 py-4 rounded-full bg-white hover:bg-gray-100 text-black font-bold text-lg shadow-xl transition-all"
+              className="inline-flex items-center justify-center rounded-full border border-white/35 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/15"
             >
               Ver todos los servicios
             </Link>
           </div>
         </div>
-      </section>
+      </GestoriaHeroFullBleed>
 
       <CiudadHubVentajasOnline ciudad="Sevilla" />
 

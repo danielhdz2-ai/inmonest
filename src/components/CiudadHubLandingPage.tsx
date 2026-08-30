@@ -1,6 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
+import GestoriaCiudadHubHero from '@/components/GestoriaCiudadHubHero'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
@@ -44,63 +44,13 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
       />
       <Navbar />
       <main className="min-h-screen bg-gray-50">
-        <section className="relative bg-gradient-to-br from-black to-black text-white py-20">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-8">
-              <Link href="/" className="hover:text-gray-300">
-                Inicio
-              </Link>
-              <span>/</span>
-              <Link href="/gestoria" className="hover:text-gray-300">
-                Gestoría
-              </Link>
-              <span>/</span>
-              <span className="text-white font-medium">{nombre}</span>
-            </nav>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-gold-500/20 text-gold-300 border border-gold-500/30 mb-4">
-                  {config.heroBadge}
-                </span>
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                  Gestoría Inmobiliaria <span className="text-gold-400">{nombre}</span> para Particulares
-                </h1>
-                <p className="text-xl text-gray-300 mb-8">{config.heroSubtitulo}</p>
-                <div className="flex flex-wrap gap-4">
-                  <Link
-                    href={solicitarLauHref}
-                    className="bg-gold-500 text-forest-900 px-8 py-3 rounded-lg font-semibold hover:bg-gold-600 transition shadow-lg"
-                  >
-                    Contrato alquiler desde {precioLau}€ →
-                  </Link>
-                  <Link
-                    href="/gestoria/solicitar/arras-penitenciales"
-                    className="bg-white/10 border border-gold-500/50 text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/15 transition"
-                  >
-                    Arras desde 145€
-                  </Link>
-                  <Link
-                    href="#servicios"
-                    className="border border-white/30 px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition"
-                  >
-                    Ver todos los servicios
-                  </Link>
-                </div>
-              </div>
-              <div className="relative h-64 lg:h-80 rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src={getCiudadImage(slug).src}
-                  alt={`Gestoría inmobiliaria en ${nombre}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+        <GestoriaCiudadHubHero
+          config={config}
+          imageSrc={getCiudadImage(slug).src}
+          imageAlt={`Gestoría inmobiliaria en ${nombre}`}
+          precioLau={precioLau}
+          solicitarLauHref={solicitarLauHref}
+        />
 
         <CiudadHubRazones ciudad={nombre} razones={config.razones} />
 
