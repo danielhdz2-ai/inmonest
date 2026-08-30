@@ -15,6 +15,654 @@ export type AgenciaCiudadContenidoLocal = {
 export const AGENCIA_CIUDAD_CONTENIDO_LOCAL: Partial<
   Record<AgenciaGestoriaCiudadSlug, AgenciaCiudadContenidoLocal>
 > = {
+  madrid: {
+    zonasDetalle: [
+      {
+        nombre: 'Salamanca · Chamberí',
+        contexto:
+          'Compraventa premium y LAU con rentas altas. Arras el mismo día de la visita cuando el comprador tiene hipoteca preaprobada en entidad madrileña.',
+      },
+      {
+        nombre: 'Las Rozas · Alcobendas',
+        contexto:
+          'Franquicias del corredor norte con 8–12 contratos/mes. Tecnocasa y oficinas similares externalizan redacción para liberar comerciales.',
+      },
+      {
+        nombre: 'Getafe · Móstoles · sur',
+        contexto:
+          'LAU familiar en municipios del sur: mayor volumen de alquiler que arras, con cláusulas Ley de Vivienda 2026 y zonas tensionadas cuando aplica.',
+      },
+      {
+        nombre: 'Vallecas · Usera',
+        contexto:
+          'Operaciones entre particulares con precio más ajustado: arras penitenciales con señal moderada y plazos cortos de escritura.',
+      },
+    ],
+    perfilesLocales: [
+      {
+        tipo: 'Franquicia multi-oficina',
+        titulo: 'Tecnocasa, Century o similar en Las Rozas o Alcobendas',
+        desc: 'Pack Agencia Plus para 8+ contratos/mes. Cola prioritaria B2B y mismo gestor en operaciones sucesivas del corredor norte.',
+      },
+      {
+        tipo: 'Agencia de barrio',
+        titulo: 'Inmobiliaria en Chamberí o Retiro con 3–6 operaciones/mes',
+        desc: 'Mix arras y LAU en barrios céntricos. Contrato suelto 110 € hasta confirmar volumen anual.',
+      },
+      {
+        tipo: 'Autónomo / colaborador API',
+        titulo: 'Agente autónomo que reparte venta y alquiler en Madrid',
+        desc: 'Sin escaparate propio: subes operación al panel y recibes PDF en 4–5 h. Ideal 2–5 contratos/mes.',
+      },
+      {
+        tipo: 'Freelance captador',
+        titulo: 'Captador freelance para varias agencias del sur',
+        desc: 'Cierras en Getafe o Móstoles y necesitas arras antes de que el cliente vuelva a Idealista.',
+      },
+    ],
+    ayudaLocal: {
+      titulo: 'Ayuda B2B en el mercado con más volumen de España',
+      intro:
+        'Madrid exige velocidad: el comprador visita tres pisos el sábado y el lunes quiere arras. Externalizar redacción no es lujo — es cómo las franquicias del corredor norte cierran 10+ operaciones/mes.',
+      items: [
+        {
+          titulo: 'LAU con zonas tensionadas',
+          desc: 'Cláusulas de actualización de renta y referencia a Ley de Vivienda 2026 cuando el inmueble está en área declarada.',
+        },
+        {
+          titulo: 'Arras penitenciales express',
+          desc: 'Entrega 4–5 h en Las Rozas, Chamberí y sur — cláusula suspensiva por hipoteca incluida.',
+        },
+        {
+          titulo: 'Panel para franquicia y autónomo',
+          desc: 'Misma tarifa 110 €/suelto; packs anuales para oficinas con volumen en capital y metropolitana.',
+        },
+      ],
+    },
+    faqExtraExtra: [
+      {
+        q: '¿Ayudáis a autónomos inmobiliarios sin franquicia en Madrid?',
+        a: 'Sí. Contrato suelto a 110 € sin pack anual. Muchos colaboradores en sur y metropolitana empiezan así y activan Pack Agente al superar 3 operaciones/mes.',
+      },
+    ],
+  },
+
+  barcelona: {
+    zonasDetalle: [
+      {
+        nombre: 'Sants · Poblenou',
+        contexto:
+          'Alquiler de habitación en pisos 80–100 m² y LAU en rehabilitaciones. Inmo Sants y agencias de barrio con alto volumen de habitación.',
+      },
+      {
+        nombre: 'Eixample · Gràcia',
+        contexto:
+          'LAU en pisos señoriales con cláusulas Decret llei 1/2022. Arras en venta entre particulares con compradores locales e internacionales.',
+      },
+      {
+        nombre: 'L\'Hospitalet · Badalona',
+        contexto:
+          'Área metropolitana: LAU familiar a renta moderada y arras en promociones recientes. Operativa distinta del Eixample.',
+      },
+      {
+        nombre: 'Sant Martí · Diagonal Mar',
+        contexto:
+          'Inquilinos corporativos y familias en zonas nuevas: contratos LAU con garantías adicionales frecuentes.',
+      },
+    ],
+    perfilesLocales: [
+      {
+        tipo: 'API colegiado',
+        titulo: 'Interhouse BCN y APIs en Eixample',
+        desc: 'LAU impecables con responsabilidad profesional. Contrato suelto o Pack Agente según cartera mensual.',
+      },
+      {
+        tipo: 'Agencia de barrio',
+        titulo: 'Inmo Sants y similares en Sants-Montjuïc',
+        desc: 'Habitación + LAU en mismo panel. Redacción adaptada a normativa catalana, no plantilla de Madrid.',
+      },
+      {
+        tipo: 'Autónomo',
+        titulo: 'Colaborador autónomo en área metropolitana',
+        desc: 'Operas en Badalona y Barcelona sin estructura de agencia: 110 €/contrato, comunicación en castellano.',
+      },
+      {
+        tipo: 'Particular propietario',
+        titulo: 'Propietario con piso compartido en Gràcia',
+        desc: 'Alquilas habitaciones legalmente: contrato bajo Código Civil con normas de convivencia, no LAU mal aplicado.',
+      },
+    ],
+    ayudaLocal: {
+      titulo: 'Soporte B2B en el área metropolitana de Barcelona',
+      intro:
+        'Barcelona no es un mercado único: habitación en Sants, LAU señorial en Eixample y operaciones en L\'Hospitalet requieren cláusulas distintas bajo normativa catalana.',
+      items: [
+        {
+          titulo: 'Habitación vs LAU de piso entero',
+          desc: 'Distinguimos figuras en pisos compartidos — error frecuente en Poblenou y Gràcia.',
+        },
+        {
+          titulo: 'Cláusulas autonómicas catalanas',
+          desc: 'IPC, fianza, subrogación y referencias al Decret llei cuando la operación lo exige.',
+        },
+        {
+          titulo: 'APIs con entrega 4–5 h',
+          desc: 'Interhouse y otros colegiados usan cola B2B para no retrasar entrada de inquilino corporativo.',
+        },
+      ],
+    },
+    faqExtraExtra: [
+      {
+        q: '¿Los contratos pueden incluir referencias a normativa catalana?',
+        a: 'Sí. Adaptamos cláusulas LAU y arras a la operación en Catalunya. Comunicación con el gestor en castellano; el PDF legal sigue siendo válido en todo el Estado.',
+      },
+    ],
+  },
+
+  valencia: {
+    zonasDetalle: [
+      {
+        nombre: 'Ruzafa · Ciutat Vella',
+        contexto:
+          'Barrios de moda: alternancia LAU anual y temporada para nómadas. Agencia Ruzafa y oficinas boutique con 5–8 contratos/mes.',
+      },
+      {
+        nombre: 'Benimaclet · Campanar',
+        contexto:
+          'Familias y estudiantes: LAU estable y habitación cerca de universidades politécnicas.',
+      },
+      {
+        nombre: 'Mislata · Torrent',
+        contexto:
+          'Área metropolitana: arras en venta entre particulares a precio accesible y LAU en promociones 2000–2010.',
+      },
+      {
+        nombre: 'Playa · Malvarrosa',
+        contexto:
+          'Temporada y segundas residencias: distinguir causa de temporalidad de LAU anual en operaciones 6–11 meses.',
+      },
+    ],
+    perfilesLocales: [
+      {
+        tipo: 'Agencia local',
+        titulo: 'Agencia en Ruzafa con mix LAU + temporada',
+        desc: 'Pack Agencia cuando superas 5 contratos/mes. Contrato suelto 110 € para probar sin compromiso anual.',
+      },
+      {
+        tipo: 'Autónomo sin pack',
+        titulo: 'Agente autónomo en Valencia capital',
+        desc: 'Hero explícito: no necesitas pack anual. Pagas por operación hasta confirmar flujo mensual.',
+      },
+      {
+        tipo: 'Freelance',
+        titulo: 'Captador freelance en Benimaclet y centro',
+        desc: 'Cierras alquiler o arras y necesitas PDF el mismo día — operativa habitual en Ciutat Vella.',
+      },
+      {
+        tipo: 'Particular',
+        titulo: 'Propietario que alquila en Malvarrosa en verano',
+        desc: 'Temporada con causa real vs LAU: te orientamos en la figura correcta antes de redactar.',
+      },
+    ],
+    ayudaLocal: {
+      titulo: 'Gestoría B2B para agencias valencianas y autónomos',
+      intro:
+        'Valencia crece en teletrabajo y temporada flexible. Las agencias de Ruzafa pierden operaciones si mezclan causas de arrendamiento en un solo contrato copiado.',
+      items: [
+        {
+          titulo: 'Temporada vs LAU en Ruzafa',
+          desc: 'Redactamos causa de temporalidad bien fundada para estancias de trabajo o estudio.',
+        },
+        {
+          titulo: 'Arras rápidas entre particulares',
+          desc: 'Comprador valenciano con hipoteca local: arras penitenciales en 4–5 h.',
+        },
+        {
+          titulo: 'Sin pack obligatorio',
+          desc: 'Autónomos empiezan a 110 €/contrato — Pack Agencia cuando el volumen lo justifica.',
+        },
+      ],
+    },
+    faqExtraExtra: [
+      {
+        q: '¿infoPISOS y agencias locales usan el mismo panel?',
+        a: 'Sí. Cualquier agencia o autónomo en Valencia accede al panel B2B con la misma tarifa. El contenido local de esta página describe operativa en Ruzafa y área metropolitana.',
+      },
+    ],
+  },
+
+  sevilla: {
+    zonasDetalle: [
+      {
+        nombre: 'Triana · Los Remedios',
+        contexto:
+          'Agencias familiares con arras el mismo día de la visita. Compraventa entre particulares muy mediada — Inmobiliaria Triana Centro tipo.',
+      },
+      {
+        nombre: 'Nervión · Sevilla Este',
+        contexto:
+          'LAU en zonas bien comunicadas con metro. Mix venta-alquiler en franquicias del este.',
+      },
+      {
+        nombre: 'Macarena · Centro',
+        contexto:
+          'Edificios históricos: arras con checklist comunidad e ITE en rehabilitaciones.',
+      },
+      {
+        nombre: 'Dos Hermanas · Alcalá',
+        contexto:
+          'Área metropolitana: LAU familiar a precio moderado y arras en promociones recientes.',
+      },
+    ],
+    perfilesLocales: [
+      {
+        tipo: 'Agencia familiar',
+        titulo: 'Inmobiliaria en Triana con 5–7 contratos/mes',
+        desc: 'Arras penitenciales express y LAU andaluz. Pack Agencia cuando confirmas volumen en Nervión y Triana.',
+      },
+      {
+        tipo: 'Autónomo',
+        titulo: 'Autónomo inmobiliario en Sevilla Este',
+        desc: 'Combinas venta y alquiler: 110 €/suelto, entrega 4–5 h, sin esperar al abogado de turno.',
+      },
+      {
+        tipo: 'Franquicia',
+        titulo: 'Franquicia en Nervión orientada a arras',
+        desc: 'Externalizas redacción y liberas comerciales para captación en Los Remedios.',
+      },
+      {
+        tipo: 'Particular vendedor',
+        titulo: 'Vendedor particular en Macarena sin agencia',
+        desc: 'Comprador encontrado en portal: redactamos arras neutras para ambas partes.',
+      },
+    ],
+    ayudaLocal: {
+      titulo: 'Cómo ayudamos en el mercado sevillano',
+      intro:
+        'En Sevilla el cuello de botella es el abogado externo que tarda 2–3 días. Mientras tanto el comprador firma arras con otra agencia de Triana.',
+      items: [
+        {
+          titulo: 'Arras el día de la visita',
+          desc: 'Panel B2B + documentación completa = PDF con FirmaCert en 4–5 h.',
+        },
+        {
+          titulo: 'LAU adaptado a Andalucía',
+          desc: 'Fianza, actualización y garantías según operativa sevillana — no plantilla de Catalunya.',
+        },
+        {
+          titulo: 'Autónomos y agencias pequeñas',
+          desc: 'Misma tarifa B2B sin exigir pack anual el primer mes.',
+        },
+      ],
+    },
+    faqExtraExtra: [
+      {
+        q: '¿Podéis sustituir al despacho externo que usaba mi agencia en Triana?',
+        a: 'Sí. Muchas agencias sevillanas migraron de abogado externo (48–72 h) a panel B2B (4–5 h) para arras y LAU. Mismo nivel de personalización, menor tiempo muerto.',
+      },
+    ],
+  },
+
+  malaga: {
+    zonasDetalle: [
+      {
+        nombre: 'Centro · Teatinos',
+        contexto:
+          'LAU para residentes y familias universitarias. Operativa estable todo el año, distinta de la costa.',
+      },
+      {
+        nombre: 'Torremolinos · Fuengirola',
+        contexto:
+          'Temporada 6–11 meses para teletrabajadores y propietarios no residentes. Error frecuente: LAU mal aplicado.',
+      },
+      {
+        nombre: 'Marbella · Estepona',
+        contexto:
+          'Segunda residencia y compradores internacionales: arras con plazos ampliados y cláusulas NIE pendiente.',
+      },
+      {
+        nombre: 'Ronda · interior',
+        contexto:
+          'Venta entre particulares local: arras penitenciales sin operativa turística.',
+      },
+    ],
+    perfilesLocales: [
+      {
+        tipo: 'Agencia Costa del Sol',
+        titulo: 'Costa Inmobiliaria Málaga y similares',
+        desc: 'Pack Agencia Plus para 6+ contratos/mes entre capital y costa. Temporada + LAU + arras en un gestor.',
+      },
+      {
+        tipo: 'Autónomo',
+        titulo: 'Autónomo que gestiona pisos de propietarios europeos',
+        desc: 'Propietario no residente en UK o Alemania: contrato en español, comunicación con gestor en castellano.',
+      },
+      {
+        tipo: 'Particular',
+        titulo: 'Propietario residente en Teatinos',
+        desc: 'LAU anual habitual — distinto del teletrabajador en Torremolinos que necesita temporada.',
+      },
+      {
+        tipo: 'Freelance',
+        titulo: 'Mediador entre particulares en Marbella',
+        desc: 'Acompañas compra sin ser agencia: revisión de arras antes de señal internacional.',
+      },
+    ],
+    ayudaLocal: {
+      titulo: 'Ayuda B2B en Málaga y Costa del Sol',
+      intro:
+        'La Costa del Sol mezcla residentes, no residentes y teletrabajadores. No es un solo mercado: Teatinos ≠ Torremolinos ≠ Marbella.',
+      items: [
+        {
+          titulo: 'Temporada vs LAU vs no residente',
+          desc: 'Cada operación con la figura jurídica correcta — clave en Fuengirola y Torremolinos.',
+        },
+        {
+          titulo: 'Arras con comprador extranjero',
+          desc: 'Plazos NIE y financiación internacional en cláusulas suspensivas.',
+        },
+        {
+          titulo: 'Normativa VFT orientativa',
+          desc: 'Si la operación toca alquiler turístico, te indicamos qué revisar (sin tramitar licencia).',
+        },
+      ],
+    },
+    faqExtraExtra: [
+      {
+        q: '¿Atendéis agencias que trabajan con propietarios británicos o nórdicos?',
+        a: 'Sí. Contratos en español (válidos ante notaría). Comunicación del gestor en castellano. Cláusulas adaptadas a plazos de compradores no residentes.',
+      },
+    ],
+  },
+
+  bilbao: {
+    zonasDetalle: [
+      {
+        nombre: 'Abando · Indautxu',
+        contexto:
+          'LAU corporativo: inquilinos de banca, consultoras y servicios. Cláusulas de garantía y subrogación frecuentes.',
+      },
+      {
+        nombre: 'Getxo · Leioa',
+        contexto:
+          'Margen izquierda residencial: arras entre particulares en chalet adosado y LAU familiar.',
+      },
+      {
+        nombre: 'Deusto · Uribarri',
+        contexto:
+          'Universidad y familias: habitación puntual y LAU en barrios consolidados.',
+      },
+      {
+        nombre: 'Barakaldo · margen derecha',
+        contexto:
+          'LAU a renta moderada y venta entre particulares en área industrial.',
+      },
+    ],
+    perfilesLocales: [
+      {
+        tipo: 'API Bizkaia',
+        titulo: 'Assessoria Getxo y APIs en margen izquierda',
+        desc: 'LAU impecables para inquilinos corporativos en Abando. Pack Agente a 110 €/contrato.',
+      },
+      {
+        tipo: 'Agencia local',
+        titulo: 'Inmobiliaria en Indautxu orientada a alquiler',
+        desc: 'Recurrente LAU mensual: un gestor aprende tus cláusulas de fianza habituales.',
+      },
+      {
+        tipo: 'Autónomo',
+        titulo: 'Autónomo inmobiliario en área metropolitana',
+        desc: 'Operas en Getxo y Bilbao sin pack anual: escalas cuando superas 3 LAU/mes.',
+      },
+      {
+        tipo: 'Particular',
+        titulo: 'Propietario en Leioa que vende sin agencia',
+        desc: 'Arras penitenciales entre particulares con checklist pre-escritura.',
+      },
+    ],
+    ayudaLocal: {
+      titulo: 'Soporte B2B en Bilbao y Bizkaia',
+      intro:
+        'El mercado bilbaíno valora precisión en LAU corporativo. Un contrato genérico retrasa la entrada del inquilino en Abando una semana.',
+      items: [
+        {
+          titulo: 'LAU inquilino corporativo',
+          desc: 'Garantías, duración y subrogación redactadas para operaciones en Indautxu.',
+        },
+        {
+          titulo: 'Arras en Getxo y Leioa',
+          desc: 'Compraventa entre particulares en margen izquierda — entrega 4–5 h.',
+        },
+        {
+          titulo: 'APIs colegiados',
+          desc: 'Pack Agente diseñado para volumen 3–5 contratos/mes con responsabilidad profesional.',
+        },
+      ],
+    },
+    faqExtraExtra: [
+      {
+        q: '¿Trabajáis con agencias del margen derecho (Barakaldo, Santurtzi)?',
+        a: 'Sí. Servicio 100 % online para toda Bizkaia. Indicas municipio en el panel y adaptamos cláusulas a la operación.',
+      },
+    ],
+  },
+
+  zaragoza: {
+    zonasDetalle: [
+      {
+        nombre: 'Actur · Delicias',
+        contexto:
+          'Franquicias y expansión urbana: arras en venta entre particulares y LAU en promociones 1990–2010.',
+      },
+      {
+        nombre: 'Centro · Paseo Independencia',
+        contexto:
+          'Rehabilitación de locales y pisos señoriales: LAU y arras con checklist ITE.',
+      },
+      {
+        nombre: 'Valdespartera · Torrero',
+        contexto:
+          'Familias jóvenes: LAU estable en barrios nuevos del sur de Zaragoza.',
+      },
+      {
+        nombre: 'Utebo · Cuarte',
+        contexto:
+          'Área metropolitana: operaciones a precio accesible, arras con hipoteca Caixa y Ibercaja.',
+      },
+    ],
+    perfilesLocales: [
+      {
+        tipo: 'Franquicia',
+        titulo: 'Inmobiliaria Ebro y franquicias en Actur',
+        desc: '4–6 contratos/mes: Pack Agencia libera 14 h/mes de redacción interna.',
+      },
+      {
+        tipo: 'Agencia familiar',
+        titulo: 'Oficina familiar en Delicias',
+        desc: 'Equipo comercial pequeño: externalizas arras y LAU para dedicar tiempo a captación.',
+      },
+      {
+        tipo: 'Autónomo',
+        titulo: 'Autónomo inmobiliario en Zaragoza capital',
+        desc: '110 €/suelto sin pack. Ideal arras + LAU en Actur y centro.',
+      },
+      {
+        tipo: 'Particular',
+        titulo: 'Vendedor particular en Valdespartera',
+        desc: 'Comprador de Idealista: arras penitenciales neutras en 4–5 h.',
+      },
+    ],
+    ayudaLocal: {
+      titulo: 'Ayuda a agencias aragonesas y autónomos',
+      intro:
+        'Zaragoza tiene volumen estable, no picos turísticos. Gana la agencia que externaliza redacción y dedica comerciales a visitas en Actur.',
+      items: [
+        {
+          titulo: 'Arras entre particulares',
+          desc: 'Operación más habitual en Actur — cláusulas penitenciales equilibradas.',
+        },
+        {
+          titulo: 'LAU en barrios en expansión',
+          desc: 'Valdespartera y Torrero: contratos para vivienda nueva con garaje comunitario.',
+        },
+        {
+          titulo: 'Franquicia sin redactor interno',
+          desc: 'Pack anual vs suelto 110 € según confirmes 3–4 operaciones/mes.',
+        },
+      ],
+    },
+    faqExtraExtra: [
+      {
+        q: '¿Conocéis la operativa de franquicias en Actur y Delicias?',
+        a: 'Sí. Inmobiliaria Ebro y oficinas similares usan packs de volumen con entrega prioritaria. Contrato suelto para probar antes del pack anual.',
+      },
+    ],
+  },
+
+  alicante: {
+    zonasDetalle: [
+      {
+        nombre: 'San Juan · Playa de San Juan',
+        contexto:
+          'Teletrabajadores y residentes: temporada 6–11 meses vs LAU anual — operativa Costa Inmobiliaria tipo.',
+      },
+      {
+        nombre: 'Centro · Explanada',
+        contexto:
+          'Arras entre particulares y LAU en edificios céntricos. Compradores locales e inversores peninsulares.',
+      },
+      {
+        nombre: 'Elche · Crevillent',
+        contexto:
+          'Área metropolitana: venta entre particulares a precio accesible y LAU familiar.',
+      },
+      {
+        nombre: 'Benidorm · torres',
+        contexto:
+          'Segunda residencia y temporada: distinguir figuras en operaciones estacionales sin confundir con LAU.',
+      },
+    ],
+    perfilesLocales: [
+      {
+        tipo: 'Agencia Costa Blanca',
+        titulo: 'Inmobiliaria Costa Blanca · Alicante',
+        desc: '7–10 contratos/mes: LAU + temporada + arras. Pack Agencia Plus en julio–agosto.',
+      },
+      {
+        tipo: 'Autónomo',
+        titulo: 'Autónomo que gestiona pisos de teletrabajadores',
+        desc: 'San Juan y Playa: temporada con causa bien redactada a 110 €/operación.',
+      },
+      {
+        tipo: 'Particular',
+        titulo: 'Propietario residente en Elche',
+        desc: 'Venta sin agencia: arras penitenciales para comprador de portal.',
+      },
+      {
+        tipo: 'Freelance',
+        titulo: 'Captador freelance en Benidorm y Alicante',
+        desc: 'Cierras en temporada alta: cola prioritaria B2B con pack activo.',
+      },
+    ],
+    ayudaLocal: {
+      titulo: 'Gestoría B2B en Alicante y Costa Blanca',
+      intro:
+        'Alicante triplica operaciones en verano. Sin cola prioritaria pierdes reservas de temporada en San Juan mientras redactas LAU genéricos.',
+      items: [
+        {
+          titulo: 'Triple operativa: LAU + temporada + arras',
+          desc: 'Un panel, tres figuras jurídicas — no tres plantillas copiadas.',
+        },
+        {
+          titulo: 'Cola prioritaria en temporada alta',
+          desc: 'Pack Agencia Plus recomendado antes de julio en Costa Blanca.',
+        },
+        {
+          titulo: 'Elche y metropolitana',
+          desc: 'Misma tarifa B2B para agencias en Elche, San Vicente y Alicante capital.',
+        },
+      ],
+    },
+    faqExtraExtra: [
+      {
+        q: '¿Gestionáis contratos para teletrabajadores en Playa de San Juan?',
+        a: 'Sí. Temporada con causa de temporalidad para estancias de trabajo 6–11 meses — operativa distinta del LAU de residente en Elche.',
+      },
+    ],
+  },
+
+  palma: {
+    zonasDetalle: [
+      {
+        nombre: 'Palma Centro · La Lonja',
+        contexto:
+          'LAU para residentes en capital. Operativa estable fuera de temporada turística.',
+      },
+      {
+        nombre: 'Calvià · Peguera',
+        contexto:
+          'Temporada alta abril–octubre: Mediterráneo Homes y agencias con pico estacional triplicado.',
+      },
+      {
+        nombre: 'Playa de Palma · Arenal',
+        contexto:
+          'Alquiler estacional vs LAU: normativa balear exige distinguir figuras — no plantilla peninsular.',
+      },
+      {
+        nombre: 'Inca · Manacor',
+        contexto:
+          'Interior de Mallorca: arras entre particulares y LAU familiar lejos de turismo costero.',
+      },
+    ],
+    perfilesLocales: [
+      {
+        tipo: 'Agencia balear',
+        titulo: 'Mediterráneo Homes · Palma y Calvià',
+        desc: 'Empezó con sueltos 110 € en temporada alta; hoy Pack anual con cola prioritaria.',
+      },
+      {
+        tipo: 'Autónomo',
+        titulo: 'Autónomo inmobiliario en Mallorca',
+        desc: 'Operas en Palma e Inca: mismo panel, cláusulas según municipio.',
+      },
+      {
+        tipo: 'Particular',
+        titulo: 'Propietario residente en Palma Centro',
+        desc: 'LAU anual habitual — distinto del apartamento turístico en Calvià.',
+      },
+      {
+        tipo: 'Freelance',
+        titulo: 'Gestor de cartera para varios propietarios',
+        desc: 'Administrar 10+ pisos sin agencia: contratos sueltos o pack según curva anual.',
+      },
+    ],
+    ayudaLocal: {
+      titulo: 'Ayuda B2B en Palma y Mallorca',
+      intro:
+        'Baleares tiene estacionalidad extrema. Las agencias palmesanas que no activan pack antes de abril pierden cierres en Calvià en mayo.',
+      items: [
+        {
+          titulo: 'Temporada vs LAU balear',
+          desc: 'Referencias a operativa en Illes Balears cuando la normativa autonómica aplica.',
+        },
+        {
+          titulo: 'Pico abril–octubre',
+          desc: 'Pack Plus + cola prioritaria B2B en meses de máxima demanda.',
+        },
+        {
+          titulo: 'Interior vs costa',
+          desc: 'Inca y Manacor no se redactan igual que Playa de Palma.',
+        },
+      ],
+    },
+    faqExtraExtra: [
+      {
+        q: '¿Activáis packs antes de temporada en Calvià?',
+        a: 'Recomendamos Pack Agencia Plus activo antes de abril. Agencias como Mediterráneo Homes usan cola prioritaria en Calvià y Peguera de mayo a septiembre.',
+      },
+    ],
+  },
+
   granada: {
     zonasDetalle: [
       {
