@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { DueDiligenceFaqItem } from './due-diligence-ciudad-faq'
 import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
+import { withGestoriaIndexRobots } from './gestoria-indexacion-tier'
 
 const BASE_URL = 'https://inmonest.com'
 export const ASESORIA_COMPRA_PRECIO = 687
@@ -865,7 +866,8 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
 }
 
 export function buildAsesoriaCompraMetadata(config: AsesoriaCompraCiudadConfig): Metadata {
-  return {
+  const path = `/gestoria/asesoria-compra-piso/${config.slug}`
+  return withGestoriaIndexRobots(path, {
     title: config.meta.title,
     description: config.meta.description,
     keywords: config.meta.keywords,
@@ -888,7 +890,7 @@ export function buildAsesoriaCompraMetadata(config: AsesoriaCompraCiudadConfig):
         },
       ],
     },
-  }
+  })
 }
 
 export function comisionAgenciaMin(precio: number) {

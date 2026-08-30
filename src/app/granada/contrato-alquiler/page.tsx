@@ -68,7 +68,7 @@ const schemaData = {
         itemListElement: [
           {
             '@type': 'Offer',
-            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler Estudiantes Granada', price: '97', priceCurrency: 'EUR' },
+            itemOffered: { '@type': 'Service', name: 'Contrato Alquiler Temporal Granada (estudiantes)', price: '165', priceCurrency: 'EUR' },
           },
           {
             '@type': 'Offer',

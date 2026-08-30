@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
+import { withGestoriaIndexRobots } from './gestoria-indexacion-tier'
 
 const BASE_URL = 'https://inmonest.com'
 export const PRESTAMO_PARTICULARES_PRECIO = 130
@@ -616,7 +617,8 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
 }
 
 export function buildPrestamoParticularesMetadata(config: PrestamoParticularesCiudadConfig): Metadata {
-  return {
+  const path = `/gestoria/prestamo-particulares/${config.slug}`
+  return withGestoriaIndexRobots(path, {
     title: config.meta.title,
     description: config.meta.description,
     keywords: config.meta.keywords,
@@ -645,5 +647,5 @@ export function buildPrestamoParticularesMetadata(config: PrestamoParticularesCi
       description: config.meta.ogDescription,
       images: [`${BASE_URL}${config.heroImage}`],
     },
-  }
+  })
 }

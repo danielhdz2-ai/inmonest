@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { DueDiligenceFaqItem } from './due-diligence-ciudad-faq'
 import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
+import { withGestoriaIndexRobots } from './gestoria-indexacion-tier'
 
 const BASE_URL = 'https://inmonest.com'
 export const VENTA_COMPLETA_PRECIO = 687
@@ -291,7 +292,8 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
 }
 
 export function buildVentaCompletaMetadata(config: VentaCompletaCiudadConfig): Metadata {
-  return {
+  const path = `/gestoria/venta-completa-reserva-escritura/${config.slug}`
+  return withGestoriaIndexRobots(path, {
     title: config.meta.title,
     description: config.meta.description,
     keywords: config.meta.keywords,
@@ -307,5 +309,5 @@ export function buildVentaCompletaMetadata(config: VentaCompletaCiudadConfig): M
       locale: 'es_ES',
       images: [{ url: `${BASE_URL}${config.heroImage}`, width: 1200, height: 630, alt: `Venta piso ${config.nombre}` }],
     },
-  }
+  })
 }

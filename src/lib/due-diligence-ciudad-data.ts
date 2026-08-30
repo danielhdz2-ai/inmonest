@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import type { DueDiligenceFaqItem } from './due-diligence-ciudad-faq'
 import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
+import { withGestoriaIndexRobots } from './gestoria-indexacion-tier'
 
 const BASE_URL = 'https://inmonest.com'
 export const DUE_DILIGENCE_PRECIO = 350
@@ -419,7 +420,8 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
 }
 
 export function buildDueDiligenceMetadata(config: DueDiligenceCiudadConfig): Metadata {
-  return {
+  const path = `/gestoria/due-diligence-precompra/${config.slug}`
+  return withGestoriaIndexRobots(path, {
     title: config.meta.title,
     description: config.meta.description,
     keywords: config.meta.keywords,
@@ -448,7 +450,7 @@ export function buildDueDiligenceMetadata(config: DueDiligenceCiudadConfig): Met
       description: config.meta.ogDescription,
       images: [`${BASE_URL}${config.heroImage}`],
     },
-  }
+  })
 }
 
 export function comisionAgenciaMin(precio: number) {

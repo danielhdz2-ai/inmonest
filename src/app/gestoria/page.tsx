@@ -9,8 +9,13 @@ import {
   buildGestoriaAggregateRatingSchema,
   buildGestoriaReviewSchema,
 } from '@/lib/gestoria-reviews-schema'
+import { getPrecioServicio } from '@/lib/gestoria-catalogo'
 
 const BASE_URL = 'https://inmonest.com'
+
+function schemaPrice(slug: string, fallback: number): string {
+  return String(getPrecioServicio(slug) ?? fallback)
+}
 
 export const metadata: Metadata = {
   title: 'Gestoría inmobiliaria online desde 61€',
@@ -95,7 +100,7 @@ const schemaJson = JSON.stringify({
           },
           offers: {
             '@type': 'Offer',
-            price: '145',
+            price: schemaPrice('arras-penitenciales', 145),
             priceCurrency: 'EUR',
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
@@ -116,7 +121,7 @@ const schemaJson = JSON.stringify({
           },
           offers: {
             '@type': 'Offer',
-            price: '145',
+            price: schemaPrice('contrato-alquiler', 145),
             priceCurrency: 'EUR',
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
@@ -137,7 +142,7 @@ const schemaJson = JSON.stringify({
           },
           offers: {
             '@type': 'Offer',
-            price: '97',
+            price: schemaPrice('alquiler-temporada', 165),
             priceCurrency: 'EUR',
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
@@ -158,7 +163,7 @@ const schemaJson = JSON.stringify({
           },
           offers: {
             '@type': 'Offer',
-            price: '61',
+            price: schemaPrice('reserva-alquiler', 61),
             priceCurrency: 'EUR',
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
@@ -179,7 +184,7 @@ const schemaJson = JSON.stringify({
           },
           offers: {
             '@type': 'Offer',
-            price: '73',
+            price: schemaPrice('rescision-alquiler', 120),
             priceCurrency: 'EUR',
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
@@ -200,7 +205,7 @@ const schemaJson = JSON.stringify({
           },
           offers: {
             '@type': 'Offer',
-            price: '350',
+            price: schemaPrice('pack-due-diligence-precompra', 350),
             priceCurrency: 'EUR',
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',
@@ -221,7 +226,7 @@ const schemaJson = JSON.stringify({
           },
           offers: {
             '@type': 'Offer',
-            price: '450',
+            price: schemaPrice('pack-arras-revision-documental', 450),
             priceCurrency: 'EUR',
             availability: 'https://schema.org/InStock',
             priceValidUntil: '2026-12-31',

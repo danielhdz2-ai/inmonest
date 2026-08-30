@@ -4,6 +4,7 @@ import { CONTRATO_ALQUILER_PREMIUM } from '@/lib/contrato-alquiler-premium-confi
 import { CONTRATO_ARRAS_PREMIUM } from '@/lib/contrato-arras-premium-config'
 import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
 import { AGENCIAS_GESTORIA_CIUDAD_SLUGS } from '@/lib/agencias-gestoria-ciudades'
+import { GESTORIA_NOINDEX_CITY_PATHS } from '@/lib/gestoria-indexacion-tier'
 // ✅ OPTIMIZACIÓN: Regenerar sitemap cada 24 horas (reducido de 1h por alto consumo CPU)
 // Con 0.5 visitas/día, regenerar cada hora es innecesario y costoso
 export const revalidate = 86400  // 24 horas (antes: 1h - consumía CPU excesivo)
@@ -269,6 +270,13 @@ const ALQUILER_PARTICULARES_PAGES: MetadataRoute.Sitemap = CIUDADES.map((ciudad)
 
 const MAX_SITEMAP_LISTINGS = 5_000
 
+function excludeGestoriaNoindex(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
+  return entries.filter((entry) => {
+    const path = entry.url.replace(BASE_URL, '')
+    return !GESTORIA_NOINDEX_CITY_PATHS.has(path)
+  })
+}
+
 async function getListingUrls(): Promise<MetadataRoute.Sitemap> {
   try {
     const supabase = createClient(
@@ -302,7 +310,7 @@ async function getListingUrls(): Promise<MetadataRoute.Sitemap> {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const listingUrls = await getListingUrls()
 
-  return [
+  return excludeGestoriaNoindex([
     ...STATIC_PAGES,
     ...GESTORIA_GENERIC_LANDING_PAGES,
     ...CIUDAD_HUB_PAGES,
@@ -313,5 +321,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...PISOS_CIUDAD_PAGES,
     ...ALQUILER_PARTICULARES_PAGES,
     ...listingUrls,
-  ]
+  ])
 }

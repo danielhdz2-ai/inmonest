@@ -9,6 +9,9 @@ import { precioLabel } from '@/lib/gestoria-precios-ui'
 const BASE_URL = 'https://inmonest.com'
 const PRECIO_HABITACION = precioLabel('alquiler-habitaciones')
 const PRECIO_LAU = precioLabel('contrato-alquiler')
+const PRECIO_RESCISION = precioLabel('rescision-alquiler')
+const PRECIO_REVISION_ARRAS = precioLabel('revision-correccion-arras')
+const PRECIO_REVISION_ALQUILER = precioLabel('revision-alquiler')
 
 export const metadata: Metadata = {
   title: 'Gestoría Inmobiliaria: Qué Es, Servicios y Precios desde 61€ [2026]',
@@ -117,7 +120,7 @@ export default function QueEsGestoriaInmobiliariaPage() {
             <li><strong>Contrato de alquiler LAU</strong> (vivienda habitual) — 145€</li>
             <li><strong>Contrato de alquiler temporal</strong> — 165€</li>
             <li><strong>Contrato de alquiler de habitación</strong> — {PRECIO_HABITACION}</li>
-            <li><strong>Contrato de rescisión de alquiler</strong> — 73€</li>
+            <li><strong>Contrato de rescisión de alquiler</strong> — {PRECIO_RESCISION}</li>
             <li><strong>Contrato de reserva de alquiler</strong> — 61€</li>
           </ul>
 
@@ -125,8 +128,8 @@ export default function QueEsGestoriaInmobiliariaPage() {
             3. Revisión Legal de Contratos
           </h3>
           <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
-            <li><strong>Revisión de contrato de arras</strong> — 60€</li>
-            <li><strong>Revisión de contrato de alquiler</strong> — 60€</li>
+            <li><strong>Revisión de contrato de arras</strong> — {PRECIO_REVISION_ARRAS}</li>
+            <li><strong>Revisión de contrato de alquiler</strong> — {PRECIO_REVISION_ALQUILER}</li>
             <li><strong>Revisión + corrección (versión corregida incluida)</strong> — 120€</li>
             <li><strong>Análisis de fraude inmobiliario</strong> — 145€ (urgente en 12h)</li>
           </ul>

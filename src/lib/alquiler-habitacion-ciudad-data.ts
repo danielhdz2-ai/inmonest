@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
+import { withGestoriaIndexRobots } from './gestoria-indexacion-tier'
 
 const BASE_URL = 'https://inmonest.com'
 export const ALQUILER_HABITACION_PRECIO = 145
@@ -467,7 +468,8 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
 }
 
 export function buildAlquilerHabitacionMetadata(config: AlquilerHabitacionCiudadConfig): Metadata {
-  return {
+  const path = `/gestoria/contrato-alquiler-habitacion/${config.slug}`
+  return withGestoriaIndexRobots(path, {
     title: config.meta.title,
     description: config.meta.description,
     keywords: config.meta.keywords,
@@ -496,5 +498,5 @@ export function buildAlquilerHabitacionMetadata(config: AlquilerHabitacionCiudad
       description: config.meta.ogDescription,
       images: [`${BASE_URL}${config.heroImage}`],
     },
-  }
+  })
 }
