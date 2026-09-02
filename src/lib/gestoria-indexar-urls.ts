@@ -20,6 +20,9 @@ const GESTORIA_HUBS = [
 export const GESTORIA_INDEXAR_PRIORIDAD_ALTA = [
   '/gestoria',
   '/contratos-inmobiliarios',
+  '/contratos-inmobiliarios/madrid',
+  '/contratos-inmobiliarios/barcelona',
+  '/contratos-inmobiliarios/valencia',
   '/gestoria/ciudades',
   '/servicios',
   '/gestoria/contrato-alquiler',

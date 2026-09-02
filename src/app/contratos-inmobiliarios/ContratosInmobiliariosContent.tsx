@@ -299,7 +299,8 @@ export default function ContratosInmobiliariosContent() {
               Contratos inmobiliarios en toda España
             </h2>
             <p className="mx-auto mt-2 max-w-xl text-sm text-gray-500">
-              Servicio online con adaptación autonómica. Próximamente landings locales por ciudad.
+              Servicio online con adaptación autonómica. Madrid, Barcelona y Valencia con landings
+              locales; más ciudades en camino.
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-2">

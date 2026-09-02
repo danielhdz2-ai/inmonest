@@ -94,9 +94,9 @@ export const CONTRATOS_DESTACADOS: ContratoDestacado[] = [
 
 /** Ciudades para bloque SEO local (fase 2: landings dedicadas) */
 export const CONTRATOS_CIUDADES_LOCAL = [
-  { slug: 'madrid', label: 'Madrid', href: '/gestoria/madrid' },
-  { slug: 'barcelona', label: 'Barcelona', href: '/gestoria/barcelona' },
-  { slug: 'valencia', label: 'Valencia', href: '/valencia/contrato-alquiler' },
+  { slug: 'madrid', label: 'Madrid', href: '/contratos-inmobiliarios/madrid' },
+  { slug: 'barcelona', label: 'Barcelona', href: '/contratos-inmobiliarios/barcelona' },
+  { slug: 'valencia', label: 'Valencia', href: '/contratos-inmobiliarios/valencia' },
   { slug: 'sevilla', label: 'Sevilla', href: '/gestoria/sevilla' },
   { slug: 'malaga', label: 'Málaga', href: '/malaga/alquiler-particulares' },
   { slug: 'bilbao', label: 'Bilbao', href: '/bilbao/contrato-alquiler' },
