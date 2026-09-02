@@ -161,6 +161,20 @@ export const SEO_REDIRECTS: Redirect[] = [
     permanent: true,
   },
 
+  // ═══ TELÉFONO MAL INDEXADO COMO PATH (GSC 404) ═══
+  {
+    source: '/:ciudad/+34745022862',
+    destination: '/gestoria/:ciudad',
+    permanent: true,
+  },
+
+  // ═══ SERVICIOS SIN LANDING PROPIA ═══
+  {
+    source: '/gestoria/reserva-compra',
+    destination: '/gestoria/solicitar/reserva-compra',
+    permanent: true,
+  },
+
   // ═══ CIUDADES — ATAJOS RAÍZ ═══
   {
     source: '/mes',
