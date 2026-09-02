@@ -24,6 +24,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: BASE_URL,                           lastModified: today, changeFrequency: 'daily',   priority: 1.0 },
   { url: `${BASE_URL}/pisos`,                lastModified: today, changeFrequency: 'daily',   priority: 0.9 },
   { url: `${BASE_URL}/gestoria`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.9 },
+  { url: `${BASE_URL}/contratos-inmobiliarios`, lastModified: today, changeFrequency: 'weekly', priority: 0.93 },
   { url: `${BASE_URL}/servicios`,            lastModified: today, changeFrequency: 'weekly',  priority: 0.92 },
   { url: `${BASE_URL}/gestoria/solicitar`,  lastModified: today, changeFrequency: 'weekly',  priority: 0.88 },
   { url: `${BASE_URL}/hipoteca`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.9 },

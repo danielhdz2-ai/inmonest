@@ -10,6 +10,12 @@ export type EnlaceSeo = {
 
 const ENLACES_HOME: EnlaceSeo[] = [
   {
+    href: '/contratos-inmobiliarios',
+    title: 'Contratos inmobiliarios',
+    description: 'Redacción profesional para particulares. Desde 61€ en 48h.',
+    badge: 'Captación',
+  },
+  {
     href: '/calculadora-gastos-alquiler',
     title: 'Calculadora gastos de alquiler',
     description: 'Coste mensual real gratis: renta + suministros.',

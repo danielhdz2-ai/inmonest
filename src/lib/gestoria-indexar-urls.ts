@@ -19,6 +19,7 @@ const GESTORIA_HUBS = [
 /** Núcleo + landings genéricas premium (prioridad máxima en GSC) */
 export const GESTORIA_INDEXAR_PRIORIDAD_ALTA = [
   '/gestoria',
+  '/contratos-inmobiliarios',
   '/gestoria/ciudades',
   '/servicios',
   '/gestoria/contrato-alquiler',
