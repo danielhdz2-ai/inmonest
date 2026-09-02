@@ -300,7 +300,7 @@ export default function ContratosInmobiliariosContent() {
             </h2>
             <p className="mx-auto mt-2 max-w-xl text-sm text-gray-500">
               Servicio online con adaptación autonómica. Landings locales en Madrid, Barcelona,
-              Valencia, Sevilla, Málaga y Bilbao.
+              Valencia, Sevilla, Málaga, Bilbao, Zaragoza, Alicante y Palma.
             </p>
           </div>
           <div className="flex flex-wrap justify-center gap-2">

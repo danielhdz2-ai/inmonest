@@ -8,6 +8,9 @@ export type ContratosInmobiliariosCiudadSlug =
   | 'sevilla'
   | 'malaga'
   | 'bilbao'
+  | 'zaragoza'
+  | 'alicante'
+  | 'palma'
 
 export type ContratosCiudadBarrio = {
   nombre: string
@@ -673,6 +676,318 @@ const BILBAO: ContratosInmobiliariosCiudadConfig = {
   enlaceAlquiler: '/bilbao/contrato-alquiler',
 }
 
+const ZARAGOZA: ContratosInmobiliariosCiudadConfig = {
+  slug: 'zaragoza',
+  nombre: 'Zaragoza',
+  region: 'Aragón',
+  metaTitle: 'Contratos inmobiliarios Zaragoza | Arras, LAU y gestoría Aragón',
+  metaDescription:
+    'Contratos inmobiliarios en Zaragoza y Aragón: arras, alquiler LAU y venta entre particulares. Delicias, Actur, Universidad. Fianza INAGA. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Zaragoza, contrato arras Zaragoza, contrato alquiler Zaragoza, gestoría inmobiliaria Aragón particulares, LAU Zaragoza',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Zaragoza',
+  heroLead:
+    'Redacción de arras, alquiler LAU y packs documentales para compradores y vendedores en Zaragoza capital, cinturón metropolitano y provincia. Mercado accesible, normativa aragonesa de fianzas y operativa entre particulares sin comisión de agencia.',
+  heroTags: ['Aragón', 'INAGA', 'Particulares', 'Delicias · Actur'],
+  heroImage: getCiudadImage('zaragoza'),
+  mercadoTitulo: 'Zaragoza: mercado en crecimiento y operaciones ágiles',
+  mercadoIntro:
+    'Zaragoza combina precios por m² más accesibles que Madrid o Barcelona con un volumen creciente de compraventa entre particulares. El riesgo no es menor: arras sin condición de hipoteca, alquileres sin depósito en INAGA o IEE caducada en edificios del casco histórico pueden bloquear la operación en el último momento.',
+  mercadoCards: [
+    {
+      titulo: 'Primera vivienda con ticket moderado',
+      desc: 'En Delicias, Actur o Romareda muchos compradores son primerizos. Redactamos arras con plazos realistas para financiación bancaria y revisión de nota simple del Registro de Zaragoza.',
+    },
+    {
+      titulo: 'Fianza ante INAGA',
+      desc: 'En Aragón la fianza legal se deposita ante el organismo autonómico (INAGA / SUELO ARAGÓN). El contrato detalla importe, plazo de ingreso y devolución al finalizar el arrendamiento.',
+    },
+    {
+      titulo: 'Perfil universitario y familiar',
+      desc: 'Romareda y Universidad concentran alquileres de habitación y LAU de larga duración. Inventario detallado y cláusulas de convivencia para evitar conflictos al cambio de curso.',
+    },
+  ],
+  normativaTitulo: 'Normativa en Zaragoza y Aragón',
+  normativaIntro:
+    'Los contratos entre particulares en Zaragoza combinan derecho estatal (LAU, Código Civil) con obligaciones autonómicas aragonesas:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante INAGA (Instituto Aragonés de Gestión Ambiental) en plazo de 30 días',
+    'IEE obligatorio en edificios de más de 50 años — habitual en el casco histórico y el Paseo Independencia',
+    'Cláusulas de arras con doble penitencial y condición suspensiva de financiación',
+    'Certificado energético vigente antes de compraventa o alquiler de larga duración',
+  ],
+  barriosTitulo: 'Barrios y zonas de Zaragoza donde adaptamos cada contrato',
+  barriosIntro:
+    'Un piso en el Casco no se formaliza igual que un adosado en Utebo. Contextualizamos según zona:',
+  barrios: [
+    {
+      nombre: 'Centro y Casco Histórico',
+      contexto: 'Rotación urbana y edificios antiguos',
+      operativa:
+        'LAU con inventario en amueblados. Arras en compraventa con revisión de IEE y certificado energético.',
+    },
+    {
+      nombre: 'Delicias y Actur',
+      contexto: 'Demanda familiar de larga duración',
+      operativa:
+        'Contratos LAU con actualización IPC, fianza INAGA y pack vendedor para quien vende sin agencia.',
+    },
+    {
+      nombre: 'Universidad y Romareda',
+      contexto: 'Perfil estudiante y joven profesional',
+      operativa:
+        'Alquiler LAU o habitación según convivencia. Arras en operaciones rápidas entre particulares.',
+    },
+    {
+      nombre: 'Las Fuentes y Torrero',
+      contexto: 'Barrios residenciales consolidados',
+      operativa:
+        'Compraventa familiar con arras penitenciales. Acompañamiento de compra por tarifa fija 687 €.',
+    },
+    {
+      nombre: 'Utebo y Cuarte de Huerva',
+      contexto: 'Cinturón metropolitano — primer vivienda',
+      operativa:
+        'Operaciones ágiles con compradores jóvenes. Due diligence documental en packs arras plus.',
+    },
+    {
+      nombre: 'La Almozara y Valdespartera',
+      contexto: 'Expansión urbana reciente',
+      operativa:
+        'Alquiler LAU en promociones nuevas. Arras con verificación de licencia de primera ocupación.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Zaragoza',
+  serviciosIntro:
+    'Desde arras en Delicias hasta alquiler LAU en Actur: gestor asignado, panel online y entrega en 48 horas.',
+  faq: [
+    {
+      q: '¿Los contratos son válidos en toda Aragón?',
+      a: 'Sí. Redactamos para Zaragoza capital y cualquier municipio aragonés. El Código Civil y la LAU son estatales; adaptamos cláusulas a la normativa autonómica de fianzas.',
+    },
+    {
+      q: '¿Qué es INAGA y por qué importa en mi contrato de alquiler?',
+      a: 'INAGA es el organismo donde se deposita la fianza legal en Aragón. El contrato debe indicar importe, plazo y responsable del ingreso para evitar problemas en la devolución.',
+    },
+    {
+      q: '¿Necesito IEE para vender un piso en el centro de Zaragoza?',
+      a: 'Sí, si el edificio tiene más de 50 años. Sin IEE vigente la operación puede bloquearse en notaría. Lo verificamos en packs vendedor y compra.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/zaragoza',
+  enlaceArras: '/zaragoza/contrato-arras',
+  enlaceAlquiler: '/zaragoza/contrato-alquiler',
+}
+
+const ALICANTE: ContratosInmobiliariosCiudadConfig = {
+  slug: 'alicante',
+  nombre: 'Alicante',
+  region: 'Comunitat Valenciana · Costa Blanca',
+  metaTitle: 'Contratos inmobiliarios Alicante | Arras, LAU y Costa Blanca',
+  metaDescription:
+    'Contratos inmobiliarios en Alicante y Costa Blanca: arras, alquiler LAU, venta entre particulares. Playa San Juan, Elche, Benidorm. Fianza AVANT. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Alicante, contrato arras Alicante, contrato alquiler Costa Blanca, gestoría inmobiliaria Alicante particulares, LAU Comunitat Valenciana',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Alicante',
+  heroLead:
+    'Gestoría especializada en Alicante capital, Costa Blanca y provincia: arras, alquiler LAU y documentación para compradores nacionales e internacionales que operan sin agencia inmobiliaria.',
+  heroTags: ['Costa Blanca', 'AVANT', 'Particulares', 'San Juan · Elche'],
+  heroImage: getCiudadImage('alicante'),
+  mercadoTitulo: 'Alicante: residencial, turismo y compradores internacionales',
+  mercadoIntro:
+    'Alicante concentra alquiler estable en Carolinas y Benalúa, demanda internacional en Playa de San Juan y operaciones rápidas en Benidorm o Torrevieja. El error más frecuente es confundir alquiler turístico con LAU habitual, o firmar arras con un comprador extranjero sin plazos para NIE e hipoteca.',
+  mercadoCards: [
+    {
+      titulo: 'LAU vs uso turístico en la costa',
+      desc: 'En Explanada, San Juan o Campello conviven pisos residenciales y alquiler turístico. Redactamos el régimen jurídico correcto según el uso real del inmueble — no mezclamos Registro de Turisme con LAU.',
+    },
+    {
+      titulo: 'Fianza AVANT y cédula de habitabilidad',
+      desc: 'La fianza legal se ingresa ante la Generalitat Valenciana (AVANT). La cédula de habitabilidad es obligatoria para alquilar y vender con garantías en la Comunitat.',
+    },
+    {
+      titulo: 'Compradores extranjeros en la Costa Blanca',
+      desc: 'Operaciones con compradores nórdicos, británicos o alemanes requieren arras con condiciones suspensivas claras para NIE, hipoteca y verificación documental antes de notaría.',
+    },
+  ],
+  normativaTitulo: 'Qué debe cubrir tu contrato en Alicante',
+  normativaIntro:
+    'En Alicante y provincia aplican LAU, Ley de Vivienda 2026 y normativa valenciana de fianzas, más matices propios del mercado costero:',
+  normativaPuntos: [
+    'Depósito de fianza ante AVANT (Generalitat Valenciana) en alquileres LAU de vivienda habitual',
+    'Cédula de habitabilidad vigente — requisito para compraventa y alquiler en la Comunitat',
+    'Distinción estricta entre arrendamiento LAU y alquiler turístico con Registro de Turisme',
+    'Cláusulas de arras con plazos para NIE e hipoteca en operaciones con compradores no residentes',
+  ],
+  barriosTitulo: 'Zonas de Alicante y Costa Blanca',
+  barriosIntro:
+    'Cada zona de Alicante tiene un perfil de operación distinto. No usamos el mismo texto para el centro que para Playa de San Juan:',
+  barrios: [
+    {
+      nombre: 'Centro y Explanada',
+      contexto: 'Alquiler urbano y rotación alta',
+      operativa:
+        'LAU con cláusulas de mascotas y subarriendo. Arras en compraventa de pisos del casco con revisión de cédula.',
+    },
+    {
+      nombre: 'Playa de San Juan y Campello',
+      contexto: 'Costa — habitual vs turístico',
+      operativa:
+        'Análisis del uso real del inmueble antes de redactar. Arras en segundas residencias con due diligence.',
+    },
+    {
+      nombre: 'Carolinas y Benalúa',
+      contexto: 'Alquiler residencial estable',
+      operativa:
+        'LAU de larga duración con fianza AVANT. Pack vendedor para propietarios que enajenan sin agencia.',
+    },
+    {
+      nombre: 'Elche y San Vicente',
+      contexto: 'Área metropolitana — demanda familiar',
+      operativa:
+        'Compraventa entre particulares con arras penitenciales. Verificación registral y cargas antes de señal.',
+    },
+    {
+      nombre: 'Benidorm y Torrevieja',
+      contexto: 'Ticket medio e inversión costera',
+      operativa:
+        'Pack Arras Plus Comprador con revisión documental. Cláusulas en operaciones con compradores internacionales.',
+    },
+    {
+      nombre: 'Mutxamel y San Juan de Alicante',
+      contexto: 'Periferia residencial accesible',
+      operativa:
+        'Alquiler LAU familiar. Arras en promociones recientes con licencia de primera ocupación.',
+    },
+  ],
+  serviciosTitulo: 'Contratos inmobiliarios en Alicante y alrededores',
+  serviciosIntro:
+    'Operaciones en Alicante capital, Costa Blanca o interior de provincia: un gestor conoce tu expediente de principio a fin.',
+  faq: [
+    {
+      q: '¿Atendéis operaciones en Benidorm, Elche o Torrevieja?',
+      a: 'Sí. El servicio es 100% online en toda la provincia de Alicante y Costa Blanca. Adaptamos referencias registrales al municipio del inmueble.',
+    },
+    {
+      q: '¿Cómo evitáis confundir alquiler turístico con LAU?',
+      a: 'Analizamos el uso previsto del inmueble y redactamos el contrato bajo el régimen jurídico correcto. Un LAU mal aplicado a uso turístico puede anular cláusulas enteras y acarrear sanciones.',
+    },
+    {
+      q: '¿Puedo firmar arras si el comprador es extranjero sin NIE definitivo?',
+      a: 'Sí. Incluimos condiciones suspensivas y plazos realistas en las arras mientras se regulariza la documentación del comprador.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/alicante',
+  enlaceArras: '/alicante/contrato-arras',
+  enlaceAlquiler: '/alicante/contrato-alquiler',
+}
+
+const PALMA: ContratosInmobiliariosCiudadConfig = {
+  slug: 'palma',
+  nombre: 'Palma',
+  region: 'Illes Balears · Mallorca',
+  metaTitle: 'Contratos inmobiliarios Palma | LAU, arras y Baleares',
+  metaDescription:
+    'Contratos inmobiliarios en Palma e Illes Balears: LAU, fianza IBAVI, arras y venta entre particulares. Santa Catalina, Calvià, zona tensionada. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Palma, contrato alquiler Mallorca, contrato arras Baleares, gestoría inmobiliaria Palma particulares, LAU Illes Balears',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Palma',
+  heroLead:
+    'Redacción profesional de arras y alquiler LAU en Palma, Calvià, Manacor y resto de Baleares. Incorporamos fianza IBAVI, índice de referencia en zona tensionada y particularidades del mercado insular más regulado de España.',
+  heroTags: ['Illes Balears', 'IBAVI', 'Zona tensionada', 'Particulares'],
+  heroImage: getCiudadImage('palma'),
+  mercadoTitulo: 'Palma: uno de los mercados más caros y regulados',
+  mercadoIntro:
+    'Palma supera los 4.000 €/m² en zonas como Santa Catalina o el Born, con normativa balear específica: zona tensionada con índice de referencia obligatorio, moratoria de licencias turísticas (ETV) y depósito de fianza ante IBAVI. Un contrato genérico no refleja estos matices.',
+  mercadoCards: [
+    {
+      titulo: 'Zona tensionada e índice de referencia',
+      desc: 'Palma está declarada zona tensionada. Los contratos LAU deben respetar el índice del Govern Balear. Grandes tenedores tienen limitaciones adicionales de precio que incorporamos según tu situación.',
+    },
+    {
+      titulo: 'LAU habitual vs alquiler turístico (ETV)',
+      desc: 'Baleares tiene la regulación turística más restrictiva de España. Un contrato LAU no sirve para alquilar a turistas en Airbnb — son documentos y regímenes completamente distintos.',
+    },
+    {
+      titulo: 'Fianza IBAVI y cédula d\'habitabilitat',
+      desc: 'La fianza legal se deposita ante el Institut Balear de l\'Habitatge en 30 días. La cédula de habitabilidad es obligatoria para vender y alquilar en las islas.',
+    },
+  ],
+  normativaTitulo: 'Particularidades en Palma y las Illes Balears',
+  normativaIntro:
+    'Los contratos inmobiliarios en Palma deben reflejar derecho estatal y normativa autonómica balear:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante IBAVI en plazo de 30 días desde la firma',
+    'Índice de referencia de precios del Govern Balear en zona tensionada de Palma',
+    'Distinción estricta entre arrendamiento LAU y alquiler turístico con licencia ETV',
+    'Cédula d\'habitabilitat vigente antes de compraventa o alquiler de larga duración',
+  ],
+  barriosTitulo: 'Barrios de Palma y área metropolitana',
+  barriosIntro:
+    'Desde Santa Catalina hasta Calvià, cada zona tiene dinámica de alquiler y compraventa distinta:',
+  barrios: [
+    {
+      nombre: 'Santa Catalina y el Born',
+      contexto: 'Alta demanda y rentas elevadas',
+      operativa:
+        'LAU con índice de referencia en zona tensionada. Arras en compraventa con ticket alto y revisión documental integral.',
+    },
+    {
+      nombre: 'Eixample y Son Espanyolet',
+      contexto: 'Residencial consolidado',
+      operativa:
+        'Alquiler LAU de larga duración, inventario en amueblados. Fianza IBAVI y devolución documentada.',
+    },
+    {
+      nombre: 'Portixol y El Terreno',
+      contexto: 'Costa urbana y segunda residencia',
+      operativa:
+        'Distinción habitual vs temporada. Arras en operaciones con compradores internacionales.',
+    },
+    {
+      nombre: 'Son Cladera y Pere Garau',
+      contexto: 'Demanda accesible y familiar',
+      operativa:
+        'Compraventa entre particulares con arras penitenciales. Acompañamiento de compra por tarifa fija 687 €.',
+    },
+    {
+      nombre: 'Calvià y Marratxí',
+      contexto: 'Área metropolitana de lujo',
+      operativa:
+        'Operaciones de alto valor con due diligence documental. Pack vendedor para enajenación sin agencia.',
+    },
+    {
+      nombre: 'Manacor e Inca (interior)',
+      contexto: 'Mercado insular fuera de Palma',
+      operativa:
+        'Arras en fincas y viviendas unifamiliares. Mismo marco legal balear con adaptación municipal.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Palma',
+  serviciosIntro:
+    'Arras en Santa Catalina, alquiler LAU en Son Espanyolet o venta sin agencia en Calvià: precio cerrado, panel de seguimiento y gestor asignado.',
+  faq: [
+    {
+      q: '¿El contrato es válido en Menorca, Ibiza y Formentera?',
+      a: 'Sí. Redactamos para Palma y cualquier municipio de las Illes Balears. Adaptamos cláusulas a la normativa autonómica balear de fianzas e IBAVI.',
+    },
+    {
+      q: '¿Qué es IBAVI y cuándo debo depositar la fianza?',
+      a: 'IBAVI es el organismo donde se deposita la fianza legal en Baleares. El propietario tiene 30 días desde la firma del contrato. El incumplimiento puede acarrear sanciones.',
+    },
+    {
+      q: '¿Puedo usar un contrato LAU para alquilar en Airbnb?',
+      a: 'No. El alquiler turístico requiere licencia ETV y régimen distinto al LAU. Mezclar ambos puede anular cláusulas y acarrear sanciones en una de las comunidades más reguladas de España.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/palma',
+  enlaceArras: '/palma/contrato-arras',
+  enlaceAlquiler: '/palma/contrato-alquiler',
+}
+
 export const CONTRATOS_INMOBILIARIOS_CIUDADES: Record<
   ContratosInmobiliariosCiudadSlug,
   ContratosInmobiliariosCiudadConfig
@@ -683,6 +998,9 @@ export const CONTRATOS_INMOBILIARIOS_CIUDADES: Record<
   sevilla: SEVILLA,
   malaga: MALAGA,
   bilbao: BILBAO,
+  zaragoza: ZARAGOZA,
+  alicante: ALICANTE,
+  palma: PALMA,
 }
 
 export const CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS = Object.keys(

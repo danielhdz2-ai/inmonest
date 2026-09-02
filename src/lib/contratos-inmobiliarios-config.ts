@@ -100,6 +100,7 @@ export const CONTRATOS_CIUDADES_LOCAL = [
   { slug: 'sevilla', label: 'Sevilla', href: '/contratos-inmobiliarios/sevilla' },
   { slug: 'malaga', label: 'Málaga', href: '/contratos-inmobiliarios/malaga' },
   { slug: 'bilbao', label: 'Bilbao', href: '/contratos-inmobiliarios/bilbao' },
-  { slug: 'zaragoza', label: 'Zaragoza', href: '/zaragoza/contrato-alquiler' },
-  { slug: 'alicante', label: 'Alicante', href: '/gestoria/alicante' },
+  { slug: 'zaragoza', label: 'Zaragoza', href: '/contratos-inmobiliarios/zaragoza' },
+  { slug: 'alicante', label: 'Alicante', href: '/contratos-inmobiliarios/alicante' },
+  { slug: 'palma', label: 'Palma', href: '/contratos-inmobiliarios/palma' },
 ] as const
