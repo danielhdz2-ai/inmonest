@@ -120,8 +120,14 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301)
   }
 
-  // Teléfono pegado a slug de ciudad (GSC: /bilbao/ 34745022862)
+  // Teléfono pegado a slug de ciudad (GSC: /barcelona/+34745022862 o /bilbao/ 34745022862)
   const decodedPath = decodeURIComponent(pathname)
+  const gestoriaPhoneSlug = decodedPath.match(/^\/([a-z0-9-]+)\/\+34745022862\/?$/)
+  if (gestoriaPhoneSlug) {
+    const url = request.nextUrl.clone()
+    url.pathname = `/gestoria/${gestoriaPhoneSlug[1]}`
+    return NextResponse.redirect(url, 301)
+  }
   const malformedCityPhone = decodedPath.match(/^\/([a-z0-9-]+)\/\s*(\d{9,12})\/?$/)
   if (malformedCityPhone) {
     const url = request.nextUrl.clone()
