@@ -8,6 +8,7 @@ import ContratosServiciosProfundos from '../ContratosServiciosProfundos'
 import HomeTestimonials from '@/components/home/HomeTestimonials'
 import {
   CONTRATOS_CIUDAD_PRECIOS,
+  CONTRATOS_INMOBILIARIOS_CIUDADES,
   CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS,
   type ContratosInmobiliariosCiudadConfig,
 } from '@/lib/contratos-inmobiliarios-ciudades'
@@ -283,7 +284,7 @@ export default function ContratosInmobiliariosCiudadContent({ ciudad }: Props) {
                 href={`/contratos-inmobiliarios/${slug}`}
                 className="rounded-full border border-gold-200 bg-gold-50 px-4 py-2 text-sm font-semibold text-gold-700 hover:bg-gold-100"
               >
-                {slug.charAt(0).toUpperCase() + slug.slice(1)}
+                {CONTRATOS_INMOBILIARIOS_CIUDADES[slug].nombre}
               </Link>
             ))}
           </div>

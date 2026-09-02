@@ -25,7 +25,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/pisos`,                lastModified: today, changeFrequency: 'daily',   priority: 0.9 },
   { url: `${BASE_URL}/gestoria`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.9 },
   { url: `${BASE_URL}/contratos-inmobiliarios`, lastModified: today, changeFrequency: 'weekly', priority: 0.93 },
-  ...['madrid', 'barcelona', 'valencia'].map((ciudad) => ({
+  ...['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao'].map((ciudad) => ({
     url: `${BASE_URL}/contratos-inmobiliarios/${ciudad}`,
     lastModified: today,
     changeFrequency: 'weekly' as const,

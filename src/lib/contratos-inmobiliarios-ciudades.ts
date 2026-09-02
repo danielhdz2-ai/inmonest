@@ -1,7 +1,13 @@
 import { getCiudadImage } from '@/lib/gestoria-images'
 import { getPrecioServicio } from '@/lib/gestoria-catalogo'
 
-export type ContratosInmobiliariosCiudadSlug = 'madrid' | 'barcelona' | 'valencia'
+export type ContratosInmobiliariosCiudadSlug =
+  | 'madrid'
+  | 'barcelona'
+  | 'valencia'
+  | 'sevilla'
+  | 'malaga'
+  | 'bilbao'
 
 export type ContratosCiudadBarrio = {
   nombre: string
@@ -355,6 +361,318 @@ const VALENCIA: ContratosInmobiliariosCiudadConfig = {
   enlaceAlquiler: '/valencia/contrato-alquiler',
 }
 
+const SEVILLA: ContratosInmobiliariosCiudadConfig = {
+  slug: 'sevilla',
+  nombre: 'Sevilla',
+  region: 'Andalucía',
+  metaTitle: 'Contratos inmobiliarios Sevilla | Arras, LAU y gestoría',
+  metaDescription:
+    'Contratos inmobiliarios en Sevilla y Andalucía: arras, alquiler LAU y venta entre particulares. Triana, Nervión, Los Remedios. Fianza AVRA. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Sevilla, contrato arras Sevilla, contrato alquiler Sevilla, gestoría inmobiliaria Sevilla particulares, LAU Andalucía',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Sevilla',
+  heroLead:
+    'Redacción de arras, alquiler LAU y packs documentales para compradores y vendedores en Sevilla capital, Aljarafe y provincia. Conocemos el mercado andaluz, la fianza AVRA y la operativa entre particulares sin comisión de agencia.',
+  heroTags: ['Andalucía', 'AVRA', 'Particulares', 'Triana · Nervión'],
+  heroImage: getCiudadImage('sevilla'),
+  mercadoTitulo: 'Sevilla: compraventa activa y alquiler estable',
+  mercadoIntro:
+    'Sevilla mueve un volumen alto de operaciones entre particulares con precios más accesibles que Madrid o Barcelona, pero el riesgo jurídico es el mismo: arras sin condición de hipoteca, alquileres que confunden temporada con LAU en el casco histórico, o documentación de comunidad incompleta antes de ir al notario de Nervión o Triana.',
+  mercadoCards: [
+    {
+      titulo: 'Arras como ritual andaluz',
+      desc: 'En Sevilla las arras penitenciales son el paso previo habitual a la escritura. Redactamos cláusulas de desistimiento, plazo a notaría y revisión de nota simple del Registro de la Propiedad de Sevilla.',
+    },
+    {
+      titulo: 'Alquiler LAU con fianza AVRA',
+      desc: 'La fianza legal se ingresa ante el organismo autonómico andaluz (AVRA). El contrato detalla importe, plazo de depósito y devolución — evitando retenciones indebidas al final del arrendamiento.',
+    },
+    {
+      titulo: 'Particulares en Aljarafe y provincia',
+      desc: 'Dos Hermanas, Alcalá de Guadaira y Mairena del Aljarafe concentran compradores primerizos. Mismo servicio online con adaptación al municipio del inmueble.',
+    },
+  ],
+  normativaTitulo: 'Normativa en Sevilla y Andalucía',
+  normativaIntro:
+    'Los contratos entre particulares en Sevilla combinan derecho estatal (LAU, Código Civil) con obligaciones autonómicas andaluzas:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante AVRA (Agencia de Vivienda y Rehabilitación de Andalucía)',
+    'Distinción entre vivienda habitual LAU y alquiler turístico en Santa Cruz o el Arenal — régimen distinto',
+    'Cláusulas de arras con doble penitencial y condición suspensiva de financiación bancaria',
+    'Revisión de cédula de habitabilidad y licencias en edificios protegidos del casco antiguo',
+  ],
+  barriosTitulo: 'Barrios y zonas de Sevilla donde adaptamos cada contrato',
+  barriosIntro:
+    'Un piso en Triana no se formaliza igual que un adosado en Vallecas del Rosario. Contextualizamos según zona:',
+  barrios: [
+    {
+      nombre: 'Triana y Los Remedios',
+      contexto: 'Alta demanda de alquiler residencial',
+      operativa:
+        'LAU con duración mínima, actualización IPC y fianza AVRA. Arras en compraventa con plazos cortos entre particulares.',
+    },
+    {
+      nombre: 'Nervión y Sevilla Este',
+      contexto: 'Perfil profesional y familiar',
+      operativa:
+        'Contratos de larga duración, inventario en amueblados y pack vendedor para quien vende sin agencia en zona consolidada.',
+    },
+    {
+      nombre: 'Santa Cruz y Casco Antiguo',
+      contexto: 'Edificios históricos y turismo residencial',
+      operativa:
+        'Verificación de habitabilidad, régimen de obras en comunidad y distinción estricta habitual vs temporada.',
+    },
+    {
+      nombre: 'Macarena y San Jerónimo',
+      contexto: 'Regeneración urbana y estudiantes',
+      operativa:
+        'Alquiler LAU o habitación según caso. Arras en rehabilitaciones recientes con revisión registral.',
+    },
+    {
+      nombre: 'Heliópolis y Bellavista',
+      contexto: 'Barrios familiares del sur',
+      operativa:
+        'Compraventa entre particulares con arras penitenciales y acompañamiento de compra por tarifa fija.',
+    },
+    {
+      nombre: 'Alcalá de Guadaira y Dos Hermanas',
+      contexto: 'Área metropolitana — primer vivienda',
+      operativa:
+        'Operaciones ágiles con compradores jóvenes. Due diligence documental en packs arras plus.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Sevilla',
+  serviciosIntro:
+    'Desde arras en un piso de Nervión hasta alquiler LAU en Los Remedios: gestor asignado, panel online y entrega en 48 horas.',
+  faq: [
+    {
+      q: '¿Los contratos son válidos en toda Andalucía?',
+      a: 'Sí. Redactamos para Sevilla capital y cualquier municipio andaluz. El Código Civil y la LAU son estatales; adaptamos cláusulas a la normativa autonómica de fianzas.',
+    },
+    {
+      q: '¿Qué es AVRA y por qué importa en mi contrato de alquiler?',
+      a: 'AVRA es el organismo donde se deposita la fianza legal en Andalucía. El contrato debe indicar importe, plazo y responsable del ingreso para evitar problemas en la devolución.',
+    },
+    {
+      q: '¿Puedo vender mi piso en Triana sin agencia con vuestro pack vendedor?',
+      a: 'Sí. El Pack Arras Plus Vendedor (450 €) incluye arras redactadas a tu favor y ayuda para recabar documentación de comunidad, ITE y nota simple antes de escriturar.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/sevilla',
+  enlaceArras: '/sevilla/contrato-arras',
+  enlaceAlquiler: '/sevilla/contrato-alquiler',
+}
+
+const MALAGA: ContratosInmobiliariosCiudadConfig = {
+  slug: 'malaga',
+  nombre: 'Málaga',
+  region: 'Andalucía · Costa del Sol',
+  metaTitle: 'Contratos inmobiliarios Málaga | Arras, LAU y Costa del Sol',
+  metaDescription:
+    'Contratos inmobiliarios en Málaga y Costa del Sol: arras, alquiler LAU, venta entre particulares. Teatinos, Soho, Marbella. Gestoría online desde 61€.',
+  keywords:
+    'contratos inmobiliarios Málaga, contrato arras Málaga, contrato alquiler Costa del Sol, gestoría inmobiliaria Málaga particulares',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Málaga',
+  heroLead:
+    'Gestoría especializada en Málaga capital, Costa del Sol y provincia: arras, alquiler LAU y documentación para compradores nacionales e internacionales que operan sin agencia inmobiliaria.',
+  heroTags: ['Costa del Sol', 'Andalucía', 'Particulares', 'Teatinos · Soho'],
+  heroImage: getCiudadImage('malaga'),
+  mercadoTitulo: 'Málaga: crecimiento, sol y operaciones a doble velocidad',
+  mercadoIntro:
+    'Málaga combina mercado local de familias y estudiantes con demanda internacional en la Costa del Sol. El error más caro aquí es mezclar alquiler turístico con LAU habitual, o firmar arras en Marbella o Málaga centro con plazos imposibles de cumplir si la hipoteca tarda.',
+  mercadoCards: [
+    {
+      titulo: 'Costa del Sol e inversores',
+      desc: 'Operaciones en Marbella, Estepona o Fuengirola suelen ir con ticket alto y compradores extranjeros. Revisamos NIE, nota simple y cláusulas de arras con condiciones suspensivas claras.',
+    },
+    {
+      titulo: 'Distinción LAU vs temporada',
+      desc: 'En Soho, La Malagueta o Torremolinos es crítico no confundir arrendamiento turístico con vivienda habitual. Redactamos el régimen jurídico correcto según el uso real del inmueble.',
+    },
+    {
+      titulo: 'Mercado universitario Teatinos',
+      desc: 'Pisos compartidos y alquileres de habitación requieren contratos específicos. Inventario detallado y normas de convivencia para evitar conflictos al final del curso.',
+    },
+  ],
+  normativaTitulo: 'Qué debe cubrir tu contrato en Málaga',
+  normativaIntro:
+    'En Málaga y provincia aplican LAU, Ley de Vivienda 2026 y normativa andaluza de fianzas, más matices propios del mercado costero:',
+  normativaPuntos: [
+    'Depósito de fianza ante AVRA en alquileres LAU de vivienda habitual',
+    'Cláusulas de arras adaptadas a compradores con financiación en trámite o venta cruzada de otra vivienda',
+    'Revisión de licencia turística vs contrato LAU — especialmente en primera línea de playa',
+    'Inventario profesional en pisos amueblados de expatriados y nómadas digitales',
+  ],
+  barriosTitulo: 'Zonas de Málaga y Costa del Sol',
+  barriosIntro:
+    'Cada zona de Málaga tiene un perfil de operación distinto. No usamos el mismo texto para El Palo que para el centro Soho:',
+  barrios: [
+    {
+      nombre: 'Centro histórico y Soho',
+      contexto: 'Regeneración urbana y alquiler joven',
+      operativa:
+        'LAU con cláusulas de mascotas y subarriendo. Arras en compraventa de pisos rehabilitados con revisión de licencias.',
+    },
+    {
+      nombre: 'Teatinos y El Palo',
+      contexto: 'Universidad y perfil estudiante',
+      operativa:
+        'Contratos de habitación o LAU según convivencia. Fianza AVRA y devolución documentada.',
+    },
+    {
+      nombre: 'La Malagueta y Ciudad Jardín',
+      contexto: 'Residencial consolidado',
+      operativa:
+        'Alquiler familiar de larga duración. Pack vendedor para propietarios que enajenan sin agencia.',
+    },
+    {
+      nombre: 'Torremolinos y Benalmádena',
+      contexto: 'Costa — habitual vs vacacional',
+      operativa:
+        'Análisis del uso real del inmueble antes de redactar. Arras en segundas residencias con due diligence.',
+    },
+    {
+      nombre: 'Marbella y Estepona',
+      contexto: 'Ticket alto e inversión internacional',
+      operativa:
+        'Pack Arras Plus Comprador con revisión documental integral. Cláusulas en operaciones con compradores no residentes.',
+    },
+    {
+      nombre: 'Ronda y Antequera (interior)',
+      contexto: 'Compraventa rural y pueblo',
+      operativa:
+        'Arras en fincas y viviendas unifamiliares. Verificación registral y cargas antes de señal.',
+    },
+  ],
+  serviciosTitulo: 'Contratos inmobiliarios en Málaga y alrededores',
+  serviciosIntro:
+    'Operaciones en Málaga capital, Costa del Sol o interior de provincia: un gestor conoce tu expediente de principio a fin.',
+  faq: [
+    {
+      q: '¿Atendéis operaciones en Marbella o Fuengirola?',
+      a: 'Sí. El servicio es 100% online en toda la provincia de Málaga y Costa del Sol. Adaptamos referencias registrales al municipio del inmueble.',
+    },
+    {
+      q: '¿Cómo evitáis confundir alquiler turístico con LAU?',
+      a: 'Analizamos el uso previsto del inmueble y redactamos el contrato bajo el régimen jurídico correcto. Un LAU mal aplicado a uso turístico puede anular cláusulas enteras.',
+    },
+    {
+      q: '¿Puedo contratar si el comprador es extranjero sin NIE definitivo?',
+      a: 'Sí. Incluimos condiciones suspensivas y plazos realistas en las arras mientras se regulariza la documentación del comprador.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/malaga',
+  enlaceArras: '/malaga/contrato-arras',
+  enlaceAlquiler: '/malaga/contrato-alquiler',
+}
+
+const BILBAO: ContratosInmobiliariosCiudadConfig = {
+  slug: 'bilbao',
+  nombre: 'Bilbao',
+  region: 'País Vasco · Bizkaia',
+  metaTitle: 'Contratos inmobiliarios Bilbao | LAU, arras y País Vasco',
+  metaDescription:
+    'Contratos inmobiliarios en Bilbao y Bizkaia: LAU, fianza vasca, arras y venta entre particulares. Abando, Deusto, Getxo. Gestoría desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Bilbao, contrato alquiler Bilbao, contrato arras Bizkaia, gestoría inmobiliaria País Vasco, LAU País Vasco',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Bilbao',
+  heroLead:
+    'Redacción profesional de arras y alquiler LAU en Bilbao, Getxo, Barakaldo y Bizkaia. Incorporamos fianza autonómica vasca, límites de actualización IPC y particularidades del mercado foral.',
+  heroTags: ['País Vasco', 'Bizkaia', 'Fianza vasca', 'Particulares'],
+  heroImage: getCiudadImage('bilbao'),
+  mercadoTitulo: 'Bilbao: mercado sólido con normativa foral propia',
+  mercadoIntro:
+    'Bizkaia tiene un mercado de alquiler estable y compraventa entre particulares activa en Abando, Deusto y el Gran Bilbao. Aquí la fianza se deposita ante el organismo autonómico vasco, la actualización de renta tiene reglas específicas según gran tenedor, y un contrato estatal genérico no refleja estos matices.',
+  mercadoCards: [
+    {
+      titulo: 'Fianza y garantías en Euskadi',
+      desc: 'Una mensualidad de fianza legal con depósito en el organismo autonómico correspondiente. Hasta dos mensualidades adicionales si la ley lo permite — todo detallado en el contrato.',
+    },
+    {
+      titulo: 'Actualización IPC en Bizkaia',
+      desc: 'Pequeños propietarios: IPC + 2 % en muchos supuestos. Grandes tenedores: límites más estrictos. Redactamos la fórmula correcta según tu situación.',
+    },
+    {
+      titulo: 'Gran Bilbao y área metropolitana',
+      desc: 'Getxo, Barakaldo, Portugalete y Santurtzi comparten marco legal vasco con matices urbanísticos propios. Misma gestoría online con adaptación municipal.',
+    },
+  ],
+  normativaTitulo: 'Particularidades en Bilbao y el País Vasco',
+  normativaIntro:
+    'Los contratos inmobiliarios en Bizkaia deben reflejar derecho estatal y normativa autonómica vasca:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante organismo autonómico del País Vasco',
+    'Cláusulas de actualización de renta conformes a gran tenedor o pequeño propietario',
+    'Arras penitenciales válidas en todo el territorio foral con revisión de nota simple registral',
+    'Contrato disponible en castellano o euskera según preferencia de las partes',
+  ],
+  barriosTitulo: 'Barrios de Bilbao y área metropolitana',
+  barriosIntro:
+    'Desde Indautxu hasta Getxo, cada zona tiene dinámica de alquiler y compraventa distinta:',
+  barrios: [
+    {
+      nombre: 'Abando e Indautxu',
+      contexto: 'Núcleo financiero — rentas altas',
+      operativa:
+        'LAU con garantías acotadas al límite legal. Arras en compraventa de pisos señoriales con revisión de comunidad.',
+    },
+    {
+      nombre: 'Deusto y Uribarri',
+      contexto: 'Universidad y familias',
+      operativa:
+        'Alquiler LAU de larga duración, inventario en amueblados para estudiantes de Deusto. Arras en operaciones rápidas.',
+    },
+    {
+      nombre: 'Casco Viejo y San Francisco',
+      contexto: 'Edificios históricos y alta rotación',
+      operativa:
+        'Revisión de obras en fachada, régimen de comunidad y distinción de uso habitual en pisos urbanos.',
+    },
+    {
+      nombre: 'Basurto y Rekalde',
+      contexto: 'Regeneración y demanda accesible',
+      operativa:
+        'Compraventa entre particulares con arras penitenciales. Acompañamiento de compra por tarifa fija 687 €.',
+    },
+    {
+      nombre: 'Getxo y Portugalete',
+      contexto: 'Área metropolitana costera',
+      operativa:
+        'Alquiler familiar estable. Pack vendedor para propietarios que venden sin agencia en municipios del Gran Bilbao.',
+    },
+    {
+      nombre: 'Barakaldo y Santurtzi',
+      contexto: 'Cinturón industrial reconvertido',
+      operativa:
+        'Operaciones con ticket medio. Due diligence documental en packs arras plus para compradores exigentes.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Bilbao',
+  serviciosIntro:
+    'Arras en Indautxu, alquiler LAU en Deusto o venta sin agencia en Getxo: precio cerrado, panel de seguimiento y gestor asignado.',
+  faq: [
+    {
+      q: '¿El contrato de alquiler es válido en todo el País Vasco?',
+      a: 'Sí. Redactamos para Bilbao, Getxo, Barakaldo, San Sebastián, Vitoria y resto del territorio. Adaptamos cláusulas a la normativa autonómica vasca de fianzas.',
+    },
+    {
+      q: '¿Puedo redactar el contrato en euskera?',
+      a: 'Sí, si ambas partes lo prefieren. Por defecto entregamos en castellano; indícanos tu preferencia al contratar.',
+    },
+    {
+      q: '¿Cuánto puede subir el alquiler cada año en Bilbao?',
+      a: 'Depende de si eres gran tenedor o pequeño propietario. Incorporamos la fórmula legal correcta (IPC, IPC + 2 % o límites de gran tenedor) según tu caso concreto.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/bilbao',
+  enlaceArras: '/bilbao/contrato-arras',
+  enlaceAlquiler: '/bilbao/contrato-alquiler',
+}
+
 export const CONTRATOS_INMOBILIARIOS_CIUDADES: Record<
   ContratosInmobiliariosCiudadSlug,
   ContratosInmobiliariosCiudadConfig
@@ -362,6 +680,9 @@ export const CONTRATOS_INMOBILIARIOS_CIUDADES: Record<
   madrid: MADRID,
   barcelona: BARCELONA,
   valencia: VALENCIA,
+  sevilla: SEVILLA,
+  malaga: MALAGA,
+  bilbao: BILBAO,
 }
 
 export const CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS = Object.keys(
