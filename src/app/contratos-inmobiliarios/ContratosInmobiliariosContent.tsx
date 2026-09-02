@@ -7,6 +7,7 @@ import GestoriaHeroFullBleed from '@/components/GestoriaHeroFullBleed'
 import HomeTestimonials from '@/components/home/HomeTestimonials'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
 import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
+import ContratosServiciosProfundos from './ContratosServiciosProfundos'
 import { BRAND_IMAGES } from '@/lib/brand-images'
 import { GESTORIA_PRECIO_MIN } from '@/lib/gestoria-catalogo'
 import {
@@ -255,6 +256,8 @@ export default function ContratosInmobiliariosContent() {
       <FirmaCertIncluidaSection />
 
       <AgenciaGestoriaPanelDemo audience="particular" />
+
+      <ContratosServiciosProfundos />
 
       {/* CTA cuenta */}
       <section className="border-t border-gray-100 bg-cream-100 px-4 py-12">
