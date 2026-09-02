@@ -95,4 +95,30 @@ export const CONTRATOS_SERVICIOS_PROFUNDOS: ContratoServicioProfundo[] = [
     ctaSecundarioHref: '/gestoria/asesoria-compra-piso',
     ctaSecundarioLabel: 'Ver servicio en detalle',
   },
+  {
+    id: 'pack-arras-vendedor',
+    kicker: 'Pack Arras Plus · Vendedores',
+    titulo: '¿Vendes tu vivienda de manera particular sin agencia?',
+    intro:
+      'Vender entre particulares sin inmobiliaria ahorra comisiones, pero nadie te redacta las arras ni te prepara la documentación para notaría. El Pack Arras Plus Vendedor lo resuelve en un solo servicio: arras penitenciales redactadas a tu favor y ayuda profesional para recabar, ordenar y analizar toda la documentación del inmueble.',
+    beneficios: [
+      'Redacción de contrato de arras penitenciales a favor del vendedor (PDF en 48 h)',
+      'Ayuda para recabar escrituras, nota simple y certificado energético',
+      'Análisis de actas de comunidad (2 años) y derramas pendientes',
+      'Revisión del ITE, cargas registrales y deudas de IBI o suministros',
+      'Checklist documental para escriturar ante notario sin retrasos',
+      'Informe con riesgos, tareas pendientes y recomendaciones en 3-5 días',
+    ],
+    extra:
+      'Sin agencia eres tú quien debe garantizar que el piso está listo para escriturar. Un comprador exigente puede paralizar la operación si falta documentación o las arras no protegen tu señal. Con Inmonest tienes gestor asignado, panel de seguimiento y un pack pensado exclusivamente para propietarios vendedores.',
+    imagen: '/contratodearras.jpg',
+    imagenAlt: 'Pack Arras Plus Vendedor — arras y documentación para vender sin agencia',
+    precio: getPrecioServicio('pack-arras-plus-vendedor') ?? 450,
+    precioNota: 'Arras + documentación · IVA incluido',
+    ctaHref: '/gestoria/solicitar/pack-arras-plus-vendedor',
+    ctaLabel: 'Contratar Pack Arras Plus Vendedor',
+    ctaSecundarioHref: '/gestoria/pack-arras-plus-vendedor',
+    ctaSecundarioLabel: 'Ver más información',
+    invertido: true,
+  },
 ]

@@ -12,11 +12,11 @@ export default function ContratosServiciosProfundos() {
             Servicios especializados
           </span>
           <h2 className="mt-2 text-2xl font-extrabold text-gray-900 sm:text-3xl">
-            Arras, alquiler y acompañamiento de compra
+            Arras, alquiler, compra y venta entre particulares
           </h2>
           <p className="mx-auto mt-2 max-w-2xl text-sm text-gray-500">
-            Tres servicios pensados para particulares que operan sin agencia y quieren la misma
-            seguridad jurídica que un despacho, con precio cerrado y panel de seguimiento.
+            Servicios pensados para quien opera sin agencia: compradores, vendedores, arrendadores e
+            inquilinos. Precio cerrado, panel de seguimiento y gestor asignado.
           </p>
         </div>
       </div>
