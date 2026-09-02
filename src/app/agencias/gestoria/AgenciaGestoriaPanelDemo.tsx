@@ -1,10 +1,46 @@
 'use client'
 
-import { useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import Image from 'next/image'
 import { GESTOR_DANIEL_HERNANDEZ } from '@/lib/gestores-inmonest'
 
 type DemoSection = 'inicio' | 'expediente' | 'documentos' | 'contratos'
+export type GestoriaPanelDemoAudience = 'agencia' | 'particular'
+
+type DemoMock = {
+  subtitulo: string
+  usuario: string
+  ciudad: string
+  servicio: string
+  referencia: string
+  importe: number
+  pasoActual: number
+  progreso: number
+  plazo: string
+}
+
+type DemoDoc = {
+  key: string
+  label: string
+  file: string | null
+  status: 'done' | 'reviewing' | 'pending'
+  fecha: string | null
+}
+
+type DemoBundle = {
+  mock: DemoMock
+  actividad: { icon: string; titulo: string; fecha: string }[]
+  docs: DemoDoc[]
+  contratosHist: {
+    nombre: string
+    ref: string
+    estado: string
+    paso: number
+    fecha: string
+    activo: boolean
+  }[]
+  historialLabel: string
+}
 
 const DEMO_NAV: { id: DemoSection; label: string; icon: string; desc: string }[] = [
   { id: 'inicio', label: 'Panel', icon: '◉', desc: 'Resumen y próximos pasos' },
@@ -13,18 +49,6 @@ const DEMO_NAV: { id: DemoSection; label: string; icon: string; desc: string }[]
   { id: 'contratos', label: 'Contratos', icon: '📄', desc: 'Pedidos y descargas PDF' },
 ]
 
-const MOCK = {
-  agencia: 'Agencia Sol Mar',
-  usuario: 'Carlos Ruiz',
-  ciudad: 'Valencia',
-  servicio: 'Contrato de alquiler LAU',
-  referencia: 'REF. A1B2C3D4',
-  importe: 110,
-  pasoActual: 2,
-  progreso: 45,
-  plazo: '4–5 h laborables',
-}
-
 const WORKFLOW = [
   { n: 1, label: 'Pago recibido', icon: '💳', done: true, date: '27 ago' },
   { n: 2, label: 'Documentación', icon: '📋', done: false, active: true, date: 'En curso' },
@@ -32,46 +56,79 @@ const WORKFLOW = [
   { n: 4, label: 'Entregado', icon: '✅', done: false, date: '—' },
 ]
 
-const DOCS = [
-  { key: 'partes', label: 'Datos de las partes', file: 'partes-alquiler-valencia.pdf', status: 'done' as const, fecha: '28 ago, 09:15' },
-  { key: 'dni-arrendador', label: 'DNI arrendador', file: 'dni-propietario-anverso.jpg', status: 'done' as const, fecha: '28 ago, 10:02' },
-  { key: 'dni-inquilino', label: 'DNI inquilino', file: 'dni-inquilino-anverso.jpg', status: 'done' as const, fecha: '28 ago, 10:05' },
-  { key: 'nota-simple', label: 'Nota simple registral', file: 'nota-simple-calle-colon-12.pdf', status: 'reviewing' as const, fecha: '29 ago, 10:24' },
-  { key: 'ite', label: 'Certificado ITE / habitabilidad', file: null, status: 'pending' as const, fecha: null },
-]
+const BUNDLE_AGENCIA: DemoBundle = {
+  mock: {
+    subtitulo: 'Agencia Sol Mar',
+    usuario: 'Carlos Ruiz',
+    ciudad: 'Valencia',
+    servicio: 'Contrato de alquiler LAU',
+    referencia: 'REF. A1B2C3D4',
+    importe: 110,
+    pasoActual: 2,
+    progreso: 45,
+    plazo: '4–5 h laborables',
+  },
+  actividad: [
+    { icon: 'D', titulo: 'Nota simple registral subida y en revisión', fecha: '29 ago, 10:24' },
+    { icon: 'S', titulo: 'Expediente en fase de documentación (paso 2 de 4)', fecha: '28 ago, 09:15' },
+    { icon: 'P', titulo: 'Pago confirmado — tarifa agencia 110 €', fecha: '27 ago, 16:42' },
+  ],
+  docs: [
+    { key: 'partes', label: 'Datos de las partes', file: 'partes-alquiler-valencia.pdf', status: 'done', fecha: '28 ago, 09:15' },
+    { key: 'dni-arrendador', label: 'DNI arrendador', file: 'dni-propietario-anverso.jpg', status: 'done', fecha: '28 ago, 10:02' },
+    { key: 'dni-inquilino', label: 'DNI inquilino', file: 'dni-inquilino-anverso.jpg', status: 'done', fecha: '28 ago, 10:05' },
+    { key: 'nota-simple', label: 'Nota simple registral', file: 'nota-simple-calle-colon-12.pdf', status: 'reviewing', fecha: '29 ago, 10:24' },
+    { key: 'ite', label: 'Certificado ITE / habitabilidad', file: null, status: 'pending', fecha: null },
+  ],
+  contratosHist: [
+    { nombre: 'Contrato de alquiler LAU', ref: 'REF. A1B2C3D4', estado: 'Documentación', paso: 2, fecha: '27 ago 2026', activo: true },
+    { nombre: 'Arras penitenciales', ref: 'REF. F8E2A901', estado: 'Entregado', paso: 4, fecha: '12 ago 2026', activo: false },
+    { nombre: 'Alquiler de habitación', ref: 'REF. C3D7B112', estado: 'Entregado', paso: 4, fecha: '3 ago 2026', activo: false },
+  ],
+  historialLabel: 'Historial de servicios de Agencia Sol Mar',
+}
 
-const ACTIVIDAD = [
-  { icon: 'D', titulo: 'Nota simple registral subida y en revisión', fecha: '29 ago, 10:24' },
-  { icon: 'S', titulo: 'Expediente en fase de documentación (paso 2 de 4)', fecha: '28 ago, 09:15' },
-  { icon: 'P', titulo: 'Pago confirmado — tarifa agencia 110 €', fecha: '27 ago, 16:42' },
-]
+const BUNDLE_PARTICULAR: DemoBundle = {
+  mock: {
+    subtitulo: 'Comprador · Madrid',
+    usuario: 'María López',
+    ciudad: 'Madrid',
+    servicio: 'Contrato de arras penitenciales',
+    referencia: 'INV-2026-0847',
+    importe: 145,
+    pasoActual: 2,
+    progreso: 65,
+    plazo: '48 h laborables',
+  },
+  actividad: [
+    { icon: 'D', titulo: 'Nota simple registral subida — el gestor la está revisando', fecha: '2 sept, 11:20' },
+    { icon: 'S', titulo: 'Expediente en documentación (paso 2 de 4)', fecha: '1 sept, 09:40' },
+    { icon: 'P', titulo: 'Pago confirmado — contrato arras 145 €', fecha: '1 sept, 08:15' },
+  ],
+  docs: [
+    { key: 'partes', label: 'Datos comprador y vendedor', file: 'partes-arras-madrid.pdf', status: 'done', fecha: '1 sept, 09:10' },
+    { key: 'dni-comprador', label: 'DNI comprador', file: 'dni-comprador-anverso.jpg', status: 'done', fecha: '1 sept, 09:25' },
+    { key: 'dni-vendedor', label: 'DNI vendedor', file: 'dni-vendedor-anverso.jpg', status: 'done', fecha: '1 sept, 09:28' },
+    { key: 'nota-simple', label: 'Nota simple registral', file: 'nota-simple-piso-chamberi.pdf', status: 'reviewing', fecha: '2 sept, 11:20' },
+    { key: 'ite', label: 'Certificado ITE / habitabilidad', file: null, status: 'pending', fecha: null },
+  ],
+  contratosHist: [
+    { nombre: 'Contrato de arras penitenciales', ref: 'INV-2026-0847', estado: 'Documentación', paso: 2, fecha: '1 sept 2026', activo: true },
+    { nombre: 'Contrato de alquiler LAU', ref: 'INV-2026-0612', estado: 'Entregado', paso: 4, fecha: '15 ago 2026', activo: false },
+    { nombre: 'Reserva de compra', ref: 'INV-2026-0588', estado: 'Entregado', paso: 4, fecha: '3 ago 2026', activo: false },
+  ],
+  historialLabel: 'Historial de tus contratos inmobiliarios',
+}
 
-const CONTRATOS_HIST = [
-  {
-    nombre: 'Contrato de alquiler LAU',
-    ref: 'REF. A1B2C3D4',
-    estado: 'Documentación',
-    paso: 2,
-    fecha: '27 ago 2026',
-    activo: true,
-  },
-  {
-    nombre: 'Arras penitenciales',
-    ref: 'REF. F8E2A901',
-    estado: 'Entregado',
-    paso: 4,
-    fecha: '12 ago 2026',
-    activo: false,
-  },
-  {
-    nombre: 'Alquiler de habitación',
-    ref: 'REF. C3D7B112',
-    estado: 'Entregado',
-    paso: 4,
-    fecha: '3 ago 2026',
-    activo: false,
-  },
-]
+const PanelDemoContext = createContext<DemoBundle>(BUNDLE_AGENCIA)
+
+function usePanelDemo() {
+  return useContext(PanelDemoContext)
+}
+
+function getDemoBundle(audience: GestoriaPanelDemoAudience): DemoBundle {
+  return audience === 'particular' ? BUNDLE_PARTICULAR : BUNDLE_AGENCIA
+}
 
 function DocStatusBadge({ status }: { status: 'done' | 'reviewing' | 'pending' }) {
   if (status === 'done') {
@@ -102,6 +159,7 @@ function DemoSidebar({
   active: DemoSection
   onChange: (s: DemoSection) => void
 }) {
+  const { mock } = usePanelDemo()
   return (
     <aside className="hidden md:flex md:w-52 lg:w-56 flex-col bg-[#0a1410] text-white flex-shrink-0 border-r border-[#1f3524]">
       <div className="px-4 pt-4 pb-3 border-b border-white/10">
@@ -137,8 +195,8 @@ function DemoSidebar({
       </nav>
       <div className="px-3 py-3 border-t border-white/10">
         <p className="text-[9px] uppercase tracking-widest text-[#f4d98a]/80">Cliente</p>
-        <p className="text-xs font-semibold truncate">{MOCK.usuario}</p>
-        <p className="text-[10px] text-white/40 truncate">{MOCK.agencia}</p>
+        <p className="text-xs font-semibold truncate">{mock.usuario}</p>
+        <p className="text-[10px] text-white/40 truncate">{mock.subtitulo}</p>
       </div>
     </aside>
   )
@@ -172,13 +230,14 @@ function DemoMobileTabs({
 }
 
 function ExpedienteHero() {
+  const { mock } = usePanelDemo()
   return (
     <div className="relative bg-gradient-to-br from-black via-black to-black px-4 py-5 text-white">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(201,150,42,0.18)_0%,_transparent_55%)]" />
       <div className="relative space-y-3">
         <div className="flex items-start justify-between gap-2">
           <span className="text-[9px] font-bold uppercase tracking-widest text-gold-400 font-mono">
-            {MOCK.referencia}
+            {mock.referencia}
           </span>
           <span className="text-[9px] font-bold uppercase tracking-widest text-white/70 bg-white/10 px-2 py-0.5 rounded-full border border-white/20">
             En elaboración
@@ -186,10 +245,10 @@ function ExpedienteHero() {
         </div>
         <div>
           <h3 className="text-base sm:text-lg font-bold tracking-tight leading-tight uppercase">
-            {MOCK.servicio}
+            {mock.servicio}
           </h3>
           <p className="text-xs text-white/60 mt-1">
-            Documentación · Paso {MOCK.pasoActual} de 4 · {MOCK.agencia}
+            Documentación · Paso {mock.pasoActual} de 4 · {mock.subtitulo}
           </p>
         </div>
         <div className="grid grid-cols-4 gap-1.5">
@@ -215,18 +274,19 @@ function ExpedienteHero() {
 }
 
 function InicioView() {
+  const { mock } = usePanelDemo()
   return (
     <div className="p-4 sm:p-5 space-y-4">
       <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
         <p className="text-[10px] font-bold uppercase tracking-widest text-gold-600 mb-2">
           Resumen del expediente
         </p>
-        <p className="text-lg font-bold text-gray-900">Hola, {MOCK.usuario.split(' ')[0]}</p>
-        <p className="text-sm text-gray-500 mt-0.5">{MOCK.servicio} · {MOCK.ciudad}</p>
+        <p className="text-lg font-bold text-gray-900">Hola, {mock.usuario.split(' ')[0]}</p>
+        <p className="text-sm text-gray-500 mt-0.5">{mock.servicio} · {mock.ciudad}</p>
         <div className="mt-4 grid grid-cols-3 gap-2">
           <div className="rounded-xl bg-[#fdfbf5] border border-gold-100 p-3 text-center">
             <p className="text-[9px] uppercase tracking-wider text-gray-400">Progreso</p>
-            <p className="text-xl font-extrabold text-gold-600">{MOCK.progreso}%</p>
+            <p className="text-xl font-extrabold text-gold-600">{mock.progreso}%</p>
           </div>
           <div className="rounded-xl bg-gray-50 border border-gray-100 p-3 text-center">
             <p className="text-[9px] uppercase tracking-wider text-gray-400">Documentos</p>
@@ -234,7 +294,7 @@ function InicioView() {
           </div>
           <div className="rounded-xl bg-gray-50 border border-gray-100 p-3 text-center">
             <p className="text-[9px] uppercase tracking-wider text-gray-400">Plazo</p>
-            <p className="text-[11px] font-bold text-gray-800 leading-tight mt-1">{MOCK.plazo}</p>
+            <p className="text-[11px] font-bold text-gray-800 leading-tight mt-1">{mock.plazo}</p>
           </div>
         </div>
       </div>
@@ -253,7 +313,7 @@ function InicioView() {
           <p className="text-[10px] font-bold uppercase tracking-widest text-gold-500">Tu gestor</p>
           <p className="text-sm font-bold text-gray-900">{GESTOR_DANIEL_HERNANDEZ.nombre}</p>
           <p className="text-xs text-gray-500">{GESTOR_DANIEL_HERNANDEZ.rol}</p>
-          <p className="text-[11px] text-gold-700 mt-1">Revisando nota simple · {MOCK.ciudad}</p>
+          <p className="text-[11px] text-gold-700 mt-1">Revisando nota simple · {mock.ciudad}</p>
         </div>
       </div>
 
@@ -268,6 +328,7 @@ function InicioView() {
 }
 
 function ExpedienteView() {
+  const { mock, actividad } = usePanelDemo()
   return (
     <>
       <ExpedienteHero />
@@ -298,13 +359,13 @@ function ExpedienteView() {
         <div className="grid sm:grid-cols-2 gap-3">
           <div className="rounded-xl border border-gray-100 bg-white p-3">
             <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400">Plazo estimado</p>
-            <p className="text-sm font-bold text-gray-900 mt-1">{MOCK.plazo}</p>
+            <p className="text-sm font-bold text-gray-900 mt-1">{mock.plazo}</p>
             <p className="text-[10px] text-gray-500 mt-0.5">Desde recepción de documentación</p>
           </div>
           <div className="rounded-xl border border-gray-100 bg-white p-3">
             <p className="text-[9px] font-bold uppercase tracking-widest text-gray-400">Fecha de pago</p>
             <p className="text-sm font-bold text-gray-900 mt-1">27 ago 2026</p>
-            <p className="text-[10px] text-gray-500 mt-0.5">{MOCK.ciudad} · {MOCK.importe} €</p>
+            <p className="text-[10px] text-gray-500 mt-0.5">{mock.ciudad} · {mock.importe} €</p>
           </div>
         </div>
 
@@ -313,7 +374,7 @@ function ExpedienteView() {
             Actividad reciente
           </p>
           <div className="space-y-2">
-            {ACTIVIDAD.map((item) => (
+            {actividad.map((item) => (
               <div key={item.titulo} className="flex items-start gap-3 rounded-xl border border-gray-100 bg-white p-3">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#0a1410] text-xs font-bold text-[#f4d98a]">
                   {item.icon}
@@ -332,16 +393,17 @@ function ExpedienteView() {
 }
 
 function DocumentosView() {
+  const { mock, docs } = usePanelDemo()
   return (
     <div className="p-4 sm:p-5 space-y-4">
       <div>
         <h3 className="text-sm font-bold text-gray-900">Tu documentación</h3>
         <p className="text-xs text-gray-500 mt-1 leading-relaxed">
-          Documentos subidos para {MOCK.servicio.toLowerCase()}. Datos ficticios de demostración.
+          Documentos subidos para {mock.servicio.toLowerCase()}. Datos ficticios de demostración.
         </p>
       </div>
       <ul className="space-y-2">
-        {DOCS.map((doc) => (
+        {docs.map((doc) => (
           <li
             key={doc.key}
             className={`flex items-center gap-3 rounded-xl border px-3 py-3 ${
@@ -384,13 +446,14 @@ function DocumentosView() {
 }
 
 function ContratosView() {
+  const { historialLabel, contratosHist } = usePanelDemo()
   return (
     <div className="p-4 sm:p-5 space-y-3">
       <div>
         <h3 className="text-sm font-bold text-gray-900">Mis contratos</h3>
-        <p className="text-xs text-gray-500 mt-1">Historial de servicios de {MOCK.agencia}</p>
+        <p className="text-xs text-gray-500 mt-1">{historialLabel}</p>
       </div>
-      {CONTRATOS_HIST.map((c) => (
+      {contratosHist.map((c) => (
         <div
           key={c.ref}
           className={`rounded-xl border p-4 transition-all ${
@@ -459,22 +522,42 @@ function DemoContent({ section }: { section: DemoSection }) {
   }
 }
 
-export default function AgenciaGestoriaPanelDemo() {
+export default function AgenciaGestoriaPanelDemo({
+  audience = 'agencia',
+}: {
+  audience?: GestoriaPanelDemoAudience
+}) {
   const [section, setSection] = useState<DemoSection>('expediente')
+  const bundle = getDemoBundle(audience)
+
+  const copy =
+    audience === 'particular'
+      ? {
+          kicker: 'Panel de cliente',
+          title: 'Tu panel de gestoría: seguimiento en tiempo real',
+          description:
+            'Tras contratar un contrato inmobiliario, accedes a tu área privada. Sube documentación, sigue el expediente paso a paso, habla con tu gestor asignado y descarga el PDF cuando esté listo. Explora las secciones del panel.',
+        }
+      : {
+          kicker: 'Panel de gestoría',
+          title: 'El mismo panel que usan tus clientes',
+          description:
+            'Tras contratar, la agencia accede al portal de gestoría: sube documentación, sigue el expediente en tiempo real y descarga el PDF firmable. Explora las secciones del panel.',
+        }
 
   return (
+    <PanelDemoContext.Provider value={bundle}>
     <section className="py-16 px-4 bg-white border-y border-gray-100">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <p className="text-xs font-bold uppercase tracking-widest text-gold-600 mb-2">
-            Panel de gestoría
+            {copy.kicker}
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
-            El mismo panel que usan tus clientes
+            {copy.title}
           </h2>
           <p className="text-gray-500 text-sm max-w-2xl mx-auto leading-relaxed">
-            Tras contratar, la agencia accede al portal de gestoría: sube documentación, sigue el
-            expediente en tiempo real y descarga el PDF firmable. Explora las secciones del panel.
+            {copy.description}
           </p>
         </div>
 
@@ -519,5 +602,6 @@ export default function AgenciaGestoriaPanelDemo() {
         </div>
       </div>
     </section>
+    </PanelDemoContext.Provider>
   )
 }

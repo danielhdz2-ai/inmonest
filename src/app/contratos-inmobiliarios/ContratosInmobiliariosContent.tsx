@@ -6,6 +6,7 @@ import Link from 'next/link'
 import GestoriaHeroFullBleed from '@/components/GestoriaHeroFullBleed'
 import HomeTestimonials from '@/components/home/HomeTestimonials'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
+import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
 import { BRAND_IMAGES } from '@/lib/brand-images'
 import { GESTORIA_PRECIO_MIN } from '@/lib/gestoria-catalogo'
 import {
@@ -194,24 +195,47 @@ export default function ContratosInmobiliariosContent() {
               exigentes.
             </p>
           </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {CONTRATOS_DESTACADOS.map((c) => (
               <Link
                 key={c.slug}
                 href={`/gestoria/solicitar/${c.slug}`}
-                className="group flex flex-col rounded-2xl border border-gray-100 bg-white p-5 shadow-sm transition hover:border-gold-400 hover:shadow-md"
+                className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-gold-400 hover:shadow-md"
               >
-                <span className="mb-2 w-fit rounded-full bg-gold-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-gold-700">
-                  {c.categoria}
-                </span>
-                <h3 className="mb-2 text-sm font-bold text-gray-900 group-hover:text-gold-700">
-                  {c.nombre}
-                </h3>
-                <p className="mb-4 flex-1 text-xs leading-relaxed text-gray-600">{c.descripcion}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-lg font-extrabold text-gold-600">{c.precio} €</span>
+                <div className="relative h-48 overflow-hidden bg-gray-200">
+                  <Image
+                    src={c.imagen}
+                    alt={`${c.nombre} — gestoría Inmonest`}
+                    fill
+                    className="object-cover transition duration-300 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                  <div
+                    className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"
+                    aria-hidden
+                  />
+                  <span className="absolute top-3 left-3 rounded-full bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-gold-700">
+                    {c.categoria}
+                  </span>
+                  {c.badge && (
+                    <span className="absolute top-3 right-3 rounded-full bg-gold-500 px-2.5 py-1 text-[10px] font-bold text-white">
+                      {c.badge}
+                    </span>
+                  )}
+                  <div className="absolute right-3 bottom-3 rounded-lg bg-white/95 px-3 py-1.5">
+                    <div className="text-right">
+                      <div className="text-xl font-extrabold text-gold-500">{c.precio} €</div>
+                      <div className="-mt-0.5 text-[10px] font-medium text-gray-500">IVA incluido</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="mb-2 text-base leading-snug font-bold text-gray-900 group-hover:text-gold-700">
+                    {c.nombre}
+                  </h3>
+                  <p className="mb-4 flex-1 text-xs leading-relaxed text-gray-600">{c.descripcion}</p>
                   <span className="text-xs font-semibold text-gold-600 group-hover:underline">
-                    Solicitar →
+                    Solicitar contrato →
                   </span>
                 </div>
               </Link>
@@ -230,53 +254,31 @@ export default function ContratosInmobiliariosContent() {
 
       <FirmaCertIncluidaSection />
 
-      {/* Plataforma */}
-      <section className="border-t border-gray-100 bg-cream-100 px-4 py-16">
-        <div className="mx-auto max-w-5xl">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
-            <div className="relative aspect-video overflow-hidden rounded-2xl shadow-lg">
-              <Image
-                src={BRAND_IMAGES.portal.src}
-                alt="Panel de gestión de contratos inmobiliarios Inmonest"
-                fill
-                className="object-cover object-top"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-            </div>
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-gold-500">
-                Plataforma Inmonest
-              </span>
-              <h2 className="mt-2 mb-4 text-2xl font-extrabold text-gray-900">
-                Portal + gestoría en un solo lugar
-              </h2>
-              <p className="mb-5 leading-relaxed text-gray-600">
-                Publica tu piso sin comisiones, solicita contratos con datos prefilled y haz
-                seguimiento del estado de cada servicio desde tu cuenta. Ideal si operas entre
-                particulares y quieres trazabilidad documental.
-              </p>
-              <ol className="mb-6 space-y-3">
-                {[
-                  'Crea cuenta gratis (2 anuncios incluidos)',
-                  'Elige el contrato y completa el formulario guiado',
-                  'Un profesional redacta y revisa tu documento',
-                  'Recibe PDF firmable + historial en tu panel',
-                ].map((step, i) => (
-                  <li key={step} className="flex items-start gap-3 text-sm text-gray-700">
-                    <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-gold-500 text-xs font-bold text-white">
-                      {i + 1}
-                    </span>
-                    {step}
-                  </li>
-                ))}
-              </ol>
-              <Link
-                href="/login"
-                className="inline-block rounded-xl bg-gold-500 px-6 py-3 text-sm font-bold text-white transition hover:bg-gold-600"
-              >
-                Crear cuenta gratis →
-              </Link>
-            </div>
+      <AgenciaGestoriaPanelDemo audience="particular" />
+
+      {/* CTA cuenta */}
+      <section className="border-t border-gray-100 bg-cream-100 px-4 py-12">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="mb-3 text-xl font-extrabold text-gray-900 sm:text-2xl">
+            Publica tu piso y gestiona tus contratos desde una cuenta
+          </h2>
+          <p className="mb-6 text-sm leading-relaxed text-gray-600">
+            Cuenta gratuita con 2 anuncios incluidos, formularios con datos prefilled e historial
+            de todos tus contratos inmobiliarios en el panel de gestoría.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              href="/login"
+              className="rounded-xl bg-gold-500 px-6 py-3 text-sm font-bold text-white transition hover:bg-gold-600"
+            >
+              Crear cuenta gratis →
+            </Link>
+            <Link
+              href="/gestoria/acceso-cliente"
+              className="rounded-xl border border-gold-300 bg-white px-6 py-3 text-sm font-bold text-gold-700 transition hover:bg-gold-50"
+            >
+              Acceso clientes gestoría
+            </Link>
           </div>
         </div>
       </section>

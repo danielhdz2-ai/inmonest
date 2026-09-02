@@ -33,6 +33,8 @@ export type ContratoDestacado = {
   categoria: string
   descripcion: string
   precio: number
+  imagen: string
+  badge?: string
 }
 
 export const CONTRATOS_DESTACADOS: ContratoDestacado[] = [
@@ -42,6 +44,8 @@ export const CONTRATOS_DESTACADOS: ContratoDestacado[] = [
     categoria: 'Compraventa',
     descripcion: 'El más solicitado en compraventa entre particulares. Protege la señal con cláusulas de desistimiento.',
     precio: getPrecioServicio('arras-penitenciales') ?? 145,
+    imagen: '/gestoria1.jpg',
+    badge: 'Más solicitado',
   },
   {
     slug: 'contrato-alquiler',
@@ -49,6 +53,8 @@ export const CONTRATOS_DESTACADOS: ContratoDestacado[] = [
     categoria: 'Alquiler',
     descripcion: 'Arrendamiento de vivienda habitual actualizado a Ley de Vivienda 2023-2026.',
     precio: getPrecioServicio('contrato-alquiler') ?? 145,
+    imagen: '/gestoria7.jpg',
+    badge: 'Ley 2026',
   },
   {
     slug: 'reserva-compra',
@@ -56,6 +62,7 @@ export const CONTRATOS_DESTACADOS: ContratoDestacado[] = [
     categoria: 'Compraventa',
     descripcion: 'Bloquea el inmueble 48-72 h mientras revisáis documentación antes de las arras.',
     precio: getPrecioServicio('reserva-compra') ?? 120,
+    imagen: '/gestoria4.jpg',
   },
   {
     slug: 'reserva-alquiler',
@@ -63,6 +70,7 @@ export const CONTRATOS_DESTACADOS: ContratoDestacado[] = [
     categoria: 'Alquiler',
     descripcion: 'Formaliza la reserva mientras preparáis el contrato definitivo de alquiler.',
     precio: getPrecioServicio('reserva-alquiler') ?? 61,
+    imagen: '/gestoria5.jpg',
   },
   {
     slug: 'pack-arras-revision-documental',
@@ -70,6 +78,8 @@ export const CONTRATOS_DESTACADOS: ContratoDestacado[] = [
     categoria: 'Compraventa',
     descripcion: 'Arras + revisión documental integral del inmueble antes de escriturar.',
     precio: getPrecioServicio('pack-arras-revision-documental') ?? 450,
+    imagen: '/gestoria10.jpg',
+    badge: 'Compradores',
   },
   {
     slug: 'prestamo-particulares',
@@ -77,6 +87,8 @@ export const CONTRATOS_DESTACADOS: ContratoDestacado[] = [
     categoria: 'Financiación',
     descripcion: 'Formaliza préstamos familiares con validez jurídica y fiscal ante Hacienda.',
     precio: getPrecioServicio('prestamo-particulares') ?? 130,
+    imagen: '/gestoria9.jpg',
+    badge: 'Capital privado',
   },
 ]
 
