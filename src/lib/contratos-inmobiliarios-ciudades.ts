@@ -11,6 +11,9 @@ export type ContratosInmobiliariosCiudadSlug =
   | 'zaragoza'
   | 'alicante'
   | 'palma'
+  | 'murcia'
+  | 'coruna'
+  | 'pamplona'
 
 export type ContratosCiudadBarrio = {
   nombre: string
@@ -988,6 +991,318 @@ const PALMA: ContratosInmobiliariosCiudadConfig = {
   enlaceAlquiler: '/palma/contrato-alquiler',
 }
 
+const MURCIA: ContratosInmobiliariosCiudadConfig = {
+  slug: 'murcia',
+  nombre: 'Murcia',
+  region: 'Región de Murcia',
+  metaTitle: 'Contratos inmobiliarios Murcia | Arras, LAU y gestoría',
+  metaDescription:
+    'Contratos inmobiliarios en Murcia y Región de Murcia: arras, alquiler LAU y venta entre particulares. Centro, Espinardo, Cartagena. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Murcia, contrato arras Murcia, contrato alquiler Murcia, gestoría inmobiliaria Murcia particulares, LAU Región de Murcia',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Murcia',
+  heroLead:
+    'Redacción de arras, alquiler LAU y packs documentales para compradores y vendedores en Murcia capital, huerta y litoral. Mercado accesible, perfil universitario en Espinardo y operativa entre particulares sin comisión de agencia.',
+  heroTags: ['Región de Murcia', 'Particulares', 'Huerta · Costa', 'Entrega 48h'],
+  heroImage: getCiudadImage('murcia'),
+  mercadoTitulo: 'Murcia: mercado accesible con demanda estable',
+  mercadoIntro:
+    'Murcia concentra compraventa familiar con precios por m² moderados frente a Madrid o Barcelona, pero el riesgo jurídico es idéntico: arras sin condición de hipoteca, alquileres sin fianza depositada correctamente o documentación de comunidad incompleta antes de ir al notario en el centro o en Cartagena.',
+  mercadoCards: [
+    {
+      titulo: 'Primera vivienda en la huerta',
+      desc: 'Molina de Segura, Alcantarilla o Las Torres mueven compradores primerizos. Redactamos arras con plazos realistas para financiación y revisión de nota simple registral.',
+    },
+    {
+      titulo: 'Perfil universitario en Espinardo',
+      desc: 'La zona del campus concentra alquileres de habitación y LAU de larga duración. Inventario detallado y cláusulas de convivencia para evitar conflictos al final del curso.',
+    },
+    {
+      titulo: 'Cartagena y litoral',
+      desc: 'Operaciones en el litoral murciano con ticket medio. Due diligence documental en packs arras plus para compradores que reservan piso de particular.',
+    },
+  ],
+  normativaTitulo: 'Normativa en Murcia y la Región',
+  normativaIntro:
+    'Los contratos entre particulares en Murcia se rigen por el Código Civil, la LAU y la Ley de Vivienda 2026, con obligaciones autonómicas de fianza:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante el organismo autonómico de la Región de Murcia',
+    'Cláusulas de arras con condición suspensiva de hipoteca — habitual en operaciones con financiación bancaria',
+    'Distinción entre vivienda habitual LAU y alquiler temporal en zonas costeras',
+    'Certificado energético vigente y revisión de deudas de comunidad antes de escritura',
+  ],
+  barriosTitulo: 'Barrios y zonas de Murcia donde adaptamos cada contrato',
+  barriosIntro:
+    'Un piso en Vistabella no se formaliza igual que un adosado en La Alberca. Contextualizamos según zona:',
+  barrios: [
+    {
+      nombre: 'Centro y Vistabella',
+      contexto: 'Alquiler urbano de rotación media',
+      operativa:
+        'LAU con duración mínima, actualización IPC y fianza autonómica. Arras en compraventa con plazos cortos entre particulares.',
+    },
+    {
+      nombre: 'Espinardo y Guadalupe',
+      contexto: 'Zona universitaria',
+      operativa:
+        'Alquiler LAU o habitación según convivencia. Inventario en amueblados para estudiantes de la UM.',
+    },
+    {
+      nombre: 'Infante y Santiago el Mayor',
+      contexto: 'Residencial familiar',
+      operativa:
+        'Contratos de larga duración. Pack vendedor para quien vende sin agencia en zona consolidada.',
+    },
+    {
+      nombre: 'El Carmen y San Andrés',
+      contexto: 'Barrios históricos del casco',
+      operativa:
+        'Revisión de obras en comunidad y certificado energético. Arras con verificación registral.',
+    },
+    {
+      nombre: 'Cartagena y La Manga',
+      contexto: 'Litoral — habitual vs temporada',
+      operativa:
+        'Análisis del uso real del inmueble antes de redactar. Arras en segundas residencias con due diligence.',
+    },
+    {
+      nombre: 'Molina de Segura y Alcantarilla',
+      contexto: 'Área metropolitana — primer vivienda',
+      operativa:
+        'Operaciones ágiles con compradores jóvenes. Acompañamiento de compra por tarifa fija 687 €.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Murcia',
+  serviciosIntro:
+    'Desde arras en el centro hasta alquiler LAU en Espinardo: gestor asignado, panel online y entrega en 48 horas.',
+  faq: [
+    {
+      q: '¿Los contratos son válidos en toda la Región de Murcia?',
+      a: 'Sí. Redactamos para Murcia capital, Cartagena, Lorca y cualquier municipio de la región. El Código Civil y la LAU son estatales; adaptamos cláusulas a la normativa autonómica de fianzas.',
+    },
+    {
+      q: '¿Puedo vender mi piso en Murcia sin agencia con vuestro pack vendedor?',
+      a: 'Sí. El Pack Arras Plus Vendedor (450 €) incluye arras redactadas a tu favor y ayuda para recabar documentación de comunidad, ITE y nota simple antes de escriturar.',
+    },
+    {
+      q: '¿Atendéis operaciones en Cartagena o Molina de Segura?',
+      a: 'Sí. El servicio es 100% online en toda la Región de Murcia. Adaptamos referencias registrales al municipio del inmueble.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/asesoria-compra-piso/murcia',
+  enlaceArras: '/murcia/contrato-arras',
+  enlaceAlquiler: '/murcia/contrato-alquiler',
+}
+
+const CORUNA: ContratosInmobiliariosCiudadConfig = {
+  slug: 'coruna',
+  nombre: 'A Coruña',
+  region: 'Galicia',
+  metaTitle: 'Contratos inmobiliarios A Coruña | Arras, LAU y Galicia',
+  metaDescription:
+    'Contratos inmobiliarios en A Coruña y Galicia: arras, alquiler LAU y venta entre particulares. Ciudad Vieja, Orzán, Oleiros. Gestoría desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios A Coruña, contrato arras Coruña, contrato alquiler Coruña, gestoría inmobiliaria Galicia particulares, LAU A Coruña',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'A Coruña',
+  heroLead:
+    'Redacción profesional de arras y alquiler LAU en A Coruña, Oleiros, Arteixo y área metropolitana. Mercado gallego con LAU estatal, operativa entre particulares y adaptación a la dinámica del litoral atlántico.',
+  heroTags: ['Galicia', 'Particulares', 'Orzán · Mariña', 'Entrega 48h'],
+  heroImage: getCiudadImage('coruna'),
+  mercadoTitulo: 'A Coruña: mercado atlántico con operativa directa',
+  mercadoIntro:
+    'A Coruña mueve compraventa entre particulares activa en Ciudad Vieja, Orzán y barrios residenciales, con alquiler estable en la zona universitaria y el área metropolitana. Firmar arras o un alquiler con plantilla genérica en un mercado con edificios del siglo XIX multiplica el riesgo de litigio por obras en fachada o cargas ocultas.',
+  mercadoCards: [
+    {
+      titulo: 'Edificios históricos en el casco',
+      desc: 'Ciudad Vieja y Puertochico concentran pisos con obras en comunidad pendientes. Revisamos documentación de fachada, ITE y certificado energético antes de arras o alquiler LAU.',
+    },
+    {
+      titulo: 'Área metropolitana Oleiros-Arteixo',
+      desc: 'Familias que compran en periferia con la misma urgencia que en el centro. Contratos válidos en toda la provincia de A Coruña con adaptación documental local.',
+    },
+    {
+      titulo: 'Alquiler LAU sin complicaciones forales',
+      desc: 'Galicia aplica LAU estatal sin particularidades forales como País Vasco o Navarra. Aun así, fianza, actualización de renta y garantías deben estar redactadas con precisión.',
+    },
+  ],
+  normativaTitulo: 'Normativa aplicable en A Coruña',
+  normativaIntro:
+    'Los contratos entre particulares en A Coruña se rigen por el Código Civil, la LAU y la Ley de Vivienda 2026:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante el organismo autonómico de Galicia',
+    'Cláusulas de arras con condición suspensiva de hipoteca en operaciones con financiación bancaria',
+    'Revisión de nota simple del Registro de la Propiedad de A Coruña cuando hay cargas o usufructo',
+    'Certificado energético vigente — obligatorio en compraventa y alquiler de larga duración',
+  ],
+  barriosTitulo: 'Barrios de A Coruña y área metropolitana',
+  barriosIntro:
+    'Desde Ciudad Vieja hasta Ferrol, cada zona tiene dinámica de alquiler y compraventa distinta:',
+  barrios: [
+    {
+      nombre: 'Ciudad Vieja y Puertochico',
+      contexto: 'Alquiler urbano de alta rotación',
+      operativa:
+        'LAU con inventario en amueblados. Arras en compraventa de pisos señoriales con revisión de comunidad.',
+    },
+    {
+      nombre: 'Orzán y Riazor',
+      contexto: 'Demanda joven y perfiles temporales',
+      operativa:
+        'Distinción habitual vs temporada. Alquiler LAU de larga duración con fianza y devolución documentada.',
+    },
+    {
+      nombre: 'Os Mallos y Agra del Orzán',
+      contexto: 'Residencial accesible',
+      operativa:
+        'Compraventa entre particulares con arras penitenciales. Pack vendedor para enajenación sin agencia.',
+    },
+    {
+      nombre: 'Oleiros y Arteixo',
+      contexto: 'Área metropolitana familiar',
+      operativa:
+        'Alquiler LAU estable. Acompañamiento de compra por tarifa fija 687 € en operaciones de periferia.',
+    },
+    {
+      nombre: 'Elviña y Zapateira',
+      contexto: 'Zona universitaria',
+      operativa:
+        'Alquiler LAU o habitación según convivencia. Inventario detallado para pisos compartidos.',
+    },
+    {
+      nombre: 'Santiago y Ferrol',
+      contexto: 'Provincia de A Coruña',
+      operativa:
+        'Mismo marco legal galiciano. Arras con verificación registral y due diligence en packs arras plus.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en A Coruña',
+  serviciosIntro:
+    'Arras en Ciudad Vieja, alquiler LAU en Oleiros o venta sin agencia en Arteixo: precio cerrado, panel de seguimiento y gestor asignado.',
+  faq: [
+    {
+      q: '¿El contrato es válido en Santiago de Compostela o Ferrol?',
+      a: 'Sí. Redactamos para A Coruña capital y cualquier municipio de Galicia. Adaptamos referencias registrales al municipio del inmueble.',
+    },
+    {
+      q: '¿Galicia tiene normativa foral como el País Vasco?',
+      a: 'No. Galicia aplica LAU estatal y Código Civil común. La fianza se deposita ante el organismo autonómico gallego según la normativa vigente.',
+    },
+    {
+      q: '¿Puedo comprar un piso de particular en A Coruña con acompañamiento completo?',
+      a: 'Sí. El servicio de compra completa (687 €) incluye revisión documental, arras y acompañamiento hasta escritura — sin comisión de agencia.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/asesoria-compra-piso/coruna',
+  enlaceArras: '/coruna/contrato-arras',
+  enlaceAlquiler: '/coruna/contrato-alquiler',
+}
+
+const PAMPLONA: ContratosInmobiliariosCiudadConfig = {
+  slug: 'pamplona',
+  nombre: 'Pamplona',
+  region: 'Navarra',
+  metaTitle: 'Contratos inmobiliarios Pamplona | Arras, LAU y Navarra',
+  metaDescription:
+    'Contratos inmobiliarios en Pamplona y Navarra: arras, alquiler LAU y venta entre particulares. Casco Antiguo, Iturrama, Rochapea. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Pamplona, contrato arras Pamplona, contrato alquiler Navarra, gestoría inmobiliaria Pamplona particulares, LAU Navarra',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Pamplona',
+  heroLead:
+    'Redacción de arras, alquiler LAU y packs documentales para compradores y vendedores en Pamplona, Comarca de Pamplona y Navarra. Mercado estable, perfil universitario y operativa entre particulares sin comisión de agencia.',
+  heroTags: ['Navarra', 'Particulares', 'Iturrama · Ensanche', 'Entrega 48h'],
+  heroImage: getCiudadImage('pamplona'),
+  mercadoTitulo: 'Pamplona: mercado sólido con demanda universitaria',
+  mercadoIntro:
+    'Pamplona combina compraventa familiar en Iturrama y San Juan con alquiler estable en el Ensanche y alta rotación en el Casco Antiguo. Las arras penitenciales son el paso previo habitual a la escritura, pero una cláusula mal redactada sobre hipoteca o plazo a notaría puede costar la señal entera.',
+  mercadoCards: [
+    {
+      titulo: 'Sanfermines y rotación en el casco',
+      desc: 'El Casco Antiguo concentra pisos con régimen de obras en comunidad y alta rotación de inquilinos. Revisamos habitabilidad, fianza y distinción habitual vs temporal.',
+    },
+    {
+      titulo: 'Familias en Iturrama y Rochapea',
+      desc: 'Barrios residenciales con alquiler LAU de larga duración. Contratos con actualización IPC, garantías acotadas y pack vendedor para quien enajena sin agencia.',
+    },
+    {
+      titulo: 'Comarca de Pamplona',
+      desc: 'Burlada, Barañáin y Zizur Mayor comparten marco legal navarro con matices urbanísticos propios. Misma gestoría online con adaptación municipal.',
+    },
+  ],
+  normativaTitulo: 'Normativa en Pamplona y Navarra',
+  normativaIntro:
+    'Los contratos entre particulares en Pamplona combinan derecho estatal (LAU, Código Civil) con competencias autonómicas navarras en vivienda:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante el organismo autonómico de Navarra',
+    'Cláusulas de arras penitenciales válidas en todo el territorio foral con revisión registral',
+    'Actualización de renta conforme a Ley de Vivienda 2026 y situación de gran tenedor',
+    'Certificado energético vigente antes de compraventa o alquiler de larga duración',
+  ],
+  barriosTitulo: 'Barrios de Pamplona y Comarca',
+  barriosIntro:
+    'Desde el Ensanche hasta Barañáin, cada zona tiene dinámica de operación distinta:',
+  barrios: [
+    {
+      nombre: 'Casco Antiguo y Ensanche',
+      contexto: 'Núcleo urbano — alta rotación',
+      operativa:
+        'LAU con inventario en amueblados. Arras en compraventa con revisión de obras en fachada y comunidad.',
+    },
+    {
+      nombre: 'Iturrama y San Juan',
+      contexto: 'Residencial y familiar',
+      operativa:
+        'Alquiler LAU de larga duración. Pack vendedor para propietarios que venden sin agencia.',
+    },
+    {
+      nombre: 'Mendillorri y Rochapea',
+      contexto: 'Barrios de expansión',
+      operativa:
+        'Compraventa entre particulares con arras penitenciales. Acompañamiento de compra por tarifa fija 687 €.',
+    },
+    {
+      nombre: 'Buztintxuri y Ermitagaña',
+      contexto: 'Perfil mixto urbano',
+      operativa:
+        'Alquiler LAU con fianza autonómica. Arras en operaciones rápidas entre particulares.',
+    },
+    {
+      nombre: 'Burlada y Barañáin',
+      contexto: 'Comarca de Pamplona',
+      operativa:
+        'Operaciones familiares con ticket medio. Due diligence documental en packs arras plus.',
+    },
+    {
+      nombre: 'Tudela y resto de Navarra',
+      contexto: 'Provincia navarra',
+      operativa:
+        'Mismo marco legal. Arras con verificación registral adaptada al municipio del inmueble.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Pamplona',
+  serviciosIntro:
+    'Arras en el Ensanche, alquiler LAU en Iturrama o venta sin agencia en Rochapea: precio cerrado, panel de seguimiento y gestor asignado.',
+  faq: [
+    {
+      q: '¿Los contratos son válidos en toda Navarra?',
+      a: 'Sí. Redactamos para Pamplona, Tudela y cualquier municipio navarro. Adaptamos cláusulas a la normativa autonómica de fianzas y vivienda.',
+    },
+    {
+      q: '¿Navarra tiene normativa foral distinta en alquiler?',
+      a: 'Navarra tiene competencias propias en vivienda dentro del marco estatal. La LAU aplica, pero el depósito de fianza y algunas obligaciones siguen normativa autonómica navarra.',
+    },
+    {
+      q: '¿Puedo alquilar un piso en el Casco Antiguo con contrato LAU?',
+      a: 'Sí, si el uso es vivienda habitual del inquilino. Redactamos el contrato con cláusulas de duración, fianza y actualización de renta conformes a la normativa vigente.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/asesoria-compra-piso/pamplona',
+  enlaceArras: '/pamplona/contrato-arras',
+  enlaceAlquiler: '/pamplona/contrato-alquiler',
+}
+
 export const CONTRATOS_INMOBILIARIOS_CIUDADES: Record<
   ContratosInmobiliariosCiudadSlug,
   ContratosInmobiliariosCiudadConfig
@@ -1001,6 +1316,9 @@ export const CONTRATOS_INMOBILIARIOS_CIUDADES: Record<
   zaragoza: ZARAGOZA,
   alicante: ALICANTE,
   palma: PALMA,
+  murcia: MURCIA,
+  coruna: CORUNA,
+  pamplona: PAMPLONA,
 }
 
 export const CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS = Object.keys(

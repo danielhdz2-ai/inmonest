@@ -1,7 +1,14 @@
 import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
 import { LANDINGS_POR_CIUDAD } from '@/lib/gestoria-ciudades-inventario'
+import { CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS } from '@/lib/contratos-inmobiliarios-ciudades'
 
 export const SITE_URL = 'https://inmonest.com'
+
+/** Hub contratos-inmobiliarios (hub + todas las ciudades) */
+export const CONTRATOS_INMOBILIARIOS_INDEXAR = [
+  '/contratos-inmobiliarios',
+  ...CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS.map((c) => `/contratos-inmobiliarios/${c}`),
+] as const
 
 /** Hubs gestoría por ciudad */
 const GESTORIA_HUBS = [
@@ -19,16 +26,7 @@ const GESTORIA_HUBS = [
 /** Núcleo + landings genéricas premium (prioridad máxima en GSC) */
 export const GESTORIA_INDEXAR_PRIORIDAD_ALTA = [
   '/gestoria',
-  '/contratos-inmobiliarios',
-  '/contratos-inmobiliarios/madrid',
-  '/contratos-inmobiliarios/barcelona',
-  '/contratos-inmobiliarios/valencia',
-  '/contratos-inmobiliarios/sevilla',
-  '/contratos-inmobiliarios/malaga',
-  '/contratos-inmobiliarios/bilbao',
-  '/contratos-inmobiliarios/zaragoza',
-  '/contratos-inmobiliarios/alicante',
-  '/contratos-inmobiliarios/palma',
+  ...CONTRATOS_INMOBILIARIOS_INDEXAR,
   '/gestoria/ciudades',
   '/servicios',
   '/gestoria/contrato-alquiler',
@@ -116,6 +114,30 @@ export function getGestoriaPrioridadAltaCompletas(): string[] {
 
 /** Enlaces internos destacados (home + /gestoria) */
 export const GESTORIA_ENLACES_INDEXACION = [
+  {
+    href: '/contratos-inmobiliarios/madrid',
+    title: 'Contratos inmobiliarios Madrid',
+    description: 'Arras, LAU y gestoría para particulares en Madrid.',
+    badge: 'Captación',
+  },
+  {
+    href: '/contratos-inmobiliarios/barcelona',
+    title: 'Contratos inmobiliarios Barcelona',
+    description: 'Normativa catalana, INCASÒL y arras entre particulares.',
+    badge: 'Captación',
+  },
+  {
+    href: '/contratos-inmobiliarios/valencia',
+    title: 'Contratos inmobiliarios Valencia',
+    description: 'LAU, fianza Generalitat y compraventa sin agencia.',
+    badge: 'Captación',
+  },
+  {
+    href: '/contratos-inmobiliarios/sevilla',
+    title: 'Contratos inmobiliarios Sevilla',
+    description: 'AVRA, arras andaluzas y alquiler LAU en Andalucía.',
+    badge: 'Captación',
+  },
   {
     href: '/gestoria/alquiler-local-comercial/madrid',
     title: 'Alquiler local comercial Madrid',

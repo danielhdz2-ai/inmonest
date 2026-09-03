@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { createClient } from '@supabase/supabase-js'
+import { CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS } from '@/lib/contratos-inmobiliarios-ciudades'
 import { CONTRATO_ALQUILER_PREMIUM } from '@/lib/contrato-alquiler-premium-config'
 import { CONTRATO_ARRAS_PREMIUM } from '@/lib/contrato-arras-premium-config'
 import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
@@ -25,7 +26,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/pisos`,                lastModified: today, changeFrequency: 'daily',   priority: 0.9 },
   { url: `${BASE_URL}/gestoria`,             lastModified: today, changeFrequency: 'weekly',  priority: 0.9 },
   { url: `${BASE_URL}/contratos-inmobiliarios`, lastModified: today, changeFrequency: 'weekly', priority: 0.93 },
-  ...['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante', 'palma'].map((ciudad) => ({
+  ...CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS.map((ciudad) => ({
     url: `${BASE_URL}/contratos-inmobiliarios/${ciudad}`,
     lastModified: today,
     changeFrequency: 'weekly' as const,

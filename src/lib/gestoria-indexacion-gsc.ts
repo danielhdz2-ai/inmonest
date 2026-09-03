@@ -3,6 +3,11 @@
  * Formato esperado: issue,url,category,prefix  (scripts/gsc-coverage-urls.csv)
  */
 
+import {
+  CONTRATOS_INMOBILIARIOS_INDEXAR,
+  SITE_URL,
+} from './gestoria-indexar-urls'
+
 export type GscIssueRow = {
   issue: string
   url: string
@@ -23,8 +28,6 @@ export type GscUrlEstado = {
   estado: GscIndexEstado
   issue: string
 }
-
-const SITE = 'https://inmonest.com'
 
 /** Problemas GSC que implican «solicitar indexación» */
 const ISSUE_SIN_INDEXAR = /sin indexar|no indexada/i
@@ -59,7 +62,7 @@ export function pathFromUrl(url: string): string {
   try {
     return new URL(url).pathname.replace(/\/$/, '') || '/'
   } catch {
-    return url.replace(SITE, '').replace(/\/$/, '') || '/'
+    return url.replace(SITE_URL, '').replace(/\/$/, '') || '/'
   }
 }
 
@@ -75,7 +78,7 @@ export function buildGscEstadoMap(rows: GscIssueRow[]): Map<string, GscUrlEstado
   }
 
   for (const row of rows) {
-    if (!row.url.includes('/gestoria')) continue
+    if (!row.url.includes('/gestoria') && !row.url.includes('/contratos-inmobiliarios')) continue
     const path = pathFromUrl(row.url)
     const estado = classifyGscIssue(row.issue)
     const prev = map.get(path)
@@ -98,6 +101,7 @@ export type GestoriaIndexacionInforme = {
 
 /** Rutas nuevas que conviene revisar aunque no aparezcan en GSC antiguo */
 const PRIORIDAD_SIN_DATOS = [
+  ...CONTRATOS_INMOBILIARIOS_INDEXAR.filter((p) => p !== '/contratos-inmobiliarios'),
   '/gestoria/alquiler-local-comercial',
   '/gestoria/alquiler-local-comercial/madrid',
   '/gestoria/alquiler-local-comercial/barcelona',
@@ -122,10 +126,10 @@ export function buildGestoriaIndexacionInforme(
 
   for (const path of inventarioPaths) {
     const gsc = gscMap.get(path.replace(/\/$/, ''))
-    const url = `${SITE}${path}`
+    const url = `${SITE_URL}${path}`
 
     if (!gsc) {
-      if (PRIORIDAD_SIN_DATOS.includes(path)) {
+      if (PRIORIDAD_SIN_DATOS.includes(path as (typeof PRIORIDAD_SIN_DATOS)[number])) {
         pendientesVerificar.push({
           url,
           path,
