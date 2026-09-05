@@ -1,64 +1,89 @@
 /**
- * Service Worker para Notificaciones Push
- * Maneja push notifications en segundo plano
+ * Service Worker Inmonest — PWA + push notifications
  */
 
-/// <reference lib="webworker" />
+const CACHE_NAME = 'inmonest-pwa-v1'
+const OFFLINE_URLS = ['/', '/pisos', '/gestoria']
 
-declare const self: ServiceWorkerGlobalScope
-
-// ── Instalación del Service Worker ────────────────────────────────────────
 self.addEventListener('install', (event) => {
-  console.log('[SW] Instalado')
-  self.skipWaiting()
+  event.waitUntil(
+    caches
+      .open(CACHE_NAME)
+      .then((cache) => cache.addAll(OFFLINE_URLS))
+      .then(() => self.skipWaiting())
+  )
 })
 
-// ── Activación del Service Worker ─────────────────────────────────────────
 self.addEventListener('activate', (event) => {
-  console.log('[SW] Activado')
-  event.waitUntil(self.clients.claim())
+  event.waitUntil(
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key)))
+      )
+      .then(() => self.clients.claim())
+  )
 })
 
-// ── Recibir Push Notification ─────────────────────────────────────────────
+self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return
+  const url = new URL(event.request.url)
+  if (url.origin !== self.location.origin) return
+  if (url.pathname.startsWith('/api/')) return
+
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        if (response && response.status === 200 && response.type === 'basic') {
+          const clone = response.clone()
+          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone))
+        }
+        return response
+      })
+      .catch(() => caches.match(event.request).then((cached) => cached || caches.match('/')))
+  )
+})
+
 self.addEventListener('push', (event) => {
   if (!event.data) return
 
-  const data = event.data.json()
-  
-  const options: NotificationOptions = {
+  let data = {}
+  try {
+    data = event.data.json()
+  } catch {
+    data = { body: event.data.text() }
+  }
+
+  const options = {
     body: data.body || 'Tienes una nueva notificación',
     icon: '/icon-192x192.png',
     badge: '/badge-72x72.png',
     tag: data.tag || 'inmonest-notification',
     data: {
       url: data.url || '/',
-      ...data,
     },
-    requireInteraction: data.requireInteraction || false,
+    requireInteraction: Boolean(data.requireInteraction),
     vibrate: [200, 100, 200],
   }
 
-  event.waitUntil(
-    self.registration.showNotification(data.title || 'Inmonest', options)
-  )
+  event.waitUntil(self.registration.showNotification(data.title || 'Inmonest', options))
 })
 
-// ── Click en Notificación ──────────────────────────────────────────────────
 self.addEventListener('notificationclick', (event) => {
   event.notification.close()
-
   const urlToOpen = event.notification.data?.url || '/'
 
   event.waitUntil(
     self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clientList) => {
-      // Si ya hay una ventana abierta, enfocarla y navegar
       for (const client of clientList) {
-        if (client.url === new URL(urlToOpen, self.location.origin).href && 'focus' in client) {
-          return client.focus()
+        if ('focus' in client) {
+          return client.focus().then(() => {
+            if ('navigate' in client) {
+              return client.navigate(urlToOpen)
+            }
+          })
         }
       }
-      
-      // Si no hay ventana abierta, abrir nueva
       if (self.clients.openWindow) {
         return self.clients.openWindow(urlToOpen)
       }
@@ -66,26 +91,17 @@ self.addEventListener('notificationclick', (event) => {
   )
 })
 
-// ── Push Subscription Change ───────────────────────────────────────────────
 self.addEventListener('pushsubscriptionchange', (event) => {
-  console.log('[SW] Push subscription cambió')
-  
   event.waitUntil(
-    // Re-suscribirse con nuevas credenciales
     self.registration.pushManager
-      .subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
-      })
-      .then((subscription) => {
-        // Enviar nueva suscripción al servidor
-        return fetch('/api/push/subscribe', {
+      .subscribe({ userVisibleOnly: true })
+      .then((subscription) =>
+        fetch('/api/push/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(subscription),
         })
-      })
+      )
+      .catch(() => undefined)
   )
 })
-
-export {}

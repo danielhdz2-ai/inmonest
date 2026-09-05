@@ -7,6 +7,8 @@ import ConditionalFooter from "@/components/ConditionalFooter";
 import ConditionalMobileBottomNav from "@/components/ConditionalMobileBottomNav";
 import GTMProvider from "@/components/GTMProvider";
 import OrganizationSchema from "@/components/OrganizationSchema";
+import PwaServiceWorkerRegister from "@/components/PwaServiceWorkerRegister";
+import PwaInstallBanner from "@/components/PwaInstallBanner";
 
 const GTM_ID = 'GTM-57Q8NRVN'
 
@@ -62,11 +64,20 @@ export const metadata: Metadata = {
   creator: 'Inmonest',
   publisher: 'Inmonest',
   applicationName: 'Inmonest',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'Inmonest',
+  },
+  formatDetection: {
+    telephone: false,
+  },
 
   icons: {
     icon: [
       { url: '/favicon-32.png', type: 'image/png', sizes: '32x32' },
-      { url: '/icon.png',       type: 'image/png', sizes: '192x192' },
+      { url: '/icon-192x192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icon-512x512.png', type: 'image/png', sizes: '512x512' },
       { url: '/favicon.ico',    type: 'image/x-icon', sizes: 'any' },
     ],
     shortcut: '/favicon.ico',
@@ -150,6 +161,8 @@ export default function RootLayout({
         {children}
         <ConditionalFooter />
         <ConditionalMobileBottomNav />
+        <PwaInstallBanner />
+        <PwaServiceWorkerRegister />
         <LazyChatWidget />
       </body>
     </html>
