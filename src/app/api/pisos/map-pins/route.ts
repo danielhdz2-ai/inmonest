@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
+import { PUBLIC_LISTINGS_BANK_ONLY } from '@/lib/listings-catalog'
 import { applyProFilters, parseProParams } from '@/lib/search-filters'
 
 export async function GET(req: Request) {
@@ -25,8 +26,8 @@ export async function GET(req: Request) {
     .limit(3000)
 
   if (operacion) query = query.eq('operation', operacion)
-  if (soloParticulares) query = query.eq('is_particular', true)
-  if (soloBancarias) query = query.eq('is_bank', true)
+  if (PUBLIC_LISTINGS_BANK_ONLY || soloBancarias) query = query.eq('is_bank', true)
+  else if (soloParticulares) query = query.eq('is_particular', true)
   if (ciudad) {
     const c = ciudad.toLowerCase()
     query = query.or(`city.ilike.%${c}%,province.ilike.%${c}%,district.ilike.%${c}%`)

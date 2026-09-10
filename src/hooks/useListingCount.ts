@@ -14,6 +14,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { PUBLIC_LISTINGS_BANK_ONLY } from '@/lib/listings-catalog'
 import { applyProFilters, parseProParams } from '@/lib/search-filters'
 
 const DEBOUNCE_MS = 350
@@ -63,10 +64,13 @@ export function useListingCount(overrides?: Record<string, string>, enabled = tr
         if (operacion) q = q.eq('operation', operacion)
         if (ciudad)    q = q.ilike('city', `%${ciudad}%`)
 
-        if (get('solo_particulares') === 'true') q = q.eq('is_particular', true)
-        if (get('solo_bancarias')    === 'true') q = q.eq('is_bank', true)
-        if (get('solo_agencias')     === 'true') {
-          q = q.eq('is_particular', false).eq('is_bank', false)
+        if (PUBLIC_LISTINGS_BANK_ONLY || get('solo_bancarias') === 'true') {
+          q = q.eq('is_bank', true)
+        } else {
+          if (get('solo_particulares') === 'true') q = q.eq('is_particular', true)
+          if (get('solo_agencias') === 'true') {
+            q = q.eq('is_particular', false).eq('is_bank', false)
+          }
         }
 
         if (hab)       q = q.eq('bedrooms', parseInt(hab, 10))

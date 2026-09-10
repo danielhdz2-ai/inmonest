@@ -96,13 +96,13 @@ export default function Home() {
               <span className="text-white">desde 61 € en 48 h</span>
             </h1>
             <p className="mt-5 text-lg text-white/75 max-w-xl leading-relaxed">
-              Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones.
+              Arras, alquiler LAU y compraventa redactados por expertos. Online, en toda España, con respuesta en 24 h.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/gestoria" variant="primary" className="rounded-full">
                 Ver contratos
               </Button>
-              <Button href="/pisos?solo_particulares=true" variant="ghost" className="rounded-full">
+              <Button href="/pisos" variant="ghost" className="rounded-full">
                 Buscar pisos
               </Button>
             </div>
@@ -124,12 +124,12 @@ export default function Home() {
       <section className="bg-gray-50 py-14">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl font-bold text-gray-900 mb-1">Buscar piso por ciudad</h2>
-          <p className="text-gray-500 text-sm mb-6">Anuncios entre particulares, sin comisiones de agencia</p>
+          <p className="text-gray-500 text-sm mb-6">Explora oportunidades en venta por ciudad</p>
           <div className="flex flex-wrap gap-2">
             {CIUDADES_POPULARES.map((ciudad) => (
               <Link
                 key={ciudad.slug}
-                href={`/pisos?ciudad=${ciudad.slug}&solo_particulares=true`}
+                href={`/pisos?ciudad=${ciudad.slug}&operacion=sale`}
                 className="px-4 py-2 rounded-full border border-gold-400/40 bg-white text-sm font-medium text-gray-700 hover:border-gold-500 hover:text-gold-700 hover:bg-cream-100 transition-colors"
               >
                 {ciudad.nombre}
@@ -144,7 +144,7 @@ export default function Home() {
         className="py-16 sm:py-20 bg-white"
         eyebrow="Propuesta de valor"
         title="¿Por qué Inmonest?"
-        description="Alquiler y compraventa entre particulares, con respaldo jurídico cuando lo necesitas."
+        description="Gestoría inmobiliaria online con contratos claros, plazos cortos y precio cerrado."
       >
         <BentoVentajas />
       </Section>

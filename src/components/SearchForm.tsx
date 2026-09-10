@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useListingCount } from '@/hooks/useListingCount'
+import { PUBLIC_LISTINGS_BANK_ONLY } from '@/lib/listings-catalog'
 
 type TipoAnunciante = 'particulares' | 'bancarios' | 'agencias' | ''
 
@@ -21,12 +22,19 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
   const router = useRouter()
 
   const [ciudad, setCiudad] = useState(defaultValues?.ciudad ?? '')
-  const [operacion, setOperacion] = useState<'rent' | 'sale'>(defaultValues?.operacion ?? 'rent')
+  const [operacion, setOperacion] = useState<'rent' | 'sale'>(
+    defaultValues?.operacion ?? (PUBLIC_LISTINGS_BANK_ONLY ? 'sale' : 'rent'),
+  )
 
-  const initialTipo: TipoAnunciante =
-    defaultValues?.soloBancarias ? 'bancarios' :
-    defaultValues?.soloAgencias  ? 'agencias'  :
-    defaultValues?.soloParticulares !== false ? 'particulares' : ''
+  const initialTipo: TipoAnunciante = PUBLIC_LISTINGS_BANK_ONLY
+    ? 'bancarios'
+    : defaultValues?.soloBancarias
+      ? 'bancarios'
+      : defaultValues?.soloAgencias
+        ? 'agencias'
+        : defaultValues?.soloParticulares !== false
+          ? 'particulares'
+          : ''
 
   const [tipoAnunciante, setTipoAnunciante] = useState<TipoAnunciante>(initialTipo)
 
@@ -37,9 +45,9 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
     const params = new URLSearchParams()
     if (c.trim()) params.set('ciudad', c.trim().toLowerCase())
     params.set('operacion', op)
-    if (tipo === 'particulares') params.set('solo_particulares', 'true')
-    if (tipo === 'bancarios')    params.set('solo_bancarias', 'true')
-    if (tipo === 'agencias')     params.set('solo_agencias', 'true')
+    if (PUBLIC_LISTINGS_BANK_ONLY || tipo === 'bancarios') params.set('solo_bancarias', 'true')
+    else if (tipo === 'particulares') params.set('solo_particulares', 'true')
+    else if (tipo === 'agencias') params.set('solo_agencias', 'true')
     return params
   }
 
@@ -52,9 +60,12 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
   const liveOverrides: Record<string, string> = {}
   if (ciudad.trim()) liveOverrides.ciudad = ciudad.trim().toLowerCase()
   liveOverrides.operacion = operacion
-  if (tipoAnunciante === 'particulares') liveOverrides.solo_particulares = 'true'
-  if (tipoAnunciante === 'bancarios')    liveOverrides.solo_bancarias = 'true'
-  if (tipoAnunciante === 'agencias')     liveOverrides.solo_agencias = 'true'
+  if (PUBLIC_LISTINGS_BANK_ONLY || tipoAnunciante === 'bancarios') {
+    liveOverrides.solo_bancarias = 'true'
+  } else {
+    if (tipoAnunciante === 'particulares') liveOverrides.solo_particulares = 'true'
+    if (tipoAnunciante === 'agencias') liveOverrides.solo_agencias = 'true'
+  }
 
   const { count: liveCount, loading: countLoading } = useListingCount(liveOverrides, !compact)
 
@@ -129,7 +140,7 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
           </button>
         </div>
 
-        {/* Pills tipo anunciante — fila separada */}
+        {!PUBLIC_LISTINGS_BANK_ONLY && (
         <div className="flex items-center gap-1.5 flex-wrap">
           {TIPO_PILLS.map((pill) => (
             <button
@@ -147,6 +158,7 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
             </button>
           ))}
         </div>
+        )}
       </form>
     )
   }
@@ -210,7 +222,7 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
         </button>
       </div>
 
-      {/* Pills tipo de anunciante */}
+      {!PUBLIC_LISTINGS_BANK_ONLY && (
       <div className="flex items-center gap-2 flex-wrap">
         <span className="text-xs text-gray-500 font-medium shrink-0">Tipo de anunciante:</span>
         {TIPO_PILLS.map((pill) => (
@@ -229,6 +241,7 @@ export default function SearchForm({ compact = false, defaultValues }: SearchFor
           </button>
         ))}
       </div>
+      )}
     </form>
   )
 }

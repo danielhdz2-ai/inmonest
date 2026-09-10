@@ -1,6 +1,7 @@
 import { createClient as createClient_ } from '@supabase/supabase-js'
 import { createClient } from '@/lib/supabase/server'
 import type { Listing, SearchParams } from '@/types/listings'
+import { PUBLIC_LISTINGS_BANK_ONLY } from '@/lib/listings-catalog'
 import { applyProFilters, parseProParams } from '@/lib/search-filters'
 import type { PostgrestFilterBuilder } from '@supabase/postgrest-js'
 
@@ -40,9 +41,12 @@ function applySearchFilters(
     const normalized = normalizeCitySearch(params.ciudad)
     q = q.or(`city.ilike.%${params.ciudad}%,city.ilike.%${normalized}%`)
   }
-  if (params.solo_particulares) q = q.eq('is_particular', true)
-  if (params.solo_bancarias) q = q.eq('is_bank', true)
-  if (params.solo_agencias) q = q.eq('is_particular', false).eq('is_bank', false)
+  if (PUBLIC_LISTINGS_BANK_ONLY || params.solo_bancarias) {
+    q = q.eq('is_bank', true)
+  } else {
+    if (params.solo_particulares) q = q.eq('is_particular', true)
+    if (params.solo_agencias) q = q.eq('is_particular', false).eq('is_bank', false)
+  }
   if (params.habitaciones_min) q = q.gte('bedrooms', params.habitaciones_min)
   if (params.habitaciones) q = q.eq('bedrooms', params.habitaciones)
   if (params.precio_min) q = q.gte('price_eur', params.precio_min)
@@ -131,6 +135,8 @@ export async function getListingById(id: string): Promise<Listing | null> {
     .single()
 
   if (error || !data) return null
+
+  if (PUBLIC_LISTINGS_BANK_ONLY && !data.is_bank) return null
 
   const { data: images } = await supabase
     .from('listing_images')
@@ -223,6 +229,7 @@ export async function getSimilarListings(
     .select('id, title, price_eur, operation, city, district, province, bedrooms, bathrooms, area_m2, is_particular, is_bank, bank_entity, turbo_until, status, published_at, created_at, ranking_score')
     .eq('status', 'published')
     .eq('has_images', true)
+    .eq('is_bank', true)
     .eq('operation', operation)
     .or(`city.ilike.%${city}%,city.ilike.%${normalized}%`)
     .neq('id', currentId)

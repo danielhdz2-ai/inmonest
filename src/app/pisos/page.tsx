@@ -3,6 +3,7 @@ import SearchResults from '@/components/SearchResults'
 import type { Metadata } from 'next'
 import type { OperationType, SortOption, VistaOption } from '@/types/listings'
 import { searchListings } from '@/lib/listings'
+import { PUBLIC_LISTINGS_BANK_ONLY } from '@/lib/listings-catalog'
 import Link from 'next/link'
 import SearchForm from '@/components/SearchForm'
 
@@ -18,29 +19,24 @@ export async function generateMetadata({ searchParams }: PisosPageProps): Promis
   const params = await searchParams
   const ciudad = params.ciudad
   const operacion = params.operacion
-  const soloParticulares = params.solo_particulares === 'true'
   const pagina = parseInt(params.pagina ?? '1', 10)
 
-  const opLabel = operacion === 'sale' ? 'Venta' : operacion === 'rent' ? 'Alquiler' : 'Venta y Alquiler'
+  const opLabel = operacion === 'sale' ? 'Venta' : operacion === 'rent' ? 'Alquiler' : 'Venta'
   const ciudadLabel = ciudad ? ` ${ciudad.charAt(0).toUpperCase() + ciudad.slice(1)}` : ''
-  const particulares = soloParticulares ? ' Particulares' : ''
 
   const { total } = await searchListings({
     ciudad: ciudad || undefined,
-    operacion: (operacion as OperationType) || undefined,
-    solo_particulares: soloParticulares,
+    operacion: (operacion as OperationType) || 'sale',
+    solo_bancarias: PUBLIC_LISTINGS_BANK_ONLY,
     pagina: 1,
     page_size: 1,
   })
   const totalLabel = new Intl.NumberFormat('es-ES').format(total)
 
-  // Meta optimizada para CTR en Google (sin "| Inmonest": layout.tsx aplica template)
-  const title = `${opLabel}${ciudadLabel}${particulares} 【${totalLabel} Pisos desde 250€】 0% Comisión`
-  const opText =
-    operacion === 'rent' ? ' en alquiler' : operacion === 'sale' ? ' en venta' : ''
+  const title = `${opLabel}${ciudadLabel} · ${totalLabel} pisos en venta`
+  const opText = operacion === 'rent' ? ' en alquiler' : ' en venta'
   const ciudadText = ciudadLabel ? ` en ${ciudadLabel.trim()}` : ''
-  const precioText = operacion === 'sale' ? '' : ' desde 250€/mes'
-  const description = `✓ ${totalLabel} pisos${opText}${ciudadText}${precioText}. 0% comisión entre particulares. Contratos LAU desde 145€. ¡Ver ahora!`
+  const description = `${totalLabel} pisos${opText}${ciudadText}. Gestoría inmobiliaria online: contratos desde 61 € en 48 h.`
 
   // ✅ SEO: Canonical siempre a URL base (sin filtros)
   const canonicalUrl = `/pisos${ciudad ? `?ciudad=${encodeURIComponent(ciudad)}` : ''}`
@@ -81,9 +77,9 @@ export default async function PisosPage({ searchParams }: PisosPageProps) {
 
   const ciudad = params.ciudad ?? ''
   const operacion = (params.operacion as OperationType) || undefined
-  const soloParticulares = params.solo_particulares === 'true'
-  const soloBancarias    = params.solo_bancarias === 'true'
-  const soloAgencias     = params.solo_agencias === 'true'
+  const soloBancarias = true
+  const soloParticulares = false
+  const soloAgencias = false
   const ordenar = (params.ordenar as SortOption) || 'relevancia'
   const vista = (params.vista as VistaOption) || 'grid'
   const pagina = Math.max(1, parseInt(params.pagina ?? '1', 10))
@@ -150,7 +146,7 @@ export default async function PisosPage({ searchParams }: PisosPageProps) {
             compact
             defaultValues={{
               ciudad: ciudad || undefined,
-              operacion: operacion || 'rent',
+              operacion: operacion || 'sale',
               soloParticulares,
               soloBancarias,
               soloAgencias,
