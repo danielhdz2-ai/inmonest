@@ -6,6 +6,7 @@ import { GESTOR_DANIEL_HERNANDEZ } from '@/lib/gestores-inmonest'
 
 type DemoSection = 'inicio' | 'expediente' | 'documentos' | 'contratos'
 export type GestoriaPanelDemoAudience = 'agencia' | 'particular'
+export type GestoriaPanelDemoRole = 'comprador' | 'vendedor'
 
 type DemoMock = {
   subtitulo: string
@@ -120,14 +121,55 @@ const BUNDLE_PARTICULAR: DemoBundle = {
   historialLabel: 'Historial de tus contratos inmobiliarios',
 }
 
+function buildVendedorBundle(ciudadNombre?: string): DemoBundle {
+  const ciudad = ciudadNombre ?? 'Madrid'
+  return {
+    mock: {
+      subtitulo: `Vendedor · ${ciudad}`,
+      usuario: 'Antonio Ruiz',
+      ciudad,
+      servicio: 'Venta completa hasta escritura',
+      referencia: 'INV-2026-0924',
+      importe: 687,
+      pasoActual: 2,
+      progreso: 55,
+      plazo: 'Acompañamiento hasta notaría',
+    },
+    actividad: [
+      { icon: 'D', titulo: 'Certificado energético subido — el gestor lo valida', fecha: '4 sept, 14:10' },
+      { icon: 'S', titulo: 'Arras redactadas y enviadas al comprador para firma', fecha: '3 sept, 11:30' },
+      { icon: 'P', titulo: 'Pago confirmado — venta completa 687 €', fecha: '2 sept, 09:05' },
+    ],
+    docs: [
+      { key: 'partes', label: 'Datos vendedor y comprador', file: `partes-venta-${ciudad.toLowerCase().replace(/\s+/g, '-')}.pdf`, status: 'done', fecha: '2 sept, 10:00' },
+      { key: 'dni-vendedor', label: 'DNI vendedor', file: 'dni-vendedor-anverso.jpg', status: 'done', fecha: '2 sept, 10:15' },
+      { key: 'escrituras', label: 'Escritura de propiedad', file: 'escritura-compra-2018.pdf', status: 'done', fecha: '2 sept, 10:40' },
+      { key: 'nota-simple', label: 'Nota simple registral', file: `nota-simple-${ciudad.toLowerCase().slice(0, 6)}.pdf`, status: 'reviewing', fecha: '4 sept, 14:10' },
+      { key: 'comunidad', label: 'Certificado de deudas de comunidad', file: null, status: 'pending', fecha: null },
+    ],
+    contratosHist: [
+      { nombre: 'Venta completa hasta escritura', ref: 'INV-2026-0924', estado: 'Documentación', paso: 2, fecha: '2 sept 2026', activo: true },
+      { nombre: 'Contrato de arras penitenciales', ref: 'INV-2026-0880', estado: 'En elaboración', paso: 3, fecha: '3 sept 2026', activo: false },
+      { nombre: 'Contrato de reserva de compra', ref: 'INV-2026-0855', estado: 'Entregado', paso: 4, fecha: '28 ago 2026', activo: false },
+    ],
+    historialLabel: 'Historial de tu venta y contratos',
+  }
+}
+
 const PanelDemoContext = createContext<DemoBundle>(BUNDLE_AGENCIA)
 
 function usePanelDemo() {
   return useContext(PanelDemoContext)
 }
 
-function getDemoBundle(audience: GestoriaPanelDemoAudience): DemoBundle {
-  return audience === 'particular' ? BUNDLE_PARTICULAR : BUNDLE_AGENCIA
+function getDemoBundle(
+  audience: GestoriaPanelDemoAudience,
+  role: GestoriaPanelDemoRole = 'comprador',
+  ciudadNombre?: string,
+): DemoBundle {
+  if (audience === 'agencia') return BUNDLE_AGENCIA
+  if (role === 'vendedor') return buildVendedorBundle(ciudadNombre)
+  return BUNDLE_PARTICULAR
 }
 
 function DocStatusBadge({ status }: { status: 'done' | 'reviewing' | 'pending' }) {
@@ -525,25 +567,38 @@ function DemoContent({ section }: { section: DemoSection }) {
 export default function AgenciaGestoriaPanelDemo({
   audience = 'agencia',
   ciudadNombre,
+  particularRole = 'comprador',
 }: {
   audience?: GestoriaPanelDemoAudience
   /** Personaliza copy en landings locales de contratos */
   ciudadNombre?: string
+  /** Perfil del panel cuando audience es particular */
+  particularRole?: GestoriaPanelDemoRole
 }) {
   const [section, setSection] = useState<DemoSection>('expediente')
-  const bundle = getDemoBundle(audience)
+  const bundle = getDemoBundle(audience, particularRole, ciudadNombre)
 
   const copy =
     audience === 'particular'
-      ? {
-          kicker: 'Panel de cliente',
-          title: ciudadNombre
-            ? `Tu panel de gestoría en ${ciudadNombre}`
-            : 'Tu panel de gestoría: seguimiento en tiempo real',
-          description: ciudadNombre
-            ? `Tras contratar arras, alquiler o acompañamiento en ${ciudadNombre}, accedes a tu área privada. Sube nota simple, DNIs e inventario; sigue el expediente paso a paso, habla con Daniel o tu gestor asignado y descarga el PDF cuando esté listo.`
-            : 'Tras contratar un contrato inmobiliario, accedes a tu área privada. Sube documentación, sigue el expediente paso a paso, habla con tu gestor asignado y descarga el PDF cuando esté listo. Explora las secciones del panel.',
-        }
+      ? particularRole === 'vendedor'
+        ? {
+            kicker: 'Panel del vendedor particular',
+            title: ciudadNombre
+              ? `Tu panel de gestoría al vender en ${ciudadNombre}`
+              : 'Panel de gestoría para vender sin agencia',
+            description: ciudadNombre
+              ? `Tras contratar venta completa en ${ciudadNombre}, accedes a tu área privada. Sube escrituras, certificado energético y deudas de comunidad; sigue arras, documentación y fecha de notaría; habla con tu gestor asignado hasta cerrar la venta.`
+              : 'Tras contratar venta completa hasta escritura, accedes a tu panel. Sube documentación del inmueble, sigue el expediente paso a paso y coordina con tu gestor hasta la firma en notaría.',
+          }
+        : {
+            kicker: 'Panel de cliente',
+            title: ciudadNombre
+              ? `Tu panel de gestoría en ${ciudadNombre}`
+              : 'Tu panel de gestoría: seguimiento en tiempo real',
+            description: ciudadNombre
+              ? `Tras contratar arras, alquiler o acompañamiento en ${ciudadNombre}, accedes a tu área privada. Sube nota simple, DNIs e inventario; sigue el expediente paso a paso, habla con Daniel o tu gestor asignado y descarga el PDF cuando esté listo.`
+              : 'Tras contratar un contrato inmobiliario, accedes a tu área privada. Sube documentación, sigue el expediente paso a paso, habla con tu gestor asignado y descarga el PDF cuando esté listo. Explora las secciones del panel.',
+          }
       : {
           kicker: 'Panel de gestoría',
           title: 'El mismo panel que usan tus clientes',

@@ -4,7 +4,7 @@ import Navbar from '@/components/NavbarServer'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import JsonLd from '@/components/JsonLd'
-import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
+import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaCiudadHero from '@/components/GestoriaCiudadHero'
 import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
@@ -32,6 +32,7 @@ import {
   buildVentaCompletaBreadcrumbSchema,
   buildVentaCompletaServiceSchema,
 } from '@/lib/venta-completa-ciudad-schema'
+import { getVentaCompletaEnriquecimiento } from '@/lib/venta-completa-ciudad-enriquecimiento'
 
 const SOLICITAR_URL = '/gestoria/solicitar/venta-completa-reserva-escritura'
 const SERVICIO_SLUG = 'venta-completa-reserva-escritura'
@@ -46,6 +47,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - VENTA_COMPLETA_PRECIO
   const faq = getVentaCompletaFaq(nombre, region, precioEjemploPiso, config.faqPrioritarias)
+  const local = getVentaCompletaEnriquecimiento(slug)
 
   return (
     <>
@@ -67,7 +69,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
           { label: 'Venta completa', href: '/gestoria/venta-completa-reserva-escritura' },
           { label: nombre },
         ]}
-        badge={`Vendedor particular · ${region}`}
+        badge={`Gestoría inmobiliaria · Vendedor particular · ${region}`}
         title={config.hero.h1}
         lead={config.hero.lead}
         precio={VENTA_COMPLETA_PRECIO}
@@ -77,7 +79,94 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         footnote={`${ventasAcompanadas} ventas acompañadas en ${nombre} · Gestor en 24h · Sin comisión sobre el precio`}
       />
 
-      <GestoriaPanelShowcase servicioLabel={`venta completa en ${nombre}`} />
+      {local && (
+        <section className="py-14 px-4 bg-white border-t border-gray-100">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{local.gestoriaTitulo}</h2>
+            <p className="text-gray-600 leading-relaxed">{local.gestoriaIntro}</p>
+          </div>
+        </section>
+      )}
+
+      <AgenciaGestoriaPanelDemo audience="particular" particularRole="vendedor" ciudadNombre={nombre} />
+
+      {local && (
+        <>
+          <section className="py-14 px-4 bg-slate-50 border-t border-gray-100">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-3">
+                {local.situacionesTitulo}
+              </h2>
+              <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
+                Situaciones reales de propietarios que venden en {nombre} sin pasar por una agencia inmobiliaria.
+              </p>
+              <div className="grid md:grid-cols-3 gap-6">
+                {local.situaciones.map((s) => (
+                  <div key={s.titulo} className="bg-white border border-gray-200 rounded-xl p-5">
+                    <h3 className="font-bold text-gray-900 mb-2">{s.titulo}</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">{s.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="py-14 px-4 bg-white">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-3">
+                {local.barriosTitulo}
+              </h2>
+              <p className="text-center text-gray-600 mb-10 max-w-2xl mx-auto">{local.barriosIntro}</p>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                {local.barrios.map((b) => (
+                  <div key={b.nombre} className="bg-cream-50 border border-gold-300/30 rounded-xl p-5">
+                    <h3 className="font-bold text-gray-900 mb-1">{b.nombre}</h3>
+                    <p className="text-xs font-semibold text-gold-700 mb-2">{b.contexto}</p>
+                    <p className="text-sm text-gray-600 leading-relaxed">{b.operativa}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section className="py-14 px-4 bg-slate-50">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-3">
+                {local.tramitesTitulo}
+              </h2>
+              <p className="text-center text-gray-600 mb-8">{local.tramitesIntro}</p>
+              <ul className="grid sm:grid-cols-2 gap-3">
+                {local.tramitesLocales.map((t) => (
+                  <li
+                    key={t}
+                    className="flex items-start gap-2 text-sm text-gray-700 bg-white rounded-lg p-3 border border-gray-100"
+                  >
+                    <GestoriaCheckIcon className="mt-0.5" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <section className="py-14 px-4 bg-white border-t border-gray-100">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10">
+                {local.pasosTitulo}
+              </h2>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {local.pasos.map((paso, i) => (
+                  <div key={paso.titulo} className="bg-slate-50 border border-gray-200 rounded-xl p-5">
+                    <span className="text-3xl font-black text-gold-500/30 block mb-2">0{i + 1}</span>
+                    <h3 className="font-bold text-gray-900 mb-2">{paso.titulo}</h3>
+                    <p className="text-sm text-gray-600">{paso.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </>
+      )}
 
       {/* Para quién es */}
       <section className="py-14 px-4 bg-white">

@@ -95,7 +95,7 @@ export default function LoginForm() {
         )}
 
         <div className="flex gap-2 justify-center flex-wrap mb-6">
-          {['2 anuncios gratis', 'Visibilidad Turbo', 'Sin intermediarios'].map((text) => (
+          {['Desde 61 €', 'Entrega en 48 h', 'Precio cerrado'].map((text) => (
             <span
               key={text}
               className="bg-cream-100 border border-[#f0dfa0] text-[#7a5c10] text-xs font-semibold px-2.5 py-1 rounded-full"

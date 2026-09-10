@@ -12,7 +12,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/interior3.jpg"
-          alt="Vivienda moderna"
+          alt="Gestoría inmobiliaria online para particulares"
           className="absolute inset-0 w-full h-full object-cover"
         />
 
@@ -31,22 +31,24 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
 
           {/* Texto central */}
           <div className="py-12">
-            <p className="text-gold-500 text-sm font-semibold uppercase tracking-widest mb-3">Portal inmobiliario de particulares</p>
+            <p className="text-gold-500 text-sm font-semibold uppercase tracking-widest mb-3">Gestoría inmobiliaria para particulares</p>
             <h1 className="text-white text-4xl xl:text-5xl font-black leading-tight mb-6">
-              Tu nido, directo<br />y sin comisiones
+              Trámites inmobiliarios<br />desde 61 € en 48 h
             </h1>
             <p className="text-gray-300 text-base xl:text-lg leading-relaxed mb-10 max-w-md">
-              Inmonest es el portal dedicado a conectar <strong className="text-white">propietarios directos</strong> con
-              compradores e inquilinos, eliminando intermediarios y ahorrando miles de euros en comisiones.
+              Inmonest es <strong className="text-white">gestoría inmobiliaria online</strong> para compradores,
+              vendedores e inquilinos que operan entre particulares. Redactamos contratos, revisamos documentación
+              y te acompañamos hasta la firma — precio cerrado, sin comisiones sobre el inmueble.
             </p>
 
-            {/* Servicios */}
+            {/* Trámites */}
             <div className="grid grid-cols-1 gap-4 max-w-md">
               {[
-                { title: 'Vende o alquila tu piso gratis', desc: 'Publica tu anuncio en minutos y llega a miles de compradores directos.' },
-                { title: 'Encuentra pisos sin agencia', desc: 'Miles de inmuebles de particulares en venta y alquiler, sin comisión.' },
-                { title: 'Contratos y gestoría online', desc: 'Contratos de arras y alquiler LAU redactados por gestoría especializada.' },
-                { title: 'Buscador con IA', desc: 'Describe lo que buscas en lenguaje natural y la IA lo encuentra por ti.' },
+                { title: 'Contrato de arras penitenciales', desc: 'Señal de compraventa con cláusulas legales, condición de hipoteca y revisión registral.' },
+                { title: 'Contrato de alquiler LAU', desc: 'Fianza, inventario, actualización de renta y normativa autonómica adaptada a tu ciudad.' },
+                { title: 'Reserva de compra o alquiler', desc: 'Bloqueo jurídico del inmueble mientras preparas las arras o el contrato definitivo.' },
+                { title: 'Compraventa hasta escritura', desc: 'Acompañamiento completo: reserva, arras, documentación y coordinación con notaría.' },
+                { title: 'Revisión y corrección de contratos', desc: 'Análisis de cláusulas abusivas antes de firmar o entregar la fianza.' },
               ].map((s) => (
                 <div key={s.title} className="flex gap-3 items-start">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" aria-hidden />
@@ -61,7 +63,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
 
           {/* Footer */}
           <p className="text-gray-500 text-xs mt-auto">
-            © {new Date().getFullYear()} Inmonest · Tu nido, directo y sin comisiones
+            © {new Date().getFullYear()} Inmonest · Gestoría inmobiliaria online
           </p>
         </div>
       </div>
@@ -83,7 +85,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
         </main>
 
         <footer className="flex lg:hidden text-center text-xs text-gray-400 py-4 justify-center">
-          © {new Date().getFullYear()} Inmonest · Tu nido, directo y sin comisiones
+          © {new Date().getFullYear()} Inmonest · Gestoría inmobiliaria online
         </footer>
       </div>
 

@@ -44,6 +44,11 @@ export const VENTA_COMPLETA_CIUDADES_LIST = [
   { slug: 'malaga', nombre: 'Málaga' },
   { slug: 'salamanca', nombre: 'Salamanca' },
   { slug: 'valladolid', nombre: 'Valladolid' },
+  { slug: 'alicante', nombre: 'Alicante' },
+  { slug: 'bilbao', nombre: 'Bilbao' },
+  { slug: 'zaragoza', nombre: 'Zaragoza' },
+  { slug: 'coruna', nombre: 'A Coruña' },
+  { slug: 'pamplona', nombre: 'Pamplona' },
 ] as const
 
 export function comisionAgenciaMin(precio: number) {
@@ -288,6 +293,185 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
       lead:
         'Ya tienes comprador. Un gestor inmobiliario se encarga de contratos, documentación castellano-leonesa y coordinación con notaría. 687€, sin pagar comisión de agencia.',
     },
+  },
+
+  alicante: {
+    slug: 'alicante',
+    nombre: 'Alicante',
+    region: 'Comunitat Valenciana · Costa Blanca',
+    testimoniosLanding: 'venta-completa-alicante',
+    heroImage: getCiudadImage('alicante').src,
+    precioEjemploPiso: 240_000,
+    ventasAcompanadas: 14,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en Costa Blanca',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña vendedores particulares en Alicante, Elche y costa. Gestiona cédula valenciana, arras con compradores extranjeros y coordinación notarial.',
+    },
+    zonas: ['Centro', 'Playa San Juan', 'Carolinas', 'Elche', 'Benidorm', 'Torrevieja'],
+    meta: {
+      title: 'Vender piso particular Alicante desde 687€',
+      description:
+        '¿Comprador particular en Alicante o Costa Blanca? Gestoría inmobiliaria: contratos, cédula AVANT, documentación y notaría. 687€ sin comisión de agencia.',
+      keywords:
+        'vender piso particular alicante, gestoria venta vivienda alicante, vender sin agencia costa blanca, gestor venta piso alicante',
+      ogTitle: 'Vender piso a particular en Alicante — gestoría hasta escritura',
+      ogDescription: '687€ fijos. Documentación valenciana, arras y notaría para vendedores particulares.',
+    },
+    hero: {
+      h1: 'Vende en Alicante a un particular con gestoría — no con comisión de agencia',
+      lead:
+        'Ya tienes comprador en la capital o la Costa Blanca. Inmonest redacta reserva y arras, verifica cédula de habitabilidad y cargas, y coordina con notaría. 687€ fijos para propietarios que venden por su cuenta.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Puedo vender si mi comprador es extranjero sin NIE definitivo?',
+        a: 'Sí. Redactamos arras con condiciones suspensivas y plazos realistas mientras se regulariza la documentación del comprador.',
+      },
+    ],
+  },
+
+  bilbao: {
+    slug: 'bilbao',
+    nombre: 'Bilbao',
+    region: 'País Vasco · Bizkaia',
+    testimoniosLanding: 'venta-completa-bilbao',
+    heroImage: getCiudadImage('bilbao').src,
+    precioEjemploPiso: 310_000,
+    ventasAcompanadas: 12,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en Bizkaia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en ventas entre particulares en Bilbao y Gran Bilbao. Conoce normativa foral vasca, ITE en casco histórico y coordinación con notarías locales.',
+    },
+    zonas: ['Abando', 'Deusto', 'Casco Viejo', 'Getxo', 'Barakaldo', 'Santurtzi'],
+    meta: {
+      title: 'Vender piso particular Bilbao desde 687€',
+      description:
+        'Vende a particular en Bilbao con gestor asignado. Contratos, documentación foral vasca y notaría. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'vender piso particular bilbao, gestoria venta vivienda bilbao, vender sin agencia bizkaia, gestor venta piso bilbao',
+      ogTitle: 'Vender piso a particular en Bilbao — 687€ hasta escritura',
+      ogDescription: 'Gestoría inmobiliaria para vendedores particulares en Bizkaia.',
+    },
+    hero: {
+      h1: '¿Ya tienes comprador en Bilbao? Tu gestoría hasta la escritura pública',
+      lead:
+        'Vendes de particular a particular en Indautxu, Deusto o el Gran Bilbao. Redactamos contratos, revisamos ITE y deudas de comunidad, y enviamos el expediente completo a notaría. 687€, 0% de comisión sobre el piso.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿El servicio es válido en Getxo, Barakaldo o Portugalete?',
+        a: 'Sí. Gestionamos ventas en todo Bizkaia con adaptación registral al municipio del inmueble.',
+      },
+    ],
+  },
+
+  zaragoza: {
+    slug: 'zaragoza',
+    nombre: 'Zaragoza',
+    region: 'Aragón',
+    testimoniosLanding: 'venta-completa-zaragoza',
+    heroImage: getCiudadImage('zaragoza').src,
+    precioEjemploPiso: 195_000,
+    ventasAcompanadas: 10,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en Aragón',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña vendedores particulares en Zaragoza capital y área metropolitana. Especialista en IEE en casco antiguo y operaciones rápidas entre particulares.',
+    },
+    zonas: ['Centro', 'Delicias', 'Actur', 'Romareda', 'Las Fuentes', 'Utebo'],
+    meta: {
+      title: 'Vender piso particular Zaragoza desde 687€',
+      description:
+        '¿Comprador particular en Zaragoza? Gestoría: contratos, IEE, documentación aragonesa y notaría. 687€ sin comisión de agencia.',
+      keywords:
+        'vender piso particular zaragoza, gestoria venta vivienda zaragoza, vender sin agencia zaragoza, gestor venta piso zaragoza',
+      ogTitle: 'Vender piso a particular en Zaragoza — gestor completo',
+      ogDescription: '687€ fijos. Arras, documentación y notaría para vendedores particulares.',
+    },
+    hero: {
+      h1: 'Vende tu piso en Zaragoza entre particulares con gestoría especializada',
+      lead:
+        'Has encontrado comprador en Delicias, Actur o el casco. Un gestor inmobiliario redacta reserva y arras, verifica IEE si el edificio lo exige y coordina con notaría. 687€ frente a miles en comisión de inmobiliaria.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Necesito IEE para vender en el centro de Zaragoza?',
+        a: 'Sí, si el edificio tiene más de 50 años. Lo verificamos en el pack documental para que no bloquee la operación en notaría.',
+      },
+    ],
+  },
+
+  coruna: {
+    slug: 'coruna',
+    nombre: 'A Coruña',
+    region: 'Galicia',
+    testimoniosLanding: 'venta-completa-coruna',
+    heroImage: getCiudadImage('coruna').src,
+    precioEjemploPiso: 205_000,
+    ventasAcompanadas: 8,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en Galicia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña ventas entre particulares en A Coruña, Oleiros y Arteixo. Gestiona documentación gallega y coordinación con notaría local.',
+    },
+    zonas: ['Ciudad Vieja', 'Orzán', 'Elviña', 'Oleiros', 'Arteixo', 'Os Mallos'],
+    meta: {
+      title: 'Vender piso particular A Coruña desde 687€',
+      description:
+        'Vende a particular en A Coruña con gestor asignado. Contratos, documentación gallega y notaría. 687€ IVA incl. Sin comisión de agencia.',
+      keywords:
+        'vender piso particular coruña, gestoria venta vivienda a coruña, vender sin agencia galicia, gestor venta piso coruña',
+      ogTitle: 'Vender piso a particular en A Coruña — 687€',
+      ogDescription: 'Gestoría inmobiliaria online para vendedores particulares en Galicia.',
+    },
+    hero: {
+      h1: 'Vende en A Coruña de particular a particular con tu gestor asignado',
+      lead:
+        'Ya tienes comprador en Ciudad Vieja, Orzán o la área metropolitana. Redactamos contratos, verificamos obras en comunidad y preparamos el expediente para notaría. 687€ fijos — somos gestoría, no agencia.',
+    },
+  },
+
+  pamplona: {
+    slug: 'pamplona',
+    nombre: 'Pamplona',
+    region: 'Navarra',
+    testimoniosLanding: 'venta-completa-pamplona',
+    heroImage: getCiudadImage('pamplona').src,
+    precioEjemploPiso: 215_000,
+    ventasAcompanadas: 7,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en Navarra',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en ventas entre particulares en Pamplona y Comarca. Conoce normativa navarra de fianzas y operativa en casco histórico.',
+    },
+    zonas: ['Casco Antiguo', 'Iturrama', 'Rochapea', 'Burlada', 'Barañáin', 'Ensanche'],
+    meta: {
+      title: 'Vender piso particular Pamplona desde 687€',
+      description:
+        '¿Comprador particular en Pamplona? Gestoría inmobiliaria: contratos, documentación navarra y notaría. 687€ sin comisión 3-5%.',
+      keywords:
+        'vender piso particular pamplona, gestoria venta vivienda pamplona, vender sin agencia navarra, gestor venta piso pamplona',
+      ogTitle: 'Vender piso a particular en Pamplona — gestoría completa',
+      ogDescription: '687€ fijos. Acompañamiento hasta escritura para vendedores particulares.',
+    },
+    hero: {
+      h1: '¿Vendes en Pamplona sin agencia? Gestoría completa hasta escritura',
+      lead:
+        'Tienes comprador en Iturrama, el Ensanche o la Comarca. Inmonest redacta arras, recopila documentación navarra y coordina con notaría. 687€ para propietarios particulares — sin comisión sobre el precio de venta.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Atendéis ventas en Burlada, Barañáin o Tudela?',
+        a: 'Sí. El servicio es online en toda Navarra. Adaptamos referencias registrales al municipio del inmueble.',
+      },
+    ],
   },
 }
 

@@ -120,6 +120,11 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/malaga`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/salamanca`,  lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/valladolid`, lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/alicante`,   lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/bilbao`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/zaragoza`,   lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/coruna`,     lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/gestoria/venta-completa-reserva-escritura/pamplona`,   lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
 
   // Gestoría — Landing pages SEO ciudad-específicas (NUEVAS - Mayo 2026 - URLs limpias)
   // Zaragoza: hub + contrato (legacy page aún en árbol)
