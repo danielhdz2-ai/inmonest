@@ -59,6 +59,8 @@ export const ASESORIA_COMPRA_CIUDADES_LIST = [
   { slug: 'coruna', nombre: 'A Coruña' },
   { slug: 'murcia', nombre: 'Murcia' },
   { slug: 'pamplona', nombre: 'Pamplona' },
+  { slug: 'salamanca', nombre: 'Salamanca' },
+  { slug: 'granada', nombre: 'Granada' },
 ] as const
 
 export const ASESORIA_COMPRA_TRAMITES = [
@@ -860,6 +862,85 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
           'Primera compra en Navarra. No sabía qué documentos exigir ni cómo funciona el ITP foral.',
         resultado:
           'Gestor explicó cada trámite, revisó documentación y acompañó hasta escritura con informe previo de la situación registral.',
+      },
+    ],
+  },
+
+  salamanca: {
+    slug: 'salamanca',
+    nombre: 'Salamanca',
+    region: 'Castilla y León',
+    testimoniosLanding: 'asesoria-compra-salamanca',
+    heroImage: getCiudadImage('salamanca').src,
+    precioEjemploPiso: 180_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Salamanca',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores de particular en Salamanca. Casco histórico, mercado universitario y revisión documental castellanoleonesa hasta escritura.',
+    },
+    zonasIntro: 'Salamanca capital y provincia.',
+    zonas: ['Centro', 'Garrido', 'San Bernardo', 'Vista Hermosa', 'Alamedilla'],
+    meta: {
+      title: 'Asesoría compra piso Salamanca desde 687€',
+      description:
+        'Compra piso de particular en Salamanca con gestor asignado. Arras, nota simple y notaría. 687€ IVA incl. Sin comisión de agencia.',
+      keywords:
+        'asesoria compra piso salamanca, comprar piso particular salamanca, comprar piso sin agencia salamanca, gestor compra vivienda salamanca',
+      ogTitle: 'Compra piso particular Salamanca — 687€',
+      ogDescription: 'Gestor hasta escritura en Salamanca.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Salamanca sin pagar comisión de agencia',
+      lead:
+        'Muchas operaciones en Salamanca son entre particulares. Tu gestor revisa contratos, documentación del Registro y te acompaña hasta la escritura por 687€ IVA incluido.',
+    },
+    casosReales: [
+      {
+        titulo: 'Piso en el centro de Salamanca',
+        perfil: 'Profesional que compra para vivir',
+        situacion: 'Arras redactadas por el vendedor con plazos muy cortos y sin revisión de ITE en edificio antiguo.',
+        resultado: 'Renegociación de plazos, verificación documental y compra cerrada en notaría sin comisión de agencia.',
+        ahorro: '5.400€ vs inmobiliaria',
+      },
+    ],
+  },
+
+  granada: {
+    slug: 'granada',
+    nombre: 'Granada',
+    region: 'Andalucía',
+    testimoniosLanding: 'asesoria-compra-granada',
+    heroImage: getCiudadImage('granada').src,
+    precioEjemploPiso: 195_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Granada',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en compras entre particulares en Granada capital y área metropolitana. Revisa arras, cédula andaluza y acompaña hasta escritura.',
+    },
+    zonasIntro: 'Granada capital, Realejo, Zaidín y área metropolitana.',
+    zonas: ['Centro', 'Realejo', 'Zaidín', 'Chana', 'Albaicín', 'Armilla'],
+    meta: {
+      title: 'Asesoría compra piso Granada desde 687€',
+      description:
+        'Compra piso de particular en Granada con gestor asignado. Documentación andaluza, arras y notaría. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'asesoria compra piso granada, comprar piso particular granada, comprar piso sin agencia granada, gestor compra vivienda granada',
+      ogTitle: 'Compra piso particular Granada — 687€ fijos',
+      ogDescription: 'Gestor asignado desde reserva hasta escritura en Granada.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Granada con gestoría a tu favor',
+      lead:
+        '¿Has encontrado piso sin agencia en el Realejo, Zaidín o la periferia? Revisamos reserva, arras, nota simple y coordinamos con notaría por 687€ — frente a miles en comisión inmobiliaria.',
+    },
+    casosReales: [
+      {
+        titulo: 'Compra en Zaidín entre particulares',
+        perfil: 'Familia con hipoteca',
+        situacion: 'Plazos de arras incompatibles con aprobación bancaria. Nota simple con carga pendiente de cancelar.',
+        resultado: 'Arras con cláusula suspensiva, seguimiento de cancelación de hipoteca y escritura en 6 semanas.',
       },
     ],
   },

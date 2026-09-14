@@ -72,7 +72,7 @@ const SERVICIO_ENLACE_META: Record<string, ServicioEnlaceMeta> = {
     labelGeneral: 'Ver pack arras comprador →',
   },
   'pack-arras-plus-vendedor': {
-    landingId: 'contrato-arras',
+    landingId: 'pack-arras-vendedor',
     generalHref: '/gestoria/pack-arras-plus-vendedor',
     labelConCiudad: (ciudad) => `Pack Arras Vendedor ${ciudad} →`,
     labelGeneral: 'Ver pack arras vendedor →',

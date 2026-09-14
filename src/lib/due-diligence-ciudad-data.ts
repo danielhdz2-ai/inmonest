@@ -51,6 +51,11 @@ export const DUE_DILIGENCE_CIUDADES_LIST = [
   { slug: 'bilbao', nombre: 'Bilbao' },
   { slug: 'zaragoza', nombre: 'Zaragoza' },
   { slug: 'coruna', nombre: 'A Coruña' },
+  { slug: 'alicante', nombre: 'Alicante' },
+  { slug: 'murcia', nombre: 'Murcia' },
+  { slug: 'pamplona', nombre: 'Pamplona' },
+  { slug: 'salamanca', nombre: 'Salamanca' },
+  { slug: 'valladolid', nombre: 'Valladolid' },
 ] as const
 
 export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = {
@@ -416,6 +421,202 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
         a: '350€ IVA incluido por el pack Due Diligence Pre-Compra con gestora asignada, informe escrito y seguimiento hasta escritura.',
       },
     ],
+  },
+
+  alicante: {
+    slug: 'alicante',
+    nombre: 'Alicante',
+    region: 'Comunitat Valenciana · Costa Blanca',
+    testimoniosLanding: 'due-diligence-alicante',
+    heroImage: getCiudadImage('alicante').src,
+    precioEjemploPiso: 240_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Alicante',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Revisa compras entre particulares en Alicante, Elche y costa. Cédula valenciana, compradores extranjeros y cargas registrales antes de escritura.',
+      especialidades: ['Costa Blanca', 'Compras sin agencia', 'Cédula AVANT'],
+    },
+    docTecnicaTitulo: 'Documentación técnica y Generalitat Valenciana',
+    docTecnicaItems: [
+      'Cédula de habitabilidad valenciana vigente',
+      'Certificado energético actualizado',
+      'ITE / IEE en edificios antiguos',
+      'Licencias de obra y uso turístico si aplica',
+    ],
+    zonasIntro: 'Alicante capital, Playa de San Juan, Elche y Costa Blanca.',
+    zonas: ['Centro', 'Explanada', 'Playa San Juan', 'Carolinas', 'Elche', 'San Vicente', 'Benidorm'],
+    meta: {
+      title: 'Due diligence compra piso Alicante desde 350€',
+      description:
+        '¿Compras piso de particular en Alicante? Gestor revisa nota simple, cédula, cargas y comunidad. 350€ IVA incl. Sin comisión de agencia.',
+      keywords:
+        'due diligence compra piso alicante, revisar documentacion compra alicante, comprar piso particular alicante, gestor compra vivienda costa blanca',
+      ogTitle: 'Due Diligence Pre-Compra Alicante — 350€',
+      ogDescription: 'Revisión documental para compradores particulares en Alicante.',
+    },
+    hero: {
+      badge: 'Revisión documental · Costa Blanca',
+      h1: 'Revisión documental antes de comprar piso en Alicante',
+      lead:
+        'Compras de particular a particular en Alicante o la costa? Un gestor revisa cédula valenciana, nota simple, deudas de comunidad e ITE antes de notaría. 350€ fijos.',
+    },
+  },
+
+  murcia: {
+    slug: 'murcia',
+    nombre: 'Murcia',
+    region: 'Región de Murcia',
+    testimoniosLanding: 'due-diligence-murcia',
+    heroImage: getCiudadImage('murcia').src,
+    precioEjemploPiso: 175_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Murcia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en compras directas en Murcia, Cartagena y Lorca. Mercado accesible con mucha presión para firmar arras sin revisar documentación.',
+      especialidades: ['Mercado accesible', 'Compras rápidas', 'Revisión comunidad'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Región de Murcia',
+    docTecnicaItems: [
+      'Cédula de habitabilidad regional',
+      'Certificado energético',
+      'ITE en edificios antiguos',
+      'Certificado de deudas de comunidad',
+    ],
+    zonasIntro: 'Murcia capital, Cartagena, Lorca y área metropolitana.',
+    zonas: ['Centro', 'Vista Alegre', 'El Carmen', 'Cartagena', 'Lorca', 'Molina de Segura'],
+    meta: {
+      title: 'Due diligence compra piso Murcia desde 350€',
+      description:
+        'Revisión documental antes de comprar en Murcia. Nota simple, cargas, IBI y comunidad. 350€. Compra entre particulares sin agencia.',
+      keywords:
+        'due diligence compra piso murcia, revisar documentacion compra murcia, comprar piso particular murcia',
+      ogTitle: 'Due Diligence Murcia — Gestor 350€',
+      ogDescription: 'Compra segura de particular a particular en la Región de Murcia.',
+    },
+    hero: {
+      h1: 'Revisión documental antes de comprar piso en Murcia',
+      lead:
+        'En Murcia es habitual firmar arras en días. Tu gestor revisa documentación antes de entregar señal. 350€ IVA incluido.',
+    },
+  },
+
+  pamplona: {
+    slug: 'pamplona',
+    nombre: 'Pamplona',
+    region: 'Navarra',
+    testimoniosLanding: 'due-diligence-pamplona',
+    heroImage: getCiudadImage('pamplona').src,
+    precioEjemploPiso: 240_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Navarra',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Revisa compras entre particulares en Pamplona y Navarra. Normativa foral, ITE en casco antiguo y deudas de comunidad.',
+      especialidades: ['Normativa navarra', 'Compras sin agencia', 'Due diligence post-arras'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Navarra',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético',
+      'ITE en casco antiguo',
+      'Licencias de obra',
+    ],
+    zonasIntro: 'Pamplona capital y Comarca.',
+    zonas: ['Casco Antiguo', 'Iturrama', 'Rochapea', 'Burlada', 'Barañáin'],
+    meta: {
+      title: 'Due diligence compra piso Pamplona desde 350€',
+      description:
+        '¿Compras piso de particular en Pamplona? Revisión registral y documental. 350€ IVA incl. Sin comisión de agencia.',
+      keywords:
+        'due diligence compra piso pamplona, comprar piso particular pamplona, revisar documentacion compra navarra',
+      ogTitle: 'Due Diligence Pamplona — 350€',
+      ogDescription: 'Gestor asignado para compradores particulares en Navarra.',
+    },
+    hero: {
+      h1: 'Revisión documental antes de comprar piso en Pamplona',
+      lead:
+        'Compras de particular a particular en Navarra? Revisamos nota simple, cargas, IBI y documentación técnica antes de escritura. 350€ fijos.',
+    },
+  },
+
+  salamanca: {
+    slug: 'salamanca',
+    nombre: 'Salamanca',
+    region: 'Castilla y León',
+    testimoniosLanding: 'due-diligence-salamanca',
+    heroImage: getCiudadImage('salamanca').src,
+    precioEjemploPiso: 180_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Salamanca',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores de particular en Salamanca. Casco histórico, universidad y revisión documental castellanoleonesa.',
+      especialidades: ['Casco histórico', 'Compras sin agencia', 'Revisión registral'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Salamanca',
+    docTecnicaItems: [
+      'Cédula de habitabilidad castellanoleonesa',
+      'Certificado energético',
+      'ITE en edificios antiguos del centro',
+      'Licencias de reforma',
+    ],
+    zonasIntro: 'Salamanca capital y provincia.',
+    zonas: ['Centro', 'Garrido', 'San Bernardo', 'Vista Hermosa', 'Alamedilla'],
+    meta: {
+      title: 'Due diligence compra piso Salamanca desde 350€',
+      description:
+        'Revisión documental antes de comprar en Salamanca. 350€ IVA incl. Compra entre particulares con gestor asignado.',
+      keywords:
+        'due diligence compra piso salamanca, comprar piso particular salamanca, gestor compra vivienda salamanca',
+      ogTitle: 'Due Diligence Salamanca — 350€',
+      ogDescription: 'Compra segura de particular a particular en Salamanca.',
+    },
+    hero: {
+      h1: 'Revisión documental antes de comprar piso en Salamanca',
+      lead:
+        '¿Compras de particular en Salamanca? Tu gestor revisa cargas, comunidad y cédula antes de notaría. 350€ sin comisión de agencia.',
+    },
+  },
+
+  valladolid: {
+    slug: 'valladolid',
+    nombre: 'Valladolid',
+    region: 'Castilla y León',
+    testimoniosLanding: 'due-diligence-valladolid',
+    heroImage: getCiudadImage('valladolid').src,
+    precioEjemploPiso: 190_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Valladolid',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Revisa compras entre particulares en Valladolid. Ideal si compras desde otra provincia: due diligence online hasta escritura.',
+      especialidades: ['Compras a distancia', 'Revisión arras', 'Registro Valladolid'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Valladolid',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético',
+      'ITE en centro histórico',
+      'Certificado de deudas de comunidad',
+    ],
+    zonasIntro: 'Valladolid capital y provincia.',
+    zonas: ['Centro', 'Parquesol', 'Delicias', 'Rondilla', 'La Victoria'],
+    meta: {
+      title: 'Due diligence compra piso Valladolid desde 350€',
+      description:
+        '¿Compras piso de particular en Valladolid? Gestor revisa documentación completa. 350€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'due diligence compra piso valladolid, comprar piso particular valladolid, revisar documentacion compra valladolid',
+      ogTitle: 'Due Diligence Valladolid — 350€',
+      ogDescription: 'Revisión documental para compradores particulares en Valladolid.',
+    },
+    hero: {
+      h1: 'Revisión documental antes de comprar piso en Valladolid',
+      lead:
+        'Compras de particular a particular en Valladolid? Revisamos nota simple, deudas de comunidad e ITE antes de ir a notaría. 350€ fijos.',
+    },
   },
 }
 

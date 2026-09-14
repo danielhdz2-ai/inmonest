@@ -239,6 +239,44 @@ export const ASESORIA_COMPRA_ENRIQUECIMIENTO: Record<string, AsesoriaCompraEnriq
       { titulo: 'Escritura', desc: 'Coordinación con notaría murciana.' },
     ],
   },
+  salamanca: {
+    beneficiosTitulo: 'Comprar en Salamanca de particular — casco y universidad',
+    beneficiosIntro:
+      'Salamanca mezcla casco histórico protegido y demanda de alquiler estudiantil. Comprar sin revisar licencias o ITE en el centro puede bloquear la operación.',
+    tramitesTitulo: 'Trámites de compra en Salamanca',
+    tramitesIntro: 'Checklist castellanoleonés antes de arras:',
+    tramitesLocales: [
+      'ITE en edificios antiguos del centro',
+      'Cédula de habitabilidad vigente',
+      'Nota simple y deudas de comunidad',
+    ],
+    pasosTitulo: 'Tu compra en Salamanca',
+    pasos: [
+      { titulo: 'Consulta', desc: 'Barrio, precio y documentación del vendedor.' },
+      { titulo: '687 € fijos', desc: 'Sin comisión sobre el precio del piso.' },
+      { titulo: 'Revisión legal', desc: 'Arras, registral y técnica.' },
+      { titulo: 'Escritura', desc: 'Coordinación con notaría salmantina.' },
+    ],
+  },
+  granada: {
+    beneficiosTitulo: 'Asesoría compra piso Granada — particular sin agencia',
+    beneficiosIntro:
+      'Granada concentra operaciones directas en Realejo, Zaidín y Albaicín. La cédula andaluza y las obras sin licencia son los riesgos más frecuentes.',
+    tramitesTitulo: 'Trámites de compra en Granada',
+    tramitesIntro: 'Documentación andaluza que revisamos:',
+    tramitesLocales: [
+      'Cédula de habitabilidad andaluza',
+      'Certificado energético e ITE si aplica',
+      'Uso turístico vs habitual en comunidad',
+    ],
+    pasosTitulo: 'Proceso en Granada',
+    pasos: [
+      { titulo: 'Primera llamada', desc: 'Análisis de barrio y urgencia del vendedor.' },
+      { titulo: '687 € IVA incl.', desc: 'Tarifa plana frente a comisión de agencia.' },
+      { titulo: 'Arras equilibradas', desc: 'Plazos realistas para hipoteca.' },
+      { titulo: 'Hasta escritura', desc: 'Gestor asignado en notaría granadina.' },
+    ],
+  },
   pamplona: {
     beneficiosTitulo: 'Compra piso Pamplona de particular — Navarra',
     beneficiosIntro:

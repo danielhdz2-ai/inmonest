@@ -349,6 +349,107 @@ export const VENTA_COMPLETA_ENRIQUECIMIENTO: Record<string, VentaCompletaEnrique
       { titulo: 'Escritura', desc: 'Expediente enviado a notaría; firma con tranquilidad.' },
     ],
   },
+
+  murcia: {
+    gestoriaTitulo: 'Gestoría para vender en Murcia sin comisión de agencia',
+    gestoriaIntro:
+      'Murcia concentra operaciones rápidas entre particulares en Vista Alegre y El Carmen. Inmonest redacta arras, revisa deudas de comunidad en urbanizaciones y te acompaña hasta notaría por 687 € fijos.',
+    situacionesTitulo: 'Situaciones habituales de vendedores en Murcia',
+    situaciones: [
+      {
+        titulo: 'Presión para firmar arras el mismo día',
+        desc: 'El comprador exige señal sin revisar certificado de deudas. Tu gestor negocia plazos y redacta arras equilibradas.',
+      },
+      {
+        titulo: 'Piso en urbanización con derramas',
+        desc: 'Comunidades en Churra o El Palmar con cuotas pendientes. Verificamos actas antes de comprometer el precio.',
+      },
+      {
+        titulo: 'Venta en Cartagena o Lorca',
+        desc: 'Mismo servicio online con adaptación registral al municipio del inmueble y coordinación notarial.',
+      },
+    ],
+    barriosTitulo: 'Venta entre particulares por zonas de Murcia',
+    barriosIntro: 'Mercado accesible pero con riesgos documentales si vendes sin gestoría:',
+    barrios: [
+      { nombre: 'Centro y El Carmen', contexto: 'Edificios antiguos, operaciones rápidas', operativa: 'ITE y cédula regional verificadas antes de arras.' },
+      { nombre: 'Vista Alegre', contexto: 'Alta rotación entre particulares', operativa: 'Pack documental completo subido al panel de gestoría.' },
+      { nombre: 'La Flota y periferia', contexto: 'Precio accesible, compradores jóvenes', operativa: 'Arras con condición de hipoteca del comprador.' },
+      { nombre: 'Cartagena', contexto: 'Segunda ciudad de la región', operativa: 'Coordinación registral cartagenera y plazos realistas.' },
+      { nombre: 'Lorca', contexto: 'Operaciones directas frecuentes', operativa: 'Checklist documental adaptado a municipio lorquino.' },
+    ],
+    tramitesTitulo: 'Trámites de venta en Región de Murcia',
+    tramitesIntro: 'Documentación habitual en notaría murciana:',
+    tramitesLocales: ['Cédula de habitabilidad regional', 'Certificado energético', 'Nota simple sin cargas', 'IBI y plusvalía municipal', 'Certificado de deudas de comunidad'],
+    pasosTitulo: 'Proceso de venta en Murcia',
+    pasos: [
+      { titulo: 'Consulta', desc: 'Precio pactado y urgencia del comprador.' },
+      { titulo: '687 € fijos', desc: 'Sin % sobre un piso de 175.000 €.' },
+      { titulo: 'Arras + docs', desc: 'Contrato y recopilación documental regional.' },
+      { titulo: 'Escritura', desc: 'Expediente listo para notaría en Murcia o área metropolitana.' },
+    ],
+  },
+
+  granada: {
+    gestoriaTitulo: 'Vender en Granada entre particulares con gestoría online',
+    gestoriaIntro:
+      'Granada mezcla casco histórico, universidad y periferia en expansión. Somos gestoría para vendedores que ya tienen comprador — no agencia. 687 € hasta escritura.',
+    situacionesTitulo: 'Situaciones habituales en Granada',
+    situaciones: [
+      { titulo: 'Piso en el Albaicín o Realejo', desc: 'Edificios protegidos y reformas sin licencia. Revisamos documentación urbanística antes de arras.' },
+      { titulo: 'Venta por traslado laboral', desc: 'Plazos cortos del comprador. Coordinamos arras, hipoteca ajena y notaría granadina.' },
+      { titulo: 'Herencia entre hermanos', desc: 'Varios titulares en registro. Tu gestor alinea documentación para una sola venta a particular.' },
+    ],
+    barriosTitulo: 'Ventas por barrios de Granada',
+    barriosIntro: 'Adaptamos arras y checklist al barrio y al perfil del comprador:',
+    barrios: [
+      { nombre: 'Centro y Realejo', contexto: 'Casco histórico', operativa: 'Revisión de licencias de obra y protección patrimonial.' },
+      { nombre: 'Zaidín y Chana', contexto: 'Familias y estudiantes', operativa: 'Operaciones rápidas con arras penitenciales claras.' },
+      { nombre: 'Albaicín', contexto: 'Turismo y segunda residencia', operativa: 'Verificación de uso turístico vs habitual en comunidad.' },
+      { nombre: 'Armilla y área metropolitana', contexto: 'Expansión urbana', operativa: 'Documentación andaluza estándar y plazos de hipoteca.' },
+    ],
+    tramitesTitulo: 'Trámites de venta en Granada',
+    tramitesIntro: 'Requisitos andaluces antes de escritura:',
+    tramitesLocales: ['Cédula de habitabilidad andaluza', 'Certificado energético', 'Nota simple registral', 'Deudas de comunidad e IBI', 'ITE en edificios antiguos del centro'],
+    pasosTitulo: 'Tu venta en Granada paso a paso',
+    pasos: [
+      { titulo: 'Primera llamada', desc: 'Barrio, precio y estado de la documentación.' },
+      { titulo: '687 € IVA incl.', desc: 'Tarifa plana frente a comisión de agencia.' },
+      { titulo: 'Panel de gestoría', desc: 'Subes docs y sigues el expediente online.' },
+      { titulo: 'Notaría', desc: 'Coordinación hasta firma de escritura pública.' },
+    ],
+  },
+
+  mallorca: {
+    gestoriaTitulo: 'Gestoría inmobiliaria para vender en Mallorca sin agencia',
+    gestoriaIntro:
+      'En Palma y Mallorca venden muchos particulares a compradores nacionales y extranjeros. Inmonest redacta arras, verifica cédula balear y cargas, y coordina notaría por 687 € — sin comisión del 3-5 %.',
+    situacionesTitulo: 'Situaciones habituales en Mallorca',
+    situaciones: [
+      { titulo: 'Comprador extranjero con plazos de NIE', desc: 'Arras con condición suspensiva mientras se regulariza la documentación del comprador.' },
+      { titulo: 'Segunda residencia en Portixol o Calvià', desc: 'Distinción entre uso habitual y turístico en comunidad y registro.' },
+      { titulo: 'Venta desde península', desc: 'Propietario no residente: gestoría 100 % online con notaría palmesana.' },
+    ],
+    barriosTitulo: 'Venta entre particulares en Palma y Mallorca',
+    barriosIntro: 'Cada zona tiene compradores y trámites distintos:',
+    barrios: [
+      { nombre: 'Palma Centro', contexto: 'Piso urbano, rotación alta', operativa: 'Arras con inventario si vendes amueblado.' },
+      { nombre: 'Portixol y Playa', contexto: 'Segunda residencia', operativa: 'Revisión de certificados y comunidad costera.' },
+      { nombre: 'Son Espanyolet', contexto: 'Familias y profesionales', operativa: 'Documentación balear completa para notaría.' },
+      { nombre: 'Calvià y litoral', contexto: 'Compradores internacionales', operativa: 'Plazos realistas para financiación y NIE.' },
+      { nombre: 'Inca y interior', contexto: 'Precio más accesible', operativa: 'Mismo pack gestoría con registro local.' },
+    ],
+    tramitesTitulo: 'Trámites de venta en Baleares',
+    tramitesIntro: 'Documentación exigida en notaría balear:',
+    tramitesLocales: ['Cédula de habitabilidad balear', 'Certificado energético', 'Nota simple sin cargas', 'IBI en Palma o municipio', 'Certificado de deudas de comunidad'],
+    pasosTitulo: 'Proceso de venta en Mallorca',
+    pasos: [
+      { titulo: 'Consulta inicial', desc: 'Municipio, precio pactado y perfil del comprador.' },
+      { titulo: '687 € fijos', desc: 'Sin comisión sobre 320.000 € o más.' },
+      { titulo: 'Gestor + panel', desc: 'Seguimiento online hasta notaría.' },
+      { titulo: 'Escritura', desc: 'Expediente completo en notaría de Palma o Mallorca.' },
+    ],
+  },
 }
 
 export function getVentaCompletaEnriquecimiento(slug: string): VentaCompletaEnriquecimiento | undefined {

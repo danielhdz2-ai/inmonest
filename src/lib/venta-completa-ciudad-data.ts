@@ -49,6 +49,9 @@ export const VENTA_COMPLETA_CIUDADES_LIST = [
   { slug: 'zaragoza', nombre: 'Zaragoza' },
   { slug: 'coruna', nombre: 'A Coruña' },
   { slug: 'pamplona', nombre: 'Pamplona' },
+  { slug: 'murcia', nombre: 'Murcia' },
+  { slug: 'granada', nombre: 'Granada' },
+  { slug: 'mallorca', nombre: 'Mallorca' },
 ] as const
 
 export function comisionAgenciaMin(precio: number) {
@@ -470,6 +473,111 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
       {
         q: '¿Atendéis ventas en Burlada, Barañáin o Tudela?',
         a: 'Sí. El servicio es online en toda Navarra. Adaptamos referencias registrales al municipio del inmueble.',
+      },
+    ],
+  },
+
+  murcia: {
+    slug: 'murcia',
+    nombre: 'Murcia',
+    region: 'Región de Murcia',
+    testimoniosLanding: 'venta-completa-murcia',
+    heroImage: getCiudadImage('murcia').src,
+    precioEjemploPiso: 175_000,
+    ventasAcompanadas: 9,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en Región de Murcia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña vendedores particulares en Murcia, Cartagena y Lorca. Mercado accesible con muchas operaciones directas: arras, documentación regional y notaría.',
+    },
+    zonas: ['Centro', 'Vista Alegre', 'El Carmen', 'La Flota', 'Cartagena', 'Lorca'],
+    meta: {
+      title: 'Vender piso particular Murcia desde 687€',
+      description:
+        '¿Comprador particular en Murcia? Gestoría: contratos, documentación regional y notaría. 687€ sin comisión de agencia.',
+      keywords:
+        'vender piso particular murcia, gestoria venta vivienda murcia, vender sin agencia murcia, gestor venta piso cartagena',
+      ogTitle: 'Vender piso a particular en Murcia — gestoría hasta escritura',
+      ogDescription: '687€ fijos para vendedores particulares en la Región de Murcia.',
+    },
+    hero: {
+      h1: 'Vende tu piso en Murcia de particular a particular con gestoría completa',
+      lead:
+        'En Murcia muchos propietarios venden sin agencia. Redactamos reserva y arras, verificamos documentación y coordinamos con notaría por 687€ — frente a miles en comisión inmobiliaria.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Cubrís Cartagena y Lorca?',
+        a: 'Sí. Gestionamos ventas en toda la Región de Murcia con el mismo servicio online y gestor asignado.',
+      },
+    ],
+  },
+
+  granada: {
+    slug: 'granada',
+    nombre: 'Granada',
+    region: 'Andalucía',
+    testimoniosLanding: 'venta-completa-granada',
+    heroImage: getCiudadImage('granada').src,
+    precioEjemploPiso: 195_000,
+    ventasAcompanadas: 8,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en Granada',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en ventas entre particulares en Granada capital y área metropolitana. Revisa documentación andaluza, arras y coordinación notarial.',
+    },
+    zonas: ['Centro', 'Realejo', 'Zaidín', 'Chana', 'Albaicín', 'Armilla'],
+    meta: {
+      title: 'Vender piso particular Granada desde 687€',
+      description:
+        'Vende a particular en Granada con gestor asignado. Contratos, documentación andaluza y notaría. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'vender piso particular granada, gestoria venta vivienda granada, vender sin agencia granada, gestor venta piso granada',
+      ogTitle: 'Vender piso a particular en Granada — 687€',
+      ogDescription: 'Gestoría inmobiliaria para vendedores particulares en Granada.',
+    },
+    hero: {
+      h1: '¿Vendes en Granada sin inmobiliaria? Gestoría hasta escritura pública',
+      lead:
+        'Ya tienes comprador en el Realejo, Zaidín o la periferia. Inmonest redacta arras, recopila documentación andaluza y coordina con notaría. 687€ fijos, sin comisión sobre el precio.',
+    },
+  },
+
+  mallorca: {
+    slug: 'mallorca',
+    nombre: 'Mallorca',
+    region: 'Islas Baleares',
+    testimoniosLanding: 'venta-completa-mallorca',
+    heroImage: getCiudadImage('mallorca').src,
+    precioEjemploPiso: 320_000,
+    ventasAcompanadas: 10,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en Baleares',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña vendedores particulares en Palma y Mallorca. Segunda residencia, compradores nacionales e internacionales, cédula balear y coordinación notarial.',
+    },
+    zonas: ['Palma Centro', 'Portixol', 'Son Espanyolet', 'Pere Garau', 'Calvià', 'Inca'],
+    meta: {
+      title: 'Vender piso particular Mallorca desde 687€',
+      description:
+        '¿Comprador particular en Palma o Mallorca? Gestoría: arras, documentación balear y notaría. 687€ sin comisión de agencia.',
+      keywords:
+        'vender piso particular mallorca, gestoria venta vivienda palma, vender sin agencia baleares, gestor venta piso mallorca',
+      ogTitle: 'Vender piso a particular en Mallorca — gestoría completa',
+      ogDescription: '687€ fijos. Vendedores particulares en Palma y Mallorca.',
+    },
+    hero: {
+      h1: 'Vende en Mallorca a un particular con gestoría — no con comisión de agencia',
+      lead:
+        'Tienes comprador en Palma o la isla. Redactamos contratos, verificamos cédula y cargas, y preparamos el expediente para notaría. 687€ para propietarios que venden por su cuenta.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Atendéis ventas con comprador extranjero?',
+        a: 'Sí. Redactamos arras con plazos realistas mientras el comprador regulariza NIE o documentación bancaria.',
       },
     ],
   },
