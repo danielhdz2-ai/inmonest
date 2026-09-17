@@ -147,6 +147,82 @@ export const PACK_ARRAS_DOCUMENTAL_ENRIQUECIMIENTO: Record<string, Enriquecimien
     ],
   },
 
+  alicante: {
+    barriosPrecio: [
+      { barrio: 'Centro / Explanada', precioM2: '2.400 – 3.100 €/m²', perfil: 'Hostelería y retail; licencias y terrazas' },
+      { barrio: 'Playa San Juan', precioM2: '2.600 – 3.400 €/m²', perfil: 'Compradores nacionales e internacionales; plazos NIE' },
+      { barrio: 'Carolinas', precioM2: '1.900 – 2.500 €/m²', perfil: 'Operaciones rápidas entre particulares' },
+      { barrio: 'Elche', precioM2: '1.400 – 1.900 €/m²', perfil: 'Ticket accesible; revisión comunidad imprescindible' },
+      { barrio: 'San Vicente', precioM2: '1.700 – 2.200 €/m²', perfil: 'Área metropolitana; arras genéricas del vendedor' },
+    ],
+    fiscalidadLocal: {
+      itp: '10 % en Comunitat Valenciana',
+      plusvalia: 'IIVTNU del Ayuntamiento de Alicante',
+      notas: [
+        'Cédula de habitabilidad valenciana obligatoria en notaría',
+        'Costa Blanca: verificar uso turístico vs habitual',
+        'Compradores extranjeros: plazos realistas en arras',
+      ],
+    },
+    guiaComprador: {
+      titulo: 'Comprar de particular en Alicante y Costa Blanca',
+      parrafos: [
+        'Alicante mezcla centro urbano, puerto y costa con muchas operaciones directas entre particulares. El vendedor suele presionar para firmar arras en días sin entregar certificado de deudas ni cédula AVANT.',
+        'En Playa de San Juan y Campello es frecuente el comprador internacional; en Elche y San Vicente, familias locales. El Pack Arras Plus redacta arras equilibradas e informe documental por 450 € con gestor asignado y panel online.',
+        'En un piso de 240.000 €, la agencia cobraría 7.200–12.000 €. Inmonest cobra 450 € fijos: gestoría para compradores, no comisión sobre el piso.',
+      ],
+    },
+    pasosLocales: [
+      { titulo: 'Análisis costa vs capital', desc: 'Evaluamos si compras en Alicante ciudad, Elche o línea de playa.' },
+      { titulo: 'Arras valencianas', desc: 'Cláusula hipotecaria y plazos 45–60 días.' },
+      { titulo: 'Documentación AVANT', desc: 'Cédula, CEE y comunidad antes de la señal.' },
+      { titulo: 'Informe pre-arras', desc: 'Nota simple, cargas y turismo si aplica.' },
+    ],
+    checklistPreArras: [
+      'Nota simple Registro de Alicante',
+      'Certificado de deudas de comunidad',
+      'Cédula de habitabilidad valenciana',
+      'Certificado energético',
+      'IBI al corriente',
+      'Licencias si hubo reforma',
+    ],
+  },
+
+  salamanca: {
+    barriosPrecio: [
+      { barrio: 'Centro / Plaza Mayor', precioM2: '2.000 – 2.700 €/m²', perfil: 'Patrimonio; licencias y ITE' },
+      { barrio: 'Garrido', precioM2: '1.700 – 2.200 €/m²', perfil: 'Familias; operaciones entre particulares' },
+      { barrio: 'San Bernardo', precioM2: '1.600 – 2.100 €/m²', perfil: 'Demanda estudiantil residual' },
+      { barrio: 'Vista Hermosa', precioM2: '1.800 – 2.400 €/m²', perfil: 'Chalets y pisos amplios' },
+    ],
+    fiscalidadLocal: {
+      itp: '8 % en Castilla y León',
+      plusvalia: 'IIVTNU Ayuntamiento de Salamanca',
+      notas: ['Mercado universitario', 'Compradores desde Madrid frecuentes', 'Centro histórico protegido'],
+    },
+    guiaComprador: {
+      titulo: 'Comprar en Salamanca de particular con gestoría online',
+      parrafos: [
+        'Salamanca combina casco histórico y barrios residenciales con ventas directas sin agencia. Los borradores de arras suelen favorecer al vendedor y omiten revisión de comunidad.',
+        'El Pack Arras Plus incluye arras redactadas por gestoría, informe documental y acceso al panel de Inmonest para subir documentos y hablar con tu gestor — 450 € fijos.',
+        'En un piso de 180.000 €, la comisión de agencia sería 5.400–9.000 €. Pagas 450 € por el pack completo.',
+      ],
+    },
+    pasosLocales: [
+      { titulo: 'Consulta online', desc: 'Barrio salmantino y documentación del vendedor.' },
+      { titulo: 'Arras castellanoleonesas', desc: 'ITP 8 % y plazos realistas.' },
+      { titulo: 'Centro histórico', desc: 'Protección patrimonial y licencias.' },
+      { titulo: 'Hasta notaría', desc: 'Coordinación con gestor asignado.' },
+    ],
+    checklistPreArras: [
+      'Nota simple Registro de Salamanca',
+      'Deudas de comunidad',
+      'Cédula castellanoleonesa',
+      'CEE vigente',
+      'ITE en edificios antiguos del centro',
+    ],
+  },
+
   sevilla: {
     barriosPrecio: [
       { barrio: 'Triana', precioM2: '3.000 – 3.600 €/m²', perfil: 'Casco histórico UNESCO; IEE obligatorio en edificios antiguos' },

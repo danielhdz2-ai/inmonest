@@ -1,3 +1,5 @@
+import { VENTA_COMPLETA_ENRIQUECIMIENTO_CORE } from './venta-completa-ciudad-enriquecimiento-core'
+
 export type VentaCompletaBarrio = {
   nombre: string
   contexto: string
@@ -453,5 +455,5 @@ export const VENTA_COMPLETA_ENRIQUECIMIENTO: Record<string, VentaCompletaEnrique
 }
 
 export function getVentaCompletaEnriquecimiento(slug: string): VentaCompletaEnriquecimiento | undefined {
-  return VENTA_COMPLETA_ENRIQUECIMIENTO[slug]
+  return VENTA_COMPLETA_ENRIQUECIMIENTO[slug] ?? VENTA_COMPLETA_ENRIQUECIMIENTO_CORE[slug]
 }

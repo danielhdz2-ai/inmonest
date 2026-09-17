@@ -259,6 +259,168 @@ export const ALQUILER_LOCAL_ENRIQUECIMIENTO: Record<string, AlquilerLocalEnrique
     ],
     comparativaIntro: 'En Alicante capital la renta orientativa ronda 980 €/mes. 145 € por contrato LAU vs comisión del 10 % anual de agencia sobre esa renta.',
   },
+  murcia: {
+    heroH1: 'Alquiler local comercial Murcia — Trapería y Gran Vía sin agencia',
+    heroLead:
+      'Centro histórico, Verónicas o polígonos de Churra: contrato Título III LAU con gestor que conoce licencias del Ayuntamiento de Murcia, tanteo y traspaso. 145 € IVA incluido, entrega en 48 h.',
+    inmonestTitulo: 'En Murcia el bajo comercial no se alquila como una vivienda',
+    inmonestParrafoExtra:
+      'En Trapería y Platería muchos propietarios entregan un PDF de alquiler residencial. Eso no protege el tanteo ante venta ni la amortización de obras del inquilino. Inmonest asigna un gestor inmobiliario: revisa datos en panel, redacta cláusulas empresariales y te explica cada punto antes de firmar — sin comisión del 10 % sobre la renta anual.',
+    basesLegalesTitulo: 'LAU empresarial en la Región de Murcia',
+    basesLegalesIntro: 'Adaptamos contrato a retail en Gran Vía, hostelería en Verónicas y locales en Cartagena o Lorca:',
+    basesLegalesLocal: [
+      { titulo: 'Licencia de actividad municipal', desc: 'Cláusula suspensiva si el arrendatario no obtiene apertura en plazo — habitual en bajos del centro murciano.' },
+      { titulo: 'Tanteo y traspaso', desc: 'Derecho del propietario ante venta del inmueble o traspaso de negocio en hostelería.' },
+    ],
+    pasosLocal: [
+      { num: '01', titulo: 'Datos del local', desc: 'Barrio (Trapera, La Fama, Cartagena…), actividad, renta y si hay traspaso.' },
+      { num: '02', titulo: 'Revisión LAU', desc: 'Tu gestor valida uso comercial, licencia y cláusulas de obras.' },
+      { num: '03', titulo: 'Redacción', desc: 'Contrato personalizado para retail o hostelería murciana.' },
+      { num: '04', titulo: 'Consulta previa', desc: 'Videollamada o WhatsApp para resolver dudas antes de la firma.' },
+      { num: '05', titulo: 'PDF en 48 h', desc: 'Documento firmable con guía para propietario e inquilino.' },
+    ],
+    panelClausulas: [
+      { titulo: 'Tanteo ante venta', estado: 'Revisada', nota: 'Plazos LAU en bajo de Gran Vía.' },
+      { titulo: 'Obras del arrendatario', estado: 'Asesorada', nota: 'Amortización en local de Verónicas.' },
+      { titulo: 'Licencia Ayuntamiento', estado: 'Ajustada', nota: 'Suspensiva si no hay apertura en 60 días.' },
+    ],
+    comparativaIntro: 'En Murcia capital la renta orientativa de un bajo ronda 750 €/mes. 145 € por contrato redactado por gestoría vs cientos de euros de comisión inmobiliaria recurrente.',
+  },
+  granada: {
+    heroH1: 'Contrato local comercial Granada — Realejo y Plaza Nueva',
+    heroLead:
+      'Hostelería en el centro, comercio en Zaidín o local en Motril: LAU empresarial con cláusulas de traspaso, obras y licencia del Ayuntamiento de Granada. Particulares, 145 €.',
+    inmonestTitulo: 'Traspaso de bares en Granada: sin contrato, sin control',
+    inmonestParrafoExtra:
+      'En torno a Plaza Nueva y Reyes Católicos el traspaso es la norma. Un modelo genérico no limita quién puede traspasar ni cómo ejerces el tanteo. Trabajamos como gestoría: un gestor revisa tu caso, documenta cláusulas en el panel y entrega contrato en 48 h — sin ser agencia ni cobrar porcentaje sobre renta.',
+    basesLegalesTitulo: 'Arrendamiento comercial en Granada y provincia',
+    basesLegalesIntro: 'Título III LAU con matices de hostelería turística y comercio de barrio:',
+    basesLegalesLocal: [
+      { titulo: 'Traspaso de actividad', desc: 'Condiciones, prohibiciones y tanteo del propietario en locales de hostelería.' },
+      { titulo: 'Terrazas y vía pública', desc: 'Reparto de tasas y licencias en bares del centro histórico.' },
+    ],
+    pasosLocal: [
+      { num: '01', titulo: 'Tu local granadino', desc: 'Centro, Zaidín, Armilla o costa — actividad y renta.' },
+      { num: '02', titulo: 'Análisis legal', desc: 'Licencia, uso y cláusulas de traspaso según LAU.' },
+      { num: '03', titulo: 'Redacción', desc: 'Contrato adaptado a hostelería o retail.' },
+      { num: '04', titulo: 'Gestor Inmonest', desc: 'Acompañamiento hasta la firma.' },
+      { num: '05', titulo: 'Entrega 48 h', desc: 'PDF listo para firmar entre particulares.' },
+    ],
+    panelClausulas: [
+      { titulo: 'Traspaso hostelería', estado: 'Revisada', nota: 'Tanteo en local de Plaza Nueva.' },
+      { titulo: 'Obras y adecuación', estado: 'Asesorada', nota: 'Amortización en Realejo.' },
+      { titulo: 'Licencia municipal', estado: 'Ajustada', nota: 'Actividad compatible en casco histórico.' },
+    ],
+    comparativaIntro: 'En Granada capital un bajo comercial suele rondar 820 €/mes. 145 € una sola vez por gestoría frente al 10 % anual de una agencia.',
+  },
+  coruna: {
+    heroH1: 'Alquiler local comercial A Coruña — Ciudad Vieja y Orzán',
+    heroLead:
+      'Bajos en la Ciudad Vieja, Cuatro Caminos o polígonos de Arteixo: contrato LAU empresarial con gestor gallego, tanteo y licencias municipales. 145 € IVA incluido.',
+    inmonestTitulo: 'Locales en edificio mixto: hace falta LAU empresarial',
+    inmonestParrafoExtra:
+      'En A Coruña es habitual el bajo comercial bajo viviendas en Orzán o Gran Vía. Mezclar cláusulas de alquiler residencial genera conflictos con la comunidad y con Hacienda. Inmonest redacta contrato Título III, asigna gestor y sigue el expediente en panel hasta entrega — modelo gestoría, no portal inmobiliario.',
+    basesLegalesTitulo: 'Normativa comercial en A Coruña y comarca',
+    basesLegalesIntro: 'Contrato adaptado a Galicia y licencias del concello:',
+    basesLegalesLocal: [
+      { titulo: 'Uso comercial en edificio residencial', desc: 'Coordinación con comunidad y licencia de actividad en planta baja.' },
+      { titulo: 'Tanteo ante venta', desc: 'Notificación y plazos al arrendatario en retail de Ciudad Vieja.' },
+    ],
+    pasosLocal: [
+      { num: '01', titulo: 'Local y actividad', desc: 'Ciudad Vieja, Ferrol, Oleiros — renta y licencia.' },
+      { num: '02', titulo: 'Revisión LAU', desc: 'Cláusulas de obras, tanteo y fianza.' },
+      { num: '03', titulo: 'Redacción', desc: 'Contrato para bajo o nave ligera.' },
+      { num: '04', titulo: 'Consulta gestor', desc: 'Dudas resueltas antes de firmar.' },
+      { num: '05', titulo: 'PDF 48 h', desc: 'Entrega online en toda la provincia.' },
+    ],
+    panelClausulas: [
+      { titulo: 'Edificio mixto', estado: 'Revisada', nota: 'Uso comercial en Orzán.' },
+      { titulo: 'Tanteo venta', estado: 'Asesorada', nota: 'Plazos en local de Gran Vía.' },
+      { titulo: 'Licencia concello', estado: 'Ajustada', nota: 'Apertura en Cuatro Caminos.' },
+    ],
+    comparativaIntro: 'En A Coruña la renta orientativa de un bajo ronda 900 €/mes. 145 € por contrato profesional vs comisión inmobiliaria recurrente.',
+  },
+  pamplona: {
+    heroH1: 'Local comercial Pamplona — Ensanche y Casco Antiguo',
+    heroLead:
+      'Retail en Ensanche, hostelería en Estafeta o local en Mutilva: contrato LAU empresarial con gestor, terrazas y traspaso regulados. 145 €, entrega 48 h.',
+    inmonestTitulo: 'Navarra: formaliza el local con gestoría, no con un Word',
+    inmonestParrafoExtra:
+      'En Pamplona muchos arrendamientos se cierran de palabra o con plantillas desactualizadas. El propietario pierde control sobre tanteo, obras y terrazas en vía pública. Inmonest trabaja 100 % online: gestor asignado, panel con estado del expediente y contrato redactado para particulares — sin listar tu local ni cobrar comisión.',
+    basesLegalesTitulo: 'Arrendamiento comercial en la Comunidad Foral',
+    basesLegalesIntro: 'LAU estatal con ordenanzas del Ayuntamiento de Pamplona:',
+    basesLegalesLocal: [
+      { titulo: 'Terrazas en hostelería', desc: 'Licencia, tasas y responsabilidad en Casco Antiguo y Ensanche.' },
+      { titulo: 'Traspaso de negocio', desc: 'Limitaciones y tanteo del propietario en bares y cafeterías.' },
+    ],
+    pasosLocal: [
+      { num: '01', titulo: 'Datos del inmueble', desc: 'Barrio pamplonés, actividad, renta, terraza.' },
+      { num: '02', titulo: 'Revisión LAU', desc: 'Tanteo, obras y garantías.' },
+      { num: '03', titulo: 'Redacción', desc: 'Contrato empresarial personalizado.' },
+      { num: '04', titulo: 'Gestor asignado', desc: 'Soporte hasta la firma.' },
+      { num: '05', titulo: 'Entrega 48 h', desc: 'PDF firmable en Navarra y área metropolitana.' },
+    ],
+    panelClausulas: [
+      { titulo: 'Terraza Estafeta', estado: 'Revisada', nota: 'Tasas y licencia municipal.' },
+      { titulo: 'Traspaso bar', estado: 'Asesorada', nota: 'Tanteo en Casco Antiguo.' },
+      { titulo: 'Polígono Mutilva', estado: 'Ajustada', nota: 'Uso en nave o bajo comercial.' },
+    ],
+    comparativaIntro: 'En Pamplona un bajo comercial suele rondar 950 €/mes. 145 € por gestoría frente al coste anual de una agencia.',
+  },
+  mallorca: {
+    heroH1: 'Alquiler local comercial Mallorca — Palma y costa',
+    heroLead:
+      'Jaime III, La Lonja, Calvià o Manacor: contrato LAU con cláusulas de temporada, traspaso hostelería y licencia balear. Particulares, 145 € IVA incluido.',
+    inmonestTitulo: 'Temporada alta en Mallorca: el contrato debe decirlo',
+    inmonestParrafoExtra:
+      'En Palma y municipios turísticos muchos locales dependen de estacionalidad y traspaso de negocio. Sin LAU empresarial, renta, obras y garantías quedan en el aire. Inmonest es gestoría inmobiliaria: gestor dedicado, seguimiento en panel y contrato en 48 h — no publicamos tu local ni actuamos como agencia.',
+    basesLegalesTitulo: 'Locales comerciales en Illes Balears',
+    basesLegalesIntro: 'Título III LAU y licencias del Ajuntament correspondiente:',
+    basesLegalesLocal: [
+      { titulo: 'Estacionalidad turística', desc: 'Cláusulas de apertura y renta cuando la actividad varía por temporada en zona costera.' },
+      { titulo: 'Traspaso hostelería', desc: 'Tanteo y condiciones en Puerto y Paseo Marítimo.' },
+    ],
+    pasosLocal: [
+      { num: '01', titulo: 'Local en Mallorca', desc: 'Palma, Calvià, Manacor — actividad y traspaso.' },
+      { num: '02', titulo: 'Revisión LAU', desc: 'Licencia, terraza y garantías.' },
+      { num: '03', titulo: 'Redacción', desc: 'Contrato para retail o hostelería balear.' },
+      { num: '04', titulo: 'Gestor Inmonest', desc: 'Consultas previas a firmar.' },
+      { num: '05', titulo: 'PDF 48 h', desc: 'Servicio online en toda la isla.' },
+    ],
+    panelClausulas: [
+      { titulo: 'Temporada costera', estado: 'Revisada', nota: 'Renta y apertura en Calvià.' },
+      { titulo: 'Traspaso Puerto', estado: 'Asesorada', nota: 'Tanteo en hostelería palmesana.' },
+      { titulo: 'Licencia Palma', estado: 'Ajustada', nota: 'Actividad en Jaime III.' },
+    ],
+    comparativaIntro: 'En Palma la renta orientativa de un bajo suele superar 1.100 €/mes. 145 € por contrato gestoría vs comisión del 10 % anual de agencia.',
+  },
+  salamanca: {
+    heroH1: 'Local comercial Salamanca — Plaza Mayor y Villamayor',
+    heroLead:
+      'Centro universitario, Gran Vía o polígonos de Villamayor: contrato LAU empresarial con gestor castellanoleonés. Tanteo, obras y licencia. 145 €, 48 h.',
+    inmonestTitulo: 'Salamanca: particulares alquilan locales sin protección LAU',
+    inmonestParrafoExtra:
+      'En el casco histórico y Gran Vía muchos arrendamientos se formalizan con modelos de vivienda. Eso no cubre tanteo ante venta ni traspaso en hostelería de Plaza Mayor. Inmonest asigna gestor inmobiliario, documenta el expediente en panel y entrega contrato Título III — gestoría para particulares, sin comisión sobre renta.',
+    basesLegalesTitulo: 'Arrendamiento comercial en Salamanca',
+    basesLegalesIntro: 'LAU empresarial y licencias del Ayuntamiento:',
+    basesLegalesLocal: [
+      { titulo: 'Casco histórico protegido', desc: 'Uso comercial compatible y licencia en edificios patrimoniales.' },
+      { titulo: 'Polígonos Villamayor', desc: 'Cláusulas para nave ligera o bajo en entorno industrial.' },
+    ],
+    pasosLocal: [
+      { num: '01', titulo: 'Tu local', desc: 'Centro, Villamayor o Laguna — actividad y renta.' },
+      { num: '02', titulo: 'Revisión LAU', desc: 'Obras, tanteo y fianza.' },
+      { num: '03', titulo: 'Redacción', desc: 'Contrato para retail o hostelería salmantina.' },
+      { num: '04', titulo: 'Consulta gestor', desc: 'Acompañamiento hasta firmar.' },
+      { num: '05', titulo: 'Entrega 48 h', desc: 'PDF online en provincia de Salamanca.' },
+    ],
+    panelClausulas: [
+      { titulo: 'Casco histórico', estado: 'Revisada', nota: 'Licencia en edificio protegido.' },
+      { titulo: 'Tanteo venta', estado: 'Asesorada', nota: 'Plazos en Gran Vía.' },
+      { titulo: 'Villamayor polígono', estado: 'Ajustada', nota: 'Uso en nave comercial.' },
+    ],
+    comparativaIntro: 'En Salamanca capital un bajo ronda 700 €/mes de media. 145 € por contrato redactado por gestoría frente a comisiones de agencia.',
+  },
 }
 
 export function getAlquilerLocalEnriquecimiento(slug: string): AlquilerLocalEnriquecimiento | null {

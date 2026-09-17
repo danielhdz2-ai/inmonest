@@ -48,6 +48,12 @@ export const PRESTAMO_PARTICULARES_CIUDADES_LIST = [
   { slug: 'zaragoza', nombre: 'Zaragoza' },
   { slug: 'mallorca', nombre: 'Mallorca' },
   { slug: 'valladolid', nombre: 'Valladolid' },
+  { slug: 'alicante', nombre: 'Alicante' },
+  { slug: 'murcia', nombre: 'Murcia' },
+  { slug: 'granada', nombre: 'Granada' },
+  { slug: 'coruna', nombre: 'A Coruña' },
+  { slug: 'pamplona', nombre: 'Pamplona' },
+  { slug: 'salamanca', nombre: 'Salamanca' },
 ] as const
 
 export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticularesCiudadConfig> = {
@@ -612,6 +618,378 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
       ogTitle: 'Contrato Préstamo entre Particulares Valladolid — 130€ con asesor experto',
       ogDescription:
         'Formaliza préstamos privados en Valladolid con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  alicante: {
+    slug: 'alicante',
+    nombre: 'Alicante',
+    region: 'Comunitat Valenciana',
+    testimoniosLanding: 'prestamo-particulares-alicante',
+    heroImage: getCiudadImage('alicante').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en Alicante',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en Alicante y provincia. Especialista en préstamos familiares para entrada de vivienda, financiación entre particulares con compradores desde otras provincias, Modelo 600 ante la Junta de Comunitat Valenciana y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos familiares vivienda', 'Modelo 600 Comunitat Valenciana', 'Préstamos sin interés (0 %)'],
+    },
+    mercadoIntro:
+      'En Alicante es habitual que familiares presten capital para la entrada de un piso, que emprendedores reciban financiación privada o que particulares se presten dinero para reformas. Muchos compradores llegan desde Madrid u otras ciudades. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta.',
+    fiscalIntro:
+      'En Comunitat Valenciana el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en Alicante y provincia:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en Alicante',
+      'Préstamo entre socios de negocio o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en Alicante capital, área metropolitana y provincia. Servicio 100 % online.',
+    zonas: [
+      'Centro', 'Parquesol', 'Delicias', 'Rondilla', 'La Victoria',
+      'Pilarica', 'Laguna de Duero', 'Medina del Campo', 'Tudela de Duero', 'Arroyo de la Encomienda',
+    ],
+    paraQuienExtra: [
+      'Familias en Alicante que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Compradores que se mudan desde Madrid y reciben financiación familiar',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en Alicante y Comunitat Valenciana?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en San Juan, Elche y resto de la provincia. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en Alicante?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Puedo formalizar el préstamo si vivo en Madrid y el prestatario está en Alicante?',
+        a: 'Sí. Trabajamos 100 % online: recopilamos datos por videollamada, redactamos el contrato y te orientamos sobre la declaración fiscal en la comunidad autónoma correspondiente.',
+      },
+    ],
+    meta: {
+      title: 'Préstamo particulares Alicante desde 130€',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Alicante? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares alicante, prestamo entre familiares alicante, prestamo privado alicante hacienda, modelo 600 prestamo comunitat valenciana, prestamo padres hijos entrada piso alicante, prestamo sin intereses alicante, contrato prestamo privado alicante, formalizar prestamo familiar alicante',
+      ogTitle: 'Contrato Préstamo entre Particulares Alicante — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Alicante con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  murcia: {
+    slug: 'murcia',
+    nombre: 'Murcia',
+    region: 'Región de Murcia',
+    testimoniosLanding: 'prestamo-particulares-murcia',
+    heroImage: getCiudadImage('murcia').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en Murcia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en Murcia y provincia. Especialista en préstamos familiares para entrada de vivienda, financiación entre particulares con compradores desde Madrid u otras provincias, Modelo 600 ante la Junta de Comunitat Valenciana y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos familiares vivienda', 'Modelo 600 Región de Murcia', 'Préstamos sin interés (0 %)'],
+    },
+    mercadoIntro:
+      'En Murcia es habitual que familiares presten capital para la entrada de un piso, que emprendedores reciban financiación privada o que particulares se presten dinero para reformas. Muchos compradores llegan desde Madrid u otras ciudades. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta.',
+    fiscalIntro:
+      'En Región de Murcia el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en Murcia y provincia:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en Murcia',
+      'Préstamo entre socios de negocio o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en Murcia capital, área metropolitana y provincia. Servicio 100 % online.',
+    zonas: [
+      'Centro', 'Parquesol', 'Delicias', 'Rondilla', 'La Victoria',
+      'Pilarica', 'Laguna de Duero', 'Medina del Campo', 'Tudela de Duero', 'Arroyo de la Encomienda',
+    ],
+    paraQuienExtra: [
+      'Familias en Murcia que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Compradores que se mudan desde Madrid y reciben financiación familiar',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en Murcia y Región de Murcia?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en Cartagena, Lorca y resto de la Región de Murcia. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en Murcia?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Puedo formalizar el préstamo si vivo en Madrid y el prestatario está en Murcia?',
+        a: 'Sí. Trabajamos 100 % online: recopilamos datos por videollamada, redactamos el contrato y te orientamos sobre la declaración fiscal en la comunidad autónoma correspondiente.',
+      },
+    ],
+    meta: {
+      title: 'Préstamo particulares Murcia desde 130€',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Murcia? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares murcia, prestamo entre familiares murcia, prestamo privado murcia hacienda, modelo 600 prestamo region de murcia, prestamo padres hijos entrada piso murcia, prestamo sin intereses murcia, contrato prestamo privado murcia, formalizar prestamo familiar murcia',
+      ogTitle: 'Contrato Préstamo entre Particulares Murcia — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Murcia con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  granada: {
+    slug: 'granada',
+    nombre: 'Granada',
+    region: 'Andalucía',
+    testimoniosLanding: 'prestamo-particulares-granada',
+    heroImage: getCiudadImage('granada').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en Granada',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en Granada y provincia. Especialista en préstamos familiares para entrada de vivienda, financiación entre particulares con compradores desde otras provincias, Modelo 600 ante la Junta de Andalucía y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos familiares vivienda', 'Modelo 600 Andalucía', 'Préstamos sin interés (0 %)'],
+    },
+    mercadoIntro:
+      'En Granada es habitual que familiares presten capital para la entrada de un piso, que emprendedores reciban financiación privada o que particulares se presten dinero para reformas. Muchos compradores llegan desde Madrid u otras ciudades. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta.',
+    fiscalIntro:
+      'En Andalucía el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en Granada y provincia:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en Granada',
+      'Préstamo entre socios de negocio o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en Granada capital, área metropolitana y provincia. Servicio 100 % online.',
+    zonas: [
+      'Centro', 'Parquesol', 'Delicias', 'Rondilla', 'La Victoria',
+      'Pilarica', 'Laguna de Duero', 'Medina del Campo', 'Tudela de Duero', 'Arroyo de la Encomienda',
+    ],
+    paraQuienExtra: [
+      'Familias en Granada que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Compradores que se mudan desde Madrid y reciben financiación familiar',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en Granada y Andalucía?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en Armilla, Motril y provincia de Granada. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en Granada?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Puedo formalizar el préstamo si vivo en Madrid y el prestatario está en Granada?',
+        a: 'Sí. Trabajamos 100 % online: recopilamos datos por videollamada, redactamos el contrato y te orientamos sobre la declaración fiscal en la comunidad autónoma correspondiente.',
+      },
+    ],
+    meta: {
+      title: 'Préstamo particulares Granada desde 130€',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Granada? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares granada, prestamo entre familiares granada, prestamo privado granada hacienda, modelo 600 prestamo andalucia, prestamo padres hijos entrada piso granada, prestamo sin intereses granada, contrato prestamo privado granada, formalizar prestamo familiar granada',
+      ogTitle: 'Contrato Préstamo entre Particulares Granada — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Granada con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  coruna: {
+    slug: 'coruna',
+    nombre: 'A Coruña',
+    region: 'Galicia',
+    testimoniosLanding: 'prestamo-particulares-coruna',
+    heroImage: getCiudadImage('coruna').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en A Coruña',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en A Coruña y provincia. Especialista en préstamos familiares para entrada de vivienda, financiación entre particulares con compradores desde otras provincias, Modelo 600 ante la Xunta de Galicia y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos familiares vivienda', 'Modelo 600 Galicia', 'Préstamos sin interés (0 %)'],
+    },
+    mercadoIntro:
+      'En A Coruña es habitual que familiares presten capital para la entrada de un piso, que emprendedores reciban financiación privada o que particulares se presten dinero para reformas. Muchos compradores llegan desde Madrid u otras ciudades. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta.',
+    fiscalIntro:
+      'En Galicia el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en A Coruña y provincia:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en A Coruña',
+      'Préstamo entre socios de negocio o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en A Coruña capital, área metropolitana y provincia. Servicio 100 % online.',
+    zonas: [
+      'Centro', 'Parquesol', 'Delicias', 'Rondilla', 'La Victoria',
+      'Pilarica', 'Laguna de Duero', 'Medina del Campo', 'Tudela de Duero', 'Arroyo de la Encomienda',
+    ],
+    paraQuienExtra: [
+      'Familias en A Coruña que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Compradores que se mudan desde Madrid y reciben financiación familiar',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en A Coruña y Galicia?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en Ferrol, Oleiros y resto de la provincia. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en A Coruña?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Puedo formalizar el préstamo si vivo en Madrid y el prestatario está en A Coruña?',
+        a: 'Sí. Trabajamos 100 % online: recopilamos datos por videollamada, redactamos el contrato y te orientamos sobre la declaración fiscal en la comunidad autónoma correspondiente.',
+      },
+    ],
+    meta: {
+      title: 'Préstamo particulares A Coruña desde 130€',
+      description:
+        '¿Prestas o recibes dinero entre particulares en A Coruña? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares coruna, prestamo entre familiares coruna, prestamo privado coruna hacienda, modelo 600 prestamo galicia, prestamo padres hijos entrada piso coruna, prestamo sin intereses coruna, contrato prestamo privado coruna, formalizar prestamo familiar coruna',
+      ogTitle: 'Contrato Préstamo entre Particulares A Coruña — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en A Coruña con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  pamplona: {
+    slug: 'pamplona',
+    nombre: 'Pamplona',
+    region: 'Navarra',
+    testimoniosLanding: 'prestamo-particulares-pamplona',
+    heroImage: getCiudadImage('pamplona').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en Pamplona',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en Pamplona y provincia. Especialista en préstamos familiares para entrada de vivienda, financiación entre particulares con compradores desde otras provincias, Modelo 600 ante la Hacienda Foral de Navarra y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos familiares vivienda', 'Modelo 600 Navarra', 'Préstamos sin interés (0 %)'],
+    },
+    mercadoIntro:
+      'En Pamplona es habitual que familiares presten capital para la entrada de un piso, que emprendedores reciban financiación privada o que particulares se presten dinero para reformas. Muchos compradores llegan desde Madrid u otras ciudades. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta.',
+    fiscalIntro:
+      'En Navarra el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en Pamplona y provincia:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en Pamplona',
+      'Préstamo entre socios de negocio o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en Pamplona capital, área metropolitana y provincia. Servicio 100 % online.',
+    zonas: [
+      'Centro', 'Parquesol', 'Delicias', 'Rondilla', 'La Victoria',
+      'Pilarica', 'Laguna de Duero', 'Medina del Campo', 'Tudela de Duero', 'Arroyo de la Encomienda',
+    ],
+    paraQuienExtra: [
+      'Familias en Pamplona que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Compradores que se mudan desde Madrid y reciben financiación familiar',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en Pamplona y Navarra?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en Burlada, Tudela y Comunidad Foral de Navarra. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en Pamplona?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Puedo formalizar el préstamo si vivo en Madrid y el prestatario está en Pamplona?',
+        a: 'Sí. Trabajamos 100 % online: recopilamos datos por videollamada, redactamos el contrato y te orientamos sobre la declaración fiscal en la comunidad autónoma correspondiente.',
+      },
+    ],
+    meta: {
+      title: 'Préstamo particulares Pamplona desde 130€',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Pamplona? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares pamplona, prestamo entre familiares pamplona, prestamo privado pamplona hacienda, modelo 600 prestamo navarra, prestamo padres hijos entrada piso pamplona, prestamo sin intereses pamplona, contrato prestamo privado pamplona, formalizar prestamo familiar pamplona',
+      ogTitle: 'Contrato Préstamo entre Particulares Pamplona — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Pamplona con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+
+  salamanca: {
+    slug: 'salamanca',
+    nombre: 'Salamanca',
+    region: 'Castilla y León',
+    testimoniosLanding: 'prestamo-particulares-salamanca',
+    heroImage: getCiudadImage('salamanca').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Préstamos entre particulares en Salamanca',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a prestamistas y prestatarios en Salamanca y provincia. Especialista en préstamos familiares para entrada de vivienda, financiación entre particulares con compradores desde otras provincias, Modelo 600 ante la Junta de Castilla y León y protección ante reclamaciones de la AEAT.',
+      especialidades: ['Préstamos familiares vivienda', 'Modelo 600 Castilla y León', 'Préstamos sin interés (0 %)'],
+    },
+    mercadoIntro:
+      'En Salamanca es habitual que familiares presten capital para la entrada de un piso, que emprendedores reciban financiación privada o que particulares se presten dinero para reformas. Muchos compradores llegan desde Madrid u otras ciudades. Sin contrato, una transferencia bancaria puede ser cuestionada por Hacienda como donación encubierta.',
+    fiscalIntro:
+      'En Castilla y León el préstamo entre particulares debe formalizarse y declararse correctamente (Modelo 600, ITP). Si el préstamo es a tipo cero, la cuota puede ser nula, pero la obligación de declarar sigue existiendo. Tu gestor te explica el tratamiento fiscal y cómo documentar intereses si los hubiera.',
+    situacionesIntro: 'Situaciones habituales de préstamos privados que gestionamos en Salamanca y provincia:',
+    situaciones: [
+      'Préstamo familiar para comprar piso en Salamanca',
+      'Préstamo entre socios de negocio o autónomos',
+      'Préstamo para reforma integral del inmueble',
+      'Préstamo entre conocidos con cuotas mensuales',
+      'Préstamo sin intereses entre familiares directos',
+      'Préstamo con garantía personal o aval',
+    ],
+    zonasIntro: 'Cobertura en Salamanca capital, área metropolitana y provincia. Servicio 100 % online.',
+    zonas: [
+      'Centro', 'Parquesol', 'Delicias', 'Rondilla', 'La Victoria',
+      'Pilarica', 'Laguna de Duero', 'Medina del Campo', 'Tudela de Duero', 'Arroyo de la Encomienda',
+    ],
+    paraQuienExtra: [
+      'Familias en Salamanca que prestan dinero para la entrada de vivienda sin hipoteca bancaria',
+      'Compradores que se mudan desde Madrid y reciben financiación familiar',
+      'Prestamistas que necesitan cláusulas de impago y vencimiento anticipado',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de préstamo es válido en Salamanca y Castilla y León?',
+        a: 'Sí. El contrato privado entre particulares tiene plena validez jurídica en Laguna de Duero, Béjar y provincia de Salamanca. Debe complementarse con la declaración fiscal correspondiente (Modelo 600).',
+      },
+      {
+        q: '¿Hace falta notario para un préstamo entre particulares en Salamanca?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garantía. Para préstamos entre 5.000€ y 100.000€ el contrato privado firmado es suficiente y ejecutable judicialmente.',
+      },
+      {
+        q: '¿Puedo formalizar el préstamo si vivo en Madrid y el prestatario está en Salamanca?',
+        a: 'Sí. Trabajamos 100 % online: recopilamos datos por videollamada, redactamos el contrato y te orientamos sobre la declaración fiscal en la comunidad autónoma correspondiente.',
+      },
+    ],
+    meta: {
+      title: 'Préstamo particulares Salamanca desde 130€',
+      description:
+        '¿Prestas o recibes dinero entre particulares en Salamanca? Contrato profesional con asesor experto, nota fiscal y Modelo 600. Evita donación encubierta ante Hacienda. 130€ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares salamanca, prestamo entre familiares salamanca, prestamo privado salamanca hacienda, modelo 600 prestamo castilla y leon, prestamo padres hijos entrada piso salamanca, prestamo sin intereses salamanca, contrato prestamo privado salamanca, formalizar prestamo familiar salamanca',
+      ogTitle: 'Contrato Préstamo entre Particulares Salamanca — 130€ con asesor experto',
+      ogDescription:
+        'Formaliza préstamos privados en Salamanca con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
     },
   },
 }

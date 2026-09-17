@@ -186,7 +186,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Pack Arras Plus Comprador',
     precioSlug: 'pack-arras-revision-documental',
     href: (c) => `/gestoria/pack-arras-revision-documental/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'zaragoza', 'bilbao', 'coruna', 'valladolid', 'murcia', 'pamplona'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'zaragoza', 'bilbao', 'coruna', 'valladolid', 'murcia', 'pamplona', 'alicante', 'salamanca'],
   },
   {
     id: 'contrato-alquiler-habitacion',
@@ -200,14 +200,14 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Alquiler Local Comercial',
     precioSlug: 'alquiler-local-comercial',
     href: (c) => `/gestoria/alquiler-local-comercial/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante', 'murcia', 'granada', 'coruna', 'pamplona', 'mallorca', 'salamanca'],
   },
   {
     id: 'prestamo-particulares',
     nombre: 'Préstamo entre Particulares',
     precioSlug: 'prestamo-particulares',
     href: (c) => `/gestoria/prestamo-particulares/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'mallorca', 'valladolid'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'mallorca', 'valladolid', 'alicante', 'murcia', 'granada', 'coruna', 'pamplona', 'salamanca'],
   },
   {
     id: 'alquiler-particulares',

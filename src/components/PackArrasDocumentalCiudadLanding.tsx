@@ -21,7 +21,7 @@ import { getPackArrasDocumentalFaq } from '@/lib/pack-arras-documental-ciudad-fa
 import { buildFaqSchema } from '@/lib/gestoria-ciudad-schema'
 import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getCiudadCtaImage } from '@/lib/gestoria-images'
-import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
+import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
@@ -557,7 +557,7 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
         </div>
       </section>
 
-      <GestoriaPanelShowcase servicioLabel={`pack arras plus en ${nombre}`} />
+      <AgenciaGestoriaPanelDemo audience="particular" particularRole="comprador" ciudadNombre={nombre} />
 
       <GestoriaLandingExtras
         servicio={PACK_ARRAS_SERVICIO_SLUG}

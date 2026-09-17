@@ -91,6 +91,8 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_LIST = [
   { slug: 'sevilla', nombre: 'Sevilla' },
   { slug: 'malaga', nombre: 'Málaga' },
   { slug: 'zaragoza', nombre: 'Zaragoza' },
+  { slug: 'alicante', nombre: 'Alicante' },
+  { slug: 'salamanca', nombre: 'Salamanca' },
   { slug: 'bilbao', nombre: 'Bilbao' },
   { slug: 'coruna', nombre: 'A Coruña' },
   { slug: 'valladolid', nombre: 'Valladolid' },
@@ -771,6 +773,230 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocume
       {
         q: '¿Operáis en Actur, Valdespartera y extrarradio?',
         a: 'Sí. Cubrimos Zaragoza capital, Ensanche, barrios periféricos y municipios del área metropolitana con el mismo servicio online y gestor asignado.',
+      },
+    ],
+  },
+
+  alicante: {
+    slug: 'alicante',
+    nombre: 'Alicante',
+    region: 'Comunitat Valenciana · Costa Blanca',
+    testimoniosLanding: 'pack-arras-documental-alicante',
+    heroImage: getCiudadImage('alicante').src,
+    precioEjemploPiso: 240000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras entre particulares en Alicante',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña a compradores que adquieren vivienda de particular en Alicante capital, Actur, Valdespartera y área metropolitana. Revisa cargas registrales, ITE en edificios del Ensanche, derramas en comunidades y redacta arras equilibradas en un mercado de operaciones rápidas.',
+      especialidades: ['Normativa aragonesa', 'Arras + informe documental', 'Compras en Actur y Valdespartera'],
+    },
+    docTecnicaTitulo: 'Documentación técnica y Gobierno de Aragón',
+    docTecnicaItems: [
+      'Cédula de habitabilidad o certificado equivalente aragonés',
+      'Certificado de eficiencia energética (CEE)',
+      'ITE / IEE en edificios de más de 50 años — habitual en el Ensanche y casco antiguo',
+      'Licencias de obra y cédula de conformidad urbanística del Ayuntamiento de Alicante',
+      'Certificado de deudas con la comunidad y revisión de derramas en urbanizaciones nuevas',
+    ],
+    zonasIntro:
+      'Alicante capital, Ensanche histórico, barrios periféricos en crecimiento y municipios del área metropolitana (Utebo, Cuarte, La Muela) con conocimiento de la normativa aragonesa.',
+    zonas: [
+      'Centro', 'Delicias', 'Las Fuentes', 'San José', 'Actur', 'Montecanal',
+      'Valdespartera', 'La Almozara', 'Torre Ramona', 'Oliver-Valdefierro',
+      'Utebo', 'Cuarte de Huerva', 'La Muela', 'Villanueva de Gállego',
+    ],
+    mercadoLocal: {
+      titulo: 'Mercado de particulares en Alicante en 2026',
+      parrafos: [
+        'Alicante ofrece uno de los mercados más accesibles de las grandes ciudades españolas, con alto volumen de operaciones entre particulares en Delicias, Actur, Las Fuentes o el Ensanche. Los plazos son cortos y los vendedores presionan para firmar arras en días — sin que nadie revise la documentación.',
+        'En el centro y Delicias el precio medio ronda los 2.200–2.800 €/m²; en Actur, Valdespartera o Montecanal, entre 1.900 y 2.400 €/m². Una comisión de agencia del 3–5 % en un piso de 185.000 € supone entre 5.550 € y 9.250 €. El Pack Arras Plus por 450 € incluye arras penitenciales redactadas por gestoría y revisión documental integral adaptada a Aragón.',
+        'En Alicante el riesgo no es solo el precio: son las operaciones rápidas sin due diligence, las derramas en urbanizaciones de los 2000 (Actur, Valdespartera) y las discrepancias entre metros registrales y catastrales en pisos reformados del Ensanche.',
+      ],
+      datos: [
+        { label: 'Precio medio Centro / Delicias', valor: '2.200 – 2.800 €/m²' },
+        { label: 'Precio medio Actur / Valdespartera', valor: '1.900 – 2.400 €/m²' },
+        { label: 'Comisión agencia (3–5 %)', valor: '5.550 – 9.250 € en 185.000 €' },
+        { label: 'Pack Arras Plus', valor: '450 € IVA incl.' },
+      ],
+    },
+    riesgosLocales: [
+      {
+        titulo: 'Derramas en urbanizaciones de Actur y Valdespartera',
+        desc: 'Comunidades de propietarios de los años 2000 acumulan derramas de fachada, ascensor y eficiencia energética. Revisamos actas recientes y cuotas pendientes antes de la señal en operaciones entre particulares.',
+      },
+      {
+        titulo: 'ITE pendiente en edificios del Ensanche',
+        desc: 'El Ensanche alicanteno concentra edificios de principios del s. XX sin ITE al día. El Ayuntamiento y los bancos pueden exigirla. Verificamos el estado del edificio y coherencia con la nota simple.',
+      },
+      {
+        titulo: 'Arras con plazos imposibles para hipoteca',
+        desc: 'En Alicante los vendedores suelen fijar 10–15 días para escritura en un mercado muy dinámico. Si tu banco tarda más, pierdes la señal. Redactamos arras con cláusula suspensiva por financiación y plazos de 45–60 días.',
+      },
+      {
+        titulo: 'Discrepancias catastro vs registro en pisos reformados',
+        desc: 'En Delicias o el Centro hay muchas reformas sin actualizar registro o cédula. Cruzamos documentación técnica, catastro y realidad del inmueble para evitar sorpresas en notaría y en el ITP.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra en Actur entre particulares',
+        perfil: 'Pareja joven, primera compra',
+        situacion:
+          'Encontraron piso en un portal. El vendedor presionaba para firmar arras en 48 h con señal de 12.000 € sin certificado de deudas de la comunidad.',
+        resultado:
+          'Pack Arras Plus: derrama pendiente de 4.100 € y otra aprobada de 8.500 € detectadas en actas. Arras redactadas con plazo de 50 días y condición de información completa. Renegociaron 5.000 € de descuento.',
+        ahorro: '5.000 €',
+      },
+      {
+        titulo: 'Piso en Delicias con ITE del edificio',
+        perfil: 'Comprador que vende su piso actual en Alicante',
+        situacion:
+          'Operación en cadena entre particulares. El borrador de arras no incluía cláusula suspensiva ni revisión del ITE del edificio de 1958.',
+        resultado:
+          'Redacción de arras con protección por financiación y revisión de ITE: obras menores pendientes en portal común. Negociaron retención en escrow hasta subsanación. Escritura sin sobresaltos a los 52 días.',
+      },
+    ],
+    meta: {
+      title: 'Pack Arras Plus Alicante 450€ — Arras + revisión documental',
+      description:
+        'Compra piso de particular en Alicante: arras penitenciales redactadas + revisión documental completa (ITE, comunidad, nota simple). 450€ IVA incl. Sin agencia.',
+      keywords:
+        'contrato arras alicante particular, comprar piso particular alicante, revision documentacion compra piso alicante, arras penitenciales alicante, gestor compra vivienda alicante, comprar piso sin agencia alicante, pack arras alicante, revisar documentacion antes arras alicante, que revisar antes comprar piso alicante, comprar actur particular, comprar valdespartera particular',
+      ogTitle: 'Pack Arras Plus Alicante — Arras + documentación por 450€',
+      ogDescription:
+        'Arras penitenciales y auditoría documental para compradores entre particulares en Alicante. 450€ fijos.',
+    },
+    hero: {
+      badge: 'Pack Arras Plus · Aragón',
+      h1: 'Compra piso de particular en Alicante con arras y documentación revisada',
+      lead:
+        'Redactamos tus arras penitenciales y verificamos cédula aragonesa, actas de comunidad, derramas, nota simple e ITE antes de entregar la señal. 450 €. Gestor asignado para particulares.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Qué revisar antes de comprar en Alicante de particular?',
+        a: 'Nota simple registral, certificado de deudas de comunidad, IBI al día, cédula de habitabilidad, certificado energético, ITE si el edificio lo exige y licencias de reformas. El pack lo incluye junto con arras redactadas.',
+      },
+      {
+        q: '¿Cuánto cuesta el pack en Alicante frente a una agencia?',
+        a: '450 € IVA incluido por arras + informe documental. En un piso de 185.000 € la agencia cobraría 5.550–9.250 € de comisión.',
+      },
+      {
+        q: '¿Operáis en Actur, Valdespartera y extrarradio?',
+        a: 'Sí. Cubrimos Alicante capital, Ensanche, barrios periféricos y municipios del área metropolitana con el mismo servicio online y gestor asignado.',
+      },
+    ],
+  },
+
+  salamanca: {
+    slug: 'salamanca',
+    nombre: 'Salamanca',
+    region: 'Castilla y León',
+    testimoniosLanding: 'pack-arras-documental-salamanca',
+    heroImage: getCiudadImage('salamanca').src,
+    precioEjemploPiso: 180000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras entre particulares en Salamanca',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña a compradores que adquieren vivienda de particular en Salamanca capital, Actur, Valdespartera y área metropolitana. Revisa cargas registrales, ITE en edificios del Ensanche, derramas en comunidades y redacta arras equilibradas en un mercado de operaciones rápidas.',
+      especialidades: ['Normativa aragonesa', 'Arras + informe documental', 'Compras en Actur y Valdespartera'],
+    },
+    docTecnicaTitulo: 'Documentación técnica y Gobierno de Aragón',
+    docTecnicaItems: [
+      'Cédula de habitabilidad o certificado equivalente aragonés',
+      'Certificado de eficiencia energética (CEE)',
+      'ITE / IEE en edificios de más de 50 años — habitual en el Ensanche y casco antiguo',
+      'Licencias de obra y cédula de conformidad urbanística del Ayuntamiento de Salamanca',
+      'Certificado de deudas con la comunidad y revisión de derramas en urbanizaciones nuevas',
+    ],
+    zonasIntro:
+      'Salamanca capital, Ensanche histórico, barrios periféricos en crecimiento y municipios del área metropolitana (Utebo, Cuarte, La Muela) con conocimiento de la normativa aragonesa.',
+    zonas: [
+      'Centro', 'Delicias', 'Las Fuentes', 'San José', 'Actur', 'Montecanal',
+      'Valdespartera', 'La Almozara', 'Torre Ramona', 'Oliver-Valdefierro',
+      'Utebo', 'Cuarte de Huerva', 'La Muela', 'Villanueva de Gállego',
+    ],
+    mercadoLocal: {
+      titulo: 'Mercado de particulares en Salamanca en 2026',
+      parrafos: [
+        'Salamanca ofrece uno de los mercados más accesibles de las grandes ciudades españolas, con alto volumen de operaciones entre particulares en Delicias, Actur, Las Fuentes o el Ensanche. Los plazos son cortos y los vendedores presionan para firmar arras en días — sin que nadie revise la documentación.',
+        'En el centro y Delicias el precio medio ronda los 2.200–2.800 €/m²; en Actur, Valdespartera o Montecanal, entre 1.900 y 2.400 €/m². Una comisión de agencia del 3–5 % en un piso de 185.000 € supone entre 5.550 € y 9.250 €. El Pack Arras Plus por 450 € incluye arras penitenciales redactadas por gestoría y revisión documental integral adaptada a Aragón.',
+        'En Salamanca el riesgo no es solo el precio: son las operaciones rápidas sin due diligence, las derramas en urbanizaciones de los 2000 (Actur, Valdespartera) y las discrepancias entre metros registrales y catastrales en pisos reformados del Ensanche.',
+      ],
+      datos: [
+        { label: 'Precio medio Centro / Delicias', valor: '2.200 – 2.800 €/m²' },
+        { label: 'Precio medio Actur / Valdespartera', valor: '1.900 – 2.400 €/m²' },
+        { label: 'Comisión agencia (3–5 %)', valor: '5.550 – 9.250 € en 185.000 €' },
+        { label: 'Pack Arras Plus', valor: '450 € IVA incl.' },
+      ],
+    },
+    riesgosLocales: [
+      {
+        titulo: 'Derramas en urbanizaciones de Actur y Valdespartera',
+        desc: 'Comunidades de propietarios de los años 2000 acumulan derramas de fachada, ascensor y eficiencia energética. Revisamos actas recientes y cuotas pendientes antes de la señal en operaciones entre particulares.',
+      },
+      {
+        titulo: 'ITE pendiente en edificios del Ensanche',
+        desc: 'El Ensanche salamancano concentra edificios de principios del s. XX sin ITE al día. El Ayuntamiento y los bancos pueden exigirla. Verificamos el estado del edificio y coherencia con la nota simple.',
+      },
+      {
+        titulo: 'Arras con plazos imposibles para hipoteca',
+        desc: 'En Salamanca los vendedores suelen fijar 10–15 días para escritura en un mercado muy dinámico. Si tu banco tarda más, pierdes la señal. Redactamos arras con cláusula suspensiva por financiación y plazos de 45–60 días.',
+      },
+      {
+        titulo: 'Discrepancias catastro vs registro en pisos reformados',
+        desc: 'En Delicias o el Centro hay muchas reformas sin actualizar registro o cédula. Cruzamos documentación técnica, catastro y realidad del inmueble para evitar sorpresas en notaría y en el ITP.',
+      },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra en Actur entre particulares',
+        perfil: 'Pareja joven, primera compra',
+        situacion:
+          'Encontraron piso en un portal. El vendedor presionaba para firmar arras en 48 h con señal de 12.000 € sin certificado de deudas de la comunidad.',
+        resultado:
+          'Pack Arras Plus: derrama pendiente de 4.100 € y otra aprobada de 8.500 € detectadas en actas. Arras redactadas con plazo de 50 días y condición de información completa. Renegociaron 5.000 € de descuento.',
+        ahorro: '5.000 €',
+      },
+      {
+        titulo: 'Piso en Delicias con ITE del edificio',
+        perfil: 'Comprador que vende su piso actual en Salamanca',
+        situacion:
+          'Operación en cadena entre particulares. El borrador de arras no incluía cláusula suspensiva ni revisión del ITE del edificio de 1958.',
+        resultado:
+          'Redacción de arras con protección por financiación y revisión de ITE: obras menores pendientes en portal común. Negociaron retención en escrow hasta subsanación. Escritura sin sobresaltos a los 52 días.',
+      },
+    ],
+    meta: {
+      title: 'Pack Arras Plus Salamanca 450€ — Arras + revisión documental',
+      description:
+        'Compra piso de particular en Salamanca: arras penitenciales redactadas + revisión documental completa (ITE, comunidad, nota simple). 450€ IVA incl. Sin agencia.',
+      keywords:
+        'contrato arras salamanca particular, comprar piso particular salamanca, revision documentacion compra piso salamanca, arras penitenciales salamanca, gestor compra vivienda salamanca, comprar piso sin agencia salamanca, pack arras salamanca, revisar documentacion antes arras salamanca, que revisar antes comprar piso salamanca, comprar actur particular, comprar valdespartera particular',
+      ogTitle: 'Pack Arras Plus Salamanca — Arras + documentación por 450€',
+      ogDescription:
+        'Arras penitenciales y auditoría documental para compradores entre particulares en Salamanca. 450€ fijos.',
+    },
+    hero: {
+      badge: 'Pack Arras Plus · Aragón',
+      h1: 'Compra piso de particular en Salamanca con arras y documentación revisada',
+      lead:
+        'Redactamos tus arras penitenciales y verificamos cédula aragonesa, actas de comunidad, derramas, nota simple e ITE antes de entregar la señal. 450 €. Gestor asignado para particulares.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Qué revisar antes de comprar en Salamanca de particular?',
+        a: 'Nota simple registral, certificado de deudas de comunidad, IBI al día, cédula de habitabilidad, certificado energético, ITE si el edificio lo exige y licencias de reformas. El pack lo incluye junto con arras redactadas.',
+      },
+      {
+        q: '¿Cuánto cuesta el pack en Salamanca frente a una agencia?',
+        a: '450 € IVA incluido por arras + informe documental. En un piso de 185.000 € la agencia cobraría 5.550–9.250 € de comisión.',
+      },
+      {
+        q: '¿Operáis en Actur, Valdespartera y extrarradio?',
+        a: 'Sí. Cubrimos Salamanca capital, Ensanche, barrios periféricos y municipios del área metropolitana con el mismo servicio online y gestor asignado.',
       },
     ],
   },
