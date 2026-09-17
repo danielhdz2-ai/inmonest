@@ -30,11 +30,12 @@ export const DUE_DILIGENCE_CIUDADES = [
 ] as const
 
 /** Ciudades con landing Pack Arras Plus (450€) */
-export const PACK_ARRAS_DOCUMENTAL_CIUDADES = ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'zaragoza', 'bilbao', 'coruna', 'valladolid', 'murcia', 'pamplona', 'alicante', 'salamanca'] as const
+export const PACK_ARRAS_DOCUMENTAL_CIUDADES = ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'zaragoza', 'bilbao', 'coruna', 'valladolid', 'murcia', 'pamplona', 'alicante', 'salamanca', 'granada', 'mallorca'] as const
 
 const CITY_SLUG_ALIASES: Record<string, string> = {
   'a coruña': 'coruna',
   'la coruña': 'coruna',
+  'a-coruna': 'coruna',
   coruna: 'coruna',
   'coruña': 'coruna',
   málaga: 'malaga',

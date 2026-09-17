@@ -192,6 +192,31 @@ export const SEO_REDIRECTS: Redirect[] = [
     destination: '/coruna/contrato-alquiler',
     permanent: true,
   },
+  {
+    source: '/gestoria/prestamo-particulares/a-coruna',
+    destination: '/gestoria/prestamo-particulares/coruna',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/alquiler-local-comercial/a-coruna',
+    destination: '/gestoria/alquiler-local-comercial/coruna',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/pack-arras-revision-documental/a-coruna',
+    destination: '/gestoria/pack-arras-revision-documental/coruna',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/pack-arras-plus-vendedor/a-coruna',
+    destination: '/gestoria/pack-arras-plus-vendedor/coruna',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/venta-completa-reserva-escritura/a-coruna',
+    destination: '/gestoria/venta-completa-reserva-escritura/coruna',
+    permanent: true,
+  },
 
   // ═══ BLOG — POSTS MOVIDOS O RENOMBRADOS ═══
   {

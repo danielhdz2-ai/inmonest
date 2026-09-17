@@ -472,6 +472,8 @@ export const TESTIMONIOS_POR_LANDING: Record<string, Testimonio[]> = {
   'alquiler-local-comercial-salamanca': pick(14, 11, 15),
   'pack-arras-documental-alicante': pick(3, 12, 16),
   'pack-arras-documental-salamanca': pick(4, 13, 17),
+  'pack-arras-documental-granada': pick(5, 14, 18),
+  'pack-arras-documental-mallorca': pick(6, 15, 19),
   'alquiler-opcion-compra': pick(4, 11, 8),
   'alquiler-garaje-trastero': pick(4, 11, 8),
   'compra-completa-reserva-escritura': pick(4, 11, 8),

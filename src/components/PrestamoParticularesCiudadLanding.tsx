@@ -18,6 +18,8 @@ import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { DUE_DILIGENCE_LANDING, getCiudadCtaImage, getServicioImages, GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 import { precioLabel, precioLauLabel } from '@/lib/gestoria-precios-ui'
+import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
+import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 
 const DUE_DILIGENCE_CIUDADES = new Set([
   'madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza',
@@ -283,7 +285,9 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
                 <li className="flex items-center gap-2"><CheckIcon /> Asesor asignado</li>
                 <li className="flex items-center gap-2"><CheckIcon /> Nota fiscal incluida</li>
                 <li className="flex items-center gap-2"><CheckIcon /> Entrega en 48h</li>
+                <li className="flex items-center gap-2"><CheckIcon /> {GESTORIA_TRAMITE_ONLINE_SHORT}</li>
               </ul>
+              <GestoriaTramiteOnlineNote variant="hero-light" className="mt-4 max-w-xl" />
             </div>
             <div className="relative h-72 md:h-96 rounded-xl overflow-hidden shadow-lg">
               <Image
@@ -345,6 +349,7 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
       <section className="py-16 px-4 bg-slate-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Cómo trabajamos contigo</h2>
+          <GestoriaTramiteOnlineNote variant="section" className="mb-10" />
           <div className="grid md:grid-cols-5 gap-6">
             {PASOS.map((paso, i) => (
               <div key={paso.titulo} className="text-center">

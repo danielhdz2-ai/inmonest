@@ -186,7 +186,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Pack Arras Plus Comprador',
     precioSlug: 'pack-arras-revision-documental',
     href: (c) => `/gestoria/pack-arras-revision-documental/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'zaragoza', 'bilbao', 'coruna', 'valladolid', 'murcia', 'pamplona', 'alicante', 'salamanca'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'zaragoza', 'bilbao', 'coruna', 'valladolid', 'murcia', 'pamplona', 'alicante', 'salamanca', 'granada', 'mallorca'],
   },
   {
     id: 'contrato-alquiler-habitacion',

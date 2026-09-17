@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import GestoriaHeroFullBleed from '@/components/GestoriaHeroFullBleed'
+import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 
 export type GestoriaBreadcrumb = {
   label: string
@@ -59,6 +60,7 @@ export default function GestoriaCiudadHero({
             Hablar con Daniel
           </a>
         </div>
+        <GestoriaTramiteOnlineNote variant="hero-dark" className="mb-3 max-w-2xl" />
         {footnote && <div className="text-sm text-white/65">{footnote}</div>}
       </div>
     </GestoriaHeroFullBleed>

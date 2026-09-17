@@ -188,6 +188,87 @@ export const PACK_ARRAS_DOCUMENTAL_ENRIQUECIMIENTO: Record<string, Enriquecimien
     ],
   },
 
+  granada: {
+    barriosPrecio: [
+      { barrio: 'Centro / Reyes Católicos', precioM2: '2.200 – 2.900 €/m²', perfil: 'Turismo y hostelería; ITE en casco' },
+      { barrio: 'Realejo', precioM2: '2.000 – 2.600 €/m²', perfil: 'Operaciones entre particulares sin revisión' },
+      { barrio: 'Zaidín', precioM2: '1.700 – 2.200 €/m²', perfil: 'Familias; arras redactadas por vendedor' },
+      { barrio: 'Albaicín', precioM2: '2.400 – 3.200 €/m²', perfil: 'Protección patrimonial; licencias de obra' },
+      { barrio: 'Armilla', precioM2: '1.500 – 1.900 €/m²', perfil: 'Área metropolitana; ticket accesible' },
+    ],
+    fiscalidadLocal: {
+      itp: '7,5 % en Andalucía (vivienda habitual con bonificaciones según caso)',
+      plusvalia: 'IIVTNU del Ayuntamiento de Granada',
+      notas: [
+        'Casco histórico: verificar licencias y protección urbanística',
+        'Compradores desde Madrid o costa: trámite 100 % online hasta notaría granadina',
+        'Revisar actas de comunidad en edificios del s. XX del centro',
+      ],
+    },
+    guiaComprador: {
+      titulo: 'Comprar piso de particular en Granada con gestoría Inmonest',
+      parrafos: [
+        'Granada concentra compraventas directas en el centro, Realejo y Zaidín. Los vendedores suelen entregar arras genéricas sin cláusula hipotecaria ni plazo realista para la banca andaluza.',
+        'El Pack Arras Plus redacta arras penitenciales e informe documental (nota simple, comunidad, cédula, CEE, ITE si aplica) por 450 €. Trámite 100 % online: panel, gestor asignado y videollamada — sin desplazamientos hasta la firma en notaría.',
+        'En un piso de 195.000 € la agencia cobraría 5.850–9.750 €. Inmonest cobra 450 € fijos por gestoría, no comisión sobre el precio.',
+      ],
+    },
+    pasosLocales: [
+      { titulo: 'Análisis del barrio granadino', desc: 'Centro, Realejo, Zaidín o área metropolitana.' },
+      { titulo: 'Arras andaluzas equilibradas', desc: 'Plazos 45–60 días y cláusula suspensiva por hipoteca.' },
+      { titulo: 'Documentación técnica', desc: 'ITE en casco histórico y cédula andaluza.' },
+      { titulo: 'Informe pre-señal', desc: 'Actas, derramas y cargas registrales.' },
+    ],
+    checklistPreArras: [
+      'Nota simple Registro de Granada',
+      'Certificado de deudas de comunidad',
+      'Cédula de habitabilidad (Junta de Andalucía)',
+      'Certificado energético',
+      'ITE si el edificio lo exige',
+      'IBI al corriente',
+    ],
+  },
+
+  mallorca: {
+    barriosPrecio: [
+      { barrio: 'Palma — Centro', precioM2: '3.200 – 4.200 €/m²', perfil: 'Operaciones premium; plazos cortos' },
+      { barrio: 'La Lonja / Paseo Marítimo', precioM2: '3.500 – 4.800 €/m²', perfil: 'Compradores nacionales e internacionales' },
+      { barrio: 'Pere Garau', precioM2: '2.400 – 3.000 €/m²', perfil: 'Familias locales; arras sin revisión' },
+      { barrio: 'Calvià / Palmanova', precioM2: '3.000 – 4.500 €/m²', perfil: 'Segunda residencia; NIE y plazos' },
+      { barrio: 'Inca / Manacor', precioM2: '1.600 – 2.200 €/m²', perfil: 'Interior de la isla; ticket más accesible' },
+    ],
+    fiscalidadLocal: {
+      itp: '8 % en Baleares (ITP autonómico)',
+      plusvalia: 'IIVTNU del municipio correspondiente (Palma, Calvià, etc.)',
+      notas: [
+        'Compradores no residentes: plazos realistas en arras',
+        'Verificar uso turístico vs vivienda habitual',
+        'Servicio 100 % online desde península o extranjero',
+      ],
+    },
+    guiaComprador: {
+      titulo: 'Comprar en Mallorca de particular sin agencia',
+      parrafos: [
+        'Palma, Calvià y municipios de la isla registran muchas ventas directas. Sin due diligence, heredas derramas, cargas o discrepancias catastro-registro habituales en edificios costeros.',
+        'Inmonest es gestoría inmobiliaria: pack con arras redactadas, auditoría documental y gestor en panel. Todo el trámite es online — sin desplazamientos hasta la firma en notaría balear.',
+        'En un piso de 285.000 €, la comisión de agencia sería 8.550–14.250 €. El pack cuesta 450 € IVA incluido.',
+      ],
+    },
+    pasosLocales: [
+      { titulo: 'Consulta online', desc: 'Palma, Calvià, Manacor o interior — documentación del vendedor.' },
+      { titulo: 'Arras baleares', desc: 'ITP 8 % y cláusulas de financiación.' },
+      { titulo: 'Documentación insular', desc: 'Cédula, CEE y comunidad antes de la señal.' },
+      { titulo: 'Coordinación pre-escritura', desc: 'Gestor asignado hasta notaría.' },
+    ],
+    checklistPreArras: [
+      'Nota simple Registro de Palma / municipio',
+      'Deudas de comunidad y derramas',
+      'Cédula de habitabilidad balear',
+      'Certificado energético',
+      'IBI y licencias si hubo reforma',
+    ],
+  },
+
   salamanca: {
     barriosPrecio: [
       { barrio: 'Centro / Plaza Mayor', precioM2: '2.000 – 2.700 €/m²', perfil: 'Patrimonio; licencias y ITE' },

@@ -15,6 +15,8 @@ import { getCiudadCtaImage } from '@/lib/gestoria-images'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 import { getContratoAlquilerPrecio } from '@/lib/gestoria-catalogo'
 import { precioLabel } from '@/lib/gestoria-precios-ui'
+import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
+import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
@@ -259,7 +261,9 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
                 <li className="flex items-center gap-2"><CheckIcon /> Asesor asignado</li>
                 <li className="flex items-center gap-2"><CheckIcon /> Entrega en 48h</li>
                 <li className="flex items-center gap-2"><CheckIcon /> Código Civil</li>
+                <li className="flex items-center gap-2"><CheckIcon /> {GESTORIA_TRAMITE_ONLINE_SHORT}</li>
               </ul>
+              <GestoriaTramiteOnlineNote variant="hero-light" className="mt-4 max-w-xl" />
             </div>
             <div className="relative h-72 md:h-96 rounded-xl overflow-hidden shadow-lg">
               <Image
@@ -321,6 +325,7 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
       <section className="py-16 px-4 bg-slate-50">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Cómo trabajamos contigo</h2>
+          <GestoriaTramiteOnlineNote variant="section" className="mb-10" />
           <div className="grid md:grid-cols-5 gap-6">
             {PASOS.map((paso, i) => (
               <div key={paso.titulo} className="text-center">

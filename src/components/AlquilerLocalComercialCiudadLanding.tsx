@@ -9,6 +9,8 @@ import ComoTrabajamosGestoria from '@/components/ComoTrabajamosGestoria'
 import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
 import { RELACIONADOS_LOCAL_COMERCIAL } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
+import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
 import type { AlquilerLocalComercialCiudadConfig } from '@/lib/alquiler-local-comercial-ciudad-data'
 import {
   ALQUILER_LOCAL_CIUDADES_LIST,
@@ -171,7 +173,9 @@ export default function AlquilerLocalComercialCiudadLanding({ config }: Props) {
                 <li className="flex items-center gap-2"><GestoriaCheckIcon className="text-gold-500" /> Gestor en 24h</li>
                 <li className="flex items-center gap-2"><GestoriaCheckIcon className="text-gold-500" /> Entrega en 48h</li>
                 <li className="flex items-center gap-2"><GestoriaCheckIcon className="text-gold-500" /> 0% comisión agencia</li>
+                <li className="flex items-center gap-2"><GestoriaCheckIcon className="text-gold-500" /> {GESTORIA_TRAMITE_ONLINE_SHORT}</li>
               </ul>
+              <GestoriaTramiteOnlineNote variant="hero-light" className="mt-4 max-w-xl" />
               <p className="mt-4 text-sm text-gray-500">
                 {config.localesGestionados} locales comerciales gestionados en {nombre} · Renta media orientativa{' '}
                 {config.rentaEjemploMensual.toLocaleString('es-ES')}€/mes
@@ -290,6 +294,7 @@ export default function AlquilerLocalComercialCiudadLanding({ config }: Props) {
           <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
             Cómo trabajamos contigo en {nombre}
           </h2>
+          <GestoriaTramiteOnlineNote variant="section" className="mb-6" />
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
             Desde la primera consulta hasta la entrega del PDF firmable. Atención personalizada en cada fase.
           </p>

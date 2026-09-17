@@ -215,6 +215,8 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/pack-arras-revision-documental/pamplona`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/pack-arras-revision-documental/alicante`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/pack-arras-revision-documental/salamanca`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/pack-arras-revision-documental/granada`,   lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/pack-arras-revision-documental/mallorca`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/solicitar/pack-arras-revision-documental`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
   { url: `${BASE_URL}/gestoria/solicitar/contrato-compraventa`,          lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/gestoria/solicitar/alquiler-temporada`,            lastModified: today, changeFrequency: 'monthly', priority: 0.82 },

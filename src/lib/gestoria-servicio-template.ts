@@ -20,7 +20,7 @@ export const SERVICIO_CIUDAD_LANDING: Record<string, string> = {
   'alquiler-opcion-compra': 'gestoria-hub',
   'venta-completa-reserva-escritura': 'venta-completa',
   'pack-due-diligence-precompra': 'due-diligence',
-  'pack-arras-revision-documental': 'contrato-arras',
+  'pack-arras-revision-documental': 'pack-arras-documental',
   'pack-arras-plus-vendedor': 'contrato-arras',
   'asesoramiento-arras-venta': 'contrato-arras',
   'revision-contrato-arras': 'contrato-arras',
@@ -54,7 +54,7 @@ export const SERVICIO_TESTIMONIO_LANDING: Record<string, string> = {
   'compra-completa-parking-trastero': 'compra-parking-trastero',
   'venta-completa-reserva-escritura': 'venta-completa',
   'pack-due-diligence-precompra': 'due-diligence',
-  'pack-arras-revision-documental': 'contrato-arras',
+  'pack-arras-revision-documental': 'pack-arras-documental',
   'pack-arras-plus-vendedor': 'asesoramiento-arras',
   'asesoramiento-arras-venta': 'asesoramiento-arras',
   'revision-contrato-arras': 'revision-correccion-arras',
@@ -142,7 +142,12 @@ const DEFAULT_GESTOR: GestorServicioCopy = {
     'Cuando contratas, se te asigna un <strong>gestor especializado</strong> que revisa tu caso, resuelve dudas por teléfono o WhatsApp y adapta el documento a tu operación real.',
   ],
   bio: 'Acompaña a particulares en compraventas, alquileres y contratos inmobiliarios. Conoce la LAU, los plazos de arras y la documentación que exige cada comunidad autónoma.',
-  bullets: ['Contratos personalizados', 'Asesoramiento pre y post firma', 'Disponible por WhatsApp y teléfono'],
+  bullets: [
+    'Trámite 100% online · sin desplazamientos',
+    'Contratos personalizados',
+    'Asesoramiento pre y post firma',
+    'Disponible por WhatsApp y teléfono',
+  ],
 }
 
 export function getGestorCopy(servicio: string, servicioNombre: string): GestorServicioCopy {
@@ -154,7 +159,12 @@ export function getGestorCopy(servicio: string, servicioNombre: string): GestorS
         'Cuando contratas, se te asigna un <strong>gestor especializado en financiación entre particulares</strong>. Te explica el Modelo 600, cómo evitar que Hacienda califique la operación como donación y qué hacer si el prestatario deja de pagar.',
       ],
       bio: 'Acompaña a particulares que formalizan préstamos privados entre familiares, amigos o inversores. Conoce la tributación del Modelo 600 y la reclamación judicial por impago.',
-      bullets: ['Préstamos familiares e inversores', 'Orientación fiscal Modelo 600', 'Asesoramiento pre y post firma'],
+      bullets: [
+        'Trámite 100% online · sin desplazamientos',
+        'Préstamos familiares e inversores',
+        'Orientación fiscal Modelo 600',
+        'Asesoramiento pre y post firma',
+      ],
     }
   }
 

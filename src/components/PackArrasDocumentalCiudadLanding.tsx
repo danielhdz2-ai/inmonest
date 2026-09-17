@@ -22,6 +22,8 @@ import { buildFaqSchema } from '@/lib/gestoria-ciudad-schema'
 import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getCiudadCtaImage } from '@/lib/gestoria-images'
 import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
+import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
+import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
 const BASE_URL = 'https://inmonest.com'
@@ -159,7 +161,9 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
             <li className="flex items-center gap-2"><CheckIcon /> Arras en 48h</li>
             <li className="flex items-center gap-2"><CheckIcon /> Informe documental</li>
             <li className="flex items-center gap-2"><CheckIcon /> Solo particulares</li>
+            <li className="flex items-center gap-2"><CheckIcon /> {GESTORIA_TRAMITE_ONLINE_SHORT}</li>
           </ul>
+          <GestoriaTramiteOnlineNote variant="hero-dark" className="mt-4 max-w-xl" />
         </GestoriaImageBanner>
       </div>
 

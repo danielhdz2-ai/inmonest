@@ -22,6 +22,8 @@ import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/Gestoria
 import { DUE_DILIGENCE_LANDING, getCiudadCtaImage } from '@/lib/gestoria-images'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
+import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
+import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/pack-due-diligence-precompra'
@@ -182,7 +184,9 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
             <li className="flex items-center gap-2"><CheckIcon /> Gestor asignado</li>
             <li className="flex items-center gap-2"><CheckIcon /> Hasta escritura</li>
             <li className="flex items-center gap-2"><CheckIcon /> Informe completo</li>
+            <li className="flex items-center gap-2"><CheckIcon /> {GESTORIA_TRAMITE_ONLINE_SHORT}</li>
           </ul>
+          <GestoriaTramiteOnlineNote variant="hero-dark" className="mt-4 max-w-xl" />
         </GestoriaImageBanner>
       </div>
 
@@ -236,6 +240,7 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Cómo trabajamos contigo</h2>
+          <GestoriaTramiteOnlineNote variant="section" className="mb-10" />
           <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
             Proceso claro desde el primer contacto hasta la firma en notaría. Siempre con el mismo gestor asignado.
           </p>

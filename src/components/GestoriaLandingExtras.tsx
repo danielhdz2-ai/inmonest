@@ -4,6 +4,7 @@ import GestoriaServicioCiudades from '@/components/GestoriaServicioCiudades'
 import { ServicioRelacionadoCard } from '@/components/ServicioRelacionadoCard'
 import TestimoniosSection from '@/components/TestimoniosSection'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
+import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 import { getServicioImages } from '@/lib/gestoria-images'
 import type { RelacionadoServicio } from '@/lib/gestoria-relacionados'
 import {
@@ -77,6 +78,7 @@ export default function GestoriaLandingExtras({
 
   return (
     <div className={cn('space-y-16', className)}>
+      {showContact && <GestoriaTramiteOnlineNote variant="banner" />}
       {(showDanielBlock || showLlamaBlock) && (
         <div className={cn(showDanielBlock && showLlamaBlock && 'space-y-6')}>
           {showDanielBlock && (
