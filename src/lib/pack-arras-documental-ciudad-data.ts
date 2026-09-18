@@ -1464,76 +1464,75 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocume
     precioEjemploPiso: 195000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
-      rol: 'Gestor inmobiliario · Compras entre particulares en la Región de Granada',
+      rol: 'Gestor inmobiliario · Compras entre particulares en Granada',
       foto: GESTOR_DANIEL_HERNANDEZ.foto,
-      bio: 'Acompaña a compradores que adquieren vivienda de particular en Granada capital, Cartagena, Lorca y área metropolitana. Revisa cargas registrales, derramas en comunidades y redacta arras equilibradas en un mercado accesible con muchas operaciones directas.',
-      especialidades: ['Mercado accesible', 'Arras + informe documental', 'Compras en Vista Alegre y El Carmen'],
+      bio: 'Acompaña compradores en Granada capital, Realejo, Zaidín y área metropolitana. Revisa cargas, ITE en casco histórico y redacta arras con plazos realistas para la banca andaluza. Trámite 100 % online hasta notaría.',
+      especialidades: ['Centro y Albaicín', 'Arras + informe documental', 'Compras sin agencia'],
     },
-    docTecnicaTitulo: 'Documentación técnica y Región de Granada',
+    docTecnicaTitulo: 'Documentación técnica · Junta de Andalucía',
     docTecnicaItems: [
-      'Cédula de habitabilidad vigente según normativa regional',
+      'Cédula de habitabilidad vigente',
       'Certificado energético actualizado (obligatorio)',
       'ITE / IEE en edificios de más de 50 años',
-      'Licencias de obra y legalización de reformas',
-      'Certificado de deudas con la comunidad y revisión de derramas en urbanizaciones',
+      'Licencias de obra en zona protegida',
+      'Certificado de deudas con la comunidad y revisión de derramas',
     ],
     zonasIntro:
-      'Granada capital, barrios residenciales, Cartagena, Lorca y municipios del área metropolitana con conocimiento de la normativa regional granadana.',
+      'Granada capital, Realejo, Zaidín, Albaicín, Ronda y municipios del área metropolitana (Armilla, Churriana).',
     zonas: [
-      'Centro', 'Vista Alegre', 'El Carmen', 'San Andrés', 'La Flota',
-      'Churra', 'El Palmar', 'Santiago El Mayor', 'Cartagena', 'Lorca',
-      'Alcantarilla', 'Molina de Segura',
+      'Centro / Reyes Católicos', 'Realejo', 'Zaidín', 'Albaicín', 'Ronda',
+      'Cartuja', 'Armilla', 'Churriana de la Vega', 'Motril', 'Loja',
     ],
     mercadoLocal: {
       titulo: 'Compraventa entre particulares en Granada en 2026',
       parrafos: [
-        'Granada es uno de los mercados más accesibles de España, con alto volumen de operaciones entre particulares en Vista Alegre, El Carmen y barrios periféricos. Los vendedores suelen presionar para firmar arras en días — sin que nadie revise la documentación.',
-        'En el centro y Vista Alegre el precio medio ronda los 1.600–2.200 €/m²; en barrios periféricos, entre 1.300 y 1.800 €/m². Una comisión de agencia del 3–5 % en un piso de 195.000 € supone entre 5.250 € y 8.750 €. El Pack Arras Plus por 450 € incluye arras penitenciales y revisión documental integral adaptada a la Región de Granada.',
-        'En Granada el riesgo principal son las operaciones rápidas sin due diligence, las derramas en urbanizaciones nuevas, las arras redactadas solo por el vendedor y la presión para entregar señal el mismo día sin revisar actas de comunidad.',
+        'Granada concentra compraventas directas en el centro, Realejo y Zaidín. Los vendedores entregan arras genéricas sin cláusula hipotecaria ni plazo realista — sin que nadie revise la documentación.',
+        'En Centro y Realejo el precio medio ronda **2.000–2.900 €/m²**; en Zaidín y Armilla, **1.500–2.200 €/m²**. Una comisión de agencia del 3–5 % en 195.000 € supone **5.850–9.750 €**. El Pack Arras Plus por **450 €** incluye arras penitenciales e informe documental. Trámite **100 % online** con gestor asignado.',
+        'Riesgos habituales: ITE pendiente en casco, licencias en Albaicín, derramas en comunidades del s. XX y arras redactadas solo por el vendedor.',
       ],
       datos: [
-        { label: 'Precio medio Centro / Vista Alegre', valor: '1.600 – 2.200 €/m²' },
-        { label: 'Precio medio barrios periféricos', valor: '1.300 – 1.800 €/m²' },
-        { label: 'Comisión agencia (3–5 %)', valor: '5.250 – 8.750 € en 195.000 €' },
+        { label: 'Precio medio Centro / Realejo', valor: '2.000 – 2.900 €/m²' },
+        { label: 'Precio medio Zaidín / Armilla', valor: '1.500 – 2.200 €/m²' },
+        { label: 'Comisión agencia (3–5 %)', valor: '5.850 – 9.750 € en 195.000 €' },
         { label: 'Pack Arras Plus', valor: '450 € IVA incl.' },
       ],
     },
     riesgosLocales: [
       {
-        titulo: 'Presión para firmar arras sin revisión',
-        desc: 'En Granada es habitual que el vendedor exija señal el mismo día. Sin certificado de deudas ni nota simple revisada, heredas cargas ocultas. El pack incluye auditoría completa antes de entregar la señal.',
+        titulo: 'Arras sin cláusula hipotecaria',
+        desc: 'En Granada es frecuente firmar arras del vendedor con plazos de 10–15 días. Redactamos arras con suspensiva por financiación y 45–60 días para escritura.',
       },
       {
-        titulo: 'Derramas en urbanizaciones nuevas',
-        desc: 'Comunidades de los años 2000 en Churra, El Palmar o Molina de Segura acumulan derramas de fachada y zonas comunes. Revisamos actas recientes antes de la señal.',
+        titulo: 'ITE y licencias en casco histórico',
+        desc: 'En Centro y Albaicín muchos edificios exigen ITE o tienen reformas sin licencia. Revisamos documentación técnica antes de la señal.',
       },
       {
-        titulo: 'Arras con plazos imposibles para hipoteca',
-        desc: 'Los vendedores suelen fijar 10–15 días para escritura. Si tu banco tarda más, pierdes la señal. Redactamos arras con cláusula suspensiva por financiación y plazos de 45–60 días.',
+        titulo: 'Derramas en comunidades antiguas',
+        desc: 'Edificios del centro acumulan derramas de fachada y ascensor. Cruzamos actas recientes con el certificado de deudas.',
       },
       {
         titulo: 'Discrepancias catastro vs registro',
-        desc: 'En Granada capital hay muchas reformas sin actualizar registro o cédula. Cruzamos documentación técnica, catastro y realidad del inmueble para evitar sorpresas en notaría.',
+        desc: 'Reformas sin actualizar registro o cédula andaluza. El informe documental del pack lo detecta antes de entregar señal.',
       },
     ],
     casosReales: [
       {
-        titulo: 'Compra en Vista Alegre entre particulares',
+        titulo: 'Compra en Realejo entre particulares',
         perfil: 'Pareja joven, primer piso',
         situacion:
-          'Encontraron anuncio en portal sin intermediarios. El vendedor quería señal el mismo día sin dar tiempo a revisar documentación.',
+          'Anuncio en portal sin intermediarios. El vendedor pedía señal el mismo día con arras genéricas.',
         resultado:
-          'Pack Arras Plus: deuda de comunidad de 2.800 € detectada y derrama aprobada de 4.500 €. Arras redactadas con plazo de 48 h para revisión y 50 días para escritura. Renegociaron 4.000 € de descuento.',
-        ahorro: '4.000 €',
+          'Detectada derrama aprobada de 3.200 € y deuda de comunidad. Arras con 48 h de revisión y cláusula hipotecaria. Renegociaron 3.500 € de descuento.',
+        ahorro: '3.500 €',
       },
       {
-        titulo: 'Piso en Cartagena con discrepancia registral',
-        perfil: 'Inversor que compra segunda vivienda',
+        titulo: 'Piso en Zaidín con ITE pendiente',
+        perfil: 'Comprador desde Madrid',
         situacion:
-          'Operación con plazos cortos. El anuncio indicaba 80 m² pero el registro reflejaba 72 m² útiles.',
+          'Operación online desde península. El edificio requería ITE y el vendedor no lo mencionaba.',
         resultado:
-          'Informe documental detectó discrepancia de 8 m². Renegociaron precio por m² real y arras con condición de actualización registral antes de escritura.',
-        ahorro: '5.500 €',
+          'Informe documental antes de arras. Condición suspensiva hasta ITE favorable. Escritura a los 55 días sin perder la señal.',
+        ahorro: 'Evitó compra con 12.000 € de obra obligatoria',
       },
     ],
     meta: {
@@ -1541,16 +1540,16 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocume
       description:
         'Compra piso de particular en Granada: arras penitenciales redactadas + revisión documental completa (ITE, comunidad, nota simple). 450€ IVA incl. Sin agencia.',
       keywords:
-        'contrato arras granada particular, comprar piso particular granada, revision documentacion compra piso granada, arras penitenciales granada, gestor compra vivienda granada, comprar piso sin agencia granada, pack arras granada, revisar documentacion antes arras granada, comprar vista alegre particular, comprar cartagena particular',
+        'contrato arras granada particular, comprar piso particular granada, revision documentacion compra piso granada, arras penitenciales granada, gestor compra vivienda granada, comprar piso sin agencia granada, pack arras granada, revisar documentacion antes arras granada, comprar realejo particular, comprar zaidin particular',
       ogTitle: 'Pack Arras Plus Granada — Arras + documentación por 450€',
       ogDescription:
         'Arras penitenciales y auditoría documental para compradores entre particulares en Granada y Región. 450€ fijos.',
     },
     hero: {
-      badge: 'Pack Arras Plus · Región de Granada',
+      badge: 'Pack Arras Plus · Granada · 100 % online',
       h1: 'Compra piso de particular en Granada con arras y documentación revisada',
       lead:
-        'Redactamos tus arras penitenciales y verificamos cédula, actas de comunidad, derramas, nota simple e ITE antes de entregar la señal. 450 €. Gestor asignado para particulares.',
+        'Redactamos tus arras penitenciales y verificamos cédula, actas de comunidad, derramas, nota simple e ITE antes de entregar la señal. 450 €. Gestor asignado — sin desplazamientos hasta notaría.',
     },
     faqPrioritarias: [
       {
@@ -1559,11 +1558,11 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocume
       },
       {
         q: '¿Cuánto cuesta el pack en Granada frente a una agencia?',
-        a: '450 € IVA incluido por arras + informe documental. En un piso de 195.000 € la agencia cobraría 5.250–8.750 € de comisión.',
+        a: '450 € IVA incluido por arras + informe documental. En un piso de 195.000 € la agencia cobraría 5.850–9.750 € de comisión.',
       },
       {
-        q: '¿Operáis en Cartagena y Lorca?',
-        a: 'Sí. Cubrimos Granada capital, Cartagena, Lorca y principales municipios de la región con el mismo servicio online y gestor asignado.',
+        q: '¿Puedo hacer todo el trámite desde fuera de Granada?',
+        a: 'Sí. Panel online, videollamada con gestor y revisión documental remota. Solo te desplazas a la notaría granadina para firmar la escritura.',
       },
     ],
   },
@@ -1578,76 +1577,75 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocume
     precioEjemploPiso: 285000,
     gestor: {
       nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
-      rol: 'Gestor inmobiliario · Compras entre particulares en la Región de Mallorca',
+      rol: 'Gestor inmobiliario · Compras entre particulares en Mallorca',
       foto: GESTOR_DANIEL_HERNANDEZ.foto,
-      bio: 'Acompaña a compradores que adquieren vivienda de particular en Mallorca capital, Cartagena, Lorca y área metropolitana. Revisa cargas registrales, derramas en comunidades y redacta arras equilibradas en un mercado accesible con muchas operaciones directas.',
-      especialidades: ['Mercado accesible', 'Arras + informe documental', 'Compras en Vista Alegre y El Carmen'],
+      bio: 'Acompaña compradores en Palma, Calvià, Manacor e interior de la isla. Revisa cargas, uso turístico vs habitual y redacta arras con plazos para no residentes. Trámite 100 % online desde península o extranjero.',
+      especialidades: ['Palma y costa', 'Arras + informe documental', 'Compradores no residentes'],
     },
-    docTecnicaTitulo: 'Documentación técnica y Región de Mallorca',
+    docTecnicaTitulo: 'Documentación técnica · Govern Balear',
     docTecnicaItems: [
-      'Cédula de habitabilidad vigente según normativa regional',
+      'Cédula d\'habitabilitat vigente',
       'Certificado energético actualizado (obligatorio)',
-      'ITE / IEE en edificios de más de 50 años',
+      'ITE en edificios antiguos de Palma',
       'Licencias de obra y legalización de reformas',
-      'Certificado de deudas con la comunidad y revisión de derramas en urbanizaciones',
+      'Certificado de deudas de comunidad y coherencia catastro-registro',
     ],
     zonasIntro:
-      'Mallorca capital, barrios residenciales, Cartagena, Lorca y municipios del área metropolitana con conocimiento de la normativa regional mallorcana.',
+      'Palma, Calvià, Palmanova, Inca, Manacor y municipios del interior con normativa balear.',
     zonas: [
-      'Centro', 'Vista Alegre', 'El Carmen', 'San Andrés', 'La Flota',
-      'Churra', 'El Palmar', 'Santiago El Mayor', 'Cartagena', 'Lorca',
-      'Alcantarilla', 'Molina de Segura',
+      'Palma — Centro', 'La Lonja', 'Pere Garau', 'Son Espanyolet',
+      'Calvià', 'Palmanova', 'Magaluf', 'Inca', 'Manacor', 'Pollença',
     ],
     mercadoLocal: {
       titulo: 'Compraventa entre particulares en Mallorca en 2026',
       parrafos: [
-        'Mallorca es uno de los mercados más accesibles de España, con alto volumen de operaciones entre particulares en Vista Alegre, El Carmen y barrios periféricos. Los vendedores suelen presionar para firmar arras en días — sin que nadie revise la documentación.',
-        'En el centro y Vista Alegre el precio medio ronda los 1.600–2.200 €/m²; en barrios periféricos, entre 1.300 y 1.800 €/m². Una comisión de agencia del 3–5 % en un piso de 285.000 € supone entre 5.250 € y 8.750 €. El Pack Arras Plus por 450 € incluye arras penitenciales y revisión documental integral adaptada a la Región de Mallorca.',
-        'En Mallorca el riesgo principal son las operaciones rápidas sin due diligence, las derramas en urbanizaciones nuevas, las arras redactadas solo por el vendedor y la presión para entregar señal el mismo día sin revisar actas de comunidad.',
+        'Palma, Calvià y el interior registran muchas ventas directas. Sin due diligence, heredas derramas, cargas o discrepancias catastro-registro habituales en edificios costeros.',
+        'En Palma centro el precio medio ronda **3.200–4.200 €/m²**; en Calvià y costa, **3.000–4.500 €/m²**. Una comisión del 3–5 % en 285.000 € supone **8.550–14.250 €**. El Pack Arras Plus por **450 €** incluye arras e informe documental. **100 % online** hasta notaría balear.',
+        'Riesgos: plazos cortos para no residentes, uso turístico mal declarado, arras sin cláusula de financiación y comunidades con derramas en fachada marina.',
       ],
       datos: [
-        { label: 'Precio medio Centro / Vista Alegre', valor: '1.600 – 2.200 €/m²' },
-        { label: 'Precio medio barrios periféricos', valor: '1.300 – 1.800 €/m²' },
-        { label: 'Comisión agencia (3–5 %)', valor: '5.250 – 8.750 € en 285.000 €' },
+        { label: 'Precio medio Palma centro', valor: '3.200 – 4.200 €/m²' },
+        { label: 'Precio medio Calvià / costa', valor: '3.000 – 4.500 €/m²' },
+        { label: 'Comisión agencia (3–5 %)', valor: '8.550 – 14.250 € en 285.000 €' },
         { label: 'Pack Arras Plus', valor: '450 € IVA incl.' },
       ],
     },
     riesgosLocales: [
       {
-        titulo: 'Presión para firmar arras sin revisión',
-        desc: 'En Mallorca es habitual que el vendedor exija señal el mismo día. Sin certificado de deudas ni nota simple revisada, heredas cargas ocultas. El pack incluye auditoría completa antes de entregar la señal.',
+        titulo: 'Plazos irreales para compradores no residentes',
+        desc: 'Muchos vendedores exigen señal en 48 h. Redactamos arras con plazos de 45–60 días y suspensiva por hipoteca, coordinando desde península.',
       },
       {
-        titulo: 'Derramas en urbanizaciones nuevas',
-        desc: 'Comunidades de los años 2000 en Churra, El Palmar o Molina de Segura acumulan derramas de fachada y zonas comunes. Revisamos actas recientes antes de la señal.',
+        titulo: 'Uso turístico vs vivienda habitual',
+        desc: 'Licencias ETV o contratos de temporada mal encuadrados pueden afectar tu compra. Revisamos actas y normativa del Govern antes de la señal.',
       },
       {
-        titulo: 'Arras con plazos imposibles para hipoteca',
-        desc: 'Los vendedores suelen fijar 10–15 días para escritura. Si tu banco tarda más, pierdes la señal. Redactamos arras con cláusula suspensiva por financiación y plazos de 45–60 días.',
+        titulo: 'Derramas en comunidades costeras',
+        desc: 'Edificios en primera línea acumulan derramas de fachada y ascensor. Cruzamos actas con certificado de deudas.',
       },
       {
         titulo: 'Discrepancias catastro vs registro',
-        desc: 'En Mallorca capital hay muchas reformas sin actualizar registro o cédula. Cruzamos documentación técnica, catastro y realidad del inmueble para evitar sorpresas en notaría.',
+        desc: 'Reformas sin actualizar cédula balear o registro. El informe del pack lo detecta antes de entregar señal.',
       },
     ],
     casosReales: [
       {
-        titulo: 'Compra en Vista Alegre entre particulares',
-        perfil: 'Pareja joven, primer piso',
+        titulo: 'Compra en Pere Garau desde Madrid',
+        perfil: 'Familia, primera vivienda en Baleares',
         situacion:
-          'Encontraron anuncio en portal sin intermediarios. El vendedor quería señal el mismo día sin dar tiempo a revisar documentación.',
+          'Operación 100 % remota. Arras del vendedor con 15 días para escritura sin cláusula hipotecaria.',
         resultado:
-          'Pack Arras Plus: deuda de comunidad de 2.800 € detectada y derrama aprobada de 4.500 €. Arras redactadas con plazo de 48 h para revisión y 50 días para escritura. Renegociaron 4.000 € de descuento.',
-        ahorro: '4.000 €',
+          'Arras equilibradas con 55 días y revisión documental previa. Derrama de 6.100 € detectada; renegociaron 5.000 € de descuento.',
+        ahorro: '5.000 €',
       },
       {
-        titulo: 'Piso en Cartagena con discrepancia registral',
-        perfil: 'Inversor que compra segunda vivienda',
+        titulo: 'Piso en Calvià con discrepancia de superficie',
+        perfil: 'Segunda residencia',
         situacion:
-          'Operación con plazos cortos. El anuncio indicaba 80 m² pero el registro reflejaba 72 m² útiles.',
+          'Anuncio con 95 m²; registro con 88 m² útiles. Vendedor presionaba para señal inmediata.',
         resultado:
-          'Informe documental detectó discrepancia de 8 m². Renegociaron precio por m² real y arras con condición de actualización registral antes de escritura.',
-        ahorro: '5.500 €',
+          'Informe antes de arras. Precio ajustado por m² real y condición de actualización registral.',
+        ahorro: '7.200 €',
       },
     ],
     meta: {
@@ -1655,29 +1653,29 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocume
       description:
         'Compra piso de particular en Mallorca: arras penitenciales redactadas + revisión documental completa (ITE, comunidad, nota simple). 450€ IVA incl. Sin agencia.',
       keywords:
-        'contrato arras mallorca particular, comprar piso particular mallorca, revision documentacion compra piso mallorca, arras penitenciales mallorca, gestor compra vivienda mallorca, comprar piso sin agencia mallorca, pack arras mallorca, revisar documentacion antes arras mallorca, comprar vista alegre particular, comprar cartagena particular',
+        'contrato arras mallorca particular, comprar piso particular mallorca, revision documentacion compra piso palma, arras penitenciales mallorca, gestor compra vivienda baleares, comprar piso sin agencia mallorca, pack arras mallorca, revisar documentacion antes arras palma, comprar calvia particular',
       ogTitle: 'Pack Arras Plus Mallorca — Arras + documentación por 450€',
       ogDescription:
         'Arras penitenciales y auditoría documental para compradores entre particulares en Mallorca y Región. 450€ fijos.',
     },
     hero: {
-      badge: 'Pack Arras Plus · Región de Mallorca',
+      badge: 'Pack Arras Plus · Mallorca · 100 % online',
       h1: 'Compra piso de particular en Mallorca con arras y documentación revisada',
       lead:
-        'Redactamos tus arras penitenciales y verificamos cédula, actas de comunidad, derramas, nota simple e ITE antes de entregar la señal. 450 €. Gestor asignado para particulares.',
+        'Redactamos tus arras penitenciales y verificamos cédula balear, actas de comunidad, derramas y nota simple antes de entregar la señal. 450 €. Gestor asignado — sin desplazamientos hasta notaría.',
     },
     faqPrioritarias: [
       {
         q: '¿Qué revisar antes de comprar un piso en Mallorca de particular?',
-        a: 'Nota simple registral, certificado de deudas de comunidad, IBI al corriente, cédula de habitabilidad, certificado energético e ITE si el edificio lo exige. El pack lo incluye junto con arras redactadas.',
+        a: 'Nota simple registral, certificado de deudas de comunidad, IBI al corriente, cédula d\'habitabilitat, certificado energético e ITE si aplica. El pack lo incluye junto con arras redactadas.',
       },
       {
         q: '¿Cuánto cuesta el pack en Mallorca frente a una agencia?',
-        a: '450 € IVA incluido por arras + informe documental. En un piso de 285.000 € la agencia cobraría 5.250–8.750 € de comisión.',
+        a: '450 € IVA incluido por arras + informe documental. En un piso de 285.000 € la agencia cobraría 8.550–14.250 € de comisión.',
       },
       {
-        q: '¿Operáis en Cartagena y Lorca?',
-        a: 'Sí. Cubrimos Mallorca capital, Cartagena, Lorca y principales municipios de la región con el mismo servicio online y gestor asignado.',
+        q: '¿Puedo comprar en Mallorca viviendo en la península?',
+        a: 'Sí. Subes documentación al panel, videollamada con gestor e informe antes de arras. Solo viajas a la isla para firmar en notaría.',
       },
     ],
   },

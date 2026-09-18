@@ -27,6 +27,13 @@ export const DUE_DILIGENCE_CIUDADES = [
   'bilbao',
   'zaragoza',
   'coruna',
+  'alicante',
+  'murcia',
+  'pamplona',
+  'salamanca',
+  'valladolid',
+  'granada',
+  'mallorca',
 ] as const
 
 /** Ciudades con landing Pack Arras Plus (450€) */

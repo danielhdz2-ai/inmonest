@@ -183,16 +183,6 @@ export const SEO_REDIRECTS: Redirect[] = [
     permanent: true,
   },
   {
-    source: '/gestoria/mallorca',
-    destination: '/mallorca/contrato-alquiler',
-    permanent: true,
-  },
-  {
-    source: '/gestoria/coruna',
-    destination: '/coruna/contrato-alquiler',
-    permanent: true,
-  },
-  {
     source: '/gestoria/prestamo-particulares/a-coruna',
     destination: '/gestoria/prestamo-particulares/coruna',
     permanent: true,

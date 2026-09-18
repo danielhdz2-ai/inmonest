@@ -5,6 +5,7 @@ import { GESTORIA_BILBAO_FAQ } from './gestoria-bilbao-faq'
 import { GESTORIA_MALAGA_FAQ } from './gestoria-malaga-faq'
 import { GESTORIA_PALMA_FAQ } from './gestoria-palma-faq'
 import { GESTORIA_ZARAGOZA_FAQ } from './gestoria-zaragoza-faq'
+import { CIUDAD_HUBS_NUCLEO } from './gestoria-ciudad-hub-nucleo'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -338,6 +339,8 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
       { slug: 'contrato-alquiler', href: '/alicante/contrato-alquiler', label: 'Ver contrato alquiler Alicante →' },
     ],
   },
+
+  ...CIUDAD_HUBS_NUCLEO,
 }
 
 export function buildCiudadHubMetadata(config: CiudadHubConfig): Metadata {

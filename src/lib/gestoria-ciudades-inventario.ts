@@ -179,7 +179,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Due Diligence Pre-Compra',
     precioSlug: 'pack-due-diligence-precompra',
     href: (c) => `/gestoria/due-diligence-precompra/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'coruna', 'alicante', 'murcia', 'pamplona', 'salamanca', 'valladolid'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'coruna', 'alicante', 'murcia', 'pamplona', 'salamanca', 'valladolid', 'granada', 'mallorca'],
   },
   {
     id: 'pack-arras-documental',
@@ -350,4 +350,9 @@ export const CIUDADES_SEO = [
   { slug: 'alicante', nombre: 'Alicante', texto: 'Costa blanca, compradores extranjeros, cédula habitabilidad' },
   { slug: 'salamanca', nombre: 'Salamanca', texto: 'Venta universitaria, casco histórico, Castilla y León' },
   { slug: 'valladolid', nombre: 'Valladolid', texto: 'Venta particular, compradores desde Madrid, provincia' },
+  { slug: 'coruna', nombre: 'A Coruña', texto: 'Due diligence, pack arras y normativa gallega' },
+  { slug: 'murcia', nombre: 'Murcia', texto: 'Pack arras, venta completa, mercado accesible' },
+  { slug: 'pamplona', nombre: 'Pamplona', texto: 'Normativa foral, pack arras y due diligence' },
+  { slug: 'granada', nombre: 'Granada', texto: 'Compraventa entre particulares, casco e ITE' },
+  { slug: 'mallorca', nombre: 'Mallorca', texto: 'Palma y isla, pack arras, compradores no residentes' },
 ] as const

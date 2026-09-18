@@ -56,6 +56,8 @@ export const DUE_DILIGENCE_CIUDADES_LIST = [
   { slug: 'pamplona', nombre: 'Pamplona' },
   { slug: 'salamanca', nombre: 'Salamanca' },
   { slug: 'valladolid', nombre: 'Valladolid' },
+  { slug: 'granada', nombre: 'Granada' },
+  { slug: 'mallorca', nombre: 'Mallorca' },
 ] as const
 
 export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = {
@@ -617,6 +619,106 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
       lead:
         'Compras de particular a particular en Valladolid? Revisamos nota simple, deudas de comunidad e ITE antes de ir a notaría. 350€ fijos.',
     },
+  },
+
+  granada: {
+    slug: 'granada',
+    nombre: 'Granada',
+    region: 'Andalucía',
+    testimoniosLanding: 'due-diligence-granada',
+    heroImage: getCiudadImage('granada').src,
+    precioEjemploPiso: 195_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Granada',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Revisa compras entre particulares en Granada capital, Realejo, Zaidín y área metropolitana. Casco histórico, ITE en edificios antiguos y deudas de comunidad antes de la señal.',
+      especialidades: ['Casco y Albaicín', 'Compras sin agencia', 'Due diligence pre-arras'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Junta de Andalucía',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético',
+      'ITE / IEE en edificios de más de 50 años',
+      'Licencias de obra en zona protegida',
+      'Certificado de deudas de comunidad',
+    ],
+    zonasIntro: 'Granada capital, Realejo, Zaidín, Armilla y municipios del área metropolitana.',
+    zonas: ['Centro / Reyes Católicos', 'Realejo', 'Zaidín', 'Albaicín', 'Ronda', 'Armilla', 'Churriana de la Vega'],
+    meta: {
+      title: 'Due diligence compra piso Granada desde 350€',
+      description:
+        'Revisión documental antes de comprar en Granada de particular. Nota simple, cargas, comunidad e ITE. 350€ IVA incl. Trámite 100 % online.',
+      keywords:
+        'due diligence compra piso granada, revisar documentacion compra granada, comprar piso particular granada, gestor compra vivienda granada',
+      ogTitle: 'Due Diligence Granada — 350€',
+      ogDescription: 'Compra segura entre particulares en Granada con gestor asignado.',
+    },
+    hero: {
+      h1: 'Revisión documental antes de comprar piso en Granada',
+      lead:
+        'Compras de particular a particular en Granada? Revisamos nota simple, cargas, deudas de comunidad e ITE en casco histórico antes de entregar señal. 350€ fijos. Sin desplazamientos hasta notaría.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Qué revisar antes de comprar un piso en Granada de particular?',
+        a: 'Nota simple, certificado de deudas de comunidad, IBI, cédula andaluza, certificado energético e ITE si el edificio lo exige. En el centro y Albaicín conviene verificar licencias de obra.',
+      },
+      {
+        q: '¿Cuánto cuesta el due diligence en Granada frente a una agencia?',
+        a: '350 € IVA incluido con gestor e informe. En un piso de 195.000 € la comisión de agencia sería 5.850–9.750 €.',
+      },
+    ],
+  },
+
+  mallorca: {
+    slug: 'mallorca',
+    nombre: 'Mallorca',
+    region: 'Islas Baleares',
+    testimoniosLanding: 'due-diligence-mallorca',
+    heroImage: getCiudadImage('mallorca').src,
+    precioEjemploPiso: 285_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Baleares',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores que adquieren en Palma, Calvià, Manacor e interior de Mallorca. Revisa cargas, derramas, uso turístico vs habitual y plazos realistas para no residentes.',
+      especialidades: ['Palma y costa', 'Compradores peninsulares', 'Revisión pre-señal'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Govern Balear',
+    docTecnicaItems: [
+      'Cédula d\'habitabilitat vigente',
+      'Certificado energético',
+      'ITE en edificios antiguos de Palma',
+      'Certificado de deudas de comunidad',
+      'Verificación de licencias turísticas (ETV) si aplica',
+    ],
+    zonasIntro: 'Palma, Calvià, Inca, Manacor y municipios de la isla.',
+    zonas: ['Palma — Centro', 'La Lonja', 'Pere Garau', 'Calvià', 'Palmanova', 'Inca', 'Manacor'],
+    meta: {
+      title: 'Due diligence compra piso Mallorca desde 350€',
+      description:
+        'Revisión documental antes de comprar en Mallorca de particular. Palma y resto de la isla. 350€ IVA incl. Gestoría 100 % online.',
+      keywords:
+        'due diligence compra piso mallorca, revisar documentacion compra palma, comprar piso particular mallorca, gestor compra vivienda baleares',
+      ogTitle: 'Due Diligence Mallorca — 350€',
+      ogDescription: 'Revisión documental para compradores particulares en Mallorca.',
+    },
+    hero: {
+      h1: 'Revisión documental antes de comprar piso en Mallorca',
+      lead:
+        '¿Compras en Palma o en la isla de particular a particular? Revisamos nota simple, comunidad, cédula balear y cargas antes de la señal. 350 €. Trámite online sin desplazamientos hasta la notaría.',
+    },
+    faqPrioritarias: [
+      {
+        q: '¿Qué revisar antes de comprar en Mallorca sin agencia?',
+        a: 'Nota simple, deudas de comunidad, IBI, cédula d\'habitabilitat, certificado energético y coherencia catastro-registro. Si hay uso turístico, verificar que no comprometa tu compra como vivienda habitual.',
+      },
+      {
+        q: '¿Puedo hacer el due diligence desde la península?',
+        a: 'Sí. Subes documentación al panel, videollamada con gestor asignado e informe antes de firmar arras. Solo te desplazas a notaría balear para la escritura.',
+      },
+    ],
   },
 }
 
