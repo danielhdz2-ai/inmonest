@@ -2,6 +2,7 @@ import { CIUDADES_PORTAL_SLUGS } from './ciudades-portal'
 import { CONTRATO_ARRAS_PREMIUM } from './contrato-arras-premium-config'
 import { CONTRATO_ALQUILER_PREMIUM } from './contrato-alquiler-premium-config'
 import { CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS } from './contratos-inmobiliarios-ciudades'
+import { GESTORIA_HUB_CIUDAD_SLUGS } from './gestoria-ciudad-hub-data'
 import { formatPrecioDesde, formatPrecioEuro, getPrecioServicio } from './gestoria-catalogo'
 import { precioLabel, precioLauInventarioLabel } from './gestoria-precios-ui'
 
@@ -149,9 +150,9 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
   {
     id: 'gestoria-hub',
     nombre: 'Gestoría Ciudad (Hub)',
-    precioInfo: formatPrecioDesde('contrato-alquiler-barcelona'),
+    precioInfo: formatPrecioDesde('contrato-alquiler'),
     href: (c) => `/gestoria/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'palma', 'zaragoza', 'alicante'],
+    ciudades: [...GESTORIA_HUB_CIUDAD_SLUGS],
   },
   {
     id: 'venta-completa',
@@ -355,4 +356,7 @@ export const CIUDADES_SEO = [
   { slug: 'pamplona', nombre: 'Pamplona', texto: 'Normativa foral, pack arras y due diligence' },
   { slug: 'granada', nombre: 'Granada', texto: 'Compraventa entre particulares, casco e ITE' },
   { slug: 'mallorca', nombre: 'Mallorca', texto: 'Palma y isla, pack arras, compradores no residentes' },
+  { slug: 'santander', nombre: 'Santander', texto: 'Costa cantábrica, El Sardinero, arras y LAU' },
+  { slug: 'vitoria', nombre: 'Vitoria-Gasteiz', texto: 'Álava, Ensanche, normativa foral vasca' },
+  { slug: 'san-sebastian', nombre: 'San Sebastián', texto: 'Donostia, Gros, mercado tensionado' },
 ] as const

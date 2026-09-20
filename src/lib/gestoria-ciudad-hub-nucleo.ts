@@ -375,4 +375,177 @@ export const CIUDAD_HUBS_NUCLEO: Record<string, CiudadHubConfig> = {
       { slug: 'contrato-alquiler', href: '/pamplona/contrato-alquiler', label: 'Ver contrato alquiler Pamplona →' },
     ],
   },
+
+  santander: {
+    slug: 'santander',
+    nombre: 'Santander',
+    region: 'Cantabria',
+    metaDescription:
+      'Gestoría inmobiliaria para particulares en Santander. Contratos LAU y arras desde 145€, pack arras 450€, venta completa 687€. Sin comisiones de agencia.',
+    keywords:
+      'gestoría inmobiliaria santander, contrato arras santander, contrato alquiler cantabria, comprar piso santander sin agencia',
+    heroBadge: 'Gestoría 100% Online | Cantabria',
+    heroSubtitulo:
+      'Gestoría inmobiliaria para particulares en Santander y Cantabria. El Sardinero, centro y Camargo. Contratos desde 145€. Sin comisiones.',
+    ogImage: '/gestoria6.jpg',
+    twitterDescription: 'Contratos, arras y due diligence en Santander desde 145€. Panel online y gestor asignado.',
+    razones: [
+      {
+        titulo: 'Mercado costero con segunda residencia',
+        descripcion:
+          'Operaciones en El Sardinero o Somo mezclan uso habitual y temporal. Un contrato mal redactado puede anular cláusulas o bloquear la fianza autonómica.',
+      },
+      {
+        titulo: 'Compraventa entre particulares frecuente',
+        descripcion:
+          'Sin revisión documental heredas derramas, ITE pendiente o arras redactadas solo por el vendedor en un mercado con plazos cortos en verano.',
+      },
+      {
+        titulo: 'Honorarios fijos vs comisión 3-5%',
+        descripcion:
+          'En un piso de 220.000€ la agencia cobra miles de euros. Inmonest: arras 145€, pack vendedor 450€, venta completa 687€.',
+      },
+    ],
+    mercadoZonas: [
+      { nombre: 'Centro / Cuatro Caminos', rango: '650-950€/mes', perfil: 'profesionales' },
+      { nombre: 'El Sardinero', rango: '800-1.200€/mes', perfil: 'costa y turismo' },
+      { nombre: 'Cueto y Monte', rango: '550-750€/mes', perfil: 'familias' },
+      { nombre: 'Camargo / Astillero', rango: '450-650€/mes', perfil: 'área metropolitana' },
+    ],
+    mercadoCompraventa: [
+      'En **Santander capital** el precio medio ronda **2.400-3.200€/m²** en centro; en **Camargo**, **1.800-2.400€/m²**.',
+      'Comisión agencia 3-5% vs **687€** servicio Inmonest hasta escritura.',
+    ],
+    mercadoParticularidades: [
+      'ITE en edificios de más de 50 años',
+      'Distinción LAU vs alquiler temporal en zona costera',
+      'Depósito fianza conforme a normativa autonómica',
+      'Certificado energético obligatorio en compraventa',
+    ],
+    faq: GESTORIA_HUB_FAQ_COMUN,
+    faqSubtitulo: 'Gestoría inmobiliaria en Santander y Cantabria para particulares.',
+    serviciosSubtitulo:
+      'Arras, alquiler LAU, pack vendedor y venta completa en Santander: precio cerrado, panel online y gestor asignado.',
+    ctaFinalTitulo: '¿Vas a comprar o vender en Santander?',
+    ctaFinalTexto: 'Opera con gestor asignado y trámite 100% online hasta notaría.',
+    enlacesContrato: [
+      { slug: 'arras-penitenciales', href: '/santander/contrato-arras', label: 'Ver contrato arras Santander →' },
+      { slug: 'contrato-alquiler', href: '/santander/contrato-alquiler', label: 'Ver contrato alquiler Santander →' },
+    ],
+  },
+
+  vitoria: {
+    slug: 'vitoria',
+    nombre: 'Vitoria-Gasteiz',
+    region: 'País Vasco',
+    metaDescription:
+      'Gestoría inmobiliaria para particulares en Vitoria-Gasteiz. Contratos desde 145€, pack arras 450€, due diligence 350€. Normativa foral vasca.',
+    keywords:
+      'gestoría inmobiliaria vitoria, contrato arras vitoria gasteiz, contrato alquiler álava, comprar piso vitoria sin agencia',
+    heroBadge: 'Gestoría 100% Online | Álava',
+    heroSubtitulo:
+      'Gestoría inmobiliaria para particulares en Vitoria-Gasteiz. Ensanche, Lakua y Zabalgana. Contratos desde 145€. Sin comisiones.',
+    ogImage: '/gestoria9.jpg',
+    twitterDescription: 'Gestoría inmobiliaria en Vitoria desde 145€. Panel online y gestor asignado.',
+    razones: [
+      {
+        titulo: 'Capital de Álava con mercado estable',
+        descripcion:
+          'Compraventa familiar con ticket medio alto. Las arras sin condición de hipoteca o sin revisión registral pueden costar la señal entera.',
+      },
+      {
+        titulo: 'Normativa foral y urbanística local',
+        descripcion:
+          'Vitoria exige coherencia documental antes de notaría. Un gestor evita bloqueos por ITE, cargas o cláusulas desequilibradas.',
+      },
+      {
+        titulo: 'Precio fijo sin comisión sobre el piso',
+        descripcion: 'Pack arras 450€, due diligence 350€ y venta completa 687€ con gestor asignado por WhatsApp.',
+      },
+    ],
+    mercadoZonas: [
+      { nombre: 'Ensanche', rango: '700-950€/mes', perfil: 'profesionales' },
+      { nombre: 'Lakua', rango: '650-850€/mes', perfil: 'familias' },
+      { nombre: 'Zabalgana', rango: '550-750€/mes', perfil: 'expansión urbana' },
+      { nombre: 'Casco Medieval', rango: '600-800€/mes', perfil: 'centro histórico' },
+    ],
+    mercadoCompraventa: [
+      'Vitoria-Gasteiz: **2.200-3.000€/m²** en Ensanche y Lakua.',
+      'Inmonest **687€** venta completa vs miles en comisión de agencia.',
+    ],
+    mercadoParticularidades: [
+      'Normativa foral vasca en transmisión',
+      'ITE en edificios antiguos del casco',
+      'Depósito fianza LAU autonómico',
+      'Certificado energético vigente',
+    ],
+    faq: GESTORIA_HUB_FAQ_COMUN,
+    faqSubtitulo: 'Gestoría inmobiliaria en Vitoria-Gasteiz y Álava.',
+    serviciosSubtitulo:
+      'Servicios activos en Vitoria: arras, alquiler LAU, pack vendedor y due diligence con panel de seguimiento.',
+    ctaFinalTitulo: '¿Vas a comprar o vender en Vitoria?',
+    ctaFinalTexto: 'Gestor asignado y precio cerrado hasta notaría.',
+    enlacesContrato: [
+      { slug: 'arras-penitenciales', href: '/vitoria/contrato-arras', label: 'Ver contrato arras Vitoria →' },
+      { slug: 'contrato-alquiler', href: '/vitoria/contrato-alquiler', label: 'Ver contrato alquiler Vitoria →' },
+    ],
+  },
+
+  'san-sebastian': {
+    slug: 'san-sebastian',
+    nombre: 'San Sebastián',
+    region: 'País Vasco',
+    metaDescription:
+      'Gestoría inmobiliaria para particulares en San Sebastián. Contratos desde 145€, pack arras 450€, venta completa 687€. Donostia, Gros y Área metropolitana.',
+    keywords:
+      'gestoría inmobiliaria san sebastián, contrato arras donostia, contrato alquiler gipuzkoa, comprar piso san sebastián sin agencia',
+    heroBadge: 'Gestoría 100% Online | Gipuzkoa',
+    heroSubtitulo:
+      'Gestoría inmobiliaria para particulares en San Sebastián (Donostia). Mercado tensionado, alta demanda y operativa entre particulares. Desde 145€.',
+    ogImage: '/gestoria10.jpg',
+    twitterDescription: 'Gestoría inmobiliaria en San Sebastián desde 145€. Panel online y gestor asignado.',
+    razones: [
+      {
+        titulo: 'Mercado de alta demanda y precios elevados',
+        descripcion:
+          'En Gros o Centro un error en arras o alquiler LAU puede suponer miles de euros. Revisamos cláusulas con rigor de mercado premium.',
+      },
+      {
+        titulo: 'Normativa foral y vivienda tensionada',
+        descripcion:
+          'Gipuzkoa tiene particularidades en fianzas y vivienda. Adaptamos contratos a la normativa autonómica vasca aplicable.',
+      },
+      {
+        titulo: 'Venta sin agencia con documentación exigente',
+        descripcion:
+          'Pack vendedor 450€: arras a tu favor y recopilación de documentación de comunidad, ITE y certificado energético.',
+      },
+    ],
+    mercadoZonas: [
+      { nombre: 'Centro / Parte Vieja', rango: '900-1.400€/mes', perfil: 'turismo y residentes' },
+      { nombre: 'Gros', rango: '850-1.200€/mes', perfil: 'jóvenes profesionales' },
+      { nombre: 'Amara', rango: '700-950€/mes', perfil: 'familias' },
+      { nombre: 'Irun / Errenteria', rango: '550-750€/mes', perfil: 'área metropolitana' },
+    ],
+    mercadoCompraventa: [
+      'Donostia: **4.500-6.500€/m²** en zonas céntricas; en **Amara**, **3.500-4.800€/m²**.',
+      'Comisión agencia vs **687€** servicio Inmonest hasta escritura.',
+    ],
+    mercadoParticularidades: [
+      'Mercado tensionado — plazos cortos en operaciones deseadas',
+      'Normativa foral vasca en transmisión',
+      'ITE y protección patrimonial en casco histórico',
+      'Depósito fianza LAU autonómico',
+    ],
+    faq: GESTORIA_HUB_FAQ_COMUN,
+    faqSubtitulo: 'Gestoría inmobiliaria en San Sebastián y Gipuzkoa.',
+    serviciosSubtitulo:
+      'Arras, alquiler LAU y venta completa en Donostia: precio cerrado, panel online y gestor asignado en 48 h.',
+    ctaFinalTitulo: '¿Vas a comprar o vender en San Sebastián?',
+    ctaFinalTexto: 'Opera con seguridad jurídica y gestor asignado hasta notaría.',
+    enlacesContrato: [
+      { slug: 'arras-penitenciales', href: '/san-sebastian/contrato-arras', label: 'Ver contrato arras San Sebastián →' },
+      { slug: 'contrato-alquiler', href: '/san-sebastian/contrato-alquiler', label: 'Ver contrato alquiler San Sebastián →' },
+    ],
+  },
 }

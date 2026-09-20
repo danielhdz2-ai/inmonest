@@ -1,6 +1,7 @@
 import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
 import { LANDINGS_POR_CIUDAD } from '@/lib/gestoria-ciudades-inventario'
 import { CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS } from '@/lib/contratos-inmobiliarios-ciudades'
+import { GESTORIA_HUB_CIUDAD_SLUGS } from '@/lib/gestoria-ciudad-hub-data'
 
 export const SITE_URL = 'https://inmonest.com'
 
@@ -10,18 +11,8 @@ export const CONTRATOS_INMOBILIARIOS_INDEXAR = [
   ...CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS.map((c) => `/contratos-inmobiliarios/${c}`),
 ] as const
 
-/** Hubs gestoría por ciudad */
-const GESTORIA_HUBS = [
-  'madrid',
-  'barcelona',
-  'valencia',
-  'sevilla',
-  'malaga',
-  'bilbao',
-  'zaragoza',
-  'alicante',
-  'palma',
-] as const
+/** Hubs gestoría por ciudad (todas las páginas /gestoria/[ciudad] hub) */
+const GESTORIA_HUBS = GESTORIA_HUB_CIUDAD_SLUGS
 
 /** Núcleo + landings genéricas premium (prioridad máxima en GSC) */
 export const GESTORIA_INDEXAR_PRIORIDAD_ALTA = [

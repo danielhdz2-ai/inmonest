@@ -13,6 +13,8 @@ import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFoote
 import GestoriaCiudadAgenciasBanner from '@/components/GestoriaCiudadAgenciasBanner'
 import JsonLd from '@/components/JsonLd'
 import type { CiudadHubConfig } from '@/lib/gestoria-ciudad-hub-data'
+import { GESTORIA_HUB_CIUDAD_SLUGS } from '@/lib/gestoria-ciudad-hub-data'
+import { getNombreCiudad } from '@/lib/gestoria-ciudades-inventario'
 import { isAgenciaGestoriaCiudadSlug } from '@/lib/agencias-gestoria-ciudades'
 import { getCiudadImage } from '@/lib/gestoria-images'
 import {
@@ -87,20 +89,19 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
         <section className="py-12 bg-white border-t border-gray-200">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
             <h3 className="text-xl font-bold text-gray-900 mb-6">También ofrecemos gestoría inmobiliaria en:</h3>
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <Link href="/gestoria/madrid" className="text-gold-500 hover:underline font-semibold">
-                Madrid
-              </Link>
-              <Link href="/gestoria/barcelona" className="text-gold-500 hover:underline font-semibold">
-                Barcelona
-              </Link>
-              <Link href="/gestoria/valencia" className="text-gold-500 hover:underline font-semibold">
-                Valencia
-              </Link>
-              <Link href="/gestoria/sevilla" className="text-gold-500 hover:underline font-semibold">
-                Sevilla
-              </Link>
-              <Link href="/gestoria" className="text-gold-500 hover:underline font-semibold">
+            <div className="flex flex-wrap justify-center gap-3 text-sm">
+              {GESTORIA_HUB_CIUDAD_SLUGS.filter((s) => s !== slug)
+                .slice(0, 8)
+                .map((hubSlug) => (
+                  <Link
+                    key={hubSlug}
+                    href={`/gestoria/${hubSlug}`}
+                    className="text-gold-500 hover:underline font-semibold"
+                  >
+                    {getNombreCiudad(hubSlug)}
+                  </Link>
+                ))}
+              <Link href="/gestoria/ciudades" className="text-gold-500 hover:underline font-semibold">
                 Ver todas las ciudades →
               </Link>
             </div>

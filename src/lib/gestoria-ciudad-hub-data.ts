@@ -343,6 +343,14 @@ export const CIUDAD_HUBS: Record<string, CiudadHubConfig> = {
   ...CIUDAD_HUBS_NUCLEO,
 }
 
+/** Hubs con página propia Madrid/Barcelona/Valencia/Sevilla (custom) + CIUDAD_HUBS */
+export const GESTORIA_HUB_CIUDADES_CUSTOM = ['madrid', 'barcelona', 'valencia', 'sevilla'] as const
+
+export const GESTORIA_HUB_CIUDAD_SLUGS = [
+  ...GESTORIA_HUB_CIUDADES_CUSTOM,
+  ...(Object.keys(CIUDAD_HUBS) as (keyof typeof CIUDAD_HUBS)[]).sort(),
+] as const
+
 export function buildCiudadHubMetadata(config: CiudadHubConfig): Metadata {
   const title = `Gestoría Inmobiliaria ${config.nombre} para Particulares | Contratos desde 145€`
   const ciudadImage = getCiudadImage(config.slug)
