@@ -1,0 +1,21 @@
+---
+description: Commits los hace el agente; cuenta GitHub danielhdz2-ai para push
+alwaysApply: true
+---
+
+# Git: commits y cuenta GitHub
+
+## Commits
+- **Siempre crea tú el commit** cuando implementes cambios. No dejes el trabajo solo en local ni pidas al usuario que commitee.
+- Tras terminar una tarea con cambios de código, haz `git add` + `git commit` con mensaje claro.
+- Solo omite commit si el usuario lo pide explícitamente o no hay cambios que commitear.
+
+## Cuenta GitHub / push
+- Repositorio: **danielhdz2-ai/inmonest**
+- Cuenta correcta para push: **danielhdz2-ai**
+- Si push falla con `Permission denied to danielhdz3-ai`, avisa al usuario para que cambie credenciales a **danielhdz2-ai** y reintenta.
+- No actualices `git config` global ni local por tu cuenta.
+
+## Push
+- No hagas push salvo que el usuario lo pida explícitamente (regla de commit vs push separada).
+- Tras commit, indica que está listo para push y recuerda la cuenta si hubo error 403 antes.
