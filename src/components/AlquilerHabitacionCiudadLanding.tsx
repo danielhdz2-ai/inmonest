@@ -17,33 +17,12 @@ import { getContratoAlquilerPrecio } from '@/lib/gestoria-catalogo'
 import { precioLabel } from '@/lib/gestoria-precios-ui'
 import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
 import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
+import GestoriaCiudadServiciosYPanel from '@/components/GestoriaCiudadServiciosYPanel'
+import ContratosComoFuncionaSection from '@/components/contratos/ContratosComoFuncionaSection'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
 const DUE_DILIGENCE_CIUDADES = new Set(['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao'])
-
-const PASOS = [
-  {
-    titulo: 'Primera consulta con tu asesor',
-    desc: 'En menos de 24 horas un gestor inmobiliario experto te contacta. Revisamos tu caso: número de habitaciones, convivencia, fianza, duración y situación del inmueble.',
-  },
-  {
-    titulo: 'Contratas el servicio',
-    desc: `Pago único de ${ALQUILER_HABITACION_PRECIO}€ IVA incluido. Sin costes ocultos. Comenzamos la redacción personalizada del contrato de habitación.`,
-  },
-  {
-    titulo: 'Recopilación de datos',
-    desc: 'Tu asesor te guía para recopilar datos del inquilino, condiciones de la habitación, uso de zonas comunes y normas de convivencia que quieres pactar.',
-  },
-  {
-    titulo: 'Redacción jurídica',
-    desc: 'El contrato se redacta conforme al Código Civil y la práctica inmobiliaria: renta, fianza, duración, salida anticipada, impagos y resolución del contrato.',
-  },
-  {
-    titulo: 'Entrega y asesoramiento',
-    desc: 'Recibes el PDF firmable en 48h. Tu asesor resuelve dudas antes de la firma y te explica cómo actuar si surge un conflicto durante el arrendamiento.',
-  },
-] as const
 
 const BASES_LEGALES = [
   {
@@ -322,23 +301,19 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
         </div>
       </section>
 
-      <section className="py-16 px-4 bg-slate-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Cómo trabajamos contigo</h2>
-          <GestoriaTramiteOnlineNote variant="section" className="mb-10" />
-          <div className="grid md:grid-cols-5 gap-6">
-            {PASOS.map((paso, i) => (
-              <div key={paso.titulo} className="text-center">
-                <div className="w-12 h-12 bg-forest-800 text-gold-500 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">
-                  {i + 1}
-                </div>
-                <h3 className="font-bold text-gray-900 mb-2 text-sm leading-snug">{paso.titulo}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{paso.desc}</p>
-              </div>
-            ))}
-          </div>
+      <GestoriaCiudadServiciosYPanel
+        ciudadNombre={nombre}
+        ciudadSlug={slug}
+        sectionIntro={`Además del contrato de habitación por ${ALQUILER_HABITACION_PRECIO}€, en ${nombre} puedes contratar arras, alquiler LAU, compra, venta y pack vendedor con precio cerrado, panel de seguimiento y gestor asignado.`}
+      />
+
+      <section className="py-10 px-4 bg-slate-50 border-y border-gray-200">
+        <div className="max-w-3xl mx-auto">
+          <GestoriaTramiteOnlineNote variant="banner" />
         </div>
       </section>
+
+      <ContratosComoFuncionaSection ciudadNombre={nombre} region={region} />
 
       <section className="py-16 px-4 bg-white border-y border-gray-200">
         <div className="max-w-5xl mx-auto">
