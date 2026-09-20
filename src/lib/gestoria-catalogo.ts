@@ -56,7 +56,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'contrato-alquiler-barcelona': {
     nombre: 'Contrato de Alquiler de Vivienda (LAU) — Barcelona',
-    precio: 120,
+    precio: 145,
     categoria: 'Alquiler',
     incluye: [
       'Adaptado a la Ley de Vivienda 2026',
@@ -394,10 +394,11 @@ export function formatPrecioDesde(slug: string): string {
 }
 
 export const CONTRATO_ALQUILER_PRECIO_ESPANA = 145
-export const CONTRATO_ALQUILER_PRECIO_BARCELONA = 120
+/** @deprecated Usar CONTRATO_ALQUILER_PRECIO_ESPANA — mismo precio en todas las ciudades */
+export const CONTRATO_ALQUILER_PRECIO_BARCELONA = CONTRATO_ALQUILER_PRECIO_ESPANA
 
-export function getContratoAlquilerPrecio(ciudadSlug?: string | null): number {
-  return ciudadSlug === 'barcelona' ? CONTRATO_ALQUILER_PRECIO_BARCELONA : CONTRATO_ALQUILER_PRECIO_ESPANA
+export function getContratoAlquilerPrecio(_ciudadSlug?: string | null): number {
+  return CONTRATO_ALQUILER_PRECIO_ESPANA
 }
 
 export function getContratoAlquilerSolicitarSlug(ciudadSlug?: string | null): string {

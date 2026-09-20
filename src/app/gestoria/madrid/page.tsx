@@ -7,6 +7,7 @@ import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
 import ComprarConSeguridad from '@/components/ComprarConSeguridad'
+import GestoriaCiudadServiciosYPanel from '@/components/GestoriaCiudadServiciosYPanel'
 import CiudadHubMercado from '@/components/CiudadHubMercado'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import JsonLd from '@/components/JsonLd'
@@ -318,6 +319,8 @@ export default function GestoriaMadridPage() {
         <CiudadHubServiciosGrid ciudad="Madrid" ciudadSlug="madrid" />
 
         <CiudadHubComoTrabajamos ciudad="Madrid" />
+
+        <GestoriaCiudadServiciosYPanel ciudadNombre="Madrid" ciudadSlug="madrid" />
 
         <CiudadHubMercado
           ciudad="Madrid"

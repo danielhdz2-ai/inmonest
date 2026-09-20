@@ -15,7 +15,7 @@ const STRIPE_SERVICES: Record<string, { name: string; price_eur: number }> = {
   'reserva-compra':        { name: 'Contrato de Reserva de Compra',          price_eur: 120 },
   'alquiler-vivienda-lau': { name: 'Contrato de Alquiler de Vivienda (LAU)', price_eur: 145  },
   'contrato-alquiler':            { name: 'Contrato de Alquiler de Vivienda (LAU)', price_eur: 145 },
-  'contrato-alquiler-barcelona':  { name: 'Contrato de Alquiler de Vivienda (LAU) — Barcelona', price_eur: 120 },
+  'contrato-alquiler-barcelona':  { name: 'Contrato de Alquiler de Vivienda (LAU) — Barcelona', price_eur: 145 },
   'alquiler-temporada':    { name: 'Contrato de Alquiler por Temporada',     price_eur: 165 },
   'contrato-alquiler-temporal': { name: 'Contrato de Alquiler por Temporada', price_eur: 165 },
   'alquiler-habitacion':   { name: 'Contrato de Alquiler de Habitación',     price_eur: 145 },

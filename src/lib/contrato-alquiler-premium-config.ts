@@ -194,11 +194,11 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'barcelona',
     nombre: 'Barcelona',
     meta: {
-      title: 'Contrato de alquiler Barcelona desde 120€',
+      title: 'Contrato de alquiler Barcelona desde 145€',
       description:
-        'Contrato LAU en Barcelona desde 120€ (48h). Zonas tensionadas e índice de referencia. Barcelona y área metropolitana.',
+        'Contrato LAU en Barcelona desde 145€ (48h). Zonas tensionadas e índice de referencia. Barcelona y área metropolitana.',
       keywords: ['contrato alquiler Barcelona', 'LAU Barcelona', 'zona tensionada alquiler', 'INCASOL fianza', 'contrato arrendamiento Barcelona'],
-      ogTitle: 'Contrato de alquiler Barcelona desde 120€',
+      ogTitle: 'Contrato de alquiler Barcelona desde 145€',
       ogDescription: 'LAU + Ley Vivienda 2026. Adaptado a normativa catalana y zonas tensionadas cuando aplique.',
       ogImageAlt: 'Contrato de alquiler Barcelona',
     },

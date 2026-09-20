@@ -8,6 +8,7 @@ import CiudadHubMercado from '@/components/CiudadHubMercado'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubRazones from '@/components/CiudadHubRazones'
 import ComprarConSeguridad from '@/components/ComprarConSeguridad'
+import GestoriaCiudadServiciosYPanel from '@/components/GestoriaCiudadServiciosYPanel'
 import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
 import GestoriaCiudadAgenciasBanner from '@/components/GestoriaCiudadAgenciasBanner'
 import JsonLd from '@/components/JsonLd'
@@ -63,6 +64,12 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
         />
 
         <CiudadHubComoTrabajamos ciudad={nombre} />
+
+        <GestoriaCiudadServiciosYPanel
+          ciudadNombre={nombre}
+          ciudadSlug={slug}
+          sectionIntro={config.serviciosSubtitulo}
+        />
 
         <CiudadHubMercado
           ciudad={nombre}

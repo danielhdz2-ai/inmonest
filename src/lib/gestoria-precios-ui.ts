@@ -1,6 +1,5 @@
 /** Etiquetas de precio para UI — siempre derivadas de gestoria-catalogo (Stripe). */
 import {
-  CONTRATO_ALQUILER_PRECIO_BARCELONA,
   CONTRATO_ALQUILER_PRECIO_ESPANA,
   GESTORIA_SERVICIOS,
   formatPrecioEuro,
@@ -26,7 +25,7 @@ export function precioLauLabel(ciudadSlug?: string | null): string {
 }
 
 export function precioLauInventarioLabel(): string {
-  return `${CONTRATO_ALQUILER_PRECIO_BARCELONA}€–${CONTRATO_ALQUILER_PRECIO_ESPANA}€`
+  return formatPrecioEuro(CONTRATO_ALQUILER_PRECIO_ESPANA)
 }
 
 export function precioPorNombreServicio(nombre: string): number | undefined {

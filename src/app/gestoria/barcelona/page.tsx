@@ -7,6 +7,7 @@ import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
 import ComprarConSeguridad from '@/components/ComprarConSeguridad'
+import GestoriaCiudadServiciosYPanel from '@/components/GestoriaCiudadServiciosYPanel'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import JsonLd from '@/components/JsonLd'
 import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Gestoría inmobiliaria Barcelona',
     description:
-      'Contratos y acompañamiento legal en Barcelona desde 120€ (LAU) y 145€ (arras). Adaptados a zona tensionada, ITE y normativa catalana.',
+      'Contratos y acompañamiento legal en Barcelona desde 145€ (LAU y arras). Adaptados a zona tensionada, ITE y normativa catalana.',
   },
 }
 
@@ -324,6 +325,8 @@ export default function GestoriaBarcelonaPage() {
         <CiudadHubServiciosGrid ciudad="Barcelona" ciudadSlug="barcelona" />
 
         <CiudadHubComoTrabajamos ciudad="Barcelona" />
+
+        <GestoriaCiudadServiciosYPanel ciudadNombre="Barcelona" ciudadSlug="barcelona" />
 
         {/* Quiénes somos */}
         <section className="py-16 bg-gray-50">

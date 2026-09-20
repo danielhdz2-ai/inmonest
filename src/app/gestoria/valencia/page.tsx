@@ -7,6 +7,7 @@ import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
 import ComprarConSeguridad from '@/components/ComprarConSeguridad'
+import GestoriaCiudadServiciosYPanel from '@/components/GestoriaCiudadServiciosYPanel'
 import CiudadHubMercado from '@/components/CiudadHubMercado'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import JsonLd from '@/components/JsonLd'
@@ -325,6 +326,8 @@ export default function GestoriaValenciaPage() {
         <CiudadHubServiciosGrid ciudad="Valencia" ciudadSlug="valencia" />
 
         <CiudadHubComoTrabajamos ciudad="Valencia" />
+
+        <GestoriaCiudadServiciosYPanel ciudadNombre="Valencia" ciudadSlug="valencia" />
 
         <CiudadHubMercado
           ciudad="Valencia"

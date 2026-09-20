@@ -14,6 +14,9 @@ export type ContratosInmobiliariosCiudadSlug =
   | 'murcia'
   | 'coruna'
   | 'pamplona'
+  | 'granada'
+  | 'salamanca'
+  | 'valladolid'
 
 export type ContratosCiudadBarrio = {
   nombre: string
@@ -1199,6 +1202,318 @@ const CORUNA: ContratosInmobiliariosCiudadConfig = {
   enlaceAlquiler: '/coruna/contrato-alquiler',
 }
 
+const GRANADA: ContratosInmobiliariosCiudadConfig = {
+  slug: 'granada',
+  nombre: 'Granada',
+  region: 'Andalucía',
+  metaTitle: 'Contratos inmobiliarios Granada | Arras, LAU y gestoría',
+  metaDescription:
+    'Contratos inmobiliarios en Granada: arras, alquiler LAU y venta entre particulares. Realejo, Zaidín, Albaicín. Desde 61€ en 48h. Panel online.',
+  keywords:
+    'contratos inmobiliarios Granada, contrato arras Granada, contrato alquiler Granada, gestoría inmobiliaria Granada particulares, LAU Andalucía',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Granada',
+  heroLead:
+    'Redacción de arras, alquiler LAU y packs documentales para compradores y vendedores en Granada capital, área metropolitana y vega. Mercado universitario, casco histórico protegido y operativa entre particulares sin comisión de agencia.',
+  heroTags: ['Andalucía', 'Particulares', 'Realejo · Zaidín', 'Entrega 48h'],
+  heroImage: getCiudadImage('granada'),
+  mercadoTitulo: 'Granada: compraventa directa con riesgo jurídico real',
+  mercadoIntro:
+    'Granada concentra muchas operaciones entre particulares en centro, Realejo y Zaidín. Sin revisión documental previa, heredas ITE pendiente en edificios del casco, derramas de comunidad ocultas o arras redactadas solo por el vendedor con cláusulas desequilibradas.',
+  mercadoCards: [
+    {
+      titulo: 'Casco histórico y Albaicín',
+      desc: 'Protección urbanística, licencias y cédula de habitabilidad son habituales puntos de bloqueo en notaría. Revisamos documentación antes de entregar señal en operaciones del casco.',
+    },
+    {
+      titulo: 'Mercado universitario en Realejo',
+      desc: 'Alta rotación de inquilinos y alquileres amueblados. LAU con inventario detallado y cláusulas de convivencia para evitar conflictos al final del curso académico.',
+    },
+    {
+      titulo: 'Zaidín y Armilla',
+      desc: 'Compraventa familiar con ticket medio. Arras penitenciales con plazos para hipoteca y pack vendedor para quien enajena sin agencia.',
+    },
+  ],
+  normativaTitulo: 'Normativa en Granada y Andalucía',
+  normativaIntro:
+    'Los contratos entre particulares en Granada combinan derecho estatal (LAU, Código Civil) con obligaciones autonómicas andaluzas:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante el organismo autonómico de Andalucía',
+    'ITE obligatoria en edificios de más de 50 años — frecuente en casco y Realejo',
+    'Cláusulas de arras con condición suspensiva de hipoteca en operaciones con financiación',
+    'Certificado energético vigente y revisión de deudas de comunidad antes de escritura',
+  ],
+  barriosTitulo: 'Barrios de Granada donde adaptamos cada contrato',
+  barriosIntro:
+    'Un piso en Zaidín no se formaliza igual que una vivienda en Albaicín. Contextualizamos según zona:',
+  barrios: [
+    {
+      nombre: 'Centro y Realejo',
+      contexto: 'Núcleo urbano — demanda mixta',
+      operativa:
+        'LAU con inventario en amueblados. Arras en compraventa con revisión de nota simple y cargas registrales.',
+    },
+    {
+      nombre: 'Albaicín y Sacromonte',
+      contexto: 'Casco protegido',
+      operativa:
+        'Due diligence documental antes de señal. Verificación de licencias, ITE y situación urbanística.',
+    },
+    {
+      nombre: 'Zaidín y Cartuja',
+      contexto: 'Residencial y universitario',
+      operativa:
+        'Alquiler LAU de larga duración. Pack vendedor para propietarios que venden sin agencia.',
+    },
+    {
+      nombre: 'Armilla y Churriana',
+      contexto: 'Área metropolitana',
+      operativa:
+        'Compraventa entre particulares con arras penitenciales. Acompañamiento de compra por tarifa fija 687 €.',
+    },
+    {
+      nombre: 'La Chana y Norte',
+      contexto: 'Familias y primera vivienda',
+      operativa:
+        'Operaciones ágiles con plazos realistas para financiación. Contratos con cláusulas de penalización equilibradas.',
+    },
+    {
+      nombre: 'Motril y Costa Granadina',
+      contexto: 'Segunda residencia y litoral',
+      operativa:
+        'Distinción habitual vs temporal. Arras con verificación registral adaptada al municipio del inmueble.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Granada',
+  serviciosIntro:
+    'Arras en Realejo, alquiler LAU en Zaidín o venta sin agencia en Armilla: precio cerrado, panel de seguimiento y gestor asignado.',
+  faq: [
+    {
+      q: '¿Los contratos son válidos en toda la provincia de Granada?',
+      a: 'Sí. Redactamos para Granada capital, Motril, Loja y cualquier municipio de la provincia. Adaptamos cláusulas a la normativa autonómica andaluza de fianzas y vivienda.',
+    },
+    {
+      q: '¿Necesito ITE para comprar en el casco histórico?',
+      a: 'En edificios de más de 50 años la ITE es obligatoria en Andalucía. Sin ella, notaría puede bloquear la inscripción registral. Revisamos la documentación técnica antes de las arras.',
+    },
+    {
+      q: '¿Puedo vender mi piso en Granada sin agencia?',
+      a: 'Sí. El Pack Arras Plus Vendedor (450 €) incluye arras redactadas a tu favor y ayuda para recabar documentación de comunidad, certificado energético y nota simple antes de escriturar.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/granada',
+  enlaceArras: '/granada/contrato-arras',
+  enlaceAlquiler: '/granada/contrato-alquiler',
+}
+
+const SALAMANCA: ContratosInmobiliariosCiudadConfig = {
+  slug: 'salamanca',
+  nombre: 'Salamanca',
+  region: 'Castilla y León',
+  metaTitle: 'Contratos inmobiliarios Salamanca | Arras, LAU y gestoría',
+  metaDescription:
+    'Contratos inmobiliarios en Salamanca: arras, alquiler LAU y venta entre particulares. Casco histórico, Garrido, San Bernardo. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Salamanca, contrato arras Salamanca, contrato alquiler Salamanca, gestoría inmobiliaria Salamanca particulares',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Salamanca',
+  heroLead:
+    'Redacción de arras, alquiler LAU y packs documentales para compradores y vendedores en Salamanca capital y área universitaria. Mercado de casco histórico, alta rotación de inquilinos y operativa entre particulares sin comisión de agencia.',
+  heroTags: ['Castilla y León', 'Particulares', 'Casco · Universidad', 'Entrega 48h'],
+  heroImage: getCiudadImage('salamanca'),
+  mercadoTitulo: 'Salamanca: mercado universitario con casco protegido',
+  mercadoIntro:
+    'Salamanca mezcla compraventa entre familias en Garrido y San Bernardo con alquileres de rotación en el casco histórico. Las arras mal redactadas, la falta de ITE en edificios antiguos o un alquiler sin fianza depositada correctamente pueden costar miles de euros en litigio evitable.',
+  mercadoCards: [
+    {
+      titulo: 'Casco histórico UNESCO',
+      desc: 'Protección patrimonial, licencias y certificado energético son puntos críticos. Revisamos documentación antes de señal en operaciones del centro.',
+    },
+    {
+      titulo: 'Demanda universitaria',
+      desc: 'Alquileres por curso académico y LAU de larga duración conviven en la misma ciudad. Inventario y cláusulas de convivencia bien definidas.',
+    },
+    {
+      titulo: 'Venta sin agencia',
+      desc: 'Muchos propietarios publican en portales. Pack vendedor y due diligence documental antes de entregar arras penitenciales.',
+    },
+  ],
+  normativaTitulo: 'Normativa en Salamanca y Castilla y León',
+  normativaIntro:
+    'Los contratos entre particulares en Salamanca se rigen por el Código Civil, la LAU y la Ley de Vivienda 2026, con trámites autonómicos de fianza:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante el organismo autonómico de Castilla y León',
+    'ITE en edificios del casco histórico con más de 50 años',
+    'Cláusulas de arras con plazos realistas para hipoteca bancaria',
+    'Certificado energético obligatorio y revisión de deudas de comunidad',
+  ],
+  barriosTitulo: 'Barrios de Salamanca donde adaptamos cada contrato',
+  barriosIntro:
+    'Un piso en Garrido no se formaliza igual que una vivienda en el casco. Contextualizamos según zona:',
+  barrios: [
+    {
+      nombre: 'Casco histórico',
+      contexto: 'Patrimonio UNESCO — rotación alta',
+      operativa:
+        'LAU con inventario en amueblados para estudiantes. Arras con revisión de licencias y cargas registrales.',
+    },
+    {
+      nombre: 'Garrido y San Bernardo',
+      contexto: 'Residencial familiar',
+      operativa:
+        'Alquiler LAU de larga duración. Compraventa entre particulares con arras penitenciales.',
+    },
+    {
+      nombre: 'Vista Hermosa y Pizarrales',
+      contexto: 'Perfil mixto urbano',
+      operativa:
+        'Operaciones con ticket medio. Acompañamiento de compra por tarifa fija 687 €.',
+    },
+    {
+      nombre: 'Tejares y Carbajosa',
+      contexto: 'Expansión residencial',
+      operativa:
+        'Arras en operaciones rápidas entre particulares. Pack vendedor para enajenación sin agencia.',
+    },
+    {
+      nombre: 'Aldehuela de la Bóveda',
+      contexto: 'Área metropolitana',
+      operativa:
+        'Compraventa familiar con due diligence documental. Verificación de nota simple antes de señal.',
+    },
+    {
+      nombre: 'Béjar y Ciudad Rodrigo',
+      contexto: 'Provincia salmantina',
+      operativa:
+        'Mismo marco legal estatal. Arras adaptadas al municipio del inmueble con gestor asignado online.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Salamanca',
+  serviciosIntro:
+    'Arras en el casco, alquiler LAU en Garrido o venta sin agencia en San Bernardo: precio cerrado, panel online y gestor asignado.',
+  faq: [
+    {
+      q: '¿Los contratos son válidos en toda la provincia de Salamanca?',
+      a: 'Sí. Redactamos para Salamanca capital, Béjar, Ciudad Rodrigo y cualquier municipio de la provincia. Adaptamos cláusulas a la normativa autonómica de fianzas.',
+    },
+    {
+      q: '¿Puedo alquilar a estudiantes con contrato LAU?',
+      a: 'Sí, si el uso es vivienda habitual del inquilino. Redactamos el contrato con duración, fianza, inventario y cláusulas de convivencia conformes a la LAU.',
+    },
+    {
+      q: '¿Cuánto cuesta el acompañamiento de compra en Salamanca?',
+      a: '687 € IVA incluido por tarifa plana desde reserva hasta escritura. Sin comisión sobre el precio del piso — alternativa real a los miles de euros de una agencia.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/salamanca',
+  enlaceArras: '/salamanca/contrato-arras',
+  enlaceAlquiler: '/salamanca/contrato-alquiler',
+}
+
+const VALLADOLID: ContratosInmobiliariosCiudadConfig = {
+  slug: 'valladolid',
+  nombre: 'Valladolid',
+  region: 'Castilla y León',
+  metaTitle: 'Contratos inmobiliarios Valladolid | Arras, LAU y gestoría',
+  metaDescription:
+    'Contratos inmobiliarios en Valladolid: arras, alquiler LAU y venta entre particulares. Centro, Parquesol, Delicias. Desde 61€ en 48h. Panel online.',
+  keywords:
+    'contratos inmobiliarios Valladolid, contrato arras Valladolid, contrato alquiler Valladolid, gestoría inmobiliaria Valladolid particulares',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Valladolid',
+  heroLead:
+    'Redacción de arras, alquiler LAU y packs documentales para compradores y vendedores en Valladolid capital y área metropolitana. Demanda desde Madrid, compraventa entre particulares y operativa online sin comisión de agencia.',
+  heroTags: ['Castilla y León', 'Particulares', 'Parquesol · Centro', 'Entrega 48h'],
+  heroImage: getCiudadImage('valladolid'),
+  mercadoTitulo: 'Valladolid: operaciones directas con compradores externos',
+  mercadoIntro:
+    'Valladolid recibe compradores desde Madrid y otras provincias que necesitan gestoría remota y plazos realistas en arras. Sin due diligence previa, heredas deudas de comunidad ocultas, ITE pendiente en el centro histórico o cláusulas de señal desequilibradas.',
+  mercadoCards: [
+    {
+      titulo: 'Demanda desde Madrid',
+      desc: 'Compradores externos que operan a distancia. Gestor asignado, panel online y arras con condición suspensiva de hipoteca bien redactada.',
+    },
+    {
+      titulo: 'Parquesol y Delicias',
+      desc: 'Barrios residenciales con alquiler LAU estable. Inventario en amueblados y cláusulas de actualización de renta conformes a la Ley de Vivienda 2026.',
+    },
+    {
+      titulo: 'Centro histórico',
+      desc: 'Edificios antiguos con ITE y cargas registrales frecuentes. Revisión documental antes de entregar señal en compraventa entre particulares.',
+    },
+  ],
+  normativaTitulo: 'Normativa en Valladolid y Castilla y León',
+  normativaIntro:
+    'Los contratos entre particulares en Valladolid se rigen por el Código Civil, la LAU y obligaciones autonómicas de fianza e ITP:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante el organismo autonómico de Castilla y León',
+    'ITE en edificios del centro histórico con más de 50 años',
+    'Cláusulas de arras penitenciales con plazos para financiación bancaria',
+    'Certificado energético vigente y revisión de cargas antes de escritura',
+  ],
+  barriosTitulo: 'Barrios de Valladolid donde adaptamos cada contrato',
+  barriosIntro:
+    'Un piso en Parquesol no se formaliza igual que una vivienda en el centro. Contextualizamos según zona:',
+  barrios: [
+    {
+      nombre: 'Centro y Campo Grande',
+      contexto: 'Núcleo urbano — edificios históricos',
+      operativa:
+        'Arras con revisión de ITE y cargas. LAU con fianza autonómica y cláusulas de duración mínima.',
+    },
+    {
+      nombre: 'Parquesol y Rondilla',
+      contexto: 'Residencial familiar',
+      operativa:
+        'Compraventa entre particulares con arras penitenciales. Pack vendedor para enajenación sin agencia.',
+    },
+    {
+      nombre: 'Delicias y La Victoria',
+      contexto: 'Perfil mixto',
+      operativa:
+        'Alquiler LAU de larga duración. Acompañamiento de compra por tarifa fija 687 €.',
+    },
+    {
+      nombre: 'Barrio España y Zona Sur',
+      contexto: 'Demanda accesible',
+      operativa:
+        'Operaciones ágiles con compradores primerizos. Due diligence documental en packs arras plus.',
+    },
+    {
+      nombre: 'Laguna de Duero y Boecillo',
+      contexto: 'Área metropolitana',
+      operativa:
+        'Arras en operaciones familiares. Verificación de nota simple del Registro de Valladolid.',
+    },
+    {
+      nombre: 'Medina del Campo y provincia',
+      contexto: 'Mercado provincial',
+      operativa:
+        'Mismo marco legal estatal. Gestoría 100% online con adaptación al municipio del inmueble.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Valladolid',
+  serviciosIntro:
+    'Arras en Parquesol, alquiler LAU en Delicias o venta sin agencia en el centro: precio cerrado, panel de seguimiento y gestor asignado.',
+  faq: [
+    {
+      q: '¿Los contratos son válidos en toda la provincia de Valladolid?',
+      a: 'Sí. Redactamos para Valladolid capital, Laguna de Duero, Medina del Campo y cualquier municipio de la provincia. Adaptamos cláusulas a la normativa autonómica de fianzas.',
+    },
+    {
+      q: '¿Atendéis compradores que vienen desde Madrid?',
+      a: 'Sí. El servicio es 100% online: gestor asignado, panel de seguimiento y coordinación hasta notaría sin desplazamientos previos a la firma.',
+    },
+    {
+      q: '¿Qué incluye el pack vendedor en Valladolid?',
+      a: '450 € IVA incluido: arras redactadas a tu favor, ayuda para recabar documentación de comunidad, certificado energético y nota simple antes de ir al notario.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/valladolid',
+  enlaceArras: '/valladolid/contrato-arras',
+  enlaceAlquiler: '/valladolid/contrato-alquiler',
+}
+
 const PAMPLONA: ContratosInmobiliariosCiudadConfig = {
   slug: 'pamplona',
   nombre: 'Pamplona',
@@ -1319,6 +1634,9 @@ export const CONTRATOS_INMOBILIARIOS_CIUDADES: Record<
   murcia: MURCIA,
   coruna: CORUNA,
   pamplona: PAMPLONA,
+  granada: GRANADA,
+  salamanca: SALAMANCA,
+  valladolid: VALLADOLID,
 }
 
 export const CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS = Object.keys(

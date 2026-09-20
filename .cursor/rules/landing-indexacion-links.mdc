@@ -1,0 +1,22 @@
+---
+description: Al crear landings nuevas, enviar siempre los links para indexar en GSC
+alwaysApply: true
+---
+
+# Links de indexación en landings nuevas
+
+Cuando crees **landings nuevas** (hubs gestoría, contratos-inmobiliarios/[ciudad], packs por ciudad, agencias, etc.):
+
+1. Al terminar, incluye siempre una sección **«Links para indexar en GSC»** con URLs completas `https://inmonest.com/...`
+2. Indica cuáles son **nuevas** y cuáles ya existían
+3. Recuerda que GSC tiene cuota (~10 solicitudes/día) y que «solicitada» ≠ «indexada»
+4. Verifica que cada URL responda **200 en producción** antes de pedir indexación (404 = rechazo GSC)
+5. Comprueba que estén en el **sitemap** dinámico
+
+Formato obligatorio al cerrar tareas con landings:
+
+```
+## Links para indexar en GSC
+- https://inmonest.com/ruta/nueva-1
+- https://inmonest.com/ruta/nueva-2
+```

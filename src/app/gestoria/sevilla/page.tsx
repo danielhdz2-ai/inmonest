@@ -8,6 +8,7 @@ import CiudadHubComoTrabajamos from '@/components/CiudadHubComoTrabajamos'
 import CiudadHubExtras from '@/components/CiudadHubExtras'
 import CiudadHubVentajasOnline from '@/components/CiudadHubVentajasOnline'
 import ComprarConSeguridad from '@/components/ComprarConSeguridad'
+import GestoriaCiudadServiciosYPanel from '@/components/GestoriaCiudadServiciosYPanel'
 import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
 import GestoriaCiudadAgenciasBanner from '@/components/GestoriaCiudadAgenciasBanner'
 import { GESTORIA_PRECIOS } from '@/lib/gestoria-servicios-destacados'
@@ -206,6 +207,12 @@ export default function GestoriaSevillaPage() {
       />
 
       <CiudadHubComoTrabajamos ciudad="Sevilla" />
+
+      <GestoriaCiudadServiciosYPanel
+        ciudadNombre="Sevilla"
+        ciudadSlug="sevilla"
+        sectionIntro="Redactados por gestores inmobiliarios expertos con experiencia en el mercado sevillano. Precios iguales que en nuestra gestoría online."
+      />
 
       {/* Contenido SEO: Mercado Sevilla */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
