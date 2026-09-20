@@ -1,21 +1,45 @@
 ---
-description: Commits los hace el agente; cuenta GitHub danielhdz2-ai para push
+description: Commit, push y deploy Vercel automáticos en inmonest (danielhdz2-ai)
 alwaysApply: true
 ---
 
-# Git: commits y cuenta GitHub
+# Commit + push + deploy (Inmonest)
 
-## Commits
-- **Siempre crea tú el commit** cuando implementes cambios. No dejes el trabajo solo en local ni pidas al usuario que commitee.
-- Tras terminar una tarea con cambios de código, haz `git add` + `git commit` con mensaje claro.
-- Solo omite commit si el usuario lo pide explícitamente o no hay cambios que commitear.
+Al terminar cambios de código en este repo, **haz commit Y push tú mismo**. No pidas al usuario que commitee, pushee ni despliegue.
 
-## Cuenta GitHub / push
-- Repositorio: **danielhdz2-ai/inmonest**
+## Repo y cuentas
+
+- GitHub: **danielhdz2-ai/inmonest**
 - Cuenta correcta para push: **danielhdz2-ai**
-- Si push falla con `Permission denied to danielhdz3-ai`, avisa al usuario para que cambie credenciales a **danielhdz2-ai** y reintenta.
-- No actualices `git config` global ni local por tu cuenta.
+- Deploy: **Vercel** despliega solo al hacer push a `main`
 
-## Push
-- No hagas push salvo que el usuario lo pida explícitamente (regla de commit vs push separada).
-- Tras commit, indica que está listo para push y recuerda la cuenta si hubo error 403 antes.
+## Flujo obligatorio al cerrar una tarea con cambios
+
+1. `git status` + `git diff` — revisar qué entra
+2. `git add` solo archivos del feature (no `.env`, credenciales, CSVs GSC salvo que el usuario lo pida)
+3. `git commit` con mensaje claro (1–2 frases, el porqué)
+4. **Push automático** a `main`:
+   ```powershell
+   cd D:\Proyectos\Inmonest\inmonest
+   gh auth switch -u danielhdz2-ai
+   git push origin main
+   ```
+5. Confirmar al usuario: hash del commit, que el push fue OK y que Vercel desplegará en ~2–3 min
+
+## Si push falla con 403 (danielhdz3-ai u otra cuenta)
+
+1. Ejecutar `gh auth switch -u danielhdz2-ai`
+2. Reintentar `git push origin main`
+3. Solo si sigue fallando, avisar al usuario para credenciales — **no** pedirle que commitee
+
+## Prohibido
+
+- Dejar trabajo solo en local sin commit+push al terminar
+- Pedir al usuario «haz push» salvo fallo irreparable de auth
+- `git config` global/local
+- `git push --force` a main
+- Commitear secretos (`.env`, tokens)
+
+## Landings nuevas
+
+Tras deploy, incluir sección **«Links para indexar en GSC»** con URLs `https://inmonest.com/...` completas.
