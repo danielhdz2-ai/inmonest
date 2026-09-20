@@ -4,7 +4,7 @@ import { getCiudadImage } from './gestoria-images'
 import { withGestoriaIndexRobots } from './gestoria-indexacion-tier'
 
 const BASE_URL = 'https://inmonest.com'
-export const ALQUILER_HABITACION_PRECIO = 145
+export const ALQUILER_HABITACION_PRECIO = 120
 
 export type AlquilerHabitacionGestor = {
   nombre: string
@@ -45,6 +45,11 @@ export const ALQUILER_HABITACION_CIUDADES_LIST = [
   { slug: 'valencia', nombre: 'Valencia' },
   { slug: 'zaragoza', nombre: 'Zaragoza' },
   { slug: 'asturias', nombre: 'Asturias' },
+  { slug: 'alicante', nombre: 'Alicante' },
+  { slug: 'granada', nombre: 'Granada' },
+  { slug: 'salamanca', nombre: 'Salamanca' },
+  { slug: 'coruna', nombre: 'A Coruña' },
+  { slug: 'pamplona', nombre: 'Pamplona' },
 ] as const
 
 export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiudadConfig> = {
@@ -84,14 +89,14 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/madrid/contrato-alquiler',
     meta: {
-      title: 'Contrato alquiler habitación Madrid desde 145€',
+      title: 'Contrato alquiler habitación Madrid desde 120€',
       description:
-        '¿Alquilas una habitación en Madrid? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia y protección ante impagos. 145€ IVA incluido.',
+        '¿Alquilas una habitación en Madrid? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia y protección ante impagos. 120€ IVA incluido.',
       keywords:
         'contrato alquiler habitacion madrid, alquilar habitacion madrid, contrato habitacion piso compartido madrid, coliving madrid contrato, arrendamiento habitacion madrid, gestoria alquiler habitacion madrid, alquiler habitacion particular madrid, piso compartido madrid contrato, alquiler habitacion moncloa, alquiler habitacion chamberi',
-      ogTitle: 'Contrato Alquiler Habitación Madrid — 145€ con asesor experto',
+      ogTitle: 'Contrato Alquiler Habitación Madrid — 120€ con asesor experto',
       ogDescription:
-        'Particulares que alquilan habitaciones en Madrid. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
+        'Particulares que alquilan habitaciones en Madrid. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
     },
   },
 
@@ -131,14 +136,14 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/barcelona/contrato-alquiler',
     meta: {
-      title: 'Contrato alquiler habitación Barcelona desde 145€',
+      title: 'Contrato alquiler habitación Barcelona desde 120€',
       description:
-        '¿Alquilas una habitación en Barcelona? Contrato profesional para particulares con asesor experto. Normas de convivencia, Código Civil y protección legal. 145€ IVA incluido.',
+        '¿Alquilas una habitación en Barcelona? Contrato profesional para particulares con asesor experto. Normas de convivencia, Código Civil y protección legal. 120€ IVA incluido.',
       keywords:
         'contrato alquiler habitacion barcelona, alquilar habitacion barcelona, contrato habitacion piso compartido barcelona, coliving barcelona contrato, arrendamiento habitacion barcelona, gestoria alquiler habitacion barcelona, alquiler habitacion gracia, alquiler habitacion eixample, piso compartido barcelona contrato',
-      ogTitle: 'Contrato Alquiler Habitación Barcelona — 145€ con asesor experto',
+      ogTitle: 'Contrato Alquiler Habitación Barcelona — 120€ con asesor experto',
       ogDescription:
-        'Particulares que alquilan habitaciones en Barcelona. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
+        'Particulares que alquilan habitaciones en Barcelona. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
     },
   },
 
@@ -180,19 +185,19 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
       },
       {
         q: '¿Qué incluye el contrato para pisos compartidos en Sevilla?',
-        a: 'Renta, fianza, normas de convivencia, uso de cocina y baño, preaviso de salida, causas de resolución por impago y procedimiento ante daños. Todo redactado por un gestor inmobiliario experto por 145€ IVA incluido.',
+        a: 'Renta, fianza, normas de convivencia, uso de cocina y baño, preaviso de salida, causas de resolución por impago y procedimiento ante daños. Todo redactado por un gestor inmobiliario experto por 120€ IVA incluido.',
       },
     ],
     enlaceContratoLau: '/sevilla/contrato-alquiler',
     meta: {
-      title: 'Contrato alquiler habitación Sevilla desde 145€',
+      title: 'Contrato alquiler habitación Sevilla desde 120€',
       description:
-        '¿Alquilas una habitación en Sevilla? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia, coliving y protección ante impagos. 145€ IVA incluido.',
+        '¿Alquilas una habitación en Sevilla? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia, coliving y protección ante impagos. 120€ IVA incluido.',
       keywords:
         'contrato alquiler habitacion sevilla, alquilar habitacion sevilla, contrato habitacion piso compartido sevilla, coliving sevilla contrato, arrendamiento habitacion sevilla, gestoria alquiler habitacion sevilla, alquiler habitacion triana, alquiler habitacion nervion, piso compartido sevilla contrato, alquiler habitacion particular sevilla, alquiler habitacion estudiantes sevilla',
-      ogTitle: 'Contrato Alquiler Habitación Sevilla — 145€ con asesor experto',
+      ogTitle: 'Contrato Alquiler Habitación Sevilla — 120€ con asesor experto',
       ogDescription:
-        'Particulares que alquilan habitaciones en Sevilla. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
+        'Particulares que alquilan habitaciones en Sevilla. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
     },
   },
 
@@ -226,7 +231,7 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     faqExtra: [
       {
         q: '¿Cuánto cuesta el contrato de alquiler de habitación en Málaga?',
-        a: '145€ IVA incluido. Tarifa plana por contrato personalizado, redacción jurídica y asesoramiento de un gestor inmobiliario experto. Entrega en 48 horas laborables en Málaga y provincia.',
+        a: '120€ IVA incluido. Tarifa plana por contrato personalizado, redacción jurídica y asesoramiento de un gestor inmobiliario experto. Entrega en 48 horas laborables en Málaga y provincia.',
       },
       {
         q: '¿Sirve para alquilar habitaciones a estudiantes en Teatinos?',
@@ -239,14 +244,14 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/malaga/contrato-alquiler',
     meta: {
-      title: 'Contrato alquiler habitación Málaga desde 145€',
+      title: 'Contrato alquiler habitación Málaga desde 120€',
       description:
-        '¿Alquilas una habitación en Málaga? Contrato profesional para particulares con asesor experto. Teatinos, coliving, Código Civil y normas de convivencia. 145€ IVA incluido.',
+        '¿Alquilas una habitación en Málaga? Contrato profesional para particulares con asesor experto. Teatinos, coliving, Código Civil y normas de convivencia. 120€ IVA incluido.',
       keywords:
         'contrato alquiler habitacion malaga, alquilar habitacion malaga, contrato habitacion piso compartido malaga, coliving malaga contrato, arrendamiento habitacion malaga, gestoria alquiler habitacion malaga, alquiler habitacion teatinos, alquiler habitacion centro malaga, piso compartido malaga contrato, alquiler habitacion particular malaga, alquiler habitacion estudiantes malaga',
-      ogTitle: 'Contrato Alquiler Habitación Málaga — 145€ con asesor experto',
+      ogTitle: 'Contrato Alquiler Habitación Málaga — 120€ con asesor experto',
       ogDescription:
-        'Particulares que alquilan habitaciones en Málaga. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
+        'Particulares que alquilan habitaciones en Málaga. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
     },
   },
 
@@ -293,14 +298,14 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/bilbao/contrato-alquiler',
     meta: {
-      title: 'Contrato alquiler habitación Bilbao desde 145€',
+      title: 'Contrato alquiler habitación Bilbao desde 120€',
       description:
-        '¿Alquilas una habitación en Bilbao? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia y protección ante impagos en Gran Bilbao. 145€ IVA incluido.',
+        '¿Alquilas una habitación en Bilbao? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia y protección ante impagos en Gran Bilbao. 120€ IVA incluido.',
       keywords:
         'contrato alquiler habitacion bilbao, alquilar habitacion bilbao, contrato habitacion piso compartido bilbao, coliving bilbao contrato, arrendamiento habitacion bilbao, gestoria alquiler habitacion bilbao, alquiler habitacion indautxu, alquiler habitacion deusto, piso compartido bilbao contrato, alquiler habitacion particular bilbao, alquiler habitacion getxo',
-      ogTitle: 'Contrato Alquiler Habitación Bilbao — 145€ con asesor experto',
+      ogTitle: 'Contrato Alquiler Habitación Bilbao — 120€ con asesor experto',
       ogDescription:
-        'Particulares que alquilan habitaciones en Bilbao. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
+        'Particulares que alquilan habitaciones en Bilbao. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
     },
   },
 
@@ -342,19 +347,19 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
       },
       {
         q: '¿Necesito un contrato distinto por cada habitación en Valencia?',
-        a: 'Sí, es lo recomendable. Si alquilas varias habitaciones a personas distintas en Ruzafa, Benimaclet u otro barrio, cada inquilino debe tener su propio contrato por 145€ IVA incluido.',
+        a: 'Sí, es lo recomendable. Si alquilas varias habitaciones a personas distintas en Ruzafa, Benimaclet u otro barrio, cada inquilino debe tener su propio contrato por 120€ IVA incluido.',
       },
     ],
     enlaceContratoLau: '/valencia/contrato-alquiler',
     meta: {
-      title: 'Contrato alquiler habitación Valencia desde 145€',
+      title: 'Contrato alquiler habitación Valencia desde 120€',
       description:
-        '¿Alquilas una habitación en Valencia? Contrato profesional para particulares con asesor experto. Ruzafa, Benimaclet, Código Civil y normas de convivencia. 145€ IVA incluido.',
+        '¿Alquilas una habitación en Valencia? Contrato profesional para particulares con asesor experto. Ruzafa, Benimaclet, Código Civil y normas de convivencia. 120€ IVA incluido.',
       keywords:
         'contrato alquiler habitacion valencia, alquilar habitacion valencia, contrato habitacion piso compartido valencia, coliving valencia contrato, arrendamiento habitacion valencia, gestoria alquiler habitacion valencia, alquiler habitacion ruzafa, alquiler habitacion benimaclet, piso compartido valencia contrato, alquiler habitacion particular valencia, alquiler habitacion estudiantes valencia',
-      ogTitle: 'Contrato Alquiler Habitación Valencia — 145€ con asesor experto',
+      ogTitle: 'Contrato Alquiler Habitación Valencia — 120€ con asesor experto',
       ogDescription:
-        'Particulares que alquilan habitaciones en Valencia. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
+        'Particulares que alquilan habitaciones en Valencia. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
     },
   },
 
@@ -396,19 +401,19 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
       },
       {
         q: '¿Puedo incluir normas de convivencia en el contrato de habitación?',
-        a: 'Sí. Horarios, limpieza, visitas o uso de electrodomésticos pueden pactarse siempre que no sean abusivas. Tu gestor inmobiliario te ayuda a redactarlas con validez jurídica por 145€ IVA incluido.',
+        a: 'Sí. Horarios, limpieza, visitas o uso de electrodomésticos pueden pactarse siempre que no sean abusivas. Tu gestor inmobiliario te ayuda a redactarlas con validez jurídica por 120€ IVA incluido.',
       },
     ],
     enlaceContratoLau: '/zaragoza/contrato-alquiler',
     meta: {
-      title: 'Contrato alquiler habitación Zaragoza desde 145€',
+      title: 'Contrato alquiler habitación Zaragoza desde 120€',
       description:
-        '¿Alquilas una habitación en Zaragoza? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia, coliving y protección ante impagos. 145€ IVA incluido.',
+        '¿Alquilas una habitación en Zaragoza? Contrato profesional para particulares con asesor experto. Código Civil, normas de convivencia, coliving y protección ante impagos. 120€ IVA incluido.',
       keywords:
         'contrato alquiler habitacion zaragoza, alquilar habitacion zaragoza, contrato habitacion piso compartido zaragoza, coliving zaragoza contrato, arrendamiento habitacion zaragoza, gestoria alquiler habitacion zaragoza, alquiler habitacion delicias, alquiler habitacion san francisco, piso compartido zaragoza contrato, alquiler habitacion particular zaragoza, alquiler habitacion estudiantes zaragoza',
-      ogTitle: 'Contrato Alquiler Habitación Zaragoza — 145€ con asesor experto',
+      ogTitle: 'Contrato Alquiler Habitación Zaragoza — 120€ con asesor experto',
       ogDescription:
-        'Particulares que alquilan habitaciones en Zaragoza. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
+        'Particulares que alquilan habitaciones en Zaragoza. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
     },
   },
 
@@ -455,14 +460,249 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
     ],
     enlaceContratoLau: '/asturias/contrato-alquiler',
     meta: {
-      title: 'Contrato alquiler habitación Asturias desde 145€',
+      title: 'Contrato alquiler habitación Asturias desde 120€',
       description:
-        '¿Alquilas una habitación en Asturias? Contrato profesional para particulares en Oviedo, Gijón y Avilés. Código Civil, normas de convivencia y protección ante impagos. 145€ IVA incluido.',
+        '¿Alquilas una habitación en Asturias? Contrato profesional para particulares en Oviedo, Gijón y Avilés. Código Civil, normas de convivencia y protección ante impagos. 120€ IVA incluido.',
       keywords:
         'contrato alquiler habitacion asturias, alquilar habitacion oviedo, contrato habitacion gijon, alquiler habitacion piso compartido asturias, coliving oviedo contrato, arrendamiento habitacion gijon, gestoria alquiler habitacion asturias, alquiler habitacion aviles, piso compartido oviedo contrato, alquiler habitacion particular asturias, alquiler habitacion estudiantes oviedo',
-      ogTitle: 'Contrato Alquiler Habitación Asturias — 145€ con asesor experto',
+      ogTitle: 'Contrato Alquiler Habitación Asturias — 120€ con asesor experto',
       ogDescription:
-        'Particulares que alquilan habitaciones en Oviedo, Gijón y Asturias. Contrato profesional, asesoramiento legal y entrega en 48h. 145€ IVA incluido.',
+        'Particulares que alquilan habitaciones en Oviedo, Gijón y Asturias. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
+    },
+  },
+
+  alicante: {
+    slug: 'alicante',
+    nombre: 'Alicante',
+    region: 'Comunitat Valenciana',
+    testimoniosLanding: 'alquiler-habitacion-alicante',
+    heroImage: getCiudadImage('alicante').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Alquiler de habitaciones en Alicante',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a propietarios que alquilan habitaciones en Alicante capital, San Juan y área metropolitana. Conoce el mercado de pisos compartidos con perfil universitario, trabajadores del puerto y compradores internacionales en temporada.',
+      especialidades: ['Pisos compartidos en Alicante', 'Coliving costa', 'Contratos por habitación'],
+    },
+    mercadoIntro:
+      'Alicante concentra demanda de habitaciones en piso compartido: estudiantes de la UA en San Vicente, jóvenes profesionales en el centro y perfiles internacionales en Playa de San Juan. Sin contrato escrito, los conflictos por fianza, convivencia o impago son habituales.',
+    zonasIntro: 'Servicio en Alicante capital, San Juan, El Campello y barrios con alta rotación de inquilinos en la Comunitat Valenciana.',
+    zonas: [
+      'Centro', 'Carolinas Altas', 'San Blas', 'Playa de San Juan', 'San Gabriel',
+      'San Vicente del Raspeig', 'El Campello', 'Muchamiel', 'Albufereta', 'Benalúa',
+    ],
+    paraQuienExtra: [
+      'Propietarios en el centro o San Vicente con habitaciones para estudiantes universitarios',
+      'Quien alquila varias habitaciones en el mismo piso sin pasar por agencia',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de habitación es válido en Alicante y provincia?',
+        a: 'Sí. El arrendamiento de habitación se rige por el Código Civil y es válido en Alicante, Elche, Torrevieja y resto de la provincia. Tu gestor adapta las cláusulas a tu piso concreto.',
+      },
+      {
+        q: '¿Es lo mismo que un contrato LAU de vivienda completa?',
+        a: 'No. Si alquilas habitaciones sueltas, no aplica el LAU de piso íntegro. Si alquilas el piso completo, necesitas contrato LAU (145€). También lo redactamos.',
+      },
+    ],
+    enlaceContratoLau: '/alicante/contrato-alquiler',
+    meta: {
+      title: 'Contrato alquiler habitación Alicante desde 120€',
+      description:
+        '¿Alquilas una habitación en Alicante? Contrato profesional para particulares. Código Civil, normas de convivencia y coliving. 120€ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion alicante, alquilar habitacion alicante, piso compartido alicante contrato, coliving alicante, alquiler habitacion san vicente, gestoria alquiler habitacion alicante',
+      ogTitle: 'Contrato Alquiler Habitación Alicante — 120€ con asesor experto',
+      ogDescription:
+        'Particulares que alquilan habitaciones en Alicante. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
+    },
+  },
+
+  granada: {
+    slug: 'granada',
+    nombre: 'Granada',
+    region: 'Andalucía',
+    testimoniosLanding: 'alquiler-habitacion-granada',
+    heroImage: getCiudadImage('granada').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Alquiler de habitaciones en Granada',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña a propietarios que alquilan habitaciones en Granada capital y área metropolitana. Especialista en pisos compartidos cerca del campus, Realejo y Zaidín, con contratos conforme al Código Civil.',
+      especialidades: ['Habitaciones universitarias', 'Pisos compartidos Granada', 'Normas de convivencia'],
+    },
+    mercadoIntro:
+      'Granada tiene una de las mayores tasas de alquiler por habitación de Andalucía: estudiantes en Cartuja y Realejo, trabajadores temporales y residentes en Zaidín. Alquilar sin contrato entre particulares multiplica disputas por fianza o convivencia.',
+    zonasIntro: 'Cobertura en Granada capital, Cartuja, Realejo, Zaidín, Armilla y municipios del área metropolitana.',
+    zonas: [
+      'Realejo', 'Cartuja', 'Centro', 'Zaidín', 'Chana',
+      'Armilla', 'La Chana', 'Ronda', 'Albaicín', 'Beiro', 'PTS',
+    ],
+    paraQuienExtra: [
+      'Propietarios en Realejo o Cartuja con habitaciones para estudiantes de la UGR',
+      'Particulares con piso compartido de 4-5 habitaciones que necesitan un contrato por inquilino',
+    ],
+    faqExtra: [
+      {
+        q: '¿Sirve para alquilar habitaciones a estudiantes en Granada?',
+        a: 'Sí. Es uno de los casos más frecuentes. El contrato regula renta, fianza, duración del curso, normas de convivencia y salida anticipada con validez jurídica por 120€ IVA incluido.',
+      },
+      {
+        q: '¿Es lo mismo que un contrato LAU en Granada?',
+        a: 'No. El alquiler por habitación se rige por el Código Civil. Si alquilas la vivienda completa, necesitas contrato LAU (145€). También lo redactamos.',
+      },
+    ],
+    enlaceContratoLau: '/granada/contrato-alquiler',
+    meta: {
+      title: 'Contrato alquiler habitación Granada desde 120€',
+      description:
+        '¿Alquilas una habitación en Granada? Contrato profesional para particulares en Realejo, Cartuja y Zaidín. 120€ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion granada, alquilar habitacion granada, piso compartido granada contrato, alquiler habitacion cartuja, coliving granada, gestoria alquiler habitacion granada',
+      ogTitle: 'Contrato Alquiler Habitación Granada — 120€ con asesor experto',
+      ogDescription:
+        'Particulares que alquilan habitaciones en Granada. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
+    },
+  },
+
+  salamanca: {
+    slug: 'salamanca',
+    nombre: 'Salamanca',
+    region: 'Castilla y León',
+    testimoniosLanding: 'alquiler-habitacion-salamanca',
+    heroImage: getCiudadImage('salamanca').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Alquiler de habitaciones en Salamanca',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a propietarios que alquilan habitaciones en Salamanca capital. Conoce el mercado universitario del casco histórico, Garrido y San Bernardo, y redacta contratos por habitación conforme al Código Civil.',
+      especialidades: ['Habitaciones universitarias', 'Casco histórico', 'Contratos entre particulares'],
+    },
+    mercadoIntro:
+      'Salamanca vive del alquiler por habitación: miles de estudiantes en el casco y barrios como Garrido buscan piso compartido cada curso. Sin contrato profesional, las disputas por fianza retenida o convivencia se alargan innecesariamente.',
+    zonasIntro: 'Servicio en Salamanca capital, barrios universitarios y área con mayor demanda de habitaciones entre particulares.',
+    zonas: [
+      'Casco histórico', 'Garrido', 'San Bernardo', 'Vista Hermosa', 'Pizarrales',
+      'Tejares', 'Aldehuela de la Bóveda', 'Centro', 'San Juan Bautista', 'Delicias',
+    ],
+    paraQuienExtra: [
+      'Propietarios en el casco o Garrido con habitaciones para estudiantes',
+      'Quien alquila varias habitaciones en el mismo piso y necesita un contrato por inquilino',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de habitación es válido en Salamanca?',
+        a: 'Sí. Válido en Salamanca capital y provincia. Tu gestor adapta cláusulas de renta, fianza, convivencia y duración del curso académico.',
+      },
+      {
+        q: '¿Puedo alquilar habitaciones en el casco histórico con este contrato?',
+        a: 'Sí. El régimen es el del Código Civil para alquiler de habitación, independiente de la protección urbanística del edificio.',
+      },
+    ],
+    enlaceContratoLau: '/salamanca/contrato-alquiler',
+    meta: {
+      title: 'Contrato alquiler habitación Salamanca desde 120€',
+      description:
+        '¿Alquilas una habitación en Salamanca? Contrato profesional para particulares y estudiantes. Casco, Garrido, convivencia. 120€ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion salamanca, alquilar habitacion salamanca, piso compartido salamanca contrato, alquiler habitacion universidad salamanca, coliving salamanca, gestoria alquiler habitacion salamanca',
+      ogTitle: 'Contrato Alquiler Habitación Salamanca — 120€ con asesor experto',
+      ogDescription:
+        'Particulares que alquilan habitaciones en Salamanca. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
+    },
+  },
+
+  coruna: {
+    slug: 'coruna',
+    nombre: 'A Coruña',
+    region: 'Galicia',
+    testimoniosLanding: 'alquiler-habitacion-coruna',
+    heroImage: getCiudadImage('coruna').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Alquiler de habitaciones en A Coruña',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña a propietarios que alquilan habitaciones en A Coruña, Ferrol y área metropolitana. Redacta contratos por habitación con normas de convivencia válidas conforme al Código Civil.',
+      especialidades: ['Habitaciones en Coruña', 'Pisos compartidos Galicia', 'Coliving urbano'],
+    },
+    mercadoIntro:
+      'A Coruña tiene demanda estable de habitaciones en piso compartido: estudiantes en Elviña, jóvenes profesionales en Ensanche y trabajadores del sector portuario. El alquiler entre particulares sin contrato escrito es frecuente y genera conflictos evitables.',
+    zonasIntro: 'Cobertura en A Coruña capital, Ferrol, Oleiros y barrios con alta demanda de alquiler por habitaciones.',
+    zonas: [
+      'Ensanche', 'Ciudad Vieja', 'Matadero', 'Cuatro Caminos', 'Elviña',
+      'Mesoiro', 'Adiós', 'Ferrol', 'Oleiros', 'Cambre', 'Orzán',
+    ],
+    paraQuienExtra: [
+      'Propietarios en Ensanche o Elviña con habitaciones para estudiantes o profesionales',
+      'Particulares con piso compartido que necesitan un contrato independiente por inquilino',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de habitación es válido en A Coruña y Galicia?',
+        a: 'Sí. El arrendamiento de habitación se rige por el Código Civil y es válido en A Coruña, Ferrol, Santiago y resto de Galicia.',
+      },
+      {
+        q: '¿Es lo mismo que un contrato LAU de piso completo?',
+        a: 'No. Si alquilas habitaciones sueltas, necesitas contrato de habitación. Si alquilas el piso entero, contrato LAU (145€). También lo redactamos.',
+      },
+    ],
+    enlaceContratoLau: '/coruna/contrato-alquiler',
+    meta: {
+      title: 'Contrato alquiler habitación A Coruña desde 120€',
+      description:
+        '¿Alquilas una habitación en A Coruña? Contrato profesional para particulares en Ensanche, Elviña y Ferrol. 120€ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion coruña, alquilar habitacion a coruña, piso compartido coruña contrato, alquiler habitacion elviña, coliving coruña, gestoria alquiler habitacion galicia',
+      ogTitle: 'Contrato Alquiler Habitación A Coruña — 120€ con asesor experto',
+      ogDescription:
+        'Particulares que alquilan habitaciones en A Coruña y Galicia. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
+    },
+  },
+
+  pamplona: {
+    slug: 'pamplona',
+    nombre: 'Pamplona',
+    region: 'Navarra',
+    testimoniosLanding: 'alquiler-habitacion-pamplona',
+    heroImage: getCiudadImage('pamplona').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Alquiler de habitaciones en Pamplona',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a propietarios que alquilan habitaciones en Pamplona y comarca. Conoce el mercado universitario de Iturrama, el Ensanche y la rotación en el casco antiguo, con contratos conforme al Código Civil.',
+      especialidades: ['Habitaciones universitarias', 'Pisos compartidos Navarra', 'Contratos por inquilino'],
+    },
+    mercadoIntro:
+      'Pamplona concentra demanda de habitaciones en piso compartido: estudiantes en Iturrama y San Juan, jóvenes profesionales en el Ensanche y alta rotación en el casco. Sin contrato profesional, los conflictos por fianza o convivencia son habituales.',
+    zonasIntro: 'Servicio en Pamplona capital, comarca de Pamplona y barrios con mayor demanda de alquiler por habitaciones.',
+    zonas: [
+      'Iturrama', 'San Juan', 'Ensanche', 'Casco Antiguo', 'Rochapea',
+      'Mendillorri', 'Burlada', 'Barañáin', 'Ermitagaña', 'Lezkairu', 'Universidad',
+    ],
+    paraQuienExtra: [
+      'Propietarios en Iturrama o San Juan con habitaciones para estudiantes',
+      'Quien alquila varias habitaciones en el mismo piso sin agencia intermediaria',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de habitación es válido en Pamplona y Navarra?',
+        a: 'Sí. Válido en Pamplona, Tudela y resto de Navarra. Tu gestor adapta cláusulas de renta, fianza y convivencia al Código Civil.',
+      },
+      {
+        q: '¿Es lo mismo que un contrato LAU en Pamplona?',
+        a: 'No. El alquiler por habitación no es LAU de vivienda íntegra. Si alquilas el piso completo, necesitas contrato LAU (145€). También lo redactamos.',
+      },
+    ],
+    enlaceContratoLau: '/pamplona/contrato-alquiler',
+    meta: {
+      title: 'Contrato alquiler habitación Pamplona desde 120€',
+      description:
+        '¿Alquilas una habitación en Pamplona? Contrato profesional para particulares en Iturrama, Ensanche y casco. 120€ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion pamplona, alquilar habitacion pamplona, piso compartido pamplona contrato, alquiler habitacion iturrama, coliving pamplona, gestoria alquiler habitacion navarra',
+      ogTitle: 'Contrato Alquiler Habitación Pamplona — 120€ con asesor experto',
+      ogDescription:
+        'Particulares que alquilan habitaciones en Pamplona. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
     },
   },
 }
