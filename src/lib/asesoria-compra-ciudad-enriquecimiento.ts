@@ -296,6 +296,94 @@ export const ASESORIA_COMPRA_ENRIQUECIMIENTO: Record<string, AsesoriaCompraEnriq
       { titulo: 'Escritura', desc: 'Acompañamiento hasta notaría.' },
     ],
   },
+
+  asturias: {
+    beneficiosTitulo: 'Comprar piso en Asturias de particular — Oviedo y Gijón',
+    beneficiosIntro:
+      'Oviedo Centro y Gijón Cimadevilla concentran operaciones directas entre comprador y vendedor. Sin revisión, heredas derramas en ensanches del 60–70 o arras con plazos imposibles para la hipoteca. ITP del 8 % en el Principado.',
+    tramitesTitulo: 'Trámites de compra en el Principado de Asturias',
+    tramitesIntro: 'Checklist asturiano antes de entregar señal:',
+    tramitesLocales: [
+      'ITE / IEE en edificios de más de 50 años del ensanche ovieense y gijonés',
+      'Certificado de deudas de comunidad — derramas de fachada frecuentes',
+      'Cédula de habitabilidad y certificado energético vigentes',
+      'Nota simple registral y coherencia catastro-registro',
+      'IBI al corriente en Oviedo, Gijón o Avilés',
+    ],
+    pasosTitulo: 'Cómo compramos contigo en Asturias',
+    pasos: [
+      { titulo: 'Llamada en 24 h', desc: 'Barrio (Oviedo Centro, Cimadevilla, Avilés), precio y documentación del vendedor.' },
+      { titulo: '687 € tarifa plana', desc: 'Sin % sobre un piso de 185.000 € — ahorro de 5.550–9.250 € vs agencia.' },
+      { titulo: 'Reserva y arras', desc: 'Cláusula suspensiva de hipoteca y plazos de 45–60 días adaptados a banca asturiana.' },
+      { titulo: 'Escritura', desc: 'Coordinación con notaría en Oviedo, Gijón o Avilés — incluso si compras desde otra provincia.' },
+    ],
+  },
+
+  santander: {
+    beneficiosTitulo: 'Asesoría compra piso Santander — Cantabria y costa',
+    beneficiosIntro:
+      'Santander mezcla mercado residencial y costero. En verano es habitual comprar sin agencia con plazos de 48–72 h y arras del vendedor sin revisar ITE en El Sardinero. ITP del 8 % en Cantabria.',
+    tramitesTitulo: 'Documentación obligatoria en Cantabria',
+    tramitesIntro: 'Riesgos frecuentes en compraventa santanderina:',
+    tramitesLocales: [
+      'ITE en edificios antiguos del centro y El Sardinero',
+      'IBI al corriente con el Ayuntamiento de Santander',
+      'Certificado de deudas de comunidad y cédula de habitabilidad',
+      'Nota simple del Registro sin cargas ocultas',
+      'Arras con plazos realistas para concesión hipotecaria',
+    ],
+    pasosTitulo: 'Proceso de compra en Santander',
+    pasos: [
+      { titulo: 'Consulta inicial', desc: 'Zona (centro, Sardinero, Camargo), precio y urgencia del vendedor.' },
+      { titulo: '687 € plano', desc: 'Frente a 6.600–11.000 € de comisión en piso de 220.000 €.' },
+      { titulo: 'Arras con ITE', desc: 'Detectamos inspecciones pendientes en edificios costeros antes de la señal.' },
+      { titulo: 'Hasta escritura', desc: 'Gestor asignado y seguimiento WhatsApp hasta notaría cantábrica.' },
+    ],
+  },
+
+  vitoria: {
+    beneficiosTitulo: 'Compra piso Vitoria-Gasteiz de particular — normativa foral vasca',
+    beneficiosIntro:
+      'Ensanche, Lakua y Zabalgana mueven operaciones familiares entre particulares. Vitoria exige coherencia documental antes de notaría: cargas registrales, ITE en casco medieval y arras desequilibradas son los errores más caros. ITP del 7 % en Álava.',
+    tramitesTitulo: 'Trámites de compra en Álava (País Vasco)',
+    tramitesIntro: 'Documentación foral que revisamos antes de arras:',
+    tramitesLocales: [
+      'Nota simple registral y verificación de cargas pendientes',
+      'ITE en edificios antiguos del casco medieval de Vitoria',
+      'Certificado de deudas de comunidad — derramas en urbanizaciones de Lakua',
+      'Cédula de habitabilidad y certificado energético',
+      'Normativa foral vasca aplicable a la transmisión',
+    ],
+    pasosTitulo: 'Tu compra en Vitoria-Gasteiz paso a paso',
+    pasos: [
+      { titulo: 'Primera llamada', desc: 'Análisis de barrio (Ensanche, Lakua, Zabalgana) y condiciones del vendedor.' },
+      { titulo: '687 € IVA incl.', desc: 'Tarifa fija frente a 7.200–12.000 € de comisión en piso de 240.000 €.' },
+      { titulo: 'Revisión de arras', desc: 'Plazos de 45–60 días y cláusula suspensiva de financiación.' },
+      { titulo: 'Escritura', desc: 'Acompañamiento hasta notaría vitoriana con gestor que conoce normativa foral.' },
+    ],
+  },
+
+  'san-sebastian': {
+    beneficiosTitulo: 'Asesoría compra piso San Sebastián — mercado premium Donostia',
+    beneficiosIntro:
+      'Donostia es uno de los mercados más caros del norte (4.500–6.000 €/m² en Centro y Gros). Un error documental puede costar decenas de miles. Comprar de particular sin due diligence previa a la señal es el riesgo más grave. ITP del 7 % en Gipuzkoa.',
+    tramitesTitulo: 'Due diligence de compra en Gipuzkoa',
+    tramitesIntro: 'Checklist obligatorio en operaciones de 350.000 €+:',
+    tramitesLocales: [
+      'Actas de comunidad de los últimos 2 años — derramas señoriales elevadas',
+      'ITE en edificios del Ensanche donostiarra',
+      'Coherencia catastro-registro en pisos reformados (Amara, Gros)',
+      'Nota simple registral y certificado de deudas de comunidad',
+      'Arras equilibradas — plazos y señal proporcionados al ticket',
+    ],
+    pasosTitulo: 'Proceso de compra en San Sebastián',
+    pasos: [
+      { titulo: 'Contacto 24 h', desc: 'Barrio (Centro, Gros, Amara), precio de referencia y documentación disponible.' },
+      { titulo: '687 € fijos', desc: 'Sin comisión del 3–5 % sobre 380.000 € — ahorro de 11.400–19.000 €.' },
+      { titulo: 'Informe pre-arras', desc: 'Hallazgos documentales por escrito antes de entregar señal alta.' },
+      { titulo: 'Escritura', desc: 'Coordinación con notaría donostiarra hasta firma y entrega de llaves.' },
+    ],
+  },
 }
 
 /** FAQ base reescrita por ciudad — evita respuestas idénticas en schema.org */
@@ -323,6 +411,38 @@ export const ASESORIA_FAQ_BASE_POR_CIUDAD: Record<string, DueDiligenceFaqItem[]>
     { q: '¿Conocéis la normativa valenciana?', a: 'Sí: cédula de habitabilidad de la Generalitat, IEE en edificios antiguos de Ciutat Vella y derramas de rehabilitación de fachada.' },
     { q: '¿Cuándo contratar en Valencia?', a: 'Antes de reserva o inmediatamente después. En Ruzafa y Benimaclet las operaciones van rápido.' },
     { q: '¿Qué pasa con derramas de comunidad?', a: 'Verificamos certificado de deudas; si hay derrama pendiente de 5.000 € o más, renegociamos o condicionamos la compra.' },
+  ],
+  asturias: [
+    { q: '¿Qué incluye la asesoría de compra en Asturias?', a: 'Gestor asignado en Oviedo, Gijón o Avilés, revisión de reserva y arras, nota simple, ITE en ensanches, deudas de comunidad y coordinación con notaría asturiana hasta escritura.' },
+    { q: '¿Puedo comprar de particular en Oviedo sin agencia?', a: 'Sí. Inmonest cubre la parte legal por 687 € fijos — frente a 5.550–9.250 € de comisión (3–5 %) en un piso de 185.000 € en el Principado.' },
+    { q: '¿Revisáis derramas en edificios del ensanche?', a: 'Sí. Comunidades de los 60–70 en Oviedo y Gijón suelen tener obras de fachada pendientes. Verificamos actas antes de que entregues señal.' },
+    { q: '¿Conocéis la normativa asturiana?', a: 'Sí: ITP del 8 % en Asturias, cédula de habitabilidad del Principado, ITE en edificios antiguos e IBI al corriente en Oviedo, Gijón o Avilés.' },
+    { q: '¿Trabajáis con hipotecas de Kutxabank o Santander en Asturias?', a: 'Sí. Redactamos o revisamos arras con plazos de 45–60 días y cláusula suspensiva de financiación adaptados a la banca asturiana.' },
+    { q: '¿Cuándo contratar en Asturias?', a: 'Antes de firmar arras. En operaciones entre particulares en Gijón y Oviedo es habitual que el vendedor presione con plazos de 10–15 días.' },
+  ],
+  santander: [
+    { q: '¿Qué incluye la asesoría de compra en Santander?', a: 'Gestor asignado, revisión de arras, ITE en edificios costeros, nota simple, cédula cantábrica, deudas de comunidad y acompañamiento hasta escritura en notaría de Santander.' },
+    { q: '¿Comprar de particular en El Sardinero es seguro?', a: 'Sí con revisión previa. Edificios de los 70 en la costa suelen tener ITE pendiente que el anuncio no menciona — lo verificamos antes de la señal.' },
+    { q: '¿Revisáis arras con plazos veraniegos de 48–72 h?', a: 'Sí. En verano es frecuente en Santander. Equilibramos plazos y añadimos condición suspensiva de hipoteca para proteger al comprador.' },
+    { q: '¿Conocéis la normativa cantábrica?', a: 'Sí: ITP del 8 % en Cantabria, IBI con el Ayuntamiento de Santander, cédula de habitabilidad y documentación técnica costera.' },
+    { q: '¿Operáis en Camargo y área metropolitana?', a: 'Sí. Santander capital, El Sardinero, Cueto, Camargo y Somo con el mismo servicio online y gestor asignado.' },
+    { q: '¿Qué pasa si hay ITE desfavorable?', a: 'Informe claro con importe de obras obligatorias; opciones de renegociar precio, condicionar la compra o desistir con arras recuperables si procede.' },
+  ],
+  vitoria: [
+    { q: '¿Qué incluye la asesoría de compra en Vitoria-Gasteiz?', a: 'Gestor asignado, revisión de reserva y arras, nota simple, ITE en casco medieval, deudas de comunidad en Lakua y coordinación con notaría vitoriana hasta escritura.' },
+    { q: '¿Puedo comprar de particular en Vitoria sin agencia?', a: 'Sí. 687 € fijos frente a 7.200–12.000 € de comisión en un piso de 240.000 € en el Ensanche o Zabalgana.' },
+    { q: '¿Revisáis normativa foral vasca?', a: 'Sí. Verificamos documentación adaptada a Álava: cargas registrales, fiscalidad foral (ITP 7 %) y requisitos urbanísticos antes de arras.' },
+    { q: '¿Qué pasa con cargas registrales pendientes?', a: 'Detectamos hipotecas o usufructos en nota simple; exigimos cancelación antes de escritura o cláusula suspensiva con plazo realista.' },
+    { q: '¿Trabajáis con hipotecas en Vitoria?', a: 'Sí. Arras con plazos de 45–60 días y cláusula suspensiva de financiación — habitual en operaciones familiares entre particulares en Álava.' },
+    { q: '¿Cuándo contratar en Vitoria-Gasteiz?', a: 'Antes de entregar señal. El mercado es estable pero las arras del vendedor suelen venir desequilibradas si no las revisa un gestor.' },
+  ],
+  'san-sebastian': [
+    { q: '¿Qué incluye la asesoría de compra en San Sebastián?', a: 'Gestor asignado en Donostia, due diligence documental completa, revisión de arras premium, actas de comunidad, ITE del Ensanche y coordinación con notaría gipuzkoana hasta escritura.' },
+    { q: '¿Comprar de particular en Gros sin agencia es seguro?', a: 'Solo con revisión previa. En Donostia un error documental puede costar 10.000 € o más — 687 € de gestoría frente a 11.400–19.000 € de comisión de agencia.' },
+    { q: '¿Revisáis derramas en edificios señoriales?', a: 'Sí. Comunidades del Ensanche donostiarra con obras de fachada de alto importe. Analizamos actas de los últimos 2 años antes de la señal.' },
+    { q: '¿Conocéis la normativa de Gipuzkoa?', a: 'Sí: ITP del 7 % en País Vasco, plusvalía municipal de San Sebastián, cédula de habitabilidad y coherencia catastro-registro en pisos reformados.' },
+    { q: '¿Qué pasa con arras de señal alta y plazo de 15 días?', a: 'Equilibramos cláusulas, señal proporcionada al ticket y plazos realistas para aprobación hipotecaria en mercado premium.' },
+    { q: '¿Cuándo contratar en Donostia?', a: 'Antes de entregar señal. En operaciones de 350.000 €+ la due diligence previa no es opcional — es la diferencia entre comprar seguro o heredar un problema caro.' },
   ],
 }
 

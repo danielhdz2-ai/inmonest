@@ -965,7 +965,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Oviedo, Gijón, Avilés y área metropolitana del Principado.',
     zonas: ['Oviedo Centro', 'Gijón Centro', 'Cimadevilla', 'Avilés', 'El Milán', 'Langreo'],
     meta: {
-      title: 'Asesoría compra piso Asturias desde 687€',
+      title: 'Asesoría compra piso Oviedo y Gijón desde 687€',
       description:
         'Compra piso de particular en Oviedo o Gijón con gestor asignado. Documentación, arras y notaría. 687€ IVA incl. Sin comisión 3-5%.',
       keywords:
@@ -1005,7 +1005,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Santander capital, El Sardinero, Camargo y área metropolitana.',
     zonas: ['Centro', 'El Sardinero', 'Cuatro Caminos', 'Cueto', 'Camargo', 'Somo'],
     meta: {
-      title: 'Asesoría compra piso Santander desde 687€',
+      title: 'Asesoría compra piso Santander y Cantabria desde 687€',
       description:
         'Compra piso de particular en Santander con gestor asignado. Arras, documentación cantábrica y notaría. 687€ IVA incl.',
       keywords:
@@ -1045,7 +1045,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'Vitoria-Gasteiz capital, Ensanche, Lakua y Zabalgana.',
     zonas: ['Ensanche', 'Lakua', 'Zabalgana', 'Casco Medieval', 'Salburua', 'Armentia'],
     meta: {
-      title: 'Asesoría compra piso Vitoria desde 687€',
+      title: 'Asesoría compra piso Vitoria-Gasteiz desde 687€',
       description:
         'Compra piso de particular en Vitoria-Gasteiz con gestor asignado. Documentación foral, arras y notaría. 687€ IVA incl.',
       keywords:
@@ -1085,7 +1085,7 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
     zonasIntro: 'San Sebastián / Donostia, Gros, Amara y área metropolitana.',
     zonas: ['Centro', 'Gros', 'Antiguo', 'Amara', 'Egia', 'Intxaurrondo'],
     meta: {
-      title: 'Asesoría compra piso San Sebastián desde 687€',
+      title: 'Asesoría compra piso Donostia desde 687€',
       description:
         'Compra piso de particular en Donostia con gestor asignado. Arras, documentación vasca y notaría. 687€ IVA incl. Sin comisión 3-5%.',
       keywords:

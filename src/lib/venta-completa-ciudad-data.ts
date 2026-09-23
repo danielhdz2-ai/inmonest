@@ -602,7 +602,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     },
     zonas: ['Oviedo Centro', 'Gijón Centro', 'Cimadevilla', 'Avilés', 'El Milán', 'Langreo'],
     meta: {
-      title: 'Vender piso particular Asturias desde 687€',
+      title: 'Vender piso particular Oviedo y Gijón desde 687€',
       description:
         '¿Comprador particular en Oviedo o Gijón? Gestoría: arras, documentación y notaría. 687€ sin comisión de agencia.',
       keywords:
@@ -633,7 +633,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     },
     zonas: ['Centro', 'El Sardinero', 'Cuatro Caminos', 'Cueto', 'Camargo', 'Somo'],
     meta: {
-      title: 'Vender piso particular Santander desde 687€',
+      title: 'Vender piso particular Santander y Sardinero desde 687€',
       description:
         'Vende a particular en Santander con gestor asignado. Contratos, documentación y notaría. 687€ IVA incl. Sin comisión 3-5%.',
       keywords:
@@ -664,7 +664,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     },
     zonas: ['Ensanche', 'Lakua', 'Zabalgana', 'Casco Medieval', 'Salburua', 'Armentia'],
     meta: {
-      title: 'Vender piso particular Vitoria desde 687€',
+      title: 'Vender piso particular Vitoria-Gasteiz desde 687€',
       description:
         '¿Comprador particular en Vitoria-Gasteiz? Gestoría: arras, documentación foral y notaría. 687€ sin comisión de agencia.',
       keywords:
@@ -695,7 +695,7 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
     },
     zonas: ['Centro', 'Gros', 'Antiguo', 'Amara', 'Egia', 'Intxaurrondo'],
     meta: {
-      title: 'Vender piso particular San Sebastián desde 687€',
+      title: 'Vender piso particular Donostia desde 687€',
       description:
         'Vende a particular en Donostia con gestor asignado. Arras, documentación vasca y notaría. 687€ IVA incl. Sin comisión 3-5%.',
       keywords:

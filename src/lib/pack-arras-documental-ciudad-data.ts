@@ -1847,7 +1847,7 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocume
       },
     ],
     meta: {
-      title: 'Pack Arras Plus Asturias 450€ — Arras + revisión documental',
+      title: 'Pack Arras Plus Asturias 450€ — Arras + revisión Oviedo y Gijón',
       description: 'Compra piso de particular en Oviedo o Gijón: arras + revisión documental. 450€ IVA incl. Sin agencia.',
       keywords: 'pack arras oviedo, comprar piso particular gijon, arras penitenciales asturias, revision documentacion compra asturias',
       ogTitle: 'Pack Arras Plus Asturias — 450€',
@@ -1912,7 +1912,7 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocume
       },
     ],
     meta: {
-      title: 'Pack Arras Plus Santander 450€ — Arras + revisión documental',
+      title: 'Pack Arras Plus Santander 450€ — Arras + revisión El Sardinero',
       description: 'Compra piso de particular en Santander: arras + revisión documental. 450€ IVA incl.',
       keywords: 'pack arras santander, comprar piso particular cantabria, arras penitenciales santander, revision documentacion compra sardinero',
       ogTitle: 'Pack Arras Plus Santander — 450€',
@@ -1977,7 +1977,7 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocume
       },
     ],
     meta: {
-      title: 'Pack Arras Plus Vitoria 450€ — Arras + revisión documental',
+      title: 'Pack Arras Plus Vitoria 450€ — Arras + revisión foral Álava',
       description: 'Compra piso de particular en Vitoria-Gasteiz: arras + revisión documental. 450€ IVA incl.',
       keywords: 'pack arras vitoria, comprar piso particular alava, arras penitenciales vitoria gasteiz, revision documentacion compra vitoria',
       ogTitle: 'Pack Arras Plus Vitoria — 450€',
@@ -2042,7 +2042,7 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocume
       },
     ],
     meta: {
-      title: 'Pack Arras Plus San Sebastián 450€ — Arras + revisión documental',
+      title: 'Pack Arras Plus San Sebastián 450€ — Arras + revisión Donostia',
       description: 'Compra piso de particular en Donostia: arras + revisión documental. 450€ IVA incl.',
       keywords: 'pack arras san sebastian, comprar piso particular donostia, arras penitenciales gros, revision documentacion compra san sebastian',
       ogTitle: 'Pack Arras Plus San Sebastián — 450€',
