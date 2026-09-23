@@ -5,10 +5,7 @@ import GestoriaContent from './GestoriaContent'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
-import {
-  buildGestoriaAggregateRatingSchema,
-  buildGestoriaReviewSchema,
-} from '@/lib/gestoria-reviews-schema'
+import { buildGestoriaReviewSchema } from '@/lib/gestoria-reviews-schema'
 import { getPrecioServicio } from '@/lib/gestoria-catalogo'
 
 const BASE_URL = 'https://inmonest.com'
@@ -245,10 +242,6 @@ const schemaJson = JSON.stringify({
     availableLanguage: 'Spanish'
   },
   
-  // Reseñas agregadas (para mostrar estrellas ⭐⭐⭐⭐⭐ en Google)
-  aggregateRating: buildGestoriaAggregateRatingSchema(),
-  
-  // Reseñas individuales (Google Business)
   review: buildGestoriaReviewSchema(),
 })
 

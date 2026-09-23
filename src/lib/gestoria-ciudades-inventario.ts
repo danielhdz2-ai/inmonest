@@ -208,6 +208,9 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
       'salamanca',
       'coruna',
       'pamplona',
+      'mallorca',
+      'murcia',
+      'valladolid',
     ],
   },
   {

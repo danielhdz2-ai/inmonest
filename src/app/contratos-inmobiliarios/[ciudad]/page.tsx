@@ -6,10 +6,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import ContratosInmobiliariosCiudadContent from './ContratosInmobiliariosCiudadContent'
-import {
-  buildGestoriaAggregateRatingSchema,
-  buildGestoriaReviewSchema,
-} from '@/lib/gestoria-reviews-schema'
+import { buildGestoriaReviewSchema } from '@/lib/gestoria-reviews-schema'
 import {
   CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS,
   getContratosInmobiliariosCiudad,
@@ -73,7 +70,6 @@ export default async function ContratosInmobiliariosCiudadPage({
     description: cfg.metaDescription,
     url: `${BASE_URL}/contratos-inmobiliarios/${cfg.slug}`,
     areaServed: { '@type': 'City', name: cfg.nombre },
-    aggregateRating: buildGestoriaAggregateRatingSchema(),
     review: buildGestoriaReviewSchema(),
   })
 

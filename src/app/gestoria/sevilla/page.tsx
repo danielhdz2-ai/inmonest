@@ -50,10 +50,7 @@ export const metadata: Metadata = {
   },
 }
 
-import {
-  buildGestoriaAggregateRatingSchema,
-  buildGestoriaReviewSchema,
-} from '@/lib/gestoria-reviews-schema'
+import { buildGestoriaReviewSchema } from '@/lib/gestoria-reviews-schema'
 
 // Schema.org: Breadcrumbs + Service + FAQ
 const schemaData = {
@@ -80,7 +77,6 @@ const schemaData = {
         addressCountry: 'ES',
       },
       priceRange: '€€',
-      aggregateRating: buildGestoriaAggregateRatingSchema(),
       review: buildGestoriaReviewSchema(),
       hasOfferCatalog: {
         '@type': 'OfferCatalog',

@@ -7,6 +7,11 @@ import type { Redirect } from 'next/dist/lib/load-custom-routes'
 export const SEO_REDIRECTS: Redirect[] = [
   // ═══ ALIASES DE SLUGS GESTORÍA ═══
   {
+    source: '/gestoria/palma',
+    destination: '/gestoria/mallorca',
+    permanent: true,
+  },
+  {
     source: '/gestoria/alquiler-vivienda-lau',
     destination: '/gestoria/contrato-alquiler',
     permanent: true,

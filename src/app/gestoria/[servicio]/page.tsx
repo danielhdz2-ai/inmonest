@@ -246,7 +246,7 @@ const SERVICIOS: Record<string, ServiceData> = {
 
   'alquiler-habitaciones': {
     nombre: 'Contrato de Alquiler de Habitación',
-    precio: 145,
+    precio: 120,
     categoria: 'Alquiler',
     tagline: 'Alquila habitaciones en piso compartido con todas las garantías jurídicas',
     descripcion:

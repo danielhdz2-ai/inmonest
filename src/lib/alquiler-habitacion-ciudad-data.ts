@@ -50,6 +50,9 @@ export const ALQUILER_HABITACION_CIUDADES_LIST = [
   { slug: 'salamanca', nombre: 'Salamanca' },
   { slug: 'coruna', nombre: 'A Coruña' },
   { slug: 'pamplona', nombre: 'Pamplona' },
+  { slug: 'mallorca', nombre: 'Mallorca' },
+  { slug: 'murcia', nombre: 'Murcia' },
+  { slug: 'valladolid', nombre: 'Valladolid' },
 ] as const
 
 export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiudadConfig> = {
@@ -703,6 +706,147 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
       ogTitle: 'Contrato Alquiler Habitación Pamplona — 120€ con asesor experto',
       ogDescription:
         'Particulares que alquilan habitaciones en Pamplona. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
+    },
+  },
+
+  mallorca: {
+    slug: 'mallorca',
+    nombre: 'Mallorca',
+    region: 'Islas Baleares',
+    testimoniosLanding: 'alquiler-habitacion-mallorca',
+    heroImage: getCiudadImage('mallorca').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Alquiler de habitaciones en Mallorca',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a propietarios que alquilan habitaciones en Palma, Calvià e interior de Mallorca. Conoce el mercado de pisos compartidos entre particulares y redacta contratos conforme al Código Civil con normas de convivencia válidas.',
+      especialidades: ['Habitaciones en Palma', 'Pisos compartidos Baleares', 'Contratos entre particulares'],
+    },
+    mercadoIntro:
+      'Mallorca concentra demanda de habitaciones en Palma, Pere Garau, Son Armadans y zonas universitarias. Entre particulares es habitual alquilar habitaciones sin contrato escrito, lo que complica recuperar fianzas o resolver conflictos de convivencia.',
+    zonasIntro: 'Cobertura en Palma, Calvià, Manacor, Inca y municipios de Mallorca con alta demanda de alquiler por habitaciones.',
+    zonas: [
+      'Palma Centro', 'Santa Catalina', 'Pere Garau', 'Son Armadans', 'El Molinar',
+      'Calvià', 'Portixol', 'Inca', 'Manacor', 'Llucmajor', 'Universidad UIB',
+    ],
+    paraQuienExtra: [
+      'Propietarios en Palma que alquilan habitaciones a estudiantes o trabajadores temporales',
+      'Particulares con piso compartido en Baleares que necesitan un contrato por inquilino',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de habitación es válido en Mallorca y Baleares?',
+        a: 'Sí. El alquiler por habitación se rige por el Código Civil en Palma y resto de Baleares. Tu gestor adapta cláusulas de renta, fianza y convivencia por 120€ IVA incluido.',
+      },
+      {
+        q: '¿Es lo mismo que un contrato LAU en Palma?',
+        a: 'No. Si alquilas habitaciones sueltas, no aplica LAU de vivienda íntegra. Si alquilas el piso completo, necesitas contrato LAU (145€). También lo redactamos.',
+      },
+    ],
+    enlaceContratoLau: '/mallorca/contrato-alquiler',
+    meta: {
+      title: 'Contrato alquiler habitación Mallorca desde 120€',
+      description:
+        '¿Alquilas una habitación en Mallorca o Palma? Contrato profesional para particulares. Código Civil y normas de convivencia. 120€ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion mallorca, alquilar habitacion palma, piso compartido mallorca contrato, coliving palma, gestoria alquiler habitacion baleares',
+      ogTitle: 'Contrato Alquiler Habitación Mallorca — 120€ con asesor experto',
+      ogDescription:
+        'Particulares que alquilan habitaciones en Mallorca. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
+    },
+  },
+
+  murcia: {
+    slug: 'murcia',
+    nombre: 'Murcia',
+    region: 'Región de Murcia',
+    testimoniosLanding: 'alquiler-habitacion-murcia',
+    heroImage: getCiudadImage('murcia').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Alquiler de habitaciones en Murcia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña a propietarios que alquilan habitaciones en Murcia capital, Espinardo y área universitaria. Redacta contratos por habitación conforme al Código Civil con normas de convivencia adaptadas al mercado local.',
+      especialidades: ['Habitaciones universitarias', 'Pisos compartidos Murcia', 'Contratos entre particulares'],
+    },
+    mercadoIntro:
+      'Murcia tiene fuerte demanda de habitaciones cerca de la Universidad, Espinardo y el centro. Alquilar entre particulares sin contrato genera conflictos frecuentes por fianza, convivencia o impago de renta.',
+    zonasIntro: 'Servicio en Murcia capital, Espinardo, Vistabella, El Carmen y barrios con alta demanda de alquiler por habitaciones.',
+    zonas: [
+      'Centro', 'Espinardo', 'Vistabella', 'El Carmen', 'San Andrés',
+      'Churra', 'La Flota', 'Santiago y Zaraiche', 'Universidad', 'Santa María de Gracia',
+    ],
+    paraQuienExtra: [
+      'Propietarios en Espinardo o centro con habitaciones para estudiantes de la UM',
+      'Quien alquila varias habitaciones en el mismo piso sin pasar por agencia',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de habitación es válido en Murcia?',
+        a: 'Sí. Válido en Murcia capital y provincia. Tu gestor adapta renta, fianza, duración y normas de convivencia por 120€ IVA incluido.',
+      },
+      {
+        q: '¿Puedo alquilar habitaciones a estudiantes con este contrato?',
+        a: 'Sí. Es uno de los casos más habituales en Murcia. El contrato regula curso académico, fianza, convivencia y salida anticipada.',
+      },
+    ],
+    enlaceContratoLau: '/murcia/contrato-alquiler',
+    meta: {
+      title: 'Contrato alquiler habitación Murcia desde 120€',
+      description:
+        '¿Alquilas una habitación en Murcia? Contrato profesional para particulares en Espinardo y centro. 120€ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion murcia, alquilar habitacion murcia, piso compartido murcia contrato, alquiler habitacion espinardo, coliving murcia, gestoria alquiler habitacion murcia',
+      ogTitle: 'Contrato Alquiler Habitación Murcia — 120€ con asesor experto',
+      ogDescription:
+        'Particulares que alquilan habitaciones en Murcia. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
+    },
+  },
+
+  valladolid: {
+    slug: 'valladolid',
+    nombre: 'Valladolid',
+    region: 'Castilla y León',
+    testimoniosLanding: 'alquiler-habitacion-valladolid',
+    heroImage: getCiudadImage('valladolid').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Alquiler de habitaciones en Valladolid',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora a propietarios que alquilan habitaciones en Valladolid capital. Conoce el mercado universitario del Campus Miguel Delibes, Delicias y centro, con contratos conforme al Código Civil.',
+      especialidades: ['Habitaciones universitarias', 'Pisos compartidos Valladolid', 'Contratos entre particulares'],
+    },
+    mercadoIntro:
+      'Valladolid concentra demanda de habitaciones para estudiantes y jóvenes profesionales en Delicias, Campus y centro histórico. Sin contrato escrito, las disputas por fianza o convivencia se alargan innecesariamente.',
+    zonasIntro: 'Cobertura en Valladolid capital, barrios universitarios y zonas con mayor demanda de alquiler por habitaciones.',
+    zonas: [
+      'Centro', 'Delicias', 'Campus Miguel Delibes', 'Parquesol', 'Rondilla',
+      'San Pedro Regalado', 'La Victoria', 'Barrio España', 'Universidad', 'Pilarica',
+    ],
+    paraQuienExtra: [
+      'Propietarios en Delicias o cerca del campus con habitaciones para estudiantes',
+      'Particulares con piso compartido que necesitan un contrato independiente por inquilino',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato de habitación es válido en Valladolid?',
+        a: 'Sí. Válido en Valladolid capital y provincia. Tu gestor adapta cláusulas de renta, fianza y convivencia por 120€ IVA incluido.',
+      },
+      {
+        q: '¿Es lo mismo que un contrato LAU en Valladolid?',
+        a: 'No. El alquiler por habitación se rige por el Código Civil. Si alquilas el piso completo, necesitas contrato LAU (145€). También lo redactamos.',
+      },
+    ],
+    enlaceContratoLau: '/valladolid/contrato-alquiler',
+    meta: {
+      title: 'Contrato alquiler habitación Valladolid desde 120€',
+      description:
+        '¿Alquilas una habitación en Valladolid? Contrato profesional para particulares en Delicias y campus. 120€ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion valladolid, alquilar habitacion valladolid, piso compartido valladolid contrato, alquiler habitacion universidad valladolid, coliving valladolid, gestoria alquiler habitacion valladolid',
+      ogTitle: 'Contrato Alquiler Habitación Valladolid — 120€ con asesor experto',
+      ogDescription:
+        'Particulares que alquilan habitaciones en Valladolid. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
     },
   },
 }

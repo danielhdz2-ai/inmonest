@@ -1,10 +1,6 @@
-import CiudadHubLandingPage from '@/components/CiudadHubLandingPage'
-import { CIUDAD_HUBS, buildCiudadHubMetadata } from '@/lib/gestoria-ciudad-hub-data'
+import { permanentRedirect } from 'next/navigation'
 
-const config = CIUDAD_HUBS.palma
-
-export const metadata = buildCiudadHubMetadata(config)
-
-export default function GestoriaPalmaPage() {
-  return <CiudadHubLandingPage config={config} />
+/** Hub canónico: /gestoria/mallorca (evita duplicado Palma/Mallorca en SEO). */
+export default function GestoriaPalmaRedirect() {
+  permanentRedirect('/gestoria/mallorca')
 }
