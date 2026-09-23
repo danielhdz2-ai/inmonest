@@ -159,21 +159,21 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Venta Completa hasta Escritura',
     precioSlug: 'venta-completa-reserva-escritura',
     href: (c) => `/gestoria/venta-completa-reserva-escritura/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'salamanca', 'valladolid', 'alicante', 'bilbao', 'zaragoza', 'coruna', 'pamplona', 'murcia', 'granada', 'mallorca'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'salamanca', 'valladolid', 'alicante', 'bilbao', 'zaragoza', 'coruna', 'pamplona', 'murcia', 'granada', 'mallorca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
     id: 'pack-arras-vendedor',
     nombre: 'Pack Arras Plus Vendedor',
     precioSlug: 'pack-arras-plus-vendedor',
     href: (c) => `/gestoria/pack-arras-plus-vendedor/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'salamanca', 'valladolid', 'alicante', 'bilbao', 'zaragoza', 'coruna', 'pamplona', 'murcia', 'granada', 'mallorca'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'salamanca', 'valladolid', 'alicante', 'bilbao', 'zaragoza', 'coruna', 'pamplona', 'murcia', 'granada', 'mallorca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
     id: 'asesoria-compra',
     nombre: 'Asesoría Compra de Piso',
     precioSlug: 'compra-completa-reserva-escritura',
     href: (c) => `/gestoria/asesoria-compra-piso/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'alicante', 'zaragoza', 'valladolid', 'mallorca', 'bilbao', 'coruna', 'murcia', 'pamplona', 'salamanca', 'granada'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'alicante', 'zaragoza', 'valladolid', 'mallorca', 'bilbao', 'coruna', 'murcia', 'pamplona', 'salamanca', 'granada', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
     id: 'due-diligence',
@@ -187,7 +187,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Pack Arras Plus Comprador',
     precioSlug: 'pack-arras-revision-documental',
     href: (c) => `/gestoria/pack-arras-revision-documental/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'zaragoza', 'bilbao', 'coruna', 'valladolid', 'murcia', 'pamplona', 'alicante', 'salamanca', 'granada', 'mallorca'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'zaragoza', 'bilbao', 'coruna', 'valladolid', 'murcia', 'pamplona', 'alicante', 'salamanca', 'granada', 'mallorca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
     id: 'contrato-alquiler-habitacion',

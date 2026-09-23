@@ -663,4 +663,106 @@ export const PACK_ARRAS_DOCUMENTAL_ENRIQUECIMIENTO: Record<string, Enriquecimien
       'Verificación normativa foral navarra aplicable a la operación',
     ],
   },
+
+  asturias: {
+    barriosPrecio: [
+      { barrio: 'Oviedo Centro', precioM2: '1.900 – 2.600 €/m²', perfil: 'Ensanche con ITE frecuente y derramas en comunidades grandes' },
+      { barrio: 'Gijón Cimadevilla', precioM2: '2.000 – 2.800 €/m²', perfil: 'Centro histórico; discrepancias catastro-registro' },
+      { barrio: 'Avilés', precioM2: '1.400 – 2.000 €/m²', perfil: 'Operaciones entre particulares sin revisión documental' },
+    ],
+    fiscalidadLocal: {
+      itp: '8 % en Asturias (Principado)',
+      plusvalia: 'IIVTNU municipal según ayuntamiento (Oviedo, Gijón, Avilés)',
+      notas: ['Verificamos IBI al corriente y certificado de deudas de comunidad'],
+    },
+    guiaComprador: {
+      titulo: 'Comprar de particular en Asturias sin agencia',
+      parrafos: [
+        'Oviedo y Gijón concentran operaciones directas. El Pack Arras Plus redacta arras con plazos realistas e informe documental antes de la señal por 450 €.',
+      ],
+    },
+    pasosLocales: [
+      { titulo: 'Revisión documental asturiana', desc: 'Nota simple, actas, ITE y cédula antes de arras.' },
+      { titulo: 'Arras equilibradas', desc: 'Cláusula suspensiva por hipoteca y plazos de 45–60 días.' },
+    ],
+    checklistPreArras: [
+      'Nota simple registral',
+      'Certificado de deudas de comunidad',
+      'Cédula de habitabilidad',
+      'Certificado energético',
+      'ITE si aplica',
+    ],
+  },
+
+  santander: {
+    barriosPrecio: [
+      { barrio: 'Centro', precioM2: '2.400 – 3.200 €/m²', perfil: 'Profesionales; arras del vendedor sin revisión' },
+      { barrio: 'El Sardinero', precioM2: '2.800 – 3.800 €/m²', perfil: 'Costa; ITE pendiente en edificios antiguos' },
+      { barrio: 'Camargo', precioM2: '1.800 – 2.400 €/m²', perfil: 'Área metropolitana; operaciones rápidas en verano' },
+    ],
+    fiscalidadLocal: {
+      itp: '8 % en Cantabria',
+      plusvalia: 'Plusvalía municipal del Ayuntamiento de Santander',
+      notas: ['Revisamos IBI y documentación técnica costera'],
+    },
+    guiaComprador: {
+      titulo: 'Comprar de particular en Santander',
+      parrafos: [
+        'En Santander y El Sardinero es habitual comprar sin agencia. El pack incluye arras redactadas e informe documental por 450 €.',
+      ],
+    },
+    pasosLocales: [
+      { titulo: 'Auditoría pre-señal', desc: 'Comunidad, ITE e IBI antes de entregar arras.' },
+      { titulo: 'Arras con plazos realistas', desc: 'Adaptadas a concesión hipotecaria cantábrica.' },
+    ],
+    checklistPreArras: ['Nota simple', 'Certificado de deudas comunidad', 'Cédula', 'Certificado energético', 'ITE si aplica'],
+  },
+
+  vitoria: {
+    barriosPrecio: [
+      { barrio: 'Ensanche', precioM2: '2.400 – 3.100 €/m²', perfil: 'Mercado estable; arras sin cláusula hipotecaria' },
+      { barrio: 'Lakua', precioM2: '2.200 – 2.900 €/m²', perfil: 'Familias; derramas en urbanizaciones' },
+      { barrio: 'Zabalgana', precioM2: '2.000 – 2.700 €/m²', perfil: 'Expansión urbana; operaciones entre particulares' },
+    ],
+    fiscalidadLocal: {
+      itp: '7 % en País Vasco (Álava)',
+      plusvalia: 'Plusvalía municipal de Vitoria-Gasteiz',
+      notas: ['Normativa foral vasca en transmisión'],
+    },
+    guiaComprador: {
+      titulo: 'Comprar de particular en Vitoria-Gasteiz',
+      parrafos: [
+        'Vitoria exige coherencia documental antes de notaría. Pack Arras Plus: 450 € con gestor asignado.',
+      ],
+    },
+    pasosLocales: [
+      { titulo: 'Revisión foral', desc: 'Documentación adaptada a Álava y normativa vasca.' },
+      { titulo: 'Informe pre-arras', desc: 'Hallazgos por escrito antes de la señal.' },
+    ],
+    checklistPreArras: ['Nota simple', 'Deudas comunidad', 'Cédula', 'Certificado energético', 'ITE casco medieval si aplica'],
+  },
+
+  'san-sebastian': {
+    barriosPrecio: [
+      { barrio: 'Centro', precioM2: '4.800 – 6.200 €/m²', perfil: 'Mercado premium; derramas elevadas' },
+      { barrio: 'Gros', precioM2: '4.500 – 5.800 €/m²', perfil: 'Alta demanda; arras con plazos cortos' },
+      { barrio: 'Amara', precioM2: '3.800 – 4.800 €/m²', perfil: 'Residencial; reformas sin licencia' },
+    ],
+    fiscalidadLocal: {
+      itp: '7 % en País Vasco (Gipuzkoa)',
+      plusvalia: 'Plusvalía municipal de San Sebastián',
+      notas: ['Mercado premium: due diligence obligatoria antes de señal alta'],
+    },
+    guiaComprador: {
+      titulo: 'Comprar de particular en Donostia',
+      parrafos: [
+        'En San Sebastián un error documental cuesta mucho más que 450 €. Pack Arras Plus con informe completo antes de la señal.',
+      ],
+    },
+    pasosLocales: [
+      { titulo: 'Due diligence premium', desc: 'Actas, ITE y cargas en mercado de alto ticket.' },
+      { titulo: 'Arras equilibradas', desc: 'Plazos y señal proporcionados en operaciones de 350.000 €+.' },
+    ],
+    checklistPreArras: ['Nota simple', 'Actas comunidad 2 años', 'Cédula', 'Certificado energético', 'Coherencia catastro-registro'],
+  },
 }

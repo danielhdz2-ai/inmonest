@@ -100,6 +100,10 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_LIST = [
   { slug: 'valladolid', nombre: 'Valladolid' },
   { slug: 'murcia', nombre: 'Murcia' },
   { slug: 'pamplona', nombre: 'Pamplona' },
+  { slug: 'asturias', nombre: 'Asturias' },
+  { slug: 'santander', nombre: 'Santander' },
+  { slug: 'vitoria', nombre: 'Vitoria-Gasteiz' },
+  { slug: 'san-sebastian', nombre: 'San Sebastián' },
 ] as const
 
 export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocumentalCiudadConfigBase> = {
@@ -1790,6 +1794,267 @@ export const PACK_ARRAS_DOCUMENTAL_CIUDADES_BASE: Record<string, PackArrasDocume
         q: '¿Operáis en Burlada, Villava y área metropolitana?',
         a: 'Sí. Cubrimos Pamplona capital, barrios periféricos y municipios del área metropolitana con el mismo servicio online y gestor asignado.',
       },
+    ],
+  },
+
+  asturias: {
+    slug: 'asturias',
+    nombre: 'Asturias',
+    region: 'Principado de Asturias',
+    testimoniosLanding: 'pack-arras-documental-asturias',
+    heroImage: getCiudadImage('asturias').src,
+    precioEjemploPiso: 185_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras entre particulares en Asturias',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores en Oviedo, Gijón y Avilés. Revisa actas, ITE en ensanches y redacta arras con plazos realistas para banca asturiana.',
+      especialidades: ['Oviedo y Gijón', 'Arras + informe documental', 'Compras sin agencia'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Principado de Asturias',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético actualizado',
+      'ITE / IEE en edificios de más de 50 años',
+      'Certificado de deudas de comunidad y derramas',
+      'Coherencia catastro-registro en edificios del ensanche',
+    ],
+    zonasIntro: 'Oviedo, Gijón, Avilés, Langreo y municipios del Principado con alta compraventa entre particulares.',
+    zonas: ['Oviedo Centro', 'Gijón Centro', 'Cimadevilla', 'Avilés', 'El Milán', 'Langreo', 'Pumarín', 'Viesques'],
+    mercadoLocal: {
+      titulo: 'Compraventa entre particulares en Asturias en 2026',
+      parrafos: [
+        'Oviedo y Gijón concentran operaciones directas entre comprador y vendedor. Sin revisión documental, heredas derramas en comunidades del ensanche o arras con plazos imposibles para la hipoteca.',
+        'En Oviedo centro el precio medio ronda **1.900–2.600 €/m²**; en Gijón Cimadevilla, **2.000–2.800 €/m²**. Comisión agencia 3–5 % en 185.000 €: **5.550–9.250 €**. Pack Arras Plus: **450 €** con arras e informe documental.',
+      ],
+      datos: [
+        { label: 'Precio medio Oviedo / Gijón', valor: '1.900 – 2.800 €/m²' },
+        { label: 'Comisión agencia (3–5 %)', valor: '5.550 – 9.250 € en 185.000 €' },
+        { label: 'Pack Arras Plus', valor: '450 € IVA incl.' },
+      ],
+    },
+    riesgosLocales: [
+      { titulo: 'Derramas en edificios del ensanche', desc: 'Comunidades de los 60–70 con obras de fachada pendientes. Revisamos actas antes de la señal.' },
+      { titulo: 'Arras sin cláusula hipotecaria', desc: 'Plazos de 10–15 días habituales en operaciones entre particulares. Redactamos arras con 45–60 días y suspensiva por financiación.' },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra en Oviedo entre particulares',
+        perfil: 'Pareja con hipoteca',
+        situacion: 'Arras del vendedor sin revisión de actas. Derrama de 4.200 € detectada tarde.',
+        resultado: 'Pack con informe previo a señal, renegociación de 4.000 € y escritura en 7 semanas.',
+        ahorro: '4.000 €',
+      },
+    ],
+    meta: {
+      title: 'Pack Arras Plus Asturias 450€ — Arras + revisión documental',
+      description: 'Compra piso de particular en Oviedo o Gijón: arras + revisión documental. 450€ IVA incl. Sin agencia.',
+      keywords: 'pack arras oviedo, comprar piso particular gijon, arras penitenciales asturias, revision documentacion compra asturias',
+      ogTitle: 'Pack Arras Plus Asturias — 450€',
+      ogDescription: 'Arras y auditoría documental para compradores entre particulares en Asturias.',
+    },
+    hero: {
+      badge: 'Pack Arras Plus · Asturias',
+      h1: 'Compra piso de particular en Asturias con arras y documentación revisada',
+      lead: 'Redactamos arras penitenciales y verificamos nota simple, comunidad e ITE antes de la señal. 450 €. Gestor asignado — trámite online.',
+    },
+    faqPrioritarias: [
+      { q: '¿Operáis en Oviedo, Gijón y Avilés?', a: 'Sí. Mismo servicio online y gestor asignado en todo el Principado de Asturias.' },
+    ],
+  },
+
+  santander: {
+    slug: 'santander',
+    nombre: 'Santander',
+    region: 'Cantabria',
+    testimoniosLanding: 'pack-arras-documental-santander',
+    heroImage: getCiudadImage('santander').src,
+    precioEjemploPiso: 220_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras entre particulares en Cantabria',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores en Santander, El Sardinero y área metropolitana. Revisa documentación costera, ITE y arras equilibradas.',
+      especialidades: ['Santander y costa', 'Arras + informe documental', 'Compras sin agencia'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Cantabria',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético actualizado',
+      'ITE en edificios antiguos del centro y El Sardinero',
+      'Certificado de deudas de comunidad',
+      'IBI al corriente con el Ayuntamiento de Santander',
+    ],
+    zonasIntro: 'Santander capital, El Sardinero, Cueto, Camargo y municipios del área metropolitana.',
+    zonas: ['Centro', 'El Sardinero', 'Cuatro Caminos', 'Cueto', 'Camargo', 'Somo', 'Peñacastillo'],
+    mercadoLocal: {
+      titulo: 'Compraventa entre particulares en Santander en 2026',
+      parrafos: [
+        'Santander mezcla mercado residencial y costero. Operaciones entre particulares sin due diligence son frecuentes en verano, con plazos cortos y arras del vendedor.',
+        'Precio medio **2.400–3.200 €/m²** en centro; **2.800–3.800 €/m²** en El Sardinero. Comisión agencia en 220.000 €: **6.600–11.000 €**. Pack Arras Plus: **450 €**.',
+      ],
+      datos: [
+        { label: 'Precio medio Santander', valor: '2.400 – 3.200 €/m²' },
+        { label: 'Pack Arras Plus', valor: '450 € IVA incl.' },
+      ],
+    },
+    riesgosLocales: [
+      { titulo: 'ITE en edificios costeros', desc: 'Edificios de los 70 en El Sardinero con inspección pendiente. Verificamos antes de arras.' },
+      { titulo: 'Arras con plazos veraniegos', desc: 'Vendedores presionan para cerrar en 48–72 h. Redactamos plazos realistas con suspensiva por hipoteca.' },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra en El Sardinero',
+        perfil: 'Comprador desde Madrid',
+        situacion: 'Operación remota. ITE pendiente no mencionada en el anuncio.',
+        resultado: 'Informe documental, condición suspensiva y escritura a los 50 días.',
+        ahorro: 'Evitó 9.000 € en obras obligatorias',
+      },
+    ],
+    meta: {
+      title: 'Pack Arras Plus Santander 450€ — Arras + revisión documental',
+      description: 'Compra piso de particular en Santander: arras + revisión documental. 450€ IVA incl.',
+      keywords: 'pack arras santander, comprar piso particular cantabria, arras penitenciales santander, revision documentacion compra sardinero',
+      ogTitle: 'Pack Arras Plus Santander — 450€',
+      ogDescription: 'Arras y auditoría documental en Cantabria.',
+    },
+    hero: {
+      badge: 'Pack Arras Plus · Cantabria',
+      h1: 'Compra piso de particular en Santander con arras y documentación revisada',
+      lead: 'Arras penitenciales + informe documental antes de la señal. 450 €. Gestor asignado en Cantabria.',
+    },
+    faqPrioritarias: [
+      { q: '¿Cubrís El Sardinero y Camargo?', a: 'Sí. Santander capital, costa y área metropolitana con el mismo servicio online.' },
+    ],
+  },
+
+  vitoria: {
+    slug: 'vitoria',
+    nombre: 'Vitoria-Gasteiz',
+    region: 'País Vasco · Álava',
+    testimoniosLanding: 'pack-arras-documental-vitoria',
+    heroImage: getCiudadImage('vitoria').src,
+    precioEjemploPiso: 240_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras entre particulares en Vitoria',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores en Vitoria-Gasteiz. Normativa foral vasca, ITE en casco medieval y arras equilibradas.',
+      especialidades: ['Ensanche y Lakua', 'Arras + informe documental', 'Compras sin agencia'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Álava',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético actualizado',
+      'ITE en edificios antiguos del casco medieval',
+      'Certificado de deudas de comunidad',
+      'Verificación normativa foral vasca aplicable',
+    ],
+    zonasIntro: 'Vitoria-Gasteiz, Ensanche, Lakua, Zabalgana y Salburua.',
+    zonas: ['Ensanche', 'Lakua', 'Zabalgana', 'Casco Medieval', 'Salburua', 'Armentia'],
+    mercadoLocal: {
+      titulo: 'Compraventa entre particulares en Vitoria en 2026',
+      parrafos: [
+        'Vitoria-Gasteiz tiene mercado estable con operaciones familiares entre particulares. Sin revisión registral, heredas cargas o arras desequilibradas.',
+        'Precio medio **2.200–3.000 €/m²** en Ensanche y Lakua. Comisión agencia en 240.000 €: **7.200–12.000 €**. Pack Arras Plus: **450 €**.',
+      ],
+      datos: [
+        { label: 'Precio medio Vitoria', valor: '2.200 – 3.000 €/m²' },
+        { label: 'Pack Arras Plus', valor: '450 € IVA incl.' },
+      ],
+    },
+    riesgosLocales: [
+      { titulo: 'Normativa foral vasca', desc: 'Particularidades urbanísticas y fiscales. Revisamos documentación con criterio local.' },
+      { titulo: 'ITE en casco medieval', desc: 'Edificios antiguos con inspección pendiente. Verificamos antes de entregar señal.' },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra en Lakua entre particulares',
+        perfil: 'Familia con hipoteca',
+        situacion: 'Carga registral pendiente. Arras con plazo de 20 días.',
+        resultado: 'Cláusula suspensiva, seguimiento de cancelación y escritura en 8 semanas.',
+        ahorro: '7.200 € vs agencia',
+      },
+    ],
+    meta: {
+      title: 'Pack Arras Plus Vitoria 450€ — Arras + revisión documental',
+      description: 'Compra piso de particular en Vitoria-Gasteiz: arras + revisión documental. 450€ IVA incl.',
+      keywords: 'pack arras vitoria, comprar piso particular alava, arras penitenciales vitoria gasteiz, revision documentacion compra vitoria',
+      ogTitle: 'Pack Arras Plus Vitoria — 450€',
+      ogDescription: 'Arras y auditoría documental en Vitoria-Gasteiz.',
+    },
+    hero: {
+      badge: 'Pack Arras Plus · Álava',
+      h1: 'Compra piso de particular en Vitoria con arras y documentación revisada',
+      lead: 'Arras penitenciales + informe documental adaptado a normativa foral. 450 €. Gestor asignado.',
+    },
+    faqPrioritarias: [
+      { q: '¿Atendéis compras en todo Álava?', a: 'Sí. Vitoria-Gasteiz y municipios del área con servicio online y gestor asignado.' },
+    ],
+  },
+
+  'san-sebastian': {
+    slug: 'san-sebastian',
+    nombre: 'San Sebastián',
+    region: 'País Vasco · Gipuzkoa',
+    testimoniosLanding: 'pack-arras-documental-san-sebastian',
+    heroImage: getCiudadImage('san-sebastian').src,
+    precioEjemploPiso: 380_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras entre particulares en Donostia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores en San Sebastián. Mercado premium: due diligence documental, arras equilibradas y plazos realistas.',
+      especialidades: ['Donostia y Gros', 'Arras + informe documental', 'Compras sin agencia'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Gipuzkoa',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético actualizado',
+      'ITE en edificios del Ensanche donostiarra',
+      'Certificado de deudas de comunidad y derramas',
+      'Coherencia catastro-registro en pisos reformados',
+    ],
+    zonasIntro: 'San Sebastián / Donostia, Gros, Amara, Antiguo e Intxaurrondo.',
+    zonas: ['Centro', 'Gros', 'Antiguo', 'Amara', 'Egia', 'Intxaurrondo', 'Aiete'],
+    mercadoLocal: {
+      titulo: 'Compraventa entre particulares en San Sebastián en 2026',
+      parrafos: [
+        'Donostia es uno de los mercados más caros del norte. Un error documental puede costar decenas de miles. Las operaciones entre particulares exigen due diligence previa a la señal.',
+        'Precio medio **4.500–6.000 €/m²** en Centro y Gros. Comisión agencia en 380.000 €: **11.400–19.000 €**. Pack Arras Plus: **450 €**.',
+      ],
+      datos: [
+        { label: 'Precio medio Donostia', valor: '4.500 – 6.000 €/m²' },
+        { label: 'Pack Arras Plus', valor: '450 € IVA incl.' },
+      ],
+    },
+    riesgosLocales: [
+      { titulo: 'Derramas en edificios señoriales', desc: 'Comunidades del Ensanche con obras de fachada de alto importe. Revisamos actas recientes.' },
+      { titulo: 'Arras en mercado premium', desc: 'Vendedores exigen señal alta y plazos cortos. Equilibramos cláusulas y plazos hipotecarios.' },
+    ],
+    casosReales: [
+      {
+        titulo: 'Compra en Gros entre particulares',
+        perfil: 'Profesional con hipoteca',
+        situacion: 'Derrama de 12.000 € no declarada. Arras con plazo de 15 días.',
+        resultado: 'Informe documental, renegociación de 12.000 € y escritura en 9 semanas.',
+        ahorro: '12.000 €',
+      },
+    ],
+    meta: {
+      title: 'Pack Arras Plus San Sebastián 450€ — Arras + revisión documental',
+      description: 'Compra piso de particular en Donostia: arras + revisión documental. 450€ IVA incl.',
+      keywords: 'pack arras san sebastian, comprar piso particular donostia, arras penitenciales gros, revision documentacion compra san sebastian',
+      ogTitle: 'Pack Arras Plus San Sebastián — 450€',
+      ogDescription: 'Arras y auditoría documental en Donostia.',
+    },
+    hero: {
+      badge: 'Pack Arras Plus · Gipuzkoa',
+      h1: 'Compra piso de particular en San Sebastián con arras y documentación revisada',
+      lead: 'Due diligence documental + arras penitenciales antes de la señal. 450 € en un mercado donde un error cuesta mucho más.',
+    },
+    faqPrioritarias: [
+      { q: '¿Operáis en Gros y Amara?', a: 'Sí. Todo San Sebastián / Donostia con gestor asignado y trámite online.' },
     ],
   },
 }

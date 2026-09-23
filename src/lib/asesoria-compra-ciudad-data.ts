@@ -61,6 +61,10 @@ export const ASESORIA_COMPRA_CIUDADES_LIST = [
   { slug: 'pamplona', nombre: 'Pamplona' },
   { slug: 'salamanca', nombre: 'Salamanca' },
   { slug: 'granada', nombre: 'Granada' },
+  { slug: 'asturias', nombre: 'Asturias' },
+  { slug: 'santander', nombre: 'Santander' },
+  { slug: 'vitoria', nombre: 'Vitoria-Gasteiz' },
+  { slug: 'san-sebastian', nombre: 'San Sebastián' },
 ] as const
 
 export const ASESORIA_COMPRA_TRAMITES = [
@@ -941,6 +945,166 @@ export const ASESORIA_COMPRA_CIUDADES: Record<string, AsesoriaCompraCiudadConfig
         perfil: 'Familia con hipoteca',
         situacion: 'Plazos de arras incompatibles con aprobación bancaria. Nota simple con carga pendiente de cancelar.',
         resultado: 'Arras con cláusula suspensiva, seguimiento de cancelación de hipoteca y escritura en 6 semanas.',
+      },
+    ],
+  },
+
+  asturias: {
+    slug: 'asturias',
+    nombre: 'Asturias',
+    region: 'Principado de Asturias',
+    testimoniosLanding: 'asesoria-compra-asturias',
+    heroImage: getCiudadImage('asturias').src,
+    precioEjemploPiso: 185_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Asturias',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en compras entre particulares en Oviedo, Gijón y Avilés. Revisa arras, documentación asturiana y acompaña hasta escritura.',
+    },
+    zonasIntro: 'Oviedo, Gijón, Avilés y área metropolitana del Principado.',
+    zonas: ['Oviedo Centro', 'Gijón Centro', 'Cimadevilla', 'Avilés', 'El Milán', 'Langreo'],
+    meta: {
+      title: 'Asesoría compra piso Asturias desde 687€',
+      description:
+        'Compra piso de particular en Oviedo o Gijón con gestor asignado. Documentación, arras y notaría. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'asesoria compra piso asturias, comprar piso particular oviedo, comprar piso sin agencia gijon, gestor compra vivienda aviles',
+      ogTitle: 'Compra piso particular Asturias — 687€ fijos',
+      ogDescription: 'Gestor asignado desde reserva hasta escritura en Asturias.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Asturias con gestoría a tu favor',
+      lead:
+        '¿Has encontrado piso sin agencia en Oviedo, Gijón o la costa? Revisamos reserva, arras, nota simple y coordinamos con notaría por 687€.',
+    },
+    casosReales: [
+      {
+        titulo: 'Compra en Oviedo entre particulares',
+        perfil: 'Pareja con hipoteca',
+        situacion: 'Arras del vendedor sin cláusula suspensiva. Derrama pendiente en actas de comunidad.',
+        resultado: 'Renegociación de plazos, informe documental y escritura en 7 semanas sin comisión de agencia.',
+        ahorro: '5.550€ vs inmobiliaria',
+      },
+    ],
+  },
+
+  santander: {
+    slug: 'santander',
+    nombre: 'Santander',
+    region: 'Cantabria',
+    testimoniosLanding: 'asesoria-compra-santander',
+    heroImage: getCiudadImage('santander').src,
+    precioEjemploPiso: 220_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Santander',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores particulares en Santander y Cantabria. Revisa arras, ITE en edificios costeros y documentación hasta notaría.',
+    },
+    zonasIntro: 'Santander capital, El Sardinero, Camargo y área metropolitana.',
+    zonas: ['Centro', 'El Sardinero', 'Cuatro Caminos', 'Cueto', 'Camargo', 'Somo'],
+    meta: {
+      title: 'Asesoría compra piso Santander desde 687€',
+      description:
+        'Compra piso de particular en Santander con gestor asignado. Arras, documentación cantábrica y notaría. 687€ IVA incl.',
+      keywords:
+        'asesoria compra piso santander, comprar piso particular cantabria, comprar piso sin agencia santander, gestor compra vivienda sardinero',
+      ogTitle: 'Compra piso particular Santander — 687€ fijos',
+      ogDescription: 'Gestor asignado desde reserva hasta escritura en Cantabria.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Santander con gestoría completa',
+      lead:
+        '¿Compras sin agencia en el centro o El Sardinero? Revisamos reserva, arras y documentación por 687€ — frente a miles en comisión inmobiliaria.',
+    },
+    casosReales: [
+      {
+        titulo: 'Piso en Cuatro Caminos entre particulares',
+        perfil: 'Comprador primerizo',
+        situacion: 'Plazos de arras demasiado cortos y sin revisión de ITE en edificio de los 70.',
+        resultado: 'Arras con suspensiva por hipoteca, informe documental y compra cerrada en notaría.',
+        ahorro: '6.600€ vs inmobiliaria',
+      },
+    ],
+  },
+
+  vitoria: {
+    slug: 'vitoria',
+    nombre: 'Vitoria-Gasteiz',
+    region: 'País Vasco',
+    testimoniosLanding: 'asesoria-compra-vitoria',
+    heroImage: getCiudadImage('vitoria').src,
+    precioEjemploPiso: 240_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Vitoria-Gasteiz',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en compras entre particulares en Vitoria-Gasteiz. Normativa foral vasca, arras equilibradas y seguimiento hasta escritura.',
+    },
+    zonasIntro: 'Vitoria-Gasteiz capital, Ensanche, Lakua y Zabalgana.',
+    zonas: ['Ensanche', 'Lakua', 'Zabalgana', 'Casco Medieval', 'Salburua', 'Armentia'],
+    meta: {
+      title: 'Asesoría compra piso Vitoria desde 687€',
+      description:
+        'Compra piso de particular en Vitoria-Gasteiz con gestor asignado. Documentación foral, arras y notaría. 687€ IVA incl.',
+      keywords:
+        'asesoria compra piso vitoria, comprar piso particular alava, comprar piso sin agencia vitoria gasteiz, gestor compra vivienda vitoria',
+      ogTitle: 'Compra piso particular Vitoria — 687€ fijos',
+      ogDescription: 'Gestor asignado desde reserva hasta escritura en Álava.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en Vitoria-Gasteiz con gestoría a tu favor',
+      lead:
+        '¿Has encontrado piso sin agencia en el Ensanche o Lakua? Revisamos reserva, arras, nota simple y coordinamos con notaría por 687€.',
+    },
+    casosReales: [
+      {
+        titulo: 'Compra en Lakua entre particulares',
+        perfil: 'Familia con financiación',
+        situacion: 'Arras redactadas solo por el vendedor. Carga registral pendiente de cancelar.',
+        resultado: 'Cláusula suspensiva, seguimiento de cancelación y escritura en 8 semanas.',
+        ahorro: '7.200€ vs inmobiliaria',
+      },
+    ],
+  },
+
+  'san-sebastian': {
+    slug: 'san-sebastian',
+    nombre: 'San Sebastián',
+    region: 'País Vasco',
+    testimoniosLanding: 'asesoria-compra-san-sebastian',
+    heroImage: getCiudadImage('san-sebastian').src,
+    precioEjemploPiso: 380_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en San Sebastián',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores particulares en Donostia. Mercado premium: arras equilibradas, due diligence documental y coordinación notarial.',
+    },
+    zonasIntro: 'San Sebastián / Donostia, Gros, Amara y área metropolitana.',
+    zonas: ['Centro', 'Gros', 'Antiguo', 'Amara', 'Egia', 'Intxaurrondo'],
+    meta: {
+      title: 'Asesoría compra piso San Sebastián desde 687€',
+      description:
+        'Compra piso de particular en Donostia con gestor asignado. Arras, documentación vasca y notaría. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'asesoria compra piso san sebastian, comprar piso particular donostia, comprar piso sin agencia gros, gestor compra vivienda san sebastian',
+      ogTitle: 'Compra piso particular San Sebastián — 687€ fijos',
+      ogDescription: 'Gestor asignado desde reserva hasta escritura en Donostia.',
+    },
+    hero: {
+      h1: 'Compra piso de particular en San Sebastián con gestoría completa',
+      lead:
+        '¿Compras sin agencia en el Centro o Gros? Revisamos reserva, arras y documentación por 687€ — frente a 11.400–19.000€ de comisión en un piso de 380.000€.',
+    },
+    casosReales: [
+      {
+        titulo: 'Compra en Gros entre particulares',
+        perfil: 'Profesional con hipoteca',
+        situacion: 'Arras con plazo de 15 días. Derrama de fachada no declarada en el anuncio.',
+        resultado: 'Renegociación de plazos, informe documental y descuento de 12.000€ antes de escritura.',
+        ahorro: '12.000€',
       },
     ],
   },

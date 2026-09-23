@@ -52,6 +52,10 @@ export const VENTA_COMPLETA_CIUDADES_LIST = [
   { slug: 'murcia', nombre: 'Murcia' },
   { slug: 'granada', nombre: 'Granada' },
   { slug: 'mallorca', nombre: 'Mallorca' },
+  { slug: 'asturias', nombre: 'Asturias' },
+  { slug: 'santander', nombre: 'Santander' },
+  { slug: 'vitoria', nombre: 'Vitoria-Gasteiz' },
+  { slug: 'san-sebastian', nombre: 'San Sebastián' },
 ] as const
 
 export function comisionAgenciaMin(precio: number) {
@@ -580,6 +584,130 @@ export const VENTA_COMPLETA_CIUDADES: Record<string, VentaCompletaCiudadConfig> 
         a: 'Sí. Redactamos arras con plazos realistas mientras el comprador regulariza NIE o documentación bancaria.',
       },
     ],
+  },
+
+  asturias: {
+    slug: 'asturias',
+    nombre: 'Asturias',
+    region: 'Principado de Asturias',
+    testimoniosLanding: 'venta-completa-asturias',
+    heroImage: getCiudadImage('asturias').src,
+    precioEjemploPiso: 185_000,
+    ventasAcompanadas: 7,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en Asturias',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña vendedores particulares en Oviedo, Gijón y Avilés. Revisa documentación asturiana, arras y coordinación con notaría.',
+    },
+    zonas: ['Oviedo Centro', 'Gijón Centro', 'Cimadevilla', 'Avilés', 'El Milán', 'Langreo'],
+    meta: {
+      title: 'Vender piso particular Asturias desde 687€',
+      description:
+        '¿Comprador particular en Oviedo o Gijón? Gestoría: arras, documentación y notaría. 687€ sin comisión de agencia.',
+      keywords:
+        'vender piso particular asturias, gestoria venta vivienda oviedo, vender sin agencia gijon, gestor venta piso aviles',
+      ogTitle: 'Vender piso a particular en Asturias — 687€',
+      ogDescription: 'Gestoría inmobiliaria para vendedores particulares en Oviedo, Gijón y Avilés.',
+    },
+    hero: {
+      h1: 'Vende en Asturias de particular a particular con gestoría completa',
+      lead:
+        'Ya tienes comprador en Oviedo, Gijón o la costa. Redactamos arras, verificamos documentación asturiana y coordinamos con notaría por 687€ — frente a miles en comisión inmobiliaria.',
+    },
+  },
+
+  santander: {
+    slug: 'santander',
+    nombre: 'Santander',
+    region: 'Cantabria',
+    testimoniosLanding: 'venta-completa-santander',
+    heroImage: getCiudadImage('santander').src,
+    precioEjemploPiso: 220_000,
+    ventasAcompanadas: 6,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en Santander',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en ventas entre particulares en Santander, El Sardinero y área metropolitana. Arras, documentación cantábrica y notaría.',
+    },
+    zonas: ['Centro', 'El Sardinero', 'Cuatro Caminos', 'Cueto', 'Camargo', 'Somo'],
+    meta: {
+      title: 'Vender piso particular Santander desde 687€',
+      description:
+        'Vende a particular en Santander con gestor asignado. Contratos, documentación y notaría. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'vender piso particular santander, gestoria venta vivienda cantabria, vender sin agencia santander, gestor venta piso sardinero',
+      ogTitle: 'Vender piso a particular en Santander — 687€',
+      ogDescription: 'Gestoría inmobiliaria para vendedores particulares en Cantabria.',
+    },
+    hero: {
+      h1: '¿Vendes en Santander sin inmobiliaria? Gestoría hasta escritura pública',
+      lead:
+        'Tienes comprador en el centro, El Sardinero o Camargo. Inmonest redacta arras, recopila documentación y coordina con notaría. 687€ fijos, sin comisión sobre el precio.',
+    },
+  },
+
+  vitoria: {
+    slug: 'vitoria',
+    nombre: 'Vitoria-Gasteiz',
+    region: 'País Vasco',
+    testimoniosLanding: 'venta-completa-vitoria',
+    heroImage: getCiudadImage('vitoria').src,
+    precioEjemploPiso: 240_000,
+    ventasAcompanadas: 6,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en Vitoria-Gasteiz',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña vendedores particulares en Vitoria-Gasteiz y Álava. Normativa foral vasca, arras equilibradas y coordinación notarial.',
+    },
+    zonas: ['Ensanche', 'Lakua', 'Zabalgana', 'Casco Medieval', 'Salburua', 'Armentia'],
+    meta: {
+      title: 'Vender piso particular Vitoria desde 687€',
+      description:
+        '¿Comprador particular en Vitoria-Gasteiz? Gestoría: arras, documentación foral y notaría. 687€ sin comisión de agencia.',
+      keywords:
+        'vender piso particular vitoria, gestoria venta vivienda alava, vender sin agencia vitoria gasteiz, gestor venta piso vitoria',
+      ogTitle: 'Vender piso a particular en Vitoria — 687€',
+      ogDescription: '687€ fijos para vendedores particulares en Vitoria-Gasteiz.',
+    },
+    hero: {
+      h1: 'Vende en Vitoria-Gasteiz a un particular con gestoría — no con comisión de agencia',
+      lead:
+        'Ya tienes comprador en el Ensanche, Lakua o Zabalgana. Redactamos contratos, verificamos cargas y preparamos el expediente para notaría. 687€ para propietarios que venden por su cuenta.',
+    },
+  },
+
+  'san-sebastian': {
+    slug: 'san-sebastian',
+    nombre: 'San Sebastián',
+    region: 'País Vasco',
+    testimoniosLanding: 'venta-completa-san-sebastian',
+    heroImage: getCiudadImage('san-sebastian').src,
+    precioEjemploPiso: 380_000,
+    ventasAcompanadas: 5,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Ventas en San Sebastián',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en ventas entre particulares en Donostia, Gros y área metropolitana. Mercado premium con documentación foral y plazos realistas.',
+    },
+    zonas: ['Centro', 'Gros', 'Antiguo', 'Amara', 'Egia', 'Intxaurrondo'],
+    meta: {
+      title: 'Vender piso particular San Sebastián desde 687€',
+      description:
+        'Vende a particular en Donostia con gestor asignado. Arras, documentación vasca y notaría. 687€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'vender piso particular san sebastian, gestoria venta vivienda donostia, vender sin agencia gros, gestor venta piso san sebastian',
+      ogTitle: 'Vender piso a particular en San Sebastián — 687€',
+      ogDescription: 'Gestoría inmobiliaria para vendedores particulares en Donostia.',
+    },
+    hero: {
+      h1: '¿Vendes en San Sebastián sin agencia? Gestoría hasta escritura',
+      lead:
+        'Comprador en el Centro, Gros o Amara. Redactamos arras, auditamos documentación y coordinamos con notaría por 687€ — frente a 11.000–19.000€ de comisión inmobiliaria en un piso de 380.000€.',
+    },
   },
 }
 
