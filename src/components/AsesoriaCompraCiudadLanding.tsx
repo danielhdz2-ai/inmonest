@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
@@ -26,6 +25,7 @@ import {
   buildServiceOfferSchema,
 } from '@/lib/gestoria-ciudad-schema'
 import { getDueDiligenceHref } from '@/lib/gestoria-compra-cross-sell'
+import AsesoriaCompraServiciosDetalle from '@/components/AsesoriaCompraServiciosDetalle'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getCiudadCtaImage } from '@/lib/gestoria-images'
 
@@ -57,25 +57,6 @@ const BENEFICIOS = [
   {
     titulo: 'De reserva a llaves',
     desc: 'No solo revisamos un contrato suelto: te acompañamos en todo el proceso hasta la firma en notaría.',
-  },
-] as const
-
-const PASOS = [
-  {
-    titulo: 'Primera llamada con tu gestor',
-    desc: 'En menos de 24h un gestor experto analiza tu operación: precio, plazos, vendedor y documentación disponible.',
-  },
-  {
-    titulo: 'Contratas el servicio (687€)',
-    desc: 'Tarifa plana IVA incluido. Sin comisión sobre el precio del piso. Comenzamos la revisión de inmediato.',
-  },
-  {
-    titulo: 'Revisión de reserva y arras',
-    desc: 'Analizamos contratos, nota simple, cargas, deudas de comunidad y documentación técnica obligatoria.',
-  },
-  {
-    titulo: 'Acompañamiento hasta escritura',
-    desc: 'Coordinación con notaría, resolución de dudas y verificación final antes de firmar.',
   },
 ] as const
 
@@ -173,22 +154,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
         </div>
       </section>
 
-      <section className="py-14 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-10">
-            {local?.pasosTitulo ?? 'Proceso en 4 pasos'}
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {(local?.pasos ?? PASOS).map((paso, i) => (
-              <div key={paso.titulo} className="bg-slate-50 border border-gray-200 rounded-xl p-5">
-                <span className="text-3xl font-black text-gold-500/30 block mb-2">0{i + 1}</span>
-                <h3 className="font-bold text-gray-900 mb-2">{paso.titulo}</h3>
-                <p className="text-sm text-gray-600">{paso.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <AsesoriaCompraServiciosDetalle ciudadNombre={nombre} />
 
       <LocalRegulationsBlock ciudad={nombre} region={region} servicio="compra" />
 
