@@ -15,6 +15,14 @@ const nextConfig: NextConfig = {
   // Redirects 301 para URLs antiguas o eliminadas
   async redirects() {
     return [
+      // ═══ WWW → APEX (GSC: error de redirección en www.inmonest.com) ═══
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.inmonest.com' }],
+        destination: 'https://inmonest.com/:path*',
+        permanent: true,
+      },
+
       // ═══ SERVICIOS ELIMINADOS ═══
       // Redirigir a gestoría principal
       {

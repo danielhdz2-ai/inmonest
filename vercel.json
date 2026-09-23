@@ -1,4 +1,13 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.inmonest.com" }],
+      "destination": "https://inmonest.com/:path*",
+      "permanent": true
+    }
+  ],
   "functions": {
     "src/app/api/scraper/route.ts":                    { "maxDuration": 300 },
     "src/app/api/maintenance/route.ts":                { "maxDuration": 120 },

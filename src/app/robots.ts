@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: ['/', '/api/img-proxy'],
+        allow: ['/', '/api/img-proxy', '/publicar-anuncio'],
         disallow: [
           // API routes (img-proxy allowed so Google can fetch images without GSC "blocked" noise)
           '/api/',
@@ -25,8 +25,7 @@ export default function robots(): MetadataRoute.Robots {
           '/gestoria/carga-documentos',
           // Turbo post-payment pages (noindex handled via metadata in each page)
           // Note: NOT disallowed here so Google can read the noindex meta tag
-          // Wizard / multi-step forms
-          '/publicar',
+          // Wizard / multi-step forms (no bloquear /publicar-anuncio — está en sitemap)
           '/publicar/',
           // Debug
           '/debug/',
