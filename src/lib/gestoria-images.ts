@@ -26,7 +26,7 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
   'arras-confirmatorias': {
     hero: { src: '/contrato1.jpg', alt: 'Contrato de arras confirmatorias' },
     mid: { src: '/gestoria14.jpg', alt: 'Gestoría especializada en compraventa' },
-    cta: { src: '/gestoria12.jpg', alt: 'Cierre de operación inmobiliaria' },
+    cta: { src: '/gestoria10.jpg', alt: 'Cierre de operación inmobiliaria' },
     imagePosition: 'left',
   },
   'contrato-alquiler': {
@@ -74,7 +74,7 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
   'acompanamiento-reserva-arras': {
     hero: { src: '/gestoria10.jpg', alt: 'Reserva y arras de compraventa' },
     mid: { src: '/contrato2.jpg', alt: 'Pack reserva más arras' },
-    cta: { src: '/gestoria17.jpg', alt: 'Acompañamiento hasta escritura' },
+    cta: { src: '/gestoria16.jpg', alt: 'Acompañamiento hasta escritura' },
     imagePosition: 'left',
   },
   'compra-completa-reserva-escritura': {
@@ -86,7 +86,7 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
   'compra-completa-parking-trastero': {
     hero: { src: '/comercial4.jpg', alt: 'Compra de parking o trastero' },
     mid: { src: '/gestoria18.jpg', alt: 'Due diligence de plaza de garaje' },
-    cta: { src: '/gestoria8.jpg', alt: 'Escritura de parking o trastero' },
+    cta: { src: '/gestoria18.jpg', alt: 'Escritura de parking o trastero' },
     imagePosition: 'left',
   },
   'pack-revision-reserva-alquiler': {
@@ -104,7 +104,7 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
   'pack-arras-plus-vendedor': {
     hero: { src: '/contratodearras.jpg', alt: 'Pack Arras Plus Vendedor — arras y documentación' },
     mid: { src: '/gestoria14.jpg', alt: 'Documentación para escriturar como vendedor' },
-    cta: { src: '/gestoria12.jpg', alt: 'Venta entre particulares con gestoría' },
+    cta: { src: '/publicar-keys.jpg', alt: 'Venta entre particulares con gestoría' },
     imagePosition: 'right',
   },
   'pack-due-diligence-precompra': {
@@ -115,7 +115,7 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
   },
   'arras-parking-garage': {
     hero: { src: '/contrato5.jpg', alt: 'Arras para compraventa de parking' },
-    mid: { src: '/gestoria13.jpg', alt: 'Plaza de garaje en operación de compra' },
+    mid: { src: '/gestoria14.jpg', alt: 'Plaza de garaje en operación de compra' },
     cta: { src: '/publicar-keys.jpg', alt: 'Señal de arras en parking' },
     imagePosition: 'left',
   },
@@ -185,20 +185,22 @@ export const VENTA_CIUDAD_IMAGES = CIUDAD_IMAGES
 const CIUDAD_CTA_POOL: { src: string; alt: string }[] = [
   { src: '/gestoria2.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
   { src: '/gestoria5.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
-  { src: '/gestoria8.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
-  { src: '/gestoria12.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
-  { src: '/gestoria13.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
-  { src: '/gestoria17.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/gestoria10.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/gestoria14.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/gestoria16.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/gestoria18.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
   { src: '/familia2.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
-  { src: '/familia4.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
-  { src: '/familia7.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
-  { src: '/familia8.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
-  { src: '/familia9.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/familia3.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/familia5.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/familia6.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/familia10.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
   { src: '/interior2.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
   { src: '/interior3.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
-  { src: '/amigos2.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
-  { src: '/amigos3.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
-  { src: '/amigos4.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/interior4.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/amigos1.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/amigos5.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/keys.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
+  { src: '/publicar-keys.jpg', alt: 'Gestoría inmobiliaria por ciudad' },
 ]
 
 export function getCiudadImage(slug: string): { src: string; alt: string } {

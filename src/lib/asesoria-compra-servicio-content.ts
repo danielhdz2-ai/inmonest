@@ -120,7 +120,7 @@ export const ASESORIA_COMPRA_SERVICIO_BLOQUES: AsesoriaCompraServicioBloque[] = 
       'Expediente completo sin sorpresas el día de escritura',
       'Acompañamiento remoto el día de la firma si lo necesitas',
     ],
-    imagen: '/gestoria17.jpg',
+    imagen: '/gestoria16.jpg',
     imagenAlt: 'Coordinación con notaría para escritura pública de compraventa',
   },
   {
@@ -141,7 +141,7 @@ export const ASESORIA_COMPRA_SERVICIO_BLOQUES: AsesoriaCompraServicioBloque[] = 
       'Seguimiento post-firma si surge alguna gestión pendiente',
       'Tranquilidad de haber comprado con revisión profesional',
     ],
-    imagen: '/gestoria12.jpg',
+    imagen: '/publicar-keys.jpg',
     imagenAlt: 'Escritura pública de compraventa de vivienda',
     invertido: true,
   },

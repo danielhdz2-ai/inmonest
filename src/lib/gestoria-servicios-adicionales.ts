@@ -656,7 +656,7 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
     tagline: 'Para vendedores que ya firmaron arras: documentación y camino hasta notaría',
     descripcion:
       'Ya vendiste en arras y ahora necesitas recabar certificados, coordinar con el comprador y llegar a escritura sin errores. Este servicio asigna un gestor experto que te guía en la documentación autonómica, plazos, cancelación de hipoteca si aplica y coordinación con notaría. No incluye redacción de arras (ya firmadas), sino acompañamiento operativo y jurídico hasta la firma.',
-    image: '/gestoria12.jpg',
+    image: '/gestoria10.jpg',
     imageAlt: 'Asesoramiento al vendedor desde arras hasta escritura',
     paraQuien: [
       'Propietarios vendedores que ya firmaron arras con comprador',

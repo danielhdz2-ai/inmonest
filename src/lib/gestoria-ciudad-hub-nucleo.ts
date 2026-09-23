@@ -335,7 +335,7 @@ export const CIUDAD_HUBS_NUCLEO: Record<string, CiudadHubConfig> = {
     heroBadge: 'Gestoría 100% Online | Navarra',
     heroSubtitulo:
       'Gestoría inmobiliaria para particulares en Pamplona. Derecho foral y mercado dinámico. Contratos desde 145€.',
-    ogImage: '/gestoria8.jpg',
+    ogImage: '/gestoria18.jpg',
     twitterDescription: 'Gestoría inmobiliaria en Pamplona desde 145€.',
     razones: [
       {

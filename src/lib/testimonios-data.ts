@@ -325,7 +325,7 @@ export const TESTIMONIOS_POOL: Testimonio[] = [
     nombre: 'Javier Ortega',
     ciudad: 'Zaragoza',
     servicio: 'Contrato alquiler habitación',
-    foto: '/testimonios/testimonio7.jpg',
+    foto: '/testimonios/testimonio12.jpg',
     rating: 5,
     texto:
       'Tengo un piso de tres habitaciones cerca de Delicias para estudiantes. Contraté Inmonest para formalizar cada alquiler por separado. Por 145€ tengo contratos claros sobre cocina, visitas e impagos. Profesional y rápido.',
