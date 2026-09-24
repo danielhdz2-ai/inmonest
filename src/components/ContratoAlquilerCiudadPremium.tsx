@@ -5,7 +5,8 @@ import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
 import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
-import ContratoAlquilerProcesoDetalladoSection from '@/components/ContratoAlquilerProcesoDetalladoSection'
+import ContratoAlquilerServiciosDetalle from '@/components/ContratoAlquilerServiciosDetalle'
+import GestoriaTramiteOnlineSection from '@/components/GestoriaTramiteOnlineSection'
 import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
@@ -105,11 +106,12 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 max-w-2xl leading-tight">
             Contrato de alquiler en {config.nombre} desde {precio}€
           </h1>
-          <p className="text-white/90 text-lg sm:text-xl max-w-xl mb-5 font-medium">
+          <p className="text-white/90 text-lg sm:text-xl max-w-xl mb-3 font-medium">
             LAU + Ley de Vivienda 2026, personalizado, entrega en{' '}
             <strong className="text-gold-500">48 h</strong>. Precio cerrado{' '}
             <strong className="text-gold-500">{precio} €</strong> IVA incluido.
           </p>
+          <GestoriaTramiteOnlineNote variant="hero-dark" className="mb-5 max-w-xl" />
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <div>
               <span className="text-3xl font-bold text-gold-500">{precio} €</span>
@@ -133,9 +135,7 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
         </div>
       </section>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-2">
-        <GestoriaTramiteOnlineNote variant="banner" />
-      </div>
+      <GestoriaTramiteOnlineSection ciudad={config.nombre} panelAnchorId="panel-gestoria-lau" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -204,18 +204,20 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
         </section>
       </div>
 
+      <ContratoAlquilerServiciosDetalle ciudadNombre={config.nombre} solicitarHref={solicitarHref} />
+
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <ComoTrabajamosContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="alquiler" />
       </div>
 
-      <ContratoAlquilerProcesoDetalladoSection ciudad={config.nombre} precio={precio} />
-
-      <AgenciaGestoriaPanelDemo
-        audience="particular"
-        ciudadNombre={config.nombre}
-        servicioDemo="alquiler-lau"
-        defaultSection="inicio"
-      />
+      <div id="panel-gestoria-lau">
+        <AgenciaGestoriaPanelDemo
+          audience="particular"
+          ciudadNombre={config.nombre}
+          servicioDemo="alquiler-lau"
+          defaultSection="inicio"
+        />
+      </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <BarriosCiudadContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="alquiler" />
