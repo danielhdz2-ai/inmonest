@@ -505,6 +505,226 @@ export const CONTRATO_ARRAS_PREMIUM: Record<string, ContratoArrasPremiumConfig> 
     ),
   },
 
+  granada: {
+    slug: 'granada',
+    nombre: 'Granada',
+    meta: {
+      title: 'Arras penitenciales Granada — Albaicín y Realejo desde 145€',
+      description:
+        'Contrato de arras en Granada para compraventa entre particulares. Casco histórico, ITE, nota simple y cláusula de hipoteca. 145€, entrega 48h. Sin PDF genérico.',
+      keywords: [
+        'contrato arras Granada',
+        'arras penitenciales Granada',
+        'señal compra piso Granada particular',
+        'arras Albaicín Realejo',
+        'redactar arras Granada nota simple',
+        'comprar piso Granada sin agencia arras',
+      ],
+      ogTitle: 'Arras penitenciales Granada — 145€ con gestor',
+      ogDescription: 'Reserva la compraventa en Granada con arras redactadas a medida. ITE y documentación andaluza revisada.',
+      ogImageAlt: 'Contrato de arras en Granada — casco y provincia',
+    },
+    schema: {
+      serviceName: 'Contrato de Arras Penitenciales en Granada',
+      serviceDescription:
+        'Redacción de arras penitenciales para compraventa en Granada capital, Realejo, Zaidín y área metropolitana. Revisión registral incluida.',
+      areaType: 'City',
+      areaName: 'Granada',
+    },
+    heroImageAlt: 'Contrato de arras en Granada',
+    breadcrumbFinal: 'Contrato de Arras Granada',
+    badgeLine: 'Compraventa · Granada',
+    ctaStickyLabel: 'Arras · Granada',
+    introLargo:
+      'En Granada muchas compraventas van de particular a particular en el Realejo, el Albaicín o Zaidín, con edificios que exigen ITE y licencias coherentes antes de notaría. Firmar arras con un modelo genérico es arriesgado: la señal queda amarrada pero las cláusulas de hipoteca, plazo de escritura o penalización pueden quedar ambiguas. Redactamos arras penitenciales con tus datos reales, revisión de nota simple y condiciones suspensivas cuando dependes del banco. 145€ IVA incluido, PDF en 48h.',
+    alertaTitulo: 'Vas a entregar señal en Granada: ¿el contrato protege la ITE y la hipoteca?',
+    paraQuienTitulo: '¿Para quién es este contrato en Granada?',
+    paraQuien: [
+      'Compradores que reservan piso en casco histórico o Zaidín mientras tramitan hipoteca',
+      'Vendedores particulares que quieren doble penitencial clara y plazo a notaría',
+      'Operaciones en Armilla, Churriana o municipios del área metropolitana',
+      'Quien compra sin agencia y necesita arras equilibradas antes del notario granadino',
+    ],
+    faqs: [
+      {
+        q: '¿Las arras son válidas en Granada y provincia?',
+        a: 'Sí. En Granada capital y provincia rige el Código Civil. Lo determinante es que el contrato recoja tipo de arras, importe, plazo y consecuencias del desistimiento.',
+      },
+      {
+        q: '¿Debo revisar ITE o licencias antes de las arras en el Albaicín?',
+        a: 'Es muy recomendable. En edificios antiguos o protegidos conviene incluir condición suspensiva sobre documentación técnica. Podemos orientarte al redactar el contrato.',
+      },
+      hipotecaFaq,
+      señalFaq('Granada'),
+      tiposFaq,
+      notarioFaq,
+    ],
+  },
+
+  salamanca: {
+    slug: 'salamanca',
+    nombre: 'Salamanca',
+    meta: {
+      title: 'Arras compraventa Salamanca — universidad y casco desde 145€',
+      description:
+        'Contrato de arras penitenciales en Salamanca para pisos de particulares. Mercado universitario, casco UNESCO, cláusula hipoteca. 145€, 48h.',
+      keywords: [
+        'contrato arras Salamanca',
+        'arras penitenciales Salamanca',
+        'señal compra piso Salamanca',
+        'arras compraventa casco Salamanca',
+        'comprar piso particular Salamanca arras',
+        'gestoría arras Castilla y León',
+      ],
+      ogTitle: 'Arras penitenciales Salamanca — 145€',
+      ogDescription: 'Arras para compraventa en Salamanca: Plaza Mayor, Gran Vía y barrios universitarios. Redacción profesional.',
+      ogImageAlt: 'Contrato de arras Salamanca',
+    },
+    schema: {
+      serviceName: 'Contrato de Arras Penitenciales en Salamanca',
+      serviceDescription: 'Arras penitenciales para compraventa en Salamanca y provincia. Particulares y mercado universitario.',
+      areaType: 'City',
+      areaName: 'Salamanca',
+    },
+    heroImageAlt: 'Contrato de arras en Salamanca',
+    breadcrumbFinal: 'Contrato de Arras Salamanca',
+    badgeLine: 'Compraventa · Salamanca',
+    ctaStickyLabel: 'Arras · Salamanca',
+    introLargo:
+      'Salamanca mezcla compradores locales, familias castellanas y operaciones ligadas al campus (San Bernardo, El Rollo, Garrido). Las arras penitenciales son el paso habitual antes de escritura, pero un Word descargado no suele regular bien la señal cuando el comprador viene de Madrid, la hipoteca tarda o el piso está en edificio histórico del casco. Preparamos el contrato con plazos realistas, penalizaciones pactadas y revisión de nota simple. Precio cerrado 145€.',
+    alertaTitulo: '¿Vas a dejar señal en Salamanca con un contrato copiado de internet?',
+    paraQuienTitulo: '¿Para quién es este contrato en Salamanca?',
+    paraQuien: [
+      'Compradores que reservan piso cerca de la USAL o en centro histórico',
+      'Vendedores que venden sin inmobiliaria y quieren compromiso firme del comprador',
+      'Operaciones entre particulares en Villamayor, Carbajosa o área metropolitana',
+      'Quien necesita cláusula suspensiva de financiación antes de ir al notario',
+    ],
+    faqs: [
+      {
+        q: '¿Cuánto suele ser la señal de arras en Salamanca?',
+        a: 'Habitualmente entre el 5 % y el 10 % del precio. En operaciones universitarias o de segunda residencia conviene dejarlo escrito con claridad para evitar disputas.',
+      },
+      {
+        q: '¿El contrato vale en toda la provincia de Salamanca?',
+        a: 'Sí, en capital y provincia. Se aplica el Código Civil y lo pactado entre comprador y vendedor.',
+      },
+      hipotecaFaq,
+      tiposFaq,
+      notarioFaq,
+    ],
+  },
+
+  valladolid: {
+    slug: 'valladolid',
+    nombre: 'Valladolid',
+    meta: {
+      title: 'Arras penitenciales Valladolid — Delicias y centro desde 145€',
+      description:
+        'Contrato de arras en Valladolid para compraventa entre particulares. Parquesol, Delicias, hipoteca y nota simple. 145€ IVA incl., 48h.',
+      keywords: [
+        'contrato arras Valladolid',
+        'arras penitenciales Valladolid',
+        'señal compra vivienda Valladolid',
+        'arras compraventa Parquesol',
+        'comprar piso Valladolid particular',
+        'gestoría arras Castilla y León Valladolid',
+      ],
+      ogTitle: 'Contrato arras Valladolid — 145€ con revisión registral',
+      ogDescription: 'Arras penitenciales en Valladolid: plazo a escritura, doble penitencial y condición de hipoteca.',
+      ogImageAlt: 'Contrato de arras Valladolid',
+    },
+    schema: {
+      serviceName: 'Contrato de Arras Penitenciales en Valladolid',
+      serviceDescription: 'Arras para compraventa en Valladolid y provincia. Mercado accesible y compradores desde Madrid.',
+      areaType: 'City',
+      areaName: 'Valladolid',
+    },
+    heroImageAlt: 'Contrato de arras en Valladolid',
+    breadcrumbFinal: 'Contrato de Arras Valladolid',
+    badgeLine: 'Compraventa · Valladolid',
+    ctaStickyLabel: 'Arras · Valladolid',
+    introLargo:
+      'Valladolid atrae compradores desde Madrid y operaciones familiares en Delicias, Parquesol, La Victoria o Rondilla. Las arras penitenciales fijan precio y calendario hasta notaría, pero solo protegen si el texto refleja lo acordado: importe de la señal, plazo, cargas registrales y qué pasa si el banco dice no. Redactamos el contrato con gestor inmobiliario, nota simple revisada y entrega en 48 horas.',
+    alertaTitulo: 'Señal en Valladolid: ¿tu contrato de arras tiene cláusula de hipoteca?',
+    paraQuienTitulo: '¿Para quién es este contrato en Valladolid?',
+    paraQuien: [
+      'Compradores que reservan piso mientras esperan aprobación hipotecaria',
+      'Vendedores particulares en capital o Laguna de Duero',
+      'Operaciones con comprador que viene de otra provincia',
+      'Reserva seria con penalizaciones claras para ambas partes',
+    ],
+    faqs: [
+      {
+        q: '¿Las arras penitenciales son válidas en Valladolid y provincia?',
+        a: 'Sí, en toda la provincia de Valladolid. El régimen es el del Código Civil; lo crítico es redactar bien penitencial vs confirmatoria y plazos.',
+      },
+      {
+        q: '¿Puedo firmar arras en Valladolid si compro desde Madrid?',
+        a: 'Sí. El contrato privado es válido con firma de las partes. Podemos redactarlo 100 % online y orientarte sobre la escritura en notaría vallisoletana.',
+      },
+      hipotecaFaq,
+      señalFaq('Valladolid'),
+      tiposFaq,
+      notarioFaq,
+    ],
+  },
+
+  mallorca: {
+    slug: 'mallorca',
+    nombre: 'Mallorca',
+    meta: {
+      title: 'Arras compraventa Mallorca — Palma e isla desde 145€',
+      description:
+        'Contrato de arras penitenciales en Mallorca para particulares. Palma, Calvià, compradores no residentes, hipoteca y plazos baleares. 145€, 48h.',
+      keywords: [
+        'contrato arras Mallorca',
+        'arras penitenciales Palma',
+        'señal compra piso Baleares',
+        'arras compraventa Mallorca particular',
+        'redactar arras Calvià Palma',
+        'comprar piso Mallorca arras',
+      ],
+      ogTitle: 'Arras penitenciales Mallorca — 145€',
+      ogDescription: 'Arras en Mallorca con plazo a escritura notarial balear y revisión registral. Ideal compradores peninsulares.',
+      ogImageAlt: 'Contrato de arras Mallorca',
+    },
+    schema: {
+      serviceName: 'Contrato de Arras Penitenciales en Mallorca',
+      serviceDescription: 'Arras para compraventa en Mallorca, Palma y municipios de la isla. Compradores residentes y no residentes.',
+      areaType: 'State',
+      areaName: 'Mallorca',
+    },
+    heroImageAlt: 'Contrato de arras en Mallorca',
+    breadcrumbFinal: 'Contrato de Arras Mallorca',
+    badgeLine: 'Compraventa · Mallorca',
+    ctaStickyLabel: 'Arras · Mallorca',
+    introLargo:
+      'En Mallorca las operaciones suelen mezclar plazos cortos, compradores no residentes y documentación balear (cédula d’habitabilitat, cargas, comunidad). Las arras penitenciales amarran la señal hasta la escritura en notaría, pero un modelo peninsular genérico no siempre refleja plazos realistas ni condiciones si la hipoteca se tramita fuera de la isla. Redactamos arras con datos reales, revisión de nota simple y cláusulas suspensivas. 145€, entrega en 48h.',
+    alertaTitulo: '¿Firmas arras en Mallorca sin revisar cargas y plazos notariales?',
+    paraQuienTitulo: '¿Para quién es este contrato en Mallorca?',
+    paraQuien: [
+      'Compradores peninsulares que reservan piso en Palma o Calvià',
+      'Vendedores particulares en la isla que quieren señal con doble penitencial clara',
+      'Operaciones con hipoteca en trámite o NIE en curso',
+      'Reserva hasta escritura en notaría balear con condiciones escritas',
+    ],
+    faqs: [
+      {
+        q: '¿Las arras son válidas en Mallorca y resto de Baleares?',
+        a: 'Sí. Rigen el Código Civil y lo pactado. La escritura definitiva se firma ante notario; las arras son el compromiso previo con penalización económica si alguien se echa atrás.',
+      },
+      {
+        q: '¿Puedo hacer el trámite desde la península?',
+        a: 'Sí. Recopilamos datos online, redactamos el PDF firmable y te orientamos sobre documentación habitual en compraventa balear.',
+      },
+      hipotecaFaq,
+      señalFaq('Mallorca'),
+      tiposFaq,
+      notarioFaq,
+    ],
+  },
+
   asturias: {
     slug: 'asturias',
     nombre: 'Asturias',

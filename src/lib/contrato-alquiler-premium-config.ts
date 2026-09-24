@@ -1019,6 +1019,176 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     ],
   },
 
+  salamanca: {
+    slug: 'salamanca',
+    nombre: 'Salamanca',
+    meta: {
+      title: 'Contrato LAU Salamanca — casco y campus desde 145€',
+      description:
+        'Contrato de alquiler en Salamanca para vivienda habitual. USAL, Gran Vía, fianza Castilla y León, Ley de Vivienda 2026. 145€, 48h.',
+      keywords: [
+        'contrato alquiler Salamanca',
+        'LAU Salamanca',
+        'contrato arrendamiento Salamanca universidad',
+        'alquiler piso Salamanca particular',
+        'fianza alquiler Castilla y León',
+        'contrato alquiler San Bernardo El Rollo',
+      ],
+      ogTitle: 'Contrato LAU Salamanca — 145€ con gestor',
+      ogDescription: 'Alquiler habitual en Salamanca: cláusulas LAU, inventario y fianza. Ideal propietarios sin agencia.',
+      ogImageAlt: 'Contrato de alquiler Salamanca — casco y campus',
+    },
+    particularidadesRegionales: {
+      titulo: 'Alquiler en Salamanca: universidad, casco patrimonial y fianza',
+      secciones: [
+        {
+          titulo: 'Mercado por barrios (no es lo mismo Gran Vía que Villamayor)',
+          contenido:
+            'En Salamanca conviven pisos para estudiantes (San Bernardo, El Rollo, Garrido), familias en Delicias o Pajarillos y alquileres en Villamayor ligados al campus. El LAU exige duración mínima, fianza y actualización de renta; en pisos amueblados el inventario evita conflictos al final del curso.',
+          bullets: [
+            'Centro / Plaza Mayor: edificios históricos — revisar estado y comunidad',
+            'Zona universitaria: rotación anual — cláusulas de duración y fianza claras',
+            'Villamayor y Carbajosa: demanda estable de familias y profesores',
+            'Distinción vivienda habitual vs alquiler por habitación (contrato distinto)',
+          ],
+        },
+        {
+          titulo: 'Fianza y normativa en Castilla y León',
+          contenido:
+            'La fianza legal mínima es una mensualidad (LAU). Debe reflejarse en el contrato el importe, plazo de ingreso y devolución. La Ley de Vivienda 2026 limita la actualización de renta según el tipo de arrendador; lo incorporamos en la redacción.',
+          bullets: [
+            'Fianza: 1 mensualidad + garantías adicionales dentro de límites legales',
+            'Actualización IPC conforme a Ley de Vivienda 2026',
+            'Inventario recomendable en pisos amueblados para estudiantes',
+            'Comunidad de propietarios: reparto de gastos en cláusulas',
+          ],
+        },
+      ],
+    },
+    schema: {
+      serviceName: 'Contrato de Alquiler de Vivienda (LAU) en Salamanca',
+      serviceDescription: 'Contrato LAU en Salamanca capital y provincia. Mercado universitario y vivienda habitual.',
+      areaType: 'City',
+      areaName: 'Salamanca',
+    },
+    heroImageAlt: 'Contrato de alquiler en Salamanca',
+    breadcrumbFinal: 'Contrato de Alquiler Salamanca',
+    badgeLine: 'Alquiler · Salamanca',
+    ctaStickyLabel: 'LAU · Salamanca',
+    introLargo:
+      'Alquilar en Salamanca no es igual en el casco UNESCO que en Villamayor: cambian perfiles, rotación y riesgo de impagos al terminar el curso. Un PDF genérico suele fallar en fianza, actualización de renta e inventario. Redactamos contrato LAU adaptado a tu piso y arrendatario (familia, profesional o estudiantes en régimen de vivienda habitual). 145€ IVA incluido, entrega en 48h, PDF firmable.',
+    alertaTitulo: '¿Alquilas en Salamanca con un contrato pensado para Madrid?',
+    paraQuienTitulo: '¿Para quién es este contrato en Salamanca?',
+    paraQuien: [
+      'Propietarios en centro o zona campus que alquilan sin agencia',
+      'Arrendadores que renovan contratos antiguos a la Ley de Vivienda 2026',
+      'Inquilinos que quieren revisar cláusulas antes de firmar en Salamanca',
+      'Alquiler de vivienda completa (no habitación suelta) en capital o provincia',
+    ],
+    faqs: [
+      {
+        q: '¿Cuánto cuesta el contrato LAU en Salamanca?',
+        a: '145€ IVA incluido en Inmonest, con entrega en 48h. Incluye redacción personalizada, inventario como anexo y cláusulas conforme a LAU y Ley de Vivienda 2026.',
+      },
+      {
+        q: '¿Sirve para pisos para estudiantes de la USAL?',
+        a: 'Sí, si alquilas la vivienda completa con uso habitual. Si alquilas habitaciones sueltas, necesitas contrato de habitación (otro servicio). Te orientamos según tu caso.',
+      },
+      ...faqPack(
+        'Salamanca',
+        '¿Qué fianza es obligatoria en Castilla y León?',
+        'Una mensualidad de renta como fianza legal mínima. Las garantías adicionales no pueden superar los límites de la LAU.',
+        '¿El contrato es válido en Villamayor, Béjar y provincia?',
+        'Sí, en Salamanca capital y toda la provincia, con adaptación a normativa estatal y autonómica.',
+      ),
+    ],
+  },
+
+  valladolid: {
+    slug: 'valladolid',
+    nombre: 'Valladolid',
+    meta: {
+      title: 'Contrato alquiler Valladolid — Delicias y Parquesol desde 145€',
+      description:
+        'Contrato LAU en Valladolid para particulares. Delicias, Parquesol, La Victoria, fianza y Ley de Vivienda 2026. 145€, entrega 48h.',
+      keywords: [
+        'contrato alquiler Valladolid',
+        'LAU Valladolid',
+        'contrato arrendamiento Delicias Parquesol',
+        'alquiler piso Valladolid particular',
+        'gestoría alquiler Castilla y León',
+        'precio contrato alquiler Valladolid',
+      ],
+      ogTitle: 'Contrato LAU Valladolid — 145€',
+      ogDescription: 'Alquiler habitual en Valladolid con fianza, inventario y cláusulas LAU 2026.',
+      ogImageAlt: 'Contrato de alquiler Valladolid',
+    },
+    particularidadesRegionales: {
+      titulo: 'Alquiler en Valladolid: barrios y compradores desde Madrid',
+      secciones: [
+        {
+          titulo: 'Barrios con distinta demanda',
+          contenido:
+            'Delicias y Parquesol concentran familias y profesionales; La Victoria y Rondilla mezclan casco y renovación; Laguna de Duero y Tudela de Duero amplían el mercado metropolitano. El marco legal es el mismo (LAU), pero conviene reflejar obras, mascotas y comunidad según el edificio.',
+          bullets: [
+            'Delicias / Parquesol: pisos amplios, familias',
+            'Centro / La Victoria: edificios con cargas de comunidad a revisar',
+            'Laguna de Duero: alquiler metropolitano con desplazamientos a capital',
+            'Inventario en pisos amueblados para evitar disputas al salir',
+          ],
+        },
+        {
+          titulo: 'Fianza y actualización de renta',
+          contenido:
+            'La fianza legal es una mensualidad. En Castilla y León el contrato debe ser claro en depósito, devolución y actualización anual según Ley de Vivienda 2026 (límites según gran tenedor o pequeño propietario).',
+          bullets: [
+            'Fianza legal: 1 mensualidad',
+            'Cláusula de IPC / límites 2026 según tu caso',
+            'Duración mínima LAU (5 años persona física)',
+            'Anexo de inventario y estado del inmueble',
+          ],
+        },
+      ],
+    },
+    schema: {
+      serviceName: 'Contrato de Alquiler de Vivienda (LAU) en Valladolid',
+      serviceDescription: 'Contrato de alquiler LAU en Valladolid y área metropolitana.',
+      areaType: 'City',
+      areaName: 'Valladolid',
+    },
+    heroImageAlt: 'Contrato de alquiler en Valladolid',
+    breadcrumbFinal: 'Contrato de Alquiler Valladolid',
+    badgeLine: 'Alquiler · Valladolid',
+    ctaStickyLabel: 'LAU · Valladolid',
+    introLargo:
+      'Valladolid es un mercado accesible con muchos alquileres entre particulares y inquilinos que llegan desde Madrid. Firmar un LAU genérico deja expuestas la fianza, la subida de renta y las obras en común. Redactamos contrato personalizado con gestor inmobiliario: 145€ IVA incluido, PDF en 48h, válido en capital y municipios del entorno.',
+    alertaTitulo: '¿Firmas alquiler en Valladolid sin cláusula de actualización legal?',
+    paraQuienTitulo: '¿Para quién es este contrato en Valladolid?',
+    paraQuien: [
+      'Propietarios en Delicias, Parquesol o centro que alquilan sin agencia',
+      'Arrendadores que actualizan contratos previos a 2026',
+      'Inquilinos que quieren condiciones claras antes de firmar',
+      'Alquiler de vivienda habitual en Valladolid o Laguna de Duero',
+    ],
+    faqs: [
+      {
+        q: '¿Cuánto cuesta un contrato de alquiler en Valladolid?',
+        a: '145€ IVA incluido con Inmonest. Incluye redacción LAU, inventario y orientación sobre fianza. Entrega en 48 horas laborables.',
+      },
+      {
+        q: '¿El contrato vale en Laguna de Duero y provincia?',
+        a: 'Sí, en Valladolid capital y municipios del área metropolitana y provincia, conforme a LAU y normativa autonómica.',
+      },
+      ...faqPack(
+        'Valladolid',
+        '¿Qué fianza debo exigir en Valladolid?',
+        'Como mínimo una mensualidad de renta como fianza legal. Garantías adicionales solo dentro de los límites que marca la LAU.',
+        '¿Puedo alquilar estando yo en Madrid y el piso en Valladolid?',
+        'Sí. Gestionamos el contrato 100 % online; solo necesitas datos del inmueble, arrendatario y condiciones económicas.',
+      ),
+    ],
+  },
+
   'san-sebastian': {
     slug: 'san-sebastian',
     nombre: 'San Sebastián',

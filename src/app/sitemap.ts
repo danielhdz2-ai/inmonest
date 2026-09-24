@@ -221,6 +221,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/gestoria/alquiler-local-comercial/pamplona`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/alquiler-local-comercial/mallorca`,  lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/alquiler-local-comercial/salamanca`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/alquiler-local-comercial/valladolid`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/alquiler-local-comercial/asturias`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/alquiler-local-comercial/santander`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/alquiler-local-comercial/vitoria`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },

@@ -221,7 +221,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Alquiler Local Comercial',
     precioSlug: 'alquiler-local-comercial',
     href: (c) => `/gestoria/alquiler-local-comercial/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante', 'murcia', 'granada', 'coruna', 'pamplona', 'mallorca', 'salamanca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante', 'murcia', 'granada', 'coruna', 'pamplona', 'mallorca', 'salamanca', 'valladolid', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
     id: 'prestamo-particulares',

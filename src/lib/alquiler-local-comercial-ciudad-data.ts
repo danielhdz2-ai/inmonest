@@ -48,6 +48,7 @@ export const ALQUILER_LOCAL_CIUDADES_LIST = [
   { slug: 'pamplona', nombre: 'Pamplona' },
   { slug: 'mallorca', nombre: 'Mallorca' },
   { slug: 'salamanca', nombre: 'Salamanca' },
+  { slug: 'valladolid', nombre: 'Valladolid' },
   { slug: 'asturias', nombre: 'Asturias' },
   { slug: 'santander', nombre: 'Santander' },
   { slug: 'vitoria', nombre: 'Vitoria-Gasteiz' },
@@ -811,7 +812,61 @@ export const ALQUILER_LOCAL_COMERCIAL_CIUDADES: Record<string, AlquilerLocalCome
       ogDescription: 'Locales comerciales en Salamanca entre particulares. Gestoría Inmonest sin comisión de agencia.',
     },
   },
-asturias: {
+
+  valladolid: {
+    slug: 'valladolid',
+    nombre: 'Valladolid',
+    region: 'Castilla y León',
+    testimoniosLanding: 'alquiler-local-comercial-valladolid',
+    heroImage: getCiudadImage('valladolid').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      rol: 'Gestor inmobiliario · Locales comerciales en Valladolid',
+      bio: 'Asesora alquileres de local en Paseo Zorrilla, Arenal, polígonos de Argales y San Cristóbal, y bajos en Delicias. Conoce licencias del Ayuntamiento de Valladolid, hostelería en la Acera de Recoletos y operaciones entre particulares sin comisión anual de agencia.',
+    },
+    mercadoIntro:
+      'Valladolid combina retail en el Arenal y Paseo Zorrilla con hostelería en Recoletos y cadenas en Parquesol. En polígonos como Argales hay naves y oficinas técnicas; muchos propietarios alquilan bajos entre particulares sin contrato LAU empresarial y descubren tarde problemas de obras, IAE o tanteo si venden el inmueble.',
+    zonasIntro: 'Cobertura en Valladolid capital, Laguna de Duero, Arroyo de la Encomienda y municipios con actividad comercial en la provincia.',
+    zonas: [
+      'Arenal / Acera de Recoletos', 'Paseo Zorrilla', 'Campo Grande', 'Delicias', 'Parquesol',
+      'La Victoria / Rondilla', 'Polígono Argales', 'San Cristóbal', 'Laguna de Duero', 'Medina del Campo',
+    ],
+    rentaEjemploMensual: 750,
+    localesGestionados: 9,
+    paraQuienExtra: [
+      'Propietarios de bajos en el Arenal o Paseo Zorrilla que alquilan sin inmobiliaria',
+      'Autónomos vallisoletanos que abren local y quieren arrendamiento LAU claro',
+      'Inversores con local en polígono que formalizan renta con empresa arrendataria',
+    ],
+    faqExtra: [
+      {
+        q: '¿El contrato cubre locales en polígonos como Argales?',
+        a: 'Sí. Redactamos arrendamiento LAU de local de negocio con cláusulas de uso industrial/comercial, obras y devolución adaptadas a nave o bajo en polígono.',
+      },
+      {
+        q: '¿Puedo gestionar el alquiler del local estando en Madrid?',
+        a: 'Sí. Trabajamos 100 % online: datos del inmueble, arrendatario, renta y garantías. El PDF firmable es válido en Valladolid y provincia.',
+      },
+    ],
+    regulacionLocal: [
+      'Licencia de actividad — Ayuntamiento de Valladolid',
+      'Normativa de terrazas en hostelería (Recoletos / centro)',
+      'IAE según epígrafe del arrendatario',
+      'Registro de la Propiedad si aplica por renta anual',
+    ],
+    meta: {
+      title: 'Local comercial Valladolid — Arenal y polígonos desde 145€',
+      description:
+        'Contrato de alquiler de local comercial en Valladolid entre particulares. Paseo Zorrilla, Delicias, Argales. LAU empresarial, 145€ IVA incl., 48h.',
+      keywords:
+        'contrato alquiler local comercial valladolid, alquilar local valladolid particular, arrendamiento local paseo zorrilla, gestoria local comercial castilla y leon',
+      ogTitle: 'Alquiler local comercial Valladolid — 145€',
+      ogDescription: 'Locales en Valladolid con contrato LAU, tanteo y licencias. Sin comisión de agencia.',
+    },
+  },
+
+  asturias: {
     slug: 'asturias',
     nombre: 'Asturias',
     region: 'Principado de Asturias',
