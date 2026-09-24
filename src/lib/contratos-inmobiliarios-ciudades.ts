@@ -17,6 +17,11 @@ export type ContratosInmobiliariosCiudadSlug =
   | 'granada'
   | 'salamanca'
   | 'valladolid'
+  | 'asturias'
+  | 'santander'
+  | 'vitoria'
+  | 'san-sebastian'
+  | 'castellon'
 
 export type ContratosCiudadBarrio = {
   nombre: string
@@ -1514,6 +1519,526 @@ const VALLADOLID: ContratosInmobiliariosCiudadConfig = {
   enlaceAlquiler: '/valladolid/contrato-alquiler',
 }
 
+const ASTURIAS: ContratosInmobiliariosCiudadConfig = {
+  slug: 'asturias',
+  nombre: 'Asturias',
+  region: 'Principado de Asturias',
+  metaTitle: 'Contratos inmobiliarios Asturias | Oviedo, Gijón y LAU',
+  metaDescription:
+    'Contratos inmobiliarios en Asturias: arras, alquiler LAU y venta entre particulares en Oviedo, Gijón y Avilés. Humedades en casco, fianza autonómica. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Asturias, contrato arras Oviedo, contrato alquiler Gijón, gestoría inmobiliaria Asturias particulares, LAU Avilés',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Asturias',
+  heroLead:
+    'Arras penitenciales, alquiler LAU y packs documentales para compradores y vendedores en Oviedo, Gijón, Avilés y municipios del Principado. Mercado atlántico con edificios de piedra, obras en fachada y operativa habitual entre particulares sin comisión de agencia.',
+  heroTags: ['Principado de Asturias', 'Oviedo · Gijón', 'Particulares', 'Entrega 48h'],
+  heroImage: getCiudadImage('asturias'),
+  mercadoTitulo: 'Asturias: tres ciudades, un mercado de particulares activo',
+  mercadoIntro:
+    'Oviedo concentra compraventa familiar en El Centro y Teatinos; Gijón mueve alquiler en Cimadevilla, La Calzada y playa de San Lorenzo; Avilés añade operaciones industriales reconvertidas. Firmar arras o un LAU con plantilla genérica ignora humedades, ITE en bloques antiguos y cargas de comunidad frecuentes en el litoral.',
+  mercadoCards: [
+    {
+      titulo: 'Casco histórico y humedades',
+      desc: 'En Cimadevilla o el casco ovetense conviene revisar estado del inmueble antes de arras. Incluimos condiciones suspensivas cuando la documentación técnica no está al día.',
+    },
+    {
+      titulo: 'Alquiler estable frente a segunda residencia',
+      desc: 'En Gijón marítimo y Villaviciosa hay mezcla de uso habitual y temporal. Redactamos LAU de vivienda habitual con fianza autonómica y cláusulas de actualización conforme a Ley de Vivienda 2026.',
+    },
+    {
+      titulo: 'Área metropolitana y valles',
+      desc: 'Langreo, Mieres o Siero comparten marco legal asturiano. Misma gestoría online con adaptación registral al municipio del inmueble.',
+    },
+  ],
+  normativaTitulo: 'Normativa en el Principado de Asturias',
+  normativaIntro:
+    'Los contratos entre particulares en Asturias se rigen por Código Civil, LAU y Ley de Vivienda 2026, con depósito de fianza ante el organismo autonómico:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante la Consejería competente en vivienda del Principado',
+    'Cláusulas de arras con condición suspensiva de hipoteca en operaciones con financiación',
+    'Revisión de nota simple en Registros de Oviedo, Gijón o Avilés según ubicación del inmueble',
+    'Certificado energético vigente en compraventa y alquiler de larga duración',
+  ],
+  barriosTitulo: 'Oviedo, Gijón, Avilés y área metropolitana',
+  barriosIntro:
+    'Cada núcleo asturiano tiene dinámica distinta de alquiler y compraventa:',
+  barrios: [
+    {
+      nombre: 'Oviedo — El Centro y Teatinos',
+      contexto: 'Capital administrativa — demanda familiar',
+      operativa:
+        'LAU de larga duración y arras en compraventa con plazos para hipoteca. Pack vendedor sin agencia.',
+    },
+    {
+      nombre: 'Gijón — Cimadevilla y La Calzada',
+      contexto: 'Casco y ensanche — rotación moderada',
+      operativa:
+        'Inventario en amueblados. Arras con revisión de comunidad y obras en fachada.',
+    },
+    {
+      nombre: 'Gijón — Playa y marítimo',
+      contexto: 'Segunda residencia y alquiler costero',
+      operativa:
+        'Distinción LAU habitual vs uso temporal. Cláusulas claras sobre temporada y devolución.',
+    },
+    {
+      nombre: 'Avilés y Langreo',
+      contexto: 'Área industrial reconvertida',
+      operativa:
+        'Compraventa entre particulares con arras penitenciales. Due diligence en packs arras plus.',
+    },
+    {
+      nombre: 'Mieres y Siero',
+      contexto: 'Periferia metropolitana',
+      operativa:
+        'Alquiler LAU accesible. Acompañamiento de compra 687 € en operaciones familiares.',
+    },
+    {
+      nombre: 'Llanes y occidente',
+      contexto: 'Demanda estacional y rural',
+      operativa:
+        'Arras en operaciones con compradores de fuera de Asturias. Verificación registral provincial.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Asturias',
+  serviciosIntro:
+    'Arras en Oviedo, alquiler LAU en Gijón o venta sin agencia en Avilés: precio cerrado, panel online y gestor asignado.',
+  faq: [
+    {
+      q: '¿El contrato vale en Oviedo, Gijón y toda Asturias?',
+      a: 'Sí. Redactamos para cualquier municipio del Principado. Adaptamos referencias al Registro de la Propiedad correspondiente.',
+    },
+    {
+      q: '¿Asturias tiene normativa foral como Navarra?',
+      a: 'No. Aplica LAU estatal y Código Civil común. La fianza se deposita ante el organismo autonómico asturiano según la normativa vigente.',
+    },
+    {
+      q: '¿Puedo reservar un piso en Gijón con arras mientras pido la hipoteca?',
+      a: 'Sí. Redactamos arras penitenciales con condición suspensiva de financiación y plazo realista hasta escritura en notaría asturiana.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/asturias',
+  enlaceArras: '/asturias/contrato-arras',
+  enlaceAlquiler: '/asturias/contrato-alquiler',
+}
+
+const SANTANDER: ContratosInmobiliariosCiudadConfig = {
+  slug: 'santander',
+  nombre: 'Santander',
+  region: 'Cantabria',
+  metaTitle: 'Contratos inmobiliarios Santander | Sardinero, LAU y arras',
+  metaDescription:
+    'Contratos inmobiliarios en Santander y Cantabria: arras, alquiler LAU y venta entre particulares. Centro, El Sardinero, Camargo. Gestoría desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Santander, contrato arras Santander, contrato alquiler Cantabria, gestoría inmobiliaria Santander particulares, LAU El Sardinero',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Santander',
+  heroLead:
+    'Redacción de arras y alquiler LAU en Santander, El Sardinero, Camargo y área metropolitana cántabra. Mercado universitario (UC), segunda residencia en la bahía y compraventa entre particulares con revisión registral incluida.',
+  heroTags: ['Cantabria', 'UC · Sardinero', 'Particulares', 'Entrega 48h'],
+  heroImage: getCiudadImage('santander'),
+  mercadoTitulo: 'Santander: bahía, universidad y mercado estable',
+  mercadoIntro:
+    'Santander combina alquiler universitario cerca de la UC, familias en Cuatro Caminos y operaciones de segunda residencia en El Sardinero. Las arras penitenciales son el paso previo habitual a notaría; un contrato genérico deja expuestas la señal y el plazo cuando el comprador financia desde fuera de Cantabria.',
+  mercadoCards: [
+    {
+      titulo: 'El Sardinero y segunda residencia',
+      desc: 'Pisos con vista a la bahía exigen cláusulas claras sobre estado, mobiliario y calendario hasta escritura. Revisamos nota simple y cargas antes de fijar la señal.',
+    },
+    {
+      titulo: 'Zona universitaria y Cueto',
+      desc: 'Alquiler LAU con inventario en amueblados y fianza autonómica. Distinción entre vivienda habitual y uso temporal en temporada de verano.',
+    },
+    {
+      titulo: 'Camargo, Torrelavega y litoral',
+      desc: 'Operaciones familiares en área metropolitana con el mismo marco legal cántabro. Gestoría 100 % online con adaptación municipal.',
+    },
+  ],
+  normativaTitulo: 'Normativa en Santander y Cantabria',
+  normativaIntro:
+    'Los contratos entre particulares en Cantabria aplican LAU, Código Civil y Ley de Vivienda 2026:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante el organismo autonómico de Cantabria',
+    'Arras con doble penitencial y condición suspensiva de hipoteca cuando procede',
+    'Certificado energético e ITE en edificios antiguos del centro y del Paseo de Pereda',
+    'Actualización de renta según gran tenedor o pequeño propietario (Ley de Vivienda 2026)',
+  ],
+  barriosTitulo: 'Barrios de Santander y Cantabria',
+  barriosIntro:
+    'Desde el Paseo de Pereda hasta Camargo, adaptamos cláusulas al contexto real:',
+  barrios: [
+    {
+      nombre: 'Centro y Pereda',
+      contexto: 'Núcleo urbano — compraventa activa',
+      operativa:
+        'Arras penitenciales con plazo a notaría. LAU en bajos y pisos señoriales con revisión de comunidad.',
+    },
+    {
+      nombre: 'El Sardinero y La Magdalena',
+      contexto: 'Segunda residencia y costa',
+      operativa:
+        'Arras en operaciones con compradores de Madrid o País Vasco. Due diligence documental.',
+    },
+    {
+      nombre: 'Cuatro Caminos y Nueva Montaña',
+      contexto: 'Residencial familiar',
+      operativa:
+        'Alquiler LAU estable. Pack vendedor para enajenación sin agencia.',
+    },
+    {
+      nombre: 'Cueto y Monte',
+      contexto: 'Perfil universitario',
+      operativa:
+        'LAU con cláusulas de duración e inventario. Arras en compraventa accesible.',
+    },
+    {
+      nombre: 'Camargo y Maliaño',
+      contexto: 'Área metropolitana',
+      operativa:
+        'Compraventa entre particulares. Servicio completo de compra 687 €.',
+    },
+    {
+      nombre: 'Torrelavega y litoral oriental',
+      contexto: 'Provincia de Cantabria',
+      operativa:
+        'Mismo marco legal. Contratos válidos con referencia registral local.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Santander',
+  serviciosIntro:
+    'Arras en el centro, alquiler LAU en Cuatro Caminos o venta sin agencia en El Sardinero: gestor asignado y entrega en 48 horas.',
+  faq: [
+    {
+      q: '¿Los contratos son válidos en toda Cantabria?',
+      a: 'Sí. Redactamos para Santander, Torrelavega, Castro Urdiales y cualquier municipio cántabro.',
+    },
+    {
+      q: '¿Puedo alquilar en El Sardinero con contrato LAU?',
+      a: 'Sí, si el uso es vivienda habitual del inquilino. Si el régimen es turístico, el documento y las obligaciones son distintos — te orientamos al contratar.',
+    },
+    {
+      q: '¿Qué incluye el pack vendedor en Santander?',
+      a: '450 € IVA incluido: arras redactadas a tu favor, ayuda con documentación de comunidad, certificado energético y nota simple antes de escritura.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/santander',
+  enlaceArras: '/santander/contrato-arras',
+  enlaceAlquiler: '/santander/contrato-alquiler',
+}
+
+const VITORIA: ContratosInmobiliariosCiudadConfig = {
+  slug: 'vitoria',
+  nombre: 'Vitoria-Gasteiz',
+  region: 'País Vasco · Álava',
+  metaTitle: 'Contratos inmobiliarios Vitoria | Arras, LAU y Álava',
+  metaDescription:
+    'Contratos inmobiliarios en Vitoria-Gasteiz y Álava: arras, alquiler LAU y venta entre particulares. Ensanche, Lakua, fianza vasca. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Vitoria, contrato arras Vitoria-Gasteiz, contrato alquiler Álava, gestoría inmobiliaria Vitoria particulares, LAU País Vasco',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Vitoria-Gasteiz',
+  heroLead:
+    'Arras, alquiler LAU y packs documentales en Vitoria-Gasteiz, Lakua, Zaramaga y provincia de Álava. Ciudad verde con mercado residencial estable, normativa vasca de fianzas y operativa entre particulares sin comisión de agencia.',
+  heroTags: ['Álava', 'Ensanche · Lakua', 'Particulares', 'Entrega 48h'],
+  heroImage: getCiudadImage('vitoria'),
+  mercadoTitulo: 'Vitoria-Gasteiz: calidad de vida y contratos exigentes',
+  mercadoIntro:
+    'Vitoria-Gasteiz destaca por alquiler familiar en Lakua y Salburua y compraventa estable en el Ensanche. En el País Vasco la fianza y algunas obligaciones autonómicas exigen precisión: un LAU genérico puede incumplir requisitos de depósito o actualización de renta.',
+  mercadoCards: [
+    {
+      titulo: 'Ensanche y casco medieval',
+      desc: 'Edificios con obras en comunidad y protección patrimonial. Revisamos documentación antes de arras y adaptamos cláusulas de alquiler LAU.',
+    },
+    {
+      titulo: 'Lakua, Salburua y Zabalgana',
+      desc: 'Barrios de expansión con alquiler de larga duración. Contratos con fianza vasca, inventario y límites legales de garantías adicionales.',
+    },
+    {
+      titulo: 'Álava y Rioja Alavesa',
+      desc: 'Operaciones en Laguardia o Llodio con mismo marco legal foral vinculado. Gestoría online con referencia registral provincial.',
+    },
+  ],
+  normativaTitulo: 'Normativa en Vitoria y Álava',
+  normativaIntro:
+    'Los contratos en Vitoria combinan LAU estatal con competencias autonómicas vascas en vivienda y fianzas:',
+  normativaPuntos: [
+    'Depósito de fianza legal conforme a normativa autonómica vasca',
+    'Cláusulas de arras penitenciales válidas en Álava con revisión registral',
+    'Actualización de renta según Ley de Vivienda 2026 y situación de gran tenedor',
+    'Certificado energético vigente en compraventa y alquiler de larga duración',
+  ],
+  barriosTitulo: 'Barrios de Vitoria-Gasteiz y Álava',
+  barriosIntro:
+    'Desde el Ensanche hasta Salburua, cada zona tiene perfil de operación distinto:',
+  barrios: [
+    {
+      nombre: 'Ensanche y Casco Medieval',
+      contexto: 'Centro histórico — ticket medio-alto',
+      operativa:
+        'Arras en compraventa con plazo a notaría. LAU con cláusulas de obras en edificios antiguos.',
+    },
+    {
+      nombre: 'Lakua y Salburua',
+      contexto: 'Familias y alquiler estable',
+      operativa:
+        'LAU de larga duración. Pack vendedor para propietarios sin agencia.',
+    },
+    {
+      nombre: 'Zaramaga y Zabalgana',
+      contexto: 'Periferia residencial',
+      operativa:
+        'Compraventa entre particulares con arras penitenciales. Acompañamiento 687 €.',
+    },
+    {
+      nombre: 'Adúa y Judimendi',
+      contexto: 'Demanda urbana compacta',
+      operativa:
+        'Alquiler LAU con fianza autonómica. Inventario en pisos amueblados.',
+    },
+    {
+      nombre: 'Armentia y periurbano',
+      contexto: 'Chalets y unifamiliares',
+      operativa:
+        'Arras en operaciones con parcela. Due diligence en packs arras plus.',
+    },
+    {
+      nombre: 'Llodio y Rioja Alavesa',
+      contexto: 'Provincia de Álava',
+      operativa:
+        'Mismo marco legal. Contratos adaptados al municipio del inmueble.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Vitoria',
+  serviciosIntro:
+    'Arras en el Ensanche, alquiler LAU en Lakua o venta sin agencia en Salburua: precio cerrado y panel de seguimiento.',
+  faq: [
+    {
+      q: '¿El contrato es válido en toda Álava?',
+      a: 'Sí. Redactamos para Vitoria-Gasteiz y cualquier municipio alavés, con cláusulas conformes a LAU y normativa autonómica vasca aplicable.',
+    },
+    {
+      q: '¿Puedo redactar el contrato en euskera?',
+      a: 'Sí, si ambas partes lo prefieren. Por defecto entregamos en castellano; indícanos tu preferencia al contratar.',
+    },
+    {
+      q: '¿Las arras protegen si el comprador no obtiene hipoteca?',
+      a: 'Sí, si incluimos condición suspensiva de financiación. Es la cláusula más habitual en compraventas en Vitoria con banco implicado.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/vitoria',
+  enlaceArras: '/vitoria/contrato-arras',
+  enlaceAlquiler: '/vitoria/contrato-alquiler',
+}
+
+const SAN_SEBASTIAN: ContratosInmobiliariosCiudadConfig = {
+  slug: 'san-sebastian',
+  nombre: 'San Sebastián',
+  region: 'País Vasco · Gipuzkoa',
+  metaTitle: 'Contratos inmobiliarios San Sebastián | Gros, arras y LAU',
+  metaDescription:
+    'Contratos inmobiliarios en San Sebastián y Gipuzkoa: arras, alquiler LAU y venta entre particulares. Parte Vieja, Gros, rentas altas. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios San Sebastián, contrato arras Donostia, contrato alquiler Gros, gestoría inmobiliaria Gipuzkoa particulares, LAU San Sebastián',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'San Sebastián',
+  heroLead:
+    'Gestoría de arras y alquiler LAU en San Sebastián (Donostia), Gros, Antiguo, Egia y comarca. Mercado de rentas elevadas, normativa vasca de fianzas y compraventa entre particulares donde cada cláusula cuenta.',
+  heroTags: ['Gipuzkoa', 'Gros · Parte Vieja', 'Particulares', 'Entrega 48h'],
+  heroImage: getCiudadImage('san-sebastian'),
+  mercadoTitulo: 'San Sebastián: rentas altas y operaciones exigentes',
+  mercadoIntro:
+    'San Sebastián es uno de los mercados de alquiler más tensionados del norte: Gros, Centro y Antiguo concentran LAU con rentas elevadas y compradores exigentes. Firmar arras sin revisar cargas registrales o un alquiler sin límite legal de garantías expone a propietarios e inquilinos a litigios costosos.',
+  mercadoCards: [
+    {
+      titulo: 'Gros y Centro — LAU premium',
+      desc: 'Pisos amueblados con inventario detallado, fianza autonómica vasca y actualización de renta conforme a Ley de Vivienda 2026 y perfil de arrendador.',
+    },
+    {
+      titulo: 'Parte Vieja y turismo mal clasificado',
+      desc: 'Distinción estricta entre vivienda habitual LAU y uso turístico. Redactamos el régimen correcto según el uso real del inmueble.',
+    },
+    {
+      titulo: 'Irún, Eibar y litoral guipuzcoano',
+      desc: 'Operaciones familiares con ticket algo más accesible. Misma gestoría online con adaptación registral a Gipuzkoa.',
+    },
+  ],
+  normativaTitulo: 'Normativa en San Sebastián y Gipuzkoa',
+  normativaIntro:
+    'Los contratos en Donostia combinan LAU estatal con obligaciones autonómicas vascas:',
+  normativaPuntos: [
+    'Depósito de fianza legal conforme a normativa autonómica vasca',
+    'Cláusulas de arras penitenciales con revisión de nota simple del Registro de San Sebastián',
+    'Límites de garantías adicionales y actualización anual de renta (Ley de Vivienda 2026)',
+    'Certificado energético vigente — habitual en edificios señoriales del Ensanche donostiarra',
+  ],
+  barriosTitulo: 'Barrios de San Sebastián y Gipuzkoa',
+  barriosIntro:
+    'Gros no se redacta igual que Intxaurrondo. Contextualizamos por zona:',
+  barrios: [
+    {
+      nombre: 'Gros y Egia',
+      contexto: 'Alquiler urbano de alta demanda',
+      operativa:
+        'LAU con inventario y fianza vasca. Arras en compraventa con ticket elevado y due diligence.',
+    },
+    {
+      nombre: 'Parte Vieja y Centro',
+      contexto: 'Turismo y rotación',
+      operativa:
+        'Análisis habitual vs temporal. Arras con plazos cortos hasta escritura en notaría guipuzcoana.',
+    },
+    {
+      nombre: 'Antiguo y Amara',
+      contexto: 'Residencial consolidado',
+      operativa:
+        'Alquiler LAU familiar. Pack vendedor sin comisión de agencia.',
+    },
+    {
+      nombre: 'Intxaurrondo y Altza',
+      contexto: 'Familias y periferia',
+      operativa:
+        'Compraventa entre particulares con arras penitenciales. Servicio completo 687 €.',
+    },
+    {
+      nombre: 'Ondarreta e Igueldo',
+      contexto: 'Segunda residencia y vistas',
+      operativa:
+        'Arras en operaciones con compradores foráneos. Condición suspensiva de hipoteca.',
+    },
+    {
+      nombre: 'Irún y Hondarribia',
+      contexto: 'Comarca fronteriza',
+      operativa:
+        'Contratos válidos en Gipuzkoa con referencia registral local.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en San Sebastián',
+  serviciosIntro:
+    'Arras en Gros, alquiler LAU en Antiguo o venta sin agencia en Egia: gestor asignado, precio cerrado y entrega en 48h.',
+  faq: [
+    {
+      q: '¿Los contratos son válidos en toda Gipuzkoa?',
+      a: 'Sí. Redactamos para San Sebastián, Irún, Eibar y cualquier municipio guipuzcoano.',
+    },
+    {
+      q: '¿San Sebastián es zona tensionada como Palma?',
+      a: 'El marco es la LAU y Ley de Vivienda 2026 más normativa vasca de fianzas. Incorporamos límites de actualización según tu situación de arrendador.',
+    },
+    {
+      q: '¿Puedo comprar un piso en Gros con acompañamiento completo?',
+      a: 'Sí. El servicio de compra completa (687 €) incluye revisión documental, arras y seguimiento hasta escritura — sin comisión sobre el precio.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/san-sebastian',
+  enlaceArras: '/san-sebastian/contrato-arras',
+  enlaceAlquiler: '/san-sebastian/contrato-alquiler',
+}
+
+const CASTELLON: ContratosInmobiliariosCiudadConfig = {
+  slug: 'castellon',
+  nombre: 'Castellón',
+  region: 'Comunitat Valenciana · Plana',
+  metaTitle: 'Contratos inmobiliarios Castellón | Grao, LAU y arras',
+  metaDescription:
+    'Contratos inmobiliarios en Castelló de la Plana y provincia: arras, alquiler LAU y venta entre particulares. Grao, Benicàssim, fianza AVANT. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Castellón, contrato arras Castelló, contrato alquiler Grao, gestoría inmobiliaria Castellón particulares, LAU Castelló de la Plana',
+  heroH1: 'Contratos inmobiliarios en',
+  heroHighlight: 'Castellón',
+  heroLead:
+    'Arras penitenciales, alquiler LAU y packs documentales en Castelló de la Plana, Grao, Benicàssim y comarca. Mercado valenciano con fianza AVANT, costa y operativa entre particulares sin agencia.',
+  heroTags: ['Castelló', 'AVANT', 'Grao · Plana', 'Particulares'],
+  heroImage: getCiudadImage('castellon'),
+  mercadoTitulo: 'Castellón: capital, puerto y costa de la Plana',
+  mercadoIntro:
+    'Castelló de la Plana concentra compraventa en el centro y alquiler en el Grao; Benicàssim y Vila-real amplían el mercado con perfiles familiares y costeros. El error habitual es firmar LAU sin depósito AVANT o arras sin plazo para hipoteca cuando el comprador viene de Valencia o Barcelona.',
+  mercadoCards: [
+    {
+      titulo: 'Grao y litoral castellonense',
+      desc: 'Mezcla de alquiler habitual y segunda residencia. Distinción LAU vs uso temporal antes de redactar.',
+    },
+    {
+      titulo: 'Fianza AVANT y cédula valenciana',
+      desc: 'La fianza legal se ingresa ante la Generalitat (AVANT). La cédula de habitabilidad es obligatoria para alquilar y vender con garantías en la Comunitat.',
+    },
+    {
+      titulo: 'Benicàssim y área metropolitana',
+      desc: 'Operaciones familiares con ticket accesible. Arras con revisión de nota simple del Registro de Castellón.',
+    },
+  ],
+  normativaTitulo: 'Normativa en Castellón y Comunitat Valenciana',
+  normativaIntro:
+    'Los contratos en Castelló aplican LAU, Ley de Vivienda 2026 y normativa valenciana de fianzas:',
+  normativaPuntos: [
+    'Depósito de fianza legal ante AVANT (Generalitat Valenciana)',
+    'Cédula de habitabilidad vigente en compraventa y alquiler de larga duración',
+    'Cláusulas de arras con condición suspensiva de hipoteca en operaciones financiadas',
+    'Certificado energético obligatorio antes de escritura o entrega de llaves en LAU',
+  ],
+  barriosTitulo: 'Castelló, Grao y provincia',
+  barriosIntro:
+    'Capital, puerto y municipios costeros no comparten el mismo perfil de contrato:',
+  barrios: [
+    {
+      nombre: 'Centro y Parque Ribalta',
+      contexto: 'Núcleo urbano — compraventa activa',
+      operativa:
+        'Arras penitenciales con plazo a notaría castellonense. LAU en pisos del ensanche.',
+    },
+    {
+      nombre: 'Grao y puerto',
+      contexto: 'Costa urbana — rotación',
+      operativa:
+        'LAU habitual con fianza AVANT. Inventario en amueblados cerca del mar.',
+    },
+    {
+      nombre: 'Benicàssim y Almazora',
+      contexto: 'Litoral y demanda estacional',
+      operativa:
+        'Análisis de uso real del inmueble. Arras en segundas residencias.',
+    },
+    {
+      nombre: 'Vila-real y Borriana',
+      contexto: 'Área metropolitana familiar',
+      operativa:
+        'Compraventa entre particulares. Pack vendedor 450 € sin agencia.',
+    },
+    {
+      nombre: 'Burriana y Oropesa',
+      contexto: 'Costa norte de Castellón',
+      operativa:
+        'Alquiler LAU y arras con adaptación registral municipal.',
+    },
+    {
+      nombre: 'Segorbe y interior',
+      contexto: 'Provincia — ticket moderado',
+      operativa:
+        'Mismo marco legal valenciano. Gestoría 100 % online.',
+    },
+  ],
+  serviciosTitulo: 'Gestoría de contratos inmobiliarios en Castellón',
+  serviciosIntro:
+    'Arras en el centro, alquiler LAU en el Grao o venta sin agencia en Benicàssim: precio cerrado y entrega en 48 horas.',
+  faq: [
+    {
+      q: '¿El contrato vale en toda la provincia de Castellón?',
+      a: 'Sí. Redactamos para Castelló de la Plana, Vila-real, Benicàssim y cualquier municipio castellonense.',
+    },
+    {
+      q: '¿Debo depositar la fianza en AVANT?',
+      a: 'Sí. En la Comunitat Valenciana la fianza legal del LAU se ingresa ante AVANT. El contrato detalla importe, plazo y devolución.',
+    },
+    {
+      q: '¿Atendéis compradores que vienen desde Valencia o Barcelona?',
+      a: 'Sí. Servicio online con gestor asignado; redactamos arras con plazos realistas para hipoteca y revisión registral antes de la señal.',
+    },
+  ],
+  enlaceGestoria: '/gestoria/valencia',
+  enlaceArras: '/castellon/contrato-arras',
+  enlaceAlquiler: '/castellon/contrato-alquiler',
+}
+
 const PAMPLONA: ContratosInmobiliariosCiudadConfig = {
   slug: 'pamplona',
   nombre: 'Pamplona',
@@ -1637,6 +2162,11 @@ export const CONTRATOS_INMOBILIARIOS_CIUDADES: Record<
   granada: GRANADA,
   salamanca: SALAMANCA,
   valladolid: VALLADOLID,
+  asturias: ASTURIAS,
+  santander: SANTANDER,
+  vitoria: VITORIA,
+  'san-sebastian': SAN_SEBASTIAN,
+  castellon: CASTELLON,
 }
 
 export const CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS = Object.keys(

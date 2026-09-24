@@ -109,4 +109,9 @@ export const CONTRATOS_CIUDADES_LOCAL = [
   { slug: 'granada', label: 'Granada', href: '/contratos-inmobiliarios/granada' },
   { slug: 'salamanca', label: 'Salamanca', href: '/contratos-inmobiliarios/salamanca' },
   { slug: 'valladolid', label: 'Valladolid', href: '/contratos-inmobiliarios/valladolid' },
+  { slug: 'asturias', label: 'Asturias', href: '/contratos-inmobiliarios/asturias' },
+  { slug: 'santander', label: 'Santander', href: '/contratos-inmobiliarios/santander' },
+  { slug: 'vitoria', label: 'Vitoria-Gasteiz', href: '/contratos-inmobiliarios/vitoria' },
+  { slug: 'san-sebastian', label: 'San Sebastián', href: '/contratos-inmobiliarios/san-sebastian' },
+  { slug: 'castellon', label: 'Castellón', href: '/contratos-inmobiliarios/castellon' },
 ] as const
