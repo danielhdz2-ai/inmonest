@@ -5,6 +5,64 @@ import { GESTORIA_PALMA_FAQ } from './gestoria-palma-faq'
 
 /** Hubs gestoría para ciudades núcleo sin página custom (Madrid/Barcelona/Valencia/Sevilla aparte) */
 export const CIUDAD_HUBS_NUCLEO: Record<string, CiudadHubConfig> = {
+  asturias: {
+    slug: 'asturias',
+    nombre: 'Asturias',
+    region: 'Principado de Asturias',
+    metaDescription:
+      'Gestoría inmobiliaria para particulares en Asturias. Oviedo, Gijón y Avilés. Contratos desde 145€, pack arras 450€, due diligence 350€. Sin comisiones de agencia.',
+    keywords:
+      'gestoría inmobiliaria asturias, contrato arras oviedo, contrato alquiler gijon, comprar piso asturias sin agencia',
+    heroBadge: 'Gestoría 100% Online | Asturias',
+    heroSubtitulo:
+      'Gestoría inmobiliaria para particulares en Oviedo, Gijón y Avilés. Contratos desde 145€. Trámite online con gestor asignado.',
+    ogImage: '/gestoria6.jpg',
+    twitterDescription: 'Contratos, arras y due diligence en Asturias desde 145€. Panel online y gestor asignado.',
+    razones: [
+      {
+        titulo: 'Compraventa entre particulares habitual',
+        descripcion:
+          'En Oviedo y Gijón muchas operaciones van sin agencia. Sin revisión documental heredas derramas, ITE pendiente o arras redactadas solo por el vendedor.',
+      },
+      {
+        titulo: 'Mercado universitario y de habitaciones',
+        descripcion:
+          'Alquiler de habitaciones y pisos compartidos requiere contratos claros (Código Civil o LAU según el caso).',
+      },
+      {
+        titulo: 'Honorarios fijos vs comisión 3-5%',
+        descripcion:
+          'En un piso de 185.000€ la agencia cobra miles de euros. Inmonest: arras 145€, due diligence 350€, venta completa 687€.',
+      },
+    ],
+    mercadoZonas: [
+      { nombre: 'Oviedo Centro', rango: '550-750€/mes', perfil: 'profesionales y universidad' },
+      { nombre: 'Gijón Centro', rango: '500-700€/mes', perfil: 'familias' },
+      { nombre: 'Avilés', rango: '450-650€/mes', perfil: 'industrial y residencial' },
+      { nombre: 'Langreo', rango: '400-550€/mes', perfil: 'área metropolitana' },
+    ],
+    mercadoCompraventa: [
+      'En **Oviedo y Gijón** el precio medio ronda **1.600-2.400€/m²** en centro.',
+      'Comisión agencia 3-5% vs **687€** servicio Inmonest hasta escritura.',
+    ],
+    mercadoParticularidades: [
+      'ITE en edificios de más de 50 años',
+      'Depósito fianza LAU autonómico',
+      'Certificado energético obligatorio en compraventa',
+      'Trámite online con gestor hasta notaría asturiana',
+    ],
+    faq: GESTORIA_HUB_FAQ_COMUN,
+    faqSubtitulo: 'Gestoría inmobiliaria en Asturias para particulares.',
+    serviciosSubtitulo:
+      'Arras, alquiler LAU, pack vendedor, due diligence y venta completa en Oviedo, Gijón y Avilés.',
+    ctaFinalTitulo: '¿Vas a comprar o vender en Asturias?',
+    ctaFinalTexto: 'Opera con gestor asignado y precio cerrado hasta notaría.',
+    enlacesContrato: [
+      { slug: 'arras-penitenciales', href: '/asturias/contrato-arras', label: 'Ver contrato arras Asturias →' },
+      { slug: 'contrato-alquiler', href: '/asturias/contrato-alquiler', label: 'Ver contrato alquiler Asturias →' },
+    ],
+  },
+
   granada: {
     slug: 'granada',
     nombre: 'Granada',

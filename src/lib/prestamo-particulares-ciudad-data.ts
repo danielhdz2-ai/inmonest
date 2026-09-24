@@ -54,6 +54,10 @@ export const PRESTAMO_PARTICULARES_CIUDADES_LIST = [
   { slug: 'coruna', nombre: 'A Coruña' },
   { slug: 'pamplona', nombre: 'Pamplona' },
   { slug: 'salamanca', nombre: 'Salamanca' },
+  { slug: 'asturias', nombre: 'Asturias' },
+  { slug: 'santander', nombre: 'Santander' },
+  { slug: 'vitoria', nombre: 'Vitoria-Gasteiz' },
+  { slug: 'san-sebastian', nombre: 'San Sebastián' },
 ] as const
 
 export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticularesCiudadConfig> = {
@@ -990,6 +994,209 @@ export const PRESTAMO_PARTICULARES_CIUDADES: Record<string, PrestamoParticulares
       ogTitle: 'Contrato Préstamo entre Particulares Salamanca — 130€ con asesor experto',
       ogDescription:
         'Formaliza préstamos privados en Salamanca con contrato profesional, orientación fiscal y entrega en 48h. 130€ IVA incluido.',
+    },
+  },
+asturias: {
+    slug: 'asturias',
+    nombre: 'Asturias',
+    region: 'Principado de Asturias',
+    testimoniosLanding: 'prestamo-particulares-asturias',
+    heroImage: getCiudadImage('asturias').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario ┬À Pr├®stamos entre particulares en Asturias',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora pr├®stamos privados en Oviedo, Gij├│n y Avil├®s. Entrada de vivienda entre familiares, Modelo 600 ante Junta del Principado de Asturias y contratos ejecutables sin donaci├│n encubierta.',
+      especialidades: ['Pr├®stamos familiares vivienda', 'Modelo 600', 'Pr├®stamos sin inter├®s (0 %)'],
+    },
+    mercadoIntro:
+      'En Asturias es habitual que familiares presten capital para la entrada de un piso o reforma. Sin contrato escrito, Hacienda puede reclasificar transferencias como donaci├│n.',
+    fiscalIntro:
+      'El pr├®stamo entre particulares debe formalizarse y declararse (Modelo 600, ITP). Tu gestor explica el tratamiento fiscal en Principado de Asturias.',
+    situacionesIntro: 'Pr├®stamos privados que formalizamos en Oviedo, Gij├│n y Avil├®s:',
+    situaciones: [
+      'Pr├®stamo familiar para comprar piso',
+      'Pr├®stamo entre socios o aut├│nomos',
+      'Pr├®stamo para reforma del inmueble',
+      'Pr├®stamo sin intereses entre familiares',
+    ],
+    zonasIntro: 'Cobertura en Oviedo, Gij├│n y Avil├®s. Servicio 100 % online.',
+    zonas: ['Centro', 'Ensanche', 'Zona residencial', '├ürea metropolitana'],
+    paraQuienExtra: [
+      'Familias que prestan dinero para entrada sin hipoteca bancaria',
+      'Prestamistas que necesitan cl├íusulas de impago claras',
+    ],
+    faqExtra: [
+      {
+        q: '┬┐El contrato de pr├®stamo es v├ílido en Asturias?',
+        a: 'S├¡. El contrato privado entre particulares es v├ílido en Principado de Asturias y debe complementarse con la declaraci├│n fiscal correspondiente.',
+      },
+      {
+        q: '┬┐Hace falta notario?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garant├¡a. El contrato privado firmado es ejecutable judicialmente.',
+      },
+    ],
+    meta: {
+      title: 'Pr├®stamo particulares Asturias desde 130Ôé¼',
+      description:
+        '┬┐Prestas o recibes dinero entre particulares en Asturias? Contrato profesional, nota fiscal y Modelo 600. 130Ôé¼ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares asturias, prestamo entre familiares asturias, prestamo privado asturias hacienda, modelo 600 prestamo',
+      ogTitle: 'Contrato Pr├®stamo entre Particulares Asturias ÔÇö 130Ôé¼',
+      ogDescription: 'Formaliza pr├®stamos privados en Asturias con gestor asignado. 130Ôé¼ IVA incluido.',
+    },
+  },
+
+  santander: {
+    slug: 'santander',
+    nombre: 'Santander',
+    region: 'Cantabria',
+    testimoniosLanding: 'prestamo-particulares-santander',
+    heroImage: getCiudadImage('santander').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario ┬À Pr├®stamos entre particulares en Santander',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora pr├®stamos privados en Santander y Cantabria. Entrada de vivienda entre familiares, Modelo 600 ante Hacienda de Cantabria y contratos ejecutables sin donaci├│n encubierta.',
+      especialidades: ['Pr├®stamos familiares vivienda', 'Modelo 600', 'Pr├®stamos sin inter├®s (0 %)'],
+    },
+    mercadoIntro:
+      'En Santander es habitual que familiares presten capital para la entrada de un piso o reforma. Sin contrato escrito, Hacienda puede reclasificar transferencias como donaci├│n.',
+    fiscalIntro:
+      'El pr├®stamo entre particulares debe formalizarse y declararse (Modelo 600, ITP). Tu gestor explica el tratamiento fiscal en Cantabria.',
+    situacionesIntro: 'Pr├®stamos privados que formalizamos en Santander y Cantabria:',
+    situaciones: [
+      'Pr├®stamo familiar para comprar piso',
+      'Pr├®stamo entre socios o aut├│nomos',
+      'Pr├®stamo para reforma del inmueble',
+      'Pr├®stamo sin intereses entre familiares',
+    ],
+    zonasIntro: 'Cobertura en Santander y Cantabria. Servicio 100 % online.',
+    zonas: ['Centro', 'Ensanche', 'Zona residencial', '├ürea metropolitana'],
+    paraQuienExtra: [
+      'Familias que prestan dinero para entrada sin hipoteca bancaria',
+      'Prestamistas que necesitan cl├íusulas de impago claras',
+    ],
+    faqExtra: [
+      {
+        q: '┬┐El contrato de pr├®stamo es v├ílido en Santander?',
+        a: 'S├¡. El contrato privado entre particulares es v├ílido en Cantabria y debe complementarse con la declaraci├│n fiscal correspondiente.',
+      },
+      {
+        q: '┬┐Hace falta notario?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garant├¡a. El contrato privado firmado es ejecutable judicialmente.',
+      },
+    ],
+    meta: {
+      title: 'Pr├®stamo particulares Santander desde 130Ôé¼',
+      description:
+        '┬┐Prestas o recibes dinero entre particulares en Santander? Contrato profesional, nota fiscal y Modelo 600. 130Ôé¼ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares santander, prestamo entre familiares santander, prestamo privado santander hacienda, modelo 600 prestamo',
+      ogTitle: 'Contrato Pr├®stamo entre Particulares Santander ÔÇö 130Ôé¼',
+      ogDescription: 'Formaliza pr├®stamos privados en Santander con gestor asignado. 130Ôé¼ IVA incluido.',
+    },
+  },
+
+  vitoria: {
+    slug: 'vitoria',
+    nombre: 'Vitoria-Gasteiz',
+    region: 'Pa├¡s Vasco',
+    testimoniosLanding: 'prestamo-particulares-vitoria',
+    heroImage: getCiudadImage('vitoria').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario ┬À Pr├®stamos entre particulares en Vitoria-Gasteiz',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora pr├®stamos privados en Vitoria-Gasteiz y ├ülava. Entrada de vivienda entre familiares, Modelo 600 ante Hacienda Foral de ├ülava y contratos ejecutables sin donaci├│n encubierta.',
+      especialidades: ['Pr├®stamos familiares vivienda', 'Modelo 600', 'Pr├®stamos sin inter├®s (0 %)'],
+    },
+    mercadoIntro:
+      'En Vitoria-Gasteiz es habitual que familiares presten capital para la entrada de un piso o reforma. Sin contrato escrito, Hacienda puede reclasificar transferencias como donaci├│n.',
+    fiscalIntro:
+      'El pr├®stamo entre particulares debe formalizarse y declararse (Modelo 600, ITP). Tu gestor explica el tratamiento fiscal en Pa├¡s Vasco.',
+    situacionesIntro: 'Pr├®stamos privados que formalizamos en Vitoria-Gasteiz y ├ülava:',
+    situaciones: [
+      'Pr├®stamo familiar para comprar piso',
+      'Pr├®stamo entre socios o aut├│nomos',
+      'Pr├®stamo para reforma del inmueble',
+      'Pr├®stamo sin intereses entre familiares',
+    ],
+    zonasIntro: 'Cobertura en Vitoria-Gasteiz y ├ülava. Servicio 100 % online.',
+    zonas: ['Centro', 'Ensanche', 'Zona residencial', '├ürea metropolitana'],
+    paraQuienExtra: [
+      'Familias que prestan dinero para entrada sin hipoteca bancaria',
+      'Prestamistas que necesitan cl├íusulas de impago claras',
+    ],
+    faqExtra: [
+      {
+        q: '┬┐El contrato de pr├®stamo es v├ílido en Vitoria-Gasteiz?',
+        a: 'S├¡. El contrato privado entre particulares es v├ílido en Pa├¡s Vasco y debe complementarse con la declaraci├│n fiscal correspondiente.',
+      },
+      {
+        q: '┬┐Hace falta notario?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garant├¡a. El contrato privado firmado es ejecutable judicialmente.',
+      },
+    ],
+    meta: {
+      title: 'Pr├®stamo particulares Vitoria-Gasteiz desde 130Ôé¼',
+      description:
+        '┬┐Prestas o recibes dinero entre particulares en Vitoria-Gasteiz? Contrato profesional, nota fiscal y Modelo 600. 130Ôé¼ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares vitoria, prestamo entre familiares vitoria, prestamo privado vitoria hacienda, modelo 600 prestamo',
+      ogTitle: 'Contrato Pr├®stamo entre Particulares Vitoria-Gasteiz ÔÇö 130Ôé¼',
+      ogDescription: 'Formaliza pr├®stamos privados en Vitoria-Gasteiz con gestor asignado. 130Ôé¼ IVA incluido.',
+    },
+  },
+
+  'san-sebastian': {
+    slug: 'san-sebastian',
+    nombre: 'San Sebasti├ín',
+    region: 'Pa├¡s Vasco',
+    testimoniosLanding: 'prestamo-particulares-san-sebastian',
+    heroImage: getCiudadImage('san-sebastian').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario ┬À Pr├®stamos entre particulares en San Sebasti├ín',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Asesora pr├®stamos privados en San Sebasti├ín y Gipuzkoa. Entrada de vivienda entre familiares, Modelo 600 ante Hacienda Foral de Gipuzkoa y contratos ejecutables sin donaci├│n encubierta.',
+      especialidades: ['Pr├®stamos familiares vivienda', 'Modelo 600', 'Pr├®stamos sin inter├®s (0 %)'],
+    },
+    mercadoIntro:
+      'En San Sebasti├ín es habitual que familiares presten capital para la entrada de un piso o reforma. Sin contrato escrito, Hacienda puede reclasificar transferencias como donaci├│n.',
+    fiscalIntro:
+      'El pr├®stamo entre particulares debe formalizarse y declararse (Modelo 600, ITP). Tu gestor explica el tratamiento fiscal en Pa├¡s Vasco.',
+    situacionesIntro: 'Pr├®stamos privados que formalizamos en San Sebasti├ín y Gipuzkoa:',
+    situaciones: [
+      'Pr├®stamo familiar para comprar piso',
+      'Pr├®stamo entre socios o aut├│nomos',
+      'Pr├®stamo para reforma del inmueble',
+      'Pr├®stamo sin intereses entre familiares',
+    ],
+    zonasIntro: 'Cobertura en San Sebasti├ín y Gipuzkoa. Servicio 100 % online.',
+    zonas: ['Centro', 'Ensanche', 'Zona residencial', '├ürea metropolitana'],
+    paraQuienExtra: [
+      'Familias que prestan dinero para entrada sin hipoteca bancaria',
+      'Prestamistas que necesitan cl├íusulas de impago claras',
+    ],
+    faqExtra: [
+      {
+        q: '┬┐El contrato de pr├®stamo es v├ílido en San Sebasti├ín?',
+        a: 'S├¡. El contrato privado entre particulares es v├ílido en Pa├¡s Vasco y debe complementarse con la declaraci├│n fiscal correspondiente.',
+      },
+      {
+        q: '┬┐Hace falta notario?',
+        a: 'No es obligatorio para importes habituales sin hipoteca como garant├¡a. El contrato privado firmado es ejecutable judicialmente.',
+      },
+    ],
+    meta: {
+      title: 'Pr├®stamo particulares San Sebasti├ín desde 130Ôé¼',
+      description:
+        '┬┐Prestas o recibes dinero entre particulares en San Sebasti├ín? Contrato profesional, nota fiscal y Modelo 600. 130Ôé¼ IVA incluido.',
+      keywords:
+        'contrato prestamo entre particulares san-sebastian, prestamo entre familiares san-sebastian, prestamo privado san-sebastian hacienda, modelo 600 prestamo',
+      ogTitle: 'Contrato Pr├®stamo entre Particulares San Sebasti├ín ÔÇö 130Ôé¼',
+      ogDescription: 'Formaliza pr├®stamos privados en San Sebasti├ín con gestor asignado. 130Ôé¼ IVA incluido.',
     },
   },
 }

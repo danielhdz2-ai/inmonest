@@ -48,6 +48,10 @@ export const ALQUILER_LOCAL_CIUDADES_LIST = [
   { slug: 'pamplona', nombre: 'Pamplona' },
   { slug: 'mallorca', nombre: 'Mallorca' },
   { slug: 'salamanca', nombre: 'Salamanca' },
+  { slug: 'asturias', nombre: 'Asturias' },
+  { slug: 'santander', nombre: 'Santander' },
+  { slug: 'vitoria', nombre: 'Vitoria-Gasteiz' },
+  { slug: 'san-sebastian', nombre: 'San Sebastián' },
 ] as const
 
 export const ALQUILER_LOCAL_COMERCIAL_CIUDADES: Record<string, AlquilerLocalComercialCiudadConfig> = {
@@ -807,8 +811,181 @@ export const ALQUILER_LOCAL_COMERCIAL_CIUDADES: Record<string, AlquilerLocalCome
       ogDescription: 'Locales comerciales en Salamanca entre particulares. Gestoría Inmonest sin comisión de agencia.',
     },
   },
+asturias: {
+    slug: 'asturias',
+    nombre: 'Asturias',
+    region: 'Principado de Asturias',
+    testimoniosLanding: 'alquiler-local-comercial-asturias',
+    heroImage: getCiudadImage('asturias').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      rol: 'Gestor inmobiliario ┬À Locales comerciales en Asturias',
+      bio: 'Asesora alquileres de local entre particulares en Asturias. Licencias del Ayuntamiento de Oviedo / Gij├│n, cl├íusulas LAU empresarial y tanteo ante venta.',
+    },
+    mercadoIntro:
+      'Propietarios particulares alquilan bajos comerciales en Asturias sin contrato LAU empresarial y asumen riesgos en obras, IAE y devoluci├│n de local.',
+    zonasIntro: 'Servicio en Asturias capital y ├írea metropolitana.',
+    zonas: ['Centro', 'Ensanche', 'Pol├¡gono comercial', 'Zona residencial-comercial'],
+    rentaEjemploMensual: 850,
+    localesGestionados: 8,
+    paraQuienExtra: [
+      'Propietarios de bajos comerciales sin agencia',
+      'Aut├│nomos que formalizan arrendamiento de local',
+    ],
+    faqExtra: [
+      {
+        q: '┬┐El contrato cubre locales entre particulares en Asturias?',
+        a: 'S├¡. Redactamos contrato LAU de local conforme al T├¡tulo III, con cl├íusulas de renta, obras y devoluci├│n.',
+      },
+    ],
+    regulacionLocal: [
+      'Licencia de actividad ÔÇö Ayuntamiento de Oviedo / Gij├│n',
+      'IAE seg├║n ep├¡grafe del arrendatario',
+      'Registro de la Propiedad si aplica por renta anual',
+    ],
+    meta: {
+      title: 'Contrato alquiler local comercial Asturias desde 145Ôé¼',
+      description:
+        'Alquiler de local comercial en Asturias entre particulares. 145Ôé¼ IVA incl. Entrega 48h.',
+      keywords:
+        'contrato alquiler local comercial asturias, alquilar local asturias, arrendamiento local asturias',
+      ogTitle: 'Alquiler Local Comercial Asturias ÔÇö 145Ôé¼',
+      ogDescription: 'Locales comerciales en Asturias entre particulares. Gestor├¡a Inmonest.',
+    },
+  },
 
+  santander: {
+    slug: 'santander',
+    nombre: 'Santander',
+    region: 'Cantabria',
+    testimoniosLanding: 'alquiler-local-comercial-santander',
+    heroImage: getCiudadImage('santander').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      rol: 'Gestor inmobiliario ┬À Locales comerciales en Santander',
+      bio: 'Asesora alquileres de local entre particulares en Santander. Licencias del Ayuntamiento de Santander, cl├íusulas LAU empresarial y tanteo ante venta.',
+    },
+    mercadoIntro:
+      'Propietarios particulares alquilan bajos comerciales en Santander sin contrato LAU empresarial y asumen riesgos en obras, IAE y devoluci├│n de local.',
+    zonasIntro: 'Servicio en Santander capital y ├írea metropolitana.',
+    zonas: ['Centro', 'Ensanche', 'Pol├¡gono comercial', 'Zona residencial-comercial'],
+    rentaEjemploMensual: 850,
+    localesGestionados: 8,
+    paraQuienExtra: [
+      'Propietarios de bajos comerciales sin agencia',
+      'Aut├│nomos que formalizan arrendamiento de local',
+    ],
+    faqExtra: [
+      {
+        q: '┬┐El contrato cubre locales entre particulares en Santander?',
+        a: 'S├¡. Redactamos contrato LAU de local conforme al T├¡tulo III, con cl├íusulas de renta, obras y devoluci├│n.',
+      },
+    ],
+    regulacionLocal: [
+      'Licencia de actividad ÔÇö Ayuntamiento de Santander',
+      'IAE seg├║n ep├¡grafe del arrendatario',
+      'Registro de la Propiedad si aplica por renta anual',
+    ],
+    meta: {
+      title: 'Contrato alquiler local comercial Santander desde 145Ôé¼',
+      description:
+        'Alquiler de local comercial en Santander entre particulares. 145Ôé¼ IVA incl. Entrega 48h.',
+      keywords:
+        'contrato alquiler local comercial santander, alquilar local santander, arrendamiento local santander',
+      ogTitle: 'Alquiler Local Comercial Santander ÔÇö 145Ôé¼',
+      ogDescription: 'Locales comerciales en Santander entre particulares. Gestor├¡a Inmonest.',
+    },
+  },
 
+  vitoria: {
+    slug: 'vitoria',
+    nombre: 'Vitoria-Gasteiz',
+    region: 'Pa├¡s Vasco',
+    testimoniosLanding: 'alquiler-local-comercial-vitoria',
+    heroImage: getCiudadImage('vitoria').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      rol: 'Gestor inmobiliario ┬À Locales comerciales en Vitoria-Gasteiz',
+      bio: 'Asesora alquileres de local entre particulares en Vitoria-Gasteiz. Licencias del Ayuntamiento de Vitoria-Gasteiz, cl├íusulas LAU empresarial y tanteo ante venta.',
+    },
+    mercadoIntro:
+      'Propietarios particulares alquilan bajos comerciales en Vitoria-Gasteiz sin contrato LAU empresarial y asumen riesgos en obras, IAE y devoluci├│n de local.',
+    zonasIntro: 'Servicio en Vitoria-Gasteiz capital y ├írea metropolitana.',
+    zonas: ['Centro', 'Ensanche', 'Pol├¡gono comercial', 'Zona residencial-comercial'],
+    rentaEjemploMensual: 850,
+    localesGestionados: 8,
+    paraQuienExtra: [
+      'Propietarios de bajos comerciales sin agencia',
+      'Aut├│nomos que formalizan arrendamiento de local',
+    ],
+    faqExtra: [
+      {
+        q: '┬┐El contrato cubre locales entre particulares en Vitoria-Gasteiz?',
+        a: 'S├¡. Redactamos contrato LAU de local conforme al T├¡tulo III, con cl├íusulas de renta, obras y devoluci├│n.',
+      },
+    ],
+    regulacionLocal: [
+      'Licencia de actividad ÔÇö Ayuntamiento de Vitoria-Gasteiz',
+      'IAE seg├║n ep├¡grafe del arrendatario',
+      'Registro de la Propiedad si aplica por renta anual',
+    ],
+    meta: {
+      title: 'Contrato alquiler local comercial Vitoria-Gasteiz desde 145Ôé¼',
+      description:
+        'Alquiler de local comercial en Vitoria-Gasteiz entre particulares. 145Ôé¼ IVA incl. Entrega 48h.',
+      keywords:
+        'contrato alquiler local comercial vitoria, alquilar local vitoria, arrendamiento local vitoria',
+      ogTitle: 'Alquiler Local Comercial Vitoria-Gasteiz ÔÇö 145Ôé¼',
+      ogDescription: 'Locales comerciales en Vitoria-Gasteiz entre particulares. Gestor├¡a Inmonest.',
+    },
+  },
+
+  'san-sebastian': {
+    slug: 'san-sebastian',
+    nombre: 'San Sebasti├ín',
+    region: 'Pa├¡s Vasco',
+    testimoniosLanding: 'alquiler-local-comercial-san-sebastian',
+    heroImage: getCiudadImage('san-sebastian').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      rol: 'Gestor inmobiliario ┬À Locales comerciales en San Sebasti├ín',
+      bio: 'Asesora alquileres de local entre particulares en San Sebasti├ín. Licencias del Ayuntamiento de San Sebasti├ín, cl├íusulas LAU empresarial y tanteo ante venta.',
+    },
+    mercadoIntro:
+      'Propietarios particulares alquilan bajos comerciales en San Sebasti├ín sin contrato LAU empresarial y asumen riesgos en obras, IAE y devoluci├│n de local.',
+    zonasIntro: 'Servicio en San Sebasti├ín capital y ├írea metropolitana.',
+    zonas: ['Centro', 'Ensanche', 'Pol├¡gono comercial', 'Zona residencial-comercial'],
+    rentaEjemploMensual: 850,
+    localesGestionados: 8,
+    paraQuienExtra: [
+      'Propietarios de bajos comerciales sin agencia',
+      'Aut├│nomos que formalizan arrendamiento de local',
+    ],
+    faqExtra: [
+      {
+        q: '┬┐El contrato cubre locales entre particulares en San Sebasti├ín?',
+        a: 'S├¡. Redactamos contrato LAU de local conforme al T├¡tulo III, con cl├íusulas de renta, obras y devoluci├│n.',
+      },
+    ],
+    regulacionLocal: [
+      'Licencia de actividad ÔÇö Ayuntamiento de San Sebasti├ín',
+      'IAE seg├║n ep├¡grafe del arrendatario',
+      'Registro de la Propiedad si aplica por renta anual',
+    ],
+    meta: {
+      title: 'Contrato alquiler local comercial San Sebasti├ín desde 145Ôé¼',
+      description:
+        'Alquiler de local comercial en San Sebasti├ín entre particulares. 145Ôé¼ IVA incl. Entrega 48h.',
+      keywords:
+        'contrato alquiler local comercial san-sebastian, alquilar local san-sebastian, arrendamiento local san-sebastian',
+      ogTitle: 'Alquiler Local Comercial San Sebasti├ín ÔÇö 145Ôé¼',
+      ogDescription: 'Locales comerciales en San Sebasti├ín entre particulares. Gestor├¡a Inmonest.',
+    },
+  },
 }
 
 export function buildAlquilerLocalComercialMetadata(

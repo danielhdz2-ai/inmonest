@@ -58,6 +58,10 @@ export const DUE_DILIGENCE_CIUDADES_LIST = [
   { slug: 'valladolid', nombre: 'Valladolid' },
   { slug: 'granada', nombre: 'Granada' },
   { slug: 'mallorca', nombre: 'Mallorca' },
+  { slug: 'asturias', nombre: 'Asturias' },
+  { slug: 'santander', nombre: 'Santander' },
+  { slug: 'vitoria', nombre: 'Vitoria-Gasteiz' },
+  { slug: 'san-sebastian', nombre: 'San Sebastián' },
 ] as const
 
 export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = {
@@ -719,6 +723,162 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
         a: 'Sí. Subes documentación al panel, videollamada con gestor asignado e informe antes de firmar arras. Solo te desplazas a notaría balear para la escritura.',
       },
     ],
+  },
+
+  asturias: {
+    slug: 'asturias',
+    nombre: 'Asturias',
+    region: 'Principado de Asturias',
+    testimoniosLanding: 'due-diligence-asturias',
+    heroImage: getCiudadImage('asturias').src,
+    precioEjemploPiso: 185_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Asturias',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Revisa compras entre particulares en Oviedo, Gijón y Avilés. Nota simple, deudas de comunidad, ITE en edificios antiguos y coherencia documental antes de firmar arras.',
+      especialidades: ['Compras sin agencia', 'Due diligence pre-arras', 'Oviedo y Gijón'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Principado de Asturias',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético',
+      'ITE en edificios de más de 50 años',
+      'Certificado de deudas de comunidad',
+    ],
+    zonasIntro: 'Oviedo, Gijón, Avilés, Langreo y municipios del Principado.',
+    zonas: ['Oviedo Centro', 'El Milán', 'Gijón Centro', 'Cimadevilla', 'Avilés', 'Langreo', 'Mieres'],
+    meta: {
+      title: 'Due diligence compra piso Asturias desde 350€',
+      description:
+        '¿Compras piso de particular en Oviedo o Gijón? Gestor revisa documentación completa antes de la señal. 350€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'due diligence compra piso asturias, comprar piso particular oviedo, revisar documentacion compra gijon, gestor compra vivienda aviles',
+      ogTitle: 'Due Diligence Asturias — 350€',
+      ogDescription: 'Revisión documental para compradores particulares en Asturias.',
+    },
+    hero: {
+      h1: 'Revisión documental antes de comprar piso en Asturias',
+      lead:
+        'Compras de particular a particular en Oviedo, Gijón o la costa? Revisamos nota simple, cargas y comunidad antes de entregar señal. 350€ fijos.',
+    },
+  },
+
+  santander: {
+    slug: 'santander',
+    nombre: 'Santander',
+    region: 'Cantabria',
+    testimoniosLanding: 'due-diligence-santander',
+    heroImage: getCiudadImage('santander').src,
+    precioEjemploPiso: 220_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Cantabria',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en compraventas entre particulares en Santander, El Sardinero y área metropolitana. Revisa cargas, ITE y arras antes de notaría.',
+      especialidades: ['Costa cantábrica', 'Compras sin agencia', 'Informe pre-escritura'],
+    },
+    docTecnicaTitulo: 'Documentación técnica · Cantabria',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético',
+      'ITE en edificios antiguos',
+      'Certificado de deudas de comunidad',
+    ],
+    zonasIntro: 'Santander capital, El Sardinero, Camargo y resto de Cantabria.',
+    zonas: ['Centro', 'El Sardinero', 'Cuatro Caminos', 'Cueto', 'Camargo', 'Torrelavega'],
+    meta: {
+      title: 'Due diligence compra piso Santander desde 350€',
+      description:
+        '¿Compras piso de particular en Santander? Gestor revisa documentación completa. 350€ IVA incl. Sin comisión de agencia.',
+      keywords:
+        'due diligence compra piso santander, comprar piso particular cantabria, revisar documentacion compra sardinero',
+      ogTitle: 'Due Diligence Santander — 350€',
+      ogDescription: 'Revisión documental para compradores particulares en Cantabria.',
+    },
+    hero: {
+      h1: 'Revisión documental antes de comprar piso en Santander',
+      lead:
+        '¿Compras en el centro, El Sardinero o Camargo? Revisamos nota simple, deudas de comunidad e ITE antes de la señal. 350€ fijos.',
+    },
+  },
+
+  vitoria: {
+    slug: 'vitoria',
+    nombre: 'Vitoria-Gasteiz',
+    region: 'País Vasco · Álava',
+    testimoniosLanding: 'due-diligence-vitoria',
+    heroImage: getCiudadImage('vitoria').src,
+    precioEjemploPiso: 240_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Vitoria-Gasteiz',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompaña compradores particulares en Vitoria-Gasteiz y Álava. Normativa foral vasca, revisión registral y documentación técnica antes de escritura.',
+      especialidades: ['Normativa foral vasca', 'Due diligence post-arras', 'Ensanche y Lakua'],
+    },
+    docTecnicaTitulo: 'Documentación técnica y normativa foral vasca',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético actualizado',
+      'ITE / IEE en edificios de más de 50 años',
+      'Licencias de obra y conformidad urbanística',
+    ],
+    zonasIntro: 'Vitoria-Gasteiz, Ensanche, Lakua, Zabalgana y provincia de Álava.',
+    zonas: ['Ensanche', 'Lakua', 'Zabalgana', 'Casco Medieval', 'Salburua', 'Armentia'],
+    meta: {
+      title: 'Due diligence compra piso Vitoria-Gasteiz desde 350€',
+      description:
+        '¿Compras piso de particular en Vitoria? Gestor revisa cargas, foral y comunidad. 350€ IVA incl. Sin comisión 3-5%.',
+      keywords:
+        'due diligence compra piso vitoria, comprar piso particular alava, revisar documentacion compra vitoria gasteiz',
+      ogTitle: 'Due Diligence Vitoria — 350€',
+      ogDescription: 'Revisión documental para compradores particulares en Álava.',
+    },
+    hero: {
+      h1: 'Revisión documental antes de comprar piso en Vitoria-Gasteiz',
+      lead:
+        'Compras de particular a particular en el Ensanche o Lakua? Revisamos nota simple y documentación foral antes de firmar arras. 350€ fijos.',
+    },
+  },
+
+  'san-sebastian': {
+    slug: 'san-sebastian',
+    nombre: 'San Sebastián',
+    region: 'País Vasco · Gipuzkoa',
+    testimoniosLanding: 'due-diligence-san-sebastian',
+    heroImage: getCiudadImage('san-sebastian').src,
+    precioEjemploPiso: 380_000,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario · Compras en Donostia',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Especialista en compraventas entre particulares en San Sebastián y Gipuzkoa. Mercado tensionado: revisión rigurosa de cargas, foral y plazos antes de la señal.',
+      especialidades: ['Donostia y Gros', 'Normativa foral vasca', 'Compras sin agencia'],
+    },
+    docTecnicaTitulo: 'Documentación técnica y normativa foral vasca',
+    docTecnicaItems: [
+      'Cédula de habitabilidad vigente',
+      'Certificado energético actualizado',
+      'ITE en edificios del casco histórico',
+      'Certificado de deudas de comunidad',
+    ],
+    zonasIntro: 'Donostia-San Sebastián, Gros, Amara, Antiguo e Irun.',
+    zonas: ['Centro', 'Gros', 'Antiguo', 'Amara', 'Egia', 'Intxaurrondo', 'Irun'],
+    meta: {
+      title: 'Due diligence compra piso San Sebastián desde 350€',
+      description:
+        '¿Compras piso de particular en Donostia? Gestor revisa documentación foral y cargas. 350€ IVA incl. Sin comisión de agencia.',
+      keywords:
+        'due diligence compra piso san sebastian, comprar piso particular donostia, revisar documentacion compra gros',
+      ogTitle: 'Due Diligence San Sebastián — 350€',
+      ogDescription: 'Revisión documental para compradores particulares en Gipuzkoa.',
+    },
+    hero: {
+      h1: 'Revisión documental antes de comprar piso en San Sebastián',
+      lead:
+        '¿Compras en Gros, Centro o Amara? Revisamos nota simple, comunidad y normativa vasca antes de entregar señal. 350€ fijos.',
+    },
   },
 }
 

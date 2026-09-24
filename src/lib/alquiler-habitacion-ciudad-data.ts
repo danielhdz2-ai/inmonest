@@ -53,6 +53,9 @@ export const ALQUILER_HABITACION_CIUDADES_LIST = [
   { slug: 'mallorca', nombre: 'Mallorca' },
   { slug: 'murcia', nombre: 'Murcia' },
   { slug: 'valladolid', nombre: 'Valladolid' },
+  { slug: 'santander', nombre: 'Santander' },
+  { slug: 'vitoria', nombre: 'Vitoria-Gasteiz' },
+  { slug: 'san-sebastian', nombre: 'San Sebastián' },
 ] as const
 
 export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiudadConfig> = {
@@ -471,6 +474,122 @@ export const ALQUILER_HABITACION_CIUDADES: Record<string, AlquilerHabitacionCiud
       ogTitle: 'Contrato Alquiler Habitación Asturias — 120€ con asesor experto',
       ogDescription:
         'Particulares que alquilan habitaciones en Oviedo, Gijón y Asturias. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
+    },
+  },
+santander: {
+    slug: 'santander',
+    nombre: 'Santander',
+    region: 'Cantabria',
+    testimoniosLanding: 'alquiler-habitacion-santander',
+    heroImage: getCiudadImage('santander').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario ┬À Alquiler de habitaciones en Santander',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompa├▒a propietarios que alquilan habitaciones en piso compartido en Santander. Contratos conforme al C├│digo Civil con normas de convivencia v├ílidas.',
+      especialidades: ['Pisos compartidos', 'Estudiantes y profesionales', 'Contratos entre particulares'],
+    },
+    mercadoIntro:
+      'El alquiler de habitaci├│n entre particulares en Santander exige contrato escrito: fianza, convivencia e impagos mal gestionados generan conflictos largos.',
+    zonasIntro: 'Cobertura en Santander y ├írea metropolitana.',
+    zonas: ['Centro', 'Ensanche', 'Zona universitaria', 'Barrio residencial'],
+    paraQuienExtra: [
+      'Propietarios con varias habitaciones en el mismo piso',
+      'Quien alquila habitaciones sin contrato LAU de piso entero',
+    ],
+    faqExtra: [
+      {
+        q: '┬┐El contrato de habitaci├│n es v├ílido en Santander?',
+        a: 'S├¡. El arrendamiento de habitaci├│n se rige por el C├│digo Civil. Si alquilas el piso completo, necesitas contrato LAU (145Ôé¼).',
+      },
+    ],
+    enlaceContratoLau: '/santander/contrato-alquiler',
+    meta: {
+      title: 'Contrato alquiler habitaci├│n Santander desde 120Ôé¼',
+      description:
+        '┬┐Alquilas una habitaci├│n en Santander? Contrato profesional para particulares. 120Ôé¼ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion santander, alquilar habitacion santander, piso compartido santander contrato',
+      ogTitle: 'Contrato Alquiler Habitaci├│n Santander ÔÇö 120Ôé¼',
+      ogDescription: 'Particulares que alquilan habitaciones en Santander. Entrega en 48h.',
+    },
+  },
+
+  vitoria: {
+    slug: 'vitoria',
+    nombre: 'Vitoria-Gasteiz',
+    region: 'Pa├¡s Vasco',
+    testimoniosLanding: 'alquiler-habitacion-vitoria',
+    heroImage: getCiudadImage('vitoria').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario ┬À Alquiler de habitaciones en Vitoria-Gasteiz',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompa├▒a propietarios que alquilan habitaciones en piso compartido en Vitoria-Gasteiz. Contratos conforme al C├│digo Civil con normas de convivencia v├ílidas.',
+      especialidades: ['Pisos compartidos', 'Estudiantes y profesionales', 'Contratos entre particulares'],
+    },
+    mercadoIntro:
+      'El alquiler de habitaci├│n entre particulares en Vitoria-Gasteiz exige contrato escrito: fianza, convivencia e impagos mal gestionados generan conflictos largos.',
+    zonasIntro: 'Cobertura en Vitoria-Gasteiz y ├írea metropolitana.',
+    zonas: ['Centro', 'Ensanche', 'Zona universitaria', 'Barrio residencial'],
+    paraQuienExtra: [
+      'Propietarios con varias habitaciones en el mismo piso',
+      'Quien alquila habitaciones sin contrato LAU de piso entero',
+    ],
+    faqExtra: [
+      {
+        q: '┬┐El contrato de habitaci├│n es v├ílido en Vitoria-Gasteiz?',
+        a: 'S├¡. El arrendamiento de habitaci├│n se rige por el C├│digo Civil. Si alquilas el piso completo, necesitas contrato LAU (145Ôé¼).',
+      },
+    ],
+    enlaceContratoLau: '/vitoria/contrato-alquiler',
+    meta: {
+      title: 'Contrato alquiler habitaci├│n Vitoria-Gasteiz desde 120Ôé¼',
+      description:
+        '┬┐Alquilas una habitaci├│n en Vitoria-Gasteiz? Contrato profesional para particulares. 120Ôé¼ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion vitoria, alquilar habitacion vitoria, piso compartido vitoria contrato',
+      ogTitle: 'Contrato Alquiler Habitaci├│n Vitoria-Gasteiz ÔÇö 120Ôé¼',
+      ogDescription: 'Particulares que alquilan habitaciones en Vitoria-Gasteiz. Entrega en 48h.',
+    },
+  },
+
+  'san-sebastian': {
+    slug: 'san-sebastian',
+    nombre: 'San Sebasti├ín',
+    region: 'Pa├¡s Vasco',
+    testimoniosLanding: 'alquiler-habitacion-san-sebastian',
+    heroImage: getCiudadImage('san-sebastian').src,
+    gestor: {
+      nombre: GESTOR_DANIEL_HERNANDEZ.nombre,
+      rol: 'Gestor inmobiliario ┬À Alquiler de habitaciones en San Sebasti├ín',
+      foto: GESTOR_DANIEL_HERNANDEZ.foto,
+      bio: 'Acompa├▒a propietarios que alquilan habitaciones en piso compartido en San Sebasti├ín. Contratos conforme al C├│digo Civil con normas de convivencia v├ílidas.',
+      especialidades: ['Pisos compartidos', 'Estudiantes y profesionales', 'Contratos entre particulares'],
+    },
+    mercadoIntro:
+      'El alquiler de habitaci├│n entre particulares en San Sebasti├ín exige contrato escrito: fianza, convivencia e impagos mal gestionados generan conflictos largos.',
+    zonasIntro: 'Cobertura en San Sebasti├ín y ├írea metropolitana.',
+    zonas: ['Centro', 'Ensanche', 'Zona universitaria', 'Barrio residencial'],
+    paraQuienExtra: [
+      'Propietarios con varias habitaciones en el mismo piso',
+      'Quien alquila habitaciones sin contrato LAU de piso entero',
+    ],
+    faqExtra: [
+      {
+        q: '┬┐El contrato de habitaci├│n es v├ílido en San Sebasti├ín?',
+        a: 'S├¡. El arrendamiento de habitaci├│n se rige por el C├│digo Civil. Si alquilas el piso completo, necesitas contrato LAU (145Ôé¼).',
+      },
+    ],
+    enlaceContratoLau: '/san-sebastian/contrato-alquiler',
+    meta: {
+      title: 'Contrato alquiler habitaci├│n San Sebasti├ín desde 120Ôé¼',
+      description:
+        '┬┐Alquilas una habitaci├│n en San Sebasti├ín? Contrato profesional para particulares. 120Ôé¼ IVA incluido.',
+      keywords:
+        'contrato alquiler habitacion san-sebastian, alquilar habitacion san-sebastian, piso compartido san-sebastian contrato',
+      ogTitle: 'Contrato Alquiler Habitaci├│n San Sebasti├ín ÔÇö 120Ôé¼',
+      ogDescription: 'Particulares que alquilan habitaciones en San Sebasti├ín. Entrega en 48h.',
     },
   },
 

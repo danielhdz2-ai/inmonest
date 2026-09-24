@@ -1,7 +1,7 @@
 {
-  "generadoEn": "2026-09-08T06:29:02.757Z",
+  "generadoEn": "2026-09-23T13:37:35.041Z",
   "fuenteGsc": "scripts\\gsc-coverage-urls.csv",
-  "totalInventario": 126,
+  "totalInventario": 211,
   "sinIndexar": [
     {
       "url": "https://inmonest.com/gestoria/prestamo-particulares/zaragoza",
@@ -31,6 +31,11 @@
       "motivo": "Landing nueva — no consta en el último export GSC"
     },
     {
+      "url": "https://inmonest.com/contratos-inmobiliarios/granada",
+      "path": "/contratos-inmobiliarios/granada",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
       "url": "https://inmonest.com/contratos-inmobiliarios/madrid",
       "path": "/contratos-inmobiliarios/madrid",
       "motivo": "Landing nueva — no consta en el último export GSC"
@@ -56,6 +61,11 @@
       "motivo": "Landing nueva — no consta en el último export GSC"
     },
     {
+      "url": "https://inmonest.com/contratos-inmobiliarios/salamanca",
+      "path": "/contratos-inmobiliarios/salamanca",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
       "url": "https://inmonest.com/contratos-inmobiliarios/sevilla",
       "path": "/contratos-inmobiliarios/sevilla",
       "motivo": "Landing nueva — no consta en el último export GSC"
@@ -63,6 +73,11 @@
     {
       "url": "https://inmonest.com/contratos-inmobiliarios/valencia",
       "path": "/contratos-inmobiliarios/valencia",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/contratos-inmobiliarios/valladolid",
+      "path": "/contratos-inmobiliarios/valladolid",
       "motivo": "Landing nueva — no consta en el último export GSC"
     },
     {
@@ -142,5 +157,5 @@
       "issue": "No se ha encontrado (404)"
     }
   ],
-  "probablementeIndexadas": 100
+  "probablementeIndexadas": 182
 }

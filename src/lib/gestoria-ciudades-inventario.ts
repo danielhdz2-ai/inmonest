@@ -180,7 +180,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Due Diligence Pre-Compra',
     precioSlug: 'pack-due-diligence-precompra',
     href: (c) => `/gestoria/due-diligence-precompra/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'coruna', 'alicante', 'murcia', 'pamplona', 'salamanca', 'valladolid', 'granada', 'mallorca'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'coruna', 'alicante', 'murcia', 'pamplona', 'salamanca', 'valladolid', 'granada', 'mallorca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
     id: 'pack-arras-documental',
@@ -211,6 +211,9 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
       'mallorca',
       'murcia',
       'valladolid',
+      'santander',
+      'vitoria',
+      'san-sebastian',
     ],
   },
   {
@@ -218,14 +221,14 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Alquiler Local Comercial',
     precioSlug: 'alquiler-local-comercial',
     href: (c) => `/gestoria/alquiler-local-comercial/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante', 'murcia', 'granada', 'coruna', 'pamplona', 'mallorca', 'salamanca'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante', 'murcia', 'granada', 'coruna', 'pamplona', 'mallorca', 'salamanca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
     id: 'prestamo-particulares',
     nombre: 'Préstamo entre Particulares',
     precioSlug: 'prestamo-particulares',
     href: (c) => `/gestoria/prestamo-particulares/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'mallorca', 'valladolid', 'alicante', 'murcia', 'granada', 'coruna', 'pamplona', 'salamanca'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'mallorca', 'valladolid', 'alicante', 'murcia', 'granada', 'coruna', 'pamplona', 'salamanca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
     id: 'alquiler-particulares',
