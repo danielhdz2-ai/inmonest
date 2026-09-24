@@ -3,7 +3,11 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
-import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
+import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
+import GestoriaArrasModulosCompletos, {
+  GestoriaArrasTramiteOnlineSection,
+} from '@/components/GestoriaArrasModulosCompletos'
+import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
 import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
@@ -12,7 +16,6 @@ import { getCiudadImage } from '@/lib/gestoria-images'
 import type { ContratoArrasPremiumConfig } from '@/lib/contrato-arras-premium-config'
 import {
   CONTRATO_ARRAS_PREMIUM_INCLUDES,
-  CONTRATO_ARRAS_PREMIUM_PASOS,
   CONTRATO_ARRAS_PREMIUM_PRECIO,
 } from '@/lib/contrato-arras-premium-config'
 
@@ -91,10 +94,11 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
           <h1 className="text-3xl sm:text-4xl font-extrabold text-white mb-3 max-w-2xl leading-tight">
             Contrato de arras en {config.nombre} desde {precio}€
           </h1>
-          <p className="text-white/90 text-lg sm:text-xl max-w-xl mb-5 font-medium">
+          <p className="text-white/90 text-lg sm:text-xl max-w-xl mb-3 font-medium">
             Arras penitenciales personalizadas, entrega en <strong className="text-gold-500">48 h</strong>. Precio
             cerrado <strong className="text-gold-500">{precio} €</strong> IVA incluido. Habla primero con un gestor.
           </p>
+          <GestoriaTramiteOnlineNote variant="hero-dark" className="mb-5 max-w-xl" />
           <div className="flex flex-wrap items-center gap-3 mb-4">
             <div>
               <span className="text-3xl font-bold text-gold-500">{precio} €</span>
@@ -117,6 +121,12 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
           </div>
         </div>
       </section>
+
+      <GestoriaArrasTramiteOnlineSection
+        ciudadNombre={config.nombre}
+        panelAnchorId="panel-gestoria-arras"
+        variant="penitenciales"
+      />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -184,8 +194,6 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
           </div>
         </section>
 
-        <ComoTrabajamosContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="arras" />
-
         <BarriosCiudadContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="arras" />
 
         <CalculadoraAhorroContrato
@@ -206,26 +214,16 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
             ))}
           </div>
         </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">¿Cómo funciona la redacción?</h2>
-          <div className="space-y-6">
-            {CONTRATO_ARRAS_PREMIUM_PASOS.map((paso) => (
-              <div key={paso.num} className="flex gap-6">
-                <div className="shrink-0">
-                  <div className="w-14 h-14 rounded-full bg-gold-500 flex items-center justify-center text-white font-bold text-lg">
-                    {paso.num}
-                  </div>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 text-lg mb-1">{paso.titulo}</h3>
-                  <p className="text-gray-600">{paso.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
       </div>
+
+      <GestoriaArrasModulosCompletos
+        variant="penitenciales"
+        ciudadNombre={config.nombre}
+        ciudadSlug={config.slug}
+        solicitarHref={solicitarHref}
+        panelAnchorId="panel-gestoria-arras"
+        partes={{ tramiteOnline: false }}
+      />
 
       <GestoriaLandingExtras
         servicio="arras-penitenciales"
@@ -265,6 +263,8 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
         phase="footer"
         className="max-w-5xl mx-auto px-4 sm:px-6"
       />
+
+      <GestoriaLandingCiudadesGrid landingId="contrato-arras" currentCiudadSlug={config.slug} />
 
       <CiudadHubServiciosGrid
         ciudad={config.nombre}

@@ -18,7 +18,9 @@ import { precioLabel } from '@/lib/gestoria-precios-ui'
 import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
 import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 import GestoriaCiudadServiciosYPanel from '@/components/GestoriaCiudadServiciosYPanel'
-import ContratosComoFuncionaSection from '@/components/contratos/ContratosComoFuncionaSection'
+import GestoriaAlquilerModulosCompletos, {
+  GestoriaAlquilerTramiteOnlineSection,
+} from '@/components/GestoriaAlquilerModulosCompletos'
 
 const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
@@ -258,6 +260,12 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
         </div>
       </section>
 
+      <GestoriaAlquilerTramiteOnlineSection
+        ciudadNombre={nombre}
+        panelAnchorId="panel-gestoria-habitacion"
+        variant="habitacion"
+      />
+
       <section className="py-16 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Mercado de habitaciones en {nombre}</h2>
@@ -301,19 +309,20 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
         </div>
       </section>
 
+      <GestoriaAlquilerModulosCompletos
+        variant="habitacion"
+        ciudadNombre={nombre}
+        ciudadSlug={slug}
+        solicitarHref={SOLICITAR_URL}
+        panelAnchorId="panel-gestoria-habitacion"
+        partes={{ tramiteOnline: false }}
+      />
+
       <GestoriaCiudadServiciosYPanel
         ciudadNombre={nombre}
         ciudadSlug={slug}
         sectionIntro={`Además del contrato de habitación por ${ALQUILER_HABITACION_PRECIO}€, en ${nombre} puedes contratar arras, alquiler LAU, compra, venta y pack vendedor con precio cerrado, panel de seguimiento y gestor asignado.`}
       />
-
-      <section className="py-10 px-4 bg-slate-50 border-y border-gray-200">
-        <div className="max-w-3xl mx-auto">
-          <GestoriaTramiteOnlineNote variant="banner" />
-        </div>
-      </section>
-
-      <ContratosComoFuncionaSection ciudadNombre={nombre} region={region} />
 
       <section className="py-16 px-4 bg-white border-y border-gray-200">
         <div className="max-w-5xl mx-auto">

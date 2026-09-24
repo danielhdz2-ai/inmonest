@@ -7,6 +7,16 @@ import GestoriaHeroFullBleed from '@/components/GestoriaHeroFullBleed'
 import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getServicioImages } from '@/lib/gestoria-images'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
+import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
+import GestoriaAlquilerModulosCompletos, {
+  GestoriaAlquilerTramiteOnlineSection,
+} from '@/components/GestoriaAlquilerModulosCompletos'
+import { servicioSlugToAlquilerVariant } from '@/lib/alquiler-contrato-servicio-registry'
+import GestoriaArrasModulosCompletos, {
+  GestoriaArrasTramiteOnlineSection,
+} from '@/components/GestoriaArrasModulosCompletos'
+import { servicioSlugToArrasVariant } from '@/lib/arras-contrato-servicio-registry'
+import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaBlindajeOperacion from '@/components/GestoriaBlindajeOperacion'
 import ComoTrabajamosGestoria from '@/components/ComoTrabajamosGestoria'
@@ -928,6 +938,17 @@ export default async function ServicioGestoriaPage({
   })
 
   const incluye = withFirmaCertIncluido(data.incluye)
+  const alquilerVariant = servicioSlugToAlquilerVariant(servicio)
+  const alquilerPanelId =
+    alquilerVariant === 'temporada'
+      ? 'panel-gestoria-temporada'
+      : alquilerVariant === 'habitacion'
+        ? 'panel-gestoria-habitacion'
+        : 'panel-gestoria-lau'
+  const arrasVariant = servicioSlugToArrasVariant(servicio)
+  const arrasPanelId =
+    arrasVariant === 'confirmatorias' ? 'panel-gestoria-arras-confirmatorias' : 'panel-gestoria-arras'
+  const showTramiteOnlineNote = Boolean(alquilerVariant || arrasVariant)
 
   return (
     <>
@@ -954,6 +975,9 @@ export default async function ServicioGestoriaPage({
           </span>
           <h1 className="mb-5 text-3xl font-extrabold leading-tight sm:text-4xl lg:text-5xl">{data.nombre}</h1>
           <p className="mb-6 max-w-2xl text-base leading-relaxed text-white/85 sm:text-lg">{data.tagline}</p>
+          {showTramiteOnlineNote ? (
+            <GestoriaTramiteOnlineNote variant="hero-dark" className="mb-5 max-w-xl" />
+          ) : null}
           <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2">
             <span className="text-3xl font-bold text-gold-400 sm:text-4xl">{data.precio} €</span>
             <span className="text-xs text-white/55">IVA incluido</span>
@@ -977,6 +1001,21 @@ export default async function ServicioGestoriaPage({
           </div>
         </div>
       </GestoriaHeroFullBleed>
+
+      {alquilerVariant ? (
+        <GestoriaAlquilerTramiteOnlineSection
+          ciudadNombre="toda España"
+          panelAnchorId={alquilerPanelId}
+          variant={alquilerVariant}
+        />
+      ) : null}
+      {arrasVariant ? (
+        <GestoriaArrasTramiteOnlineSection
+          ciudadNombre="toda España"
+          panelAnchorId={arrasPanelId}
+          variant={arrasVariant}
+        />
+      ) : null}
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-12 space-y-16">
 
@@ -1038,6 +1077,30 @@ export default async function ServicioGestoriaPage({
           </div>
         </section>
 
+        {alquilerVariant ? (
+          <GestoriaAlquilerModulosCompletos
+            variant={alquilerVariant}
+            ciudadNombre="toda España"
+            solicitarHref={`/gestoria/solicitar/${servicio}`}
+            panelAnchorId={alquilerPanelId}
+            partes={{ tramiteOnline: false }}
+          />
+        ) : null}
+
+        {arrasVariant ? (
+          <GestoriaArrasModulosCompletos
+            variant={arrasVariant}
+            ciudadNombre="toda España"
+            solicitarHref={`/gestoria/solicitar/${servicio}`}
+            panelAnchorId={arrasPanelId}
+            partes={{ tramiteOnline: false }}
+          />
+        ) : null}
+
+        {arrasVariant === 'penitenciales' ? (
+          <GestoriaLandingCiudadesGrid landingId="contrato-arras" />
+        ) : null}
+
         {/* ── QUÉ INCLUYE ──────────────────────────────────────────────── */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">¿Qué incluye el servicio?</h2>
@@ -1078,7 +1141,9 @@ export default async function ServicioGestoriaPage({
           phase="contact"
         />
 
-        <GestoriaPanelShowcase servicioLabel={data.nombre.toLowerCase()} />
+        {!alquilerVariant && !arrasVariant ? (
+          <GestoriaPanelShowcase servicioLabel={data.nombre.toLowerCase()} />
+        ) : null}
 
         <GestoriaImageBanner
           imageSrc={visuals.mid.src}

@@ -2,36 +2,33 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { CheckCircle } from '@/components/ui/Icons'
 import {
-  getAlquilerContratoServicioMeta,
-  type AlquilerContratoModuloVariant,
-} from '@/lib/alquiler-contrato-servicio-registry'
+  getArrasContratoServicioMeta,
+  type ArrasContratoModuloVariant,
+} from '@/lib/arras-contrato-servicio-registry'
 
 type Props = {
-  variant?: AlquilerContratoModuloVariant
+  variant?: ArrasContratoModuloVariant
   ciudadNombre: string
   solicitarHref: string
 }
 
-export default function ContratoAlquilerServiciosDetalle({
-  variant = 'lau',
+export default function ContratoArrasServiciosDetalle({
+  variant = 'penitenciales',
   ciudadNombre,
   solicitarHref,
 }: Props) {
-  const meta = getAlquilerContratoServicioMeta(variant)
+  const meta = getArrasContratoServicioMeta(variant)
 
   return (
     <section
       className="border-t border-gray-100 bg-white"
-      aria-labelledby="alquiler-servicios-titulo"
+      aria-labelledby="arras-servicios-titulo"
       id={meta.sectionId}
     >
       <div className="mx-auto max-w-5xl px-4 py-10 sm:py-14">
         <div className="mb-8 text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-gold-500">{meta.eyebrow}</span>
-          <h2
-            id="alquiler-servicios-titulo"
-            className="mt-2 text-2xl font-extrabold text-gray-900 sm:text-3xl"
-          >
+          <h2 id="arras-servicios-titulo" className="mt-2 text-2xl font-extrabold text-gray-900 sm:text-3xl">
             {meta.heading}
           </h2>
           <p className="mx-auto mt-3 max-w-3xl text-sm leading-relaxed text-gray-600 sm:text-base">
@@ -45,15 +42,12 @@ export default function ContratoAlquilerServiciosDetalle({
               <p className="text-4xl font-extrabold text-gold-600">{meta.precio} €</p>
             </div>
             <p className="max-w-xs text-sm text-gray-600">
-              Sin comisión sobre la renta. Trámite 100 % online con gestor real de principio a fin.
+              Sin comisión sobre el precio del piso. Trámite 100 % online con gestor real.
             </p>
           </div>
         </div>
 
-        <nav
-          aria-label="Pasos del contrato de alquiler"
-          className="mb-10 flex flex-wrap justify-center gap-2"
-        >
+        <nav aria-label="Pasos del contrato de arras" className="mb-10 flex flex-wrap justify-center gap-2">
           {meta.nav.map((item) => (
             <a
               key={item.id}
@@ -75,13 +69,9 @@ export default function ContratoAlquilerServiciosDetalle({
           <div className="mx-auto grid max-w-5xl grid-cols-1 items-start gap-10 lg:grid-cols-2 lg:gap-14">
             <div className={bloque.invertido ? 'lg:order-2' : ''}>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-gold-500/10 px-3 py-1">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-gold-700">
-                  {bloque.kicker}
-                </span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-gold-700">{bloque.kicker}</span>
               </div>
-              <h3 className="mb-4 text-2xl font-extrabold leading-snug text-gray-900 sm:text-3xl">
-                {bloque.titulo}
-              </h3>
+              <h3 className="mb-4 text-2xl font-extrabold leading-snug text-gray-900 sm:text-3xl">{bloque.titulo}</h3>
               <p className="mb-6 leading-relaxed text-gray-600">{bloque.intro}</p>
 
               <div className="mb-6 rounded-2xl border border-gray-100 bg-gray-50/80 p-5">
@@ -118,10 +108,7 @@ export default function ContratoAlquilerServiciosDetalle({
                   sizes="(max-width: 1024px) 100vw, 50vw"
                   priority={index < 2}
                 />
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"
-                  aria-hidden
-                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" aria-hidden />
                 <div className="absolute top-4 right-4 rounded-xl bg-gold-500 px-4 py-2 shadow-lg">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-white/80">Incluido</p>
                   <p className="text-lg font-extrabold text-white">{meta.precio} €</p>
@@ -131,9 +118,7 @@ export default function ContratoAlquilerServiciosDetalle({
                     {meta.overlayProductLabel}
                   </p>
                   <p className="mt-1 text-sm font-bold text-gray-900">{bloque.kicker}</p>
-                  <p className="mt-1 text-xs text-gray-600">
-                    {ciudadNombre} · 100 % online · gestor asignado
-                  </p>
+                  <p className="mt-1 text-xs text-gray-600">{ciudadNombre} · 100 % online · gestor asignado</p>
                 </div>
               </div>
             </div>
@@ -144,7 +129,7 @@ export default function ContratoAlquilerServiciosDetalle({
       <div className="border-t border-gray-200 bg-slate-50 px-4 py-12">
         <div className="mx-auto max-w-3xl text-center">
           <p className="mb-6 text-gray-600">
-            ¿Listo para formalizar el alquiler en {ciudadNombre}? Contrata online y tu gestor empieza en 24 h.
+            ¿Listo para blindar las arras en {ciudadNombre}? Contrata online y tu gestor empieza en 24 h.
           </p>
           <Link
             href={solicitarHref}

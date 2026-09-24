@@ -389,6 +389,52 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     ),
   },
 
+  granada: {
+    slug: 'granada',
+    nombre: 'Granada',
+    meta: {
+      title: 'Contrato de alquiler Granada desde 145€',
+      description:
+        'Contrato LAU en Granada desde 145€, entrega en 48h. Ideal para estudiantes y familias. Ley de Vivienda 2026. Sin plantillas genéricas.',
+      keywords: [
+        'contrato alquiler granada',
+        'contrato lau granada',
+        'gestoria inmobiliaria granada',
+        'alquiler estudiantes granada',
+      ],
+      ogTitle: 'Contrato de alquiler Granada desde 145€',
+      ogDescription: 'Contrato de alquiler personalizado en Granada desde 145€. LAU + Ley de Vivienda 2026.',
+      ogImageAlt: 'Contrato de alquiler Granada',
+    },
+    schema: {
+      serviceName: 'Contrato de Alquiler de Vivienda (LAU) en Granada',
+      serviceDescription: 'Redacción de contrato de alquiler en Granada y provincia.',
+      areaType: 'City',
+      areaName: 'Granada',
+    },
+    heroImageAlt: 'Contrato de alquiler en Granada',
+    breadcrumbFinal: 'Contrato de Alquiler Granada',
+    badgeLine: 'Alquiler · Granada',
+    ctaStickyLabel: 'Alquiler · Granada',
+    introLargo:
+      'Granada concentra mucho alquiler por universidad, turismo residencial y familias. La LAU y la Ley de Vivienda exigen cláusulas claras sobre renta, fianza y duración — también cuando el inquilino es estudiante o temporal. Redactamos tu contrato con foco local y normativa al día.',
+    alertaTitulo: 'Vas a firmar un alquiler en Granada: ¿vas a hacerlo con un PDF "genérico"?',
+    paraQuienTitulo: '¿Para quién es este contrato en Granada?',
+    paraQuien: [
+      'Propietarios en Granada capital (Realejo, Zaidín, Chana, Centro)',
+      'Arrendadores en campus y zonas de estudiantes',
+      'Inquilinos que quieren revisar condiciones antes de firmar',
+      'Alquileres LAU de larga duración en Granada y provincia',
+    ],
+    faqs: faqPack(
+      'Granada',
+      '¿Qué fianza es obligatoria en Andalucía?',
+      'Una mensualidad como fianza legal mínima, con ingreso en AVRA cuando proceda, y garantías adicionales dentro del límite legal.',
+      '¿Vale en toda la provincia de Granada?',
+      'Sí, en Granada capital, metropolitan area y resto de la provincia según legislación vigente.',
+    ),
+  },
+
   malaga: {
     slug: 'malaga',
     nombre: 'Málaga',

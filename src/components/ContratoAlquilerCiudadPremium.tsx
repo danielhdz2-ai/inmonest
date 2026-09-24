@@ -3,10 +3,9 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
-import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
-import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
-import ContratoAlquilerServiciosDetalle from '@/components/ContratoAlquilerServiciosDetalle'
-import GestoriaTramiteOnlineSection from '@/components/GestoriaTramiteOnlineSection'
+import GestoriaAlquilerModulosCompletos, {
+  GestoriaAlquilerTramiteOnlineSection,
+} from '@/components/GestoriaAlquilerModulosCompletos'
 import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
@@ -135,7 +134,11 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
         </div>
       </section>
 
-      <GestoriaTramiteOnlineSection ciudad={config.nombre} panelAnchorId="panel-gestoria-lau" />
+      <GestoriaAlquilerTramiteOnlineSection
+        ciudadNombre={config.nombre}
+        panelAnchorId="panel-gestoria-lau"
+        variant="lau"
+      />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -204,20 +207,14 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
         </section>
       </div>
 
-      <ContratoAlquilerServiciosDetalle ciudadNombre={config.nombre} solicitarHref={solicitarHref} />
-
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
-        <ComoTrabajamosContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="alquiler" />
-      </div>
-
-      <div id="panel-gestoria-lau">
-        <AgenciaGestoriaPanelDemo
-          audience="particular"
-          ciudadNombre={config.nombre}
-          servicioDemo="alquiler-lau"
-          defaultSection="inicio"
-        />
-      </div>
+      <GestoriaAlquilerModulosCompletos
+        variant="lau"
+        ciudadNombre={config.nombre}
+        ciudadSlug={config.slug}
+        solicitarHref={solicitarHref}
+        panelAnchorId="panel-gestoria-lau"
+        partes={{ tramiteOnline: false }}
+      />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <BarriosCiudadContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="alquiler" />
