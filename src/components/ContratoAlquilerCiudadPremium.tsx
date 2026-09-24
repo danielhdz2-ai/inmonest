@@ -4,6 +4,9 @@ import Navbar from '@/components/NavbarServer'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
+import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
+import ContratoAlquilerProcesoDetalladoSection from '@/components/ContratoAlquilerProcesoDetalladoSection'
+import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
@@ -11,7 +14,6 @@ import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import { getCiudadImage } from '@/lib/gestoria-images'
 import {
   CONTRATO_ALQUILER_PREMIUM_INCLUDES,
-  CONTRATO_ALQUILER_PREMIUM_PASOS,
   getContratoAlquilerPremiumPrecio,
   getContratoAlquilerPremiumSolicitarHref,
   type ContratoAlquilerPremiumConfig,
@@ -131,6 +133,10 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
         </div>
       </section>
 
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-6 pb-2">
+        <GestoriaTramiteOnlineNote variant="banner" />
+      </div>
+
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-6">
@@ -196,9 +202,22 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
             </div>
           </div>
         </section>
+      </div>
 
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <ComoTrabajamosContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="alquiler" />
+      </div>
 
+      <ContratoAlquilerProcesoDetalladoSection ciudad={config.nombre} precio={precio} />
+
+      <AgenciaGestoriaPanelDemo
+        audience="particular"
+        ciudadNombre={config.nombre}
+        servicioDemo="alquiler-lau"
+        defaultSection="inicio"
+      />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <BarriosCiudadContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="alquiler" />
 
         <CalculadoraAhorroContrato
@@ -255,23 +274,6 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
               <div key={inc} className="flex items-start gap-3 bg-gray-50 rounded-xl p-4">
                 <span className="text-gold-500 text-lg mt-0.5 shrink-0">✓</span>
                 <span className="text-gray-700 text-sm">{inc}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">¿Cómo funciona la redacción?</h2>
-          <div className="space-y-6">
-            {CONTRATO_ALQUILER_PREMIUM_PASOS.map((paso) => (
-              <div key={paso.num} className="flex gap-6">
-                <div className="shrink-0">
-                  <div className="w-14 h-14 rounded-full bg-gold-500 flex items-center justify-center text-white font-bold text-lg">{paso.num}</div>
-                </div>
-                <div>
-                  <h3 className="font-bold text-gray-900 text-lg mb-1">{paso.titulo}</h3>
-                  <p className="text-gray-600">{paso.desc}</p>
-                </div>
               </div>
             ))}
           </div>

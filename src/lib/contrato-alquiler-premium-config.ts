@@ -56,6 +56,44 @@ const PASOS = [
   { num: '03', titulo: 'Listo para firmar', desc: 'Recibes el contrato PDF en 48h, firmable digitalmente. El inventario de mobiliario se incluye como anexo.' },
 ] as const
 
+export type ContratoAlquilerPasoDetallado = {
+  num: string
+  titulo: string
+  desc: string
+}
+
+/** Proceso completo (consulta → entrega) para landings premium LAU */
+export function getContratoAlquilerPasosDetallados(precio: string | number): ContratoAlquilerPasoDetallado[] {
+  const p = String(precio)
+  return [
+    {
+      num: '01',
+      titulo: 'Primera consulta con tu gestor',
+      desc: 'En menos de 24 horas un gestor inmobiliario te contacta. Revisamos si es vivienda habitual LAU, renta, fianza, duración mínima, mascotas, amueblado e inventario.',
+    },
+    {
+      num: '02',
+      titulo: 'Contratas el servicio',
+      desc: `Pago único de ${p}€ IVA incluido desde el panel. Sin costes ocultos ni comisión sobre la renta mensual.`,
+    },
+    {
+      num: '03',
+      titulo: 'Recopilación de datos online',
+      desc: 'Subes documentación al expediente: DNI/CIF, datos del inmueble, importe de fianza, garantías adicionales, estado del piso y certificado energético si aplica.',
+    },
+    {
+      num: '04',
+      titulo: 'Redacción jurídica LAU',
+      desc: 'Contrato conforme a LAU y Ley de Vivienda 2026: actualización de renta, depósito de fianza autonómico, obras, impago, rescisión e inventario como anexo.',
+    },
+    {
+      num: '05',
+      titulo: 'Entrega y asesoramiento',
+      desc: 'PDF firmable en 48h. Tu gestor resuelve dudas antes de la firma y te orienta sobre el ingreso de la fianza ante el organismo autonómico correspondiente.',
+    },
+  ]
+}
+
 export const CONTRATO_ALQUILER_PREMIUM_INCLUDES = INCLUYE
 export const CONTRATO_ALQUILER_PREMIUM_PASOS = PASOS
 

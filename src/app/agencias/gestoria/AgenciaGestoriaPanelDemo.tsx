@@ -121,6 +121,41 @@ const BUNDLE_PARTICULAR: DemoBundle = {
   historialLabel: 'Historial de tus contratos inmobiliarios',
 }
 
+function buildAlquilerLauBundle(ciudadNombre?: string): DemoBundle {
+  const ciudad = ciudadNombre ?? 'Madrid'
+  const ciudadSlug = ciudad.toLowerCase().replace(/\s+/g, '-').slice(0, 12)
+  return {
+    mock: {
+      subtitulo: `Arrendador · ${ciudad}`,
+      usuario: 'María López',
+      ciudad,
+      servicio: 'Contrato de alquiler LAU',
+      referencia: 'INV-2026-0847',
+      importe: 145,
+      pasoActual: 3,
+      progreso: 65,
+      plazo: '48 h laborables',
+    },
+    actividad: [
+      { icon: 'D', titulo: 'Inventario de mobiliario subido — el gestor lo incorpora al anexo', fecha: '14 mar, 10:05' },
+      { icon: 'S', titulo: 'Redacción LAU en curso (paso 3 de 4)', fecha: '13 mar, 16:40' },
+      { icon: 'P', titulo: 'Pago confirmado — contrato alquiler 145 €', fecha: '12 mar, 09:22' },
+    ],
+    docs: [
+      { key: 'partes', label: 'Datos arrendador e inquilino', file: `partes-alquiler-${ciudadSlug}.pdf`, status: 'done', fecha: '12 mar, 10:00' },
+      { key: 'dni-arrendador', label: 'DNI arrendador', file: 'dni-arrendador-anverso.jpg', status: 'done', fecha: '12 mar, 10:18' },
+      { key: 'dni-inquilino', label: 'DNI inquilino', file: 'dni-inquilino-anverso.jpg', status: 'done', fecha: '12 mar, 10:22' },
+      { key: 'inventario', label: 'Inventario de mobiliario', file: 'inventario-piso-amueblado.pdf', status: 'done', fecha: '14 mar, 10:05' },
+      { key: 'cee', label: 'Certificado energético', file: null, status: 'pending', fecha: null },
+    ],
+    contratosHist: [
+      { nombre: 'Contrato de alquiler LAU', ref: 'INV-2026-0847', estado: 'En elaboración', paso: 3, fecha: '12 mar 2026', activo: true },
+      { nombre: 'Contrato de arras penitenciales', ref: 'INV-2026-0612', estado: 'Entregado', paso: 4, fecha: '15 feb 2026', activo: false },
+    ],
+    historialLabel: 'Historial de tus contratos inmobiliarios',
+  }
+}
+
 function buildVendedorBundle(ciudadNombre?: string): DemoBundle {
   const ciudad = ciudadNombre ?? 'Madrid'
   return {
@@ -162,13 +197,17 @@ function usePanelDemo() {
   return useContext(PanelDemoContext)
 }
 
+export type GestoriaPanelDemoServicio = 'arras' | 'alquiler-lau'
+
 function getDemoBundle(
   audience: GestoriaPanelDemoAudience,
   role: GestoriaPanelDemoRole = 'comprador',
   ciudadNombre?: string,
+  servicioDemo: GestoriaPanelDemoServicio = 'arras',
 ): DemoBundle {
   if (audience === 'agencia') return BUNDLE_AGENCIA
   if (role === 'vendedor') return buildVendedorBundle(ciudadNombre)
+  if (servicioDemo === 'alquiler-lau') return buildAlquilerLauBundle(ciudadNombre)
   return BUNDLE_PARTICULAR
 }
 
@@ -316,7 +355,10 @@ function ExpedienteHero() {
 }
 
 function InicioView() {
-  const { mock } = usePanelDemo()
+  const { mock, docs } = usePanelDemo()
+  const esAlquilerLau = mock.servicio.toLowerCase().includes('alquiler')
+  const docsHechos = docs.filter((d) => d.status === 'done').length
+  const docsTotal = docs.length
   return (
     <div className="p-4 sm:p-5 space-y-4">
       <div className="rounded-2xl border border-gray-100 bg-white p-4 shadow-sm">
@@ -332,7 +374,9 @@ function InicioView() {
           </div>
           <div className="rounded-xl bg-gray-50 border border-gray-100 p-3 text-center">
             <p className="text-[9px] uppercase tracking-wider text-gray-400">Documentos</p>
-            <p className="text-xl font-extrabold text-gray-900">4/5</p>
+            <p className="text-xl font-extrabold text-gray-900">
+              {docsHechos}/{docsTotal}
+            </p>
           </div>
           <div className="rounded-xl bg-gray-50 border border-gray-100 p-3 text-center">
             <p className="text-[9px] uppercase tracking-wider text-gray-400">Plazo</p>
@@ -355,14 +399,20 @@ function InicioView() {
           <p className="text-[10px] font-bold uppercase tracking-widest text-gold-500">Tu gestor</p>
           <p className="text-sm font-bold text-gray-900">{GESTOR_DANIEL_HERNANDEZ.nombre}</p>
           <p className="text-xs text-gray-500">{GESTOR_DANIEL_HERNANDEZ.rol}</p>
-          <p className="text-[11px] text-gold-700 mt-1">Revisando nota simple · {mock.ciudad}</p>
+          <p className="text-[11px] text-gold-700 mt-1">
+            {esAlquilerLau
+              ? `Revisando cláusulas LAU · ${mock.ciudad}`
+              : `Revisando nota simple · ${mock.ciudad}`}
+          </p>
         </div>
       </div>
 
       <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-4">
         <p className="text-xs font-bold text-amber-900 mb-1">Próximo paso</p>
         <p className="text-sm text-amber-800 leading-relaxed">
-          Sube el certificado ITE o envíalo a info@inmonest.com para que el gestor pueda finalizar la redacción.
+          {esAlquilerLau
+            ? 'Sube el certificado energético del piso o envíalo a info@inmonest.com para que el gestor pueda cerrar el LAU e incorporar la fianza al texto.'
+            : 'Sube el certificado ITE o envíalo a info@inmonest.com para que el gestor pueda finalizar la redacción.'}
         </p>
       </div>
     </div>
@@ -568,18 +618,34 @@ export default function AgenciaGestoriaPanelDemo({
   audience = 'agencia',
   ciudadNombre,
   particularRole = 'comprador',
+  servicioDemo = 'arras',
+  defaultSection = 'inicio',
 }: {
   audience?: GestoriaPanelDemoAudience
   /** Personaliza copy en landings locales de contratos */
   ciudadNombre?: string
   /** Perfil del panel cuando audience es particular */
   particularRole?: GestoriaPanelDemoRole
+  /** Datos ficticios del mock: arras vs alquiler LAU */
+  servicioDemo?: GestoriaPanelDemoServicio
+  /** Sección visible al cargar (Panel, Expediente, Documentos, Contratos) */
+  defaultSection?: DemoSection
 }) {
-  const [section, setSection] = useState<DemoSection>('expediente')
-  const bundle = getDemoBundle(audience, particularRole, ciudadNombre)
+  const [section, setSection] = useState<DemoSection>(defaultSection)
+  const bundle = getDemoBundle(audience, particularRole, ciudadNombre, servicioDemo)
 
   const copy =
-    audience === 'particular'
+    audience === 'particular' && servicioDemo === 'alquiler-lau'
+      ? {
+          kicker: 'Panel interactivo',
+          title: ciudadNombre
+            ? `Tu alquiler LAU en ${ciudadNombre}: seguimiento en tiempo real`
+            : 'Panel interactivo de tu contrato de alquiler',
+          description: ciudadNombre
+            ? `Tras contratar el LAU en ${ciudadNombre}, entras en mi-cuenta/contratos. Explora las pestañas del panel: resumen y próximo paso, timeline del expediente, checklist de documentos (arrendador, inquilino, inventario) y descarga del PDF con firma FIRMACERT cuando el gestor lo entregue. Todo online, sin desplazamientos.`
+            : 'Tras contratar, accedes al panel: sube documentación, sigue el progreso, habla con tu gestor y descarga el contrato firmable.',
+        }
+      : audience === 'particular'
       ? particularRole === 'vendedor'
         ? {
             kicker: 'Panel del vendedor particular',
@@ -647,13 +713,21 @@ export default function AgenciaGestoriaPanelDemo({
           Vista interactiva con datos ficticios. Tu panel real se activa al contratar un pack o contrato.
         </p>
 
-        <div className="mt-10 grid sm:grid-cols-4 gap-4">
-          {[
-            { n: '01', titulo: 'Expediente trazable', desc: 'Timeline con cada hito del contrato' },
-            { n: '02', titulo: 'Documentos seguros', desc: 'Subida por rol: arrendador, inquilino, inmueble' },
-            { n: '03', titulo: 'Contratos PDF', desc: 'Descarga cuando el gestor entrega' },
-            { n: '04', titulo: 'Firma FIRMACERT', desc: 'Firma electrónica certificada incluida' },
-          ].map((item) => (
+        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {(servicioDemo === 'alquiler-lau'
+            ? [
+                { n: '01', titulo: 'Expediente trazable', desc: 'Progreso %, plazo 48 h y estado “en elaboración” en vivo' },
+                { n: '02', titulo: 'Documentos seguros', desc: 'Checklist LAU: DNI, partes, inventario y certificado energético' },
+                { n: '03', titulo: 'Contratos PDF', desc: 'Descarga del LAU personalizado cuando el gestor cierra la redacción' },
+                { n: '04', titulo: 'Firma FIRMACERT', desc: 'Firma electrónica avanzada (eIDAS) incluida en el precio' },
+              ]
+            : [
+                { n: '01', titulo: 'Expediente trazable', desc: 'Timeline con cada hito del contrato' },
+                { n: '02', titulo: 'Documentos seguros', desc: 'Subida por rol: arrendador, inquilino, inmueble' },
+                { n: '03', titulo: 'Contratos PDF', desc: 'Descarga cuando el gestor entrega' },
+                { n: '04', titulo: 'Firma FIRMACERT', desc: 'Firma electrónica certificada incluida' },
+              ]
+          ).map((item) => (
             <div key={item.n} className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
               <p className="text-2xl font-black text-gray-200 mb-1">{item.n}</p>
               <p className="text-sm font-bold text-gray-900">{item.titulo}</p>
