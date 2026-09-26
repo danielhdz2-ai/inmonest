@@ -16,6 +16,10 @@ import GestoriaArrasModulosCompletos, {
   GestoriaArrasTramiteOnlineSection,
 } from '@/components/GestoriaArrasModulosCompletos'
 import { servicioSlugToArrasVariant } from '@/lib/arras-contrato-servicio-registry'
+import GestoriaDueDiligenceModulosCompletos, {
+  GestoriaDueDiligenceTramiteOnlineSection,
+} from '@/components/GestoriaDueDiligenceModulosCompletos'
+import { servicioSlugIsDueDiligencePack } from '@/lib/due-diligence-servicio-registry'
 import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaBlindajeOperacion from '@/components/GestoriaBlindajeOperacion'
@@ -948,7 +952,9 @@ export default async function ServicioGestoriaPage({
   const arrasVariant = servicioSlugToArrasVariant(servicio)
   const arrasPanelId =
     arrasVariant === 'confirmatorias' ? 'panel-gestoria-arras-confirmatorias' : 'panel-gestoria-arras'
-  const showTramiteOnlineNote = Boolean(alquilerVariant || arrasVariant)
+  const dueDiligencePack = servicioSlugIsDueDiligencePack(servicio)
+  const dueDiligencePanelId = 'panel-gestoria-due-diligence'
+  const showTramiteOnlineNote = Boolean(alquilerVariant || arrasVariant || dueDiligencePack)
 
   return (
     <>
@@ -1014,6 +1020,12 @@ export default async function ServicioGestoriaPage({
           ciudadNombre="toda España"
           panelAnchorId={arrasPanelId}
           variant={arrasVariant}
+        />
+      ) : null}
+      {dueDiligencePack ? (
+        <GestoriaDueDiligenceTramiteOnlineSection
+          ciudadNombre="toda España"
+          panelAnchorId={dueDiligencePanelId}
         />
       ) : null}
 
@@ -1097,6 +1109,15 @@ export default async function ServicioGestoriaPage({
           />
         ) : null}
 
+        {dueDiligencePack ? (
+          <GestoriaDueDiligenceModulosCompletos
+            ciudadNombre="toda España"
+            solicitarHref={`/gestoria/solicitar/${servicio}`}
+            panelAnchorId={dueDiligencePanelId}
+            partes={{ tramiteOnline: false }}
+          />
+        ) : null}
+
         {arrasVariant === 'penitenciales' ? (
           <GestoriaLandingCiudadesGrid landingId="contrato-arras" />
         ) : null}
@@ -1119,7 +1140,9 @@ export default async function ServicioGestoriaPage({
         {/* ── CÓMO FUNCIONA ────────────────────────────────────────────── */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Cómo funciona</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div
+            className={`grid grid-cols-1 gap-6 ${data.pasos.length >= 5 ? 'sm:grid-cols-2 lg:grid-cols-5' : 'sm:grid-cols-3'}`}
+          >
             {data.pasos.map((paso) => (
               <div key={paso.num} className="relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
                 <span className="text-5xl font-black text-gold-500/20 absolute top-4 right-5 leading-none">
@@ -1141,7 +1164,7 @@ export default async function ServicioGestoriaPage({
           phase="contact"
         />
 
-        {!alquilerVariant && !arrasVariant ? (
+        {!alquilerVariant && !arrasVariant && !dueDiligencePack ? (
           <GestoriaPanelShowcase servicioLabel={data.nombre.toLowerCase()} />
         ) : null}
 

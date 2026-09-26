@@ -6,6 +6,7 @@ export type TramiteOnlineSectionTipo =
   | 'habitacion'
   | 'arras-penitenciales'
   | 'arras-confirmatorias'
+  | 'due-diligence'
 
 export type TramiteOnlinePunto = { titulo: string; desc: string }
 
@@ -109,6 +110,34 @@ export function getTramiteOnlineSectionContent(
         puntos: PUNTOS_BASE,
         imagenAlt: `Contrato de alquiler de habitación online en ${ciudad}`,
         overlaySubtitulo: `${ciudad} · gestor asignado · panel de expediente`,
+      }
+
+    case 'due-diligence':
+      return {
+        titulo: `Tu due diligence pre-compra en ${ciudad} sin ir a ninguna oficina`,
+        hero:
+          'Trámite 100 % online para verificar el inmueble antes de escriturar: panel de expediente, gestor asignado e informe ejecutivo — sin desplazamientos.',
+        desc: 'Subes arras, nota simple, actas de comunidad y documentación técnica al panel. Tu gestor audita registros, urbanismo, edificio e informe; te asesora por teléfono, WhatsApp y email hasta la firma en notaría.',
+        puntos: [
+          {
+            titulo: 'Panel mi-cuenta/contratos',
+            desc: 'Expediente due diligence con checklist, documentos y estado de la revisión en un solo sitio.',
+          },
+          {
+            titulo: 'Gestor con teléfono directo',
+            desc: 'Un gestor inmobiliario asignado en menos de 24 h — WhatsApp, llamada o videollamada.',
+          },
+          {
+            titulo: 'Informe ejecutivo en PDF',
+            desc: 'Hallazgos, riesgos y recomendaciones antes de ir a notaría, incluidos en la tarifa plana.',
+          },
+          {
+            titulo: 'Sin desplazamientos',
+            desc: 'Contratación, documentación, auditoría y asesoramiento desde casa en toda España.',
+          },
+        ],
+        imagenAlt: `Due diligence pre-compra online en ${ciudad} — panel y gestor`,
+        overlaySubtitulo: `${ciudad} · gestor asignado · expediente due diligence`,
       }
 
     case 'lau':

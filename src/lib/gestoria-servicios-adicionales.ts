@@ -408,9 +408,11 @@ export const GESTORIA_SERVICIOS_ADICIONALES: Record<string, GestoriaServiceLandi
       'Informe ejecutivo PDF en 3–5 días laborables',
     ],
     pasos: [
-      { num: '01', titulo: 'Contrata y envía docs', desc: 'Indica datos del inmueble y aporta arras, nota simple y documentación de comunidad si la tienes.' },
-      { num: '02', titulo: 'Auditoría documental', desc: 'Tu gestor solicita y analiza actas, ITE, registros y urbanismo según el caso.' },
-      { num: '03', titulo: 'Informe ejecutivo', desc: 'Recibes PDF con hallazgos, riesgos y recomendaciones antes de ir a notaría.' },
+      { num: '01', titulo: 'Primera llamada con tu gestor', desc: 'Preparamos la operación: precio, arras, plazos y documentación disponible.' },
+      { num: '02', titulo: 'Contratas el servicio', desc: '350 € IVA incluido. Se abre tu expediente due diligence en el panel online.' },
+      { num: '03', titulo: 'Documentación en el expediente', desc: 'Subes arras, nota simple, actas y certificados; el gestor te indica qué falta.' },
+      { num: '04', titulo: 'Auditoría completa', desc: 'Revisión de arras, registro, urbanismo, actas vecinales, ITE y aptitud técnica del edificio.' },
+      { num: '05', titulo: 'Informe y asesoramiento', desc: 'Informe PDF y soporte por teléfono, email y WhatsApp hasta escritura.' },
     ],
     faq: [
       {
