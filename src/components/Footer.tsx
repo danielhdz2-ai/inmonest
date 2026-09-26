@@ -11,6 +11,7 @@ const CIUDADES = [
   { slug: 'bilbao',    nombre: 'Bilbao' },
   { slug: 'zaragoza',  nombre: 'Zaragoza' },
   { slug: 'alicante',  nombre: 'Alicante' },
+  { slug: 'castellon', nombre: 'Castellón' },
 ]
 
 const SERVICIOS_CIUDAD = [
@@ -84,6 +85,9 @@ export default function Footer() {
           </Link>
           <Link href="/gestoria/alicante" className="text-xs text-white/45 hover:text-gold-300 transition-colors">
             Gestoría Alicante
+          </Link>
+          <Link href="/gestoria/castellon" className="text-xs text-white/45 hover:text-gold-300 transition-colors">
+            Gestoría Castellón
           </Link>
           <Link href="/gestoria/palma" className="text-xs text-white/45 hover:text-gold-300 transition-colors">
             Gestoría Palma

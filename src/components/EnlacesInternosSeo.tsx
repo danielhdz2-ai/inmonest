@@ -76,6 +76,24 @@ const ENLACES_HOME: EnlaceSeo[] = [
     badge: 'Ciudad',
   },
   {
+    href: '/gestoria/castellon',
+    title: 'Gestoría inmobiliaria Castellón',
+    description: 'Arras, LAU, due diligence y Grao. 100% online.',
+    badge: 'Nuevo',
+  },
+  {
+    href: '/castellon/contrato-arras',
+    title: 'Contrato arras Castellón',
+    description: 'Señal penitencial Grao y Plana. Desde 145€.',
+    badge: 'Nuevo',
+  },
+  {
+    href: '/castellon/alquiler-particulares',
+    title: 'Alquiler particulares Castellón',
+    description: 'Pisos sin comisión. Trato directo en Castelló.',
+    badge: 'Nuevo',
+  },
+  {
     href: '/gestoria/ciudades',
     title: 'Gestoría por ciudad',
     description: 'Todas las landings locales activas.',
