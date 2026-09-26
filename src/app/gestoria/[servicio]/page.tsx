@@ -869,7 +869,9 @@ export async function generateMetadata({
         ? `Pack Arras Plus Comprador 【${data.precio}€】 Arras + Revisión Documental`
         : servicio === 'pack-arras-plus-vendedor'
           ? `Pack Arras Plus Vendedor 【${data.precio}€】 Arras + Documentación para Escritura`
-          : `${data.nombre} — Gestoría inmobiliaria`
+          : servicio === 'pack-due-diligence-precompra'
+            ? `Due Diligence Pre-Compra 【${data.precio}€】 Informe documental · 100 % online`
+            : `${data.nombre} — Gestoría inmobiliaria`
   const seoDescription =
     servicio === 'contrato-alquiler'
       ? `Contrato de alquiler de vivienda habitual adaptado a LAU y Ley de Vivienda 2026. Redactado por gestoría experta. ${data.precio}€ IVA incl. PDF firmable en 48h.`
@@ -877,7 +879,13 @@ export async function generateMetadata({
         ? `Arras penitenciales + revisión documental completa para compradores entre particulares. ${data.precio}€ IVA incl. Informe en 3-5 días.`
         : servicio === 'pack-arras-plus-vendedor'
           ? `Arras penitenciales + recopilación y análisis documental para vendedores particulares. ${data.precio}€ IVA incl. Informe en 3-5 días.`
-          : `${data.tagline}. Redactado por gestores especializados. Desde ${data.precio} €. Entrega en 48h.`
+          : servicio === 'pack-due-diligence-precompra'
+            ? `Auditoría documental tras arras: registro, comunidad, urbanismo e ITE. ${data.precio}€ IVA incl. Informe en 3–5 días. Trámite 100 % online con gestor asignado.`
+            : `${data.tagline}. Redactado por gestores especializados. Desde ${data.precio} €. Entrega en 48h.`
+  const ogDeliveryLine =
+    servicio === 'pack-due-diligence-precompra'
+      ? `${data.precio} € · Informe en 3–5 días · 100 % online`
+      : `${data.precio} € · Entrega en 48h.`
 
   return {
     title: seoTitle,
@@ -885,7 +893,7 @@ export async function generateMetadata({
     alternates: { canonical: `${BASE_URL}/gestoria/${servicio}` },
     openGraph: {
       title: `${data.nombre}`,
-      description: `${data.tagline}. ${data.precio} € · Entrega en 48h.`,
+      description: `${data.tagline}. ${ogDeliveryLine}`,
       url: `${BASE_URL}/gestoria/${servicio}`,
       type: 'website',
       siteName: 'Inmonest',
@@ -987,7 +995,11 @@ export default async function ServicioGestoriaPage({
           <div className="mb-6 flex flex-wrap items-center gap-x-4 gap-y-2">
             <span className="text-3xl font-bold text-gold-400 sm:text-4xl">{data.precio} €</span>
             <span className="text-xs text-white/55">IVA incluido</span>
-            <span className="hidden text-sm text-white/60 sm:inline">· Entrega en 48h · PDF firmable</span>
+            <span className="hidden text-sm text-white/60 sm:inline">
+              {dueDiligencePack
+                ? '· Informe en 3–5 días · 100 % online'
+                : '· Entrega en 48h · PDF firmable'}
+            </span>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Link
