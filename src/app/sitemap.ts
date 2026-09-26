@@ -88,6 +88,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/blog/que-es-gestoria-inmobiliaria`, lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/blog/cuanto-cuesta-contrato-arras`, lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/blog/revision-contrato-arras-antes-firmar`, lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/blog/lau-actualizacion-renta-irav-2026`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
 ]
 
 const MAX_SITEMAP_LISTINGS = 5_000

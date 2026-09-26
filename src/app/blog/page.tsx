@@ -34,6 +34,17 @@ const RECURSOS = [
 
 const ARTICULOS = [
   {
+    slug: 'lau-actualizacion-renta-irav-2026',
+    href: '/blog/lau-actualizacion-renta-irav-2026',
+    titulo: 'Actualización renta alquiler LAU 2026: IRAV y fin del RDL 8/2026',
+    resumen:
+      'Qué puede subir tu casero tras derogarse el decreto del 2%: IRAV, zonas tensionadas, gran tenedor y prórrogas LAU. Guía actual para inquilinos y propietarios.',
+    fecha: '26 de septiembre de 2026',
+    categoria: 'Alquiler · LAU',
+    lectura: '10 min',
+    etiqueta: 'Nuevo',
+  },
+  {
     slug: 'revision-contrato-arras-antes-firmar',
     href: '/blog/revision-contrato-arras-antes-firmar',
     titulo: 'Revisión del contrato de arras antes de firmar — Checklist legal 2026',
