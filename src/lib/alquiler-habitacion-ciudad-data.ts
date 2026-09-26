@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
 import { withGestoriaIndexRobots } from './gestoria-indexacion-tier'
+import { CASTELLON_HABITACION } from './ciudad-castellon-configs'
 
 const BASE_URL = 'https://inmonest.com'
 export const ALQUILER_HABITACION_PRECIO = 120
@@ -42,6 +43,7 @@ export const ALQUILER_HABITACION_CIUDADES_LIST = [
   { slug: 'sevilla', nombre: 'Sevilla' },
   { slug: 'malaga', nombre: 'Málaga' },
   { slug: 'bilbao', nombre: 'Bilbao' },
+  { slug: 'castellon', nombre: 'Castellón' },
   { slug: 'valencia', nombre: 'Valencia' },
   { slug: 'zaragoza', nombre: 'Zaragoza' },
   { slug: 'asturias', nombre: 'Asturias' },
@@ -968,6 +970,8 @@ santander: {
         'Particulares que alquilan habitaciones en Valladolid. Contrato profesional, asesoramiento legal y entrega en 48h. 120€ IVA incluido.',
     },
   },
+
+  castellon: CASTELLON_HABITACION,
 }
 
 export function buildAlquilerHabitacionMetadata(config: AlquilerHabitacionCiudadConfig): Metadata {

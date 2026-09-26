@@ -3,6 +3,11 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
 import { getCiudadImage } from '@/lib/gestoria-images'
+import {
+  CIUDADES_PORTAL_EXTENDIDAS_SLUGS,
+  getCiudadPortalNombre,
+  isCiudadPortalActiva,
+} from '@/lib/ciudades-portal'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -18,13 +23,13 @@ const CIUDADES: Record<string, string> = {
 }
 
 export function generateStaticParams() {
-  return Object.keys(CIUDADES).map((ciudad) => ({ ciudad }))
+  return CIUDADES_PORTAL_EXTENDIDAS_SLUGS.map((ciudad) => ({ ciudad }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ ciudad: string }> }): Promise<Metadata> {
   const { ciudad } = await params
-  const nombre = CIUDADES[ciudad]
-  if (!nombre) return {}
+  if (!isCiudadPortalActiva(ciudad)) return {}
+  const nombre = getCiudadPortalNombre(ciudad) ?? ciudad
   return {
     title: `Alquiler sin agencia en ${nombre}`,
     description: `Encuentra pisos de alquiler en ${nombre} directamente de particulares. Sin intermediarios, sin comisiones de agencia. Miles de anuncios reales y actualizados.`,
@@ -43,8 +48,8 @@ export async function generateMetadata({ params }: { params: Promise<{ ciudad: s
 
 export default async function AlquilerSinAgenciaPage({ params }: { params: Promise<{ ciudad: string }> }) {
   const { ciudad } = await params
-  const nombre = CIUDADES[ciudad]
-  if (!nombre) notFound()
+  if (!isCiudadPortalActiva(ciudad)) notFound()
+  const nombre = getCiudadPortalNombre(ciudad) ?? ciudad
 
   const heroImage = getCiudadImage(ciudad)
 

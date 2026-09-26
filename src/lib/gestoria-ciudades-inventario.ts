@@ -1,4 +1,5 @@
-import { CIUDADES_PORTAL_SLUGS } from './ciudades-portal'
+import { CIUDADES_PORTAL_EXTENDIDAS_SLUGS, CIUDADES_PORTAL_SLUGS } from './ciudades-portal'
+import { LANDINGS_CIUDAD_PREMIUM_SLUGS } from './landings-ciudad-premium'
 import { CONTRATO_ARRAS_PREMIUM } from './contrato-arras-premium-config'
 import { CONTRATO_ALQUILER_PREMIUM } from './contrato-alquiler-premium-config'
 import { CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS } from './contratos-inmobiliarios-ciudades'
@@ -49,6 +50,7 @@ const NOMBRES_EXTRA: Record<string, string> = {
   valladolid: 'Valladolid',
   granada: 'Granada',
   coruna: 'A Coruña',
+  castellon: 'Castellón',
   palma: 'Palma de Mallorca',
   mallorca: 'Mallorca',
   asturias: 'Asturias',
@@ -95,8 +97,8 @@ export function getServicioGuiaHref(slug: string): string {
 
 /** Solo ciudades con landing realmente construida para este tipo de página */
 export function filterCiudadesLandingActiva(landingId: string, ciudades: string[]): string[] {
-  if (landingId === 'alquiler-particulares') {
-    return ciudades.filter((c) => (CIUDADES_PORTAL_SLUGS as readonly string[]).includes(c))
+  if (landingId === 'alquiler-particulares' || landingId === 'alquiler-sin-agencia' || landingId === 'vender-piso' || landingId === 'pisos-ciudad') {
+    return ciudades.filter((c) => (CIUDADES_PORTAL_EXTENDIDAS_SLUGS as readonly string[]).includes(c))
   }
   return ciudades
 }
@@ -180,7 +182,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Due Diligence Pre-Compra',
     precioSlug: 'pack-due-diligence-precompra',
     href: (c) => `/gestoria/due-diligence-precompra/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'coruna', 'alicante', 'murcia', 'pamplona', 'salamanca', 'valladolid', 'granada', 'mallorca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'coruna', 'alicante', 'castellon', 'murcia', 'pamplona', 'salamanca', 'valladolid', 'granada', 'mallorca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
     id: 'pack-arras-documental',
@@ -214,6 +216,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
       'santander',
       'vitoria',
       'san-sebastian',
+      'castellon',
     ],
   },
   {
@@ -221,42 +224,56 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Alquiler Local Comercial',
     precioSlug: 'alquiler-local-comercial',
     href: (c) => `/gestoria/alquiler-local-comercial/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante', 'murcia', 'granada', 'coruna', 'pamplona', 'mallorca', 'salamanca', 'valladolid', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'alicante', 'castellon', 'murcia', 'granada', 'coruna', 'pamplona', 'mallorca', 'salamanca', 'valladolid', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
     id: 'prestamo-particulares',
     nombre: 'Préstamo entre Particulares',
     precioSlug: 'prestamo-particulares',
     href: (c) => `/gestoria/prestamo-particulares/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'mallorca', 'valladolid', 'alicante', 'murcia', 'granada', 'coruna', 'pamplona', 'salamanca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao', 'zaragoza', 'mallorca', 'valladolid', 'alicante', 'castellon', 'murcia', 'granada', 'coruna', 'pamplona', 'salamanca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
+  },
+  {
+    id: 'alquiler-temporada',
+    nombre: 'Alquiler Temporada (Ciudad)',
+    precioSlug: 'alquiler-temporada',
+    href: (c) => `/${c}/alquiler-temporada`,
+    ciudades: [...LANDINGS_CIUDAD_PREMIUM_SLUGS],
+  },
+  {
+    id: 'revision-correccion-arras-ciudad',
+    nombre: 'Revisión + Corrección Arras (Ciudad)',
+    precioSlug: 'revision-correccion-arras',
+    href: (c) => `/gestoria/revision-correccion-arras/${c}`,
+    ciudades: [...LANDINGS_CIUDAD_PREMIUM_SLUGS],
   },
   {
     id: 'alquiler-particulares',
     nombre: 'Alquiler de Particulares',
     precioInfo: 'Portal',
     href: (c) => `/${c}/alquiler-particulares`,
-    ciudades: [...CIUDADES_PORTAL_SLUGS],
+    ciudades: [...CIUDADES_PORTAL_EXTENDIDAS_SLUGS],
   },
   {
     id: 'alquiler-sin-agencia',
     nombre: 'Alquiler sin Agencia',
     precioInfo: 'Portal',
     href: (c) => `/${c}/alquiler-sin-agencia`,
-    ciudades: CIUDADES_PORTAL,
+    ciudades: [...CIUDADES_PORTAL_EXTENDIDAS_SLUGS],
   },
   {
     id: 'vender-piso',
     nombre: 'Vender Piso en Ciudad',
     precioInfo: 'Portal',
     href: (c) => `/${c}/vender-piso`,
-    ciudades: CIUDADES_PORTAL,
+    ciudades: [...CIUDADES_PORTAL_EXTENDIDAS_SLUGS],
   },
   {
     id: 'pisos-ciudad',
     nombre: 'Pisos en Ciudad',
     precioInfo: 'Portal',
     href: (c) => `/${c}/pisos`,
-    ciudades: CIUDADES_PORTAL,
+    ciudades: [...CIUDADES_PORTAL_EXTENDIDAS_SLUGS],
   },
   {
     id: 'pisos-sin-comision',

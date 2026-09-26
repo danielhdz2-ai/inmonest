@@ -3,6 +3,12 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
 import { getCiudadImage } from '@/lib/gestoria-images'
+import {
+  CIUDADES_PORTAL_EXTENDIDAS_SLUGS,
+  getCiudadPortalNombre,
+  isCiudadPortalActiva,
+} from '@/lib/ciudades-portal'
+import { getPortalMercadoGenerico } from '@/lib/portal-ciudad-generic'
 
 // ✅ OPTIMIZACIÓN: Cachear 2 horas
 export const revalidate = 43200  // 12 horas (antes: 2h - optimizado para reducir CPU)
@@ -106,14 +112,14 @@ const MERCADO: Record<string, {
 }
 
 export function generateStaticParams() {
-  return Object.keys(CIUDADES).map((ciudad) => ({ ciudad }))
+  return CIUDADES_PORTAL_EXTENDIDAS_SLUGS.map((ciudad) => ({ ciudad }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ ciudad: string }> }): Promise<Metadata> {
   const { ciudad } = await params
-  const nombre = CIUDADES[ciudad]
-  if (!nombre) return {}
-  const mercado = MERCADO[ciudad]
+  if (!isCiudadPortalActiva(ciudad)) return {}
+  const nombre = getCiudadPortalNombre(ciudad) ?? ciudad
+  const mercado = MERCADO[ciudad] ?? getPortalMercadoGenerico(ciudad)
 
   return {
     title: `Pisos en ${nombre}: compra y alquiler`,
@@ -133,10 +139,21 @@ export async function generateMetadata({ params }: { params: Promise<{ ciudad: s
 
 export default async function PisosCiudadPage({ params }: { params: Promise<{ ciudad: string }> }) {
   const { ciudad } = await params
-  const nombre = CIUDADES[ciudad]
-  if (!nombre) notFound()
+  if (!isCiudadPortalActiva(ciudad)) notFound()
+  const nombre = getCiudadPortalNombre(ciudad) ?? ciudad
 
-  const mercado = MERCADO[ciudad]
+  const genericMercado = getPortalMercadoGenerico(ciudad)
+  const mercado =
+    MERCADO[ciudad] ??
+    ({
+      precio_venta: genericMercado.precio_venta,
+      precio_alquiler: genericMercado.precio_alquiler,
+      precio_m2: genericMercado.precio_m2,
+      tendencia_venta: genericMercado.tendencia_venta,
+      tendencia_alquiler: genericMercado.tendencia_alquiler,
+      barrios: genericMercado.barrios,
+      descripcion: genericMercado.descripcion,
+    } as const)
   const heroImage = getCiudadImage(ciudad)
 
   const schemaJson = JSON.stringify({

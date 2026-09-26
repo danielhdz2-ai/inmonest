@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { GESTOR_CARMEN_GUTIERREZ, GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
+import { CASTELLON_LOCAL_COMERCIAL } from './ciudad-castellon-configs'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -40,6 +41,7 @@ export const ALQUILER_LOCAL_CIUDADES_LIST = [
   { slug: 'sevilla', nombre: 'Sevilla' },
   { slug: 'malaga', nombre: 'Málaga' },
   { slug: 'bilbao', nombre: 'Bilbao' },
+  { slug: 'castellon', nombre: 'Castellón' },
   { slug: 'zaragoza', nombre: 'Zaragoza' },
   { slug: 'alicante', nombre: 'Alicante' },
   { slug: 'murcia', nombre: 'Murcia' },
@@ -1041,6 +1043,8 @@ export const ALQUILER_LOCAL_COMERCIAL_CIUDADES: Record<string, AlquilerLocalCome
       ogDescription: 'Locales comerciales en San Sebasti├ín entre particulares. Gestor├¡a Inmonest.',
     },
   },
+
+  castellon: CASTELLON_LOCAL_COMERCIAL,
 }
 
 export function buildAlquilerLocalComercialMetadata(

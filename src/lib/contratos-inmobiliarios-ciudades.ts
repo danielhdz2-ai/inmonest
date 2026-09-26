@@ -11,6 +11,7 @@ export type ContratosInmobiliariosCiudadSlug =
   | 'zaragoza'
   | 'alicante'
   | 'palma'
+  | 'mallorca'
   | 'murcia'
   | 'coruna'
   | 'pamplona'
@@ -997,6 +998,23 @@ const PALMA: ContratosInmobiliariosCiudadConfig = {
   enlaceGestoria: '/gestoria/palma',
   enlaceArras: '/palma/contrato-arras',
   enlaceAlquiler: '/palma/contrato-alquiler',
+}
+
+const MALLORCA: ContratosInmobiliariosCiudadConfig = {
+  ...PALMA,
+  slug: 'mallorca',
+  nombre: 'Mallorca',
+  metaTitle: 'Contratos inmobiliarios Mallorca | LAU, arras y Baleares',
+  metaDescription:
+    'Contratos inmobiliarios en Mallorca e Illes Balears: LAU, fianza IBAVI, arras y venta entre particulares. Palma, Calvià, Manacor. Desde 61€ en 48h.',
+  keywords:
+    'contratos inmobiliarios Mallorca, contrato alquiler Mallorca, contrato arras Baleares, gestoría inmobiliaria Mallorca particulares',
+  heroHighlight: 'Mallorca',
+  heroLead:
+    'Redacción de arras y alquiler LAU en Mallorca: Palma, Calvià, Manacor y resto de la isla. Fianza IBAVI, zona tensionada e índice de referencia balear.',
+  enlaceGestoria: '/gestoria/mallorca',
+  enlaceArras: '/mallorca/contrato-arras',
+  enlaceAlquiler: '/mallorca/contrato-alquiler',
 }
 
 const MURCIA: ContratosInmobiliariosCiudadConfig = {
@@ -2156,6 +2174,7 @@ export const CONTRATOS_INMOBILIARIOS_CIUDADES: Record<
   zaragoza: ZARAGOZA,
   alicante: ALICANTE,
   palma: PALMA,
+  mallorca: MALLORCA,
   murcia: MURCIA,
   coruna: CORUNA,
   pamplona: PAMPLONA,

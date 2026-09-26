@@ -3,6 +3,12 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
 import { getCiudadImage } from '@/lib/gestoria-images'
+import {
+  CIUDADES_PORTAL_EXTENDIDAS_SLUGS,
+  getCiudadPortalNombre,
+  isCiudadPortalActiva,
+} from '@/lib/ciudades-portal'
+import { getPortalMercadoGenerico } from '@/lib/portal-ciudad-generic'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -30,13 +36,13 @@ const MERCADO: Record<string, { precio_m2: string; tiempo_venta: string; tendenc
 }
 
 export function generateStaticParams() {
-  return Object.keys(CIUDADES).map((ciudad) => ({ ciudad }))
+  return CIUDADES_PORTAL_EXTENDIDAS_SLUGS.map((ciudad) => ({ ciudad }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ ciudad: string }> }): Promise<Metadata> {
   const { ciudad } = await params
-  const nombre = CIUDADES[ciudad]
-  if (!nombre) return {}
+  if (!isCiudadPortalActiva(ciudad)) return {}
+  const nombre = getCiudadPortalNombre(ciudad) ?? ciudad
   return {
     title: `Vender piso sin comisión en ${nombre}`,
     description: `¿Quieres vender tu piso en ${nombre} sin pagar comisiones a agencias? Aprende cómo hacerlo paso a paso: documentación, precio, anuncio y firma. Gratis en Inmonest.`,
@@ -55,10 +61,17 @@ export async function generateMetadata({ params }: { params: Promise<{ ciudad: s
 
 export default async function VenderPisoPage({ params }: { params: Promise<{ ciudad: string }> }) {
   const { ciudad } = await params
-  const nombre = CIUDADES[ciudad]
-  if (!nombre) notFound()
+  if (!isCiudadPortalActiva(ciudad)) notFound()
+  const nombre = getCiudadPortalNombre(ciudad) ?? ciudad
 
-  const mercado = MERCADO[ciudad]
+  const genericMercado = getPortalMercadoGenerico(ciudad)
+  const mercado =
+    MERCADO[ciudad] ??
+    ({
+      precio_m2: genericMercado.precio_m2,
+      tiempo_venta: 'Consultar',
+      tendencia: genericMercado.tendencia_venta,
+    } as const)
   const heroImage = getCiudadImage(ciudad)
 
   const schemaJson = JSON.stringify({

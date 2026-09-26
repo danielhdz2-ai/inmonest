@@ -230,6 +230,63 @@ export const CIUDAD_HUBS_NUCLEO: Record<string, CiudadHubConfig> = {
     ],
   },
 
+  castellon: {
+    slug: 'castellon',
+    nombre: 'Castellón',
+    region: 'Comunitat Valenciana',
+    metaDescription:
+      'Gestoría inmobiliaria para particulares en Castellón. Contratos LAU y arras desde 145€, due diligence 350€, pack arras 450€. Grao, litoral y provincia. 100% online.',
+    keywords:
+      'gestoría inmobiliaria castellon, contrato arras castellon, contrato alquiler castellon, comprar piso castellon particular',
+    heroBadge: 'Gestoría 100% Online | Castellón',
+    heroSubtitulo:
+      'Gestoría inmobiliaria para particulares en Castelló de la Plana, Grao y litoral castellonense. Cerámica, universidad Jaume I y compraventa rápida entre particulares.',
+    ogImage: '/gestoria4.jpg',
+    twitterDescription: 'Contratos, arras y due diligence en Castellón desde 145€. Gestor asignado online.',
+    razones: [
+      {
+        titulo: 'Arras con plazos muy cortos',
+        descripcion:
+          'En Castellón es habitual firmar señal en pocos días. Revisión de arras y due diligence evita sorpresas en comunidad o cargas.',
+      },
+      {
+        titulo: 'Alquiler universitario y habitaciones',
+        descripcion:
+          'Demanda de habitaciones y pisos compartidos cerca de la UJI. Contratos Código Civil o LAU según el caso.',
+      },
+      {
+        titulo: 'Honorarios fijos vs comisión 3-5%',
+        descripcion:
+          'En operaciones entre particulares, Inmonest cobra desde 145€ por contrato y 687€ venta completa hasta escritura.',
+      },
+    ],
+    mercadoZonas: [
+      { nombre: 'Centro Castelló', rango: '550-750€/mes', perfil: 'residentes y profesionales' },
+      { nombre: 'Grao', rango: '500-700€/mes', perfil: 'litoral y familias' },
+      { nombre: 'Benicàssim', rango: '600-900€/mes', perfil: 'segunda residencia y temporada' },
+      { nombre: 'Vila-real', rango: '450-650€/mes', perfil: 'área metropolitana' },
+    ],
+    mercadoCompraventa: [
+      'Castelló capital: **1.400-2.200€/m²** según barrio y proximidad al mar.',
+      'Comisión agencia 3-5% vs **687€** servicio Inmonest hasta escritura en compraventa directa.',
+    ],
+    mercadoParticularidades: [
+      'Cédula de habitabilidad valenciana',
+      'Depósito fianza LAU ante Generalitat (AVANT)',
+      'Distinción alquiler habitual vs temporada en litoral',
+      'Trámite online con panel y gestor hasta notaría castellonense',
+    ],
+    faq: GESTORIA_HUB_FAQ_COMUN,
+    faqSubtitulo: 'Gestoría inmobiliaria en Castellón para particulares.',
+    serviciosSubtitulo: 'Arras, LAU, habitación, local comercial, préstamos entre particulares y due diligence en Castellón.',
+    ctaFinalTitulo: '¿Vas a comprar o vender en Castellón?',
+    ctaFinalTexto: 'Opera con gestor asignado y precio cerrado hasta notaría.',
+    enlacesContrato: [
+      { slug: 'arras-penitenciales', href: '/castellon/contrato-arras', label: 'Ver contrato arras Castellón →' },
+      { slug: 'contrato-alquiler', href: '/castellon/contrato-alquiler', label: 'Ver contrato alquiler Castellón →' },
+    ],
+  },
+
   salamanca: {
     slug: 'salamanca',
     nombre: 'Salamanca',

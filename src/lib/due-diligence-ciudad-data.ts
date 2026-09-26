@@ -3,6 +3,7 @@ import type { DueDiligenceFaqItem } from './due-diligence-ciudad-faq'
 import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
 import { withGestoriaIndexRobots } from './gestoria-indexacion-tier'
+import { CASTELLON_DUE_DILIGENCE } from './ciudad-castellon-configs'
 
 const BASE_URL = 'https://inmonest.com'
 export const DUE_DILIGENCE_PRECIO = 350
@@ -49,6 +50,7 @@ export const DUE_DILIGENCE_CIUDADES_LIST = [
   { slug: 'sevilla', nombre: 'Sevilla' },
   { slug: 'malaga', nombre: 'Málaga' },
   { slug: 'bilbao', nombre: 'Bilbao' },
+  { slug: 'castellon', nombre: 'Castellón' },
   { slug: 'zaragoza', nombre: 'Zaragoza' },
   { slug: 'coruna', nombre: 'A Coruña' },
   { slug: 'alicante', nombre: 'Alicante' },
@@ -880,6 +882,8 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
         '¿Compras en Gros, Centro o Amara? Revisamos nota simple, comunidad y normativa vasca antes de entregar señal. 350€ fijos.',
     },
   },
+
+  castellon: CASTELLON_DUE_DILIGENCE,
 }
 
 export function buildDueDiligenceMetadata(config: DueDiligenceCiudadConfig): Metadata {

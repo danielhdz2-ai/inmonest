@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
 import { withGestoriaIndexRobots } from './gestoria-indexacion-tier'
+import { CASTELLON_PRESTAMO } from './ciudad-castellon-configs'
 
 const BASE_URL = 'https://inmonest.com'
 export const PRESTAMO_PARTICULARES_PRECIO = 130
@@ -45,6 +46,7 @@ export const PRESTAMO_PARTICULARES_CIUDADES_LIST = [
   { slug: 'sevilla', nombre: 'Sevilla' },
   { slug: 'malaga', nombre: 'Málaga' },
   { slug: 'bilbao', nombre: 'Bilbao' },
+  { slug: 'castellon', nombre: 'Castellón' },
   { slug: 'zaragoza', nombre: 'Zaragoza' },
   { slug: 'mallorca', nombre: 'Mallorca' },
   { slug: 'valladolid', nombre: 'Valladolid' },
@@ -1199,6 +1201,8 @@ asturias: {
       ogDescription: 'Formaliza pr├®stamos privados en San Sebasti├ín con gestor asignado. 130Ôé¼ IVA incluido.',
     },
   },
+
+  castellon: CASTELLON_PRESTAMO,
 }
 
 export function buildPrestamoParticularesMetadata(config: PrestamoParticularesCiudadConfig): Metadata {

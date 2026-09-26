@@ -6,7 +6,14 @@ import { getCiudadImage } from '@/lib/gestoria-images'
 import Navbar from '@/components/NavbarServer'
 import ListingCard from '@/components/ListingCard'
 import LeadCaptureForm from '@/components/LeadCaptureForm'
-import { CIUDADES_PORTAL_NOMBRES, isCiudadPortal } from '@/lib/ciudades-portal'
+import {
+  CIUDADES_PORTAL_EXTENDIDAS_SLUGS,
+  CIUDADES_PORTAL_NOMBRES,
+  getCiudadPortalNombre,
+  isCiudadPortal,
+  isCiudadPortalActiva,
+} from '@/lib/ciudades-portal'
+import { getPortalAlquilerParticularesMeta, getPortalCiudadDatos } from '@/lib/portal-ciudad-generic'
 import { searchListings } from '@/lib/listings'
 
 // ✅ OPTIMIZACIÓN: Cachear 2 horas (páginas de ciudad cambian poco)
@@ -140,7 +147,7 @@ const DATOS: Record<string, {
 }
 
 export function generateStaticParams() {
-  return Object.keys(CIUDADES).map((ciudad) => ({ ciudad }))
+  return CIUDADES_PORTAL_EXTENDIDAS_SLUGS.map((ciudad) => ({ ciudad }))
 }
 
 export async function generateMetadata({
@@ -149,19 +156,22 @@ export async function generateMetadata({
   params: Promise<{ ciudad: string }>
 }): Promise<Metadata> {
   const { ciudad } = await params
-  if (!isCiudadPortal(ciudad)) return {}
-  const nombre = CIUDADES[ciudad]
-  const datos = DATOS[ciudad]
+  if (!isCiudadPortalActiva(ciudad)) return {}
+  const nombre = getCiudadPortalNombre(ciudad) ?? ciudad
+  const datos = DATOS[ciudad] ?? getPortalCiudadDatos(ciudad)
+  const portalMeta = getPortalAlquilerParticularesMeta(ciudad)
   return {
     // Sin "| Inmonest" aquí: layout.tsx ya aplica template "%s | Inmonest"
     title:
-      ciudad === 'bilbao'
+      portalMeta?.title ??
+      (ciudad === 'bilbao'
         ? 'Pisos alquiler Bilbao particulares sin comisión'
-        : `Alquiler de particulares en ${nombre} sin comisión`,
+        : `Alquiler de particulares en ${nombre} sin comisión`),
     description:
-      ciudad === 'bilbao'
+      portalMeta?.description ??
+      (ciudad === 'bilbao'
         ? 'Pisos en alquiler en Bilbao de particulares sin comisión. Trato directo con el propietario. Abando, Deusto, Indautxu y más. Contrato LAU opcional desde 145€.'
-        : `Pisos de alquiler de particulares en ${nombre} sin comisión de agencia. Trato directo con el propietario. Precio medio: ${datos?.precio_medio ?? 'consultar'}.`,
+        : `Pisos de alquiler de particulares en ${nombre} sin comisión de agencia. Trato directo con el propietario. Precio medio: ${datos?.precio_medio ?? 'consultar'}.`),
     keywords: `alquiler particulares ${nombre.toLowerCase()}, pisos alquiler ${nombre.toLowerCase()} particulares, pisos en alquiler en ${nombre.toLowerCase()} particulares, alquiler directo propietario ${nombre.toLowerCase()}, piso alquiler ${nombre.toLowerCase()} sin comision`,
     alternates: { canonical: `/${ciudad}/alquiler-particulares` },
     openGraph: {
@@ -184,10 +194,10 @@ export default async function AlquilerParticularesPage({
   params: Promise<{ ciudad: string }>
 }) {
   const { ciudad } = await params
-  if (!isCiudadPortal(ciudad)) notFound()
-  const nombre = CIUDADES[ciudad]
+  if (!isCiudadPortalActiva(ciudad)) notFound()
+  const nombre = getCiudadPortalNombre(ciudad) ?? ciudad
 
-  const datos = DATOS[ciudad]
+  const datos = DATOS[ciudad] ?? getPortalCiudadDatos(ciudad)
   const heroImage = getCiudadImage(ciudad)
 
   // ── Fetch listings reales ───────────────────────────────────────────────────

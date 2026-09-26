@@ -162,6 +162,21 @@ export const CONTRATOS_CIUDAD_ENRIQUECIMIENTO: Record<
       compra: 'Gestor en compras de particular en mercado con escasez de stock — verificación de cargas y derramas en comunidades de edificios costeros.',
     },
   },
+  mallorca: {
+    heroTitulo: 'Contratos de compraventa y alquiler en',
+    heroHighlight: 'Mallorca',
+    mercadoKicker: 'Illes Balears',
+    normativaKicker: 'IBAVI · zona tensionada',
+    barriosKicker: 'Palma · Calvià · interior',
+    precioEjemploVenta: 310_000,
+    precioAgenciaAlquiler: 3_100,
+    serviciosRapidos: {
+      arras: 'Arras en Palma, Calvià o Manacor con revisión documental y plazo a notaría adaptado al mercado insular.',
+      alquiler: 'LAU con depósito IBAVI e índice de referencia en zona tensionada — distinto de alquiler turístico ETV.',
+      packVendedor: 'Documentación para vender en Mallorca sin agencia: cédula, energético y situación turística del inmueble.',
+      compra: 'Acompañamiento de compra entre particulares en isla con escasez de oferta y normativa balear específica.',
+    },
+  },
   murcia: {
     heroTitulo: 'Arras y alquiler entre particulares en',
     heroHighlight: 'Murcia capital',

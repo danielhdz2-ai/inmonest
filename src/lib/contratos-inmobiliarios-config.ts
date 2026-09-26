@@ -114,4 +114,5 @@ export const CONTRATOS_CIUDADES_LOCAL = [
   { slug: 'vitoria', label: 'Vitoria-Gasteiz', href: '/contratos-inmobiliarios/vitoria' },
   { slug: 'san-sebastian', label: 'San Sebastián', href: '/contratos-inmobiliarios/san-sebastian' },
   { slug: 'castellon', label: 'Castellón', href: '/contratos-inmobiliarios/castellon' },
+  { slug: 'mallorca', label: 'Mallorca', href: '/contratos-inmobiliarios/mallorca' },
 ] as const
