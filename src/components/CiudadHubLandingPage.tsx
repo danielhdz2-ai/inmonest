@@ -11,7 +11,7 @@ import ComprarConSeguridad from '@/components/ComprarConSeguridad'
 import GestoriaCiudadServiciosYPanel from '@/components/GestoriaCiudadServiciosYPanel'
 import GestoriaHubConversionFooter from '@/components/GestoriaHubConversionFooter'
 import GestoriaCiudadAgenciasBanner from '@/components/GestoriaCiudadAgenciasBanner'
-import JsonLd from '@/components/JsonLd'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
 import type { CiudadHubConfig } from '@/lib/gestoria-ciudad-hub-data'
 import { GESTORIA_HUB_CIUDAD_SLUGS } from '@/lib/gestoria-ciudad-hub-data'
 import { getNombreCiudad } from '@/lib/gestoria-ciudades-inventario'
@@ -21,11 +21,7 @@ import {
   getContratoAlquilerPrecio,
   getContratoAlquilerSolicitarHref,
 } from '@/lib/gestoria-catalogo'
-import {
-  buildFaqSchema,
-  buildLegalServiceSchema,
-  buildServiceOfferSchema,
-} from '@/lib/gestoria-ciudad-schema'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 
 type CiudadHubLandingPageProps = {
   config: CiudadHubConfig
@@ -38,12 +34,14 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
 
   return (
     <>
-      <JsonLd
-        schema={[
-          buildLegalServiceSchema(nombre, slug),
-          buildServiceOfferSchema('Acompañamiento Reserva hasta Arras', nombre, 424),
-          buildFaqSchema(config.faq),
-        ]}
+      <GestoriaLandingSeo
+        pagePath={`/gestoria/${slug}`}
+        pageTitle={`Gestoría inmobiliaria en ${nombre}`}
+        description={config.metaDescription}
+        servicioNombre="Gestoría inmobiliaria para particulares"
+        ciudadNombre={nombre}
+        faqs={config.faq}
+        breadcrumbs={gestoriaLandingBreadcrumbs({ name: nombre })}
       />
       <Navbar />
       <main className="min-h-screen bg-gray-50">

@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
-import JsonLd from '@/components/JsonLd'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaPanelShowcase, {
   PRESTAMO_PANEL_CLAUSULAS,
@@ -16,7 +17,6 @@ import {
 } from '@/lib/prestamo-particulares-ciudad-data'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { DUE_DILIGENCE_LANDING, getCiudadCtaImage, getServicioImages, GESTORIA_CTA_BANNERS } from '@/lib/gestoria-images'
-import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 import { precioLabel, precioLauLabel } from '@/lib/gestoria-precios-ui'
 import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
 import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
@@ -30,7 +30,6 @@ const ASESORIA_COMPRA_CIUDADES = new Set([
   'zaragoza', 'valladolid', 'mallorca', 'coruna', 'murcia', 'pamplona',
 ])
 
-const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/prestamo-particulares'
 
 const PASOS = [
@@ -195,50 +194,21 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
     },
   ]
 
-  const schemaJson = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: `Contrato de Préstamo entre Particulares en ${nombre}`,
-    description: `Redacción profesional de contratos de préstamo privado para particulares en ${nombre}. Asesor experto, nota fiscal y entrega en 48h.`,
-    areaServed: {
-      '@type': 'City',
-      name: nombre,
-      containedIn: { '@type': 'Country', name: 'España' },
-    },
-    provider: { '@id': ORGANIZATION_SCHEMA_ID },
-    offers: {
-      '@type': 'Offer',
-      price: String(PRESTAMO_PARTICULARES_PRECIO),
-      priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
-      priceValidUntil: '2026-12-31',
-    },
-  }
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Gestoría', item: `${BASE_URL}/gestoria` },
-      { '@type': 'ListItem', position: 3, name: 'Préstamo entre Particulares', item: `${BASE_URL}/gestoria/prestamo-particulares` },
-      { '@type': 'ListItem', position: 4, name: nombre, item: `${BASE_URL}/gestoria/prestamo-particulares/${slug}` },
-    ],
-  }
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faq.map((item) => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: { '@type': 'Answer', text: item.a },
-    })),
-  }
-
   return (
     <>
-      <JsonLd schema={[schemaJson, breadcrumbSchema, faqSchema]} />
+      <GestoriaLandingSeo
+        pagePath={`/gestoria/prestamo-particulares/${slug}`}
+        pageTitle={`Préstamo entre particulares en ${nombre}`}
+        description={`Contrato de préstamo privado con nota fiscal para particulares en ${nombre}. Gestor asignado y entrega en 48 h.`}
+        servicioNombre="Préstamo entre particulares"
+        ciudadNombre={nombre}
+        precioEuros={PRESTAMO_PARTICULARES_PRECIO}
+        faqs={faq}
+        breadcrumbs={gestoriaLandingBreadcrumbs(
+          { name: 'Préstamo particulares', path: '/gestoria/prestamo-particulares' },
+          { name: nombre },
+        )}
+      />
       <Navbar />
       <WhatsAppButton />
 

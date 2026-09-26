@@ -18,50 +18,25 @@ import {
   CONTRATO_ARRAS_PREMIUM_INCLUDES,
   CONTRATO_ARRAS_PREMIUM_PRECIO,
 } from '@/lib/contrato-arras-premium-config'
-
-const BASE_URL = 'https://inmonest.com'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 
 export default function ContratoArrasCiudadPremium({ config }: { config: ContratoArrasPremiumConfig }) {
   const precio = CONTRATO_ARRAS_PREMIUM_PRECIO
   const solicitarHref = '/gestoria/solicitar/arras-penitenciales'
 
-  const schemaJson = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: config.schema.serviceName,
-    description: config.schema.serviceDescription,
-    provider: {
-      '@type': 'Organization',
-      name: 'Inmonest',
-      url: BASE_URL,
-    },
-    areaServed: {
-      '@type': config.schema.areaType,
-      name: config.schema.areaName,
-      containedIn: { '@type': 'Country', name: 'España' },
-    },
-    offers: {
-      '@type': 'Offer',
-      price: precio,
-      priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
-    },
-  }
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: config.faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  }
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <GestoriaLandingSeo
+        pagePath={`/${config.slug}/contrato-arras`}
+        pageTitle={`Contrato de arras en ${config.nombre}`}
+        description={config.schema.serviceDescription}
+        servicioNombre="Contrato de arras penitenciales"
+        ciudadNombre={config.nombre}
+        precioEuros={Number(precio)}
+        faqs={config.faqs}
+        breadcrumbs={gestoriaLandingBreadcrumbs({ name: `Arras en ${config.nombre}` })}
+      />
       <Navbar />
 
       <section className="relative h-[400px] sm:h-[480px] overflow-hidden">

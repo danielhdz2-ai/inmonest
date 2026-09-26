@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
-import JsonLd from '@/components/JsonLd'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 import GestoriaBlindajeOperacion from '@/components/GestoriaBlindajeOperacion'
@@ -28,11 +29,9 @@ import {
 } from '@/lib/alquiler-local-comercial-servicio-content'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getCiudadCtaImage } from '@/lib/gestoria-images'
-import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 import { precioLabel } from '@/lib/gestoria-precios-ui'
 import { getAlquilerLocalEnriquecimiento } from '@/lib/alquiler-local-comercial-ciudad-enriquecimiento'
 
-const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-local-comercial'
 const SERVICIO_SLUG = 'alquiler-local-comercial'
 
@@ -71,50 +70,21 @@ export default function AlquilerLocalComercialCiudadLanding({ config }: Props) {
   const ahorroMin = ahorroVsMercadoTradicional()
   const paraQuien = [...LOCAL_COMERCIAL_PARA_QUIEN_BASE, ...config.paraQuienExtra]
   const faq = [...FAQ_BASE, ...config.faqExtra]
-  const schemaJson = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: `Contrato de Alquiler de Local Comercial en ${nombre}`,
-    description: `Redacción profesional de contratos LAU empresariales para particulares en ${nombre}. Gestor experto y entrega en 48h.`,
-    areaServed: {
-      '@type': 'City',
-      name: nombre,
-      containedIn: { '@type': 'Country', name: 'España' },
-    },
-    provider: { '@id': ORGANIZATION_SCHEMA_ID },
-    offers: {
-      '@type': 'Offer',
-      price: String(ALQUILER_LOCAL_COMERCIAL_PRECIO),
-      priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
-      priceValidUntil: '2026-12-31',
-    },
-  }
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Gestoría', item: `${BASE_URL}/gestoria` },
-      { '@type': 'ListItem', position: 3, name: 'Alquiler Local Comercial', item: `${BASE_URL}/gestoria/alquiler-local-comercial` },
-      { '@type': 'ListItem', position: 4, name: nombre, item: `${BASE_URL}/gestoria/alquiler-local-comercial/${slug}` },
-    ],
-  }
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faq.map((item) => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: { '@type': 'Answer', text: item.a },
-    })),
-  }
-
   return (
     <>
-      <JsonLd schema={[schemaJson, breadcrumbSchema, faqSchema]} />
+      <GestoriaLandingSeo
+        pagePath={`/gestoria/alquiler-local-comercial/${slug}`}
+        pageTitle={`Alquiler local comercial en ${nombre}`}
+        description={`Contrato LAU empresarial para locales en ${nombre}. Gestor experto y entrega en 48 h.`}
+        servicioNombre="Contrato alquiler local comercial"
+        ciudadNombre={nombre}
+        precioEuros={ALQUILER_LOCAL_COMERCIAL_PRECIO}
+        faqs={faq}
+        breadcrumbs={gestoriaLandingBreadcrumbs(
+          { name: 'Local comercial', path: '/gestoria/alquiler-local-comercial' },
+          { name: nombre },
+        )}
+      />
       <Navbar />
       <WhatsAppButton />
 

@@ -3,7 +3,8 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
-import JsonLd from '@/components/JsonLd'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import { RELACIONADOS_DUE_DILIGENCE } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
@@ -17,15 +18,12 @@ import {
   comisionAgenciaMax,
 } from '@/lib/due-diligence-ciudad-data'
 import { getDueDiligenceFaq } from '@/lib/due-diligence-ciudad-faq'
-import { buildFaqSchema } from '@/lib/gestoria-ciudad-schema'
 import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { DUE_DILIGENCE_LANDING, getCiudadCtaImage } from '@/lib/gestoria-images'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
-import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
 import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 
-const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/pack-due-diligence-precompra'
 
 const PASOS = [
@@ -75,37 +73,6 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
   const waText = encodeURIComponent(`Hola, necesito Due Diligence pre-compra en ${nombre}`)
   const faq = getDueDiligenceFaq(nombre, region, config.faqPrioritarias)
 
-  const schemaJson = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: `Pack Due Diligence Pre-Compra en ${nombre}`,
-    description: `Revisión exhaustiva de documentación de vivienda para compradores de particular a particular en ${nombre}. Gestor asignado hasta escritura.`,
-    areaServed: {
-      '@type': 'City',
-      name: nombre,
-      containedIn: { '@type': 'Country', name: 'España' },
-    },
-    provider: { '@id': ORGANIZATION_SCHEMA_ID },
-    offers: {
-      '@type': 'Offer',
-      price: String(DUE_DILIGENCE_PRECIO),
-      priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
-      priceValidUntil: '2026-12-31',
-    },
-  }
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Gestoría', item: `${BASE_URL}/gestoria` },
-      { '@type': 'ListItem', position: 3, name: 'Due Diligence Pre-Compra', item: `${BASE_URL}/gestoria/due-diligence-precompra` },
-      { '@type': 'ListItem', position: 4, name: nombre, item: `${BASE_URL}/gestoria/due-diligence-precompra/${slug}` },
-    ],
-  }
-
   const revisionBlocks = [
     {
       titulo: 'Nota simple registral',
@@ -135,7 +102,19 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
 
   return (
     <>
-      <JsonLd schema={[schemaJson, breadcrumbSchema, buildFaqSchema(faq)]} />
+      <GestoriaLandingSeo
+        pagePath={`/gestoria/due-diligence-precompra/${slug}`}
+        pageTitle={`Due diligence pre-compra en ${nombre}`}
+        description={`Revisión exhaustiva de documentación para compradores entre particulares en ${nombre}. Gestor asignado hasta escritura.`}
+        servicioNombre="Due diligence pre-compra"
+        ciudadNombre={nombre}
+        precioEuros={DUE_DILIGENCE_PRECIO}
+        faqs={faq}
+        breadcrumbs={gestoriaLandingBreadcrumbs(
+          { name: 'Due diligence', path: '/gestoria/pack-due-diligence-precompra' },
+          { name: nombre },
+        )}
+      />
       <Navbar />
       <WhatsAppButton />
 

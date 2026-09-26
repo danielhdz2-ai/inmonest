@@ -1,4 +1,6 @@
 import GestorDanielSection from '@/components/GestorDanielSection'
+import GestoriaLandingPasosOnline from '@/components/GestoriaLandingPasosOnline'
+import GestoriaLandingTrustStrip from '@/components/GestoriaLandingTrustStrip'
 import LlamaGestorBanner from '@/components/LlamaGestorBanner'
 import GestoriaServicioCiudades from '@/components/GestoriaServicioCiudades'
 import { ServicioRelacionadoCard } from '@/components/ServicioRelacionadoCard'
@@ -78,7 +80,13 @@ export default function GestoriaLandingExtras({
 
   return (
     <div className={cn('space-y-16', className)}>
-      {showContact && <GestoriaTramiteOnlineNote variant="banner" />}
+      {showContact && (
+        <>
+          <GestoriaLandingTrustStrip servicio={servicioNombre} ciudad={ciudad} />
+          <GestoriaLandingPasosOnline />
+          <GestoriaTramiteOnlineNote variant="banner" />
+        </>
+      )}
       {(showDanielBlock || showLlamaBlock) && (
         <div className={cn(showDanielBlock && showLlamaBlock && 'space-y-6')}>
           {showDanielBlock && (

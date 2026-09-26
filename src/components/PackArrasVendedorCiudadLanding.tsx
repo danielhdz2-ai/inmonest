@@ -2,7 +2,8 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
-import JsonLd from '@/components/JsonLd'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaCiudadHero from '@/components/GestoriaCiudadHero'
@@ -21,7 +22,6 @@ import {
 } from '@/lib/pack-arras-vendedor-ciudad-data'
 import { getPackArrasVendedorFaq } from '@/lib/pack-arras-vendedor-ciudad-faq'
 import { getPackArrasVendedorEnriquecimiento } from '@/lib/pack-arras-vendedor-enriquecimiento'
-import { buildFaqSchema, buildServiceOfferSchema } from '@/lib/gestoria-ciudad-schema'
 
 const SOLICITAR_URL = '/gestoria/solicitar/pack-arras-plus-vendedor'
 
@@ -46,11 +46,18 @@ export default function PackArrasVendedorCiudadLanding({ config }: Props) {
 
   return (
     <>
-      <JsonLd
-        schema={[
-          buildServiceOfferSchema('Pack Arras Plus Vendedor', nombre, PACK_ARRAS_VENDEDOR_PRECIO),
-          buildFaqSchema(faq),
-        ]}
+      <GestoriaLandingSeo
+        pagePath={`/gestoria/pack-arras-plus-vendedor/${slug}`}
+        pageTitle={`Pack Arras Plus vendedor en ${nombre}`}
+        description={config.hero.lead}
+        servicioNombre="Pack Arras Plus vendedor"
+        ciudadNombre={nombre}
+        precioEuros={PACK_ARRAS_VENDEDOR_PRECIO}
+        faqs={faq}
+        breadcrumbs={gestoriaLandingBreadcrumbs(
+          { name: 'Pack vendedor', path: '/gestoria/pack-arras-plus-vendedor' },
+          { name: nombre },
+        )}
       />
       <Navbar />
       <WhatsAppButton />

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
-import JsonLd from '@/components/JsonLd'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
 import LocalRegulationsBlock from '@/components/LocalRegulationsBlock'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaCiudadHero from '@/components/GestoriaCiudadHero'
@@ -19,17 +19,12 @@ import {
 } from '@/lib/asesoria-compra-ciudad-data'
 import { getAsesoriaCompraFaq } from '@/lib/asesoria-compra-ciudad-faq'
 import { getAsesoriaCompraEnriquecimiento } from '@/lib/asesoria-compra-ciudad-enriquecimiento'
-import {
-  buildFaqSchema,
-  buildLegalServiceSchema,
-  buildServiceOfferSchema,
-} from '@/lib/gestoria-ciudad-schema'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import { getDueDiligenceHref } from '@/lib/gestoria-compra-cross-sell'
 import AsesoriaCompraServiciosDetalle from '@/components/AsesoriaCompraServiciosDetalle'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getCiudadCtaImage } from '@/lib/gestoria-images'
 
-const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/compra-completa-reserva-escritura'
 const SERVICIO_SLUG = 'compra-completa-reserva-escritura'
 
@@ -75,15 +70,18 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
 
   return (
     <>
-      <JsonLd
-        schema={[
-          buildLegalServiceSchema(nombre, slug, {
-            path: `${BASE_URL}/gestoria/asesoria-compra-piso/${slug}`,
-            name: `Inmonest Asesoría Compra Piso ${nombre}`,
-          }),
-          buildServiceOfferSchema('Asesoría Compra de Piso', nombre, ASESORIA_COMPRA_PRECIO),
-          buildFaqSchema(faq),
-        ]}
+      <GestoriaLandingSeo
+        pagePath={`/gestoria/asesoria-compra-piso/${slug}`}
+        pageTitle={`Asesoría compra de piso en ${nombre}`}
+        description={config.hero.lead}
+        servicioNombre="Asesoría compra de piso"
+        ciudadNombre={nombre}
+        precioEuros={ASESORIA_COMPRA_PRECIO}
+        faqs={faq}
+        breadcrumbs={gestoriaLandingBreadcrumbs(
+          { name: 'Compra completa', path: '/gestoria/compra-completa-reserva-escritura' },
+          { name: nombre },
+        )}
       />
       <Navbar />
       <WhatsAppButton />

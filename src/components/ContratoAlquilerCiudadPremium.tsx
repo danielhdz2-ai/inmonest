@@ -18,8 +18,8 @@ import {
   getContratoAlquilerPremiumSolicitarHref,
   type ContratoAlquilerPremiumConfig,
 } from '@/lib/contrato-alquiler-premium-config'
-
-const BASE_URL = 'https://inmonest.com'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 
 const GESTORIA_HUB_POR_CIUDAD: Record<string, string> = {
   malaga: '/gestoria/malaga',
@@ -38,43 +38,18 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
   const solicitarHref = getContratoAlquilerPremiumSolicitarHref(config.slug)
   const gestoriaHubHref = GESTORIA_HUB_POR_CIUDAD[config.slug]
 
-  const schemaJson = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: config.schema.serviceName,
-    description: config.schema.serviceDescription,
-    provider: {
-      '@type': 'Organization',
-      name: 'Inmonest',
-      url: BASE_URL,
-    },
-    areaServed: {
-      '@type': config.schema.areaType,
-      name: config.schema.areaName,
-      containedIn: { '@type': 'Country', name: 'España' },
-    },
-    offers: {
-      '@type': 'Offer',
-      price: precio,
-      priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
-    },
-  }
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: config.faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  }
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJson) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <GestoriaLandingSeo
+        pagePath={`/${config.slug}/contrato-alquiler`}
+        pageTitle={`Contrato de alquiler LAU en ${config.nombre}`}
+        description={config.schema.serviceDescription}
+        servicioNombre="Contrato de alquiler LAU"
+        ciudadNombre={config.nombre}
+        precioEuros={Number(precio)}
+        faqs={config.faqs}
+        breadcrumbs={gestoriaLandingBreadcrumbs({ name: `Alquiler LAU en ${config.nombre}` })}
+      />
       <Navbar />
 
       <section className="relative h-[400px] sm:h-[480px] overflow-hidden">

@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
-import JsonLd from '@/components/JsonLd'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import GestoriaTramiteOnlineSection from '@/components/GestoriaTramiteOnlineSection'
@@ -31,19 +32,21 @@ export default function RevisionCorreccionArrasCiudadLanding({
 }) {
   const { nombre, slug, hero, mercadoIntro, alerta, riesgosLocales, faqs, gestorBio, region } = config
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  }
-
   return (
     <>
-      <JsonLd schema={faqSchema} />
+      <GestoriaLandingSeo
+        pagePath={`/gestoria/revision-correccion-arras/${slug}`}
+        pageTitle={hero.h1}
+        description={hero.lead}
+        servicioNombre="Revisión y corrección de contrato de arras"
+        ciudadNombre={nombre}
+        precioEuros={REVISION_ARRAS_PRECIO}
+        faqs={faqs}
+        breadcrumbs={gestoriaLandingBreadcrumbs(
+          { name: 'Revisión arras', path: '/gestoria/revision-correccion-arras' },
+          { name: nombre },
+        )}
+      />
       <Navbar />
 
       <section className="relative bg-slate-900 text-white overflow-hidden">

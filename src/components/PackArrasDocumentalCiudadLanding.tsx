@@ -2,7 +2,8 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
-import JsonLd from '@/components/JsonLd'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import LocalRegulationsBlock from '@/components/LocalRegulationsBlock'
 import { RELACIONADOS_PACK_ARRAS_DOCUMENTAL } from '@/lib/gestoria-relacionados'
@@ -18,15 +19,11 @@ import {
   comisionAgenciaMin,
 } from '@/lib/pack-arras-documental-ciudad-data'
 import { getPackArrasDocumentalFaq } from '@/lib/pack-arras-documental-ciudad-faq'
-import { buildFaqSchema } from '@/lib/gestoria-ciudad-schema'
 import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getCiudadCtaImage } from '@/lib/gestoria-images'
 import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
 import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
 import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
-import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
-
-const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/pack-arras-revision-documental'
 
 function CheckIcon() {
@@ -52,47 +49,6 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
   const ahorroMin = agenciaMin - PACK_ARRAS_DOCUMENTAL_PRECIO
   const faq = getPackArrasDocumentalFaq(nombre, region, config.faqPrioritarias)
   const pasos = config.pasosLocales
-
-  const schemaJson = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: `Pack Arras Plus Comprador en ${nombre}`,
-    description: `Arras penitenciales redactadas y revisión documental integral para compradores entre particulares en ${nombre}.`,
-    areaServed: {
-      '@type': 'City',
-      name: nombre,
-      containedIn: { '@type': 'Country', name: 'España' },
-    },
-    provider: { '@id': ORGANIZATION_SCHEMA_ID },
-    offers: {
-      '@type': 'Offer',
-      price: String(PACK_ARRAS_DOCUMENTAL_PRECIO),
-      priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
-      priceValidUntil: '2026-12-31',
-    },
-  }
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Gestoría', item: `${BASE_URL}/gestoria` },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        name: 'Pack Arras Plus Comprador',
-        item: `${BASE_URL}/gestoria/pack-arras-revision-documental`,
-      },
-      {
-        '@type': 'ListItem',
-        position: 4,
-        name: nombre,
-        item: `${BASE_URL}/gestoria/pack-arras-revision-documental/${slug}`,
-      },
-    ],
-  }
 
   const revisionBlocks = [
     {
@@ -121,7 +77,19 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
 
   return (
     <>
-      <JsonLd schema={[schemaJson, breadcrumbSchema, buildFaqSchema(faq)]} />
+      <GestoriaLandingSeo
+        pagePath={`/gestoria/pack-arras-revision-documental/${slug}`}
+        pageTitle={`Pack Arras Plus comprador en ${nombre}`}
+        description={`Arras penitenciales y revisión documental para compradores entre particulares en ${nombre}.`}
+        servicioNombre="Pack Arras Plus comprador"
+        ciudadNombre={nombre}
+        precioEuros={PACK_ARRAS_DOCUMENTAL_PRECIO}
+        faqs={faq}
+        breadcrumbs={gestoriaLandingBreadcrumbs(
+          { name: 'Pack Arras Plus', path: '/gestoria/pack-arras-revision-documental' },
+          { name: nombre },
+        )}
+      />
       <Navbar />
       <WhatsAppButton />
 

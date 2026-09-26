@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
-import JsonLd from '@/components/JsonLd'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import GestoriaAlquilerModulosCompletos, {
@@ -18,19 +19,21 @@ export default function AlquilerTemporadaCiudadLanding({ config }: { config: Alq
   const { nombre, slug, hero, mercadoIntro, casosUso, normativaBullets } = config
   const precio = getAlquilerTemporadaPrecio()
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: config.faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  }
-
   return (
     <>
-      <JsonLd schema={faqSchema} />
+      <GestoriaLandingSeo
+        pagePath={`/${slug}/alquiler-temporada`}
+        pageTitle={hero.h1}
+        description={hero.lead}
+        servicioNombre="Contrato de alquiler de temporada"
+        ciudadNombre={nombre}
+        precioEuros={precio}
+        faqs={config.faqs}
+        breadcrumbs={gestoriaLandingBreadcrumbs(
+          { name: 'Alquiler temporada', path: '/gestoria/alquiler-temporada' },
+          { name: nombre },
+        )}
+      />
       <Navbar />
 
       <section className="relative bg-slate-900 text-white overflow-hidden">

@@ -3,7 +3,8 @@ import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
-import JsonLd from '@/components/JsonLd'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaCiudadHero from '@/components/GestoriaCiudadHero'
@@ -27,11 +28,6 @@ import {
   VENTA_COMPLETA_DOCUMENTOS_CHECKLIST,
   VENTA_COMPLETA_PASOS_PROCESO,
 } from '@/lib/venta-completa-servicio-content'
-import { buildFaqSchema, buildServiceOfferSchema } from '@/lib/gestoria-ciudad-schema'
-import {
-  buildVentaCompletaBreadcrumbSchema,
-  buildVentaCompletaServiceSchema,
-} from '@/lib/venta-completa-ciudad-schema'
 import { getVentaCompletaEnriquecimiento } from '@/lib/venta-completa-ciudad-enriquecimiento'
 
 const SOLICITAR_URL = '/gestoria/solicitar/venta-completa-reserva-escritura'
@@ -51,13 +47,18 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
 
   return (
     <>
-      <JsonLd
-        schema={[
-          buildVentaCompletaServiceSchema(nombre, slug),
-          buildVentaCompletaBreadcrumbSchema(nombre, slug),
-          buildServiceOfferSchema('Venta Completa hasta Escritura', nombre, VENTA_COMPLETA_PRECIO),
-          buildFaqSchema(faq),
-        ]}
+      <GestoriaLandingSeo
+        pagePath={`/gestoria/venta-completa-reserva-escritura/${slug}`}
+        pageTitle={`Venta completa hasta escritura en ${nombre}`}
+        description={config.hero.lead}
+        servicioNombre="Venta completa hasta escritura"
+        ciudadNombre={nombre}
+        precioEuros={VENTA_COMPLETA_PRECIO}
+        faqs={faq}
+        breadcrumbs={gestoriaLandingBreadcrumbs(
+          { name: 'Venta completa', path: '/gestoria/venta-completa-reserva-escritura' },
+          { name: nombre },
+        )}
       />
       <Navbar />
       <WhatsAppButton />

@@ -1,7 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
-import JsonLd from '@/components/JsonLd'
+import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import { RELACIONADOS_HABITACION } from '@/lib/gestoria-relacionados'
 import WhatsAppButton from '@/components/WhatsAppButton'
@@ -12,7 +13,6 @@ import {
 } from '@/lib/alquiler-habitacion-ciudad-data'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getCiudadCtaImage } from '@/lib/gestoria-images'
-import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 import { getContratoAlquilerPrecio } from '@/lib/gestoria-catalogo'
 import { precioLabel } from '@/lib/gestoria-precios-ui'
 import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
@@ -22,7 +22,6 @@ import GestoriaAlquilerModulosCompletos, {
   GestoriaAlquilerTramiteOnlineSection,
 } from '@/components/GestoriaAlquilerModulosCompletos'
 
-const BASE_URL = 'https://inmonest.com'
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
 const DUE_DILIGENCE_CIUDADES = new Set(['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao'])
 
@@ -152,50 +151,21 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
     },
   ]
 
-  const schemaJson = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: `Contrato de Alquiler de Habitación en ${nombre}`,
-    description: `Redacción profesional de contratos de alquiler de habitación para particulares en ${nombre}. Asesor experto y entrega en 48h.`,
-    areaServed: {
-      '@type': 'City',
-      name: nombre,
-      containedIn: { '@type': 'Country', name: 'España' },
-    },
-    provider: { '@id': ORGANIZATION_SCHEMA_ID },
-    offers: {
-      '@type': 'Offer',
-      price: String(ALQUILER_HABITACION_PRECIO),
-      priceCurrency: 'EUR',
-      availability: 'https://schema.org/InStock',
-      priceValidUntil: '2026-12-31',
-    },
-  }
-
-  const breadcrumbSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Inicio', item: BASE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Gestoría', item: `${BASE_URL}/gestoria` },
-      { '@type': 'ListItem', position: 3, name: 'Contrato Alquiler Habitación', item: `${BASE_URL}/gestoria/contrato-alquiler-habitacion` },
-      { '@type': 'ListItem', position: 4, name: nombre, item: `${BASE_URL}/gestoria/contrato-alquiler-habitacion/${slug}` },
-    ],
-  }
-
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faq.map((item) => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: { '@type': 'Answer', text: item.a },
-    })),
-  }
-
   return (
     <>
-      <JsonLd schema={[schemaJson, breadcrumbSchema, faqSchema]} />
+      <GestoriaLandingSeo
+        pagePath={`/gestoria/contrato-alquiler-habitacion/${slug}`}
+        pageTitle={`Contrato alquiler habitación en ${nombre}`}
+        description={`Contrato de habitación y coliving para particulares en ${nombre}. Gestor asignado y entrega en 48 h.`}
+        servicioNombre="Contrato alquiler de habitación"
+        ciudadNombre={nombre}
+        precioEuros={ALQUILER_HABITACION_PRECIO}
+        faqs={faq}
+        breadcrumbs={gestoriaLandingBreadcrumbs(
+          { name: 'Alquiler habitación', path: '/gestoria/alquiler-habitaciones' },
+          { name: nombre },
+        )}
+      />
       <Navbar />
       <WhatsAppButton />
 
