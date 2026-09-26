@@ -1,7 +1,31 @@
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 
-/** Reseñas reales de Google Business (visibles también en la web) */
+/** Totales del Perfil de Empresa Google (actualizar si cambian en GBP). */
+export const GESTORIA_GOOGLE_AGGREGATE = {
+  ratingValue: '5.0',
+  reviewCount: 20,
+  bestRating: '5',
+  worstRating: '1',
+} as const
+
+/** Muestra de reseñas reales para web + schema Review (no hace falta listar las 20). */
 export const GESTORIA_GOOGLE_REVIEWS = [
+  {
+    author: 'Javier Alegre',
+    datePublished: '2026-09-19',
+    reviewBody:
+      'La profesionalidad de Daniel ha sido espectacular, me mandó el contrato de forma rápida y adaptado a mis peticiones. Lo recomiendo sin lugar a dudas.',
+  },
+  {
+    author: 'Juan Sebastian Cardenas Puertas',
+    datePublished: '2026-09-23',
+    reviewBody: 'Espectacular el trato, muchas gracias por todo.',
+  },
+  {
+    author: 'Firma Cert',
+    datePublished: '2026-09-12',
+    reviewBody: 'Grandes profesionales del sector, espectacular servicio lo recomiendo.',
+  },
   {
     author: 'zonetechonline',
     datePublished: '2026-05-26',
@@ -46,11 +70,12 @@ export function buildGestoriaReviewSchema() {
 }
 
 export function buildGestoriaAggregateRatingSchema() {
+  const { ratingValue, reviewCount, bestRating, worstRating } = GESTORIA_GOOGLE_AGGREGATE
   return {
     '@type': 'AggregateRating' as const,
-    ratingValue: '5.0',
-    reviewCount: String(GESTORIA_GOOGLE_REVIEWS.length),
-    bestRating: '5',
-    worstRating: '1',
+    ratingValue,
+    reviewCount: String(reviewCount),
+    bestRating,
+    worstRating,
   }
 }

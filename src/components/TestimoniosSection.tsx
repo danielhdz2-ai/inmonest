@@ -1,6 +1,6 @@
 import TestimoniosCarousel from '@/components/TestimoniosCarousel'
 import TestimoniosStack from '@/components/TestimoniosStack'
-import { GESTORIA_GOOGLE_REVIEWS } from '@/lib/gestoria-reviews-schema'
+import { GESTORIA_GOOGLE_AGGREGATE, GESTORIA_GOOGLE_REVIEWS } from '@/lib/gestoria-reviews-schema'
 import {
   GOOGLE_REVIEWS_LIST_URL,
   GOOGLE_REVIEW_SHORT_PATH,
@@ -46,9 +46,9 @@ export default function TestimoniosSection({
                     </svg>
                   ))}
                 </div>
-                <span className="text-lg font-bold text-gray-900">5.0</span>
+                <span className="text-lg font-bold text-gray-900">{GESTORIA_GOOGLE_AGGREGATE.ratingValue}</span>
                 <span className="text-sm text-gray-500">
-                  · {GESTORIA_GOOGLE_REVIEWS.length} reseñas en Google
+                  · {GESTORIA_GOOGLE_AGGREGATE.reviewCount} reseñas en Google
                 </span>
               </div>
               <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">

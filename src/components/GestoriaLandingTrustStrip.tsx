@@ -1,5 +1,6 @@
 import { GESTOR_DANIEL_HERNANDEZ } from '@/lib/gestores-inmonest'
 import { GESTORIA_LANDING_CONTENT_REVISED } from '@/lib/gestoria-ciudad-schema'
+import { GESTORIA_GOOGLE_AGGREGATE } from '@/lib/gestoria-reviews-schema'
 
 type GestoriaLandingTrustStripProps = {
   servicio?: string
@@ -29,6 +30,12 @@ export default function GestoriaLandingTrustStrip({ servicio, ciudad }: Gestoria
           |
         </span>
         <span>100 % online · toda España</span>
+        <span className="hidden sm:inline text-gray-300" aria-hidden>
+          |
+        </span>
+        <span>
+          {GESTORIA_GOOGLE_AGGREGATE.ratingValue} · {GESTORIA_GOOGLE_AGGREGATE.reviewCount} reseñas Google
+        </span>
         <span className="hidden sm:inline text-gray-300" aria-hidden>
           |
         </span>
