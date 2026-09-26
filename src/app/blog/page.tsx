@@ -34,6 +34,17 @@ const RECURSOS = [
 
 const ARTICULOS = [
   {
+    slug: 'revision-contrato-arras-antes-firmar',
+    href: '/blog/revision-contrato-arras-antes-firmar',
+    titulo: 'Revisión del contrato de arras antes de firmar — Checklist legal 2026',
+    resumen:
+      'Qué revisar en un contrato de señal o arras penitenciales antes de pagar: hipoteca, plazos, cargas registrales y corrección de cláusulas. Guía gestoría online para compradores entre particulares.',
+    fecha: '26 de septiembre de 2026',
+    categoria: 'Gestoría',
+    lectura: '11 min',
+    etiqueta: 'Nuevo',
+  },
+  {
     slug: 'que-es-gestoria-inmobiliaria',
     href: '/blog/que-es-gestoria-inmobiliaria',
     titulo: '¿Qué es una Gestoría Inmobiliaria? Funciones, Servicios y Precios [2026]',
