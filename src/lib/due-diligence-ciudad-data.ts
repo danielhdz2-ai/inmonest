@@ -4,6 +4,8 @@ import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
 import { withGestoriaIndexRobots } from './gestoria-indexacion-tier'
 import { CASTELLON_DUE_DILIGENCE } from './ciudad-castellon-configs'
+import { DUE_DILIGENCE_CIUDAD_EXPANSION } from './due-diligence-ciudad-expansion'
+import { GESTORIA_CIUDADES_EXPANSION_SLUGS } from './gestoria-ciudades-expansion'
 
 const BASE_URL = 'https://inmonest.com'
 export const DUE_DILIGENCE_PRECIO = 350
@@ -64,6 +66,10 @@ export const DUE_DILIGENCE_CIUDADES_LIST = [
   { slug: 'santander', nombre: 'Santander' },
   { slug: 'vitoria', nombre: 'Vitoria-Gasteiz' },
   { slug: 'san-sebastian', nombre: 'San Sebastián' },
+  ...GESTORIA_CIUDADES_EXPANSION_SLUGS.map((slug) => ({
+    slug,
+    nombre: DUE_DILIGENCE_CIUDAD_EXPANSION[slug].nombre,
+  })),
 ] as const
 
 export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = {
@@ -884,6 +890,8 @@ export const DUE_DILIGENCE_CIUDADES: Record<string, DueDiligenceCiudadConfig> = 
   },
 
   castellon: CASTELLON_DUE_DILIGENCE,
+
+  ...DUE_DILIGENCE_CIUDAD_EXPANSION,
 }
 
 export function buildDueDiligenceMetadata(config: DueDiligenceCiudadConfig): Metadata {

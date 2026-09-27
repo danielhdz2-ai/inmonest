@@ -4,10 +4,10 @@ import {
   DUE_DILIGENCE_CIUDADES,
   buildDueDiligenceMetadata,
 } from '@/lib/due-diligence-ciudad-data'
-import { gestoriaCiudadesSoloRutaDinamicaParams } from '@/lib/gestoria-ciudades-solo-ruta-dinamica'
+import { gestoriaDueDiligenceDinamicaParams } from '@/lib/gestoria-ciudades-solo-ruta-dinamica'
 
 export function generateStaticParams() {
-  return gestoriaCiudadesSoloRutaDinamicaParams()
+  return gestoriaDueDiligenceDinamicaParams()
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ ciudad: string }> }) {

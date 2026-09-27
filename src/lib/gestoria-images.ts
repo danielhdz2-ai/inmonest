@@ -176,6 +176,14 @@ export const CIUDAD_IMAGES: Record<string, { src: string; alt: string }> = {
   vitoria: { src: '/gestoria9.jpg', alt: 'Gestoría inmobiliaria Vitoria' },
   castellon: { src: '/valencia.jpg', alt: 'Gestoría inmobiliaria Castellón' },
   'san-sebastian': { src: '/gestoria10.jpg', alt: 'Gestoría inmobiliaria San Sebastián' },
+  cordoba: { src: '/gestoria5.jpg', alt: 'Gestoría inmobiliaria Córdoba' },
+  'las-palmas': { src: '/gestoria14.jpg', alt: 'Gestoría inmobiliaria Las Palmas' },
+  'santa-cruz': { src: '/gestoria16.jpg', alt: 'Gestoría inmobiliaria Santa Cruz de Tenerife' },
+  cadiz: { src: '/gestoria6.jpg', alt: 'Gestoría inmobiliaria Cádiz' },
+  badajoz: { src: '/gestoria4.jpg', alt: 'Gestoría inmobiliaria Badajoz' },
+  toledo: { src: '/gestoria9.jpg', alt: 'Gestoría inmobiliaria Toledo' },
+  tarragona: { src: '/barcelona1.jpg', alt: 'Gestoría inmobiliaria Tarragona' },
+  almeria: { src: '/malaga1.jpg', alt: 'Gestoría inmobiliaria Almería' },
 }
 
 /** @deprecated Usar CIUDAD_IMAGES */

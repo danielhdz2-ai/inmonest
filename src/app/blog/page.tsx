@@ -34,6 +34,17 @@ const RECURSOS = [
 
 const ARTICULOS = [
   {
+    slug: 'gestoria-online-ciudades-espana',
+    href: '/blog/gestoria-online-ciudades-espana',
+    titulo: 'Gestoría inmobiliaria online por ciudades de España [2026]',
+    resumen:
+      'Due diligence, arras y LAU con gestor asignado en toda España. Hub y due diligence local en Vigo, Córdoba, Canarias, Cádiz, Toledo, Tarragona, Almería, Gijón y más.',
+    fecha: '27 de septiembre de 2026',
+    categoria: 'Gestoría',
+    lectura: '9 min',
+    etiqueta: 'Nuevo',
+  },
+  {
     slug: 'lau-actualizacion-renta-irav-2026',
     href: '/blog/lau-actualizacion-renta-irav-2026',
     titulo: 'Actualización renta alquiler LAU 2026: IRAV y fin del RDL 8/2026',

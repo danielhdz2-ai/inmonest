@@ -1,5 +1,6 @@
 import type { CiudadHubConfig } from './gestoria-ciudad-hub-data'
 import { GESTORIA_HUB_FAQ_COMUN } from './gestoria-hub-faq-comun'
+import { CIUDAD_HUBS_EXPANSION } from './gestoria-ciudad-hub-expansion'
 import { GESTORIA_MALAGA_FAQ } from './gestoria-malaga-faq'
 import { GESTORIA_PALMA_FAQ } from './gestoria-palma-faq'
 
@@ -663,4 +664,6 @@ export const CIUDAD_HUBS_NUCLEO: Record<string, CiudadHubConfig> = {
       { slug: 'contrato-alquiler', href: '/san-sebastian/contrato-alquiler', label: 'Ver contrato alquiler San Sebastián →' },
     ],
   },
+
+  ...CIUDAD_HUBS_EXPANSION,
 }

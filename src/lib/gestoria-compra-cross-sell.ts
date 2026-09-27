@@ -1,5 +1,6 @@
 import { getContratoAlquilerPremiumConfig } from './contrato-alquiler-premium-config'
 import { getContratoArrasPremiumConfig } from './contrato-arras-premium-config'
+import { GESTORIA_CIUDADES_EXPANSION_SLUGS } from './gestoria-ciudades-expansion'
 
 /** Ciudades con landing de asesoría compra (687€) */
 export const ASESORIA_COMPRA_CIUDADES = [
@@ -34,6 +35,12 @@ export const DUE_DILIGENCE_CIUDADES = [
   'valladolid',
   'granada',
   'mallorca',
+  'castellon',
+  'asturias',
+  'santander',
+  'vitoria',
+  'san-sebastian',
+  ...GESTORIA_CIUDADES_EXPANSION_SLUGS,
 ] as const
 
 /** Ciudades con landing Pack Arras Plus (450€) */
