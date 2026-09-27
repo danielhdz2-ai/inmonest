@@ -20,34 +20,23 @@ import {
 import { getDueDiligenceFaq } from '@/lib/due-diligence-ciudad-faq'
 import { GestoriaImageBanner, GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { DUE_DILIGENCE_LANDING, getCiudadCtaImage } from '@/lib/gestoria-images'
-import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
 import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
+import GestoriaDueDiligenceModulosCompletos, {
+  GestoriaDueDiligenceTramiteOnlineSection,
+} from '@/components/GestoriaDueDiligenceModulosCompletos'
 
 const SOLICITAR_URL = '/gestoria/solicitar/pack-due-diligence-precompra'
+const PANEL_DUE_DILIGENCE_ID = 'panel-gestoria-due-diligence'
 
-const PASOS = [
-  {
-    titulo: 'Primera llamada con tu gestor asignado',
-    desc: 'En menos de 24 horas un gestor inmobiliario experto te contacta. Analizamos juntos la operación: precio, plazos, estado de las arras y documentación disponible.',
-  },
-  {
-    titulo: 'Contratas el servicio',
-    desc: 'Pago único de 350€ IVA incluido. Sin costes ocultos. Comenzamos de inmediato la revisión documental de la vivienda.',
-  },
-  {
-    titulo: 'Recopilación de documentación',
-    desc: 'Tu gestor solicita nota simple, certificados, actas de comunidad y toda la documentación oficial. Te guía si el vendedor no la tiene completa.',
-  },
-  {
-    titulo: 'Análisis exhaustivo',
-    desc: 'Revisión de cargas, hipotecas, deudas de comunidad, IBI, suministros, cédula de habitabilidad, certificado energético e informes técnicos obligatorios.',
-  },
-  {
-    titulo: 'Informe y acompañamiento hasta escritura',
-    desc: 'Recibes un informe con hallazgos y recomendaciones. Tu gestor resuelve dudas y verifica que todo esté en regla antes de firmar en notaría.',
-  },
-] as const
+const DUE_DILIGENCE_INCLUDES = [
+  'Adaptado a la normativa vigente y a la compraventa en tu comunidad autónoma.',
+  'Revisión de título, cargas, hipotecas y situación registral.',
+  'Actas de comunidad, derramas, ITE y documentación urbanística.',
+  'Informe PDF con riesgos y recomendaciones (entrega en 3–5 días laborables).',
+  'Gestor asignado hasta el día de la escritura en notaría.',
+  'Trámite 100 % online: panel, videollamada y WhatsApp con tu gestor.',
+]
 
 function CheckIcon() {
   return (
@@ -169,26 +158,106 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         </GestoriaImageBanner>
       </div>
 
-      {/* Qué es Inmonest */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Qué es Inmonest</h2>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            Inmonest es una <strong className="text-gray-900">gestoría inmobiliaria digital</strong> especializada
-            en ayudar a particulares a comprar y vender vivienda con todas las garantías jurídicas. No somos una
-            agencia inmobiliaria: no cobramos comisiones sobre el precio del piso.
-          </p>
-          <p className="text-gray-600 mb-4 leading-relaxed">
-            Nuestro equipo de gestores con experiencia en <strong className="text-gray-900">derecho inmobiliario</strong> te
-            acompaña en operaciones de particular a particular: revisamos documentación, detectamos riesgos y te
-            asesoramos hasta que firmas en notaría con seguridad.
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            El Pack Due Diligence Pre-Compra está pensado para compradores que ya han encontrado piso y vendedor
-            por su cuenta y necesitan un profesional que verifique que la operación es segura.
-          </p>
-        </div>
-      </section>
+      <GestoriaDueDiligenceTramiteOnlineSection
+        ciudadNombre={nombre}
+        panelAnchorId={PANEL_DUE_DILIGENCE_ID}
+      />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+        <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-2 space-y-8">
+            <div className="rounded-xl border border-gold-500/30 bg-amber-50/80 p-6 border-l-4 border-l-gold-500">
+              <p className="font-semibold text-gray-900 mb-2">
+                Vas a comprar en {nombre}: ¿firmas arras o escritura sin revisar la documentación?
+              </p>
+              <p className="text-gray-700 text-sm leading-relaxed">
+                Cargas ocultas, deudas de comunidad o problemas urbanísticos pueden costarte miles de euros. Por{' '}
+                <strong>{DUE_DILIGENCE_PRECIO} €</strong> (IVA incluido) un gestor inmobiliario revisa el expediente
+                completo y te entrega informe en <strong>3–5 días laborables</strong>, sin comisión sobre el precio del
+                piso.
+              </p>
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                ¿Qué es el due diligence pre-compra en {nombre}?
+              </h2>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                {config.hero?.lead ?? config.gestor.bio}
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-4">
+                Inmonest es una <strong className="text-gray-900">gestoría inmobiliaria digital</strong>: no somos
+                agencia y no cobramos comisión sobre el precio. Revisamos documentación, detectamos riesgos y te
+                acompañamos hasta notaría en {region}.
+              </p>
+              {config.zonasIntro ? (
+                <p className="text-gray-600 leading-relaxed text-sm">{config.zonasIntro}</p>
+              ) : null}
+            </div>
+
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                ¿Para quién es este servicio en {nombre}?
+              </h2>
+              <ul className="space-y-2">
+                {paraQuien.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-gray-700">
+                    <CheckIcon />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <aside className="lg:col-span-1">
+            <div className="sticky top-24 rounded-2xl border-2 border-gold-500/40 bg-white p-6 shadow-lg">
+              <p className="text-xs font-semibold tracking-widest text-gold-600 uppercase mb-2">
+                Compra · {nombre}
+              </p>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Due diligence, sin vueltas</h3>
+              <p className="text-3xl font-bold text-gold-600 mb-1">
+                {DUE_DILIGENCE_PRECIO} €
+                <span className="text-sm font-normal text-gray-500 ml-1">IVA incluido</span>
+              </p>
+              <ul className="mt-6 space-y-2 text-sm text-gray-700">
+                {DUE_DILIGENCE_INCLUDES.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <CheckIcon />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href={SOLICITAR_URL}
+                className="mt-6 block w-full text-center px-4 py-3 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors"
+              >
+                Pedir revisión — {DUE_DILIGENCE_PRECIO} €
+              </Link>
+              <a
+                href="#gestor-daniel"
+                className="mt-3 block w-full text-center px-4 py-3 rounded-lg border border-gold-500 text-gold-700 font-semibold hover:bg-cream-50 transition-colors text-sm"
+              >
+                Hablar con Daniel
+              </a>
+              <Link
+                href="/gestoria/pack-due-diligence-precompra"
+                className="mt-3 block text-center text-sm font-semibold text-gold-600 hover:underline"
+              >
+                Ver pack nacional
+              </Link>
+            </div>
+          </aside>
+        </section>
+      </div>
+
+      <GestoriaDueDiligenceModulosCompletos
+        ciudadNombre={nombre}
+        ciudadSlug={slug}
+        solicitarHref={SOLICITAR_URL}
+        panelAnchorId={PANEL_DUE_DILIGENCE_ID}
+        partes={{ tramiteOnline: false }}
+      />
 
       {/* Qué revisamos */}
       <section className="py-16 px-4 bg-slate-50 border-y border-gray-200">
@@ -209,28 +278,6 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
                     </li>
                   ))}
                 </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Cómo trabajamos */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Cómo trabajamos contigo</h2>
-          <GestoriaTramiteOnlineNote variant="section" className="mb-10" />
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Proceso claro desde el primer contacto hasta la firma en notaría. Siempre con el mismo gestor asignado.
-          </p>
-          <div className="grid md:grid-cols-5 gap-6">
-            {PASOS.map((paso, i) => (
-              <div key={paso.titulo} className="text-center">
-                <div className="w-12 h-12 bg-forest-800 text-gold-500 rounded-full flex items-center justify-center text-lg font-bold mx-auto mb-4">
-                  {i + 1}
-                </div>
-                <h3 className="font-bold text-gray-900 mb-2 text-sm leading-snug">{paso.titulo}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{paso.desc}</p>
               </div>
             ))}
           </div>
@@ -288,26 +335,6 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
         </div>
       </section>
 
-      {/* Para quién */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-10 text-center">¿Para quién es este servicio?</h2>
-          <ul className="space-y-4">
-            {paraQuien.map((item) => (
-              <li key={item} className="flex items-start gap-3 p-4 bg-slate-50 rounded-lg border border-gray-100">
-                <CheckIcon />
-                <span className="text-gray-700">{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-10 text-center">
-            <Link href={SOLICITAR_URL} className="inline-flex px-8 py-4 rounded-lg bg-gold-500 text-white font-semibold hover:bg-gold-600 transition-colors">
-              Contratar — {DUE_DILIGENCE_PRECIO}€ IVA incluido
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Zonas */}
       <section className="py-16 px-4 bg-slate-50 border-t border-gray-200">
         <div className="max-w-4xl mx-auto text-center">
@@ -347,8 +374,6 @@ export default function DueDiligenceCiudadLanding({ config }: DueDiligenceCiudad
           </div>
         </div>
       </section>
-
-      <GestoriaPanelShowcase servicioLabel={`due diligence pre-compra en ${nombre}`} />
 
       <GestoriaLandingExtras
         servicio="pack-due-diligence-precompra"
