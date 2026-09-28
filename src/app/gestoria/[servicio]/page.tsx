@@ -366,7 +366,7 @@ const SERVICIOS: Record<string, ServiceData> = {
 
   'alquiler-opcion-compra': {
     nombre: 'Contrato de Alquiler con Opción a Compra',
-    precio: 182,
+    precio: 145,
     categoria: 'Compraventa',
     tagline: 'Alquila ahora, compra cuando quieras: el contrato más versátil del mercado',
     descripcion:
@@ -465,7 +465,7 @@ const SERVICIOS: Record<string, ServiceData> = {
     ],
     relacionados: [
       { slug: 'arras-penitenciales', nombre: 'Arras Penitenciales', precio: 145 },
-      { slug: 'alquiler-opcion-compra', nombre: 'Alquiler con Opción a Compra', precio: 182 },
+      { slug: 'alquiler-opcion-compra', nombre: 'Alquiler con Opción a Compra', precio: 145 },
       { slug: 'contrato-alquiler', nombre: 'Contrato de Alquiler LAU', precio: 145 },
     ],
   },

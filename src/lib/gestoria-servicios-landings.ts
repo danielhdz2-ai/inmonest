@@ -126,7 +126,7 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     shortName: 'Opción a compra',
     descripcion: 'Combina arrendamiento y derecho de compra futura en un solo contrato.',
     categoria: 'alquiler',
-    precio: getPrecioServicio('alquiler-opcion-compra') ?? 182,
+    precio: getPrecioServicio('alquiler-opcion-compra') ?? 145,
     image: '/contrato4.jpg',
     landingHref: '/gestoria/alquiler-opcion-compra',
   },

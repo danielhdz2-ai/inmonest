@@ -133,7 +133,7 @@ export const GESTORIA_SERVICIOS: Record<string, GestoriaServicio> = {
   },
   'alquiler-opcion-compra': {
     nombre: 'Contrato de Alquiler con Opción a Compra',
-    precio: 182,
+    precio: 145,
     categoria: 'Compraventa',
     incluye: [
       'Arrendamiento + opción de compra integrados',

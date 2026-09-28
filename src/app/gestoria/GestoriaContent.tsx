@@ -411,7 +411,7 @@ const SERVICES: Service[] = [
       'Prima de opción y penalización por no ejercitar',
       'Entrega en 48h · PDF firmable digitalmente',
     ],
-    price: 182,
+    price: 145,
     image: '/gestoria4.jpg',
     badge: 'Nuevo',
   },
