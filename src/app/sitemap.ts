@@ -89,6 +89,8 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/blog/cuanto-cuesta-contrato-arras`, lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/blog/revision-contrato-arras-antes-firmar`, lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
   { url: `${BASE_URL}/blog/lau-actualizacion-renta-irav-2026`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
+  { url: `${BASE_URL}/blog/decretos-vivienda-alquiler-septiembre-2026`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
+  { url: `${BASE_URL}/blog/regulacion-alquiler-temporada-habitaciones-2026`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
   { url: `${BASE_URL}/blog/gestoria-online-ciudades-espana`, lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
 ]
 

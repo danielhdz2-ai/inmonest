@@ -3,10 +3,18 @@
  * Formato esperado: issue,url,category,prefix  (scripts/gsc-coverage-urls.csv)
  */
 
+import { getBarcelonaAlquilerBarrioPaths } from './barcelona-contrato-alquiler-barrios'
 import {
   CONTRATOS_INMOBILIARIOS_INDEXAR,
   SITE_URL,
 } from './gestoria-indexar-urls'
+
+/** Landings recientes: solicitar indexación aunque no figuren en el export GSC */
+const LANDINGS_RECIENTES_INDEXAR = [
+  ...getBarcelonaAlquilerBarrioPaths(),
+  '/blog/decretos-vivienda-alquiler-septiembre-2026',
+  '/blog/regulacion-alquiler-temporada-habitaciones-2026',
+] as const
 
 export type GscIssueRow = {
   issue: string
@@ -129,7 +137,10 @@ export function buildGestoriaIndexacionInforme(
     const url = `${SITE_URL}${path}`
 
     if (!gsc) {
-      if (PRIORIDAD_SIN_DATOS.includes(path as (typeof PRIORIDAD_SIN_DATOS)[number])) {
+      if (
+        PRIORIDAD_SIN_DATOS.includes(path as (typeof PRIORIDAD_SIN_DATOS)[number]) ||
+        (LANDINGS_RECIENTES_INDEXAR as readonly string[]).includes(path)
+      ) {
         pendientesVerificar.push({
           url,
           path,

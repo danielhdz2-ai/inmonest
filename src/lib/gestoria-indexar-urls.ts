@@ -74,6 +74,8 @@ export const GESTORIA_INDEXAR_PRIORIDAD_MEDIA = [
   '/barcelona/contrato-alquiler/sants',
   '/barcelona/contrato-alquiler/poblenou',
   '/barcelona/contrato-alquiler/les-corts',
+  '/blog/decretos-vivienda-alquiler-septiembre-2026',
+  '/blog/regulacion-alquiler-temporada-habitaciones-2026',
   '/valencia/contrato-alquiler',
   '/sevilla/contrato-alquiler',
   '/bilbao/contrato-alquiler',

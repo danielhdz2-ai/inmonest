@@ -1,7 +1,7 @@
 {
-  "generadoEn": "2026-09-23T13:37:35.041Z",
+  "generadoEn": "2026-09-29T18:07:01.990Z",
   "fuenteGsc": "scripts\\gsc-coverage-urls.csv",
-  "totalInventario": 211,
+  "totalInventario": 289,
   "sinIndexar": [
     {
       "url": "https://inmonest.com/gestoria/prestamo-particulares/zaragoza",
@@ -11,8 +11,48 @@
   ],
   "pendientesVerificar": [
     {
+      "url": "https://inmonest.com/barcelona/contrato-alquiler/eixample",
+      "path": "/barcelona/contrato-alquiler/eixample",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/barcelona/contrato-alquiler/gracia",
+      "path": "/barcelona/contrato-alquiler/gracia",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/barcelona/contrato-alquiler/les-corts",
+      "path": "/barcelona/contrato-alquiler/les-corts",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/barcelona/contrato-alquiler/poblenou",
+      "path": "/barcelona/contrato-alquiler/poblenou",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/barcelona/contrato-alquiler/sants",
+      "path": "/barcelona/contrato-alquiler/sants",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/blog/decretos-vivienda-alquiler-septiembre-2026",
+      "path": "/blog/decretos-vivienda-alquiler-septiembre-2026",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/blog/regulacion-alquiler-temporada-habitaciones-2026",
+      "path": "/blog/regulacion-alquiler-temporada-habitaciones-2026",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
       "url": "https://inmonest.com/contratos-inmobiliarios/alicante",
       "path": "/contratos-inmobiliarios/alicante",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/contratos-inmobiliarios/asturias",
+      "path": "/contratos-inmobiliarios/asturias",
       "motivo": "Landing nueva — no consta en el último export GSC"
     },
     {
@@ -23,6 +63,11 @@
     {
       "url": "https://inmonest.com/contratos-inmobiliarios/bilbao",
       "path": "/contratos-inmobiliarios/bilbao",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/contratos-inmobiliarios/castellon",
+      "path": "/contratos-inmobiliarios/castellon",
       "motivo": "Landing nueva — no consta en el último export GSC"
     },
     {
@@ -46,6 +91,11 @@
       "motivo": "Landing nueva — no consta en el último export GSC"
     },
     {
+      "url": "https://inmonest.com/contratos-inmobiliarios/mallorca",
+      "path": "/contratos-inmobiliarios/mallorca",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
       "url": "https://inmonest.com/contratos-inmobiliarios/murcia",
       "path": "/contratos-inmobiliarios/murcia",
       "motivo": "Landing nueva — no consta en el último export GSC"
@@ -66,6 +116,16 @@
       "motivo": "Landing nueva — no consta en el último export GSC"
     },
     {
+      "url": "https://inmonest.com/contratos-inmobiliarios/san-sebastian",
+      "path": "/contratos-inmobiliarios/san-sebastian",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/contratos-inmobiliarios/santander",
+      "path": "/contratos-inmobiliarios/santander",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
       "url": "https://inmonest.com/contratos-inmobiliarios/sevilla",
       "path": "/contratos-inmobiliarios/sevilla",
       "motivo": "Landing nueva — no consta en el último export GSC"
@@ -78,6 +138,11 @@
     {
       "url": "https://inmonest.com/contratos-inmobiliarios/valladolid",
       "path": "/contratos-inmobiliarios/valladolid",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/contratos-inmobiliarios/vitoria",
+      "path": "/contratos-inmobiliarios/vitoria",
       "motivo": "Landing nueva — no consta en el último export GSC"
     },
     {
@@ -157,5 +222,5 @@
       "issue": "No se ha encontrado (404)"
     }
   ],
-  "probablementeIndexadas": 182
+  "probablementeIndexadas": 247
 }

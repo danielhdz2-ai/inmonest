@@ -34,6 +34,28 @@ const RECURSOS = [
 
 const ARTICULOS = [
   {
+    slug: 'regulacion-alquiler-temporada-habitaciones-2026',
+    href: '/blog/regulacion-alquiler-temporada-habitaciones-2026',
+    titulo: 'Temporada y habitaciones 2026: regulación, Cataluña y contratos',
+    resumen:
+      'LAU vs temporada vs habitación (Código Civil). Decretos de vivienda, cómo contratar LAU o habitación blindados con Inmonest.',
+    fecha: '29 de septiembre de 2026',
+    categoria: 'Alquiler · Actualidad',
+    lectura: '14 min',
+    etiqueta: 'Nuevo',
+  },
+  {
+    slug: 'decretos-vivienda-alquiler-septiembre-2026',
+    href: '/blog/decretos-vivienda-alquiler-septiembre-2026',
+    titulo: 'Decretos vivienda 29 sep 2026: prórroga alquiler LAU y contratos',
+    resumen:
+      'Consejo de Ministros aprueba dos decretos: prórroga hasta 2 años en contratos que venzan antes de 2028, desahucios, habitaciones y temporada. Qué hacer con tu LAU.',
+    fecha: '29 de septiembre de 2026',
+    categoria: 'Alquiler · Actualidad',
+    lectura: '12 min',
+    etiqueta: 'Hoy',
+  },
+  {
     slug: 'gestoria-online-ciudades-espana',
     href: '/blog/gestoria-online-ciudades-espana',
     titulo: 'Gestoría inmobiliaria online por ciudades de España [2026]',

@@ -1,23 +1,36 @@
-# Gestoría sin indexar / pendientes — 2026-09-23
-# Inventario: 211 · Sin indexar GSC: 1 · Pendientes verificar: 24
-# Probablemente indexadas: 182
+# Gestoría sin indexar / pendientes — 2026-09-29
+# Inventario: 289 · Sin indexar GSC: 1 · Pendientes verificar: 37
+# Probablemente indexadas: 247
 
 ## SOLICITAR INDEXACIÓN (GSC confirmado + landings nuevas)
 https://inmonest.com/gestoria/prestamo-particulares/zaragoza
+https://inmonest.com/barcelona/contrato-alquiler/eixample
+https://inmonest.com/barcelona/contrato-alquiler/gracia
+https://inmonest.com/barcelona/contrato-alquiler/les-corts
+https://inmonest.com/barcelona/contrato-alquiler/poblenou
+https://inmonest.com/barcelona/contrato-alquiler/sants
+https://inmonest.com/blog/decretos-vivienda-alquiler-septiembre-2026
+https://inmonest.com/blog/regulacion-alquiler-temporada-habitaciones-2026
 https://inmonest.com/contratos-inmobiliarios/alicante
+https://inmonest.com/contratos-inmobiliarios/asturias
 https://inmonest.com/contratos-inmobiliarios/barcelona
 https://inmonest.com/contratos-inmobiliarios/bilbao
+https://inmonest.com/contratos-inmobiliarios/castellon
 https://inmonest.com/contratos-inmobiliarios/coruna
 https://inmonest.com/contratos-inmobiliarios/granada
 https://inmonest.com/contratos-inmobiliarios/madrid
 https://inmonest.com/contratos-inmobiliarios/malaga
+https://inmonest.com/contratos-inmobiliarios/mallorca
 https://inmonest.com/contratos-inmobiliarios/murcia
 https://inmonest.com/contratos-inmobiliarios/palma
 https://inmonest.com/contratos-inmobiliarios/pamplona
 https://inmonest.com/contratos-inmobiliarios/salamanca
+https://inmonest.com/contratos-inmobiliarios/san-sebastian
+https://inmonest.com/contratos-inmobiliarios/santander
 https://inmonest.com/contratos-inmobiliarios/sevilla
 https://inmonest.com/contratos-inmobiliarios/valencia
 https://inmonest.com/contratos-inmobiliarios/valladolid
+https://inmonest.com/contratos-inmobiliarios/vitoria
 https://inmonest.com/contratos-inmobiliarios/zaragoza
 https://inmonest.com/gestoria/alquiler-local-comercial
 https://inmonest.com/gestoria/alquiler-local-comercial/alicante
