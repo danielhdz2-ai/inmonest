@@ -3,6 +3,7 @@ import { LANDINGS_POR_CIUDAD } from '@/lib/gestoria-ciudades-inventario'
 import { getGestoriaUrlsParaIndexar } from '@/lib/gestoria-indexar-urls'
 import { isGestoriaPathIndexable } from '@/lib/gestoria-indexacion-tier'
 import { CIUDADES_PORTAL_SLUGS } from '@/lib/ciudades-portal'
+import { getBarcelonaAlquilerBarrioPaths } from '@/lib/barcelona-contrato-alquiler-barrios'
 
 /** Rutas de landings (portal + gestoría) alineadas con LANDINGS_POR_CIUDAD y listas GSC. */
 export function collectIndexableMarketingPaths(): string[] {
@@ -12,7 +13,9 @@ export function collectIndexableMarketingPaths(): string[] {
   const fromGestoria = getGestoriaUrlsParaIndexar()
   const portalHubs = CIUDADES_PORTAL_SLUGS.map((c) => `/${c}`)
 
-  return [...new Set([...fromLandings, ...fromGestoria, ...portalHubs])].filter((path) =>
+  const barcelonaBarrios = getBarcelonaAlquilerBarrioPaths()
+
+  return [...new Set([...fromLandings, ...fromGestoria, ...portalHubs, ...barcelonaBarrios])].filter((path) =>
     isGestoriaPathIndexable(path),
   )
 }

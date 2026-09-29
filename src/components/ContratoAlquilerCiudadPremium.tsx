@@ -8,6 +8,7 @@ import GestoriaAlquilerModulosCompletos, {
 } from '@/components/GestoriaAlquilerModulosCompletos'
 import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
+import BarcelonaAlquilerBarriosHub from '@/components/BarcelonaAlquilerBarriosHub'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
@@ -192,7 +193,11 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
-        <BarriosCiudadContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="alquiler" />
+        {config.slug === 'barcelona' ? (
+          <BarcelonaAlquilerBarriosHub />
+        ) : (
+          <BarriosCiudadContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="alquiler" />
+        )}
 
         <CalculadoraAhorroContrato
           mode="alquiler"
