@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useCallback, useRef } from 'react'
+import PrivacyAcceptCheckbox from '@/components/PrivacyAcceptCheckbox'
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -120,6 +121,7 @@ export default function VenderForm() {
   const [submitted, setSubmitted] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
   const { suggestions, loading: addrLoading, setSuggestions, search } = useAddressSearch()
 
   const set = (field: keyof FormData, value: string) =>
@@ -141,6 +143,10 @@ export default function VenderForm() {
 
   // Envío final
   async function handleSubmit() {
+    if (!privacyAccepted) {
+      setError('Debes aceptar la política de privacidad.')
+      return
+    }
     setSubmitting(true)
     setError(null)
     try {
@@ -454,6 +460,13 @@ export default function VenderForm() {
             <p className="text-red-500 text-sm text-center">{error}</p>
           )}
 
+          <PrivacyAcceptCheckbox
+            checked={privacyAccepted}
+            onChange={setPrivacyAccepted}
+            disabled={submitting}
+            id="vender-privacy"
+          />
+
           <div className="flex gap-3 pt-1">
             <button
               onClick={() => setStep(2)}
@@ -463,7 +476,7 @@ export default function VenderForm() {
             </button>
             <button
               onClick={handleSubmit}
-              disabled={!form.name || !form.phone || !form.email || submitting}
+              disabled={!form.name || !form.phone || !form.email || submitting || !privacyAccepted}
               className="flex-[2] py-3 rounded-2xl bg-gold-500 text-white font-bold text-base hover:bg-gold-600 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md shadow-[#c9962a]/30"
             >
               {submitting ? 'Enviando…' : 'Buscar agencias →'}
@@ -471,8 +484,6 @@ export default function VenderForm() {
           </div>
 
           <p className="text-center text-xs text-gray-400">
-            Al enviar aceptas nuestra{' '}
-            <a href="/privacidad" className="underline hover:text-gray-600">política de privacidad</a>.
             Contactaremos con un máximo de 4 agencias de tu zona.
           </p>
         </div>

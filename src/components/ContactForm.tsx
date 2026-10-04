@@ -4,6 +4,7 @@ import { useState, FormEvent } from 'react'
 import HoneypotField from '@/components/HoneypotField'
 import TurnstileWidget from '@/components/TurnstileWidget'
 import { useBotProtection } from '@/hooks/useBotProtection'
+import PrivacyAcceptCheckbox from '@/components/PrivacyAcceptCheckbox'
 
 interface ContactFormProps {
   /** Asunto preseleccionado (p.ej. desde una página de producto) */
@@ -35,6 +36,7 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
   const [sending, setSending] = useState(false)
   const [sent, setSent]       = useState(false)
   const [error, setError]     = useState('')
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
   const {
     honeypot,
     setHoneypot,
@@ -52,6 +54,10 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     if (sending) return
+    if (!privacyAccepted) {
+      setError('Debes aceptar la política de privacidad.')
+      return
+    }
     setSending(true)
     setError('')
 
@@ -199,6 +205,13 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
       )}
 
       {/* Submit */}
+      <PrivacyAcceptCheckbox
+        checked={privacyAccepted}
+        onChange={setPrivacyAccepted}
+        disabled={sending}
+        id="contact-privacy"
+      />
+
       {turnstileEnabled && (
         <TurnstileWidget
           siteKey={turnstileSiteKey}
@@ -208,7 +221,7 @@ export default function ContactForm({ defaultAsunto = '', className = '', onSucc
       )}
       <button
         type="submit"
-        disabled={sending}
+        disabled={sending || !privacyAccepted}
         className="w-full rounded-xl bg-gold-500 px-6 py-3 text-sm font-bold text-white hover:bg-gold-600 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
       >
         {sending ? 'Enviando…' : 'Enviar mensaje'}

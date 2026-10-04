@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import FooterGestoriaContact from '@/components/FooterGestoriaContact'
+import CookiePreferencesButton from '@/components/CookiePreferencesButton'
 
 const CIUDADES = [
   { slug: 'madrid',    nombre: 'Madrid' },
@@ -167,6 +168,7 @@ export default function Footer() {
                 <li><Link href="/aviso-legal" className="hover:text-gold-300 transition-colors">Aviso Legal</Link></li>
                 <li><Link href="/privacidad" className="hover:text-gold-300 transition-colors">Política de Privacidad</Link></li>
                 <li><Link href="/cookies" className="hover:text-gold-300 transition-colors">Política de Cookies</Link></li>
+                <li><CookiePreferencesButton /></li>
                 <li><Link href="/seguridad" className="hover:text-gold-300 transition-colors">Seguridad</Link></li>
               </ul>
             </div>

@@ -5,6 +5,7 @@ import { createClient } from '@/lib/supabase/client'
 import { gtmPush } from '@/components/GTMProvider'
 import HoneypotField from '@/components/HoneypotField'
 import TurnstileWidget from '@/components/TurnstileWidget'
+import PrivacyAcceptCheckbox from '@/components/PrivacyAcceptCheckbox'
 import { useBotProtection } from '@/hooks/useBotProtection'
 
 interface Props {
@@ -56,6 +57,7 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
   const [status, setStatus] = useState<'idle' | 'loading' | 'sending' | 'error'>('loading')
   const [errMsg, setErrMsg] = useState('')
   const [loggedIn, setLoggedIn] = useState(false)
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
   const {
     honeypot,
     setHoneypot,
@@ -101,6 +103,7 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
     if (!form.name.trim())                  { setErrMsg('El nombre es obligatorio.');         setStatus('error'); return }
     if (!EMAIL_RE.test(form.email.trim()))  { setErrMsg('Introduce un email válido.');        setStatus('error'); return }
     if (!form.phone.trim())                 { setErrMsg('El teléfono es obligatorio.');       setStatus('error'); return }
+    if (!privacyAccepted)                   { setErrMsg('Debes aceptar la política de privacidad.'); setStatus('error'); return }
 
     // ── Evento GTM: usuario completó el formulario (lead capturado) ───────────
     gtmPush({
@@ -268,6 +271,13 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
                 </p>
               )}
 
+              <PrivacyAcceptCheckbox
+                checked={privacyAccepted}
+                onChange={setPrivacyAccepted}
+                disabled={isSending}
+                id="lead-privacy-accept"
+              />
+
               {turnstileEnabled && (
                 <TurnstileWidget
                   siteKey={turnstileSiteKey}
@@ -277,7 +287,7 @@ export default function LeadCaptureForm({ serviceKey, price, label }: Props) {
               )}
               <button
                 type="submit"
-                disabled={isSending}
+                disabled={isSending || !privacyAccepted}
                 className="w-full flex items-center justify-center gap-2 bg-gold-500 hover:bg-[#b8841f] active:scale-[0.98] disabled:opacity-60 text-white font-bold px-6 py-3.5 rounded-xl text-base transition-all shadow-md mt-2"
               >
                 {isSending

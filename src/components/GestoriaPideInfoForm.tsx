@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { gtmPush } from '@/components/GTMProvider'
 import HoneypotField from '@/components/HoneypotField'
 import TurnstileWidget from '@/components/TurnstileWidget'
+import PrivacyAcceptCheckbox from '@/components/PrivacyAcceptCheckbox'
 import { useBotProtection } from '@/hooks/useBotProtection'
 import { resolveServiceKeyFromLabel } from '@/lib/gestoria-service-docs'
 
@@ -25,6 +26,7 @@ export default function GestoriaPideInfoForm({
   const [form, setForm] = useState({ nombre: '', telefono: '', email: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'error'>('idle')
   const [errMsg, setErrMsg] = useState('')
+  const [privacyAccepted, setPrivacyAccepted] = useState(false)
   const {
     honeypot,
     setHoneypot,
@@ -53,6 +55,11 @@ export default function GestoriaPideInfoForm({
     }
     if (!form.email.trim() || !form.email.includes('@')) {
       setErrMsg('Indica tu email para acceder a tu área de gestoría.')
+      setStatus('error')
+      return
+    }
+    if (!privacyAccepted) {
+      setErrMsg('Debes aceptar la política de privacidad.')
       setStatus('error')
       return
     }
@@ -149,6 +156,12 @@ export default function GestoriaPideInfoForm({
         className="w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border-gold-500 focus:outline-none focus:ring-1 focus:ring-[#c9a84c]"
       />
       {errMsg && <p className="text-xs text-red-600">{errMsg}</p>}
+      <PrivacyAcceptCheckbox
+        checked={privacyAccepted}
+        onChange={setPrivacyAccepted}
+        disabled={status === 'sending'}
+        id="pide-info-privacy"
+      />
       {turnstileEnabled && (
         <TurnstileWidget
           siteKey={turnstileSiteKey}
@@ -158,7 +171,7 @@ export default function GestoriaPideInfoForm({
       )}
       <button
         type="submit"
-        disabled={status === 'sending'}
+        disabled={status === 'sending' || !privacyAccepted}
         className="w-full rounded-xl bg-forest-900 hover:bg-neutral-900 text-white font-semibold py-3.5 min-h-[52px] text-base transition-colors disabled:opacity-60 touch-manipulation"
       >
         {status === 'sending' ? 'Accediendo a tu panel…' : 'Ver mi área de gestoría'}

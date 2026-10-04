@@ -1,4 +1,5 @@
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
+import { getLegalEntity } from '@/lib/legal-entity'
 
 /**
  * Schema.org Organization + LegalService
@@ -8,6 +9,8 @@ import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
  */
 
 export default function OrganizationSchema() {
+  const legal = getLegalEntity()
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -22,8 +25,12 @@ export default function OrganizationSchema() {
     foundingDate: '2026',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: legal.address,
+      addressLocality: 'Barcelona',
+      addressRegion: 'Cataluña',
       addressCountry: 'ES',
     },
+    taxID: legal.nif,
     areaServed: {
       '@type': 'Country',
       name: 'España',

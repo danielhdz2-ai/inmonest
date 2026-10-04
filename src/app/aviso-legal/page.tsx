@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
+import { getLegalEntity } from '@/lib/legal-entity'
 
 export const metadata: Metadata = {
   title: 'Aviso legal',
@@ -8,6 +9,8 @@ export const metadata: Metadata = {
 }
 
 export default function AvisoLegalPage() {
+  const legal = getLegalEntity()
+
   return (
     <>
       <Navbar />
@@ -26,10 +29,19 @@ export default function AvisoLegalPage() {
             En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y del Comercio Electrónico (LSSICE), se informa de los datos del titular de este sitio web:
           </p>
           <ul className="mt-4 space-y-1 text-sm">
-            <li><strong>Denominación social:</strong> Inmonest</li>
-            <li><strong>Nombre comercial:</strong> Inmonest</li>
-            <li><strong>Correo electrónico:</strong> <a href="mailto:info@inmonest.com" className="text-gold-500 hover:underline">info@inmonest.com</a></li>
-            <li><strong>Sitio web:</strong> <a href="https://inmonest.com" className="text-gold-500 hover:underline">https://inmonest.com</a></li>
+            <li><strong>Denominación social:</strong> {legal.denomination}</li>
+            <li><strong>Nombre comercial:</strong> {legal.tradeName}</li>
+            <li><strong>NIF:</strong> {legal.nif}</li>
+            <li><strong>Domicilio fiscal:</strong> {legal.address}</li>
+            {legal.mercantileRegistry ? (
+              <li><strong>Registro Mercantil:</strong> {legal.mercantileRegistry}</li>
+            ) : null}
+            <li>
+              <strong>Teléfono:</strong>{' '}
+              <a href={`tel:${legal.phone.replace(/\s/g, '')}`} className="text-gold-500 hover:underline">{legal.phone}</a>
+            </li>
+            <li><strong>Correo electrónico:</strong> <a href={`mailto:${legal.email}`} className="text-gold-500 hover:underline">{legal.email}</a></li>
+            <li><strong>Sitio web:</strong> <a href={legal.website} className="text-gold-500 hover:underline">{legal.website}</a></li>
           </ul>
         </section>
 

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { useState } from 'react'
 
 type Props = {
   email: string
@@ -83,6 +84,33 @@ export default function PrivacidadDatosPanel({
   deleteAccountForm,
 }: Props) {
   const isGestoria = variant === 'gestoria'
+  const [exporting, setExporting] = useState(false)
+  const [exportError, setExportError] = useState('')
+
+  async function handleExportData() {
+    setExportError('')
+    setExporting(true)
+    try {
+      const res = await fetch('/api/perfil/exportar-datos')
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}))
+        throw new Error((data as { error?: string }).error ?? 'No se pudo exportar')
+      }
+      const blob = await res.blob()
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download =
+        res.headers.get('Content-Disposition')?.match(/filename="([^"]+)"/)?.[1] ??
+        'inmonest-mis-datos.json'
+      a.click()
+      URL.revokeObjectURL(url)
+    } catch (e) {
+      setExportError(e instanceof Error ? e.message : 'Error al descargar')
+    } finally {
+      setExporting(false)
+    }
+  }
 
   return (
     <div className="space-y-5">
@@ -161,12 +189,23 @@ export default function PrivacidadDatosPanel({
       <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6">
         <h3 className="font-semibold text-gray-900 mb-1">Tus derechos</h3>
         <p className="text-sm text-gray-500 mb-4">
-          Puedes ejercerlos escribiendo a{' '}
+          Descarga una copia de tus datos (portabilidad, art. 20 RGPD) o escríbenos a{' '}
           <a href="mailto:info@inmonest.com" className="text-gold-500 font-medium hover:underline">
             info@inmonest.com
           </a>{' '}
           desde <strong className="text-gray-700">{email}</strong>.
         </p>
+        <button
+          type="button"
+          onClick={handleExportData}
+          disabled={exporting}
+          className="w-full sm:w-auto mb-4 px-5 py-3 rounded-xl bg-gold-500 hover:bg-[#b8841f] disabled:opacity-60 text-white text-sm font-semibold min-h-[48px] transition-colors"
+        >
+          {exporting ? 'Preparando descarga…' : 'Descargar mis datos (JSON)'}
+        </button>
+        {exportError && (
+          <p className="text-sm text-red-600 mb-4 bg-red-50 border border-red-100 rounded-lg px-3 py-2">{exportError}</p>
+        )}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {RGPD_RIGHTS.map((r) => (
             <div key={r.label} className="rounded-xl bg-cream-100/60 border border-[#f0dfa0]/50 px-3 py-2.5">
@@ -192,7 +231,7 @@ export default function PrivacidadDatosPanel({
       {/* Responsable */}
       <div className="rounded-2xl border border-gray-200 bg-gray-50 px-5 py-4 text-sm text-gray-600">
         <p>
-          <strong className="text-gray-800">Responsable del tratamiento:</strong> Inmonest ·{' '}
+          <strong className="text-gray-800">Responsable del tratamiento:</strong> Inmonest (NIF 47838291P) ·{' '}
           <a href="mailto:info@inmonest.com" className="text-gold-500 hover:underline">
             info@inmonest.com
           </a>

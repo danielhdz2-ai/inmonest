@@ -61,3 +61,7 @@ public/client_secret*.json
 
 .vercel
 build.log
+
+# generación batch IA (no versionar entradas/salidas)
+claude-batch-input.json
+claude-batch-output.json
