@@ -18,19 +18,17 @@ Al terminar cambios de código en este repo, **haz commit Y push tú mismo**. No
 1. `git status` + `git diff` — revisar qué entra
 2. `git add` solo archivos del feature (no `.env`, credenciales, CSVs GSC salvo que el usuario lo pida)
 3. `git commit` con mensaje claro (1–2 frases, el porqué)
-4. **Push automático** a `main`:
+4. **Push automático** a `main` — **siempre** cambiar cuenta **antes** del push (no esperar al 403):
    ```powershell
-   cd D:\Proyectos\Inmonest\inmonest
    gh auth switch -u danielhdz2-ai
+   cd D:\Proyectos\Inmonest\inmonest
    git push origin main
    ```
-5. Confirmar al usuario: hash del commit, que el push fue OK y que Vercel desplegará en ~2–3 min
+5. Confirmar al usuario: hash del commit, push OK y Vercel ~2–3 min
 
 ## Si push falla con 403 (danielhdz3-ai u otra cuenta)
 
-1. Ejecutar `gh auth switch -u danielhdz2-ai`
-2. Reintentar `git push origin main`
-3. Solo si sigue fallando, avisar al usuario para credenciales — **no** pedirle que commitee
+Significa que se omitió el paso 4. Ejecutar `gh auth switch -u danielhdz2-ai` y reintentar push. Solo si sigue fallando, avisar al usuario — **no** pedirle que commitee.
 
 ## Prohibido
 
