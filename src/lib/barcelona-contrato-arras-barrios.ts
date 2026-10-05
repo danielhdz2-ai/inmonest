@@ -3,53 +3,8 @@
  * Contenido único por zona (mercado compraventa, fiscalidad catalana, perfiles comprador/vendedor).
  */
 
-export type BarcelonaArrasBarrioConfig = {
-  slug: string
-  nombre: string
-  distrito: string
-  meta: {
-    title: string
-    description: string
-    keywords: string[]
-    ogTitle: string
-    ogDescription: string
-  }
-  hero: {
-    badge: string
-    h1: string
-    subtitulo: string
-    anguloComprador: string
-    anguloVendedor: string
-  }
-  mercado: {
-    titulo: string
-    intro: string
-    precioOrientativo: string
-    perfilComprador: string
-    particularidad: string
-  }
-  normativa: {
-    titulo: string
-    intro: string
-    bloques: { titulo: string; contenido: string; bullets?: string[] }[]
-  }
-  blindaje: {
-    titulo: string
-    intro: string
-    puntos: { titulo: string; texto: string }[]
-  }
-  paraComprador: {
-    titulo: string
-    intro: string
-    bullets: string[]
-  }
-  paraVendedor: {
-    titulo: string
-    intro: string
-    bullets: string[]
-  }
-  faqs: { q: string; a: string }[]
-}
+export type { BarcelonaArrasBarrioConfig } from '@/lib/barcelona-contrato-arras-barrios-types'
+import type { BarcelonaArrasBarrioConfig } from '@/lib/barcelona-contrato-arras-barrios-types'
 
 const NORMA_ARRAS_CATALUNA: BarcelonaArrasBarrioConfig['normativa']['bloques'] = [
   {
@@ -84,25 +39,34 @@ const NORMA_ARRAS_CATALUNA: BarcelonaArrasBarrioConfig['normativa']['bloques'] =
   },
 ]
 
+import {
+  BARCELONA_ARRAS_BARRIO_SLUGS_EXTRA,
+  BARCELONA_ARRAS_BARRIOS_EXTRA,
+} from '@/lib/barcelona-contrato-arras-barrios-ampliacion'
+
 export const BARCELONA_ARRAS_BARRIO_SLUGS = [
   'eixample',
   'gracia',
   'sants',
   'poblenou',
   'les-corts',
+  ...BARCELONA_ARRAS_BARRIO_SLUGS_EXTRA,
 ] as const
 
 export type BarcelonaArrasBarrioSlug = (typeof BARCELONA_ARRAS_BARRIO_SLUGS)[number]
 
-export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, BarcelonaArrasBarrioConfig> = {
+const BARCELONA_ARRAS_BARRIOS_BASE: Record<
+  'eixample' | 'gracia' | 'sants' | 'poblenou' | 'les-corts',
+  BarcelonaArrasBarrioConfig
+> = {
   eixample: {
     slug: 'eixample',
     nombre: 'Eixample',
     distrito: 'Eixample',
     meta: {
-      title: 'Contrato arras Eixample Barcelona — penitenciales 145€',
+      title: 'Señal en finca del Eixample: arras cuando compites con tres compradores',
       description:
-        'Contrato de arras penitenciales en el Eixample: compraventa, ITP Cataluña, hipoteca y cargas. Redacción en 48h, 145€ IVA incluido. Sin plantillas genéricas.',
+        'Arras penitenciales en el Eixample (Dreta, Esquerra, Sant Antoni): derramas en fincas regias, ITE y condición de hipoteca. Redacción propia, 48 h, 145 € IVA incl.',
       keywords: [
         'contrato arras eixample',
         'arras penitenciales eixample barcelona',
@@ -110,13 +74,13 @@ export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, Barcelona
         'contrato arras barcelona eixample',
         'comprar piso eixample arras',
       ],
-      ogTitle: 'Contrato de arras en el Eixample — señal blindada en 48h',
+      ogTitle: 'Eixample: arras penitenciales sin cláusula genérica de “Barcelona”',
       ogDescription:
-        'Compradores y vendedores del Eixample: arras penitenciales a medida, condición de hipoteca y revisión registral. 145€.',
+        'Compraventa en cuadrícula modernista: señal trazable, plazo a notaría y revisión de cargas antes de transferir.',
     },
     hero: {
-      badge: 'Eixample · Compraventa',
-      h1: 'Contrato de arras en el Eixample: protege la señal en pisos de alta demanda',
+      badge: 'Cuadrícula modernista · Señal',
+      h1: 'Eixample: convierte la prisa de la visita en un contrato de arras que aguanta notaría',
       subtitulo:
         'En el Eixample las operaciones van rápido y compites con más compradores. Unas arras bien redactadas fijan plazo, penalizaciones y condiciones suspensivas antes de entregar miles de euros de señal.',
       anguloComprador:
@@ -136,9 +100,39 @@ export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, Barcelona
         'Edificios con protección patrimonial, obras de comunidad costosas e ITE en fincas antiguas: conviene suspender o condicionar arras hasta revisar actas y certificados.',
     },
     normativa: {
-      titulo: 'Normativa aplicable a las arras en el Eixample',
-      intro: 'Compraventa en Cataluña con las mismas bases civiles que el resto de España, más matices locales de documentación urbanística.',
-      bloques: NORMA_ARRAS_CATALUNA,
+      titulo: 'Arras en fincas del Ensanche: lo que suele fallar en Cataluña',
+      intro:
+        'En el Eixample no basta copiar un modelo estatal: hay que cruzar Código Civil, ITP autonómico y documentación de edificios con protección y obras de fachada.',
+      bloques: [
+        {
+          titulo: 'Derramas y actas antes de la señal',
+          contenido:
+            'En comunidades con ascensor nuevo o rehabilitación de patrimonio, el comprador descubre deudas aprobadas después de pagar la señal. Las arras deben reservar días hábiles para certificado de deudas y lectura de actas recientes.',
+          bullets: ['Plazo para certificado de la comunidad', 'Resolución si la derrama supera un umbral pactado'],
+        },
+        ...NORMA_ARRAS_CATALUNA.slice(0, 2),
+      ],
+    },
+    contenidoUnico: {
+      tituloSeccion: 'Escenario real en Dreta o Esquerra: la señal en caliente',
+      lead:
+        'Es habitual cerrar visita un sábado y querer “bloquear” el piso el lunes con una transferencia. Sin contrato, el vendedor puede aceptar otra oferta y el comprador solo tiene un justificante bancario difícil de reclamar.',
+      escenarioLocal:
+        'En operaciones de finca regia, el vendedor exige 30.000 € de señal mientras el comprador aún no tiene tasación. Un contrato bien calendado permite señal parcial inicial y arras penitenciales completas tras aprobación hipotecaria, sin dejar el piso en el aire.',
+      erroresEvitados: [
+        {
+          titulo: 'Señal sin referencia catastral',
+          detalle: 'Evitamos descripciones genéricas (“piso en calle X”) que no coinciden con registro y catastro.',
+        },
+        {
+          titulo: 'Plazo imposible de escritura',
+          detalle: 'Calendario de 15 días cuando el banco pide 45: fuente de litigio que anticipamos en cláusulas.',
+        },
+        {
+          titulo: 'Mobiliario “de regalo” verbal',
+          detalle: 'Anexo de inventario vinculado al contrato de arras para que no desaparezcan electrodomésticos acordados.',
+        },
+      ],
     },
     blindaje: {
       titulo: 'Qué blindamos en tu contrato (Eixample)',
@@ -195,21 +189,21 @@ export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, Barcelona
     nombre: 'Gràcia',
     distrito: 'Gràcia',
     meta: {
-      title: 'Contrato arras Gràcia Barcelona — penitenciales 145€',
+      title: 'Gràcia: arras cuando la terraza no está en el registro',
       description:
-        'Arras penitenciales en Gràcia (Barcelona): compraventa entre particulares, ITP, hipoteca y fincas con encanto. 145€, entrega 48h.',
+        'Compraventa en Vila de Gràcia y Camp d’En Grassot: licencias de ampliación, terrazas y señal penitencial con hipoteca. Contrato propio en 48 h (145 €).',
       keywords: [
         'contrato arras gracia barcelona',
         'arras penitenciales gracia',
         'señal compraventa gracia',
         'comprar piso gracia arras',
       ],
-      ogTitle: 'Contrato de arras en Gràcia — compraventa blindada',
-      ogDescription: 'Arras a medida en Gràcia: plazos, hipoteca y cargas. 145€, 48h.',
+      ogTitle: 'Plaza del Sol y alrededores: señal de compravenda con cláusulas de terraza',
+      ogDescription: 'Arras en fincas bajas y áticos de Gràcia: urbanismo, ITP y calendario bancario realista.',
     },
     hero: {
-      badge: 'Gràcia · Compraventa',
-      h1: 'Contrato de arras en Gràcia: señal segura en un mercado de pisos con carácter',
+      badge: 'Plazas y fincas bajas · Arras',
+      h1: 'Gràcia: las arras deben hablar de terrazas, licencias y comunidades pequeñas',
       subtitulo:
         'Gràcia mezcla fincas señoriales, pisos de planta baja y áticos con terraza. Las arras deben reflejar el inmueble real (licencias, terrazas, comunidades pequeñas) y no un modelo genérico de “Barcelona”.',
       anguloComprador:
@@ -229,9 +223,31 @@ export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, Barcelona
         'Terrazas, reformas integrales y licencias de obra: las arras conviene condicionarlas a comprobar legalidad de ampliaciones.',
     },
     normativa: {
-      titulo: 'Arras y fiscalidad en Gràcia (Cataluña)',
-      intro: 'Misma base civil y tributaria que Barcelona capital, con énfasis en documentación del inmueble concreto.',
-      bloques: NORMA_ARRAS_CATALUNA,
+      titulo: 'Gràcia: urbanismo y arras (más allá del ITP)',
+      intro:
+        'Aquí los conflictos no vienen solo del banco: vienen de metros cuadrados construidos sin licencia o terrazas ocupadas sin reflejo registral.',
+      bloques: [
+        {
+          titulo: 'Licencias y superficie construida',
+          contenido:
+            'Antes de entregar señal alta conviene cruzar catastro, registro y certificado urbanístico cuando exista duda sobre ampliaciones en planta baja o ático.',
+          bullets: ['Plazo para aportar certificado urbanístico', 'Resolución si la superficie útil no coincide con lo vendido'],
+        },
+        NORMA_ARRAS_CATALUNA[0],
+        NORMA_ARRAS_CATALUNA[1],
+      ],
+    },
+    contenidoUnico: {
+      tituloSeccion: 'Por qué en Gràcia la “foto bonita” no basta para firmar arras',
+      lead:
+        'Muchos pisos se venden por la vida de calle, pero el contrato debe describir metros, terraza y estado registral — no solo la sensación del barrio.',
+      escenarioLocal:
+        'Comprador enamorado de un ático en Camp d’En Grassot: el vendedor promete terraza comunitaria “de hecho”. Sin cláusula, la señal queda amarrada a un piso distinto del que imaginaba.',
+      erroresEvitados: [
+        { titulo: 'Terraza verbal', detalle: 'Inventario y descripción registral/catastral alineados.' },
+        { titulo: 'Reforma sin licencia', detalle: 'Plazo para que el vendedor aporte licencia o se ajuste precio.' },
+        { titulo: 'Comunidad minúscula', detalle: 'Certificado de deudas aunque sean pocos vecinos — obras caras proporcionalmente.' },
+      ],
     },
     blindaje: {
       titulo: 'Blindaje del contrato en Gràcia',
@@ -279,16 +295,16 @@ export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, Barcelona
     nombre: 'Sants',
     distrito: 'Sants-Montjuïc',
     meta: {
-      title: 'Contrato arras Sants Barcelona — penitenciales 145€',
+      title: 'Sants Estació: arras con calendario bancario de verdad',
       description:
-        'Contrato de arras en Sants (Barcelona): compraventa, señal penitencial, hipoteca e ITP. Gestoría online 145€, 48h.',
+        'Señal penitencial en Sants y Hostafrancs: fincas 60-80, ascensor, hipoteca y plazo hasta escritura sin promesas imposibles. 145 €, 48 h.',
       keywords: ['contrato arras sants', 'arras sants barcelona', 'señal compraventa sants'],
-      ogTitle: 'Arras penitenciales en Sants — contrato en 48h',
-      ogDescription: 'Compraventa en Sants con arras personalizadas. 145€ IVA incluido.',
+      ogTitle: 'Hostafrancs y Sants: convierte la oferta en arras sin pelear con el banco',
+      ogDescription: 'Compraventa familiar junto a la estación: suspensiva hipotecaria y señal trazable.',
     },
     hero: {
-      badge: 'Sants · Compraventa',
-      h1: 'Contrato de arras en Sants: compraventa con plazos realistas cerca de la estación',
+      badge: 'Sants-Montjuïc · Familias',
+      h1: 'Sants: arras pensadas para quien compra con hipoteca y no puede prometer escritura en 20 días',
       subtitulo:
         'Sants combina vivienda de barrio, pisos para familias y operaciones con compradores que priorizan comunicaciones. Las arras deben cuadrar calendario de hipoteca y entrega de llaves con la realidad del trámite bancario.',
       anguloComprador:
@@ -303,7 +319,32 @@ export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, Barcelona
       perfilComprador: 'Familias, compradores primera vivienda con hipoteca y traslados laborales.',
       particularidad: 'Fincas con comunidades activas en obras de eficiencia; conviene condicionar arras a ITE o certificados.',
     },
-    normativa: { titulo: 'Base legal arras en Sants', intro: 'Código Civil + ITP Cataluña + documentación urbanística.', bloques: NORMA_ARRAS_CATALUNA },
+    normativa: {
+      titulo: 'Sants: arras e ITE en fincas de los años 70',
+      intro: 'En bloques de mediana antigüedad la compraventa choca con ITE pendiente o ascensor en obras — debe quedar en el calendario contractual.',
+      bloques: [
+        {
+          titulo: 'ITE y conservación del edificio',
+          contenido:
+            'Si la comunidad está tramitando inspección técnica, el comprador puede heredar cuotas elevadas. Reservamos plazo para acta de ITE y reparto de costes ya aprobados.',
+          bullets: ['Entrega de último informe disponible', 'Cláusula de ajuste si se aprueba derrama posterior'],
+        },
+        NORMA_ARRAS_CATALUNA[0],
+        NORMA_ARRAS_CATALUNA[1],
+      ],
+    },
+    contenidoUnico: {
+      tituloSeccion: 'Operación típica junto a Sants Estació',
+      lead:
+        'Pareja que vende en Cornellà y compra en Hostafrancs: necesitan alinear venta, hipoteca compra y señal sin quedarse sin piso ni sin depósito.',
+      escenarioLocal:
+        'El banco pide 40 días desde arras; el vendedor presiona por 25. El contrato fija 45 con preaviso y penalización proporcional, no una guerra de WhatsApps.',
+      erroresEvitados: [
+        { titulo: 'Fecha de escritura irreal', detalle: 'Calendario negociado con margen para tasación y aprobación.' },
+        { titulo: 'Ascensor en obras', detalle: 'Descuento o retención en fianza si el servicio esencial está interrumpido.' },
+        { titulo: 'Señal en efectivo', detalle: 'Instrucciones de pago trazables (transferencia, concepto, beneficiario).' },
+      ],
+    },
     blindaje: {
       titulo: 'Qué incluye la redacción',
       intro: 'Contrato a medida para Sants:',
@@ -334,16 +375,16 @@ export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, Barcelona
     nombre: 'Poblenou',
     distrito: 'Sant Martí',
     meta: {
-      title: 'Contrato arras Poblenou Barcelona — penitenciales 145€',
+      title: 'Poblenou / 22@: arras distintas si compras loft o obra nueva',
       description:
-        'Arras penitenciales en Poblenou: compraventa, 22@, vivienda reformada e hipoteca. Contrato personalizado 145€, 48h.',
+        'Señal penitencial entre Diagonal Mar y la Vila Olímpica: IVA vs ITP, licencia de primera ocupación, compradores internacionales. 145 €, 48 h.',
       keywords: ['contrato arras poblenou', 'arras poblenou barcelona', 'comprar piso poblenou arras'],
-      ogTitle: 'Contrato de arras en Poblenou — señal en compraventa',
-      ogDescription: 'Arras a medida en Poblenou y 22@. 145€, entrega 48h.',
+      ogTitle: 'Loft en 22@: no uses el mismo contrato de arras que una finca del Eixample',
+      ogDescription: 'Compraventa en Poblenou con fiscalidad y plazos acordes al tipo de inmueble.',
     },
     hero: {
-      badge: 'Poblenou · Compraventa',
-      h1: 'Contrato de arras en Poblenou: señal blindada entre playa, 22@ y vivienda nueva',
+      badge: '22@ · Lofts y promociones',
+      h1: 'Poblenou: el contrato de arras cambia si firmas por un piso usado o por obra entregada por promotor',
       subtitulo:
         'Poblenou concentra lofts, pisos reformados y promociones recientes. Las arras deben distinguir obra nueva (IVA vs ITP), licencias de primera ocupación y arras en operaciones rápidas.',
       anguloComprador:
@@ -358,7 +399,32 @@ export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, Barcelona
       perfilComprador: 'Perfiles tech, familias y compradores que buscan vida junto al mar con buena conexión.',
       particularidad: 'Operaciones con inversores y compradores extranjeros: claridad en idioma, plazos y medios de pago de la señal.',
     },
-    normativa: { titulo: 'Normativa arras Poblenou', intro: 'Civil, tributaria y urbanística en Cataluña.', bloques: NORMA_ARRAS_CATALUNA },
+    normativa: {
+      titulo: 'Poblenou: IVA, ITP y arras en la misma calle',
+      intro: 'En un mismo eje pueden convivir transmisión sujeta a IVA (promotor) y compraventa usada — el contrato debe nombrar el régimen fiscal previsto.',
+      bloques: [
+        {
+          titulo: 'Obra nueva y arras con promotor',
+          contenido:
+            'Si interviene promotor o vivienda nunca transmitida, el marco no es el de un PDF de “segunda mano”. Ajustamos precio, entregas a cuenta y referencias de licencia.',
+          bullets: ['Identificación de sujeto pasivo cuando aplique', 'Plazo para cédula / libro edificio'],
+        },
+        NORMA_ARRAS_CATALUNA[1],
+        NORMA_ARRAS_CATALUNA[2],
+      ],
+    },
+    contenidoUnico: {
+      tituloSeccion: 'Tech buyer en Diagonal Mar: señal en euros, contrato en dos idiomas',
+      lead:
+        'Compradores internacionales suelen pedir arras rápidas en castellano mientras el vendedor prefiere catalán — ambos válidos si el texto es claro y simétrico.',
+      escenarioLocal:
+        'Loft reconvertido en calle Pere IV: el vendedor declara industrial antigua sin certificar cambio de uso. Las arras suspenden la señal hasta certificado urbanístico favorable.',
+      erroresEvitados: [
+        { titulo: 'Confundir promoción con reventa', detalle: 'Régimen fiscal y pagos a cuenta descritos sin ambigüedad.' },
+        { titulo: 'Señal desde el extranjero', detalle: 'Datos SWIFT, plazos de valor y prueba de transferencia.' },
+        { titulo: 'Mobiliario loft', detalle: 'Anexo de instalaciones (cocina americana, climatización) vinculado a arras.' },
+      ],
+    },
     blindaje: {
       titulo: 'Blindaje en Poblenou',
       intro: 'Adaptamos el contrato a:',
@@ -389,16 +455,16 @@ export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, Barcelona
     nombre: 'Les Corts',
     distrito: 'Les Corts',
     meta: {
-      title: 'Contrato arras Les Corts Barcelona — penitenciales 145€',
+      title: 'Les Corts y Pedralbes: arras con plaza de garaje en el contrato',
       description:
-        'Contrato de arras en Les Corts: compraventa residencial, Zona Universitaria, ITP e hipoteca. 145€, 48 horas.',
+        'Señal penitencial en Les Corts: familias, Zona Universitaria, anejos registrales e hipoteca pausada. Redacción 48 h, 145 € IVA incl.',
       keywords: ['contrato arras les corts', 'arras les corts barcelona', 'señal compraventa les corts'],
-      ogTitle: 'Arras penitenciales Les Corts — Barcelona',
-      ogDescription: 'Arras personalizadas en Les Corts. 145€, gestor asignado.',
+      ogTitle: 'Garaje y trastero en Les Corts: que no se pierdan entre arras y escritura',
+      ogDescription: 'Compraventa residencial estable: descripción registral completa y plazos bancarios conservadores.',
     },
     hero: {
-      badge: 'Les Corts · Compraventa',
-      h1: 'Contrato de arras en Les Corts: compraventa estable junto a la Zona Universitaria',
+      badge: 'Pedralbes · Residencial',
+      h1: 'Les Corts: arras para operaciones familiares donde el parking vale tanto como una habitación',
       subtitulo:
         'Les Corts es un distrito residencial con fincas amplias y demanda familiar. Las arras deben contemplar plazos de hipoteca conservadores y revisión de comunidades con pocos vecinos pero obras costosas.',
       anguloComprador:
@@ -413,7 +479,32 @@ export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, Barcelona
       perfilComprador: 'Familias consolidadas, profesionales y compradores que buscan estabilidad barrial.',
       particularidad: 'Viviendas con trastero y plaza de garaje: describir anejos en arras y escritura futura.',
     },
-    normativa: { titulo: 'Marco legal en Les Corts', intro: 'Arras penitenciales bajo Código Civil e impuestos catalanes.', bloques: NORMA_ARRAS_CATALUNA },
+    normativa: {
+      titulo: 'Les Corts: anejos registrales y arras',
+      intro: 'En operaciones de cierto importe, el garaje tiene vida registral propia — debe aparecer en arras y coherencia con nota simple.',
+      bloques: [
+        {
+          titulo: 'Plaza de parking y trastero',
+          contenido:
+            'Si el precio global incluye anejos, identificamos fincas registrales vinculadas o transmitidas aparte, evitando sorpresas en notaría.',
+          bullets: ['Referencia registral de cada anejo', 'Precio desglosado o global justificado'],
+        },
+        NORMA_ARRAS_CATALUNA[0],
+        NORMA_ARRAS_CATALUNA[1],
+      ],
+    },
+    contenidoUnico: {
+      tituloSeccion: 'Familia que baja de Pedralbes interior a Les Corts: una sola señal, dos urgencias',
+      lead:
+        'Venden y compran en el mismo trimestre: las arras de compra no pueden ignorar que aún no han cobrado la venta anterior.',
+      escenarioLocal:
+        'Condicionamos la señal de compra a la escritura de venta del piso actual o a hipoteca puente documentada, en lugar de un plazo imposible impuesto por el vendedor.',
+      erroresEvitados: [
+        { titulo: 'Garaje no incluido en arras', detalle: 'Anejos descritos con registro o descuento explícito.' },
+        { titulo: 'Cadena de compraventa', detalle: 'Plazos encadenados con resolución si falla la venta previa.' },
+        { titulo: 'Comunidad “tranquila”', detalle: 'Aun con pocos vecinos, certificado de deudas obligatorio.' },
+      ],
+    },
     blindaje: {
       titulo: 'Contrato blindado Les Corts',
       intro: 'Incluye:',
@@ -439,6 +530,11 @@ export const BARCELONA_ARRAS_BARRIOS: Record<BarcelonaArrasBarrioSlug, Barcelona
     ],
   },
 }
+
+export const BARCELONA_ARRAS_BARRIOS = {
+  ...BARCELONA_ARRAS_BARRIOS_BASE,
+  ...BARCELONA_ARRAS_BARRIOS_EXTRA,
+} as Record<BarcelonaArrasBarrioSlug, BarcelonaArrasBarrioConfig>
 
 export function getBarcelonaArrasBarrio(slug: string): BarcelonaArrasBarrioConfig | undefined {
   if (!(BARCELONA_ARRAS_BARRIO_SLUGS as readonly string[]).includes(slug)) return undefined

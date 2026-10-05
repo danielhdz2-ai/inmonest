@@ -120,6 +120,24 @@ function BarcelonaArrasBarrioContenidoSeo({ config }: { config: BarcelonaArrasBa
         </div>
       </section>
 
+      <section className="rounded-2xl border-2 border-dashed border-gold-400/60 bg-white p-6 sm:p-8">
+        <p className="text-xs font-bold uppercase tracking-widest text-gold-600 mb-2">Solo en {config.nombre}</p>
+        <h2 className="text-2xl font-bold text-gray-900 mb-3">{config.contenidoUnico.tituloSeccion}</h2>
+        <p className="text-gray-700 leading-relaxed mb-4">{config.contenidoUnico.lead}</p>
+        <p className="text-gray-600 leading-relaxed mb-6 italic border-l-4 border-gold-500 pl-4">
+          {config.contenidoUnico.escenarioLocal}
+        </p>
+        <h3 className="font-semibold text-gray-900 mb-3">Errores que evitamos en el contrato</h3>
+        <ul className="space-y-4">
+          {config.contenidoUnico.erroresEvitados.map((e) => (
+            <li key={e.titulo} className="rounded-xl bg-cream-50 border border-gold-200/50 p-4">
+              <p className="font-semibold text-gray-900 text-sm">{e.titulo}</p>
+              <p className="text-sm text-gray-600 mt-1 leading-relaxed">{e.detalle}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section>
         <h2 className="text-2xl font-bold text-gray-900 mb-3">{config.blindaje.titulo}</h2>
         <p className="text-gray-600 mb-5">{config.blindaje.intro}</p>
