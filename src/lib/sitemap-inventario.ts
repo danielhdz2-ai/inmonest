@@ -4,6 +4,7 @@ import { getGestoriaUrlsParaIndexar } from '@/lib/gestoria-indexar-urls'
 import { isGestoriaPathIndexable } from '@/lib/gestoria-indexacion-tier'
 import { CIUDADES_PORTAL_SLUGS } from '@/lib/ciudades-portal'
 import { getBarcelonaAlquilerBarrioPaths } from '@/lib/barcelona-contrato-alquiler-barrios'
+import { getBarcelonaArrasBarrioPaths } from '@/lib/barcelona-contrato-arras-barrios'
 
 /** Rutas de landings (portal + gestoría) alineadas con LANDINGS_POR_CIUDAD y listas GSC. */
 export function collectIndexableMarketingPaths(): string[] {
@@ -13,7 +14,7 @@ export function collectIndexableMarketingPaths(): string[] {
   const fromGestoria = getGestoriaUrlsParaIndexar()
   const portalHubs = CIUDADES_PORTAL_SLUGS.map((c) => `/${c}`)
 
-  const barcelonaBarrios = getBarcelonaAlquilerBarrioPaths()
+  const barcelonaBarrios = [...getBarcelonaAlquilerBarrioPaths(), ...getBarcelonaArrasBarrioPaths()]
 
   return [...new Set([...fromLandings, ...fromGestoria, ...portalHubs, ...barcelonaBarrios])].filter((path) =>
     isGestoriaPathIndexable(path),
@@ -38,6 +39,8 @@ function resolvePriority(path: string): number {
   if (path.endsWith('/pisos')) return 0.9
   if (path.startsWith('/contratos-inmobiliarios')) return path === '/contratos-inmobiliarios' ? 0.93 : 0.91
   if (path.endsWith('/contrato-arras') || path.endsWith('/contrato-alquiler')) return 0.85
+  if (path.includes('/barcelona/contrato-arras/')) return 0.86
+  if (path.includes('/barcelona/contrato-alquiler/')) return 0.86
   if (path.endsWith('/alquiler-temporada')) return 0.86
   if (path.includes('/revision-correccion-arras/')) return 0.86
   if (path.match(/^\/gestoria\/[^/]+$/)) return 0.85

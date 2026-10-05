@@ -9,6 +9,7 @@ import GestoriaArrasModulosCompletos, {
 } from '@/components/GestoriaArrasModulosCompletos'
 import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
 import BarriosCiudadContrato from '@/components/BarriosCiudadContrato'
+import BarcelonaArrasBarriosHub from '@/components/BarcelonaArrasBarriosHub'
 import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
@@ -169,7 +170,11 @@ export default function ContratoArrasCiudadPremium({ config }: { config: Contrat
           </div>
         </section>
 
-        <BarriosCiudadContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="arras" />
+        {config.slug === 'barcelona' ? (
+          <BarcelonaArrasBarriosHub />
+        ) : (
+          <BarriosCiudadContrato ciudad={config.nombre} ciudadSlug={config.slug} servicio="arras" />
+        )}
 
         <CalculadoraAhorroContrato
           mode="arras"
