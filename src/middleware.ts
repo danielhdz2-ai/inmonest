@@ -15,6 +15,14 @@ import {
 } from '@/lib/rate-limit'
 
 export async function middleware(request: NextRequest) {
+  const host = request.headers.get('host')?.split(':')[0]?.toLowerCase()
+  if (host === 'www.inmonest.com') {
+    const dest = request.nextUrl.clone()
+    dest.hostname = 'inmonest.com'
+    dest.protocol = 'https:'
+    return NextResponse.redirect(dest, 308)
+  }
+
   const { pathname } = request.nextUrl
 
   // ── 0. BLOQUEO DE BOTS AGRESIVOS (protección CPU) ─────────────────────────
