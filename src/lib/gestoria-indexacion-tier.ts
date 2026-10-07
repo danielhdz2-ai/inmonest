@@ -1,28 +1,12 @@
 import type { Metadata } from 'next'
 
 /**
- * Landings gestoría ciudad × servicio de baja prioridad SEO.
- * Siguen accesibles y enlazadas; no van al sitemap y llevan noindex,follow.
+ * Rutas gestoría con noindex explícito (excepciones puntuales).
+ * Las landings ciudad × servicio se indexan por defecto; solo añade aquí páginas
+ * que deban seguir accesibles pero fuera del índice.
  */
 export const GESTORIA_NOINDEX_CITY_PATHS = new Set<string>([
-  '/gestoria/asesoria-compra-piso/zaragoza',
-  '/gestoria/asesoria-compra-piso/valladolid',
-  '/gestoria/asesoria-compra-piso/mallorca',
-  '/gestoria/asesoria-compra-piso/bilbao',
-  '/gestoria/asesoria-compra-piso/coruna',
-  '/gestoria/asesoria-compra-piso/murcia',
-  '/gestoria/asesoria-compra-piso/pamplona',
-  '/gestoria/contrato-alquiler-habitacion/asturias',
-  '/gestoria/prestamo-particulares/sevilla',
-  '/gestoria/prestamo-particulares/malaga',
-  '/gestoria/prestamo-particulares/bilbao',
-  '/gestoria/prestamo-particulares/mallorca',
-  '/gestoria/prestamo-particulares/valladolid',
-  '/gestoria/due-diligence-precompra/bilbao',
-  '/gestoria/due-diligence-precompra/zaragoza',
-  '/gestoria/due-diligence-precompra/coruna',
-  '/gestoria/venta-completa-reserva-escritura/salamanca',
-  '/gestoria/venta-completa-reserva-escritura/valladolid',
+  // Portal de acceso post-pago — noindex en metadata de la página; reservado por si se enlaza mal
 ])
 
 export function isGestoriaPathIndexable(path: string): boolean {

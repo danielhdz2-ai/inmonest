@@ -36,6 +36,11 @@ export const GESTORIA_INDEXAR_PRIORIDAD_ALTA = [
   '/gestoria/contrato-arras',
   '/gestoria/cuanto-cuesta-contrato-alquiler',
   '/gestoria/guia-arras-penitenciales',
+  '/gestoria/acompanamiento-reserva-arras',
+  '/gestoria/alquiler-garaje-trastero',
+  '/gestoria/rescision-alquiler',
+  '/gestoria/contrato-compraventa',
+  '/gestoria/asesoramiento-arras-venta',
 ] as const
 
 /** Landings por ciudad recientes o con poca visibilidad en GSC */
@@ -94,6 +99,19 @@ export const GESTORIA_INDEXAR_PRIORIDAD_MEDIA = [
   '/valencia/contrato-alquiler',
   '/sevilla/contrato-alquiler',
   '/bilbao/contrato-alquiler',
+  '/gestoria/contrato-alquiler-habitacion/malaga',
+  '/gestoria/contrato-alquiler-habitacion/sevilla',
+  '/gestoria/contrato-alquiler-habitacion/zaragoza',
+  '/gestoria/prestamo-particulares/barcelona',
+  '/gestoria/prestamo-particulares/bilbao',
+  '/gestoria/due-diligence-precompra/bilbao',
+  '/gestoria/due-diligence-precompra/coruna',
+  '/gestoria/asesoria-compra-piso/malaga',
+  '/gestoria/asesoria-compra-piso/sevilla',
+  '/gestoria/madrid/agencias',
+  '/asturias/contrato-alquiler',
+  '/castellon/contrato-alquiler',
+  '/barcelona/contrato-alquiler/sants',
 ] as const
 
 function gestoriaLandingsPorCiudad(): string[] {

@@ -890,6 +890,7 @@ export async function generateMetadata({
   return {
     title: seoTitle,
     description: seoDescription,
+    robots: { index: true, follow: true },
     alternates: { canonical: `${BASE_URL}/gestoria/${servicio}` },
     openGraph: {
       title: `${data.nombre}`,

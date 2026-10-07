@@ -14,6 +14,18 @@ const LANDINGS_RECIENTES_INDEXAR = [
   ...getBarcelonaAlquilerBarrioPaths(),
   '/blog/decretos-vivienda-alquiler-septiembre-2026',
   '/blog/regulacion-alquiler-temporada-habitaciones-2026',
+  '/gestoria/acompanamiento-reserva-arras',
+  '/gestoria/alquiler-garaje-trastero',
+  '/gestoria/rescision-alquiler',
+  '/gestoria/contrato-compraventa',
+  '/gestoria/asesoramiento-arras-venta',
+  '/gestoria/contrato-alquiler-habitacion/malaga',
+  '/gestoria/contrato-alquiler-habitacion/sevilla',
+  '/gestoria/due-diligence-precompra/madrid',
+  '/gestoria/prestamo-particulares/valencia',
+  '/gestoria/madrid/agencias',
+  '/asturias/contrato-alquiler',
+  '/castellon/contrato-alquiler',
 ] as const
 
 export type GscIssueRow = {

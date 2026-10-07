@@ -1,9 +1,27 @@
-# Gestoría sin indexar / pendientes — 2026-09-29
-# Inventario: 289 · Sin indexar GSC: 1 · Pendientes verificar: 37
-# Probablemente indexadas: 247
+# Gestoría sin indexar / pendientes — 2026-10-07
+# Inventario: 306 · Sin indexar GSC: 18 · Pendientes verificar: 40
+# Probablemente indexadas: 242
 
 ## SOLICITAR INDEXACIÓN (GSC confirmado + landings nuevas)
-https://inmonest.com/gestoria/prestamo-particulares/zaragoza
+https://inmonest.com/gestoria/acompanamiento-reserva-arras
+https://inmonest.com/gestoria/alquiler-garaje-trastero
+https://inmonest.com/gestoria/asesoramiento-arras-venta
+https://inmonest.com/gestoria/asesoria-compra-piso/malaga
+https://inmonest.com/gestoria/asesoria-compra-piso/sevilla
+https://inmonest.com/gestoria/contrato-alquiler-habitacion/barcelona
+https://inmonest.com/gestoria/contrato-alquiler-habitacion/madrid
+https://inmonest.com/gestoria/contrato-alquiler-habitacion/malaga
+https://inmonest.com/gestoria/contrato-alquiler-habitacion/sevilla
+https://inmonest.com/gestoria/contrato-alquiler-habitacion/zaragoza
+https://inmonest.com/gestoria/due-diligence-precompra/bilbao
+https://inmonest.com/gestoria/due-diligence-precompra/coruna
+https://inmonest.com/gestoria/due-diligence-precompra/madrid
+https://inmonest.com/gestoria/madrid/agencias
+https://inmonest.com/gestoria/prestamo-particulares/barcelona
+https://inmonest.com/gestoria/prestamo-particulares/bilbao
+https://inmonest.com/gestoria/prestamo-particulares/valencia
+https://inmonest.com/gestoria/rescision-alquiler
+https://inmonest.com/asturias/contrato-alquiler
 https://inmonest.com/barcelona/contrato-alquiler/eixample
 https://inmonest.com/barcelona/contrato-alquiler/gracia
 https://inmonest.com/barcelona/contrato-alquiler/les-corts
@@ -11,6 +29,7 @@ https://inmonest.com/barcelona/contrato-alquiler/poblenou
 https://inmonest.com/barcelona/contrato-alquiler/sants
 https://inmonest.com/blog/decretos-vivienda-alquiler-septiembre-2026
 https://inmonest.com/blog/regulacion-alquiler-temporada-habitaciones-2026
+https://inmonest.com/castellon/contrato-alquiler
 https://inmonest.com/contratos-inmobiliarios/alicante
 https://inmonest.com/contratos-inmobiliarios/asturias
 https://inmonest.com/contratos-inmobiliarios/barcelona
@@ -41,13 +60,18 @@ https://inmonest.com/gestoria/alquiler-local-comercial/malaga
 https://inmonest.com/gestoria/alquiler-local-comercial/sevilla
 https://inmonest.com/gestoria/alquiler-local-comercial/valencia
 https://inmonest.com/gestoria/alquiler-local-comercial/zaragoza
+https://inmonest.com/gestoria/contrato-compraventa
 
 ## SOLO PROBLEMAS GSC (404, redirect…)
-# error_404: No se ha encontrado (404)
-https://inmonest.com/gestoria/alquiler-temporada
-# error_404: No se ha encontrado (404)
-https://inmonest.com/gestoria/asesoria-compra-piso/valencia
 # redirect: Página con redirección
-https://inmonest.com/gestoria/malaga
+https://inmonest.com/gestoria
+# otro_problema: Excluida por una etiqueta "noindex"
+https://inmonest.com/gestoria/contrato-alquiler-habitacion/asturias
+# redirect: Página con redirección
+https://inmonest.com/gestoria/contrato-arras
+# otro_problema: Excluida por una etiqueta "noindex"
+https://inmonest.com/gestoria/due-diligence-precompra/zaragoza
 # error_404: No se ha encontrado (404)
-https://inmonest.com/gestoria/reserva-compra
+https://inmonest.com/gestoria/prestamo-particulares
+# otro_problema: Excluida por una etiqueta "noindex"
+https://inmonest.com/gestoria/prestamo-particulares/sevilla

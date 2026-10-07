@@ -165,6 +165,16 @@ export const SEO_REDIRECTS: Redirect[] = [
     destination: '/gestoria/contrato-compraventa',
     permanent: true,
   },
+  {
+    source: '/gestoria/revision-contrato-alquiler/:ciudad',
+    destination: '/gestoria/revision-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/revision-arras/:path*',
+    destination: '/gestoria/revision-correccion-arras',
+    permanent: true,
+  },
 
   // ═══ CIUDADES — ATAJOS RAÍZ ═══
   {

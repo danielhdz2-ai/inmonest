@@ -1,15 +1,105 @@
 {
-  "generadoEn": "2026-09-29T18:07:01.990Z",
+  "generadoEn": "2026-10-07T19:31:01.594Z",
   "fuenteGsc": "scripts\\gsc-coverage-urls.csv",
-  "totalInventario": 289,
+  "totalInventario": 306,
   "sinIndexar": [
     {
-      "url": "https://inmonest.com/gestoria/prestamo-particulares/zaragoza",
-      "path": "/gestoria/prestamo-particulares/zaragoza",
+      "url": "https://inmonest.com/gestoria/acompanamiento-reserva-arras",
+      "path": "/gestoria/acompanamiento-reserva-arras",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/alquiler-garaje-trastero",
+      "path": "/gestoria/alquiler-garaje-trastero",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/asesoramiento-arras-venta",
+      "path": "/gestoria/asesoramiento-arras-venta",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/asesoria-compra-piso/malaga",
+      "path": "/gestoria/asesoria-compra-piso/malaga",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/asesoria-compra-piso/sevilla",
+      "path": "/gestoria/asesoria-compra-piso/sevilla",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/contrato-alquiler-habitacion/barcelona",
+      "path": "/gestoria/contrato-alquiler-habitacion/barcelona",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/contrato-alquiler-habitacion/madrid",
+      "path": "/gestoria/contrato-alquiler-habitacion/madrid",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/contrato-alquiler-habitacion/malaga",
+      "path": "/gestoria/contrato-alquiler-habitacion/malaga",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/contrato-alquiler-habitacion/sevilla",
+      "path": "/gestoria/contrato-alquiler-habitacion/sevilla",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/contrato-alquiler-habitacion/zaragoza",
+      "path": "/gestoria/contrato-alquiler-habitacion/zaragoza",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/due-diligence-precompra/bilbao",
+      "path": "/gestoria/due-diligence-precompra/bilbao",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/due-diligence-precompra/coruna",
+      "path": "/gestoria/due-diligence-precompra/coruna",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/due-diligence-precompra/madrid",
+      "path": "/gestoria/due-diligence-precompra/madrid",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/madrid/agencias",
+      "path": "/gestoria/madrid/agencias",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/prestamo-particulares/barcelona",
+      "path": "/gestoria/prestamo-particulares/barcelona",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/prestamo-particulares/bilbao",
+      "path": "/gestoria/prestamo-particulares/bilbao",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/prestamo-particulares/valencia",
+      "path": "/gestoria/prestamo-particulares/valencia",
+      "issue": "Rastreada: actualmente sin indexar"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/rescision-alquiler",
+      "path": "/gestoria/rescision-alquiler",
       "issue": "Rastreada: actualmente sin indexar"
     }
   ],
   "pendientesVerificar": [
+    {
+      "url": "https://inmonest.com/asturias/contrato-alquiler",
+      "path": "/asturias/contrato-alquiler",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
     {
       "url": "https://inmonest.com/barcelona/contrato-alquiler/eixample",
       "path": "/barcelona/contrato-alquiler/eixample",
@@ -43,6 +133,11 @@
     {
       "url": "https://inmonest.com/blog/regulacion-alquiler-temporada-habitaciones-2026",
       "path": "/blog/regulacion-alquiler-temporada-habitaciones-2026",
+      "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/castellon/contrato-alquiler",
+      "path": "/castellon/contrato-alquiler",
       "motivo": "Landing nueva — no consta en el último export GSC"
     },
     {
@@ -194,33 +289,50 @@
       "url": "https://inmonest.com/gestoria/alquiler-local-comercial/zaragoza",
       "path": "/gestoria/alquiler-local-comercial/zaragoza",
       "motivo": "Landing nueva — no consta en el último export GSC"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/contrato-compraventa",
+      "path": "/gestoria/contrato-compraventa",
+      "motivo": "Landing nueva — no consta en el último export GSC"
     }
   ],
   "problemasGsc": [
     {
-      "url": "https://inmonest.com/gestoria/alquiler-temporada",
-      "path": "/gestoria/alquiler-temporada",
-      "estado": "error_404",
-      "issue": "No se ha encontrado (404)"
-    },
-    {
-      "url": "https://inmonest.com/gestoria/asesoria-compra-piso/valencia",
-      "path": "/gestoria/asesoria-compra-piso/valencia",
-      "estado": "error_404",
-      "issue": "No se ha encontrado (404)"
-    },
-    {
-      "url": "https://inmonest.com/gestoria/malaga",
-      "path": "/gestoria/malaga",
+      "url": "https://inmonest.com/gestoria",
+      "path": "/gestoria",
       "estado": "redirect",
       "issue": "Página con redirección"
     },
     {
-      "url": "https://inmonest.com/gestoria/reserva-compra",
-      "path": "/gestoria/reserva-compra",
+      "url": "https://inmonest.com/gestoria/contrato-alquiler-habitacion/asturias",
+      "path": "/gestoria/contrato-alquiler-habitacion/asturias",
+      "estado": "otro_problema",
+      "issue": "Excluida por una etiqueta \"noindex\""
+    },
+    {
+      "url": "https://inmonest.com/gestoria/contrato-arras",
+      "path": "/gestoria/contrato-arras",
+      "estado": "redirect",
+      "issue": "Página con redirección"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/due-diligence-precompra/zaragoza",
+      "path": "/gestoria/due-diligence-precompra/zaragoza",
+      "estado": "otro_problema",
+      "issue": "Excluida por una etiqueta \"noindex\""
+    },
+    {
+      "url": "https://inmonest.com/gestoria/prestamo-particulares",
+      "path": "/gestoria/prestamo-particulares",
       "estado": "error_404",
       "issue": "No se ha encontrado (404)"
+    },
+    {
+      "url": "https://inmonest.com/gestoria/prestamo-particulares/sevilla",
+      "path": "/gestoria/prestamo-particulares/sevilla",
+      "estado": "otro_problema",
+      "issue": "Excluida por una etiqueta \"noindex\""
     }
   ],
-  "probablementeIndexadas": 247
+  "probablementeIndexadas": 242
 }

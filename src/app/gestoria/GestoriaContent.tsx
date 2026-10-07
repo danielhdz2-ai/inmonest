@@ -717,6 +717,12 @@ export default function GestoriaPage() {
                 >
                   Solicitar por {service.price} € <span className="font-normal text-xs opacity-90">(IVA incl.)</span>
                 </button>
+                <Link
+                  href={`/gestoria/${service.key}`}
+                  className="mt-3 block text-center text-xs font-semibold text-gold-600 hover:text-gold-700 underline-offset-2 hover:underline"
+                >
+                  Ver ficha del servicio
+                </Link>
               </div>
             </article>
           ))}

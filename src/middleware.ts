@@ -143,6 +143,25 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301)
   }
 
+  // Teléfono pegado a slug gestoría (GSC: /gestoria/prestamo-particulares/ 34745022862)
+  const gestoriaServicePhone = decodedPath.match(/^\/gestoria\/([a-z0-9-]+)\/(?:\+)?34745022862\/?$/)
+  if (gestoriaServicePhone) {
+    const url = request.nextUrl.clone()
+    url.pathname = `/gestoria/${gestoriaServicePhone[1]}`
+    return NextResponse.redirect(url, 301)
+  }
+  const gestoriaJunkPhone = decodedPath.match(/^\/gestoria\/([a-z0-9-]+)\/\s*(\d{9,12})\/?$/)
+  if (gestoriaJunkPhone) {
+    const url = request.nextUrl.clone()
+    url.pathname = `/gestoria/${gestoriaJunkPhone[1]}`
+    return NextResponse.redirect(url, 301)
+  }
+  if (decodedPath.match(/^\/\s*(\d{9,12})\/?$/)) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/'
+    return NextResponse.redirect(url, 301)
+  }
+
   // ── 1. RATE LIMITING (primero para evitar spam) ───────────────────────────
 
   const ip = getIP(request)
