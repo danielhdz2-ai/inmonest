@@ -43,6 +43,10 @@ import {
   BARCELONA_ARRAS_BARRIO_SLUGS_EXTRA,
   BARCELONA_ARRAS_BARRIOS_EXTRA,
 } from '@/lib/barcelona-contrato-arras-barrios-ampliacion'
+import {
+  BARCELONA_ARRAS_BARRIO_SLUGS_EXTRA_2,
+  BARCELONA_ARRAS_BARRIOS_EXTRA_2,
+} from '@/lib/barcelona-contrato-arras-barrios-ampliacion-2'
 
 export const BARCELONA_ARRAS_BARRIO_SLUGS = [
   'eixample',
@@ -51,6 +55,7 @@ export const BARCELONA_ARRAS_BARRIO_SLUGS = [
   'poblenou',
   'les-corts',
   ...BARCELONA_ARRAS_BARRIO_SLUGS_EXTRA,
+  ...BARCELONA_ARRAS_BARRIO_SLUGS_EXTRA_2,
 ] as const
 
 export type BarcelonaArrasBarrioSlug = (typeof BARCELONA_ARRAS_BARRIO_SLUGS)[number]
@@ -534,6 +539,7 @@ const BARCELONA_ARRAS_BARRIOS_BASE: Record<
 export const BARCELONA_ARRAS_BARRIOS = {
   ...BARCELONA_ARRAS_BARRIOS_BASE,
   ...BARCELONA_ARRAS_BARRIOS_EXTRA,
+  ...BARCELONA_ARRAS_BARRIOS_EXTRA_2,
 } as Record<BarcelonaArrasBarrioSlug, BarcelonaArrasBarrioConfig>
 
 export function getBarcelonaArrasBarrio(slug: string): BarcelonaArrasBarrioConfig | undefined {
