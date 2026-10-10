@@ -3,6 +3,11 @@
  * Contenido único por zona (mercado, normativa, perfiles propietario/inquilino).
  */
 
+import {
+  BARCELONA_ALQUILER_BARRIO_SLUGS_EXTRA,
+  BARCELONA_ALQUILER_BARRIOS_EXTRA,
+} from '@/lib/barcelona-contrato-alquiler-barrios-ampliacion'
+
 export type BarcelonaAlquilerBarrioConfig = {
   slug: string
   nombre: string
@@ -90,11 +95,15 @@ export const BARCELONA_ALQUILER_BARRIO_SLUGS = [
   'sants',
   'poblenou',
   'les-corts',
+  ...BARCELONA_ALQUILER_BARRIO_SLUGS_EXTRA,
 ] as const
 
 export type BarcelonaAlquilerBarrioSlug = (typeof BARCELONA_ALQUILER_BARRIO_SLUGS)[number]
 
-export const BARCELONA_ALQUILER_BARRIOS: Record<BarcelonaAlquilerBarrioSlug, BarcelonaAlquilerBarrioConfig> = {
+const BARCELONA_ALQUILER_BARRIOS_BASE: Record<
+  'eixample' | 'gracia' | 'sants' | 'poblenou' | 'les-corts',
+  BarcelonaAlquilerBarrioConfig
+> = {
   eixample: {
     slug: 'eixample',
     nombre: 'Eixample',
@@ -630,6 +639,11 @@ export const BARCELONA_ALQUILER_BARRIOS: Record<BarcelonaAlquilerBarrioSlug, Bar
     ],
   },
 }
+
+export const BARCELONA_ALQUILER_BARRIOS = {
+  ...BARCELONA_ALQUILER_BARRIOS_BASE,
+  ...BARCELONA_ALQUILER_BARRIOS_EXTRA,
+} as Record<BarcelonaAlquilerBarrioSlug, BarcelonaAlquilerBarrioConfig>
 
 export function getBarcelonaAlquilerBarrio(slug: string): BarcelonaAlquilerBarrioConfig | undefined {
   if (!(BARCELONA_ALQUILER_BARRIO_SLUGS as readonly string[]).includes(slug)) return undefined
