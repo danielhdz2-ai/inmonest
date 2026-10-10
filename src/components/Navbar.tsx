@@ -21,7 +21,6 @@ const NAV_ITEMS = [
   { label: 'Hipotecas',            href: '/hipoteca' },
   { label: 'Analizador de Mercado', href: '/analizador-mercado' },
   { label: 'Blog',                 href: '/blog' },
-  { label: 'Ciudades',             href: '/gestoria/ciudades' },
 ]
 
 import { GESTORIA_NAV_SERVICIOS } from '@/lib/gestoria-servicios-landings'

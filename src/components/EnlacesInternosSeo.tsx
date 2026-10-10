@@ -94,7 +94,7 @@ const ENLACES_HOME: EnlaceSeo[] = [
     badge: 'Nuevo',
   },
   {
-    href: '/gestoria/ciudades',
+    href: '/gestoria',
     title: 'Gestoría por ciudad',
     description: 'Todas las landings locales activas.',
     badge: 'Hub',

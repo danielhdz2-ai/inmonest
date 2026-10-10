@@ -19,6 +19,7 @@ export default function robots(): MetadataRoute.Robots {
           '/auth/',
           // Admin
           '/admin/',
+          '/gestoria/ciudades',
           // Post-payment confirmation pages (no SEO value, require session)
           '/gestoria/gracias',
           '/gestoria/error',

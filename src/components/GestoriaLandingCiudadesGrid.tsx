@@ -83,7 +83,7 @@ export default function GestoriaLandingCiudadesGrid({
             })}
           </div>
           <p className="mt-5 text-xs text-gray-500">
-            <Link href="/gestoria/ciudades" className="text-gold-700 font-semibold hover:underline">
+            <Link href="/gestoria" className="text-gold-700 font-semibold hover:underline">
               Ver inventario completo de landings por ciudad
             </Link>
           </p>

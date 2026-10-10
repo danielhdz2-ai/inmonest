@@ -278,7 +278,7 @@ export default function ContratosInmobiliariosContent() {
               </Link>
             ))}
             <Link
-              href="/gestoria/ciudades"
+              href="/gestoria"
               className="rounded-full border border-gold-300 bg-gold-50 px-4 py-2 text-sm font-semibold text-gold-700 transition hover:bg-gold-100"
             >
               Todas las ciudades →

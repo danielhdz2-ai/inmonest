@@ -99,7 +99,7 @@ export default function CiudadHubLandingPage({ config }: CiudadHubLandingPagePro
                     {getNombreCiudad(hubSlug)}
                   </Link>
                 ))}
-              <Link href="/gestoria/ciudades" className="text-gold-500 hover:underline font-semibold">
+              <Link href="/gestoria" className="text-gold-500 hover:underline font-semibold">
                 Ver todas las ciudades →
               </Link>
             </div>

@@ -35,8 +35,8 @@ export default function Footer() {
           <p className="text-xs font-bold uppercase tracking-widest text-gold-500">
             Servicios de Gestoría
           </p>
-          <Link 
-            href="/gestoria/ciudades" 
+          <Link
+            href="/servicios"
             className="text-xs text-gold-500 hover:text-gold-300 transition-colors flex items-center gap-1"
           >
             Ver todos los servicios →
@@ -93,8 +93,8 @@ export default function Footer() {
           <Link href="/gestoria/palma" className="text-xs text-white/45 hover:text-gold-300 transition-colors">
             Gestoría Palma
           </Link>
-          <Link href="/gestoria/ciudades" className="text-xs text-white/45 hover:text-gold-300 transition-colors">
-            Todas las ciudades →
+          <Link href="/gestoria" className="text-xs text-white/45 hover:text-gold-300 transition-colors">
+            Gestoría por ciudad →
           </Link>
         </div>
       </div>

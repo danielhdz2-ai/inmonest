@@ -18,7 +18,6 @@ const GESTORIA_HUBS = GESTORIA_HUB_CIUDAD_SLUGS
 export const GESTORIA_INDEXAR_PRIORIDAD_ALTA = [
   '/gestoria',
   ...CONTRATOS_INMOBILIARIOS_INDEXAR,
-  '/gestoria/ciudades',
   '/servicios',
   '/gestoria/contrato-alquiler',
   '/gestoria/arras-penitenciales',
@@ -317,11 +316,5 @@ export const GESTORIA_ENLACES_INDEXACION = [
     title: 'Alquiler habitación Madrid',
     description: 'Coliving y pisos compartidos. LAU 2026.',
     badge: 'Ciudad',
-  },
-  {
-    href: '/gestoria/ciudades',
-    title: 'Gestoría por ciudad',
-    description: 'Inventario completo de landings locales.',
-    badge: 'Hub',
   },
 ] as const

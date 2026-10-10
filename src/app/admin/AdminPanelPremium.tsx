@@ -890,7 +890,7 @@ export default function AdminPanelPremium({
         {loading ? 'Actualizando…' : 'Actualizar'}
       </button>
       <Link
-        href="/gestoria/ciudades"
+        href="/admin/inventario-seo"
         className="px-3.5 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg text-xs font-semibold hover:bg-gray-50 transition flex items-center gap-1.5"
       >
         <IconAudit className="w-3.5 h-3.5" />

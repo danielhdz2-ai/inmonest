@@ -22,7 +22,6 @@ export const GESTORIA_NOINDEX_OK = [
 
 /** Páginas gestoría ausentes del sitemap.xml (antes de corrección) */
 export const GESTORIA_FUERA_SITEMAP = [
-  '/gestoria/ciudades',
   '/gestoria/contrato-arras',
   '/gestoria/asesoramiento-arras-venta',
   '/gestoria/guia-arras-penitenciales',

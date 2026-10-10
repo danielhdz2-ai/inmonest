@@ -66,6 +66,12 @@ export default function AdminShell({ activeTab, onTabChange, title, subtitle, ac
               </button>
             )
           })}
+          <Link
+            href="/admin/inventario-seo"
+            className="w-full flex items-center gap-3 rounded-xl px-3 py-3 text-left transition-all text-white/70 hover:bg-white/5 hover:text-white border border-transparent mt-2"
+          >
+            <span className="text-sm font-semibold">Inventario SEO</span>
+          </Link>
         </nav>
 
         <div className="px-4 py-4 border-t border-white/10 space-y-2">
