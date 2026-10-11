@@ -6,9 +6,12 @@ export default function PwaServiceWorkerRegister() {
   useEffect(() => {
     if (typeof window === 'undefined' || !('serviceWorker' in navigator)) return
 
-    navigator.serviceWorker.register('/sw.js', { scope: '/' }).catch((err) => {
-      console.warn('[PWA] No se pudo registrar el service worker:', err)
-    })
+    navigator.serviceWorker
+      .register('/sw.js', { scope: '/', updateViaCache: 'none' })
+      .then((reg) => reg.update())
+      .catch((err) => {
+        console.warn('[PWA] No se pudo registrar el service worker:', err)
+      })
   }, [])
 
   return null

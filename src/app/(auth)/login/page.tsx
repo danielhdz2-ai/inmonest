@@ -15,16 +15,21 @@ export default async function LoginPage({
   const params = await searchParams
   const signedOut = params.signed_out === '1'
 
+  let existingUser: { id: string; email: string } | null = null
   if (!signedOut) {
     try {
       const supabase = await createClient()
       const { data: { user } } = await supabase.auth.getUser()
       if (user?.email) {
-        redirect(await resolvePostLoginRedirect(user.id, user.email, params.next))
+        existingUser = { id: user.id, email: user.email }
       }
     } catch {
-      /* mostrar formulario de login */
+      /* Supabase no disponible: mostrar formulario */
     }
+  }
+
+  if (existingUser) {
+    redirect(await resolvePostLoginRedirect(existingUser.id, existingUser.email, params.next))
   }
 
   return (

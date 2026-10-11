@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { loadPortalSidebarProps } from '@/lib/portal-sidebar-data'
+import { isNextRedirectError } from '@/lib/next-navigation'
 import DashboardSidebar from '../DashboardSidebar'
 
 export const dynamic = 'force-dynamic'
@@ -27,6 +28,7 @@ export default async function ContratosLayout({
       </DashboardSidebar>
     )
   } catch (err) {
+    if (isNextRedirectError(err)) throw err
     console.error('[mi-cuenta/contratos/layout]', err)
     redirect('/login?next=/mi-cuenta/contratos')
   }

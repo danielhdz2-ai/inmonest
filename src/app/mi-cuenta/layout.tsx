@@ -24,7 +24,7 @@ export default async function MiCuentaLayout({
     console.error('[mi-cuenta/layout] getUser falló', err)
   }
 
-  if (!user) redirect('/login')
+  if (!user) redirect('/login?next=/mi-cuenta/contratos')
 
   return <div className="min-h-screen">{children}</div>
 }

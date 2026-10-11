@@ -15,5 +15,5 @@ export function isAdminEmail(email: string | null | undefined): boolean {
  * @returns URL de redirección (/admin o /mi-cuenta)
  */
 export function getRedirectUrl(email: string | null | undefined): string {
-  return isAdminEmail(email) ? '/admin' : '/mi-cuenta'
+  return isAdminEmail(email) ? '/admin' : '/mi-cuenta/contratos'
 }

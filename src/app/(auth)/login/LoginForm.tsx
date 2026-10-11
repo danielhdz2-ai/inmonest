@@ -169,7 +169,7 @@ export default function LoginForm() {
 
         <p className="text-center text-[11px] text-gray-400 mt-4">
           Al continuar aceptas nuestros{' '}
-          <Link href="/terminos" className="underline hover:text-gray-600">términos</Link>
+          <Link href="/aviso-legal" className="underline hover:text-gray-600">términos</Link>
           {' '}y{' '}
           <Link href="/privacidad" className="underline hover:text-gray-600">privacidad</Link>.
         </p>

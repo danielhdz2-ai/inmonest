@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { loadPortalSidebarProps } from '@/lib/portal-sidebar-data'
+import { isNextRedirectError } from '@/lib/next-navigation'
 import DashboardSidebar from '../DashboardSidebar'
 
 export default async function PortalLayout({
@@ -12,7 +13,7 @@ export default async function PortalLayout({
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) {
-      redirect('/login?next=/mi-cuenta')
+      redirect('/login?next=/mi-cuenta/contratos')
     }
 
     const sidebar = await loadPortalSidebarProps(supabase, user)
@@ -23,7 +24,8 @@ export default async function PortalLayout({
       </DashboardSidebar>
     )
   } catch (err) {
+    if (isNextRedirectError(err)) throw err
     console.error('[portal/layout]', err)
-    redirect('/login?next=/mi-cuenta')
+    redirect('/login?next=/mi-cuenta/contratos')
   }
 }
