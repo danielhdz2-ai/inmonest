@@ -4,6 +4,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { getStripeKey } from '@/lib/stripe-key'
 import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
 import { linkGestoriaOrdersToUser } from '@/lib/gestoria-link-user'
+import { notifyClientPaymentConfirmed } from '@/lib/gestoria-client-emails'
 
 export const dynamic = 'force-dynamic'
 
@@ -55,6 +56,8 @@ export async function GET(req: NextRequest) {
   if (session.payment_status !== 'paid') {
     return NextResponse.json({ error: 'pago_pendiente' }, { status: 402 })
   }
+
+  const sendEmail = req.nextUrl.searchParams.get('email') === '1'
 
   const meta = session.metadata ?? {}
   const service_key = meta.service_key ?? ''
@@ -110,11 +113,31 @@ export async function GET(req: NextRequest) {
     console.error('[confirmar-pago] Supabase:', err instanceof Error ? err.message : err)
   }
 
+  const recipient = client_email || user?.email?.trim().toLowerCase() || ''
+  let emailSent = false
+  const amountForEmail =
+    amount_eur ?? GESTORIA_SERVICIOS[service_key]?.precio ?? null
+
+  if (sendEmail && recipient && amountForEmail != null) {
+    try {
+      emailSent = await notifyClientPaymentConfirmed({
+        to: recipient,
+        userId: userId ?? undefined,
+        clientName: client_name || user?.email?.split('@')[0],
+        serviceName: service_name,
+        amountEur: amountForEmail,
+      })
+    } catch (err) {
+      console.error('[confirmar-pago] email cliente:', err)
+    }
+  }
+
   return NextResponse.json({
     ok: true,
     service_name,
-    customer_email: client_email || user?.email || '',
+    customer_email: recipient,
     service_key,
     amount_eur,
+    email_sent: emailSent,
   })
 }

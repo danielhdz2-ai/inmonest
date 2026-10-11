@@ -2,10 +2,10 @@ import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { ADMIN_EMAIL, getNotifyEmails } from '@/lib/email'
+import { notifyClientPaymentConfirmed } from '@/lib/gestoria-client-emails'
+import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
 
 const RESEND_API   = 'https://api.resend.com/emails'
-const BASE_URL     = 'https://inmonest.com'
-
 function getStripe() {
   return new Stripe(process.env.STRIPE_SECRET_KEY!, { apiVersion: '2026-03-25.dahlia' })
 }
@@ -117,42 +117,19 @@ export async function POST(req: NextRequest) {
       `,
     })
 
-    // ── 4. Email al CLIENTE ──────────────────────────────────────────────
+    // ── 4. Email al CLIENTE (panel + preferencias) ───────────────────────
     if (clientEmail) {
-      await sendEmail({
-        from:    FROM_EMAIL,
-        to:      [clientEmail],
-        reply_to: ADMIN_EMAIL,
-        subject: `✅ Confirmación de tu pedido — Inmonest`,
-        html: `
-          <div style="font-family:sans-serif;max-width:600px;margin:auto">
-            <div style="background:linear-gradient(135deg,#7a5c1e,#c9962a);padding:32px 24px;border-radius:8px 8px 0 0;text-align:center">
-              <h1 style="color:#fff;margin:0;font-size:24px">¡Gracias por confiar en Inmonest!</h1>
-            </div>
-            <div style="background:#fff;padding:32px 24px;border:1px solid #e5e7eb;border-top:0;border-radius:0 0 8px 8px">
-              <p style="color:#374151;font-size:15px">Hola <strong>${clientName}</strong>,</p>
-              <p style="color:#374151;font-size:15px">Hemos recibido tu pago correctamente. Tu pedido está siendo procesado por nuestro equipo de gestoría.</p>
-
-              <div style="background:#fef9e8;border:1px solid #f4c94a;border-radius:8px;padding:16px;margin:24px 0">
-                <p style="margin:0;font-size:14px;color:#7a5c1e;font-weight:700">Detalles del pedido</p>
-                <p style="margin:8px 0 0;font-size:14px;color:#374151">Servicio: <strong>${serviceKey.replace(/-/g, ' ')}</strong></p>
-                <p style="margin:4px 0 0;font-size:14px;color:#374151">Importe: <strong style="color:#c9962a">${amount} €</strong></p>
-              </div>
-
-              <p style="color:#374151;font-size:14px">Nuestro equipo te contactará en las próximas <strong>24 horas</strong> para coordinar la entrega de documentos.</p>
-
-              <div style="text-align:center;margin:28px 0">
-                <a href="${BASE_URL}/mis-documentos" style="background:#c9962a;color:#fff;padding:14px 32px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;display:inline-block">
-                  Ver mi zona de documentos →
-                </a>
-              </div>
-
-              <p style="color:#9ca3af;font-size:12px;text-align:center">¿Tienes dudas? Escríbenos a <a href="mailto:${ADMIN_EMAIL}" style="color:#c9962a">${ADMIN_EMAIL}</a></p>
-            </div>
-            <p style="text-align:center;font-size:11px;color:#d1d5db;margin-top:16px">© 2026 Inmonest · Gestoría inmobiliaria online</p>
-          </div>
-        `,
+      const serviceName =
+        GESTORIA_SERVICIOS[serviceKey]?.nombre ?? serviceKey.replace(/-/g, ' ')
+      const sent = await notifyClientPaymentConfirmed({
+        to: clientEmail,
+        clientName,
+        serviceName,
+        amountEur: amount,
       })
+      if (!sent) {
+        console.log('[webhook] Email cliente omitido (preferencias o Resend)')
+      }
     } else {
       console.log('[webhook] Sin email de cliente — email de confirmación omitido')
     }
