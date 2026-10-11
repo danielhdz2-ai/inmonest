@@ -13,6 +13,13 @@ import {
   getIP,
   applyRateLimit,
 } from '@/lib/rate-limit'
+import {
+  GESTORIA_ALQUILER_HUB,
+  GESTORIA_ALQUILER_SOLICITAR,
+  isPortalListingApi,
+  MI_CUENTA_PORTAL_LEGACY_PREFIXES,
+  PORTAL_CLOSED_REDIRECTS,
+} from '@/lib/portal-closed'
 
 export async function middleware(request: NextRequest) {
   const host = request.headers.get('host')?.split(':')[0]?.toLowerCase()
@@ -24,6 +31,43 @@ export async function middleware(request: NextRequest) {
   }
 
   const { pathname } = request.nextUrl
+
+  if (isPortalListingApi(pathname)) {
+    return NextResponse.json({ error: 'Portal de anuncios desactivado' }, { status: 410 })
+  }
+
+  const portalDest = PORTAL_CLOSED_REDIRECTS[pathname]
+  if (portalDest) {
+    const url = request.nextUrl.clone()
+    url.pathname = portalDest
+    url.search = ''
+    return NextResponse.redirect(url, 308)
+  }
+  if (pathname.startsWith('/pisos/')) {
+    const url = request.nextUrl.clone()
+    url.pathname = GESTORIA_ALQUILER_HUB
+    url.search = ''
+    return NextResponse.redirect(url, 308)
+  }
+  if (
+    pathname === '/publicar-anuncio' ||
+    pathname === '/publicar' ||
+    pathname.startsWith('/publicar/')
+  ) {
+    const url = request.nextUrl.clone()
+    url.pathname = GESTORIA_ALQUILER_SOLICITAR
+    url.search = ''
+    return NextResponse.redirect(url, 308)
+  }
+  if (
+    pathname === '/mi-cuenta' ||
+    MI_CUENTA_PORTAL_LEGACY_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`))
+  ) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/mi-cuenta/contratos'
+    url.search = ''
+    return NextResponse.redirect(url, 308)
+  }
 
   // ── 0. BLOQUEO DE BOTS AGRESIVOS (protección CPU) ─────────────────────────
   

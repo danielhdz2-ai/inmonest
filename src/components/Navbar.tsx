@@ -10,17 +10,13 @@ interface NavbarProps {
 }
 
 const NAV_ITEMS = [
-  { label: 'Alquiler',             href: '/pisos?operacion=rent' },
-  { label: 'Pisos de Particulares', href: '/pisos?operacion=rent&solo_particulares=true' },
-  { label: 'Compra',               href: '/pisos?operacion=sale' },
-  { label: 'Publicar gratis',      href: '/publicar-anuncio' },
-  { label: 'Vender casa',          href: '/vender-casa' },
-  { label: 'Gestoría',             href: '/gestoria' },
-  { label: 'Servicios',            href: '/servicios' },
-  { label: 'Agencias',             href: '/agencias' },
-  { label: 'Hipotecas',            href: '/hipoteca' },
-  { label: 'Analizador de Mercado', href: '/analizador-mercado' },
-  { label: 'Blog',                 href: '/blog' },
+  { label: 'Contrato alquiler LAU', href: '/gestoria/contrato-alquiler' },
+  { label: 'Gestoría', href: '/gestoria' },
+  { label: 'Servicios', href: '/servicios' },
+  { label: 'Contratos por ciudad', href: '/contratos-inmobiliarios' },
+  { label: 'Calculadoras', href: '/calculadora-gastos-alquiler' },
+  { label: 'Agencias', href: '/agencias/gestoria' },
+  { label: 'Blog', href: '/blog' },
 ]
 
 import { GESTORIA_NAV_SERVICIOS } from '@/lib/gestoria-servicios-landings'
@@ -70,7 +66,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
   }, [serviciosOpen])
 
   const close = () => setSideOpen(false)
-  const accountHref = loggedIn ? '/mi-cuenta' : '/login'
+  const accountHref = loggedIn ? '/mi-cuenta/contratos' : '/login'
   const accountLabelMobile = loggedIn ? 'Cuenta' : 'Acceder'
   const accountLabelDesktop = loggedIn ? 'Mi cuenta' : 'Entrar'
 
@@ -176,10 +172,10 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             </div>
 
             <Link
-              href="/publicar-anuncio"
+              href="/gestoria/solicitar/contrato-alquiler"
               className="inline-flex items-center px-4 py-2 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-gold-600 transition-colors whitespace-nowrap"
             >
-              Publicar anuncio
+              Solicitar contrato
             </Link>
 
             <Link
@@ -248,11 +244,11 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
 
         <div className="p-5 border-t border-gray-100 space-y-2">
           <Link
-            href="/publicar-anuncio"
+            href="/gestoria/solicitar/contrato-alquiler"
             onClick={close}
             className="block text-center py-2.5 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-gold-600 transition-colors"
           >
-            Publicar anuncio gratis
+            Solicitar contrato alquiler
           </Link>
           <Link
             href={accountHref}

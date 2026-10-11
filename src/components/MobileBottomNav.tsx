@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 import { HomeIcon, Building2, FileText, Scale, Users } from '@/components/ui/Icons'
 import { cn } from '@/lib/cn'
 
-type TabKey = 'inicio' | 'inmuebles' | 'servicios' | 'gestoria' | 'cuenta'
+type TabKey = 'inicio' | 'alquiler' | 'servicios' | 'gestoria' | 'cuenta'
 
 const TABS: Array<{
   key: TabKey
@@ -14,10 +14,10 @@ const TABS: Array<{
   Icon: typeof HomeIcon
 }> = [
   { key: 'inicio', label: 'Inicio', href: '/', Icon: HomeIcon },
-  { key: 'inmuebles', label: 'Inmuebles', href: '/pisos', Icon: Building2 },
+  { key: 'alquiler', label: 'Alquiler', href: '/gestoria/contrato-alquiler', Icon: Building2 },
   { key: 'servicios', label: 'Servicios', href: '/servicios', Icon: FileText },
   { key: 'gestoria', label: 'Gestoría', href: '/gestoria', Icon: Scale },
-  { key: 'cuenta', label: 'Cuenta', href: '/mi-cuenta', Icon: Users },
+  { key: 'cuenta', label: 'Cuenta', href: '/mi-cuenta/contratos', Icon: Users },
 ]
 
 function activeTab(pathname: string): TabKey {
@@ -27,11 +27,11 @@ function activeTab(pathname: string): TabKey {
   if (pathname.startsWith('/gestoria')) return 'gestoria'
   if (pathname.startsWith('/servicios')) return 'servicios'
   if (
-    pathname.startsWith('/pisos') ||
-    /^\/[^/]+\/(pisos|alquiler|vender-piso)/.test(pathname) ||
-    pathname.includes('pisos-particulares')
+    pathname.startsWith('/gestoria/contrato-alquiler') ||
+    pathname.includes('/contrato-alquiler') ||
+    pathname.startsWith('/gestoria/solicitar/contrato-alquiler')
   ) {
-    return 'inmuebles'
+    return 'alquiler'
   }
   if (pathname === '/') return 'inicio'
   return 'inicio'

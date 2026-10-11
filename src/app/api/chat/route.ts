@@ -1,5 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { GoogleGenerativeAI } from '@google/generative-ai'
+import {
+  gestoriaChatServiciosParaPrompt,
+  resolveGestoriaChatNavigation,
+  type GestoriaChatParsed,
+} from '@/lib/gestoria-chat-assistant'
 
 function getGeminiKey(): string {
   return (
@@ -14,41 +19,47 @@ function getOpenRouterKey(): string {
   return (process.env.OPENROUTER_API_KEY ?? '').trim()
 }
 
-const SYSTEM_PROMPT = `Eres un asistente de búsqueda de pisos para el portal Inmonest.
-Tu única función es interpretar lo que el usuario busca y devolver un JSON con los filtros de búsqueda.
-Responde EXCLUSIVAMENTE con un objeto JSON válido, sin texto adicional, sin markdown, sin explicaciones.
+const SYSTEM_PROMPT = `Eres el asistente de gestoría inmobiliaria de Inmonest (inmonest.com).
+Inmonest NO es un portal de anuncios: ayudas al usuario a encontrar el SERVICIO DE GESTORÍA adecuado (contratos redactados por expertos, entrega ~48h, pago online).
 
-Campos posibles del JSON (todos opcionales):
-- operation: "rent" | "sale"
-- ciudad: string (nombre de ciudad española)
-- min_precio: number (precio mínimo en EUR)
-- max_precio: number (precio máximo en EUR)
-- habitaciones: number (mínimo de habitaciones)
-- solo_particulares: boolean
+Interpreta la intención y responde EXCLUSIVAMENTE con un JSON válido, sin markdown ni texto extra.
+
+Campos del JSON:
+- servicio: string (slug del catálogo, obligatorio si no hay error)
+- ciudad: string (opcional, ciudad española si la menciona)
+- mensaje: string (opcional, una frase amable en español antes de redirigir)
+- error: string (si no es una petición de gestoría/contratos)
+
+Servicios disponibles (slug → nombre):
+${gestoriaChatServiciosParaPrompt()}
+
+Prioriza contrato-alquiler cuando hablen de alquilar piso, LAU, contrato de arrendamiento o ser propietario/inquilino.
+Usa arras-penitenciales o arras-confirmatorias para compraventa/señal.
+Usa alquiler-habitaciones para piso compartido o habitación.
 
 Ejemplos:
 
-Usuario: "busco piso de alquiler en Madrid menos de 900 euros"
-{"operation":"rent","ciudad":"Madrid","max_precio":900}
+Usuario: "necesito contrato de alquiler en Barcelona"
+{"servicio":"contrato-alquiler","ciudad":"Barcelona","mensaje":"Contrato LAU personalizado para Barcelona, 145 € IVA incl."}
 
-Usuario: "quiero comprar casa en Barcelona con 3 habitaciones"
-{"operation":"sale","ciudad":"Barcelona","habitaciones":3}
+Usuario: "voy a firmar arras en Madrid"
+{"servicio":"arras-penitenciales","ciudad":"Madrid"}
 
-Usuario: "piso barato en Sevilla de particular"
-{"operation":"rent","ciudad":"Sevilla","max_precio":700,"solo_particulares":true}
+Usuario: "revisar un contrato de alquiler que me han pasado"
+{"servicio":"revision-alquiler"}
 
-Usuario: "alquiler Valencia 2 habitaciones entre 600 y 1000"
-{"operation":"rent","ciudad":"Valencia","habitaciones":2,"min_precio":600,"max_precio":1000}
+Usuario: "alquiler de habitación en Valencia"
+{"servicio":"alquiler-habitaciones","ciudad":"Valencia"}
 
-Si el usuario pregunta algo que no es una búsqueda de piso, devuelve:
-{"error":"Solo puedo ayudarte a buscar pisos y casas en España."}`
+Usuario: "busco piso barato en Madrid"
+{"error":"Inmonest ya no busca pisos en venta o alquiler. ¿Necesitas un contrato LAU o arras? Dime ciudad y si eres propietario o comprador."}`
 
-function parseFilters(raw: string): Record<string, unknown> {
+function parseGestoriaIntent(raw: string): GestoriaChatParsed {
   try {
     const clean = raw.replace(/^```json\s*/i, '').replace(/```\s*$/, '').trim()
-    return JSON.parse(clean)
+    return JSON.parse(clean) as GestoriaChatParsed
   } catch {
-    return { raw }
+    return { error: 'No he podido interpretar la petición. Prueba a decir el servicio y la ciudad.' }
   }
 }
 
@@ -143,7 +154,9 @@ export async function POST(req: NextRequest) {
   if (geminiKey) {
     try {
       const raw = await callGemini(geminiKey, lastUser.content, recent)
-      return NextResponse.json({ ok: true, filters: parseFilters(raw), raw })
+      const parsed = parseGestoriaIntent(raw)
+      const navigation = resolveGestoriaChatNavigation(parsed)
+      return NextResponse.json({ ok: true, parsed, navigation, raw })
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err)
       console.warn('[chat/route] Gemini falló, probando fallback OpenRouter:', msg)
@@ -154,7 +167,9 @@ export async function POST(req: NextRequest) {
   if (openrouterKey) {
     try {
       const raw = await callOpenRouter(openrouterKey, lastUser.content)
-      return NextResponse.json({ ok: true, filters: parseFilters(raw), raw })
+      const parsed = parseGestoriaIntent(raw)
+      const navigation = resolveGestoriaChatNavigation(parsed)
+      return NextResponse.json({ ok: true, parsed, navigation, raw })
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err)
       console.error('[chat/route] OpenRouter también falló:', msg)

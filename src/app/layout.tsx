@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     template: '%s | Inmonest',
   },
   description:
-    'Contratos inmobiliarios desde 61 € en 48 h. Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones.',
+    'Gestoría inmobiliaria online: contrato de alquiler LAU, arras y compraventa desde 61 € en 48 h. Redactados por expertos en toda España.',
   keywords: [
     'gestoría inmobiliaria online',
     'contratos de arras',
@@ -56,8 +56,8 @@ export const metadata: Metadata = {
     'redactar contrato alquiler',
     'redactar contrato arras',
     'asesoría jurídica compra vivienda',
-    'pisos particulares sin comisión',
-    'alquiler sin agencia',
+    'contrato alquiler online',
+    'gestoría alquiler LAU',
     'inmonest',
   ],
   authors: [{ name: 'Inmonest', url: 'https://inmonest.com' }],
@@ -101,7 +101,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Inmonest | Contratos inmobiliarios desde 61 € en 48 h',
     description:
-      'Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones.',
+      'Gestoría inmobiliaria online: contrato de alquiler LAU, arras y compraventa redactados por expertos en 48 h.',
     url: 'https://inmonest.com',
     siteName: 'Inmonest',
     locale: 'es_ES',

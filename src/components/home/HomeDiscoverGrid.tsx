@@ -1,29 +1,29 @@
 import Link from 'next/link'
 import { Card } from '@/components/ui/Card'
 import { Section } from '@/components/ui/Section'
-import { ArrowRight, Building2, FileText, LineChart } from '@/components/ui/Icons'
+import { ArrowRight, FileText, Scale, LineChart } from '@/components/ui/Icons'
 
 const LINKS = [
   {
-    icon: Building2,
-    title: 'Publicar anuncio',
-    description: 'Anuncio gratuito entre particulares. Sin comisiones ni intermediarios.',
-    href: '/publicar-anuncio',
-    label: 'Publicar gratis',
+    icon: FileText,
+    title: 'Contrato de alquiler LAU',
+    description: 'Vivienda habitual, Ley de Vivienda 2026, fianza e IRAV. 145 € IVA incl., entrega 48 h.',
+    href: '/gestoria/contrato-alquiler',
+    label: 'Ver contrato alquiler',
   },
   {
-    icon: FileText,
-    title: 'Gestoría online',
-    description: 'Contratos de arras, alquiler LAU y revisión legal. Entrega en 48 h.',
-    href: '/gestoria',
-    label: 'Ver contratos',
+    icon: Scale,
+    title: 'Arras y compraventa',
+    description: 'Señal penitencial, confirmatoria y packs con revisión registral. Precio cerrado online.',
+    href: '/gestoria/arras-penitenciales',
+    label: 'Contratos de arras',
   },
   {
     icon: LineChart,
-    title: 'Analizador de mercado',
-    description: 'Precio del m² y tendencias en las principales ciudades de España.',
-    href: '/analizador-mercado',
-    label: 'Consultar datos',
+    title: 'Calculadoras y guías',
+    description: 'Gastos de alquiler, compraventa y artículos sobre LAU, arras e IRAV 2026.',
+    href: '/calculadora-gastos-alquiler',
+    label: 'Calculadora alquiler',
   },
 ] as const
 
@@ -32,8 +32,8 @@ export default function HomeDiscoverGrid() {
     <Section
       className="py-16 bg-white"
       eyebrow="Explorar"
-      title="Todo lo que ofrece Inmonest"
-      description="Portal inmobiliario entre particulares y gestoría jurídica en un solo lugar."
+      title="Gestoría inmobiliaria Inmonest"
+      description="Contratos redactados por expertos, sin comisiones de intermediación."
       align="left"
     >
       <div className="grid sm:grid-cols-3 gap-5">

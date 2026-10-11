@@ -7,8 +7,11 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: ['/', '/api/img-proxy', '/publicar-anuncio'],
+        allow: ['/', '/api/img-proxy'],
         disallow: [
+          '/pisos',
+          '/publicar-anuncio',
+          '/publicar',
           // API routes (img-proxy allowed so Google can fetch images without GSC "blocked" noise)
           '/api/',
           // Auth & private flows

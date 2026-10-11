@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Suspense } from 'react'
 import Navbar from '@/components/NavbarServer'
-import SearchForm from '@/components/SearchForm'
 import BentoVentajas from '@/components/BentoVentajas'
 import CarruselServicios from '@/components/CarruselServicios'
 import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
@@ -15,7 +13,7 @@ import { Section } from '@/components/ui/Section'
 import { BRAND_IMAGES } from '@/lib/brand-images'
 import { CtaBand } from '@/components/ui/CtaBand'
 
-const CIUDADES_POPULARES = [
+const CIUDADES_GESTORIA = [
   { nombre: 'Madrid', slug: 'madrid' },
   { nombre: 'Barcelona', slug: 'barcelona' },
   { nombre: 'Valencia', slug: 'valencia' },
@@ -24,20 +22,20 @@ const CIUDADES_POPULARES = [
   { nombre: 'Bilbao', slug: 'bilbao' },
   { nombre: 'Zaragoza', slug: 'zaragoza' },
   { nombre: 'Alicante', slug: 'alicante' },
-]
+] as const
 
 const FAQ = [
   {
-    q: '¿Inmonest es gratis?',
-    a: 'Publicar pisos entre particulares es 100% gratis, sin comisiones. Los servicios de gestoría inmobiliaria (contratos de arras, alquiler LAU, revisión legal) tienen precios desde 61€ según el tipo de contrato.',
+    q: '¿Qué es Inmonest?',
+    a: 'Inmonest es una gestoría inmobiliaria online en toda España. Redactamos contratos de alquiler LAU, arras y compraventa con precio cerrado, entrega en 48 h y panel de cliente para tus documentos.',
+  },
+  {
+    q: '¿Cuánto cuesta un contrato de alquiler?',
+    a: 'El contrato de alquiler de vivienda (LAU) cuesta 145 € IVA incluido. Incluye personalización, revisión legal y una ronda de cambios. Puedes solicitarlo online en minutos.',
   },
   {
     q: '¿Qué servicios ofrece Inmonest?',
-    a: 'Inmonest es un portal de pisos entre particulares sin comisiones + gestoría inmobiliaria online. Ofrecemos publicación gratuita de anuncios, contratos redactados por expertos, revisión legal y asesoramiento en compra y alquiler.',
-  },
-  {
-    q: '¿Puedo publicar mi piso sin registrarme?',
-    a: 'Sí. Registrarte te permite gestionar anuncios, solicitar contratos con datos precargados y acceder a tu historial desde un solo panel.',
+    a: 'Contrato de alquiler LAU, arras penitenciales y confirmatorias, alquiler de habitación, revisión de contratos, packs de compraventa y due diligence. Todo online con gestor experto.',
   },
   {
     q: '¿Los contratos tienen validez legal en toda España?',
@@ -49,7 +47,7 @@ const FAQ = [
   },
   {
     q: '¿Inmonest es una agencia inmobiliaria?',
-    a: 'No. Somos portal entre particulares + gestoría digital. No cobramos comisiones por compra o alquiler; solo por servicios jurídicos específicos.',
+    a: 'No. Somos gestoría digital: no intermediamos en la búsqueda de pisos ni cobramos comisiones por operaciones. Cobramos solo por servicios jurídicos concretos.',
   },
 ] as const
 
@@ -73,8 +71,7 @@ export default function Home() {
 
       <Navbar />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden min-h-[520px] sm:min-h-[600px] flex items-center">
+      <section className="relative overflow-hidden min-h-[520px] sm:min-h-[560px] flex items-center">
         <Image
           src={BRAND_IMAGES.portal.src}
           alt={BRAND_IMAGES.portal.alt}
@@ -86,32 +83,33 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
-          <div className="max-w-2xl mb-10">
+          <div className="max-w-2xl">
             <Badge variant="dark" className="mb-5 normal-case tracking-wide">
               Gestoría inmobiliaria digital
             </Badge>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
-              <span className="text-gold-300">Contratos inmobiliarios</span>
+              <span className="text-gold-300">Contrato de alquiler LAU</span>
               <br />
-              <span className="text-white">desde 61 € en 48 h</span>
+              <span className="text-white">y gestoría online en 48 h</span>
             </h1>
             <p className="mt-5 text-lg text-white/75 max-w-xl leading-relaxed">
-              Arras, alquiler LAU y compraventa redactados por expertos. Online, en toda España, con respuesta en 24 h.
+              Redactamos tu contrato de alquiler, arras o compraventa con experto. Precio cerrado desde 61 €,
+              respuesta en 24 h y panel de cliente en toda España.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/gestoria" variant="primary" className="rounded-full">
-                Ver contratos
+              <Button href="/gestoria/solicitar/contrato-alquiler" variant="primary" className="rounded-full">
+                Solicitar contrato alquiler
               </Button>
-              <Button href="/pisos" variant="ghost" className="rounded-full">
-                Buscar pisos
+              <Button href="/gestoria/contrato-alquiler" variant="ghost" className="rounded-full">
+                Ver precio y qué incluye
               </Button>
             </div>
-          </div>
-
-          <div className="bg-white/97 backdrop-blur-md rounded-2xl shadow-2xl shadow-black/20 border border-gold-400/20 p-4 sm:p-5 max-w-3xl">
-            <Suspense fallback={<div className="h-24 animate-pulse bg-gray-100 rounded-xl" />}>
-              <SearchForm />
-            </Suspense>
+            <p className="mt-6 text-sm text-white/60">
+              También arras, habitación, revisión legal y packs compraventa →{' '}
+              <Link href="/servicios" className="text-gold-300 hover:text-gold-200 underline underline-offset-2">
+                todos los servicios
+              </Link>
+            </p>
           </div>
         </div>
       </section>
@@ -120,16 +118,15 @@ export default function Home() {
       <CarruselServicios />
       <EnlacesInternosSeo variant="home" />
 
-      {/* Ciudades */}
       <section className="bg-gray-50 py-14">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-1">Buscar piso por ciudad</h2>
-          <p className="text-gray-500 text-sm mb-6">Explora oportunidades en venta por ciudad</p>
+          <h2 className="text-xl font-bold text-gray-900 mb-1">Contrato de alquiler por ciudad</h2>
+          <p className="text-gray-500 text-sm mb-6">LAU personalizado con normativa local e IRAV cuando aplica</p>
           <div className="flex flex-wrap gap-2">
-            {CIUDADES_POPULARES.map((ciudad) => (
+            {CIUDADES_GESTORIA.map((ciudad) => (
               <Link
                 key={ciudad.slug}
-                href={`/pisos?ciudad=${ciudad.slug}&operacion=sale`}
+                href={`/${ciudad.slug}/contrato-alquiler`}
                 className="px-4 py-2 rounded-full border border-gold-400/40 bg-white text-sm font-medium text-gray-700 hover:border-gold-500 hover:text-gold-700 hover:bg-cream-100 transition-colors"
               >
                 {ciudad.nombre}
@@ -139,7 +136,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bento */}
       <Section
         className="py-16 sm:py-20 bg-white"
         eyebrow="Propuesta de valor"
@@ -151,13 +147,12 @@ export default function Home() {
 
       <HomeTestimonials />
 
-      {/* FAQ */}
       <Section
         className="py-16 bg-white"
         containerClassName="max-w-3xl"
         eyebrow="Preguntas frecuentes"
         title="¿Tienes dudas?"
-        description="Respuestas claras sobre el portal y la gestoría online."
+        description="Respuestas sobre contratos de alquiler, arras y gestoría online."
       >
         <div className="space-y-3">
           {FAQ.map(({ q, a }) => (
@@ -184,16 +179,15 @@ export default function Home() {
 
       <HomeDiscoverGrid />
 
-      {/* CTA principal — publicar */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <CtaBand
-          eyebrow="Para propietarios"
-          title={<>¿Tienes un piso para alquilar o vender?</>}
-          description="Crea tu anuncio en minutos. Publicación gratuita entre particulares, sin comisiones."
-          primaryHref="/publicar-anuncio"
-          primaryLabel="Publicar anuncio gratis"
-          secondaryHref="/vender-casa"
-          secondaryLabel="Vender con asesoramiento"
+          eyebrow="Propietarios e inquilinos"
+          title={<>¿Vas a alquilar o firmar arras?</>}
+          description="Contrato LAU blindado, fianza INCASÒL e IRAV cuando aplica. Online, con gestor y entrega en 48 h."
+          primaryHref="/gestoria/solicitar/contrato-alquiler"
+          primaryLabel="Contrato alquiler 145 €"
+          secondaryHref="/gestoria"
+          secondaryLabel="Ver todos los servicios"
           imageSrc={BRAND_IMAGES.familia.src}
           imageAlt={BRAND_IMAGES.familia.alt}
           tone="warm"

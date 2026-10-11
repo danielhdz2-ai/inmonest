@@ -1,5 +1,4 @@
 import type { MetadataRoute } from 'next'
-import { createClient } from '@supabase/supabase-js'
 import { AGENCIAS_GESTORIA_CIUDAD_SLUGS } from '@/lib/agencias-gestoria-ciudades'
 import { GESTORIA_NOINDEX_CITY_PATHS } from '@/lib/gestoria-indexacion-tier'
 import { buildInventarioSitemapEntries, dedupeSitemapByUrl } from '@/lib/sitemap-inventario'
@@ -11,8 +10,8 @@ const today = new Date()
 
 const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: BASE_URL, lastModified: today, changeFrequency: 'daily', priority: 1.0 },
-  { url: `${BASE_URL}/pisos`, lastModified: today, changeFrequency: 'daily', priority: 0.9 },
   { url: `${BASE_URL}/gestoria`, lastModified: today, changeFrequency: 'weekly', priority: 0.9 },
+  { url: `${BASE_URL}/gestoria/contrato-alquiler`, lastModified: today, changeFrequency: 'weekly', priority: 0.95 },
   { url: `${BASE_URL}/servicios`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
   { url: `${BASE_URL}/gestoria/solicitar`, lastModified: today, changeFrequency: 'weekly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/acompanamiento-reserva-arras`, lastModified: today, changeFrequency: 'monthly', priority: 0.9 },
@@ -24,7 +23,6 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/calculadora-gastos-compra`, lastModified: today, changeFrequency: 'monthly', priority: 0.9 },
   { url: `${BASE_URL}/calculadora-gastos-alquiler`, lastModified: today, changeFrequency: 'monthly', priority: 0.9 },
   { url: `${BASE_URL}/calculadora-ahorro-comisiones`, lastModified: today, changeFrequency: 'monthly', priority: 0.92 },
-  { url: `${BASE_URL}/publicar-anuncio`, lastModified: today, changeFrequency: 'monthly', priority: 0.8 },
   { url: `${BASE_URL}/vender-casa`, lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
   { url: `${BASE_URL}/vender-piso-sin-agencia`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
   { url: `${BASE_URL}/agencias`, lastModified: today, changeFrequency: 'weekly', priority: 0.8 },
@@ -99,8 +97,6 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/blog/gestoria-online-ciudades-espana`, lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
 ]
 
-const MAX_SITEMAP_LISTINGS = 5_000
-
 function excludeGestoriaNoindex(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
   return entries.filter((entry) => {
     const path = entry.url.replace(BASE_URL, '')
@@ -108,40 +104,8 @@ function excludeGestoriaNoindex(entries: MetadataRoute.Sitemap): MetadataRoute.S
   })
 }
 
-async function getListingUrls(): Promise<MetadataRoute.Sitemap> {
-  try {
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    )
-
-    const { data, error } = await supabase
-      .from('listings')
-      .select('id, updated_at')
-      .eq('status', 'published')
-      .eq('has_images', true)
-      .order('ranking_score', { ascending: false })
-      .order('published_at', { ascending: false })
-      .limit(MAX_SITEMAP_LISTINGS)
-
-    if (error || !data) return []
-
-    return data.map((listing) => ({
-      url: `${BASE_URL}/pisos/${listing.id}`,
-      lastModified: listing.updated_at ? new Date(listing.updated_at) : new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    }))
-  } catch {
-    return []
-  }
-}
-
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const listingUrls = await getListingUrls()
   const inventarioEntries = buildInventarioSitemapEntries(BASE_URL, today)
 
-  return dedupeSitemapByUrl(
-    excludeGestoriaNoindex([...STATIC_PAGES, ...inventarioEntries, ...listingUrls]),
-  )
+  return dedupeSitemapByUrl(excludeGestoriaNoindex([...STATIC_PAGES, ...inventarioEntries]))
 }

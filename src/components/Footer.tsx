@@ -177,14 +177,13 @@ export default function Footer() {
             <div>
               <h3 className="text-xs font-bold uppercase tracking-widest text-gold-500 mb-4">Servicios</h3>
               <ul className="space-y-2.5 text-sm text-white/60">
-                <li><Link href="/pisos" className="hover:text-gold-300 transition-colors">Portal inmobiliario</Link></li>
-                <li><Link href="/pisos?operacion=rent" className="hover:text-gold-300 transition-colors">Alquiler</Link></li>
-                <li><Link href="/pisos?operacion=rent&solo_particulares=true" className="hover:text-gold-300 transition-colors">Pisos de Particulares</Link></li>
-                <li><Link href="/pisos?operacion=sale" className="hover:text-gold-300 transition-colors">Compra</Link></li>
-                <li><Link href="/publicar-anuncio" className="hover:text-gold-300 transition-colors">Publicar anuncio</Link></li>
-                <li><Link href="/servicios" className="hover:text-gold-300 transition-colors">Servicios</Link></li>
+                <li><Link href="/gestoria/contrato-alquiler" className="hover:text-gold-300 transition-colors">Contrato alquiler LAU</Link></li>
+                <li><Link href="/gestoria/arras-penitenciales" className="hover:text-gold-300 transition-colors">Arras penitenciales</Link></li>
+                <li><Link href="/servicios" className="hover:text-gold-300 transition-colors">Todos los servicios</Link></li>
                 <li><Link href="/gestoria" className="hover:text-gold-300 transition-colors">Gestoría online</Link></li>
-                <li><Link href="/vender-casa" className="hover:text-gold-300 transition-colors">Vender sin comisión</Link></li>
+                <li><Link href="/contratos-inmobiliarios" className="hover:text-gold-300 transition-colors">Contratos por ciudad</Link></li>
+                <li><Link href="/calculadora-gastos-alquiler" className="hover:text-gold-300 transition-colors">Calculadora alquiler</Link></li>
+                <li><Link href="/blog/contrato-alquiler-vivienda-guia" className="hover:text-gold-300 transition-colors">Guía contrato alquiler</Link></li>
               </ul>
             </div>
 
