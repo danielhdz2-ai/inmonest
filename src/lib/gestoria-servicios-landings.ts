@@ -1,5 +1,6 @@
 import { GESTORIA_SERVICIOS, getPrecioServicio } from '@/lib/gestoria-catalogo'
 import { AGENCIA_GESTORIA_PACKS, AGENCIA_SLA_LABEL } from '@/lib/agencias-gestoria-packs'
+import { getContractHero } from '@/lib/gestoria-images'
 
 export type ServicioCategoria = 'compraventa' | 'alquiler' | 'revision' | 'packs' | 'agencias' | 'otros'
 
@@ -34,7 +35,7 @@ export const GESTORIA_NAV_SERVICIOS: Array<{ label: string; href: string }> = [
 /**
  * Catálogo público en /servicios (solo servicios con página propia).
  */
-export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
+const SERVICIOS_LANDING_CARDS_RAW: ServicioLandingCard[] = [
   // Compraventa
   {
     slug: 'arras-penitenciales',
@@ -356,6 +357,14 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     landingHref: '/gestoria/prestamo-particulares',
   },
 ]
+
+/** Imagen única por servicio (misma fuente que el panel y /servicios). */
+export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = SERVICIOS_LANDING_CARDS_RAW.map(
+  (card) => ({
+    ...card,
+    image: getContractHero(card.slug).src,
+  }),
+)
 
 export const SERVICIOS_CATEGORIA_LABELS: Record<ServicioCategoria | 'todos', string> = {
   todos: 'Todos',
