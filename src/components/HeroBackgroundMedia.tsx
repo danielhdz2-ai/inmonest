@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
 type Props = {
@@ -11,7 +11,7 @@ type Props = {
 }
 
 /**
- * Hero decorativo: vídeo en bucle en desktop; poster estático en móvil o si el usuario prefiere menos movimiento.
+ * Hero decorativo: vídeo en bucle (autoplay silenciado). Solo imagen si prefers-reduced-motion.
  */
 export default function HeroBackgroundMedia({
   videoSrc,
@@ -19,26 +19,34 @@ export default function HeroBackgroundMedia({
   posterAlt,
   priority = true,
 }: Props) {
-  const [useVideo, setUseVideo] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [reduceMotion, setReduceMotion] = useState(false)
+  const [videoFailed, setVideoFailed] = useState(false)
 
   useEffect(() => {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const desktop = window.matchMedia('(min-width: 768px)')
+    const apply = () => setReduceMotion(motion.matches)
+    apply()
+    motion.addEventListener('change', apply)
+    return () => motion.removeEventListener('change', apply)
+  }, [])
 
-    const update = () => {
-      setUseVideo(!motion.matches && desktop.matches)
-    }
-
-    update()
-    motion.addEventListener('change', update)
-    desktop.addEventListener('change', update)
-    return () => {
-      motion.removeEventListener('change', update)
-      desktop.removeEventListener('change', update)
+  const tryPlay = useCallback(() => {
+    const el = videoRef.current
+    if (!el) return
+    el.muted = true
+    const p = el.play()
+    if (p && typeof p.catch === 'function') {
+      p.catch(() => setVideoFailed(true))
     }
   }, [])
 
-  if (!useVideo) {
+  useEffect(() => {
+    if (reduceMotion || videoFailed) return
+    tryPlay()
+  }, [reduceMotion, videoFailed, tryPlay])
+
+  if (reduceMotion || videoFailed) {
     return (
       <Image
         src={posterSrc}
@@ -53,14 +61,17 @@ export default function HeroBackgroundMedia({
 
   return (
     <video
+      ref={videoRef}
       className="absolute inset-0 h-full w-full object-cover"
       autoPlay
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       poster={posterSrc}
       aria-hidden
+      onLoadedData={tryPlay}
+      onCanPlay={tryPlay}
     >
       <source src={videoSrc} type="video/mp4" />
     </video>
