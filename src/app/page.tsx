@@ -85,16 +85,18 @@ export default function Home() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
           <div className="max-w-2xl">
             <Badge variant="dark" className="mb-5 normal-case tracking-wide">
-              Gestoría inmobiliaria digital
+              Toda España · entrega en 48 h
             </Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] text-white">
-              <span className="text-gold-300">Contrato de alquiler LAU</span>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.12] text-white">
+              <span className="text-gold-300">Gestoría inmobiliaria para particulares</span>
               <br />
-              <span className="text-white">y gestoría online en 48 h</span>
+              <span className="text-white">
+                Contratos de alquiler, de arras, servicios de compra y de venta
+              </span>
             </h1>
             <p className="mt-5 text-lg text-white/75 max-w-xl leading-relaxed">
-              Redactamos tu contrato de alquiler, arras o compraventa con experto. Precio cerrado desde 61 €,
-              respuesta en 24 h y panel de cliente en toda España.
+              LAU, temporada, habitación, arras y packs hasta escritura: redactados por gestores, precio cerrado
+              desde 61 € y panel de cliente online.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button href="/gestoria/solicitar" variant="primary" className="rounded-full">
