@@ -85,10 +85,28 @@ html {
   }
 
   img,
-  video,
   svg {
     max-width: 100%;
     height: auto;
+  }
+
+  video:not(.hero-bg-video) {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Hero home: vídeo a pantalla completa (no aplastar con height:auto) */
+.hero-bg-video {
+  object-fit: cover;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-video {
+    display: none !important;
   }
 }
 

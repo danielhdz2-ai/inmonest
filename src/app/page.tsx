@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
-import HeroBackgroundMedia from '@/components/HeroBackgroundMedia'
+import HomeHeroBackground from '@/components/HomeHeroBackground'
+import HeroVideoAutoplay from '@/components/HeroVideoAutoplay'
 import BentoVentajas from '@/components/BentoVentajas'
 import CarruselServicios from '@/components/CarruselServicios'
 import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
@@ -66,13 +67,9 @@ export default function Home() {
       <Navbar />
 
       <section className="relative overflow-hidden min-h-[520px] sm:min-h-[560px] flex items-center">
+        <HeroVideoAutoplay />
         <div className="absolute inset-0 z-0">
-          <HeroBackgroundMedia
-            videoSrc="/video/gestoria-hero-calle.mp4"
-            posterSrc="/gestoria-expertos-calle.jpg"
-            posterAlt="Expertos gestores Inmonest — gestoría inmobiliaria online"
-            priority
-          />
+          <HomeHeroBackground />
         </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
 
