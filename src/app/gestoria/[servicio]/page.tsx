@@ -1178,18 +1178,6 @@ export default async function ServicioGestoriaPage({
           <GestoriaPanelShowcase servicioLabel={data.nombre.toLowerCase()} />
         ) : null}
 
-        <GestoriaImageBanner
-          imageSrc={visuals.mid.src}
-          imageAlt={visuals.mid.alt}
-          imagePosition={visuals.imagePosition === 'right' ? 'left' : 'right'}
-          size="sm"
-        >
-          <p className="text-lg sm:text-xl font-bold text-white mb-2">Redactado por gestoría especializada</p>
-          <p className="text-white/65 text-sm leading-relaxed max-w-md">
-            Sin plantillas genéricas. Cada contrato se adapta a tu operación real y cumple la normativa vigente.
-          </p>
-        </GestoriaImageBanner>
-
         {/* ── FAQ ──────────────────────────────────────────────────────── */}
         <section>
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Preguntas frecuentes</h2>

@@ -296,8 +296,7 @@ export default function Home() {
 
       <GestoriaPanelShowcase
         servicioLabel="tu contrato o pack de gestoría"
-        className="bg-cream-100 border-t border-gold-300/25 border-b-0 py-10 sm:py-12"
-        showFeatureCards={false}
+        className="bg-cream-100 border-t border-gold-300/25 border-b-0 py-8 sm:py-10 pb-6"
       />
     </div>
   )

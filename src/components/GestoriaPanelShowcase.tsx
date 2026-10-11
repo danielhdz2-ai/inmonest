@@ -125,7 +125,7 @@ export default function GestoriaPanelShowcase({
   clausulas = MOCK_CLAUSULAS,
   timeline = MOCK_TIMELINE,
   className = '',
-  showFeatureCards = true,
+  showFeatureCards = false,
 }: GestoriaPanelShowcaseProps) {
   return (
     <section className={cn('py-12 sm:py-14 px-4 bg-cream-50 border-y border-gold-300/30', className)}>
