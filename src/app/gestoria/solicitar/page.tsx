@@ -3,8 +3,6 @@ import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import ServiciosHubContent from '@/components/ServiciosHubContent'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
-import Footer from '@/components/Footer'
-import SellosConfianza from '@/components/SellosConfianza'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -33,8 +31,6 @@ export default function SolicitarIndexPage() {
       <WhatsAppButton />
       <ServiciosHubContent mode="checkout" />
       <FirmaCertIncluidaSection />
-      <SellosConfianza />
-      <Footer />
     </>
   )
 }

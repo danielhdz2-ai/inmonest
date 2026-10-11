@@ -2,8 +2,6 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
-import Footer from '@/components/Footer'
-import SellosConfianza from '@/components/SellosConfianza'
 import { precioLabel } from '@/lib/gestoria-precios-ui'
 
 const BASE_URL = 'https://inmonest.com'
@@ -287,8 +285,6 @@ export default function QueEsGestoriaInmobiliariaPage() {
         </div>
 
       </article>
-      <SellosConfianza />
-      <Footer />
     </div>
   )
 }
