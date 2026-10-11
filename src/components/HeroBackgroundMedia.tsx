@@ -1,6 +1,3 @@
-'use client'
-
-import { useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
 type Props = {
@@ -11,7 +8,8 @@ type Props = {
 }
 
 /**
- * Hero decorativo: vídeo en bucle (autoplay silenciado). Solo imagen si prefers-reduced-motion.
+ * Hero: poster siempre visible; vídeo encima en bucle (autoplay silenciado).
+ * Sin estado cliente — el MP4 va en el HTML inicial.
  */
 export default function HeroBackgroundMedia({
   videoSrc,
@@ -19,35 +17,8 @@ export default function HeroBackgroundMedia({
   posterAlt,
   priority = true,
 }: Props) {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const [reduceMotion, setReduceMotion] = useState(false)
-  const [videoFailed, setVideoFailed] = useState(false)
-
-  useEffect(() => {
-    const motion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const apply = () => setReduceMotion(motion.matches)
-    apply()
-    motion.addEventListener('change', apply)
-    return () => motion.removeEventListener('change', apply)
-  }, [])
-
-  const tryPlay = useCallback(() => {
-    const el = videoRef.current
-    if (!el) return
-    el.muted = true
-    const p = el.play()
-    if (p && typeof p.catch === 'function') {
-      p.catch(() => setVideoFailed(true))
-    }
-  }, [])
-
-  useEffect(() => {
-    if (reduceMotion || videoFailed) return
-    tryPlay()
-  }, [reduceMotion, videoFailed, tryPlay])
-
-  if (reduceMotion || videoFailed) {
-    return (
+  return (
+    <div className="absolute inset-0">
       <Image
         src={posterSrc}
         alt={posterAlt}
@@ -56,24 +27,18 @@ export default function HeroBackgroundMedia({
         priority={priority}
         sizes="100vw"
       />
-    )
-  }
-
-  return (
-    <video
-      ref={videoRef}
-      className="absolute inset-0 h-full w-full object-cover"
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="auto"
-      poster={posterSrc}
-      aria-hidden
-      onLoadedData={tryPlay}
-      onCanPlay={tryPlay}
-    >
-      <source src={videoSrc} type="video/mp4" />
-    </video>
+      <video
+        className="absolute inset-0 z-[1] h-full w-full object-cover motion-reduce:hidden"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster={posterSrc}
+        aria-hidden
+      >
+        <source src={videoSrc} type="video/mp4" />
+      </video>
+    </div>
   )
 }

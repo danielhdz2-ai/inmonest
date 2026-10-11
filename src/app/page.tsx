@@ -66,7 +66,7 @@ export default function Home() {
       <Navbar />
 
       <section className="relative overflow-hidden min-h-[520px] sm:min-h-[560px] flex items-center">
-        <div className="absolute inset-0 relative">
+        <div className="absolute inset-0 z-0">
           <HeroBackgroundMedia
             videoSrc="/video/gestoria-hero-calle.mp4"
             posterSrc="/gestoria-expertos-calle.jpg"
