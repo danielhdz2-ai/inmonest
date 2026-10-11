@@ -100,19 +100,19 @@ export const metadata: Metadata = {
 
   // Open Graph — imagen cuando alguien comparte un link
   openGraph: {
-    title: 'Inmonest | Contratos inmobiliarios desde 61 € en 48 h',
+    title: 'Inmonest | Gestoría inmobiliaria online desde 61 € en 48 h',
     description:
-      'Gestoría inmobiliaria online: contrato de alquiler LAU, arras y compraventa redactados por expertos en 48 h.',
+      'Contrato de alquiler LAU, arras y compraventa entre particulares. Gestores expertos, precio cerrado y panel de cliente.',
     url: 'https://inmonest.com',
     siteName: 'Inmonest',
     locale: 'es_ES',
     type: 'website',
     images: [
       {
-        url: '/promo.png',
+        url: '/gestor-experto-oficina.jpg',
         width: 1200,
         height: 630,
-        alt: 'Inmonest — Pisos sin comisiones entre particulares',
+        alt: 'Gestoría inmobiliaria online Inmonest — contratos LAU, arras y compraventa',
       },
     ],
   },

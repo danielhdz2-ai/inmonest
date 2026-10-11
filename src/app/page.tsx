@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Navbar from '@/components/NavbarServer'
 import HomeHeroBackground from '@/components/HomeHeroBackground'
@@ -6,43 +7,146 @@ import BentoVentajas from '@/components/BentoVentajas'
 import CarruselServicios from '@/components/CarruselServicios'
 import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
 import HomeTrustStrip from '@/components/home/HomeTrustStrip'
+import HomeHowItWorks from '@/components/home/HomeHowItWorks'
 import HomeTestimonials from '@/components/home/HomeTestimonials'
 import HomeDiscoverGrid from '@/components/home/HomeDiscoverGrid'
 import HomePersonaIntents from '@/components/home/HomePersonaIntents'
 import HomeLocalPresencia from '@/components/home/HomeLocalPresencia'
+import HomeBottomGestoriaHub from '@/components/home/HomeBottomGestoriaHub'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Section } from '@/components/ui/Section'
 import { CtaBand } from '@/components/ui/CtaBand'
 
-const FAQ = [
+const BASE_URL = 'https://inmonest.com'
+const HERO_VIDEO = `${BASE_URL}/video/gestoria-hero-walking.mp4`
+
+export const metadata: Metadata = {
+  title: 'Gestoría inmobiliaria online para particulares',
+  description:
+    'Contratos de alquiler LAU, arras y compraventa en toda España. Gestores expertos, precio cerrado desde 61 €, entrega en 48 h y panel de cliente.',
+  alternates: { canonical: BASE_URL },
+  openGraph: {
+    title: 'Inmonest | Gestoría inmobiliaria online en 48 h',
+    description:
+      'Alquiler LAU, arras y compraventa entre particulares. Valoración 5.0 en Google. Contrata online con gestor asignado.',
+    url: BASE_URL,
+    type: 'website',
+    locale: 'es_ES',
+    images: [
+      {
+        url: '/gestor-experto-oficina.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Gestoría inmobiliaria online Inmonest',
+      },
+    ],
+  },
+}
+
+const FAQ_ITEMS = [
   {
     q: '¿Qué es Inmonest?',
-    a: 'Inmonest es una gestoría inmobiliaria online en toda España. Redactamos contratos de alquiler LAU, arras y compraventa con precio cerrado, entrega en 48 h y panel de cliente para tus documentos.',
+    schemaText:
+      'Inmonest es una gestoría inmobiliaria online en toda España. Redactamos contratos de alquiler LAU, arras y compraventa con precio cerrado, entrega en 48 h y panel de cliente.',
+    body: (
+      <>
+        Inmonest es una{' '}
+        <Link href="/gestoria" className="text-gold-800 font-medium hover:underline">
+          gestoría inmobiliaria online
+        </Link>{' '}
+        en toda España. Redactamos contratos con precio cerrado, entrega en 48 h y panel de cliente.
+      </>
+    ),
   },
   {
     q: '¿Cuánto cuesta un contrato de alquiler?',
-    a: 'El contrato de alquiler de vivienda (LAU) cuesta 145 € IVA incluido. Incluye personalización, revisión legal y una ronda de cambios. Puedes solicitarlo online en minutos.',
+    schemaText:
+      'El contrato de alquiler LAU cuesta 145 € IVA incluido, con personalización, revisión legal y una ronda de cambios.',
+    body: (
+      <>
+        El{' '}
+        <Link href="/gestoria/contrato-alquiler" className="text-gold-800 font-medium hover:underline">
+          contrato de alquiler LAU
+        </Link>{' '}
+        cuesta 145 € IVA incluido. Detalle en{' '}
+        <Link
+          href="/gestoria/cuanto-cuesta-contrato-alquiler"
+          className="text-gold-800 font-medium hover:underline"
+        >
+          cuánto cuesta un contrato de alquiler
+        </Link>
+        .
+      </>
+    ),
   },
   {
     q: '¿Qué servicios ofrece Inmonest?',
-    a: 'Contrato de alquiler LAU, arras penitenciales y confirmatorias, alquiler de habitación, revisión de contratos, packs de compraventa y due diligence. Todo online con gestor experto.',
+    schemaText:
+      'Contrato LAU, arras, habitación, revisión de contratos, packs de compraventa y due diligence, con gestor experto.',
+    body: (
+      <>
+        Catálogo completo en{' '}
+        <Link href="/servicios" className="text-gold-800 font-medium hover:underline">
+          servicios de gestoría
+        </Link>
+        : LAU,{' '}
+        <Link href="/gestoria/arras-penitenciales" className="text-gold-800 font-medium hover:underline">
+          arras
+        </Link>
+        , habitación, revisiones y packs hasta escritura.
+      </>
+    ),
   },
   {
     q: '¿Los contratos tienen validez legal en toda España?',
-    a: 'Sí. Redactados siguiendo LAU, Código Civil y Ley de Vivienda 2026, adaptados a cada comunidad autónoma cuando es necesario.',
+    schemaText:
+      'Sí. Redactados siguiendo LAU, Código Civil y Ley de Vivienda 2026, adaptados a cada comunidad autónoma cuando es necesario.',
+    body: 'Sí. Redactados siguiendo LAU, Código Civil y Ley de Vivienda 2026, adaptados a cada comunidad autónoma cuando es necesario.',
   },
   {
     q: '¿Cuánto tardan en entregar un contrato?',
-    a: 'Solicitas el servicio, te contactamos en 24 h y entregamos el PDF personalizado en 48 h. Incluye una ronda de revisiones gratuita en 7 días.',
+    schemaText:
+      'Contacto en 24 h y entrega del PDF personalizado en 48 h, con una ronda de revisiones gratuita en 7 días.',
+    body: (
+      <>
+        Solicitas en{' '}
+        <Link href="/gestoria/solicitar" className="text-gold-800 font-medium hover:underline">
+          contratar online
+        </Link>
+        , te contactamos en 24 h y entregamos el PDF en 48 h (una ronda de cambios incluida).
+      </>
+    ),
   },
   {
     q: '¿Inmonest es una agencia inmobiliaria?',
-    a: 'No. Somos gestoría digital: no intermediamos en la búsqueda de pisos ni cobramos comisiones por operaciones. Cobramos solo por servicios jurídicos concretos.',
+    schemaText:
+      'No. Somos gestoría digital: no intermediamos en la búsqueda de pisos ni cobramos comisiones por operaciones.',
+    body: 'No. Somos gestoría digital: no intermediamos en la búsqueda de pisos ni cobramos comisiones por operaciones. Solo servicios jurídicos concretos.',
   },
   {
     q: '¿Puedo contratar compra o venta integral entre particulares?',
-    a: 'Sí. Ofrecemos packs desde reserva y arras hasta escritura, con gestor asignado, revisión registral y coordinación con notaría. También parking y trastero.',
+    schemaText:
+      'Sí. Packs desde reserva y arras hasta escritura, con gestor asignado, revisión registral y coordinación con notaría.',
+    body: (
+      <>
+        Sí. Consulta{' '}
+        <Link
+          href="/gestoria/compra-completa-reserva-escritura"
+          className="text-gold-800 font-medium hover:underline"
+        >
+          compra integral
+        </Link>{' '}
+        y{' '}
+        <Link
+          href="/gestoria/venta-completa-reserva-escritura"
+          className="text-gold-800 font-medium hover:underline"
+        >
+          venta integral
+        </Link>{' '}
+        con gestor hasta escritura.
+      </>
+    ),
   },
 ] as const
 
@@ -50,11 +154,22 @@ export default function Home() {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQ.map(({ q, a }) => ({
+    mainEntity: FAQ_ITEMS.map(({ q, schemaText }) => ({
       '@type': 'Question',
       name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
+      acceptedAnswer: { '@type': 'Answer', text: schemaText },
     })),
+  }
+
+  const videoSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: 'Gestoría inmobiliaria Inmonest — acompañamiento online',
+    description:
+      'Inmonest: gestoría inmobiliaria digital para contratos de alquiler, arras y compraventa entre particulares en España.',
+    contentUrl: HERO_VIDEO,
+    thumbnailUrl: `${BASE_URL}/gestor-experto-oficina.jpg`,
+    uploadDate: '2026-10-11',
   }
 
   return (
@@ -62,6 +177,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
       />
 
       <Navbar />
@@ -115,6 +234,7 @@ export default function Home() {
       </section>
 
       <HomeTrustStrip />
+      <HomeHowItWorks />
       <HomePersonaIntents />
       <HomeDiscoverGrid />
       <CarruselServicios />
@@ -140,7 +260,7 @@ export default function Home() {
         description="Respuestas sobre contratos de alquiler, arras y gestoría online."
       >
         <div className="space-y-3">
-          {FAQ.map(({ q, a }) => (
+          {FAQ_ITEMS.map(({ q, body }) => (
             <details
               key={q}
               className="bg-gray-50 rounded-xl border border-gray-100 group hover:border-gold-400/30 transition-colors"
@@ -156,13 +276,13 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </summary>
-              <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{a}</p>
+              <div className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">{body}</div>
             </details>
           ))}
         </div>
       </Section>
 
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
         <CtaBand
           eyebrow="Alquiler, arras y compraventa"
           title={<>¿Compras, vendes o alquilas entre particulares?</>}
@@ -176,6 +296,8 @@ export default function Home() {
           tone="warm"
         />
       </section>
+
+      <HomeBottomGestoriaHub />
     </div>
   )
 }

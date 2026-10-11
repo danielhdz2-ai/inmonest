@@ -34,15 +34,15 @@ const ENLACES_HOME: EnlaceSeo[] = [
     badge: 'Ciudad',
   },
   {
-    href: '/bilbao/alquiler-particulares',
-    title: 'Alquiler particulares Bilbao',
-    description: 'Pisos sin comisión de agencia. Trato directo.',
-    badge: 'Ciudad',
+    href: '/gestoria/arras-penitenciales',
+    title: 'Contrato de arras penitenciales',
+    description: 'Señal de compraventa entre particulares. Precio cerrado.',
+    badge: 'Servicio',
   },
   {
-    href: '/malaga/alquiler-particulares',
-    title: 'Alquiler particulares Málaga',
-    description: 'Sin intermediarios. Contrato LAU opcional.',
+    href: '/contratos-inmobiliarios/madrid',
+    title: 'Contratos inmobiliarios Madrid',
+    description: 'LAU, arras y gestoría para particulares en Madrid.',
     badge: 'Ciudad',
   },
   {

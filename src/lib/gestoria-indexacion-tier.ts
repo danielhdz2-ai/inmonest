@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { isGestoriaSolicitarPath } from '@/lib/gestoria-checkout-seo'
 
 /**
  * Rutas gestoría con noindex explícito (excepciones puntuales).
@@ -10,6 +11,7 @@ export const GESTORIA_NOINDEX_CITY_PATHS = new Set<string>([
 ])
 
 export function isGestoriaPathIndexable(path: string): boolean {
+  if (isGestoriaSolicitarPath(path)) return false
   return !GESTORIA_NOINDEX_CITY_PATHS.has(path)
 }
 

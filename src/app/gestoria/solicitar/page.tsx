@@ -3,8 +3,13 @@ import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import ServiciosHubContent from '@/components/ServiciosHubContent'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
+import {
+  GESTORIA_CHECKOUT_ROBOTS,
+  getSolicitarHubCanonicalPath,
+} from '@/lib/gestoria-checkout-seo'
 
 const BASE_URL = 'https://inmonest.com'
+const canonicalPath = getSolicitarHubCanonicalPath()
 
 export const metadata: Metadata = {
   title: 'Solicitar contrato — catálogo gestoría online',
@@ -13,8 +18,9 @@ export const metadata: Metadata = {
   keywords:
     'solicitar contrato arras, contrato alquiler online, gestoria inmobiliaria, contrato compraventa, revision legal vivienda',
   alternates: {
-    canonical: `${BASE_URL}/gestoria/solicitar`,
+    canonical: `${BASE_URL}${canonicalPath}`,
   },
+  robots: GESTORIA_CHECKOUT_ROBOTS,
   openGraph: {
     title: 'Solicitar servicio de gestoría',
     description:

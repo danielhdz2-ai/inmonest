@@ -5,6 +5,10 @@ import { Scale, Shield, Zap } from '@/components/ui/Icons'
 import PageHeroImage from '@/components/PageHeroImage'
 import SolicitarFormClient from './SolicitarFormClient'
 import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
+import {
+  GESTORIA_CHECKOUT_ROBOTS,
+  getLandingPathForSolicitarSlug,
+} from '@/lib/gestoria-checkout-seo'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -38,7 +42,7 @@ export async function generateMetadata({
     title: `${data.nombre} desde ${data.precio}€`,
     description,
     alternates: {
-      canonical: `${BASE_URL}/gestoria/solicitar/${servicio}`,
+      canonical: `${BASE_URL}${getLandingPathForSolicitarSlug(servicio)}`,
     },
     openGraph: {
       title: `${data.nombre} - ${data.precio}€`,
@@ -48,9 +52,7 @@ export async function generateMetadata({
       url: `${BASE_URL}/gestoria/solicitar/${servicio}`,
       type: 'website',
     },
-    robots: data.interno
-      ? { index: false, follow: false }
-      : { index: true, follow: true },
+    robots: data.interno ? { index: false, follow: false } : GESTORIA_CHECKOUT_ROBOTS,
   }
 }
 
@@ -64,6 +66,7 @@ export default async function SolicitarServicioPage({
   if (!data) notFound()
 
   // Schema markup Product para SEO
+  const landingPath = getLandingPathForSolicitarSlug(servicio)
   const productSchema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -76,7 +79,7 @@ export default async function SolicitarServicioPage({
     },
     offers: {
       '@type': 'Offer',
-      url: `${BASE_URL}/gestoria/solicitar/${servicio}`,
+      url: `${BASE_URL}${landingPath}`,
       priceCurrency: 'EUR',
       price: data.precio,
       availability: 'https://schema.org/InStock',

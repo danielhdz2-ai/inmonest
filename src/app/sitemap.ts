@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { AGENCIAS_GESTORIA_CIUDAD_SLUGS } from '@/lib/agencias-gestoria-ciudades'
-import { GESTORIA_NOINDEX_CITY_PATHS } from '@/lib/gestoria-indexacion-tier'
+import { isGestoriaPathIndexable } from '@/lib/gestoria-indexacion-tier'
 import { buildInventarioSitemapEntries, dedupeSitemapByUrl } from '@/lib/sitemap-inventario'
 
 export const revalidate = 86400
@@ -14,7 +14,6 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/opiniones`, lastModified: today, changeFrequency: 'weekly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/contrato-alquiler`, lastModified: today, changeFrequency: 'weekly', priority: 0.95 },
   { url: `${BASE_URL}/servicios`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
-  { url: `${BASE_URL}/gestoria/solicitar`, lastModified: today, changeFrequency: 'weekly', priority: 0.93 },
   { url: `${BASE_URL}/gestoria/acompanamiento-reserva-arras`, lastModified: today, changeFrequency: 'monthly', priority: 0.9 },
   { url: `${BASE_URL}/gestoria/contrato-compraventa`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/rescision-alquiler`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
@@ -40,36 +39,6 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/privacidad`, lastModified: today, changeFrequency: 'yearly', priority: 0.2 },
   { url: `${BASE_URL}/cookies`, lastModified: today, changeFrequency: 'yearly', priority: 0.2 },
   { url: `${BASE_URL}/seguridad`, lastModified: today, changeFrequency: 'yearly', priority: 0.2 },
-
-  { url: `${BASE_URL}/gestoria/solicitar/arras-penitenciales`, lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
-  { url: `${BASE_URL}/gestoria/solicitar/arras-confirmatorias`, lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
-  { url: `${BASE_URL}/gestoria/solicitar/reserva-compra`, lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
-  { url: `${BASE_URL}/gestoria/solicitar/contrato-alquiler`, lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
-  { url: `${BASE_URL}/gestoria/solicitar/contrato-alquiler-barcelona`, lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
-  { url: `${BASE_URL}/gestoria/solicitar/rescision-alquiler`, lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
-  { url: `${BASE_URL}/gestoria/solicitar/alquiler-habitaciones`, lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
-  { url: `${BASE_URL}/gestoria/solicitar/alquiler-local-comercial`, lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
-  { url: `${BASE_URL}/gestoria/solicitar/alquiler-opcion-compra`, lastModified: today, changeFrequency: 'monthly', priority: 0.84 },
-  { url: `${BASE_URL}/gestoria/solicitar/prestamo-particulares`, lastModified: today, changeFrequency: 'monthly', priority: 0.8 },
-  { url: `${BASE_URL}/gestoria/solicitar/alquiler-garaje-trastero`, lastModified: today, changeFrequency: 'monthly', priority: 0.78 },
-  { url: `${BASE_URL}/gestoria/solicitar/pack-revision-reserva-alquiler`, lastModified: today, changeFrequency: 'monthly', priority: 0.84 },
-  { url: `${BASE_URL}/gestoria/solicitar/arras-parking-garage`, lastModified: today, changeFrequency: 'monthly', priority: 0.8 },
-  { url: `${BASE_URL}/gestoria/solicitar/acompanamiento-reserva-arras`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
-  { url: `${BASE_URL}/gestoria/solicitar/compra-completa-reserva-escritura`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
-  { url: `${BASE_URL}/gestoria/solicitar/compra-completa-parking-trastero`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
-  { url: `${BASE_URL}/gestoria/solicitar/revision-alquiler`, lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
-  { url: `${BASE_URL}/gestoria/solicitar/revision-correccion`, lastModified: today, changeFrequency: 'monthly', priority: 0.84 },
-  { url: `${BASE_URL}/gestoria/solicitar/revision-correccion-arras`, lastModified: today, changeFrequency: 'monthly', priority: 0.84 },
-  { url: `${BASE_URL}/gestoria/solicitar/contrato-ilegal`, lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
-  { url: `${BASE_URL}/gestoria/solicitar/pack-due-diligence-precompra`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
-  { url: `${BASE_URL}/gestoria/solicitar/pack-arras-plus-vendedor`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
-  { url: `${BASE_URL}/gestoria/solicitar/pack-arras-revision-documental`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
-  { url: `${BASE_URL}/gestoria/solicitar/contrato-compraventa`, lastModified: today, changeFrequency: 'monthly', priority: 0.85 },
-  { url: `${BASE_URL}/gestoria/solicitar/alquiler-temporada`, lastModified: today, changeFrequency: 'monthly', priority: 0.82 },
-  { url: `${BASE_URL}/gestoria/solicitar/reserva-alquiler`, lastModified: today, changeFrequency: 'monthly', priority: 0.8 },
-  { url: `${BASE_URL}/gestoria/solicitar/liquidacion-fianza`, lastModified: today, changeFrequency: 'monthly', priority: 0.78 },
-  { url: `${BASE_URL}/gestoria/solicitar/venta-completa-reserva-escritura`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },
-  { url: `${BASE_URL}/gestoria/solicitar/asesoramiento-arras-venta`, lastModified: today, changeFrequency: 'monthly', priority: 0.84 },
 
   { url: `${BASE_URL}/oportunidades-bancarias`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
 
@@ -100,8 +69,8 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
 
 function excludeGestoriaNoindex(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
   return entries.filter((entry) => {
-    const path = entry.url.replace(BASE_URL, '')
-    return !GESTORIA_NOINDEX_CITY_PATHS.has(path)
+    const path = entry.url.replace(BASE_URL, '') || '/'
+    return isGestoriaPathIndexable(path)
   })
 }
 

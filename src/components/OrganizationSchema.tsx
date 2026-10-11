@@ -96,10 +96,25 @@ export default function OrganizationSchema() {
     },
   }
 
+  const webSite = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${ORGANIZATION_SCHEMA_ID}#website`,
+    url: 'https://inmonest.com',
+    name: 'Inmonest',
+    description:
+      'Gestoría inmobiliaria online: contratos LAU, arras y compraventa para particulares en España.',
+    publisher: { '@id': ORGANIZATION_SCHEMA_ID },
+    inLanguage: 'es-ES',
+  }
+
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webSite) }} />
+    </>
   )
 }
