@@ -10,7 +10,6 @@ import GestoriaPortalContratos from '@/components/gestoria-portal/GestoriaPortal
 import GestoriaPortalDocumentos from '@/components/gestoria-portal/GestoriaPortalDocumentos'
 import GestoriaPortalInmueble from '@/components/gestoria-portal/GestoriaPortalInmueble'
 import GestoriaPortalServicios from '@/components/gestoria-portal/GestoriaPortalServicios'
-import GestoriaPortalPublicar from '@/components/gestoria-portal/GestoriaPortalPublicar'
 import GestoriaPortalConfiguracion from '@/components/gestoria-portal/GestoriaPortalConfiguracion'
 import type { PartesFormData } from '@/components/GestoriaPartesForm'
 import type { GestoriaContrato, GestoriaPortalSection, GestoriaUserDoc } from '@/lib/gestoria-portal-types'
@@ -20,7 +19,13 @@ import { validateUploadFile } from '@/lib/gestoria-upload'
 import { uploadFileWithProgress } from '@/lib/gestoria-upload-client'
 
 const VALID_SECTIONS: GestoriaPortalSection[] = [
-  'inicio', 'expediente', 'documentos', 'contratos', 'inmueble', 'servicios', 'publicar', 'configuracion',
+  'inicio',
+  'expediente',
+  'documentos',
+  'contratos',
+  'inmueble',
+  'servicios',
+  'configuracion',
 ]
 
 function parseSection(value: string | null): GestoriaPortalSection {
@@ -497,8 +502,6 @@ export default function GestoriaPortalClient({
           clientName={activePaid?.client_name ?? displayName}
         />
       )}
-
-      {section === 'publicar' && <GestoriaPortalPublicar />}
 
       {section === 'configuracion' && (
         <GestoriaPortalConfiguracion

@@ -30,5 +30,5 @@ export default async function MiCuentaLayout({
     redirect('/login?next=/mi-cuenta/contratos')
   }
 
-  return <div className="min-h-screen">{children}</div>
+  return <div className="min-h-screen bg-[#eef0f2]">{children}</div>
 }

@@ -135,7 +135,7 @@ export default function PrivacidadPage() {
           <ul className="mt-2 list-disc list-inside space-y-1 text-sm">
             <li>
               <strong>Usuarios registrados:</strong>{' '}
-              <a href="/mi-cuenta/perfil" className="text-gold-500 hover:underline">Mi cuenta → Privacidad y datos</a>{' '}
+              <a href="/mi-cuenta/contratos?v=configuracion" className="text-gold-500 hover:underline">Mi cuenta → Privacidad y datos</a>{' '}
               (descarga de datos y baja de cuenta).
             </li>
             <li>

@@ -17,7 +17,6 @@ import {
   GESTORIA_ALQUILER_HUB,
   GESTORIA_ALQUILER_SOLICITAR,
   isPortalListingApi,
-  MI_CUENTA_PORTAL_LEGACY_PREFIXES,
   PORTAL_CLOSED_REDIRECTS,
 } from '@/lib/portal-closed'
 
@@ -59,14 +58,19 @@ export async function middleware(request: NextRequest) {
     url.search = ''
     return NextResponse.redirect(url, 308)
   }
-  if (
-    pathname === '/mi-cuenta' ||
-    MI_CUENTA_PORTAL_LEGACY_PREFIXES.some((p) => pathname === p || pathname.startsWith(`${p}/`))
-  ) {
-    const url = request.nextUrl.clone()
-    url.pathname = '/mi-cuenta/contratos'
-    url.search = ''
-    return NextResponse.redirect(url, 308)
+  // Mi cuenta = solo panel de gestoría (/mi-cuenta/contratos)
+  if (pathname.startsWith('/mi-cuenta')) {
+    const isGestoriaPanel =
+      pathname === '/mi-cuenta/contratos' || pathname.startsWith('/mi-cuenta/contratos/')
+    if (!isGestoriaPanel) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/mi-cuenta/contratos'
+      url.search =
+        pathname === '/mi-cuenta/perfil' || pathname.startsWith('/mi-cuenta/perfil/')
+          ? '?v=configuracion'
+          : ''
+      return NextResponse.redirect(url, 308)
+    }
   }
 
   // ── 0. BLOQUEO DE BOTS AGRESIVOS (protección CPU) ─────────────────────────

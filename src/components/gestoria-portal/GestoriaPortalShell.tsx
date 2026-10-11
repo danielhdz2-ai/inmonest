@@ -3,7 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { GestoriaPortalSection } from '@/lib/gestoria-portal-types'
-import { GESTORIA_PORTAL_SECTIONS } from '@/lib/gestoria-portal-types'
+import {
+  GESTORIA_PORTAL_MOBILE_SECTIONS,
+  GESTORIA_PORTAL_SECTIONS,
+} from '@/lib/gestoria-portal-types'
+import { GESTORIA_SOLICITAR_HUB } from '@/lib/gestoria-nav'
 import { GESTORIA_PHONE_TEL, GESTORIA_PHONE_WA } from '@/lib/gestoria-contact'
 
 type Props = {
@@ -76,6 +80,12 @@ export default function GestoriaPortalShell({
             <p className="text-[10px] uppercase tracking-widest text-[#f4d98a]/80">Cliente</p>
             <p className="text-sm font-semibold truncate">{displayName}</p>
           </div>
+          <Link
+            href={GESTORIA_SOLICITAR_HUB}
+            className="flex items-center justify-center gap-2 w-full rounded-xl bg-gold-500 py-2.5 text-sm font-bold text-[#0a1410] hover:bg-gold-400 transition-colors"
+          >
+            + Nuevo contrato
+          </Link>
           <a
             href={`https://wa.me/${GESTORIA_PHONE_WA}?text=${encodeURIComponent('Hola, necesito ayuda con mi expediente de gestoría')}`}
             target="_blank"
@@ -124,14 +134,14 @@ export default function GestoriaPortalShell({
           </div>
         </header>
 
-        <main className="flex-1 w-full max-w-5xl mx-auto px-3 sm:px-6 py-4 lg:py-8 pb-28 lg:pb-8">
+        <main className="flex-1 w-full max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-4 lg:py-8 pb-24 lg:pb-8">
           {children}
         </main>
 
         {/* Bottom nav móvil */}
         <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0a1410] border-t border-white/10 px-0.5 pt-1 pb-[max(0.5rem,env(safe-area-inset-bottom))] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div className="flex min-w-max justify-around max-w-none px-1">
-            {GESTORIA_PORTAL_SECTIONS.map((item) => {
+            {GESTORIA_PORTAL_MOBILE_SECTIONS.map((item) => {
               const active = activeSection === item.id
               const badge = item.id === 'expediente' && pendingDocsCount > 0
               return (
@@ -139,14 +149,14 @@ export default function GestoriaPortalShell({
                   key={item.id}
                   type="button"
                   onClick={() => onSectionChange(item.id)}
-                  className={`relative flex flex-col items-center gap-0.5 min-w-[56px] py-2 px-1 rounded-xl touch-manipulation ${
+                  className={`relative flex flex-1 flex-col items-center gap-0.5 max-w-[20%] py-2 px-0.5 rounded-xl touch-manipulation ${
                     active ? 'text-[#f4d98a]' : 'text-white/50'
                   }`}
                 >
                   <span className="text-base leading-none">{item.icon}</span>
-                  <span className="text-[9px] font-semibold">{item.shortLabel}</span>
+                  <span className="text-[9px] font-semibold truncate w-full text-center">{item.shortLabel}</span>
                   {badge && (
-                    <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-gold-500" />
+                    <span className="absolute top-1 right-2 h-2 w-2 rounded-full bg-gold-500" />
                   )}
                 </button>
               )

@@ -194,20 +194,24 @@ export default function GestoriaPortalInicio({
       {/* Acciones rápidas */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {[
-          { id: 'expediente' as const, label: 'Subir documentos', icon: '📤', color: 'from-amber-50 to-amber-100/50 border-amber-200' },
-          { id: 'documentos' as const, label: 'Mis documentos', icon: '🗂️', color: 'from-rose-50 to-rose-100/50 border-rose-200' },
-          { id: 'inmueble' as const, label: 'Datos inmueble', icon: '🏠', color: 'from-blue-50 to-blue-100/50 border-blue-200' },
-          { id: 'contratos' as const, label: 'Mis contratos', icon: '📄', color: 'from-cream-100 to-cream-100/50 border-gold-200' },
-          { id: 'servicios' as const, label: 'Contratar más', icon: '✦', color: 'from-violet-50 to-violet-100/50 border-violet-200' },
+          { id: 'expediente' as const, label: 'Subir documentos', icon: '📤', accent: 'bg-amber-500' },
+          { id: 'documentos' as const, label: 'Mis documentos', icon: '🗂️', accent: 'bg-rose-500' },
+          { id: 'inmueble' as const, label: 'Datos inmueble', icon: '🏠', accent: 'bg-sky-600' },
+          { id: 'contratos' as const, label: 'Mis contratos', icon: '📄', accent: 'bg-gold-600' },
+          { id: 'servicios' as const, label: 'Contratar más', icon: '✦', accent: 'bg-violet-600' },
         ].map((action) => (
           <button
             key={action.id}
             type="button"
             onClick={() => onNavigate(action.id)}
-            className={`rounded-2xl border bg-gradient-to-br ${action.color} p-4 text-left hover:shadow-md transition-shadow touch-manipulation min-h-[88px]`}
+            className="rounded-2xl border border-gray-200 bg-white p-4 text-left shadow-sm hover:shadow-md hover:border-gold-400/50 transition-all touch-manipulation min-h-[96px]"
           >
-            <span className="text-2xl">{action.icon}</span>
-            <p className="text-sm font-bold text-gray-900 mt-2 leading-tight">{action.label}</p>
+            <span
+              className={`inline-flex h-10 w-10 items-center justify-center rounded-xl text-lg text-white shadow-sm ${action.accent}`}
+            >
+              {action.icon}
+            </span>
+            <p className="text-sm font-bold text-gray-900 mt-3 leading-tight">{action.label}</p>
           </button>
         ))}
       </div>

@@ -1,9 +1,8 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
-import { loadPortalSidebarProps } from '@/lib/portal-sidebar-data'
 import { isNextRedirectError } from '@/lib/next-navigation'
-import DashboardSidebar from '../DashboardSidebar'
 
+/** Rutas legacy del portal: el middleware redirige a /mi-cuenta/contratos; aquí solo auth de respaldo. */
 export default async function PortalLayout({
   children,
 }: {
@@ -11,21 +10,15 @@ export default async function PortalLayout({
 }) {
   try {
     const supabase = await createClient()
-    const { data: { user } } = await supabase.auth.getUser()
+    const {
+      data: { user },
+    } = await supabase.auth.getUser()
     if (!user) {
       redirect('/login?next=/mi-cuenta/contratos')
     }
-
-    const sidebar = await loadPortalSidebarProps(supabase, user)
-
-    return (
-      <DashboardSidebar {...sidebar}>
-        {children}
-      </DashboardSidebar>
-    )
+    return <>{children}</>
   } catch (err) {
     if (isNextRedirectError(err)) throw err
-    console.error('[portal/layout]', err)
     redirect('/login?next=/mi-cuenta/contratos')
   }
 }

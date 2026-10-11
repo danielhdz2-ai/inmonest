@@ -124,16 +124,14 @@ function ContratosGateInner() {
   }
 
   return (
-    <div className="-mx-3 sm:-mx-6 lg:-mx-8 -mt-3 sm:-mt-8 min-h-[min(70vh,calc(100dvh-8rem))] overflow-auto bg-[#eef0f2] rounded-xl border border-gray-200/80">
-      <GestoriaPortalClientSuspense
-        contratos={contratos}
-        userDocs={userDocs}
-        userEmail={userEmail}
-        displayName={displayName}
-        initialSessionId={sessionId}
-        initialPhone={phone}
-      />
-    </div>
+    <GestoriaPortalClientSuspense
+      contratos={contratos}
+      userDocs={userDocs}
+      userEmail={userEmail}
+      displayName={displayName}
+      initialSessionId={sessionId}
+      initialPhone={phone}
+    />
   )
 }
 

@@ -54,9 +54,21 @@ export const GESTORIA_PORTAL_SECTIONS: {
   { id: 'contratos', label: 'Mis contratos', shortLabel: 'Contratos', icon: '📄', desc: 'Historial de servicios' },
   { id: 'inmueble', label: 'Mi inmueble', shortLabel: 'Inmueble', icon: '🏠', desc: 'Datos del inmueble' },
   { id: 'servicios', label: 'Contratar más', shortLabel: 'Servicios', icon: '✦', desc: 'Nuevos contratos y packs' },
-  { id: 'publicar', label: 'Publicar piso', shortLabel: 'Publicar', icon: '📢', desc: 'Anuncio sin comisiones' },
   { id: 'configuracion', label: 'Configuración', shortLabel: 'Ajustes', icon: '⚙️', desc: 'Datos personales y cuenta' },
 ]
+
+const MOBILE_SECTION_IDS: GestoriaPortalSection[] = [
+  'inicio',
+  'expediente',
+  'documentos',
+  'servicios',
+  'configuracion',
+]
+
+/** Navegación inferior móvil (5 pestañas, sin saturar). */
+export const GESTORIA_PORTAL_MOBILE_SECTIONS = GESTORIA_PORTAL_SECTIONS.filter((s) =>
+  MOBILE_SECTION_IDS.includes(s.id),
+)
 
 export const GESTORIA_ORDER_SELECT_CORE =
   'id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at'
