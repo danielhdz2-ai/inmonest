@@ -8,6 +8,14 @@ export default function HeroVideoAutoplay() {
     const el = document.querySelector<HTMLVideoElement>('video.hero-bg-video')
     if (!el) return
     el.muted = true
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) {
+      el.pause()
+      el.removeAttribute('autoplay')
+      return
+    }
+
     const play = () => {
       void el.play().catch(() => {})
     }

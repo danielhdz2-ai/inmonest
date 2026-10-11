@@ -104,12 +104,6 @@ html {
   max-width: none !important;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-bg-video {
-    display: none !important;
-  }
-}
-
 @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
   .app-mobile-bottom-nav {
     display: none !important;
