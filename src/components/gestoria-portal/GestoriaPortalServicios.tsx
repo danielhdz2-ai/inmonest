@@ -62,7 +62,7 @@ export default function GestoriaPortalServicios({
     <div className="space-y-5">
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-black to-black p-4 sm:p-6 text-white min-h-[120px] sm:min-h-[140px]">
         <Image
-          src="/gestoria10.jpg"
+          src="/contratos.jpg"
           alt=""
           fill
           className="object-cover opacity-35"

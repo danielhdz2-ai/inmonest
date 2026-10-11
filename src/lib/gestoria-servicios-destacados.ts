@@ -1,4 +1,5 @@
 import { getPrecioServicio } from './gestoria-catalogo'
+import { getContractHero } from './gestoria-images'
 
 /** Precios canónicos alineados con Stripe y /gestoria/solicitar/[servicio] */
 export const GESTORIA_PRECIOS = {
@@ -27,10 +28,9 @@ export type ServicioDestacado = {
   popular?: boolean
 }
 
-export const SERVICIOS_DESTACADOS_CIUDAD: ServicioDestacado[] = [
+const DESTACADOS_BASE: Omit<ServicioDestacado, 'imagen'>[] = [
   {
     slug: 'contrato-alquiler',
-    imagen: '/gestoria4.jpg',
     categoria: 'Alquiler',
     nombre: 'Contrato Alquiler LAU',
     descripcion: 'Arrendamiento de vivienda habitual. Adaptado a Ley de Vivienda 2026.',
@@ -38,7 +38,6 @@ export const SERVICIOS_DESTACADOS_CIUDAD: ServicioDestacado[] = [
   },
   {
     slug: 'alquiler-habitaciones',
-    imagen: '/gestoria6.jpg',
     categoria: 'Alquiler',
     nombre: 'Contrato Alquiler Habitación',
     descripcion: 'Piso compartido y coliving. Normas de convivencia y Código Civil.',
@@ -46,7 +45,6 @@ export const SERVICIOS_DESTACADOS_CIUDAD: ServicioDestacado[] = [
   },
   {
     slug: 'arras-penitenciales',
-    imagen: '/gestoria1.jpg',
     categoria: 'Compraventa',
     nombre: 'Arras Penitenciales',
     descripcion: 'Protege tu señal de compra. Permite desistir con penalización justa.',
@@ -55,7 +53,6 @@ export const SERVICIOS_DESTACADOS_CIUDAD: ServicioDestacado[] = [
   },
   {
     slug: 'revision-correccion-arras',
-    imagen: '/gestoria6.jpg',
     categoria: 'Revisión Legal',
     nombre: 'Revisión + Corrección Arras',
     descripcion: 'Revisión especializada con contrato corregido antes de firmar.',
@@ -63,7 +60,6 @@ export const SERVICIOS_DESTACADOS_CIUDAD: ServicioDestacado[] = [
   },
   {
     slug: 'rescision-alquiler',
-    imagen: '/gestoria10.jpg',
     categoria: 'Rescisión',
     nombre: 'Rescisión de Alquiler',
     descripcion: 'Finaliza tu contrato legalmente con acta y liquidación de fianza.',
@@ -71,7 +67,6 @@ export const SERVICIOS_DESTACADOS_CIUDAD: ServicioDestacado[] = [
   },
   {
     slug: 'venta-completa-reserva-escritura',
-    imagen: '/gestoria11.jpg',
     categoria: 'Premium',
     nombre: 'Venta Completa hasta Escritura',
     descripcion: 'Gestor asignado para vender entre particulares sin comisión de agencia.',
@@ -79,10 +74,14 @@ export const SERVICIOS_DESTACADOS_CIUDAD: ServicioDestacado[] = [
   },
   {
     slug: 'compra-completa-reserva-escritura',
-    imagen: '/gestoria3.jpg',
     categoria: 'Premium',
     nombre: 'Compra Completa hasta Escritura',
     descripcion: 'Acompañamiento total para compradores particulares sin comisiones abusivas.',
     precio: GESTORIA_PRECIOS.compraCompleta,
   },
 ]
+
+export const SERVICIOS_DESTACADOS_CIUDAD: ServicioDestacado[] = DESTACADOS_BASE.map((s) => ({
+  ...s,
+  imagen: getContractHero(s.slug).src,
+}))

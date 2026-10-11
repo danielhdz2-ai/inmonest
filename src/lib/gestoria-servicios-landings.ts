@@ -177,7 +177,7 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     descripcion: 'Desglose claro de la devolución de fianza entre propietario e inquilino.',
     categoria: 'alquiler',
     precio: getPrecioServicio('liquidacion-fianza') ?? 120,
-    image: '/gestoria6.jpg',
+    image: '/contrato6.jpg',
     landingHref: '/gestoria/liquidacion-fianza',
   },
   // Revisiones
@@ -198,7 +198,7 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     descripcion: 'Informe de riesgos y versión corregida del borrador para negociar.',
     categoria: 'revision',
     precio: getPrecioServicio('revision-correccion') ?? 120,
-    image: '/gestoria14.jpg',
+    image: '/contrato3.jpg',
     landingHref: '/gestoria/revision-correccion',
   },
   {
@@ -242,7 +242,7 @@ export const SERVICIOS_LANDING_CARDS: ServicioLandingCard[] = [
     descripcion: 'Arras penitenciales + revisión documental integral para compradores entre particulares.',
     categoria: 'packs',
     precio: getPrecioServicio('pack-arras-revision-documental') ?? 450,
-    image: '/gestoria10.jpg',
+    image: '/contratodearras.jpg',
     landingHref: '/gestoria/pack-arras-revision-documental',
     badge: 'Compradores',
   },

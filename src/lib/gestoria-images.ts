@@ -1,6 +1,10 @@
+import { GESTORIA_SLUG_ALIASES } from '@/lib/gestoria-catalogo'
+
 /**
  * Imágenes de gestoría — asignación única por servicio para evitar repetición.
  * hero: cabecera landing · mid: franja intermedia · cta: banner final
+ *
+ * En catálogo y panel, el hero usa solo fotos de contratos (getContractHero).
  */
 export type ServicioImageSet = {
   hero: { src: string; alt: string }
@@ -9,8 +13,63 @@ export type ServicioImageSet = {
   imagePosition: 'left' | 'right'
 }
 
+/** Fotos de firma / documento — nunca pilas de carpetas ni mesas genéricas */
+const CONTRACT_HERO_ROTATION: { src: string; alt: string }[] = [
+  { src: '/contratodearras.jpg', alt: 'Firma de contrato de arras' },
+  { src: '/contratodealquiler.jpg', alt: 'Contrato de alquiler' },
+  { src: '/contrato1.jpg', alt: 'Contrato inmobiliario entre particulares' },
+  { src: '/contrato2.jpg', alt: 'Documento contractual firmado' },
+  { src: '/contrato3.jpg', alt: 'Revisión de contrato inmobiliario' },
+  { src: '/contrato4.jpg', alt: 'Contrato de arrendamiento' },
+  { src: '/contrato5.jpg', alt: 'Contrato de compraventa o anexo' },
+  { src: '/contrato6.jpg', alt: 'Cláusulas del contrato' },
+  { src: '/contrato9.jpg', alt: 'Formalización de contrato' },
+  { src: '/contratos.jpg', alt: 'Contratos inmobiliarios Inmonest' },
+]
+
+const CONTRACT_HERO_BY_SLUG: Record<string, { src: string; alt: string }> = {
+  'arras-penitenciales': { src: '/contratodearras.jpg', alt: 'Contrato de arras penitenciales' },
+  'arras-confirmatorias': { src: '/contrato1.jpg', alt: 'Contrato de arras confirmatorias' },
+  'reserva-compra': { src: '/contrato2.jpg', alt: 'Contrato de reserva de compra' },
+  'contrato-alquiler': { src: '/contratodealquiler.jpg', alt: 'Contrato de alquiler LAU' },
+  'contrato-alquiler-barcelona': { src: '/contratodealquiler.jpg', alt: 'Contrato de alquiler en Barcelona' },
+  'alquiler-temporada': { src: '/contrato4.jpg', alt: 'Contrato de alquiler de temporada' },
+  'rescision-alquiler': { src: '/contrato6.jpg', alt: 'Rescisión de contrato de alquiler' },
+  'reserva-alquiler': { src: '/contrato2.jpg', alt: 'Reserva de alquiler' },
+  'liquidacion-fianza': { src: '/contrato6.jpg', alt: 'Liquidación de fianza' },
+  'alquiler-habitaciones': { src: '/contrato6.jpg', alt: 'Contrato de alquiler de habitación' },
+  'alquiler-local-comercial': { src: '/contrato4.jpg', alt: 'Contrato de alquiler de local comercial' },
+  'alquiler-opcion-compra': { src: '/contrato4.jpg', alt: 'Alquiler con opción a compra' },
+  'prestamo-particulares': { src: '/contrato2.jpg', alt: 'Contrato de préstamo entre particulares' },
+  'alquiler-garaje-trastero': { src: '/contrato5.jpg', alt: 'Contrato de alquiler de garaje o trastero' },
+  'pack-revision-reserva-alquiler': { src: '/contrato2.jpg', alt: 'Pack revisión reserva y alquiler' },
+  'arras-parking-garage': { src: '/contrato5.jpg', alt: 'Arras de compraventa de parking' },
+  'acompanamiento-reserva-arras': { src: '/contratodearras.jpg', alt: 'Reserva y arras de compraventa' },
+  'compra-completa-reserva-escritura': { src: '/contrato1.jpg', alt: 'Compraventa con acompañamiento hasta escritura' },
+  'compra-completa-parking-trastero': { src: '/contrato5.jpg', alt: 'Compra de parking o trastero' },
+  'venta-completa-reserva-escritura': { src: '/contrato1.jpg', alt: 'Venta con acompañamiento hasta escritura' },
+  'revision-alquiler': { src: '/contrato3.jpg', alt: 'Revisión de contrato de alquiler' },
+  'revision-correccion': { src: '/contrato3.jpg', alt: 'Revisión y corrección de contrato' },
+  'revision-correccion-arras': { src: '/contrato3.jpg', alt: 'Revisión de contrato de arras' },
+  'pack-due-diligence-precompra': { src: '/contrato3.jpg', alt: 'Due diligence pre-compra' },
+  'pack-arras-revision-documental': { src: '/contratodearras.jpg', alt: 'Pack arras y revisión documental' },
+  'pack-arras-plus-vendedor': { src: '/contratodearras.jpg', alt: 'Pack arras para vendedor' },
+  'contrato-compraventa': { src: '/contrato1.jpg', alt: 'Contrato de compraventa' },
+  'asesoramiento-arras-venta': { src: '/contratodearras.jpg', alt: 'Asesoramiento en arras para vendedor' },
+  'contrato-ilegal': { src: '/contratos.jpg', alt: 'Contrato inmobiliario' },
+  'prueba-pago-stripe': { src: '/contratos.jpg', alt: 'Contrato de prueba' },
+}
+
+export function getContractHero(slug: string): { src: string; alt: string } {
+  const canon = GESTORIA_SLUG_ALIASES[slug] ?? slug
+  const mapped = CONTRACT_HERO_BY_SLUG[canon] ?? CONTRACT_HERO_BY_SLUG[slug]
+  if (mapped) return mapped
+  const idx = [...canon].reduce((acc, c) => acc + c.charCodeAt(0), 0) % CONTRACT_HERO_ROTATION.length
+  return CONTRACT_HERO_ROTATION[idx]!
+}
+
 const DEFAULT: ServicioImageSet = {
-  hero: { src: '/gestoria1.jpg', alt: 'Gestoría inmobiliaria Inmonest' },
+  hero: { src: '/contratos.jpg', alt: 'Contratos inmobiliaria Inmonest' },
   mid: { src: '/gestora6.jpg', alt: 'Equipo de gestoría revisando contratos' },
   cta: { src: '/keys.jpg', alt: 'Entrega de llaves tras contrato' },
   imagePosition: 'right',
@@ -36,19 +95,19 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
     imagePosition: 'right',
   },
   'rescision-alquiler': {
-    hero: { src: '/gestoria6.jpg', alt: 'Rescisión de contrato de alquiler' },
+    hero: { src: '/contrato6.jpg', alt: 'Rescisión de contrato de alquiler' },
     mid: { src: '/interior3.jpg', alt: 'Estado del inmueble en la entrega' },
     cta: { src: '/sofainmonest.png', alt: 'Devolución de fianza y llaves' },
     imagePosition: 'left',
   },
   'alquiler-habitaciones': {
-    hero: { src: '/familia5.jpg', alt: 'Alquiler de habitación en piso compartido' },
+    hero: { src: '/contrato6.jpg', alt: 'Contrato de alquiler de habitación' },
     mid: { src: '/gestoria16.jpg', alt: 'Contrato de habitación personalizado' },
     cta: { src: '/contrato6.jpg', alt: 'Normas de convivencia en contrato' },
     imagePosition: 'right',
   },
   'alquiler-local-comercial': {
-    hero: { src: '/comercial1.jpg', alt: 'Contrato de alquiler de local comercial' },
+    hero: { src: '/contrato4.jpg', alt: 'Contrato de alquiler de local comercial' },
     mid: { src: '/comercial5.jpg', alt: 'Local comercial listo para actividad' },
     cta: { src: '/gestora7.jpg', alt: 'Asesoramiento en arrendamiento comercial' },
     imagePosition: 'left',
@@ -60,31 +119,31 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
     imagePosition: 'right',
   },
   'prestamo-particulares': {
-    hero: { src: '/gestoria3.jpg', alt: 'Contrato de préstamo entre particulares formalizado' },
+    hero: { src: '/contrato2.jpg', alt: 'Contrato de préstamo entre particulares formalizado' },
     mid: { src: '/gestoria15.jpg', alt: 'Revisión jurídica de préstamo privado' },
     cta: { src: '/gestora5.jpg', alt: 'Asesor fiscal para préstamo entre particulares' },
     imagePosition: 'left',
   },
   'alquiler-garaje-trastero': {
-    hero: { src: '/gestoria9.jpg', alt: 'Alquiler de plaza de garaje o trastero' },
+    hero: { src: '/contrato5.jpg', alt: 'Contrato de alquiler de garaje o trastero' },
     mid: { src: '/contrato5.jpg', alt: 'Contrato de arrendamiento de parking' },
     cta: { src: '/comercial2.jpg', alt: 'Garaje y trastero en comunidad' },
     imagePosition: 'right',
   },
   'acompanamiento-reserva-arras': {
-    hero: { src: '/gestoria10.jpg', alt: 'Reserva y arras de compraventa' },
+    hero: { src: '/contratodearras.jpg', alt: 'Reserva y arras de compraventa' },
     mid: { src: '/contrato2.jpg', alt: 'Pack reserva más arras' },
     cta: { src: '/gestoria16.jpg', alt: 'Acompañamiento hasta escritura' },
     imagePosition: 'left',
   },
   'compra-completa-reserva-escritura': {
-    hero: { src: '/promo.png', alt: 'Compra de vivienda con acompañamiento' },
+    hero: { src: '/contrato1.jpg', alt: 'Compra de vivienda con acompañamiento' },
     mid: { src: '/gestoria11.jpg', alt: 'Gestoría en compraventa completa' },
     cta: { src: '/familia10.jpg', alt: 'Compradores en su nueva vivienda' },
     imagePosition: 'right',
   },
   'compra-completa-parking-trastero': {
-    hero: { src: '/comercial4.jpg', alt: 'Compra de parking o trastero' },
+    hero: { src: '/contrato5.jpg', alt: 'Compra de parking o trastero' },
     mid: { src: '/gestoria18.jpg', alt: 'Due diligence de plaza de garaje' },
     cta: { src: '/gestoria18.jpg', alt: 'Escritura de parking o trastero' },
     imagePosition: 'left',
@@ -96,7 +155,7 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
     imagePosition: 'right',
   },
   'pack-arras-revision-documental': {
-    hero: { src: '/gestoria10.jpg', alt: 'Pack Arras Plus Comprador — arras y revisión documental' },
+    hero: { src: '/contratodearras.jpg', alt: 'Pack Arras Plus Comprador — arras y revisión documental' },
     mid: { src: '/gestoria15.jpg', alt: 'Verificación documental para compradores particulares' },
     cta: { src: '/contratodearras.jpg', alt: 'Arras seguras con informe documental' },
     imagePosition: 'left',
@@ -108,7 +167,7 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
     imagePosition: 'right',
   },
   'pack-due-diligence-precompra': {
-    hero: { src: '/gestoria9.jpg', alt: 'Due diligence pre-compra inmobiliaria' },
+    hero: { src: '/contrato3.jpg', alt: 'Due diligence pre-compra inmobiliaria' },
     mid: { src: '/interior1.jpg', alt: 'Auditoría documental antes de escriturar' },
     cta: { src: '/gestoria15.jpg', alt: 'Informe ejecutivo de compraventa' },
     imagePosition: 'right',
@@ -123,7 +182,7 @@ export const SERVICIO_IMAGES: Record<string, ServicioImageSet> = {
 
 /** Imágenes para banners CTA en landings premium (no genéricas) */
 export const GESTORIA_CTA_BANNERS = {
-  prestamo: { src: '/gestoria3.jpg', alt: 'Formalizar préstamo entre particulares' },
+  prestamo: { src: '/contrato2.jpg', alt: 'Formalizar préstamo entre particulares' },
   dueDiligence: { src: '/interior1.jpg', alt: 'Due diligence pre-compra' },
   ventaCompleta: { src: '/familia2.jpg', alt: 'Venta de piso entre particulares' },
   habitacion: { src: '/familia6.jpg', alt: 'Alquiler de habitación' },
@@ -225,5 +284,7 @@ export function getCiudadCtaImage(slug: string): { src: string; alt: string } {
 }
 
 export function getServicioImages(slug: string): ServicioImageSet {
-  return SERVICIO_IMAGES[slug] ?? DEFAULT
+  const canon = GESTORIA_SLUG_ALIASES[slug] ?? slug
+  const base = SERVICIO_IMAGES[slug] ?? SERVICIO_IMAGES[canon] ?? DEFAULT
+  return { ...base, hero: getContractHero(slug) }
 }

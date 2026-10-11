@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { getContractHero } from '@/lib/gestoria-images'
 
 interface Servicio {
   nombre: string
@@ -14,23 +15,28 @@ interface Servicio {
   descripcion: string
 }
 
-const SERVICIOS: Servicio[] = [
-  { nombre: 'Arras Penitenciales', precio: 145, categoria: 'Compraventa', slug: 'arras-penitenciales', imagen: '/gestoria1.jpg', tiempo: '48h', descripcion: 'El estándar de oro en compraventa. Permite al comprador desistir perdiendo la señal, o al vendedor devolviendo el doble.' },
-  { nombre: 'Arras Confirmatorias', precio: 145, categoria: 'Compraventa', slug: 'arras-confirmatorias', imagen: '/gestoria2.jpg', tiempo: '48h', descripcion: 'El contrato más vinculante. Obliga a ambas partes al cumplimiento. Ideal para operaciones con total certeza.' },
-  { nombre: 'Contrato de Reserva de Compra', precio: 120, categoria: 'Compraventa', slug: 'reserva-compra', imagen: '/gestoria3.jpg', tiempo: '24h', descripcion: 'Documento rápido y efectivo para retirar el piso del mercado durante 48-72h mientras se revisa la nota simple.' },
-  { nombre: 'Contrato de Alquiler LAU', precio: 145, categoria: 'Alquiler', slug: 'contrato-alquiler', imagen: '/gestoria4.jpg', tiempo: '48h', descripcion: 'Adaptado a Ley de Vivienda 2026. Para propietarios e inquilinos. Cláusulas personalizadas y protección legal.' },
-  { nombre: 'Alquiler con Opción a Compra', precio: 145, categoria: 'Compraventa', slug: 'alquiler-opcion-compra', imagen: '/gestoria5.jpg', tiempo: '48h', descripcion: 'Vive en el piso mientras ahorras para comprarlo. Descuento de rentas pagadas en precio final. Precio fijado.' },
-  { nombre: 'Revisión + Corrección Arras', precio: 120, categoria: 'Revisión Legal', slug: 'revision-correccion-arras', imagen: '/gestoria6.jpg', tiempo: '48h', descripcion: 'Revisión especializada de arras con contrato corregido antes de firmar la señal.' },
-  { nombre: 'Revisión de Alquiler', precio: 120, categoria: 'Revisión Legal', slug: 'revision-alquiler', imagen: '/gestoria7.jpg', tiempo: '24h', descripcion: 'Verificamos cumplimiento Ley Vivienda 2026. Detectamos cláusulas ilegales y fianzas abusivas.' },
-  { nombre: 'Alquiler de Habitación', precio: 120, categoria: 'Alquiler', slug: 'alquiler-habitaciones', imagen: '/gestoria10.jpg', tiempo: '48h', descripcion: 'Regulación de zonas comunes. Normas de convivencia pactadas. Ideal para pisos compartidos o coliving.' },
-  { nombre: 'Rescisión de Alquiler', precio: 120, categoria: 'Rescisión', slug: 'rescision-alquiler', imagen: '/gestoria1.jpg', tiempo: '48h', descripcion: 'Acta de estado del inmueble. Liquidación y devolución de fianza. Evita conflictos al terminar el contrato.' },
-  { nombre: 'Análisis de Fraude', precio: 145, categoria: 'Revisión Legal', slug: 'contrato-ilegal', imagen: '/gestoria2.jpg', tiempo: '12h', descripcion: 'Verificación documentación. Detección de señales de fraude. Informe urgente de riesgos críticos en 12h.' },
-  { nombre: 'Servicio Completo Compra', precio: 687, categoria: 'Premium', slug: 'compra-completa-reserva-escritura', imagen: '/gestoria3.jpg', tiempo: '30d', descripcion: 'Gestión completa de reserva a escritura. Coordinación notaría. Análisis registral y urbanístico. Atención prioritaria.' },
-  { nombre: 'Compra Parking/Trastero', precio: 295, categoria: 'Premium', slug: 'compra-completa-parking-trastero', imagen: '/gestoria9.jpg', tiempo: '30d', descripcion: 'Gestor asignado desde reserva hasta registro. Arras, notaría, ITP e inscripción registral para parking o trastero.' },
-  { nombre: 'Préstamo entre Particulares', precio: 130, categoria: 'Financiación', slug: 'prestamo-particulares', imagen: '/gestoria5.jpg', tiempo: '48h', descripcion: 'Importe, plazos y cuotas detalladas. Nota fiscal ante AEAT. Protección legal para ambas partes.' },
-  { nombre: 'Alquiler Local Comercial', precio: 145, categoria: 'Alquiler', slug: 'alquiler-local-comercial', imagen: '/gestoria6.jpg', tiempo: '48h', descripcion: 'Régimen LAU uso distinto vivienda. Actualización renta libre o IPC. Derecho de tanteo ante venta.' },
-  { nombre: 'Pack Revisión + Alquiler', precio: 169, categoria: 'Alquiler', slug: 'pack-revision-reserva-alquiler', imagen: '/gestoria7.jpg', tiempo: '48h', descripcion: 'Revisión completa de reserva + Redacción contrato alquiler LAU. Todo en uno con ahorro.' },
+const SERVICIOS_BASE: Omit<Servicio, 'imagen'>[] = [
+  { nombre: 'Arras Penitenciales', precio: 145, categoria: 'Compraventa', slug: 'arras-penitenciales', tiempo: '48h', descripcion: 'El estándar de oro en compraventa. Permite al comprador desistir perdiendo la señal, o al vendedor devolviendo el doble.' },
+  { nombre: 'Arras Confirmatorias', precio: 145, categoria: 'Compraventa', slug: 'arras-confirmatorias', tiempo: '48h', descripcion: 'El contrato más vinculante. Obliga a ambas partes al cumplimiento. Ideal para operaciones con total certeza.' },
+  { nombre: 'Contrato de Reserva de Compra', precio: 120, categoria: 'Compraventa', slug: 'reserva-compra', tiempo: '24h', descripcion: 'Documento rápido y efectivo para retirar el piso del mercado durante 48-72h mientras se revisa la nota simple.' },
+  { nombre: 'Contrato de Alquiler LAU', precio: 145, categoria: 'Alquiler', slug: 'contrato-alquiler', tiempo: '48h', descripcion: 'Adaptado a Ley de Vivienda 2026. Para propietarios e inquilinos. Cláusulas personalizadas y protección legal.' },
+  { nombre: 'Alquiler con Opción a Compra', precio: 145, categoria: 'Compraventa', slug: 'alquiler-opcion-compra', tiempo: '48h', descripcion: 'Vive en el piso mientras ahorras para comprarlo. Descuento de rentas pagadas en precio final. Precio fijado.' },
+  { nombre: 'Revisión + Corrección Arras', precio: 120, categoria: 'Revisión Legal', slug: 'revision-correccion-arras', tiempo: '48h', descripcion: 'Revisión especializada de arras con contrato corregido antes de firmar la señal.' },
+  { nombre: 'Revisión de Alquiler', precio: 120, categoria: 'Revisión Legal', slug: 'revision-alquiler', tiempo: '24h', descripcion: 'Verificamos cumplimiento Ley Vivienda 2026. Detectamos cláusulas ilegales y fianzas abusivas.' },
+  { nombre: 'Alquiler de Habitación', precio: 120, categoria: 'Alquiler', slug: 'alquiler-habitaciones', tiempo: '48h', descripcion: 'Regulación de zonas comunes. Normas de convivencia pactadas. Ideal para pisos compartidos o coliving.' },
+  { nombre: 'Rescisión de Alquiler', precio: 120, categoria: 'Rescisión', slug: 'rescision-alquiler', tiempo: '48h', descripcion: 'Acta de estado del inmueble. Liquidación y devolución de fianza. Evita conflictos al terminar el contrato.' },
+  { nombre: 'Análisis de Fraude', precio: 145, categoria: 'Revisión Legal', slug: 'contrato-ilegal', tiempo: '12h', descripcion: 'Verificación documentación. Detección de señales de fraude. Informe urgente de riesgos críticos en 12h.' },
+  { nombre: 'Servicio Completo Compra', precio: 687, categoria: 'Premium', slug: 'compra-completa-reserva-escritura', tiempo: '30d', descripcion: 'Gestión completa de reserva a escritura. Coordinación notaría. Análisis registral y urbanístico. Atención prioritaria.' },
+  { nombre: 'Compra Parking/Trastero', precio: 295, categoria: 'Premium', slug: 'compra-completa-parking-trastero', tiempo: '30d', descripcion: 'Gestor asignado desde reserva hasta registro. Arras, notaría, ITP e inscripción registral para parking o trastero.' },
+  { nombre: 'Préstamo entre Particulares', precio: 130, categoria: 'Financiación', slug: 'prestamo-particulares', tiempo: '48h', descripcion: 'Importe, plazos y cuotas detalladas. Nota fiscal ante AEAT. Protección legal para ambas partes.' },
+  { nombre: 'Alquiler Local Comercial', precio: 145, categoria: 'Alquiler', slug: 'alquiler-local-comercial', tiempo: '48h', descripcion: 'Régimen LAU uso distinto vivienda. Actualización renta libre o IPC. Derecho de tanteo ante venta.' },
+  { nombre: 'Pack Revisión + Alquiler', precio: 169, categoria: 'Alquiler', slug: 'pack-revision-reserva-alquiler', tiempo: '48h', descripcion: 'Revisión completa de reserva + Redacción contrato alquiler LAU. Todo en uno con ahorro.' },
 ]
+
+const SERVICIOS: Servicio[] = SERVICIOS_BASE.map((s) => ({
+  ...s,
+  imagen: getContractHero(s.slug).src,
+}))
 
 export default function CarruselServicios() {
   const [isPaused, setIsPaused] = useState(false)
