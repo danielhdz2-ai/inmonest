@@ -16,6 +16,7 @@ import {
   type PortalLandingVariant,
 } from '@/lib/portal-landing-variant-copy'
 import { precioLabel } from '@/lib/gestoria-precios-ui'
+import { GESTORIA_NAV_SOLICITAR_LABEL_MOBILE, GESTORIA_SOLICITAR_HUB } from '@/lib/gestoria-nav'
 import { LANDINGS_CIUDAD_PREMIUM_SLUGS } from '@/lib/landings-ciudad-premium'
 
 const BASE_URL = 'https://inmonest.com'
@@ -216,6 +217,12 @@ export default function ParticularesGestoriaCiudadLanding({
               className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/30 text-white font-semibold hover:bg-white/10 transition-colors"
             >
               Ver landing {nombre}
+            </Link>
+            <Link
+              href={GESTORIA_SOLICITAR_HUB}
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-gold-400/50 text-gold-200 font-semibold hover:bg-gold-500/10 transition-colors"
+            >
+              {GESTORIA_NAV_SOLICITAR_LABEL_MOBILE}
             </Link>
           </div>
 

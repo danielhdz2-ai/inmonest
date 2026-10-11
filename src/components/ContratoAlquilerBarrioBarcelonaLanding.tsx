@@ -12,6 +12,7 @@ import CalculadoraAhorroContrato from '@/components/CalculadoraAhorroContrato'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import GestoriaContratarCtaPair from '@/components/GestoriaContratarCtaPair'
 import { getCiudadImage } from '@/lib/gestoria-images'
 import {
   CONTRATO_ALQUILER_PREMIUM_INCLUDES,
@@ -239,13 +240,12 @@ export default function ContratoAlquilerBarrioBarcelonaLanding({ config }: Props
             <span className="text-3xl font-bold text-gold-500">{precio} €</span>
             <span className="text-white/50 text-xs">IVA incluido · 48h · contrato blindado</span>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href={solicitarHref}
-              className="inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-5 rounded-xl transition-colors text-sm"
-            >
-              Pedir contrato LAU — {precio}€
-            </Link>
+          <div className="flex flex-wrap items-center gap-3">
+            <GestoriaContratarCtaPair
+              variant="hero-dark"
+              primaryHref={solicitarHref}
+              primaryLabel={`Pedir contrato LAU — ${precio}€`}
+            />
             <a
               href="#gestor-daniel"
               className="inline-flex items-center justify-center border border-white/40 text-white hover:bg-white/10 font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
@@ -319,12 +319,11 @@ export default function ContratoAlquilerBarrioBarcelonaLanding({ config }: Props
                   </li>
                 ))}
               </ul>
-              <Link
-                href={solicitarHref}
-                className="block w-full text-center bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-4 rounded-xl transition-colors"
-              >
-                Pedir contrato — {precio} €
-              </Link>
+              <GestoriaContratarCtaPair
+                variant="stack"
+                primaryHref={solicitarHref}
+                primaryLabel={`Pedir contrato — ${precio} €`}
+              />
               <a
                 href="#gestor-daniel"
                 className="block w-full text-center border border-gold-500/60 text-gold-600 hover:bg-cream-100 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
@@ -510,13 +509,12 @@ export default function ContratoAlquilerBarrioBarcelonaLanding({ config }: Props
             Gestor asignado, panel online, borrador personalizado y firma digital.{' '}
             <strong className="text-white">Menos de 48 h</strong> desde que nos pasas los datos.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href={solicitarHref}
-              className="bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-8 rounded-xl transition-colors"
-            >
-              Contratar — {precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>
-            </Link>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <GestoriaContratarCtaPair
+              variant="inline"
+              primaryHref={solicitarHref}
+              primaryLabel={`Contratar — ${precio} € (IVA incl.)`}
+            />
             <a
               href="#gestor-daniel"
               className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors"

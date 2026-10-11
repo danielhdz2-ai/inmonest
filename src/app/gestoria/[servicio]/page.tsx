@@ -27,6 +27,11 @@ import ComoTrabajamosGestoria from '@/components/ComoTrabajamosGestoria'
 import { withFirmaCertIncluido } from '@/lib/firmacert'
 import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
 import { GESTORIA_SERVICIOS_ADICIONALES } from '@/lib/gestoria-servicios-adicionales'
+import GestoriaContratarCtaPair from '@/components/GestoriaContratarCtaPair'
+import {
+  GESTORIA_NAV_SOLICITAR_LABEL_MOBILE,
+  GESTORIA_SOLICITAR_HUB,
+} from '@/lib/gestoria-nav'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -1002,13 +1007,12 @@ export default async function ServicioGestoriaPage({
                 : '· Entrega en 48h · PDF firmable'}
             </span>
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Link
-              href={`/gestoria/solicitar/${servicio}`}
-              className="inline-flex items-center justify-center rounded-full bg-gold-500 px-8 py-3.5 text-sm font-bold text-forest-900 shadow-lg shadow-black/30 transition hover:bg-gold-400"
-            >
-              Solicitar ahora — {data.precio} €
-            </Link>
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <GestoriaContratarCtaPair
+              variant="hero-light"
+              primaryHref={`/gestoria/solicitar/${servicio}`}
+              primaryLabel={`Solicitar ahora — ${data.precio} €`}
+            />
             <a
               href={waHref}
               target="_blank"
@@ -1080,23 +1084,16 @@ export default async function ServicioGestoriaPage({
                   </li>
                 ))}
               </ul>
-              <Link
-                href={`/gestoria/solicitar/${servicio}`}
-                className="block w-full text-center bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-4 rounded-xl transition-colors"
-              >
-                Solicitar ahora — {data.precio} €
-              </Link>
+              <GestoriaContratarCtaPair
+                variant="stack"
+                primaryHref={`/gestoria/solicitar/${servicio}`}
+                primaryLabel={`Solicitar ahora — ${data.precio} €`}
+              />
               <Link
                 href="#gestor-daniel"
                 className="block w-full text-center border border-gold-500 text-gold-600 hover:bg-cream-100 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
                 Hablar con Daniel
-              </Link>
-              <Link
-                href="/gestoria"
-                className="block w-full text-center border border-gray-300 text-gray-600 hover:bg-gray-50 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
-              >
-                Ver todos los servicios
               </Link>
             </div>
           </div>
@@ -1229,6 +1226,8 @@ export default async function ServicioGestoriaPage({
           description="En menos de 48h tienes el documento listo para firmar. Redactado por expertos, sin plantillas genéricas."
           primaryHref={`/gestoria/solicitar/${servicio}`}
           primaryLabel={`Solicitar — ${data.precio} € (IVA incl.)`}
+          secondaryHref={GESTORIA_SOLICITAR_HUB}
+          secondaryLabel={GESTORIA_NAV_SOLICITAR_LABEL_MOBILE}
           imageSrc={visuals.cta.src}
           imageAlt={visuals.cta.alt}
           imagePosition={visuals.imagePosition}

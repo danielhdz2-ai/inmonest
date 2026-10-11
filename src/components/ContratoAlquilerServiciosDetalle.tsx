@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { CheckCircle } from '@/components/ui/Icons'
+import GestoriaContratarCtaPair from '@/components/GestoriaContratarCtaPair'
 import {
   getAlquilerContratoServicioMeta,
   type AlquilerContratoModuloVariant,
@@ -146,12 +147,11 @@ export default function ContratoAlquilerServiciosDetalle({
           <p className="mb-6 text-gray-600">
             ¿Listo para formalizar el alquiler en {ciudadNombre}? Contrata online y tu gestor empieza en 24 h.
           </p>
-          <Link
-            href={solicitarHref}
-            className="inline-block rounded-xl bg-gold-500 px-8 py-3.5 text-sm font-bold text-white shadow-md transition hover:bg-gold-600"
-          >
-            {meta.ctaLabel} — {meta.precio} € →
-          </Link>
+          <GestoriaContratarCtaPair
+            variant="inline"
+            primaryHref={solicitarHref}
+            primaryLabel={`${meta.ctaLabel} — ${meta.precio} € →`}
+          />
         </div>
       </div>
     </section>

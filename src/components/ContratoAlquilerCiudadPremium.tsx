@@ -20,6 +20,7 @@ import {
   type ContratoAlquilerPremiumConfig,
 } from '@/lib/contrato-alquiler-premium-config'
 import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
+import GestoriaContratarCtaPair from '@/components/GestoriaContratarCtaPair'
 import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 
 const GESTORIA_HUB_POR_CIUDAD: Record<string, string> = {
@@ -93,13 +94,12 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
               <span className="text-white/50 text-xs ml-2">IVA incluido · 48h</span>
             </div>
           </div>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href={solicitarHref}
-              className="inline-flex items-center justify-center bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-5 rounded-xl transition-colors text-sm"
-            >
-              Pedir contrato — {precio}€
-            </Link>
+          <div className="flex flex-wrap items-center gap-3">
+            <GestoriaContratarCtaPair
+              variant="hero-dark"
+              primaryHref={solicitarHref}
+              primaryLabel={`Pedir contrato — ${precio}€`}
+            />
             <a
               href="#gestor-daniel"
               className="inline-flex items-center justify-center border border-white/40 text-white hover:bg-white/10 font-semibold py-3 px-5 rounded-xl transition-colors text-sm"
@@ -160,24 +160,17 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
                   </li>
                 ))}
               </ul>
-              <Link
-                href={solicitarHref}
-                className="block w-full text-center bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-4 rounded-xl transition-colors"
-              >
-                Pedir contrato ahora — {precio} €
-              </Link>
+              <GestoriaContratarCtaPair
+                variant="stack"
+                primaryHref={solicitarHref}
+                primaryLabel={`Pedir contrato ahora — ${precio} €`}
+              />
               <a
                 href="#gestor-daniel"
                 className="block w-full text-center border border-gold-500/60 text-gold-600 hover:bg-cream-100 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
               >
                 Hablar con Daniel
               </a>
-              <Link
-                href="/gestoria"
-                className="block w-full text-center border border-gray-300 text-gray-600 hover:bg-gray-50 font-medium py-2.5 px-4 rounded-xl transition-colors text-sm"
-              >
-                Ver todos los contratos
-              </Link>
             </div>
           </div>
         </section>
@@ -346,13 +339,12 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
             Cada día sin un LAU bien hecho es una apuesta. Pide el tuyo ahora: <strong className="text-white">menos de 48 h</strong> en tu correo, firma
             digital y cláusulas al día (propietario e inquilino).
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href={solicitarHref}
-              className="bg-gold-500 hover:bg-gold-600 text-white font-bold py-3 px-8 rounded-xl transition-colors"
-            >
-              Lo quiero ya — {precio} € <span className="text-xs font-normal opacity-90">(IVA incl.)</span>
-            </Link>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <GestoriaContratarCtaPair
+              variant="inline"
+              primaryHref={solicitarHref}
+              primaryLabel={`Lo quiero ya — ${precio} € (IVA incl.)`}
+            />
             <a
               href="#gestor-daniel"
               className="border border-white/20 text-white hover:bg-white/10 font-medium py-3 px-8 rounded-xl transition-colors"
