@@ -15,6 +15,7 @@ import GestoriaPostPagoActivacion from '@/components/gestoria-portal/GestoriaPos
 import GestoriaPanelEmptyState from '@/components/gestoria-portal/GestoriaPanelEmptyState'
 import GestoriaPrimerAccesoOnboarding, {
   isGestoriaOnboardingDone,
+  markGestoriaOnboardingDone,
 } from '@/components/gestoria-portal/GestoriaPrimerAccesoOnboarding'
 import type { PartesFormData } from '@/components/GestoriaPartesForm'
 import type { GestoriaContrato, GestoriaPortalSection, GestoriaUserDoc } from '@/lib/gestoria-portal-types'
@@ -114,7 +115,7 @@ export default function GestoriaPortalClient({
   }, [])
 
   useEffect(() => {
-    const fallback: GestoriaPortalSection = hasPaidService ? 'inicio' : 'servicios'
+    const fallback: GestoriaPortalSection = hasPaidService ? 'expediente' : 'servicios'
     const v = parseSection(searchParams.get('v'), fallback)
     setSection(v)
   }, [searchParams, hasPaidService])
@@ -131,6 +132,27 @@ export default function GestoriaPortalClient({
       setOnboardingOpen(true)
     }
   }, [hasPaidService, primaryLead, postPagoOpen, searchParams])
+
+  // Cliente con pago: no onboarding; entrada directa al expediente (documentación)
+  useEffect(() => {
+    if (!hasPaidService) return
+    setOnboardingOpen(false)
+    markGestoriaOnboardingDone()
+    const url = new URL(window.location.href)
+    let changed = false
+    if (url.searchParams.get('onboarding') === '1') {
+      url.searchParams.delete('onboarding')
+      changed = true
+    }
+    if (changed) window.history.replaceState({}, '', url.toString())
+  }, [hasPaidService])
+
+  useEffect(() => {
+    if (!hasPaidService || postPagoOpen) return
+    if (searchParams.get('session_id')?.startsWith('cs_')) return
+    if (searchParams.get('v')) return
+    navigate('expediente')
+  }, [hasPaidService, postPagoOpen, navigate, searchParams])
 
   // Sin pago confirmado → abrir catálogo (Contratar más)
   useEffect(() => {

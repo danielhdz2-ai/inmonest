@@ -12,6 +12,7 @@ import {
 } from '@/lib/gestoria-portal-types'
 import { GESTORIA_SOLICITAR_HUB } from '@/lib/gestoria-nav'
 import { GESTORIA_PHONE_TEL, GESTORIA_PHONE_WA } from '@/lib/gestoria-contact'
+import GestoriaPortalIcon from '@/components/gestoria-portal/GestoriaPortalIcon'
 
 type Props = {
   displayName: string
@@ -81,7 +82,9 @@ export default function GestoriaPortalShell({
                     : 'text-white/70 hover:bg-white/5 hover:text-white border border-transparent'
                 }`}
               >
-                <span className="text-lg w-6 text-center flex-shrink-0">{item.icon}</span>
+                <span className="w-6 flex-shrink-0 flex items-center justify-center text-[#f4d98a]">
+                  <GestoriaPortalIcon name={item.iconKey} size={20} />
+                </span>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-semibold truncate">{item.label}</p>
                   <p className="text-[10px] text-white/40 truncate">{item.desc}</p>
@@ -184,7 +187,7 @@ export default function GestoriaPortalShell({
                     active ? 'text-[#f4d98a]' : 'text-white/50'
                   }`}
                 >
-                  <span className="text-base leading-none">{item.icon}</span>
+                  <GestoriaPortalIcon name={item.iconKey} size={22} className={active ? 'text-[#f4d98a]' : 'text-current'} />
                   <span className="text-[9px] sm:text-[10px] font-semibold truncate w-full text-center leading-tight">
                     {item.shortLabel}
                   </span>
@@ -204,7 +207,7 @@ export default function GestoriaPortalShell({
               aria-haspopup="true"
               aria-label="Más secciones"
             >
-              <span className="text-lg leading-none font-bold">⋯</span>
+              <GestoriaPortalIcon name="more" size={22} className="text-current" />
               <span className="text-[9px] sm:text-[10px] font-semibold truncate w-full text-center">Más</span>
               {moreActive && !mobileMoreOpen && (
                 <span className="absolute top-1 right-2 h-2 w-2 rounded-full bg-gold-500" />
@@ -226,7 +229,9 @@ export default function GestoriaPortalShell({
                       activeSection === item.id ? 'bg-gold-500/15 text-[#f4d98a]' : 'text-white/80'
                     }`}
                   >
-                    <span className="text-lg w-6 text-center">{item.icon}</span>
+                    <span className="w-6 flex items-center justify-center text-[#f4d98a]">
+                      <GestoriaPortalIcon name={item.iconKey} size={20} />
+                    </span>
                     <div>
                       <p className="text-sm font-semibold">{item.label}</p>
                       <p className="text-[10px] text-white/40">{item.desc}</p>

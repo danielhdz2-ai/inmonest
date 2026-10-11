@@ -1,6 +1,8 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import type { GestoriaPortalIconKey } from '@/lib/gestoria-portal-types'
+import GestoriaPortalIcon from '@/components/gestoria-portal/GestoriaPortalIcon'
 
 type TimelineItem = {
   id: string
@@ -8,7 +10,8 @@ type TimelineItem = {
   label: string
   description?: string
   date: string
-  icon: string
+  iconKey?: GestoriaPortalIconKey
+  icon?: string
 }
 
 type Props = {
@@ -95,8 +98,12 @@ export default function GestoriaExpedienteTimeline({ requestId, compact = false 
             {idx < items.length - 1 && (
               <span className="absolute left-[15px] top-8 bottom-0 w-px bg-gray-200" aria-hidden />
             )}
-            <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-cream-100 border border-[#f0dfa0] text-sm">
-              {item.icon}
+            <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-cream-100 border border-[#f0dfa0] text-[#5c4a1f]">
+              {item.iconKey ? (
+                <GestoriaPortalIcon name={item.iconKey} size={16} />
+              ) : (
+                <span className="text-xs font-semibold">{item.icon ?? '•'}</span>
+              )}
             </span>
             <div className="min-w-0 flex-1 pt-0.5">
               <p className="text-sm font-semibold text-gray-900 leading-snug">{item.label}</p>

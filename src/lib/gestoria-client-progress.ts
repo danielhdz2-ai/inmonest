@@ -1,10 +1,10 @@
 import { getRequiredDocsForService, type ServiceDocRequirement } from '@/lib/gestoria-service-docs'
 
 export const WORKFLOW_STEPS = [
-  { n: 1, label: 'Pago recibido', desc: 'Tu pago ha sido confirmado', icon: '💳' },
-  { n: 2, label: 'Documentación', desc: 'Sube los documentos de tu servicio', icon: '📋' },
-  { n: 3, label: 'En elaboración', desc: 'Nuestro equipo redacta tu contrato', icon: '⚙️' },
-  { n: 4, label: 'Entregado', desc: 'Contrato listo para descargar', icon: '✅' },
+  { n: 1, label: 'Pago recibido', desc: 'Tu pago ha sido confirmado', iconKey: 'workflow-pay' as const },
+  { n: 2, label: 'Documentación', desc: 'Sube los documentos de tu servicio', iconKey: 'workflow-docs' as const },
+  { n: 3, label: 'En elaboración', desc: 'Nuestro equipo redacta tu contrato', iconKey: 'workflow-edit' as const },
+  { n: 4, label: 'Entregado', desc: 'Contrato listo para descargar', iconKey: 'workflow-done' as const },
 ] as const
 
 export type UserDocRecord = {

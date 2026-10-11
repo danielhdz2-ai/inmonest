@@ -8,6 +8,7 @@ import GestoriaExtraUpload from '@/components/GestoriaExtraUpload'
 import GestoriaPartesForm, { type PartesFormData } from '@/components/GestoriaPartesForm'
 import { MAX_UPLOAD_BYTES, formatFileSize, validateUploadFile } from '@/lib/gestoria-upload'
 import GestoriaExpedienteTimeline from '@/components/gestoria-portal/GestoriaExpedienteTimeline'
+import GestoriaPortalIcon from '@/components/gestoria-portal/GestoriaPortalIcon'
 import { resolveGestorForRequest } from '@/lib/gestoria-gestor'
 import {
   WORKFLOW_STEPS,
@@ -200,7 +201,17 @@ export default function GestoriaPaidPanel({
                       : 'bg-white border border-gray-100 opacity-60'
                 }`}
               >
-                <div className="text-base mb-0.5">{done ? '✓' : step.icon}</div>
+                <div className="flex justify-center mb-0.5 min-h-[22px] items-center">
+                  {done ? (
+                    <span className="text-gold-700 font-bold">✓</span>
+                  ) : (
+                    <GestoriaPortalIcon
+                      name={step.iconKey}
+                      size={20}
+                      className={active ? 'text-gold-700' : 'text-gray-400'}
+                    />
+                  )}
+                </div>
                 <p className={`text-[10px] sm:text-[11px] font-bold leading-tight ${active ? 'text-gold-700' : done ? 'text-gold-800' : 'text-gray-500'}`}>
                   {step.label}
                 </p>

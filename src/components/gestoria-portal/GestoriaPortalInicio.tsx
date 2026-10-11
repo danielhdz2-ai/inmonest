@@ -5,7 +5,8 @@ import type { GestoriaContrato, GestoriaUserDoc } from '@/lib/gestoria-portal-ty
 import { computeGestoriaProgress, WORKFLOW_STEPS } from '@/lib/gestoria-client-progress'
 import { resolveGestorForRequest } from '@/lib/gestoria-gestor'
 import { isPaidStatus } from '@/lib/gestoria-leads'
-import type { GestoriaPortalSection } from '@/lib/gestoria-portal-types'
+import type { GestoriaPortalIconKey, GestoriaPortalSection } from '@/lib/gestoria-portal-types'
+import GestoriaPortalIcon from '@/components/gestoria-portal/GestoriaPortalIcon'
 
 type Props = {
   displayName: string
@@ -164,7 +165,17 @@ export default function GestoriaPortalInicio({
                         : 'border-gray-100 bg-gray-50 opacity-60'
                   }`}
                 >
-                  <div className="text-xl mb-1">{done ? '✓' : step.icon}</div>
+                  <div className="flex justify-center mb-1 min-h-[24px] items-center">
+                    {done ? (
+                      <span className="text-gold-700 font-bold text-lg">✓</span>
+                    ) : (
+                      <GestoriaPortalIcon
+                        name={step.iconKey}
+                        size={22}
+                        className={active ? 'text-gold-700' : 'text-gray-400'}
+                      />
+                    )}
+                  </div>
                   <p className={`text-[11px] font-bold leading-tight ${active ? 'text-gold-700' : done ? 'text-gold-800' : 'text-gray-500'}`}>
                     {step.label}
                   </p>
@@ -193,23 +204,23 @@ export default function GestoriaPortalInicio({
 
       {/* Acciones rápidas */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-        {[
-          { id: 'expediente' as const, label: 'Subir documentos', icon: '📤', accent: 'bg-amber-500' },
-          { id: 'documentos' as const, label: 'Mis documentos', icon: '🗂️', accent: 'bg-rose-500' },
-          { id: 'inmueble' as const, label: 'Datos inmueble', icon: '🏠', accent: 'bg-sky-600' },
-          { id: 'contratos' as const, label: 'Mis contratos', icon: '📄', accent: 'bg-gold-600' },
-          { id: 'servicios' as const, label: 'Contratar más', icon: '✦', accent: 'bg-violet-600' },
-        ].map((action) => (
+        {(
+          [
+            { id: 'expediente' as const, label: 'Subir documentos', iconKey: 'upload' as GestoriaPortalIconKey },
+            { id: 'documentos' as const, label: 'Mis documentos', iconKey: 'documentos' as GestoriaPortalIconKey },
+            { id: 'inmueble' as const, label: 'Datos inmueble', iconKey: 'inmueble' as GestoriaPortalIconKey },
+            { id: 'contratos' as const, label: 'Mis contratos', iconKey: 'contratos' as GestoriaPortalIconKey },
+            { id: 'servicios' as const, label: 'Contratar más', iconKey: 'servicios' as GestoriaPortalIconKey },
+          ] as const
+        ).map((action) => (
           <button
             key={action.id}
             type="button"
             onClick={() => onNavigate(action.id)}
             className="rounded-2xl border border-gray-200 bg-white p-4 text-left shadow-sm hover:shadow-md hover:border-gold-400/50 transition-all touch-manipulation min-h-[96px]"
           >
-            <span
-              className={`inline-flex h-10 w-10 items-center justify-center rounded-xl text-lg text-white shadow-sm ${action.accent}`}
-            >
-              {action.icon}
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#e8d48a]/60 bg-[#faf6eb] text-[#5c4a1f]">
+              <GestoriaPortalIcon name={action.iconKey} size={22} />
             </span>
             <p className="text-sm font-bold text-gray-900 mt-3 leading-tight">{action.label}</p>
           </button>

@@ -18,8 +18,8 @@ export async function resolvePostLoginRedirect(
     const admin = createAdminClient()
     const contratos = await fetchGestoriaOrdersForUser(admin, userId, email)
     const hasPaid = contratos.some((c) => isPaidStatus(c.status, c.paid_at))
-    if (hasPaid) return buildGestoriaPanelUrl()
-    return buildGestoriaPanelUrl({ v: 'servicios' })
+    if (hasPaid) return buildGestoriaPanelUrl({ v: 'expediente' })
+    return buildGestoriaPanelUrl({ v: 'servicios', onboarding: true })
   } catch (err) {
     console.error('[post-login-redirect]', err)
   }

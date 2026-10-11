@@ -13,11 +13,14 @@ export function buildGestoriaPanelUrl(params?: {
   pago?: boolean
   /** Sección del panel (p. ej. servicios = Contratar más) */
   v?: string
+  /** Modal onboarding primer acceso (solo usuarios sin pago) */
+  onboarding?: boolean
 }) {
   const q = new URLSearchParams()
   if (params?.lead) q.set('lead', '1')
   if (params?.pago) q.set('pago', '1')
   if (params?.v) q.set('v', params.v)
+  if (params?.onboarding) q.set('onboarding', '1')
   const qs = q.toString()
   return `/mi-cuenta/contratos${qs ? `?${qs}` : ''}`
 }

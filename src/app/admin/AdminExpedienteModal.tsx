@@ -304,7 +304,7 @@ export default function AdminExpedienteModal({
                           }`}
                           title={`Marcar paso ${s.n}`}
                         >
-                          <div className="text-base">{done ? '✓' : s.icon}</div>
+                          <div className="text-base font-semibold tabular-nums">{done ? '✓' : s.n}</div>
                           <p className="text-[9px] font-bold leading-tight mt-0.5">{s.label}</p>
                         </button>
                       )

@@ -50,7 +50,7 @@ export async function GET(req: NextRequest) {
     step: t.step,
     label: t.label,
     date: t.date,
-    icon: WORKFLOW_STEPS.find((s) => s.n === t.step)?.icon ?? '•',
+    iconKey: WORKFLOW_STEPS.find((s) => s.n === t.step)?.iconKey ?? 'workflow-docs',
   }))
 
   const activity = await fetchGestoriaActivity(requestId)
@@ -71,7 +71,7 @@ export async function GET(req: NextRequest) {
       label: w.label,
       description: `Paso ${w.step}/4 completado`,
       date: w.date!,
-      icon: w.icon,
+      iconKey: w.iconKey,
     })),
     ...events.map((e) => ({
       id: e.id,
