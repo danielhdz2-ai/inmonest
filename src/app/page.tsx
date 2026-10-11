@@ -122,7 +122,7 @@ export default function Home() {
         className="py-16 sm:py-20 bg-white"
         eyebrow="Propuesta de valor"
         title="¿Por qué Inmonest?"
-        description="Gestoría inmobiliaria online con contratos claros, plazos cortos y precio cerrado."
+        description="Alquiler de larga duración, arras y compraventa con gestores expertos, plazos cortos y precio cerrado."
       >
         <BentoVentajas />
       </Section>

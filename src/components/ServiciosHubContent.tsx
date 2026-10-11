@@ -86,8 +86,8 @@ export default function ServiciosHubContent({ mode = 'info' }: Props) {
       {/* HERO */}
       <section className="relative min-h-0 py-12 sm:min-h-[420px] sm:py-0 sm:h-[520px] overflow-hidden">
         <Image
-          src={BRAND_IMAGES.gestoria.src}
-          alt={BRAND_IMAGES.gestoria.alt}
+          src={BRAND_IMAGES.serviciosHub.src}
+          alt={BRAND_IMAGES.serviciosHub.alt}
           fill
           className="object-cover"
           priority

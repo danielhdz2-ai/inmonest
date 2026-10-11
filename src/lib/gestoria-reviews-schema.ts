@@ -11,6 +11,34 @@ export const GESTORIA_GOOGLE_AGGREGATE = {
 /** Muestra de reseñas reales para web + schema Review (no hace falta listar las 20). */
 export const GESTORIA_GOOGLE_REVIEWS = [
   {
+    author: 'Kike1975 Rokila',
+    datePublished: '2026-09-08',
+    reviewBody:
+      'Totalmente recomendable, Daniel es un gran profesional que me ayudó con mi trámite, dando un gran servicio y un trato humano, 100 % recomendable.',
+  },
+  {
+    author: 'Seila Rus',
+    datePublished: '2026-08-12',
+    reviewBody:
+      'Un trato estupendo, súper recomendable. Me ayudaron mucho con la gestión de mi alquiler y fue todo genial.',
+  },
+  {
+    author: 'NATALIA CIRO GALINDO',
+    datePublished: '2026-08-05',
+    reviewBody:
+      'Excelente experiencia de principio a fin. Siempre estuvieron atentos a mis dudas, fueron transparentes en todo el proceso y me ayudaron a encontrar la vivienda que buscaba. Sin duda volvería a confiar en ellos y los recomiendo al 100 %.',
+  },
+  {
+    author: 'Marisol',
+    datePublished: '2026-08-18',
+    reviewBody: 'Muy cómodo y muy bien asesoramiento. Lo recomiendo.',
+  },
+  {
+    author: 'Danii Rua',
+    datePublished: '2026-08-22',
+    reviewBody: 'Servicio de 10, lo recomiendo.',
+  },
+  {
     author: 'Javier Alegre',
     datePublished: '2026-09-19',
     reviewBody:

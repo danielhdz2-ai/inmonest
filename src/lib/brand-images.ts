@@ -1,12 +1,18 @@
 /**
  * Imágenes principales de marca Inmonest.
  * promo     → portal / búsqueda / urbano
- * promo1    → gestoría / contratos / confianza cercana
  * promo3    → familia / CTA / confianza social
  */
+const GESTORIA_SERVICIOS_HERO = {
+  src: '/familia-reunida-hogar-acogedor.jpg',
+  alt: 'Familia reunida en un hogar acogedor — gestoría inmobiliaria Inmonest',
+} as const
+
 export const BRAND_IMAGES = {
   portal: { src: '/promo.png', alt: 'Personas buscando vivienda en la ciudad' },
-  gestoria: { src: '/promo1.png', alt: 'Familia revisando documentación inmobiliaria' },
+  /** Hero /gestoria, home gestoría y catálogo /servicios */
+  gestoria: GESTORIA_SERVICIOS_HERO,
+  serviciosHub: GESTORIA_SERVICIOS_HERO,
   familia: { src: '/promo3.png', alt: 'Familia en su hogar' },
 } as const
 

@@ -6,8 +6,11 @@ import {
 export type GoogleReviewCard = {
   author: string
   time: string
+  /** Fecha corta dd/mm/yyyy para tarjetas estilo Google */
+  dateLabel: string
   text: string
   tag: string
+  initial: string
 }
 
 function inferTag(body: string): string {
@@ -17,6 +20,22 @@ function inferTag(body: string): string {
   if (b.includes('acompañamiento') || b.includes('compra')) return 'Compra / acompañamiento'
   if (b.includes('profesional') || b.includes('recomiendo')) return 'Gestoría inmobiliaria'
   return 'Gestoría Inmonest'
+}
+
+function formatDateLabel(isoDate: string): string {
+  const d = new Date(isoDate)
+  if (Number.isNaN(d.getTime())) return ''
+  const dd = String(d.getDate()).padStart(2, '0')
+  const mm = String(d.getMonth() + 1).padStart(2, '0')
+  return `${dd}/${mm}/${d.getFullYear()}`
+}
+
+function authorInitial(name: string): string {
+  const t = name.trim()
+  if (!t) return '?'
+  const parts = t.split(/\s+/).filter(Boolean)
+  if (parts.length >= 2) return (parts[0]![0]! + parts[1]![0]!).toUpperCase()
+  return t.slice(0, 2).toUpperCase()
 }
 
 function formatRelativeEs(isoDate: string): string {
@@ -38,8 +57,10 @@ export function getGoogleReviewsForDisplay(limit?: number): GoogleReviewCard[] {
   const list = GESTORIA_GOOGLE_REVIEWS.map((r) => ({
     author: r.author,
     time: formatRelativeEs(r.datePublished),
+    dateLabel: formatDateLabel(r.datePublished),
     text: r.reviewBody,
     tag: inferTag(r.reviewBody),
+    initial: authorInitial(r.author),
   }))
   return limit ? list.slice(0, limit) : [...list]
 }

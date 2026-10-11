@@ -91,7 +91,7 @@ export default function OpinionesPage() {
         </div>
       </section>
 
-      <GestoriaGoogleReviewsSection limit={allReviews.length} showAllLink={false} />
+      <GestoriaGoogleReviewsSection layout="widget" limit={allReviews.length} showAllLink={false} />
 
       <section className="max-w-3xl mx-auto px-4 pb-16 text-center text-sm text-gray-500">
         <p>

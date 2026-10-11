@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import GoogleReviewsWidget from '@/components/GoogleReviewsWidget'
 import { Section } from '@/components/ui/Section'
 import { TestimonialCard } from '@/components/ui/TestimonialCard'
 import { Star } from '@/components/ui/Icons'
@@ -19,14 +20,27 @@ type Props = {
   /** Título de sección */
   title?: string
   showAllLink?: boolean
+  /** Carrusel estilo Google (home) o grid clásico */
+  layout?: 'grid' | 'widget'
 }
 
 export default function GestoriaGoogleReviewsSection({
   limit = 4,
   title = 'Lo que dicen nuestros clientes',
   showAllLink = true,
+  layout = 'grid',
 }: Props) {
   const reviews = getGoogleReviewsForDisplay(limit)
+
+  if (layout === 'widget') {
+    return (
+      <section className="py-16 sm:py-20 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <GoogleReviewsWidget reviews={reviews} title={title} />
+        </div>
+      </section>
+    )
+  }
 
   return (
     <Section
