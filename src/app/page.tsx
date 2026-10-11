@@ -8,13 +8,15 @@ import CarruselServicios from '@/components/CarruselServicios'
 import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
 import HomeTrustStrip from '@/components/home/HomeTrustStrip'
 import HomeHowItWorks from '@/components/home/HomeHowItWorks'
+import HomeIntentSelector from '@/components/home/HomeIntentSelector'
+import HomeHeroCtas from '@/components/home/HomeHeroCtas'
+import HomeVideoPreload from '@/components/home/HomeVideoPreload'
 import HomeTestimonials from '@/components/home/HomeTestimonials'
 import HomeDiscoverGrid from '@/components/home/HomeDiscoverGrid'
 import HomePersonaIntents from '@/components/home/HomePersonaIntents'
 import HomeLocalPresencia from '@/components/home/HomeLocalPresencia'
-import HomeBottomGestoriaHub from '@/components/home/HomeBottomGestoriaHub'
+import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
 import { Badge } from '@/components/ui/Badge'
-import { Button } from '@/components/ui/Button'
 import { Section } from '@/components/ui/Section'
 import { CtaBand } from '@/components/ui/CtaBand'
 
@@ -174,6 +176,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      <HomeVideoPreload />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -215,14 +218,7 @@ export default function Home() {
               LAU, temporada, habitación, arras y packs hasta escritura: redactados por gestores, precio cerrado
               desde 61 € y panel de cliente online.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/gestoria/solicitar" variant="primary" className="rounded-full">
-                Solicitar contrato
-              </Button>
-              <Button href="/gestoria/contrato-alquiler" variant="ghost" className="rounded-full">
-                Ver precio y qué incluye
-              </Button>
-            </div>
+            <HomeHeroCtas />
             <p className="mt-6 text-sm text-white/60">
               También arras, habitación, revisión legal y packs compraventa →{' '}
               <Link href="/servicios" className="text-gold-300 hover:text-gold-200 underline underline-offset-2">
@@ -235,6 +231,7 @@ export default function Home() {
 
       <HomeTrustStrip />
       <HomeHowItWorks />
+      <HomeIntentSelector />
       <HomePersonaIntents />
       <HomeDiscoverGrid />
       <CarruselServicios />
@@ -282,7 +279,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-6">
         <CtaBand
           eyebrow="Alquiler, arras y compraventa"
           title={<>¿Compras, vendes o alquilas entre particulares?</>}
@@ -291,13 +288,17 @@ export default function Home() {
           primaryLabel="Contratar online"
           secondaryHref="/opiniones"
           secondaryLabel="Ver opiniones en Google"
-          imageSrc="/gestoria10.jpg"
-          imageAlt="Familia firmando documentación inmobiliaria con gestoría Inmonest"
+          imageSrc="/gestor-experto-oficina.jpg"
+          imageAlt="Gestor inmobiliario Inmonest en despacho profesional"
           tone="warm"
         />
       </section>
 
-      <HomeBottomGestoriaHub />
+      <GestoriaPanelShowcase
+        servicioLabel="tu contrato o pack de gestoría"
+        className="bg-cream-100 border-t border-gold-300/25 border-b-0 py-10 sm:py-12"
+        showFeatureCards={false}
+      />
     </div>
   )
 }

@@ -4,6 +4,7 @@ import Navbar from '@/components/NavbarServer'
 import { Scale, Shield, Zap } from '@/components/ui/Icons'
 import PageHeroImage from '@/components/PageHeroImage'
 import SolicitarFormClient from './SolicitarFormClient'
+import GestoriaSolicitarSteps from '@/components/gestoria/GestoriaSolicitarSteps'
 import { GESTORIA_SERVICIOS } from '@/lib/gestoria-catalogo'
 import {
   GESTORIA_CHECKOUT_ROBOTS,
@@ -101,6 +102,7 @@ export default async function SolicitarServicioPage({
       <Navbar />
       <div className="min-h-screen bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+          <GestoriaSolicitarSteps />
           <PageHeroImage
             src="/gestoria1.jpg"
             alt={`Solicitar ${data.nombre}`}

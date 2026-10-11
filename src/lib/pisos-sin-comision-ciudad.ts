@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { PORTAL_LEGACY_ROBOTS } from '@/lib/portal-legacy-seo'
 import { getAlquilerParticularesCiudadDatos } from '@/lib/alquiler-particulares-ciudad-datos'
 import { getLandingsCiudadPremiumNombre } from '@/lib/landings-ciudad-premium'
 
@@ -24,6 +25,7 @@ export function buildPisosSinComisionMetadata(ciudad: PisosSinComisionCiudad): M
     title: `Pisos particulares ${nombre} sin comisión — gestoría LAU | Inmonest`,
     description: `Ya no buscamos anuncios en ${nombre}: gestoría para alquiler LAU, temporada, habitación y compraventa entre particulares. Contratos desde 145 €, 48 h.`,
     alternates: { canonical: `${BASE_URL}/${ciudad}/pisos-particulares-sin-comision` },
+    robots: PORTAL_LEGACY_ROBOTS,
     openGraph: {
       title: `Particulares en ${nombre} — contratos, no comisiones de agencia`,
       description: `Transición a servicio de gestoría inmobiliaria online en ${nombre}.`,

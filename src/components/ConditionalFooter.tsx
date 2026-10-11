@@ -19,9 +19,7 @@ export default function ConditionalFooter() {
   if (isPlatform) return null
   return (
     <>
-      <div className="max-lg:hidden">
-        <SellosConfianza />
-      </div>
+      <SellosConfianza />
       <Footer />
     </>
   )

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { cn } from '@/lib/cn'
 import { GESTOR_DANIEL_HERNANDEZ } from '@/lib/gestores-inmonest'
 
 type ClausulaMock = {
@@ -25,6 +26,8 @@ type GestoriaPanelShowcaseProps = {
   clausulas?: readonly ClausulaMock[]
   timeline?: readonly TimelineStep[]
   className?: string
+  /** Tarjetas foto bajo el mock (desactivar en home para un cierre más limpio). */
+  showFeatureCards?: boolean
 }
 
 const MOCK_CLIENT = {
@@ -122,9 +125,10 @@ export default function GestoriaPanelShowcase({
   clausulas = MOCK_CLAUSULAS,
   timeline = MOCK_TIMELINE,
   className = '',
+  showFeatureCards = true,
 }: GestoriaPanelShowcaseProps) {
   return (
-    <section className={`py-16 px-4 bg-cream-50 border-y border-gold-300/30 ${className}`}>
+    <section className={cn('py-12 sm:py-14 px-4 bg-cream-50 border-y border-gold-300/30', className)}>
       <div className="max-w-6xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           <div>
@@ -283,46 +287,48 @@ export default function GestoriaPanelShowcase({
           </div>
         </div>
 
-        <div className="mt-12 grid sm:grid-cols-3 gap-4">
-          {[
-            {
-              src: '/familia3.jpg',
-              alt: 'Familia en proceso de compraventa',
-              titulo: 'Gestor dedicado',
-              desc: 'Un profesional conoce tu caso y responde por teléfono o WhatsApp.',
-            },
-            {
-              src: '/gestoria7.jpg',
-              alt: 'Entrega de contrato inmobiliario',
-              titulo: 'Contrato personalizado',
-              desc: 'PDF adaptado a tu operación, con cláusulas revisadas una a una.',
-            },
-            {
-              src: '/gestora6.jpg',
-              alt: 'Equipo de gestoría revisando documentación',
-              titulo: 'Proceso transparente',
-              desc: 'Cada hito visible en tu panel: pago, docs, redacción y entrega.',
-            },
-          ].map((item) => (
-            <div
-              key={item.titulo}
-              className="group relative overflow-hidden rounded-2xl bg-black min-h-[200px] shadow-lg"
-            >
-              <Image
-                src={item.src}
-                alt={item.alt}
-                fill
-                className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 640px) 100vw, 33vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="font-bold text-white text-sm">{item.titulo}</p>
-                <p className="text-white/70 text-xs mt-1 leading-relaxed">{item.desc}</p>
+        {showFeatureCards && (
+          <div className="mt-12 grid sm:grid-cols-3 gap-4">
+            {[
+              {
+                src: '/familia3.jpg',
+                alt: 'Familia en proceso de compraventa',
+                titulo: 'Gestor dedicado',
+                desc: 'Un profesional conoce tu caso y responde por teléfono o WhatsApp.',
+              },
+              {
+                src: '/gestoria7.jpg',
+                alt: 'Entrega de contrato inmobiliario',
+                titulo: 'Contrato personalizado',
+                desc: 'PDF adaptado a tu operación, con cláusulas revisadas una a una.',
+              },
+              {
+                src: '/gestora6.jpg',
+                alt: 'Equipo de gestoría revisando documentación',
+                titulo: 'Proceso transparente',
+                desc: 'Cada hito visible en tu panel: pago, docs, redacción y entrega.',
+              },
+            ].map((item) => (
+              <div
+                key={item.titulo}
+                className="group relative overflow-hidden rounded-2xl bg-black min-h-[200px] shadow-lg"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  className="object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <p className="font-bold text-white text-sm">{item.titulo}</p>
+                  <p className="text-white/70 text-xs mt-1 leading-relaxed">{item.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )
