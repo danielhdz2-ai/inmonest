@@ -66,15 +66,22 @@ export default function Home() {
 
       <Navbar />
 
-      <section className="relative overflow-hidden min-h-[520px] sm:min-h-[560px] flex items-center">
+      <section className="relative overflow-hidden min-h-[560px] sm:min-h-[620px] lg:min-h-[680px] flex items-center">
         <HeroVideoAutoplay />
         <div className="absolute inset-0 z-0">
           <HomeHeroBackground />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
+        <div
+          className="absolute inset-0 z-[2] bg-gradient-to-r from-black/82 via-black/35 to-transparent"
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 z-[2] bg-gradient-to-t from-black/25 via-transparent to-black/15 pointer-events-none"
+          aria-hidden
+        />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
-          <div className="max-w-2xl">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-16 sm:py-20 lg:py-24">
+          <div className="max-w-xl sm:max-w-lg lg:max-w-xl mr-auto text-left">
             <Badge variant="dark" className="mb-5 normal-case tracking-wide">
               Toda España · entrega en 48 h
             </Badge>

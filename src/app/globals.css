@@ -99,9 +99,16 @@ html {
 /* Hero home: vídeo a pantalla completa (no aplastar con height:auto) */
 .hero-bg-video {
   object-fit: cover;
+  object-position: 72% center;
   width: 100% !important;
   height: 100% !important;
   max-width: none !important;
+}
+
+@media (max-width: 640px) {
+  .hero-bg-video {
+    object-position: 62% center;
+  }
 }
 
 @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {

@@ -1,20 +1,9 @@
-import Image from 'next/image'
+const VIDEO = '/video/gestoria-hero-walking.mp4'
 
-const POSTER = '/gestoria-expertos-calle.jpg'
-const VIDEO = '/video/gestoria-hero-calle.mp4'
-
-/** Fondo del hero home: vídeo en bucle (HTML) + poster accesible. */
+/** Fondo del hero home: vídeo en bucle, encuadrado a la derecha (personas visibles). */
 export default function HomeHeroBackground() {
   return (
-    <div className="absolute inset-0">
-      <Image
-        src={POSTER}
-        alt="Expertos gestores Inmonest — gestoría inmobiliaria online"
-        fill
-        className="object-cover"
-        priority
-        sizes="100vw"
-      />
+    <div className="absolute inset-0 bg-neutral-900">
       <video
         className="hero-bg-video absolute inset-0 z-[1] h-full w-full object-cover"
         autoPlay
@@ -22,11 +11,9 @@ export default function HomeHeroBackground() {
         loop
         playsInline
         preload="auto"
-        poster={POSTER}
         aria-hidden
-      >
-        <source src={VIDEO} type="video/mp4" />
-      </video>
+        src={VIDEO}
+      />
     </div>
   )
 }
