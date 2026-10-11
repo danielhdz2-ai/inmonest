@@ -499,7 +499,7 @@ export default function GestoriaPage() {
             <span className="text-gold-300">desde 61 € en 48 h</span>
           </h1>
           <p className="text-white/85 text-sm sm:text-lg max-w-xl leading-relaxed line-clamp-4 sm:line-clamp-none">
-            Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones.
+            Arras, alquiler LAU y compraventa redactados por gestores expertos. Gestoría online para particulares en toda España.
           </p>
           <MobileGestoriaContactRow
             whatsappMessage="Hola, necesito información sobre gestoría inmobiliaria en Inmonest"

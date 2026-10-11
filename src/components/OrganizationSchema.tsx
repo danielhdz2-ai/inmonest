@@ -1,11 +1,14 @@
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 import { getLegalEntity } from '@/lib/legal-entity'
+import {
+  buildGestoriaAggregateRatingSchema,
+  buildGestoriaReviewSchema,
+} from '@/lib/gestoria-reviews-schema'
+import { GOOGLE_BUSINESS_PHONE_E164 } from '@/lib/google-business'
 
 /**
- * Schema.org Organization + LegalService
- * Marca estructurada para Google Knowledge Panel
- * Mejora credibilidad y visibilidad en resultados de búsqueda
- * Enfoque: Gestoría inmobiliaria digital
+ * Schema.org Organization — gestoría inmobiliaria online (marca Inmonest).
+ * AggregateRating visible en home y /opiniones (reseñas Google verificadas).
  */
 
 export default function OrganizationSchema() {
@@ -16,12 +19,12 @@ export default function OrganizationSchema() {
     '@type': 'Organization',
     '@id': ORGANIZATION_SCHEMA_ID,
     name: 'Inmonest',
-    alternateName: 'Inmonest Gestoría Inmobiliaria',
+    alternateName: ['Inmonest Gestoría Inmobiliaria', 'Inmonest gestoría online'],
     url: 'https://inmonest.com',
     logo: 'https://inmonest.com/logo.png',
     description:
-      'Contratos inmobiliarios desde 61 € en 48 h. Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones.',
-    slogan: 'Contratos inmobiliarios desde 61 € en 48 h',
+      'Gestoría inmobiliaria online para particulares en España. Contrato de alquiler LAU, arras, alquiler temporada y habitación, revisión legal y compraventa integral. Precio cerrado desde 61 €, entrega en 48 h.',
+    slogan: 'Gestoría inmobiliaria online para particulares',
     foundingDate: '2026',
     address: {
       '@type': 'PostalAddress',
@@ -31,6 +34,7 @@ export default function OrganizationSchema() {
       addressCountry: 'ES',
     },
     taxID: legal.nif,
+    telephone: GOOGLE_BUSINESS_PHONE_E164,
     areaServed: {
       '@type': 'Country',
       name: 'España',
@@ -38,15 +42,18 @@ export default function OrganizationSchema() {
     serviceType: [
       'Gestoría inmobiliaria',
       'Redacción contrato de arras',
-      'Redacción contrato de alquiler',
+      'Redacción contrato de alquiler LAU',
       'Revisión legal de contratos',
       'Asesoría jurídica inmobiliaria',
       'Contrato de compraventa',
     ],
     priceRange: '61€ - 687€',
+    aggregateRating: buildGestoriaAggregateRatingSchema(),
+    review: buildGestoriaReviewSchema(),
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',
+      telephone: GOOGLE_BUSINESS_PHONE_E164,
       email: 'hola@inmonest.com',
       availableLanguage: ['Spanish'],
       areaServed: 'ES',
@@ -86,14 +93,6 @@ export default function OrganizationSchema() {
           },
         },
       ],
-    },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: 'https://inmonest.com/gestoria?q={search_term_string}',
-      },
-      'query-input': 'required name=search_term_string',
     },
   }
 

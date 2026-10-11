@@ -8,13 +8,15 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   title: 'Sobre nosotros',
-  description: 'Inmonest es el portal inmobiliario que conecta particulares sin comisiones y ofrece gestoría legal especializada. Conoce nuestra misión, valores y equipo.',
+  description:
+    'Inmonest es gestoría inmobiliaria online para particulares: contratos LAU, arras y compraventa con precio cerrado. Valoración 5.0 en Google. Equipo y misión.',
   alternates: {
     canonical: `${BASE_URL}/sobre-nosotros`,
   },
   openGraph: {
-    title: 'Sobre nosotros',
-    description: 'El portal inmobiliario que conecta particulares sin comisiones y ofrece gestoría legal especializada en derecho inmobiliario.',
+    title: 'Sobre nosotros — Inmonest Gestoría',
+    description:
+      'Gestoría inmobiliaria digital en España. Contratos redactados por expertos, entrega en 48 h, panel de cliente.',
     url: `${BASE_URL}/sobre-nosotros`,
     type: 'website',
     siteName: 'Inmonest',
@@ -30,7 +32,8 @@ export default function SobreNosotrosPage() {
     name: 'Inmonest',
     url: BASE_URL,
     logo: `${BASE_URL}/logo.png`,
-    description: 'Portal inmobiliario que conecta particulares sin comisiones y ofrece gestoría legal especializada en derecho inmobiliario.',
+    description:
+      'Gestoría inmobiliaria online para particulares en España. Contratos LAU, arras y compraventa con gestor asignado.',
     foundingDate: '2024',
     areaServed: {
       '@type': 'Country',
@@ -60,15 +63,16 @@ export default function SobreNosotrosPage() {
                 Quiénes somos
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
-                El portal inmobiliario <span className="text-gold-500">hecho para ti</span>
+                Gestoría inmobiliaria <span className="text-gold-500">para particulares</span>
               </h1>
               <p className="text-xl text-gray-600 mb-6">
-                Inmonest nace de una visión clara: <strong>democratizar el acceso a la vivienda</strong> eliminando 
-                barreras innecesarias y poniendo la tecnología al servicio de las personas.
+                Inmonest nace para que propietarios, inquilinos y compradores{' '}
+                <strong>firmen con seguridad jurídica</strong> sin pagar comisiones de agencia por intermediar
+                la operación.
               </p>
               <p className="text-lg text-gray-600 mb-6">
-                Somos más que un portal inmobiliario. Somos tu aliado en cada paso del proceso: 
-                desde encontrar el piso perfecto hasta firmar el contrato con total seguridad jurídica.
+                Hoy somos gestoría 100 % online: tú encuentras piso, inquilino o comprador; nosotros redactamos
+                el contrato LAU, las arras o el pack de compraventa con entrega en 48 h y panel de seguimiento.
               </p>
               <p className="text-lg text-gray-700 mb-8 bg-amber-50 border-l-4 border-gold-500 p-4 rounded-r-lg">
                 Y cuando tengas dudas — sobre un contrato, una arras o cualquier trámite — 
@@ -117,8 +121,9 @@ export default function SobreNosotrosPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Nuestra misión
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Hacer que alquilar o comprar vivienda sea <strong>transparente, justo y accesible para todos</strong>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Que cualquier particular en España pueda <strong>formalizar alquiler o compraventa</strong> con el
+              mismo nivel de rigor jurídico que una agencia, a precio cerrado y en digital.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-8">
@@ -126,18 +131,18 @@ export default function SobreNosotrosPage() {
               <div className="text-4xl mb-4">🎯</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Nuestra Misión</h3>
               <p className="text-gray-700 leading-relaxed">
-                Empoderar a particulares para que <strong>tomen el control de sus decisiones inmobiliarias</strong> 
-                sin intermediarios que inflen los precios. Queremos que cualquier persona pueda publicar, buscar 
-                y cerrar operaciones inmobiliarias con las mismas herramientas que usan las grandes agencias.
+                Redactar y revisar contratos inmobiliarios con claridad, rapidez y precio transparente. Ayudamos
+                a particulares a evitar plantillas genéricas, cláusulas abusivas y conflictos evitables en fianza,
+                arras o subidas de renta.
               </p>
             </div>
             <div className="bg-orange-50 p-8 rounded-lg border-l-4 border-gold-500">
               <div className="text-4xl mb-4">🚀</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Nuestra Visión</h3>
               <p className="text-gray-700 leading-relaxed">
-                Convertirnos en el <strong>portal inmobiliario de referencia en España</strong> para operaciones 
-                entre particulares, combinando la mejor tecnología (IA, verificación automática, alertas) con 
-                un equipo legal que te protege en cada paso.
+                Ser la <strong>gestoría inmobiliaria online de referencia</strong> para particulares en España:
+                LAU, arras, temporada, habitación y compraventa integral con gestor humano y tecnología al servicio
+                del cliente.
               </p>
             </div>
           </div>

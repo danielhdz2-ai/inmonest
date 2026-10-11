@@ -238,7 +238,10 @@ export default function ParticularesGestoriaCiudadLanding({
         <div className="max-w-4xl mx-auto px-4 py-5 text-sm text-amber-950 leading-relaxed">
           <strong>Inmonest ya no publica ni busca anuncios.</strong> Si alquilas o alquilas en {nombre} como
           particular, nuestro servicio es jurídico: contrato LAU, arras, revisión y panel de cliente — sin
-          comisiones de intermediación inmobiliaria.
+          comisiones de intermediación inmobiliaria.{' '}
+          <Link href="/opiniones" className="underline font-semibold text-amber-900 hover:text-amber-950">
+            Opiniones 5.0 en Google
+          </Link>
         </div>
       </section>
 

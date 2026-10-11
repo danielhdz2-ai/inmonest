@@ -11,6 +11,7 @@ const today = new Date()
 const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: BASE_URL, lastModified: today, changeFrequency: 'daily', priority: 1.0 },
   { url: `${BASE_URL}/gestoria`, lastModified: today, changeFrequency: 'weekly', priority: 0.9 },
+  { url: `${BASE_URL}/opiniones`, lastModified: today, changeFrequency: 'weekly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/contrato-alquiler`, lastModified: today, changeFrequency: 'weekly', priority: 0.95 },
   { url: `${BASE_URL}/servicios`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
   { url: `${BASE_URL}/gestoria/solicitar`, lastModified: today, changeFrequency: 'weekly', priority: 0.88 },

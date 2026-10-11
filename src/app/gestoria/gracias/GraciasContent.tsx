@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import { GOOGLE_REVIEW_SHORT_PATH } from '@/lib/google-business'
 
 export default function GraciasContent() {
   const params = useSearchParams()
@@ -114,6 +115,14 @@ export default function GraciasContent() {
             </div>
           ))}
         </div>
+
+        <p className="text-xs text-gray-400 mb-6 leading-relaxed">
+          Cuando recibas tu contrato, si el servicio te ha ayudado,{' '}
+          <Link href={GOOGLE_REVIEW_SHORT_PATH} className="text-gold-600 font-semibold hover:underline">
+            valora a Inmonest en Google
+          </Link>{' '}
+          — nos ayuda a que más particulares encuentren gestoría de confianza.
+        </p>
 
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link

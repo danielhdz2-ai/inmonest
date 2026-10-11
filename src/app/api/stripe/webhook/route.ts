@@ -149,7 +149,7 @@ export async function POST(req: NextRequest) {
 
               <p style="color:#9ca3af;font-size:12px;text-align:center">¿Tienes dudas? Escríbenos a <a href="mailto:${ADMIN_EMAIL}" style="color:#c9962a">${ADMIN_EMAIL}</a></p>
             </div>
-            <p style="text-align:center;font-size:11px;color:#d1d5db;margin-top:16px">© 2026 Inmonest · Tu portal inmobiliario de confianza</p>
+            <p style="text-align:center;font-size:11px;color:#d1d5db;margin-top:16px">© 2026 Inmonest · Gestoría inmobiliaria online</p>
           </div>
         `,
       })

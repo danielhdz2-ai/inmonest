@@ -37,11 +37,11 @@ export const metadata: Metadata = {
 
   // title.template: todas las subpáginas heredan automáticamente "Título | Inmonest"
   title: {
-    default: 'Inmonest | Contratos inmobiliarios desde 61 € en 48 h',
+    default: 'Inmonest | Gestoría inmobiliaria online para particulares',
     template: '%s | Inmonest',
   },
   description:
-    'Gestoría inmobiliaria online: contrato de alquiler LAU, arras y compraventa desde 61 € en 48 h. Redactados por expertos en toda España.',
+    'Gestoría inmobiliaria online en España: contrato alquiler LAU, arras, temporada y compraventa entre particulares. Precio cerrado, gestor asignado, entrega en 48 h. Valoración 5.0 en Google.',
   keywords: [
     'gestoría inmobiliaria online',
     'contratos de arras',

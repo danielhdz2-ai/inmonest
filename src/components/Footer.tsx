@@ -154,7 +154,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-white/50 max-w-xs leading-relaxed">
-              Tu portal inmobiliario de confianza. Sin comisiones, sin intermediarios.
+              Gestoría inmobiliaria online para particulares. Contratos LAU, arras y compraventa en 48 h.
             </p>
           </div>
 
@@ -192,6 +192,8 @@ export default function Footer() {
               <h3 className="text-xs font-bold uppercase tracking-widest text-gold-500 mb-4">Sobre Inmonest</h3>
               <ul className="space-y-2.5 text-sm text-white/60 mb-6">
                 <li><Link href="/sobre-nosotros" className="hover:text-gold-300 transition-colors">Quiénes somos</Link></li>
+                <li><Link href="/opiniones" className="hover:text-gold-300 transition-colors">Opiniones (Google 5.0)</Link></li>
+                <li><Link href="/resena" className="hover:text-gold-300 transition-colors">Dejar reseña</Link></li>
                 <li><Link href="/blog" className="hover:text-gold-300 transition-colors">Blog inmobiliario</Link></li>
                 <li><FooterGestoriaContact /></li>
                 <li>
@@ -225,7 +227,7 @@ export default function Footer() {
 
           {/* ── Copyright ─────────────────────────────────────────── */}
           <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/35">
-            <span>© 2026 Inmonest — Tu portal inmobiliario de confianza</span>
+            <span>© 2026 Inmonest — Gestoría inmobiliaria online</span>
             <span className="hidden sm:block">Hecho en España</span>
           </div>
 

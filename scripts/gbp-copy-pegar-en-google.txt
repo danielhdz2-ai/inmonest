@@ -1,0 +1,26 @@
+=== INMONEST — copiar en Google Business Profile ===
+(Después de subir tus 5 fotos de gestoría)
+
+DESCRIPCIÓN (copiar desde src/lib/google-business.ts → GBP_DESCRIPTION)
+
+SERVICIOS (uno por línea en el panel):
+Ver lista GBP_SERVICES en src/lib/google-business.ts
+
+PREGUNTAS Y RESPUESTAS:
+Ver GBP_QA en src/lib/google-business.ts
+
+WEB PRINCIPAL:
+https://inmonest.com/gestoria
+
+ENLACE RESEÑA (para clientes):
+https://inmonest.com/resena
+(o g.page/r/CTKk9C4H6GgPEBM/review)
+
+CATEGORÍA PRINCIPAL:
+Gestoría
+
+TELÉFONO:
+745 02 28 62
+
+PUBLICACIÓN SEMANAL (plantilla):
+«Contrato de alquiler LAU desde 145 € · entrega 48 h · gestor asignado. Solicita en inmonest.com/gestoria»

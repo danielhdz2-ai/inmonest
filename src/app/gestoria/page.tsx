@@ -5,7 +5,10 @@ import GestoriaContent from './GestoriaContent'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
-import { buildGestoriaReviewSchema } from '@/lib/gestoria-reviews-schema'
+import {
+  buildGestoriaAggregateRatingSchema,
+  buildGestoriaReviewSchema,
+} from '@/lib/gestoria-reviews-schema'
 import { getPrecioServicio } from '@/lib/gestoria-catalogo'
 
 const BASE_URL = 'https://inmonest.com'
@@ -16,14 +19,16 @@ function schemaPrice(slug: string, fallback: number): string {
 
 export const metadata: Metadata = {
   title: 'Gestoría inmobiliaria online desde 61€',
-  description: 'Contratos inmobiliarios desde 61 € en 48 h. Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones.',
+  description:
+    'Gestoría inmobiliaria para particulares: contrato LAU, arras, temporada y compraventa desde 61 € en 48 h. Valoración 5.0 en Google. Toda España, trámite online.',
   keywords: 'gestoría inmobiliaria, gestoría inmobiliaria online, gestor inmobiliario, contrato arras penitenciales, contrato alquiler LAU, gestoría compraventa vivienda, gestor inmobiliario, gestoría barcelona, gestoría madrid, gestoría valencia',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
   },
   openGraph: {
     title: 'Gestoría inmobiliaria online',
-    description: 'Arras, alquiler LAU y compraventa redactados por expertos. Portal de pisos entre particulares sin comisiones. Desde 61 €, entrega 48 h.',
+    description:
+      'Arras, alquiler LAU y compraventa redactados por gestores expertos. Particulares en toda España. Desde 61 €, entrega 48 h.',
     url: `${BASE_URL}/gestoria`,
     type: 'website',
     siteName: 'Inmonest',
@@ -241,7 +246,8 @@ const schemaJson = JSON.stringify({
     email: 'hola@inmonest.com',
     availableLanguage: 'Spanish'
   },
-  
+
+  aggregateRating: buildGestoriaAggregateRatingSchema(),
   review: buildGestoriaReviewSchema(),
 })
 
