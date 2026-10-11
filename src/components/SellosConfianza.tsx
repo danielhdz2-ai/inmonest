@@ -4,7 +4,13 @@ const SELLOS = [
   { src: '/sellos-confianza/Sello-Confianza-Online.png', alt: 'Sello Confianza Online', w: 220, h: 88 },
   { src: '/sellos-confianza/pyme_innovadora_meic-SP_web.png', alt: 'Pyme Innovadora MEIC', w: 200, h: 88 },
   { src: '/sellos-confianza/efqm500.png', alt: 'EFQM Recognised', w: 110, h: 88 },
-  { src: '/sellos-confianza/RGPD.jpg', alt: 'Cumplimiento RGPD', w: 110, h: 88 },
+  {
+    src: '/sellos-confianza/rgpd-sello-hd.jpg',
+    alt: 'Cumplimiento RGPD — Reglamento General de Protección de Datos',
+    w: 120,
+    h: 120,
+    round: true,
+  },
   { src: '/sellos-confianza/api.jpg', alt: 'Agente de la Propiedad Inmobiliaria (API)', w: 110, h: 88 },
   {
     src: '/sellos-confianza/banner-consejo.jpg',
@@ -18,7 +24,7 @@ const SELLOS = [
     w: 160,
     h: 88,
   },
-]
+] as const
 
 export default function SellosConfianza() {
   return (
@@ -37,10 +43,30 @@ export default function SellosConfianza() {
               alt={sello.alt}
               width={sello.w}
               height={sello.h}
-              className="h-16 sm:h-20 md:h-24 w-auto max-w-[200px] sm:max-w-[240px] object-contain"
+              quality={95}
+              className={
+                'round' in sello && sello.round
+                  ? 'h-[72px] w-[72px] sm:h-[88px] sm:w-[88px] object-contain'
+                  : 'h-16 sm:h-20 md:h-24 w-auto max-w-[200px] sm:max-w-[240px] object-contain'
+              }
             />
           </div>
         ))}
+      </div>
+
+      <div className="mt-10 pt-8 border-t border-gray-100 max-w-4xl mx-auto">
+        <p className="text-center text-[10px] sm:text-xs font-bold uppercase tracking-[0.12em] text-gray-400 mb-5">
+          Financiado por la Unión Europea — Next Generation EU
+        </p>
+        <Image
+          src="/sellos-confianza/kit-digital-financiacion.png"
+          alt="Kit Digital: Gobierno de España, Plan de Recuperación Transformación y Resiliencia, Unión Europea"
+          width={1024}
+          height={137}
+          quality={95}
+          className="w-full h-auto max-h-[72px] sm:max-h-[88px] object-contain object-center"
+          sizes="(max-width: 896px) 100vw, 896px"
+        />
       </div>
     </section>
   )
