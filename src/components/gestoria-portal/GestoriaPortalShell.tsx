@@ -1,11 +1,14 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import type { GestoriaPortalSection } from '@/lib/gestoria-portal-types'
 import {
+  GESTORIA_PORTAL_MOBILE_MORE_SECTIONS,
   GESTORIA_PORTAL_MOBILE_SECTIONS,
   GESTORIA_PORTAL_SECTIONS,
+  GESTORIA_PORTAL_SECTION_TITLES,
 } from '@/lib/gestoria-portal-types'
 import { GESTORIA_SOLICITAR_HUB } from '@/lib/gestoria-nav'
 import { GESTORIA_PHONE_TEL, GESTORIA_PHONE_WA } from '@/lib/gestoria-contact'
@@ -26,6 +29,24 @@ export default function GestoriaPortalShell({
   children,
 }: Props) {
   const firstName = displayName.split(' ')[0]
+  const [mobileMoreOpen, setMobileMoreOpen] = useState(false)
+  const moreActive = GESTORIA_PORTAL_MOBILE_MORE_SECTIONS.some((s) => s.id === activeSection)
+
+  function goSection(id: GestoriaPortalSection) {
+    setMobileMoreOpen(false)
+    onSectionChange(id)
+  }
+
+  const mobileSectionTitle = GESTORIA_PORTAL_SECTION_TITLES[activeSection]
+
+  useEffect(() => {
+    if (!mobileMoreOpen) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [mobileMoreOpen])
 
   return (
     <div className="min-h-screen bg-[#eef0f2]">
@@ -115,9 +136,9 @@ export default function GestoriaPortalShell({
                 <p className="text-[9px] font-bold uppercase tracking-widest text-gold-500">Gestoría</p>
               </div>
             </Link>
-            <div className="min-w-0 flex-1 text-center">
-              <p className="text-[10px] text-white/50 uppercase tracking-wider">Expediente de</p>
-              <p className="text-sm font-semibold truncate">{firstName}</p>
+            <div className="min-w-0 flex-1 text-center px-1">
+              <p className="text-sm font-bold truncate text-white">{mobileSectionTitle}</p>
+              <p className="text-[10px] text-white/50 truncate">{firstName}</p>
             </div>
             <a
               href={`https://wa.me/${GESTORIA_PHONE_WA}`}
@@ -133,13 +154,24 @@ export default function GestoriaPortalShell({
           </div>
         </header>
 
-        <main className="flex-1 w-full max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-4 lg:py-8 pb-24 lg:pb-8">
+        <main className="flex-1 w-full max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 py-4 lg:py-8 pb-[calc(5.25rem+env(safe-area-inset-bottom,0px))] lg:pb-8">
           {children}
         </main>
 
         {/* Bottom nav móvil */}
-        <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0a1410] border-t border-white/10 px-0.5 pt-1 pb-[max(0.5rem,env(safe-area-inset-bottom))] overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div className="flex min-w-max justify-around max-w-none px-1">
+        {mobileMoreOpen && (
+          <button
+            type="button"
+            aria-label="Cerrar menú"
+            className="lg:hidden fixed inset-0 z-[55] bg-black/40"
+            onClick={() => setMobileMoreOpen(false)}
+          />
+        )}
+        <nav
+          className="lg:hidden fixed bottom-0 left-0 right-0 z-[60] bg-[#0a1410]/98 backdrop-blur-md border-t border-white/10 px-0.5 pt-1.5 pb-[max(0.35rem,env(safe-area-inset-bottom))]"
+          aria-label="Navegación del panel"
+        >
+          <div className="flex justify-between gap-0.5 px-0.5 max-w-lg mx-auto">
             {GESTORIA_PORTAL_MOBILE_SECTIONS.map((item) => {
               const active = activeSection === item.id
               const badge = item.id === 'expediente' && pendingDocsCount > 0
@@ -147,20 +179,63 @@ export default function GestoriaPortalShell({
                 <button
                   key={item.id}
                   type="button"
-                  onClick={() => onSectionChange(item.id)}
-                  className={`relative flex flex-1 flex-col items-center gap-0.5 max-w-[20%] py-2 px-0.5 rounded-xl touch-manipulation ${
+                  onClick={() => goSection(item.id)}
+                  className={`relative flex flex-1 flex-col items-center justify-center gap-0.5 min-w-0 min-h-[52px] py-1.5 px-0.5 rounded-xl touch-manipulation active:scale-[0.98] ${
                     active ? 'text-[#f4d98a]' : 'text-white/50'
                   }`}
                 >
                   <span className="text-base leading-none">{item.icon}</span>
-                  <span className="text-[9px] font-semibold truncate w-full text-center">{item.shortLabel}</span>
+                  <span className="text-[9px] sm:text-[10px] font-semibold truncate w-full text-center leading-tight">
+                    {item.shortLabel}
+                  </span>
                   {badge && (
                     <span className="absolute top-1 right-2 h-2 w-2 rounded-full bg-gold-500" />
                   )}
                 </button>
               )
             })}
+            <button
+              type="button"
+              onClick={() => setMobileMoreOpen((o) => !o)}
+              className={`relative flex flex-1 flex-col items-center justify-center gap-0.5 min-w-0 min-h-[52px] py-1.5 px-0.5 rounded-xl touch-manipulation active:scale-[0.98] ${
+                moreActive || mobileMoreOpen ? 'text-[#f4d98a]' : 'text-white/50'
+              }`}
+              aria-expanded={mobileMoreOpen}
+              aria-haspopup="true"
+              aria-label="Más secciones"
+            >
+              <span className="text-lg leading-none font-bold">⋯</span>
+              <span className="text-[9px] sm:text-[10px] font-semibold truncate w-full text-center">Más</span>
+              {moreActive && !mobileMoreOpen && (
+                <span className="absolute top-1 right-2 h-2 w-2 rounded-full bg-gold-500" />
+              )}
+            </button>
           </div>
+          {mobileMoreOpen && (
+            <div className="absolute bottom-full left-0 right-0 mb-2 px-3 pb-1 max-h-[min(50vh,320px)]">
+              <div className="rounded-2xl border border-white/10 bg-[#0f1a14] shadow-2xl overflow-y-auto overscroll-contain max-h-[inherit]">
+                <p className="px-4 pt-3 pb-1 text-[10px] font-bold uppercase tracking-widest text-white/40">
+                  Más secciones
+                </p>
+                {GESTORIA_PORTAL_MOBILE_MORE_SECTIONS.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => goSection(item.id)}
+                    className={`w-full flex items-center gap-3 px-4 py-4 min-h-[56px] text-left border-b border-white/5 last:border-0 touch-manipulation active:bg-white/5 ${
+                      activeSection === item.id ? 'bg-gold-500/15 text-[#f4d98a]' : 'text-white/80'
+                    }`}
+                  >
+                    <span className="text-lg w-6 text-center">{item.icon}</span>
+                    <div>
+                      <p className="text-sm font-semibold">{item.label}</p>
+                      <p className="text-[10px] text-white/40">{item.desc}</p>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </nav>
 
         {/* Footer desktop */}

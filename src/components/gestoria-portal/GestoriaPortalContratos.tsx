@@ -1,5 +1,6 @@
 'use client'
 
+import GestoriaPanelEmptyState from '@/components/gestoria-portal/GestoriaPanelEmptyState'
 import type { GestoriaContrato } from '@/lib/gestoria-portal-types'
 import { isPaidStatus, isLeadStatus } from '@/lib/gestoria-leads'
 import { WORKFLOW_STEPS } from '@/lib/gestoria-client-progress'
@@ -11,6 +12,7 @@ type Props = {
   onDownload: (contrato: GestoriaContrato) => void
   downloading: string | null
   onNavigateExpediente: (id: string) => void
+  onContratar: () => void
 }
 
 function statusBadge(contrato: GestoriaContrato) {
@@ -35,14 +37,18 @@ export default function GestoriaPortalContratos({
   onDownload,
   downloading,
   onNavigateExpediente,
+  onContratar,
 }: Props) {
   if (contratos.length === 0) {
     return (
-      <div className="rounded-2xl border border-gray-200 bg-white p-10 text-center">
-        <p className="text-4xl mb-3">📄</p>
-        <h2 className="text-lg font-bold text-gray-900">Sin contratos aún</h2>
-        <p className="text-sm text-gray-500 mt-2">Tus servicios contratados aparecerán aquí.</p>
-      </div>
+      <GestoriaPanelEmptyState
+        imageSrc="/contrato1.jpg"
+        imageAlt="Contratos inmobiliarios online"
+        title="Sin contratos aún"
+        description="Cuando contrates arras, alquiler u otro servicio de gestoría, verás aquí el estado, el importe y la descarga del PDF cuando esté listo."
+        primaryLabel="Contratar online"
+        onPrimary={onContratar}
+      />
     )
   }
 

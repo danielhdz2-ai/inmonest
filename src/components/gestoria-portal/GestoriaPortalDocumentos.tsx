@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import GestoriaPanelEmptyState from '@/components/gestoria-portal/GestoriaPanelEmptyState'
 import type { GestoriaContrato, GestoriaUserDoc } from '@/lib/gestoria-portal-types'
 import { getDocMeta } from '@/lib/gestoria-service-docs'
 
@@ -8,6 +9,8 @@ type Props = {
   contratos: GestoriaContrato[]
   userDocs: GestoriaUserDoc[]
   onDeleted: (docId: string) => void
+  onContratar: () => void
+  onGoExpediente: () => void
 }
 
 const STATUS_LABEL: Record<string, { label: string; className: string }> = {
@@ -33,7 +36,13 @@ function docLabel(docKey: string): string {
   return getDocMeta(docKey)?.label ?? docKey.replace(/-/g, ' ')
 }
 
-export default function GestoriaPortalDocumentos({ contratos, userDocs, onDeleted }: Props) {
+export default function GestoriaPortalDocumentos({
+  contratos,
+  userDocs,
+  onDeleted,
+  onContratar,
+  onGoExpediente,
+}: Props) {
   const [busyId, setBusyId] = useState<string | null>(null)
   const [confirmId, setConfirmId] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -98,11 +107,16 @@ export default function GestoriaPortalDocumentos({ contratos, userDocs, onDelete
       )}
 
       {files.length === 0 ? (
-        <div className="rounded-2xl border border-gray-200 bg-white p-10 text-center">
-          <p className="text-4xl mb-3">🗂️</p>
-          <h3 className="text-base font-bold text-gray-900">Aún no has subido documentos</h3>
-          <p className="text-sm text-gray-500 mt-2">Ve a la sección Expediente para añadir tu documentación.</p>
-        </div>
+        <GestoriaPanelEmptyState
+          imageSrc="/gestoria6.jpg"
+          imageAlt="Documentación para tu expediente"
+          title="Aún no has subido documentos"
+          description="Tras contratar un servicio, sube DNI, justificantes y el resto del checklist desde Expediente. Aquí los verás todos ordenados."
+          primaryLabel="Contratar un servicio"
+          onPrimary={onContratar}
+          secondaryLabel="Ir a expediente"
+          onSecondary={onGoExpediente}
+        />
       ) : (
         <ul className="space-y-3">
           {files.map((doc) => {
@@ -154,20 +168,20 @@ export default function GestoriaPortalDocumentos({ contratos, userDocs, onDelete
                     </div>
                   </div>
                 ) : (
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="flex flex-col sm:grid sm:grid-cols-3 gap-2">
                     <button
                       type="button"
                       disabled={busy}
                       onClick={() => void handleOpen(doc, false)}
-                      className="min-h-[44px] rounded-xl border-2 border-black text-[#0d1a0f] text-xs font-bold disabled:opacity-60 touch-manipulation"
+                      className="min-h-[48px] rounded-xl border-2 border-black text-[#0d1a0f] text-sm sm:text-xs font-bold disabled:opacity-60 touch-manipulation"
                     >
-                      👁️ Ver
+                      👁️ Ver documento
                     </button>
                     <button
                       type="button"
                       disabled={busy}
                       onClick={() => void handleOpen(doc, true)}
-                      className="min-h-[44px] rounded-xl bg-forest-900 text-white text-xs font-bold disabled:opacity-60 touch-manipulation"
+                      className="min-h-[48px] rounded-xl bg-forest-900 text-white text-sm sm:text-xs font-bold disabled:opacity-60 touch-manipulation"
                     >
                       {busy ? '…' : '⬇️ Descargar'}
                     </button>
@@ -175,7 +189,7 @@ export default function GestoriaPortalDocumentos({ contratos, userDocs, onDelete
                       type="button"
                       disabled={busy}
                       onClick={() => setConfirmId(doc.id)}
-                      className="min-h-[44px] rounded-xl border-2 border-red-200 text-red-600 text-xs font-bold disabled:opacity-60 touch-manipulation"
+                      className="min-h-[48px] rounded-xl border-2 border-red-200 text-red-600 text-sm sm:text-xs font-bold disabled:opacity-60 touch-manipulation"
                     >
                       🗑️ Eliminar
                     </button>

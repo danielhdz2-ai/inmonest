@@ -2,6 +2,7 @@
 
 import type { PartesFormData } from '@/components/GestoriaPartesForm'
 import GestoriaPartesForm from '@/components/GestoriaPartesForm'
+import GestoriaPanelEmptyState from '@/components/gestoria-portal/GestoriaPanelEmptyState'
 import type { GestoriaContrato, GestoriaUserDoc } from '@/lib/gestoria-portal-types'
 import { filterDocsForRequest } from '@/lib/gestoria-client-progress'
 
@@ -12,6 +13,7 @@ type Props = {
   uploadProgress: number | null
   onSubmitPartes: (data: PartesFormData) => Promise<void>
   onUploadPdf: (file: File) => Promise<void>
+  onContratar: () => void
 }
 
 function extractPartesData(docs: GestoriaUserDoc[], requestId: string): Record<string, unknown> | null {
@@ -27,14 +29,18 @@ export default function GestoriaPortalInmueble({
   uploadProgress,
   onSubmitPartes,
   onUploadPdf,
+  onContratar,
 }: Props) {
   if (!activeContrato) {
     return (
-      <div className="rounded-2xl border border-gray-200 bg-white p-10 text-center">
-        <p className="text-4xl mb-3">🏠</p>
-        <h2 className="text-lg font-bold text-gray-900">Sin expediente activo</h2>
-        <p className="text-sm text-gray-500 mt-2">Contrata un servicio para registrar los datos de tu inmueble.</p>
-      </div>
+      <GestoriaPanelEmptyState
+        imageSrc="/familia5.jpg"
+        imageAlt="Datos del inmueble para el contrato"
+        title="Registra los datos de tu inmueble"
+        description="Dirección, precio, partes y condiciones que usa tu gestor para redactar el contrato. Disponible en cuanto tengas un servicio pagado."
+        primaryLabel="Contratar un servicio"
+        onPrimary={onContratar}
+      />
     )
   }
 

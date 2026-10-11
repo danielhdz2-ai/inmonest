@@ -12,8 +12,14 @@ import GestoriaPortalInmueble from '@/components/gestoria-portal/GestoriaPortalI
 import GestoriaPortalServicios from '@/components/gestoria-portal/GestoriaPortalServicios'
 import GestoriaPortalConfiguracion from '@/components/gestoria-portal/GestoriaPortalConfiguracion'
 import GestoriaPostPagoActivacion from '@/components/gestoria-portal/GestoriaPostPagoActivacion'
+import GestoriaPanelEmptyState from '@/components/gestoria-portal/GestoriaPanelEmptyState'
+import GestoriaPrimerAccesoOnboarding, {
+  isGestoriaOnboardingDone,
+} from '@/components/gestoria-portal/GestoriaPrimerAccesoOnboarding'
 import type { PartesFormData } from '@/components/GestoriaPartesForm'
 import type { GestoriaContrato, GestoriaPortalSection, GestoriaUserDoc } from '@/lib/gestoria-portal-types'
+import { GESTORIA_PORTAL_SECTION_TITLES } from '@/lib/gestoria-portal-types'
+import { GESTORIA_PHONE_WA } from '@/lib/gestoria-contact'
 import { computeGestoriaProgress } from '@/lib/gestoria-client-progress'
 import { isLeadStatus, isPaidStatus } from '@/lib/gestoria-leads'
 import { validateUploadFile } from '@/lib/gestoria-upload'
@@ -29,11 +35,14 @@ const VALID_SECTIONS: GestoriaPortalSection[] = [
   'configuracion',
 ]
 
-function parseSection(value: string | null): GestoriaPortalSection {
+function parseSection(
+  value: string | null,
+  fallback: GestoriaPortalSection,
+): GestoriaPortalSection {
   if (value && VALID_SECTIONS.includes(value as GestoriaPortalSection)) {
     return value as GestoriaPortalSection
   }
-  return 'expediente'
+  return fallback
 }
 
 type Props = {
@@ -62,6 +71,7 @@ export default function GestoriaPortalClient({
   const [uploadProgress, setUploadProgress] = useState<number | null>(null)
   const [paying, setPaying] = useState<string | null>(null)
   const [uploadFeedback, setUploadFeedback] = useState<{ type: 'error' | 'success'; message: string } | null>(null)
+  const [onboardingOpen, setOnboardingOpen] = useState(false)
 
   const searchParams = useSearchParams()
   const stripeSessionId = useMemo(() => {
@@ -104,9 +114,23 @@ export default function GestoriaPortalClient({
   }, [])
 
   useEffect(() => {
-    const v = parseSection(searchParams.get('v'))
+    const fallback: GestoriaPortalSection = hasPaidService ? 'inicio' : 'servicios'
+    const v = parseSection(searchParams.get('v'), fallback)
     setSection(v)
-  }, [searchParams])
+  }, [searchParams, hasPaidService])
+
+  useEffect(() => {
+    const sectionTitle = GESTORIA_PORTAL_SECTION_TITLES[section]
+    document.title = `${sectionTitle} · Gestoría Inmonest`
+  }, [section])
+
+  useEffect(() => {
+    if (hasPaidService || primaryLead || postPagoOpen) return
+    const force = searchParams.get('onboarding') === '1'
+    if (force || !isGestoriaOnboardingDone()) {
+      setOnboardingOpen(true)
+    }
+  }, [hasPaidService, primaryLead, postPagoOpen, searchParams])
 
   // Sin pago confirmado → abrir catálogo (Contratar más)
   useEffect(() => {
@@ -405,9 +429,21 @@ export default function GestoriaPortalClient({
       )}
 
       {section === 'expediente' && !activePaid && (
-        <div className="rounded-2xl border border-gray-200 bg-white p-8 text-center">
-          <p className="text-sm text-gray-500">No hay un expediente activo con pago confirmado.</p>
-        </div>
+        <GestoriaPanelEmptyState
+          imageSrc="/gestoria1.jpg"
+          imageAlt="Expediente de gestoría Inmonest"
+          title="Aún no tienes un expediente activo"
+          description="Contrata un servicio online (arras, alquiler, revisión…) y aquí verás el checklist, la subida de documentos y el seguimiento con tu gestor."
+          primaryLabel="Ver servicios y precios"
+          onPrimary={() => navigate('servicios')}
+          secondaryLabel="Hablar por WhatsApp"
+          onSecondary={() => {
+            window.open(
+              `https://wa.me/${GESTORIA_PHONE_WA}?text=${encodeURIComponent('Hola, quiero contratar un servicio de gestoría')}`,
+              '_blank',
+            )
+          }}
+        />
       )}
 
       {section === 'documentos' && (
@@ -415,6 +451,8 @@ export default function GestoriaPortalClient({
           contratos={contratos}
           userDocs={docs}
           onDeleted={(docId) => setDocs((prev) => prev.filter((d) => d.id !== docId))}
+          onContratar={() => navigate('servicios')}
+          onGoExpediente={() => navigate(hasPaidService ? 'expediente' : 'servicios')}
         />
       )}
 
@@ -429,6 +467,7 @@ export default function GestoriaPortalClient({
             setActivePaidId(id)
             navigate('expediente')
           }}
+          onContratar={() => navigate('servicios')}
         />
       )}
 
@@ -440,6 +479,7 @@ export default function GestoriaPortalClient({
           uploadProgress={uploadProgress}
           onSubmitPartes={handleSubmitPartes}
           onUploadPdf={(file) => activePaid && handleUploadDoc('partes', file, activePaid.id)}
+          onContratar={() => navigate('servicios')}
         />
       )}
 
@@ -458,6 +498,19 @@ export default function GestoriaPortalClient({
           email={userEmail}
           initialName={displayName}
           initialPhone={initialPhone}
+        />
+      )}
+
+      {onboardingOpen && (
+        <GestoriaPrimerAccesoOnboarding
+          displayName={displayName}
+          initialPhone={initialPhone}
+          userEmail={userEmail}
+          onComplete={() => {
+            setOnboardingOpen(false)
+            navigate('servicios')
+          }}
+          onDismiss={() => setOnboardingOpen(false)}
         />
       )}
     </GestoriaPortalShell>

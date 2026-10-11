@@ -49,7 +49,7 @@ export const GESTORIA_PORTAL_SECTIONS: {
   desc: string
 }[] = [
   { id: 'inicio', label: 'Panel', shortLabel: 'Inicio', icon: '◉', desc: 'Resumen de tu expediente' },
-  { id: 'expediente', label: 'Expediente', shortLabel: 'Docs', icon: '📋', desc: 'Documentación y seguimiento' },
+  { id: 'expediente', label: 'Expediente', shortLabel: 'Exped.', icon: '📋', desc: 'Documentación y seguimiento' },
   { id: 'documentos', label: 'Mis documentos', shortLabel: 'Archivos', icon: '🗂️', desc: 'Ver, descargar o eliminar' },
   { id: 'contratos', label: 'Mis contratos', shortLabel: 'Contratos', icon: '📄', desc: 'Historial de servicios' },
   { id: 'inmueble', label: 'Mi inmueble', shortLabel: 'Inmueble', icon: '🏠', desc: 'Datos del inmueble' },
@@ -57,18 +57,29 @@ export const GESTORIA_PORTAL_SECTIONS: {
   { id: 'configuracion', label: 'Configuración', shortLabel: 'Ajustes', icon: '⚙️', desc: 'Datos personales y cuenta' },
 ]
 
-const MOBILE_SECTION_IDS: GestoriaPortalSection[] = [
-  'inicio',
-  'expediente',
-  'documentos',
-  'servicios',
-  'configuracion',
-]
+const MOBILE_BAR_IDS: GestoriaPortalSection[] = ['inicio', 'expediente', 'servicios', 'configuracion']
 
-/** Navegación inferior móvil (5 pestañas, sin saturar). */
+const MOBILE_MORE_IDS: GestoriaPortalSection[] = ['documentos', 'contratos', 'inmueble']
+
+/** Barra inferior móvil (4 accesos + menú “Más”). */
 export const GESTORIA_PORTAL_MOBILE_SECTIONS = GESTORIA_PORTAL_SECTIONS.filter((s) =>
-  MOBILE_SECTION_IDS.includes(s.id),
+  MOBILE_BAR_IDS.includes(s.id),
 )
+
+export const GESTORIA_PORTAL_MOBILE_MORE_SECTIONS = GESTORIA_PORTAL_SECTIONS.filter((s) =>
+  MOBILE_MORE_IDS.includes(s.id),
+)
+
+export const GESTORIA_PORTAL_SECTION_TITLES: Record<GestoriaPortalSection, string> = {
+  inicio: 'Panel',
+  expediente: 'Expediente',
+  documentos: 'Mis documentos',
+  contratos: 'Mis contratos',
+  inmueble: 'Mi inmueble',
+  servicios: 'Contratar más',
+  publicar: 'Publicar inmueble',
+  configuracion: 'Configuración',
+}
 
 export const GESTORIA_ORDER_SELECT_CORE =
   'id,session_id,service_key,service_name,client_name,client_email,amount_eur,status,step,paid_at,contract_path,created_at'

@@ -35,7 +35,7 @@ function RegistroForm() {
     return qs ? `/login?${qs}` : '/login'
   })()
 
-  const postAuthDest = nextParam ?? '/mi-cuenta/contratos?v=servicios'
+  const postAuthDest = nextParam ?? '/mi-cuenta/contratos?v=servicios&onboarding=1'
 
   async function handlePasswordRegister(e: React.FormEvent) {
     e.preventDefault()

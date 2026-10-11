@@ -60,7 +60,7 @@ export default function GestoriaPortalServicios({
 
   return (
     <div className="space-y-5">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-black to-black p-6 text-white min-h-[140px]">
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-black to-black p-4 sm:p-6 text-white min-h-[120px] sm:min-h-[140px]">
         <Image
           src="/gestoria10.jpg"
           alt=""
@@ -72,7 +72,7 @@ export default function GestoriaPortalServicios({
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
         <div className="relative">
           <p className="text-[#f4d98a] text-xs font-bold uppercase tracking-widest">Ampliar tu expediente</p>
-          <h2 className="text-xl font-bold mt-1">Contratar más servicios</h2>
+          <h2 className="text-lg sm:text-xl font-bold mt-1">Contratar más servicios</h2>
           <p className="text-sm text-white/60 mt-2 max-w-lg">
             Elige contrato, revisión o pack: pago seguro con Stripe y seguimiento en este mismo panel.
           </p>
