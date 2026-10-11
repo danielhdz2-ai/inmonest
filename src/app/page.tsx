@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import Navbar from '@/components/NavbarServer'
+import HeroBackgroundMedia from '@/components/HeroBackgroundMedia'
 import BentoVentajas from '@/components/BentoVentajas'
 import CarruselServicios from '@/components/CarruselServicios'
 import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
@@ -12,7 +12,6 @@ import HomeLocalPresencia from '@/components/home/HomeLocalPresencia'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Section } from '@/components/ui/Section'
-import { BRAND_IMAGES } from '@/lib/brand-images'
 import { CtaBand } from '@/components/ui/CtaBand'
 
 const FAQ = [
@@ -67,14 +66,14 @@ export default function Home() {
       <Navbar />
 
       <section className="relative overflow-hidden min-h-[520px] sm:min-h-[560px] flex items-center">
-        <Image
-          src={BRAND_IMAGES.gestoria.src}
-          alt={BRAND_IMAGES.gestoria.alt}
-          fill
-          className="object-cover"
-          priority
-          sizes="100vw"
-        />
+        <div className="absolute inset-0">
+          <HeroBackgroundMedia
+            videoSrc="/video/gestoria-hero-calle.mp4"
+            posterSrc="/gestoria-expertos-calle.jpg"
+            posterAlt="Expertos gestores Inmonest — gestoría inmobiliaria online"
+            priority
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
