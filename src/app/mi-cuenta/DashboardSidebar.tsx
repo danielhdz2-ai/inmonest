@@ -145,13 +145,13 @@ export default function DashboardSidebar({
 
       <div className="px-4 py-4 border-t border-gray-100 pb-[max(1rem,env(safe-area-inset-bottom))]">
         <Link
-          href="/publicar"
+          href="/gestoria/solicitar"
           className="flex items-center justify-center gap-2 w-full bg-gold-500 hover:bg-[#b8841e] active:bg-[#a87818] text-white text-sm font-semibold py-3 sm:py-2.5 rounded-xl transition-colors min-h-[48px] touch-manipulation"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
           </svg>
-          Publicar anuncio
+          Nuevo contrato
         </Link>
         <form action="/auth/signout" method="POST" className="mt-2">
           <button type="submit" className="w-full text-xs text-gray-400 hover:text-red-500 transition-colors py-2 min-h-[44px] touch-manipulation">

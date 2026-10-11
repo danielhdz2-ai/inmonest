@@ -367,6 +367,47 @@ export default function ServiciosHubContent({ mode = 'info' }: Props) {
         </div>
       </section>
 
+      {isCheckout && (
+        <section className="py-12 px-4 sm:px-6 bg-cream-50 border-y border-gold-200/40">
+          <div className="max-w-5xl mx-auto grid sm:grid-cols-2 gap-4">
+            <Link
+              href="/opiniones"
+              className="group relative block overflow-hidden rounded-2xl min-h-[160px] border border-gold-200/60 shadow-sm"
+            >
+              <Image
+                src="/gestoria7.jpg"
+                alt="Opiniones de clientes en Google"
+                fill
+                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-5">
+                <p className="text-white font-bold text-lg">5.0 en Google</p>
+                <p className="text-white/75 text-sm mt-1">Opiniones verificadas antes de pagar</p>
+              </div>
+            </Link>
+            <Link
+              href="/servicios"
+              className="group relative block overflow-hidden rounded-2xl min-h-[160px] border border-gold-200/60 shadow-sm"
+            >
+              <Image
+                src={BRAND_IMAGES.gestoria.src}
+                alt={BRAND_IMAGES.gestoria.alt}
+                fill
+                className="object-cover group-hover:scale-[1.02] transition-transform duration-500"
+                sizes="(max-width: 640px) 100vw, 50vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+              <div className="absolute bottom-0 left-0 p-5">
+                <p className="text-white font-bold text-lg">Catálogo con fotos</p>
+                <p className="text-white/75 text-sm mt-1">Compara servicios antes de contratar</p>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
       {/* CTA FINAL */}
       <section className="bg-forest-900 text-white py-14 px-6">
         <div className="max-w-3xl mx-auto text-center">

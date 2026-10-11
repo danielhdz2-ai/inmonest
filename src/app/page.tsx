@@ -7,22 +7,13 @@ import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
 import HomeTrustStrip from '@/components/home/HomeTrustStrip'
 import HomeTestimonials from '@/components/home/HomeTestimonials'
 import HomeDiscoverGrid from '@/components/home/HomeDiscoverGrid'
+import HomePersonaIntents from '@/components/home/HomePersonaIntents'
+import HomeLocalPresencia from '@/components/home/HomeLocalPresencia'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { Section } from '@/components/ui/Section'
 import { BRAND_IMAGES } from '@/lib/brand-images'
 import { CtaBand } from '@/components/ui/CtaBand'
-
-const CIUDADES_GESTORIA = [
-  { nombre: 'Madrid', slug: 'madrid' },
-  { nombre: 'Barcelona', slug: 'barcelona' },
-  { nombre: 'Valencia', slug: 'valencia' },
-  { nombre: 'Sevilla', slug: 'sevilla' },
-  { nombre: 'Málaga', slug: 'malaga' },
-  { nombre: 'Bilbao', slug: 'bilbao' },
-  { nombre: 'Zaragoza', slug: 'zaragoza' },
-  { nombre: 'Alicante', slug: 'alicante' },
-] as const
 
 const FAQ = [
   {
@@ -49,6 +40,10 @@ const FAQ = [
     q: '¿Inmonest es una agencia inmobiliaria?',
     a: 'No. Somos gestoría digital: no intermediamos en la búsqueda de pisos ni cobramos comisiones por operaciones. Cobramos solo por servicios jurídicos concretos.',
   },
+  {
+    q: '¿Puedo contratar compra o venta integral entre particulares?',
+    a: 'Sí. Ofrecemos packs desde reserva y arras hasta escritura, con gestor asignado, revisión registral y coordinación con notaría. También parking y trastero.',
+  },
 ] as const
 
 export default function Home() {
@@ -73,8 +68,8 @@ export default function Home() {
 
       <section className="relative overflow-hidden min-h-[520px] sm:min-h-[560px] flex items-center">
         <Image
-          src={BRAND_IMAGES.portal.src}
-          alt={BRAND_IMAGES.portal.alt}
+          src={BRAND_IMAGES.gestoria.src}
+          alt={BRAND_IMAGES.gestoria.alt}
           fill
           className="object-cover"
           priority
@@ -117,26 +112,11 @@ export default function Home() {
       </section>
 
       <HomeTrustStrip />
+      <HomePersonaIntents />
+      <HomeDiscoverGrid />
       <CarruselServicios />
       <EnlacesInternosSeo variant="home" />
-
-      <section className="bg-gray-50 py-14">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-1">Contrato de alquiler por ciudad</h2>
-          <p className="text-gray-500 text-sm mb-6">LAU personalizado con normativa local e IRAV cuando aplica</p>
-          <div className="flex flex-wrap gap-2">
-            {CIUDADES_GESTORIA.map((ciudad) => (
-              <Link
-                key={ciudad.slug}
-                href={`/${ciudad.slug}/contrato-alquiler`}
-                className="px-4 py-2 rounded-full border border-gold-400/40 bg-white text-sm font-medium text-gray-700 hover:border-gold-500 hover:text-gold-700 hover:bg-cream-100 transition-colors"
-              >
-                {ciudad.nombre}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HomeLocalPresencia />
 
       <Section
         className="py-16 sm:py-20 bg-white"
@@ -179,19 +159,17 @@ export default function Home() {
         </div>
       </Section>
 
-      <HomeDiscoverGrid />
-
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <CtaBand
-          eyebrow="Propietarios e inquilinos"
-          title={<>¿Vas a alquilar o firmar arras?</>}
-          description="Contrato LAU blindado, fianza INCASÒL e IRAV cuando aplica. Online, con gestor y entrega en 48 h."
+          eyebrow="Alquiler, arras y compraventa"
+          title={<>¿Compras, vendes o alquilas entre particulares?</>}
+          description="Precio cerrado, gestor experto, panel de cliente y entrega en 48 h en la mayoría de contratos. Pago seguro con Stripe."
           primaryHref="/gestoria/solicitar"
-          primaryLabel="Ver contratos y precios"
-          secondaryHref="/gestoria"
-          secondaryLabel="Ver todos los servicios"
-          imageSrc={BRAND_IMAGES.familia.src}
-          imageAlt={BRAND_IMAGES.familia.alt}
+          primaryLabel="Contratar online"
+          secondaryHref="/opiniones"
+          secondaryLabel="Ver opiniones en Google"
+          imageSrc="/gestoria10.jpg"
+          imageAlt="Familia firmando documentación inmobiliaria con gestoría Inmonest"
           tone="warm"
         />
       </section>
