@@ -3,7 +3,7 @@
  * Cachear rutas dinámicas rompe login y /mi-cuenta tras cada deploy.
  */
 
-const CACHE_NAME = 'inmonest-pwa-v2'
+const CACHE_NAME = 'inmonest-pwa-v3'
 
 self.addEventListener('install', (event) => {
   event.waitUntil(self.skipWaiting())
