@@ -24,7 +24,10 @@ const CONTRACT_HERO_BY_SLUG: Record<string, { src: string; alt: string }> = {
   'contrato-compraventa': { src: '/contrato9.jpg', alt: 'Contrato de compraventa' },
   'arras-parking-garage': { src: '/comercial2.jpg', alt: 'Arras de compraventa de parking' },
   'contrato-alquiler': { src: '/contratodealquiler.jpg', alt: 'Contrato de alquiler LAU' },
-  'contrato-alquiler-barcelona': { src: '/contrato2.jpg', alt: 'Contrato de alquiler en Barcelona' },
+  'contrato-alquiler-barcelona': {
+    src: '/adolfo-felix-uo7AHIpjOu0-unsplash.jpg',
+    alt: 'Contrato de alquiler en Barcelona',
+  },
   'alquiler-habitaciones': { src: '/contrato6.jpg', alt: 'Contrato de alquiler de habitación' },
   'alquiler-local-comercial': {
     src: '/colynary-media-ZKkuYgbTRl8-unsplash.jpg',
@@ -37,7 +40,10 @@ const CONTRACT_HERO_BY_SLUG: Record<string, { src: string; alt: string }> = {
     src: '/businessman-checking-documents-table.jpg',
     alt: 'Reserva de alquiler',
   },
-  'alquiler-temporada': { src: '/contrato4.jpg', alt: 'Contrato de alquiler de temporada' },
+  'alquiler-temporada': {
+    src: '/luke-miller-WvZot2OyWLo-unsplash.jpg',
+    alt: 'Contrato de alquiler de temporada',
+  },
   'liquidacion-fianza': {
     src: '/kelly-sikkema-l9HFojj_yHQ-unsplash.jpg',
     alt: 'Liquidación de fianza',
