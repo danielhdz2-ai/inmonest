@@ -27,19 +27,19 @@ export function getPortalCiudadDatos(slug: string, custom?: Partial<PortalCiudad
   const base: PortalCiudadDatos = {
     precio_medio: 'Consultar según barrio',
     barrios: ['Centro', 'Ensanche', 'Periferia'],
-    descripcion_seo: `Pisos de alquiler de particulares en ${nombre} sin comisión de agencia. Inmonest conecta inquilinos y propietarios con trato directo. Contrato LAU desde 145€ con gestoría online.`,
+    descripcion_seo: `Alquiler entre particulares en ${nombre}: Inmonest es gestoría online (contrato LAU, arras, revisión). Sin portal de anuncios. Desde 145 € IVA incl., entrega 48 h.`,
     faq: [
       {
-        q: `¿Cuánto cuesta alquilar un piso de particular en ${nombre}?`,
-        a: `El precio depende del barrio y del tipo de vivienda. En ${nombre} puedes comparar anuncios de particulares en Inmonest y ahorrar la comisión de agencia (habitualmente una mensualidad o más).`,
+        q: `¿Cuánto cuesta el contrato LAU en ${nombre}?`,
+        a: '145 € IVA incluido en Inmonest, con gestor y entrega en 48 h.',
       },
       {
         q: `¿Necesito contrato de alquiler en ${nombre}?`,
-        a: 'Sí. Un contrato LAU bien redactado protege a propietario e inquilino. En Inmonest lo redactamos desde 145€ IVA incluido, 100% online.',
+        a: 'Sí. Un contrato LAU bien redactado protege a propietario e inquilino. Lo redactamos 100 % online.',
       },
       {
-        q: '¿Cómo sé si el anuncio es de un particular?',
-        a: 'En Inmonest priorizamos anuncios de particulares verificados para que el trato sea directo, sin intermediarios.',
+        q: '¿Inmonest busca pisos por mí?',
+        a: 'No. Somos gestoría: tú encuentras piso o inquilino y nosotros formalizamos el contrato con seguridad jurídica.',
       },
     ],
   }
