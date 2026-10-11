@@ -26,13 +26,15 @@ const CATEGORIES: Array<{ key: ServicioCategoria | 'todos'; label: string }> = [
   { key: 'otros', label: 'Otros' },
 ]
 
+/** Pastillas sobre foto: fondos opacos + blur para legibilidad */
 const CATEGORY_PILL: Record<ServicioCategoria, string> = {
-  compraventa: 'bg-cream-100 text-forest-900 border border-gold-200/70',
-  alquiler: 'bg-white/95 text-gray-800 border border-gold-300/40',
-  revision: 'bg-cream-100 text-gray-800 border border-gold-200/50',
-  packs: 'bg-gold-500/25 text-gold-900',
-  agencias: 'bg-cream-100 text-gray-800 border border-gold-200/70',
-  otros: 'bg-gray-100 text-gray-700',
+  compraventa:
+    'bg-forest-950/95 text-white border border-white/20 backdrop-blur-sm shadow-md',
+  alquiler: 'bg-white text-gray-900 border border-gray-200/90 shadow-md backdrop-blur-sm',
+  revision: 'bg-cream-50 text-gray-900 border border-gold-300/80 shadow-md backdrop-blur-sm',
+  packs: 'bg-gold-700 text-white border border-gold-400/60 shadow-md backdrop-blur-sm',
+  agencias: 'bg-forest-900 text-white border border-white/20 shadow-md backdrop-blur-sm',
+  otros: 'bg-gray-900/95 text-white border border-white/15 shadow-md backdrop-blur-sm',
 }
 
 function cardHref(s: ServicioLandingCard, mode: ServiciosHubMode) {
@@ -307,7 +309,7 @@ export default function ServiciosHubContent({ mode = 'info' }: Props) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
                   <span
-                    className={`absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full ${CATEGORY_PILL[service.categoria]}`}
+                    className={`absolute top-3 left-3 z-10 max-w-[calc(100%-5.5rem)] text-[11px] sm:text-xs font-bold px-2.5 py-1 rounded-full leading-snug ${CATEGORY_PILL[service.categoria]}`}
                   >
                     {SERVICIOS_CATEGORIA_LABELS[service.categoria]}
                   </span>
