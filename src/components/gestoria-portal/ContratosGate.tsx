@@ -2,7 +2,6 @@
 
 import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
-import PortalContratosComprar from '@/components/gestoria-portal/PortalContratosComprar'
 import GestoriaPortalClientSuspense from '@/components/gestoria-portal/GestoriaPortalClientSuspense'
 import type { GestoriaContrato, GestoriaUserDoc } from '@/lib/gestoria-portal-types'
 
@@ -17,6 +16,10 @@ function ContratosLoadingState({ label }: { label: string }) {
   )
 }
 
+function sleep(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 function ContratosGateInner() {
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -26,6 +29,7 @@ function ContratosGateInner() {
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [needsLogin, setNeedsLogin] = useState(false)
   const [contratos, setContratos] = useState<GestoriaContrato[]>([])
   const [userDocs, setUserDocs] = useState<GestoriaUserDoc[]>([])
   const [userEmail, setUserEmail] = useState('')
@@ -35,10 +39,17 @@ function ContratosGateInner() {
   useEffect(() => {
     let cancelled = false
 
-    async function load() {
+    async function load(attempt: number) {
       setLoading(true)
       setError(null)
+      setNeedsLogin(false)
       try {
+        await fetch('/api/gestoria/vincular-leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sessionId ? { session_id: sessionId } : {}),
+        }).catch(() => null)
+
         const qs = sessionId ? `?session_id=${encodeURIComponent(sessionId)}` : ''
         const res = await fetch(`/api/gestoria/mis-pedidos${qs}`, {
           cache: 'no-store',
@@ -46,8 +57,15 @@ function ContratosGateInner() {
         })
 
         if (res.status === 401) {
-          const next = `/mi-cuenta/contratos${sessionId ? `?session_id=${sessionId}` : ''}`
-          router.replace(`/login?next=${encodeURIComponent(next)}`)
+          if (attempt < 2 && !cancelled) {
+            await sleep(600)
+            return load(attempt + 1)
+          }
+          if (!cancelled) {
+            setNeedsLogin(true)
+            const next = `/mi-cuenta/contratos${sessionId ? `?session_id=${sessionId}` : ''}`
+            router.replace(`/login?next=${encodeURIComponent(next)}`)
+          }
           return
         }
 
@@ -73,12 +91,18 @@ function ContratosGateInner() {
       }
     }
 
-    void load()
-    return () => { cancelled = true }
+    void load(0)
+    return () => {
+      cancelled = true
+    }
   }, [sessionId, router])
 
-  if (loading) {
-    return <ContratosLoadingState label="Cargando contratos…" />
+  if (loading && !needsLogin) {
+    return <ContratosLoadingState label="Cargando tu panel de gestoría…" />
+  }
+
+  if (needsLogin) {
+    return <ContratosLoadingState label="Redirigiendo al inicio de sesión…" />
   }
 
   if (error) {
@@ -96,16 +120,6 @@ function ContratosGateInner() {
           </button>
         </div>
       </div>
-    )
-  }
-
-  if (contratos.length === 0 && !sessionId) {
-    return (
-      <PortalContratosComprar
-        userEmail={userEmail}
-        displayName={displayName}
-        initialPhone={phone}
-      />
     )
   }
 

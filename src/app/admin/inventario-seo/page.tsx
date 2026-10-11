@@ -19,8 +19,11 @@ export default async function AdminInventarioSeoPage() {
     data: { user },
   } = await supabase.auth.getUser()
 
-  if (!user || !isAdminEmail(user.email)) {
-    redirect('/login?next=/admin/inventario-seo')
+  if (!user) {
+    redirect('/login?next=/mi-cuenta/contratos')
+  }
+  if (!isAdminEmail(user.email)) {
+    redirect('/mi-cuenta/contratos')
   }
 
   const adminEmail = (user.email || '').trim()

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import { getRedirectUrl, isAdminEmail } from '@/lib/admin'
+import { sanitizeNextPathForUser } from '@/lib/auth-redirect'
 import { safeInternalPath } from '@/lib/gestoria-leads'
 import SocialAuthButtons from '@/components/SocialAuthButtons'
 
@@ -54,10 +55,12 @@ export default function LoginForm() {
     }
 
     const userEmail = data.user?.email
-    const dest =
-      isAdminEmail(userEmail)
-        ? '/admin'
-        : nextParam ?? getRedirectUrl(userEmail)
+    const safeNext = sanitizeNextPathForUser(userEmail, nextParam)
+    const dest = isAdminEmail(userEmail)
+      ? safeNext && safeNext.startsWith('/admin')
+        ? safeNext
+        : '/admin'
+      : safeNext ?? getRedirectUrl(userEmail)
 
     // Navegación completa para que las cookies de sesión lleguen al servidor
     window.location.assign(dest)

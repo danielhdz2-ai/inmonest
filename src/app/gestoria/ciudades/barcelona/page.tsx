@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 
-/** Ruta legacy: desglose Barcelona en inventario admin. */
+/** Ruta legacy: hub Barcelona (público). */
 export default function GestoriaCiudadesBarcelonaRedirect() {
-  redirect('/admin/inventario-seo#barcelona')
+  redirect('/barcelona/contrato-alquiler')
 }

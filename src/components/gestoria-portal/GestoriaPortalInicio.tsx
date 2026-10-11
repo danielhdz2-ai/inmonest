@@ -73,6 +73,23 @@ export default function GestoriaPortalInicio({
             Seguimiento en tiempo real de tu contrato, documentación y gestor asignado.
           </p>
 
+          {paidCount === 0 && (
+            <div className="mt-6 rounded-xl border border-white/20 bg-white/10 backdrop-blur p-4 sm:p-5 text-left max-w-xl">
+              <p className="text-sm font-semibold text-white">Tu panel ya está activo</p>
+              <p className="text-xs text-white/65 mt-1 leading-relaxed">
+                Cuando contrates un servicio (online o por Stripe), verás aquí el progreso, documentos y entrega del
+                contrato. Mientras tanto puedes explorar servicios o contactar a tu gestor.
+              </p>
+              <button
+                type="button"
+                onClick={() => onNavigate('servicios')}
+                className="mt-3 inline-flex items-center rounded-xl bg-gold-500 text-white text-xs font-bold px-4 py-2.5 min-h-[44px] touch-manipulation"
+              >
+                Contratar un servicio →
+              </button>
+            </div>
+          )}
+
           {progress && activeContrato && (
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className="rounded-xl bg-white/10 backdrop-blur border border-white/10 p-4">

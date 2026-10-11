@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { sanitizeNextPathForUser } from '@/lib/auth-redirect'
 import { resolvePostLoginRedirect } from '@/lib/post-login-redirect'
 import LoginForm from './LoginForm'
 
@@ -29,7 +30,8 @@ export default async function LoginPage({
   }
 
   if (existingUser) {
-    redirect(await resolvePostLoginRedirect(existingUser.id, existingUser.email, params.next))
+    const safeNext = sanitizeNextPathForUser(existingUser.email, params.next ?? null)
+    redirect(await resolvePostLoginRedirect(existingUser.id, existingUser.email, safeNext))
   }
 
   return (

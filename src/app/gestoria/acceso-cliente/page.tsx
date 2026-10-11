@@ -20,7 +20,8 @@ export default function AccesoClientePage() {
               </div>
               <h1 className="text-2xl font-bold">Portal exclusivo para clientes</h1>
               <p className="text-sm text-white/60 mt-2">
-                El panel de gestoría solo está disponible para quienes han contratado un servicio de Inmonest.
+                Crea una cuenta gratis y accede a tu panel. Tras pagar en Stripe, tu expediente se activa al instante
+                con el mismo email.
               </p>
             </div>
             <div className="p-8 space-y-5">

@@ -49,7 +49,7 @@ export default function GestoriaPortalClient({
 }: Props) {
   const [contratos, setContratos] = useState(initialContratos)
   const [docs, setDocs] = useState(initialDocs)
-  const [section, setSection] = useState<GestoriaPortalSection>('expediente')
+  const [section, setSection] = useState<GestoriaPortalSection>('inicio')
   const [activePaidId, setActivePaidId] = useState<string | null>(null)
   const [downloading, setDownloading] = useState<string | null>(null)
   const [uploading, setUploading] = useState<string | null>(null)
@@ -92,6 +92,18 @@ export default function GestoriaPortalClient({
     const v = parseSection(searchParams.get('v'))
     setSection(v)
   }, [searchParams])
+
+  const awaitingStripeActivation = useMemo(() => {
+    const sid =
+      initialSessionId ||
+      searchParams.get('session_id') ||
+      ''
+    return (
+      linking ||
+      sid.startsWith('cs_') ||
+      searchParams.get('pago') === '1'
+    )
+  }, [initialSessionId, linking, searchParams])
 
   useEffect(() => {
     setContratos(initialContratos)
@@ -348,7 +360,7 @@ export default function GestoriaPortalClient({
     )
   }
 
-  if (!hasPaidService && contratos.length === 0) {
+  if (!hasPaidService && contratos.length === 0 && !primaryLead && awaitingStripeActivation) {
     return (
       <div className="min-h-screen bg-[#eef0f2] flex items-center justify-center p-4">
         <div className="bg-white rounded-2xl border border-gray-200 p-8 text-center space-y-4 max-w-md">

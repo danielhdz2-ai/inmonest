@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 
-/** Ruta legacy: inventario SEO solo en panel admin. */
+/** Ruta legacy: inventario público por ciudad (no panel admin). */
 export default function GestoriaCiudadesRedirect() {
-  redirect('/admin/inventario-seo')
+  redirect('/contratos-inmobiliarios')
 }

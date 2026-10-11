@@ -1,6 +1,7 @@
 import { createAdminClient } from '@/lib/supabase/admin'
 import { getRedirectUrl, isAdminEmail } from '@/lib/admin'
-import { buildGestoriaPanelUrl, safeInternalPath } from '@/lib/gestoria-leads'
+import { sanitizeNextPathForUser } from '@/lib/auth-redirect'
+import { buildGestoriaPanelUrl } from '@/lib/gestoria-leads'
 import { fetchGestoriaOrdersForUser } from '@/lib/gestoria-link-user'
 
 /** Destino tras login OAuth/password cuando la sesión ya existe o acaba de crearse. */
@@ -9,7 +10,7 @@ export async function resolvePostLoginRedirect(
   email: string,
   next?: string | null,
 ): Promise<string> {
-  const nextPath = safeInternalPath(next ?? null)
+  const nextPath = sanitizeNextPathForUser(email, next ?? null)
   if (nextPath) return nextPath
   if (isAdminEmail(email)) return '/admin'
 

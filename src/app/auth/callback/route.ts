@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { sendEmail, emailBienvenida } from '@/lib/email'
-import { safeInternalPath } from '@/lib/gestoria-leads'
+import { sanitizeNextPathForUser } from '@/lib/auth-redirect'
 import { resolvePostLoginRedirect } from '@/lib/post-login-redirect'
 export async function GET(request: Request) {
   const { searchParams, origin } = new URL(request.url)
@@ -30,13 +30,10 @@ export async function GET(request: Request) {
         }).catch(() => { /* no crítico */ })
       }
 
-      const nextPath = safeInternalPath(next)
-      let redirectUrl: string
-      if (nextPath) {
-        redirectUrl = nextPath
-      } else {
-        redirectUrl = await resolvePostLoginRedirect(user.id, email)
-      }
+      const nextPath = sanitizeNextPathForUser(email, next)
+      const redirectUrl = nextPath
+        ? nextPath
+        : await resolvePostLoginRedirect(user.id, email)
       return NextResponse.redirect(`${origin}${redirectUrl}`)
     }
   }
