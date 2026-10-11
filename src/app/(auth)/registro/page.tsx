@@ -219,7 +219,7 @@ function RegistroForm() {
 
         <p className="text-xs text-gray-400 text-center mt-4">
           Al registrarte aceptas los{' '}
-          <Link href="/terminos" className="underline">Términos de servicio</Link>
+          <Link href="/aviso-legal" className="underline">Términos de servicio</Link>
           {' '}y la{' '}
           <Link href="/privacidad" className="underline">Política de privacidad</Link>.
         </p>

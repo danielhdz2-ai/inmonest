@@ -50,30 +50,17 @@ export default function LoginForm() {
     if (error) {
       setError('Email o contraseña incorrectos')
       setLoading(false)
-    } else {
-      const userEmail = data.user?.email
-      if (isAdminEmail(userEmail)) {
-        window.location.replace('/admin')
-        return
-      }
-      if (nextParam) {
-        window.location.replace(nextParam)
-        return
-      }
-      try {
-        const r = await fetch('/api/gestoria/panel-redirect', { cache: 'no-store' })
-        if (r.ok) {
-          const { url } = await r.json() as { url?: string | null }
-          if (url) {
-            window.location.replace(url)
-            return
-          }
-        }
-      } catch {
-        /* fallback */
-      }
-      window.location.replace(getRedirectUrl(userEmail))
+      return
     }
+
+    const userEmail = data.user?.email
+    const dest =
+      isAdminEmail(userEmail)
+        ? '/admin'
+        : nextParam ?? getRedirectUrl(userEmail)
+
+    // Navegación completa para que las cookies de sesión lleguen al servidor
+    window.location.assign(dest)
   }
 
   return (

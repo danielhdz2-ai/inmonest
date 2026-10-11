@@ -20,7 +20,22 @@ export default async function ContratosLayout({
       redirect('/login?next=/mi-cuenta/contratos')
     }
 
-    const sidebar = await loadPortalSidebarProps(supabase, user)
+    let sidebar
+    try {
+      sidebar = await loadPortalSidebarProps(supabase, user)
+    } catch (sidebarErr) {
+      console.error('[mi-cuenta/contratos/layout] sidebar:', sidebarErr)
+      const email = user.email ?? ''
+      sidebar = {
+        email,
+        displayName: email.split('@')[0] || 'Usuario',
+        initials: (email.slice(0, 2) || 'IN').toUpperCase(),
+        avatarUrl: null,
+        favCount: 0,
+        msgCount: 0,
+        alertCount: 0,
+      }
+    }
 
     return (
       <DashboardSidebar {...sidebar}>

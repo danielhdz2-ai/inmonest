@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import LazyChatWidget from "@/components/LazyChatWidget";
@@ -133,6 +134,9 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden" data-app-shell="5">
+        <Script id="sw-legacy-cleanup" strategy="beforeInteractive">
+          {`if(typeof navigator!=='undefined'&&'serviceWorker' in navigator){navigator.serviceWorker.getRegistrations().then(function(r){r.forEach(function(x){x.unregister()})}).catch(function(){});}`}
+        </Script>
         <CookieConsentProvider gtmId={GTM_ID}>
           <GTMProvider />
           <OrganizationSchema />

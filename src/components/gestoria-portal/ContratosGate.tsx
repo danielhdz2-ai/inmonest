@@ -40,7 +40,10 @@ function ContratosGateInner() {
       setError(null)
       try {
         const qs = sessionId ? `?session_id=${encodeURIComponent(sessionId)}` : ''
-        const res = await fetch(`/api/gestoria/mis-pedidos${qs}`, { cache: 'no-store' })
+        const res = await fetch(`/api/gestoria/mis-pedidos${qs}`, {
+          cache: 'no-store',
+          credentials: 'include',
+        })
 
         if (res.status === 401) {
           const next = `/mi-cuenta/contratos${sessionId ? `?session_id=${sessionId}` : ''}`
@@ -107,7 +110,7 @@ function ContratosGateInner() {
   }
 
   return (
-    <div className="fixed inset-0 z-[200] overflow-auto bg-[#eef0f2]">
+    <div className="-mx-3 sm:-mx-6 lg:-mx-8 -mt-3 sm:-mt-8 min-h-[min(70vh,calc(100dvh-8rem))] overflow-auto bg-[#eef0f2] rounded-xl border border-gray-200/80">
       <GestoriaPortalClientSuspense
         contratos={contratos}
         userDocs={userDocs}

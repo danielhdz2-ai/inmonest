@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { isNextRedirectError } from '@/lib/next-navigation'
 
 export const metadata: Metadata = {
   title: 'Mi cuenta',
@@ -21,10 +22,13 @@ export default async function MiCuentaLayout({
     const { data } = await supabase.auth.getUser()
     user = data.user
   } catch (err) {
+    if (isNextRedirectError(err)) throw err
     console.error('[mi-cuenta/layout] getUser falló', err)
   }
 
-  if (!user) redirect('/login?next=/mi-cuenta/contratos')
+  if (!user) {
+    redirect('/login?next=/mi-cuenta/contratos')
+  }
 
   return <div className="min-h-screen">{children}</div>
 }

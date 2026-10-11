@@ -9,15 +9,23 @@ interface NavbarProps {
   isLoggedIn?: boolean
 }
 
-const NAV_ITEMS = [
+const SIDEBAR_CONTRATOS = [
   { label: 'Contrato alquiler LAU', href: '/gestoria/contrato-alquiler' },
+  { label: 'Contrato de temporada', href: '/gestoria/alquiler-temporada' },
+  { label: 'Contrato de alquiler de habitación', href: '/gestoria/alquiler-habitaciones' },
+  { label: 'Contrato de arras', href: '/gestoria/arras-penitenciales' },
+  { label: 'Servicio de compra integral', href: '/gestoria/compra-completa-reserva-escritura' },
+  { label: 'Servicio de venta integral', href: '/gestoria/venta-completa-reserva-escritura' },
+] as const
+
+const SIDEBAR_NAV = [
   { label: 'Gestoría', href: '/gestoria' },
   { label: 'Servicios', href: '/servicios' },
   { label: 'Contratos por ciudad', href: '/contratos-inmobiliarios' },
   { label: 'Calculadoras', href: '/calculadora-gastos-alquiler' },
   { label: 'Agencias', href: '/agencias/gestoria' },
   { label: 'Blog', href: '/blog' },
-]
+] as const
 
 import { GESTORIA_NAV_SERVICIOS } from '@/lib/gestoria-servicios-landings'
 import {
@@ -237,7 +245,23 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
         </div>
 
         <nav className="flex-1 overflow-y-auto py-3">
-          {NAV_ITEMS.map(item => (
+          <p className="px-6 py-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+            Contratos y packs
+          </p>
+          {SIDEBAR_CONTRATOS.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={close}
+              className="flex items-center gap-3 px-6 py-3 text-sm font-medium text-gray-800 hover:bg-cream-100 hover:text-gold-500 transition-colors border-b border-gray-50"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <p className="px-6 py-2 mt-2 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+            Más
+          </p>
+          {SIDEBAR_NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
@@ -262,7 +286,7 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             onClick={close}
             className="block text-center py-2.5 rounded-full border border-gold-500/40 text-gold-500 text-sm font-medium hover:bg-cream-100 transition-colors"
           >
-            {isLoggedIn ? 'Mi cuenta' : 'Iniciar sesión'}
+            {loggedIn ? 'Mi cuenta' : 'Iniciar sesión'}
           </Link>
         </div>
       </div>
