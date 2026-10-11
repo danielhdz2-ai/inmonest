@@ -41,7 +41,7 @@ const CARDS: CardData[] = [
     id: 'expertos',
     titulo: 'Expertos\ngestores',
     subtitulo: 'Trato cercano y asesoramiento claro.',
-    imagen: '/gestoria-expertos-calle.jpg',
+    imagen: '/gestor-experto-oficina.jpg',
     tag: 'Equipo jurídico',
     tagStyle: 'bg-forest-800/90',
     desc: 'Te acompañamos en alquiler de larga duración, arras y documentación previa a la firma. Resolvemos dudas antes de que firmes nada.',
