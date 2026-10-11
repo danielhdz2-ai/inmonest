@@ -28,9 +28,9 @@ export default function GestoriaPortalShell({
   const firstName = displayName.split(' ')[0]
 
   return (
-    <div className="min-h-screen bg-[#eef0f2] flex flex-col lg:flex-row">
-      {/* Sidebar desktop */}
-      <aside className="hidden lg:flex lg:w-64 xl:w-72 flex-col bg-[#0a1410] text-white flex-shrink-0 sticky top-0 h-screen border-r border-[#1f3524]">
+    <div className="min-h-screen bg-[#eef0f2]">
+      {/* Sidebar desktop — fijo; solo el contenido principal hace scroll */}
+      <aside className="hidden lg:flex fixed inset-y-0 left-0 z-40 w-64 xl:w-72 flex-col bg-[#0a1410] text-white border-r border-[#1f3524]">
         <div className="px-5 pt-6 pb-4 border-b border-white/10">
           <Link href="/" className="flex items-center gap-2.5">
             <Image src="/logo.png" alt="Inmonest" width={32} height={32} className="rounded-lg" />
@@ -102,8 +102,7 @@ export default function GestoriaPortalShell({
         </div>
       </aside>
 
-      {/* Main */}
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex flex-col min-w-0 min-h-screen lg:pl-64 xl:pl-72">
         {/* Header móvil + tablet */}
         <header className="lg:hidden sticky top-0 z-50 bg-[#0a1410] text-white shadow-lg">
           <div className="px-4 py-3 flex items-center justify-between gap-3">

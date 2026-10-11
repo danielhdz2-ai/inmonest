@@ -8,10 +8,16 @@ export function getServicePrice(serviceKey: string): number | null {
   return getPrecioServicio(serviceKey) ?? GESTORIA_SERVICIOS[serviceKey]?.precio ?? null
 }
 
-export function buildGestoriaPanelUrl(params?: { lead?: boolean; pago?: boolean }) {
+export function buildGestoriaPanelUrl(params?: {
+  lead?: boolean
+  pago?: boolean
+  /** Sección del panel (p. ej. servicios = Contratar más) */
+  v?: string
+}) {
   const q = new URLSearchParams()
   if (params?.lead) q.set('lead', '1')
   if (params?.pago) q.set('pago', '1')
+  if (params?.v) q.set('v', params.v)
   const qs = q.toString()
   return `/mi-cuenta/contratos${qs ? `?${qs}` : ''}`
 }

@@ -98,6 +98,15 @@ export default function GestoriaPortalClient({
     setSection(v)
   }, [searchParams])
 
+  // Sin pago confirmado → abrir catálogo (Contratar más)
+  useEffect(() => {
+    if (hasPaidService || primaryLead) return
+    const sid = searchParams.get('session_id')
+    if (sid?.startsWith('cs_') || searchParams.get('pago') === '1') return
+    if (searchParams.get('v')) return
+    navigate('servicios')
+  }, [hasPaidService, primaryLead, navigate, searchParams])
+
   const awaitingStripeActivation = useMemo(() => {
     const sid =
       initialSessionId ||
@@ -500,6 +509,7 @@ export default function GestoriaPortalClient({
           ownedServiceKeys={contratos.map((c) => c.service_key)}
           userEmail={userEmail}
           clientName={activePaid?.client_name ?? displayName}
+          catalogOnly={!hasPaidService}
         />
       )}
 

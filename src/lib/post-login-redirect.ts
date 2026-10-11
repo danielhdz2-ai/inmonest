@@ -1,7 +1,7 @@
 import { createAdminClient } from '@/lib/supabase/admin'
-import { getRedirectUrl, isAdminEmail } from '@/lib/admin'
+import { isAdminEmail } from '@/lib/admin'
 import { sanitizeNextPathForUser } from '@/lib/auth-redirect'
-import { buildGestoriaPanelUrl } from '@/lib/gestoria-leads'
+import { buildGestoriaPanelUrl, isPaidStatus } from '@/lib/gestoria-leads'
 import { fetchGestoriaOrdersForUser } from '@/lib/gestoria-link-user'
 
 /** Destino tras login OAuth/password cuando la sesión ya existe o acaba de crearse. */
@@ -17,10 +17,12 @@ export async function resolvePostLoginRedirect(
   try {
     const admin = createAdminClient()
     const contratos = await fetchGestoriaOrdersForUser(admin, userId, email)
-    if (contratos.length > 0) return buildGestoriaPanelUrl()
+    const hasPaid = contratos.some((c) => isPaidStatus(c.status, c.paid_at))
+    if (hasPaid) return buildGestoriaPanelUrl()
+    return buildGestoriaPanelUrl({ v: 'servicios' })
   } catch (err) {
     console.error('[post-login-redirect]', err)
   }
 
-  return getRedirectUrl(email)
+  return buildGestoriaPanelUrl({ v: 'servicios' })
 }
