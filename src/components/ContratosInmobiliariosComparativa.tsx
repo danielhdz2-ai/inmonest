@@ -266,12 +266,18 @@ export default function ContratosInmobiliariosComparativa({
             gestión integral de alquiler en España. Puede variar según ciudad y servicios incluidos.
           </p>
 
-          <div className="mt-6">
+          <div className="mt-6 flex flex-wrap gap-3">
             <Link
               href="/gestoria/solicitar/contrato-alquiler"
               className="inline-flex rounded-lg bg-gold-500 px-5 py-2.5 text-sm font-bold text-white hover:bg-gold-600"
             >
               Contratar alquiler LAU — {formatEur(ALQUILER_PRECIO)}
+            </Link>
+            <Link
+              href="/gestoria/solicitar"
+              className="inline-flex rounded-lg border border-gold-400 px-5 py-2.5 text-sm font-bold text-gold-800 hover:bg-gold-50"
+            >
+              Ver todos los contratos
             </Link>
           </div>
         </div>

@@ -97,8 +97,8 @@ export default function Home() {
               respuesta en 24 h y panel de cliente en toda España.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button href="/gestoria/solicitar/contrato-alquiler" variant="primary" className="rounded-full">
-                Solicitar contrato alquiler
+              <Button href="/gestoria/solicitar" variant="primary" className="rounded-full">
+                Solicitar contrato
               </Button>
               <Button href="/gestoria/contrato-alquiler" variant="ghost" className="rounded-full">
                 Ver precio y qué incluye
@@ -184,8 +184,8 @@ export default function Home() {
           eyebrow="Propietarios e inquilinos"
           title={<>¿Vas a alquilar o firmar arras?</>}
           description="Contrato LAU blindado, fianza INCASÒL e IRAV cuando aplica. Online, con gestor y entrega en 48 h."
-          primaryHref="/gestoria/solicitar/contrato-alquiler"
-          primaryLabel="Contrato alquiler 145 €"
+          primaryHref="/gestoria/solicitar"
+          primaryLabel="Ver contratos y precios"
           secondaryHref="/gestoria"
           secondaryLabel="Ver todos los servicios"
           imageSrc={BRAND_IMAGES.familia.src}

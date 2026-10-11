@@ -934,30 +934,31 @@ export default function GestoriaPage() {
                 Clientes Inmonest
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold mb-3 max-w-lg">
-                Regístrate y gestiona todos<br />tus contratos desde un solo lugar
+                Panel de cliente<br />para tus expedientes
               </h2>
               <p className="text-white/80 mb-8 max-w-xl text-sm leading-relaxed">
-                Con una cuenta Inmonest puedes publicar tus anuncios, solicitar contratos con tus datos prefilled, hacer seguimiento del estado de cada servicio y acceder a tu historial de documentos en cualquier momento.
+                Tras contratar un servicio, entra con tu email para ver el estado, subir documentos
+                y descargar contratos. Sin portal de anuncios: solo gestoría.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
-                  href="/login"
+                  href="/gestoria/solicitar"
                   className="px-6 py-3 bg-gold-500 text-white rounded-xl font-bold text-sm hover:bg-gold-600 transition-colors shadow-md"
                 >
-                  Crear cuenta gratis →
+                  Elegir contrato →
                 </Link>
                 <Link
-                  href="/login"
+                  href="/gestoria/acceso-cliente"
                   className="px-6 py-3 bg-white/10 border border-white/20 text-white rounded-xl font-bold text-sm hover:bg-white/20 transition-colors"
                 >
-                  Ya tengo cuenta
+                  Acceso clientes
                 </Link>
               </div>
               <div className="flex flex-wrap gap-x-8 gap-y-2 mt-8 text-xs text-white/60">
-                <span>✓ 2 anuncios gratis incluidos</span>
                 <span>✓ Historial de contratos</span>
-                <span>✓ Datos prefilled en formularios</span>
-                <span>✓ Sin permanencia</span>
+                <span>✓ Subida de documentos</span>
+                <span>✓ Seguimiento con gestor</span>
+                <span>✓ Firma digital incluida</span>
               </div>
             </div>
           </div>

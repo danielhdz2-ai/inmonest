@@ -20,10 +20,17 @@ const NAV_ITEMS = [
 ]
 
 import { GESTORIA_NAV_SERVICIOS } from '@/lib/gestoria-servicios-landings'
+import {
+  GESTORIA_NAV_SOLICITAR_LABEL,
+  GESTORIA_NAV_SOLICITAR_LABEL_MOBILE,
+  GESTORIA_SERVICIOS_CATALOGO,
+  GESTORIA_SOLICITAR_HUB,
+} from '@/lib/gestoria-nav'
 
 const SERVICIOS_QUICK: Array<{ label: string; href: string; highlight?: boolean }> = [
+  { label: 'Contratar online (todos los contratos)', href: GESTORIA_SOLICITAR_HUB, highlight: true },
   ...GESTORIA_NAV_SERVICIOS,
-  { label: 'Ver todos los servicios', href: '/servicios', highlight: true },
+  { label: 'Catálogo e información', href: GESTORIA_SERVICIOS_CATALOGO },
 ]
 
 export default function Navbar({ isLoggedIn = false }: NavbarProps) {
@@ -172,10 +179,10 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
             </div>
 
             <Link
-              href="/gestoria/solicitar/contrato-alquiler"
+              href={GESTORIA_SOLICITAR_HUB}
               className="inline-flex items-center px-4 py-2 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-gold-600 transition-colors whitespace-nowrap"
             >
-              Solicitar contrato
+              {GESTORIA_NAV_SOLICITAR_LABEL}
             </Link>
 
             <Link
@@ -244,11 +251,11 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
 
         <div className="p-5 border-t border-gray-100 space-y-2">
           <Link
-            href="/gestoria/solicitar/contrato-alquiler"
+            href={GESTORIA_SOLICITAR_HUB}
             onClick={close}
             className="block text-center py-2.5 rounded-full bg-gold-500 text-white text-sm font-semibold hover:bg-gold-600 transition-colors"
           >
-            Solicitar contrato alquiler
+            {GESTORIA_NAV_SOLICITAR_LABEL_MOBILE}
           </Link>
           <Link
             href={accountHref}

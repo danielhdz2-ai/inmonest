@@ -14,7 +14,7 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/opiniones`, lastModified: today, changeFrequency: 'weekly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/contrato-alquiler`, lastModified: today, changeFrequency: 'weekly', priority: 0.95 },
   { url: `${BASE_URL}/servicios`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
-  { url: `${BASE_URL}/gestoria/solicitar`, lastModified: today, changeFrequency: 'weekly', priority: 0.88 },
+  { url: `${BASE_URL}/gestoria/solicitar`, lastModified: today, changeFrequency: 'weekly', priority: 0.93 },
   { url: `${BASE_URL}/gestoria/acompanamiento-reserva-arras`, lastModified: today, changeFrequency: 'monthly', priority: 0.9 },
   { url: `${BASE_URL}/gestoria/contrato-compraventa`, lastModified: today, changeFrequency: 'monthly', priority: 0.88 },
   { url: `${BASE_URL}/gestoria/rescision-alquiler`, lastModified: today, changeFrequency: 'monthly', priority: 0.86 },

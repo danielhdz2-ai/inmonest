@@ -398,7 +398,7 @@ export const SEO_REDIRECTS: Redirect[] = [
   // ═══ Portal inmobiliario cerrado → gestoría (LAU hub) ═══
   { source: '/pisos', destination: '/gestoria/contrato-alquiler', permanent: true },
   { source: '/pisos/:path*', destination: '/gestoria/contrato-alquiler', permanent: true },
-  { source: '/publicar', destination: '/gestoria/solicitar/contrato-alquiler', permanent: true },
-  { source: '/publicar-anuncio', destination: '/gestoria/solicitar/contrato-alquiler', permanent: true },
-  { source: '/publicar/:path*', destination: '/gestoria/solicitar/contrato-alquiler', permanent: true },
+  { source: '/publicar', destination: '/gestoria/solicitar', permanent: true },
+  { source: '/publicar-anuncio', destination: '/gestoria/solicitar', permanent: true },
+  { source: '/publicar/:path*', destination: '/gestoria/solicitar', permanent: true },
 ]

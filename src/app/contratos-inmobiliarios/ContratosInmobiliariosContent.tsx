@@ -67,7 +67,7 @@ export default function ContratosInmobiliariosContent() {
           </Link>
         </div>
         <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-white/60">
-          <span>★ 4,9 en Google</span>
+          <span>★ 5,0 en Google</span>
           <span>+500 contratos redactados</span>
           <span>Toda España</span>
           <span>Revisiones incluidas</span>
@@ -198,24 +198,31 @@ export default function ContratosInmobiliariosContent() {
       <section className="border-t border-gray-100 bg-cream-100 px-4 py-12">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="mb-3 text-xl font-extrabold text-gray-900 sm:text-2xl">
-            Publica tu piso y gestiona tus contratos desde una cuenta
+            Contrata online o entra a tu panel de gestoría
           </h2>
           <p className="mb-6 text-sm leading-relaxed text-gray-600">
-            Cuenta gratuita con 2 anuncios incluidos, formularios con datos prefilled e historial
-            de todos tus contratos inmobiliarios en el panel de gestoría.
+            Elige el contrato que necesitas (LAU, arras, temporada, compraventa integral) en un solo
+            lugar. Tras el pago, accede al panel para subir documentos y seguir el estado con tu
+            gestor.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
-              href="/login"
+              href="/gestoria/solicitar"
               className="rounded-xl bg-gold-500 px-6 py-3 text-sm font-bold text-white transition hover:bg-gold-600"
             >
-              Crear cuenta gratis →
+              Ver todos los contratos →
             </Link>
             <Link
               href="/gestoria/acceso-cliente"
               className="rounded-xl border border-gold-300 bg-white px-6 py-3 text-sm font-bold text-gold-700 transition hover:bg-gold-50"
             >
               Acceso clientes gestoría
+            </Link>
+            <Link
+              href="/mi-cuenta/contratos"
+              className="rounded-xl border border-gray-200 bg-white px-6 py-3 text-sm font-bold text-gray-700 transition hover:bg-gray-50"
+            >
+              Mis expedientes
             </Link>
           </div>
         </div>

@@ -5,13 +5,15 @@ import PageHeroImage from '@/components/PageHeroImage'
 import FirmaCertIncluidaSection from '@/components/FirmaCertIncluidaSection'
 import Footer from '@/components/Footer'
 import SellosConfianza from '@/components/SellosConfianza'
+import SolicitarContratosFeatured from '@/components/SolicitarContratosFeatured'
 import { AGENCIA_GESTORIA_PACKS, AGENCIA_SLA_LABEL } from '@/lib/agencias-gestoria-packs'
 
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Solicitar servicio de gestoría',
-  description: 'Contratos de arras, alquiler LAU, compraventa, revisión legal y asesoría completa. Gestoría inmobiliaria online desde 61€. Entrega en 24-48h.',
+  title: 'Solicitar contrato — catálogo gestoría online',
+  description:
+    'Elige y contrata online: alquiler LAU, arras, temporada, habitación, revisión y packs compraventa. Gestoría inmobiliaria desde 61 €. Entrega 24-48 h.',
   keywords: 'solicitar contrato arras, contrato alquiler online, gestoria inmobiliaria, contrato compraventa, revision legal vivienda',
   alternates: {
     canonical: `${BASE_URL}/gestoria/solicitar`,
@@ -113,7 +115,7 @@ export default function SolicitarIndexPage() {
         <section className="bg-gradient-to-r from-[#2b4c7e] to-[#1e3a5f] text-white py-16 px-6">
           <div className="max-w-6xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Servicios de <span className="text-gold-500">Gestoría Inmobiliaria</span>
+              Solicitar <span className="text-gold-500">contrato inmobiliario</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto mb-6">
               Contratos redactados por gestores expertos, revisión legal profesional y asesoría completa. <strong>Desde 61€</strong>. Entrega en 24-48h.
@@ -126,6 +128,8 @@ export default function SolicitarIndexPage() {
             </div>
           </div>
         </section>
+
+        <SolicitarContratosFeatured />
 
         <div className="max-w-6xl mx-auto px-6 py-10">
           <PageHeroImage
