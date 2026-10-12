@@ -35,6 +35,8 @@ export function isPortalListingApi(pathname: string): boolean {
     pathname.startsWith('/api/favoritos') ||
     pathname.startsWith('/api/alertas') ||
     pathname.startsWith('/api/mis-anuncios') ||
-    pathname.startsWith('/api/push/')
+    pathname.startsWith('/api/push/') ||
+    pathname === '/api/img-proxy' ||
+    pathname.startsWith('/api/img-proxy/')
   )
 }

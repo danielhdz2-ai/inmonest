@@ -7,8 +7,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: '*',
-        allow: ['/', '/api/img-proxy'],
+        allow: ['/'],
         disallow: [
+          '/api/img-proxy',
           '/pisos',
           '/publicar-anuncio',
           '/publicar',

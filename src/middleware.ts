@@ -34,6 +34,13 @@ export async function middleware(request: NextRequest) {
     return NextResponse.json({ error: 'Portal de anuncios desactivado' }, { status: 410 })
   }
 
+  if (pathname === '/api/sitemap') {
+    const url = request.nextUrl.clone()
+    url.pathname = '/sitemap.xml'
+    url.search = ''
+    return NextResponse.redirect(url, 308)
+  }
+
   const portalDest = PORTAL_CLOSED_REDIRECTS[pathname]
   if (portalDest) {
     const url = request.nextUrl.clone()
@@ -266,12 +273,6 @@ export async function middleware(request: NextRequest) {
     pathname.startsWith('/api/perfil')
   ) {
     const rateLimitResponse = await applyRateLimit(authedApiLimit, identifier, request)
-    if (rateLimitResponse) return rateLimitResponse
-  }
-
-  // APIs públicas (sitemap; listings/pisos desactivados en portal-closed)
-  if (pathname === '/api/sitemap') {
-    const rateLimitResponse = await applyRateLimit(publicApiLimit, identifier, request)
     if (rateLimitResponse) return rateLimitResponse
   }
 

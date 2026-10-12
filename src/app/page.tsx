@@ -8,9 +8,7 @@ import CarruselServicios from '@/components/CarruselServicios'
 import EnlacesInternosSeo from '@/components/EnlacesInternosSeo'
 import HomeTrustStrip from '@/components/home/HomeTrustStrip'
 import HomeHowItWorks from '@/components/home/HomeHowItWorks'
-import HomeIntentSelector from '@/components/home/HomeIntentSelector'
 import HomeHeroCtas from '@/components/home/HomeHeroCtas'
-import HomeVideoPreload from '@/components/home/HomeVideoPreload'
 import HomeTestimonials from '@/components/home/HomeTestimonials'
 import HomeDiscoverGrid from '@/components/home/HomeDiscoverGrid'
 import HomePersonaIntents from '@/components/home/HomePersonaIntents'
@@ -176,7 +174,6 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <HomeVideoPreload />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -231,7 +228,6 @@ export default function Home() {
 
       <HomeTrustStrip />
       <HomeHowItWorks />
-      <HomeIntentSelector />
       <HomePersonaIntents />
       <HomeDiscoverGrid />
       <CarruselServicios />

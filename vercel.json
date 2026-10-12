@@ -24,22 +24,35 @@
     {
       "source": "/",
       "headers": [
-        { "key": "Cache-Control", "value": "public, s-maxage=60, stale-while-revalidate=300" },
+        { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" },
         { "key": "X-Robots-Tag", "value": "noai, noimageai" }
       ]
     },
     {
-      "source": "/(gestoria|vender-casa|agencias|publicar-anuncio|contacto|seguridad|blog|pisos)",
+      "source": "/(gestoria|vender-casa|agencias|contacto|seguridad|blog|servicios|opiniones|hipoteca|calculadora-gastos-compra|calculadora-gastos-alquiler|calculadora-ahorro-comisiones|vender-piso-sin-agencia|sobre-nosotros|contratos-inmobiliarios)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, s-maxage=60, stale-while-revalidate=300" },
+        { "key": "Cache-Control", "value": "public, s-maxage=86400, stale-while-revalidate=604800" },
         { "key": "X-Robots-Tag", "value": "noai, noimageai" }
       ]
     },
     {
-      "source": "/:ciudad/(alquiler-particulares|alquiler-sin-agencia|contrato-alquiler|contrato-arras|vender-piso|pisos)",
+      "source": "/barcelona/contrato-(arras|alquiler)/:barrio",
       "headers": [
-        { "key": "Cache-Control", "value": "public, s-maxage=7200, stale-while-revalidate=14400" },
+        { "key": "Cache-Control", "value": "public, s-maxage=86400, stale-while-revalidate=604800" },
         { "key": "X-Robots-Tag", "value": "noai, noimageai" }
+      ]
+    },
+    {
+      "source": "/:ciudad/(alquiler-particulares|alquiler-sin-agencia|contrato-alquiler|contrato-arras|vender-piso|pisos|alquiler-temporada|pisos-particulares-sin-comision)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, s-maxage=86400, stale-while-revalidate=604800" },
+        { "key": "X-Robots-Tag", "value": "noai, noimageai" }
+      ]
+    },
+    {
+      "source": "/video/:path*",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=604800, s-maxage=604800, immutable" }
       ]
     }
   ],
