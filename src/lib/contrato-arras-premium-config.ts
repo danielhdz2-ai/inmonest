@@ -1009,7 +1009,7 @@ export const CONTRATO_ARRAS_PREMIUM: Record<string, ContratoArrasPremiumConfig> 
     slug: 'hospitalet-llobregat',
     nombre: "L'Hospitalet de Llobregat",
     meta: {
-      title: "Arras penitenciales L'Hospitalet — área metropolitana desde 145€",
+      title: "Arras L'Hospitalet de Llobregat — Collblanc, Torrassa, Bellvitge · 145€",
       description:
         "Contrato de arras en L'Hospitalet de Llobregat: compraventa entre particulares, ITP Cataluña, hipoteca y plazo a notaría. 145€, entrega 48h.",
       keywords: [
@@ -1055,7 +1055,7 @@ export const CONTRATO_ARRAS_PREMIUM: Record<string, ContratoArrasPremiumConfig> 
     slug: 'cornella-llobregat',
     nombre: 'Cornellà de Llobregat',
     meta: {
-      title: 'Arras penitenciales Cornellà — Baix Llobregat desde 145€',
+      title: 'Arras Cornellà de Llobregat — Sant Ildefons y Almeda · 145€',
       description:
         'Contrato de arras en Cornellà de Llobregat: señal entre particulares, ITP Cataluña, condición de hipoteca. 145€, 48h.',
       keywords: [

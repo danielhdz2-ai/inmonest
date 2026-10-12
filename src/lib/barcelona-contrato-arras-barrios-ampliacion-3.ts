@@ -40,11 +40,11 @@ export const BARCELONA_ARRAS_BARRIOS_EXTRA_3: Record<
     nombre: 'El Raval',
     distrito: 'Ciutat Vella',
     meta: {
-      title: 'El Raval: arras en fincas protegidas y compraventa multicultural',
+      title: 'Arras penitenciales El Raval (Barcelona) — finca protegida · 145€',
       description:
         'Contrato de arras penitenciales en El Raval: edificios antiguos, ITE, hipoteca y señal trazable. 145 € · 48 h · ITP Cataluña.',
       keywords: ['contrato arras el raval', 'arras raval barcelona', 'señal compraventa raval'],
-      ogTitle: 'Arras El Raval: señal con revisión registral en Ciutat Vella',
+      ogTitle: 'El Raval: arras penitenciales (no Ciutat Vella genérico)',
       ogDescription: 'Compraventa entre particulares en uno de los barrios más dinámicos de Barcelona.',
     },
     hero: {
@@ -111,7 +111,7 @@ export const BARCELONA_ARRAS_BARRIOS_EXTRA_3: Record<
     nombre: 'Sant Antoni',
     distrito: 'Eixample',
     meta: {
-      title: 'Sant Antoni: arras en pisos reformados tras la supermanzana',
+      title: 'Arras Sant Antoni Barcelona — supermanzana y licencia de obra · 145€',
       description:
         'Señal penitencial en Sant Antoni: reformas recientes, terrazas interiores e hipoteca. Contrato arras 145 € · 48 h.',
       keywords: ['contrato arras sant antoni', 'arras eixample sant antoni', 'señal compraventa sant antoni'],
@@ -181,7 +181,7 @@ export const BARCELONA_ARRAS_BARRIOS_EXTRA_3: Record<
     nombre: 'La Barceloneta',
     distrito: 'Ciutat Vella',
     meta: {
-      title: 'La Barceloneta: arras junto al mar con estatutos anti-turismo',
+      title: 'Arras La Barceloneta — vivienda junto al mar, no apartamento turístico · 145€',
       description:
         'Contrato arras en La Barceloneta: humedad, normas comunitarias y compraventa entre particulares. 145 € · 48 h.',
       keywords: ['contrato arras barceloneta', 'arras barceloneta barcelona', 'señal compraventa playa barcelona'],
@@ -251,7 +251,7 @@ export const BARCELONA_ARRAS_BARRIOS_EXTRA_3: Record<
     nombre: 'Hostafrancs',
     distrito: 'Sants-Montjuïc',
     meta: {
-      title: 'Hostafrancs: arras entre Sants, Plaça Espanya y Montjuïc',
+      title: 'Arras Hostafrancs Barcelona — barrio residencial (no Poble-sec) · 145€',
       description:
         'Señal penitencial en Hostafrancs: familias, bloques años 70 e hipoteca. Arras 145 € · 48 h · Cataluña.',
       keywords: ['contrato arras hostafrancs', 'arras hostafrancs barcelona', 'señal compraventa hostafrancs'],
@@ -321,7 +321,7 @@ export const BARCELONA_ARRAS_BARRIOS_EXTRA_3: Record<
     nombre: 'Pedralbes',
     distrito: 'Les Corts',
     meta: {
-      title: 'Pedralbes: arras de alto importe con anejos y garaje',
+      title: 'Arras Pedralbes Barcelona — plaza, trastero y ticket alto · 145€',
       description:
         'Contrato arras en Pedralbes: señal elevada, hipoteca exigente, parking y trastero. 145 € · 48 h.',
       keywords: ['contrato arras pedralbes', 'arras pedralbes barcelona', 'señal compraventa pedralbes'],

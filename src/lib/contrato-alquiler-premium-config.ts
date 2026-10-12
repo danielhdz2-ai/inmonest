@@ -1359,7 +1359,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'hospitalet-llobregat',
     nombre: "L'Hospitalet de Llobregat",
     meta: {
-      title: "Contrato de alquiler L'Hospitalet desde 145€",
+      title: "Contrato LAU L'Hospitalet de Llobregat — metro Barcelona · 145€",
       description:
         "Contrato LAU en L'Hospitalet de Llobregat desde 145€, entrega 48h. Ley de Vivienda 2026, INCASÒL e IRAV cuando aplique.",
       keywords: [
@@ -1407,7 +1407,7 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
     slug: 'cornella-llobregat',
     nombre: 'Cornellà de Llobregat',
     meta: {
-      title: 'Contrato de alquiler Cornellà desde 145€',
+      title: 'Contrato LAU Cornellà de Llobregat — Baix Llobregat · 145€',
       description:
         'Contrato LAU en Cornellà de Llobregat desde 145€, entrega 48h. INCASÒL, IRAV metropolitano y Ley de Vivienda 2026.',
       keywords: [

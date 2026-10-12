@@ -40,11 +40,11 @@ export const BARCELONA_ALQUILER_BARRIOS_EXTRA_3: Record<
     nombre: 'El Raval',
     distrito: 'Ciutat Vella',
     meta: {
-      title: 'LAU El Raval: contrato en fincas centenarias y convivencia multicultural',
+      title: 'Contrato alquiler El Raval Barcelona — LAU patrimonio · 145€',
       description:
         'Alquiler larga duración en El Raval: edificios protegidos, IRAV en zona tensionada y coliving mal tipificado. Contrato LAU 145 € · 48 h.',
       keywords: ['contrato alquiler el raval', 'LAU raval barcelona', 'alquiler piso raval contrato'],
-      ogTitle: 'El Raval: LAU que distingue vivienda habitual de habitación encubierta',
+      ogTitle: 'El Raval: LAU de barrio (distinto de Ciutat Vella hub)',
       ogDescription: 'Arrendamiento estable en uno de los barrios más densos de Barcelona.',
     },
     hero: {
@@ -107,7 +107,7 @@ export const BARCELONA_ALQUILER_BARRIOS_EXTRA_3: Record<
     nombre: 'Sant Antoni',
     distrito: 'Eixample',
     meta: {
-      title: 'LAU Sant Antoni: contrato tras la supermanzana y mercado de barrio',
+      title: 'Contrato alquiler Sant Antoni Barcelona — LAU post-reforma · 145€',
       description:
         'Alquiler larga duración en Sant Antoni: pisos reformados, terrazas pequeñas e IRAV. LAU personalizado 145 € · 48 h.',
       keywords: ['contrato alquiler sant antoni', 'LAU eixample sant antoni', 'alquiler mercat sant antoni'],
@@ -166,7 +166,7 @@ export const BARCELONA_ALQUILER_BARRIOS_EXTRA_3: Record<
     nombre: 'La Barceloneta',
     distrito: 'Ciutat Vella',
     meta: {
-      title: 'LAU La Barceloneta: contrato junto al mar sin confundir con temporada',
+      title: 'Contrato alquiler La Barceloneta — LAU vivienda habitual · 145€',
       description:
         'Alquiler vivienda habitual en La Barceloneta: humedad marina, normas comunitarias anti-turismo e IRAV. LAU 145 € · 48 h.',
       keywords: ['contrato alquiler barceloneta', 'LAU barceloneta barcelona', 'alquiler piso playa barcelona contrato'],
@@ -233,7 +233,7 @@ export const BARCELONA_ALQUILER_BARRIOS_EXTRA_3: Record<
     nombre: 'Hostafrancs',
     distrito: 'Sants-Montjuïc',
     meta: {
-      title: 'LAU Hostafrancs: contrato entre Sants, la estación y Montjuïc',
+      title: 'Contrato alquiler Hostafrancs Barcelona — LAU familiar · 145€',
       description:
         'Alquiler larga duración en Hostafrancs: familias, pisos en bloques de los 70 e IRAV. Contrato LAU 145 € · 48 h.',
       keywords: ['contrato alquiler hostafrancs', 'LAU hostafrancs barcelona', 'alquiler sants montjuic lau'],
@@ -292,7 +292,7 @@ export const BARCELONA_ALQUILER_BARRIOS_EXTRA_3: Record<
     nombre: 'Pedralbes',
     distrito: 'Les Corts',
     meta: {
-      title: 'LAU Pedralbes: contrato en zona premium con anejos y seguridad',
+      title: 'Contrato alquiler Pedralbes Barcelona — LAU premium · 145€',
       description:
         'Alquiler larga duración en Pedralbes: casas y pisos señoriales, parking, portería e IRAV. LAU 145 € · 48 h.',
       keywords: ['contrato alquiler pedralbes', 'LAU pedralbes barcelona', 'alquiler piso pedralbes contrato'],
