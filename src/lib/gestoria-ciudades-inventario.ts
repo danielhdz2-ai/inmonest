@@ -68,6 +68,8 @@ const NOMBRES_EXTRA: Record<string, string> = {
   tarragona: 'Tarragona',
   almeria: 'Almería',
   gijon: 'Gijón',
+  'hospitalet-llobregat': "L'Hospitalet de Llobregat",
+  'cornella-llobregat': 'Cornellà de Llobregat',
 }
 
 export function getNombreCiudad(slug: string): string {

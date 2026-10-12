@@ -1354,6 +1354,100 @@ export const CONTRATO_ALQUILER_PREMIUM: Record<string, ContratoAlquilerPremiumCo
       ),
     ],
   },
+
+  'hospitalet-llobregat': {
+    slug: 'hospitalet-llobregat',
+    nombre: "L'Hospitalet de Llobregat",
+    meta: {
+      title: "Contrato de alquiler L'Hospitalet desde 145€",
+      description:
+        "Contrato LAU en L'Hospitalet de Llobregat desde 145€, entrega 48h. Ley de Vivienda 2026, INCASÒL e IRAV cuando aplique.",
+      keywords: [
+        "contrato alquiler l'hospitalet",
+        'LAU hospitalet de llobregat',
+        'contrato arrendamiento hospitalet',
+        'alquiler vivienda hospitalet contrato',
+        'gestoría alquiler área metropolitana barcelona',
+      ],
+      ogTitle: "Contrato de alquiler L'Hospitalet desde 145€",
+      ogDescription: 'LAU personalizado en el segundo municipio del área metropolitana, sin plantillas genéricas.',
+      ogImageAlt: "Contrato de alquiler en L'Hospitalet",
+    },
+    schema: {
+      serviceName: "Contrato de Alquiler de Vivienda (LAU) en L'Hospitalet de Llobregat",
+      serviceDescription:
+        "Redacción de contrato LAU en L'Hospitalet, Collblanc, La Torrassa y resto del municipio.",
+      areaType: 'City',
+      areaName: "L'Hospitalet de Llobregat",
+    },
+    heroImageAlt: "Contrato de alquiler en L'Hospitalet",
+    breadcrumbFinal: "Contrato de Alquiler L'Hospitalet",
+    badgeLine: "Alquiler · L'Hospitalet",
+    ctaStickyLabel: "Alquiler · L'Hospitalet",
+    introLargo:
+      "L'Hospitalet de Llobregat mueve mucho alquiler de vivienda habitual entre particulares: bloques de los 70, rehabilitaciones recientes y familias que alternan propiedad en el municipio con trabajo en Barcelona. La LAU y la Ley de Vivienda 2026 exigen duración mínima, fianza INCASÒL e, en muchos casos, respeto del índice de referencia en zona tensionada metropolitana. Redactamos tu contrato a medida desde 145€, listo en 48 h.",
+    alertaTitulo: "Vas a firmar un alquiler en L'Hospitalet: ¿vas a hacerlo con un PDF genérico?",
+    paraQuienTitulo: "¿Para quién es este contrato en L'Hospitalet?",
+    paraQuien: [
+      'Propietarios en Collblanc, Centre, Bellvitge o Santa Eulàlia que alquilan por primera vez',
+      'Arrendadores con contratos antiguos previos a la Ley de Vivienda',
+      'Inquilinos que quieren claridad sobre renta, fianza y duración mínima',
+      'Alquileres LAU de larga duración en el Baix Llobregat',
+    ],
+    faqs: faqPack(
+      "L'Hospitalet",
+      '¿Qué fianza es obligatoria en Cataluña para un piso en L’Hospitalet?',
+      'Una mensualidad como fianza legal, con depósito ante INCASÒL en los supuestos exigidos, y garantías adicionales solo dentro de los límites LAU.',
+      '¿El contrato es válido en todo el municipio?',
+      'Sí, en cualquier barrio de L’Hospitalet de Llobregat y con normativa estatal y catalana vigente.',
+    ),
+  },
+
+  'cornella-llobregat': {
+    slug: 'cornella-llobregat',
+    nombre: 'Cornellà de Llobregat',
+    meta: {
+      title: 'Contrato de alquiler Cornellà desde 145€',
+      description:
+        'Contrato LAU en Cornellà de Llobregat desde 145€, entrega 48h. INCASÒL, IRAV metropolitano y Ley de Vivienda 2026.',
+      keywords: [
+        'contrato alquiler cornella de llobregat',
+        'LAU cornella',
+        'contrato arrendamiento cornella',
+        'alquiler vivienda cornella contrato',
+      ],
+      ogTitle: 'Contrato de alquiler Cornellà desde 145€',
+      ogDescription: 'LAU adaptado al mercado del Baix Llobregat.',
+      ogImageAlt: 'Contrato de alquiler en Cornellà',
+    },
+    schema: {
+      serviceName: 'Contrato de Alquiler de Vivienda (LAU) en Cornellà de Llobregat',
+      serviceDescription: 'Redacción de contrato LAU en Cornellà, Sant Ildefons, Almeda y resto del municipio.',
+      areaType: 'City',
+      areaName: 'Cornellà de Llobregat',
+    },
+    heroImageAlt: 'Contrato de alquiler en Cornellà',
+    breadcrumbFinal: 'Contrato de Alquiler Cornellà',
+    badgeLine: 'Alquiler · Cornellà',
+    ctaStickyLabel: 'Alquiler · Cornellà',
+    introLargo:
+      'En Cornellà de Llobregat el alquiler LAU mezcla familias de larga permanencia y hogares que llegan por cercanía a Barcelona y precio metropolitano. Un contrato descargado no distingue gran tenedor, referencia de renta ni depósito de fianza correcto. Nosotros redactamos cláusulas conformes a LAU y normativa catalana, con inventario y actualización de renta válida: 145€ IVA incluido, PDF en 48 h.',
+    alertaTitulo: 'Vas a firmar un alquiler en Cornellà: ¿vas a hacerlo con un PDF genérico?',
+    paraQuienTitulo: '¿Para quién es este contrato en Cornellà?',
+    paraQuien: [
+      'Propietarios en Sant Ildefons, Almeda o centro de Cornellà',
+      'Inquilinos que negocian renta inicial en área metropolitana tensionada',
+      'Arrendadores que actualizan contratos posteriores a la Ley de Vivienda',
+      'Alquileres de vivienda habitual en el Baix Llobregat',
+    ],
+    faqs: faqPack(
+      'Cornellà de Llobregat',
+      '¿Dónde se deposita la fianza en Cataluña?',
+      'En los casos legalmente exigibles, ante INCASÒL; el contrato refleja importe, plazo y garantías adicionales permitidas.',
+      '¿Sirve para todo el municipio de Cornellà?',
+      'Sí, en cualquier zona del término municipal con la misma normativa LAU y autonómica.',
+    ),
+  },
 }
 
 export function getContratoAlquilerPremiumConfig(slug: string): ContratoAlquilerPremiumConfig | undefined {

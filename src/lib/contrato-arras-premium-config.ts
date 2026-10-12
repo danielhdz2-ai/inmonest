@@ -1004,6 +1004,98 @@ export const CONTRATO_ARRAS_PREMIUM: Record<string, ContratoArrasPremiumConfig> 
       notarioFaq,
     ],
   },
+
+  'hospitalet-llobregat': {
+    slug: 'hospitalet-llobregat',
+    nombre: "L'Hospitalet de Llobregat",
+    meta: {
+      title: "Arras penitenciales L'Hospitalet — área metropolitana desde 145€",
+      description:
+        "Contrato de arras en L'Hospitalet de Llobregat: compraventa entre particulares, ITP Cataluña, hipoteca y plazo a notaría. 145€, entrega 48h.",
+      keywords: [
+        "contrato arras l'hospitalet",
+        'arras penitenciales hospitalet de llobregat',
+        'señal compraventa hospitalet',
+        'comprar piso hospitalet arras',
+        'gestoría arras área metropolitana barcelona',
+      ],
+      ogTitle: "Arras L'Hospitalet — 145€ con gestor",
+      ogDescription: 'Señal penitencial en el segundo municipio de Cataluña por población, sin PDF genérico.',
+      ogImageAlt: "Contrato de arras en L'Hospitalet de Llobregat",
+    },
+    schema: {
+      serviceName: "Contrato de Arras Penitenciales en L'Hospitalet de Llobregat",
+      serviceDescription:
+        "Redacción de arras penitenciales para compraventa en L'Hospitalet, Collblanc, La Torrassa y barrios del municipio.",
+      areaType: 'City',
+      areaName: "L'Hospitalet de Llobregat",
+    },
+    heroImageAlt: "Contrato de arras en L'Hospitalet",
+    breadcrumbFinal: "Contrato de Arras L'Hospitalet",
+    badgeLine: "Compraventa · L'Hospitalet",
+    ctaStickyLabel: "Arras · L'Hospitalet",
+    introLargo:
+      "En L'Hospitalet de Llobregat se mueven muchas compraventas entre particulares con plazos cortos y señal entregada antes de revisar la nota simple. El municipio comparte fiscalidad ITP con el resto de Cataluña, pero el mercado es distinto al de Barcelona capital: bloques densos, alta rotación y operaciones encadenadas con venta en otro barrio. Redactamos arras penitenciales con condición suspensiva de hipoteca, plazo realista a escritura y revisión registral: 145€ IVA incluido, PDF en 48 h.",
+    alertaTitulo: "¿Vas a dejar señal en L'Hospitalet con un contrato copiado de Barcelona capital?",
+    paraQuienTitulo: "¿Para quién es este contrato en L'Hospitalet?",
+    paraQuien: [
+      'Compradores que reservan piso mientras venden en otro municipio del Baix Llobregat',
+      'Vendedores particulares en Collblanc, Centre o Bellvitge que quieren penitencial clara',
+      'Operaciones con hipoteca en tramitación en entidades que tasan rápido el área metropolitana',
+      'Compraventa de vivienda habitual sin agencia inmobiliaria',
+    ],
+    faqs: faqRegion(
+      "L'Hospitalet",
+      '¿Las arras penitenciales son válidas en L’Hospitalet de Llobregat?',
+      'Sí. Rigen el Código Civil y la normativa catalana de transmisiones; el contrato debe reflejar tipo de arras, importe y plazos.',
+    ),
+  },
+
+  'cornella-llobregat': {
+    slug: 'cornella-llobregat',
+    nombre: 'Cornellà de Llobregat',
+    meta: {
+      title: 'Arras penitenciales Cornellà — Baix Llobregat desde 145€',
+      description:
+        'Contrato de arras en Cornellà de Llobregat: señal entre particulares, ITP Cataluña, condición de hipoteca. 145€, 48h.',
+      keywords: [
+        'contrato arras cornella de llobregat',
+        'arras penitenciales cornella',
+        'señal compraventa cornella',
+        'comprar piso cornella arras',
+        'gestoría arras baix llobregat',
+      ],
+      ogTitle: 'Arras Cornellà — contrato a medida 145€',
+      ogDescription: 'Compraventa en municipio metropolitano con plazos bancarios realistas.',
+      ogImageAlt: 'Contrato de arras en Cornellà de Llobregat',
+    },
+    schema: {
+      serviceName: 'Contrato de Arras Penitenciales en Cornellà de Llobregat',
+      serviceDescription:
+        'Arras penitenciales para compraventa en Cornellà, Sant Ildefons, Almeda y zonas del municipio.',
+      areaType: 'City',
+      areaName: 'Cornellà de Llobregat',
+    },
+    heroImageAlt: 'Contrato de arras en Cornellà',
+    breadcrumbFinal: 'Contrato de Arras Cornellà',
+    badgeLine: 'Compraventa · Cornellà',
+    ctaStickyLabel: 'Arras · Cornellà',
+    introLargo:
+      'Cornellà de Llobregat concentra compraventa entre familias del Baix Llobregat y compradores que trabajan en Barcelona pero buscan precio metropolitano. Las arras mal redactadas dejan la señal en el aire cuando falla la hipoteca o aparecen cargas en comunidad. Preparamos contrato penitencial con tus datos, nota simple revisada y cláusulas de resolución documental: 145€, entrega en 48 h.',
+    alertaTitulo: '¿Firmas arras en Cornellà sin plazo claro hasta la notaría del Baix Llobregat?',
+    paraQuienTitulo: '¿Para quién es este contrato en Cornellà?',
+    paraQuien: [
+      'Compradores en Sant Ildefons o Almeda con financiación pendiente',
+      'Vendedores que enajenan sin agencia y quieren exclusividad durante el trámite',
+      'Operaciones entre particulares con piso en comunidad de propietarios numerosa',
+      'Quien encadena venta en Cornellà y compra en Barcelona o L’Hospitalet',
+    ],
+    faqs: faqRegion(
+      'Cornellà de Llobregat',
+      '¿El contrato de arras vale en todo el municipio?',
+      'Sí, en cualquier barrio de Cornellà y con validez general en Cataluña según lo pactado en el documento.',
+    ),
+  },
 }
 
 export function getContratoArrasPremiumConfig(slug: string): ContratoArrasPremiumConfig | undefined {

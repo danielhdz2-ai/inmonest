@@ -4,6 +4,7 @@
  */
 
 import { getBarcelonaAlquilerBarrioPaths } from './barcelona-contrato-alquiler-barrios'
+import { getBarcelonaArrasBarrioPaths } from './barcelona-contrato-arras-barrios'
 import {
   CONTRATOS_INMOBILIARIOS_INDEXAR,
   SITE_URL,
@@ -12,6 +13,7 @@ import {
 /** Landings recientes: solicitar indexación aunque no figuren en el export GSC */
 const LANDINGS_RECIENTES_INDEXAR = [
   ...getBarcelonaAlquilerBarrioPaths(),
+  ...getBarcelonaArrasBarrioPaths(),
   '/blog/decretos-vivienda-alquiler-septiembre-2026',
   '/blog/regulacion-alquiler-temporada-habitaciones-2026',
   '/gestoria/acompanamiento-reserva-arras',

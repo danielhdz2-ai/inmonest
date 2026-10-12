@@ -11,6 +11,10 @@ import {
   BARCELONA_ALQUILER_BARRIO_SLUGS_EXTRA_2,
   BARCELONA_ALQUILER_BARRIOS_EXTRA_2,
 } from '@/lib/barcelona-contrato-alquiler-barrios-ampliacion-2'
+import {
+  BARCELONA_ALQUILER_BARRIO_SLUGS_EXTRA_3,
+  BARCELONA_ALQUILER_BARRIOS_EXTRA_3,
+} from '@/lib/barcelona-contrato-alquiler-barrios-ampliacion-3'
 
 export type BarcelonaAlquilerBarrioConfig = {
   slug: string
@@ -101,6 +105,7 @@ export const BARCELONA_ALQUILER_BARRIO_SLUGS = [
   'les-corts',
   ...BARCELONA_ALQUILER_BARRIO_SLUGS_EXTRA,
   ...BARCELONA_ALQUILER_BARRIO_SLUGS_EXTRA_2,
+  ...BARCELONA_ALQUILER_BARRIO_SLUGS_EXTRA_3,
 ] as const
 
 export type BarcelonaAlquilerBarrioSlug = (typeof BARCELONA_ALQUILER_BARRIO_SLUGS)[number]
@@ -649,6 +654,7 @@ export const BARCELONA_ALQUILER_BARRIOS = {
   ...BARCELONA_ALQUILER_BARRIOS_BASE,
   ...BARCELONA_ALQUILER_BARRIOS_EXTRA,
   ...BARCELONA_ALQUILER_BARRIOS_EXTRA_2,
+  ...BARCELONA_ALQUILER_BARRIOS_EXTRA_3,
 } as Record<BarcelonaAlquilerBarrioSlug, BarcelonaAlquilerBarrioConfig>
 
 export function getBarcelonaAlquilerBarrio(slug: string): BarcelonaAlquilerBarrioConfig | undefined {
