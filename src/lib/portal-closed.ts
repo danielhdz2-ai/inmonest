@@ -23,8 +23,18 @@ export function isPortalListingApi(pathname: string): boolean {
   return (
     pathname === '/api/scraper' ||
     pathname === '/api/ingest' ||
-    pathname.startsWith('/api/cron/scraper') ||
-    pathname === '/api/cron/alertas' ||
-    pathname === '/api/cron/generate-descriptions'
+    pathname.startsWith('/api/cron/') ||
+    pathname === '/api/maintenance' ||
+    pathname === '/api/generar-descripcion' ||
+    pathname === '/api/test-alertas' ||
+    pathname === '/api/debug-db' ||
+    pathname.startsWith('/api/listings') ||
+    pathname.startsWith('/api/pisos') ||
+    pathname.startsWith('/api/publicar') ||
+    pathname.startsWith('/api/mensajes') ||
+    pathname.startsWith('/api/favoritos') ||
+    pathname.startsWith('/api/alertas') ||
+    pathname.startsWith('/api/mis-anuncios') ||
+    pathname.startsWith('/api/push/')
   )
 }

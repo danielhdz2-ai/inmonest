@@ -7,7 +7,6 @@ import {
   authLimit,
   publishLimit,
   contactLimit,
-  scraperLimit,
   gestoriaLimit,
   ownerLeadsLimit,
   getIP,
@@ -259,12 +258,6 @@ export async function middleware(request: NextRequest) {
     if (rateLimitResponse) return rateLimitResponse
   }
 
-  // Scraper endpoints (admin only)
-  if (pathname === '/api/scraper' || pathname.startsWith('/api/cron/')) {
-    const rateLimitResponse = await applyRateLimit(scraperLimit, identifier, request)
-    if (rateLimitResponse) return rateLimitResponse
-  }
-
   // APIs autenticadas (mensajes, favoritos, alertas, perfil)
   if (
     pathname.startsWith('/api/mensajes') ||
@@ -276,12 +269,8 @@ export async function middleware(request: NextRequest) {
     if (rateLimitResponse) return rateLimitResponse
   }
 
-  // APIs públicas (búsqueda, detalle, sitemap)
-  if (
-    pathname.startsWith('/api/listings') ||
-    pathname.startsWith('/api/pisos') ||
-    pathname === '/api/sitemap'
-  ) {
+  // APIs públicas (sitemap; listings/pisos desactivados en portal-closed)
+  if (pathname === '/api/sitemap') {
     const rateLimitResponse = await applyRateLimit(publicApiLimit, identifier, request)
     if (rateLimitResponse) return rateLimitResponse
   }
