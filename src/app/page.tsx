@@ -169,7 +169,8 @@ export default function Home() {
       'Inmonest: gestoría inmobiliaria digital para contratos de alquiler, arras y compraventa entre particulares en España.',
     contentUrl: HERO_VIDEO,
     thumbnailUrl: `${BASE_URL}/gestor-experto-oficina.jpg`,
-    uploadDate: '2026-10-11',
+    // ISO 8601 con zona horaria (requerido por Google VideoObject)
+    uploadDate: '2026-10-11T12:00:00+02:00',
   }
 
   return (
