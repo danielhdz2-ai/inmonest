@@ -2,6 +2,11 @@
  * Landings SEO: contrato de alquiler de habitación (Código Civil) por barrio en Barcelona.
  */
 
+import {
+  BARCELONA_HABITACION_BARRIO_SLUGS_EXTRA,
+  BARCELONA_HABITACION_BARRIOS_EXTRA,
+} from '@/lib/barcelona-alquiler-habitacion-barrios-ampliacion'
+
 export type BarcelonaHabitacionBarrioConfig = {
   slug: string
   nombre: string
@@ -71,7 +76,7 @@ const NORMA_HABITACION_BASE: BarcelonaHabitacionBarrioConfig['normativa']['bloqu
   },
 ]
 
-export const BARCELONA_HABITACION_BARRIO_SLUGS = [
+const BARCELONA_HABITACION_BARRIO_SLUGS_BASE = [
   'gracia',
   'el-raval',
   'poblenou',
@@ -79,10 +84,15 @@ export const BARCELONA_HABITACION_BARRIO_SLUGS = [
   'sant-antoni',
 ] as const
 
+export const BARCELONA_HABITACION_BARRIO_SLUGS = [
+  ...BARCELONA_HABITACION_BARRIO_SLUGS_BASE,
+  ...BARCELONA_HABITACION_BARRIO_SLUGS_EXTRA,
+] as const
+
 export type BarcelonaHabitacionBarrioSlug = (typeof BARCELONA_HABITACION_BARRIO_SLUGS)[number]
 
-export const BARCELONA_HABITACION_BARRIOS: Record<
-  BarcelonaHabitacionBarrioSlug,
+const BARCELONA_HABITACION_BARRIOS_BASE: Record<
+  (typeof BARCELONA_HABITACION_BARRIO_SLUGS_BASE)[number],
   BarcelonaHabitacionBarrioConfig
 > = {
   gracia: {
@@ -451,6 +461,11 @@ export const BARCELONA_HABITACION_BARRIOS: Record<
       },
     ],
   },
+}
+
+export const BARCELONA_HABITACION_BARRIOS = {
+  ...BARCELONA_HABITACION_BARRIOS_BASE,
+  ...BARCELONA_HABITACION_BARRIOS_EXTRA,
 }
 
 export function getBarcelonaHabitacionBarrio(slug: string): BarcelonaHabitacionBarrioConfig | undefined {
