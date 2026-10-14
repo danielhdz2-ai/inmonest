@@ -5,6 +5,7 @@
 
 import { getBarcelonaAlquilerBarrioPaths } from './barcelona-contrato-alquiler-barrios'
 import { getBarcelonaArrasBarrioPaths } from './barcelona-contrato-arras-barrios'
+import { getBarcelonaHabitacionBarrioPaths } from './barcelona-alquiler-habitacion-barrios'
 import {
   CONTRATOS_INMOBILIARIOS_INDEXAR,
   SITE_URL,
@@ -14,6 +15,7 @@ import {
 const LANDINGS_RECIENTES_INDEXAR = [
   ...getBarcelonaAlquilerBarrioPaths(),
   ...getBarcelonaArrasBarrioPaths(),
+  ...getBarcelonaHabitacionBarrioPaths(),
   '/blog/decretos-vivienda-alquiler-septiembre-2026',
   '/blog/regulacion-alquiler-temporada-habitaciones-2026',
   '/gestoria/acompanamiento-reserva-arras',

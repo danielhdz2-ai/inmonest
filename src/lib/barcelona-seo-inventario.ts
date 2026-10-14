@@ -1,5 +1,6 @@
 import { listBarcelonaAlquilerBarrios } from '@/lib/barcelona-contrato-alquiler-barrios'
 import { listBarcelonaArrasBarrios } from '@/lib/barcelona-contrato-arras-barrios'
+import { listBarcelonaHabitacionBarrios } from '@/lib/barcelona-alquiler-habitacion-barrios'
 import {
   filterCiudadesLandingActiva,
   getLandingPrecioDisplay,
@@ -86,6 +87,19 @@ export function buildBarcelonaSeoInventario(): BarcelonaSeoInventario {
       for (const b of barriosAlquiler) {
         enlaces.push(
           toEnlace(`${b.nombre} (barrio)`, `/barcelona/contrato-alquiler/${b.slug}`, 'barrio')
+        )
+      }
+    } else if (servicio.id === 'contrato-alquiler-habitacion') {
+      enlaces.push(
+        toEnlace('Barcelona (ciudad)', '/gestoria/contrato-alquiler-habitacion/barcelona', 'ciudad')
+      )
+      for (const b of listBarcelonaHabitacionBarrios()) {
+        enlaces.push(
+          toEnlace(
+            `${b.nombre} (barrio)`,
+            `/barcelona/contrato-alquiler-habitacion/${b.slug}`,
+            'barrio'
+          )
         )
       }
     } else {

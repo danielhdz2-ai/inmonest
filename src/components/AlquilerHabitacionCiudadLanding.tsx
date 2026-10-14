@@ -21,6 +21,7 @@ import GestoriaCiudadServiciosYPanel from '@/components/GestoriaCiudadServiciosY
 import GestoriaAlquilerModulosCompletos, {
   GestoriaAlquilerTramiteOnlineSection,
 } from '@/components/GestoriaAlquilerModulosCompletos'
+import BarcelonaHabitacionBarriosHub from '@/components/BarcelonaHabitacionBarriosHub'
 
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
 const DUE_DILIGENCE_CIUDADES = new Set(['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'bilbao'])
@@ -235,6 +236,12 @@ export default function AlquilerHabitacionCiudadLanding({ config }: Props) {
         panelAnchorId="panel-gestoria-habitacion"
         variant="habitacion"
       />
+
+      {slug === 'barcelona' && (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 pt-12">
+          <BarcelonaHabitacionBarriosHub />
+        </div>
+      )}
 
       <section className="py-16 px-4 bg-white">
         <div className="max-w-3xl mx-auto">
