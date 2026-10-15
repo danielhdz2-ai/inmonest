@@ -10,6 +10,10 @@ import {
   BARCELONA_HABITACION_BARRIO_SLUGS_EXTRA_2,
   BARCELONA_HABITACION_BARRIOS_EXTRA_2,
 } from '@/lib/barcelona-alquiler-habitacion-barrios-ampliacion-2'
+import {
+  BARCELONA_HABITACION_BARRIO_SLUGS_EXTRA_3,
+  BARCELONA_HABITACION_BARRIOS_EXTRA_3,
+} from '@/lib/barcelona-alquiler-habitacion-barrios-ampliacion-3'
 
 export type BarcelonaHabitacionBarrioConfig = {
   slug: string
@@ -57,6 +61,18 @@ export type BarcelonaHabitacionBarrioConfig = {
     bullets: string[]
   }
   faqs: { q: string; a: string }[]
+  /** Si alquilas habitación pero compras vivienda en el mismo barrio */
+  bloqueCompradores?: {
+    titulo: string
+    intro: string
+    bullets: string[]
+  }
+  /** Si alquilas habitaciones y luego vendes el piso o compradores compiten en la zona */
+  bloqueVendedores?: {
+    titulo: string
+    intro: string
+    bullets: string[]
+  }
 }
 
 const NORMA_HABITACION_BASE: BarcelonaHabitacionBarrioConfig['normativa']['bloques'] = [
@@ -92,6 +108,7 @@ export const BARCELONA_HABITACION_BARRIO_SLUGS = [
   ...BARCELONA_HABITACION_BARRIO_SLUGS_BASE,
   ...BARCELONA_HABITACION_BARRIO_SLUGS_EXTRA,
   ...BARCELONA_HABITACION_BARRIO_SLUGS_EXTRA_2,
+  ...BARCELONA_HABITACION_BARRIO_SLUGS_EXTRA_3,
 ] as const
 
 export type BarcelonaHabitacionBarrioSlug = (typeof BARCELONA_HABITACION_BARRIO_SLUGS)[number]
@@ -472,6 +489,7 @@ export const BARCELONA_HABITACION_BARRIOS = {
   ...BARCELONA_HABITACION_BARRIOS_BASE,
   ...BARCELONA_HABITACION_BARRIOS_EXTRA,
   ...BARCELONA_HABITACION_BARRIOS_EXTRA_2,
+  ...BARCELONA_HABITACION_BARRIOS_EXTRA_3,
 }
 
 export function getBarcelonaHabitacionBarrio(slug: string): BarcelonaHabitacionBarrioConfig | undefined {

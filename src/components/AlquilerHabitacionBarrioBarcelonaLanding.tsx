@@ -19,6 +19,10 @@ import {
 import type { BarcelonaHabitacionBarrioConfig } from '@/lib/barcelona-alquiler-habitacion-barrios'
 import { listBarcelonaHabitacionBarrios } from '@/lib/barcelona-alquiler-habitacion-barrios'
 import { RELACIONADOS_HABITACION } from '@/lib/gestoria-relacionados'
+import {
+  resolveBloqueCompradores,
+  resolveBloqueVendedores,
+} from '@/lib/barcelona-habitacion-bloques-comprador-vendedor'
 
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
 
@@ -175,6 +179,84 @@ function BarcelonaHabitacionBarrioContenidoSeo({ config }: { config: BarcelonaHa
   )
 }
 
+function BarcelonaHabitacionCompradorVendedorBloques({ config }: { config: BarcelonaHabitacionBarrioConfig }) {
+  const comprador = resolveBloqueCompradores(config)
+  const vendedor = resolveBloqueVendedores(config)
+  const arrasHref = `/barcelona/contrato-arras/${config.slug}`
+
+  return (
+    <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="rounded-2xl border border-emerald-200 bg-emerald-50/70 p-6 sm:p-8">
+        <p className="text-xs font-bold uppercase tracking-widest text-emerald-800 mb-2">Compradores</p>
+        <h2 className="text-xl font-bold text-gray-900 mb-3">{comprador.titulo}</h2>
+        <p className="text-gray-700 text-sm leading-relaxed mb-5">{comprador.intro}</p>
+        <ul className="space-y-2 mb-6">
+          {comprador.bullets.map((b) => (
+            <li key={b} className="flex items-start gap-2 text-sm text-gray-700">
+              <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+              {b}
+            </li>
+          ))}
+        </ul>
+        <div className="flex flex-col sm:flex-row flex-wrap gap-2">
+          <Link
+            href={arrasHref}
+            className="inline-flex justify-center px-4 py-2.5 rounded-lg bg-white border border-emerald-300 text-sm font-semibold text-emerald-900 hover:bg-emerald-100 transition-colors"
+          >
+            Arras en {config.nombre}
+          </Link>
+          <Link
+            href="/gestoria/due-diligence-precompra/barcelona"
+            className="inline-flex justify-center px-4 py-2.5 rounded-lg bg-emerald-700 text-sm font-semibold text-white hover:bg-emerald-800 transition-colors"
+          >
+            Due diligence Barcelona
+          </Link>
+          <Link
+            href="/gestoria/asesoria-compra-piso/barcelona"
+            className="inline-flex justify-center px-4 py-2.5 rounded-lg border border-emerald-400 text-sm font-semibold text-emerald-900 hover:bg-white transition-colors"
+          >
+            Asesoría compra
+          </Link>
+        </div>
+      </div>
+
+      <div className="rounded-2xl border border-violet-200 bg-violet-50/60 p-6 sm:p-8">
+        <p className="text-xs font-bold uppercase tracking-widest text-violet-800 mb-2">Vendedores</p>
+        <h2 className="text-xl font-bold text-gray-900 mb-3">{vendedor.titulo}</h2>
+        <p className="text-gray-700 text-sm leading-relaxed mb-5">{vendedor.intro}</p>
+        <ul className="space-y-2 mb-6">
+          {vendedor.bullets.map((b) => (
+            <li key={b} className="flex items-start gap-2 text-sm text-gray-700">
+              <span className="text-violet-600 font-bold mt-0.5">✓</span>
+              {b}
+            </li>
+          ))}
+        </ul>
+        <div className="flex flex-col sm:flex-row flex-wrap gap-2">
+          <Link
+            href="/gestoria/pack-arras-plus-vendedor/barcelona"
+            className="inline-flex justify-center px-4 py-2.5 rounded-lg bg-violet-700 text-sm font-semibold text-white hover:bg-violet-800 transition-colors"
+          >
+            Pack vendedor Barcelona
+          </Link>
+          <Link
+            href={arrasHref}
+            className="inline-flex justify-center px-4 py-2.5 rounded-lg bg-white border border-violet-300 text-sm font-semibold text-violet-900 hover:bg-violet-100 transition-colors"
+          >
+            Arras venta · {config.nombre}
+          </Link>
+          <Link
+            href="/gestoria/venta-completa-reserva-escritura/barcelona"
+            className="inline-flex justify-center px-4 py-2.5 rounded-lg border border-violet-400 text-sm font-semibold text-violet-900 hover:bg-white transition-colors"
+          >
+            Venta hasta escritura
+          </Link>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function AlquilerHabitacionBarrioBarcelonaLanding({ config }: Props) {
   const ciudadCfg = ALQUILER_HABITACION_CIUDADES.barcelona
   const pagePath = `/barcelona/contrato-alquiler-habitacion/${config.slug}`
@@ -255,6 +337,7 @@ export default function AlquilerHabitacionBarrioBarcelonaLanding({ config }: Pro
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
         <BarcelonaHabitacionBarrioContenidoSeo config={config} />
+        <BarcelonaHabitacionCompradorVendedorBloques config={config} />
         <BarcelonaHabitacionBarriosHub />
       </div>
 
