@@ -6,6 +6,10 @@ import {
   BARCELONA_HABITACION_BARRIO_SLUGS_EXTRA,
   BARCELONA_HABITACION_BARRIOS_EXTRA,
 } from '@/lib/barcelona-alquiler-habitacion-barrios-ampliacion'
+import {
+  BARCELONA_HABITACION_BARRIO_SLUGS_EXTRA_2,
+  BARCELONA_HABITACION_BARRIOS_EXTRA_2,
+} from '@/lib/barcelona-alquiler-habitacion-barrios-ampliacion-2'
 
 export type BarcelonaHabitacionBarrioConfig = {
   slug: string
@@ -87,6 +91,7 @@ const BARCELONA_HABITACION_BARRIO_SLUGS_BASE = [
 export const BARCELONA_HABITACION_BARRIO_SLUGS = [
   ...BARCELONA_HABITACION_BARRIO_SLUGS_BASE,
   ...BARCELONA_HABITACION_BARRIO_SLUGS_EXTRA,
+  ...BARCELONA_HABITACION_BARRIO_SLUGS_EXTRA_2,
 ] as const
 
 export type BarcelonaHabitacionBarrioSlug = (typeof BARCELONA_HABITACION_BARRIO_SLUGS)[number]
@@ -466,6 +471,7 @@ const BARCELONA_HABITACION_BARRIOS_BASE: Record<
 export const BARCELONA_HABITACION_BARRIOS = {
   ...BARCELONA_HABITACION_BARRIOS_BASE,
   ...BARCELONA_HABITACION_BARRIOS_EXTRA,
+  ...BARCELONA_HABITACION_BARRIOS_EXTRA_2,
 }
 
 export function getBarcelonaHabitacionBarrio(slug: string): BarcelonaHabitacionBarrioConfig | undefined {
