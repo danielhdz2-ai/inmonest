@@ -24,7 +24,14 @@ export default function BarcelonaTemporadaBarriosHub() {
           >
             <h3 className="font-bold text-gray-900 group-hover:text-[#8a6420] mb-1">{b.nombre}</h3>
             <p className="text-xs text-gray-500 mb-2">{b.distrito}</p>
-            <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed">{b.hero.anguloPropietario}</p>
+            <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-2">{b.hero.subtitulo}</p>
+            <div className="flex flex-wrap gap-1 mb-2">
+              {b.destacados.etiquetas.slice(0, 3).map((tag) => (
+                <span key={tag} className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-100">
+                  {tag}
+                </span>
+              ))}
+            </div>
             <span className="inline-block mt-3 text-sm font-semibold text-gold-600">Ver contrato temporada →</span>
           </Link>
         ))}

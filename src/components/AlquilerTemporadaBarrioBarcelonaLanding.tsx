@@ -77,6 +77,45 @@ function BarcelonaTemporadaBarrioContenidoSeo({ config }: { config: BarcelonaTem
         </p>
       </section>
 
+      <section className="rounded-2xl border-2 border-amber-300/80 bg-gradient-to-br from-amber-50 via-white to-cream-50 p-6 sm:p-8">
+        <p className="text-xs font-bold uppercase tracking-widest text-amber-700 mb-2">Diferenciador · {config.nombre}</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">{config.destacados.titulo}</h2>
+        <div className="flex flex-wrap gap-2 mb-6">
+          {config.destacados.etiquetas.map((tag) => (
+            <span
+              key={tag}
+              className="text-xs font-semibold px-3 py-1 rounded-full bg-white border border-amber-200 text-amber-900"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div>
+            <h3 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">Casos habituales en este barrio</h3>
+            <ul className="space-y-2">
+              {config.destacados.casos.map((c) => (
+                <li key={c} className="text-sm text-gray-700 flex gap-2 leading-relaxed">
+                  <span className="text-amber-600 shrink-0">●</span>
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="font-bold text-gray-900 mb-3 text-sm uppercase tracking-wide">Riesgos si firmas a ciegas</h3>
+            <div className="space-y-3">
+              {config.destacados.riesgos.map((r) => (
+                <div key={r.titulo} className="rounded-xl bg-white border border-red-100 p-4">
+                  <p className="font-semibold text-gray-900 text-sm">{r.titulo}</p>
+                  <p className="text-gray-600 text-sm mt-1 leading-relaxed">{r.texto}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="para-propietario" className="scroll-mt-24">
         <h2 className="text-2xl font-bold text-gray-900 mb-3">{config.paraPropietario.titulo}</h2>
         <p className="text-gray-600 mb-5 leading-relaxed">{config.paraPropietario.intro}</p>
