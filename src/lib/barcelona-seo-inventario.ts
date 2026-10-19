@@ -1,6 +1,7 @@
 import { listBarcelonaAlquilerBarrios } from '@/lib/barcelona-contrato-alquiler-barrios'
 import { listBarcelonaArrasBarrios } from '@/lib/barcelona-contrato-arras-barrios'
 import { listBarcelonaHabitacionBarrios } from '@/lib/barcelona-alquiler-habitacion-barrios'
+import { listBarcelonaTemporadaBarrios } from '@/lib/barcelona-alquiler-temporada-barrios'
 import {
   filterCiudadesLandingActiva,
   getLandingPrecioDisplay,
@@ -100,6 +101,13 @@ export function buildBarcelonaSeoInventario(): BarcelonaSeoInventario {
             `/barcelona/contrato-alquiler-habitacion/${b.slug}`,
             'barrio'
           )
+        )
+      }
+    } else if (servicio.id === 'alquiler-temporada') {
+      enlaces.push(toEnlace('Barcelona (ciudad)', '/barcelona/alquiler-temporada', 'ciudad'))
+      for (const b of listBarcelonaTemporadaBarrios()) {
+        enlaces.push(
+          toEnlace(`${b.nombre} (barrio)`, `/barcelona/alquiler-temporada/${b.slug}`, 'barrio')
         )
       }
     } else {

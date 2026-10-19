@@ -6,6 +6,7 @@ import { CIUDADES_PORTAL_SLUGS } from '@/lib/ciudades-portal'
 import { getBarcelonaAlquilerBarrioPaths } from '@/lib/barcelona-contrato-alquiler-barrios'
 import { getBarcelonaArrasBarrioPaths } from '@/lib/barcelona-contrato-arras-barrios'
 import { getBarcelonaHabitacionBarrioPaths } from '@/lib/barcelona-alquiler-habitacion-barrios'
+import { getBarcelonaTemporadaBarrioPaths } from '@/lib/barcelona-alquiler-temporada-barrios'
 
 /** Rutas de landings (portal + gestoría) alineadas con LANDINGS_POR_CIUDAD y listas GSC. */
 export function collectIndexableMarketingPaths(): string[] {
@@ -19,6 +20,7 @@ export function collectIndexableMarketingPaths(): string[] {
     ...getBarcelonaAlquilerBarrioPaths(),
     ...getBarcelonaArrasBarrioPaths(),
     ...getBarcelonaHabitacionBarrioPaths(),
+    ...getBarcelonaTemporadaBarrioPaths(),
   ]
 
   return [...new Set([...fromLandings, ...fromGestoria, ...portalHubs, ...barcelonaBarrios])].filter((path) =>
@@ -47,6 +49,7 @@ function resolvePriority(path: string): number {
   if (path.includes('/barcelona/contrato-arras/')) return 0.86
   if (path.includes('/barcelona/contrato-alquiler/')) return 0.86
   if (path.includes('/barcelona/contrato-alquiler-habitacion/')) return 0.86
+  if (path.includes('/barcelona/alquiler-temporada/')) return 0.86
   if (path.endsWith('/alquiler-temporada')) return 0.86
   if (path.includes('/revision-correccion-arras/')) return 0.86
   if (path.match(/^\/gestoria\/[^/]+$/)) return 0.85

@@ -5,6 +5,7 @@ import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
 import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import BarcelonaTemporadaBarriosHub from '@/components/BarcelonaTemporadaBarriosHub'
 import GestoriaAlquilerModulosCompletos, {
   GestoriaAlquilerTramiteOnlineSection,
 } from '@/components/GestoriaAlquilerModulosCompletos'
@@ -92,6 +93,12 @@ export default function AlquilerTemporadaCiudadLanding({ config }: { config: Alq
         panelAnchorId="panel-gestoria-temporada"
         variant="temporada"
       />
+
+      {slug === 'barcelona' ? (
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
+          <BarcelonaTemporadaBarriosHub />
+        </div>
+      ) : null}
 
       <GestoriaAlquilerModulosCompletos
         variant="temporada"
