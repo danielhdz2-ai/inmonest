@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import {
   getTramiteOnlineSectionContent,
+  type TramiteOnlineSectionContent,
   type TramiteOnlineSectionTipo,
 } from '@/lib/gestoria-tramite-online-section-content'
 
@@ -11,14 +12,18 @@ type Props = {
   panelAnchorId?: string
   /** Copy del bloque según tipo de contrato */
   tipo?: TramiteOnlineSectionTipo
+  /** Sustituye título/descripcion por barrio u otras landings locales */
+  contentOverride?: Partial<TramiteOnlineSectionContent>
 }
 
 export default function GestoriaTramiteOnlineSection({
   ciudad,
   panelAnchorId = 'panel-gestoria-lau',
   tipo = 'lau',
+  contentOverride,
 }: Props) {
-  const content = getTramiteOnlineSectionContent(tipo, ciudad)
+  const base = getTramiteOnlineSectionContent(tipo, ciudad)
+  const content = { ...base, ...contentOverride }
 
   return (
     <section

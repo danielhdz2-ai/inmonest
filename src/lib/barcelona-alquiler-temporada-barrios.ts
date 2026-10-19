@@ -78,6 +78,13 @@ export type BarcelonaTemporadaBarrioConfig = {
   paraPropietario: BarcelonaTemporadaBarrioDiferenciador['paraPropietario']
   paraInquilino: BarcelonaTemporadaBarrioDiferenciador['paraInquilino']
   faqs: BarcelonaTemporadaBarrioDiferenciador['faqs']
+  /** Bloque «Trámite 100 % online» distinto al hero */
+  tramiteOnline: {
+    titulo: string
+    desc: string
+    overlaySubtitulo: string
+    imagenAlt: string
+  }
 }
 
 const NORMA_TEMPORADA_BASE: BarcelonaTemporadaBarrioConfig['normativa']['bloques'] = [
@@ -148,6 +155,12 @@ function buildConfig(slug: BarcelonaTemporadaBarrioSlug): BarcelonaTemporadaBarr
     paraPropietario: d.paraPropietario,
     paraInquilino: d.paraInquilino,
     faqs: d.faqs,
+    tramiteOnline: {
+      titulo: `${d.mercado.titulo}: redacción online en 48 h`,
+      desc: `${d.mercado.particularidad} Subes documentación en el panel, tu gestor redacta el contrato de temporada (no LAU genérico) y recibes PDF firmable.`,
+      overlaySubtitulo: `${lau.nombre} · ${d.destacados.etiquetas.slice(0, 3).join(' · ')}`,
+      imagenAlt: `Contrato alquiler temporada ${lau.nombre} Barcelona — trámite online`,
+    },
   }
 }
 

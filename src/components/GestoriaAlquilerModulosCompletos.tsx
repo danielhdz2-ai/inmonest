@@ -1,4 +1,5 @@
 import GestoriaTramiteOnlineSection from '@/components/GestoriaTramiteOnlineSection'
+import type { TramiteOnlineSectionContent } from '@/lib/gestoria-tramite-online-section-content'
 import ContratoAlquilerServiciosDetalle from '@/components/ContratoAlquilerServiciosDetalle'
 import ComoTrabajamosContrato from '@/components/ComoTrabajamosContrato'
 import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
@@ -38,16 +39,19 @@ export function GestoriaAlquilerTramiteOnlineSection({
   ciudadNombre,
   panelAnchorId = 'panel-gestoria-alquiler',
   variant = 'lau',
+  tramiteContentOverride,
 }: {
   ciudadNombre: string
   panelAnchorId?: string
   variant?: AlquilerContratoModuloVariant
+  tramiteContentOverride?: Partial<TramiteOnlineSectionContent>
 }) {
   return (
     <GestoriaTramiteOnlineSection
       ciudad={ciudadNombre}
       panelAnchorId={panelAnchorId}
       tipo={tramiteTipoFromAlquilerVariant(variant)}
+      contentOverride={tramiteContentOverride}
     />
   )
 }

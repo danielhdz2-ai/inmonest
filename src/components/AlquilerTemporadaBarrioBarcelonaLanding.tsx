@@ -275,6 +275,12 @@ export default function AlquilerTemporadaBarrioBarcelonaLanding({ config }: Prop
         ciudadNombre={`${config.nombre}, ${ciudadLabel}`}
         panelAnchorId="panel-gestoria-temporada"
         variant="temporada"
+        tramiteContentOverride={{
+          titulo: config.tramiteOnline.titulo,
+          desc: config.tramiteOnline.desc,
+          overlaySubtitulo: config.tramiteOnline.overlaySubtitulo,
+          imagenAlt: config.tramiteOnline.imagenAlt,
+        }}
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 space-y-16">
