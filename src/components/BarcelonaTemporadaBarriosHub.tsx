@@ -11,29 +11,45 @@ export default function BarcelonaTemporadaBarriosHub() {
       <h2 className="text-2xl font-bold text-gray-900 mb-3">
         Contrato de alquiler por temporada por barrio: meses sin confundir con LAU largo
       </h2>
-      <p className="text-gray-600 leading-relaxed mb-6 max-w-3xl">
+      <p className="text-gray-600 leading-relaxed mb-4 max-w-3xl">
         Además de la landing de Barcelona, publicamos guías por barrio con mercado local, distinción temporada /
         LAU / turismo y contratos <strong>personalizados</strong> con fechas y fianza claras. Elige tu zona:
       </p>
+      <p className="text-sm text-gray-600 mb-6">
+        ¿Vivienda habitual de larga duración?{' '}
+        <Link href="/barcelona/contrato-alquiler" className="font-semibold text-gold-700 hover:text-gold-500">
+          Contrato LAU en Barcelona (20 barrios) →
+        </Link>
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {barrios.map((b) => (
-          <Link
+          <div
             key={b.slug}
-            href={`/barcelona/alquiler-temporada/${b.slug}`}
             className="group rounded-xl border border-gray-200 bg-white p-5 hover:border-gold-500 hover:shadow-md transition-all"
           >
-            <h3 className="font-bold text-gray-900 group-hover:text-[#8a6420] mb-1">{b.nombre}</h3>
-            <p className="text-xs text-gray-500 mb-2">{b.distrito}</p>
-            <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-2">{b.hero.subtitulo}</p>
-            <div className="flex flex-wrap gap-1 mb-2">
-              {b.destacados.etiquetas.slice(0, 3).map((tag) => (
-                <span key={tag} className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-100">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <span className="inline-block mt-3 text-sm font-semibold text-gold-600">Ver contrato temporada →</span>
-          </Link>
+            <Link href={`/barcelona/alquiler-temporada/${b.slug}`}>
+              <h3 className="font-bold text-gray-900 group-hover:text-[#8a6420] mb-1">{b.nombre}</h3>
+              <p className="text-xs text-gray-500 mb-2">{b.distrito}</p>
+              <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-2">{b.hero.subtitulo}</p>
+              <div className="flex flex-wrap gap-1 mb-2">
+                {b.destacados.etiquetas.slice(0, 3).map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-amber-50 text-amber-900 border border-amber-100"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <span className="inline-block mt-3 text-sm font-semibold text-gold-600">Ver contrato temporada →</span>
+            </Link>
+            <Link
+              href={`/barcelona/contrato-alquiler/${b.slug}`}
+              className="inline-block mt-2 text-xs font-medium text-gray-600 hover:text-gold-700"
+            >
+              LAU en {b.nombre} →
+            </Link>
+          </div>
         ))}
       </div>
     </section>

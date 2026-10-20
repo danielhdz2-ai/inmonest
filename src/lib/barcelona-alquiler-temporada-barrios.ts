@@ -10,7 +10,7 @@ import {
 import { TEMPORADA_DIFERENCIADORES_1 } from '@/lib/barcelona-alquiler-temporada-diferenciadores-1'
 import { TEMPORADA_DIFERENCIADORES_2 } from '@/lib/barcelona-alquiler-temporada-diferenciadores-2'
 
-export type BarcelonaTemporadaBarrioDiferenciador = {
+export type TemporadaBarrioDiferenciador = {
   meta: {
     title: string
     description: string
@@ -61,24 +61,26 @@ export type BarcelonaTemporadaBarrioDiferenciador = {
   faqs: { q: string; a: string }[]
 }
 
-export type BarcelonaTemporadaBarrioConfig = {
+export type BarcelonaTemporadaBarrioDiferenciador = TemporadaBarrioDiferenciador
+
+/** Config landings temporada por barrio en Barcelona. */
+export type TemporadaBarrioLandingConfig = {
   slug: string
   nombre: string
   distrito: string
-  meta: BarcelonaTemporadaBarrioDiferenciador['meta']
-  hero: BarcelonaTemporadaBarrioDiferenciador['hero']
-  mercado: BarcelonaTemporadaBarrioDiferenciador['mercado']
-  destacados: BarcelonaTemporadaBarrioDiferenciador['destacados']
+  meta: TemporadaBarrioDiferenciador['meta']
+  hero: TemporadaBarrioDiferenciador['hero']
+  mercado: TemporadaBarrioDiferenciador['mercado']
+  destacados: TemporadaBarrioDiferenciador['destacados']
   normativa: {
     titulo: string
     intro: string
     bloques: { titulo: string; contenido: string; bullets?: string[] }[]
   }
-  blindaje: BarcelonaTemporadaBarrioDiferenciador['blindaje']
-  paraPropietario: BarcelonaTemporadaBarrioDiferenciador['paraPropietario']
-  paraInquilino: BarcelonaTemporadaBarrioDiferenciador['paraInquilino']
-  faqs: BarcelonaTemporadaBarrioDiferenciador['faqs']
-  /** Bloque «Trámite 100 % online» distinto al hero */
+  blindaje: TemporadaBarrioDiferenciador['blindaje']
+  paraPropietario: TemporadaBarrioDiferenciador['paraPropietario']
+  paraInquilino: TemporadaBarrioDiferenciador['paraInquilino']
+  faqs: TemporadaBarrioDiferenciador['faqs']
   tramiteOnline: {
     titulo: string
     desc: string
@@ -86,6 +88,8 @@ export type BarcelonaTemporadaBarrioConfig = {
     imagenAlt: string
   }
 }
+
+export type BarcelonaTemporadaBarrioConfig = TemporadaBarrioLandingConfig
 
 const NORMA_TEMPORADA_BASE: BarcelonaTemporadaBarrioConfig['normativa']['bloques'] = [
   {

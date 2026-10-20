@@ -448,6 +448,16 @@ export default function ContratoAlquilerBarrioBarcelonaLanding({ config }: Props
               desc: 'Hub LAU + todos los barrios',
             },
             {
+              href: `/barcelona/alquiler-temporada/${config.slug}`,
+              label: `Temporada en ${config.nombre}`,
+              desc: 'Alquiler por meses · 165€',
+            },
+            {
+              href: '/barcelona/alquiler-temporada',
+              label: 'Temporada Barcelona (ciudad)',
+              desc: 'Hub + 20 barrios',
+            },
+            {
               href: '/gestoria/contrato-alquiler-habitacion/barcelona',
               label: 'Contrato habitación Barcelona',
               desc: 'Piso compartido · 120€',

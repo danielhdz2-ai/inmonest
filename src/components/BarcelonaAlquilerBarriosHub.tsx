@@ -11,23 +11,36 @@ export default function BarcelonaAlquilerBarriosHub() {
       <h2 className="text-2xl font-bold text-gray-900 mb-3">
         Contrato LAU por barrio: contenido local para propietarios e inquilinos
       </h2>
-      <p className="text-gray-600 leading-relaxed mb-6 max-w-3xl">
+      <p className="text-gray-600 leading-relaxed mb-4 max-w-3xl">
         Además de la landing de Barcelona, hemos publicado guías por barrio con mercado, normativa (LAU, Ley de
         Vivienda, INCASÒL, zona tensionada) y contratos <strong>personalizados y jurídicamente blindados</strong>.
         Elige tu zona:
       </p>
+      <p className="text-sm text-gray-600 mb-6">
+        ¿Estancia de meses y no vivienda habitual?{' '}
+        <Link href="/barcelona/alquiler-temporada" className="font-semibold text-gold-700 hover:text-gold-500">
+          Contrato de alquiler por temporada en Barcelona (20 barrios) →
+        </Link>
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {barrios.map((b) => (
-          <Link
+          <div
             key={b.slug}
-            href={`/barcelona/contrato-alquiler/${b.slug}`}
             className="group rounded-xl border border-gray-200 bg-white p-5 hover:border-gold-500 hover:shadow-md transition-all"
           >
-            <h3 className="font-bold text-gray-900 group-hover:text-[#8a6420] mb-1">{b.nombre}</h3>
-            <p className="text-xs text-gray-500 mb-2">{b.distrito}</p>
-            <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed">{b.hero.anguloPropietario}</p>
-            <span className="inline-block mt-3 text-sm font-semibold text-gold-600">Ver contrato LAU →</span>
-          </Link>
+            <Link href={`/barcelona/contrato-alquiler/${b.slug}`}>
+              <h3 className="font-bold text-gray-900 group-hover:text-[#8a6420] mb-1">{b.nombre}</h3>
+              <p className="text-xs text-gray-500 mb-2">{b.distrito}</p>
+              <p className="text-sm text-gray-600 line-clamp-3 leading-relaxed">{b.hero.anguloPropietario}</p>
+              <span className="inline-block mt-3 text-sm font-semibold text-gold-600">Ver contrato LAU →</span>
+            </Link>
+            <Link
+              href={`/barcelona/alquiler-temporada/${b.slug}`}
+              className="inline-block mt-2 text-xs font-medium text-amber-800 hover:text-amber-950"
+            >
+              Temporada en {b.nombre} →
+            </Link>
+          </div>
         ))}
       </div>
     </section>

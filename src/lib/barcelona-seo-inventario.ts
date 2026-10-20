@@ -59,6 +59,7 @@ export type BarcelonaSeoInventario = {
   totalLandingsBarrio: number
   barriosArras: { slug: string; nombre: string }[]
   barriosAlquiler: { slug: string; nombre: string }[]
+  barriosTemporada: { slug: string; nombre: string }[]
   todasLasUrls: string[]
 }
 
@@ -66,6 +67,7 @@ export type BarcelonaSeoInventario = {
 export function buildBarcelonaSeoInventario(): BarcelonaSeoInventario {
   const barriosArras = listBarcelonaArrasBarrios().map((b) => ({ slug: b.slug, nombre: b.nombre }))
   const barriosAlquiler = listBarcelonaAlquilerBarrios().map((b) => ({ slug: b.slug, nombre: b.nombre }))
+  const barriosTemporada = listBarcelonaTemporadaBarrios().map((b) => ({ slug: b.slug, nombre: b.nombre }))
 
   const servicios: BarcelonaSeoServicioBloque[] = []
 
@@ -139,6 +141,7 @@ export function buildBarcelonaSeoInventario(): BarcelonaSeoInventario {
     totalLandingsBarrio,
     barriosArras,
     barriosAlquiler,
+    barriosTemporada,
     todasLasUrls,
   }
 }
