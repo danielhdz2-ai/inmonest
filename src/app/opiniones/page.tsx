@@ -45,7 +45,7 @@ export default function OpinionesPage() {
       '@id': ORGANIZATION_SCHEMA_ID,
       name: 'Inmonest',
       aggregateRating: buildGestoriaAggregateRatingSchema(),
-      review: buildGestoriaReviewSchema(),
+      review: buildGestoriaReviewSchema({ nested: true }),
     },
   }
 

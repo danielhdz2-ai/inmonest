@@ -80,17 +80,30 @@ export const GESTORIA_GOOGLE_REVIEWS = [
   },
 ] as const
 
-const ITEM_REVIEWED = { '@id': ORGANIZATION_SCHEMA_ID }
+type ReviewSchemaOptions = {
+  /** Reseñas dentro de Organization/LegalService: omitir itemReviewed (Google). */
+  nested?: boolean
+}
 
-export function buildGestoriaReviewSchema() {
+export function buildGestoriaReviewSchema(options?: ReviewSchemaOptions) {
+  const nested = options?.nested ?? false
   return GESTORIA_GOOGLE_REVIEWS.map((r) => ({
     '@type': 'Review' as const,
-    itemReviewed: ITEM_REVIEWED,
+    ...(nested
+      ? {}
+      : {
+          itemReviewed: {
+            '@type': 'Organization' as const,
+            '@id': ORGANIZATION_SCHEMA_ID,
+            name: 'Inmonest',
+          },
+        }),
     author: { '@type': 'Person' as const, name: r.author },
     reviewRating: {
       '@type': 'Rating' as const,
       ratingValue: '5',
       bestRating: '5',
+      worstRating: '1',
     },
     reviewBody: r.reviewBody,
     datePublished: r.datePublished,

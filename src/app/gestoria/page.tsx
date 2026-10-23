@@ -5,10 +5,6 @@ import GestoriaContent from './GestoriaContent'
 import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
-import {
-  buildGestoriaAggregateRatingSchema,
-  buildGestoriaReviewSchema,
-} from '@/lib/gestoria-reviews-schema'
 import { getPrecioServicio } from '@/lib/gestoria-catalogo'
 
 const BASE_URL = 'https://inmonest.com'
@@ -247,8 +243,6 @@ const schemaJson = JSON.stringify({
     availableLanguage: 'Spanish'
   },
 
-  aggregateRating: buildGestoriaAggregateRatingSchema(),
-  review: buildGestoriaReviewSchema(),
 })
 
 // Schema para breadcrumb (mejora SEO)

@@ -1,14 +1,10 @@
 import { ORGANIZATION_SCHEMA_ID } from '@/lib/organization-schema'
 import { getLegalEntity } from '@/lib/legal-entity'
-import {
-  buildGestoriaAggregateRatingSchema,
-  buildGestoriaReviewSchema,
-} from '@/lib/gestoria-reviews-schema'
 import { GOOGLE_BUSINESS_PHONE_E164 } from '@/lib/google-business'
 
 /**
  * Schema.org Organization — gestoría inmobiliaria online (marca Inmonest).
- * AggregateRating visible en home y /opiniones (reseñas Google verificadas).
+ * Sin Review/AggregateRating aquí (autopromoción + duplicados GSC). Ver /opiniones.
  */
 
 export default function OrganizationSchema() {
@@ -48,8 +44,6 @@ export default function OrganizationSchema() {
       'Contrato de compraventa',
     ],
     priceRange: '61€ - 687€',
-    aggregateRating: buildGestoriaAggregateRatingSchema(),
-    review: buildGestoriaReviewSchema(),
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'Customer Service',

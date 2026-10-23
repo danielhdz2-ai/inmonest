@@ -90,7 +90,7 @@ export const GESTORIA_PROBLEMAS_REVIEWS: ProblemaSeo[] = [
     tipo: 'schema-reviews',
     url: '/gestoria/barcelona',
     problema: 'LegalService con aggregateRating 5.0/4 sin review[] en la página',
-    accion: 'Eliminar aggregateRating del schema (corregido en gestoria-ciudad-schema.ts)',
+    accion: 'Sin Review/AggregateRating en layout ni landings; solo /opiniones (2026-03)',
   },
   {
     id: 'hub-madrid',

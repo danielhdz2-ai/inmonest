@@ -5,7 +5,6 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import ContratosInmobiliariosContent from './ContratosInmobiliariosContent'
-import { buildGestoriaReviewSchema } from '@/lib/gestoria-reviews-schema'
 import { GESTORIA_PRECIO_MIN } from '@/lib/gestoria-catalogo'
 import { CONTRATOS_INMOBILIARIOS_FAQ } from '@/lib/contratos-inmobiliarios-config'
 
@@ -67,7 +66,6 @@ const legalServiceSchema = JSON.stringify({
     'Contratos de alquiler LAU',
     'Contratos de compraventa entre particulares',
   ],
-  review: buildGestoriaReviewSchema(),
 })
 
 const faqSchema = JSON.stringify({

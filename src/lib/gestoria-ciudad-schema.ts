@@ -24,7 +24,7 @@ export type GestoriaLandingSeoInput = {
   precioEuros?: number
   faqs: ReadonlyArray<{ q: string; a: string }>
   breadcrumbs: ReadonlyArray<GestoriaLandingBreadcrumb>
-  /** Por defecto incluye AggregateRating en el provider. */
+  /** Solo true en páginas dedicadas a opiniones; evita duplicar markup en landings. */
   includeAggregateRating?: boolean
 }
 
@@ -68,7 +68,7 @@ export function buildBreadcrumbListSchema(breadcrumbs: ReadonlyArray<GestoriaLan
 /** Schema estándar oro: WebPage + Person + Service + FAQ + Breadcrumb. */
 export function buildGestoriaLandingSchemas(input: GestoriaLandingSeoInput) {
   const pageUrl = `${BASE_URL}${input.pagePath}`
-  const includeRating = input.includeAggregateRating !== false
+  const includeRating = input.includeAggregateRating === true
 
   const provider: Record<string, unknown> = {
     '@type': 'LegalService',
@@ -80,7 +80,7 @@ export function buildGestoriaLandingSchemas(input: GestoriaLandingSeoInput) {
   }
   if (includeRating) {
     provider.aggregateRating = buildGestoriaAggregateRatingSchema()
-    provider.review = buildGestoriaReviewSchema()
+    provider.review = buildGestoriaReviewSchema({ nested: true })
   }
 
   const service: Record<string, unknown> = {
@@ -142,7 +142,6 @@ export function buildLegalServiceSchema(
     url: options?.path ?? `${BASE_URL}/gestoria/${slug}`,
     telephone: '+34745022862',
     priceRange: '€€',
-    review: buildGestoriaReviewSchema(),
     address: {
       '@type': 'PostalAddress',
       addressLocality: ciudad,
