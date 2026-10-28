@@ -18,14 +18,14 @@ export function BlogGestorExpedientePanel({
 
   return (
     <aside className="not-prose my-10 rounded-2xl border border-gold-200 bg-gradient-to-br from-cream-50 to-white overflow-hidden shadow-sm">
-      <div className="grid grid-cols-1 sm:grid-cols-[140px_1fr] gap-0">
-        <div className="relative h-36 sm:h-full sm:min-h-[180px] bg-gray-100">
+      <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,160px)_1fr] gap-0">
+        <div className="relative aspect-[4/5] sm:aspect-auto sm:min-h-[200px] bg-gray-100">
           <Image
             src={GESTOR_DANIEL_HERNANDEZ.foto}
             alt={`${GESTOR_DANIEL_HERNANDEZ.nombre}, gestor inmobiliario Inmonest`}
             fill
             className="object-cover object-top"
-            sizes="140px"
+            sizes="(max-width: 640px) 100vw, 160px"
           />
         </div>
         <div className="p-6">

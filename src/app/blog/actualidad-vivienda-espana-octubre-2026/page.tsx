@@ -149,6 +149,7 @@ export default function ActualidadViviendaEspanaOctubre2026Page() {
           src="/olena-kholina-MhqUBTxQ3Hw-unsplash.jpg"
           alt="Actualidad del mercado de vivienda en España 2026"
           className="mb-10"
+          aspect="banner"
           priority
         />
 
@@ -185,6 +186,8 @@ export default function ActualidadViviendaEspanaOctubre2026Page() {
             src="/gestoria-expertos-calle.jpg"
             alt="Gestoría inmobiliaria y mercado de vivienda en España"
             className="my-8"
+            aspect="wide"
+            objectPosition="center"
           />
 
           <h2>Alquiler: estabilidad contractual más allá del titular</h2>
@@ -224,7 +227,9 @@ export default function ActualidadViviendaEspanaOctubre2026Page() {
           <PageHeroImage
             src="/gestor-experto-oficina.jpg"
             alt="Gestor inmobiliario revisando contratos de vivienda"
-            className="my-8"
+            className="my-8 max-w-lg mx-auto"
+            aspect="standard"
+            objectPosition="center top"
           />
 
           <h2>Geografía: la norma cambia según dónde esté el piso</h2>

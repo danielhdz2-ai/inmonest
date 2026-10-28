@@ -164,6 +164,7 @@ export default function ErroresComprarPisoEntreParticulares2026Page() {
           src="/contratodearras.jpg"
           alt="Contrato de arras y compraventa entre particulares"
           className="mb-10"
+          aspect="banner"
           priority
         />
 
@@ -230,6 +231,7 @@ export default function ErroresComprarPisoEntreParticulares2026Page() {
             src="/businessman-checking-documents-table.jpg"
             alt="Revisión de documentación antes de firmar arras de compraventa"
             className="my-8"
+            aspect="wide"
           />
 
           <h2 id="error-2">Error 2: No solicitar nota simple registral actualizada</h2>
@@ -280,6 +282,8 @@ export default function ErroresComprarPisoEntreParticulares2026Page() {
             src="/scott-graham-5fNmWej4tAA-unsplash.jpg"
             alt="Documentos legales y compraventa de vivienda"
             className="my-8"
+            aspect="wide"
+            objectPosition="center 30%"
           />
 
           <h2 id="error-5">Error 5: Confiar en el anuncio y no verificar la realidad</h2>

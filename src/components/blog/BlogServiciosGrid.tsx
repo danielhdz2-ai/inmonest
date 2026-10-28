@@ -26,7 +26,7 @@ export function BlogServiciosGrid({
     <div className="not-prose my-10">
       <h2 className="text-2xl font-bold text-gray-900 mb-2">{title}</h2>
       {intro ? <p className="text-gray-600 text-sm leading-relaxed mb-6">{intro}</p> : null}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-6">
         {items.map((item) => {
           const catalog = GESTORIA_SERVICIOS[item.slug as keyof typeof GESTORIA_SERVICIOS]
           const nombre = catalog?.nombre ?? item.slug
@@ -38,33 +38,43 @@ export function BlogServiciosGrid({
           return (
             <article
               key={item.slug}
-              className="rounded-2xl border border-gray-200 overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm hover:shadow-md hover:border-gold-400/40 transition-all duration-300"
             >
-              <div className="relative h-40">
-                <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+              <Link href={href} className="relative block h-44 sm:h-48 shrink-0 overflow-hidden bg-gray-100">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                  sizes="(max-width: 640px) 100vw, 384px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent pointer-events-none" />
                 {precio ? (
-                  <span className="absolute top-3 right-3 rounded-full bg-gold-500 px-3 py-1 text-xs font-bold text-gray-900">
+                  <span className="absolute top-3 right-3 rounded-full bg-gold-500 px-3 py-1 text-xs font-bold text-gray-900 shadow-sm">
                     {precio}
                   </span>
                 ) : null}
-              </div>
-              <div className="p-5">
-                <h3 className="text-lg font-bold text-gray-900 leading-snug mb-2">{nombre}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed mb-4">
+              </Link>
+              <div className="flex flex-col flex-1 p-5">
+                <h3 className="text-base font-bold text-gray-900 leading-snug mb-2">
+                  <Link href={href} className="hover:text-gold-800 transition-colors">
+                    {nombre}
+                  </Link>
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed flex-1 mb-4">
                   {item.descripcion ??
                     (catalog?.incluye.slice(0, 2).join('. ') + (catalog?.incluye[2] ? '…' : ''))}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mt-auto">
                   <Link
                     href={solicitar}
-                    className="inline-flex rounded-lg bg-gold-500 px-4 py-2 text-xs font-bold text-gray-900 hover:bg-gold-600 transition-colors"
+                    className="inline-flex rounded-lg bg-gold-500 px-4 py-2.5 text-xs font-bold text-gray-900 hover:bg-gold-600 transition-colors"
                   >
                     Contratar online
                   </Link>
                   <Link
                     href={href}
-                    className="inline-flex rounded-lg border border-gray-300 px-4 py-2 text-xs font-semibold text-gray-800 hover:bg-gray-50 transition-colors"
+                    className="inline-flex rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-xs font-semibold text-gray-800 hover:bg-gray-50 transition-colors"
                   >
                     Ver servicio
                   </Link>
