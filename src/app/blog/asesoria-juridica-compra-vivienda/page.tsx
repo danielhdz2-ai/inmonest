@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
@@ -39,7 +38,6 @@ export default function AsesoriaJuridicaCompraPost() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: schemaArticle }} />
-      <Navbar />
       <main className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         <nav className="text-sm text-gray-500 mb-8">
           <Link href="/" className="hover:underline">Inicio</Link>

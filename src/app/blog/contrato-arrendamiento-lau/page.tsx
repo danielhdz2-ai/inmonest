@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -25,7 +24,6 @@ export const metadata: Metadata = {
 export default function ContratoArrendamientoLAUPage() {
   return (
     <>
-      <Navbar />
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header className="mb-10">
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Navbar from '@/components/NavbarServer'
 import PageHeroImage from '@/components/PageHeroImage'
 
 const BASE_URL = 'https://inmonest.com'
@@ -25,7 +24,6 @@ export const metadata: Metadata = {
 export default function DueDiligenceBlogPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white">
-      <Navbar />
 
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Breadcrumb */}

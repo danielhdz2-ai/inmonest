@@ -29,6 +29,8 @@ import {
   VENTA_COMPLETA_PASOS_PROCESO,
 } from '@/lib/venta-completa-servicio-content'
 import { getVentaCompletaEnriquecimiento } from '@/lib/venta-completa-ciudad-enriquecimiento'
+import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
+import { listBarcelonaVentaCompletaBarrios } from '@/lib/barcelona-venta-completa-barrios'
 
 const SOLICITAR_URL = '/gestoria/solicitar/venta-completa-reserva-escritura'
 const SERVICIO_SLUG = 'venta-completa-reserva-escritura'
@@ -349,6 +351,31 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         subtitulo={`Otros servicios de gestoría en ${nombre} para propietarios.`}
         excluirServicios={['venta-completa-reserva-escritura']}
       />
+
+      {slug === 'barcelona' && (
+        <>
+          <section className="py-14 px-4 bg-cream-50 border-t border-gold-200/40">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-2xl font-bold text-gray-900 mb-3">Venta completa por barrios de Barcelona</h2>
+              <p className="text-gray-600 text-sm mb-8 max-w-2xl mx-auto">
+                Landings con título y contexto de mercado por zona — mismo pack 687 € hasta escritura.
+              </p>
+              <div className="flex flex-wrap justify-center gap-2">
+                {listBarcelonaVentaCompletaBarrios().map((b) => (
+                  <Link
+                    key={b.slug}
+                    href={`/barcelona/venta-completa/${b.slug}`}
+                    className="rounded-full border border-gold-300 bg-white px-4 py-2 text-sm font-semibold text-gold-900 hover:bg-gold-50 transition-colors"
+                  >
+                    {b.nombre} →
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+          <InmonestOficinaBarcelonaSection />
+        </>
+      )}
 
       <section className="py-10 px-4 bg-white border-t border-gray-100">
         <div className="max-w-4xl mx-auto text-center">

@@ -18,6 +18,9 @@ import {
   buildServiceOfferSchema,
 } from '@/lib/gestoria-ciudad-schema'
 import { getCiudadImage } from '@/lib/gestoria-images'
+import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
+import { listBarcelonaCompraCompletaBarrios } from '@/lib/barcelona-compra-completa-barrios'
+import { listBarcelonaVentaCompletaBarrios } from '@/lib/barcelona-venta-completa-barrios'
 
 const BASE_URL = 'https://inmonest.com'
 const CIUDAD = 'barcelona'
@@ -319,6 +322,51 @@ export default function GestoriaBarcelonaPage() {
             </div>
           </div>
         </section>
+
+        <section className="py-14 px-4 bg-white border-t border-gray-100">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 text-center mb-3">
+              Compra y venta completa por barrios (687 €)
+            </h2>
+            <p className="text-center text-gray-600 text-sm mb-8 max-w-2xl mx-auto">
+              Pack reserva a escritura con gestor, panel online y despacho en Les Corts.
+            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-gold-700 mb-3">Venta completa</h3>
+                <ul className="flex flex-wrap gap-2">
+                  {listBarcelonaVentaCompletaBarrios().map((b) => (
+                    <li key={b.slug}>
+                      <Link
+                        href={`/barcelona/venta-completa/${b.slug}`}
+                        className="text-sm font-semibold text-gold-800 hover:underline"
+                      >
+                        {b.nombre} →
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-emerald-800 mb-3">Compra completa</h3>
+                <ul className="flex flex-wrap gap-2">
+                  {listBarcelonaCompraCompletaBarrios().map((b) => (
+                    <li key={b.slug}>
+                      <Link
+                        href={`/barcelona/compra-completa/${b.slug}`}
+                        className="text-sm font-semibold text-emerald-900 hover:underline"
+                      >
+                        {b.nombre} →
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <InmonestOficinaBarcelonaSection backHref="/gestoria/barcelona" backLabel="← Hub gestoría Barcelona" />
 
         <ComprarConSeguridad ciudad="Barcelona" ciudadSlug="barcelona" />
 

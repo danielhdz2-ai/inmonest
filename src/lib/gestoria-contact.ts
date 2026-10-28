@@ -12,6 +12,7 @@ const ALLOWED_PREFIXES = [
 ]
 
 const CONTRACT_LANDING_PATTERN = /\/contrato-(alquiler|arras)(\/|$)/
+const BARCELONA_COMPLETA_PATTERN = /\/barcelona\/(venta-completa|compra-completa)(\/|$)/
 
 /** Teléfono de gestoría solo en landings de gestoría, contratos, servicios, blog y sobre nosotros. */
 export function shouldShowGestoriaPhone(pathname: string): boolean {
@@ -22,6 +23,8 @@ export function shouldShowGestoriaPhone(pathname: string): boolean {
   }
 
   if (CONTRACT_LANDING_PATTERN.test(pathname)) return true
+
+  if (BARCELONA_COMPLETA_PATTERN.test(pathname)) return true
 
   return false
 }

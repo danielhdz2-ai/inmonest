@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import Navbar from '@/components/NavbarServer'
 import WhatsAppButton from '@/components/WhatsAppButton'
 
 const BASE_URL = 'https://inmonest.com'
@@ -26,7 +25,6 @@ export const revalidate = 86400
 export default function DetectarArrasFraudulentoBlogPost() {
   return (
     <>
-      <Navbar />
       <WhatsAppButton />
       
       <article className="max-w-4xl mx-auto px-4 py-16">

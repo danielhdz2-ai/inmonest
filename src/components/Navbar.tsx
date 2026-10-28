@@ -7,6 +7,8 @@ import { createClient } from '@/lib/supabase/client'
 
 interface NavbarProps {
   isLoggedIn?: boolean
+  /** Si false, el sticky lo aplica SiteHeader (navbar + carrusel). */
+  stickyShell?: boolean
 }
 
 const SIDEBAR_CONTRATOS = [
@@ -41,7 +43,7 @@ const SERVICIOS_QUICK: Array<{ label: string; href: string; highlight?: boolean 
   { label: 'Catálogo e información', href: GESTORIA_SERVICIOS_CATALOGO },
 ]
 
-export default function Navbar({ isLoggedIn = false }: NavbarProps) {
+export default function Navbar({ isLoggedIn = false, stickyShell = true }: NavbarProps) {
   const [sideOpen, setSideOpen] = useState(false)
   const [serviciosOpen, setServiciosOpen] = useState(false)
   const [loggedIn, setLoggedIn] = useState(isLoggedIn)
@@ -87,7 +89,11 @@ export default function Navbar({ isLoggedIn = false }: NavbarProps) {
 
   return (
     <>
-      <header className="sticky top-0 z-50 border-b shadow-sm bg-black border-white/10 lg:bg-white lg:border-gray-100 lg:shadow-sm">
+      <header
+        className={`border-b shadow-sm bg-black border-white/10 lg:bg-white lg:border-gray-100 lg:shadow-sm ${
+          stickyShell ? 'sticky top-0 z-50' : 'relative z-50'
+        }`}
+      >
         <div className="relative flex items-center h-14 lg:h-16 px-3 lg:px-5 gap-2 lg:gap-3 min-w-0">
 
           {/* Hamburger */}
