@@ -34,6 +34,28 @@ const RECURSOS = [
 
 const ARTICULOS = [
   {
+    slug: 'errores-comprar-piso-entre-particulares-2026',
+    href: '/blog/errores-comprar-piso-entre-particulares-2026',
+    titulo: '10 errores al comprar piso entre particulares (guía 2026)',
+    resumen:
+      'Arras sin revisión, nota simple, comunidad, hipoteca, cédula e ITE: checklist extenso, calendario de compraventa, módulos de gestoría y panel con tu gestor.',
+    fecha: '28 de octubre de 2026',
+    categoria: 'Compraventa',
+    lectura: '18 min',
+    etiqueta: 'Nuevo',
+  },
+  {
+    slug: 'actualidad-vivienda-espana-octubre-2026',
+    href: '/blog/actualidad-vivienda-espana-octubre-2026',
+    titulo: 'Actualidad vivienda España — octubre 2026',
+    resumen:
+      'Alquiler tras los decretos, compraventa entre particulares, Euríbor y checklist accionable. Servicios Inmonest con imágenes y contacto con gestor.',
+    fecha: '28 de octubre de 2026',
+    categoria: 'Actualidad',
+    lectura: '16 min',
+    etiqueta: 'Nuevo',
+  },
+  {
     slug: 'regulacion-alquiler-temporada-habitaciones-2026',
     href: '/blog/regulacion-alquiler-temporada-habitaciones-2026',
     titulo: 'Temporada y habitaciones 2026: regulación, Cataluña y contratos',

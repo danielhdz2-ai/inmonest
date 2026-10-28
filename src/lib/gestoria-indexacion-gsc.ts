@@ -18,6 +18,8 @@ const LANDINGS_RECIENTES_INDEXAR = [
   ...getBarcelonaHabitacionBarrioPaths(),
   '/blog/decretos-vivienda-alquiler-septiembre-2026',
   '/blog/regulacion-alquiler-temporada-habitaciones-2026',
+  '/blog/errores-comprar-piso-entre-particulares-2026',
+  '/blog/actualidad-vivienda-espana-octubre-2026',
   '/gestoria/acompanamiento-reserva-arras',
   '/gestoria/alquiler-garaje-trastero',
   '/gestoria/rescision-alquiler',

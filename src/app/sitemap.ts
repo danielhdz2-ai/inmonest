@@ -65,6 +65,8 @@ const STATIC_PAGES: MetadataRoute.Sitemap = [
   { url: `${BASE_URL}/blog/decretos-vivienda-alquiler-septiembre-2026`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
   { url: `${BASE_URL}/blog/regulacion-alquiler-temporada-habitaciones-2026`, lastModified: today, changeFrequency: 'weekly', priority: 0.92 },
   { url: `${BASE_URL}/blog/gestoria-online-ciudades-espana`, lastModified: today, changeFrequency: 'monthly', priority: 0.87 },
+  { url: `${BASE_URL}/blog/errores-comprar-piso-entre-particulares-2026`, lastModified: today, changeFrequency: 'monthly', priority: 0.9 },
+  { url: `${BASE_URL}/blog/actualidad-vivienda-espana-octubre-2026`, lastModified: today, changeFrequency: 'weekly', priority: 0.91 },
 ]
 
 function excludeGestoriaNoindex(entries: MetadataRoute.Sitemap): MetadataRoute.Sitemap {
