@@ -186,7 +186,7 @@ const nextConfig: NextConfig = {
       "media-src 'self' blob:",
       "font-src 'self' https://fonts.gstatic.com data:",
       "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://api.stripe.com https://challenges.cloudflare.com",
-      "frame-src https://js.stripe.com https://hooks.stripe.com https://www.google.com https://challenges.cloudflare.com",
+      "frame-src https://js.stripe.com https://hooks.stripe.com https://www.google.com https://maps.google.com https://www.openstreetmap.org https://challenges.cloudflare.com",
       "frame-ancestors 'none'",
       "form-action 'self'",
       "base-uri 'self'",

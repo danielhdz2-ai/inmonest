@@ -49,7 +49,7 @@ export default function InmonestOficinaBarcelonaSection({
             </Link>
           </div>
         </div>
-        <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-lg bg-white aspect-[4/3] lg:aspect-auto lg:min-h-[320px] relative">
+        <div className="rounded-2xl overflow-hidden border border-gray-200 shadow-lg bg-gray-100 aspect-[4/3] lg:aspect-auto lg:min-h-[320px] relative">
           <iframe
             title={`Mapa despacho Inmonest — ${o.direccionCompleta}`}
             src={o.mapsEmbedUrl}
