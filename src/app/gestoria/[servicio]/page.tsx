@@ -19,6 +19,9 @@ import { servicioSlugToArrasVariant } from '@/lib/arras-contrato-servicio-regist
 import GestoriaDueDiligenceModulosCompletos, {
   GestoriaDueDiligenceTramiteOnlineSection,
 } from '@/components/GestoriaDueDiligenceModulosCompletos'
+import CompletaServiciosDetalle from '@/components/CompletaServiciosDetalle'
+import GestoriaTramiteOnlineSection from '@/components/GestoriaTramiteOnlineSection'
+import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
 import { servicioSlugIsDueDiligencePack } from '@/lib/due-diligence-servicio-registry'
 import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
@@ -968,7 +971,10 @@ export default async function ServicioGestoriaPage({
     arrasVariant === 'confirmatorias' ? 'panel-gestoria-arras-confirmatorias' : 'panel-gestoria-arras'
   const dueDiligencePack = servicioSlugIsDueDiligencePack(servicio)
   const dueDiligencePanelId = 'panel-gestoria-due-diligence'
-  const showTramiteOnlineNote = Boolean(alquilerVariant || arrasVariant || dueDiligencePack)
+  const ventaCompletaPack = servicio === 'venta-completa-reserva-escritura'
+  const compraCompletaPack = servicio === 'compra-completa-reserva-escritura'
+  const completaPack = ventaCompletaPack || compraCompletaPack
+  const showTramiteOnlineNote = Boolean(alquilerVariant || arrasVariant || dueDiligencePack || completaPack)
 
   return (
     <>
@@ -1128,6 +1134,44 @@ export default async function ServicioGestoriaPage({
           />
         ) : null}
 
+        {completaPack ? (
+          <>
+            <GestoriaTramiteOnlineSection
+              ciudad="toda España"
+              panelAnchorId="panel-gestoria-demo"
+              tipo={ventaCompletaPack ? 'venta-completa' : 'compra-completa'}
+              contentOverride={
+                ventaCompletaPack
+                  ? {
+                      titulo: 'Tu venta completa hasta escritura sin ir a ninguna oficina (o con cita en Barcelona)',
+                    }
+                  : {
+                      titulo: 'Tu compra completa hasta escritura sin ir a ninguna oficina (o con cita en Barcelona)',
+                    }
+              }
+            />
+            <div id="panel-gestoria-demo" className="scroll-mt-24">
+              <GestoriaPanelShowcase servicioLabel={data.nombre.toLowerCase()} />
+            </div>
+            {ventaCompletaPack ? (
+              <InmonestOficinaBarcelonaSection
+                backHref="/gestoria/venta-completa-reserva-escritura/barcelona"
+                backLabel="← Venta completa Barcelona"
+              />
+            ) : (
+              <InmonestOficinaBarcelonaSection
+                backHref="/gestoria/compra-completa-reserva-escritura"
+                backLabel="← Compra completa"
+              />
+            )}
+            <CompletaServiciosDetalle
+              modo={ventaCompletaPack ? 'venta' : 'compra'}
+              lugarNombre="toda España"
+              solicitarHref={`/gestoria/solicitar/${servicio}`}
+            />
+          </>
+        ) : null}
+
         {arrasVariant === 'penitenciales' ? (
           <GestoriaLandingCiudadesGrid landingId="contrato-arras" />
         ) : null}
@@ -1147,23 +1191,24 @@ export default async function ServicioGestoriaPage({
 
         <GestoriaBlindajeOperacion servicioSlug={servicio} />
 
-        {/* ── CÓMO FUNCIONA ────────────────────────────────────────────── */}
-        <section>
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Cómo funciona</h2>
-          <div
-            className={`grid grid-cols-1 gap-6 ${data.pasos.length >= 5 ? 'sm:grid-cols-2 lg:grid-cols-5' : 'sm:grid-cols-3'}`}
-          >
-            {data.pasos.map((paso) => (
-              <div key={paso.num} className="relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
-                <span className="text-5xl font-black text-gold-500/20 absolute top-4 right-5 leading-none">
-                  {paso.num}
-                </span>
-                <h3 className="text-base font-bold text-gray-900 mb-2">{paso.titulo}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{paso.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        {!completaPack ? (
+          <section>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Cómo funciona</h2>
+            <div
+              className={`grid grid-cols-1 gap-6 ${data.pasos.length >= 5 ? 'sm:grid-cols-2 lg:grid-cols-5' : 'sm:grid-cols-3'}`}
+            >
+              {data.pasos.map((paso) => (
+                <div key={paso.num} className="relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm">
+                  <span className="text-5xl font-black text-gold-500/20 absolute top-4 right-5 leading-none">
+                    {paso.num}
+                  </span>
+                  <h3 className="text-base font-bold text-gray-900 mb-2">{paso.titulo}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{paso.desc}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <ComoTrabajamosGestoria servicioSlug={servicio} servicioNombre={data.nombre} />
 
@@ -1174,7 +1219,7 @@ export default async function ServicioGestoriaPage({
           phase="contact"
         />
 
-        {!alquilerVariant && !arrasVariant && !dueDiligencePack ? (
+        {!alquilerVariant && !arrasVariant && !dueDiligencePack && !completaPack ? (
           <GestoriaPanelShowcase servicioLabel={data.nombre.toLowerCase()} />
         ) : null}
 

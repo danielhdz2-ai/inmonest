@@ -11,10 +11,7 @@ import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
 import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import { VENTA_COMPLETA_PRECIO, VENTA_COMPLETA_CIUDADES_LIST } from '@/lib/venta-completa-ciudad-data'
-import {
-  COMPRA_COMPLETA_CINCO_PASOS,
-  VENTA_COMPLETA_CINCO_PASOS,
-} from '@/lib/completa-cinco-pasos-content'
+import CompletaServiciosDetalle from '@/components/CompletaServiciosDetalle'
 import {
   VENTA_COMPLETA_BLOQUES_SERVICIO,
   VENTA_COMPLETA_COMPARATIVA,
@@ -64,7 +61,6 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
   const basePath = isVenta ? '/barcelona/venta-completa' : '/barcelona/compra-completa'
   const pagePath = `${basePath}/${config.slug}`
   const solicitarHref = `/gestoria/solicitar/${servicioSlug}`
-  const pasos = isVenta ? VENTA_COMPLETA_CINCO_PASOS : COMPRA_COMPLETA_CINCO_PASOS
   const faqItems = isVenta
     ? getBarcelonaVentaCompletaFaq(config.nombre, config.faqs)
     : getBarcelonaCompraCompletaFaq(config.nombre, config.faqs)
@@ -169,30 +165,17 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
         />
       </div>
 
-      <section className="py-16 px-4 bg-slate-50 border-t border-gray-100" id="como-funciona">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-gold-700 text-center mb-2">Proceso</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-3">
-            Cómo funciona el pack en {config.nombre} — 5 pasos
-          </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Mismo flujo en los {allBarrios.length} barrios de Barcelona con cobertura Inmonest: online con panel;
-            presencial en Les Corts cuando lo pidas.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
-            {pasos.map((item) => (
-              <article
-                key={item.paso}
-                className="bg-white border border-gray-200 rounded-2xl p-5 shadow-sm flex flex-col h-full"
-              >
-                <span className="text-3xl font-black text-gold-500/40 mb-2">{item.paso}</span>
-                <h3 className="font-bold text-gray-900 text-sm mb-2 leading-snug">{item.titulo}</h3>
-                <p className="text-xs text-gray-600 leading-relaxed flex-1">{item.desc}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CompletaServiciosDetalle
+        modo={isVenta ? 'venta' : 'compra'}
+        lugarNombre={`${config.nombre}, Barcelona`}
+        solicitarHref={solicitarHref}
+        headingOverride={
+          isVenta
+            ? `Cómo funciona la venta completa en ${config.nombre} — 5 pasos con gestor`
+            : `Cómo funciona la compra completa en ${config.nombre} — 5 pasos con gestor`
+        }
+        modalidadOverlay={`${allBarrios.length} barrios · panel online · Les Corts presencial`}
+      />
 
       {isVenta ? (
         <section className="py-16 px-4 bg-white border-t border-gray-100">

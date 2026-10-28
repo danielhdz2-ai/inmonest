@@ -7,6 +7,8 @@ export type TramiteOnlineSectionTipo =
   | 'arras-penitenciales'
   | 'arras-confirmatorias'
   | 'due-diligence'
+  | 'venta-completa'
+  | 'compra-completa'
 
 export type TramiteOnlinePunto = { titulo: string; desc: string }
 
@@ -110,6 +112,62 @@ export function getTramiteOnlineSectionContent(
         puntos: PUNTOS_BASE,
         imagenAlt: `Contrato de alquiler de habitación online en ${ciudad}`,
         overlaySubtitulo: `${ciudad} · gestor asignado · panel de expediente`,
+      }
+
+    case 'venta-completa':
+      return {
+        titulo: `Tu venta completa en ${ciudad} sin ir a ninguna oficina`,
+        hero:
+          'Trámite 100 % online desde que tienes comprador hasta escritura: panel de expediente, gestor asignado y contratos profesionales — sin comisión sobre el precio del piso.',
+        desc: 'Subes documentación, revisamos reserva y arras, verificamos certificados para notaría y coordinamos la firma. Opción presencial en Barcelona (Les Corts) sin suplemento.',
+        puntos: [
+          {
+            titulo: 'Panel mi-cuenta/contratos',
+            desc: 'Expediente de venta con checklist, borradores y mensajes con tu gestor.',
+          },
+          {
+            titulo: 'Gestor con teléfono directo',
+            desc: 'Un gestor inmobiliario en menos de 24 h — WhatsApp, llamada o videollamada.',
+          },
+          {
+            titulo: 'Reserva, arras y camino a notaría',
+            desc: 'Redacción o revisión de contratos y documentación catalana/autonómica incluida en 687 €.',
+          },
+          {
+            titulo: 'Online o despacho Barcelona',
+            desc: 'Todo desde casa o cita en Carrer de Mejía Lequerica 44 (Les Corts) si lo prefieres.',
+          },
+        ],
+        imagenAlt: `Venta completa online en ${ciudad} — panel y gestor`,
+        overlaySubtitulo: `${ciudad} · gestor asignado · pack reserva a escritura`,
+      }
+
+    case 'compra-completa':
+      return {
+        titulo: `Tu compra completa en ${ciudad} sin ir a ninguna oficina`,
+        hero:
+          'Trámite 100 % online como comprador particular: due diligence, arras blindadas, seguimiento hipoteca y coordinación hasta escritura — tarifa plana 687 €.',
+        desc: 'Revisamos nota simple y comunidad antes de la señal, redactamos o corregimos arras y te acompañamos hasta notaría. Presencial en Les Corts (Barcelona) con cita previa.',
+        puntos: [
+          {
+            titulo: 'Panel mi-cuenta/contratos',
+            desc: 'Sube PDFs, consulta el estado y habla con tu gestor en un solo sitio.',
+          },
+          {
+            titulo: 'Gestor con teléfono directo',
+            desc: 'Asignado en 24 h para resolver dudas de hipoteca, plazos y documentación.',
+          },
+          {
+            titulo: 'Due diligence incluida',
+            desc: 'Análisis registral y de edificio antes de entregar señal elevada.',
+          },
+          {
+            titulo: 'Online o despacho Barcelona',
+            desc: 'Mismo precio online o con cita en Mejía Lequerica 44.',
+          },
+        ],
+        imagenAlt: `Compra completa online en ${ciudad}`,
+        overlaySubtitulo: `${ciudad} · gestor asignado · pack compra completa`,
       }
 
     case 'due-diligence':

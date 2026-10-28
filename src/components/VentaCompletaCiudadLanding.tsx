@@ -26,8 +26,8 @@ import {
   VENTA_COMPLETA_BLOQUES_SERVICIO,
   VENTA_COMPLETA_COMPARATIVA,
   VENTA_COMPLETA_DOCUMENTOS_CHECKLIST,
-  VENTA_COMPLETA_PASOS_PROCESO,
 } from '@/lib/venta-completa-servicio-content'
+import CompletaServiciosDetalle from '@/components/CompletaServiciosDetalle'
 import { getVentaCompletaEnriquecimiento } from '@/lib/venta-completa-ciudad-enriquecimiento'
 import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
 import { listBarcelonaVentaCompletaBarrios } from '@/lib/barcelona-venta-completa-barrios'
@@ -248,27 +248,17 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         </div>
       </section>
 
-      {/* Proceso 6 pasos */}
-      <section className="py-16 px-4 bg-slate-50">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Proceso completo de venta en {nombre}
-          </h2>
-          <div className="space-y-6">
-            {VENTA_COMPLETA_PASOS_PROCESO.map((item) => (
-              <div key={item.paso} className="flex gap-4 items-start">
-                <div className="bg-gold-500 text-white w-12 h-12 rounded-full flex items-center justify-center font-black text-lg shrink-0">
-                  {item.paso}
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-1">{item.titulo}</h3>
-                  <p className="text-gray-600">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CompletaServiciosDetalle
+        modo="venta"
+        lugarNombre={nombre}
+        solicitarHref={SOLICITAR_URL}
+        headingOverride={`Cómo funciona la venta completa en ${nombre} — 5 pasos con imágenes`}
+        modalidadOverlay={
+          slug === 'barcelona'
+            ? '100 % online · gestor asignado · despacho Les Corts (Mejía Lequerica 44)'
+            : '100 % online · gestor asignado'
+        }
+      />
 
       <LocalRegulationsBlock ciudad={nombre} region={region} servicio="venta" />
 
