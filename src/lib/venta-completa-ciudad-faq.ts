@@ -34,7 +34,71 @@ export function getVentaCompletaFaq(
       q: '¿Cuánto tarda el proceso hasta escritura?',
       a: 'Normalmente entre 1 y 3 meses, según si el comprador necesita hipoteca, la disponibilidad de notaría y el tiempo en conseguir documentación. Tu gestor te da un calendario realista desde el primer día.',
     },
+    {
+      q: '¿687 € incluye notaría, registro o plusvalía?',
+      a: 'No. Es la tarifa de gestoría Inmonest (contratos, documentación, coordinación y asesoramiento). Notaría, registro, plusvalía municipal (IIVTNU) e IRPF del vendedor se liquidan aparte según tarifas oficiales.',
+    },
+    {
+      q: '¿Puedo hacer todo online desde casa?',
+      a: 'Sí. Contratación, subida de PDFs, borradores y videollamadas con tu gestor. Si estás en Barcelona y prefieres presencial, cita en nuestro despacho de Les Corts sin coste adicional.',
+    },
+    {
+      q: '¿Redactáis reserva y arras o solo revisáis?',
+      a: 'Ambas: redacción personalizada desde cero o revisión y corrección de borradores que te haya pasado el comprador o una agencia, adaptados a tu operación y a la normativa autonómica.',
+    },
+    {
+      q: '¿Qué pasa si el comprador no obtiene la hipoteca?',
+      a: 'Las arras deben incluir cláusula suspensiva de financiación con plazo y documentación exigible. La redactamos o corregimos para que puedas recuperar la señal si el banco deniega.',
+    },
+    {
+      q: '¿Gestionáis la cancelación de mi hipoteca como vendedor?',
+      a: 'Te orientamos sobre cancelación registral y plazos con el banco; el coste de cancelación va aparte. En arras fijamos fechas realistas para levantar la carga antes de escritura.',
+    },
+    {
+      q: '¿Incluye encontrar comprador o hacer fotos del piso?',
+      a: 'No. No somos agencia inmobiliaria: no captamos compradores ni marketing. El servicio empieza cuando ya tienes comprador o negociación avanzada con un particular.',
+    },
+    {
+      q: '¿Cuánto ahorro respecto a una agencia en ' + nombre + '?',
+      a: `En un piso de ${precioEjemplo.toLocaleString('es-ES')} € una agencia al 3–5 % cobraría ${comisionMin.toLocaleString('es-ES')}–${comisionMax.toLocaleString('es-ES')} €. Frente a 687 € de gestoría el ahorro en honorarios de intermediación suele ser muy superior.`,
+    },
+    {
+      q: '¿Trabajáis con compradores que traen gestoría propia?',
+      a: 'Sí, es habitual. Coordinamos plazos, condiciones suspensivas y entrega documental para que notaría no rechace el expediente el día de la firma.',
+    },
+    {
+      q: '¿Qué documentos suele pedir notaría en ' + region + '?',
+      a: 'Entre otros: DNI/NIE, escrituras, nota simple reciente, certificado energético, cédula de habitabilidad, certificado de deudas de comunidad, IBI al corriente y licencias si hubo obras. Te guiamos paso a paso.',
+    },
+    {
+      q: '¿Emitís factura?',
+      a: 'Sí, factura con IVA incluido y contrato de prestación de servicios con alcance claro del pack premium.',
+    },
+    {
+      q: '¿Puedo contratar si ya firmé arras?',
+      a: 'Sí, en fase arras-escritura. Revisamos lo firmado y te acompañamos en documentación y notaría; lo ideal es contratar antes de entregar señal alta.',
+    },
+    {
+      q: '¿Hay gestor asignado con nombre y teléfono?',
+      a: 'Sí. En menos de 24 h laborables tras el pago tienes gestor con WhatsApp, llamada y email directos, además del panel mi-cuenta/contratos.',
+    },
+    {
+      q: '¿Qué diferencia hay con asesoramiento arras-venta (350 €)?',
+      a: 'El asesoramiento arras-venta se centra sobre todo después de firmar arras. La venta completa cubre desde reserva (si aplica), arras, documentación integral y coordinación hasta escritura.',
+    },
+    {
+      q: '¿Vendéis también en barrios concretos de Barcelona?',
+      a: 'Sí. Tenemos landings por barrio (Eixample, Gràcia, Sants, Poblenou, Les Corts, Sarrià, Sant Andreu, Horta-Guinardó, Ciutat Vella, Diagonal Mar, Sant Antoni, Nou Barris) con el mismo pack 687 €.',
+    },
   ]
 
-  return prioritarias.length > 0 ? [...prioritarias, ...base] : base
+  const seen = new Set<string>()
+  const merged: DueDiligenceFaqItem[] = []
+  for (const item of [...prioritarias, ...base]) {
+    const key = item.q.trim()
+    if (seen.has(key)) continue
+    seen.add(key)
+    merged.push(item)
+  }
+  return merged
 }

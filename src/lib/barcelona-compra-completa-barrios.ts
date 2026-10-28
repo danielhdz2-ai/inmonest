@@ -6,6 +6,13 @@ export const BARCELONA_COMPRA_COMPLETA_SLUGS = [
   'les-corts',
   'sarria',
   'poblenou',
+  'sants',
+  'sant-andreu',
+  'horta-guinardo',
+  'ciutat-vella',
+  'diagonal-mar',
+  'sant-antoni',
+  'nou-barris',
 ] as const
 
 export type BarcelonaCompraCompletaSlug = (typeof BARCELONA_COMPRA_COMPLETA_SLUGS)[number]
@@ -206,6 +213,169 @@ const BARRIOS: Record<BarcelonaCompraCompletaSlug, BarcelonaCompletaBarrioConfig
         a: 'En el despacho Inmonest, Mejía Lequerica 44, o 100 % online.',
       },
     ],
+  },
+  sants: {
+    slug: 'sants',
+    nombre: 'Sants',
+    distrito: 'Sants-Montjuïc',
+    heroImage: '/businessman-checking-documents-table.jpg',
+    meta: {
+      title: 'Compra completa Sants-Montjuïc — pack 687€ hasta escritura',
+      description:
+        'Compra piso en Sants o Hostafrancs a particular: due diligence, arras con hipoteca, notaría. Inmonest Barcelona.',
+      keywords: 'comprar piso sants particular, compra completa montjuic, gestoría comprador sants',
+      ogTitle: 'Comprar en Sants con gestor hasta escritura',
+      ogDescription: '687 € IVA incl. · panel online.',
+    },
+    hero: {
+      h1: 'Compra completa en Sants-Montjuïc: due diligence, arras blindadas y camino a notaría por 687 €',
+      lead:
+        'Fincas con ITE y compradores con financiación. Revisamos cargas y cláusulas antes de entregar la señal.',
+    },
+    mercado: {
+      titulo: 'Sants: ITE y plazos de hipoteca',
+      intro: 'Priorizamos cláusula suspensiva y certificado de deudas de comunidad.',
+      puntos: ['Nota simple y cargas', 'Cláusula de financiación', 'Coordinación notaría'],
+    },
+    faqs: [{ q: '¿Incluye revisión de arras del vendedor?', a: 'Sí, redacción o corrección en el pack completo.' }],
+  },
+  'sant-andreu': {
+    slug: 'sant-andreu',
+    nombre: 'Sant Andreu',
+    distrito: 'Sant Andreu',
+    heroImage: '/gestoria4.jpg',
+    meta: {
+      title: 'Compra completa Sant Andreu Barcelona 687€',
+      description: 'Comprar piso en Sant Andreu o La Sagrera entre particulares. Pack Inmonest hasta escritura.',
+      keywords: 'comprar piso sant andreu particular, compra completa sagrera',
+      ogTitle: 'Comprar en Sant Andreu — gestoría premium',
+      ogDescription: '687 € · despacho Les Corts.',
+    },
+    hero: {
+      h1: 'Compra completa en Sant Andreu: compra a particular con revisión documental real',
+      lead: 'Herencias en venta, reformas recientes y hipoteca en trámite. Un gestor te guía hasta escritura.',
+    },
+    mercado: {
+      titulo: 'Sant Andreu: finca variada y documentación heterogénea',
+      intro: 'Verificamos licencias y comunidad antes de arras.',
+      puntos: ['Due diligence previa a señal', 'Arras con plazos realistas', 'Seguimiento banco'],
+    },
+    faqs: [{ q: '¿Precio plano?', a: '687 € IVA incluido sin % sobre el precio del piso.' }],
+  },
+  'horta-guinardo': {
+    slug: 'horta-guinardo',
+    nombre: 'Horta-Guinardó',
+    distrito: 'Horta-Guinardó',
+    heroImage: '/keys.jpg',
+    meta: {
+      title: 'Compra completa Horta-Guinardó — 687€ hasta escritura',
+      description: 'Comprar en Horta, Guinardó o El Carmel a particular. Gestor Inmonest Barcelona.',
+      keywords: 'comprar piso horta particular, compra completa guinardo',
+      ogTitle: 'Comprar en Horta-Guinardó con gestor',
+      ogDescription: '687 € · online o presencial.',
+    },
+    hero: {
+      h1: 'Compra completa en Horta-Guinardó: no firmes arras sin revisar ITE y derramas',
+      lead: 'El pack cubre auditoría documental, arras y coordinación con notaría.',
+    },
+    mercado: {
+      titulo: 'Horta-Guinardó: edificios en obras',
+      intro: 'Derramas e ITE son frecuentes; las detectamos antes de la señal.',
+      puntos: ['Actas de comunidad', 'Cédula y certificado energético', 'Minuta pre-escritura'],
+    },
+    faqs: [{ q: '¿Online?', a: 'Sí, con panel y videollamada; presencial en Les Corts opcional.' }],
+  },
+  'ciutat-vella': {
+    slug: 'ciutat-vella',
+    nombre: 'Ciutat Vella',
+    distrito: 'Ciutat Vella',
+    heroImage: '/gestoria-expertos-calle.jpg',
+    meta: {
+      title: 'Compra completa Ciutat Vella — Gòtic, Born 687€',
+      description: 'Comprar piso en Ciutat Vella entre particulares. Due diligence, arras, notaría.',
+      keywords: 'comprar piso gothic barcelona, compra completa born particular',
+      ogTitle: 'Comprar en Ciutat Vella — Inmonest',
+      ogDescription: '687 € · gestor asignado.',
+    },
+    hero: {
+      h1: 'Compra completa en Ciutat Vella: compra entre particulares con due diligence en finca histórica',
+      lead: 'Licencias, protección patrimonial y vendedores internacionales. Revisamos todo antes de comprometerte.',
+    },
+    mercado: {
+      titulo: 'Ciutat Vella: máxima cautela documental',
+      intro: 'Coherencia registral y urbanística es crítica.',
+      puntos: ['Nota simple exhaustiva', 'Obras y licencias', 'Cláusulas de arras robustas'],
+    },
+    faqs: [{ q: '¿Compradores extranjeros?', a: 'Sí, adaptamos checklist y plazos con el vendedor.' }],
+  },
+  'diagonal-mar': {
+    slug: 'diagonal-mar',
+    nombre: 'Diagonal Mar i el Front Marítim',
+    distrito: 'Sant Martí',
+    heroImage: '/gestoria6.jpg',
+    meta: {
+      title: 'Compra completa Diagonal Mar — pack 687€',
+      description: 'Comprar en Diagonal Mar o front marítim a particular. Gestoría Inmonest.',
+      keywords: 'comprar piso diagonal mar, compra completa vila olimpica',
+      ogTitle: 'Comprar en Diagonal Mar con gestor',
+      ogDescription: '687 € IVA incl.',
+    },
+    hero: {
+      h1: 'Compra completa en Diagonal Mar: due diligence rápida y arras listas para hipoteca',
+      lead: 'Operaciones con plazos cortos. Revisamos minuta y documentación del edificio.',
+    },
+    mercado: {
+      titulo: 'Diagonal Mar: compradores exigentes',
+      intro: 'Documentación impecable acelera la operación.',
+      puntos: ['Arras con hipoteca', 'Certificados al día', 'Coordinación notaría'],
+    },
+    faqs: [{ q: '¿Due diligence incluida?', a: 'Sí, revisión documental integral en el pack 687 €.' }],
+  },
+  'sant-antoni': {
+    slug: 'sant-antoni',
+    nombre: 'Sant Antoni',
+    distrito: 'Eixample',
+    heroImage: '/contrato6.jpg',
+    meta: {
+      title: 'Compra completa Sant Antoni — 687€ hasta escritura',
+      description: 'Comprar piso en Sant Antoni entre particulares. Inmonest gestoría Barcelona.',
+      keywords: 'comprar piso sant antoni, compra completa eixample izquierdo',
+      ogTitle: 'Comprar en Sant Antoni — pack completo',
+      ogDescription: '687 € · panel online.',
+    },
+    hero: {
+      h1: 'Compra completa en Sant Antoni: compra en el Eixample izquierdo con gestor hasta notaría',
+      lead: 'Reformas recientes y mercado competitivo. Blindamos tu señal con cláusulas revisadas.',
+    },
+    mercado: {
+      titulo: 'Sant Antoni: rotación alta',
+      intro: 'Plazos cortos; conviene revisar arras en 48 h.',
+      puntos: ['Revisión de borrador de arras', 'Comunidad e IBI', 'ITP orientativo Cataluña'],
+    },
+    faqs: [{ q: '¿687 € incluye impuestos?', a: 'No; ITP y notaría aparte. Incluye gestoría Inmonest.' }],
+  },
+  'nou-barris': {
+    slug: 'nou-barris',
+    nombre: 'Nou Barris',
+    distrito: 'Nou Barris',
+    heroImage: '/businessman-checking-documents-table.jpg',
+    meta: {
+      title: 'Compra completa Nou Barris — comprar a particular 687€',
+      description: 'Pack comprador en Nou Barris, Verdum o Roquetes. Gestor hasta escritura.',
+      keywords: 'comprar piso nou barris particular, compra completa verdum',
+      ogTitle: 'Comprar en Nou Barris — Inmonest',
+      ogDescription: '687 € fijos.',
+    },
+    hero: {
+      h1: 'Compra completa en Nou Barris: compra segura a particular sin pagar comisión de agencia',
+      lead: 'Te acompañamos en arras, hipoteca y escritura con lenguaje claro y panel online.',
+    },
+    mercado: {
+      titulo: 'Nou Barris: operaciones familiares',
+      intro: 'Checklist accesible y arras comprensibles.',
+      puntos: ['Due diligence básica ampliada', 'Financiación comprador', 'Cierre notarial'],
+    },
+    faqs: [{ q: '¿Primera compra?', a: 'Te explicamos cada fase; el gestor responde por WhatsApp.' }],
   },
 }
 

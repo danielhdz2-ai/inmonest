@@ -355,22 +355,32 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
       {slug === 'barcelona' && (
         <>
           <section className="py-14 px-4 bg-cream-50 border-t border-gold-200/40">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-3">Venta completa por barrios de Barcelona</h2>
-              <p className="text-gray-600 text-sm mb-8 max-w-2xl mx-auto">
-                Landings con título y contexto de mercado por zona — mismo pack 687 € hasta escritura.
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-3 text-center">
+                Venta completa por barrios de Barcelona ({listBarcelonaVentaCompletaBarrios().length} zonas)
+              </h2>
+              <p className="text-gray-600 text-sm mb-8 max-w-2xl mx-auto text-center">
+                Cada barrio tiene landing propia con mercado local, FAQ ampliada, testimonios y enlaces cruzados.
+                Mismo pack 687 € hasta escritura — online o despacho Les Corts.
               </p>
-              <div className="flex flex-wrap justify-center gap-2">
+              <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                 {listBarcelonaVentaCompletaBarrios().map((b) => (
-                  <Link
-                    key={b.slug}
-                    href={`/barcelona/venta-completa/${b.slug}`}
-                    className="rounded-full border border-gold-300 bg-white px-4 py-2 text-sm font-semibold text-gold-900 hover:bg-gold-50 transition-colors"
-                  >
-                    {b.nombre} →
-                  </Link>
+                  <li key={b.slug}>
+                    <Link
+                      href={`/barcelona/venta-completa/${b.slug}`}
+                      className="block rounded-xl border border-gold-200 bg-white px-3 py-3 text-sm font-semibold text-gold-900 hover:bg-gold-50 transition-colors"
+                    >
+                      {b.nombre}
+                      <span className="block text-[10px] font-normal text-gray-500 mt-0.5">{b.distrito}</span>
+                    </Link>
+                  </li>
                 ))}
-              </div>
+              </ul>
+              <p className="text-center mt-6 text-sm">
+                <Link href="/barcelona/compra-completa/eixample" className="text-gold-700 font-semibold hover:underline">
+                  ¿Compras en Barcelona? Compra completa por barrios →
+                </Link>
+              </p>
             </div>
           </section>
           <InmonestOficinaBarcelonaSection />
@@ -418,6 +428,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         servicioNombre={`Venta completa en ${nombre}`}
         ciudad={nombre}
         testimonioLanding={config.testimoniosLanding}
+        testimoniosLayout="carousel"
         relacionados={RELACIONADOS_VENTA}
         skipCiudades
         skipDaniel

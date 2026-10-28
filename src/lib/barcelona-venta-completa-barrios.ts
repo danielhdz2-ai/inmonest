@@ -6,6 +6,13 @@ export const BARCELONA_VENTA_COMPLETA_SLUGS = [
   'sants',
   'poblenou',
   'les-corts',
+  'sarria',
+  'sant-andreu',
+  'horta-guinardo',
+  'ciutat-vella',
+  'diagonal-mar',
+  'sant-antoni',
+  'nou-barris',
 ] as const
 
 export type BarcelonaVentaCompletaSlug = (typeof BARCELONA_VENTA_COMPLETA_SLUGS)[number]
@@ -204,6 +211,251 @@ const BARRIOS: Record<BarcelonaVentaCompletaSlug, BarcelonaCompletaBarrioConfig>
       {
         q: '¿Mismo precio que online?',
         a: 'Sí, 687 € IVA incluido; la atención presencial no lleva suplemento.',
+      },
+    ],
+  },
+  sarria: {
+    slug: 'sarria',
+    nombre: 'Sarrià-Sant Gervasi',
+    distrito: 'Sarrià-Sant Gervasi',
+    heroImage: '/inmobiliaria8.jpg',
+    meta: {
+      title: 'Venta completa Sarrià-Sant Gervasi — pack 687€ hasta escritura',
+      description:
+        'Vende piso en Sarrià, Sant Gervasi o Tres Torres entre particulares: arras, documentación premium y notaría. Gestor + despacho Les Corts.',
+      keywords: 'vender piso sarria particular, venta completa sant gervasi barcelona, gestoría venta tres torres',
+      ogTitle: 'Vender en Sarrià-Sant Gervasi sin comisión de agencia',
+      ogDescription: '687 € IVA incl. · gestor dedicado · panel online.',
+    },
+    hero: {
+      h1: 'Venta completa en Sarrià-Sant Gervasi: cierra con tu comprador por 687 € y expediente impecable',
+      lead:
+        'Operaciones de alto valor, herencias y segundas residencias. Blindamos arras, plusvalía y documentación exigente antes de que el comprador pida descuentos de última hora.',
+    },
+    mercado: {
+      titulo: 'Sarrià-Sant Gervasi: exigencia documental y plazos de hipoteca',
+      intro:
+        'Compradores con financiación premium y operaciones entre patrimonios familiares. Revisamos cargas, usufructos y comunidades con cuotas elevadas.',
+      puntos: [
+        'Arras con plazos realistas para cancelación de hipoteca vendedor',
+        'Coordinación con asesores del comprador sin ceder tu posición',
+        'Checklist notarial alineado con notarías habituales de zona alta',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Tramitáis ventas con usufructo vitalicio?',
+        a: 'Analizamos nota simple y te indicamos viabilidad registral y cláusulas necesarias antes de firmar reserva.',
+      },
+    ],
+  },
+  'sant-andreu': {
+    slug: 'sant-andreu',
+    nombre: 'Sant Andreu',
+    distrito: 'Sant Andreu',
+    heroImage: '/gestoria4.jpg',
+    meta: {
+      title: 'Venta completa Sant Andreu Barcelona 687€ — particular a escritura',
+      description:
+        'Pack venta reserva-escritura en Sant Andreu, La Sagrera y Navas. Arras, cédula, comunidad. Inmonest gestoría.',
+      keywords: 'vender piso sant andreu particular, venta completa sagrera, gestor inmobiliario sant andreu',
+      ogTitle: 'Vender en Sant Andreu con gestor hasta notaría',
+      ogDescription: '687 € fijos · online o despacho Les Corts.',
+    },
+    hero: {
+      h1: 'Venta completa en Sant Andreu: vende entre particulares con gestor y sin pagar comisión al 3 %',
+      lead:
+        'Familias que venden tras herencia o por traslado. Te acompañamos en arras, certificados de la Generalitat y cierre con comprador que financia.',
+    },
+    mercado: {
+      titulo: 'Sant Andreu: mezcla de finca antigua y obra nueva',
+      intro:
+        'Reformas con licencia, derramas de ascensor y compradores jóvenes con hipoteca. Anticipamos documentación para no perder la operación.',
+      puntos: [
+        'ITE y estado del edificio en bloques de años 60–70',
+        'Cláusulas de financiación del comprador',
+        'Certificado de deudas de comunidad antes de señal',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Puedo vender si hay herencia sin adjudicar?',
+        a: 'Depende del Registro. En la primera llamada revisamos titularidad y te damos hoja de ruta antes de contratar.',
+      },
+    ],
+  },
+  'horta-guinardo': {
+    slug: 'horta-guinardo',
+    nombre: 'Horta-Guinardó',
+    distrito: 'Horta-Guinardó',
+    heroImage: '/keys.jpg',
+    meta: {
+      title: 'Venta completa Horta-Guinardó — gestoría 687€ hasta escritura',
+      description:
+        'Vender piso en Horta, Guinardó o El Carmel entre particulares. Reserva, arras, notaría. Panel online + despacho Barcelona.',
+      keywords: 'vender piso horta particular, venta completa guinardo, gestoría venta el carmel',
+      ogTitle: 'Venta integral Horta-Guinardó — Inmonest',
+      ogDescription: 'Gestor asignado · sin comisión sobre el precio.',
+    },
+    hero: {
+      h1: 'Venta completa en Horta-Guinardó: de la señal al acta de notaría con un solo gestor',
+      lead:
+        'Ventas por portal o recomendación en barrios residenciales con pendiente de ITE. El pack 687 € cubre contratos y camino a escritura.',
+    },
+    mercado: {
+      titulo: 'Horta-Guinardó: edificios en revisión técnica',
+      intro:
+        'Muchas comunidades negocian obras e inspecciones. Verificamos actas y cargas antes de que el comprador reduzca el precio.',
+      puntos: [
+        'Revisión de derramas y obras en curso',
+        'Arras equilibradas para vendedor con hipoteca',
+        'Orientación plusvalía municipal en Barcelona',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Qué pasa si la ITE es desfavorable?',
+        a: 'Te explicamos impacto en la venta y cómo reflejarlo en arras o negociación con el comprador.',
+      },
+    ],
+  },
+  'ciutat-vella': {
+    slug: 'ciutat-vella',
+    nombre: 'Ciutat Vella',
+    distrito: 'Ciutat Vella',
+    heroImage: '/gestoria-expertos-calle.jpg',
+    meta: {
+      title: 'Venta completa Ciutat Vella — Gòtic, Born, Raval 687€',
+      description:
+        'Vende en el Gòtic, Born, Barceloneta o Raval entre particulares. Gestoría arras-escritura, cédula y notaría. Inmonest.',
+      keywords: 'vender piso gothic quarter, venta completa born barcelona, gestoría venta ciutat vella',
+      ogTitle: 'Vender en Ciutat Vella con gestoría premium',
+      ogDescription: '687 € · documentación catalana · panel online.',
+    },
+    hero: {
+      h1: 'Venta completa en Ciutat Vella: fincas históricas, comprador encontrado y cierre legal seguro',
+      lead:
+        'Locales convertidos, protección patrimonial y compradores internacionales. Te ayudamos con arras, certificados y coordinación notarial sin comisión de captación.',
+    },
+    mercado: {
+      titulo: 'Ciutat Vella: complejidad urbanística y turística',
+      intro:
+        'Licencias, cambios de uso y comunidades exigentes. Revisamos coherencia registral y requisitos antes de fijar señal alta.',
+      puntos: [
+        'Obras y licencias en edificios protegidos',
+        'Nota simple y cargas ocultas',
+        'Plazos realistas para compradores con hipoteca',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Vendéis pisos con actividad turística previa?',
+        a: 'Revisamos normativa aplicable y te orientamos sobre declaraciones y contratos; cada finca es distinta.',
+      },
+    ],
+  },
+  'diagonal-mar': {
+    slug: 'diagonal-mar',
+    nombre: 'Diagonal Mar i el Front Marítim',
+    distrito: 'Sant Martí',
+    heroImage: '/gestoria6.jpg',
+    meta: {
+      title: 'Venta completa Diagonal Mar y Poblenou — 687€ hasta escritura',
+      description:
+        'Vender piso en Diagonal Mar, Selva de Mar o front marítim entre particulares. Pack Inmonest: arras, due diligence vendedor, notaría.',
+      keywords: 'vender piso diagonal mar, venta completa front maritim barcelona, gestoría sant marti venta',
+      ogTitle: 'Venta completa Diagonal Mar — gestor asignado',
+      ogDescription: '687 € IVA incl. · trámite online o Les Corts.',
+    },
+    hero: {
+      h1: 'Venta completa en Diagonal Mar: cierra tu operación con vistas al mar y gestoría sin comisión inmobiliaria',
+      lead:
+        'Compradores exigentes que piden due diligence antes de la señal. Entregamos expediente ordenado: arras, certificados y minuta revisada.',
+    },
+    mercado: {
+      titulo: 'Diagonal Mar: operaciones rápidas y compradores corporativos',
+      intro:
+        'Plazos cortos y documentación impecable. Coordinamos con gestorías del comprador y notarías de zona.',
+      puntos: [
+        'Arras con condiciones suspensivas bien calibradas',
+        'Certificado energético y cédula al día',
+        'Seguimiento hipoteca del comprador',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Es distinto del pack en Poblenou?',
+        a: 'Mismo precio y alcance; esta landing prioriza copy y SEO para Diagonal Mar y edificios de la Vila Olímpica.',
+      },
+    ],
+  },
+  'sant-antoni': {
+    slug: 'sant-antoni',
+    nombre: 'Sant Antoni',
+    distrito: 'Eixample',
+    heroImage: '/contrato6.jpg',
+    meta: {
+      title: 'Venta completa Sant Antoni — pack 687€ reserva a escritura',
+      description:
+        'Vende en Sant Antoni (Eixample izquierdo) entre particulares. Arras, documentación Generalitat, notaría. Despacho Les Corts.',
+      keywords: 'vender piso sant antoni barcelona, venta completa mercat sant antoni, gestoría venta eixample',
+      ogTitle: 'Vender en Sant Antoni con Inmonest',
+      ogDescription: '687 € · gestor inmobiliario · panel online.',
+    },
+    hero: {
+      h1: 'Venta completa en Sant Antoni: mercado dinámico, comprador concreto y gestoría 687 € hasta escritura',
+      lead:
+        'Reformas recientes, locales en planta baja y familias que venden sin agencia. Redactamos reserva y arras adaptadas al mercado del Eixample izquierdo.',
+    },
+    mercado: {
+      titulo: 'Sant Antoni: alta rotación y fincas reformadas',
+      intro:
+        'Compradores que comparan varias opciones en el mismo distrito. Blindamos plazos y penalizaciones en arras.',
+      puntos: [
+        'Coherencia entre precio en arras e ITP del comprador',
+        'Licencias de obra en reformas integrales',
+        'Comunidad y IBI antes de señal',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Cubrís también Esquerra de l’Eixample?',
+        a: 'Sí. El servicio es el mismo en todo el Eixample; esta página destaca Sant Antoni y zona Mercat.',
+      },
+    ],
+  },
+  'nou-barris': {
+    slug: 'nou-barris',
+    nombre: 'Nou Barris',
+    distrito: 'Nou Barris',
+    heroImage: '/businessman-checking-documents-table.jpg',
+    meta: {
+      title: 'Venta completa Nou Barris — vender piso particular 687€',
+      description:
+        'Pack venta completa en Nou Barris, Verdum, Roquetes o Ciutat Meridiana. Gestor, arras y notaría. Inmonest Barcelona.',
+      keywords: 'vender piso nou barris particular, venta completa verdum, gestoría venta roquetes',
+      ogTitle: 'Venta integral Nou Barris — sin comisión agencia',
+      ogDescription: '687 € fijos · online + despacho Les Corts.',
+    },
+    hero: {
+      h1: 'Venta completa en Nou Barris: vende a particular con gestor y tarifa plana, no con porcentaje de agencia',
+      lead:
+        'Operaciones familiares y compradores con hipoteca. Te guiamos en arras, certificados y día de firma con lenguaje claro y panel online.',
+    },
+    mercado: {
+      titulo: 'Nou Barris: plazos de financiación y documentación accesible',
+      intro:
+        'Priorizamos arras comprensibles y checklist de bajo coste para no retrasar la venta por papeles mal preparados.',
+      puntos: [
+        'Arras penitenciales con plazo hipoteca comprador',
+        'Certificado de deudas de comunidad',
+        'Soporte hasta notaría en castellano o catalán',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Puedo pagar en varios plazos?',
+        a: 'El servicio Inmonest se paga al contratar (687 €). La forma de pago del piso al comprador se pacta en arras y escritura.',
       },
     ],
   },

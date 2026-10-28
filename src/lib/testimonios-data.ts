@@ -358,7 +358,7 @@ export const TESTIMONIOS_POR_LANDING: Record<string, Testimonio[]> = {
   'venta-completa': pick(1, 13, 12),
   'venta-completa-valencia': pick(12, 13, 1),
   'venta-completa-madrid': pick(13, 1, 10),
-  'venta-completa-barcelona': pick(1, 13, 12),
+  'venta-completa-barcelona': pick(1, 13, 12, 14, 18, 8, 15),
   'venta-completa-sevilla': pick(15, 1, 13),
   'venta-completa-malaga': pick(8, 12, 10),
   'venta-completa-salamanca': pick(10, 13, 1),
@@ -530,6 +530,13 @@ export type TestimoniosOptions = {
 export function getTestimonios({ landing, ciudad }: TestimoniosOptions = {}): Testimonio[] {
   if (landing && TESTIMONIOS_POR_LANDING[landing]?.length) {
     return TESTIMONIOS_POR_LANDING[landing]
+  }
+
+  if (landing?.startsWith('venta-completa-bcn-')) {
+    return pick(1, 13, 12, 14, 18, 8, 15)
+  }
+  if (landing?.startsWith('compra-completa-bcn-')) {
+    return pick(4, 18, 11, 17, 1, 14, 5)
   }
 
   if (ciudad) {

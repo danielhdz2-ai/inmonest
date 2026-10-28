@@ -10,6 +10,8 @@ import {
   CONTRATOS_INMOBILIARIOS_INDEXAR,
   SITE_URL,
 } from './gestoria-indexar-urls'
+import { getBarcelonaCompraCompletaBarrioPaths } from './barcelona-compra-completa-barrios'
+import { getBarcelonaVentaCompletaBarrioPaths } from './barcelona-venta-completa-barrios'
 
 /** Landings recientes: solicitar indexación aunque no figuren en el export GSC */
 const LANDINGS_RECIENTES_INDEXAR = [
@@ -20,16 +22,8 @@ const LANDINGS_RECIENTES_INDEXAR = [
   '/blog/regulacion-alquiler-temporada-habitaciones-2026',
   '/blog/errores-comprar-piso-entre-particulares-2026',
   '/blog/actualidad-vivienda-espana-octubre-2026',
-  '/barcelona/venta-completa/eixample',
-  '/barcelona/venta-completa/gracia',
-  '/barcelona/venta-completa/sants',
-  '/barcelona/venta-completa/poblenou',
-  '/barcelona/venta-completa/les-corts',
-  '/barcelona/compra-completa/eixample',
-  '/barcelona/compra-completa/gracia',
-  '/barcelona/compra-completa/les-corts',
-  '/barcelona/compra-completa/sarria',
-  '/barcelona/compra-completa/poblenou',
+  ...getBarcelonaVentaCompletaBarrioPaths(),
+  ...getBarcelonaCompraCompletaBarrioPaths(),
   '/gestoria/acompanamiento-reserva-arras',
   '/gestoria/alquiler-garaje-trastero',
   '/gestoria/rescision-alquiler',
