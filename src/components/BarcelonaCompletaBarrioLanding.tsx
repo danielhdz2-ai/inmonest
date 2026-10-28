@@ -12,6 +12,7 @@ import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
 import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import { VENTA_COMPLETA_PRECIO, VENTA_COMPLETA_CIUDADES_LIST } from '@/lib/venta-completa-ciudad-data'
 import CompletaServiciosDetalle from '@/components/CompletaServiciosDetalle'
+import GestoriaCompletaModalidadSections from '@/components/GestoriaCompletaModalidadSections'
 import {
   VENTA_COMPLETA_BLOQUES_SERVICIO,
   VENTA_COMPLETA_COMPARATIVA,
@@ -125,45 +126,11 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
         </div>
       </section>
 
-      <section className="border-y border-gold-200/50 bg-gradient-to-b from-[#fdfbf5] to-white py-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-gold-700 mb-2">Dos formas de trabajar</p>
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">100 % online o con cita en despacho Barcelona</h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
-            El pack {PRECO} € es el mismo: panel mi-cuenta/contratos, gestor con WhatsApp directo y expediente hasta
-            escritura. Si prefieres entregar documentación en mano o revisar borradores cara a cara, reservas cita en{' '}
-            <strong>Carrer de Mejía Lequerica, 44</strong> (Les Corts) — sin suplemento.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href="#panel-gestoria-demo"
-              className="rounded-full bg-gold-500 px-6 py-2.5 text-sm font-bold text-gray-900 hover:bg-gold-600"
-            >
-              Ver panel interactivo
-            </Link>
-            <Link
-              href="#despacho-barcelona"
-              className="rounded-full border border-gold-400 px-6 py-2.5 text-sm font-semibold text-gold-900 hover:bg-cream-50"
-            >
-              Mapa del despacho
-            </Link>
-            <Link
-              href={solicitarHref}
-              className="rounded-full border border-gray-300 px-6 py-2.5 text-sm font-semibold text-gray-800 hover:bg-white"
-            >
-              Contratar pack →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      <div id="panel-gestoria-demo" className="scroll-mt-24">
-        <AgenciaGestoriaPanelDemo
-          audience="particular"
-          particularRole={isVenta ? 'vendedor' : 'comprador'}
-          ciudadNombre={config.nombre}
-        />
-      </div>
+      <GestoriaCompletaModalidadSections
+        modo={isVenta ? 'venta' : 'compra'}
+        lugarNombre={`${config.nombre}, Barcelona`}
+        solicitarHref={solicitarHref}
+      />
 
       <CompletaServiciosDetalle
         modo={isVenta ? 'venta' : 'compra'}
@@ -176,6 +143,14 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
         }
         modalidadOverlay={`${allBarrios.length} barrios · panel online · Les Corts presencial`}
       />
+
+      <div id="panel-gestoria-demo" className="scroll-mt-24">
+        <AgenciaGestoriaPanelDemo
+          audience="particular"
+          particularRole={isVenta ? 'vendedor' : 'comprador'}
+          ciudadNombre={config.nombre}
+        />
+      </div>
 
       {isVenta ? (
         <section className="py-16 px-4 bg-white border-t border-gray-100">

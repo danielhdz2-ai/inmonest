@@ -20,7 +20,7 @@ import GestoriaDueDiligenceModulosCompletos, {
   GestoriaDueDiligenceTramiteOnlineSection,
 } from '@/components/GestoriaDueDiligenceModulosCompletos'
 import CompletaServiciosDetalle from '@/components/CompletaServiciosDetalle'
-import GestoriaTramiteOnlineSection from '@/components/GestoriaTramiteOnlineSection'
+import GestoriaCompletaModalidadSections from '@/components/GestoriaCompletaModalidadSections'
 import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
 import { servicioSlugIsDueDiligencePack } from '@/lib/due-diligence-servicio-registry'
 import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
@@ -1136,19 +1136,24 @@ export default async function ServicioGestoriaPage({
 
         {completaPack ? (
           <>
-            <GestoriaTramiteOnlineSection
-              ciudad="toda España"
-              panelAnchorId="panel-gestoria-demo"
-              tipo={ventaCompletaPack ? 'venta-completa' : 'compra-completa'}
-              contentOverride={
+            <GestoriaCompletaModalidadSections
+              modo={ventaCompletaPack ? 'venta' : 'compra'}
+              lugarNombre="toda España"
+              solicitarHref={`/gestoria/solicitar/${servicio}`}
+              tramiteOnlineOverride={
                 ventaCompletaPack
                   ? {
-                      titulo: 'Tu venta completa hasta escritura sin ir a ninguna oficina (o con cita en Barcelona)',
+                      titulo: 'Tu venta completa en toda España sin ir a ninguna oficina',
                     }
                   : {
-                      titulo: 'Tu compra completa hasta escritura sin ir a ninguna oficina (o con cita en Barcelona)',
+                      titulo: 'Tu compra completa en toda España sin ir a ninguna oficina',
                     }
               }
+            />
+            <CompletaServiciosDetalle
+              modo={ventaCompletaPack ? 'venta' : 'compra'}
+              lugarNombre="toda España"
+              solicitarHref={`/gestoria/solicitar/${servicio}`}
             />
             <div id="panel-gestoria-demo" className="scroll-mt-24">
               <GestoriaPanelShowcase servicioLabel={data.nombre.toLowerCase()} />
@@ -1164,11 +1169,6 @@ export default async function ServicioGestoriaPage({
                 backLabel="← Compra completa"
               />
             )}
-            <CompletaServiciosDetalle
-              modo={ventaCompletaPack ? 'venta' : 'compra'}
-              lugarNombre="toda España"
-              solicitarHref={`/gestoria/solicitar/${servicio}`}
-            />
           </>
         ) : null}
 

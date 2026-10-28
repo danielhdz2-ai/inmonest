@@ -28,6 +28,7 @@ import {
   VENTA_COMPLETA_DOCUMENTOS_CHECKLIST,
 } from '@/lib/venta-completa-servicio-content'
 import CompletaServiciosDetalle from '@/components/CompletaServiciosDetalle'
+import GestoriaCompletaModalidadSections from '@/components/GestoriaCompletaModalidadSections'
 import { getVentaCompletaEnriquecimiento } from '@/lib/venta-completa-ciudad-enriquecimiento'
 import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
 import { listBarcelonaVentaCompletaBarrios } from '@/lib/barcelona-venta-completa-barrios'
@@ -247,6 +248,13 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
           </div>
         </div>
       </section>
+
+      <GestoriaCompletaModalidadSections
+        modo="venta"
+        lugarNombre={nombre}
+        solicitarHref={SOLICITAR_URL}
+        showDespachoBarcelona={slug === 'barcelona'}
+      />
 
       <CompletaServiciosDetalle
         modo="venta"
