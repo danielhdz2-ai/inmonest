@@ -156,6 +156,46 @@ function buildAlquilerLauBundle(ciudadNombre?: string): DemoBundle {
   }
 }
 
+function slugifyCiudad(ciudad: string): string {
+  return ciudad.toLowerCase().replace(/\s+/g, '-').replace(/[·,]/g, '')
+}
+
+function buildCompradorCompletaBundle(ciudadNombre?: string): DemoBundle {
+  const ciudad = ciudadNombre ?? 'Barcelona'
+  const ciudadSlug = slugifyCiudad(ciudad).slice(0, 24)
+  return {
+    mock: {
+      subtitulo: `Comprador · ${ciudad}`,
+      usuario: 'María López',
+      ciudad,
+      servicio: 'Compra completa hasta escritura',
+      referencia: 'INV-2026-0911',
+      importe: 687,
+      pasoActual: 2,
+      progreso: 50,
+      plazo: 'Hasta firma en notaría',
+    },
+    actividad: [
+      { icon: 'D', titulo: 'Actas de comunidad subidas — revisión de derramas e ITE', fecha: '5 sept, 15:20' },
+      { icon: 'S', titulo: 'Borrador de arras enviado al vendedor con cláusula de financiación', fecha: '4 sept, 12:00' },
+      { icon: 'P', titulo: 'Pago confirmado — compra completa 687 €', fecha: '3 sept, 10:30' },
+    ],
+    docs: [
+      { key: 'partes', label: 'Datos comprador y vendedor', file: `partes-compra-${ciudadSlug}.pdf`, status: 'done', fecha: '3 sept, 11:00' },
+      { key: 'dni-comprador', label: 'DNI comprador', file: 'dni-comprador-anverso.jpg', status: 'done', fecha: '3 sept, 11:10' },
+      { key: 'nota-simple', label: 'Nota simple registral', file: `nota-simple-${ciudadSlug}.pdf`, status: 'reviewing', fecha: '5 sept, 15:20' },
+      { key: 'comunidad', label: 'Certificado de deudas de comunidad', file: 'certificado-deudas-comunidad.pdf', status: 'done', fecha: '4 sept, 09:40' },
+      { key: 'hipoteca', label: 'Preaprobación bancaria / FEIN', file: null, status: 'pending', fecha: null },
+    ],
+    contratosHist: [
+      { nombre: 'Compra completa hasta escritura', ref: 'INV-2026-0911', estado: 'Documentación', paso: 2, fecha: '3 sept 2026', activo: true },
+      { nombre: 'Contrato de arras penitenciales', ref: 'INV-2026-0872', estado: 'En elaboración', paso: 3, fecha: '4 sept 2026', activo: false },
+      { nombre: 'Due diligence pre-compra', ref: 'INV-2026-0820', estado: 'Entregado', paso: 4, fecha: '20 ago 2026', activo: false },
+    ],
+    historialLabel: 'Historial de tu compra y contratos',
+  }
+}
+
 function buildVendedorBundle(ciudadNombre?: string): DemoBundle {
   const ciudad = ciudadNombre ?? 'Madrid'
   return {
@@ -197,7 +237,11 @@ function usePanelDemo() {
   return useContext(PanelDemoContext)
 }
 
-export type GestoriaPanelDemoServicio = 'arras' | 'alquiler-lau'
+export type GestoriaPanelDemoServicio =
+  | 'arras'
+  | 'alquiler-lau'
+  | 'venta-completa'
+  | 'compra-completa'
 
 function getDemoBundle(
   audience: GestoriaPanelDemoAudience,
@@ -207,6 +251,7 @@ function getDemoBundle(
 ): DemoBundle {
   if (audience === 'agencia') return BUNDLE_AGENCIA
   if (role === 'vendedor') return buildVendedorBundle(ciudadNombre)
+  if (servicioDemo === 'compra-completa') return buildCompradorCompletaBundle(ciudadNombre)
   if (servicioDemo === 'alquiler-lau') return buildAlquilerLauBundle(ciudadNombre)
   return BUNDLE_PARTICULAR
 }

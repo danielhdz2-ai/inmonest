@@ -115,6 +115,19 @@ export const VENTA_COMPLETA_COMPARATIVA = [
   { aspecto: 'Comisión de agencia', inmonest: '0% — no somos agencia', solo: '3-5% si usas inmobiliaria' },
 ] as const
 
+/** Checklist orientado al comprador (pack compra completa). */
+export const COMPRA_COMPLETA_DOCUMENTOS_CHECKLIST = [
+  'DNI o NIE del comprador (y cotitular si aplica)',
+  'Nota simple registral del inmueble (vendedor o solicitud conjunta)',
+  'Certificado de deudas de la comunidad de propietarios',
+  'Certificado de eficiencia energético vigente',
+  'Cédula de habitabilidad (Generalitat de Catalunya en Barcelona)',
+  'Actas de comunidad recientes (derramas, ITE del edificio)',
+  'Borrador de arras recibido del vendedor (para revisión o sustitución)',
+  'Preaprobación o FEIN del banco (cuando hay hipoteca)',
+  'Justificante de origen de fondos si lo exige la entidad',
+] as const
+
 export const VENTA_COMPLETA_DOCUMENTOS_CHECKLIST = [
   'DNI o NIE de todos los propietarios',
   'Escritura de compra original',

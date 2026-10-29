@@ -1,3 +1,6 @@
+import { getBarcelonaVentaCompletaBarrio } from '@/lib/barcelona-venta-completa-barrios'
+import { getBarcelonaCompraCompletaBarrio } from '@/lib/barcelona-compra-completa-barrios'
+
 export type Testimonio = {
   id: number
   nombre: string
@@ -527,16 +530,60 @@ export type TestimoniosOptions = {
   ciudad?: string
 }
 
+function hashSlugBarrio(slug: string): number {
+  let h = 0
+  for (let i = 0; i < slug.length; i++) h = (h * 31 + slug.charCodeAt(i)) | 0
+  return Math.abs(h)
+}
+
+function barcelonaCompletaBarrioTestimonios(landing: string): Testimonio[] | null {
+  const m = landing.match(/^(venta|compra)-completa-bcn-([a-z0-9-]+)$/)
+  if (!m) return null
+
+  const modo = m[1] as 'venta' | 'compra'
+  const slug = m[2]
+  const cfg =
+    modo === 'venta' ? getBarcelonaVentaCompletaBarrio(slug) : getBarcelonaCompraCompletaBarrio(slug)
+  const barrio = cfg?.nombre ?? slug.replace(/-/g, ' ')
+  const ids =
+    modo === 'venta' ? [1, 13, 12, 14, 8, 10, 15] : [4, 11, 18, 17, 16, 1, 14]
+  const offset = hashSlugBarrio(slug) % ids.length
+  const pickIds = [ids[offset], ids[(offset + 1) % ids.length], ids[(offset + 2) % ids.length]]
+  const base = pickIds
+    .map((id) => TESTIMONIOS_POOL.find((t) => t.id === id))
+    .filter(Boolean) as Testimonio[]
+
+  return base.map((t, i) => {
+    const suffix =
+      modo === 'venta'
+        ? i === 0
+          ? ` Vendí en ${barrio} (Barcelona) con venta completa Inmonest: arras, documentación y notaría por 687 €.`
+          : i === 1
+            ? ` En ${barrio} revisaron comunidad e ITE antes de las arras.`
+            : ` Trámite online o en Les Corts desde ${barrio}.`
+        : i === 0
+          ? ` Compré en ${barrio} a un particular con due diligence y arras blindadas.`
+          : i === 1
+            ? ` En ${barrio} detectaron derramas en actas antes de la señal.`
+            : ` Gestor claro en castellano para mi compra en ${barrio}.`
+
+    return {
+      ...t,
+      ciudad: 'Barcelona',
+      servicio: modo === 'venta' ? 'Venta completa reserva-escritura' : 'Compra completa reserva-escritura',
+      texto: t.texto.includes(barrio) ? t.texto : `${t.texto}${suffix}`,
+    }
+  })
+}
+
 export function getTestimonios({ landing, ciudad }: TestimoniosOptions = {}): Testimonio[] {
   if (landing && TESTIMONIOS_POR_LANDING[landing]?.length) {
     return TESTIMONIOS_POR_LANDING[landing]
   }
 
-  if (landing?.startsWith('venta-completa-bcn-')) {
-    return pick(1, 13, 12, 14, 18, 8, 15)
-  }
-  if (landing?.startsWith('compra-completa-bcn-')) {
-    return pick(4, 18, 11, 17, 1, 14, 5)
+  if (landing?.includes('-completa-bcn-')) {
+    const barrioTs = barcelonaCompletaBarrioTestimonios(landing)
+    if (barrioTs?.length) return barrioTs
   }
 
   if (ciudad) {

@@ -357,9 +357,14 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
               <h2 className="text-2xl font-bold text-gray-900 mb-3 text-center">
                 Venta completa por barrios de Barcelona ({listBarcelonaVentaCompletaBarrios().length} zonas)
               </h2>
-              <p className="text-gray-600 text-sm mb-8 max-w-2xl mx-auto text-center">
-                Cada barrio tiene landing propia con mercado local, FAQ ampliada, testimonios y enlaces cruzados.
-                Mismo pack 687 € hasta escritura — online o despacho Les Corts.
+              <p className="text-gray-600 text-sm mb-4 max-w-2xl mx-auto text-center">
+                Cada barrio tiene landing propia con mercado local, guía editorial, FAQ ampliada, testimonios y schema
+                HowTo. Mismo pack 687 € hasta escritura — online o despacho Les Corts.
+              </p>
+              <p className="text-gray-500 text-xs mb-8 max-w-2xl mx-auto text-center">
+                Para SEO local, la página canónica por zona es{' '}
+                <code className="text-[11px] bg-white px-1 rounded">/barcelona/venta-completa/[barrio]</code>; esta hub
+                enlaza al detalle de cada barrio sin duplicar el contenido principal.
               </p>
               <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                 {listBarcelonaVentaCompletaBarrios().map((b) => (

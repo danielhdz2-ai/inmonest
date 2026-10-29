@@ -9,7 +9,13 @@ import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPan
 import TestimoniosSection from '@/components/TestimoniosSection'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import { GestoriaCheckIcon } from '@/components/ui/GestoriaCheckIcon'
-import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
+import { gestoriaLandingBreadcrumbs, howToStepsFromCompletaBloques } from '@/lib/gestoria-ciudad-schema'
+import {
+  COMPRA_COMPLETA_SERVICIO_BLOQUES,
+  VENTA_COMPLETA_SERVICIO_BLOQUES,
+} from '@/lib/completa-reserva-escritura-pasos-content'
+import { getBarcelonaCompletaEditorial } from '@/lib/barcelona-completa-editorial'
+import BarcelonaCompletaEditorialSection from '@/components/BarcelonaCompletaEditorialSection'
 import { VENTA_COMPLETA_PRECIO, VENTA_COMPLETA_CIUDADES_LIST } from '@/lib/venta-completa-ciudad-data'
 import CompletaServiciosDetalle from '@/components/CompletaServiciosDetalle'
 import GestoriaCompletaModalidadSections from '@/components/GestoriaCompletaModalidadSections'
@@ -17,6 +23,7 @@ import {
   VENTA_COMPLETA_BLOQUES_SERVICIO,
   VENTA_COMPLETA_COMPARATIVA,
   VENTA_COMPLETA_DOCUMENTOS_CHECKLIST,
+  COMPRA_COMPLETA_DOCUMENTOS_CHECKLIST,
 } from '@/lib/venta-completa-servicio-content'
 import {
   barrioCompletaTestimoniosLanding,
@@ -69,6 +76,17 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
   const hubBarcelonaPath = `/gestoria/${servicioSlug}/barcelona`
   const allBarrios = isVenta ? listBarcelonaVentaCompletaBarrios() : listBarcelonaCompraCompletaBarrios()
   const comparativa = isVenta ? VENTA_COMPLETA_COMPARATIVA : COMPRA_COMPARATIVA
+  const documentosChecklist = isVenta ? VENTA_COMPLETA_DOCUMENTOS_CHECKLIST : COMPRA_COMPLETA_DOCUMENTOS_CHECKLIST
+  const editorial = getBarcelonaCompletaEditorial(modo, config.slug, config.nombre, config.distrito)
+  const pasosBloques = isVenta ? VENTA_COMPLETA_SERVICIO_BLOQUES : COMPRA_COMPLETA_SERVICIO_BLOQUES
+  const howTo = howToStepsFromCompletaBloques(
+    pasosBloques,
+    isVenta
+      ? `Vender piso en ${config.nombre} (Barcelona) hasta escritura — 5 pasos`
+      : `Comprar piso en ${config.nombre} (Barcelona) hasta escritura — 5 pasos`,
+  )
+  const panelCiudad = `Barcelona · ${config.nombre}`
+  const panelServicio = isVenta ? 'venta-completa' : 'compra-completa'
 
   return (
     <>
@@ -80,9 +98,14 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
         ciudadNombre={`${config.nombre}, Barcelona`}
         precioEuros={PRECO}
         faqs={faqItems}
+        howTo={howTo}
+        includeBarcelonaLocalBusiness
+        barrioNombreForLocalBusiness={config.nombre}
+        includeAggregateRating
         breadcrumbs={gestoriaLandingBreadcrumbs(
           { name: servicioNombre, path: `/gestoria/${servicioSlug}` },
-          { name: `Barcelona · ${config.nombre}` },
+          { name: 'Barcelona', path: hubBarcelonaPath },
+          { name: config.nombre },
         )}
       />
       <Navbar />
@@ -126,6 +149,22 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
         </div>
       </section>
 
+      <section className="py-8 px-4 bg-slate-50 border-t border-gray-100">
+        <div className="max-w-3xl mx-auto text-sm text-gray-600 leading-relaxed">
+          <p>
+            Esta página es la guía específica para{' '}
+            <strong className="text-gray-800">{config.nombre}</strong> ({config.distrito}). El resumen del servicio en
+            toda Barcelona está en{' '}
+            <Link href={hubBarcelonaPath} className="text-gold-700 font-semibold hover:underline">
+              {isVenta ? 'venta' : 'compra'} completa Barcelona (hub gestoría)
+            </Link>
+            ; aquí encontrarás mercado local, FAQ ampliada y contenido editorial único por barrio.
+          </p>
+        </div>
+      </section>
+
+      <BarcelonaCompletaEditorialSection editorial={editorial} barrioNombre={config.nombre} />
+
       <GestoriaCompletaModalidadSections
         modo={isVenta ? 'venta' : 'compra'}
         lugarNombre={`${config.nombre}, Barcelona`}
@@ -148,7 +187,8 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
         <AgenciaGestoriaPanelDemo
           audience="particular"
           particularRole={isVenta ? 'vendedor' : 'comprador'}
-          ciudadNombre={config.nombre}
+          ciudadNombre={panelCiudad}
+          servicioDemo={panelServicio}
         />
       </div>
 
@@ -196,7 +236,7 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
             fecha en notaría.
           </p>
           <div className="grid sm:grid-cols-2 gap-3">
-            {VENTA_COMPLETA_DOCUMENTOS_CHECKLIST.map((doc) => (
+            {documentosChecklist.map((doc) => (
               <div key={doc} className="flex items-start gap-3 bg-white border border-gray-200 rounded-lg p-4">
                 <span className="text-gold-500 font-bold shrink-0">✓</span>
                 <span className="text-sm text-gray-800">{doc}</span>

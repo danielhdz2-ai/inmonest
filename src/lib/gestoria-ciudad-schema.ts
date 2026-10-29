@@ -4,6 +4,7 @@ import {
   buildGestoriaAggregateRatingSchema,
   buildGestoriaReviewSchema,
 } from '@/lib/gestoria-reviews-schema'
+import { buildInmonestBarcelonaLocalBusinessSchema } from '@/lib/inmonest-barcelona-local-business-schema'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -14,6 +15,8 @@ export type GestoriaLandingBreadcrumb = {
   name: string
   path?: string
 }
+
+export type GestoriaHowToStep = { name: string; text: string }
 
 export type GestoriaLandingSeoInput = {
   pagePath: string
@@ -26,6 +29,11 @@ export type GestoriaLandingSeoInput = {
   breadcrumbs: ReadonlyArray<GestoriaLandingBreadcrumb>
   /** Solo true en páginas dedicadas a opiniones; evita duplicar markup en landings. */
   includeAggregateRating?: boolean
+  /** HowTo JSON-LD (p. ej. 5 pasos venta/compra completa). */
+  howTo?: { name: string; steps: ReadonlyArray<GestoriaHowToStep> }
+  /** Despacho Mejía Lequerica 44 en schema. */
+  includeBarcelonaLocalBusiness?: boolean
+  barrioNombreForLocalBusiness?: string
 }
 
 export function gestoriaLandingBreadcrumbs(
@@ -126,8 +134,44 @@ export function buildGestoriaLandingSchemas(input: GestoriaLandingSeoInput) {
 
   if (input.faqs.length > 0) schemas.push(buildFaqSchema(input.faqs))
   if (input.breadcrumbs.length > 0) schemas.push(buildBreadcrumbListSchema(input.breadcrumbs))
+  if (input.howTo && input.howTo.steps.length > 0) {
+    schemas.push(buildHowToSchema(input.howTo.name, input.howTo.steps, pageUrl))
+  }
+  if (input.includeBarcelonaLocalBusiness) {
+    schemas.push(buildInmonestBarcelonaLocalBusinessSchema(input.barrioNombreForLocalBusiness))
+  }
 
   return schemas
+}
+
+export function buildHowToSchema(
+  name: string,
+  steps: ReadonlyArray<GestoriaHowToStep>,
+  pageUrl: string,
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name,
+    description: name,
+    url: pageUrl,
+    step: steps.map((step, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+    })),
+  }
+}
+
+export function howToStepsFromCompletaBloques(
+  bloques: ReadonlyArray<{ titulo: string; intro: string }>,
+  label: string,
+): { name: string; steps: GestoriaHowToStep[] } {
+  return {
+    name: label,
+    steps: bloques.map((b) => ({ name: b.titulo, text: b.intro })),
+  }
 }
 
 export function buildLegalServiceSchema(
