@@ -88,7 +88,7 @@ export function getVentaCompletaFaq(
     },
     {
       q: '¿Vendéis también en barrios concretos de Barcelona?',
-      a: 'Sí. Tenemos landings por barrio (Eixample, Gràcia, Sants, Poblenou, Les Corts, Sarrià, Sant Andreu, Horta-Guinardó, Ciutat Vella, Diagonal Mar, Sant Antoni, Nou Barris) con el mismo pack 687 €.',
+      a: 'Sí. Tenemos landings por barrio en Barcelona (17 zonas: Eixample, Gràcia, Sants, Poblenou, Les Corts, Sarrià, Pedralbes, Sant Andreu, Horta-Guinardó, El Carmel, Ciutat Vella, El Born, La Barceloneta, Diagonal Mar, Sant Antoni, Hostafrancs, Nou Barris) con el mismo pack 687 €.',
     },
   ]
 

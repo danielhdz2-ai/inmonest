@@ -13,6 +13,11 @@ export const BARCELONA_COMPRA_COMPLETA_SLUGS = [
   'diagonal-mar',
   'sant-antoni',
   'nou-barris',
+  'pedralbes',
+  'barceloneta',
+  'el-born',
+  'hostafrancs',
+  'el-carmel',
 ] as const
 
 export type BarcelonaCompraCompletaSlug = (typeof BARCELONA_COMPRA_COMPLETA_SLUGS)[number]
@@ -376,6 +381,205 @@ const BARRIOS: Record<BarcelonaCompraCompletaSlug, BarcelonaCompletaBarrioConfig
       puntos: ['Due diligence básica ampliada', 'Financiación comprador', 'Cierre notarial'],
     },
     faqs: [{ q: '¿Primera compra?', a: 'Te explicamos cada fase; el gestor responde por WhatsApp.' }],
+  },
+  pedralbes: {
+    slug: 'pedralbes',
+    nombre: 'Pedralbes',
+    distrito: 'Les Corts / Sarrià-Sant Gervasi',
+    heroImage: '/inmobiliaria8.jpg',
+    meta: {
+      title: 'Comprar piso en Pedralbes a particular — compra completa 687€ hasta escritura',
+      description:
+        'Compra completa Pedralbes: due diligence, arras con cláusula hipoteca, ITP Cataluña y notaría. Gestor Inmonest sin comisión de agencia.',
+      keywords: 'comprar piso pedralbes particular, compra completa pedralbes, gestoría comprador zona alta barcelona',
+      ogTitle: 'Comprar en Pedralbes con gestor hasta notaría',
+      ogDescription: '687 € IVA incl. · revisión documental premium.',
+    },
+    hero: {
+      h1: 'Compra completa en Pedralbes: due diligence exigente, arras blindadas y camino a escritura por 687 €',
+      lead:
+        'Operaciones de precio elevado exigen revisión registral fina antes de señal. No pagas comisión de captación: pagas gestoría plana con panel y despacho en Les Corts.',
+    },
+    mercado: {
+      titulo: 'Pedralbes: comprador profesional y vendedor con asesor',
+      intro:
+        'Suelen existir dos gestorías en la mesa. Alineamos plazos, condiciones suspensivas y documentación para notaría de alto valor.',
+      puntos: [
+        'Nota simple, usufructos y cargas ocultas',
+        'Cláusula de financiación con plazo realista',
+        'Revisión de minuta pre-escritura',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿687 € cubre tasación hipotecaria?',
+        a: 'No; el banco gestiona tasación. Incluye gestoría Inmonest documental y contractual.',
+      },
+      {
+        q: '¿Due diligence antes de arras?',
+        a: 'Sí, es el núcleo del paso 2 del pack compra completa.',
+      },
+      {
+        q: '¿Despacho cerca de Pedralbes?',
+        a: 'Mejía Lequerica 44 (Les Corts), cita previa sin suplemento.',
+      },
+    ],
+  },
+  barceloneta: {
+    slug: 'barceloneta',
+    nombre: 'La Barceloneta',
+    distrito: 'Ciutat Vella',
+    heroImage: '/gestoria6.jpg',
+    meta: {
+      title: 'Comprar piso La Barceloneta entre particulares — pack 687€ compra completa',
+      description:
+        'Compra en La Barceloneta: revisión arras, licencias, ITE y notaría. Gestor comprador Inmonest Barcelona.',
+      keywords: 'comprar piso barceloneta particular, compra completa playa barcelona, due diligence barceloneta',
+      ogTitle: 'Comprar en La Barceloneta con gestor Inmonest',
+      ogDescription: '687 € fijos · sin comisión inmobiliaria.',
+    },
+    hero: {
+      h1: 'Compra completa en La Barceloneta: no firmes arras en un piso de playa sin revisar licencias y comunidad',
+      lead:
+        'Fincas con historial turístico, humedades ocultas o derramas de fachada. El pack 687 € incluye auditoría documental y arras a tu favor antes de transferir la señal.',
+    },
+    mercado: {
+      titulo: 'Barceloneta: máxima cautela antes de señal alta',
+      intro:
+        'Compradores internacionales y locales compiten por stock limitado. Revisamos lo urgente en 48–72 h cuando la operación va rápido.',
+      puntos: [
+        'ITE y certificado energético vigentes',
+        'Actas de comunidad y obras de fachada',
+        'Coherencia descripción registral vs. realidad',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Compráis con hipoteca extranjera?',
+        a: 'Adaptamos cláusulas y plazos; el gestor coordina con vendedor y notaría.',
+      },
+      {
+        q: '¿ITP en Cataluña?',
+        a: 'Te orientamos; el impuesto lo liquida el comprador aparte del precio.',
+      },
+    ],
+  },
+  'el-born': {
+    slug: 'el-born',
+    nombre: 'El Born',
+    distrito: 'Ciutat Vella',
+    heroImage: '/contrato9.jpg',
+    meta: {
+      title: 'Compra completa El Born (La Ribera) — comprar a particular 687€ Barcelona',
+      description:
+        'Pack comprador El Born: due diligence en finca histórica, arras, hipoteca y escritura. Inmonest gestoría.',
+      keywords: 'comprar piso el born particular, compra completa la ribera, gestor comprador ciutat vella',
+      ogTitle: 'Comprar en El Born — pack integral 687 €',
+      ogDescription: 'Panel online · Les Corts presencial.',
+    },
+    hero: {
+      h1: 'Compra completa en El Born: due diligence en edificio protegido y arras con cláusula hipoteca por 687 €',
+      lead:
+        'La Ribera atrae compradores exigentes. Revisamos obras, licencias y cargas del vendedor antes de que entregues una señal difícil de recuperar.',
+    },
+    mercado: {
+      titulo: 'El Born: patrimonio y plazos de operación rápida',
+      intro:
+        'Operaciones competitivas requieren gestor que responda el mismo día. Panel + WhatsApp directo con tu gestor asignado.',
+      puntos: [
+        'Revisión registral y urbanística orientativa',
+        'Arras penitenciales con condiciones suspensivas',
+        'Seguimiento banco hasta pre-escritura',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Piso con inquilino?',
+        a: 'Analizamos contrato de alquiler vigente y plazo a vacío si aplica.',
+      },
+      {
+        q: '¿Mismo precio que otras zonas?',
+        a: '687 € IVA incluido en todo Barcelona; sin % sobre el precio de compra.',
+      },
+    ],
+  },
+  hostafrancs: {
+    slug: 'hostafrancs',
+    nombre: 'Hostafrancs',
+    distrito: 'Sants-Montjuïc',
+    heroImage: '/gestoria4.jpg',
+    meta: {
+      title: 'Compra completa Hostafrancs — comprar piso particular Sants-Montjuïc 687€',
+      description:
+        'Compra piso Hostafrancs o Plaça Espanya a particular. Due diligence, arras, notaría. Gestor Inmonest.',
+      keywords: 'comprar piso hostafrancs particular, compra completa sants, gestoría comprador montjuic',
+      ogTitle: 'Comprar en Hostafrancs con gestor hasta escritura',
+      ogDescription: '687 € · online o despacho Les Corts.',
+    },
+    hero: {
+      h1: 'Compra completa en Hostafrancs: compra segura a particular con revisión de arras e ITE del edificio',
+      lead:
+        'Precios más accesibles que el Eixample pero mismos riesgos documentales. El pack te acompaña desde la primera visita seria hasta escritura.',
+    },
+    mercado: {
+      titulo: 'Hostafrancs: financiación hipotecaria habitual',
+      intro:
+        'Cláusula suspensiva mal redactada cuesta miles. Redactamos o corregimos arras con plazo alineado a tu banco.',
+      puntos: [
+        'Due diligence comunidad e IBI',
+        'Negociación documental con vendedor',
+        'Coordinación fecha notaría',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Primera vivienda en Barcelona?',
+        a: 'El gestor explica ITP, provisión de fondos y orden de firma hipoteca-escritura.',
+      },
+      {
+        q: '¿687 € incluye notaría?',
+        a: 'No; incluye gestoría Inmonest hasta coordinación y revisión de minuta.',
+      },
+    ],
+  },
+  'el-carmel': {
+    slug: 'el-carmel',
+    nombre: 'El Carmel',
+    distrito: 'Horta-Guinardó',
+    heroImage: '/keys.jpg',
+    meta: {
+      title: 'Compra completa El Carmel — comprar piso Horta-Guinardó particular 687€',
+      description:
+        'Comprar en El Carmel o Turó de la Rovira entre particulares. Pack 687 €: arras, derramas, notaría. Inmonest.',
+      keywords: 'comprar piso el carmel particular, compra completa turó barcelona, gestor comprador horta',
+      ogTitle: 'Comprar en El Carmel — gestoría premium plana',
+      ogDescription: 'Sin comisión agencia · gestor 24 h.',
+    },
+    hero: {
+      h1: 'Compra completa en El Carmel: detecta derramas e ITE antes de pagar señal a un particular',
+      lead:
+        'Edificios en obras y pendiente de inspección. Revisamos actas y nota simple para que no heredes deudas de comunidad en el precio.',
+    },
+    mercado: {
+      titulo: 'El Carmel: riesgo de derrama y estado del edificio',
+      intro:
+        'Priorizamos certificado de deudas y actas recientes. Si hay obra aprobada, renegociamos antes de arras.',
+      puntos: [
+        'Informe claro para decidir si comprar o no',
+        'Arras con resolución por incumplimiento documental',
+        'ITP y minuta entendida antes de firma',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Compráis pisos solo por portal?',
+        a: 'Sí, cuando ya tienes precio con vendedor particular; no somos agencia de búsqueda.',
+      },
+      {
+        q: '¿Trámite online desde El Carmel?',
+        a: 'Sí; presencial en Les Corts opcional para revisar papeles.',
+      },
+    ],
   },
 }
 

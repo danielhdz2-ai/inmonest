@@ -13,6 +13,11 @@ export const BARCELONA_VENTA_COMPLETA_SLUGS = [
   'diagonal-mar',
   'sant-antoni',
   'nou-barris',
+  'pedralbes',
+  'barceloneta',
+  'el-born',
+  'hostafrancs',
+  'el-carmel',
 ] as const
 
 export type BarcelonaVentaCompletaSlug = (typeof BARCELONA_VENTA_COMPLETA_SLUGS)[number]
@@ -456,6 +461,207 @@ const BARRIOS: Record<BarcelonaVentaCompletaSlug, BarcelonaCompletaBarrioConfig>
       {
         q: '¿Puedo pagar en varios plazos?',
         a: 'El servicio Inmonest se paga al contratar (687 €). La forma de pago del piso al comprador se pacta en arras y escritura.',
+      },
+    ],
+  },
+  pedralbes: {
+    slug: 'pedralbes',
+    nombre: 'Pedralbes',
+    distrito: 'Les Corts / Sarrià-Sant Gervasi',
+    heroImage: '/inmobiliaria8.jpg',
+    meta: {
+      title: 'Vender piso en Pedralbes entre particulares — pack gestoría 687€ hasta escritura',
+      description:
+        'Venta completa Pedralbes y Zona Universitària: arras de alto importe, plusvalía, herencias y notaría. Gestor Inmonest + despacho Les Corts. Sin comisión inmobiliaria.',
+      keywords:
+        'vender piso pedralbes particular, venta completa pedralbes barcelona, gestoría venta zona alta les corts',
+      ogTitle: 'Vender en Pedralbes con gestor hasta notaría — 687 € fijos',
+      ogDescription: 'Pack reserva-escritura para vendedores particulares en Pedralbes. Panel online y cita presencial.',
+    },
+    hero: {
+      h1: 'Vender tu piso en Pedralbes sin agencia: pack 687 € con gestor hasta escritura y expediente impecable',
+      lead:
+        'Compradores exigentes, operaciones por valor elevado y a menudo herencias o segundas residencias. Blindamos arras, documentación registral y coordinación notarial manteniendo el ahorro frente al 3–5 % de comisión.',
+    },
+    mercado: {
+      titulo: 'Pedralbes: ventas de alto valor y due diligence del comprador',
+      intro:
+        'Suele haber revisión legal previa a señal alta. Anticipamos nota simple, cargas, ITE del edificio y certificados para que la operación no se caiga en el último momento.',
+      puntos: [
+        'Arras con plazos y penalizaciones proporcionadas al precio de venta',
+        'Orientación IIVTNU (plusvalía) Ayuntamiento de Barcelona',
+        'Coordinación con gestorías de compradores internacionales',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Pedralbes entra en el mismo pack que Les Corts?',
+        a: 'Sí, 687 € IVA incluido. Nuestro despacho está en Mejía Lequerica 44 (Les Corts), a minutos de Pedralbes.',
+      },
+      {
+        q: '¿Vendéis pisos con usufructo o nuda propiedad?',
+        a: 'Analizamos título registral en la primera llamada y te indicamos viabilidad antes de firmar reserva.',
+      },
+      {
+        q: '¿Incluye redactar arras penitenciales?',
+        a: 'Sí: reserva, arras, checklist documental y seguimiento hasta escritura.',
+      },
+    ],
+  },
+  barceloneta: {
+    slug: 'barceloneta',
+    nombre: 'La Barceloneta',
+    distrito: 'Ciutat Vella',
+    heroImage: '/gestoria6.jpg',
+    meta: {
+      title: 'Venta completa La Barceloneta — vender piso particular playa Barcelona 687€',
+      description:
+        'Vende en La Barceloneta o front marítim con comprador ya encontrado. Gestoría arras, cédula, licencias y notaría. Inmonest 687 € sin comisión de agencia.',
+      keywords:
+        'vender piso barceloneta particular, venta completa barceloneta, gestor inmobiliario venta playa barcelona',
+      ogTitle: 'Vender piso en La Barceloneta — pack integral Inmonest',
+      ogDescription: '687 € · gestor asignado · online o despacho Les Corts.',
+    },
+    hero: {
+      h1: 'Venta completa en La Barceloneta: cierra con tu comprador particular sin regalar comisión a una inmobiliaria de playa',
+      lead:
+        'Fincas con uso turístico previo, locales en planta baja o pisos familiares del barrio marinero. Te acompañamos en contratos, certificados y camino a notaría con normativa catalana.',
+    },
+    mercado: {
+      titulo: 'Barceloneta: licencias, comunidades exigentes y plazos cortos',
+      intro:
+        'Compradores suelen pedir cédula, ITE y certificado de deudas antes de señal. El pack ordena el expediente para no perder la operación en temporada alta.',
+      puntos: [
+        'Revisión de actividad turística o cambio de uso en historial',
+        'Arras con cláusula de financiación del comprador',
+        'Coordinación con notarías habituales en operaciones marítimas',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Es distinto de la landing Ciutat Vella?',
+        a: 'Mismo precio y alcance; aquí el copy y SEO están orientados a La Barceloneta y el front marítim.',
+      },
+      {
+        q: '¿687 € incluye marketing del piso?',
+        a: 'No captamos comprador ni hacemos fotos: el servicio es gestoría desde que ya tienes uno.',
+      },
+    ],
+  },
+  'el-born': {
+    slug: 'el-born',
+    nombre: 'El Born',
+    distrito: 'Ciutat Vella',
+    heroImage: '/contrato9.jpg',
+    meta: {
+      title: 'Vender piso en El Born (La Ribera) — venta completa particular 687€ Barcelona',
+      description:
+        'Pack venta reserva-escritura en El Born: arras, fincas en edificio protegido, documentación Generalitat. Gestor Inmonest Les Corts.',
+      keywords: 'vender piso el born particular, venta completa la ribera barcelona, gestoría venta ciutat vella',
+      ogTitle: 'Venta integral El Born — gestor hasta escritura',
+      ogDescription: 'Sin comisión sobre el precio · 687 € IVA incl.',
+    },
+    hero: {
+      h1: 'Venta completa en El Born: vende tu piso en La Ribera con gestor, arras profesionales y trámite online o en despacho',
+      lead:
+        'Edificios históricos, reformas con licencia y compradores nacionales e internacionales. El pack 687 € cubre contratos y documentación hasta notaría sin honorarios de captación.',
+    },
+    mercado: {
+      titulo: 'El Born: patrimonio, obras y coherencia registral',
+      intro:
+        'Errores frecuentes: discrepancia catastral, obras sin legalizar o derramas de fachada. Revisamos antes de que el comprador reduzca el precio.',
+      puntos: [
+        'Nota simple y cargas antes de arras elevadas',
+        'Checklist cédula de habitabilidad y certificado energético',
+        'Arras en castellano o catalán según partes',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Tramitáis ventas con inquilino en el piso?',
+        a: 'Sí, con matices de arrendamiento vigente; el gestor repasa contrato LAU y plazos a escritura.',
+      },
+      {
+        q: '¿Precio del servicio en El Born?',
+        a: '687 € IVA incluido, tarifa plana independiente del precio del piso.',
+      },
+    ],
+  },
+  hostafrancs: {
+    slug: 'hostafrancs',
+    nombre: 'Hostafrancs',
+    distrito: 'Sants-Montjuïc',
+    heroImage: '/gestoria4.jpg',
+    meta: {
+      title: 'Venta completa Hostafrancs — vender piso Sants-Montjuïc particular 687€',
+      description:
+        'Vende en Hostafrancs o Plaça Espanya entre particulares. Arras, ITE, comunidad y notaría. Gestoría Inmonest Barcelona online + Les Corts.',
+      keywords: 'vender piso hostafrancs particular, venta completa sants montjuic, gestor venta plaça espanya',
+      ogTitle: 'Vender en Hostafrancs con pack 687 € hasta escritura',
+      ogDescription: 'Gestor asignado · panel mi-cuenta · sin comisión agencia.',
+    },
+    hero: {
+      h1: 'Venta completa en Hostafrancs: cierra la venta a particular con gestor y 687 € fijos hasta la firma en notaría',
+      lead:
+        'Barrio bien comunicado, muchas ventas entre familias y herencias. Te guiamos en reserva, arras, cancelación de hipoteca vendedor e ITE del edificio cuando aplica.',
+    },
+    mercado: {
+      titulo: 'Hostafrancs: hipoteca del comprador e inspección del edificio',
+      intro:
+        'Operaciones con financiación necesitan cláusula suspensiva bien redactada. Evitamos que el vendedor quede expuesto si el banco tarda.',
+      puntos: [
+        'Plazos realistas en arras penitenciales',
+        'Certificado de deudas de comunidad e IBI',
+        'Seguimiento hasta minuta de escritura',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Hostafrancs comparte gestor con Sants?',
+        a: 'Mismo pack y equipo; esta landing prioriza SEO y contexto de Hostafrancs y entorno Plaça Espanya.',
+      },
+      {
+        q: '¿Puedo acudir al despacho?',
+        a: 'Sí, Carrer de Mejía Lequerica 44 (Les Corts), cita previa, sin suplemento.',
+      },
+    ],
+  },
+  'el-carmel': {
+    slug: 'el-carmel',
+    nombre: 'El Carmel',
+    distrito: 'Horta-Guinardó',
+    heroImage: '/keys.jpg',
+    meta: {
+      title: 'Venta completa El Carmel (Horta-Guinardó) — particular a escritura 687€',
+      description:
+        'Vender piso en El Carmel o Turó de la Rovira entre particulares. Pack gestoría: arras, documentación, notaría. Inmonest Barcelona.',
+      keywords: 'vender piso el carmel particular, venta completa horta guinardo, gestoría venta turó barcelona',
+      ogTitle: 'Venta completa El Carmel — 687 € sin comisión',
+      ogDescription: 'Online + despacho Les Corts · gestor inmobiliario real.',
+    },
+    hero: {
+      h1: 'Venta completa en El Carmel: vende entre particulares con vistas al Turó y gestoría premium por tarifa plana 687 €',
+      lead:
+        'Fincas en pendiente, comunidades activas en obras y compradores con hipoteca. Redactamos arras y recopilamos certificados para notaría sin pagar comisión de agencia.',
+    },
+    mercado: {
+      titulo: 'El Carmel: derramas, ITE y plazos de comprador financiado',
+      intro:
+        'Edificios con inspección técnica y obras de accesibilidad. Anticipamos actas de comunidad y cargas antes de la señal.',
+      puntos: [
+        'Revisión de derramas aprobadas y pendientes',
+        'Arras equilibradas para vendedor con hipoteca propia',
+        'Orientación plusvalía municipal Barcelona',
+      ],
+    },
+    faqs: [
+      {
+        q: '¿Qué diferencia hay con Horta-Guinardó genérico?',
+        a: 'Mismo servicio; aquí el contenido está focalizado en El Carmel, Turó de la Rovira y compradores del noreste de la ciudad.',
+      },
+      {
+        q: '¿Incluye coordinación con notaría?',
+        a: 'Sí, verificación de expediente y soporte hasta el día de la firma.',
       },
     ],
   },
