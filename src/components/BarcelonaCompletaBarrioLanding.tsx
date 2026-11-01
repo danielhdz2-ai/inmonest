@@ -62,7 +62,7 @@ const ENLACES_SERVICIOS = [
   { href: '/gestoria/arras-penitenciales', label: 'Arras penitenciales', precio: '145 €' },
   { href: '/gestoria/pack-due-diligence-precompra', label: 'Due diligence pre-compra', precio: '350 €' },
   { href: '/gestoria/asesoramiento-arras-venta', label: 'Asesoramiento arras-venta', precio: '350 €' },
-  { href: '/gestoria/barcelona', label: 'Gestoría Barcelona (hub)', precio: '—' },
+  { href: '/gestoria/barcelona', label: 'Gestoría inmobiliaria Barcelona', precio: '—' },
 ] as const
 
 export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarrios }: Props) {

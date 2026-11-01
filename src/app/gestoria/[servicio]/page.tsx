@@ -24,6 +24,8 @@ import GestoriaCompletaModalidadSections from '@/components/GestoriaCompletaModa
 import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
 import BarcelonaCompletaBarriosHubSection from '@/components/BarcelonaCompletaBarriosHubSection'
 import GestoriaCompletaNacionalConversion from '@/components/GestoriaCompletaNacionalConversion'
+import GestoriaCompletaNacionalAboveFold from '@/components/GestoriaCompletaNacionalAboveFold'
+import GestoriaServicioStrikeConversion from '@/components/GestoriaServicioStrikeConversion'
 import { servicioSlugIsDueDiligencePack } from '@/lib/due-diligence-servicio-registry'
 import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
@@ -885,7 +887,11 @@ export async function generateMetadata({
               ? `Vender piso sin comisiones 【${data.precio}€】 hasta escritura`
               : servicio === 'compra-completa-reserva-escritura'
                 ? `Comprar piso sin agencia 【${data.precio}€】 hasta escritura`
-                : `${data.nombre} — Gestoría inmobiliaria`
+                : servicio === 'rescision-alquiler'
+                  ? `Rescisión alquiler y fianza 【${data.precio}€】 acta LAU`
+                  : servicio === 'contrato-compraventa'
+                    ? `Contrato compraventa privado 【${data.precio}€】 particulares`
+                    : `${data.nombre} — Gestoría inmobiliaria`
   const seoDescription =
     servicio === 'contrato-alquiler'
       ? `Contrato de alquiler de vivienda habitual adaptado a LAU y Ley de Vivienda 2026. Redactado por gestoría experta. ${data.precio}€ IVA incl. PDF firmable en 48h.`
@@ -899,7 +905,11 @@ export async function generateMetadata({
               ? `Vendes de particular a particular con comprador ya encontrado. Gestor asignado: contratos, documentación y notaría. ${data.precio}€ IVA incl. 0 % comisión sobre el precio del piso.`
               : servicio === 'compra-completa-reserva-escritura'
                 ? `Compras a un particular con precio acordado. Due diligence, arras con hipoteca y acompañamiento hasta escritura. ${data.precio}€ IVA incl. Sin comisión de captación.`
-                : `${data.tagline}. Redactado por gestores especializados. Desde ${data.precio} €. Entrega en 48h.`
+                : servicio === 'rescision-alquiler'
+                  ? `Acta de rescisión, entrega de llaves y liquidación de fianza conforme a LAU. ${data.precio}€ IVA incl. Evita conflictos al finalizar el alquiler. Entrega 48 h.`
+                  : servicio === 'contrato-compraventa'
+                    ? `Contrato privado de compraventa entre particulares: precio, pagos, entrega y garantías. ${data.precio}€ IVA incl. Gestoría online en 48 h.`
+                    : `${data.tagline}. Redactado por gestores especializados. Desde ${data.precio} €. Entrega en 48h.`
   const ogDeliveryLine =
     servicio === 'pack-due-diligence-precompra'
       ? `${data.precio} € · Informe en 3–5 días · 100 % online`
@@ -1040,6 +1050,18 @@ export default async function ServicioGestoriaPage({
           </div>
         </div>
       </GestoriaHeroFullBleed>
+
+      {completaPack ? (
+        <GestoriaCompletaNacionalAboveFold
+          modo={ventaCompletaPack ? 'venta' : 'compra'}
+          precio={data.precio}
+          solicitarHref={`/gestoria/solicitar/${servicio}`}
+        />
+      ) : null}
+
+      {servicio === 'rescision-alquiler' || servicio === 'contrato-compraventa' ? (
+        <GestoriaServicioStrikeConversion servicio={servicio} />
+      ) : null}
 
       {alquilerVariant ? (
         <GestoriaAlquilerTramiteOnlineSection

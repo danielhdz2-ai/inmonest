@@ -192,6 +192,12 @@ export function getGestoriaPrioridadAltaCompletas(): string[] {
 /** Enlaces internos destacados (home + /gestoria) */
 export const GESTORIA_ENLACES_INDEXACION = [
   {
+    href: '/gestoria/barcelona',
+    title: 'Gestoría inmobiliaria Barcelona',
+    description: 'LAU, arras y venta/compra completa 687 €. Particulares sin comisión de agencia.',
+    badge: 'Hub BCN',
+  },
+  {
     href: '/contratos-inmobiliarios/madrid',
     title: 'Contratos inmobiliarios Madrid',
     description: 'Arras, LAU y gestoría para particulares en Madrid.',

@@ -66,7 +66,7 @@ export default function GestoriaHomePacks687Section() {
           </Link>
           {' · '}
           <Link href="/gestoria/barcelona" className="text-gold-700 hover:underline">
-            Gestoría Barcelona
+            Gestoría inmobiliaria Barcelona
           </Link>
         </p>
       </div>

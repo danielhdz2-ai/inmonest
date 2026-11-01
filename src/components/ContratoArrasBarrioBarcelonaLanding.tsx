@@ -362,7 +362,7 @@ export default function ContratoArrasBarrioBarcelonaLanding({ config }: Props) {
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="/gestoria/barcelona" className="text-gold-700 font-semibold hover:text-gold-500">
-              Hub gestoría Barcelona →
+              Gestoría inmobiliaria Barcelona →
             </Link>
             <Link href={`/barcelona/contrato-alquiler/${config.slug}`} className="text-gold-700 font-semibold hover:text-gold-500">
               Contrato alquiler {config.nombre} →

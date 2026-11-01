@@ -373,7 +373,7 @@ export default function ContratoAlquilerBarrioBarcelonaLanding({ config }: Props
             href="/gestoria/barcelona"
             className="inline-flex items-center gap-2 text-gold-700 font-semibold hover:text-gold-500 transition-colors"
           >
-            Hub gestoría Barcelona →
+            Gestoría inmobiliaria Barcelona →
           </Link>
         </section>
 

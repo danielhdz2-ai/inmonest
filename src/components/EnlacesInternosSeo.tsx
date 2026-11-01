@@ -10,6 +10,12 @@ export type EnlaceSeo = {
 
 const ENLACES_HOME: EnlaceSeo[] = [
   {
+    href: '/gestoria/barcelona',
+    title: 'Gestoría inmobiliaria Barcelona',
+    description: 'Contratos LAU, arras y packs 687 € para particulares.',
+    badge: 'Hub',
+  },
+  {
     href: '/contratos-inmobiliarios',
     title: 'Contratos inmobiliarios',
     description: 'Redacción profesional para particulares. Desde 61€ en 48h.',
