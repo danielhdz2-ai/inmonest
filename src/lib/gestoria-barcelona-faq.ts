@@ -2,6 +2,10 @@ import { buildFaqSchema } from './gestoria-ciudad-schema'
 
 export const GESTORIA_BARCELONA_FAQ = [
   {
+    q: '¿Qué es una gestoría inmobiliaria en Barcelona y en qué se diferencia de una agencia?',
+    a: 'La gestoría inmobiliaria redacta contratos, revisa documentación (cédula, ITE, comunidad) y te acompaña hasta notaría sin buscar compradores ni cobrar comisión sobre el precio del piso. Una agencia captura el inmueble y suele cobrar el 3–5 %. Inmonest es gestoría: honorarios fijos desde 145 € (LAU, arras) o 687 € venta/compra completa hasta escritura.',
+  },
+  {
     q: '¿Es obligatoria la cédula de habitabilidad para vender un piso en Barcelona?',
     a: 'Sí. En Cataluña la cédula de habitabilidad es obligatoria para transmitir cualquier vivienda. Sin ella la operación puede bloquearse en notaría. Inmonest verifica su vigencia como parte del servicio.',
   },

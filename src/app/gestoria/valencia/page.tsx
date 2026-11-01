@@ -22,12 +22,13 @@ import {
 import { getCiudadImage } from '@/lib/gestoria-images'
 import GestoriaHubSinComisionSection from '@/components/GestoriaHubSinComisionSection'
 import GestoriaServiciosEstrellaSection from '@/components/GestoriaServiciosEstrellaSection'
+import GestoriaCiudadKeywordSection from '@/components/GestoriaCiudadKeywordSection'
 
 const BASE_URL = 'https://inmonest.com'
 const ciudadImage = getCiudadImage('valencia')
 
 const META_DESCRIPTION =
-  'Gestoría inmobiliaria en Valencia para particulares. Contratos LAU desde 145€, arras 145€. Sin comisiones de agencia. Gestores expertos, entrega 48h.'
+  'Gestoría inmobiliaria Valencia: LAU, arras y packs 687 € venta/compra completa. Cédula valenciana, VUT y due diligence. Sin comisión 3–5 % de agencia.'
 
 export const metadata: Metadata = {
   title: 'Gestoría inmobiliaria Valencia — 687€ venta/compra',
@@ -105,6 +106,7 @@ export default function GestoriaValenciaPage() {
 
         <GestoriaHubSinComisionSection ciudadNombre="Valencia" ciudadSlug="valencia" />
         <GestoriaServiciosEstrellaSection ciudadSlug="valencia" ciudadNombre="Valencia" />
+        <GestoriaCiudadKeywordSection ciudadSlug="valencia" ciudadNombre="Valencia" />
 
         {/* Por qué Valencia necesita gestoría especializada */}
         <section className="py-16 bg-white">

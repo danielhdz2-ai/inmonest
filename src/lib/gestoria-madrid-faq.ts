@@ -1,5 +1,9 @@
 export const GESTORIA_MADRID_FAQ = [
   {
+    q: '¿Qué hace una gestoría inmobiliaria en Madrid para particulares?',
+    a: 'Gestoría inmobiliaria en Madrid: contratos LAU y arras, revisión registral, checklist documental (ITE en edificios +50 años, plusvalía, comunidad) y coordinación con notaría. Inmonest no es agencia: 687 € venta o compra completa hasta escritura, 0 % comisión sobre el precio del inmueble.',
+  },
+  {
     q: '¿Cuánto cuesta un contrato de alquiler en Madrid?',
     a: 'En Inmonest redactamos contratos de alquiler LAU para Madrid por 145€ IVA incluido. Incluye personalización completa, asesoría legal y entrega en 48h. Todo 100% online.',
   },

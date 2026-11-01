@@ -1,5 +1,9 @@
 export const GESTORIA_VALENCIA_FAQ = [
   {
+    q: '¿Qué es la gestoría inmobiliaria en Valencia?',
+    a: 'Es el servicio profesional de contratos y documentación inmobiliaria (alquiler, arras, compraventa entre particulares) sin comisión de captación. En Valencia, Inmonest adapta contratos a la Generalitat Valenciana, cédula de habitabilidad y plazos habituales de notaría. Desde 145 € por contrato o 687 € compra/venta completa.',
+  },
+  {
     q: '¿Cuánto cuesta un contrato de alquiler en Valencia?',
     a: 'En Inmonest redactamos contratos de alquiler LAU para Valencia por 145€ IVA incluido. Entrega en 48h, personalización completa y asesoría legal. Servicio 100% online.',
   },

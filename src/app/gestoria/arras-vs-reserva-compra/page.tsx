@@ -6,8 +6,9 @@ import { RELACIONADOS_ARRAS } from '@/lib/gestoria-relacionados'
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
-  title: 'Diferencia entre Arras y Reserva de Compra: ¿Cuál Elegir en 2026?',
-  description: 'Aprende las diferencias clave entre arras penitenciales y contrato de reserva. Cuándo usar cada uno, qué pasa si incumples, precios y ejemplos reales. Guía completa 2026.',
+  title: 'Arras vs reserva de compra — Guía 2026',
+  description:
+    'Arras penitenciales (145 €) vs reserva de compra: cuándo firmar cada una, riesgos y plazos. Evita perder la señal. Gestoría online Inmonest.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/arras-vs-reserva-compra`,
   },

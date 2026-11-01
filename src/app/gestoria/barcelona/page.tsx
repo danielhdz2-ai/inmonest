@@ -21,6 +21,7 @@ import { getCiudadImage } from '@/lib/gestoria-images'
 import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
 import GestoriaHubSinComisionSection from '@/components/GestoriaHubSinComisionSection'
 import GestoriaServiciosEstrellaSection from '@/components/GestoriaServiciosEstrellaSection'
+import GestoriaCiudadKeywordSection from '@/components/GestoriaCiudadKeywordSection'
 import { listBarcelonaCompraCompletaBarrios } from '@/lib/barcelona-compra-completa-barrios'
 import { listBarcelonaVentaCompletaBarrios } from '@/lib/barcelona-venta-completa-barrios'
 
@@ -29,10 +30,10 @@ const CIUDAD = 'barcelona'
 const ciudadImage = getCiudadImage(CIUDAD)
 
 const META_DESCRIPTION =
-  'Gestoría inmobiliaria en Barcelona para particulares. Contratos LAU y arras adaptados a zona tensionada. Desde 61€, entrega 48h. Gestores expertos, sin comisiones de agencia.'
+  'Gestoría inmobiliaria Barcelona para particulares: LAU, arras y venta/compra completa 687 €. Zona tensionada, cédula Generalitat. Sin comisión de agencia. Entrega 48 h.'
 
 export const metadata: Metadata = {
-  title: 'Gestoría inmobiliaria Barcelona — 687€ venta/compra',
+  title: 'Gestoría inmobiliaria Barcelona — LAU 145€ · 687€',
   description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria barcelona, gestoría para particulares barcelona, comprar piso barcelona sin agencia, vender piso barcelona, contrato arras barcelona, asesoría compra vivienda barcelona',
   alternates: { canonical: `${BASE_URL}/gestoria/barcelona` },
@@ -111,6 +112,7 @@ export default function GestoriaBarcelonaPage() {
           showBarcelonaBarrios
         />
         <GestoriaServiciosEstrellaSection ciudadSlug="barcelona" ciudadNombre="Barcelona" />
+        <GestoriaCiudadKeywordSection ciudadSlug="barcelona" ciudadNombre="Barcelona" />
 
         {/* Por qué Barcelona necesita gestoría especializada */}
         <section className="py-16 bg-white">
