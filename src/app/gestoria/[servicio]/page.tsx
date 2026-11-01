@@ -23,6 +23,7 @@ import CompletaServiciosDetalle from '@/components/CompletaServiciosDetalle'
 import GestoriaCompletaModalidadSections from '@/components/GestoriaCompletaModalidadSections'
 import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
 import BarcelonaCompletaBarriosHubSection from '@/components/BarcelonaCompletaBarriosHubSection'
+import GestoriaCompletaNacionalConversion from '@/components/GestoriaCompletaNacionalConversion'
 import { servicioSlugIsDueDiligencePack } from '@/lib/due-diligence-servicio-registry'
 import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
@@ -880,7 +881,11 @@ export async function generateMetadata({
           ? `Pack Arras Plus Vendedor 【${data.precio}€】 Arras + Documentación para Escritura`
           : servicio === 'pack-due-diligence-precompra'
             ? `Due Diligence Pre-Compra 【${data.precio}€】 Informe documental · 100 % online`
-            : `${data.nombre} — Gestoría inmobiliaria`
+            : servicio === 'venta-completa-reserva-escritura'
+              ? `Vender piso sin comisiones 【${data.precio}€】 hasta escritura`
+              : servicio === 'compra-completa-reserva-escritura'
+                ? `Comprar piso sin agencia 【${data.precio}€】 hasta escritura`
+                : `${data.nombre} — Gestoría inmobiliaria`
   const seoDescription =
     servicio === 'contrato-alquiler'
       ? `Contrato de alquiler de vivienda habitual adaptado a LAU y Ley de Vivienda 2026. Redactado por gestoría experta. ${data.precio}€ IVA incl. PDF firmable en 48h.`
@@ -890,7 +895,11 @@ export async function generateMetadata({
           ? `Arras penitenciales + recopilación y análisis documental para vendedores particulares. ${data.precio}€ IVA incl. Informe en 3-5 días.`
           : servicio === 'pack-due-diligence-precompra'
             ? `Auditoría documental tras arras: registro, comunidad, urbanismo e ITE. ${data.precio}€ IVA incl. Informe en 3–5 días. Trámite 100 % online con gestor asignado.`
-            : `${data.tagline}. Redactado por gestores especializados. Desde ${data.precio} €. Entrega en 48h.`
+            : servicio === 'venta-completa-reserva-escritura'
+              ? `Vendes de particular a particular con comprador ya encontrado. Gestor asignado: contratos, documentación y notaría. ${data.precio}€ IVA incl. 0 % comisión sobre el precio del piso.`
+              : servicio === 'compra-completa-reserva-escritura'
+                ? `Compras a un particular con precio acordado. Due diligence, arras con hipoteca y acompañamiento hasta escritura. ${data.precio}€ IVA incl. Sin comisión de captación.`
+                : `${data.tagline}. Redactado por gestores especializados. Desde ${data.precio} €. Entrega en 48h.`
   const ogDeliveryLine =
     servicio === 'pack-due-diligence-precompra'
       ? `${data.precio} € · Informe en 3–5 días · 100 % online`
@@ -1156,6 +1165,7 @@ export default async function ServicioGestoriaPage({
               lugarNombre="toda España"
               solicitarHref={`/gestoria/solicitar/${servicio}`}
             />
+            <GestoriaCompletaNacionalConversion modo={ventaCompletaPack ? 'venta' : 'compra'} />
             <div id="panel-gestoria-demo" className="scroll-mt-24">
               <GestoriaPanelShowcase servicioLabel={data.nombre.toLowerCase()} />
             </div>

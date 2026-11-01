@@ -19,6 +19,8 @@ import {
 } from '@/lib/gestoria-ciudad-schema'
 import { getCiudadImage } from '@/lib/gestoria-images'
 import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
+import GestoriaHubSinComisionSection from '@/components/GestoriaHubSinComisionSection'
+import GestoriaServiciosEstrellaSection from '@/components/GestoriaServiciosEstrellaSection'
 import { listBarcelonaCompraCompletaBarrios } from '@/lib/barcelona-compra-completa-barrios'
 import { listBarcelonaVentaCompletaBarrios } from '@/lib/barcelona-venta-completa-barrios'
 
@@ -30,7 +32,7 @@ const META_DESCRIPTION =
   'Gestoría inmobiliaria en Barcelona para particulares. Contratos LAU y arras adaptados a zona tensionada. Desde 61€, entrega 48h. Gestores expertos, sin comisiones de agencia.'
 
 export const metadata: Metadata = {
-  title: 'Gestoría inmobiliaria Barcelona desde 61€',
+  title: 'Gestoría inmobiliaria Barcelona — 687€ venta/compra',
   description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria barcelona, gestoría para particulares barcelona, comprar piso barcelona sin agencia, vender piso barcelona, contrato arras barcelona, asesoría compra vivienda barcelona',
   alternates: { canonical: `${BASE_URL}/gestoria/barcelona` },
@@ -102,6 +104,13 @@ export default function GestoriaBarcelonaPage() {
         </GestoriaHeroFullBleed>
 
         <GestoriaCiudadAgenciasBanner ciudadSlug="barcelona" ciudadNombre="Barcelona" />
+
+        <GestoriaHubSinComisionSection
+          ciudadNombre="Barcelona"
+          ciudadSlug="barcelona"
+          showBarcelonaBarrios
+        />
+        <GestoriaServiciosEstrellaSection ciudadSlug="barcelona" ciudadNombre="Barcelona" />
 
         {/* Por qué Barcelona necesita gestoría especializada */}
         <section className="py-16 bg-white">

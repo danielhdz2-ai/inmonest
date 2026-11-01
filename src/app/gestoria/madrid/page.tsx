@@ -20,6 +20,8 @@ import {
   buildServiceOfferSchema,
 } from '@/lib/gestoria-ciudad-schema'
 import { getCiudadImage } from '@/lib/gestoria-images'
+import GestoriaHubSinComisionSection from '@/components/GestoriaHubSinComisionSection'
+import GestoriaServiciosEstrellaSection from '@/components/GestoriaServiciosEstrellaSection'
 
 const BASE_URL = 'https://inmonest.com'
 const ciudadImage = getCiudadImage('madrid')
@@ -28,7 +30,7 @@ const META_DESCRIPTION =
   'Gestoría inmobiliaria en Madrid para particulares. Contratos LAU desde 145€, arras 145€. Sin comisiones de agencia. Gestores expertos, entrega 48h.'
 
 export const metadata: Metadata = {
-  title: 'Gestoría inmobiliaria Madrid desde 61€',
+  title: 'Gestoría inmobiliaria Madrid — 687€ venta/compra',
   description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria madrid, gestoría para particulares madrid, comprar piso madrid sin agencia, vender piso madrid, contrato arras madrid, asesoría compra vivienda madrid',
   alternates: { canonical: `${BASE_URL}/gestoria/madrid` },
@@ -99,6 +101,9 @@ export default function GestoriaMadridPage() {
         </GestoriaHeroFullBleed>
 
         <GestoriaCiudadAgenciasBanner ciudadSlug="madrid" ciudadNombre="Madrid" />
+
+        <GestoriaHubSinComisionSection ciudadNombre="Madrid" ciudadSlug="madrid" />
+        <GestoriaServiciosEstrellaSection ciudadSlug="madrid" ciudadNombre="Madrid" />
 
         {/* Por qué Madrid necesita gestoría especializada */}
         <section className="py-16 bg-white">

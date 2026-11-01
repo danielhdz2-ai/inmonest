@@ -177,6 +177,13 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'salamanca', 'valladolid', 'alicante', 'bilbao', 'zaragoza', 'coruna', 'pamplona', 'murcia', 'granada', 'mallorca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
+    id: 'compra-completa',
+    nombre: 'Compra Completa hasta Escritura',
+    precioSlug: 'compra-completa-reserva-escritura',
+    href: (c) => `/gestoria/compra-completa-reserva-escritura/${c}`,
+    ciudades: ['barcelona', 'madrid', 'valencia'],
+  },
+  {
     id: 'pack-arras-vendedor',
     nombre: 'Pack Arras Plus Vendedor',
     precioSlug: 'pack-arras-plus-vendedor',

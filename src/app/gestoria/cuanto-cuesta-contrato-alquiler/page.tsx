@@ -103,6 +103,18 @@ export default function CuantoCuestaContratoAlquilerPage() {
               Abajo tienes la comparativa completa y qué incluye cada opción.
             </p>
             <div className="mt-3 flex flex-wrap gap-3 text-sm">
+              <Link
+                href="/gestoria/solicitar/contrato-alquiler"
+                className="text-gold-800 font-bold underline"
+              >
+                Contratar LAU 145€
+              </Link>
+              <Link href="/gestoria/venta-completa-reserva-escritura" className="text-gold-700 font-medium underline">
+                Vender sin comisiones (687€)
+              </Link>
+              <Link href="/gestoria/compra-completa-reserva-escritura" className="text-gold-700 font-medium underline">
+                Comprar con gestor (687€)
+              </Link>
               <Link href="/calculadora-gastos-alquiler" className="text-gold-700 font-medium underline">
                 Calculadora gastos alquiler
               </Link>
