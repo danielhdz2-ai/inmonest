@@ -34,6 +34,8 @@ export type GestoriaLandingSeoInput = {
   /** Despacho Mejía Lequerica 44 en schema. */
   includeBarcelonaLocalBusiness?: boolean
   barrioNombreForLocalBusiness?: string
+  /** ItemList de URLs relacionadas (p. ej. otros barrios). */
+  itemList?: { name: string; items: ReadonlyArray<{ name: string; url: string }> }
 }
 
 export function gestoriaLandingBreadcrumbs(
@@ -140,8 +142,31 @@ export function buildGestoriaLandingSchemas(input: GestoriaLandingSeoInput) {
   if (input.includeBarcelonaLocalBusiness) {
     schemas.push(buildInmonestBarcelonaLocalBusinessSchema(input.barrioNombreForLocalBusiness))
   }
+  if (input.itemList && input.itemList.items.length > 0) {
+    schemas.push(buildItemListSchema(input.itemList.name, input.itemList.items, pageUrl))
+  }
 
   return schemas
+}
+
+export function buildItemListSchema(
+  name: string,
+  items: ReadonlyArray<{ name: string; url: string }>,
+  pageUrl: string,
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    url: pageUrl,
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      url: item.url.startsWith('http') ? item.url : `${BASE_URL}${item.url}`,
+    })),
+  }
 }
 
 export function buildHowToSchema(

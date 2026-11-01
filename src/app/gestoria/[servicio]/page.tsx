@@ -22,6 +22,7 @@ import GestoriaDueDiligenceModulosCompletos, {
 import CompletaServiciosDetalle from '@/components/CompletaServiciosDetalle'
 import GestoriaCompletaModalidadSections from '@/components/GestoriaCompletaModalidadSections'
 import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
+import BarcelonaCompletaBarriosHubSection from '@/components/BarcelonaCompletaBarriosHubSection'
 import { servicioSlugIsDueDiligencePack } from '@/lib/due-diligence-servicio-registry'
 import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
@@ -1159,15 +1160,21 @@ export default async function ServicioGestoriaPage({
               <GestoriaPanelShowcase servicioLabel={data.nombre.toLowerCase()} />
             </div>
             {ventaCompletaPack ? (
-              <InmonestOficinaBarcelonaSection
-                backHref="/gestoria/venta-completa-reserva-escritura/barcelona"
-                backLabel="← Venta completa Barcelona"
-              />
+              <>
+                <BarcelonaCompletaBarriosHubSection modo="venta" />
+                <InmonestOficinaBarcelonaSection
+                  backHref="/gestoria/venta-completa-reserva-escritura/barcelona"
+                  backLabel="← Venta completa Barcelona (hub)"
+                />
+              </>
             ) : (
-              <InmonestOficinaBarcelonaSection
-                backHref="/gestoria/compra-completa-reserva-escritura"
-                backLabel="← Compra completa"
-              />
+              <>
+                <BarcelonaCompletaBarriosHubSection modo="compra" />
+                <InmonestOficinaBarcelonaSection
+                  backHref="/gestoria/compra-completa-reserva-escritura/barcelona"
+                  backLabel="← Compra completa Barcelona (hub)"
+                />
+              </>
             )}
           </>
         ) : null}

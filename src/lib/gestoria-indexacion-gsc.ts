@@ -24,6 +24,7 @@ const LANDINGS_RECIENTES_INDEXAR = [
   '/blog/actualidad-vivienda-espana-octubre-2026',
   ...getBarcelonaVentaCompletaBarrioPaths(),
   ...getBarcelonaCompraCompletaBarrioPaths(),
+  '/gestoria/compra-completa-reserva-escritura/barcelona',
   '/gestoria/acompanamiento-reserva-arras',
   '/gestoria/alquiler-garaje-trastero',
   '/gestoria/rescision-alquiler',

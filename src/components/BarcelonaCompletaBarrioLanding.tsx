@@ -16,6 +16,9 @@ import {
 } from '@/lib/completa-reserva-escritura-pasos-content'
 import { getBarcelonaCompletaEditorial } from '@/lib/barcelona-completa-editorial'
 import BarcelonaCompletaEditorialSection from '@/components/BarcelonaCompletaEditorialSection'
+import BarcelonaCompletaRecursosSection from '@/components/BarcelonaCompletaRecursosSection'
+
+const SITE = 'https://inmonest.com'
 import { VENTA_COMPLETA_PRECIO, VENTA_COMPLETA_CIUDADES_LIST } from '@/lib/venta-completa-ciudad-data'
 import CompletaServiciosDetalle from '@/components/CompletaServiciosDetalle'
 import GestoriaCompletaModalidadSections from '@/components/GestoriaCompletaModalidadSections'
@@ -102,6 +105,13 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
         includeBarcelonaLocalBusiness
         barrioNombreForLocalBusiness={config.nombre}
         includeAggregateRating
+        itemList={{
+          name: `${isVenta ? 'Venta' : 'Compra'} completa en barrios de Barcelona`,
+          items: allBarrios.map((b) => ({
+            name: b.nombre,
+            url: `${SITE}${basePath}/${b.slug}`,
+          })),
+        }}
         breadcrumbs={gestoriaLandingBreadcrumbs(
           { name: servicioNombre, path: `/gestoria/${servicioSlug}` },
           { name: 'Barcelona', path: hubBarcelonaPath },
@@ -386,6 +396,8 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
           </ul>
         </div>
       </section>
+
+      <BarcelonaCompletaRecursosSection barrioNombre={config.nombre} modo={modo} />
 
       <CiudadHubFaq
         ciudad={config.nombre}

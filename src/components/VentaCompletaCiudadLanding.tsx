@@ -4,7 +4,9 @@ import Navbar from '@/components/NavbarServer'
 import CiudadHubFaq from '@/components/CiudadHubFaq'
 import CiudadHubServiciosGrid from '@/components/CiudadHubServiciosGrid'
 import GestoriaLandingSeo from '@/components/GestoriaLandingSeo'
-import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
+import { gestoriaLandingBreadcrumbs, howToStepsFromCompletaBloques } from '@/lib/gestoria-ciudad-schema'
+import { VENTA_COMPLETA_SERVICIO_BLOQUES } from '@/lib/completa-reserva-escritura-pasos-content'
+import BarcelonaCompletaBarriosHubSection from '@/components/BarcelonaCompletaBarriosHubSection'
 import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import GestoriaCiudadHero from '@/components/GestoriaCiudadHero'
@@ -31,7 +33,6 @@ import CompletaServiciosDetalle from '@/components/CompletaServiciosDetalle'
 import GestoriaCompletaModalidadSections from '@/components/GestoriaCompletaModalidadSections'
 import { getVentaCompletaEnriquecimiento } from '@/lib/venta-completa-ciudad-enriquecimiento'
 import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelonaSection'
-import { listBarcelonaVentaCompletaBarrios } from '@/lib/barcelona-venta-completa-barrios'
 
 const SOLICITAR_URL = '/gestoria/solicitar/venta-completa-reserva-escritura'
 const SERVICIO_SLUG = 'venta-completa-reserva-escritura'
@@ -47,6 +48,10 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
   const ahorroMin = agenciaMin - VENTA_COMPLETA_PRECIO
   const faq = getVentaCompletaFaq(nombre, region, precioEjemploPiso, config.faqPrioritarias)
   const local = getVentaCompletaEnriquecimiento(slug)
+  const howTo = howToStepsFromCompletaBloques(
+    VENTA_COMPLETA_SERVICIO_BLOQUES,
+    `Vender piso en ${nombre} hasta escritura — 5 pasos`,
+  )
 
   return (
     <>
@@ -58,6 +63,8 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
         ciudadNombre={nombre}
         precioEuros={VENTA_COMPLETA_PRECIO}
         faqs={faq}
+        howTo={howTo}
+        includeBarcelonaLocalBusiness={slug === 'barcelona'}
         breadcrumbs={gestoriaLandingBreadcrumbs(
           { name: 'Venta completa', path: '/gestoria/venta-completa-reserva-escritura' },
           { name: nombre },
@@ -352,40 +359,7 @@ export default function VentaCompletaCiudadLanding({ config }: VentaCompletaCiud
 
       {slug === 'barcelona' && (
         <>
-          <section className="py-14 px-4 bg-cream-50 border-t border-gold-200/40">
-            <div className="max-w-5xl mx-auto">
-              <h2 className="text-2xl font-bold text-gray-900 mb-3 text-center">
-                Venta completa por barrios de Barcelona ({listBarcelonaVentaCompletaBarrios().length} zonas)
-              </h2>
-              <p className="text-gray-600 text-sm mb-4 max-w-2xl mx-auto text-center">
-                Cada barrio tiene landing propia con mercado local, guía editorial, FAQ ampliada, testimonios y schema
-                HowTo. Mismo pack 687 € hasta escritura — online o despacho Les Corts.
-              </p>
-              <p className="text-gray-500 text-xs mb-8 max-w-2xl mx-auto text-center">
-                Para SEO local, la página canónica por zona es{' '}
-                <code className="text-[11px] bg-white px-1 rounded">/barcelona/venta-completa/[barrio]</code>; esta hub
-                enlaza al detalle de cada barrio sin duplicar el contenido principal.
-              </p>
-              <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-                {listBarcelonaVentaCompletaBarrios().map((b) => (
-                  <li key={b.slug}>
-                    <Link
-                      href={`/barcelona/venta-completa/${b.slug}`}
-                      className="block rounded-xl border border-gold-200 bg-white px-3 py-3 text-sm font-semibold text-gold-900 hover:bg-gold-50 transition-colors"
-                    >
-                      {b.nombre}
-                      <span className="block text-[10px] font-normal text-gray-500 mt-0.5">{b.distrito}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <p className="text-center mt-6 text-sm">
-                <Link href="/barcelona/compra-completa/eixample" className="text-gold-700 font-semibold hover:underline">
-                  ¿Compras en Barcelona? Compra completa por barrios →
-                </Link>
-              </p>
-            </div>
-          </section>
+          <BarcelonaCompletaBarriosHubSection modo="venta" showCanonicalNote />
           <InmonestOficinaBarcelonaSection />
         </>
       )}

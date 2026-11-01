@@ -46,6 +46,12 @@ export async function generateMetadata({
         },
       ],
     },
+    twitter: {
+      card: 'summary_large_image',
+      title: cfg.meta.ogTitle,
+      description: cfg.meta.ogDescription,
+      images: [`${BASE_URL}${cfg.heroImage}`],
+    },
   })
 }
 

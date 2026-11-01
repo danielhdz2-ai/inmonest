@@ -296,6 +296,28 @@ export default function ServicioCompletoCompraPost() {
             </p>
           </div>
 
+          <div className="mt-10 p-6 bg-white border border-gray-200 rounded-xl">
+            <h3 className="text-lg font-bold text-gray-900 mb-2">Compra completa en Barcelona por barrio</h3>
+            <p className="text-sm text-gray-600 mb-4">
+              Si compras en Barcelona, cada zona tiene guía local, FAQ y pack 687 €: Eixample, Gràcia, Sants, Poblenou,
+              Les Corts y más.
+            </p>
+            <div className="flex flex-wrap gap-2 text-sm">
+              <Link href="/gestoria/compra-completa-reserva-escritura/barcelona" className="text-amber-700 font-semibold hover:underline">
+                Hub compra completa Barcelona →
+              </Link>
+              <Link href="/barcelona/compra-completa/eixample" className="text-gray-700 hover:underline">
+                Ejemplo: Eixample →
+              </Link>
+              <Link href="/barcelona/compra-completa/gracia" className="text-gray-700 hover:underline">
+                Gràcia →
+              </Link>
+              <Link href="/barcelona/compra-completa/les-corts" className="text-gray-700 hover:underline">
+                Les Corts →
+              </Link>
+            </div>
+          </div>
+
           <div className="mt-12 p-6 bg-amber-50 border border-amber-200 rounded-xl">
             <h3 className="text-xl font-bold text-gray-900 mb-3">
               ¿Listo para comprar con todas las garantías?
