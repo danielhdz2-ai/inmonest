@@ -24,6 +24,8 @@ import GestoriaHubSinComisionSection from '@/components/GestoriaHubSinComisionSe
 import GestoriaServiciosEstrellaSection from '@/components/GestoriaServiciosEstrellaSection'
 import GestoriaCiudadKeywordSection from '@/components/GestoriaCiudadKeywordSection'
 import GestoriaCiudadRankingSection from '@/components/GestoriaCiudadRankingSection'
+import GestoriaCiudadHubAboveFold from '@/components/GestoriaCiudadHubAboveFold'
+import { gestoriaHubWhatsAppMessage } from '@/lib/gestoria-contact'
 
 const BASE_URL = 'https://inmonest.com'
 const ciudadImage = getCiudadImage('valencia')
@@ -32,7 +34,7 @@ const META_DESCRIPTION =
   'Gestoría inmobiliaria Valencia: LAU, arras y packs 687 € venta/compra completa. Cédula valenciana, VUT y due diligence. Sin comisión 3–5 % de agencia.'
 
 export const metadata: Metadata = {
-  title: 'Gestoría inmobiliaria Valencia — 687€ venta/compra',
+  title: 'Gestoría inmobiliaria Valencia | particulares',
   description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria valencia, gestoría para particulares valencia, comprar piso valencia sin agencia, vender piso valencia, contrato arras valencia, asesoría compra vivienda valencia',
   alternates: { canonical: `${BASE_URL}/gestoria/valencia` },
@@ -104,6 +106,12 @@ export default function GestoriaValenciaPage() {
         </GestoriaHeroFullBleed>
 
         <GestoriaCiudadAgenciasBanner ciudadSlug="valencia" ciudadNombre="Valencia" />
+
+        <GestoriaCiudadHubAboveFold
+          ciudadNombre="Valencia"
+          faqs={GESTORIA_VALENCIA_FAQ}
+          whatsappMessage={gestoriaHubWhatsAppMessage('Valencia')}
+        />
 
         <GestoriaHubSinComisionSection ciudadNombre="Valencia" ciudadSlug="valencia" />
         <GestoriaServiciosEstrellaSection ciudadSlug="valencia" ciudadNombre="Valencia" />
@@ -420,7 +428,7 @@ export default function GestoriaValenciaPage() {
         <CiudadHubExtras
           ciudad="Valencia"
           hubSlug="valencia"
-          whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Valencia"
+          whatsappMessage={gestoriaHubWhatsAppMessage('Valencia')}
           testimoniosLayout="stack"
           showGoogleReviews
         />

@@ -330,7 +330,7 @@ export default function AlquilerHabitacionBarrioBarcelonaLanding({ config }: Pro
         </div>
       </section>
 
-      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} />
+      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} barrioSlug={config.slug} />
 
       <GestoriaAlquilerTramiteOnlineSection
         ciudadNombre={ciudadLabel}

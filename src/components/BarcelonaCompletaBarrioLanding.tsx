@@ -140,7 +140,7 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
         footnote={`Gestor asignado · Panel de cliente · Trámite 100 % online o despacho Les Corts (Mejía Lequerica 44)`}
       />
 
-      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} />
+      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} barrioSlug={config.slug} />
 
       <section className="py-14 px-4 bg-white border-t border-gray-100">
         <div className="max-w-3xl mx-auto">

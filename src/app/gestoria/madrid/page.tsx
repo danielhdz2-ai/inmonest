@@ -24,6 +24,8 @@ import GestoriaHubSinComisionSection from '@/components/GestoriaHubSinComisionSe
 import GestoriaServiciosEstrellaSection from '@/components/GestoriaServiciosEstrellaSection'
 import GestoriaCiudadKeywordSection from '@/components/GestoriaCiudadKeywordSection'
 import GestoriaCiudadRankingSection from '@/components/GestoriaCiudadRankingSection'
+import GestoriaCiudadHubAboveFold from '@/components/GestoriaCiudadHubAboveFold'
+import { gestoriaHubWhatsAppMessage } from '@/lib/gestoria-contact'
 
 const BASE_URL = 'https://inmonest.com'
 const ciudadImage = getCiudadImage('madrid')
@@ -32,7 +34,7 @@ const META_DESCRIPTION =
   'Gestoría inmobiliaria Madrid: contratos LAU y arras 145 €, venta/compra completa 687 €. ITE, plusvalía y notaría. Particulares sin comisión de agencia.'
 
 export const metadata: Metadata = {
-  title: 'Gestoría inmobiliaria Madrid — 687€ venta/compra',
+  title: 'Gestoría inmobiliaria Madrid | particulares',
   description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria madrid, gestoría para particulares madrid, comprar piso madrid sin agencia, vender piso madrid, contrato arras madrid, asesoría compra vivienda madrid',
   alternates: { canonical: `${BASE_URL}/gestoria/madrid` },
@@ -103,6 +105,12 @@ export default function GestoriaMadridPage() {
         </GestoriaHeroFullBleed>
 
         <GestoriaCiudadAgenciasBanner ciudadSlug="madrid" ciudadNombre="Madrid" />
+
+        <GestoriaCiudadHubAboveFold
+          ciudadNombre="Madrid"
+          faqs={GESTORIA_MADRID_FAQ}
+          whatsappMessage={gestoriaHubWhatsAppMessage('Madrid')}
+        />
 
         <GestoriaHubSinComisionSection ciudadNombre="Madrid" ciudadSlug="madrid" />
         <GestoriaServiciosEstrellaSection ciudadSlug="madrid" ciudadNombre="Madrid" />
@@ -413,7 +421,7 @@ export default function GestoriaMadridPage() {
         <CiudadHubExtras
           ciudad="Madrid"
           hubSlug="madrid"
-          whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Madrid"
+          whatsappMessage={gestoriaHubWhatsAppMessage('Madrid')}
           testimoniosLayout="stack"
           showGoogleReviews
         />

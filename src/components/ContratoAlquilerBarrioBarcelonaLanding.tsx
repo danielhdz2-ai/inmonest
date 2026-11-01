@@ -263,7 +263,7 @@ export default function ContratoAlquilerBarrioBarcelonaLanding({ config }: Props
         </div>
       </section>
 
-      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} />
+      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} barrioSlug={config.slug} />
 
       <GestoriaAlquilerTramiteOnlineSection
         ciudadNombre={ciudadLabel}

@@ -25,6 +25,10 @@ import GestoriaCiudadKeywordSection from '@/components/GestoriaCiudadKeywordSect
 import GestoriaCiudadRankingSection from '@/components/GestoriaCiudadRankingSection'
 import { listBarcelonaCompraCompletaBarrios } from '@/lib/barcelona-compra-completa-barrios'
 import { listBarcelonaVentaCompletaBarrios } from '@/lib/barcelona-venta-completa-barrios'
+import { listBarcelonaAlquilerBarrios } from '@/lib/barcelona-contrato-alquiler-barrios'
+import { listBarcelonaArrasBarrios } from '@/lib/barcelona-contrato-arras-barrios'
+import GestoriaCiudadHubAboveFold from '@/components/GestoriaCiudadHubAboveFold'
+import { gestoriaHubWhatsAppMessage } from '@/lib/gestoria-contact'
 
 const BASE_URL = 'https://inmonest.com'
 const CIUDAD = 'barcelona'
@@ -34,7 +38,7 @@ const META_DESCRIPTION =
   'Gestoría inmobiliaria Barcelona para particulares: LAU, arras y venta/compra completa 687 €. Zona tensionada, cédula Generalitat. Sin comisión de agencia. Entrega 48 h.'
 
 export const metadata: Metadata = {
-  title: 'Gestoría inmobiliaria Barcelona — LAU 145€ · 687€',
+  title: 'Gestoría inmobiliaria Barcelona | particulares',
   description: META_DESCRIPTION,
   keywords: 'gestoría inmobiliaria barcelona, gestoría para particulares barcelona, comprar piso barcelona sin agencia, vender piso barcelona, contrato arras barcelona, asesoría compra vivienda barcelona',
   alternates: { canonical: `${BASE_URL}/gestoria/barcelona` },
@@ -106,6 +110,12 @@ export default function GestoriaBarcelonaPage() {
         </GestoriaHeroFullBleed>
 
         <GestoriaCiudadAgenciasBanner ciudadSlug="barcelona" ciudadNombre="Barcelona" />
+
+        <GestoriaCiudadHubAboveFold
+          ciudadNombre="Barcelona"
+          faqs={GESTORIA_BARCELONA_FAQ}
+          whatsappMessage={gestoriaHubWhatsAppMessage('Barcelona')}
+        />
 
         <GestoriaHubSinComisionSection
           ciudadNombre="Barcelona"
@@ -379,6 +389,50 @@ export default function GestoriaBarcelonaPage() {
           </div>
         </section>
 
+        <section className="py-12 px-4 bg-gray-50 border-t border-gray-100">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-2xl font-bold text-gray-900 text-center mb-3">
+              Contratos LAU y arras por barrio en Barcelona
+            </h2>
+            <p className="text-center text-gray-600 text-sm mb-8 max-w-2xl mx-auto">
+              Landings con normativa catalana, zona tensionada y FAQ local — enlazadas al hub de gestoría
+              inmobiliaria Barcelona.
+            </p>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-gold-700 mb-3">Contrato alquiler LAU</h3>
+                <ul className="flex flex-wrap gap-2">
+                  {listBarcelonaAlquilerBarrios().map((b) => (
+                    <li key={b.slug}>
+                      <Link
+                        href={`/barcelona/contrato-alquiler/${b.slug}`}
+                        className="text-sm font-semibold text-gold-800 hover:underline"
+                      >
+                        {b.nombre} →
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="text-sm font-bold uppercase tracking-widest text-orange-800 mb-3">Contrato de arras</h3>
+                <ul className="flex flex-wrap gap-2">
+                  {listBarcelonaArrasBarrios().map((b) => (
+                    <li key={b.slug}>
+                      <Link
+                        href={`/barcelona/contrato-arras/${b.slug}`}
+                        className="text-sm font-semibold text-orange-900 hover:underline"
+                      >
+                        {b.nombre} →
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <InmonestOficinaBarcelonaSection backHref="/gestoria/barcelona" backLabel="← Hub gestoría Barcelona" />
 
         <ComprarConSeguridad ciudad="Barcelona" ciudadSlug="barcelona" />
@@ -444,7 +498,7 @@ export default function GestoriaBarcelonaPage() {
         <CiudadHubExtras
           ciudad="Barcelona"
           hubSlug="barcelona"
-          whatsappMessage="Hola, necesito gestoría inmobiliaria para particulares en Barcelona"
+          whatsappMessage={gestoriaHubWhatsAppMessage('Barcelona')}
           testimoniosLayout="stack"
           showGoogleReviews
         />

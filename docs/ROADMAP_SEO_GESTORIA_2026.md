@@ -18,7 +18,7 @@
 
 ## Fase 2 — Hubs ciudad (Barcelona, Madrid, Valencia)
 
-- [ ] Posición queries «gestoría inmobiliaria [ciudad]» (meta + H1 + FAQ + schema)
+- [x] Posición queries «gestoría inmobiliaria [ciudad]» — meta + FAQ/WA above fold BCN/MAD/VLC (oleada 5)
 - [ ] Reducir canibalización: hub `/gestoria/{ciudad}` vs `/gestoria/{servicio}/{ciudad}`
 - [x] Madrid/Valencia: mismos bloques que Barcelona (sin comisión + estrella)
 - [x] Enlazar blog arras → hubs ciudad + packs 687€ (4 posts)
@@ -48,7 +48,7 @@
 ## Fase 6 — E-E-A-T y conversión
 
 - [ ] Testimonios por servicio/ciudad en landings con >500 imp
-- [ ] CTA WhatsApp con mensaje pre-rellenado por landing
+- [x] CTA WhatsApp con mensaje pre-rellenado (hubs ciudad + servicios top GSC, oleada 5)
 - [ ] Panel demo por servicio en landings top 10
 - [ ] Agregación reseñas schema solo donde proceda
 

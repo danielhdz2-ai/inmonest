@@ -269,7 +269,7 @@ export default function ContratoArrasBarrioBarcelonaLanding({ config }: Props) {
         </div>
       </section>
 
-      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} />
+      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} barrioSlug={config.slug} />
 
       <GestoriaArrasTramiteOnlineSection
         ciudadNombre={ciudadLabel}

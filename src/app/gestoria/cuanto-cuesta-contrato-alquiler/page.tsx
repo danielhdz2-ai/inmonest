@@ -4,6 +4,7 @@ import GestoriaGuiaPageLayout from '@/components/GestoriaGuiaPageLayout'
 import GestoriaContratoAlquilerStrikeConversion from '@/components/GestoriaContratoAlquilerStrikeConversion'
 import GestoriaServicioFaqAboveFold from '@/components/GestoriaServicioFaqAboveFold'
 import { RELACIONADOS_ALQUILER } from '@/lib/gestoria-relacionados'
+import { gestoriaServicioWhatsAppMessage } from '@/lib/gestoria-contact'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -93,7 +94,10 @@ export default function CuantoCuestaContratoAlquilerPage() {
       ]}
       servicio="contrato-alquiler"
       servicioNombre="Contrato de Alquiler LAU"
-      whatsappMessage="Hola Daniel, tengo dudas sobre el precio del contrato de alquiler"
+      whatsappMessage={gestoriaServicioWhatsAppMessage(
+        'cuanto-cuesta-contrato-alquiler',
+        'precio contrato alquiler'
+      )}
       ctaTitle="Contrato de alquiler LAU por 145€"
       ctaDescription="Redactado por gestoría especializada. Adaptado a Ley de Vivienda 2026. Cláusulas personalizadas y entrega en 48h."
       ctaPrimaryHref="/gestoria/solicitar/contrato-alquiler"

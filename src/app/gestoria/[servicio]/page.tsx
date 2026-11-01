@@ -41,6 +41,10 @@ import {
   GESTORIA_NAV_SOLICITAR_LABEL_MOBILE,
   GESTORIA_SOLICITAR_HUB,
 } from '@/lib/gestoria-nav'
+import {
+  buildGestoriaWhatsAppHref,
+  gestoriaServicioWhatsAppMessage,
+} from '@/lib/gestoria-contact'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -943,7 +947,8 @@ export default async function ServicioGestoriaPage({
   if (!data) notFound()
 
   const visuals = getServicioImages(servicio)
-  const waHref = `https://wa.me/34745022862?text=${encodeURIComponent(`Hola, tengo dudas sobre ${data.nombre}`)}`
+  const waMessage = gestoriaServicioWhatsAppMessage(servicio, data.nombre)
+  const waHref = buildGestoriaWhatsAppHref(waMessage)
 
   const schemaJson = JSON.stringify({
     '@context': 'https://schema.org',
@@ -1280,7 +1285,7 @@ export default async function ServicioGestoriaPage({
         <GestoriaLandingExtras
           servicio={servicio}
           servicioNombre={data.nombre}
-          whatsappMessage={`Hola Daniel, tengo dudas sobre ${data.nombre}`}
+          whatsappMessage={waMessage}
           phase="contact"
         />
 
