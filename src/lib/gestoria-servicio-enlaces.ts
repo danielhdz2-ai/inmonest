@@ -43,10 +43,10 @@ const SERVICIO_ENLACE_META: Record<string, ServicioEnlaceMeta> = {
     labelGeneral: 'Ver venta completa →',
   },
   'compra-completa-reserva-escritura': {
-    landingId: 'compra-completa-reserva-escritura',
-    generalHref: '/gestoria/asesoria-compra-piso',
-    labelConCiudad: (ciudad) => `Ver asesoría compra ${ciudad} →`,
-    labelGeneral: 'Ver asesoría compra de piso →',
+    landingId: 'compra-completa',
+    generalHref: '/gestoria/compra-completa-reserva-escritura',
+    labelConCiudad: (ciudad) => `Ver compra completa ${ciudad} →`,
+    labelGeneral: 'Ver compra completa hasta escritura →',
   },
   'compra-completa-parking-trastero': {
     generalHref: '/gestoria/compra-parking-trastero',

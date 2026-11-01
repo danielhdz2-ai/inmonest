@@ -12,6 +12,7 @@
     "gsc:auth": "npx tsx scripts/seo/gsc-auth.ts",
     "gsc:token": "npx tsx scripts/seo/gsc-exchange-code.ts",
     "gsc:fetch": "npx tsx scripts/seo/fetch-gsc-performance.ts",
+    "gsc:gestoria:analyze": "node scripts/seo/analyze-gsc-gestoria.mjs",
     "gsc:fetch:queries": "npx tsx scripts/seo/fetch-gsc-performance.ts -- --dimension query",
     "gsc:indexacion": "npx tsx scripts/seo/comprobar-indexacion-gestoria.ts",
     "gsc:indexar:contratos": "npx tsx scripts/seo/iniciar-indexacion-contratos.ts",

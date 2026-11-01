@@ -24,6 +24,7 @@ import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import type { BarcelonaAlquilerBarrioConfig } from '@/lib/barcelona-contrato-alquiler-barrios'
 import { listBarcelonaAlquilerBarrios } from '@/lib/barcelona-contrato-alquiler-barrios'
 import GestoriaBarcelonaHubMiniStrip from '@/components/GestoriaBarcelonaHubMiniStrip'
+import GestoriaBarrioBarcelonaFaqAboveFold from '@/components/GestoriaBarrioBarcelonaFaqAboveFold'
 
 type Props = {
   config: BarcelonaAlquilerBarrioConfig
@@ -196,6 +197,8 @@ export default function ContratoAlquilerBarrioBarcelonaLanding({ config }: Props
         ciudadNombre={ciudadLabel}
         precioEuros={Number(precio)}
         faqs={faqsAll}
+        includeBarcelonaLocalBusiness
+        barrioNombreForLocalBusiness={config.nombre}
         breadcrumbs={gestoriaLandingBreadcrumbs(
           { name: 'Contrato alquiler Barcelona', path: '/barcelona/contrato-alquiler' },
           { name: config.nombre },
@@ -264,6 +267,12 @@ export default function ContratoAlquilerBarrioBarcelonaLanding({ config }: Props
       </section>
 
       <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} barrioSlug={config.slug} />
+
+      <GestoriaBarrioBarcelonaFaqAboveFold
+        barrioNombre={config.nombre}
+        servicioLabel="Contrato de alquiler LAU"
+        faqs={faqsAll}
+      />
 
       <GestoriaAlquilerTramiteOnlineSection
         ciudadNombre={ciudadLabel}

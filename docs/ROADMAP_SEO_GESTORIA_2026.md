@@ -19,7 +19,7 @@
 ## Fase 2 — Hubs ciudad (Barcelona, Madrid, Valencia)
 
 - [x] Posición queries «gestoría inmobiliaria [ciudad]» — meta + FAQ/WA above fold BCN/MAD/VLC (oleada 5)
-- [ ] Reducir canibalización: hub `/gestoria/{ciudad}` vs `/gestoria/{servicio}/{ciudad}`
+- [x] Reducir canibalización: enlaces compra→`compra-completa`, LAU premium `/{ciudad}/contrato-alquiler`, 301 legacy (oleada 6)
 - [x] Madrid/Valencia: mismos bloques que Barcelona (sin comisión + estrella)
 - [x] Enlazar blog arras → hubs ciudad + packs 687€ (4 posts)
 - [x] Hub `/gestoria` — bloque conversión 687 € + meta SERP
@@ -29,7 +29,7 @@
 - [x] Hubs compra en mismas ciudades que venta (19 ciudades, ruta `[ciudad]`)
 - [ ] Barrios BCN: indexación GSC (top 10 barrios/semana)
 - [ ] Queries «vender/comprar sin comisiones» → landings dedicadas + enlaces desde marketplace
-- [ ] CTR: rich results (FAQ, HowTo, LocalBusiness) en todas las landings barrio
+- [x] CTR: FAQ above fold + LocalBusiness barrios BCN LAU/arras/habitación/temporada (oleada 6)
 
 ## Fase 4 — Páginas con impresiones sin clics (GSC)
 
@@ -43,7 +43,7 @@
 - [x] Silo `prestamo-particulares` (oculto en grid «Todos» del hub `/gestoria`; excluido en hubs BCN/MAD/VLC)
 - [x] Puente `contratos-inmobiliarios` ↔ `/gestoria/{servicio}` (oleada 3)
 - [ ] Checkout: no indexar variantes `?ciudad=`; canonical limpia
-- [ ] 404 legacy gestoría (lista GSC ago 2026) → redirects en `seo-redirects.ts`
+- [x] 404 legacy gestoría (GSC ago 2026) — oleada 4–6 en `seo-redirects.ts` (revisar Coverage tras deploy)
 
 ## Fase 6 — E-E-A-T y conversión
 
@@ -54,7 +54,7 @@
 
 ## Fase 7 — Medición
 
-- [ ] `npm run gsc:fetch` mensual; diff vs `gsc-gestoria-analysis.json`
+- [ ] `npm run gsc:fetch` mensual; luego `npm run gsc:gestoria:analyze` → diff vs `gsc-gestoria-analysis.json`
 - [ ] Panel interno: top 20 URLs gestoría sin clics
 - [ ] A/B titles en 3 landings (manual GSC)
 

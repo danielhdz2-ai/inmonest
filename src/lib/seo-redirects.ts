@@ -166,6 +166,26 @@ export const SEO_REDIRECTS: Redirect[] = [
     permanent: true,
   },
   {
+    source: '/gestoria/contrato-alquiler/:ciudad',
+    destination: '/:ciudad/contrato-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/contrato-arras/:ciudad',
+    destination: '/:ciudad/contrato-arras',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/ciudades',
+    destination: '/contratos-inmobiliarios',
+    permanent: true,
+  },
+  {
+    source: '/gestoria/ciudades/barcelona',
+    destination: '/gestoria/barcelona',
+    permanent: true,
+  },
+  {
     source: '/gestoria/contrato-compraventa/:ciudad',
     destination: '/gestoria/contrato-compraventa',
     permanent: true,

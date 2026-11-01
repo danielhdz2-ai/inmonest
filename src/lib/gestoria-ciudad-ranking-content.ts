@@ -26,7 +26,8 @@ export const GESTORIA_CIUDAD_RANKING: Record<string, CiudadRankingConfig> = {
       },
     ],
     links: [
-      { href: '/gestoria/solicitar/contrato-alquiler?ciudad=barcelona', label: 'Contratar LAU Barcelona' },
+      { href: '/gestoria/solicitar/contrato-alquiler-barcelona', label: 'Contratar LAU Barcelona' },
+      { href: '/barcelona/contrato-alquiler', label: 'Landing LAU Barcelona', className: 'text-gray-700' },
       { href: '/barcelona/venta-completa/eixample', label: 'Venta completa Eixample' },
       { href: '/barcelona/compra-completa/eixample', label: 'Compra completa Eixample', className: 'text-emerald-800' },
       { href: '/contratos-inmobiliarios/barcelona', label: 'Contratos inmobiliarios Barcelona', className: 'text-gray-700' },
@@ -51,7 +52,8 @@ export const GESTORIA_CIUDAD_RANKING: Record<string, CiudadRankingConfig> = {
       },
     ],
     links: [
-      { href: '/gestoria/solicitar/contrato-alquiler?ciudad=madrid', label: 'Contratar LAU Madrid' },
+      { href: '/gestoria/solicitar/contrato-alquiler', label: 'Contratar LAU Madrid' },
+      { href: '/madrid/contrato-alquiler', label: 'Landing LAU Madrid', className: 'text-gray-700' },
       { href: '/gestoria/venta-completa-reserva-escritura/madrid', label: 'Venta completa Madrid' },
       { href: '/gestoria/compra-completa-reserva-escritura/madrid', label: 'Compra completa Madrid', className: 'text-emerald-800' },
       { href: '/contratos-inmobiliarios/madrid', label: 'Contratos inmobiliarios Madrid', className: 'text-gray-700' },
@@ -76,7 +78,8 @@ export const GESTORIA_CIUDAD_RANKING: Record<string, CiudadRankingConfig> = {
       },
     ],
     links: [
-      { href: '/gestoria/solicitar/contrato-alquiler?ciudad=valencia', label: 'Contratar LAU Valencia' },
+      { href: '/gestoria/solicitar/contrato-alquiler', label: 'Contratar LAU Valencia' },
+      { href: '/valencia/contrato-alquiler', label: 'Landing LAU Valencia', className: 'text-gray-700' },
       { href: '/gestoria/venta-completa-reserva-escritura/valencia', label: 'Venta completa Valencia' },
       { href: '/gestoria/compra-completa-reserva-escritura/valencia', label: 'Compra completa Valencia', className: 'text-emerald-800' },
       { href: '/contratos-inmobiliarios/valencia', label: 'Contratos inmobiliarios Valencia', className: 'text-gray-700' },

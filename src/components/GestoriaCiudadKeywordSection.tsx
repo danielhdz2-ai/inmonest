@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import { CONTRATO_ALQUILER_PREMIUM } from '@/lib/contrato-alquiler-premium-config'
+import { getContratoAlquilerSolicitarHref } from '@/lib/gestoria-catalogo'
 
 type Props = {
   ciudadNombre: string
@@ -7,6 +9,12 @@ type Props = {
 
 /** Bloque on-page para query GSC «gestoría inmobiliaria [ciudad]» (posición ~25–46). */
 export default function GestoriaCiudadKeywordSection({ ciudadNombre, ciudadSlug }: Props) {
+  const lauLandingHref =
+    ciudadSlug in CONTRATO_ALQUILER_PREMIUM
+      ? `/${ciudadSlug}/contrato-alquiler`
+      : '/gestoria/contrato-alquiler'
+  const solicitarLauHref = getContratoAlquilerSolicitarHref(ciudadSlug)
+
   return (
     <section className="py-10 px-4 bg-white border-b border-gray-100">
       <div className="max-w-3xl mx-auto">
@@ -25,11 +33,11 @@ export default function GestoriaCiudadKeywordSection({ ciudadNombre, ciudadSlug 
           <li>Venta o compra entre particulares sin captación de inmuebles</li>
         </ul>
         <div className="flex flex-wrap gap-3 text-sm">
-          <Link
-            href={`/gestoria/solicitar/contrato-alquiler?ciudad=${ciudadSlug}`}
-            className="font-semibold text-gold-800 hover:underline"
-          >
+          <Link href={solicitarLauHref} className="font-semibold text-gold-800 hover:underline">
             Contratar alquiler LAU →
+          </Link>
+          <Link href={lauLandingHref} className="font-semibold text-gray-700 hover:underline">
+            Landing LAU {ciudadNombre} →
           </Link>
           <Link
             href={`/gestoria/venta-completa-reserva-escritura/${ciudadSlug}`}

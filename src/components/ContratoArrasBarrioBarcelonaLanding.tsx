@@ -22,6 +22,7 @@ import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import type { BarcelonaArrasBarrioConfig } from '@/lib/barcelona-contrato-arras-barrios'
 import { listBarcelonaArrasBarrios } from '@/lib/barcelona-contrato-arras-barrios'
 import GestoriaBarcelonaHubMiniStrip from '@/components/GestoriaBarcelonaHubMiniStrip'
+import GestoriaBarrioBarcelonaFaqAboveFold from '@/components/GestoriaBarrioBarcelonaFaqAboveFold'
 
 type Props = { config: BarcelonaArrasBarrioConfig }
 
@@ -201,6 +202,8 @@ export default function ContratoArrasBarrioBarcelonaLanding({ config }: Props) {
         ciudadNombre={ciudadLabel}
         precioEuros={Number(precio)}
         faqs={faqsAll}
+        includeBarcelonaLocalBusiness
+        barrioNombreForLocalBusiness={config.nombre}
         breadcrumbs={gestoriaLandingBreadcrumbs(
           { name: 'Contrato arras Barcelona', path: '/barcelona/contrato-arras' },
           { name: config.nombre },
@@ -270,6 +273,12 @@ export default function ContratoArrasBarrioBarcelonaLanding({ config }: Props) {
       </section>
 
       <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} barrioSlug={config.slug} />
+
+      <GestoriaBarrioBarcelonaFaqAboveFold
+        barrioNombre={config.nombre}
+        servicioLabel="Contrato de arras penitenciales"
+        faqs={faqsAll}
+      />
 
       <GestoriaArrasTramiteOnlineSection
         ciudadNombre={ciudadLabel}

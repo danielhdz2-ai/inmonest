@@ -56,7 +56,7 @@ export default function GestoriaCiudadServiciosYPanel({
           alquilerInfo: contratosConfig?.enlaceAlquiler ?? `/${ciudadSlug}/contrato-alquiler`,
           compraInfo: COMPRA_COMPLETA_CIUDADES[ciudadSlug]
             ? `/gestoria/compra-completa-reserva-escritura/${ciudadSlug}`
-            : `/gestoria/asesoria-compra-piso/${ciudadSlug}`,
+            : '/gestoria/compra-completa-reserva-escritura',
           ventaInfo: ventaHref,
         }}
       />

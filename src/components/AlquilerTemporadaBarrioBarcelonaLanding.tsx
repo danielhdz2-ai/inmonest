@@ -18,6 +18,7 @@ import { precioLabel } from '@/lib/gestoria-precios-ui'
 import type { BarcelonaTemporadaBarrioConfig } from '@/lib/barcelona-alquiler-temporada-barrios'
 import { listBarcelonaTemporadaBarrios } from '@/lib/barcelona-alquiler-temporada-barrios'
 import GestoriaBarcelonaHubMiniStrip from '@/components/GestoriaBarcelonaHubMiniStrip'
+import GestoriaBarrioBarcelonaFaqAboveFold from '@/components/GestoriaBarrioBarcelonaFaqAboveFold'
 
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-temporada'
 
@@ -218,6 +219,8 @@ export default function AlquilerTemporadaBarrioBarcelonaLanding({ config }: Prop
         ciudadNombre={`${config.nombre}, Barcelona`}
         precioEuros={precio}
         faqs={faqsAll}
+        includeBarcelonaLocalBusiness
+        barrioNombreForLocalBusiness={config.nombre}
         breadcrumbs={gestoriaLandingBreadcrumbs(
           { name: 'Alquiler temporada', path: '/gestoria/alquiler-temporada' },
           { name: 'Barcelona', path: '/barcelona/alquiler-temporada' },
@@ -273,6 +276,12 @@ export default function AlquilerTemporadaBarrioBarcelonaLanding({ config }: Prop
       </section>
 
       <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} barrioSlug={config.slug} />
+
+      <GestoriaBarrioBarcelonaFaqAboveFold
+        barrioNombre={config.nombre}
+        servicioLabel="Contrato de alquiler de temporada"
+        faqs={faqsAll}
+      />
 
       <GestoriaAlquilerTramiteOnlineSection
         ciudadNombre={`${config.nombre}, ${ciudadLabel}`}

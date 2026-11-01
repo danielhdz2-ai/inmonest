@@ -24,6 +24,7 @@ import {
   resolveBloqueVendedores,
 } from '@/lib/barcelona-habitacion-bloques-comprador-vendedor'
 import GestoriaBarcelonaHubMiniStrip from '@/components/GestoriaBarcelonaHubMiniStrip'
+import GestoriaBarrioBarcelonaFaqAboveFold from '@/components/GestoriaBarrioBarcelonaFaqAboveFold'
 
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
 
@@ -274,6 +275,8 @@ export default function AlquilerHabitacionBarrioBarcelonaLanding({ config }: Pro
         ciudadNombre={ciudadLabel}
         precioEuros={ALQUILER_HABITACION_PRECIO}
         faqs={faqsAll}
+        includeBarcelonaLocalBusiness
+        barrioNombreForLocalBusiness={config.nombre}
         breadcrumbs={gestoriaLandingBreadcrumbs(
           { name: 'Alquiler habitación Barcelona', path: '/gestoria/contrato-alquiler-habitacion/barcelona' },
           { name: config.nombre },
@@ -331,6 +334,12 @@ export default function AlquilerHabitacionBarrioBarcelonaLanding({ config }: Pro
       </section>
 
       <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} barrioSlug={config.slug} />
+
+      <GestoriaBarrioBarcelonaFaqAboveFold
+        barrioNombre={config.nombre}
+        servicioLabel="Contrato alquiler de habitación"
+        faqs={faqsAll}
+      />
 
       <GestoriaAlquilerTramiteOnlineSection
         ciudadNombre={ciudadLabel}
