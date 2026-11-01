@@ -332,7 +332,11 @@ export default function GestoriaValenciaPage() {
 
         <ComprarConSeguridad ciudad="Valencia" ciudadSlug="valencia" />
 
-        <CiudadHubServiciosGrid ciudad="Valencia" ciudadSlug="valencia" />
+        <CiudadHubServiciosGrid
+          ciudad="Valencia"
+          ciudadSlug="valencia"
+          excluirServicios={['prestamo-particulares']}
+        />
 
         <CiudadHubComoTrabajamos ciudad="Valencia" />
 

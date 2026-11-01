@@ -325,7 +325,11 @@ export default function GestoriaMadridPage() {
 
         <ComprarConSeguridad ciudad="Madrid" ciudadSlug="madrid" />
 
-        <CiudadHubServiciosGrid ciudad="Madrid" ciudadSlug="madrid" />
+        <CiudadHubServiciosGrid
+          ciudad="Madrid"
+          ciudadSlug="madrid"
+          excluirServicios={['prestamo-particulares']}
+        />
 
         <CiudadHubComoTrabajamos ciudad="Madrid" />
 

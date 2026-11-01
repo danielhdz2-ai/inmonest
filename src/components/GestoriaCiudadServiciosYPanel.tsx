@@ -5,6 +5,7 @@ import {
   getContratosInmobiliariosCiudad,
   isContratosInmobiliariosCiudad,
 } from '@/lib/contratos-inmobiliarios-ciudades'
+import { COMPRA_COMPLETA_CIUDADES } from '@/lib/compra-completa-ciudad-data'
 
 const CIUDADES_VENTA_LANDING = new Set([
   'madrid',
@@ -53,7 +54,9 @@ export default function GestoriaCiudadServiciosYPanel({
         links={{
           arrasInfo: contratosConfig?.enlaceArras ?? `/${ciudadSlug}/contrato-arras`,
           alquilerInfo: contratosConfig?.enlaceAlquiler ?? `/${ciudadSlug}/contrato-alquiler`,
-          compraInfo: `/gestoria/asesoria-compra-piso/${ciudadSlug}`,
+          compraInfo: COMPRA_COMPLETA_CIUDADES[ciudadSlug]
+            ? `/gestoria/compra-completa-reserva-escritura/${ciudadSlug}`
+            : `/gestoria/asesoria-compra-piso/${ciudadSlug}`,
           ventaInfo: ventaHref,
         }}
       />

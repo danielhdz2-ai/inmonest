@@ -383,7 +383,11 @@ export default function GestoriaBarcelonaPage() {
 
         <ComprarConSeguridad ciudad="Barcelona" ciudadSlug="barcelona" />
 
-        <CiudadHubServiciosGrid ciudad="Barcelona" ciudadSlug="barcelona" />
+        <CiudadHubServiciosGrid
+          ciudad="Barcelona"
+          ciudadSlug="barcelona"
+          excluirServicios={['prestamo-particulares']}
+        />
 
         <CiudadHubComoTrabajamos ciudad="Barcelona" />
 

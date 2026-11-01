@@ -32,6 +32,16 @@ const ESTRELLA = [
     label: 'Alquiler habitación Barcelona',
     hint: '145 €',
   },
+  {
+    href: '/gestoria/rescision-alquiler',
+    label: 'Rescisión alquiler y fianza',
+    hint: '120 €',
+  },
+  {
+    href: '/gestoria/contrato-compraventa',
+    label: 'Contrato compraventa privado',
+    hint: '145 €',
+  },
 ] as const
 
 type Props = {

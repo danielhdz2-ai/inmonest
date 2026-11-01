@@ -15,6 +15,7 @@ import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
 import { GestoriaCtaBanner } from '@/components/ui/GestoriaImageBanner'
 import { getCiudadCtaImage } from '@/lib/gestoria-images'
 import ContratosServiciosProfundos from '../ContratosServiciosProfundos'
+import ContratosInmobiliariosGestoriaBridge from '@/components/ContratosInmobiliariosGestoriaBridge'
 import {
   CONTRATOS_INMOBILIARIOS_CIUDADES,
   CONTRATOS_INMOBILIARIOS_CIUDAD_SLUGS,
@@ -79,6 +80,12 @@ export default function ContratosInmobiliariosCiudadContent({ ciudad }: Props) {
           </Link>
         </div>
       </GestoriaHeroFullBleed>
+
+      <ContratosInmobiliariosGestoriaBridge
+        ciudadNombre={ciudad.nombre}
+        ciudadSlug={ciudad.slug}
+        enlaceGestoria={ciudad.enlaceGestoria}
+      />
 
       {/* Mercado local */}
       <section className="bg-white px-4 py-16">

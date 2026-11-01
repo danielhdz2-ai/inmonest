@@ -27,6 +27,7 @@ import GestoriaCompletaNacionalConversion from '@/components/GestoriaCompletaNac
 import GestoriaCompletaNacionalAboveFold from '@/components/GestoriaCompletaNacionalAboveFold'
 import GestoriaServicioStrikeConversion from '@/components/GestoriaServicioStrikeConversion'
 import GestoriaContratoAlquilerStrikeConversion from '@/components/GestoriaContratoAlquilerStrikeConversion'
+import GestoriaServicioFaqAboveFold from '@/components/GestoriaServicioFaqAboveFold'
 import { servicioSlugIsDueDiligencePack } from '@/lib/due-diligence-servicio-registry'
 import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
@@ -1065,6 +1066,17 @@ export default async function ServicioGestoriaPage({
       ) : null}
 
       {servicio === 'contrato-alquiler' ? <GestoriaContratoAlquilerStrikeConversion /> : null}
+
+      {servicio === 'rescision-alquiler' || servicio === 'contrato-compraventa' ? (
+        <GestoriaServicioFaqAboveFold
+          title={
+            servicio === 'rescision-alquiler'
+              ? 'Preguntas frecuentes sobre rescisión de alquiler y fianza'
+              : 'Preguntas frecuentes sobre contrato de compraventa privado'
+          }
+          faqs={data.faq}
+        />
+      ) : null}
 
       {alquilerVariant ? (
         <GestoriaAlquilerTramiteOnlineSection

@@ -23,6 +23,7 @@ import {
   resolveBloqueCompradores,
   resolveBloqueVendedores,
 } from '@/lib/barcelona-habitacion-bloques-comprador-vendedor'
+import GestoriaBarcelonaHubMiniStrip from '@/components/GestoriaBarcelonaHubMiniStrip'
 
 const SOLICITAR_URL = '/gestoria/solicitar/alquiler-habitaciones'
 
@@ -328,6 +329,8 @@ export default function AlquilerHabitacionBarrioBarcelonaLanding({ config }: Pro
           />
         </div>
       </section>
+
+      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} />
 
       <GestoriaAlquilerTramiteOnlineSection
         ciudadNombre={ciudadLabel}
