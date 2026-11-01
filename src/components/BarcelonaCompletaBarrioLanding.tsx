@@ -17,6 +17,7 @@ import {
 import { getBarcelonaCompletaEditorial } from '@/lib/barcelona-completa-editorial'
 import BarcelonaCompletaEditorialSection from '@/components/BarcelonaCompletaEditorialSection'
 import BarcelonaCompletaRecursosSection from '@/components/BarcelonaCompletaRecursosSection'
+import GestoriaBarcelonaHubMiniStrip from '@/components/GestoriaBarcelonaHubMiniStrip'
 
 const SITE = 'https://inmonest.com'
 import { VENTA_COMPLETA_PRECIO, VENTA_COMPLETA_CIUDADES_LIST } from '@/lib/venta-completa-ciudad-data'
@@ -138,6 +139,8 @@ export default function BarcelonaCompletaBarrioLanding({ modo, config, otrosBarr
         solicitarLabel={`Contratar online — ${PRECO}€`}
         footnote={`Gestor asignado · Panel de cliente · Trámite 100 % online o despacho Les Corts (Mejía Lequerica 44)`}
       />
+
+      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} />
 
       <section className="py-14 px-4 bg-white border-t border-gray-100">
         <div className="max-w-3xl mx-auto">

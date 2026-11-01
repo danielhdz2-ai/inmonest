@@ -22,7 +22,7 @@ import InmonestOficinaBarcelonaSection from '@/components/InmonestOficinaBarcelo
 import GestoriaHubSinComisionSection from '@/components/GestoriaHubSinComisionSection'
 import GestoriaServiciosEstrellaSection from '@/components/GestoriaServiciosEstrellaSection'
 import GestoriaCiudadKeywordSection from '@/components/GestoriaCiudadKeywordSection'
-import GestoriaBarcelonaRankingSection from '@/components/GestoriaBarcelonaRankingSection'
+import GestoriaCiudadRankingSection from '@/components/GestoriaCiudadRankingSection'
 import { listBarcelonaCompraCompletaBarrios } from '@/lib/barcelona-compra-completa-barrios'
 import { listBarcelonaVentaCompletaBarrios } from '@/lib/barcelona-venta-completa-barrios'
 
@@ -114,7 +114,7 @@ export default function GestoriaBarcelonaPage() {
         />
         <GestoriaServiciosEstrellaSection ciudadSlug="barcelona" ciudadNombre="Barcelona" />
         <GestoriaCiudadKeywordSection ciudadSlug="barcelona" ciudadNombre="Barcelona" />
-        <GestoriaBarcelonaRankingSection />
+        <GestoriaCiudadRankingSection ciudadSlug="barcelona" ciudadNombre="Barcelona" />
 
         {/* Por qué Barcelona necesita gestoría especializada */}
         <section className="py-16 bg-white">

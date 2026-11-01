@@ -23,6 +23,7 @@ import { getCiudadImage } from '@/lib/gestoria-images'
 import GestoriaHubSinComisionSection from '@/components/GestoriaHubSinComisionSection'
 import GestoriaServiciosEstrellaSection from '@/components/GestoriaServiciosEstrellaSection'
 import GestoriaCiudadKeywordSection from '@/components/GestoriaCiudadKeywordSection'
+import GestoriaCiudadRankingSection from '@/components/GestoriaCiudadRankingSection'
 
 const BASE_URL = 'https://inmonest.com'
 const ciudadImage = getCiudadImage('valencia')
@@ -107,6 +108,7 @@ export default function GestoriaValenciaPage() {
         <GestoriaHubSinComisionSection ciudadNombre="Valencia" ciudadSlug="valencia" />
         <GestoriaServiciosEstrellaSection ciudadSlug="valencia" ciudadNombre="Valencia" />
         <GestoriaCiudadKeywordSection ciudadSlug="valencia" ciudadNombre="Valencia" />
+        <GestoriaCiudadRankingSection ciudadSlug="valencia" ciudadNombre="Valencia" />
 
         {/* Por qué Valencia necesita gestoría especializada */}
         <section className="py-16 bg-white">

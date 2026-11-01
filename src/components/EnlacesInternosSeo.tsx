@@ -16,6 +16,18 @@ const ENLACES_HOME: EnlaceSeo[] = [
     badge: 'Hub',
   },
   {
+    href: '/gestoria/madrid',
+    title: 'Gestoría inmobiliaria Madrid',
+    description: 'Particulares: LAU, arras y 687 € hasta escritura.',
+    badge: 'Hub',
+  },
+  {
+    href: '/gestoria/valencia',
+    title: 'Gestoría inmobiliaria Valencia',
+    description: 'Gestoría online con normativa valenciana.',
+    badge: 'Hub',
+  },
+  {
     href: '/contratos-inmobiliarios',
     title: 'Contratos inmobiliarios',
     description: 'Redacción profesional para particulares. Desde 61€ en 48h.',

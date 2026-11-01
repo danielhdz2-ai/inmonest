@@ -23,6 +23,7 @@ import { getCiudadImage } from '@/lib/gestoria-images'
 import GestoriaHubSinComisionSection from '@/components/GestoriaHubSinComisionSection'
 import GestoriaServiciosEstrellaSection from '@/components/GestoriaServiciosEstrellaSection'
 import GestoriaCiudadKeywordSection from '@/components/GestoriaCiudadKeywordSection'
+import GestoriaCiudadRankingSection from '@/components/GestoriaCiudadRankingSection'
 
 const BASE_URL = 'https://inmonest.com'
 const ciudadImage = getCiudadImage('madrid')
@@ -106,6 +107,7 @@ export default function GestoriaMadridPage() {
         <GestoriaHubSinComisionSection ciudadNombre="Madrid" ciudadSlug="madrid" />
         <GestoriaServiciosEstrellaSection ciudadSlug="madrid" ciudadNombre="Madrid" />
         <GestoriaCiudadKeywordSection ciudadSlug="madrid" ciudadNombre="Madrid" />
+        <GestoriaCiudadRankingSection ciudadSlug="madrid" ciudadNombre="Madrid" />
 
         {/* Por qué Madrid necesita gestoría especializada */}
         <section className="py-16 bg-white">

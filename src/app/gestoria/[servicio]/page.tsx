@@ -26,6 +26,7 @@ import BarcelonaCompletaBarriosHubSection from '@/components/BarcelonaCompletaBa
 import GestoriaCompletaNacionalConversion from '@/components/GestoriaCompletaNacionalConversion'
 import GestoriaCompletaNacionalAboveFold from '@/components/GestoriaCompletaNacionalAboveFold'
 import GestoriaServicioStrikeConversion from '@/components/GestoriaServicioStrikeConversion'
+import GestoriaContratoAlquilerStrikeConversion from '@/components/GestoriaContratoAlquilerStrikeConversion'
 import { servicioSlugIsDueDiligencePack } from '@/lib/due-diligence-servicio-registry'
 import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
@@ -894,7 +895,7 @@ export async function generateMetadata({
                     : `${data.nombre} — Gestoría inmobiliaria`
   const seoDescription =
     servicio === 'contrato-alquiler'
-      ? `Contrato de alquiler de vivienda habitual adaptado a LAU y Ley de Vivienda 2026. Redactado por gestoría experta. ${data.precio}€ IVA incl. PDF firmable en 48h.`
+      ? `Contrato alquiler LAU por gestoría inmobiliaria online. ${data.precio}€ IVA incl., Ley Vivienda 2026, entrega 48 h. PDF firmable — toda España.`
       : servicio === 'pack-arras-revision-documental'
         ? `Arras penitenciales + revisión documental completa para compradores entre particulares. ${data.precio}€ IVA incl. Informe en 3-5 días.`
         : servicio === 'pack-arras-plus-vendedor'
@@ -1062,6 +1063,8 @@ export default async function ServicioGestoriaPage({
       {servicio === 'rescision-alquiler' || servicio === 'contrato-compraventa' ? (
         <GestoriaServicioStrikeConversion servicio={servicio} />
       ) : null}
+
+      {servicio === 'contrato-alquiler' ? <GestoriaContratoAlquilerStrikeConversion /> : null}
 
       {alquilerVariant ? (
         <GestoriaAlquilerTramiteOnlineSection

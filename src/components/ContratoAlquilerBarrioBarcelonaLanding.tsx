@@ -23,6 +23,7 @@ import {
 import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import type { BarcelonaAlquilerBarrioConfig } from '@/lib/barcelona-contrato-alquiler-barrios'
 import { listBarcelonaAlquilerBarrios } from '@/lib/barcelona-contrato-alquiler-barrios'
+import GestoriaBarcelonaHubMiniStrip from '@/components/GestoriaBarcelonaHubMiniStrip'
 
 type Props = {
   config: BarcelonaAlquilerBarrioConfig
@@ -261,6 +262,8 @@ export default function ContratoAlquilerBarrioBarcelonaLanding({ config }: Props
           </div>
         </div>
       </section>
+
+      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} />
 
       <GestoriaAlquilerTramiteOnlineSection
         ciudadNombre={ciudadLabel}

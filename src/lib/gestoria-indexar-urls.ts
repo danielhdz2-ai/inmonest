@@ -198,6 +198,18 @@ export const GESTORIA_ENLACES_INDEXACION = [
     badge: 'Hub BCN',
   },
   {
+    href: '/gestoria/madrid',
+    title: 'Gestoría inmobiliaria Madrid',
+    description: 'LAU, arras y venta/compra completa 687 €. Particulares sin comisión.',
+    badge: 'Hub MAD',
+  },
+  {
+    href: '/gestoria/valencia',
+    title: 'Gestoría inmobiliaria Valencia',
+    description: 'Contratos LAU, arras y packs 687 € en la Comunitat Valenciana.',
+    badge: 'Hub VLC',
+  },
+  {
     href: '/contratos-inmobiliarios/madrid',
     title: 'Contratos inmobiliarios Madrid',
     description: 'Arras, LAU y gestoría para particulares en Madrid.',

@@ -21,6 +21,7 @@ import {
 import { gestoriaLandingBreadcrumbs } from '@/lib/gestoria-ciudad-schema'
 import type { BarcelonaArrasBarrioConfig } from '@/lib/barcelona-contrato-arras-barrios'
 import { listBarcelonaArrasBarrios } from '@/lib/barcelona-contrato-arras-barrios'
+import GestoriaBarcelonaHubMiniStrip from '@/components/GestoriaBarcelonaHubMiniStrip'
 
 type Props = { config: BarcelonaArrasBarrioConfig }
 
@@ -267,6 +268,8 @@ export default function ContratoArrasBarrioBarcelonaLanding({ config }: Props) {
           </div>
         </div>
       </section>
+
+      <GestoriaBarcelonaHubMiniStrip barrioNombre={config.nombre} />
 
       <GestoriaArrasTramiteOnlineSection
         ciudadNombre={ciudadLabel}
