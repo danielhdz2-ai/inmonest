@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { getContratoAlquilerSolicitarHref } from '@/lib/gestoria-catalogo'
 
 type Mode = 'alquiler' | 'arras'
 
@@ -83,8 +84,8 @@ export default function CalculadoraAhorroContrato({ mode, ciudad, ciudadSlug, pr
 
   const solicitarHref =
     mode === 'alquiler'
-      ? `/gestoria/solicitar/contrato-alquiler?ciudad=${ciudadSlug}`
-      : `/gestoria/solicitar/arras-penitenciales?ciudad=${ciudadSlug}`
+      ? getContratoAlquilerSolicitarHref(ciudadSlug)
+      : '/gestoria/solicitar/arras-penitenciales'
 
   return (
     <section className="rounded-2xl border border-gold-500/25 overflow-hidden shadow-xl bg-white">

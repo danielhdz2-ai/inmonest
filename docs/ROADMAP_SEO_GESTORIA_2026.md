@@ -42,20 +42,20 @@
 
 - [x] Silo `prestamo-particulares` (oculto en grid «Todos» del hub `/gestoria`; excluido en hubs BCN/MAD/VLC)
 - [x] Puente `contratos-inmobiliarios` ↔ `/gestoria/{servicio}` (oleada 3)
-- [ ] Checkout: no indexar variantes `?ciudad=`; canonical limpia
+- [x] Checkout: URLs `?ciudad=` en solicitar — middleware 301 + CTAs sin query (Calculadora, hubs, oleada 8)
 - [x] 404 legacy gestoría (GSC ago 2026) — oleada 4–6 en `seo-redirects.ts` (revisar Coverage tras deploy)
 
 ## Fase 6 — E-E-A-T y conversión
 
 - [x] Testimonios en landings >500 imp (cuanto-cuesta + servicios top GSC, oleada 7)
 - [x] CTA WhatsApp con mensaje pre-rellenado (hubs ciudad + servicios top GSC, oleada 5)
-- [ ] Panel demo por servicio en landings top 10
-- [ ] Agregación reseñas schema solo donde proceda
+- [ ] Agregación reseñas schema solo donde proceda (no duplicar en todas las landings)
 
 ## Fase 7 — Medición
 
-- [ ] `npm run gsc:fetch` mensual; luego `npm run gsc:gestoria:analyze` → diff vs `gsc-gestoria-analysis.json`
-- [ ] Panel interno: top 20 URLs gestoría sin clics
+- [x] Baseline 90d documentado — `docs/GSC_GESTORIA_MEDICION.md` + `npm run gsc:gestoria:refresh` (2026-11-01)
+- [ ] Repetir refresh mensual y anotar diff en `GSC_GESTORIA_MEDICION.md`
+- [x] Top URLs sin clics / page-1 — listadas en `GSC_GESTORIA_MEDICION.md` (salida analyze local)
 - [ ] A/B titles en 3 landings (manual GSC)
 
 ---
