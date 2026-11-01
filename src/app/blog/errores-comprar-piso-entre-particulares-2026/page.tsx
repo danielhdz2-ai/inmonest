@@ -5,6 +5,7 @@ import GestorContactBanner from '@/components/GestorContactBanner'
 import { BlogGestorExpedientePanel } from '@/components/blog/BlogGestorExpedientePanel'
 import { BlogServiciosGrid } from '@/components/blog/BlogServiciosGrid'
 import { precioLabel } from '@/lib/gestoria-precios-ui'
+import GestoriaBlogCompraVenta687Cta from '@/components/GestoriaBlogCompraVenta687Cta'
 
 const BASE_URL = 'https://inmonest.com'
 const SLUG = 'errores-comprar-piso-entre-particulares-2026'
@@ -454,6 +455,8 @@ export default function ErroresComprarPisoEntreParticulares2026Page() {
             </div>
           </div>
         </article>
+
+        <GestoriaBlogCompraVenta687Cta />
 
         <GestorContactBanner
           title="¿Necesitas hablar con tu gestor inmobiliario?"

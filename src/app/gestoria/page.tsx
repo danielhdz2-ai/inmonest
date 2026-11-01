@@ -6,6 +6,7 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 import StickyMobileContratoCta from '@/components/StickyMobileContratoCta'
 import { MobileDockSpacer } from '@/components/ui/MobileDockSpacer'
 import { getPrecioServicio } from '@/lib/gestoria-catalogo'
+import GestoriaHomePacks687Section from '@/components/GestoriaHomePacks687Section'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -14,9 +15,9 @@ function schemaPrice(slug: string, fallback: number): string {
 }
 
 export const metadata: Metadata = {
-  title: 'Gestoría inmobiliaria online desde 61€',
+  title: 'Gestoría inmobiliaria online — 687€ venta/compra',
   description:
-    'Gestoría inmobiliaria para particulares: contrato LAU, arras, temporada y compraventa desde 61 € en 48 h. Valoración 5.0 en Google. Toda España, trámite online.',
+    'Gestoría inmobiliaria para particulares: LAU y arras desde 145 €; venta y compra completa hasta escritura 687 € sin comisión de agencia. Entrega 48 h. Toda España.',
   keywords: 'gestoría inmobiliaria, gestoría inmobiliaria online, gestor inmobiliario, contrato arras penitenciales, contrato alquiler LAU, gestoría compraventa vivienda, gestor inmobiliario, gestoría barcelona, gestoría madrid, gestoría valencia',
   alternates: {
     canonical: `${BASE_URL}/gestoria`,
@@ -279,6 +280,7 @@ export default function GestoriaPage() {
         dangerouslySetInnerHTML={{ __html: breadcrumbSchema }}
       />
       <Navbar />
+      <GestoriaHomePacks687Section />
       <GestoriaContent />
       <MobileDockSpacer />
       <StickyMobileContratoCta

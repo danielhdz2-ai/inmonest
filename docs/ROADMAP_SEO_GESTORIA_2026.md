@@ -20,12 +20,13 @@
 
 - [ ] Posición queries «gestoría inmobiliaria [ciudad]» (meta + H1 + FAQ + schema)
 - [ ] Reducir canibalización: hub `/gestoria/{ciudad}` vs `/gestoria/{servicio}/{ciudad}`
-- [ ] Madrid/Valencia: mismos bloques que Barcelona (sin comisión + estrella)
-- [ ] Enlazar blog arras → hubs ciudad + packs 687€
+- [x] Madrid/Valencia: mismos bloques que Barcelona (sin comisión + estrella)
+- [x] Enlazar blog arras → hubs ciudad + packs 687€ (4 posts)
+- [x] Hub `/gestoria` — bloque conversión 687 € + meta SERP
 
 ## Fase 3 — Venta/compra completa
 
-- [ ] Hubs compra en mismas ciudades que venta (19 ciudades)
+- [x] Hubs compra en mismas ciudades que venta (19 ciudades, ruta `[ciudad]`)
 - [ ] Barrios BCN: indexación GSC (top 10 barrios/semana)
 - [ ] Queries «vender/comprar sin comisiones» → landings dedicadas + enlaces desde marketplace
 - [ ] CTR: rich results (FAQ, HowTo, LocalBusiness) en todas las landings barrio

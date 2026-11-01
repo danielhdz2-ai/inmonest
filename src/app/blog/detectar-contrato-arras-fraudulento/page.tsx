@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import GestoriaBlogCompraVenta687Cta from '@/components/GestoriaBlogCompraVenta687Cta'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -302,6 +303,8 @@ export default function DetectarArrasFraudulentoBlogPost() {
             </Link>
           </div>
         </div>
+
+        <GestoriaBlogCompraVenta687Cta />
       </article>
     </>
   )

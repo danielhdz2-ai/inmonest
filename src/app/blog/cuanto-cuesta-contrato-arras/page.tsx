@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
+import GestoriaBlogCompraVenta687Cta from '@/components/GestoriaBlogCompraVenta687Cta'
 
 const BASE_URL = 'https://inmonest.com'
 const FECHA = '2026-05-27'
@@ -476,6 +477,8 @@ export default function CuantoCuestaArrasPage() {
           </div>
 
         </article>
+
+        <GestoriaBlogCompraVenta687Cta />
 
         <nav className="mt-12 pt-8 border-t border-gray-200">
           <p className="text-sm text-gray-500 mb-4">Artículos relacionados:</p>

@@ -181,7 +181,7 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     nombre: 'Compra Completa hasta Escritura',
     precioSlug: 'compra-completa-reserva-escritura',
     href: (c) => `/gestoria/compra-completa-reserva-escritura/${c}`,
-    ciudades: ['barcelona', 'madrid', 'valencia'],
+    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'salamanca', 'valladolid', 'alicante', 'bilbao', 'zaragoza', 'coruna', 'pamplona', 'murcia', 'granada', 'mallorca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
     id: 'pack-arras-vendedor',

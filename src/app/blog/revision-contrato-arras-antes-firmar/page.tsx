@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import PageHeroImage from '@/components/PageHeroImage'
 import { precioLabel } from '@/lib/gestoria-precios-ui'
+import GestoriaBlogCompraVenta687Cta from '@/components/GestoriaBlogCompraVenta687Cta'
 
 const BASE_URL = 'https://inmonest.com'
 const SLUG = 'revision-contrato-arras-antes-firmar'
@@ -389,6 +390,8 @@ export default function RevisionContratoArrasAntesFirmarPage() {
               </Link>
             </div>
           </div>
+
+          <GestoriaBlogCompraVenta687Cta />
         </article>
       </main>
     </>

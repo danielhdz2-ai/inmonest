@@ -4,6 +4,10 @@ import { GESTOR_DANIEL_HERNANDEZ } from './gestores-inmonest'
 import { getCiudadImage } from './gestoria-images'
 import { withGestoriaIndexRobots } from './gestoria-indexacion-tier'
 import { getPrecioServicio } from './gestoria-catalogo'
+import {
+  VENTA_COMPLETA_CIUDADES,
+  type VentaCompletaCiudadConfig,
+} from './venta-completa-ciudad-data'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -38,7 +42,54 @@ export type CompraCompletaCiudadConfig = {
   faqPrioritarias?: DueDiligenceFaqItem[]
 }
 
-export const COMPRA_COMPLETA_CIUDADES: Record<string, CompraCompletaCiudadConfig> = {
+function compraGestorFromVenta(v: VentaCompletaCiudadConfig): CompraCompletaCiudadConfig['gestor'] {
+  const rol = v.gestor.rol
+    .replace(/Ventas/gi, 'Compras')
+    .replace(/Venta/gi, 'Compra')
+    .replace(/vendedores/gi, 'compradores')
+    .replace(/Vendedores/gi, 'Compradores')
+  const bio = v.gestor.bio
+    .replace(/vendedores/gi, 'compradores')
+    .replace(/Vendedores/gi, 'Compradores')
+    .replace(/ventas/gi, 'compras')
+    .replace(/Vende/gi, 'Compra')
+  return {
+    nombre: v.gestor.nombre,
+    rol: rol.includes('Compra') ? rol : `${rol} · Compras entre particulares`,
+    foto: v.gestor.foto,
+    bio: bio.length > 40 ? bio : `Due diligence, arras y seguimiento hasta notaría en ${v.nombre}.`,
+  }
+}
+
+export function compraCompletaConfigFromVenta(v: VentaCompletaCiudadConfig): CompraCompletaCiudadConfig {
+  const slug = v.slug
+  const nombre = v.nombre
+  return {
+    slug,
+    nombre,
+    region: v.region,
+    testimoniosLanding: 'compra-completa-reserva-escritura',
+    heroImage: v.heroImage,
+    precioEjemploPiso: v.precioEjemploPiso,
+    comprasAcompanadas: Math.max(5, Math.round(v.ventasAcompanadas * 0.45)),
+    gestor: compraGestorFromVenta(v),
+    zonas: v.zonas,
+    meta: {
+      title: `Comprar piso particular ${nombre} desde 687€`,
+      description: `Compra a particular en ${nombre} con gestor: due diligence, arras y notaría. 687€ IVA incl. Sin comisión de agencia.`,
+      keywords: `comprar piso particular ${slug}, gestoria compra vivienda ${slug}, comprar sin agencia ${slug}, gestor compra piso ${slug}`,
+      ogTitle: `Comprar piso a un particular en ${nombre} — 687€ hasta escritura`,
+      ogDescription: `Revisión documental, arras con hipoteca y coordinación notarial. 687€ fijos.`,
+    },
+    hero: {
+      h1: `Compra piso a particular en ${nombre} con gestor hasta escritura`,
+      lead: `Ya tienes vivienda y precio con un vendedor particular. Revisamos documentación en ${v.region}, blindamos las arras y te acompañamos hasta notaría. 687 € fijos — 0 % comisión de captación.`,
+    },
+  }
+}
+
+/** Copys premium para las 3 ciudades con más tráfico GSC */
+const COMPRA_COMPLETA_OVERRIDES: Partial<Record<string, CompraCompletaCiudadConfig>> = {
   barcelona: {
     slug: 'barcelona',
     nombre: 'Barcelona',
@@ -79,7 +130,6 @@ export const COMPRA_COMPLETA_CIUDADES: Record<string, CompraCompletaCiudadConfig
       },
     ],
   },
-
   madrid: {
     slug: 'madrid',
     nombre: 'Madrid',
@@ -116,7 +166,6 @@ export const COMPRA_COMPLETA_CIUDADES: Record<string, CompraCompletaCiudadConfig
       },
     ],
   },
-
   valencia: {
     slug: 'valencia',
     nombre: 'Valencia',
@@ -148,6 +197,13 @@ export const COMPRA_COMPLETA_CIUDADES: Record<string, CompraCompletaCiudadConfig
     },
   },
 }
+
+export const COMPRA_COMPLETA_CIUDADES: Record<string, CompraCompletaCiudadConfig> = Object.fromEntries(
+  Object.entries(VENTA_COMPLETA_CIUDADES).map(([slug, venta]) => [
+    slug,
+    COMPRA_COMPLETA_OVERRIDES[slug] ?? compraCompletaConfigFromVenta(venta),
+  ]),
+)
 
 export function buildCompraCompletaMetadata(config: CompraCompletaCiudadConfig): Metadata {
   const path = `/gestoria/compra-completa-reserva-escritura/${config.slug}`
