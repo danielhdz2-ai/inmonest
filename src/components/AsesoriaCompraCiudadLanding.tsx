@@ -71,7 +71,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
   return (
     <>
       <GestoriaLandingSeo
-        pagePath={`/gestoria/asesoria-compra-piso/${slug}`}
+        pagePath={`/gestoria/compra-completa-reserva-escritura/${slug}`}
         pageTitle={`Asesoría compra de piso en ${nombre}`}
         description={config.hero.lead}
         servicioNombre="Asesoría compra de piso"
@@ -243,7 +243,7 @@ export default function AsesoriaCompraCiudadLanding({ config }: AsesoriaCompraCi
             {ASESORIA_COMPRA_CIUDADES_LIST.filter((c) => c.slug !== slug).map((c) => (
               <Link
                 key={c.slug}
-                href={`/gestoria/asesoria-compra-piso/${c.slug}`}
+                href={`/gestoria/compra-completa-reserva-escritura/${c.slug}`}
                 className="text-sm font-semibold text-gold-500 hover:underline"
               >
                 {c.nombre} →

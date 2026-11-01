@@ -113,7 +113,7 @@ export const CONTRATOS_SERVICIOS_PROFUNDOS: ContratoServicioProfundo[] = [
     precioNota: 'Reserva a escritura · IVA incluido · sin comisión',
     ctaHref: '/gestoria/solicitar/compra-completa-reserva-escritura',
     ctaLabel: 'Contratar acompañamiento de compra',
-    ctaSecundarioHref: '/gestoria/asesoria-compra-piso',
+    ctaSecundarioHref: '/gestoria/compra-completa-reserva-escritura',
     ctaSecundarioLabel: 'Ver servicio en detalle',
   },
   {

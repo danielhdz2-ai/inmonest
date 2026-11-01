@@ -48,6 +48,7 @@ import {
   buildGestoriaWhatsAppHref,
   gestoriaServicioWhatsAppMessage,
 } from '@/lib/gestoria-contact'
+import { withGestoriaIndexRobots } from '@/lib/gestoria-indexacion-tier'
 
 const BASE_URL = 'https://inmonest.com'
 
@@ -924,10 +925,9 @@ export async function generateMetadata({
       ? `${data.precio} € · Informe en 3–5 días · 100 % online`
       : `${data.precio} € · Entrega en 48h.`
 
-  return {
+  return withGestoriaIndexRobots(`/gestoria/${servicio}`, {
     title: seoTitle,
     description: seoDescription,
-    robots: { index: true, follow: true },
     alternates: { canonical: `${BASE_URL}/gestoria/${servicio}` },
     openGraph: {
       title: `${data.nombre}`,
@@ -937,7 +937,7 @@ export async function generateMetadata({
       siteName: 'Inmonest',
       locale: 'es_ES',
     },
-  }
+  })
 }
 
 export default async function ServicioGestoriaPage({

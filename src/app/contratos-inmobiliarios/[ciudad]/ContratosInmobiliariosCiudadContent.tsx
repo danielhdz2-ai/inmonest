@@ -22,6 +22,7 @@ import {
   type ContratosInmobiliariosCiudadConfig,
 } from '@/lib/contratos-inmobiliarios-ciudades'
 import { GESTORIA_PRECIO_MIN } from '@/lib/gestoria-catalogo'
+import { getCompraCompletaHref } from '@/lib/gestoria-compra-cross-sell'
 import { Building2, Scale } from '@/components/ui/Icons'
 
 type Props = {
@@ -124,7 +125,7 @@ export default function ContratosInmobiliariosCiudadContent({ ciudad }: Props) {
         links={{
           arrasInfo: ciudad.enlaceArras,
           alquilerInfo: ciudad.enlaceAlquiler,
-          compraInfo: `/gestoria/asesoria-compra-piso/${ciudad.slug}`,
+          compraInfo: getCompraCompletaHref(ciudad.slug),
           ventaInfo: [
             'madrid',
             'barcelona',

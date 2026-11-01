@@ -59,7 +59,7 @@ export default function ParticularesGestoriaServiciosCatalog({ ciudad, nombre }:
       title: 'Compra integral',
       price: 'Consultar pack',
       desc: 'Reserva, arras, due diligence y camino a escritura.',
-      href: `/gestoria/asesoria-compra-piso/${ciudad}`,
+      href: `/gestoria/compra-completa-reserva-escritura/${ciudad}`,
       solicitar: '/gestoria/solicitar/compra-completa-reserva-escritura',
       image: compraImg.hero,
     },

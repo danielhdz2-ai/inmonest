@@ -55,8 +55,8 @@ export default function Footer() {
           <Link href="/gestoria/cuanto-cuesta-contrato-alquiler" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Precio contrato alquiler
           </Link>
-          <Link href="/gestoria/prestamo-particulares" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
-            Préstamo entre particulares
+          <Link href="/gestoria/compra-completa-reserva-escritura" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
+            Compra completa 687€
           </Link>
           <Link href="/gestoria/contrato-alquiler-habitacion" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Alquiler habitación
@@ -70,7 +70,7 @@ export default function Footer() {
           <Link href="/gestoria/contrato-compraventa" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Contrato de compraventa
           </Link>
-          <Link href="/gestoria/asesoria-compra-piso" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
+          <Link href="/gestoria/compra-completa-reserva-escritura" className="text-sm text-white/60 hover:text-gold-300 transition-colors">
             Asesoría compra de piso
           </Link>
           <Link href="/gestoria/due-diligence-precompra" className="text-sm text-white/60 hover:text-gold-300 transition-colors">

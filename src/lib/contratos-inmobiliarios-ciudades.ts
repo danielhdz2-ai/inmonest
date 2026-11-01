@@ -1116,7 +1116,7 @@ const MURCIA: ContratosInmobiliariosCiudadConfig = {
       a: 'Sí. El servicio es 100% online en toda la Región de Murcia. Adaptamos referencias registrales al municipio del inmueble.',
     },
   ],
-  enlaceGestoria: '/gestoria/asesoria-compra-piso/murcia',
+  enlaceGestoria: '/gestoria/compra-completa-reserva-escritura/murcia',
   enlaceArras: '/murcia/contrato-arras',
   enlaceAlquiler: '/murcia/contrato-alquiler',
 }
@@ -1220,7 +1220,7 @@ const CORUNA: ContratosInmobiliariosCiudadConfig = {
       a: 'Sí. El servicio de compra completa (687 €) incluye revisión documental, arras y acompañamiento hasta escritura — sin comisión de agencia.',
     },
   ],
-  enlaceGestoria: '/gestoria/asesoria-compra-piso/coruna',
+  enlaceGestoria: '/gestoria/compra-completa-reserva-escritura/coruna',
   enlaceArras: '/coruna/contrato-arras',
   enlaceAlquiler: '/coruna/contrato-alquiler',
 }
@@ -2156,7 +2156,7 @@ const PAMPLONA: ContratosInmobiliariosCiudadConfig = {
       a: 'Sí, si el uso es vivienda habitual del inquilino. Redactamos el contrato con cláusulas de duración, fianza y actualización de renta conformes a la normativa vigente.',
     },
   ],
-  enlaceGestoria: '/gestoria/asesoria-compra-piso/pamplona',
+  enlaceGestoria: '/gestoria/compra-completa-reserva-escritura/pamplona',
   enlaceArras: '/pamplona/contrato-arras',
   enlaceAlquiler: '/pamplona/contrato-alquiler',
 }

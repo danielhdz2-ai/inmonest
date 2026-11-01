@@ -40,7 +40,7 @@ export const RELACIONADOS_VENTA: RelacionadoServicio[] = [
 export const RELACIONADOS_DUE_DILIGENCE: RelacionadoServicio[] = [
   {
     slug: 'compra-completa-reserva-escritura',
-    href: '/gestoria/asesoria-compra-piso',
+    href: '/gestoria/compra-completa-reserva-escritura',
     nombre: 'Asesoría Compra de Piso',
     precio: precio('compra-completa-reserva-escritura'),
     descripcion: 'Acompañamiento integral desde reserva hasta escritura.',
@@ -71,7 +71,7 @@ export const RELACIONADOS_PACK_ARRAS_DOCUMENTAL: RelacionadoServicio[] = [
   },
   {
     slug: 'compra-completa-reserva-escritura',
-    href: '/gestoria/asesoria-compra-piso',
+    href: '/gestoria/compra-completa-reserva-escritura',
     nombre: 'Compra Completa',
     precio: precio('compra-completa-reserva-escritura'),
     descripcion: 'Gestor dedicado desde reserva hasta escritura.',
@@ -126,7 +126,7 @@ export const RELACIONADOS_PRESTAMO: RelacionadoServicio[] = [
   },
   {
     slug: 'compra-completa-reserva-escritura',
-    href: '/gestoria/asesoria-compra-piso',
+    href: '/gestoria/compra-completa-reserva-escritura',
     nombre: 'Asesoría Compra de Piso',
     precio: precio('compra-completa-reserva-escritura'),
     descripcion: 'Acompañamiento integral si el préstamo va destinado a comprar vivienda.',
@@ -167,7 +167,7 @@ export const RELACIONADOS_PARKING: RelacionadoServicio[] = [
   },
   {
     slug: 'compra-completa-reserva-escritura',
-    href: '/gestoria/asesoria-compra-piso',
+    href: '/gestoria/compra-completa-reserva-escritura',
     nombre: 'Asesoría Compra Vivienda',
     precio: precio('compra-completa-reserva-escritura'),
     descripcion: 'Si compras vivienda y parking, acompañamiento integral.',
@@ -277,7 +277,7 @@ export const RELACIONADOS_REVISION_ARRAS: RelacionadoServicio[] = [
   },
   {
     slug: 'compra-completa-reserva-escritura',
-    href: '/gestoria/asesoria-compra-piso',
+    href: '/gestoria/compra-completa-reserva-escritura',
     nombre: 'Asesoría Compra de Piso',
     precio: precio('compra-completa-reserva-escritura'),
     descripcion: 'Acompañamiento integral del comprador hasta notaría.',
@@ -373,7 +373,7 @@ export const RELACIONADOS_COMPRAVENTA: RelacionadoServicio[] = [
   },
   {
     slug: 'compra-completa-reserva-escritura',
-    href: '/gestoria/asesoria-compra-piso',
+    href: '/gestoria/compra-completa-reserva-escritura',
     nombre: 'Asesoría Compra de Piso',
     precio: precio('compra-completa-reserva-escritura'),
     descripcion: 'Acompañamiento integral hasta escritura.',

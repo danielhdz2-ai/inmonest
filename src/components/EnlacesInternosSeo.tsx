@@ -76,9 +76,9 @@ const ENLACES_HOME: EnlaceSeo[] = [
     badge: 'Blog',
   },
   {
-    href: '/gestoria/prestamo-particulares',
-    title: 'Préstamo entre particulares',
-    description: 'Contrato legal con registro en Hacienda.',
+    href: '/gestoria/contrato-alquiler',
+    title: 'Contrato de alquiler LAU',
+    description: 'Gestoría online 145 € · Ley Vivienda 2026 · 48 h.',
     badge: 'Servicio',
   },
   {
@@ -88,7 +88,7 @@ const ENLACES_HOME: EnlaceSeo[] = [
     badge: 'Nuevo',
   },
   {
-    href: '/gestoria/asesoria-compra-piso/valencia',
+    href: '/gestoria/compra-completa-reserva-escritura/valencia',
     title: 'Compra piso Valencia',
     description: '687€ fijos. Sin comisión de agencia.',
     badge: 'Ciudad',

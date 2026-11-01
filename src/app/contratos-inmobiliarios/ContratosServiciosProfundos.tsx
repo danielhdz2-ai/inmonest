@@ -64,7 +64,7 @@ function buildServicios(
     if (s.id === 'acompanamiento-compra') {
       ctaSecundarioHref =
         links?.compraInfo ??
-        (ciudadSlug ? `/gestoria/asesoria-compra-piso/${ciudadSlug}` : s.ctaSecundarioHref)
+        (ciudadSlug ? `/gestoria/compra-completa-reserva-escritura/${ciudadSlug}` : s.ctaSecundarioHref)
     }
     if (s.id === 'acompanamiento-venta') {
       ctaSecundarioHref =

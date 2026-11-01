@@ -214,7 +214,7 @@ function BarcelonaHabitacionCompradorVendedorBloques({ config }: { config: Barce
             Due diligence Barcelona
           </Link>
           <Link
-            href="/gestoria/asesoria-compra-piso/barcelona"
+            href="/gestoria/compra-completa-reserva-escritura/barcelona"
             className="inline-flex justify-center px-4 py-2.5 rounded-lg border border-emerald-400 text-sm font-semibold text-emerald-900 hover:bg-white transition-colors"
           >
             Asesoría compra

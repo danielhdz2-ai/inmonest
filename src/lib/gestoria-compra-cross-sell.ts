@@ -1,5 +1,6 @@
 import { getContratoAlquilerPremiumConfig } from './contrato-alquiler-premium-config'
 import { getContratoArrasPremiumConfig } from './contrato-arras-premium-config'
+import { COMPRA_COMPLETA_CIUDADES } from './compra-completa-ciudad-data'
 import { GESTORIA_CIUDADES_EXPANSION_SLUGS } from './gestoria-ciudades-expansion'
 
 /** Ciudades con landing de asesoría compra (687€) */
@@ -88,12 +89,17 @@ export function hasPackArrasDocumentalCiudad(ciudadSlug: string): boolean {
   return (PACK_ARRAS_DOCUMENTAL_CIUDADES as readonly string[]).includes(ciudadSlug)
 }
 
-export function getAsesoriaCompraHref(ciudadSlug: string | null | undefined): string {
+export function getCompraCompletaHref(ciudadSlug: string | null | undefined): string {
   const slug = ciudadSlug?.toLowerCase()
-  if (slug && (ASESORIA_COMPRA_CIUDADES as readonly string[]).includes(slug)) {
-    return `/gestoria/asesoria-compra-piso/${slug}`
+  if (slug && slug in COMPRA_COMPLETA_CIUDADES) {
+    return `/gestoria/compra-completa-reserva-escritura/${slug}`
   }
-  return '/gestoria/asesoria-compra-piso'
+  return '/gestoria/compra-completa-reserva-escritura'
+}
+
+/** @deprecated Usar getCompraCompletaHref — mantiene compatibilidad interna. */
+export function getAsesoriaCompraHref(ciudadSlug: string | null | undefined): string {
+  return getCompraCompletaHref(ciudadSlug)
 }
 
 export function hasDueDiligenceCiudad(ciudadSlug: string): boolean {

@@ -41,7 +41,7 @@ Seguimiento post-deploy: CTR de cuanto-cuesta y hubs ciudad.
 
 | URL | Imp | Clics | Notas |
 |-----|-----|-------|--------|
-| `/gestoria/prestamo-particulares/valencia` | 491 | 0 | Reducir enlaces desde silo gestoría |
+| `/gestoria/prestamo-particulares/valencia` | 491 | 0 | **Oleada 9:** `noindex` + sin enlaces internos/sitemap |
 | `/gestoria/madrid` | 206 | 1 | FAQ/WA above fold (oleada 5) |
 | `/gestoria/rescision-alquiler` | 118 | 0 | Strike + FAQ (oleada 2–3) |
 | `/gestoria/prestamo-particulares/barcelona` | 117 | 0 | Excluido grid hubs |

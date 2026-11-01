@@ -10,9 +10,9 @@ const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   // ≤48 chars: layout añade " | Inmonest" → precio visible en SERP
-  title: '¿Cuánto cuesta contrato alquiler gestoría? 145€',
+  title: 'Cuánto cuesta contrato alquiler en gestoría — 145€',
   description:
-    '¿Cuánto cuesta un contrato de alquiler en gestoría? Desde 145 € IVA incl. (48 h) vs notario 300–500 €. Comparativa LAU 2026 y contratar online.',
+    'Precio contrato alquiler en gestoría: 145 € IVA incl. (48 h) vs notario 300–500 €. Comparativa LAU 2026, qué incluye y contratar online.',
   alternates: {
     canonical: `${BASE_URL}/gestoria/cuanto-cuesta-contrato-alquiler`,
   },

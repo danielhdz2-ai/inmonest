@@ -162,8 +162,8 @@ export default function PrestamoParticularesCiudadLanding({ config }: Props) {
       titulo: 'Asesoría Compra de Piso',
       desc: 'Acompañamiento integral si el préstamo va destinado a comprar vivienda.',
       href: ASESORIA_COMPRA_CIUDADES.has(slug)
-        ? `/gestoria/asesoria-compra-piso/${slug}`
-        : '/gestoria/asesoria-compra-piso',
+        ? `/gestoria/compra-completa-reserva-escritura/${slug}`
+        : '/gestoria/compra-completa-reserva-escritura',
       precio: precioLabel('compra-completa-reserva-escritura'),
       imageSrc: GESTORIA_CTA_BANNERS.asesoriaCompra.src,
       imageAlt: `Asesoría compra de piso en ${nombre}`,

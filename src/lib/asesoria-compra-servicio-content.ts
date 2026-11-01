@@ -12,7 +12,7 @@ export type AsesoriaCompraServicioBloque = {
   invertido?: boolean
 }
 
-/** Contenido idéntico en todas las landings /gestoria/asesoria-compra-piso/[ciudad] */
+/** Bloques compartidos compra completa (687€) — reutilizable en CompraCompletaCiudadLanding */
 export const ASESORIA_COMPRA_SERVICIO_BLOQUES: AsesoriaCompraServicioBloque[] = [
   {
     id: 'primera-llamada',

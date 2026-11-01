@@ -191,13 +191,6 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'salamanca', 'valladolid', 'alicante', 'bilbao', 'zaragoza', 'coruna', 'pamplona', 'murcia', 'granada', 'mallorca', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
   },
   {
-    id: 'asesoria-compra',
-    nombre: 'Asesoría Compra de Piso',
-    precioSlug: 'compra-completa-reserva-escritura',
-    href: (c) => `/gestoria/asesoria-compra-piso/${c}`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga', 'alicante', 'zaragoza', 'valladolid', 'mallorca', 'bilbao', 'coruna', 'murcia', 'pamplona', 'salamanca', 'granada', 'asturias', 'santander', 'vitoria', 'san-sebastian'],
-  },
-  {
     id: 'due-diligence',
     nombre: 'Due Diligence Pre-Compra',
     precioSlug: 'pack-due-diligence-precompra',

@@ -20,7 +20,8 @@
     "gsc:urls": "npx tsx scripts/generar-urls-indexar.ts",
     "gsc:audit": "npx tsx scripts/seo/audit-gsc-coverage-live.ts",
     "detect-404s": "npx tsx scripts/detect-404s.mts",
-    "audit:seo": "node scripts/audit-seo-regression.mjs"
+    "audit:seo": "node scripts/audit-seo-regression.mjs",
+    "audit:gestoria-landings": "node scripts/audit-gestoria-landing-quality.mjs"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

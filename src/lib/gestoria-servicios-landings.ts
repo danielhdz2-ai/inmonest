@@ -23,7 +23,6 @@ export const GESTORIA_NAV_SERVICIOS: Array<{ label: string; href: string }> = [
   { label: 'Arras penitenciales', href: '/gestoria/arras-penitenciales' },
   { label: 'Contrato de alquiler LAU', href: '/gestoria/contrato-alquiler' },
   { label: 'Alquiler habitación', href: '/gestoria/alquiler-habitaciones' },
-  { label: 'Préstamo particulares', href: '/gestoria/prestamo-particulares' },
   { label: 'Compra completa', href: '/gestoria/compra-completa-reserva-escritura' },
   { label: 'Venta completa', href: '/gestoria/venta-completa-reserva-escritura' },
   { label: 'Due diligence', href: '/gestoria/pack-due-diligence-precompra' },
@@ -345,17 +344,6 @@ const SERVICIOS_LANDING_CARDS_RAW: ServicioLandingCard[] = [
     incluye: pack.features.slice(0, 5),
   })),
 
-  // Otros
-  {
-    slug: 'prestamo-particulares',
-    nombre: 'Préstamo entre Particulares',
-    shortName: 'Préstamo particulares',
-    descripcion: 'Contrato de préstamo privado entre particulares, claro y ejecutable.',
-    categoria: 'otros',
-    precio: getPrecioServicio('prestamo-particulares') ?? 130,
-    image: '/contrato4.jpg',
-    landingHref: '/gestoria/prestamo-particulares',
-  },
 ]
 
 /** Imagen única por servicio (misma fuente que el panel y /servicios). */
