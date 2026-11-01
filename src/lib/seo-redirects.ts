@@ -86,6 +86,11 @@ export const SEO_REDIRECTS: Redirect[] = [
     permanent: true,
   },
   {
+    source: '/gestoria/asesoria-compra-piso/:ciudad',
+    destination: '/gestoria/compra-completa-reserva-escritura/:ciudad',
+    permanent: true,
+  },
+  {
     source: '/gestoria/revision-arras',
     destination: '/gestoria/revision-correccion-arras',
     permanent: true,

@@ -1,13 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import GestoriaGuiaPageLayout from '@/components/GestoriaGuiaPageLayout'
+import GestoriaContratoAlquilerStrikeConversion from '@/components/GestoriaContratoAlquilerStrikeConversion'
+import GestoriaServicioFaqAboveFold from '@/components/GestoriaServicioFaqAboveFold'
 import { RELACIONADOS_ALQUILER } from '@/lib/gestoria-relacionados'
 
 const BASE_URL = 'https://inmonest.com'
 
 export const metadata: Metadata = {
   // ≤48 chars: layout añade " | Inmonest" → precio visible en SERP
-  title: 'Precio contrato alquiler gestoría — 145€ 2026',
+  title: '¿Cuánto cuesta contrato alquiler gestoría? 145€',
   description:
     '¿Cuánto cuesta un contrato de alquiler en gestoría? Desde 145 € IVA incl. (48 h) vs notario 300–500 €. Comparativa LAU 2026 y contratar online.',
   alternates: {
@@ -69,6 +71,11 @@ const faqSchema = {
   ],
 }
 
+const FAQ_ABOVE_FOLD = faqSchema.mainEntity.map((item) => ({
+  q: item.name,
+  a: item.acceptedAnswer.text,
+}))
+
 export default function CuantoCuestaContratoAlquilerPage() {
   return (
     <GestoriaGuiaPageLayout
@@ -94,6 +101,16 @@ export default function CuantoCuestaContratoAlquilerPage() {
       ctaImageSrc="/interior3.jpg"
       ctaImageAlt="Contrato de alquiler LAU profesional"
       relacionados={RELACIONADOS_ALQUILER}
+      belowHero={
+        <>
+          <GestoriaContratoAlquilerStrikeConversion />
+          <GestoriaServicioFaqAboveFold
+            title="Precio contrato alquiler en gestoría (respuestas directas)"
+            faqs={FAQ_ABOVE_FOLD}
+            limit={3}
+          />
+        </>
+      }
     >
           <div className="bg-white rounded-xl border border-gold-200 shadow-sm p-5 sm:p-6 -mt-4">
             <p className="text-sm font-semibold text-gold-800 mb-2">Respuesta rápida (gestoría)</p>

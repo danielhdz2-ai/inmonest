@@ -30,6 +30,8 @@ type GestoriaGuiaPageLayoutProps = {
   ctaImageSrc?: string
   ctaImageAlt?: string
   relacionados?: RelacionadoServicio[]
+  /** Bloque ancho bajo el hero (CTA strike, FAQ, etc.) */
+  belowHero?: React.ReactNode
   children: React.ReactNode
 }
 
@@ -52,6 +54,7 @@ export default function GestoriaGuiaPageLayout({
   ctaImageSrc = '/gestoria1.jpg',
   ctaImageAlt = 'Gestoría inmobiliaria Inmonest',
   relacionados,
+  belowHero,
   children,
 }: GestoriaGuiaPageLayoutProps) {
   const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
@@ -116,6 +119,8 @@ export default function GestoriaGuiaPageLayout({
             </div>
           </GestoriaImageBanner>
         </div>
+
+        {belowHero}
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 pb-12 space-y-12 text-gray-700">
           {children}

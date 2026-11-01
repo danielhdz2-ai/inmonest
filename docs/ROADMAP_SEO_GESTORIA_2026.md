@@ -33,15 +33,15 @@
 
 ## Fase 4 — Páginas con impresiones sin clics (GSC)
 
-- [ ] `/gestoria/cuanto-cuesta-contrato-alquiler` — CTR (pos ~7)
-- [ ] `/gestoria/compra-completa-reserva-escritura` — copy + FAQ above fold
+- [x] `/gestoria/cuanto-cuesta-contrato-alquiler` — strike + FAQ above fold + title SERP (oleada 4)
+- [x] `/gestoria/compra-completa-reserva-escritura` — FAQ above fold nacional (oleada 4)
 - [ ] `/gestoria/contrato-compraventa`, `/gestoria/rescision-alquiler` — redirect 301 o contenido
 - [ ] Ciudad×servicio con 0 clics: titles locales + enlace desde hub
 
 ## Fase 5 — Arquitectura y silos
 
-- [ ] Silo `prestamo-particulares` (menos enlaces desde hub gestoría principal)
-- [ ] Puente `contratos-inmobiliarios` ↔ `/gestoria/{servicio}`
+- [x] Silo `prestamo-particulares` (oculto en grid «Todos» del hub `/gestoria`; excluido en hubs BCN/MAD/VLC)
+- [x] Puente `contratos-inmobiliarios` ↔ `/gestoria/{servicio}` (oleada 3)
 - [ ] Checkout: no indexar variantes `?ciudad=`; canonical limpia
 - [ ] 404 legacy gestoría (lista GSC ago 2026) → redirects en `seo-redirects.ts`
 

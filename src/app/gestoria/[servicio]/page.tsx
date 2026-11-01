@@ -1061,6 +1061,17 @@ export default async function ServicioGestoriaPage({
         />
       ) : null}
 
+      {completaPack ? (
+        <GestoriaServicioFaqAboveFold
+          title={
+            ventaCompletaPack
+              ? 'Preguntas frecuentes: vender sin comisiones hasta escritura'
+              : 'Preguntas frecuentes: comprar piso con gestor hasta escritura'
+          }
+          faqs={data.faq}
+        />
+      ) : null}
+
       {servicio === 'rescision-alquiler' || servicio === 'contrato-compraventa' ? (
         <GestoriaServicioStrikeConversion servicio={servicio} />
       ) : null}

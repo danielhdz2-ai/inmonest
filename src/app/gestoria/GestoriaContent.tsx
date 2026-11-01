@@ -461,9 +461,10 @@ export default function GestoriaPage() {
   const [activeCategory, setActiveCategory] = useState<string>('all')
   const [selectedService, setSelectedService] = useState<Service | null>(null)
 
-  const filtered = activeCategory === 'all'
-    ? SERVICES
-    : SERVICES.filter(s => s.category === activeCategory)
+  const filtered =
+    activeCategory === 'all'
+      ? SERVICES.filter((s) => s.key !== 'prestamo-particulares')
+      : SERVICES.filter((s) => s.category === activeCategory)
 
   return (
     <div className="min-h-screen bg-white">
