@@ -32,6 +32,9 @@ type GestoriaGuiaPageLayoutProps = {
   relacionados?: RelacionadoServicio[]
   /** Bloque ancho bajo el hero (CTA strike, FAQ, etc.) */
   belowHero?: React.ReactNode
+  /** Opiniones visibles (landings guía con muchas impresiones GSC) */
+  showTestimonios?: boolean
+  testimonioLanding?: string
   children: React.ReactNode
 }
 
@@ -55,6 +58,8 @@ export default function GestoriaGuiaPageLayout({
   ctaImageAlt = 'Gestoría inmobiliaria Inmonest',
   relacionados,
   belowHero,
+  showTestimonios = false,
+  testimonioLanding,
   children,
 }: GestoriaGuiaPageLayoutProps) {
   const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : []
@@ -125,6 +130,24 @@ export default function GestoriaGuiaPageLayout({
         <article className="max-w-4xl mx-auto px-4 sm:px-6 pb-12 space-y-12 text-gray-700">
           {children}
         </article>
+
+        {showTestimonios ? (
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-12">
+            <GestoriaLandingExtras
+              servicio={servicio}
+              servicioNombre={servicioNombre}
+              whatsappMessage={whatsappMessage}
+              testimonioLanding={testimonioLanding ?? servicio}
+              testimoniosLayout="carousel"
+              showGoogleReviews
+              skipDaniel
+              skipLlamaGestor
+              skipCiudades
+              skipRelacionados
+              phase="footer"
+            />
+          </div>
+        ) : null}
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 pb-12">
           <GestoriaLandingExtras

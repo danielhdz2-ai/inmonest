@@ -28,6 +28,9 @@ import GestoriaCompletaNacionalAboveFold from '@/components/GestoriaCompletaNaci
 import GestoriaServicioStrikeConversion from '@/components/GestoriaServicioStrikeConversion'
 import GestoriaContratoAlquilerStrikeConversion from '@/components/GestoriaContratoAlquilerStrikeConversion'
 import GestoriaServicioFaqAboveFold from '@/components/GestoriaServicioFaqAboveFold'
+import GestoriaGscTopTrafficTestimonios, {
+  isGscTopTrafficServicio,
+} from '@/components/GestoriaGscTopTrafficTestimonios'
 import { servicioSlugIsDueDiligencePack } from '@/lib/due-diligence-servicio-registry'
 import GestoriaLandingCiudadesGrid from '@/components/GestoriaLandingCiudadesGrid'
 import GestoriaLandingExtras from '@/components/GestoriaLandingExtras'
@@ -1083,6 +1086,8 @@ export default async function ServicioGestoriaPage({
 
       {servicio === 'contrato-alquiler' ? <GestoriaContratoAlquilerStrikeConversion /> : null}
 
+      <GestoriaGscTopTrafficTestimonios servicio={servicio} />
+
       {servicio === 'rescision-alquiler' || servicio === 'contrato-compraventa' ? (
         <GestoriaServicioFaqAboveFold
           title={
@@ -1314,6 +1319,7 @@ export default async function ServicioGestoriaPage({
         <GestoriaLandingExtras
           servicio={servicio}
           servicioNombre={data.nombre}
+          skipTestimonios={isGscTopTrafficServicio(servicio)}
           phase="footer"
           relacionados={data.relacionados.map((rel) => ({
             slug: rel.slug,

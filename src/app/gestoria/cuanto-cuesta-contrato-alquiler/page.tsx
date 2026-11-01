@@ -105,6 +105,8 @@ export default function CuantoCuestaContratoAlquilerPage() {
       ctaImageSrc="/interior3.jpg"
       ctaImageAlt="Contrato de alquiler LAU profesional"
       relacionados={RELACIONADOS_ALQUILER}
+      showTestimonios
+      testimonioLanding="cuanto-cuesta-contrato-alquiler"
       belowHero={
         <>
           <GestoriaContratoAlquilerStrikeConversion />
@@ -130,8 +132,14 @@ export default function CuantoCuestaContratoAlquilerPage() {
               >
                 Contratar LAU 145€
               </Link>
+              <Link href="/vender-piso-sin-agencia" className="text-gold-700 font-medium underline">
+                Vender sin comisiones
+              </Link>
               <Link href="/gestoria/venta-completa-reserva-escritura" className="text-gold-700 font-medium underline">
-                Vender sin comisiones (687€)
+                Pack venta 687€
+              </Link>
+              <Link href="/barcelona/pisos-particulares-sin-comision" className="text-gold-700 font-medium underline">
+                Particulares Barcelona
               </Link>
               <Link href="/gestoria/compra-completa-reserva-escritura" className="text-gold-700 font-medium underline">
                 Comprar con gestor (687€)

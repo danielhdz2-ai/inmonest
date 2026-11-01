@@ -28,7 +28,7 @@
 
 - [x] Hubs compra en mismas ciudades que venta (19 ciudades, ruta `[ciudad]`)
 - [ ] Barrios BCN: indexación GSC (top 10 barrios/semana)
-- [ ] Queries «vender/comprar sin comisiones» → landings dedicadas + enlaces desde marketplace
+- [x] Queries «vender/comprar sin comisiones» — enlaces hub/guía precio + packs 687 (oleada 7)
 - [x] CTR: FAQ above fold + LocalBusiness barrios BCN LAU/arras/habitación/temporada (oleada 6)
 
 ## Fase 4 — Páginas con impresiones sin clics (GSC)
@@ -47,7 +47,7 @@
 
 ## Fase 6 — E-E-A-T y conversión
 
-- [ ] Testimonios por servicio/ciudad en landings con >500 imp
+- [x] Testimonios en landings >500 imp (cuanto-cuesta + servicios top GSC, oleada 7)
 - [x] CTA WhatsApp con mensaje pre-rellenado (hubs ciudad + servicios top GSC, oleada 5)
 - [ ] Panel demo por servicio en landings top 10
 - [ ] Agregación reseñas schema solo donde proceda

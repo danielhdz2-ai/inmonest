@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { isPisosSinComisionCiudad } from '@/lib/pisos-sin-comision-ciudad'
 
 const PRECO = 687
 
@@ -108,6 +109,27 @@ export default function GestoriaHubSinComisionSection({
             ) : null}
           </article>
         </div>
+        {isPisosSinComisionCiudad(ciudadSlug) ? (
+          <p className="text-center mt-8 text-sm text-gray-600 max-w-2xl mx-auto">
+            Guía «comprar o alquilar entre particulares sin comisión de agencia» en {ciudadNombre}:{' '}
+            <Link
+              href={`/${ciudadSlug}/pisos-particulares-sin-comision`}
+              className="font-semibold text-gold-800 hover:underline"
+            >
+              particulares {ciudadNombre} sin comisión →
+            </Link>
+            {' · '}
+            <Link href="/vender-piso-sin-agencia" className="font-semibold text-gold-800 hover:underline">
+              Vender sin agencia
+            </Link>
+          </p>
+        ) : (
+          <p className="text-center mt-8 text-sm text-gray-600">
+            <Link href="/vender-piso-sin-agencia" className="font-semibold text-gold-800 hover:underline">
+              Vender piso sin comisiones de agencia →
+            </Link>
+          </p>
+        )}
       </div>
     </section>
   )

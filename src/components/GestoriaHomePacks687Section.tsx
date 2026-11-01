@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { PISOS_SIN_COMISION_CIUDADES } from '@/lib/pisos-sin-comision-ciudad'
 
 const PRECO = 687
 
@@ -10,6 +11,8 @@ const CIUDADES_TOP = [
   { slug: 'malaga', nombre: 'Málaga' },
   { slug: 'bilbao', nombre: 'Bilbao' },
 ] as const
+
+const sinComisionSet = new Set<string>(PISOS_SIN_COMISION_CIUDADES)
 
 export default function GestoriaHomePacks687Section() {
   return (
@@ -53,6 +56,11 @@ export default function GestoriaHomePacks687Section() {
               >
                 Compra
               </Link>
+              {sinComisionSet.has(slug) ? (
+                <Link href={`/${slug}/pisos-particulares-sin-comision`} className="text-gray-600 hover:underline">
+                  Sin comisión
+                </Link>
+              ) : null}
             </div>
           ))}
         </div>
