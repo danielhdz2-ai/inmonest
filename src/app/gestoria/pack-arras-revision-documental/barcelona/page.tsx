@@ -14,7 +14,7 @@ export const revalidate = 86400
 export default function PackArrasDocumentalBarcelonaPage() {
   return (
     <>
-      <PackArrasDocumentalCiudadLanding config={config} />
+      <PackArrasDocumentalCiudadLanding config={config} showModulosIlustrados />
       <BarcelonaPackArrasCompradorBarriosHub />
     </>
   )

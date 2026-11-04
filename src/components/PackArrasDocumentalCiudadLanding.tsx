@@ -26,9 +26,11 @@ import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
 import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
 import GestoriaBarrioBarcelonaFaqAboveFold from '@/components/GestoriaBarrioBarcelonaFaqAboveFold'
 import GestoriaBarcelonaHubMiniStrip from '@/components/GestoriaBarcelonaHubMiniStrip'
+import GestoriaPackArrasDocumentalModulosCompletos from '@/components/GestoriaPackArrasDocumentalModulosCompletos'
 import type { ReactNode } from 'react'
 
 const SOLICITAR_URL = '/gestoria/solicitar/pack-arras-revision-documental'
+const PANEL_PACK_ARRAS_ANCHOR = 'panel-gestoria-pack-arras'
 
 function CheckIcon() {
   return (
@@ -52,6 +54,8 @@ type Props = {
   barrioSlug?: string
   barrioSeoContent?: ReactNode
   showBarrioFaqAboveFold?: boolean
+  /** Bloque LAU-style: tramite online + 5 pasos con imágenes + despacho Les Corts */
+  showModulosIlustrados?: boolean
 }
 
 export default function PackArrasDocumentalCiudadLanding({
@@ -63,8 +67,11 @@ export default function PackArrasDocumentalCiudadLanding({
   barrioSlug,
   barrioSeoContent,
   showBarrioFaqAboveFold,
+  showModulosIlustrados,
 }: Props) {
   const { nombre, slug, region, precioEjemploPiso } = config
+  const lugarModulos =
+    barrioNombre && barrioNombre.length > 0 ? `${barrioNombre}, Barcelona` : nombre
   const agenciaMin = comisionAgenciaMin(precioEjemploPiso)
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - PACK_ARRAS_DOCUMENTAL_PRECIO
@@ -208,6 +215,20 @@ export default function PackArrasDocumentalCiudadLanding({
           </div>
         </div>
       </section>
+
+      {showModulosIlustrados ? (
+        <GestoriaPackArrasDocumentalModulosCompletos
+          lugarNombre={lugarModulos}
+          solicitarHref={SOLICITAR_URL}
+          panelAnchorId={PANEL_PACK_ARRAS_ANCHOR}
+          showDespachoBarcelona={slug === 'barcelona' || Boolean(barrioSlug)}
+          headingPasosOverride={
+            barrioNombre
+              ? `Cómo funciona el Pack Arras Plus en ${barrioNombre}, paso a paso`
+              : undefined
+          }
+        />
+      ) : null}
 
       {/* Diferencia vs otros servicios */}
       <section className="py-16 px-4 bg-slate-50 border-y border-gray-200">
@@ -450,26 +471,28 @@ export default function PackArrasDocumentalCiudadLanding({
         </div>
       </section>
 
-      {/* Proceso */}
-      <section className="py-16 px-4 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Cómo funciona el pack en {nombre}</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Proceso claro: primero arras seguras, en paralelo la auditoría documental. Mismo gestor de principio a fin.
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pasos.map((paso, i) => (
-              <div key={paso.titulo} className="border border-gray-200 rounded-xl p-6 bg-slate-50">
-                <span className="inline-flex w-10 h-10 items-center justify-center rounded-full bg-forest-800 text-gold-400 font-bold text-sm mb-4">
-                  {i + 1}
-                </span>
-                <h3 className="font-bold text-gray-900 mb-2 text-sm leading-snug">{paso.titulo}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{paso.desc}</p>
-              </div>
-            ))}
+      {!showModulosIlustrados ? (
+        <section className="py-16 px-4 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">Cómo funciona el pack en {nombre}</h2>
+            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+              Proceso claro: primero arras seguras, en paralelo la auditoría documental. Mismo gestor de principio a
+              fin.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {pasos.map((paso, i) => (
+                <div key={paso.titulo} className="border border-gray-200 rounded-xl p-6 bg-slate-50">
+                  <span className="inline-flex w-10 h-10 items-center justify-center rounded-full bg-forest-800 text-gold-400 font-bold text-sm mb-4">
+                    {i + 1}
+                  </span>
+                  <h3 className="font-bold text-gray-900 mb-2 text-sm leading-snug">{paso.titulo}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{paso.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
 
       <LocalRegulationsBlock ciudad={nombre} region={region} servicio="arras" />
 
@@ -568,7 +591,9 @@ export default function PackArrasDocumentalCiudadLanding({
         </div>
       </section>
 
-      <AgenciaGestoriaPanelDemo audience="particular" particularRole="comprador" ciudadNombre={nombre} />
+      <div id={showModulosIlustrados ? PANEL_PACK_ARRAS_ANCHOR : undefined} className="scroll-mt-24">
+        <AgenciaGestoriaPanelDemo audience="particular" particularRole="comprador" ciudadNombre={nombre} />
+      </div>
 
       <GestoriaLandingExtras
         servicio={PACK_ARRAS_SERVICIO_SLUG}

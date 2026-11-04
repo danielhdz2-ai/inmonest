@@ -1,6 +1,7 @@
 import { INMONEST_OFICINA_BARCELONA } from '@/lib/inmonest-oficina-barcelona'
 import { COMPLETA_RESERVA_ESCRITURA_PRECIO } from '@/lib/completa-reserva-escritura-pasos-content'
 import type { CompletaServicioModo } from '@/lib/completa-reserva-escritura-pasos-content'
+import { PACK_ARRAS_DOCUMENTAL_PRECIO } from '@/lib/pack-arras-documental-ciudad-data'
 
 export type DespachoTramitePunto = { titulo: string; desc: string }
 
@@ -11,6 +12,38 @@ export type DespachoTramiteSectionContent = {
   puntos: DespachoTramitePunto[]
   imagenAlt: string
   overlaySubtitulo: string
+}
+
+export function getPackArrasDocumentalDespachoContent(lugarNombre: string): DespachoTramiteSectionContent {
+  const dir = INMONEST_OFICINA_BARCELONA.direccionCompleta
+  const precio = PACK_ARRAS_DOCUMENTAL_PRECIO
+
+  return {
+    titulo: `Pack Arras Plus en ${lugarNombre} con cita en despacho Les Corts — ${precio} € IVA incl.`,
+    hero:
+      'Compras a particular y prefieres repasar arras o documentación del vendedor en persona. Mismo pack 450 €: panel online + reunión en Les Corts sin coste extra.',
+    desc: `${INMONEST_OFICINA_BARCELONA.horario}. Dirección: ${dir}. Ideal si vienes desde ${lugarNombre} o zona alta de Barcelona.`,
+    puntos: [
+      {
+        titulo: 'Mismo gestor asignado',
+        desc: 'Lo acordado por WhatsApp queda en el panel; la cita presencial complementa el seguimiento digital.',
+      },
+      {
+        titulo: 'Revisión de borradores de arras',
+        desc: 'Repaso cláusula a cláusula antes de firmar la señal con el vendedor.',
+      },
+      {
+        titulo: 'Entrega de documentación en mano',
+        desc: 'Nota simple, actas o certificados cuando no quieres escanear o necesitas validar originales.',
+      },
+      {
+        titulo: `${precio} € planos — online o presencial`,
+        desc: 'Sin % sobre el precio del piso; gestoría solo para comprador, no agencia.',
+      },
+    ],
+    imagenAlt: `Despacho Inmonest Les Corts — Pack Arras Plus ${lugarNombre}`,
+    overlaySubtitulo: `${lugarNombre} · Mejía Lequerica 44 · gestor asignado`,
+  }
 }
 
 export function getDespachoBarcelonaTramiteContent(

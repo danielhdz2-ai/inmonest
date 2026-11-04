@@ -104,6 +104,7 @@ export default function PackArrasDocumentalBarrioBarcelonaLanding({ config }: Pr
         barrioNombre={config.nombre}
         barrioSlug={config.slug}
         showBarrioFaqAboveFold
+        showModulosIlustrados
         barrioSeoContent={<BarrioPackDocumentalSeoBlocks config={config} />}
       />
       <BarcelonaPackArrasCompradorBarriosHub />

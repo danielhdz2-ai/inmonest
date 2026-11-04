@@ -38,6 +38,14 @@ export function getPackArrasDocumentalFaq(
       q: '¿El gestor sigue disponible después de entregar las arras?',
       a: 'Sí. El mismo gestor resuelve dudas sobre el informe documental, negociación con el vendedor y preparación de la fase pre-escritura. No desaparecemos tras enviar el PDF.',
     },
+    {
+      q: '¿Puedo hacer el trámite presencial en Barcelona?',
+      a: `Sí. Mismo precio 450 € IVA incluido: online en toda España o cita en nuestro despacho de Les Corts (Carrer de Mejía Lequerica 44) para entregar documentación, revisar borradores de arras o hablar con tu gestor asignado.`,
+    },
+    {
+      q: '¿Quién es mi gestor y cómo le contacto?',
+      a: 'Tras contratar, asignamos un gestor inmobiliario con nombre, teléfono y WhatsApp directo en menos de 24 h. No es call center: te acompaña desde la primera llamada hasta el informe documental.',
+    },
   ]
 
   return prioritarias.length > 0 ? [...prioritarias, ...base] : base

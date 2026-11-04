@@ -9,6 +9,7 @@ export type TramiteOnlineSectionTipo =
   | 'due-diligence'
   | 'venta-completa'
   | 'compra-completa'
+  | 'pack-arras-documental'
 
 export type TramiteOnlinePunto = { titulo: string; desc: string }
 
@@ -168,6 +169,34 @@ export function getTramiteOnlineSectionContent(
         ],
         imagenAlt: `Compra completa online en ${ciudad}`,
         overlaySubtitulo: `${ciudad} · gestor asignado · pack compra completa`,
+      }
+
+    case 'pack-arras-documental':
+      return {
+        titulo: `Tu Pack Arras Plus en ${ciudad} con gestor asignado — online o en Les Corts`,
+        hero:
+          'Trámite 100 % online como comprador particular: arras penitenciales redactadas, auditoría documental e informe antes de la señal — tarifa plana 450 € IVA incluido.',
+        desc: 'Panel mi-cuenta/contratos, gestor con teléfono directo en 24 h y firma digital cuando proceda. También puedes reservar cita presencial en nuestro despacho de Les Corts (Barcelona) sin suplemento.',
+        puntos: [
+          {
+            titulo: 'Panel mi-cuenta/contratos',
+            desc: 'Sube PDFs del vendedor, consulta el estado de arras e informe documental en un solo sitio.',
+          },
+          {
+            titulo: 'Gestor con teléfono directo',
+            desc: 'Asignado en menos de 24 h — WhatsApp, llamada o videollamada; no call center.',
+          },
+          {
+            titulo: 'Arras + informe documental',
+            desc: 'Redacción de arras en 48 h y auditoría registral/comunidad en 3–5 días laborables.',
+          },
+          {
+            titulo: 'Online o despacho Barcelona',
+            desc: 'Mismo precio online o con cita en Carrer de Mejía Lequerica 44 (Les Corts).',
+          },
+        ],
+        imagenAlt: `Pack Arras Plus online en ${ciudad} — panel y gestor`,
+        overlaySubtitulo: `${ciudad} · gestor asignado · pack arras + documentación`,
       }
 
     case 'due-diligence':
