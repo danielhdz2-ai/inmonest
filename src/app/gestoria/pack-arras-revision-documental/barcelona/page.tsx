@@ -1,4 +1,5 @@
 import PackArrasDocumentalCiudadLanding from '@/components/PackArrasDocumentalCiudadLanding'
+import BarcelonaPackArrasCompradorBarriosHub from '@/components/BarcelonaPackArrasCompradorBarriosHub'
 import {
   PACK_ARRAS_DOCUMENTAL_CIUDADES,
   buildPackArrasDocumentalMetadata,
@@ -11,5 +12,10 @@ export const metadata = buildPackArrasDocumentalMetadata(config)
 export const revalidate = 86400
 
 export default function PackArrasDocumentalBarcelonaPage() {
-  return <PackArrasDocumentalCiudadLanding config={config} />
+  return (
+    <>
+      <PackArrasDocumentalCiudadLanding config={config} />
+      <BarcelonaPackArrasCompradorBarriosHub />
+    </>
+  )
 }

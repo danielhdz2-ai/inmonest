@@ -42,7 +42,8 @@ const ALLOWED_PREFIXES = [
 ]
 
 const CONTRACT_LANDING_PATTERN = /\/contrato-(alquiler|arras)(\/|$)/
-const BARCELONA_COMPLETA_PATTERN = /\/barcelona\/(venta-completa|compra-completa)(\/|$)/
+const BARCELONA_COMPLETA_PATTERN =
+  /\/barcelona\/(venta-completa|compra-completa|pack-arras-comprador)(\/|$)/
 
 /** Teléfono de gestoría solo en landings de gestoría, contratos, servicios, blog y sobre nosotros. */
 export function shouldShowGestoriaPhone(pathname: string): boolean {

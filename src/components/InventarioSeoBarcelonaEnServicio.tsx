@@ -36,7 +36,7 @@ export default function InventarioSeoBarcelonaEnServicio({ barcelona }: Props) {
             href={e.path}
             className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-white border border-gray-200 text-xs font-medium text-gray-800 hover:border-gold-400 transition-colors"
           >
-            Hub Barcelona →
+            {e.label} →
           </Link>
         ))}
         {barrioEnlaces.map((e) => (

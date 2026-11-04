@@ -31,8 +31,10 @@ export default function InventarioSeoBarcelonaSection({ inventario }: Props) {
             {inventario.totalLandingsBarrio} por barrio
           </span>
           <span className="px-3 py-2 rounded-lg bg-white border border-gold-200 text-sm text-gray-700">
-            Arras: {inventario.barriosArras.length} · LAU: {inventario.barriosAlquiler.length} · Temporada:{' '}
-            {inventario.barriosTemporada.length} barrios
+            LAU {inventario.barriosAlquiler.length} · Arras {inventario.barriosArras.length} · Temporada{' '}
+            {inventario.barriosTemporada.length} · Habitación {inventario.barriosHabitacion.length} · Compra{' '}
+            {inventario.barriosCompraCompleta.length} · Venta {inventario.barriosVentaCompleta.length} · Pack
+            comprador {inventario.barriosPackArrasDocumental.length}
           </span>
           <a
             href="#barcelona-gsc"

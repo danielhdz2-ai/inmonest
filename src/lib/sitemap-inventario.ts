@@ -9,6 +9,7 @@ import { getBarcelonaHabitacionBarrioPaths } from '@/lib/barcelona-alquiler-habi
 import { getBarcelonaTemporadaBarrioPaths } from '@/lib/barcelona-alquiler-temporada-barrios'
 import { getBarcelonaVentaCompletaBarrioPaths } from '@/lib/barcelona-venta-completa-barrios'
 import { getBarcelonaCompraCompletaBarrioPaths } from '@/lib/barcelona-compra-completa-barrios'
+import { getBarcelonaPackArrasDocumentalBarrioPaths } from '@/lib/barcelona-pack-arras-documental-barrios'
 
 /** Rutas de landings (portal + gestoría) alineadas con LANDINGS_POR_CIUDAD y listas GSC. */
 export function collectIndexableMarketingPaths(): string[] {
@@ -25,6 +26,7 @@ export function collectIndexableMarketingPaths(): string[] {
     ...getBarcelonaTemporadaBarrioPaths(),
     ...getBarcelonaVentaCompletaBarrioPaths(),
     ...getBarcelonaCompraCompletaBarrioPaths(),
+    ...getBarcelonaPackArrasDocumentalBarrioPaths(),
   ]
 
   return [...new Set([...fromLandings, ...fromGestoria, ...portalHubs, ...barcelonaBarrios])].filter((path) =>

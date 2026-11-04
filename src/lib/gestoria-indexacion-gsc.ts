@@ -12,6 +12,7 @@ import {
 } from './gestoria-indexar-urls'
 import { getBarcelonaCompraCompletaBarrioPaths } from './barcelona-compra-completa-barrios'
 import { getBarcelonaVentaCompletaBarrioPaths } from './barcelona-venta-completa-barrios'
+import { getBarcelonaPackArrasDocumentalBarrioPaths } from './barcelona-pack-arras-documental-barrios'
 
 /** Landings recientes: solicitar indexación aunque no figuren en el export GSC */
 const LANDINGS_RECIENTES_INDEXAR = [
@@ -24,6 +25,7 @@ const LANDINGS_RECIENTES_INDEXAR = [
   '/blog/actualidad-vivienda-espana-octubre-2026',
   ...getBarcelonaVentaCompletaBarrioPaths(),
   ...getBarcelonaCompraCompletaBarrioPaths(),
+  ...getBarcelonaPackArrasDocumentalBarrioPaths(),
   '/gestoria/compra-completa-reserva-escritura/barcelona',
   '/gestoria/compra-completa-reserva-escritura/madrid',
   '/gestoria/compra-completa-reserva-escritura/valencia',

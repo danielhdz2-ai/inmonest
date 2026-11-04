@@ -24,6 +24,10 @@ import { getCiudadCtaImage } from '@/lib/gestoria-images'
 import AgenciaGestoriaPanelDemo from '@/app/agencias/gestoria/AgenciaGestoriaPanelDemo'
 import { GESTORIA_TRAMITE_ONLINE_SHORT } from '@/lib/gestoria-tramite-online'
 import GestoriaTramiteOnlineNote from '@/components/GestoriaTramiteOnlineNote'
+import GestoriaBarrioBarcelonaFaqAboveFold from '@/components/GestoriaBarrioBarcelonaFaqAboveFold'
+import GestoriaBarcelonaHubMiniStrip from '@/components/GestoriaBarcelonaHubMiniStrip'
+import type { ReactNode } from 'react'
+
 const SOLICITAR_URL = '/gestoria/solicitar/pack-arras-revision-documental'
 
 function CheckIcon() {
@@ -40,15 +44,37 @@ function CheckIcon() {
 
 type Props = {
   config: PackArrasDocumentalCiudadConfig
+  /** Ruta canónica (p. ej. landings /barcelona/pack-arras-comprador/[barrio]) */
+  pagePath?: string
+  breadcrumbHub?: { name: string; path: string }
+  includeBarcelonaLocalBusiness?: boolean
+  barrioNombre?: string
+  barrioSlug?: string
+  barrioSeoContent?: ReactNode
+  showBarrioFaqAboveFold?: boolean
 }
 
-export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
+export default function PackArrasDocumentalCiudadLanding({
+  config,
+  pagePath: pagePathProp,
+  breadcrumbHub,
+  includeBarcelonaLocalBusiness,
+  barrioNombre,
+  barrioSlug,
+  barrioSeoContent,
+  showBarrioFaqAboveFold,
+}: Props) {
   const { nombre, slug, region, precioEjemploPiso } = config
   const agenciaMin = comisionAgenciaMin(precioEjemploPiso)
   const agenciaMax = comisionAgenciaMax(precioEjemploPiso)
   const ahorroMin = agenciaMin - PACK_ARRAS_DOCUMENTAL_PRECIO
   const faq = getPackArrasDocumentalFaq(nombre, region, config.faqPrioritarias)
   const pasos = config.pasosLocales
+  const pagePath = pagePathProp ?? `/gestoria/pack-arras-revision-documental/${slug}`
+  const breadcrumbsMiddle = breadcrumbHub ?? {
+    name: 'Pack Arras Plus',
+    path: '/gestoria/pack-arras-revision-documental',
+  }
 
   const revisionBlocks = [
     {
@@ -78,17 +104,16 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
   return (
     <>
       <GestoriaLandingSeo
-        pagePath={`/gestoria/pack-arras-revision-documental/${slug}`}
-        pageTitle={`Pack Arras Plus comprador en ${nombre}`}
-        description={`Arras penitenciales y revisión documental para compradores entre particulares en ${nombre}.`}
+        pagePath={pagePath}
+        pageTitle={config.meta.ogTitle}
+        description={config.meta.description}
         servicioNombre="Pack Arras Plus comprador"
         ciudadNombre={nombre}
         precioEuros={PACK_ARRAS_DOCUMENTAL_PRECIO}
         faqs={faq}
-        breadcrumbs={gestoriaLandingBreadcrumbs(
-          { name: 'Pack Arras Plus', path: '/gestoria/pack-arras-revision-documental' },
-          { name: nombre },
-        )}
+        includeBarcelonaLocalBusiness={includeBarcelonaLocalBusiness}
+        barrioNombreForLocalBusiness={barrioNombre}
+        breadcrumbs={gestoriaLandingBreadcrumbs(breadcrumbsMiddle, { name: nombre })}
       />
       <Navbar />
       <WhatsAppButton />
@@ -134,6 +159,18 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
           <GestoriaTramiteOnlineNote variant="hero-dark" className="mt-4 max-w-xl" />
         </GestoriaImageBanner>
       </div>
+
+      {barrioNombre && barrioSlug ? (
+        <GestoriaBarcelonaHubMiniStrip barrioNombre={barrioNombre} barrioSlug={barrioSlug} />
+      ) : null}
+
+      {showBarrioFaqAboveFold && barrioNombre ? (
+        <GestoriaBarrioBarcelonaFaqAboveFold
+          barrioNombre={barrioNombre}
+          servicioLabel="Pack Arras Plus comprador"
+          faqs={faq}
+        />
+      ) : null}
 
       {/* Qué incluye el pack — dos pilares */}
       <section className="py-16 px-4 bg-white">
@@ -237,6 +274,8 @@ export default function PackArrasDocumentalCiudadLanding({ config }: Props) {
           )}
         </div>
       </section>
+
+      {barrioSeoContent}
 
       {/* Guía editorial local — contenido único por ciudad */}
       <section className="py-16 px-4 bg-cream-50 border-y border-gold-200/40">
