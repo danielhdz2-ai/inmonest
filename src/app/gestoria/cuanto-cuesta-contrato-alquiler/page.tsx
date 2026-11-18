@@ -138,7 +138,7 @@ export default function CuantoCuestaContratoAlquilerPage() {
               <Link href="/gestoria/venta-completa-reserva-escritura" className="text-gold-700 font-medium underline">
                 Pack venta 687€
               </Link>
-              <Link href="/barcelona/pisos-particulares-sin-comision" className="text-gold-700 font-medium underline">
+              <Link href="/barcelona/contrato-alquiler" className="text-gold-700 font-medium underline">
                 Particulares Barcelona
               </Link>
               <Link href="/gestoria/compra-completa-reserva-escritura" className="text-gold-700 font-medium underline">
@@ -147,10 +147,10 @@ export default function CuantoCuestaContratoAlquilerPage() {
               <Link href="/calculadora-gastos-alquiler" className="text-gold-700 font-medium underline">
                 Calculadora gastos alquiler
               </Link>
-              <Link href="/bilbao/alquiler-particulares" className="text-gold-700 font-medium underline">
+              <Link href="/bilbao/contrato-alquiler" className="text-gold-700 font-medium underline">
                 Alquiler particulares Bilbao
               </Link>
-              <Link href="/malaga/alquiler-particulares" className="text-gold-700 font-medium underline">
+              <Link href="/malaga/contrato-alquiler" className="text-gold-700 font-medium underline">
                 Particulares Málaga
               </Link>
             </div>

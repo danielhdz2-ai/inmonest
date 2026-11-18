@@ -113,7 +113,7 @@ export default function GestoriaHubSinComisionSection({
           <p className="text-center mt-8 text-sm text-gray-600 max-w-2xl mx-auto">
             Guía «comprar o alquilar entre particulares sin comisión de agencia» en {ciudadNombre}:{' '}
             <Link
-              href={`/${ciudadSlug}/pisos-particulares-sin-comision`}
+              href={`/${ciudadSlug}/contrato-alquiler`}
               className="font-semibold text-gold-800 hover:underline"
             >
               particulares {ciudadNombre} sin comisión →

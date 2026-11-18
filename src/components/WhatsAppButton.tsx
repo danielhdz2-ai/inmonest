@@ -1,7 +1,12 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { GESTORIA_PHONE_WA, shouldShowGestoriaPhone } from '@/lib/gestoria-contact'
+import { gtmPush } from '@/components/GTMProvider'
+import {
+  buildGestoriaWhatsAppHref,
+  gestoriaWhatsAppMessageForPath,
+  shouldShowGestoriaPhone,
+} from '@/lib/gestoria-contact'
 
 const CONTRACT_LANDING = /\/contrato-(alquiler|arras)(\/|$)/
 const GESTORIA_HUB =
@@ -22,11 +27,8 @@ export default function WhatsAppButton() {
     return null
   }
 
-  const phone = GESTORIA_PHONE_WA
-  const message = encodeURIComponent(
-    'Hola Inmonest, estoy interesado en recibir información sobre vuestros servicios inmobiliarios.',
-  )
-  const href = `https://wa.me/${phone}?text=${message}`
+  const path = pathname ?? '/'
+  const href = buildGestoriaWhatsAppHref(gestoriaWhatsAppMessageForPath(path))
   // Sticky móvil ya cubre Llamar/WA en contratos, hubs y due diligence
   const hideOnMobileSticky = hideMobileSticky(pathname ?? '')
 
@@ -44,6 +46,7 @@ export default function WhatsAppButton() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Contactar por WhatsApp"
+        onClick={() => gtmPush({ event: 'wa_click', wa_source: 'floating', page_path: path })}
         className={`wa-pulse fixed z-50 flex items-center justify-center w-14 h-14 rounded-full bg-[#25d366] shadow-lg hover:bg-[#1ebe5d] transition-colors max-lg:bottom-[calc(9.5rem+env(safe-area-inset-bottom))] max-lg:right-4 bottom-24 right-6 ${
           hideOnMobileSticky ? 'hidden lg:flex' : ''
         }`}

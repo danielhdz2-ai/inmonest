@@ -480,7 +480,7 @@ export default function ContratoAlquilerBarrioBarcelonaLanding({ config }: Props
               desc: 'Coste mensual orientativo',
             },
             {
-              href: '/barcelona/alquiler-particulares',
+              href: '/barcelona/contrato-alquiler',
               label: 'Alquiler particulares Barcelona',
               desc: 'Sin comisión agencia',
             },

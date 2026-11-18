@@ -31,24 +31,11 @@ export function getLocalLandingsPathsParaIndexar(): string[] {
     (c) => `/gestoria/revision-correccion-arras/${c}`,
   )
 
-  const portalNuevo = CIUDADES_PORTAL_EXTENDIDAS_SLUGS.flatMap((c) => [
-    `/${c}/alquiler-particulares`,
-    `/${c}/alquiler-sin-agencia`,
-    `/${c}/vender-piso`,
-    `/${c}/pisos`,
-  ]).filter(
-    (path) =>
-      ![
-        '/madrid/alquiler-particulares',
-        '/barcelona/alquiler-particulares',
-        '/valencia/alquiler-particulares',
-        '/sevilla/alquiler-particulares',
-        '/malaga/alquiler-particulares',
-        '/bilbao/alquiler-particulares',
-        '/zaragoza/alquiler-particulares',
-        '/alicante/alquiler-particulares',
-      ].includes(path),
-  )
+  const gestoriaCiudad = CIUDADES_PORTAL_EXTENDIDAS_SLUGS.flatMap((c) => [
+    `/${c}/contrato-alquiler`,
+    `/${c}/contrato-arras`,
+    `/${c}`,
+  ])
 
   const mallorcaExtra = ['/contratos-inmobiliarios/mallorca']
 
@@ -59,7 +46,7 @@ export function getLocalLandingsPathsParaIndexar(): string[] {
       ...expansionDueDiligenceOnly,
       ...temporada,
       ...revisionArras,
-      ...portalNuevo,
+      ...gestoriaCiudad,
       ...mallorcaExtra,
     ]),
   ].sort()

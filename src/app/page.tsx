@@ -14,6 +14,7 @@ import HomeDiscoverGrid from '@/components/home/HomeDiscoverGrid'
 import HomePersonaIntents from '@/components/home/HomePersonaIntents'
 import HomeLocalPresencia from '@/components/home/HomeLocalPresencia'
 import GestoriaPanelShowcase from '@/components/GestoriaPanelShowcase'
+import WhatsAppButton from '@/components/WhatsAppButton'
 import { Badge } from '@/components/ui/Badge'
 import { Section } from '@/components/ui/Section'
 import { CtaBand } from '@/components/ui/CtaBand'
@@ -22,9 +23,9 @@ const BASE_URL = 'https://inmonest.com'
 const HERO_VIDEO = `${BASE_URL}/video/gestoria-hero-walking.mp4`
 
 export const metadata: Metadata = {
-  title: 'Gestoría inmobiliaria online para particulares',
+  title: 'Gestoría inmobiliaria online · 5.0 en Google (20 opiniones)',
   description:
-    'Contratos de alquiler LAU, arras y compraventa en toda España. Gestores expertos, precio cerrado desde 61 €, entrega en 48 h y panel de cliente.',
+    'Contratos LAU, arras y compraventa entre particulares en España. Gestor asignado, precio cerrado desde 61 €, entrega 48 h. Sin portal de anuncios.',
   alternates: { canonical: BASE_URL },
   openGraph: {
     title: 'Inmonest | Gestoría inmobiliaria online en 48 h',
@@ -295,6 +296,7 @@ export default function Home() {
         servicioLabel="tu contrato o pack de gestoría"
         className="bg-cream-100 border-t border-gold-300/25 border-b-0 py-8 sm:py-10 pb-6"
       />
+      <WhatsAppButton />
     </div>
   )
 }

@@ -106,9 +106,9 @@ const ENLACES_HOME: EnlaceSeo[] = [
     badge: 'Nuevo',
   },
   {
-    href: '/castellon/alquiler-particulares',
-    title: 'Alquiler particulares Castellón',
-    description: 'Pisos sin comisión. Trato directo en Castelló.',
+    href: '/castellon/contrato-alquiler',
+    title: 'Contrato LAU Castellón',
+    description: 'Gestoría alquiler entre particulares. Desde 145 €.',
     badge: 'Nuevo',
   },
   {

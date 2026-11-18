@@ -29,15 +29,15 @@ export async function generateMetadata({
   const portalMeta = getPortalAlquilerParticularesMeta(ciudad)
   return {
     title:
-      portalMeta?.title ??
-      `Alquiler entre particulares en ${nombre}: contrato LAU con gestoría`,
+      portalMeta.title ??
+      `Contrato alquiler LAU en ${nombre} · Gestoría online · 145 €`,
     description:
-      portalMeta?.description ??
-      `Gestoría para particulares en ${nombre}. Contrato de alquiler LAU 145 €, 48 h. Sin portal de anuncios. Renta orientativa: ${datos.precio_medio}.`,
+      portalMeta.description ??
+      `Gestoría inmobiliaria en ${nombre}. Contrato LAU, arras, 20 opiniones 5.0 en Google. Sin buscar pisos: formalizamos tu alquiler entre particulares. Renta orientativa: ${datos.precio_medio}.`,
     keywords: `contrato alquiler ${nombre.toLowerCase()} particulares, LAU ${nombre.toLowerCase()}, gestoría alquiler ${nombre.toLowerCase()}`,
     alternates: { canonical: `${BASE_URL}/${ciudad}/alquiler-particulares` },
     openGraph: {
-      title: `Alquiler particulares ${nombre} — contrato LAU | Inmonest`,
+      title: `Contrato LAU en ${nombre} — gestoría Inmonest · 5.0 Google`,
       description: datos.descripcion_seo.slice(0, 160),
       url: `${BASE_URL}/${ciudad}/alquiler-particulares`,
       locale: 'es_ES',

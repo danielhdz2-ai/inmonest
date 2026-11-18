@@ -57,7 +57,7 @@ export default function GestoriaHomePacks687Section() {
                 Compra
               </Link>
               {sinComisionSet.has(slug) ? (
-                <Link href={`/${slug}/pisos-particulares-sin-comision`} className="text-gray-600 hover:underline">
+                <Link href={`/${slug}/contrato-alquiler`} className="text-gray-600 hover:underline">
                   Sin comisión
                 </Link>
               ) : null}

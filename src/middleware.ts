@@ -18,6 +18,7 @@ import {
   isPortalListingApi,
   PORTAL_CLOSED_REDIRECTS,
 } from '@/lib/portal-closed'
+import { resolvePortalEmbudoRedirect } from '@/lib/portal-embudo-redirects'
 
 export async function middleware(request: NextRequest) {
   const host = request.headers.get('host')?.split(':')[0]?.toLowerCase()
@@ -51,6 +52,14 @@ export async function middleware(request: NextRequest) {
   if (pathname.startsWith('/pisos/')) {
     const url = request.nextUrl.clone()
     url.pathname = GESTORIA_ALQUILER_HUB
+    url.search = ''
+    return NextResponse.redirect(url, 308)
+  }
+
+  const portalEmbudoDest = resolvePortalEmbudoRedirect(pathname)
+  if (portalEmbudoDest) {
+    const url = request.nextUrl.clone()
+    url.pathname = portalEmbudoDest
     url.search = ''
     return NextResponse.redirect(url, 308)
   }

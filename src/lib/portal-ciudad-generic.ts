@@ -4,6 +4,8 @@ import {
   isLandingsCiudadPremium,
   type LandingsCiudadPremiumSlug,
 } from '@/lib/landings-ciudad-premium'
+import { getCiudadPortalNombre } from '@/lib/ciudades-portal'
+import { GESTORIA_GOOGLE_AGGREGATE } from '@/lib/gestoria-reviews-schema'
 import { getPortalCiudadEnriquecimiento } from '@/lib/portal-ciudad-enriquecimiento'
 
 export type PortalCiudadDatos = {
@@ -46,15 +48,14 @@ export function getPortalCiudadDatos(slug: string, custom?: Partial<PortalCiudad
   return { ...base, ...custom }
 }
 
-export function getPortalAlquilerParticularesMeta(slug: string): { title: string; description: string } | undefined {
-  const e = getPortalCiudadEnriquecimiento(slug)
-  if (!e) return undefined
-  const nombre = getLandingsCiudadPremiumNombre(slug) ?? slug
+export function getPortalAlquilerParticularesMeta(slug: string): { title: string; description: string } {
+  const nombre =
+    getLandingsCiudadPremiumNombre(slug) ?? getCiudadPortalNombre(slug) ?? slug
+  const datos = getPortalCiudadDatos(slug)
+  const reviews = GESTORIA_GOOGLE_AGGREGATE.reviewCount
   return {
-    title: e.metaTitle,
-    description:
-      e.metaDescription ??
-      `Pisos de alquiler de particulares en ${nombre} sin comisión. ${e.descripcion_seo.slice(0, 140)}…`,
+    title: `Contrato alquiler LAU en ${nombre} · Gestoría · ${GESTORIA_GOOGLE_AGGREGATE.ratingValue}★`,
+    description: `Gestoría inmobiliaria en ${nombre}: contrato LAU, arras y revisión. ${reviews} reseñas Google. Sin portal de anuncios. Desde 145 €, 48 h. ${datos.descripcion_seo.slice(0, 90)}`,
   }
 }
 

@@ -15,11 +15,18 @@ const CIUDADES = [
   { slug: 'castellon', nombre: 'Castellón' },
 ]
 
-const SERVICIOS_CIUDAD = [
-  { titulo: 'Contratos de Arras',       ruta: 'contrato-arras' },
-  { titulo: 'Contratos de Alquiler',    ruta: 'contrato-alquiler' },
-  { titulo: 'Alquiler de Particulares', ruta: 'alquiler-particulares' },
-  { titulo: 'Alquiler sin Agencia',     ruta: 'alquiler-sin-agencia' },
+type ServicioCiudadFooter =
+  | { titulo: string; ruta: string }
+  | { titulo: string; href: (slug: string) => string }
+
+const SERVICIOS_CIUDAD: ServicioCiudadFooter[] = [
+  { titulo: 'Contrato LAU', ruta: 'contrato-alquiler' },
+  { titulo: 'Contrato de Arras', ruta: 'contrato-arras' },
+  { titulo: 'Hub gestoría', href: (slug) => `/gestoria/${slug}` },
+  {
+    titulo: 'Contratos (hub)',
+    href: (slug) => `/contratos-inmobiliarios/${slug}`,
+  },
 ]
 
 export default function Footer() {
@@ -105,16 +112,16 @@ export default function Footer() {
           Información por ciudad
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-8">
-          {SERVICIOS_CIUDAD.map(({ titulo, ruta }) => (
-            <div key={ruta}>
+          {SERVICIOS_CIUDAD.map((item) => (
+            <div key={item.titulo}>
               <p className="text-xs font-semibold text-white/45 uppercase tracking-wide mb-3">
-                {titulo}
+                {item.titulo}
               </p>
               <ul className="space-y-1.5">
                 {CIUDADES.map(({ slug, nombre }) => (
                   <li key={slug}>
                     <Link
-                      href={`/${slug}/${ruta}`}
+                      href={'ruta' in item ? `/${slug}/${item.ruta}` : item.href(slug)}
                       className="text-sm text-white/60 hover:text-gold-300 transition-colors leading-snug"
                     >
                       {nombre}

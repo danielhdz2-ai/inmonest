@@ -310,9 +310,9 @@ export default function ContratoAlquilerCiudadPremium({ config }: { config: Cont
               desc: 'Coste mensual real gratis',
             },
             {
-              href: `/${config.slug}/alquiler-particulares`,
-              label: `Alquiler de particulares en ${config.nombre}`,
-              desc: 'Sin comisión de agencia',
+              href: `/gestoria/${config.slug}`,
+              label: `Gestoría inmobiliaria en ${config.nombre}`,
+              desc: 'LAU, arras y compraventa',
             },
             {
               href: '/gestoria/cuanto-cuesta-contrato-alquiler',

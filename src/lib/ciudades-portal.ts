@@ -5,8 +5,8 @@ import {
 } from './landings-ciudad-premium'
 
 /**
- * Ciudades con landings de portal activas ({slug}/alquiler-particulares, /pisos, etc.).
- * Debe coincidir con src/app/[ciudad]/alquiler-particulares/page.tsx y Footer.
+ * Ciudades con landings locales de gestoría (/{slug}/contrato-alquiler, hub, etc.).
+ * URLs legacy de portal (/pisos, /alquiler-particulares) redirigen vía portal-embudo-redirects.
  */
 export const CIUDADES_PORTAL_SLUGS = [
   'madrid',

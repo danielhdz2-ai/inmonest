@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Navbar from '@/components/NavbarServer'
+import WhatsAppButton from '@/components/WhatsAppButton'
+import { buildGestoriaWhatsAppHref, gestoriaWhatsAppMessageForPath } from '@/lib/gestoria-contact'
 import LeadCaptureForm from '@/components/LeadCaptureForm'
 import PageHeroImage from '@/components/PageHeroImage'
 import ParticularesGestoriaServiciosCatalog from '@/components/ParticularesGestoriaServiciosCatalog'
@@ -91,6 +93,9 @@ export default function ParticularesGestoriaCiudadLanding({
   const lead = getPortalLandingLeadConfig(variant)
   const introResolved = getPortalLandingIntro(variant, nombre, intro)
   const lauPrecio = precioLabel('contrato-alquiler', ciudad)
+  const waSegment = VARIANT_PATH[variant] ?? 'alquiler-particulares'
+  const waPath = variant === 'hub' ? `/${ciudad}` : `/${ciudad}/${waSegment}`
+  const waHref = buildGestoriaWhatsAppHref(gestoriaWhatsAppMessageForPath(waPath))
 
   const h1 =
     variant === 'pisos'
@@ -212,6 +217,14 @@ export default function ParticularesGestoriaCiudadLanding({
                 ? `Solicitar arras — ${precioLabel('arras-penitenciales')}`
                 : `Solicitar contrato alquiler — ${lauPrecio}`}
             </Link>
+            <a
+              href={waHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#25d366] text-white font-semibold hover:bg-[#1ebe5d] transition-colors shadow-lg"
+            >
+              WhatsApp — gestor en 24 h
+            </a>
             <Link
               href={contratoHref}
               className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/30 text-white font-semibold hover:bg-white/10 transition-colors"
@@ -395,9 +408,9 @@ export default function ParticularesGestoriaCiudadLanding({
           <h2 className="text-xl font-semibold text-gray-800 mb-5">Guías en {nombre}</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              { href: `/${ciudad}/alquiler-particulares`, t: 'Alquiler entre particulares', d: 'LAU y contexto de mercado' },
-              { href: `/${ciudad}/alquiler-sin-agencia`, t: 'Alquiler sin agencia', d: 'Contratos sin intermediario' },
-              { href: `/${ciudad}/contrato-alquiler`, t: 'Contrato alquiler', d: 'Landing servicio' },
+              { href: `/${ciudad}/contrato-alquiler`, t: 'Contrato LAU', d: 'Servicio principal de alquiler' },
+              { href: `/${ciudad}/contrato-arras`, t: 'Contrato de arras', d: 'Compraventa entre particulares' },
+              { href: `/contratos-inmobiliarios/${ciudad}`, t: 'Contratos por ciudad', d: 'Hub de servicios' },
               ...((LANDINGS_CIUDAD_PREMIUM_SLUGS as readonly string[]).includes(ciudad)
                 ? [{ href: `/${ciudad}/alquiler-temporada`, t: 'Alquiler temporada', d: 'Estancia temporal' }]
                 : [{ href: '/gestoria/alquiler-temporada', t: 'Alquiler temporada', d: 'Estancia temporal' }]),
@@ -416,6 +429,7 @@ export default function ParticularesGestoriaCiudadLanding({
           </div>
         </section>
       )}
+      <WhatsAppButton />
     </>
   )
 }

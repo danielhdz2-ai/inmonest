@@ -317,11 +317,6 @@ export const SEO_REDIRECTS: Redirect[] = [
     destination: '/castellon/contrato-alquiler',
     permanent: true,
   },
-  {
-    source: '/murcia/alquiler-particulares',
-    destination: '/pisos?ciudad=murcia&solo_particulares=true',
-    permanent: true,
-  },
 
   // ═══ GESTORÍA B2B AGENCIAS — URL canónica bajo /gestoria/{ciudad}/agencias ═══
   {
@@ -419,6 +414,25 @@ export const SEO_REDIRECTS: Redirect[] = [
     destination: '/gestoria/asturias/agencias',
     permanent: true,
   },
+
+  // ═══ Embudo portal ciudad → servicio gestoría (también en middleware) ═══
+  {
+    source: '/:ciudad/alquiler-particulares',
+    destination: '/:ciudad/contrato-alquiler',
+    permanent: true,
+  },
+  {
+    source: '/:ciudad/alquiler-sin-agencia',
+    destination: '/:ciudad/contrato-alquiler',
+    permanent: true,
+  },
+  { source: '/:ciudad/pisos', destination: '/:ciudad/contrato-alquiler', permanent: true },
+  {
+    source: '/:ciudad/pisos-particulares-sin-comision',
+    destination: '/:ciudad/contrato-alquiler',
+    permanent: true,
+  },
+  { source: '/:ciudad/vender-piso', destination: '/:ciudad/contrato-arras', permanent: true },
 
   // ═══ Portal inmobiliario cerrado → gestoría (LAU hub) ═══
   { source: '/pisos', destination: '/gestoria/contrato-alquiler', permanent: true },

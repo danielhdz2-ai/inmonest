@@ -110,9 +110,6 @@ export function getServicioGuiaHref(slug: string): string {
 
 /** Solo ciudades con landing realmente construida para este tipo de página */
 export function filterCiudadesLandingActiva(landingId: string, ciudades: string[]): string[] {
-  if (landingId === 'alquiler-particulares' || landingId === 'alquiler-sin-agencia' || landingId === 'vender-piso' || landingId === 'pisos-ciudad') {
-    return ciudades.filter((c) => (CIUDADES_PORTAL_EXTENDIDAS_SLUGS as readonly string[]).includes(c))
-  }
   return ciudades
 }
 
@@ -290,41 +287,6 @@ export const LANDINGS_POR_CIUDAD: LandingPorCiudad[] = [
     precioSlug: 'revision-correccion-arras',
     href: (c) => `/gestoria/revision-correccion-arras/${c}`,
     ciudades: [...LANDINGS_CIUDAD_PREMIUM_SLUGS],
-  },
-  {
-    id: 'alquiler-particulares',
-    nombre: 'Alquiler de Particulares',
-    precioInfo: 'Portal',
-    href: (c) => `/${c}/alquiler-particulares`,
-    ciudades: [...CIUDADES_PORTAL_EXTENDIDAS_SLUGS],
-  },
-  {
-    id: 'alquiler-sin-agencia',
-    nombre: 'Alquiler sin Agencia',
-    precioInfo: 'Portal',
-    href: (c) => `/${c}/alquiler-sin-agencia`,
-    ciudades: [...CIUDADES_PORTAL_EXTENDIDAS_SLUGS],
-  },
-  {
-    id: 'vender-piso',
-    nombre: 'Vender Piso en Ciudad',
-    precioInfo: 'Portal',
-    href: (c) => `/${c}/vender-piso`,
-    ciudades: [...CIUDADES_PORTAL_EXTENDIDAS_SLUGS],
-  },
-  {
-    id: 'pisos-ciudad',
-    nombre: 'Pisos en Ciudad',
-    precioInfo: 'Portal',
-    href: (c) => `/${c}/pisos`,
-    ciudades: [...CIUDADES_PORTAL_EXTENDIDAS_SLUGS],
-  },
-  {
-    id: 'pisos-sin-comision',
-    nombre: 'Pisos Particulares sin Comisión',
-    precioInfo: 'Portal',
-    href: (c) => `/${c}/pisos-particulares-sin-comision`,
-    ciudades: ['madrid', 'barcelona', 'valencia', 'sevilla', 'malaga'],
   },
 ]
 

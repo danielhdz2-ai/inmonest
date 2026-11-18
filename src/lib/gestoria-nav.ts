@@ -6,7 +6,7 @@
  * 2. Catálogo info: /servicios, /gestoria/[servicio]
  * 3. Checkout: /gestoria/solicitar → /gestoria/solicitar/[servicio]
  * 4. SEO local servicio: /[ciudad]/contrato-alquiler, /barcelona/contrato-alquiler/[barrio]
- * 5. Embudo legacy indexable: /[ciudad]/pisos, alquiler-particulares, etc. → capas 3–4
+ * 5. Embudo legacy portal: 301 a /[ciudad]/contrato-alquiler (ver portal-embudo-redirects)
  * 6. Hub ciudad contratos: /contratos-inmobiliarios/[ciudad]
  */
 

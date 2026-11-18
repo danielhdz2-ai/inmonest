@@ -37,19 +37,17 @@ export function collectIndexableMarketingPaths(): string[] {
 type ChangeFreq = NonNullable<MetadataRoute.Sitemap[0]['changeFrequency']>
 
 function resolveChangeFrequency(path: string): ChangeFreq {
-  if (path.endsWith('/alquiler-particulares') || path.endsWith('/pisos-particulares-sin-comision')) {
-    return 'daily'
+  if (path.endsWith('/contrato-alquiler') || path.endsWith('/contrato-arras')) {
+    return 'weekly'
   }
-  if (path.endsWith('/pisos') || path.startsWith('/contratos-inmobiliarios')) {
+  if (path.startsWith('/contratos-inmobiliarios')) {
     return 'weekly'
   }
   return 'monthly'
 }
 
 function resolvePriority(path: string): number {
-  if (path.endsWith('/pisos-particulares-sin-comision')) return 0.95
-  if (path.endsWith('/alquiler-particulares')) return 0.92
-  if (path.endsWith('/pisos')) return 0.9
+  if (path.endsWith('/contrato-alquiler')) return 0.93
   if (path.startsWith('/contratos-inmobiliarios')) return path === '/contratos-inmobiliarios' ? 0.93 : 0.91
   if (path.endsWith('/contrato-arras') || path.endsWith('/contrato-alquiler')) return 0.85
   if (path.includes('/barcelona/contrato-arras/')) return 0.86

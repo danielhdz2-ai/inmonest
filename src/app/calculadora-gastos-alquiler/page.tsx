@@ -127,7 +127,7 @@ export default function CalculadoraGastosAlquilerPage() {
                   💡 <strong>¿Ya sabes tu presupuesto?</strong> Encuentra pisos de particulares sin comisión de agencia.
                 </p>
                 <Link 
-                  href="/pisos?operacion=rent" 
+                  href="/gestoria/contrato-alquiler" 
                   className="block w-full bg-gold-600 hover:bg-gold-700 text-white font-bold py-3 rounded-lg text-center transition-colors"
                 >
                   Ver pisos en alquiler sin comisión
@@ -228,7 +228,7 @@ export default function CalculadoraGastosAlquilerPage() {
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
                   <Link
-                    href="/pisos?operacion=rent"
+                    href="/gestoria/contrato-alquiler"
                     className="inline-block bg-white text-gold-600 hover:bg-cream-100 font-bold px-8 py-3.5 rounded-full transition-colors"
                   >
                     Explorar pisos en alquiler →
@@ -252,7 +252,7 @@ export default function CalculadoraGastosAlquilerPage() {
                     Málaga
                   </Link>
                   <Link
-                    href="/bilbao/alquiler-particulares"
+                    href="/bilbao/contrato-alquiler"
                     className="inline-block border-2 border-white/70 text-white hover:bg-white/10 font-semibold px-6 py-3.5 rounded-full transition-colors text-sm"
                   >
                     Particulares Bilbao
