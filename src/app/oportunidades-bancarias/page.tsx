@@ -257,7 +257,7 @@ export default function OportunidadesBancariasPage() {
                 </div>
                 <p className="text-sm text-gray-600">{f.descripcion}</p>
                 <Link
-                  href={`/pisos?banco=${f.nombre.toLowerCase()}`}
+                  href="/blog/pisos-fondo-bancario-baratos"
                   className="mt-4 inline-block text-sm font-semibold text-amber-700 hover:underline"
                 >
                   Ver pisos de {f.nombre} →

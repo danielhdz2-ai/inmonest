@@ -18,6 +18,7 @@
     "gsc:indexacion": "npx tsx scripts/seo/comprobar-indexacion-gestoria.ts",
     "gsc:indexar:contratos": "npx tsx scripts/seo/iniciar-indexacion-contratos.ts",
     "gsc:urls": "npx tsx scripts/generar-urls-indexar.ts",
+    "gsc:export-prioridad": "npx tsx scripts/seo/export-indexacion-prioridad.mjs",
     "gsc:audit": "npx tsx scripts/seo/audit-gsc-coverage-live.ts",
     "detect-404s": "npx tsx scripts/detect-404s.mts",
     "audit:seo": "node scripts/audit-seo-regression.mjs",

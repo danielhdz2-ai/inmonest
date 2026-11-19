@@ -116,12 +116,10 @@ export async function middleware(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams
   const problematicParams = ['ciudad', 'tipo', 'page', 'sort', 'utm_source', 'utm_medium', 'utm_campaign', 'fbclid', 'gclid']
   
-  // Si la URL tiene parámetros problemáticos Y no es una búsqueda activa (/pisos con filtros legítimos)
   const hasProblematicParams = problematicParams.some(param => searchParams.has(param))
-  const isSearchPage = pathname === '/pisos' || pathname.startsWith('/pisos/')
   const isApiRoute = pathname.startsWith('/api/')
   
-  if (hasProblematicParams && !isSearchPage && !isApiRoute) {
+  if (hasProblematicParams && !isApiRoute) {
     const url = request.nextUrl.clone()
     // Limpiar todos los parámetros problemáticos
     problematicParams.forEach(param => url.searchParams.delete(param))
@@ -129,51 +127,6 @@ export async function middleware(request: NextRequest) {
     // Solo redirigir si efectivamente eliminamos parámetros
     if (url.search !== request.nextUrl.search) {
       return NextResponse.redirect(url, 301) // Permanent redirect
-    }
-  }
-
-  // Normalizar URLs duplicadas comunes
-  const urlNormalizations: Record<string, string> = {
-    '/pisos/alquiler': '/pisos?operacion=rent',
-    '/pisos/venta': '/pisos?operacion=sale',
-    '/pisos/compra': '/pisos?operacion=sale',
-  }
-  
-  if (pathname in urlNormalizations) {
-    const url = request.nextUrl.clone()
-    url.pathname = urlNormalizations[pathname].split('?')[0]
-    const params = urlNormalizations[pathname].split('?')[1]
-    if (params) {
-      params.split('&').forEach(param => {
-        const [key, value] = param.split('=')
-        url.searchParams.set(key, value)
-      })
-    }
-    return NextResponse.redirect(url, 308)
-  }
-
-  // Parámetros legacy en búsqueda de pisos → nombres canónicos españoles
-  if (pathname === '/pisos') {
-    const url = request.nextUrl.clone()
-    let changed = false
-
-    if (searchParams.has('city') && !searchParams.has('ciudad')) {
-      url.searchParams.set('ciudad', searchParams.get('city')!.toLowerCase())
-      url.searchParams.delete('city')
-      changed = true
-    }
-
-    if (searchParams.has('operation') && !searchParams.has('operacion')) {
-      const op = searchParams.get('operation')
-      if (op === 'rent' || op === 'sale') {
-        url.searchParams.delete('operation')
-        url.searchParams.set('operacion', op)
-        changed = true
-      }
-    }
-
-    if (changed) {
-      return NextResponse.redirect(url, 301)
     }
   }
 
