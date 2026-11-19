@@ -45,7 +45,7 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         name: 'Buscar pisos',
         short_name: 'Pisos',
-        url: '/pisos',
+        url: '/gestoria/solicitar',
         icons: [{ src: '/icon-192x192.png', sizes: '192x192' }],
       },
       {
