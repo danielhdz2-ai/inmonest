@@ -379,7 +379,8 @@ export default function ErroresComprarPisoEntreParticulares2026Page() {
           <h2>Calendario tipo: compraventa entre particulares sin agencia</h2>
           <ol>
             <li>
-              <strong>Semanas 1–2:</strong> búsqueda en <Link href="/pisos">portal Inmonest</Link>, visitas, negociación.
+              <strong>Semanas 1–2:</strong> búsqueda de vivienda por tu cuenta, visitas y negociación (Inmonest entra en la fase jurídica:{' '}
+              <Link href="/gestoria/pack-arras-revision-documental">revisión documental y arras</Link>).
             </li>
             <li>
               <strong>Semana 3:</strong> solicitud documentación + revisión arras / due diligence.

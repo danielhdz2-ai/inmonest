@@ -214,7 +214,7 @@ export default function SearchResults({
             <h2 className="text-lg font-semibold text-gray-700">No encontramos anuncios</h2>
             <p className="text-gray-500 mt-1 text-sm">Prueba con otra ciudad o amplía los filtros</p>
             <Link
-              href="/pisos"
+              href="/gestoria/contrato-alquiler"
               className="mt-5 inline-block px-5 py-2.5 bg-gold-500 text-white rounded-full text-sm font-semibold hover:bg-gold-600 transition-colors"
             >
               Ver todos los anuncios

@@ -36,7 +36,7 @@ export default function NotFound() {
               Volver al inicio
             </Link>
             <Link
-              href="/pisos"
+              href="/gestoria/contrato-alquiler"
               className="border-2 border-gold-500 text-gold-500 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gold-500 hover:text-white transition"
             >
               Ver pisos
@@ -57,7 +57,7 @@ export default function NotFound() {
                 </p>
               </Link>
               
-              <Link href="/pisos" className="p-4 border rounded-lg hover:border-gold-500 transition group">
+              <Link href="/gestoria/solicitar" className="p-4 border rounded-lg hover:border-gold-500 transition group">
                 <div className="font-semibold text-gray-900 group-hover:text-gold-500 mb-1">
                   🏠 Pisos en venta
                 </div>

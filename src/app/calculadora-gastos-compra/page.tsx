@@ -114,7 +114,7 @@ export default function CalculadoraGastosCompraPage() {
                   💡 <strong>¿Ya sabes cuánto necesitas?</strong> Encuentra pisos sin comisión de agencia y ahorra aún más.
                 </p>
                 <Link 
-                  href="/pisos?operacion=sale" 
+                  href="/gestoria/venta-completa-reserva-escritura" 
                   className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg text-center transition-colors"
                 >
                   Ver pisos en venta sin comisión
@@ -211,7 +211,7 @@ export default function CalculadoraGastosCompraPage() {
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
                   <Link
-                    href="/pisos?operacion=sale"
+                    href="/gestoria/venta-completa-reserva-escritura"
                     className="inline-block bg-white text-blue-600 hover:bg-blue-50 font-bold px-8 py-3.5 rounded-full transition-colors"
                   >
                     Explorar pisos en venta →

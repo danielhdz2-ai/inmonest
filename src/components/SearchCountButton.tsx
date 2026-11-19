@@ -50,7 +50,7 @@ export default function SearchCountButton({ onClick, className }: Props) {
   }
 
   return (
-    <Link href="/pisos" className={base}>
+    <Link href="/gestoria/contrato-alquiler" className={base}>
       {label}
     </Link>
   )

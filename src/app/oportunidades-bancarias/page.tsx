@@ -215,7 +215,7 @@ export default function OportunidadesBancariasPage() {
 
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/pisos?tipo=bancario"
+                href="/gestoria/compra-completa-reserva-escritura"
                 className="bg-amber-500 hover:bg-amber-400 text-white font-semibold px-6 py-3 rounded-full transition"
               >
                 Ver pisos bancarios
@@ -354,7 +354,7 @@ export default function OportunidadesBancariasPage() {
                 Registrarme gratis
               </Link>
               <Link
-                href="/pisos?tipo=bancario"
+                href="/gestoria/compra-completa-reserva-escritura"
                 className="flex-1 bg-white/15 hover:bg-white/25 text-white font-semibold px-6 py-4 rounded-full text-center transition border border-white/30"
               >
                 Ver oportunidades
@@ -476,10 +476,10 @@ export default function OportunidadesBancariasPage() {
                 { label: 'Contratos de Arras', href: '/gestoria' },
                 { label: 'Asesoría de Compra', href: '/gestoria/solicitar/compra-completa-reserva-escritura' },
                 { label: 'Calculadora gastos compra', href: '/calculadora-gastos-compra' },
-                { label: 'Pisos en Madrid', href: '/madrid/pisos' },
-                { label: 'Pisos en Barcelona', href: '/barcelona/pisos' },
-                { label: 'Pisos en Valencia', href: '/valencia/pisos' },
-                { label: 'Pisos en Sevilla', href: '/sevilla/pisos' },
+                { label: 'LAU Madrid', href: '/madrid/contrato-alquiler' },
+                { label: 'LAU Barcelona', href: '/barcelona/contrato-alquiler' },
+                { label: 'LAU Valencia', href: '/valencia/contrato-alquiler' },
+                { label: 'LAU Sevilla', href: '/sevilla/contrato-alquiler' },
               ].map(({ label, href }) => (
                 <Link
                   key={href}

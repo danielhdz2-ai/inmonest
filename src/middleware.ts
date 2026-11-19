@@ -49,7 +49,7 @@ export async function middleware(request: NextRequest) {
     url.search = ''
     return NextResponse.redirect(url, 308)
   }
-  if (pathname.startsWith('/pisos/')) {
+  if (pathname === '/pisos' || pathname.startsWith('/pisos/')) {
     const url = request.nextUrl.clone()
     url.pathname = GESTORIA_ALQUILER_HUB
     url.search = ''
@@ -217,6 +217,12 @@ export async function middleware(request: NextRequest) {
   if (gestoriaJunkPhone) {
     const url = request.nextUrl.clone()
     url.pathname = `/gestoria/${gestoriaJunkPhone[1]}`
+    return NextResponse.redirect(url, 301)
+  }
+  if (decodedPath.match(/^\/gestoria\/\s*(\d{9,12})\/?$/)) {
+    const url = request.nextUrl.clone()
+    url.pathname = '/gestoria'
+    url.search = ''
     return NextResponse.redirect(url, 301)
   }
   if (decodedPath.match(/^\/\s*(\d{9,12})\/?$/)) {

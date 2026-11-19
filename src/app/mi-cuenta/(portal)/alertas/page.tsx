@@ -25,7 +25,7 @@ export default async function AlertasPage() {
           </p>
         </div>
         <Link
-          href="/pisos"
+          href="/gestoria/contrato-alquiler"
           className="flex-shrink-0 inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-semibold px-4 py-2.5 rounded-xl transition-colors"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

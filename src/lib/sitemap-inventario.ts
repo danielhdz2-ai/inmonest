@@ -10,13 +10,22 @@ import { getBarcelonaTemporadaBarrioPaths } from '@/lib/barcelona-alquiler-tempo
 import { getBarcelonaVentaCompletaBarrioPaths } from '@/lib/barcelona-venta-completa-barrios'
 import { getBarcelonaCompraCompletaBarrioPaths } from '@/lib/barcelona-compra-completa-barrios'
 import { getBarcelonaPackArrasDocumentalBarrioPaths } from '@/lib/barcelona-pack-arras-documental-barrios'
+import { SITEMAP_LANDING_IDS, shouldIncludePathInSitemap } from '@/lib/sitemap-crawl-budget'
+import {
+  GESTORIA_INDEXAR_PRIORIDAD_ALTA,
+  GESTORIA_INDEXAR_PRIORIDAD_MEDIA,
+} from '@/lib/gestoria-indexar-urls'
 
-/** Rutas de landings (portal + gestoría) alineadas con LANDINGS_POR_CIUDAD y listas GSC. */
+/** Rutas de landings gestoría en sitemap (presupuesto de rastreo acotado). */
 export function collectIndexableMarketingPaths(): string[] {
-  const fromLandings = LANDINGS_POR_CIUDAD.flatMap((landing) =>
+  const fromLandings = LANDINGS_POR_CIUDAD.filter((l) => SITEMAP_LANDING_IDS.has(l.id)).flatMap((landing) =>
     landing.ciudades.map((c) => landing.href(c)),
   )
-  const fromGestoria = getGestoriaUrlsParaIndexar()
+  const fromGestoria = [
+    ...GESTORIA_INDEXAR_PRIORIDAD_ALTA,
+    ...GESTORIA_INDEXAR_PRIORIDAD_MEDIA,
+    ...getGestoriaUrlsParaIndexar().filter((p) => p.startsWith('/contratos-inmobiliarios')),
+  ]
   const portalHubs = CIUDADES_PORTAL_SLUGS.map((c) => `/${c}`)
 
   const barcelonaBarrios = [
@@ -29,8 +38,8 @@ export function collectIndexableMarketingPaths(): string[] {
     ...getBarcelonaPackArrasDocumentalBarrioPaths(),
   ]
 
-  return [...new Set([...fromLandings, ...fromGestoria, ...portalHubs, ...barcelonaBarrios])].filter((path) =>
-    isGestoriaPathIndexable(path),
+  return [...new Set([...fromLandings, ...fromGestoria, ...portalHubs, ...barcelonaBarrios])].filter(
+    (path) => isGestoriaPathIndexable(path) && shouldIncludePathInSitemap(path),
   )
 }
 

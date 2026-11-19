@@ -66,7 +66,7 @@ export default function AlertasClient({ initialAlerts }: { initialAlerts: Search
           Busca pisos en el portal y haz clic en <strong>"Guardar alerta"</strong> para que te avisemos cuando aparezcan nuevos inmuebles.
         </p>
         <Link
-          href="/pisos"
+          href="/gestoria/contrato-alquiler"
           className="inline-flex items-center gap-2 bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-semibold px-6 py-3 rounded-xl transition-colors"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

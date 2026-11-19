@@ -168,7 +168,7 @@ export default function PisosFondoBancarioPage() {
             Antes de cerrar cualquier compraventa, protégete con un contrato de arras redactado por gestores especializados. Entrega en 48h.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/pisos?origen=fondos-bancarios" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
+            <Link href="/oportunidades-bancarias" className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">
               Ver pisos bancarios en Inmonest
             </Link>
             <Link href="/gestoria/arras-penitenciales" className="border border-amber-400 text-amber-700 hover:bg-amber-50 font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors">

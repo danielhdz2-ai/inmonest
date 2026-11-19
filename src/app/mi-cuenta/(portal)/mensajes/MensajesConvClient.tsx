@@ -152,7 +152,7 @@ export default function MensajesConvClient({ userId, initialConversations }: Pro
         <p className="text-sm text-gray-400 mb-6">
           Cuando contactes con un anunciante o recibas un mensaje, aparecerá aquí.
         </p>
-        <Link href="/pisos" className="inline-block bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
+        <Link href="/gestoria" className="inline-block bg-gold-500 hover:bg-[#b8841e] text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors">
           Buscar pisos
         </Link>
       </div>
